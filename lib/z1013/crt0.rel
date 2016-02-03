@@ -1,0 +1,70 @@
+XL2
+H F areas 8 global symbols
+M crt0
+S _main Ref0000
+S s__CODE Ref0000
+S .__.ABS. Def0000
+S s__INITIALIZED Ref0000
+S l__INITIALIZER Ref0000
+S s__INITIALIZER Ref0000
+A _CODE size 1E flags 0 addr 0
+A _HEADER size 0 flags 8 addr 0
+A _HEADER0 size 20 flags 8 addr E0
+A _HOME size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _GSINIT size F flags 0 addr 0
+S gsinit Def0000
+A _GSFINAL size 1 flags 0 addr 0
+A _GSEXIT size 0 flags 0 addr 0
+S gsexit Def0000
+A _GSEXITFINAL size 1 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _BSEG size 0 flags 0 addr 0
+A _BSS size 0 flags 0 addr 0
+A _STACK size 404 flags 0 addr 0
+A _HEAP size 0 flags 0 addr 0
+T E0 00
+R 00 00 02 00
+T E0 00 00 00 00 00 00 00 73 64 63 63 38 30 43 D3
+R 00 00 02 00 02 02 01 00 00 04 0D 00 00 06 00 00
+T EE 00 D3 D3 20 20 20 20 20 20 20 20 20 20 20 20
+R 00 00 02 00
+T FC 00 20 20 20 20
+R 00 00 02 00
+T 00 00
+R 00 00 00 00
+T 00 00 31 04 04 21 BB BB 22 00 00 E5 CD 00 00 CD
+R 00 00 00 00 00 03 0D 00 00 09 0D 00 00 0D 05 00
+T 0E 00 00 00 CD 00 00 31 B0 00 7C B5 20 03 C3
+R 00 00 00 00 02 02 00 00 00 05 07 00
+T 1B 00 5F F0
+R 00 00 00 00
+T 1D 00
+R 00 00 00 00
+T 1D 00 FF
+R 00 00 00 00
+T 00 00
+R 00 00 05 00
+T 00 00 01 00 00 78 B1 28 08 11 00 00 21 00 00 ED
+R 00 00 05 00 02 03 04 00 02 0A 03 00 02 0D 05 00
+T 0E 00 B0
+R 00 00 05 00
+T 0F 00
+R 00 00 05 00
+T 00 00 C9
+R 00 00 06 00
+T 00 00
+R 00 00 07 00
+T 00 00 C9
+R 00 00 08 00
+T 00 00
+R 00 00 0D 00
+T 00 00
+R 00 00 0D 00
+T 02 00
+R 00 00 0D 00
+T 02 04
+R 00 00 0D 00
+T 04 04
+R 00 00 0D 00
