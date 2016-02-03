@@ -32,6 +32,7 @@
 
 	;; Ordering of segments for the linker.
 	.area	_HEADER (ABS)
+
 	.org    0x200
 	
 	.area	_HOME
@@ -54,16 +55,16 @@
     
 init:
 	
-    ;; Initialise global variables
-    call  gsinit
+	;; Initialise global variables
+	call  gsinit
 	call  _main
 
 	call  gsexit    
-    ;ret 
-    ; use call LOOP instead of ret, works also
-    ; with direct load+start on simulator
-    call PV1
-    .db FNLOOP
+	;ret 
+	; use call LOOP instead of ret, works also
+	; with direct load+start on simulator
+	call PV1	
+	.db FNLOOP
 
 	.area   _GSINIT
 gsinit::

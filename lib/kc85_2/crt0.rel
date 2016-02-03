@@ -8,8 +8,8 @@ S .__.ABS. Def0000
 S s__INITIALIZED Ref0000
 S l__INITIALIZER Ref0000
 S s__INITIALIZER Ref0000
-A _CODE size 18 flags 0 addr 0
-S init Def000B
+A _CODE size D flags 0 addr 0
+S init Def0000
 A _HEADER size 0 flags 8 addr 0
 A _HEADER0 size 0 flags 8 addr 200
 A _HOME size 0 flags 0 addr 0
@@ -28,11 +28,9 @@ A _STACK size 0 flags 0 addr 0
 A _HEAP size 0 flags 0 addr 0
 T 00 02
 R 00 00 02 00
-T 00 00 7F 7F 31 32 33 34 35 36 37 38 01
+T 00 00
 R 00 00 00 00
-T 0B 00
-R 00 00 00 00
-T 0B 00 CD 00 00 CD 00 00 CD 00 00 CD 03 F0 12
+T 00 00 CD 00 00 CD 00 00 CD 00 00 CD 03 F0 12
 R 00 00 00 00 00 03 05 00 02 06 01 00 00 09 07 00
 T 00 00
 R 00 00 05 00

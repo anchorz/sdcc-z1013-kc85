@@ -57,17 +57,25 @@ obj/kc85_2:
 
 obj/kc85_2/bin: obj/kc85_2/$(OUT).kcc
 
-obj/kc85_2/$(OUT).kcc: ../lib/kc85_2/crt0.rel ../lib/kc85_2/kcc_header.rel  $(addsuffix .rel,$(addprefix obj/kc85_2/,$(OBJECTS)))
-	$(LINK)     -mjwx -b _KCC_HEADER=0x180 -b _CODE=0x0200 $(LD_FLAGS) -i "obj/$(OUT).ihx" -k ../lib/ -l libc -l libkc85_2 $^
-	$(OBJCOPY) -Iihex -Obinary "obj/$(OUT).ihx" "$@"
+obj/kc85_2/$(OUT).kcc: obj/kc85_2/prolog.rel ../lib/kc85_2/crt0.rel ../lib/kc85_2/kcc_header.rel  $(addsuffix .rel,$(addprefix obj/kc85_2/,$(OBJECTS)))
+	$(LINK)     -mjwx -b _KCC_HEADER=0x180 -b _CODE=0x0200 $(LD_FLAGS) -i "obj/kc85_2/$(OUT).ihx" -k ../lib/ -l libc -l libkc85_2 $^
+	$(OBJCOPY) -Iihex -Obinary "obj/kc85_2/$(OUT).ihx" "$@"
 	
 	@# include filename
-	/bin/echo -n $(OUT) >obj/filename.txt
-	dd bs=1 if=obj/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
-	dd bs=1 if=obj/filename.txt of="$@" count=8 seek=130 conv=notrunc,ucase
-
+	/bin/echo -n $(OUT) >obj/kc85_2/filename.txt
+	dd bs=1 if=obj/kc85_2/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
+	#dd bs=1 if=obj/filename.txt of="$@" count=8 seek=130 conv=notrunc,ucase
 	hexdump -C "$@"
 
+obj/kc85_2/prolog.rel:
+	echo ".area _CODE" >obj/kc85_2/prolog.asm
+	echo ".dw 0x7f7f" >>obj/kc85_2/prolog.asm
+	echo -n ".ascii '" >>obj/kc85_2/prolog.asm
+	echo -n $(OUT) | tr '[:lower:]' '[:upper:]'  >>obj/kc85_2/prolog.asm
+	echo "'" >>obj/kc85_2/prolog.asm
+	echo ".db 0x01" >>obj/kc85_2/prolog.asm
+	$(AS) -plosgff -Iinclude "$@" obj/kc85_2/prolog.asm
+	
 obj/kc85_2/%.asm : src/%.c
 	sdcc -mz80 $(CFLAGS) -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include $(CFLAGS) "$<"
 
