@@ -41,12 +41,20 @@ obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix
 obj/z1013/%.asm : src/%.c
 	sdcc -mz80 -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include $(CFLAGS)  "$<"
 	
-obj/z1013/%.rel : obj/z1013/%.asm
+obj/z1013/%.rel : src/%.s
   ifdef ENABLED_BANKED
-	../lib/bank_replace.pl "$<"
+	pwd
+	../tools/bank_replace.pl "$<"
   endif
 	$(AS) -plosgff -Iinclude "$@" "$<"
-	
+
+obj/z1013/%.rel : obj/z1013/%.asm
+  ifdef ENABLED_BANKED
+	pwd
+	../tools/bank_replace.pl "$<"
+  endif
+	$(AS) -plosgff -Iinclude "$@" "$<"
+		
 ################
 #
 #  KC85/2
@@ -73,13 +81,13 @@ obj/kc85/%.asm : src/%.c
 
 obj/kc85/%.rel : src/%.s
   ifdef ENABLED_BANKED
-	../lib/bank_replace.pl "$<"
+	../tools/bank_replace.pl "$<"
   endif
 	$(AS) -plosgff -Iinclude "$@" "$<"
 
 obj/kc85/%.rel : obj/kc85/%.asm
   ifdef ENABLED_BANKED
-	../lib/bank_replace.pl "$<"
+	../tools/bank_replace.pl "$<"
   endif
 	$(AS) -plosgff -Iinclude "$@" "$<"
 	
