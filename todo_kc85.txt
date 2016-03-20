@@ -1,0 +1,44 @@
+Hello World läuft soweit
+modulescan läuft (mit flackern, warum?) 
+   - womöglich reagiert der KC85/4 auf das Ändern des IX registers
+KCC header werden eingefügt (Dateiname auf 8 Bytes begrenzt)
+in() und out() gibt es
+
+Was noch zu tun wäre:
+- out befehl testen
+- conio.h erstellen
+- Argumente von Kommandozeile holen
+- Farben im Grafikmodus testen (Testbild generieren)
+
+Q: sample_07_kc85_appscreen kompiliert, aber läuft nicht
+    Ist es ein Compilerproblem?
+
+Probleme:
+- IX wird immer noch verwendet
+- dafür geht sowas nicht: 
+    //              __asm__( "ld a,(ix+1)");
+    // work around: __asm__( ".db 0xdd, 0x7e, 0x01");
+
+- nicht verwendete Funktionen aus der lib werden nicht entfernt
+
+Q: Wozu dient die Funktion nacked_foo() 
+    Das ist Testcode, z.B. für Interrupthandler verwendbar
+
+Q: Warum wird OUTCH und INCH in z1013.c definiert und PRST7 in z1013.h? 
+    Normalerweise plaziert werden Strings im Datensegment plaziert und über die Adresse angesprochen
+    bei 8-bit Computern kann man vielfach den Text auch gleich im Code einbauen, dann braucht man
+    die Adresse nicht mehr. PRST7 ist so ein Macro. Es funktioniert sicher so ähnlich auch am KC85. 
+
+Q: Warum verwendest Du nicht getc/putc bzw. getchar/putch für die Ein-/Ausgabe? 
+    Auf dem KC85(2-5) haben die Monitorroutinen wieder andere Namen (KBD, CRT, OSTR) als beim Z1013. 
+    Damit ist der Code nicht portabel. --> besser conio.h oder stdio.h
+Im Headerfile z1013.h sind Z1013 spezifische Funkionen deklariert. Um platformunabhängig programmieren zu können
+müssen die C-Lib oder Conio implementiert werden. Das ist richtig und hier im Demo noch nicht vollständig implementiert.
+putchar() gibt es schon.
+
+Q: Bei der Initialisierung werden die nichtinitialisierten Variablen nicht auf '0' initialisiert. 
+   Daher habe ich gs_init ergänzt (siehe Anhang).
+... und dabei ein Byte zu viel geschrieben
+
+Q:- .asciz (bei mir aufgerufen durch OSTR) darf keinen Doppelpunkt enthalten. Da gibt es den folgende Fehler: src/main.c:45: info 218: z80instructionSize() failed to parse line node, assuming 999 bytes '.asciz "platz "'. Hast Du eine Ahnung was hier falsch läuft? --> offenbar wird mit dem ':' ein Label erzeugt (und ein komischer Zeilenumbruch im .asm-File)
+

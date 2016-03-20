@@ -1,4 +1,3 @@
-UNIX_STYLE_NEW_LINE = 0x0a
-VK_ENTER            = 0x0d
-; functions numbers
+; functions numbers for z1013 monitor
 OUTCH   = 0x00
+INCH    = 0x01

@@ -3,9 +3,9 @@ LINK = sdldz80
 AS = sdasz80
 AR = sdar
 
-all: obj crt0.rel ../libz1013.lib 
+all: obj crt0.rel header.rel ../z1013.lib 
 
-crt0.rel: obj/crt0.rel
+%.rel: obj/%.rel
 	cp $< $@
 
 obj:
@@ -14,11 +14,13 @@ obj:
 obj/%.rel : src/%.s
 	$(AS) -plosgff $@ $<
  
-../libz1013.lib : obj/putchar.rel
+../z1013.lib : obj/putchar.rel obj/outch.rel obj/inch.rel obj/exit.rel
 	$(AR) r $@ $^
 	
 clean:
 	rm -rf obj
 	rm -f *.bak
+	rm -f *~
 	rm -f src/*.bak
+	rm -f src/*~
 

@@ -1,0 +1,25 @@
+; some functions provided by the CAOS (=monitor program)
+
+; first parameter LSB on SP+2
+; first parameter MSB on SP+3
+; 2nd   parameter LSB on SP+4
+; 2nd   parameter MSB on SP+5
+; return values on L or HL
+
+    .include 'caos.inc'
+
+
+
+; Sprung in ein neues Betriebssystem, 
+; Abschalten von CAOS-ROM, USER-ROM und aller Speichermodule.
+;  in:
+;   A - Modulsteckplatz
+.globl _jump
+_jump::
+    ld hl,#2
+    add hl, sp
+    ld	a, (hl)
+
+    call PV1
+    .db FNJUMP
+    ret

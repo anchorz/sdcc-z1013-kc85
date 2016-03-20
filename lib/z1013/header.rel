@@ -1,0 +1,15 @@
+XL2
+H 2 areas 4 global symbols
+M header
+S s__CODE Ref0000
+S .__.ABS. Def0000
+S start_of_stackframe Ref0000
+S init Ref0000
+A _CODE size 0 flags 0 addr 0
+A _HEADER size 20 flags 8 addr 0
+T 00 00 00 00 00 00 00 00 73 64 63 63 38 30 43 D3
+R 00 00 01 00 02 02 00 00 02 04 02 00 02 06 03 00
+T 0E 00 D3 D3 20 20 20 20 20 20 20 20 20 20 20 20
+R 00 00 01 00
+T 1C 00 20 20 20 20
+R 00 00 01 00

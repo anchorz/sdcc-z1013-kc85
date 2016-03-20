@@ -1,12 +1,14 @@
-CFLAGS=--std-sdcc99
+CFLAGS=--std-sdcc99 --fomit-frame-pointer
 LINK = sdldz80
 AS = sdasz80
 AR = sdar
 
 all: obj libc.lib
+	cd z1013; make
+	cd kc85; make
 
 libc.lib : obj/printf.rel
-	$(AR) r "$@" $^
+	$(AR) rc "$@" $^
 	
 obj:
 	mkdir obj
@@ -15,6 +17,11 @@ obj/%.rel : src/%.c
 	sdcc -mz80 $(CFLAGS) -c -o $@ --nostdlib  --nostdinc -Iinclude -I../include $<
 
 clean:
+	cd z1013; make clean
+	cd kc85; make clean
 	rm -rf obj
 	rm -f *.bak
+	rm -f *~
 	rm -f src/*.bak
+	rm -f src/*~
+

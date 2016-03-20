@@ -1,7 +1,7 @@
 ;--------------------------------------------------------------------------
 ;  putchar.s
 ;
-;  Copyright (C) 2000, Michael Hope
+;  Copyright (C) 2016, Andreas Ziermann
 ;
 ;  This library is free software; you can redistribute it and/or modify it
 ;  under the terms of the GNU General Public License as published by the
@@ -26,10 +26,15 @@
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
 
-	.module crt0
+	.module putchar
 	.include 'z1013.inc'
-        .area   _CODE
+	.include 'codes.inc'
+    .area   _CODE
 _putchar::
+
+   	ld	hl, #2
+	add	hl, sp
+	ld	a, (hl)
 loop:
 	cp	a, #UNIX_STYLE_NEW_LINE
 	jr	NZ, print_character
