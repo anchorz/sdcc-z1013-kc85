@@ -1,6 +1,7 @@
 all:
 	cd lib; make
 
+
 clean:
 	rm -f *.bak
 	rm -f *~
