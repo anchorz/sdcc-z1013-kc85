@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <caos.h>
 
-#define CLS putchar( '\x0C');
+#define putCLS putchar( '\x0C');
 
 void putstr(char *c) {
     while (*c != '\0') {
@@ -52,19 +52,19 @@ void main() {
 
     res = winin( 1, 1, 7, 3, 1);
     colorup( 2, WHITE, YELLOW);
-    CLS;
+    putCLS;
     wait( 500 / 6);
     errm();
     ahex( res & 0x01);
 
     res = winin( 10, 2, 7, 2, 2);
     colorup( 2, WHITE, RED);
-    CLS;
+    putCLS;
     ahex( res & 0x01);
 
     res = winin( 20, 3, 7, 1, 3);
     colorup( 2, WHITE, GREEN);
-    CLS;
+    putCLS;
     ahex( res & 0x01);
 
     winak( 0);

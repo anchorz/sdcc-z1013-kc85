@@ -22,7 +22,7 @@ obj/gcc/$(OUT): $(addsuffix .o,$(addprefix obj/gcc/,$(OBJECTS)))
 	#
 obj/gcc/%.o : src/%.c
 	#gcc -Wall  -Wno-main -pedantic -std=c99 -S -o "$@.asm" "$<"
-	gcc -Wall  -Wno-main -pedantic -std=c99 -c -o "$@" "$<"
+	gcc -Wall  -Wno-main -Wno-main-return-type -pedantic -std=c99 -c -o "$@" "$<"
 
 .PRECIOUS: obj/z1013/%.asm 
 
@@ -93,6 +93,7 @@ obj/kc85/%.rel : obj/kc85/%.asm
 	
 clean:
 	rm -f Makefile~
+	rm -f a.out
 	rm -f *.bak
 	rm -rf obj
 	rm -f src/*~

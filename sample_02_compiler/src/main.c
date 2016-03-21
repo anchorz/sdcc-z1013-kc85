@@ -26,6 +26,8 @@ void inline OUTCH(unsigned char c)
     putchar(c);
 }
 
-void main() {
+int main() {
     OUTCH('a');
+    return 0;
 }
+

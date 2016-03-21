@@ -6,6 +6,7 @@
   .include "bank.inc"
   .include "bank.inc"
   .include "bank.inc"
+  .include "bank.inc"
 	.globl banked_call
 	.area _CODE
 banked_call::
