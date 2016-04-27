@@ -84,11 +84,13 @@ gsinit_zero:
 
     ; zero uninitialized stuff
     xor     a              ; clear a and carry
-    ld      bc, #l__DATA   ; ram size left
-    dec     bc
-    ld      hl, #s__DATA
     ld      de, #s__DATA+1
+    ld      hl, #s__DATA
     ld      (hl), a
+    dec     bc
+    ld      a, b
+    or      a, c
+    jr      Z, gsinit_next
     ldir
 
 gsinit_next:

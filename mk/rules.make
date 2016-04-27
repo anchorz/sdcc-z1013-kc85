@@ -75,8 +75,8 @@ obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/kcc_header.rel  $(addsuffi
 	hexdump -C "$@"
 
 obj/kc85/%.asm : src/%.c
-#	sdcc -mz80 $(CFLAGS) -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include "$<"
-	sdcc -mz80 $(CFLAGS) --reserve-regs-iy -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include "$<"
+	sdcc -mz80 $(CFLAGS) -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include "$<"
+#	sdcc -mz80 $(CFLAGS) --reserve-regs-iy -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include "$<"
 	../tools/ix_replace.sh "$@"
 
 obj/kc85/%.rel : src/%.s

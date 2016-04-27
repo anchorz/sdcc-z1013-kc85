@@ -1,14 +1,6 @@
-  .include "bank.inc"
-  .include "bank.inc"
-  .include "bank.inc"
-  .include "bank.inc"
-  .include "bank.inc"
-  .include "bank.inc"
-  .include "bank.inc"
-  .include "bank.inc"
-  .include "bank.inc"
-	.globl banked_call
-	.area _CODE
+    .include "bank.inc"
+    .globl banked_call
+    .area _CODE
 banked_call::
   pop hl
   ld e,(hl)

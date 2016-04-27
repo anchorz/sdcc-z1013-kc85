@@ -8,10 +8,10 @@ void next() {
     clrscr();
 }
 
-const graphic_widht = 320;
-const graphic_widht2 = 160;
-const graphic_heigth = 256;
-const graphic_heigth2 = 128;
+const int graphic_widht = 320;
+const int graphic_widht2 = 160;
+const int graphic_heigth = 256;
+const int graphic_heigth2 = 128;
 
 uint16_t index;
 uint8_t color = 0;

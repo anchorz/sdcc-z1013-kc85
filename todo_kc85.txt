@@ -1,6 +1,7 @@
-Hello World läuft soweit
-modulescan läuft (mit flackern, warum?) 
-   - womöglich reagiert der KC85/4 auf das Ändern des IX registers
+dokumentiere installation mac ubuntu sudo 
+   apt-get install libboost-all-dev
+   apt-get install texinfo
+
 KCC header werden eingefügt (Dateiname auf 8 Bytes begrenzt)
 in() und out() gibt es
 
@@ -35,10 +36,6 @@ Q: Warum verwendest Du nicht getc/putc bzw. getchar/putch für die Ein-/Ausgabe?
 Im Headerfile z1013.h sind Z1013 spezifische Funkionen deklariert. Um platformunabhängig programmieren zu können
 müssen die C-Lib oder Conio implementiert werden. Das ist richtig und hier im Demo noch nicht vollständig implementiert.
 putchar() gibt es schon.
-
-Q: Bei der Initialisierung werden die nichtinitialisierten Variablen nicht auf '0' initialisiert. 
-   Daher habe ich gs_init ergänzt (siehe Anhang).
-... und dabei ein Byte zu viel geschrieben
 
 Q:- .asciz (bei mir aufgerufen durch OSTR) darf keinen Doppelpunkt enthalten. Da gibt es den folgende Fehler: src/main.c:45: info 218: z80instructionSize() failed to parse line node, assuming 999 bytes '.asciz "platz "'. Hast Du eine Ahnung was hier falsch läuft? --> offenbar wird mit dem ':' ein Label erzeugt (und ein komischer Zeilenumbruch im .asm-File)
 
