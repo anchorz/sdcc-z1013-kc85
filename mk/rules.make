@@ -17,12 +17,12 @@ obj/gcc:
 obj/gcc/bin: obj/gcc/$(OUT)
 	
 obj/gcc/$(OUT): $(addsuffix .o,$(addprefix obj/gcc/,$(OBJECTS)))
-	gcc -o "$@" "$<"
+	#gcc -o "$@" $^ -print-search-dirs -L ../lib/gcc-x11 -lX11 -lpthread -lgcc-conio-x11 
+	gcc -o "$@" $^ ../lib/gcc-x11/gcc-conio-x11.a -lX11 -lpthread 
 	
-	#
 obj/gcc/%.o : src/%.c
 	#gcc -Wall  -Wno-main -pedantic -std=c99 -S -o "$@.asm" "$<"
-	gcc -Wall  -Wno-main -Wno-main-return-type -pedantic -std=c99 -c -o "$@" "$<"
+	gcc -Wall -pedantic -std=c99 -Iinclude -I../include-gcc -c -o "$@" $^
 
 .PRECIOUS: obj/z1013/%.asm 
 

@@ -14,7 +14,7 @@ obj:
 obj/%.rel : src/%.s
 	$(AS) -plosgff $@ $<
  
-../z1013.lib : obj/putchar.rel obj/outch.rel obj/inch.rel obj/exit.rel
+../z1013.lib : obj/putchar.rel obj/outch.rel obj/inch.rel obj/exit.rel obj/conio_clrscr.rel obj/conio_cputs.rel
 	$(AR) r $@ $^
 	
 clean:

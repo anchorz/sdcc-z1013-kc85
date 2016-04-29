@@ -100,7 +100,7 @@ extern void clrscr( void);
 
 
 /*
- * cputs - Writes a string directly to the console.
+ * cputs - Writes a string directly to the console. The newline character is not here appended to the string.
  */
 extern unsigned char cputs( const char *str);
 
