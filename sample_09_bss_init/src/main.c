@@ -2,6 +2,11 @@
 //   einfach nur mal main.s anschauen und sehen, ob ix auch wirklich nicht verwendet wird.
 #include <stdio.h>
 
+// vor der Ausgabe sollte die Variable erst einmal initialisert werden
+// das sollte automatisch erfolgen, der initialisierungscode sollte dann in das _GSINIT segment
+// 
+//extern int lib_conio_version;
+
 unsigned char var_c;
 unsigned char var_d = 'B';
 unsigned char var_c2;
@@ -21,5 +26,6 @@ int main() {
     var_c = 'H';
     var_c2 = '2';
     printf("c=%c c2=%c b=%c foo=%04x\n", var_c, var_c2, var_d, foo(4));
+    //printf("lib_conio_version=%04x\n", lib_conio_version);
     return 0;
 }
