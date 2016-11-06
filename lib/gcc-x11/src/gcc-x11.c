@@ -1,6 +1,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
+#include <X11/keysymdef.h>
 #include <stdio.h>
 #include <string.h>
 #include <pthread.h>
@@ -9,6 +10,7 @@
 
 #define DEBUG_MSG 1
 
+#include <conio.h>
 #include "z1013font.h"
 
 /*(Farbdefinitionen vom EC1834 Emulator
@@ -91,7 +93,7 @@ static void dbg_print_event(XEvent *event) {
     char msg[128];
     switch (event->type) {
     case KeyPress: /* 2 */
-        sprintf(msg, "KeyPress");
+        sprintf(msg, "KeyPress %x",event->xkey.keycode);
         break;
     case KeyRelease: /* 3 */
         sprintf(msg, "KeyRelease");
@@ -258,6 +260,15 @@ static void handleSelectionRequest(XSelectionRequestEvent ev) {
     XFlush(display);
 }
 
+/*TODO better to use a kind of buffer: lets assume 4 keys will be pressed and only 3 released
+     what would the value of lastKeyStroke be?*/
+unsigned char lastKeyStroke=0;
+
+unsigned char gfx_get_keystroke()
+{
+    return lastKeyStroke;
+}
+
 static void handle_event() {
     XEvent event;
     KeySym key; /* a dealie-bob to handle KeyPress Events */
@@ -279,11 +290,42 @@ static void handle_event() {
         if (event.type == Expose && event.xexpose.count == 0) {
             redraw();
         }
-        if (event.type == KeyPress
-                && XLookupString(&event.xkey, text, 255, &key, 0) == 1) {
-            if (text[0] == 'q' || text[0] == 0x3) {
-                break;
+        if (event.type == KeyRelease)
+        {
+            lastKeyStroke=0;
+        }
+        
+        if (event.type == KeyPress)
+        {
+            int len= XLookupString(&event.xkey, text, 255, &key, 0);
+            if (len>0)
+            {
+                lastKeyStroke=text[0];
+            } else
+            {
+                /*TODO use mapping table*/
+                switch (key)
+                {
+                    case XK_Left:
+                        lastKeyStroke=0x08;
+                        break;
+                    case XK_Right:
+                        lastKeyStroke=0x09;
+                        break;
+                    case XK_Up:
+                        lastKeyStroke=0x0b;
+                        break;
+                    case XK_Down:
+                        lastKeyStroke=0x0a;
+                        break;
+                    default:
+                        printf("umpapped key %x->0x%x\n",key,lastKeyStroke);
+                        lastKeyStroke=0;
+                        break;
+                }
             }
+            /*if (text[0] == 'q' || text[0] == 0x3) {
+               break;*/
         }
         if (event.type == ConfigureNotify) {
             int scaleX = event.xconfigurerequest.width / PIXEL_WIDTH_MIN;
@@ -413,7 +455,7 @@ void gfx_init_x11() {
 
     XSelectInput(display, win,
             ExposureMask | ButtonPressMask | ButtonReleaseMask
-                    | PropertyChangeMask | KeyPressMask | Button1MotionMask
+                    | PropertyChangeMask | KeyPressMask  | KeyReleaseMask | Button1MotionMask
                     | StructureNotifyMask);
     gc = XCreateGC(display, win, 0, 0);
     gcValues.function = GXor;
@@ -437,6 +479,27 @@ void* doSomeThing(void *arg) {
     printf("application closed from UI-Thread\n");
     exit(1);
     return NULL;
+}
+
+void gfx_set_char(unsigned int index,unsigned char c) 
+{
+    bws[index] = c;
+    update = 1;
+}
+
+unsigned char gfx_get_char(unsigned int index)
+{
+    return bws[index];
+}
+
+unsigned char gfx_get_screen_width()
+{
+    return WIDTH;
+}
+
+unsigned char gfx_get_screen_height()
+{
+    return HEIGHT;
 }
 
 void gfx_putchar(unsigned char c) {
@@ -495,31 +558,15 @@ void gfx_puts(char *s) {
     }
 }
 
-/* demo code für ein Menu
- static void makeframe() {
- gfx_puts(
- "\xa8\xa0\xa0\xa0\xa4\xa0\xa0\xa0\xa0\xa0\xa4\xa0\xa0\xa0\xa0\xa0\xa0\xa9\xd");
- gfx_puts("\xa1Neu\xa1Liste\xa1Konten\xa1\xd");
- gfx_puts(
- "\xa2\xa0\xa0\xa0\xa2\xa0\xa0\xa0\xa0\xa0\xa2\xa0\xa0\xa0\xa0\xa0\xa0\xa2\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xd");
-
- gfx_puts(
- "\xc1\x9e\x9e\x9e\x89\x9e\x9e\x9e\x9e\x9e\x9e\x89\x9e\x9e\x9e\x9e\x9e\x9e\x9e\x89\xd");
- gfx_puts("\x9fNeu\xc0 Liste\xc0 Konten\xc0\xd");
- gfx_puts(
- "\x88\xf8\xf8\xf8\xc8\xf8\xf8\xf8\xf8\xf8\xf8\xc8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xc8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xd");
-
- gfx_puts(
- "\xc1\x9e\x9e\x9e\x9a\x9e\x9e\x9e\x9e\x9e\x9a\x9e\x9e\x9e\x9e\x9e\x9e\x89\xd");
- gfx_puts("\x9fNeu Liste Konten\xc0\xd");
- gfx_puts(
- "\x88\xf8\xf8\xf8\x9d\xf8\xf8\xf8\xf8\xf8\x9d\xf8\xf8\xf8\xf8\xf8\xf8\xc8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xf8\xd");
-
- gfx_puts("2016-03\xd\xd");
- gfx_puts("01\x9f" "500.000,00\x9fGehalt Maerz 2016\xd");
- gfx_puts("  \x9f          \x9fplus Sonderzahlung");
- gfx_puts("02\x9f  1.500,30\x9fGehalt Maerz 2016\xd");
- } */
+/* TODO use type CURSOR TYPE - 8 bit for special platforms */
+void gfx_setcursortype(int type)
+{
+    if (type==_NOCURSOR)
+    {
+        bws[cursorPos]=cursorContent;
+        update = 1;
+    }
+}
 
 void gfx_init() {
     int cnt, err;

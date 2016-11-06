@@ -3,11 +3,11 @@ all: obj gcc-conio-x11.a
 obj:
 	mkdir obj
 
-gcc-conio-x11.a: obj/conio.o obj/gcc-x11.o
+gcc-conio-x11.a: obj/z1013.o obj/conio.o obj/gcc-x11.o
 	ar r $@ $^
 
 obj/%.o: src/%.c
-	gcc -Wall -pedantic -c -o $@ $< 
+	gcc -Wall -pedantic -c -o $@ -I../../include-gcc/ $< 
 
 clean:
 	rm -f *~

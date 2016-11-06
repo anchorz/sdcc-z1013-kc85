@@ -3,7 +3,11 @@ LINK = sdldz80
 AS = sdasz80
 AR = sdar
 
-all: obj crt0.rel header.rel ../z1013.lib 
+# files for krt library
+KRT_SRC   = $(wildcard src/krt_*.s)
+KRT_OBJ   = $(KRT_SRC:src/%.s=obj/%.rel)
+
+all: obj crt0.rel header.rel ../z1013.lib  ../z1013_krt.lib
 
 %.rel: obj/%.rel
 	cp $< $@
@@ -13,8 +17,13 @@ obj:
 
 obj/%.rel : src/%.s
 	$(AS) -plosgff $@ $<
- 
-../z1013.lib : obj/putchar.rel obj/outch.rel obj/inch.rel obj/exit.rel obj/conio_clrscr.rel obj/conio_cputs.rel
+
+../z1013_krt.lib :  $(KRT_OBJ)
+	$(AR) rc $@   $^
+
+../z1013.lib : obj/putchar.rel obj/outhx.rel  obj/inkey.rel obj/outch.rel obj/inch.rel obj/exit.rel \
+    obj/z1013_spvt_poll.rel obj/z1013_spvt_getst.rel \
+    obj/conio_clrscr.rel obj/conio_setcursortype.rel obj/conio_cputs.rel
 	$(AR) r $@ $^
 	
 clean:

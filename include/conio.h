@@ -98,6 +98,10 @@ extern char* cgets( char* str);
  */
 extern void clrscr( void);
 
+#define _NOCURSOR 0
+#define _SOLIDCURSOR 100
+void _setcursortype (int type);
+
 
 /*
  * cputs - Writes a string directly to the console. The newline character is not here appended to the string.

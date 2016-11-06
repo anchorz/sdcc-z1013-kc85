@@ -8,7 +8,6 @@ char c1 = 'T';
 char c2 = '2';
 
 int main() {
-    printf("start:\n");
     printf("  initialized string str:%s\n", str);
     printf("  initialized word    w2:0x%04x\n", w2);
     printf("  initialized word    w3:0x%04x\n", w3);

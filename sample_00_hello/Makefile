@@ -1,4 +1,4 @@
-PLATFORM=gcc z1013 kc85
+PLATFORM=gcc z1013 kc85 z9001
 OUT=hello
 OBJECTS=main
 

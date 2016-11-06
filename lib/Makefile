@@ -7,6 +7,7 @@ all: obj libc.lib
 	cd gcc-x11; make
 	cd z1013; make
 	cd kc85; make
+	cd z9001; make
 	
 libc.lib : obj/printf.rel
 	$(AR) rc "$@" $^
@@ -20,6 +21,7 @@ obj/%.rel : src/%.c
 clean:
 	cd z1013; make clean
 	cd kc85; make clean
+	cd z9001; make clean
 	rm -rf obj
 	rm -f *.bak
 	rm -f *~

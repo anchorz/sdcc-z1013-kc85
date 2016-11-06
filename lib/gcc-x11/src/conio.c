@@ -21,3 +21,14 @@ void cputs(const char *str) {
         gfx_putchar(c);
     }
 }
+
+void _setcursortype (int type)
+{
+    if (!conioInitialized)
+    {
+        gfx_init();
+        conioInitialized=1;
+    }
+    gfx_setcursortype(type);
+}
+
