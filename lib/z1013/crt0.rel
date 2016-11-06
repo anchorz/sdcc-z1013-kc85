@@ -1,5 +1,5 @@
 XL2
-H D areas B global symbols
+H D areas A global symbols
 M crt0
 S l__DATA Ref0000
 S _main Ref0000
@@ -9,7 +9,7 @@ S s__INITIALIZED Ref0000
 S l__INITIALIZER Ref0000
 S s__INITIALIZER Ref0000
 S exit Ref0000
-A _CODE size 16 flags 0 addr 0
+A _CODE size 23 flags 0 addr 0
 S init Def0000
 A _HOME size 0 flags 0 addr 0
 A _INITIALIZER size 0 flags 0 addr 0
@@ -23,13 +23,16 @@ A _INITIALIZED size 0 flags 0 addr 0
 A _BSEG size 0 flags 0 addr 0
 A _BSS size 0 flags 0 addr 0
 A _STACK size 404 flags 0 addr 0
-S start_of_stackframe Def0000
 A _HEAP size 0 flags 0 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 31 04 04 21 BB BB 22 00 00 E5 CD 00 00 CD
+T 00 00 C3 0D 00 20 20 20 20 20 20 20 20 00 00
+R 00 00 00 00 00 03 00 00
+T 0D 00
+R 00 00 00 00
+T 0D 00 31 04 04 21 BB BB 22 00 00 E5 CD 00 00 CD
 R 00 00 00 00 00 03 0B 00 00 09 0B 00 00 0D 03 00
-T 0E 00 00 00 CD 00 00 C3 00 00
+T 1B 00 00 00 CD 00 00 C3 00 00
 R 00 00 00 00 02 02 01 00 00 05 05 00 02 08 07 00
 T 00 00
 R 00 00 03 00

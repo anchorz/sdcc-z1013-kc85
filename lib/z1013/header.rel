@@ -3,7 +3,7 @@ H 2 areas 4 global symbols
 M header
 S s__CODE Ref0000
 S .__.ABS. Def0000
-S start_of_stackframe Ref0000
+S s__STACK Ref0000
 S init Ref0000
 A _CODE size 0 flags 0 addr 0
 A _HEADER size 20 flags 8 addr 0

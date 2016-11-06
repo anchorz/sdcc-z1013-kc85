@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  krt_gotoxy.s
+;  krt_clrscr.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -25,47 +25,78 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module krt_gotoxy
+        .module krt_clrscr
         .include 'krt.inc'
 
-        .globl  _krt_cursor
+        .globl _krt_save_sp
 
 ;
 ; Annahmen testen
 ;
-.if ne(KRT_BYTES_PER_LINE-40)
-.if ne(KRT_BYTES_PER_LINE-32)
-        .error nur die Zeilenbreite 32 und 40 wird unterstützt
+.if (KRT_BWS_LEN%16)
+        .error "KRT_BWS_LEN muss ein Vielfaches von 16 sein"
 .endif
+
+.if gt((KRT_BWS_LEN/16)-256)
+        .error "Blocklänge passt nicht in ein 8-bit register. Maximum für BWS is 4K"
 .endif
 
         .area   _CODE
 ;
-;void krt_gotoxy(unsigned int x, unsigned int y) __z88dk_callee;
+;void krt_clrscr(unsigned int pixel, unsigned int color)  __z88dk_callee;
 ;
-_krt_gotoxy::
-        pop     hl ; HL return
-        pop     bc ; BC x
-        ex      (sp),hl; HL y
-        ld      d,h
-        ld      e,l ; DE y
-.if eq(KRT_BYTES_PER_LINE-40)
-        add     hl, hl
-        add     hl, hl; HL y*4
-        add     hl, de; HL y*4+1
-        add     hl, hl
-        add     hl, hl
-        add     hl, hl
+_krt_clrscr::
+        pop     hl      ; return
+        pop     de      ; DE pixel
+        ex      (sp),hl ; HL color
+
+        di
+        ld      (_krt_save_sp),sp
+
+        ld      d,e
+        ld      c,#KRT_BANK_COUNT
+        ld      a,#KRT_BANK7
+
+next_bank$:
+        KRT_SET_BANK
+        ld      sp,#(KRT_BWS_START+KRT_BWS_LEN)
+        ld      b,#KRT_BWS_LEN/16
+
+fill16$:
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        djnz    fill16$;
+        dec     a
+
+        rlc     d
+        ld      e,d
+
+        dec     c
+        jr      nz,next_bank$
+
+.if KRT_COLOR_OFFSET
+        ld      h,l
+        ld      sp,#(KRT_BWS_START+KRT_BWS_LEN-KRT_COLOR_OFFSET)
+        ld      b,#KRT_BWS_LEN/16
+
+fill16Col$:
+        push    hl
+        push    hl
+        push    hl
+        push    hl
+        push    hl
+        push    hl
+        push    hl
+        push    hl
+        djnz    fill16Col$;
 .endif
-.if eq(KRT_BYTES_PER_LINE-32)
-        add     hl, hl
-        add     hl, hl
-        add     hl, hl
-        add     hl, hl
-        add     hl, hl
-.endif
-        ld      de,#KRT_BWS_START
-        add     hl,de
-        add     hl,bc
-        ld      (#_krt_cursor),hl
+
+        ld      sp,(_krt_save_sp)
+        ei
         ret

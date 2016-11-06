@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  krt_cputs.s
+;  conio_setcursortype.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -13,7 +13,7 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 ;  GNU General Public License for more details.
 ;
-;  You should have received a copy of the GNU General Public License 
+;  You should have received a copy of the GNU General Public License
 ;  along with this library; see the file COPYING. If not, write to the
 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
 ;   MA 02110-1301, USA.
@@ -25,37 +25,20 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module krt_cputs
+        .module conio_setcursortype
+        .include 'z1013.inc'
 
-        .globl  _krt_color
-        .globl  _krt_cursor
-        .globl  _krt_putchar
-
+; armseliger Versuch den Cursor abzuschalten
         .area   _CODE
-;
-;   void krt_cputs(unsigned char *str) __z88dk_callee;
-;
-_krt_cputs::
-        pop     iy
-        ex      (sp),iy ; IY str
-100$:
-        ld      c,(iy)
-        ld      a,c
-        or      a,a
-        ret     z
-
-        ld      hl,#_krt_color
-        ld      e, (hl)
-        ld      d,#0x00
-        ld      b,#0x00
-        ld      hl,(_krt_cursor)
-        push    iy
-        push    de
-        push    bc
-        push    hl
-        inc     hl
-        ld      (#_krt_cursor),hl
-        call    _krt_putchar
-        pop     iy
-        inc     iy
-        jr      100$
+__setcursortype::
+        ld hl, #2
+        add hl, sp
+        ld a,(hl)
+        or a,a
+        jr nz, end
+        ;  _NOCURSOR 0
+        ld hl,(CURSR)
+        ld a,(CURSR_CHAR)
+        ld (hl),a
+end:
+        ret

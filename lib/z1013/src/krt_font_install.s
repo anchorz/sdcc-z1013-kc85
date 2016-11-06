@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  krt_cputs.s
+;  krt_font_install.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -25,37 +25,46 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module krt_cputs
+        .module krt_font_install
+        .include 'krt.inc'
 
-        .globl  _krt_color
-        .globl  _krt_cursor
-        .globl  _krt_putchar
+        .globl _krt_font
+
+;
+; Annahmen testen
+;
+.if ne(FONT_HEIGHT-8)
+        .error wir setzen 8 Bytes pro Zeichen vorgegeben voraus
+.endif
 
         .area   _CODE
 ;
-;   void krt_cputs(unsigned char *str) __z88dk_callee;
-;
-_krt_cputs::
-        pop     iy
-        ex      (sp),iy ; IY str
-100$:
-        ld      c,(iy)
-        ld      a,c
-        or      a,a
-        ret     z
-
-        ld      hl,#_krt_color
-        ld      e, (hl)
-        ld      d,#0x00
-        ld      b,#0x00
-        ld      hl,(_krt_cursor)
-        push    iy
-        push    de
+; void krt_font_install(unsigned char *source, unsigned int firstCharacter,
+;        unsigned int length) __z88dk_callee;
+_krt_font_install::
+        pop     hl ;
+        pop     bc ; source
+        pop     de ; firstCharacter
+        ex      (sp),hl ; HL length
         push    bc
-        push    hl
-        inc     hl
-        ld      (#_krt_cursor),hl
-        call    _krt_putchar
-        pop     iy
-        inc     iy
-        jr      100$
+
+        add     hl,hl
+        add     hl,hl
+        add     hl,hl
+        ld      b,h
+        ld      c,l
+
+        ld      h,d
+        ld      l,e
+        add     hl,hl
+        add     hl,hl
+        add     hl,hl
+        ld      de,#_krt_font
+        add     hl,de   ; destination address
+        ld      d,h
+        ld      e,l
+
+        pop     hl
+
+        ldir
+        ret

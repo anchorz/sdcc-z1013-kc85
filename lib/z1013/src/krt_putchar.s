@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  krt_cputs.s
+;  krt_putchar.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -25,37 +25,71 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module krt_cputs
+        .module krt_putchar
+        .include 'krt.inc'
 
-        .globl  _krt_color
-        .globl  _krt_cursor
-        .globl  _krt_putchar
+        .globl _krt_font
+
+;
+; Annahmen testen
+;
+.if ne(FONT_HEIGHT-8)
+        .error wir setzen 8 Bytes pro Zeichen vorgegeben voraus
+.endif
 
         .area   _CODE
-;
-;   void krt_cputs(unsigned char *str) __z88dk_callee;
-;
-_krt_cputs::
-        pop     iy
-        ex      (sp),iy ; IY str
-100$:
-        ld      c,(iy)
-        ld      a,c
-        or      a,a
-        ret     z
+_krt_putchar::
+    pop iy ; return
+    pop de ; destination
+    pop hl ; c
+    ex (sp),iy ; iyl color
+    ld h,#0
+    add hl,hl
+    add hl,hl
+    add hl,hl
+    ld bc,#_krt_font
+    add hl,bc
 
-        ld      hl,#_krt_color
-        ld      e, (hl)
-        ld      d,#0x00
-        ld      b,#0x00
-        ld      hl,(_krt_cursor)
-        push    iy
-        push    de
-        push    bc
-        push    hl
-        inc     hl
-        ld      (#_krt_cursor),hl
-        call    _krt_putchar
-        pop     iy
-        inc     iy
-        jr      100$
+    ld a,#KRT_BANK0
+    KRT_SET_BANK
+    ldi
+    dec de
+    inc a
+    KRT_SET_BANK
+    ldi
+    dec de
+    inc a
+    KRT_SET_BANK
+    ldi
+    dec de
+    inc a
+    KRT_SET_BANK
+    ldi
+    dec de
+    inc a
+    KRT_SET_BANK
+    ldi
+    dec de
+    inc a
+    KRT_SET_BANK
+    ldi
+    dec de
+    inc a
+    KRT_SET_BANK
+    ldi
+    dec de
+    inc a
+    KRT_SET_BANK
+    ldi
+
+.if KRT_COLOR_OFFSET
+    ; adressiere den Farbspeicher
+    .db 0xfd ; IYL
+    ld a,l
+    ld hl,#-(KRT_COLOR_OFFSET+1) ; korrektur um 1, DE schon auf das nächste Zeichen zeigt
+    add hl,de
+    ld (hl),a
+.endif
+    ret
+
+

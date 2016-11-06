@@ -25,37 +25,13 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module krt_cputs
-
-        .globl  _krt_color
-        .globl  _krt_cursor
-        .globl  _krt_putchar
+        .module krt_off
+        .include 'krt.inc'
 
         .area   _CODE
 ;
-;   void krt_cputs(unsigned char *str) __z88dk_callee;
+;       void krt_off() __z88dk_callee;
 ;
-_krt_cputs::
-        pop     iy
-        ex      (sp),iy ; IY str
-100$:
-        ld      c,(iy)
-        ld      a,c
-        or      a,a
-        ret     z
-
-        ld      hl,#_krt_color
-        ld      e, (hl)
-        ld      d,#0x00
-        ld      b,#0x00
-        ld      hl,(_krt_cursor)
-        push    iy
-        push    de
-        push    bc
-        push    hl
-        inc     hl
-        ld      (#_krt_cursor),hl
-        call    _krt_putchar
-        pop     iy
-        inc     iy
-        jr      100$
+_krt_off::
+        KRT_SWITCH_OFF
+        ret

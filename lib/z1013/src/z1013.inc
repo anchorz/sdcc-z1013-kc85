@@ -27,20 +27,6 @@ Z1013_BWS_LEN = 0x0400
 
 ; io ports 
 
-IOSEL_2 = 0x08
+IOSEL_2 = 0x08 ; Tastaturspaltentreiber & KRT Bankumschaltung
 IOSEL_3 = 0x0c ; KRT grafik ein
 IOSEL_4 = 0x10 ; KRT grafik aus
-
-GR_CTRL = IOSEL_2
-
-KRT_BANK0 =0x00
-KRT_BANK1 =0x01
-KRT_BANK2 =0x02
-KRT_BANK3 =0x03
-KRT_BANK4 =0x04
-KRT_BANK5 =0x05
-KRT_BANK6 =0x06
-KRT_BANK7 =0x07
-KRT_ON    =0x08
-KRT_OFF   =0x09
-

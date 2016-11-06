@@ -16,7 +16,7 @@ obj:
 	mkdir obj
 
 obj/%.rel : src/%.s
-	$(AS) -plosgff $@ $<
+	$(AS) -plosff $@ $<
 
 ../z1013_krt.lib :  $(KRT_OBJ)
 	$(AR) rc $@   $^
