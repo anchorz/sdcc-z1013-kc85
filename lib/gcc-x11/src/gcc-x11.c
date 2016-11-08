@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define DEBUG_MSG 1
+#define DEBUG_MSG 0
 
 #include <conio.h>
 #include "z1013font.h"
@@ -16,37 +16,61 @@
 /*(Farbdefinitionen vom EC1834 Emulator
  * für den Moment brauchen wir nur Schwarz und Weiss
  * muss noch für den KC85 angepasst werden*/
+#define COLOR_BG_BLACK   0x00
+#define COLOR_BG_RED     0x01
+#define COLOR_BG_GREEN   0x02
+#define COLOR_BG_YELLOW  0x03
+#define COLOR_BG_BLUE    0x04
+#define COLOR_BG_MAGENTA 0x05
+#define COLOR_BG_CYAN    0x06
+#define COLOR_BG_WHITE   0x07
+
+#define COLOR_FG_BLACK   0x00
+#define COLOR_FG_RED     0x10
+#define COLOR_FG_GREEN   0x20
+#define COLOR_FG_YELLOW  0x30
+#define COLOR_FG_BLUE    0x40
+#define COLOR_FG_MAGENTA 0x50
+#define COLOR_FG_CYAN    0x60
+#define COLOR_FG_WHITE   0x70
+
 #define C_black 0
-#define C_maroon 1
+#define C_red 1
 #define C_green 2
-#define C_olive 3
-#define C_navy 4
-#define C_purple 5
-#define C_teal 6
-#define C_silver 7
+#define C_yellow 3
+#define C_blue 4
+#define C_magenta 5
+#define C_cyan 6
+#define C_white 7
 #define C_gray 8
-#define C_red 9
-#define C_lime 10
-#define C_yellow 11
-#define C_blue 12
-#define C_fuchsia 13
-#define C_aqua 14
-#define C_white 15
 
 #define TYPE(X) __STRING(X)
 
 void gfx_init();
 
-const char *emu_window_name = "Z1013 32x32";
+typedef struct {
+    const char *title;
+    const int pixel_width;
+    const int pixel_height;
+    const int text_width;
+    const int text_height;
+} GraphicModel;
 
-#define WIDTH  32
-#define HEIGHT 32
-#define PIXEL_WIDTH_MIN 256
-#define PIXEL_HEIGHT_MIN 256
+#define MODEL_Z1013 0
+#define MODEL_Z9001 1
+
+const GraphicModel models[] = { { "Z1013 32x32", 256, 256, 32, 32 }, {
+        "Z9001 40x24", 320, 192, 40, 24 } };
+const GraphicModel *selected_model = &models[1];
+
+//#define WIDTH  32
+//#define HEIGHT 32
+//#define PIXEL_WIDTH_MIN 256
+//#define PIXEL_HEIGHT_MIN 256
 #define INITIAL_SCALE 2
-int scale = INITIAL_SCALE;
-int emu_window_width = INITIAL_SCALE * PIXEL_WIDTH_MIN;
-int emu_window_height = INITIAL_SCALE * PIXEL_HEIGHT_MIN;
+int scale;
+int emu_window_width;
+int emu_window_height;
 
 static Display *display;
 static Visual *visual;
@@ -61,16 +85,26 @@ static GC gc;
 static GC gcInvers;
 static Colormap cmap;
 
-unsigned char bws[WIDTH * HEIGHT];
-unsigned char cutBuffer[WIDTH * HEIGHT + HEIGHT];
+unsigned char *bws;
+unsigned char *pixelRam;
+unsigned int pixelRamSize;
+unsigned int lineWidth;
+unsigned int lines;
+
+unsigned char *colorRam;
+unsigned int colorRamSize;
+
+unsigned char *cutBuffer; //[WIDTH * HEIGHT + HEIGHT];
 unsigned int cursorPos = 0;
 unsigned char cursorContent;
 
 #define STATIC_COLOR_COUNT 16
 /* Farbtabelle für C_xxx */
-static unsigned long cmap24[STATIC_COLOR_COUNT] = { 0, 0x800000, 0x008000,
-        0x808000, 0x000080, 0x800080, 0x008080, 0xc0c0c0, 0x808080, 0xFF0000,
-        0x00ff00, 0xffff00, 0x0000ff, 0xff00ff, 0x00ffff, 0xffffff };
+static unsigned long cmap24[STATIC_COLOR_COUNT] = { 0, 0xFF0000, 0x00FF00,
+        0xFFFF00, //
+        0x0000FF, 0xFF00FF, 0x00FFFF, 0xFFFFFF, //
+        0x808080, 0xFF0000, 0x00FF00,
+        0xFFFF00, 0, 0xFF0000, 0x00FF00, 0xFFFF00, };
 
 static void create_colormap_lookup_table() {
     int i;
@@ -93,7 +127,7 @@ static void dbg_print_event(XEvent *event) {
     char msg[128];
     switch (event->type) {
     case KeyPress: /* 2 */
-        sprintf(msg, "KeyPress %x",event->xkey.keycode);
+        sprintf(msg, "KeyPress %x", event->xkey.keycode);
         break;
     case KeyRelease: /* 3 */
         sprintf(msg, "KeyRelease");
@@ -188,18 +222,22 @@ static void sortSelectionCorners() {
     }
 }
 
-static void redraw() {
+static int krtOn = 0;
+
+void gfx_setKrtEnabled(int arg) {
+    krtOn = arg;
+}
+
+static void redrawText() {
     int x, y;
 
-    sortSelectionCorners();
-
     XSetForeground(display, gcInvers, cmap24[C_blue]);
-    for (y = 0; y < HEIGHT; y++) {
-        for (x = 0; x < WIDTH; x++) {
+    for (y = 0; y < selected_model->text_height; y++) {
+        for (x = 0; x < selected_model->text_width; x++) {
             XCopyArea(display, font[scale - 1], win, gc,
-                    bws[y * WIDTH + x] * getCharacterWidth(), 0,
-                    getCharacterWidth(), getCharacterHeight(),
-                    start_x + x * getCharacterWidth(),
+                    bws[y * selected_model->text_width + x]
+                            * getCharacterWidth(), 0, getCharacterWidth(),
+                    getCharacterHeight(), start_x + x * getCharacterWidth(),
                     start_y + y * getCharacterHeight());
             if (selectText && x >= cx1 && y >= cy1 && x <= cx2 && y <= cy2) {
                 XFillRectangle(display, win, gcInvers,
@@ -211,7 +249,49 @@ static void redraw() {
     }
 }
 
-static volatile int update = 0;
+static void redrawKrt() {
+    int i, x, y;
+
+    XSetForeground(display, gcInvers, cmap24[C_white]);
+
+    unsigned char *ptr = pixelRam;
+
+    unsigned int segmentSize=(lines/8)*lineWidth;
+    for (y = 0; y < selected_model->pixel_height; y++) {
+        unsigned int segment=y%8;
+        unsigned char *ptrLine=ptr+segment*segmentSize+y/8*lineWidth;
+        for (x = 0; x < selected_model->pixel_width;) {
+            unsigned char c = ptrLine[x/8];
+            unsigned char colorByte = colorRam[y / 8
+                    * selected_model->text_width + x / 8];
+            unsigned char backgroundColor = colorByte & 0x7;
+            XSetForeground(display, gc, cmap24[backgroundColor]);
+            unsigned char foregroundColor = (colorByte/16)& 0x7;
+            XSetForeground(display, gcInvers, cmap24[foregroundColor]);
+
+            for (i = 0; i < 8; i++) {
+
+                XFillRectangle(display, win, c & 0x80 ? gcInvers : gc,
+                        start_x + x * scale, start_y + y * scale, scale, scale);
+                x++;
+                c *= 2;
+            }
+        }
+    }
+}
+
+static void redraw() {
+
+    sortSelectionCorners();
+    if (krtOn) {
+        redrawKrt();
+    } else {
+        redrawText();
+    }
+
+}
+
+volatile int update = 0;
 static volatile int initialized = 0;
 
 static void handleSelectionRequest(XSelectionRequestEvent ev) {
@@ -227,7 +307,7 @@ static void handleSelectionRequest(XSelectionRequestEvent ev) {
     printf("cx1=%d\n", cx1);
     for (y = cy1; y <= cy2; y++) {
         for (x = cx1; x <= cx2; x++) {
-            *dst++ = bws[y * WIDTH + x];
+            *dst++ = bws[y * selected_model->text_width + x];
             sel_len++;
         }
         *dst++ = 0x0a;
@@ -261,13 +341,25 @@ static void handleSelectionRequest(XSelectionRequestEvent ev) {
 }
 
 /*TODO better to use a kind of buffer: lets assume 4 keys will be pressed and only 3 released
-     what would the value of lastKeyStroke be?*/
-unsigned char lastKeyStroke=0;
+ what would the value of lastKeyStroke be?*/
+unsigned char lastKeyStroke = 0;
 
-unsigned char gfx_get_keystroke()
-{
+unsigned char gfx_get_keystroke() {
     return lastKeyStroke;
 }
+
+char kbhit()
+{
+    if (lastKeyStroke) return -1;
+    return 0;
+}
+
+char getch()
+{
+    while(!lastKeyStroke);
+    return lastKeyStroke;
+}
+
 
 static void handle_event() {
     XEvent event;
@@ -278,7 +370,10 @@ static void handle_event() {
 
         while (!XPending(display)) {
             if (update) {
-                redraw();
+                printf("update\n");
+                XClearArea(display, win, 0, 0, emu_window_width, emu_window_height, 1);
+
+                //redraw();
                 update = 0;
                 usleep(0x20000);
             }
@@ -286,55 +381,52 @@ static void handle_event() {
         XNextEvent(display, &event);
 #if DEBUG_MSG
         dbg_print_event(&event);
-#endif 	
+#endif
         if (event.type == Expose && event.xexpose.count == 0) {
             redraw();
         }
-        if (event.type == KeyRelease)
-        {
-            lastKeyStroke=0;
+        if (event.type == KeyRelease) {
+            lastKeyStroke = 0;
         }
-        
-        if (event.type == KeyPress)
-        {
-            int len= XLookupString(&event.xkey, text, 255, &key, 0);
-            if (len>0)
-            {
-                lastKeyStroke=text[0];
-            } else
-            {
+
+        if (event.type == KeyPress) {
+            int len = XLookupString(&event.xkey, text, 255, &key, 0);
+            if (len > 0) {
+                lastKeyStroke = text[0];
+            } else {
                 /*TODO use mapping table*/
-                switch (key)
-                {
-                    case XK_Left:
-                        lastKeyStroke=0x08;
-                        break;
-                    case XK_Right:
-                        lastKeyStroke=0x09;
-                        break;
-                    case XK_Up:
-                        lastKeyStroke=0x0b;
-                        break;
-                    case XK_Down:
-                        lastKeyStroke=0x0a;
-                        break;
-                    default:
-                        printf("umpapped key %x->0x%x\n",key,lastKeyStroke);
-                        lastKeyStroke=0;
-                        break;
+                switch (key) {
+                case XK_Left:
+                    lastKeyStroke = 0x08;
+                    break;
+                case XK_Right:
+                    lastKeyStroke = 0x09;
+                    break;
+                case XK_Up:
+                    lastKeyStroke = 0x0b;
+                    break;
+                case XK_Down:
+                    lastKeyStroke = 0x0a;
+                    break;
+                default:
+                    printf("umpapped key %lx->0x%x\n", key, lastKeyStroke);
+                    lastKeyStroke = 0;
+                    break;
                 }
             }
             /*if (text[0] == 'q' || text[0] == 0x3) {
-               break;*/
+             break;*/
         }
         if (event.type == ConfigureNotify) {
-            int scaleX = event.xconfigurerequest.width / PIXEL_WIDTH_MIN;
-            int scaleY = event.xconfigurerequest.height / PIXEL_HEIGHT_MIN;
+            int scaleX = event.xconfigurerequest.width
+                    / selected_model->pixel_width;
+            int scaleY = event.xconfigurerequest.height
+                    / selected_model->pixel_height;
             int tmpScale = scaleX > scaleY ? scaleY : scaleX;
             scale = tmpScale ? tmpScale : 1;
             scale = scale > ZOOM_MAX ? ZOOM_MAX : scale;
-            emu_window_width = PIXEL_WIDTH_MIN * scale;
-            emu_window_height = PIXEL_HEIGHT_MIN * scale;
+            emu_window_width = selected_model->pixel_width * scale;
+            emu_window_height = selected_model->pixel_height * scale;
             start_x = (event.xconfigurerequest.width - emu_window_width) / 2;
             start_y = (event.xconfigurerequest.height - emu_window_height) / 2;
         }
@@ -361,8 +453,12 @@ static void handle_event() {
             cursorToX = cursorToX < 0 ? 0 : cursorToX;
             cursorToY = cursorToY < 0 ? 0 : cursorToY;
 
-            cursorToX = cursorToX >= WIDTH ? WIDTH - 1 : cursorToX;
-            cursorToY = cursorToY >= HEIGHT ? HEIGHT - 1 : cursorToY;
+            cursorToX =
+                    cursorToX >= selected_model->text_width ?
+                            selected_model->text_width : cursorToX;
+            cursorToY =
+                    cursorToY >= selected_model->text_height ?
+                            selected_model->text_height - 1 : cursorToY;
 
             printf("mark (%d,%d) (%d,%d)\n", cursorFromX, cursorFromY,
                     cursorToX, cursorToY);
@@ -434,29 +530,31 @@ void gfx_init_x11() {
     hints.flags = PMinSize;
     hints.max_width = 2 * emu_window_width;
     hints.max_height = 2 * emu_window_height;
-    hints.min_width = PIXEL_WIDTH_MIN;
-    hints.min_height = PIXEL_HEIGHT_MIN;
+    hints.min_width = selected_model->pixel_width;
+    hints.min_height = selected_model->pixel_height;
     hints.width_inc = 16;
     hints.height_inc = 16;
 
     attr.background_pixel = cmap24[C_gray]; /* TODO customize */
     win = XCreateWindow(display, DefaultRootWindow(display), 0, 0,
             emu_window_width + WINDOW_FRAME, emu_window_height + WINDOW_FRAME,
-            0, CopyFromParent,
+            0,
+            CopyFromParent,
             CopyFromParent, CopyFromParent, CWBackPixel, &attr);
 
     WM_DELETE_WINDOW = XInternAtom(display, "WM_DELETE_WINDOW", False);
     XSetWMProtocols(display, win, &WM_DELETE_WINDOW, 1);
     XSetWMNormalHints(display, win, &hints);
 
-    XSetStandardProperties(display, win, emu_window_name, emu_window_name,
-    None,
-    NULL, 0, NULL);
+    XSetStandardProperties(display, win, selected_model->title,
+            selected_model->title,
+            None,
+            NULL, 0, NULL);
 
     XSelectInput(display, win,
             ExposureMask | ButtonPressMask | ButtonReleaseMask
-                    | PropertyChangeMask | KeyPressMask  | KeyReleaseMask | Button1MotionMask
-                    | StructureNotifyMask);
+                    | PropertyChangeMask | KeyPressMask | KeyReleaseMask
+                    | Button1MotionMask | StructureNotifyMask);
     gc = XCreateGC(display, win, 0, 0);
     gcValues.function = GXor;
     gcInvers = XCreateGC(display, win, GCFunction, &gcValues);
@@ -481,25 +579,21 @@ void* doSomeThing(void *arg) {
     return NULL;
 }
 
-void gfx_set_char(unsigned int index,unsigned char c) 
-{
+void gfx_set_char(unsigned int index, unsigned char c) {
     bws[index] = c;
     update = 1;
 }
 
-unsigned char gfx_get_char(unsigned int index)
-{
+unsigned char gfx_get_char(unsigned int index) {
     return bws[index];
 }
 
-unsigned char gfx_get_screen_width()
-{
-    return WIDTH;
+unsigned char gfx_get_screen_width() {
+    return selected_model->text_width;
 }
 
-unsigned char gfx_get_screen_height()
-{
-    return HEIGHT;
+unsigned char gfx_get_screen_height() {
+    return selected_model->text_height;
 }
 
 void gfx_putchar(unsigned char c) {
@@ -513,36 +607,61 @@ void gfx_putchar(unsigned char c) {
         }
         break;
     case 0x09:
-        if (cursorPos >= WIDTH * HEIGHT) {
-            memmove(bws, bws + WIDTH, WIDTH * HEIGHT - WIDTH);
-            memset(bws + WIDTH * HEIGHT - WIDTH, ' ', WIDTH);
-            cursorPos -= WIDTH;
-            cursorPos /= WIDTH;
-            cursorPos *= WIDTH;
+        if (cursorPos
+                >= selected_model->text_width * selected_model->text_height) {
+            memmove(bws, bws + selected_model->text_width,
+                    selected_model->text_width * selected_model->text_height
+                            - selected_model->text_width);
+            memset(
+                    bws
+                            + selected_model->text_width
+                                    * selected_model->text_height
+                            - selected_model->text_width, ' ',
+                    selected_model->text_width);
+            cursorPos -= selected_model->text_width;
+            cursorPos /= selected_model->text_width;
+            cursorPos *= selected_model->text_width;
         }
         cursorPos++;
         break;
     case 0x0c:
-        memset(bws, ' ', WIDTH * HEIGHT);
+        memset(bws, ' ',
+                selected_model->text_width * selected_model->text_height);
         cursorPos = 0;
         break;
     case 0x0d:
-        cursorPos += WIDTH;
-        cursorPos /= WIDTH;
-        cursorPos *= WIDTH;
-        if (cursorPos >= WIDTH * HEIGHT) {
-            memmove(bws, bws + WIDTH, WIDTH * HEIGHT - WIDTH);
-            memset(bws + WIDTH * HEIGHT - WIDTH, ' ', WIDTH);
-            cursorPos -= WIDTH;
+        cursorPos += selected_model->text_width;
+        cursorPos /= selected_model->text_width;
+        cursorPos *= selected_model->text_width;
+        if (cursorPos
+                >= selected_model->text_width * selected_model->text_height) {
+            memmove(bws, bws + selected_model->text_width,
+                    selected_model->text_width * selected_model->text_height
+                            - selected_model->text_width);
+            memset(
+                    bws
+                            + selected_model->text_width
+                                    * selected_model->text_height
+                            - selected_model->text_width, ' ',
+                    selected_model->text_width);
+            cursorPos -= selected_model->text_width;
         }
         break;
     default:
-        if (cursorPos >= WIDTH * HEIGHT) {
-            memmove(bws, bws + WIDTH, WIDTH * HEIGHT - WIDTH);
-            memset(bws + WIDTH * HEIGHT - WIDTH, ' ', WIDTH);
-            cursorPos -= WIDTH;
-            cursorPos /= WIDTH;
-            cursorPos *= WIDTH;
+        if (cursorPos
+                >= selected_model->text_width * selected_model->text_height) {
+            memmove(bws, bws + selected_model->text_width,
+                    selected_model->text_width * selected_model->text_height
+                            - selected_model->text_width);
+            memset(
+                    bws
+                            + selected_model->text_width
+                                    * selected_model->text_height
+                            - selected_model->text_width, ' ',
+                    selected_model->text_width);
+            cursorPos -= selected_model->text_width;
+            cursorPos /= selected_model->text_width;
+            cursorPos *= selected_model->text_width;
         }
         bws[cursorPos++] = c;
     }
@@ -559,20 +678,47 @@ void gfx_puts(char *s) {
 }
 
 /* TODO use type CURSOR TYPE - 8 bit for special platforms */
-void gfx_setcursortype(int type)
-{
-    if (type==_NOCURSOR)
-    {
-        bws[cursorPos]=cursorContent;
+void gfx_setcursortype(int type) {
+    if (type == _NOCURSOR) {
+        bws[cursorPos] = cursorContent;
         update = 1;
     }
 }
 
+static int gfxInitialized;
+
 void gfx_init() {
     int cnt, err;
 
-    for (cnt = 0; cnt < WIDTH * HEIGHT; cnt++) {
+    if (gfxInitialized)
+        return;
+    gfxInitialized = 1;
+
+    scale = INITIAL_SCALE;
+    emu_window_width = INITIAL_SCALE * selected_model->pixel_width;
+    emu_window_height = INITIAL_SCALE * selected_model->pixel_height;
+    bws = malloc(selected_model->text_width * selected_model->text_height);
+    lineWidth=selected_model->pixel_width / 8;
+    lines=selected_model->pixel_height;
+    pixelRamSize=lineWidth*lines;
+    pixelRam = malloc(pixelRamSize);
+
+    colorRamSize=selected_model->text_width * selected_model->text_height;
+    colorRam = malloc(colorRamSize);
+    cutBuffer = malloc(
+            selected_model->text_width * selected_model->text_height
+                    + selected_model->text_height);
+
+    for (cnt = 0;
+            cnt < selected_model->text_width * selected_model->text_height;
+            cnt++) {
         bws[cnt] = rand() & 0xff;
+        colorRam[cnt] = rand() & 0xff;
+    }
+    for (cnt = 0;
+            cnt < selected_model->pixel_width / 8 * selected_model->pixel_height;
+            cnt++) {
+        pixelRam[cnt] = rand() & 0xff;
     }
 
     err = pthread_create(&(tid), NULL, &doSomeThing, NULL);

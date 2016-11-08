@@ -33,7 +33,7 @@ obj/z1013:
 obj/z1013/bin: obj/z1013/$(OUT).z80
 
 obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS)))
-	$(LINK) -mjwx -b _HEADER=0x00e0  -b _CODE=0x0100  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/ -l libc -l z1013 -l z1013_krt $^
+	$(LINK) -mjwx -b _HEADER=0x00e0  -b _CODE=0x0100  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/ -l libc -l z1013 -l z1013_krt -l z80 $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z1013/$(OUT).ihx" "$@"
 	echo -n $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
@@ -68,7 +68,7 @@ obj/z9001:
 obj/z9001/bin: obj/z9001/$(OUT).kcc
 
 obj/z9001/$(OUT).kcc: ../lib/z9001/crt0.rel ../lib/z9001/kcc_header.rel  $(addsuffix .rel,$(addprefix obj/z9001/,$(OBJECTS)))
-	$(LINK)     -mjwx -b _KCC_HEADER=0x280 -b _CODE=0x300 $(LD_FLAGS) -i "obj/z9001/$(OUT).ihx" -k ../lib/ -l libc -l z9001 -l z9001_krt $^
+	$(LINK)     -mjwx -b _KCC_HEADER=0x280 -b _CODE=0x300 $(LD_FLAGS) -i "obj/z9001/$(OUT).ihx" -k ../lib/ -l libc -l z9001 -l z9001_krt -l z80 $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z9001/$(OUT).ihx" "$@"
 	@/bin/echo -n $(OUT) >obj/z9001/filename.txt
 	dd bs=1 if=obj/z9001/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
