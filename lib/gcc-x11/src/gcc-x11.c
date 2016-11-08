@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define DEBUG_MSG 0
+#define DEBUG_MSG 1
 
 #include <conio.h>
 #include "z1013font.h"
@@ -82,6 +82,7 @@ static int depth;
 static Pixmap font[ZOOM_MAX];
 static Window win;
 static GC gc;
+static GC gcBackground;
 static GC gcInvers;
 static Colormap cmap;
 
@@ -90,6 +91,7 @@ unsigned char *pixelRam;
 unsigned int pixelRamSize;
 unsigned int lineWidth;
 unsigned int lines;
+Pixmap krtImage[ZOOM_MAX];
 
 unsigned char *colorRam;
 unsigned int colorRamSize;
@@ -100,11 +102,13 @@ unsigned char cursorContent;
 
 #define STATIC_COLOR_COUNT 16
 /* Farbtabelle für C_xxx */
-static unsigned long cmap24[STATIC_COLOR_COUNT] = { 0, 0xFF0000, 0x00FF00,
-        0xFFFF00, //
-        0x0000FF, 0xFF00FF, 0x00FFFF, 0xFFFFFF, //
-        0x808080, 0xFF0000, 0x00FF00,
-        0xFFFF00, 0, 0xFF0000, 0x00FF00, 0xFFFF00, };
+static unsigned long cmap24[STATIC_COLOR_COUNT] =
+        { 0, 0xFF0000, 0x00FF00,
+                0xFFFF00, //
+                0x0000FF, 0xFF00FF, 0x00FFFF,
+                0xFFFFFF, //
+                0x808080, 0xFF0000, 0x00FF00, 0xFFFF00, 0, 0xFF0000, 0x00FF00,
+                0xFFFF00, };
 
 static void create_colormap_lookup_table() {
     int i;
@@ -249,35 +253,35 @@ static void redrawText() {
     }
 }
 
-static void redrawKrt() {
-    int i, x, y;
-
-    XSetForeground(display, gcInvers, cmap24[C_white]);
+void generateKrtImage() {
+    int x, i, y, segment;
 
     unsigned char *ptr = pixelRam;
 
-    unsigned int segmentSize=(lines/8)*lineWidth;
-    for (y = 0; y < selected_model->pixel_height; y++) {
-        unsigned int segment=y%8;
-        unsigned char *ptrLine=ptr+segment*segmentSize+y/8*lineWidth;
-        for (x = 0; x < selected_model->pixel_width;) {
-            unsigned char c = ptrLine[x/8];
-            unsigned char colorByte = colorRam[y / 8
-                    * selected_model->text_width + x / 8];
-            unsigned char backgroundColor = colorByte & 0x7;
-            XSetForeground(display, gc, cmap24[backgroundColor]);
-            unsigned char foregroundColor = (colorByte/16)& 0x7;
-            XSetForeground(display, gcInvers, cmap24[foregroundColor]);
+    printf("scale=%d\n", scale);
 
-            for (i = 0; i < 8; i++) {
-
-                XFillRectangle(display, win, c & 0x80 ? gcInvers : gc,
-                        start_x + x * scale, start_y + y * scale, scale, scale);
-                x++;
-                c *= 2;
+    for (segment = 0; segment < 8; segment++) {
+        for (y = 0; y < lines / 8; y++) {
+            for (x = 0; x < lineWidth; x++) {
+                unsigned char c = *ptr++;
+                unsigned color=colorRam[y*lineWidth+x];
+                XSetForeground(display, gc, cmap24[(color/16)&0x7]);
+                XSetForeground(display, gcBackground, cmap24[color&0x7]);
+                for (i = 0; i < 8; i++) {
+                    XFillRectangle(display, krtImage[scale - 1],
+                            c & 0x80 ? gc : gcBackground,
+                            x * 8 * scale + i * scale,
+                            (y * 8 + segment) * scale, scale, scale);
+                    c *= 2;
+                }
             }
         }
     }
+}
+
+static void redrawKrt() {
+    XCopyArea(display, krtImage[scale - 1], win, gc, 0, 0,
+            lineWidth * 8 * scale, lines * scale, start_x, start_y);
 }
 
 static void redraw() {
@@ -285,6 +289,7 @@ static void redraw() {
     sortSelectionCorners();
     if (krtOn) {
         redrawKrt();
+        //redrawKrt();
     } else {
         redrawText();
     }
@@ -348,18 +353,17 @@ unsigned char gfx_get_keystroke() {
     return lastKeyStroke;
 }
 
-char kbhit()
-{
-    if (lastKeyStroke) return -1;
+char kbhit() {
+    if (lastKeyStroke)
+        return -1;
     return 0;
 }
 
-char getch()
-{
-    while(!lastKeyStroke);
+char getch() {
+    while (!lastKeyStroke)
+        ;
     return lastKeyStroke;
 }
-
 
 static void handle_event() {
     XEvent event;
@@ -370,11 +374,11 @@ static void handle_event() {
 
         while (!XPending(display)) {
             if (update) {
-                printf("update\n");
-                XClearArea(display, win, 0, 0, emu_window_width, emu_window_height, 1);
-
-                //redraw();
+                printf("update re2\n");
                 update = 0;
+                //XClearArea(display, win, 0, 0, emu_window_width, emu_window_height, 1);
+                generateKrtImage();
+                redraw();
                 usleep(0x20000);
             }
         }
@@ -514,6 +518,7 @@ static void gfx_exit() {
 /* TODO hier is ein Fehler, wenn das Fenster einen Rand hat, teste Wert 32 */
 #define WINDOW_FRAME 0
 void gfx_init_x11() {
+    int f;
     XSetWindowAttributes attr;
     XSizeHints hints;
     Atom WM_DELETE_WINDOW;
@@ -556,9 +561,17 @@ void gfx_init_x11() {
                     | PropertyChangeMask | KeyPressMask | KeyReleaseMask
                     | Button1MotionMask | StructureNotifyMask);
     gc = XCreateGC(display, win, 0, 0);
+    gcBackground = XCreateGC(display, win, 0, 0);
+
     gcValues.function = GXor;
     gcInvers = XCreateGC(display, win, GCFunction, &gcValues);
     XClearWindow(display, win);
+
+    for (f = 0; f < ZOOM_MAX; f++) {
+        krtImage[f] = XCreatePixmap(display, win,
+                selected_model->pixel_width * (f + 1),
+                selected_model->pixel_height * (f + 1), depth);
+    }
 
     generateFonts();
     initialized = 1; /* so jetzt läuft unser Main-Thread weiter */
@@ -698,12 +711,12 @@ void gfx_init() {
     emu_window_width = INITIAL_SCALE * selected_model->pixel_width;
     emu_window_height = INITIAL_SCALE * selected_model->pixel_height;
     bws = malloc(selected_model->text_width * selected_model->text_height);
-    lineWidth=selected_model->pixel_width / 8;
-    lines=selected_model->pixel_height;
-    pixelRamSize=lineWidth*lines;
+    lineWidth = selected_model->pixel_width / 8;
+    lines = selected_model->pixel_height;
+    pixelRamSize = lineWidth * lines;
     pixelRam = malloc(pixelRamSize);
 
-    colorRamSize=selected_model->text_width * selected_model->text_height;
+    colorRamSize = selected_model->text_width * selected_model->text_height;
     colorRam = malloc(colorRamSize);
     cutBuffer = malloc(
             selected_model->text_width * selected_model->text_height
