@@ -12,7 +12,7 @@ unsigned char manX, manY;
 #define W SCR_WIDTH
 #define H (SCR_HEIGHT-1)
 
-unsigned char field[W * H - 1]; //initialized with 0 per specification
+unsigned char field[W * H]; //initialized with 0 per specification
 
 unsigned char keyInput = 0;
 #define TASK_MAN_MOVE 1
