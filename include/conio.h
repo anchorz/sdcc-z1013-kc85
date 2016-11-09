@@ -101,7 +101,26 @@ extern void clrscr( void);
 #define _NOCURSOR 0
 #define _SOLIDCURSOR 100
 void _setcursortype (int type);
-
+/*
+ screen10:  ;blinkcursor ein
+ push   hl
+ ld hl,(curs)
+ ld de,0fc00h   ; -400h
+ add    hl,de       ;Adr. Farbspeicher
+ set    7,(hl)      ;Blinken aus
+ pop    hl
+ screen10a:
+ ld a, 0        ; Grafik aus
+ jr screen12
+ ;
+ screen11:  ;blinkcursor aus
+ push   hl
+ ld hl,(curs)
+ ld de,0fc00h   ; -400h
+ add    hl,de       ;Adr. Farbspeicher
+ res    7,(hl)      ;Blinken aus
+ pop    hl
+ */
 
 /*
  * cputs - Writes a string directly to the console. The newline character is not here appended to the string.

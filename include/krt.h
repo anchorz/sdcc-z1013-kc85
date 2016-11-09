@@ -1,5 +1,9 @@
 #ifndef __SDCC
     #define __z88dk_callee
+    #define __z88dk_fastcall
+    #define __naked
+    #define __interrupt
+    #define inline
 #endif
 /*
  * initialisiert den Grafiktreiber schaltet in den Grafikmodus
@@ -69,6 +73,8 @@ void krt_off() __z88dk_callee;
 
 void krt_clrscr(unsigned int pixel, unsigned int color) __z88dk_callee;
 
+void krt_clear_textarea(unsigned int x, unsigned int y, unsigned int width, unsigned int height) __z88dk_callee;
+
 /*
  * zeichnet das vorgegebene Zeichen 'c' and die angegebene Bildschirmposition
  *
@@ -116,4 +122,9 @@ void krt_font_install(const unsigned char *source, unsigned int firstCharacter,
         unsigned int length) __z88dk_callee;
 
 void krt_gotoxy(unsigned int x, unsigned int y) __z88dk_callee;
+
 void krt_cputs(char *str) __z88dk_callee;
+
+void krt_textbackground( unsigned int color) __z88dk_callee;
+
+void krt_textcolor( unsigned int color) __z88dk_callee;

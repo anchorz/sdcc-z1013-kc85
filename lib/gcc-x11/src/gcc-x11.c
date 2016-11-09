@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define DEBUG_MSG 1
+#define DEBUG_MSG 0
 
 #include <conio.h>
 #include "z1013font.h"
@@ -254,25 +254,24 @@ static void redrawText() {
 }
 
 void generateKrtImage() {
-    int x, i, y, segment;
+    int x, i, y, segment, s;
 
-    unsigned char *ptr = pixelRam;
-
-    printf("scale=%d\n", scale);
-
-    for (segment = 0; segment < 8; segment++) {
-        for (y = 0; y < lines / 8; y++) {
-            for (x = 0; x < lineWidth; x++) {
-                unsigned char c = *ptr++;
-                unsigned color=colorRam[y*lineWidth+x];
-                XSetForeground(display, gc, cmap24[(color/16)&0x7]);
-                XSetForeground(display, gcBackground, cmap24[color&0x7]);
-                for (i = 0; i < 8; i++) {
-                    XFillRectangle(display, krtImage[scale - 1],
-                            c & 0x80 ? gc : gcBackground,
-                            x * 8 * scale + i * scale,
-                            (y * 8 + segment) * scale, scale, scale);
-                    c *= 2;
+    for (s = 1; s <= ZOOM_MAX; s++) {
+        unsigned char *ptr = pixelRam;
+        for (segment = 0; segment < 8; segment++) {
+            for (y = 0; y < lines / 8; y++) {
+                for (x = 0; x < lineWidth; x++) {
+                    unsigned char c = *ptr++;
+                    unsigned color = colorRam[y * lineWidth + x];
+                    XSetForeground(display, gc, cmap24[(color / 16) & 0x7]);
+                    XSetForeground(display, gcBackground, cmap24[color & 0x7]);
+                    for (i = 0; i < 8; i++) {
+                        XFillRectangle(display, krtImage[s -1 ],
+                                c & 0x80 ? gc : gcBackground,
+                                x * 8 * s + i * s,
+                                (y * 8 + segment) * s, s, s);
+                        c *= 2;
+                    }
                 }
             }
         }
@@ -309,7 +308,7 @@ static void handleSelectionRequest(XSelectionRequestEvent ev) {
     XEvent res;
 
     sortSelectionCorners();
-    printf("cx1=%d\n", cx1);
+    //printf("cx1=%d\n", cx1);
     for (y = cy1; y <= cy2; y++) {
         for (x = cx1; x <= cx2; x++) {
             *dst++ = bws[y * selected_model->text_width + x];
@@ -374,7 +373,6 @@ static void handle_event() {
 
         while (!XPending(display)) {
             if (update) {
-                printf("update re2\n");
                 update = 0;
                 //XClearArea(display, win, 0, 0, emu_window_width, emu_window_height, 1);
                 generateKrtImage();

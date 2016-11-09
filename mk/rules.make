@@ -19,11 +19,11 @@ obj/gcc/bin: obj/gcc/$(OUT)
 	
 obj/gcc/$(OUT): $(addsuffix .o,$(addprefix obj/gcc/,$(OBJECTS)))
 	#gcc -o "$@" $^ -print-search-dirs -L ../lib/gcc-x11 -lX11 -lpthread -lgcc-conio-x11 
-	gcc -o "$@" $^ ../lib/gcc-x11/gcc-conio-x11.a -lX11 -lpthread 
+	gcc -g -o "$@" $^ ../lib/gcc-x11/gcc-conio-x11.a -lX11 -lpthread 
 	
 obj/gcc/%.o : src/%.c
 	#gcc -Wall  -Wno-main -pedantic -std=c99 -S -o "$@.asm" "$<"
-	gcc -Wall -pedantic -std=c99 -Werror -Iinclude -I../include-gcc -c -o "$@" $^
+	gcc -g -Wall -pedantic -std=c99 -Werror -Iinclude -I../include-gcc -c -o "$@" $^
 
 .PRECIOUS: obj/z1013/%.asm 
 
