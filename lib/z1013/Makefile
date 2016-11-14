@@ -23,7 +23,8 @@ obj/%.rel : src/%.s
 
 ../z1013.lib : obj/putchar.rel obj/outhx.rel  obj/inkey.rel obj/outch.rel obj/inch.rel obj/exit.rel \
     obj/z1013_spvt_poll.rel obj/z1013_spvt_getst.rel \
-    obj/conio_clrscr.rel obj/conio_setcursortype.rel obj/conio_cputs.rel
+    obj/conio_clrscr.rel obj/conio_setcursortype.rel obj/conio_cputs.rel obj/conio_getch.rel \
+    obj/conio_kbhit.rel
 	$(AR) r $@ $^
 	
 clean:

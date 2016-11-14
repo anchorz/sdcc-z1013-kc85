@@ -5,6 +5,7 @@
     #define __interrupt
     #define inline
 #endif
+
 /*
  * initialisiert den Grafiktreiber schaltet in den Grafikmodus
  *
@@ -128,3 +129,22 @@ void krt_cputs(char *str) __z88dk_callee;
 void krt_textbackground( unsigned int color) __z88dk_callee;
 
 void krt_textcolor( unsigned int color) __z88dk_callee;
+
+void krt_line( unsigned int x0, unsigned int x1, unsigned int y0, unsigned int y1);
+
+#ifdef __Z1013__
+#define SCR_HEIGHT 32
+#define SCR_WIDTH 32
+#define PIXEL_WIDTH 256
+#define PIXEL_HEIGHT 256
+#elif defined(__Z9001__)
+#define SCR_HEIGHT 24
+#define SCR_WIDTH 40
+#define PIXEL_WIDTH 320
+#define PIXEL_HEIGHT 192
+#elif defined(__GNUC__)
+#define SCR_HEIGHT 24
+#define SCR_WIDTH 40
+#define PIXEL_WIDTH 320
+#define PIXEL_HEIGHT 192
+#endif

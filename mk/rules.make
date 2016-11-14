@@ -19,7 +19,7 @@ obj/gcc/bin: obj/gcc/$(OUT)
 	
 obj/gcc/$(OUT): $(addsuffix .o,$(addprefix obj/gcc/,$(OBJECTS)))
 	#gcc -o "$@" $^ -print-search-dirs -L ../lib/gcc-x11 -lX11 -lpthread -lgcc-conio-x11 
-	gcc -g -o "$@" $^ ../lib/gcc-x11/gcc-conio-x11.a -lX11 -lpthread 
+	gcc -g -o "$@" $^ ../lib/gcc-x11/gcc-conio-x11.a -lX11 -lpthread -lm
 	
 obj/gcc/%.o : src/%.c
 	#gcc -Wall  -Wno-main -pedantic -std=c99 -S -o "$@.asm" "$<"
@@ -33,7 +33,7 @@ obj/z1013:
 obj/z1013/bin: obj/z1013/$(OUT).z80
 
 obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS)))
-	$(LINK) -mjwx -b _HEADER=0x00e0  -b _CODE=0x0100  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/ -l libc -l z1013 -l z1013_krt -l z80 $^
+	$(LINK) -mjwx -b _HEADER=0x00e0  -b _CODE=0x0100  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/ -l z1013 -l z1013_krt -l z80 $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z1013/$(OUT).ihx" "$@"
 	echo -n $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
@@ -68,7 +68,7 @@ obj/z9001:
 obj/z9001/bin: obj/z9001/$(OUT).kcc
 
 obj/z9001/$(OUT).kcc: ../lib/z9001/crt0.rel ../lib/z9001/kcc_header.rel  $(addsuffix .rel,$(addprefix obj/z9001/,$(OBJECTS)))
-	$(LINK)     -mjwx -b _KCC_HEADER=0x280 -b _CODE=0x300 $(LD_FLAGS) -i "obj/z9001/$(OUT).ihx" -k ../lib/ -l libc -l z9001 -l z9001_krt -l z80 $^
+	$(LINK)     -mjwx -b _KCC_HEADER=0x280 -b _CODE=0x300 $(LD_FLAGS) -i "obj/z9001/$(OUT).ihx" -k ../lib/ -l z9001 -l z9001_krt -l z9001_conio -l z80 $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z9001/$(OUT).ihx" "$@"
 	@/bin/echo -n $(OUT) >obj/z9001/filename.txt
 	dd bs=1 if=obj/z9001/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
@@ -104,7 +104,7 @@ obj/kc85:
 obj/kc85/bin: obj/kc85/$(OUT).kcc
 
 obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/kcc_header.rel  $(addsuffix .rel,$(addprefix obj/kc85/,$(OBJECTS)))
-	$(LINK)     -mjwx -b _KCC_HEADER=0x180 -b _CODE=0x200 $(LD_FLAGS) -i "obj/kc85/$(OUT).ihx" -k ../lib/ -l libc -l kc85 -l caos  -l conio -l screen $^
+	$(LINK)     -mjwx -b _KCC_HEADER=0x180 -b _CODE=0x200 $(LD_FLAGS) -i "obj/kc85/$(OUT).ihx" -k ../lib/ -l kc85 -l caos  -l conio -l screen -l kc85_krt $^
 	$(OBJCOPY) -Iihex -Obinary "obj/kc85/$(OUT).ihx" "$@"
 	/bin/echo -n $(OUT) >obj/kc85/filename.txt
 	dd bs=1 if=obj/kc85/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
@@ -113,7 +113,7 @@ obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/kcc_header.rel  $(addsuffi
 obj/kc85/%.asm : src/%.c
 	sdcc -mz80 $(CFLAGS) -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include -D__KC85__ "$<"
 #	sdcc -mz80 $(CFLAGS) --reserve-regs-iy -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include "$<"
-	../tools/ix_replace.sh "$@"
+#	../tools/ix_replace.sh "$@"
 
 obj/kc85/%.rel : src/%.s
   ifdef ENABLED_BANKED

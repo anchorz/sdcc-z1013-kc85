@@ -12,8 +12,11 @@ CONIO_OBJ   = $(CONIO_SRC:src/%.s=obj/%.rel)
 # files for screen library
 SCREEN_SRC   = $(wildcard src/screen_*.s)
 SCREEN_OBJ   = $(SCREEN_SRC:src/%.s=obj/%.rel)
+# files for krt library
+KRT_SRC   = $(wildcard src/krt_*.s)
+KRT_OBJ   = $(KRT_SRC:src/%.s=obj/%.rel)
 
-all: obj crt0.rel kcc_header.rel ../kc85.lib  ../caos.lib ../conio.lib ../screen.lib
+all: obj crt0.rel kcc_header.rel ../kc85.lib  ../caos.lib ../conio.lib ../screen.lib ../kc85_krt.lib 
 
 %.rel: obj/%.rel 
 	cp $< $@
@@ -33,6 +36,9 @@ obj/%.rel : src/%.s
 ../screen.lib : $(SCREEN_OBJ)
 	$(AR) rc $@   $^
 
+../kc85_krt.lib : $(KRT_OBJ)
+	$(AR) rc $@   $^
+	
 ../kc85.lib  : obj/putchar.rel obj/common.rel obj/exit.rel
 	$(AR) rc $@ $^
 	

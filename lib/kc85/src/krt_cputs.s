@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  z9001.inc
+;  krt_cputs.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -25,44 +25,37 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
+        .module krt_cputs
 
-;
-; speicheradressen (...soweit verwendet und getestet) 
-;
-Z9001_WBOOT = 0x0000 ; Sprung zum Warmstart
-Z9001_BOS   = 0x0005 ; BOS Sprungverteiler
-Z9001_KEYBU = 0x0025 ; TASTATURPUFFER
-Z9001_SYSB  = 0xEFC0 ; Systembyte (siehe z9_os.pdf) 
-Z9001_MAPAR = 0xEFC1 ; 64-bit Vektor je 1K Speicher 0-ROM/1-RAM  
-Z9001_BIOS  = 0xF000 ; BIOS ROM 
+        .globl  _krt_color
+        .globl  _krt_cursor
+        .globl  _krt_putchar
 
-Z9001_SCTOP = 0xEC00 ; Zeichenspeicher
-Z9001_SCLEN = (0xEFC0-0xEC00) 
-
+        .area   _CODE
 ;
-; Farben
+;   void krt_cputs(unsigned char *str) __z88dk_callee;
 ;
-COLOR_DEFAULT   = (COLOR_FG_WHITE|COLOR_BG_BLACK)
-COLOR_BG_BLACK  = 0x00
-COLOR_FG_WHITE  = 0x70
+_krt_cputs::
+        pop     iy
+        ex      (sp),iy ; IY str
+100$:
+        ld      c,(iy)
+        ld      a,c
+        or      a,a
+        ret     z
 
-;
-; IO-Ports 
-;
-Z9001_GR_CTRL   = 0xb8
-
-Z9001_KRT_ON    = 0x08
-Z9001_KRT_OFF   = 0x00
-Z9001_KRT_BANK0 = 0x00
-Z9001_KRT_BANK1 = 0x01
-Z9001_KRT_BANK2 = 0x02
-Z9001_KRT_BANK3 = 0x03
-Z9001_KRT_BANK4 = 0x04
-Z9001_KRT_BANK5 = 0x05
-Z9001_KRT_BANK6 = 0x06
-Z9001_KRT_BANK7 = 0x07
-
-; Unterprogramme
-UP_CONSI        = 1  ; getch
-UP_CONSO        = 2  ; putchar
-UP_CSTS         = 11 ; kbhit
+        ld      hl,#_krt_color
+        ld      e, (hl)
+        ld      d,#0x00
+        ld      b,#0x00
+        ld      hl,(_krt_cursor)
+        push    iy
+        push    de
+        push    bc
+        push    hl
+        inc     hl
+        ld      (#_krt_cursor),hl
+        call    _krt_putchar
+        pop     iy
+        inc     iy
+        jr      100$

@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  z9001.inc
+;  krt_font.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -25,44 +25,35 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
+        .module krt_font
+        .include 'krt.inc'
+
+FONT_SIZE       = ((FONT_CHARACTERS+FONT_EXTRA_CHARACTERS)*FONT_HEIGHT*FONT_WIDTH)
+
+        .globl  _krt_font_install
 
 ;
-; speicheradressen (...soweit verwendet und getestet) 
+; Annahmen testen
 ;
-Z9001_WBOOT = 0x0000 ; Sprung zum Warmstart
-Z9001_BOS   = 0x0005 ; BOS Sprungverteiler
-Z9001_KEYBU = 0x0025 ; TASTATURPUFFER
-Z9001_SYSB  = 0xEFC0 ; Systembyte (siehe z9_os.pdf) 
-Z9001_MAPAR = 0xEFC1 ; 64-bit Vektor je 1K Speicher 0-ROM/1-RAM  
-Z9001_BIOS  = 0xF000 ; BIOS ROM 
+.if ne(FONT_HEIGHT-8)
+        .error wir setzen 8 Bytes pro Zeichen vorgegeben voraus
+.endif
 
-Z9001_SCTOP = 0xEC00 ; Zeichenspeicher
-Z9001_SCLEN = (0xEFC0-0xEC00) 
+        .area   _CODE
+_krt_font_source:
+        .include 'z1013font.inc'
 
-;
-; Farben
-;
-COLOR_DEFAULT   = (COLOR_FG_WHITE|COLOR_BG_BLACK)
-COLOR_BG_BLACK  = 0x00
-COLOR_FG_WHITE  = 0x70
+        .area   _DATA
+_krt_font::
+        .ds FONT_SIZE
 
-;
-; IO-Ports 
-;
-Z9001_GR_CTRL   = 0xb8
-
-Z9001_KRT_ON    = 0x08
-Z9001_KRT_OFF   = 0x00
-Z9001_KRT_BANK0 = 0x00
-Z9001_KRT_BANK1 = 0x01
-Z9001_KRT_BANK2 = 0x02
-Z9001_KRT_BANK3 = 0x03
-Z9001_KRT_BANK4 = 0x04
-Z9001_KRT_BANK5 = 0x05
-Z9001_KRT_BANK6 = 0x06
-Z9001_KRT_BANK7 = 0x07
-
-; Unterprogramme
-UP_CONSI        = 1  ; getch
-UP_CONSO        = 2  ; putchar
-UP_CSTS         = 11 ; kbhit
+        .area   _CODE
+_krt_font_init::
+        ld      hl,#FONT_CHARACTERS
+        push    hl
+        ld      hl,#0
+        push    hl
+        ld      hl,#_krt_font_source
+        push    hl
+        call    _krt_font_install
+        ret

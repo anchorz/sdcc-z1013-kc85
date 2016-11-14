@@ -359,9 +359,12 @@ char kbhit() {
 }
 
 char getch() {
+    unsigned char c;
     while (!lastKeyStroke)
         ;
-    return lastKeyStroke;
+    c=lastKeyStroke;
+    lastKeyStroke=0;
+    return c;
 }
 
 static void handle_event() {

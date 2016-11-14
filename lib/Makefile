@@ -3,14 +3,15 @@ LINK = sdldz80
 AS = sdasz80
 AR = sdar
 
-all: obj libc.lib
+#all: obj libc.lib
+all: obj
 	cd gcc-x11; make
 	cd z1013; make
 	cd kc85; make
 	cd z9001; make
 	
-libc.lib : obj/printf.rel
-	$(AR) rc "$@" $^
+#libc.lib : obj/printf.rel
+#	$(AR) rc "$@" $^
 	
 obj:
 	mkdir obj

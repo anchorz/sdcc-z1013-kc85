@@ -24,9 +24,13 @@ CURSR_CHAR    = 0x001F ; B Code-Zwischenspeicher fuer OUTCH
 CURSR         = 0x002b ; W aktuelle Cursorposition 
 Z1013_BWS     = 0xec00
 Z1013_BWS_LEN = 0x0400
+; sprungverteiler 
+SPVT_POLL     = 0xfffa ; get status
 
 ; io ports 
 
 IOSEL_2 = 0x08 ; Tastaturspaltentreiber & KRT Bankumschaltung
 IOSEL_3 = 0x0c ; KRT grafik ein
 IOSEL_4 = 0x10 ; KRT grafik aus
+
+

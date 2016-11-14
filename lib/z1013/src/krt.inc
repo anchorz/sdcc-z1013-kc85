@@ -43,6 +43,8 @@ KRT_BWS_LEN = Z1_SCLEN
 KRT_COLOR_OFFSET=0
 
 KRT_BYTES_PER_LINE = 32
+KRT_PIXEL_WIDTH = 256
+KRT_PIXEL_HEIGHT = 256
 
 FONT_HEIGHT           = 8 ; bytes pro Zeichen
 FONT_WIDTH            = 1 ; in bytes
