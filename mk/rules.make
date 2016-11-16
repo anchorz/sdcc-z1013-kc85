@@ -1,7 +1,6 @@
-#CFLAGS=--opt-code-speed 
-# --profile 
-#CFLAGS=-Wall --fomit-frame-pointer
-CFLAGS=--std-sdcc99 -Wall --fomit-frame-pointer
+#--fomit-frame-pointer important for KC85/3 - don't use IX register
+# for compatibility reasons we keep that setting for all libraries
+CFLAGS=--std-sdcc11 -Wall --fomit-frame-pointer
 
 LINK    = sdldz80
 AS      = sdasz80
@@ -33,7 +32,7 @@ obj/z1013:
 obj/z1013/bin: obj/z1013/$(OUT).z80
 
 obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS)))
-	$(LINK) -mjwx -b _HEADER=0x00e0  -b _CODE=0x0100  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/ -l z1013 -l z1013_krt -l z80 $^
+	$(LINK) -mjwx -b _HEADER=0x00e0  -b _CODE=0x0100  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/z1013 -k ../lib/ -l z1013 -l krt -l conio -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z1013/$(OUT).ihx" "$@"
 	echo -n $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
@@ -67,8 +66,8 @@ obj/z9001:
 
 obj/z9001/bin: obj/z9001/$(OUT).kcc
 
-obj/z9001/$(OUT).kcc: ../lib/z9001/crt0.rel ../lib/z9001/kcc_header.rel  $(addsuffix .rel,$(addprefix obj/z9001/,$(OBJECTS)))
-	$(LINK)     -mjwx -b _KCC_HEADER=0x280 -b _CODE=0x300 $(LD_FLAGS) -i "obj/z9001/$(OUT).ihx" -k ../lib/ -l z9001 -l z9001_krt -l z9001_conio -l z80 $^
+obj/z9001/$(OUT).kcc: ../lib/z9001/crt0.rel ../lib/z9001/header.rel  $(addsuffix .rel,$(addprefix obj/z9001/,$(OBJECTS)))
+	$(LINK)     -mjwx -b _KCC_HEADER=0x280 -b _CODE=0x300 $(LD_FLAGS) -i "obj/z9001/$(OUT).ihx" -k ../lib/z9001 -k ../lib/ -l z9001 -l conio -l krt -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z9001/$(OUT).ihx" "$@"
 	@/bin/echo -n $(OUT) >obj/z9001/filename.txt
 	dd bs=1 if=obj/z9001/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
@@ -103,8 +102,8 @@ obj/kc85:
 
 obj/kc85/bin: obj/kc85/$(OUT).kcc
 
-obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/kcc_header.rel  $(addsuffix .rel,$(addprefix obj/kc85/,$(OBJECTS)))
-	$(LINK)     -mjwx -b _KCC_HEADER=0x180 -b _CODE=0x200 $(LD_FLAGS) -i "obj/kc85/$(OUT).ihx" -k ../lib/ -l kc85 -l caos  -l conio -l screen -l kc85_krt $^
+obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/header.rel  $(addsuffix .rel,$(addprefix obj/kc85/,$(OBJECTS)))
+	$(LINK)     -mjwx -b _KCC_HEADER=0x180 -b _CODE=0x200 $(LD_FLAGS) -i "obj/kc85/$(OUT).ihx" -k ../lib/kc85 -k ../lib/ -l kc85 -l caos -l conio -l screen -l krt -l z80_noix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/kc85/$(OUT).ihx" "$@"
 	/bin/echo -n $(OUT) >obj/kc85/filename.txt
 	dd bs=1 if=obj/kc85/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
@@ -126,7 +125,49 @@ obj/kc85/%.rel : obj/kc85/%.asm
 	../tools/bank_replace.pl "$<"
   endif
 	$(AS) -plosgff -Iinclude "$@" "$<"
-	
+
+run.gcc:
+	@echo "******************************************************"
+	@echo "*" 
+	@echo "* starting application: obj/gcc/$(OUT)"
+	@echo "*" 
+	@echo "******************************************************"
+	obj/gcc/$(OUT) &
+
+run.z1013:
+	@echo "******************************************************"
+	@echo "*" 
+	@echo "* starting application: jkcemu Z1013 obj/z1013/$(OUT).z80"
+	@echo "*" 
+	@echo "******************************************************"
+	jkcemu Z1013 obj/z1013/$(OUT).z80 &
+
+run.kc85:
+	@echo "******************************************************"
+	@echo "*" 
+	@echo "* starting application: jkcemu KC85 obj/kc85/$(OUT).kcc"
+	@echo "*" 
+	@echo "******************************************************"
+	jkcemu KC85 obj/kc85/$(OUT).kcc &
+
+run.z9001:
+	@echo "******************************************************"
+	@echo "*" 
+	@echo "* starting application: jkcemu Z9001 obj/z9001/$(OUT).kcc"
+	@echo "*" 
+	@echo "******************************************************"
+	jkcemu Z9001 obj/z9001/$(OUT).kcc &
+
+run: 
+	for name in $(PLATFORM); do make run.$$name; done
+
+.SILENT: stop
+.IGNORE: stop
+
+stop:
+	pgrep -f 'jkcemu.*obj/' | xargs kill
+	pgrep -f 'obj/gcc/$(OUT)' | xargs kill
+		
 clean:
 	rm -f Makefile~
 	rm -f a.out

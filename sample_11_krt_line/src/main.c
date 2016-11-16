@@ -109,14 +109,11 @@ void enter() {
 }
 
 int main() {
-
     int cnt, _x0, _y0;
     int y0, x0, x1, y1;
 
     krt_init();
     krt_clrscr(PIXEL_ERASE, COLOR_DEFAULT);
-    circle();
-
     animation();
     enter();
 
@@ -150,4 +147,5 @@ int main() {
     krt_cputs("Ende");
     enter();
     krt_off();
+    return 0;
 }

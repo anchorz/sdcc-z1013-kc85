@@ -1,6 +1,6 @@
-PLATFORM=gcc z9001 z1013
+PLATFORM=kc85 z1013
 OUT=xonix
-OBJECTS=main input title_screen display
+OBJECTS=main input title_screen display kc85
 
 OPTION_SHOW_HEXDUMP=OFF
 

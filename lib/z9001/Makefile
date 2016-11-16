@@ -1,18 +1,18 @@
-LINK = sdldz80
 AS = sdasz80
 AR = sdar
 
-# files for krt library
+INC         = $(wildcard src/*.inc)
+# files for conio library
 CONIO_SRC   = $(wildcard src/conio_*.s)
 CONIO_OBJ   = $(CONIO_SRC:src/%.s=obj/%.rel)
-
 # files for krt library
 KRT_SRC   = $(wildcard src/krt_*.s)
 KRT_OBJ   = $(KRT_SRC:src/%.s=obj/%.rel)
 
-all: obj crt0.rel kcc_header.rel ../z9001.lib ../z9001_krt.lib ../z9001_conio.lib
+all: obj crt0.rel header.rel krt.lib conio.lib \
+          z9001.lib
 
-%.rel: obj/%.rel 
+%.rel: obj/%.rel
 	cp $< $@
 
 obj:
@@ -28,14 +28,15 @@ obj:
 obj/%.rel : src/%.s
 	$(AS) -plosff $@ $<
 
-../z9001_krt.lib :  $(KRT_OBJ) src/z9001.inc
-	$(AR) rc $@ $(KRT_OBJ)
+z9001.lib: obj/putchar.rel obj/exit.rel 
+	$(AR) rcD $@ $^
 
-../z9001_conio.lib : $(CONIO_OBJ) src/z9001.inc
-	$(AR) rc $@  $(CONIO_OBJ)
+conio.lib: $(CONIO_OBJ) $(INC)
+	$(AR) rcD $@ $(CONIO_OBJ)
 
-../z9001.lib  : obj/putchar.rel  obj/exit.rel 
-	$(AR) rc $@ $^
+krt.lib:  $(KRT_OBJ) $(INC)
+	$(AR) rcD $@ $(KRT_OBJ)
+
 
 clean:
 	rm -rf obj
@@ -43,3 +44,4 @@ clean:
 	rm -f *~
 	rm -f src/*.bak
 	rm -f src/*~
+

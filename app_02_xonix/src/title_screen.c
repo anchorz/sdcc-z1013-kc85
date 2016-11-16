@@ -33,26 +33,27 @@ void title_screen() {
 
     krt_clrscr(PIXEL_CHECKER, 0x70);
     krt_textcolor(COLOR_FG_GREEN);
-    //krt_clear_textarea(1, 1,1,1);
     krt_clear_textarea(1, 1,SCR_WIDTH-2,4);
     krt_gotoxy(2, 2);
     krt_cputs("Xonix - Ultraportable");
     krt_gotoxy(4, 3);
     krt_cputs("(C) 2016 Andreas Ziermann");
 
-    krt_clear_textarea(1, 6,SCR_WIDTH-2,6);
+    krt_clear_textarea(1, 6,SCR_WIDTH-2,7);
     krt_gotoxy(2, 7);
-    krt_cputs("f\x85r Z1013, Z9001 und Linux-");
+    krt_cputs("f\x85r Z1013, Z9001, KC85 und");
     krt_gotoxy(2, 8);
-    krt_cputs("X11 aus dem selben Quellkode.");
+    krt_cputs("Linux-X11 aus dem selben");
+    krt_gotoxy(2, 9);
+    krt_cputs("Quellkode.");
 
-    krt_gotoxy(2, 10);
+    krt_gotoxy(2, 11);
     krt_cputs(compiler);
     krt_cputs(" Version ");
     krt_cputs(version);
 
     krt_clear_textarea(1, SCR_HEIGHT-4,SCR_WIDTH-2,3);
-    krt_gotoxy((SCR_WIDTH-23)/2, SCR_HEIGHT-3);
+    krt_gotoxy((SCR_WIDTH-23)/2, (SCR_HEIGHT-3));
     krt_cputs("Dr\x85""cken Sie eine Taste!");
 
     for (;;) {

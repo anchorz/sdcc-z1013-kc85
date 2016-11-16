@@ -18,37 +18,92 @@ unsigned char keyInput = 0;
 #define TASK_MAN_MOVE 1
 unsigned char taskBits = 0;
 
+#ifdef __KC85__
+#define SCR_ADD_LINE(SCR_PTR , N) ((SCR_PTR)+(N)*0x800)
+#define SCR_INC(SCR_PTR) (SCR_PTR=normalized_inc(SCR_PTR))
+#define SCR_ADD(SCR_PTR,N) (SCR_PTR=normalized_add(SCR_PTR,N))
+#else
+#define SCR_ADD_LINE(SCR_PTR , N) ((SCR_PTR)+SCR_WIDTH)
+#define SCR_INC(SCR_PTR) ((SCR_PTR)++)
+#define SCR_ADD(SCR_PTR,N) ((SCR_PTR)+=(N))
+#endif
+
+unsigned int *normalized_inc(unsigned int *ptr) __z88dk_fastcall
+{
+        ptr;
+__asm
+        inc l
+
+        ld  a,l
+        cp  #0x28
+        jr  c,is_ok$
+        sub #0x28 ; SCR_WIDTH
+        ld  l,a
+        ld  a,h
+        add #0x8; PTR_VERTICAL_INC
+        ld  h,a
+is_ok$:
+__endasm;
+}
+
+unsigned int *normalized_add(unsigned int *ptr,unsigned int add) __z88dk_callee
+{
+        ptr;add;
+__asm
+        pop hl
+        pop de
+        ex (sp),hl
+
+        ld  a,l
+        add e
+        ld  l,a
+        ld  h,d
+
+        cp  #0x28
+        jr  c,is_ok1$
+        sub #0x28 ; SCR_WIDTH
+        ld  l,a
+        ld  a,d
+        add #0x8; PTR_VERTICAL_INC
+        ld  h,a
+is_ok1$:
+__endasm;
+}
+
 void pixel_border() {
     unsigned char x;
-    unsigned char* ptr = SCR_PTR + SCR_WIDTH;
+    unsigned char* ptr = SCR_ADD_LINE(SCR_PTR, 1);
     unsigned char *field_ptr = field;
     x = SCR_WIDTH + 2;
     while (--x) {
         *field_ptr++ = FIELD_FULL;
         krt_putchar(ptr, FIELD_FULL, COLOR_FULL);
-        ptr++;
+        SCR_INC(ptr);
     }
-    ptr += SCR_WIDTH - 2;
+    SCR_ADD(ptr,SCR_WIDTH - 2);
+    //ptr += SCR_WIDTH - 2;
     field_ptr += SCR_WIDTH - 2;
     x = SCR_HEIGHT - 2;
 
     while (--x) {
-        krt_putchar(ptr++, FIELD_FULL, COLOR_FULL);
         krt_putchar(ptr, FIELD_FULL, COLOR_FULL);
-        ptr += SCR_WIDTH - 1;
+        SCR_INC(ptr);
+        krt_putchar(ptr, FIELD_FULL, COLOR_FULL);
+        SCR_ADD(ptr,SCR_WIDTH - 1);
+        //ptr += SCR_WIDTH - 1;
 
         *field_ptr++ = FIELD_FULL;
         *field_ptr = FIELD_FULL;
         field_ptr += SCR_WIDTH - 1;
     }
-    ptr -= SCR_WIDTH - 2;
+    /*  ptr -= SCR_WIDTH - 2;
     field_ptr -= SCR_WIDTH - 2;
 
     x = SCR_WIDTH;
     while (--x) {
         krt_putchar(ptr++, FIELD_FULL, COLOR_FULL);
         *field_ptr++ = FIELD_FULL;
-    }
+    }*/
 }
 
 void pixel_man_init() {
@@ -377,10 +432,9 @@ void animation_down() {
 int usleep(unsigned long usec);
 #endif
 
-void delay()
-{
+void delay() {
 #ifdef __SDCC
-    __asm__("ld c,#0x28");
+    __asm__("ld c,#0x08");
     __asm__("m2:");
     __asm__("ld b,#0");
     __asm__("m1:");
@@ -432,7 +486,7 @@ int main() {
     krt_font_install(xonix_font, 0, sizeof(xonix_font) / 8); //zeichen 0x00..0x1F
     krt_font_install(xonix_animations, 0x88, sizeof(xonix_animations) / 8); //Zeichen >0x80
     krt_font_install(computer_font, 0x20, sizeof(computer_font) / 8);
-    title_screen();
+    //title_screen();
     krt_clrscr(PIXEL_ERASE, COLOR_EMPTY);
     krt_textcolor(COLOR_FG_YELLOW);
     pixel_border();

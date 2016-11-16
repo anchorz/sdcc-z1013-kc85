@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  kcc_header.s
+;  header.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -29,15 +29,13 @@
 ; specific header to automatic generate KCC format 
 ; (which is used by simulator, disk, tape, USB, etc...)
 
-        .module kcc_header
+        .module header
 
         .globl init
         .globl s__CODE
         .globl s__STACK
 
         .area   _KCC_HEADER (abs)
-
-        .org 0x280          ; = 0x200 - 0x80 (header size)
 
         .ascii '        '   ; name (placeholder 8 chars)
         .ascii 'KCC'        ; extension

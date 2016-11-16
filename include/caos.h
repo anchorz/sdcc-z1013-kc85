@@ -37,10 +37,10 @@
 //////////////////////////
 // Z80 common functions
 //////////////////////////
-extern unsigned char in( unsigned char port);
-extern void          out( unsigned char port, unsigned char value);
-extern unsigned char in16( unsigned int port);
-extern void          out16( unsigned int port, unsigned char value);
+//extern unsigned char in( unsigned char port);
+//extern void          out( unsigned char port, unsigned char value);
+//extern unsigned char in16( unsigned int port);
+//extern void          out16( unsigned int port, unsigned char value);
 extern unsigned char reg_r( void);
 extern void          test_ix( void);
 

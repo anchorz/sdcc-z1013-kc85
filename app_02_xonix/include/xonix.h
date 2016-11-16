@@ -41,10 +41,17 @@ extern unsigned char field[];
 #define SCR_WIDTH 32
 #define SCR_HEIGHT 32
 #define SCR_PTR ((unsigned char *)0xec00)
+
 #elif defined(__Z9001__)
 #define SCR_WIDTH 40
 #define SCR_HEIGHT 24
 #define SCR_PTR ((unsigned char *)0xec00)
+
+#elif defined(__KC85__)
+#define SCR_WIDTH 40
+#define SCR_HEIGHT 32
+#define SCR_PTR ((unsigned char *)0)
+
 #else
 #define SCR_WIDTH 40
 #define SCR_HEIGHT 24
@@ -60,5 +67,4 @@ extern unsigned char *pixelRam;
 #define CURSOR_UP 0x0b
 
 #define VK_ENTER 0x0d
-
 

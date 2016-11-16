@@ -26,86 +26,95 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
+        .module crt0
 
-    .module crt0
-    .globl  init
-    .globl  _main
-    .globl  exit
-    .globl  start_of_stackframe
+        .globl  _main
+        .globl  exit
 
-    ; Ordering of segments for the linker.
-    .area   _HOME
-    .area   _CODE
-    .area   _INITIALIZER
-    .area   _GSINIT
-    .area   _GSFINAL
-    .area   _GSEXIT
-    .area   _GSEXITFINAL
-    .area   _DATA
-    .area   _INITIALIZED
-    .area   _BSEG
-    .area   _BSS
-    .area   _STACK
-    .area   _HEAP
+        .globl l__INITIALIZER
+        .globl s__INITIALIZED
+        .globl s__INITIALIZER
+        .globl l__DATA
+        .globl s__DATA
 
-    .area   _CODE
+        ; Ordering of segments for the linker.
+        .area   _HOME
+        .area   _CODE
+        .area   _INITIALIZER
+        .area   _GSINIT
+        .area   _GSFINAL
+        .area   _GSEXIT
+        .area   _GSEXITFINAL
+        .area   _DATA
+        .area   _INITIALIZED
+        .area   _BSEG
+        .area   _BSS
+        .area   _STACK
+        .area   _HEAP
 
-init:
-    ; Stack at the top of memory.
-    ld      sp,#end_of_stackframe
-    ; mark stack frame
-    ld      hl,#0xbbbb
-    ld      (#start_of_stackframe),hl
-    push    hl
+        .area   _CODE
 
-    ; Initialise global variables
-    call    gsinit
-    call    _main
-    call    gsexit
-    jp      exit
+init::
+        jp      init2
+        .ascii      '        ' ; patch in the program name needed by Z9001 commando processor
+        .db      0x00
+        .db      0x00
+init2:
+        ; Stack at the top of memory.
+        ld      sp,#end_of_stackframe
+        ; mark stack frame
+        ld      hl,#0xbbbb
+        ld      (#start_of_stackframe),hl
+        push    hl
 
-    .area   _GSINIT
+        ; Initialise global variables
+        call    gsinit
+        call    _main
+        call    gsexit
+        jp      exit
+
+        .area   _GSINIT
 gsinit::
-    ; copy initialized variables to 'RAM'
-    ld      bc, #l__INITIALIZER
-    ld      a, b
-    or      a, c
-    jr      Z, gsinit_zero
-    ld      de, #s__INITIALIZED
-    ld      hl, #s__INITIALIZER
-    ldir
+        ; copy initialized variables to 'RAM'
+        ld      bc, #l__INITIALIZER
+        ld      a, b
+        or      a, c
+        jr      Z, gsinit_zero
+        ld      de, #s__INITIALIZED
+        ld      hl, #s__INITIALIZER
+        ldir
 
 gsinit_zero:
-    ; did we have data to zero?
-    ld      bc, #l__DATA
-    ld      a, b
-    or      a, c
-    jr      Z, gsinit_next
+        ; did we have data to zero?
+        ld      bc, #l__DATA
+        ld      a, b
+        or      a, c
+        jr      Z, gsinit_next
 
-    ; zero uninitialized stuff
-    xor     a              ; clear a and carry
-    ld      de, #s__DATA+1
-    ld      hl, #s__DATA
-    ld      (hl), a
-    dec     bc
-    ld      a, b
-    or      a, c
-    jr      Z, gsinit_next
-    ldir
+        ; zero uninitialized stuff
+        xor     a              ; clear a and carry
+        ld      de, #s__DATA+1
+        ld      hl, #s__DATA
+        ld      (hl), a
+        dec     bc
+        ld      a, b
+        or      a, c
+        jr      Z, gsinit_next
+        ldir
 
 gsinit_next:
-    .area   _GSFINAL
-    ret
+        .area   _GSFINAL
+        ret
 
-    .area   _GSEXIT
+        .area   _GSEXIT
 gsexit:
-    .area   _GSEXITFINAL
-    ret
+        .area   _GSEXITFINAL
+        ret
 
-    .area   _STACK
-    ; for now just allocate 1k for stack.
+        .area   _STACK
+        ; for now just allocate 1k for stack.
 start_of_stackframe:
-    .ds     2    ; stack frame marker - top
-    .ds     1024
-    .ds     2    ; stack frame marker - bottom
+        .ds     2    ; stack frame marker - top
+        .ds     1024
+        .ds     2    ; stack frame marker - bottom
 end_of_stackframe:

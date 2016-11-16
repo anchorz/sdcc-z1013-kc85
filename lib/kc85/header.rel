@@ -1,0 +1,15 @@
+XL2
+H 2 areas 4 global symbols
+M header
+S s__CODE Ref0000
+S .__.ABS. Def0000
+S s__STACK Ref0000
+S init Ref0000
+A _CODE size 0 flags 0 addr 0
+A _KCC_HEADER size 17 flags 8 addr 0
+T 00 00 20 20 20 20 20 20 20 20 4B 43 43
+R 00 00 01 00
+T 0B 00
+R 00 00 01 00
+T 10 00 03 00 00 00 00 00 00
+R 00 00 01 00 02 03 00 00 02 05 02 00 02 07 03 00

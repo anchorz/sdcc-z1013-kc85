@@ -1,13 +1,20 @@
-CFLAGS=--std-sdcc99
-LINK = sdldz80
 AS = sdasz80
 AR = sdar
 
+INC         = $(wildcard src/*.inc)
+# files for conio library
+CONIO_SRC   = $(wildcard src/conio_*.s)
+CONIO_OBJ   = $(CONIO_SRC:src/%.s=obj/%.rel)
 # files for krt library
 KRT_SRC   = $(wildcard src/krt_*.s)
 KRT_OBJ   = $(KRT_SRC:src/%.s=obj/%.rel)
 
-all: obj crt0.rel header.rel ../z1013.lib  ../z1013_krt.lib
+all: obj crt0.rel header.rel krt.lib conio.lib \
+          z1013.lib
+
+z1013.lib: obj/putchar.rel obj/exit.rel obj/outhx.rel  obj/inkey.rel obj/outch.rel obj/inch.rel \
+    obj/z1013_spvt_poll.rel obj/z1013_spvt_getst.rel
+	$(AR) rcD $@ $^
 
 %.rel: obj/%.rel
 	cp $< $@
@@ -15,18 +22,22 @@ all: obj crt0.rel header.rel ../z1013.lib  ../z1013_krt.lib
 obj:
 	mkdir obj
 
+# p disable automatic listing pagination
+# l create list file
+# o create object file .rel
+# s create symbol table .sym
+# ff ?? Flag relocatable references by mode in listing file
+#removed: 
+# g all unresolved symbols are external - not declaring externals hides too many problems
 obj/%.rel : src/%.s
 	$(AS) -plosff $@ $<
 
-../z1013_krt.lib :  $(KRT_OBJ)
-	$(AR) rc $@   $^
+conio.lib: $(CONIO_OBJ) $(INC)
+	$(AR) rcD $@ $(CONIO_OBJ)
 
-../z1013.lib : obj/putchar.rel obj/outhx.rel  obj/inkey.rel obj/outch.rel obj/inch.rel obj/exit.rel \
-    obj/z1013_spvt_poll.rel obj/z1013_spvt_getst.rel \
-    obj/conio_clrscr.rel obj/conio_setcursortype.rel obj/conio_cputs.rel obj/conio_getch.rel \
-    obj/conio_kbhit.rel
-	$(AR) r $@ $^
-	
+krt.lib:  $(KRT_OBJ) $(INC)
+	$(AR) rcD $@ $(KRT_OBJ)
+
 clean:
 	rm -rf obj
 	rm -f *.bak
