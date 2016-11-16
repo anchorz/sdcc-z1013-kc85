@@ -4,7 +4,7 @@ CFLAGS=--std-sdcc11 -Wall --fomit-frame-pointer
 
 LINK    = sdldz80
 AS      = sdasz80
-OBJCOPY = objcopy
+OBJCOPY = sdobjcopy
 
 all: $(addprefix obj/,$(PLATFORM)) $(addsuffix /bin,$(addprefix obj/,$(PLATFORM)))
 

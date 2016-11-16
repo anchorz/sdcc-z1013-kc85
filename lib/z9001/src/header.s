@@ -36,12 +36,12 @@
         .globl s__STACK
 
         .area   _KCC_HEADER (abs)
-        ;.org 0x280          ; = 0x200 - 0x80 (header size)
 
-        .ascii '        '   ; name (placeholder 8 chars)
-        .ascii 'KCC'        ; extension
+        .db 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00 ;name (placeholder 8 chars)
+        .ascii 'COM'        ; extension
         .ds 5               ; reserved
-        .db 0x03            ; 0x02 = load, 0x03 = autostart
+        .db 0x02            ; next block
         .dw s__CODE         ; load address
-        .dw s__STACK        ; end address + 1
+        .dw s__STACK-1      ; end address 
         .dw init            ; start address
+
