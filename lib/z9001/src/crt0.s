@@ -59,7 +59,10 @@ init::
         .ascii      '        ' ; patch in the program name needed by Z9001 commando processor
         .db      0x00
         .db      0x00
+save_initial_sp::
+        .ds     2
 init2:
+        ld      (#save_initial_sp),sp
         ; Stack at the top of memory.
         ld      sp,#end_of_stackframe
         ; mark stack frame

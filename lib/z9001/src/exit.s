@@ -28,7 +28,12 @@
         .module exit
         .include 'z9001.inc'
 
+        .globl  save_initial_sp
+
         .area   _CODE
 exit::
-        jp Z9001_WBOOT
+        xor     a,a
+        ld      sp,(#save_initial_sp)
+        ret
+        ;jp Z9001_WBOOT
 
