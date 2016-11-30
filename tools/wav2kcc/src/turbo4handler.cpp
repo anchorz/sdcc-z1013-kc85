@@ -22,7 +22,7 @@ const char * Turbo4Handler::get_token_str(int token) {
 int Turbo4Handler::get_token(double ns) {
     if (ns > 5050)
         return TOKEN_ZERO;
-    if (ns > 3500)
+    if (ns > 3400)
         return TOKEN_ONE;
     return TOKEN_SYNC;
 }
@@ -86,6 +86,7 @@ int Turbo4Handler::handle_data_bits(int token) {
         } else {
             current_crc += data;
             current_crc &= 0xff;
+            //printf("%02x (%02x)\n",data,current_crc);
             append(data);
         }
         bit_counter = 0;
@@ -101,12 +102,13 @@ int Turbo4Handler::handle_data_bits(int token) {
             }
             printf("%02x> ", block_counter + 1);
             data_counter = 0;
+            cnt=9;  //skip sync bits
             state = STATE_WAIT_FOR_SYNC;
             block_counter++;
             if (!(block_counter % 0x10)) {
                 printf("\n");
             }
-            if (block_counter > 1 && block_counter * BLOCKLEN > len) {
+            if (block_counter > 1 && (block_counter-1) * BLOCKLEN >= len) {
                 printf("OK. output is: \"%s\"\n", file_name);
                 write_image(file_name);
             }
@@ -118,7 +120,7 @@ int Turbo4Handler::handle_data_bits(int token) {
 void Turbo4Handler::check(double ns, int pos) {
     int token = get_token(ns);
 
-    //printf("b %s\n",get_token_str(token));
+    //printf("b %s pos=%d cnt=%d\n",get_token_str(token),pos,cnt);
 
     switch (state) {
     case STATE_UNKNOWN:
@@ -135,19 +137,26 @@ void Turbo4Handler::check(double ns, int pos) {
     case STATE_WAIT_FOR_SYNC:
         if (token == TOKEN_ZERO) {
             state = STATE_UNKNOWN;
+            cnt=0;
             return;
         }
         if (token == TOKEN_ONE) {
+            cnt++;
             return;
         }
         if (token == TOKEN_SYNC) {
-            state = STATE_SAMPLE_DATA;
+            if (cnt>8)
+            {
+                cnt=0; //wait for starting tone
+                state = STATE_SAMPLE_DATA;
+            }
             return;
         }
         break;
     case STATE_SAMPLE_DATA:
         if (token == TOKEN_SYNC) {
-            state = STATE_ABORT;
+            // unknown it may not be a start of a block - wait for next one
+            state = STATE_UNKNOWN;
             //this is a problem only if we have converted already something ... otherwise it is noise
             //printf ("warning: unexpected input sequence (diff=%5.2f, pos=%d) %s. We need either '0' or '1'.\n",ns,pos,get_state_str());
             return;

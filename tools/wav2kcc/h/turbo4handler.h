@@ -19,6 +19,7 @@ class Turbo4Handler: public Handler {
     int data_counter;
     int data_crc;
 
+    int cnt; //counter for sync
     int current_crc;
     int block_counter;
 
@@ -32,7 +33,7 @@ private:
     const char *get_token_str(int token);
 public:
     Turbo4Handler() :
-            bit_counter(0), data(0), data_counter(0), data_crc(0), current_crc(
+            bit_counter(0), data(0), data_counter(0), data_crc(0), cnt(0), current_crc(
                     0), block_counter(0), len(0), system(0) {
     }
 

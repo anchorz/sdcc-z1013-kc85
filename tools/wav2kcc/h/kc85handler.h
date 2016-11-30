@@ -21,6 +21,7 @@ class Kc85Handler: public Handler {
     int data_counter;
     int data_crc;
 
+    int cnt; //counter for sync
     int block_counter;
 
     char file_name[SIZE_CASS_NAME + 5]; //+".KCC"
@@ -33,7 +34,7 @@ private:
     const char *get_token_str(int token);
 public:
     Kc85Handler() :
-        last_bit(0),bit_counter(0), data(0), data_counter(0), data_crc(0), block_counter(
+        last_bit(0),bit_counter(0), data(0), data_counter(0), data_crc(0), cnt(0),  block_counter(
                     0), len(0),system(CASS_SYSTEM_KC85) {
     }
 
