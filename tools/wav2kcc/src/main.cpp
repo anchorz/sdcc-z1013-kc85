@@ -167,23 +167,18 @@ void hist_print() {
         printf("Histogramm ohne Daten\n");
         return;
     }
-    for (int k = 0; k < (HIST_MAX + 2) / 3; k++) {
+    for (int k = 0; k < (HIST_MAX + 1) / 2; k++) {
         int i = k;
         printf("%3d %6.0f <%6.0f : %6d %6.2f%%   |   ", k,
                 (1.0 * i * HIST_UPPER) / HIST_MAX,
                 ((i + 1.0) * HIST_UPPER) / HIST_MAX, hist[i],
                 100.0 * hist[i] / hist_total);
-        i = k + (HIST_MAX + 2) / 3;
-        printf("%6.0f <%6.0f : %6d %6.2f%%   |   ",
+        i = k + (HIST_MAX + 1) / 2;
+        if (i < HIST_MAX)
+             printf("%6.0f <%6.0f : %6d %6.2f%%",
                 (1.0 * i * HIST_UPPER) / HIST_MAX,
                 ((i + 1.0) * HIST_UPPER) / HIST_MAX, hist[i],
                 100.0 * hist[i] / hist_total);
-        i = k + 2 * ((HIST_MAX + 2) / 3);
-        if (i < HIST_MAX)
-            printf("%6.0f <%6.0f : %6d %6.2f%%",
-                    (1.0 * i * HIST_UPPER) / HIST_MAX,
-                    ((i + 1.0) * HIST_UPPER) / HIST_MAX, hist[i],
-                    100.0 * hist[i] / hist_total);
         printf("\n");
     }
     printf("\n");

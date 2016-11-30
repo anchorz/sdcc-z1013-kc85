@@ -96,18 +96,18 @@ start:
         .db     UP_OSTR
         .ascii  'TSAVE4 V'
         VERSION_STR
-        .ascii ' Hobi'
-        .db 0x27 ; '
-        .ascii 's Schnellkopierer'
-        .db 0x0d,0x0a
-        .ascii 'Aufruf: AADR EADR (SADR)'
-        .db 0x0d,0x0a
-        .ascii ' AADR - Anfangsadresse'
-        .db 0x0d,0x0a
-        .ascii ' EADR - Endadresse (letztes Byte!)'
-        .db 0x0d,0x0a
-        .ascii ' SADR - (optional) Startadresse'
-        .db 0x0d,0x0a, 0x00
+        .ascii  ' Hobi'
+        .db     0x27 ; '
+        .ascii  's Schnellkopierer'
+        .db     0x0d, 0x0a
+        .ascii  'Aufruf: AADR EADR (SADR)'
+        .db     0x0d,0x0a
+        .ascii  ' AADR - Anfangsadresse'
+        .db     0x0d, 0x0a
+        .ascii  ' EADR - Endadresse (letztes Byte!)'
+        .db     0x0d, 0x0a
+        .ascii  ' SADR - (optional) Startadresse'
+        .db     0x0d, 0x0a, 0x00
         ret
 has_two_arguments:
 ;
@@ -123,9 +123,9 @@ has_two_arguments:
         ld      a,#0x03
         out     (PORT_CTC+1),a
         ld      hl,(IV_CTC1)
-	    ld      (save_ctc1),hl
-	    ld      hl,#isr_ctc
-	    ld      (IV_CTC1),hl
+        ld      (save_ctc1),hl
+        ld      hl,#isr_ctc
+        ld      (IV_CTC1),hl
         ei
 
         ;ld      l,CASS_L(ix)
@@ -138,58 +138,18 @@ has_two_arguments:
         ld      bc,#BLOCKLEN-1
         ld      (hl),#0x00
         ldir 
-        ;
-        ;  test code
-        ;
-        ;ld      bc,#-BLOCKLEN+1+OF_CASS_NAME
-        ;add     hl,bc
-        ;ld      e,l
-        ;ld      d,h
-        ;inc     de
-        ;ld      bc,#SIZE_CASS_NAME-1;
-        ;ld      (hl),#0x20
-        ;ldir
-        ;ld      bc,#-SIZE_CASS_NAME-OF_CASS_NAME+1
-        ;add     hl,bc
         pop     iy
 
-; ******************** TEST *****************
-.if ne(TESTCODE)
-
-.if eq(RUNNING_SYSTEM-CASS_SYSTEM_KC85)
-        ld      OF_CASS_ARGN(iy),#0x03
-.endif
-        ld      OF_CASS_AADR(iy),#0x00
-        ld      OF_CASS_AADR+1(iy),#0xE0
-        ld      OF_CASS_EADR(iy),#0xFF
-        ld      OF_CASS_EADR+1(iy),#0xFF
-        ld      OF_CASS_SADR(iy),#0x00
-        ld      OF_CASS_SADR+1(iy),#0xF0
-        ld      OF_CASS_SYSTEM(iy),#RUNNING_SYSTEM
-               
-.if ne(OF_CASS_NAME-0)
-        ld      BC,#OF_CASS_NAME
-        add     hl,bc
-.endif
-
-        ld      de,#dummy_name
-        ex      de,hl
-
-.if lt(SIZE_CASS_NAME-(dummy_name_ends-dummy_name))
-        .error file name exceeds buffer size
-.endif
-        ld      bc,#dummy_name_ends-dummy_name
-        ldir
-; ******************** TEST *****************
-.else
         OSTR 'Name:'
         call PV1
         .db UP_INLIN
 isr_start::
         push    iy
         pop     hl
-        ld      bc,#OF_CASS_NAME
+.if ne(OF_CASS_NAME-0)
+        ld      BC,#OF_CASS_NAME
         add     hl,bc
+.endif
         ex      de,hl
         ld      bc,#0x05 ; len of 'Name:'
         add     hl,bc
@@ -211,7 +171,7 @@ isr_start::
         ld      OF_CASS_SADR+1(iy),b
 skip_autostart:
         ld      OF_CASS_SYSTEM(iy),#RUNNING_SYSTEM
-.endif ; TESTCODE
+
         xor     a
         ld      l,OF_CASS_EADR(IY)
         ld      h,OF_CASS_EADR+1(IY)
@@ -348,9 +308,9 @@ isr_ctc::
         ld      a,d                 ; [ 0]
         out     (PORT_CTC+1),a      ; [ 4]
         rlc     c                   ; [15]
-        ld      a,#BIT_0           ;
-        jr      nc,isr_bit         ; originally we "copy" the CF into BIT 3  
-        add     a                  ; 
+        ld      a,#BIT_0            ;
+        jr      nc,isr_bit          ; we actually "copy" the CF into BIT 3
+        add     a                   ;
         ;ld      a,#BIT_0/4          ; [23] we can do similar with 4 clock cycles less
         ;rla                         ; [30]
         ;rla                         ; [34]
@@ -360,17 +320,6 @@ isr_bit:
         ei                          ; 4  4.4.13.16 [53]
         reti                        ; 8  4.4. 9.16 [57]
                                     ; 22 3.4.11.16 [71]
-
-; ******************** TEST *****************
-.if ne(TESTCODE)
-
-dummy_name:
-        .ascii 'CAOS.E  BIN'
-       ;.ascii '0123456.COM'
-dummy_name_ends:
-.endif
-; ******************** TEST *****************
-
         .area _CODE_ENDS
 end_of_binary:
 
