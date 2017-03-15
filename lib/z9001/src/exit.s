@@ -32,8 +32,11 @@
 
         .area   _CODE
 exit::
-        xor     a,a
         ld      sp,(#save_initial_sp)
+        xor     a,a
+        ld      a,l
+        or      a
+        ret     z
+        scf
         ret
-        ;jp Z9001_WBOOT
 

@@ -62,36 +62,19 @@ OF_CASS_NAME            .equ 16 ; 16 Zeichen
 SIZE_CASS_NAME          .equ 16
 .endif
 
-        .area _CODE
-        .area _CODE_ENDS
-        .area _DATA
+        .globl block
 
         .area _CODE
-; **********************************
-; *                                *
-; * .KCC HEADER                    *
-; *                                *
-; **********************************
-        .ascii 'TSAVE4     '
-        .ds 5
-        .db 2
-        .dw ENTRY
-        .dw end_of_binary+1
-        .dw ENTRY
-        .ds 128-23
 ; **********************************
 ; *                                *
 ; * ENTRY                          * 
 ; *                                *
 ; **********************************
-ENTRY:  jp      start ; start the test code
-
         .db     0x7f,0x7f
         .ascii  'TSAVE'
         .db     0x01
         cp      #0x02
         jp      nc,has_two_arguments
-start:
         call    PV1
         .db     UP_OSTR
         .ascii  'TSAVE4 V'
@@ -320,12 +303,8 @@ isr_bit:
         ei                          ; 4  4.4.13.16 [53]
         reti                        ; 8  4.4. 9.16 [57]
                                     ; 22 3.4.11.16 [71]
-        .area _CODE_ENDS
-end_of_binary:
-
         .area _DATA
 save_ctc1::
         .ds 2
-block::
-        .ds BLOCKLEN
-isr_endofdata::
+
+

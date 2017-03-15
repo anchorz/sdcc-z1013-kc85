@@ -1,4 +1,4 @@
-PLATFORM=kc85 z1013
+PLATFORM=kc85
 OUT=xonix
 OBJECTS=main input title_screen display kc85
 

@@ -4,6 +4,21 @@
 
 #include "xonix.h"
 
+#ifdef __KC85__
+#define SCR_ADD_LINE(SCR_PTR , N) ((SCR_PTR)+(N)*0x800)
+#define SCR_INC(SCR_PTR) (SCR_PTR=normalized_inc(SCR_PTR))
+#define SCR_ADD(SCR_PTR,N) (SCR_PTR=normalized_add(SCR_PTR,N))
+
+unsigned char *normalized_inc(unsigned int *ptr) __z88dk_fastcall;
+unsigned char *normalized_add(unsigned int *ptr,unsigned int add) __z88dk_callee;
+
+
+#else
+#define SCR_ADD_LINE(SCR_PTR , N) ((SCR_PTR)+SCR_WIDTH)
+#define SCR_INC(SCR_PTR) ((SCR_PTR)++)
+#define SCR_ADD(SCR_PTR,N) ((SCR_PTR)+=(N))
+#endif
+
 #define MODE_GRAFIK 0
 #define MODE_INTERN ~0
 
@@ -13,9 +28,10 @@ static unsigned char mode;
 
 void display_internal_field() {
     unsigned char x, y;
-    unsigned char *ptr = SCR_PTR + SCR_WIDTH;
+    unsigned char *ptr=SCR_PTR;
     unsigned char *field_ptr = field;
 
+    SCR_ADD(ptr,SCR_WIDTH );
     for (y = 0; y < SCR_HEIGHT - 1; y++) {
         for (x = 0; x < SCR_WIDTH; x++) {
             unsigned char c = *field_ptr;
@@ -37,15 +53,18 @@ void display_internal_field() {
             default:
                 c = '?';
             }
-            krt_putchar(ptr++, c, color);
+            krt_putchar(ptr, c, color);
+            SCR_INC(ptr);
         }
     }
 }
 
 void display_grafik() {
     unsigned char x, y;
-    unsigned char *ptr = SCR_PTR + SCR_WIDTH;
+    unsigned char *ptr = SCR_PTR;
     unsigned char *field_ptr = field;
+
+    SCR_ADD(ptr,SCR_WIDTH );
 
     for (y = 0; y < SCR_HEIGHT - 1; y++) {
         for (x = 0; x < SCR_WIDTH; x++) {
@@ -65,7 +84,8 @@ void display_grafik() {
             default:
                 c = '?';
             }
-            krt_putchar(ptr++, c, color);
+            krt_putchar(ptr, c, color);
+            SCR_INC(ptr);
         }
     }
     krt_putchar(manPtr, FIELD_FULL_MAN, COLOR_FULL);

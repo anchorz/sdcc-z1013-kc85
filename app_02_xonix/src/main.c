@@ -28,7 +28,7 @@ unsigned char taskBits = 0;
 #define SCR_ADD(SCR_PTR,N) ((SCR_PTR)+=(N))
 #endif
 
-unsigned int *normalized_inc(unsigned int *ptr) __z88dk_fastcall
+unsigned char *normalized_inc(unsigned int *ptr) __z88dk_fastcall
 {
         ptr;
 __asm
@@ -43,10 +43,17 @@ __asm
         add #0x8; PTR_VERTICAL_INC
         ld  h,a
 is_ok$:
+        ret
+
+        .db 0x7f,0x7f
+        .ascii 'XONIX'
+        .db 0x01
+        jp 0x200
+
 __endasm;
 }
 
-unsigned int *normalized_add(unsigned int *ptr,unsigned int add) __z88dk_callee
+unsigned char *normalized_add(unsigned int *ptr,unsigned int add) __z88dk_callee
 {
         ptr;add;
 __asm
@@ -81,29 +88,30 @@ void pixel_border() {
         SCR_INC(ptr);
     }
     SCR_ADD(ptr,SCR_WIDTH - 2);
-    //ptr += SCR_WIDTH - 2;
     field_ptr += SCR_WIDTH - 2;
-    x = SCR_HEIGHT - 2;
 
+    x = SCR_HEIGHT - 3;
     while (--x) {
         krt_putchar(ptr, FIELD_FULL, COLOR_FULL);
         SCR_INC(ptr);
         krt_putchar(ptr, FIELD_FULL, COLOR_FULL);
         SCR_ADD(ptr,SCR_WIDTH - 1);
-        //ptr += SCR_WIDTH - 1;
 
         *field_ptr++ = FIELD_FULL;
         *field_ptr = FIELD_FULL;
         field_ptr += SCR_WIDTH - 1;
     }
-    /*  ptr -= SCR_WIDTH - 2;
-    field_ptr -= SCR_WIDTH - 2;
 
-    x = SCR_WIDTH;
+    krt_putchar(ptr, FIELD_FULL, COLOR_FULL);
+    SCR_INC(ptr);
+    *field_ptr++ = FIELD_FULL;
+
+    x = SCR_WIDTH+1;
     while (--x) {
-        krt_putchar(ptr++, FIELD_FULL, COLOR_FULL);
+        krt_putchar(ptr, FIELD_FULL, COLOR_FULL);
+        SCR_INC(ptr);
         *field_ptr++ = FIELD_FULL;
-    }*/
+    }
 }
 
 void pixel_man_init() {

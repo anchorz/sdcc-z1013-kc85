@@ -1,0 +1,60 @@
+2016-03-14
+
+Build environment:
+
+        gcc option, treat warnings as errors
+
+        add Z9001 as target
+        use compiler defines __Z1013__,__Z9001__,__KC85__ for each target
+
+        OPTION_SHOW_HEXDUMP=OFF in the MAKEFILE omits the terminal output of the hex dump after build
+
+        add initial version of KRT 11 graphics library for Z1013 and Z9001
+           support simple font handling, output strings and characters
+           two fonts included: Z1013(no Umlauts) and ModernComputer(plus Umlauts) 
+
+        must declare all externals in the assembly source code        
+        (remove -#-g all unresolved symbols are external)
+
+Some ideas for optimizations, resp develop on 8-bit systems:
+
+        using global variables is not always the best choice - using a local variable may help the compiler to 
+        optimize it in a register - but again, if the variable cannot be kept in a register and has to be copied
+        from stack that advantage may be lost - reducing the scope { int local= global; } may help
+
+        __z88dk_callee - avoid stack correction after return
+        krt_putchar function header 131 cycles to prepare the registers
+        56 to correct the stackpointer
+
+        in general callee may take care to clean up the stack
+           
+        add docu   limited   printf("  initialized string str:%s\n", str);
+        printf("  initialized word    w2:0x%04x\n", w2);
+        printf("  initialized word    w3:0x%04x\n", w3);
+        printf("  initialized char    c1:%c\n", c1);
+        printf("  initialized char    c2:%c\n", c2);
+        printf("uninitialized word    w1:0x%04x\n", w1);
+    
+        todo make putchar fastcall
+        sample_03_compiler add fastcall inline and callee demo
+        banked call - inser include file
+        
+        ; vram.s
+
+    .area   _VRAM (ABS)
+    .org    0x3C00
+    .ds     768  wrapp code around or use nbase address
+    
+     --std-sdcc11 switch to 3.6 and try alignment operator
+     
+     doc - libn assembley / source all c in makefile
+     
+     .allow_undocumented for IYL putchars
+    stack how to configure
+    heap 
+    
+    programme romable - overhead initialisierung
+    
+    TODO clean up include files - standard includes should not be in include folder - get the from sdcc
+
+

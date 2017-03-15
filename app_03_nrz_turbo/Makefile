@@ -3,13 +3,15 @@ all : obj turbo.wav x.wav
 	grep isr obj/turbo.map 
 	#play turbo.wav
 
-save:   
-	sdasz80 -plosff obj/save.rel src/save.asm
-	sdldz80 -mjwx -b _CODE=0x7d48 -i obj/save.ihx obj/save.rel
-#	sdldz80 -mjwx -b _CODE=0x6000 -i obj/save.ihx obj/save.rel
+save: obj/header.rel obj/save.rel obj/load.rel obj/hist.rel  obj/shared.rel
+	#sdldz80 -mjwx -b _CODE=0x7000 -i obj/save.ihx obj/header.rel obj/save.rel obj/load.rel obj/hist.rel obj/shared.rel
+	sdldz80 -mjwx -b _CODE=0x7000 -i obj/save.ihx obj/header.rel obj/hist.rel  obj/shared.rel
 	objcopy -Iihex -Obinary obj/save.ihx obj/save.kcc
 	../tools/kcc2wav/kcc2wav obj/save.kcc save.wav
 	grep isr obj/save.map 
+
+obj/%.rel : src/%.asm
+	sdasz80 -plosff $@ $<
 
 obj:
 	mkdir obj

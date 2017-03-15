@@ -33,7 +33,7 @@
 
         .globl init
         .globl s__CODE
-        .globl s__STACK
+        .globl s__DATA
 
         .area   _KCC_HEADER (abs)
 
@@ -42,5 +42,5 @@
         .ds 5               ; reserved
         .db 0x03            ; 0x02 = load, 0x03 = autostart
         .dw s__CODE         ; load address
-        .dw s__STACK        ; end address + 1
+        .dw s__DATA         ; end address + 1
         .dw init            ; start address
