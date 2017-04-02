@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  z9001.inc
+;  conio_clrscr.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -25,50 +25,54 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
+		.module conio_clrscr
+		.include 'z9001.inc'
+    
+		.globl _clrscr
 
-;
-; speicheradressen (...soweit verwendet und getestet) 
-;
-Z9001_WBOOT = 0x0000 ; Sprung zum Warmstart
-Z9001_BOS   = 0x0005 ; BOS Sprungverteiler
-Z9001_KEYBU = 0x0025 ; TASTATURPUFFER
-Z9001_CURS  = 0x002d ; CURSORADRESSE
-Z9001_SYSB  = 0xEFC0 ; Systembyte (siehe z9_os.pdf) 
-Z9001_MAPAR = 0xEFC1 ; 64-bit Vektor je 1K Speicher 0-ROM/1-RAM  
-Z9001_BIOS  = 0xF000 ; BIOS ROM 
-
-Z9001_SCTOP = 0xEC00 ; Zeichenspeicher
-Z9001_SCCOL = 0xE800 ; Farbspeicher
-Z9001_SCLEN = (0xEFC0-0xEC00) 
-
-;
-; Farben
-;
-COLOR_DEFAULT   = (COLOR_FG_WHITE|COLOR_BG_BLACK)
-COLOR_BG_BLACK  = 0x00
-COLOR_FG_WHITE  = 0x70
-
-;
-; IO-Ports 
-;
-Z9001_GR_CTRL   = 0xb8
-
-Z9001_KRT_ON    = 0x08
-Z9001_KRT_OFF   = 0x00
-Z9001_KRT_BANK0 = 0x00
-Z9001_KRT_BANK1 = 0x01
-Z9001_KRT_BANK2 = 0x02
-Z9001_KRT_BANK3 = 0x03
-Z9001_KRT_BANK4 = 0x04
-Z9001_KRT_BANK5 = 0x05
-Z9001_KRT_BANK6 = 0x06
-Z9001_KRT_BANK7 = 0x07
-
-; Unterprogramme
-UP_CONSI        = 1  ; getch
-UP_CONSO        = 2  ; putchar
-UP_CSTS         = 11 ; kbhit
-
-
-;
-VT_SPACE        = 0x20
+		.area   _CODE
+_clrscr:
+		xor		a
+		ld		h,a
+		ld		l,a
+		add 	hl,sp
+		ld		d,#VT_SPACE
+		ld		e,d
+		di
+		ld 		sp,#(Z9001_SCTOP+Z9001_SCLEN)
+		
+		ld      b,#(Z9001_SCLEN/16)
+		ld		c,b
+fill16$:
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        djnz    fill16$;
+		
+		ld 		
+		ld 		sp,#(Z9001_SCCOL+Z9001_SCLEN)
+		
+		ld		d,#COLOR_DEFAULT
+		ld		e,d
+		ld      b,c
+fill17$:
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        push    de
+        djnz    fill17$;
+	
+	
+	
+		ld		sp,hl
+		ei
+		ret

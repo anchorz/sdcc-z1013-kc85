@@ -186,7 +186,7 @@ unsigned int dataLen;
 
 void createData(void(*p)(int))
 {
-    int block=1;
+    int block=0;
     dataPtr=0;
     
     buffer_initialize(p);
