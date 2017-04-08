@@ -17,9 +17,8 @@ obj/gcc:
 obj/gcc/bin: obj/gcc/$(OUT)
 	
 obj/gcc/$(OUT): $(addsuffix .o,$(addprefix obj/gcc/,$(OBJECTS)))
-	#gcc -o "$@" $^ -print-search-dirs -L ../lib/gcc-x11 -lX11 -lpthread -lgcc-conio-x11 
-	gcc -g -o "$@" $^ ../lib/gcc-x11/gcc-conio-x11.a -lX11 -lpthread -lm
-	
+	gcc -g -o "$@" $^ ../lib/gcc-x11/gcc-conio-x11.a -L /usr/X11/lib -lX11 -lpthread -lm 
+
 obj/gcc/%.o : src/%.c
 	#gcc -Wall  -Wno-main -pedantic -std=c99 -S -o "$@.asm" "$<"
 	gcc -g -Wall -pedantic -std=c99 -Werror -Iinclude -I../include-gcc -c -o "$@" $^
@@ -31,7 +30,7 @@ obj/z1013:
 
 obj/z1013/bin: obj/z1013/$(OUT).z80
 
-obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS)))
+obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS) $(SDCC_OBJECTS)))
 	$(LINK) -mjwx -b _HEADER=0x00e0  -b _CODE=0x0100  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/z1013 -k ../lib/ -l z1013 -l krt -l conio -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z1013/$(OUT).ihx" "$@"
 	echo -n $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
@@ -66,7 +65,7 @@ obj/z9001:
 
 obj/z9001/bin: obj/z9001/$(OUT).kcc
 
-obj/z9001/$(OUT).kcc: ../lib/z9001/crt0.rel ../lib/z9001/header.rel  $(addsuffix .rel,$(addprefix obj/z9001/,$(OBJECTS)))
+obj/z9001/$(OUT).kcc: ../lib/z9001/crt0.rel ../lib/z9001/header.rel  $(addsuffix .rel,$(addprefix obj/z9001/,$(OBJECTS)  $(SDCC_OBJECTS)))
 	$(LINK)     -mjwx -b _KCC_HEADER=0x280 -b _CODE=0x300 $(LD_FLAGS) -i "obj/z9001/$(OUT).ihx" -k ../lib/z9001 -k ../lib/ -l z9001 -l conio -l krt -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z9001/$(OUT).ihx" "$@"
 	@/bin/echo -n $(OUT) >obj/z9001/filename.txt
@@ -102,7 +101,7 @@ obj/kc85:
 
 obj/kc85/bin: obj/kc85/$(OUT).kcc
 
-obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/header.rel  $(addsuffix .rel,$(addprefix obj/kc85/,$(OBJECTS)))
+obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/header.rel  $(addsuffix .rel,$(addprefix obj/kc85/,$(OBJECTS) $(SDCC_OBJECTS)))
 	$(LINK)     -mjwx -b _KCC_HEADER=0x180 -b _CODE=0x200 $(LD_FLAGS) -i "obj/kc85/$(OUT).ihx" -k ../lib/kc85 -k ../lib/ -l kc85 -l caos -l conio -l screen -l krt -l z80_noix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/kc85/$(OUT).ihx" "$@"
 	/bin/echo -n $(OUT) >obj/kc85/filename.txt

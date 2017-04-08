@@ -84,26 +84,17 @@ void put_char_int(int c) __z88dk_fastcall
     putchar(c);
 }
 
+void OUTSTR_CALLEE(int c1, int c2, int c3) __z88dk_callee;
+#ifndef __SDCC
 void OUTSTR_CALLEE(int c1, int c2, int c3) __z88dk_callee
 {
-#ifdef __SDCC
-    c1;
-    c2;
-    c3;
-    __asm__("pop iy"); //stack pointer
-    __asm__("pop hl");
-    __asm__("call _put_char_int");
-    __asm__("pop hl");
-    __asm__("call _put_char_int");
-    __asm__("pop hl");
-    __asm__("call _put_char_int");
-    __asm__("push iy");
-#else
     put_char_int(c1);
     put_char_int(c2);
     put_char_int(c3);
-#endif
 }
+#else
+//assembler file einbinden
+#endif
 
 void OUTSTR(int c1, int c2, int c3) {
     put_char_int(c1);

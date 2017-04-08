@@ -25,54 +25,49 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-		.module conio_clrscr
-		.include 'z9001.inc'
+        .module conio_clrscr
+        .include 'z9001.inc'
     
-		.globl _clrscr
+        .globl _clrscr
 
-		.area   _CODE
+        .area   _CODE
 _clrscr:
-		xor		a
-		ld		h,a
-		ld		l,a
-		add 	hl,sp
-		ld		d,#VT_SPACE
-		ld		e,d
-		di
-		ld 		sp,#(Z9001_SCTOP+Z9001_SCLEN)
-		
-		ld      b,#(Z9001_SCLEN/16)
-		ld		c,b
+        xor       a
+        ld        h,a
+        ld        l,a
+        add       hl,sp
+        ld        d,#VT_SPACE
+        ld        e,d
+        di
+        ld        sp,#(Z9001_SCTOP+Z9001_SCLEN)
+        ld        b,#(Z9001_SCLEN/16)
+        ld        c,b
 fill16$:
-        push    de
-        push    de
-        push    de
-        push    de
-        push    de
-        push    de
-        push    de
-        push    de
-        djnz    fill16$;
-		
-		ld 		
-		ld 		sp,#(Z9001_SCCOL+Z9001_SCLEN)
-		
-		ld		d,#COLOR_DEFAULT
-		ld		e,d
-		ld      b,c
+        push      de
+        push      de
+        push      de
+        push      de
+        push      de
+        push      de
+        push      de
+        push      de
+        djnz      fill16$;
+        
+        ld        d,#COLOR_DEFAULT
+        ld        e,d
+        ld        sp,#(Z9001_SCCOL+Z9001_SCLEN)
+        ld        b,c
 fill17$:
-        push    de
-        push    de
-        push    de
-        push    de
-        push    de
-        push    de
-        push    de
-        push    de
-        djnz    fill17$;
-	
-	
-	
-		ld		sp,hl
-		ei
-		ret
+        push      de
+        push      de
+        push      de
+        push      de
+        push      de
+        push      de
+        push      de
+        push      de
+        djnz      fill17$;
+
+        ld        sp,hl
+        ei
+        ret

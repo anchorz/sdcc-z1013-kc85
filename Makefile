@@ -2,13 +2,15 @@ LIBS=$(wildcard sample_*)
 
 .PHONY: force
 
-all: $(LIBS)
+all: 
 	cd lib; make
+	make $(LIBS)
 
 $(LIBS): force
-	cd $@ && make
+	cd $@; make
 
 clean:
+	cd lib; make clean
 	for name in $(LIBS); do cd $$name; make clean; cd ..; done
 	rm -f *.bak
 	rm -f *~

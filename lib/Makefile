@@ -20,6 +20,7 @@ obj/%.rel : src/%.c
 	sdcc -mz80 $(CFLAGS) -c -o $@ --nostdlib  --nostdinc -Iinclude -I../include $<
 
 clean:
+	cd gcc-x11; make clean
 	cd z1013; make clean
 	cd kc85; make clean
 	cd z9001; make clean
