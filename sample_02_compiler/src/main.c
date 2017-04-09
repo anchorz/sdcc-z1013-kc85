@@ -15,7 +15,19 @@
 /* 8-bit IO access */
 __sfr __at(0x79) IoPort8;
 __sfr __banked __at(0x123) IoPort16;
-__at (0xec00) unsigned char bws[1024];
+#ifdef __Z1013__
+    __at (0xec00) unsigned char bws[1024];
+#elif defined(__Z9001__)
+    __at (0xec00) unsigned char bws[1024];
+    __at (0xe800) unsigned char color[1024];
+#elif defined(__KC85__)
+    __at (0x8000) unsigned char bws[1024];
+    __at (0xa800) unsigned char color[1024];
+#elif defined(__GNUC__)
+    unsigned char bws[1024];
+#else
+    #error undefined platform
+#endif
 
 unsigned char predefined_at(int s) __z88dk_fastcall
 {
@@ -117,6 +129,14 @@ int main() {
     OUTSTR_CALLEE('1', '0', '9');
     OUTSTR('1', '0', '9');
     OUTCH('a');
+    bws[0]='A'; //works with GCC, result is only visible if GUI is linked
+#if defined(__Z9001__) 
+    color[0]=0x3f;
+#endif
+#if defined(__KC85__) 
+    color[0]=0x1f;
+#endif
+    
     return 0;
 }
 
