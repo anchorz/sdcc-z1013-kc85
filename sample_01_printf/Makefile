@@ -1,4 +1,4 @@
-PLATFORM=z1013 kc85 z9001
+PLATFORM=gcc z1013 kc85 z9001
 OUT=printf
 OBJECTS=main
 
