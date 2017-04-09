@@ -214,13 +214,13 @@ void winverschieb(void) {
 
         switch (eingabe) {
             case CUU:
-            shift(0, 0x81);
+            shift(0, (signed char)0x81);
             break;
             case CUD:
             shift(0, 1);
             break;
             case CUL:
-            shift(0x81, 0);
+            shift((signed char)0x81, 0);
             break;
             case CUR:
             shift(1, 0);
@@ -292,22 +292,22 @@ void icon_menu() {
                     break;
                     case 1:
                     icon(subicon, (void *) &folder, spalte, 1);
-                    //subicon = (subicon + 1) % 2;
+                    subicon = (subicon + 1) % 2;
                     count = 5000;
                     break;
                     case 2:
                     icon(subicon, (void *) &floppy, spalte, 1);
-                    //subicon = (subicon + 1) % 3;
+                    subicon = (subicon + 1) % 3;
                     count = 4000;
                     break;
                     case 3:
                     icon(subicon, (void *) &tape, spalte, 1);
-                    //subicon = (subicon + 1) % 3;
+                    subicon = (subicon + 1) % 3;
                     count = 3000;
                     break;
                     case 4:
                     kcsystem(subicon);
-                    //subicon = (subicon + 1) % 5;
+                    subicon = (subicon + 1) % 5;
                     count = 7000;
                     break;
                 }
@@ -323,8 +323,8 @@ void icon_menu() {
 
         if (eingabe == CUU)
         auswahl = (auswahl > 0) ? auswahl - 1 : icon_anzahl;
-        //if (eingabe == CUD)
-        //auswahl = (auswahl + 1) % (icon_anzahl + 1);
+        if (eingabe == CUD)
+        auswahl = (auswahl + 1) % (icon_anzahl + 1);
         if (eingabe == PAGE)
         auswahl = 0;
         if (eingabe == SCROL)
@@ -333,33 +333,7 @@ void icon_menu() {
     }while (eingabe != BREAK && eingabe != CR && eingabe != CUL);
 }
 
-//////////////////////////////
-// Bedienungsanleitung screen.h
-void anleitung_screen(void) {
-    const uint8_t item_anzahl = 16;
-    uint8_t eingabe;
-    uint8_t auswahl = 0;
-
-    wiinit(4, 4, 8, 19, selectionwin);
-    wisave(selectionwin);
-    clrscr();
-    rahm();
-
-    wiinit(14, 2, 25, 28, descrwin);
-    wisave(descrwin);
-    clrscr();
-    rahm();
-
-    wiinit(15, 3, 23, 26, testwin);
-
-    winak(selectionwin);
-    putstr(
-            "\r\n Index\r\n wiinit\r\n wisave\r\n wiload\r\n asme\r\n meas\r\n shift\r\n invzei\r\n invwin\r\n rahm\r\n lrahm\r\n shadow\r\n lshad\r\n icon\r\n priat\r\n inpat\r\n titel");
-    do {
-        winak(testwin);
-        clrscr();
-        switch (auswahl) {
-            case 0:
+void help_00() {
             putstr("Kurzerkl\173rung,");
             crlf();
             crlf();
@@ -398,9 +372,9 @@ void anleitung_screen(void) {
             putstr("Parameter \"-l screen\"");
             crlf();
             putstr("erg\173nzt werden.");
-            break;
+}
 
-            case 1:
+void help_01() {
             //       1234567890123456789012
             putstr("wiinit( ");
             crlf();
@@ -448,9 +422,9 @@ void anleitung_screen(void) {
             crlf();
             putstr("  shadow");
             crlf();
-            break;
+}
 
-            case 2:
+void help_02() {
             //       1234567890123456789012
             putstr("wisave( fenster_nr);");
             crlf();
@@ -474,9 +448,9 @@ void anleitung_screen(void) {
             crlf();
             putstr("  asme");
             crlf();
-            break;
+}
 
-            case 3:
+void help_03() {
             //       1234567890123456789012
             putstr("wiload( fenster_nr);");
             crlf();
@@ -500,9 +474,9 @@ void anleitung_screen(void) {
             crlf();
             putstr("  meas");
             crlf();
-            break;
+}
 
-            case 4:
+void help_asme() {
             //       1234567890123456789012
             putstr("asme( fenster_nr);");
             crlf();
@@ -524,9 +498,9 @@ void anleitung_screen(void) {
             crlf();
             putstr("  meas");
             crlf();
-            break;
+}
 
-            case 5:
+void help_meas() {
             //       1234567890123456789012
             putstr("meas( fenster_nr);");
             crlf();
@@ -550,10 +524,10 @@ void anleitung_screen(void) {
             crlf();
             putstr("  asme");
             crlf();
-            break;
+}
 
-            case 6:
-            //       1234567890123456789012
+void help_shift() {
+//       1234567890123456789012
             putstr("shift( x, y);");
             crlf();
             crlf();
@@ -584,9 +558,9 @@ void anleitung_screen(void) {
             crlf();
             putstr("  wisave");
             crlf();
-            break;
+}
 
-            case 7:
+void help_invzei() {
             //       1234567890123456789012
             putstr("invzei( zeile);");
             crlf();
@@ -601,7 +575,50 @@ void anleitung_screen(void) {
             crlf();
             putstr("  invwin");
             crlf();
-            break;
+}
+
+//////////////////////////////
+// Bedienungsanleitung screen.h
+void anleitung_screen(void) {
+    const uint8_t item_anzahl = 16;
+    uint8_t eingabe;
+    uint8_t auswahl = 0;
+
+    wiinit(4, 4, 8, 19, selectionwin);
+    wisave(selectionwin);
+    clrscr();
+    rahm();
+
+    wiinit(14, 2, 25, 28, descrwin);
+    wisave(descrwin);
+    clrscr();
+    rahm();
+
+    wiinit(15, 3, 23, 26, testwin);
+
+    winak(selectionwin);
+    putstr(
+            "\r\n Index\r\n wiinit\r\n wisave\r\n wiload\r\n asme\r\n meas\r\n shift\r\n invzei\r\n invwin\r\n rahm\r\n lrahm\r\n shadow\r\n lshad\r\n icon\r\n priat\r\n inpat\r\n titel");
+    do {
+        winak(testwin);
+        clrscr();
+        switch (auswahl) {
+            case 0: help_00(); 
+                    break;
+            case 1: help_01();
+                    break;
+            case 2: help_02();
+                    break;
+            case 3: help_03();
+                    break;
+            case 4: help_asme();
+                    break;
+            case 5: help_meas();
+                    break;    
+            case 6: help_shift();            
+                    break;
+            case 7: help_invzei();
+                    break;
 
             case 8:
             //       1234567890123456789012
@@ -875,8 +892,8 @@ void anleitung_screen(void) {
 
         if (eingabe == CUU)
         auswahl = (auswahl > 0) ? auswahl - 1 : item_anzahl;
-        //if (eingabe == CUD)
-        //auswahl = (auswahl + 1) % (item_anzahl + 1);
+        if (eingabe == CUD)
+        auswahl = (auswahl + 1) % (item_anzahl + 1);
         if (eingabe == PAGE)
         auswahl = 0;
         if (eingabe == SCROL)
@@ -894,7 +911,7 @@ void anleitung_screen(void) {
 
 
 enum auswahl_t auswahl = rahmen;
-char eingabe = 0;
+char eingabe;
 char beenden = FALSE;
 uint8_t color_save;
 const uint8_t auswahl_max = auswahl_anzahl;
@@ -902,15 +919,18 @@ const uint8_t auswahl_max = auswahl_anzahl;
 //////////////////////////////
 // Hauptprogramm
 void main() {
+    printf("Gefunden: CAOS Version %x\n",caos_version());
 
-
+    if (caos_version()<0x41) {
+        printf("l\173uft nur auf CAOS 4.1 und sp\173ter.\n");
+        return;
+    }    
 
     screen_init();
-
     // Abspeichern des Originalfensters
     color_save = syscolor;
     wiinit(0, 0, 40, 32, original);
-
+    
     textbackground(WHITE);
     clrscr();
 
