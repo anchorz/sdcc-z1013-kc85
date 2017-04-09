@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 #include <caos.h>
 #include <conio.h>
@@ -24,24 +25,34 @@ uint8_t data[] = { 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1,
 uint8_t *screen;
 
 void main() {
+
+    unsigned char version=caos_version();
     clrscr();
+    printf("CAOS Version: %x\n",version);
+    if (version>=0x31)
+    {
+        for (index = 0; index < graphic_heigth; index += 5) {
+            line(0, index, graphic_widht - 1, graphic_heigth - 1 - index, color);
+            color = 0x7f & (color + 0x08);
+        }
 
-    for (index = 0; index < graphic_heigth; index += 5) {
-        line(0, index, graphic_widht - 1, graphic_heigth - 1 - index, color);
-        color = 0x7f & (color + 0x08);
-    }
+        for (index = 0; index < graphic_widht; index += 5) {
+            line(graphic_widht - 1 - index, 0, index, graphic_heigth - 1, color);
+            color = 0x7f & (color + 0x08);
+        }
+        next();
+        // circle demo
+        color = 0;
 
-    for (index = 0; index < graphic_widht; index += 5) {
-        line(graphic_widht - 1 - index, 0, index, graphic_heigth - 1, color);
-        color = 0x7f & (color + 0x08);
-    }
-    next();
-    // circle demo
-    color = 0;
-
-    for (index = 10; index < graphic_widht2; index += 2) {
-        circle(graphic_widht2, graphic_heigth2, index, color);
-        color = 0x7f & (color + 0x08);
+        for (index = 10; index < graphic_widht2; index += 2) {
+            circle(graphic_widht2, graphic_heigth2, index, color);
+            color = 0x7f & (color + 0x08);
+        }
+    } else
+    {
+       printf("Linen und Kreis-Demo funktioniert hier\n"
+              "leider nicht. Die CAOS Funktionen gibt\n"
+              "es erst ab Version 3.1 aufwaerts.\n");
     }
     next();
 
@@ -100,7 +111,7 @@ void main() {
     screen = (uint8_t *) 0x8000;
 
     for (index = 0; index < 0x2800; index++) {
-        //screen[ index] = (uint8_t)( rand() % 256);
-        screen[index] = reg_r();
+        screen[ index] = (uint8_t)( rand() % 256);
+        //screen[index] = reg_r();
     }
 }

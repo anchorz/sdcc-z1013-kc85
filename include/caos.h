@@ -359,5 +359,9 @@ extern void inime( unsigned char* table, unsigned char count);
  */
 extern void zkout( unsigned char*);
 
-
+/* 
+ * Liefert die aktuelle HC-CAOS Version
+ * 0x31,0x41 oder 0x22
+ */
+extern unsigned char caos_version(); 
 

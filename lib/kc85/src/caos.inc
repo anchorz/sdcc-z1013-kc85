@@ -33,7 +33,8 @@ FARB      = 0xb7d6 ; graphic color
 ; menu entry
 PROLOG_BYTE = 0x7f
 
-; functions numbers
+; functions numbers 
+; HC-CAOS 2.2
 FNCRT     = 0x00
 FNKBD     = 0x04
 FNKBDS    = 0x0c
@@ -58,13 +59,26 @@ FNCRLF    = 0x2c
 FNHOME    = 0x2d
 FNPUDE    = 0x2f
 FNPUSE    = 0x30
+FNPADR    = 0x34
+; HC-CAOS 3.1
+FNMBIN    = 0x37
+FNMBOUT   = 0x38
+FNKEY     = 0x39
+FNKEYLI   = 0x3a
+FNDISP    = 0x3b
 FNWININ   = 0x3c
 FNWINAK   = 0x3d
 FNLINE    = 0x3e
 FNCIRCLE  = 0x3f
 FNSQR     = 0x40
+FNMULT    = 0x41
 FNCSTBT   = 0x42
 FNINIEA   = 0x43
 FNINIME   = 0x44
 FNZKOUT   = 0x45
+FNMENU    = 0x46
+; HC-CAOS 4.1
+FNV24OUT  = 0x47
+FNV24DUP  = 0x48
 
+CAOSNR    = 0xedff

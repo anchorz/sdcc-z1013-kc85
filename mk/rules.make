@@ -1,6 +1,6 @@
 #--fomit-frame-pointer important for KC85/3 - don't use IX register
 # for compatibility reasons we keep that setting for all libraries
-CFLAGS=--std-sdcc11 -Wall --fomit-frame-pointer
+CFLAGS=--std-sdcc11 -Wall --Werror --fomit-frame-pointer
 
 LINK    = sdldz80
 AS      = sdasz80
@@ -107,7 +107,7 @@ obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/header.rel  $(addsuffix .r
 	printf "%.8s" $(OUT) >obj/kc85/filename.txt
 	printf "\x7f\x7f%.8s\x1" $(OUT) >obj/kc85/prolog.txt
 	dd bs=1 if=obj/kc85/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
-	dd bs=1 if=obj/kc85/prolog.txt of="$@" count=8 seek=131 conv=notrunc,ucase
+	dd bs=1 if=obj/kc85/prolog.txt of="$@" count=11 seek=131 conv=notrunc,ucase
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
 
 obj/kc85/%.asm : src/%.c
