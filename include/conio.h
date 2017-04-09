@@ -94,7 +94,7 @@ extern char* cgets( char* str);
 
 
 /*
- * clrscr - Clears the screen.
+ * clrscr - Clear the whole screen and put the cursor into the top left corner
  */
 extern void clrscr( void);
 

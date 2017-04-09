@@ -32,6 +32,8 @@
 Z9001_WBOOT = 0x0000 ; Sprung zum Warmstart
 Z9001_BOS   = 0x0005 ; BOS Sprungverteiler
 Z9001_KEYBU = 0x0025 ; TASTATURPUFFER
+Z9001_CHARP = 0x002b ; ZEIGER auf Spalte 1..
+Z9001_LINEP = 0x002c ; ZEIGER auf Zeile  1..
 Z9001_CURS  = 0x002d ; CURSORADRESSE
 Z9001_SYSB  = 0xEFC0 ; Systembyte (siehe z9_os.pdf) 
 Z9001_MAPAR = 0xEFC1 ; 64-bit Vektor je 1K Speicher 0-ROM/1-RAM  
@@ -67,6 +69,7 @@ Z9001_KRT_BANK7 = 0x07
 ; Unterprogramme
 UP_CONSI        = 1  ; getch
 UP_CONSO        = 2  ; putchar
+UP_PRNST        = 9  ; cputs
 UP_CSTS         = 11 ; kbhit
 
 

@@ -27,7 +27,7 @@
 ;--------------------------------------------------------------------------
         .module conio_clrscr
         .include 'z9001.inc'
-    
+
         .globl _clrscr
 
         .area   _CODE
@@ -52,7 +52,7 @@ fill16$:
         push      de
         push      de
         djnz      fill16$;
-        
+
         ld        d,#COLOR_DEFAULT
         ld        e,d
         ld        sp,#(Z9001_SCCOL+Z9001_SCLEN)
@@ -70,4 +70,15 @@ fill17$:
 
         ld        sp,hl
         ei
+
+        ld a,#1 ; Zeile 1
+        ld hl,#Z9001_CHARP
+        ld (hl),a
+        inc hl
+        ld (hl),a
+        inc hl
+        ld (hl),#Z9001_SCTOP
+        inc hl
+        ld (hl),#Z9001_SCTOP/256
+
         ret

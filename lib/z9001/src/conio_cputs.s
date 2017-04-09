@@ -25,10 +25,17 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-    .module conio_cputs
+        .module conio_cputs
+        .include 'z9001.inc'
 
-    .globl _cputs
+        .globl _cputs
 
-    .area   _CODE
-_cputs:	
-    ret
+        .area   _CODE
+_cputs:
+        pop hl ; return address
+        pop de ; text
+        push de
+        push hl
+        ld      c,#UP_PRNST
+        call    Z9001_BOS
+        ret
