@@ -73,6 +73,7 @@ kc854_routine$:
 kc854_routine_ende$:
 
 __endasm;
+       return 0;
 }
 
 #define HW_KC85_4 1
@@ -90,7 +91,9 @@ __asm
         ld      l,a
         ret     nz
         inc     l
+        ret
 __endasm;
+        return 0;
 }
 
 
@@ -99,7 +102,7 @@ __endasm;
 void hack_und_patch();
 
 void main() {
-    unsigned int x,y,pair=0;
+    unsigned int y,pair=0;
 
     if (get_machine_type()==HW_KC85_4)
     {
