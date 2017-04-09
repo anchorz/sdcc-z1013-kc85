@@ -57,8 +57,11 @@
 init::
         jp      init2
         .ascii      '        ' ; patch in the program name needed by Z9001 commando processor
-        .db      0x00
-        .db      0x00
+        .db      0x00          ; reserve hc900 for prolog byte at the start
+        .db      0x00          ; reserve hc900 for prolog byte at the start
+        .db      0x00          ; reserve: hc900 for prolog end 0x01 after the command name
+                               ;          z9001 stack pointer
+        .db      0x00          ;          z9001 stack pointer
 init2:
         ; Stack at the top of memory.
         ld      sp,#end_of_stackframe

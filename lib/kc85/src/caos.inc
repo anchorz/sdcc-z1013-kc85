@@ -30,6 +30,8 @@ HOR       = 0xb7d3 ; horizontal graphic position
 VERT      = 0xb7d5 ; vertical graphic position
 FARB      = 0xb7d6 ; graphic color
 
+; menu entry
+PROLOG_BYTE = 0x7f
 
 ; functions numbers
 FNCRT     = 0x00

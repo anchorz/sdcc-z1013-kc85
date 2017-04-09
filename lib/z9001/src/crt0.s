@@ -60,7 +60,8 @@ init::
         .db      0x00
         .db      0x00
 save_initial_sp::
-        .ds     2
+        .db      0x00
+        .db      0x00
 init2:
         ld      (#save_initial_sp),sp
         ; Stack at the top of memory.
