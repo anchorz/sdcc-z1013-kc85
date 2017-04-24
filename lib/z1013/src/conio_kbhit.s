@@ -33,11 +33,13 @@
 ;       extern char kbhit( void);
 ;
 _kbhit::
-        call    SPVT_POLL
-        ld      l,a
-        or      a
-        ret     z
-        xor     a,a
-        dec     a
+        ;call    SPVT_POLL
+        ;ld      l,a
+        ;or      a
+        ;ret     z
+        ;xor     a,a
+        ;dec     a
+        rst     0x20
+        .db     INKEY
         ld      l,a
         ret

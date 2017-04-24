@@ -2,54 +2,38 @@
 
 #if defined(__Z1013__)
 #include <z1013.h>
-#define CURSOR_ABS Z1013_CURSR
-
-void cursor_on() {
-    Z1013_CODE = *CURSOR_ABS;
-    *CURSOR_ABS = 0xff;
-}
-
-void cursor_off() {
-    *CURSOR_ABS = Z1013_CODE; //cursor off
-}
-
-void cursor_right() {
-    CURSOR_ABS++;
-    Z1013_CODE = *CURSOR_ABS;
-    *CURSOR_ABS = 0xff;
-}
-
-void cursor_left(char c) {
-    *CURSOR_ABS = Z1013_CODE;
-    CURSOR_ABS--;
-    Z1013_CODE = c;
-    *CURSOR_ABS = 0xff;
-}
-
 #elif defined(__Z9001__)
 #include <z9001.h>
+#else
+char BWS[32 * 32];
+char * CURSOR_ABS = BWS;
+#endif
 
 void cursor_on() {
+    //Z1013_CODE = *CURSOR_ABS;
+    //*CURSOR_ABS = 0xff;
     *(CURSOR_ABS - 0x400) |= 0x80;
 }
 
 void cursor_off() {
+    //*CURSOR_ABS = Z1013_CODE; //cursor off
     *(CURSOR_ABS - 0x400) &= 0x7f;
 }
 
 void cursor_right() {
+    //*CURSOR_ABS++ = c;
+    //Z1013_CODE = *CURSOR_ABS;
+    //*CURSOR_ABS = 0xff;
     *(CURSOR_ABS - 0x400) &= 0x7f;
     CURSOR_ABS++;
     *(CURSOR_ABS - 0x400) |= 0x80;
 }
 
-void cursor_left(char c) {
+void cursor_left() {
     *(CURSOR_ABS - 0x400) &= 0x7f;
     CURSOR_ABS--;
     *(CURSOR_ABS - 0x400) |= 0x80;
-    *CURSOR_ABS = c;
 }
-#endif
 
 char * cgets(char *buffer) {
     char *input = buffer + 2;
@@ -75,7 +59,8 @@ char * cgets(char *buffer) {
         if (c < 0x20) {
             //andere wichtige keycodes sind: 1f DEL 7f BACKSP
             if (c == 8 && len) {
-                cursor_left('_');
+                cursor_left();
+                *CURSOR_ABS = '_';
                 *input-- = 0;
                 len--;
             }

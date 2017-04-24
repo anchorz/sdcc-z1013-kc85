@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  conio_kbhit.s
+;  conio_getch.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -33,7 +33,8 @@
 ;   char getch( void);
 ;
 _getch::
-        call    SPVT_POLL
+        rst     0x20
+        .db     INKEY
         or      a,a
         jr      z,_getch
         ld      l,a

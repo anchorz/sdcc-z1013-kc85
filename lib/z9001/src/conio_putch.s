@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  conio_cputs.s
+;  conio_putch.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -25,31 +25,30 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module conio_cputs
+        .module conio_putch
         .include 'z9001.inc'
-
-        .globl _cputs
-
+;
+; Annahmen testen
+;
+.if ne(BWS_BYTES_PER_LINE-40)
+       .error nur die Zeilenbreite 40 wird unterstützt
+.endif
         .area   _CODE
-_cputs:
-        ld de,(#Z9001_CURS)
+;
+;  extern void putch(char)  __z88dk_fastcall;
+;
+_putch::
+        ld b,l
         ld a,(#Z9001_ATRIB)
         ld c,a
-again:
-        ld      a,(hl)
-        or      a
-        jr      z,end
-        ld      a,#-4
-        add     d
-        ld      d,a
-        ld      a,c
-        ld      (de),a
-        ld      a,#4
-        add     d
-        ld      d,a
-        ldi
-        inc     c; restore c
-        jr      again
-end:
-        ld      (#Z9001_CURS),de
+        ld hl,(#Z9001_CURS)
+        ld a,#-4
+        add h
+        ld  h,a
+        ld (hl),c
+        add #4
+        ld  h,a
+        ld (hl),b
+        inc hl
+        ld (#Z9001_CURS),hl
         ret

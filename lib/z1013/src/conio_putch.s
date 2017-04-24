@@ -9,7 +9,6 @@
 _putch::
     ld a,l
     ld hl,(#CURSR)
-again:
     ld (hl),a
     inc hl
     ld (#CURSR),hl

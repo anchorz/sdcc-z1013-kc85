@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  conio_cputs.s
+;  conio_textbackground.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -25,31 +25,20 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module conio_cputs
+        .module conio_textcolor
         .include 'z9001.inc'
 
-        .globl _cputs
-
         .area   _CODE
-_cputs:
-        ld de,(#Z9001_CURS)
-        ld a,(#Z9001_ATRIB)
-        ld c,a
-again:
+;
+;   void textbackground(unsigned char color) __z88dk_fastcall;
+;
+_textbackground::
+        ld      a,l
+        ld      hl,#Z9001_ATRIB
+        and     #0x0f ; preserve
+        ld      c,a
         ld      a,(hl)
-        or      a
-        jr      z,end
-        ld      a,#-4
-        add     d
-        ld      d,a
-        ld      a,c
-        ld      (de),a
-        ld      a,#4
-        add     d
-        ld      d,a
-        ldi
-        inc     c; restore c
-        jr      again
-end:
-        ld      (#Z9001_CURS),de
+        and     a,#0xf0  ; preserve foreground and blink
+        or      c
+        ld      (hl),a
         ret

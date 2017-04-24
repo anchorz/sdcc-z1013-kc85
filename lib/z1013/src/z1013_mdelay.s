@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  conio_cputs.s
+;  z1013_mdelay.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -13,7 +13,7 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 ;  GNU General Public License for more details.
 ;
-;  You should have received a copy of the GNU General Public License 
+;  You should have received a copy of the GNU General Public License
 ;  along with this library; see the file COPYING. If not, write to the
 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
 ;   MA 02110-1301, USA.
@@ -25,31 +25,15 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module conio_cputs
-        .include 'z9001.inc'
-
-        .globl _cputs
+        .module z1013_mdelay
 
         .area   _CODE
-_cputs:
-        ld de,(#Z9001_CURS)
-        ld a,(#Z9001_ATRIB)
-        ld c,a
-again:
-        ld      a,(hl)
-        or      a
-        jr      z,end
-        ld      a,#-4
-        add     d
-        ld      d,a
-        ld      a,c
-        ld      (de),a
-        ld      a,#4
-        add     d
-        ld      d,a
-        ldi
-        inc     c; restore c
-        jr      again
-end:
-        ld      (#Z9001_CURS),de
-        ret
+;
+; void mdelay(unsigned char ms) __z88dk_fastcall;
+;
+_mdelay::
+        ld b,#0x99; 2MHz ~1970 clock cycles
+m1$:    djnz m1$
+        dec l
+        ret z
+        jr _mdelay

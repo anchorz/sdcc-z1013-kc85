@@ -30,6 +30,7 @@
 ; speicheradressen (...soweit verwendet und getestet) 
 ;
 Z9001_WBOOT = 0x0000 ; Sprung zum Warmstart
+Z9001_ATRIB = 0x0027 ; aktuelles Farbattribut
 Z9001_BOS   = 0x0005 ; BOS Sprungverteiler
 Z9001_KEYBU = 0x0025 ; TASTATURPUFFER
 Z9001_CHARP = 0x002b ; ZEIGER auf Spalte 1..
@@ -41,8 +42,8 @@ Z9001_BIOS  = 0xF000 ; BIOS ROM
 
 Z9001_SCTOP = 0xEC00 ; Zeichenspeicher
 Z9001_SCCOL = 0xE800 ; Farbspeicher
+BWS_BYTES_PER_LINE  = 40
 Z9001_SCLEN = (0xEFC0-0xEC00) 
-
 ;
 ; Farben
 ;

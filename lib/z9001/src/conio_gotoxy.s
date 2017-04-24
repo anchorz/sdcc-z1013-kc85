@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  conio_cputs.s
+;  conio_gotoxy.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -13,7 +13,7 @@
 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 ;  GNU General Public License for more details.
 ;
-;  You should have received a copy of the GNU General Public License 
+;  You should have received a copy of the GNU General Public License
 ;  along with this library; see the file COPYING. If not, write to the
 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
 ;   MA 02110-1301, USA.
@@ -25,31 +25,34 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module conio_cputs
+        .module conio_gotoxy
         .include 'z9001.inc'
-
-        .globl _cputs
-
+;
+; Annahmen testen
+;
+.if ne(BWS_BYTES_PER_LINE-40)
+        .error nur die Zeilenbreite 40 wird unterstützt
+.endif
         .area   _CODE
-_cputs:
-        ld de,(#Z9001_CURS)
-        ld a,(#Z9001_ATRIB)
-        ld c,a
-again:
-        ld      a,(hl)
-        or      a
-        jr      z,end
-        ld      a,#-4
-        add     d
-        ld      d,a
-        ld      a,c
-        ld      (de),a
-        ld      a,#4
-        add     d
-        ld      d,a
-        ldi
-        inc     c; restore c
-        jr      again
-end:
-        ld      (#Z9001_CURS),de
+;
+;  extern void gotoxy(unsigned char x, unsigned char y) __z88dk_callee;
+;
+_gotoxy::
+        pop     hl
+        ex      (sp),hl
+        ld      c,l
+        ld      a,h
+        rlca
+        rlca
+        add     h
+        ld      l,a
+        xor     a
+        ld      b,#(Z9001_SCTOP/256)
+        ld      h,a
+        add     hl,hl
+        add     hl,hl
+        add     hl,hl
+        add     hl,bc
+
+        ld(#Z9001_CURS),hl
         ret

@@ -1,5 +1,5 @@
 ;--------------------------------------------------------------------------
-;  conio_kbhit.s
+;  conio_getch.s
 ;
 ;  Copyright (C) 2016, Andreas Ziermann
 ;
@@ -30,7 +30,7 @@
 
         .area   _CODE
 ;
-;       extern char kbhit( void);
+;       extern char getch(void);
 ;
 _getch::
         ld      c,#UP_CONSI

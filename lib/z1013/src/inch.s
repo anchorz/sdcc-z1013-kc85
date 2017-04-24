@@ -26,12 +26,13 @@
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
 
-	.module inch
-	.include 'z1013.inc'
-    .area   _CODE
+        .module inch
+        .include 'z1013.inc'
+
+        .area   _CODE
 _INCH::
-    rst 0x20
-    .db INCH
-    ld l,a
-    ret
+        rst 0x20
+        .db INCH
+        ld l,a
+        ret
 
