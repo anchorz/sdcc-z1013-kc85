@@ -41,6 +41,10 @@
  *  - normvideo
  *  - puttext
  */
+#ifdef __GNUC__
+#define __z88dk_fastcall
+#define __z88dk_callee
+#endif
 
 // colors for text and background
 #ifdef __KC85__
@@ -66,7 +70,7 @@
 #define BLINK         (16)
 
 #elif defined(__Z9001__)
-#define BPL 40
+#define SCR_WIDTH  40
 #define SCR_HEIGHT 24
 
 #define BLACK         ( 0)
@@ -149,7 +153,8 @@ void _setcursortype(int type);
 /*
  * cputs - Writes a string directly to the console. The newline character is not here appended to the string.
  */
-extern unsigned char cputs(const char *str) __z88dk_fastcall;
+extern unsigned char cputs(const char *str)
+__z88dk_fastcall;
 
 /*
  * delline - Delete the current line (line on which is cursor)
@@ -172,7 +177,8 @@ extern char getche(void);
 /*
  * gotoxy - Moves cursor to the specified position
  */
-extern void gotoxy(unsigned char x, unsigned char y) __z88dk_callee;
+extern void gotoxy(unsigned char x, unsigned char y)
+__z88dk_callee;
 
 /*
  * highvideo - Used to select the highlighted character. 
@@ -192,17 +198,20 @@ extern void lowvideo(void);
 /*
  * putch - Writes a character directly to the console.
  */
-extern void putch(char)  __z88dk_fastcall;
+extern void putch(char)
+__z88dk_fastcall;
 
 /*
  * textbackground - change of current background color
  */
-extern void textbackground(unsigned char color) __z88dk_fastcall;
+extern void textbackground(unsigned char color)
+__z88dk_fastcall;
 
 /*
  * textcolor - change the color of drawing text
  */
-extern void textcolor(unsigned char color) __z88dk_fastcall;
+extern void textcolor(unsigned char color)
+__z88dk_fastcall;
 
 /*
  * textmode - Changes screen mode (in text mode)
@@ -229,13 +238,28 @@ extern int wherey(void);
  * window - Defines the active text mode window. 
  */
 extern void window(unsigned char left, unsigned char top, unsigned char right,
-        unsigned char bottom);
+		unsigned char bottom);
 
 #ifdef __Z1013__
 #define textcolor(X)
 #define textbackground(X)
-#define BPL 32
+#define SCR_WIDTH  32
 #define SCR_HEIGHT 32
 #endif
 
+#ifdef __GNUC__
 
+#ifndef CONIO_RESOLUTION
+#define CONIO_RESOLUTION R32X32
+#endif
+
+#if (CONIO_RESOLUTION==R32X32)
+#define SCR_WIDTH  32
+#define SCR_HEIGHT 32
+#endif
+
+#if (CONIO_RESOLUTION==R40X24)
+#define SCR_WIDTH  40
+#define SCR_HEIGHT 24
+#endif
+#endif
