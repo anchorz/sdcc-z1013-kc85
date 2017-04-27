@@ -6,6 +6,18 @@ LINK    = sdldz80
 AS      = sdasz80
 OBJCOPY = sdobjcopy
 
+ifndef Z1013_CODE
+Z1013_CODE=0x100
+endif
+
+ifndef Z1013_HEADER
+Z1013_HEADER=0x7fe0
+endif
+
+ifndef Z1013_DATA
+Z1013_DATA=0x100
+endif
+
 all: $(addprefix obj/,$(PLATFORM)) $(addsuffix /bin,$(addprefix obj/,$(PLATFORM)))
 
 obj:
@@ -31,7 +43,7 @@ obj/z1013:
 obj/z1013/bin: obj/z1013/$(OUT).z80
 
 obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS) $(SDCC_OBJECTS)))
-	$(LINK) -mjwx -b _HEADER=0x00e0  -b _CODE=0x0100  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/z1013 -k ../lib/ -l z1013 -l krt -l conio -l z80_ix $^
+	$(LINK) -mjwx -b _HEADER=$(Z1013_HEADER)  -b _DATA=$(Z1013_DATA) -b _CODE=$(Z1013_CODE)  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/z1013 -k ../lib/ -l z1013 -l krt -l conio -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z1013/$(OUT).ihx" "$@"
 	echo -n $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
