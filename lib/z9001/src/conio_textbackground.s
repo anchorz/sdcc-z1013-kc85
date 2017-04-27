@@ -1,3 +1,4 @@
+
 ;--------------------------------------------------------------------------
 ;  conio_textbackground.s
 ;
@@ -25,7 +26,7 @@
 ;  not however invalidate any other reasons why the executable file
 ;   might be covered by the GNU General Public License.
 ;--------------------------------------------------------------------------
-        .module conio_textcolor
+        .module conio_textbackground
         .include 'z9001.inc'
 
         .area   _CODE
