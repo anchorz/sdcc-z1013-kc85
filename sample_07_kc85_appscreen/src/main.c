@@ -676,6 +676,167 @@ void help_shadow() {
     crlf();
 }
 
+void help_lshad() {
+    //       12345678901234567890123
+    putstr("lshad();");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("Der Schatten unter dem");
+    crlf();
+    putstr("aktuellen Fenster wird");
+    crlf();
+    putstr("gel\174scht.");
+    crlf();
+    crlf();
+    putstr("Es wird die einge-");
+    crlf();
+    putstr("stellte Hintergundfarbe");
+    putstr("genutzt.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  shadow,");
+    crlf();
+    putstr("  lrahm");
+    crlf();
+}
+
+void help_icon() {
+    //       1234567890123456789012
+    putstr("icon(");
+    crlf();
+    putstr("    icon_nr,");
+    crlf();
+    putstr("    &icon_def,");
+    crlf();
+    putstr("    spalte,");
+    crlf();
+    putstr("    zeile);");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("Stellt einen Icon auf");
+    crlf();
+    putstr("dem Bildschirm dar.");
+    crlf();
+    crlf();
+    putstr("Die Gr\174\176e des Icons ist");
+    putstr("nur durch den Bild-");
+    crlf();
+    putstr("schirm beschr\173nkt.");
+    crlf();
+    //       12345678901234567890123
+    putstr("Die Definition des Icon");
+    putstr("kann z.B. so erfolgen:");
+    crlf();
+    crlf();
+    putstr("const unsigned char");
+    crlf();
+    putstr("  icondef\033C[] = {");
+    crlf();
+    putstr("    breite, hoehe,");
+    crlf();
+    putstr("    data_0..data_n}\033C");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("Die Daten beschreiben");
+    crlf();
+    putstr("immer ein 8x8-Feld. Die");
+    putstr("Reihenfolge ist von");
+    crlf();
+    putstr("links nach rechts und");
+    crlf();
+    putstr("von oben nach unten.");
+    crlf();
+    // Beispiel:
+    // const unsigned char beispiel_icon[] = { 2, 1,
+    // 0xff, 0x80, 0x80, 0x80,  0x80, 0x80, 0x80, 0xff,
+    // 0xff, 0x03, 0x03, 0x03,  0x03, 0x03, 0x03, 0xff };
+    // Mehrere Icons können in einer Deinition zusammengefasst werden. Die Auswahl erfolgt dann über die icon_nr.
+}
+
+void help_priat() {
+    //       12345678901234567890123
+    putstr("priat(");
+    crlf();
+    putstr("  spalte,");
+    crlf();
+    putstr("  zeile,");
+    crlf();
+    putstr("  text);");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("Gibt einen Text an der");
+    crlf();
+    putstr("entsprechenden Stelle");
+    crlf();
+    putstr("im Fenster aus.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  inpat");
+    crlf();
+}
+
+void help_inpat() {
+    //       12345678901234567890123
+    putstr("inpat(");
+    crlf();
+    putstr("  spalte,");
+    crlf();
+    putstr("  zeile);");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("Setzt den Cursor auf");
+    crlf();
+    putstr("die entsprechende Posi-");
+    putstr("tion und erwartet eine");
+    crlf();
+    putstr("Eingabe. R\175ckgabewert");
+    crlf();
+    putstr("ist ein Zeiger auf den");
+    crlf();
+    putstr("ASCII-RAM mit den Ein-");
+    crlf();
+    putstr("gabewerten.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  priat");
+    crlf();
+}
+
+void help_titel() {
+    //       12345678901234567890123
+    putstr("titel( text);");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("Dekoriert ein Fenster");
+    crlf();
+    putstr("mit einer Titelzeile,");
+    crlf();
+    putstr("einem Titeltext und");
+    crlf();
+    putstr("einem Rahmen. Die Fens-");
+    putstr("tergr\174\176e wird entspre-");
+    crlf();
+    putstr("chend verkleinert.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  wiinit");
+    crlf();
+}
+
 //////////////////////////////
 // Bedienungsanleitung screen.h
 void anleitung_screen(void) {
@@ -739,164 +900,19 @@ void anleitung_screen(void) {
             help_shadow();
             break;
         case 12:
-            //       12345678901234567890123
-            putstr("lshad();");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("Der Schatten unter dem");
-            crlf();
-            putstr("aktuellen Fenster wird");
-            crlf();
-            putstr("gel\174scht.");
-            crlf();
-            crlf();
-            putstr("Es wird die einge-");
-            crlf();
-            putstr("stellte Hintergundfarbe");
-            putstr("genutzt.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  shadow,");
-            crlf();
-            putstr("  lrahm");
-            crlf();
+            help_lshad();
             break;
-
         case 13:
-            //       1234567890123456789012
-            putstr("icon(");
-            crlf();
-            putstr("    icon_nr,");
-            crlf();
-            putstr("    &icon_def,");
-            crlf();
-            putstr("    spalte,");
-            crlf();
-            putstr("    zeile);");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("Stellt einen Icon auf");
-            crlf();
-            putstr("dem Bildschirm dar.");
-            crlf();
-            crlf();
-            putstr("Die Gr\174\176e des Icons ist");
-            putstr("nur durch den Bild-");
-            crlf();
-            putstr("schirm beschr\173nkt.");
-            crlf();
-            //       12345678901234567890123
-            putstr("Die Definition des Icon");
-            putstr("kann z.B. so erfolgen:");
-            crlf();
-            crlf();
-            putstr("const unsigned char");
-            crlf();
-            putstr("  icondef\033C[] = {");
-            crlf();
-            putstr("    breite, hoehe,");
-            crlf();
-            putstr("    data_0..data_n}\033C");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("Die Daten beschreiben");
-            crlf();
-            putstr("immer ein 8x8-Feld. Die");
-            putstr("Reihenfolge ist von");
-            crlf();
-            putstr("links nach rechts und");
-            crlf();
-            putstr("von oben nach unten.");
-            crlf();
-            // Beispiel:
-            // const unsigned char beispiel_icon[] = { 2, 1,
-            // 0xff, 0x80, 0x80, 0x80,  0x80, 0x80, 0x80, 0xff,
-            // 0xff, 0x03, 0x03, 0x03,  0x03, 0x03, 0x03, 0xff };
-            // Mehrere Icons können in einer Deinition zusammengefasst werden. Die Auswahl erfolgt dann über die icon_nr.
+            help_icon();
             break;
-
         case 14:
-            //       12345678901234567890123
-            putstr("priat(");
-            crlf();
-            putstr("  spalte,");
-            crlf();
-            putstr("  zeile,");
-            crlf();
-            putstr("  text);");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("Gibt einen Text an der");
-            crlf();
-            putstr("entsprechenden Stelle");
-            crlf();
-            putstr("im Fenster aus.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  inpat");
-            crlf();
+            help_priat();
             break;
-
         case 15:
-            //       12345678901234567890123
-            putstr("inpat(");
-            crlf();
-            putstr("  spalte,");
-            crlf();
-            putstr("  zeile);");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("Setzt den Cursor auf");
-            crlf();
-            putstr("die entsprechende Posi-");
-            putstr("tion und erwartet eine");
-            crlf();
-            putstr("Eingabe. R\175ckgabewert");
-            crlf();
-            putstr("ist ein Zeiger auf den");
-            crlf();
-            putstr("ASCII-RAM mit den Ein-");
-            crlf();
-            putstr("gabewerten.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  priat");
-            crlf();
+            help_inpat();
             break;
-
         case 16:
-            //       12345678901234567890123
-            putstr("titel( text);");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("Dekoriert ein Fenster");
-            crlf();
-            putstr("mit einer Titelzeile,");
-            crlf();
-            putstr("einem Titeltext und");
-            crlf();
-            putstr("einem Rahmen. Die Fens-");
-            putstr("tergr\174\176e wird entspre-");
-            crlf();
-            putstr("chend verkleinert.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  wiinit");
-            crlf();
+            help_titel();
             break;
         }
 
