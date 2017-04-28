@@ -68,7 +68,7 @@ void parabel_demo() {
         tx = t;
         dx = scale;
         yf = 0;
-        for (int i = 0; i < BPL; i++) {
+        for (int i = 0; i < SCR_WIDTH; i++) {
             draw_pixel(i, yf>>8);
             dx += scale2;
             yf += t;

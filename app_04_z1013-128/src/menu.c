@@ -9,6 +9,8 @@ typedef struct {
 #include "minefild.z80.c"
 //#include "hase+wolf+joy.z80.c"
 
+const char menuEntriesCount=4;
+
 const MENU_ENTRY menuEntries[] = { //
 		{ "KC-BASIC", assets_kc_basic_z80, &assets_kc_basic_z80_len }, //
 				{ "JUMPING JACK", assets_jumping_jack_z80,

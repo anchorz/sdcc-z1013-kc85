@@ -56,16 +56,9 @@
 #define GREEN         ( 4)
 #define CYAN          ( 5)
 #define BROWN         ( 6)
+#define YELLOW        ( 6)
 #define DARKGRAY      ( 7)
-// additional colors for text
-#define LIGHTBLACK    ( 8)   
-#define LIGHTBLUE     ( 9)
-#define LIGHTRED      (10)
-#define LIGHTMAGENTA  (11)  
-#define LIGHTGREEN    (12)
-#define LIGHTCYAN     (13)
-#define YELLOW        (14)
-#define WHITE         (15)
+#define WHITE         ( 7)
 // text colors can blink
 #define BLINK         (16)
 

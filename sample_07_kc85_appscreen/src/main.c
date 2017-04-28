@@ -157,7 +157,6 @@ enum auswahl_t {
 #define TRUE    ( 1 == 1)
 #define FALSE   ( 1 != 1)
 
-
 //////////////////////////////
 // Unterprogramm für Fensterdemo
 void fenster(uint8_t art) {
@@ -175,9 +174,9 @@ void fenster(uint8_t art) {
             textbackground(color);
             clrscr();
             if ((art & 0x01) == 0x01)
-            rahm();
+                rahm();
             if ((art & 0x02) == 0x02)
-            shadow();
+                shadow();
             /*
              //priat( 1 , 1, "Fenster 1");
              */
@@ -185,7 +184,7 @@ void fenster(uint8_t art) {
         }
     }
     while (!kbhit())
-    ;
+        ;
     getch();
 }
 //////////////////////////////
@@ -209,27 +208,27 @@ void winverschieb(void) {
 
     do {
         while (!kbhit())
-        ;
+            ;
         eingabe = getch();
 
         switch (eingabe) {
-            case CUU:
-            shift(0, (signed char)0x81);
+        case CUU:
+            shift(0, (signed char) 0x81);
             break;
-            case CUD:
+        case CUD:
             shift(0, 1);
             break;
-            case CUL:
-            shift((signed char)0x81, 0);
+        case CUL:
+            shift((signed char) 0x81, 0);
             break;
-            case CUR:
+        case CUR:
             shift(1, 0);
             break;
-            case ' ':
+        case ' ':
             invwin();
             break;
         }
-    }while (eingabe != BREAK && eingabe != CR);
+    } while (eingabe != BREAK && eingabe != CR);
 
 }
 
@@ -237,16 +236,16 @@ void winverschieb(void) {
 // Zeichnet KC-System mit unterschiedlichen Ausbaustufen (0..4)
 void kcsystem(uint8_t size) {
     switch (size) {
-        case 4:
+    case 4:
         icon(0, (void *) &kc85_floppy, 2, 1);
         icon(0, (void *) &kc85_floppy, 2, 0);
-        case 3:
+    case 3:
         icon(0, (void *) &kc85_D004, 2, 2);
-        case 2:
+    case 2:
         icon(0, (void *) &kc85_D002, 2, 3);
-        case 1:
+    case 1:
         icon(0, (void *) &keyboard, 1, 5);
-        case 0:
+    case 0:
         icon(0, (void *) &kc85_4, 2, 4);
     }
 }
@@ -287,25 +286,25 @@ void icon_menu() {
                 winak(iconwin);
                 clrscr();
                 switch (auswahl) {
-                    case 0:
+                case 0:
                     icon(0, (void *) &home_icon, spalte, 1);
                     break;
-                    case 1:
+                case 1:
                     icon(subicon, (void *) &folder, spalte, 1);
                     subicon = (subicon + 1) % 2;
                     count = 5000;
                     break;
-                    case 2:
+                case 2:
                     icon(subicon, (void *) &floppy, spalte, 1);
                     subicon = (subicon + 1) % 3;
                     count = 4000;
                     break;
-                    case 3:
+                case 3:
                     icon(subicon, (void *) &tape, spalte, 1);
                     subicon = (subicon + 1) % 3;
                     count = 3000;
                     break;
-                    case 4:
+                case 4:
                     kcsystem(subicon);
                     subicon = (subicon + 1) % 5;
                     count = 7000;
@@ -322,259 +321,359 @@ void icon_menu() {
         invzei(auswahl);
 
         if (eingabe == CUU)
-        auswahl = (auswahl > 0) ? auswahl - 1 : icon_anzahl;
+            auswahl = (auswahl > 0) ? auswahl - 1 : icon_anzahl;
         if (eingabe == CUD)
-        auswahl = (auswahl + 1) % (icon_anzahl + 1);
+            auswahl = (auswahl + 1) % (icon_anzahl + 1);
         if (eingabe == PAGE)
-        auswahl = 0;
+            auswahl = 0;
         if (eingabe == SCROL)
-        auswahl = icon_anzahl - 1;
+            auswahl = icon_anzahl - 1;
 
-    }while (eingabe != BREAK && eingabe != CR && eingabe != CUL);
+    } while (eingabe != BREAK && eingabe != CR && eingabe != CUL);
 }
 
 void help_00() {
-            putstr("Kurzerkl\173rung,");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("wie die Funktionen aus");
-            crlf();
-            putstr("screen.lib bzw.");
-            crlf();
-            putstr("screen.h in eigenen");
-            crlf();
-            putstr("C-Programmen genutzt");
-            crlf();
-            putstr("werden k\174nnen.");
-            crlf();
-            crlf();
-            crlf();
-            putstr("Hardwarevoraussetzung:");
-            crlf();
-            putstr("- KC85/4 oder KC85/5");
-            crlf();
-            putstr("- M011 64k-RAM-Modul");
-            crlf();
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Das Einbinden erfolgt");
-            crlf();
-            putstr("im Quelltext mit:");
-            crlf();
-            crlf();
-            putstr("#include <screen.h>");
-            crlf();
-            crlf();
-            putstr("Beim Linken mu\176 der");
-            crlf();
-            putstr("Parameter \"-l screen\"");
-            crlf();
-            putstr("erg\173nzt werden.");
+    putstr("Kurzerkl\173rung,");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("wie die Funktionen aus");
+    crlf();
+    putstr("screen.lib bzw.");
+    crlf();
+    putstr("screen.h in eigenen");
+    crlf();
+    putstr("C-Programmen genutzt");
+    crlf();
+    putstr("werden k\174nnen.");
+    crlf();
+    crlf();
+    crlf();
+    putstr("Hardwarevoraussetzung:");
+    crlf();
+    putstr("- KC85/4 oder KC85/5");
+    crlf();
+    putstr("- M011 64k-RAM-Modul");
+    crlf();
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Das Einbinden erfolgt");
+    crlf();
+    putstr("im Quelltext mit:");
+    crlf();
+    crlf();
+    putstr("#include <screen.h>");
+    crlf();
+    crlf();
+    putstr("Beim Linken mu\176 der");
+    crlf();
+    putstr("Parameter \"-l screen\"");
+    crlf();
+    putstr("erg\173nzt werden.");
 }
 
 void help_01() {
-            //       1234567890123456789012
-            putstr("wiinit( ");
-            crlf();
-            putstr("    links,");
-            crlf();
-            putstr("    oben,");
-            crlf();
-            putstr("    breite,");
-            crlf();
-            putstr("    hoehe,");
-            crlf();
-            putstr("    fenster_nr);");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Initialisiert ein");
-            crlf();
-            putstr("Fenster");
-            crlf();
-            crlf();
-            putstr("Achtung, fenster_nr");
-            crlf();
-            putstr("mu\176 wegen der");
-            crlf();
-            putstr("Speicherverwaltung");
-            crlf();
-            putstr("aufsteigend vergeben");
-            crlf();
-            putstr("werden.");
-            crlf();
-            putstr("Es werden maximal 10");
-            crlf();
-            putstr("verschiedene Fenster");
-            crlf();
-            putstr("unterst\175tzt.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  wisave,");
-            crlf();
-            putstr("  wiload,");
-            crlf();
-            putstr("  rahm,");
-            crlf();
-            putstr("  shadow");
-            crlf();
+    //       1234567890123456789012
+    putstr("wiinit( ");
+    crlf();
+    putstr("    links,");
+    crlf();
+    putstr("    oben,");
+    crlf();
+    putstr("    breite,");
+    crlf();
+    putstr("    hoehe,");
+    crlf();
+    putstr("    fenster_nr);");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Initialisiert ein");
+    crlf();
+    putstr("Fenster");
+    crlf();
+    crlf();
+    putstr("Achtung, fenster_nr");
+    crlf();
+    putstr("mu\176 wegen der");
+    crlf();
+    putstr("Speicherverwaltung");
+    crlf();
+    putstr("aufsteigend vergeben");
+    crlf();
+    putstr("werden.");
+    crlf();
+    putstr("Es werden maximal 10");
+    crlf();
+    putstr("verschiedene Fenster");
+    crlf();
+    putstr("unterst\175tzt.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  wisave,");
+    crlf();
+    putstr("  wiload,");
+    crlf();
+    putstr("  rahm,");
+    crlf();
+    putstr("  shadow");
+    crlf();
 }
 
 void help_02() {
-            //       1234567890123456789012
-            putstr("wisave( fenster_nr);");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Sichert den");
-            crlf();
-            putstr("Fensterinhalt");
-            crlf();
-            crlf();
-            putstr("Es werden Pixel-,");
-            crlf();
-            putstr("Farb- und ASCII-RAM");
-            crlf();
-            putstr("gesichert.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  wiload,");
-            crlf();
-            putstr("  asme");
-            crlf();
+    //       1234567890123456789012
+    putstr("wisave( fenster_nr);");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Sichert den");
+    crlf();
+    putstr("Fensterinhalt");
+    crlf();
+    crlf();
+    putstr("Es werden Pixel-,");
+    crlf();
+    putstr("Farb- und ASCII-RAM");
+    crlf();
+    putstr("gesichert.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  wiload,");
+    crlf();
+    putstr("  asme");
+    crlf();
 }
 
 void help_03() {
-            //       1234567890123456789012
-            putstr("wiload( fenster_nr);");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Restauriert den");
-            crlf();
-            putstr("Fensterinhalt");
-            crlf();
-            crlf();
-            putstr("Es werden Pixel-,");
-            crlf();
-            putstr("Farb- und ASCII-RAM");
-            crlf();
-            putstr("wiederhergestellt.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  wisave,");
-            crlf();
-            putstr("  meas");
-            crlf();
+    //       1234567890123456789012
+    putstr("wiload( fenster_nr);");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Restauriert den");
+    crlf();
+    putstr("Fensterinhalt");
+    crlf();
+    crlf();
+    putstr("Es werden Pixel-,");
+    crlf();
+    putstr("Farb- und ASCII-RAM");
+    crlf();
+    putstr("wiederhergestellt.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  wisave,");
+    crlf();
+    putstr("  meas");
+    crlf();
 }
 
 void help_asme() {
-            //       1234567890123456789012
-            putstr("asme( fenster_nr);");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Sichert den");
-            crlf();
-            putstr("Fensterinhalt");
-            crlf();
-            crlf();
-            putstr("Es wird nur der");
-            crlf();
-            putstr("ASCII-RAM gesichert.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  wisave,");
-            crlf();
-            putstr("  meas");
-            crlf();
+    //       1234567890123456789012
+    putstr("asme( fenster_nr);");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Sichert den");
+    crlf();
+    putstr("Fensterinhalt");
+    crlf();
+    crlf();
+    putstr("Es wird nur der");
+    crlf();
+    putstr("ASCII-RAM gesichert.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  wisave,");
+    crlf();
+    putstr("  meas");
+    crlf();
 }
 
 void help_meas() {
-            //       1234567890123456789012
-            putstr("meas( fenster_nr);");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Restauriert den");
-            crlf();
-            putstr("Fensterinhalt");
-            crlf();
-            crlf();
-            putstr("Es wird nur der");
-            crlf();
-            putstr("ASCII-RAM wiederher-");
-            crlf();
-            putstr("gestellt.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  wiload,");
-            crlf();
-            putstr("  asme");
-            crlf();
+    //       1234567890123456789012
+    putstr("meas( fenster_nr);");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Restauriert den");
+    crlf();
+    putstr("Fensterinhalt");
+    crlf();
+    crlf();
+    putstr("Es wird nur der");
+    crlf();
+    putstr("ASCII-RAM wiederher-");
+    crlf();
+    putstr("gestellt.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  wiload,");
+    crlf();
+    putstr("  asme");
+    crlf();
 }
 
 void help_shift() {
 //       1234567890123456789012
-            putstr("shift( x, y);");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Verschiebt den");
-            crlf();
-            putstr("Fensterinhalt");
-            crlf();
-            crlf();
-            putstr("Wenn das MSB gesetzt");
-            crlf();
-            putstr("ist (\1340x80), wird");
-            crlf();
-            putstr("nach links bzw. oben");
-            crlf();
-            putstr("verschoben. Der ur-");
-            crlf();
-            putstr("spr\175ngliche Fenster-");
-            crlf();
-            putstr("inhalt wird nicht ge-");
-            crlf();
-            putstr("l\174scht.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  wiinit,");
-            crlf();
-            putstr("  wisave");
-            crlf();
+    putstr("shift( x, y);");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Verschiebt den");
+    crlf();
+    putstr("Fensterinhalt");
+    crlf();
+    crlf();
+    putstr("Wenn das MSB gesetzt");
+    crlf();
+    putstr("ist (\1340x80), wird");
+    crlf();
+    putstr("nach links bzw. oben");
+    crlf();
+    putstr("verschoben. Der ur-");
+    crlf();
+    putstr("spr\175ngliche Fenster-");
+    crlf();
+    putstr("inhalt wird nicht ge-");
+    crlf();
+    putstr("l\174scht.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  wiinit,");
+    crlf();
+    putstr("  wisave");
+    crlf();
 }
 
 void help_invzei() {
-            //       1234567890123456789012
-            putstr("invzei( zeile);");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Invertiert eine Zeile");
-            crlf();
-            putstr("im aktuellen Fenster.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  invwin");
-            crlf();
+    //       1234567890123456789012
+    putstr("invzei( zeile);");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Invertiert eine Zeile");
+    crlf();
+    putstr("im aktuellen Fenster.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  invwin");
+    crlf();
+}
+
+void help_invwin() {
+    //       1234567890123456789012
+    putstr("invwin();");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Invertiert den Inhalt");
+    crlf();
+    putstr("des aktuellen");
+    crlf();
+    putstr("Fensters.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  invzei");
+    crlf();
+}
+
+void help_rahm() {
+    //       1234567890123456789012
+    putstr("rahm();");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Zeichnet einen Rahmen");
+    crlf();
+    putstr("um das aktuelle");
+    crlf();
+    putstr("Fenster.");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Der Rahmen wird nicht");
+    crlf();
+    putstr("durch wiload bzw.");
+    crlf();
+    putstr("wisave ber\175cksichtigt.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  shadow,");
+    crlf();
+    putstr("  lrahm");
+    crlf();
+}
+
+void help_lrahm() {
+    //       1234567890123456789012
+    putstr("lrahm();");
+    crlf();
+    crlf();
+    //       1234567890123456789012
+    putstr("Der Rahmen um das");
+    crlf();
+    putstr("aktuelle Fenster wird");
+    crlf();
+    putstr("mit der eingestellten");
+    crlf();
+    putstr("Hintergundfarbe ge-");
+    crlf();
+    putstr("l\174scht.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  rahm,");
+    crlf();
+    putstr("  lshad");
+    crlf();
+}
+
+void help_shadow() {
+    //       1234567890123456789012
+    putstr("shadow();");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("Zeichnet einen Schatten");
+    putstr("unter dem aktuellen");
+    crlf();
+    putstr("Fenster.");
+    crlf();
+    crlf();
+    //       12345678901234567890123
+    putstr("Der Schatten wird");
+    crlf();
+    putstr("nicht durch wiload bzw.");
+    putstr("wisave ber\175cksichtigt.");
+    crlf();
+    crlf();
+    putstr(" siehe auch:");
+    crlf();
+    putstr("  rahm,");
+    crlf();
+    putstr("  lshad");
+    crlf();
 }
 
 //////////////////////////////
@@ -603,124 +702,43 @@ void anleitung_screen(void) {
         winak(testwin);
         clrscr();
         switch (auswahl) {
-            case 0: help_00(); 
-                    break;
-            case 1: help_01();
-                    break;
-            case 2: help_02();
-                    break;
-            case 3: help_03();
-                    break;
-            case 4: help_asme();
-                    break;
-            case 5: help_meas();
-                    break;    
-            case 6: help_shift();            
-                    break;
-            case 7: help_invzei();
-                    break;
-
-            case 8:
-            //       1234567890123456789012
-            putstr("invwin();");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Invertiert den Inhalt");
-            crlf();
-            putstr("des aktuellen");
-            crlf();
-            putstr("Fensters.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  invzei");
-            crlf();
+        case 0:
+            help_00();
             break;
-
-            case 9:
-            //       1234567890123456789012
-            putstr("rahm();");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Zeichnet einen Rahmen");
-            crlf();
-            putstr("um das aktuelle");
-            crlf();
-            putstr("Fenster.");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Der Rahmen wird nicht");
-            crlf();
-            putstr("durch wiload bzw.");
-            crlf();
-            putstr("wisave ber\175cksichtigt.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  shadow,");
-            crlf();
-            putstr("  lrahm");
-            crlf();
+        case 1:
+            help_01();
             break;
-
-            case 10:
-            //       1234567890123456789012
-            putstr("lrahm();");
-            crlf();
-            crlf();
-            //       1234567890123456789012
-            putstr("Der Rahmen um das");
-            crlf();
-            putstr("aktuelle Fenster wird");
-            crlf();
-            putstr("mit der eingestellten");
-            crlf();
-            putstr("Hintergundfarbe ge-");
-            crlf();
-            putstr("l\174scht.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  rahm,");
-            crlf();
-            putstr("  lshad");
-            crlf();
+        case 2:
+            help_02();
             break;
-
-            case 11:
-            //       1234567890123456789012
-            putstr("shadow();");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("Zeichnet einen Schatten");
-            putstr("unter dem aktuellen");
-            crlf();
-            putstr("Fenster.");
-            crlf();
-            crlf();
-            //       12345678901234567890123
-            putstr("Der Schatten wird");
-            crlf();
-            putstr("nicht durch wiload bzw.");
-            putstr("wisave ber\175cksichtigt.");
-            crlf();
-            crlf();
-            putstr(" siehe auch:");
-            crlf();
-            putstr("  rahm,");
-            crlf();
-            putstr("  lshad");
-            crlf();
+        case 3:
+            help_03();
             break;
-
-            case 12:
+        case 4:
+            help_asme();
+            break;
+        case 5:
+            help_meas();
+            break;
+        case 6:
+            help_shift();
+            break;
+        case 7:
+            help_invzei();
+            break;
+        case 8:
+            help_invwin();
+            break;
+        case 9:
+            help_rahm();
+            break;
+        case 10:
+            help_lrahm();
+            break;
+        case 11:
+            help_shadow();
+            break;
+        case 12:
             //       12345678901234567890123
             putstr("lshad();");
             crlf();
@@ -747,7 +765,7 @@ void anleitung_screen(void) {
             crlf();
             break;
 
-            case 13:
+        case 13:
             //       1234567890123456789012
             putstr("icon(");
             crlf();
@@ -802,7 +820,7 @@ void anleitung_screen(void) {
             // Mehrere Icons können in einer Deinition zusammengefasst werden. Die Auswahl erfolgt dann über die icon_nr.
             break;
 
-            case 14:
+        case 14:
             //       12345678901234567890123
             putstr("priat(");
             crlf();
@@ -827,7 +845,7 @@ void anleitung_screen(void) {
             crlf();
             break;
 
-            case 15:
+        case 15:
             //       12345678901234567890123
             putstr("inpat(");
             crlf();
@@ -857,7 +875,7 @@ void anleitung_screen(void) {
             crlf();
             break;
 
-            case 16:
+        case 16:
             //       12345678901234567890123
             putstr("titel( text);");
             crlf();
@@ -891,14 +909,14 @@ void anleitung_screen(void) {
         invzei(auswahl + 1);
 
         if (eingabe == CUU)
-        auswahl = (auswahl > 0) ? auswahl - 1 : item_anzahl;
+            auswahl = (auswahl > 0) ? auswahl - 1 : item_anzahl;
         if (eingabe == CUD)
-        auswahl = (auswahl + 1) % (item_anzahl + 1);
+            auswahl = (auswahl + 1) % (item_anzahl + 1);
         if (eingabe == PAGE)
-        auswahl = 0;
+            auswahl = 0;
         if (eingabe == SCROL)
-        auswahl = item_anzahl - 1;
-    }while (eingabe != BREAK && eingabe != CR && eingabe != CUL);
+            auswahl = item_anzahl - 1;
+    } while (eingabe != BREAK && eingabe != CR && eingabe != CUL);
 
     winak(descrwin);
     lrahm();
@@ -909,7 +927,6 @@ void anleitung_screen(void) {
     wiload(selectionwin);
 }
 
-
 enum auswahl_t auswahl = rahmen;
 char eingabe;
 char beenden = FALSE;
@@ -919,18 +936,18 @@ const uint8_t auswahl_max = auswahl_anzahl;
 //////////////////////////////
 // Hauptprogramm
 void main() {
-    printf("Gefunden: CAOS Version %x\n",caos_version());
+    printf("Gefunden: CAOS Version %x\n", caos_version());
 
-    if (caos_version()<0x41) {
+    if (caos_version() < 0x41) {
         printf("l\173uft nur auf CAOS 4.1 und sp\173ter.\n");
         return;
-    }    
+    }
 
     screen_init();
     // Abspeichern des Originalfensters
     color_save = syscolor;
     wiinit(0, 0, 40, 32, original);
-    
+
     textbackground(WHITE);
     clrscr();
 
@@ -991,47 +1008,47 @@ void main() {
         eingabe = getch();
         invzei(auswahl);
         if (eingabe == CUU)
-        auswahl = (auswahl > 0) ? auswahl - 1 : auswahl_max - 1;
+            auswahl = (auswahl > 0) ? auswahl - 1 : auswahl_max - 1;
         if (eingabe == CUD) {
             auswahl++;
             if (auswahl >= auswahl_max)
-            auswahl = 0;
+                auswahl = 0;
         }
         if (eingabe == PAGE)
-        auswahl = 0;
+            auswahl = 0;
         if (eingabe == SCROL)
-        auswahl = auswahl_max - 1;
+            auswahl = auswahl_max - 1;
 
         if (eingabe == BREAK)
-        beenden = TRUE;
+            beenden = TRUE;
 
         if ((eingabe == CR) || (eingabe == CUR)) {
             switch (auswahl) {
-                case rahmen:
+            case rahmen:
                 fenster(1);
                 break;
 
-                case schatten:
+            case schatten:
                 fenster(2);
                 break;
 
-                case beides:
+            case beides:
                 fenster(3);
                 break;
 
-                case verschieb:
+            case verschieb:
                 winverschieb();
                 break;
 
-                case symbole:
+            case symbole:
                 icon_menu();
                 break;
 
-                case nutzung:
+            case nutzung:
                 anleitung_screen();
                 break;
 
-                case ende:
+            case ende:
                 beenden = TRUE;
                 break;
             }

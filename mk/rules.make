@@ -11,11 +11,11 @@ Z1013_CODE=0x100
 endif
 
 ifndef Z1013_HEADER
-Z1013_HEADER=0x7fe0
+Z1013_HEADER=0x00e0
 endif
 
-ifndef Z1013_DATA
-Z1013_DATA=0x100
+ifdef Z1013_DATA
+	Z1013_DATA_OPTION=-b _DATA=$(Z1013_DATA)
 endif
 
 all: $(addprefix obj/,$(PLATFORM)) $(addsuffix /bin,$(addprefix obj/,$(PLATFORM)))
@@ -32,7 +32,6 @@ obj/gcc/$(OUT): $(addsuffix .o,$(addprefix obj/gcc/,$(OBJECTS)))
 	gcc -g -o "$@" $^ ../lib/gcc-x11/gcc-conio-x11.a -L /usr/X11/lib -lX11 -lpthread -lm 
 
 obj/gcc/%.o : src/%.c
-	#gcc -Wall  -Wno-main -pedantic -std=c99 -S -o "$@.asm" "$<"
 	gcc -g -Wall -pedantic -std=c99 -Werror -Iinclude -I../include-gcc -c -o "$@" $^
 
 .PRECIOUS: obj/z1013/%.asm 
@@ -43,7 +42,7 @@ obj/z1013:
 obj/z1013/bin: obj/z1013/$(OUT).z80
 
 obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS) $(SDCC_OBJECTS)))
-	$(LINK) -mjwx -b _HEADER=$(Z1013_HEADER)  -b _DATA=$(Z1013_DATA) -b _CODE=$(Z1013_CODE)  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/z1013 -k ../lib/ -l z1013 -l krt -l conio -l z80_ix $^
+	$(LINK) -mjwx -b _HEADER=$(Z1013_HEADER) $(Z1013_DATA_OPTION) -b _CODE=$(Z1013_CODE)  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/z1013 -k ../lib/ -l z1013 -l krt -l conio -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z1013/$(OUT).ihx" "$@"
 	echo -n $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi

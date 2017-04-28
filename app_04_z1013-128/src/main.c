@@ -9,8 +9,8 @@ typedef struct {
 	const unsigned int *len;
 } MENU_ENTRY;
 
-#define MENU_ENTRY_COUNT 4
-extern const MENU_ENTRY menuEntries[MENU_ENTRY_COUNT];
+extern char menuEntriesCount;
+extern const MENU_ENTRY menuEntries[];
 
 #define MENU_W 18
 #define MENU_X ((SCR_WIDTH-MENU_W-1)/2)
@@ -54,7 +54,7 @@ void msgbox(int x, int y, int w, int h) {
 void draw_main_menu() {
 	char idx = MENU_Y + 1;
 
-	for (int i = 0; i < MENU_ENTRY_COUNT; i++, idx += 2) {
+	for (int i = 0; i < menuEntriesCount; i++, idx += 2) {
 		gotoxy(MENU_X + 4, idx);
 		cputs(menuEntries[i].name);
 	}
@@ -77,7 +77,7 @@ unsigned char handle_main_menu() {
 			gotoxy(MENU_X + MENU_W - 1, active_item);
 			cputs("  ");
 			active_item += 2;
-			if (active_item > (MENU_Y + MENU_ENTRY_COUNT * 2))
+			if (active_item > (MENU_Y + menuEntriesCount * 2))
 				active_item = (MENU_Y + 1);
 		} else if (c == 0x0b) {
 			gotoxy(MENU_X + 1, active_item);
@@ -86,7 +86,7 @@ unsigned char handle_main_menu() {
 			cputs("  ");
 			active_item -= 2;
 			if (active_item == (MENU_Y - 1))
-				active_item = (MENU_Y + MENU_ENTRY_COUNT * 2 - 1);
+				active_item = (MENU_Y + menuEntriesCount * 2 - 1);
 		}
 		if (c == 0x0d) {
 			break;
@@ -133,10 +133,10 @@ int main() {
 	do {
 		gotoxy((SCR_WIDTH - 22) / 2, MENU_Y - 2);
 		cputs("Z1013-128 VORFUEHRMODUS");
-		msgbox(MENU_X, MENU_Y, MENU_W, 2 * MENU_ENTRY_COUNT - 1);
+		msgbox(MENU_X, MENU_Y, MENU_W, 2 * menuEntriesCount - 1);
 		draw_main_menu();
 		item = handle_main_menu();
-		if (item == MENU_ENTRY_COUNT - 1)
+		if (item == menuEntriesCount - 1)
 			break;
 		else
 			execute(item);
