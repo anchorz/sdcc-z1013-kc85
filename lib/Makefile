@@ -9,6 +9,7 @@ all: obj
 	cd z1013; make
 	cd kc85; make
 	cd z9001; make
+	cd scp; make
 	
 #libc.lib : obj/printf.rel
 #	$(AR) rc "$@" $^
@@ -24,6 +25,7 @@ clean:
 	cd z1013; make clean
 	cd kc85; make clean
 	cd z9001; make clean
+	cd scp; make clean
 	rm -rf obj
 	rm -f *.bak
 	rm -f *~

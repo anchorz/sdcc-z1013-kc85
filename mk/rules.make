@@ -6,6 +6,34 @@ LINK    = sdldz80
 AS      = sdasz80
 OBJCOPY = sdobjcopy
 
+SDAS_OPT=-plowff
+
+# SDASZ80 Optionen
+# -p   Disable automatic listing pagination
+# -l   Create list   file/outfile[.lst]
+# -o   Create object file/outfile[.rel]
+#      wichtig, ähnlich -c beim GCC
+# -w   Wide listing format for symbol table
+#      auch im .lst File  
+#
+# inaktiv:
+# -g   Undefined symbols made global 
+#      alle externen symbole müssen mittels .globl deklariert werden
+#      hilft so Flüchtigkeitsfehler zu vermeiden
+# -s   Create symbol file/outfile[.sym]
+
+SDLD_OPT=-mwxiu
+# SDLDZ80 Optionen
+#Map format:
+# -m   Map output generated as (out)file[.map]
+# -w   Wide listing format for map file
+# -x   Hexadecimal (default)
+#Output:
+# -i   Intel Hex as (out)file[.ihx]
+#List:
+# -u   Update listing file(s) with link data as file(s)[.rst]
+#      sehr hilfreich!
+
 ifndef Z1013_CODE
 Z1013_CODE=0x100
 endif
@@ -34,6 +62,34 @@ obj/gcc/$(OUT): $(addsuffix .o,$(addprefix obj/gcc/,$(OBJECTS)))
 obj/gcc/%.o : src/%.c
 	gcc -g -Wall -pedantic -std=c99 -Werror -Iinclude -I../include-gcc -c -o "$@" $^
 
+################
+#
+#  SCP
+#
+################
+.PRECIOUS: obj/scp/%.asm 
+
+obj/scp:
+	mkdir -p "$@"
+
+obj/scp/bin: obj/scp/$(OUT).com
+
+obj/scp/$(OUT).com: ../lib/scp/crt0.rel $(addsuffix .rel,$(addprefix obj/scp/,$(OBJECTS) $(SDCC_OBJECTS)))
+	$(LINK) $(SDLD_OPT) -b _CODE=0x0100 $(LD_FLAGS) -i "obj/scp/$(OUT).ihx" -k ../lib/scp -k ../lib/ -l scp $^
+	$(OBJCOPY) -Iihex -Obinary "obj/scp/$(OUT).ihx" "$@"
+	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
+	
+obj/scp/%.asm : src/%.c
+	sdcc -mz80 -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include $(CFLAGS) -D__SCP__ "$<"
+
+obj/scp/%.rel : obj/scp/%.asm
+	$(AS) $(SDAS_OPT) -Iinclude "$@" "$<"
+
+################
+#
+#  Z1013
+#
+################
 .PRECIOUS: obj/z1013/%.asm 
 
 obj/z1013:
