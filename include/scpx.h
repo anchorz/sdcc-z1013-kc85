@@ -6,7 +6,7 @@
 #define CPM_WPUN         4              /* Stanzerausgabe */
 #define CPM_WLST         5              /* Druckerausgabe */
 #define CPM_DCIO         6              /* direkte Konsoleneingabe (param=CPM_DCIO_INPUT), sonst Ausgabe */
-   #define CPM_DCIO_INPUT 0xff
+#define CPM_DCIO_INPUT 0xff
 #define CPM_GIOB         7              /* I/O Byte holen */
 #define CPM_SIOB         8              /* I/O Byte setzen */
 #define CPM_PRNT         9              /* Zeichenkette ausgeben */
@@ -37,8 +37,38 @@
 #define CPM_F_WRITERAND 34              /* Wahlfrei schreiben */
 #define CPM_F_SIZE      35              /* Dateigröße berechnen */
 #define CPM_F_RANDREC   36              /* Feld für wahlfreien Zugriff */
+/* SCP3.0 */
+#define CPM_RESET       37              /* Laufwerk zurücksetzen */
+#define CPM_F_WRITEZF   40              /* Schreiben mit direktem Zugriff und Blockinitialisierung */
+#define CPM_F_MULTISEC  44              /* Setzen Multisektorzähler */
+#define CPM_F_ERRMODE   45              /* Setzen BDOS-Fehlermodus */
+#define CPM_SPACE       46              /* Ermittlung freie Diskettenkapazität */
+#define CPM_P_CHAIN     47              /* Programm anketten */
+#define CPM_FLUSH       48              /* Säubern des Puffers */
+#define SCP_FCB_SET     49              /* Ermitteln und Setzen FCB - Achtung nicht CP/M 3!*/
+#define CPM_BIOS        50              /* direkter BIOS Aufruf */
+#define CPM_P_LOAD      59              /* Laden Überlagerung */
+#define CPM_CALL_RSX    60              /* Aufruf resistenter Systemerweiterung */
+#define CPM_CLEANUP     98              /* freie Blöcke */
+#define CPM_F_TRUNCATE  99              /* Datei kürzen */
+#define CPM_SET_LABEL  100              /* Setze Verzeichnisskennzeichen */
+#define CPM_GET_LABEL  101              /* Rückgabe Verzeichnisskennzeichendaten */
+#define CPM_F_TIMEDATE 102              /* Lesen Datum und Passwort-Modus von Datei */
+#define CPM_WRITEXFCB  103              /* Schreiben XFCB für Datei */
+#define CPM_T_SET      104              /* Setzen Datum und Zeit */
+#define CPM_T_GET      105              /* Abfrage von Datum und Zeit */
+#define CPM_F_PASSWD   106              /* Setzen Standard-Password */
+#define CPM_S_SERIAL   107              /* Rückgabe Seriennummer */
+#define CPM_P_CODE     108              /* Abfrage/Setzen Programmrückkehrkode */
+#define CPM_C_MODE     109              /* Abfrage/Setzen Konsolen-Modus */
+#define CPM_C_DELIMIT  110              /* Abfrage/Setzen Ausgabenbegrenzer */
+#define CPM_C_WRITEBLK 111              /* Block ausgeben */
+#define CPM_L_WRITEBLK 112              /* Block listen */
+#define CPM_F_PARSE    152              /* Umwandeln Dateiname */
 
-unsigned int bdos(unsigned int foo,unsigned int param) __z88dk_callee;
+
+unsigned int bdos(unsigned int foo, unsigned int param)
+__z88dk_callee;
 
 #define JP_BOOT      0 /* Kaltstartinitialisierung */
 #define JP_WBOOT     1 /* Warmstart ausführen */
@@ -57,9 +87,22 @@ unsigned int bdos(unsigned int foo,unsigned int param) __z88dk_callee;
 #define JP_WRITE    14 /* Aufzeichnungsabschnitt schreiben */
 #define JP_LISTST   15 /* Druckerstatus abfragen */
 #define JP_SECTRAN  16 /* Aufzeichnungsnummer übersetzen */
-/* PC1715 SCPX 4 */
+/* PC1715 0x0004 */
 #define JP_CONOST   17 /* Konsole/Out-Status abfragen */
 #define JP_AUXIST   18 /* READER Status abfragen */
 #define JP_AUXOST   19 /* PUNCH-Status abfragen */
+/* SCP3.0 */
+#define JP_DEVTBL   20 /* Ermittelt Adresse für I/O-Gerätenamentabelle */
+#define JP_DEVINI   21 /* initialisiert physikalisches Gerät in Tabelle */
+#define JP_DRVTBL   22 /* ermittelt DPH-Adresse für Laufwerk */
+#define JP_MULTIO   23 /* zählt fortlaufende Sektoren fpr READ und WRITE */
+#define JP_FLUSH    24 /* löscht den physischen Sektorpuffer */
+#define JP_MOVE     25 /* Blockverschiebung von DE zu HL Anzahl BC im Speicher */
+#define JP_TIME     26 /* Zeit setzen/abfragen */
+#define JP_SELMEM   27 /* Speicherbank A anwählen */
+#define JP_SETBNK   28 /* Speicherbankn A für DMA Operation anwählen */
+#define JP_XMOVE    29 /* setzt Zielbank B und Quellbank C für Funktion 25 falls Blockverschiebung zwischen verschiedenen Banken */
 
-unsigned int bios(unsigned int foo,unsigned int param_bc,unsigned int param_de) __z88dk_callee;
+unsigned int bios(unsigned int foo, unsigned int param_bc,
+        unsigned int param_de)
+__z88dk_callee;
