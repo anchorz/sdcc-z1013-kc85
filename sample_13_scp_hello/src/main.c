@@ -23,7 +23,7 @@ void putchar(char c) {
 
 char ibuf[8];
 void print_int(int i) {
-    char c, len;
+    char c=i, len;
     _itoa(i, ibuf, 10);
     len = strlen(ibuf);
     for (c = 0; c < len; c++)
@@ -44,10 +44,20 @@ signed char p[4][2];
 signed char m, n, d;
 unsigned char t, found;
 
+//mod operator entfernen
+unsigned char rand10() {
+    unsigned char c;
+    do {
+        c = rand();
+        c &= 0x0f;
+    } while (c >= 10);
+    return c;
+}
+
 void init() {
     for (signed char j = 0; j < 2; j++) {
         for (signed char i = 0; i < 4; i++) {
-            unsigned char c = rand() % 10;
+            unsigned char c = rand10();
             p[i][j] = c;
         }
     }
@@ -104,8 +114,9 @@ int main() {
                     d1 = p[i][0] - m;
                     d2 = p[i][1] - n;
                     d = abs(d1) + abs(d2);
-                    //print_int(d);printf("%d Schritte zum MUGWUMP\n\r$");
-                    printf("%d Schritte zum MUGWUMP %d %d\n\r", d, d1, d2);
+                    print_int(d);
+                    print(" Schritte zum MUGWUMP\n\r$");
+                    //printf("%d Schritte zum MUGWUMP %d %d\n\r", d, d1, d2);
                 } else {
                     p[i][0] = -1;
                     print("Sie sind haben einen MUGWUMP gefunden.\n\r$");
