@@ -6,7 +6,7 @@ LINK    = sdldz80
 AS      = sdasz80
 OBJCOPY = sdobjcopy
 
-SDAS_OPT=-plowff
+SDAS_OPT=-plowgff
 
 # SDASZ80 Optionen
 # -p   Disable automatic listing pagination
@@ -15,6 +15,7 @@ SDAS_OPT=-plowff
 #      wichtig, ähnlich -c beim GCC
 # -w   Wide listing format for symbol table
 #      auch im .lst File  
+# -g   interne Compiler-Funktionen wie __modsint können sonst nicht mehr gefunden werden
 #
 # inaktiv:
 # -g   Undefined symbols made global 
@@ -75,7 +76,7 @@ obj/scp:
 obj/scp/bin: obj/scp/$(OUT).com
 
 obj/scp/$(OUT).com: ../lib/scp/crt0.rel $(addsuffix .rel,$(addprefix obj/scp/,$(OBJECTS) $(SDCC_OBJECTS)))
-	$(LINK) $(SDLD_OPT) -b _CODE=0x0100 $(LD_FLAGS) -i "obj/scp/$(OUT).ihx" -k ../lib/scp -k ../lib/ -l scp $^
+	$(LINK) $(SDLD_OPT) -b _CODE=0x0100 $(LD_FLAGS) -i "obj/scp/$(OUT).ihx" -k ../lib/scp -k ../lib/ -l scp -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/scp/$(OUT).ihx" "$@"
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
 	

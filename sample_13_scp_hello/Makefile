@@ -1,5 +1,5 @@
 PLATFORM=scp
-OUT=hello
+OUT=mugwump
 OBJECTS=main
 
 include ../mk/rules.make
