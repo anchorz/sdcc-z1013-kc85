@@ -1,0 +1,65 @@
+Q: Ich habe das File keyboard.z80 kaputt gemacht. Wie kann ich 
+   das reparieren?
+A: Kleines Gimmy am Rande: Im mitgelieferten Brosig Monitor ist eine
+   Zeichentabelle die Zeile,Spalte nach ASCII-Code wandelt. Fehlt
+   das Keyboardfile, so wird erstmal eine Warnung ausgegeben, aber 
+   soweit es geht eine neue Tabelle erstellt. Diese ist zwar nicht
+   immer korrekt, kann aber später noch angepaßt werden.
+
+Q: Welche Tasten braucht man für kings_valley oder wizard_of_danger
+A: Für das Beispiel kings_valley habe ich eine eigene Tastaturtabelle
+   mitgeliefert king_keys.z80 und die Tasten auf den Ziffernblock gelegt,
+   bzw auf die Zahlen 4-links, 6-rechts, 8-anmelden nach oben, 
+   2-anmelden nach unten und 5-stehenbleiben; <Space> wie gehabt und
+   <Enter> is die Pausentaste.
+        
+   bei Wizard of Danger ist der Fall ähnlich. Dort hat ein Spassvogel
+   <Cursor-Hoch> und <Cursor-Runter> vertauscht. Um das zu beheben lädt
+   man einfach wizard_keys.z80 mittels "load-keyboard-layout" aus dem
+   "keyboard" menu 
+  
+   Betreff der verschiedenen keyboard-layouts sollte man sich die Datei
+   z1013keys.txt man näher anschauen. 
+
+Q: How to load a BASIC-program manually?
+A: If you want to run Basic-Programs its a bit difficult. Follow this
+   direction:
+
+   1. ´Load´ KC-Basic ( this is the interpreter)
+   2. type F8 or J 300 to start the interpreter
+   3. he asks for maximum ramsize - press enter
+   4. after prompt OK> the basic interpreter is initialized
+   5. now you can ´Load´ basic programs directly into the memory.
+      But be carefuly ONLY basic-programs!
+
+Q: How to run a BASIC-program automatically?
+A: Its very simple:
+   Just starts the emulator with ´z1013emu -a -f soft/program.z80
+
+Q: What about a configuration-file?
+A: All commandline options can be stored in a textfile.
+   Be careful: Don´t use the shortcuts instead of fn = type font =.
+   If you start the emulator, the program will look for a configuration-
+   file in this order:
+   ./z1013emu.conf
+   $HOME/.z1013emu.rc
+   /etc/z1013emu.conf
+
+Q: Wie sieht es nun mit dem Drucken aus?
+A: In dieser Version des Monitor-ROM´s wurde ein Druckertreiber integriert,
+   d.h. die meisten Anwendungen dürften drucken können.
+   Der mit gelieferte Basic-Interpreter kann das mittels PRINT#2 oder LIST#2.
+   Darüber hinaus ergeben jetzt die Tasten F9 und F10 wieder Sinn:
+   F10 SCOPY copiert den Bildschirminhalt (32x32) zusammen mit einem 
+   Zeilenvorschub gen Drucker. Man beachte, die ASCII-Codes der Zeichen des
+   Z1013 (und ganz besonders über 0x80H) entsprechen nicht immer den
+   lokal verwendeten.
+   F9  HCOPY schaltet den HCOPY-Modus ein, d.h. jedes Zeichen, welches über
+   das Betriebssystem ausgegeben werden soll, wird auch noch an den Drucker
+   weitergegeben. Das ist z.B. "sinnvoll", wenn man mittels D 100 1000 einen
+   Speicherplatzüberblick bekommen möchte.
+   Das Programm arch/nu/HCOPY erfüllt eine ähnliche Funktion wie F10, aber
+   diesmal nutzt es die Grfikfähigkeiten des Druckers (im speziellen des
+   K6316 - dieser ist zu IBMPro und EpsonFx kompatibel und verfügt noch
+   über einen C64 Zeichensatz).
+ 

@@ -1,0 +1,399 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; Linux 2.0.33 i586) [Netscape]">
+</head>
+<body>
+
+<h1>
+Appendix B fileformats</h1>
+
+<h2>
+Z80 File</h2>
+<tt>contents of a z80 file follows the orginal header-save format:</tt>
+<br>&nbsp;
+<table BORDER WIDTH="100%" NOSAVE >
+<tr ALIGN=CENTER VALIGN=CENTER NOSAVE>
+<td WIDTH="20%" NOSAVE><tt>32 bytes headerblock</tt></td>
+
+<td NOSAVE><tt>memory dump</tt></td>
+
+<td WIDTH="10%" NOSAVE><tt>rest-bytes</tt></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER WIDTH="100%" NOSAVE >
+<tr NOSAVE>
+<td WIDTH="20%" NOSAVE><tt>headerblock:&nbsp;</tt></td>
+
+<td></td>
+</tr>
+
+<tr NOSAVE>
+<td NOSAVE></td>
+
+<td NOSAVE></td>
+</tr>
+
+<tr>
+<td><tt>WORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aadr&nbsp;</tt></td>
+
+<td><tt>address of the first byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LSB_FIRST</tt></td>
+</tr>
+
+<tr>
+<td><tt>WORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eadr</tt></td>
+
+<td><tt>address of the last byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LSB_FIRST</tt></td>
+</tr>
+
+<tr>
+<td><tt>WORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sadr</tt></td>
+
+<td><tt>startaddress of the program&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LSB_FIRST</tt></td>
+</tr>
+
+<tr>
+<td><tt>char [6]&nbsp; copyright</tt></td>
+
+<td><tt>user depend string, mostly used for author-notification</tt></td>
+</tr>
+
+<tr>
+<td><tt>BYTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; type</tt></td>
+
+<td><tt><a NAME="letter"> type information - theres no strict definition what letters to
+use. Most common are the following:&nbsp;</tt>
+<br><tt>C - exeCutable( start it with command J [SAdr]&nbsp;</tt>
+<br><tt>B - Basic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+M - Memorydump/Machinecode&nbsp;</tt>
+<br><tt>D - (hex)Dump/Document s - AssemblerSource</tt>
+<br><tt>P - Pascal-source&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b - tiny-basic-source</tt>
+<br><tt>T - Textfile</tt></td>
+</tr>
+
+<tr NOSAVE>
+<td WIDTH="20%" NOSAVE><tt>char [3]&nbsp; headermark</tt></td>
+
+<td><tt>headermark used for cassette-interface to detect first block. Its
+0xd3 0xd3 0xd3 = &acute;...&acute;</tt></td>
+</tr>
+
+<tr>
+<td><tt>char [16] filename&nbsp;</tt></td>
+
+<td><tt>16-Bytes "all characters are possible" filename</tt></td>
+</tr>
+</table>
+
+<p><tt>memory dump contains at least eadr-aadr+1 bytes.</tt>
+<p><tt>Regarding to special implementations of save-algorithms length of
+rest-bytes not always zero. the intension was: save all data you get! don&acute;t
+lose anything!</tt>
+<br><tt>Let have a look at 2 examples - Each block of a Z1013 file contains
+32 bytes netto data. That means: if you save from 0x100 to 0x200, length
+is 257 bytes and savefile has to use 9 blocks of data (with 32 bytes per
+block) and with header (1 block) the z80 filelength is 320 bytes.</tt>
+<br><tt>Another problem: when you convert a KC87 - basic file to z80. Each
+block contains 128 bytes of data. So you may think filelength is rounded
+to the next 128-border. But the first block contains only 115 byte of data.
+Lets see structure of the first block:</tt>
+<p><tt>char [3]&nbsp;&nbsp; headermark</tt>
+<br><tt>char [8]&nbsp;&nbsp; filename</tt>
+<br><tt>WORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; filelength</tt>
+<br><tt>BYTE [115] data</tt>
+<p><tt>For compatibility with z1013 hc-basic I&acute;ve added a block (from
+0x2bc0 to 0x2c00) of 41 bytes, that contains information about filelength.</tt>
+<h2>
+<a NAME="z1013keys"></a>z1013keys.txt</h2>
+To prevent to load a keyboard-layout every-time you change the running
+program, just edit the file <a href="file.html#z1013keys">z1013keys.txt</a>
+<br>The keyword "LAYOUT:" follows the layout-file you can use the fullpath
+filename or a relative filename ( relativ to directory you start the emu).
+After the layout-file was set, a list of filenames follows until fileEOF
+or next keyword "LAYOUT:".
+<br>Detection of the layout-file to use depends only on filename. Not path
+information is required.
+<p>Example:
+<p>LAYOUT:
+<br>./system/oldkeys.z80
+<br>ghost.z80
+<br>LAYOUT:
+<br>/var/z1013emu/system/wizard_keys.z80
+<br>wizard_of_danger.z80
+<h2>
+<a NAME="z1013emu.rc"></a>z1013emu.conf&nbsp;&nbsp;&nbsp; or&nbsp;&nbsp;
+.z1013emu.rc</h2>
+the name of the configuration file depends on the emulators name. So if
+executable has the name emuV126.exe you have to name your config file emuV126.exe.conf
+or .emuV126.exe.rc or you make a symbolic link. If the executable is named
+z1013emu, after the emulator starts it will take a look into local directory
+and look for a file called z1013emu.conf, then it will look for $HOME/.z1013emu.rc.
+If there&acute;s no config file found it will look for /etc/z1013emu.conf.
+<br>The contens of this config-file referns close to the <a href="command.html">commandline
+options</a>. See <i>-h</i> for a complete list of options. Sometimes there
+are shortcuts for a special optionnames. In config-file only the long optionname
+has been used. Instead of k = keyboard.z80 you have to write keyboard =
+keyboard.z80
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER WIDTH="100%" NOSAVE >
+<tr NOSAVE>
+<td WIDTH="10%" NOSAVE><b>long optionname</b></td>
+
+<td WIDTH="10%" NOSAVE><b>&nbsp;argument</b></td>
+
+<td><b>comments</b></td>
+</tr>
+
+<tr>
+<td>rc&nbsp;</td>
+
+<td>= filename</td>
+
+<td>filename to the config file - seldom used, because you reroute to another
+config-file</td>
+</tr>
+
+<tr NOSAVE>
+<td WIDTH="10%" NOSAVE>help&nbsp;</td>
+
+<td WIDTH="10%" NOSAVE>= YES</td>
+
+<td>emulator prints only the long-help and exits; usually this option is
+set to NO or missing</td>
+</tr>
+
+<tr>
+<td>quiet&nbsp;</td>
+
+<td>= YES</td>
+
+<td>the emulator produces no messages - exept error messages</td>
+</tr>
+
+<tr>
+<td>debug</td>
+
+<td>=YES</td>
+
+<td>print debug messages</td>
+</tr>
+
+<tr>
+<td>display</td>
+
+<td>= displayname&nbsp;</td>
+
+<td>X server to contact eg localhost:0.0 - if you dont need it don&acute;t
+use it</td>
+</tr>
+
+<tr NOSAVE>
+<td>version&nbsp;</td>
+
+<td NOSAVE>= YES</td>
+
+<td>print out the version and compile date then exits; usually this option
+is set to NO or missing</td>
+</tr>
+
+<tr>
+<td>zoom</td>
+
+<td>= 1</td>
+
+<td>userscreen size is { (zoom+1)*256 x (zoom+1)*256 }</td>
+</tr>
+
+<tr>
+<td><a NAME="filename"></a>filename</td>
+
+<td>= soft/digger.z80</td>
+
+<td>initially load an z1013-file - don&acute;t use it with <i><a href="#status">-st</a></i>
+or <i><a href="#status">-status</a></i> - you can also autostart a basic-file
+(see <i><a href="#basic">-bi</a></i>)</td>
+</tr>
+
+<tr>
+<td>auto</td>
+
+<td>= YES</td>
+
+<td>if <i>-filename</i> options is set, program will be started ; use it
+only in conjuction with <i>-filename</i></td>
+</tr>
+
+<tr>
+<td>readop</td>
+
+<td>= 50</td>
+
+<td>intension was: synchonize time for a read-cycle with time for write
+[lower ist faster]</td>
+</tr>
+
+<tr>
+<td>writeop</td>
+
+<td>= 50</td>
+
+<td>intension was: synchonize time for a write-cycle with time for read
+[lower ist faster]</td>
+</tr>
+
+<tr>
+<td>stepop</td>
+
+<td>= 1</td>
+
+<td>step over 1 Opcode(s), then ask for any request from system&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[lower ist better, higher is faster]</td>
+</tr>
+
+<tr>
+<td>monitor</td>
+
+<td>= system/monitor.z80</td>
+
+<td>filename of the monitor-rom to load - if there&acute;s no special purpose
+use monitor.z80</td>
+</tr>
+
+<tr>
+<td>charset</td>
+
+<td>= system/charset.z80</td>
+
+<td>charset-rom to load. ther where different charsets available if packed
+original.z80 and charset.z80&nbsp;</td>
+</tr>
+
+<tr>
+<td>best</td>
+
+<td>= NO</td>
+
+<td>enables high-quality-charset for zoom==1&amp;2 - Say NO if you want
+to look at a real Z1013</td>
+</tr>
+
+<tr>
+<td>keyboard</td>
+
+<td>= system/keyboard.z80</td>
+
+<td>filename of the keyboard table to map keys; common used file is keyboard.z80</td>
+</tr>
+
+<tr>
+<td>font</td>
+
+<td>= fixed</td>
+
+<td>use xfontsel to choose your prefered font - for menus and texts</td>
+</tr>
+
+<tr>
+<td><a NAME="basic"></a>basic</td>
+
+<td>= system/kc_basic_dump.z80</td>
+
+<td>filepath to a complete initialized basic interpreter - used for <i><a href="#filename">-f&nbsp;</a></i></td>
+</tr>
+
+<tr>
+<td>software</td>
+
+<td>= soft</td>
+
+<td>path to z1013 software ; it&acute;s used when you open "<a href="MANUAL.html#1.1 Load">LOAD</a>"
+dialog</td>
+</tr>
+
+<tr>
+<td>norandom</td>
+
+<td>= NO</td>
+
+<td>everytime you starts the emulator a new random seed ist generated use
+NO to forbid a random seed</td>
+</tr>
+
+<tr>
+<td><a NAME="status"></a>status</td>
+
+<td>= sokoban_lvl6_stat.bin</td>
+
+<td>filename to a saved emulatorstatus- it will be restored after emulator
+starts - don&acute;t use with <i><a href="#filename">-f</a></i> or <i><a href="#filename">-filename</a></i></td>
+</tr>
+<tr>
+<td>printer</td>
+<td>= output.txt</td>
+<td>enables printer support: appends every byte, thats printed, to filename
+output.txt ; if output.txt not exists it will be created</td>
+</tr>
+
+
+</table>
+
+<p>a config file from /etc/z1013.conf may looks like this:
+<p>#<tt>[YES|NO] yes disables output messages - except errors</tt>
+<br><tt>quiet&nbsp;&nbsp; = NO</tt>
+<br><tt>#[YES|NO] no disables debug informations</tt>
+<br><tt>debug&nbsp;&nbsp; = NO</tt>
+<br><tt># [0|1|2|3|4...] windowsize dx,dy=(zoom+1)*256 pixel</tt>
+<br><tt>zoom&nbsp;&nbsp;&nbsp; = 2</tt>
+<br><tt>stepop&nbsp; = 0</tt>
+<br><tt>writeop = 50</tt>
+<br><tt>readop&nbsp; = 50</tt>
+<br><tt>monitor&nbsp; = /var/z1013emu/system/monitor.z80</tt>
+<br><tt># USE [original.z80|charset.z80]</tt>
+<br><tt>charset&nbsp; = /var/z1013emu/system/original.z80</tt>
+<br><tt># NO SHOWS THE TRUE CHARSET, AND NO FUNKY FONT</tt>
+<br><tt>best&nbsp;&nbsp;&nbsp;&nbsp; = NO</tt>
+<br><tt>keyboard = /var/z1013emu/system/keyboard.z80</tt>
+<br><tt>basic&nbsp;&nbsp;&nbsp; = /var/z1013emu/system/kc_basic_dump.z80</tt>
+<br><tt>software = /var/z1013emu/soft</tt>
+<br><tt>printer &nbsp;= output.txt</tt>
+<p>
+<h2><a NAME="save"></a>z1013save.txt</h2>
+
+The Emulator has now a new save mechanism. You can save a memory area (eg.
+savegames).
+<p>
+You can use it by pressing <tt>F11</tt> (be careful! It overwrites the old
+contents. So make sure, you REALLY WANT to save.) or patch the programs like this:
+<p>
+<tt>
+turtle_player.z80:<br>
+...<br>
+07A3 C3 00 10&nbsp;&nbsp;&nbsp;JMP 1000<br>
+...<br>
+1000 ED FE 02&nbsp;&nbsp;&nbsp;Emu-Exeption 02 - means SaveMemoryArea()<br>
+1003 21 DA EC&nbsp;&nbsp;&nbsp;LD HL,EC21 - copied from 07A3<br>
+1006 C3 A6 07&nbsp;&nbsp;&nbsp;JMP 07A6 - next intruction<br>
+...<br>
+</tt><p>
+The contents of the &quot;z1013save.txt&quot; follows like this: <br>
+<tt>
+SAVEGAME:<br>
+3f00 3fff turtle_save.z80<br>
+turtle_player.z80<br>
+SAVEGAME:<br>
+...<br></tt>
+
+After keyword <tt>SAVEGAME:</tt> the adresses of memory areas follows then
+the filename you want to save to. 
+
+<p><i><a href="mailto:iagam@cluster.urz.uni-halle.de">Hobbes</a> 99/5/5</i>
+
+</body>
+</html>

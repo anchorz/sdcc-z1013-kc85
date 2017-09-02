@@ -1,0 +1,73 @@
+24.08.98 1.01  first release
+26.08.98 1.02  LD A,R bug fixedm, popup-menu
+28.08.98 1.03  performance optimization, debugger added
+30.08.98 1.04  keyboard-handling fixed ( if you press more the one key )
+05.09.98 1.05  load window, a listbox without scrollbar, path not changeable
+05.09.98 1.06  save function implemented - software collection added
+               made a download area for the internet
+07.09.98 1.07  load-win works perfectly 
+08.09.98 1.08  performance window works - i need edits, now
+08.09.98 1.09  speedup keyboard-handling, make some benchmarks see usage.txt
+09.09.98 1.10  performance-win works perfectly - mistake List::Find fixed
+10.09.98 1.11  keyboard-win shows you what keys are defined, 
+               wich codes are usable
+               keyboard-handling/behaviour improved
+               function keys implemented - look a the keyboard window
+11.09.98 1.12  keyboard-win save/load keyboard mappings
+12.09.98 1.13  keyboard-win save/load with filedialogs
+12.09.98 1.14a working on keyboard tables
+18.09.98 1.14  keyboard tables finished, bugs fixed. 
+21.09.98 1.15  keyboard table may changed with drag&drop
+               there are 2 keyboard tables the normal keyboard.z80
+               and for playing games using the Old Keyboard - 
+               oldkeys.z80
+               you may select your default font with the -fn option
+11.10.98 1.16  compiling on SUN and AIX RS6000
+               some drawing bugs on SUN machines fixed
+17.10.98 1.17  profile emu.rc added
+02.11.98 1.18  compiled with BC5 under Win32 
+               makefile and project filestructure changed
+               original Z1013 charset added  
+               -rc option for different .rc files
+28.12.98 1.19  16x16 & 24x24 grayscale charset added (use -zoom 1 or 2) 
+               nice to see
+               autoload function for executables & basic programs
+               rc file will be loaded from /etc/z1013emu.conf
+               or $HOME/.z1013emu.rc 
+08.01.99 1.20  it works with cygwin-B19 and a X-Server on WIN32 machines!!!
+               don´t need a correct configfile anymore (but it´s nice to have
+               one). default-rom-image and default-charset are built in.
+               HTML-doc added
+12.02.99 1.21  random-gernerator initialized with random-values
+01.03.99 1.22  save-emu-status function added 
+04.03.99 1.23  load-emu-status function added, strange focus behaviour
+               fixed,makefile ported to SUN-OS 
+10.03.99 1.24  bug-fixed, program added to convert sample-files into .z80
+17.03.99 1.25  raw2z80 with kc87-files
+02.04.99 1.26  docu finished - including fileformats 
+               tried to keep natural language dependency away from my code
+               z1013keys.txt - to look up keyboard-layout for different programs
+
+               in future - load routine patch - so you can pascal files
+			   up to now "load" option makes a dump directly
+                           into z1013´s main memory. Pascal don´t like these.
+                         - autostart will work on sun  ;o)
+			 - test on SUN/AIX
+14.04.99 1.27  printing is now available. use -p option ans take care about
+               your F9-Key.
+16.04.99 1.28  load-patch : you can load your programs with @L ...
+               extremly important to load a pascal-file ( with G )
+               debugger prints RST 20H calls
+05.05.99 1.29  fileselectors are alphasorted now
+               final bugfixing session starts
+06.05.99 1.30  bugfixing ends 
+               save-games implemented
+               F11 and F12 works on SUN-XServer's too
+09.06.99 1.31  minor changes
+               focus behaviour is ok now
+               illegal path using -software - fixed
+               problems with some window managers - fixed
+               icon added
+05.07.99 1.32  FINAL RELEASE!!! 99/07/05
+26.08.99 1.33  prepare for WIN32 - started
+               LSB/MSB bug when save a file (e.g. "# @S 100 1E0 100") <:-o

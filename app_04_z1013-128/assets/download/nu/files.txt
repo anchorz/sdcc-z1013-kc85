@@ -1,0 +1,63 @@
+:files in this directory you dont need anymore:
+HCOPY           .Z80    : make a screen-dump to printer by pressing hcopy-key
+HEADERSAVE 5.95 .Z80    : need to load programs with header (almost all
+                          programs with header now) 
+KC87-_1013 MC   .Z80    : load kc-87 programs with z1013
+Systemuhr o. CTC(1).Z80 : interrupt controlled system-clock
+Systemuhr o. CTC(2).Z80 : same on different adress
+joyinit                 : div. subroutines to transform a program from
+                          keyboard to joystick automatically
+monitor-rom             : collection of monitor-rom's mostly differs by
+                          keyboard-table 
+  z1013_surl_3_00.z80   : z1013 super-urlader  
+
+crc_pruef.z80           : improved crc-test
+demolation_joy.z80      : could be a joystickversion 
+disassembler.z80        : disass
+dumpx.z80               : hexdump
+headersave_gv.z80       : headersave vor 16K z1013
+maintape_4_6.z80        : just another header-load
+orgel_32.z80            : 
+orgel_8.z80             : some kind of music?? it uses the old-keyboard
+voice_dump.z80          : voice hex dump - won´t work inside emu (no sound)
+zaehlermodul.z80        : measuring frequencies on LINE-In
+8k_basic_kern.z80       : seems to be the standad-kernel-image for HC-BASIC
+                          But I don´t know how it works.
+datex.z80               : a filemanager?
+eprommer_2_9_ccl.z80    : burn EPROMS
+oel.z80                 : oil imperium - but binary is corrupt - could be
+                          corrected
+rtty.z80                : ?
+r_t_t_y_ohne_txt.z80    : radio-teletype ( tty terminal?? )
+video_list.z80          : during a load from cassette, it prints contents
+                          of a file to screen 
+headerprint_1_1.z80     : kassettenarchivierung; Listen erstellen
+headerwrite_1_0.z80     : kassettenarchivierung; Listen erstellen
+headerbank_zeit.z80
+recorderjustage.z80
+mainsave_4_6_4.z80
+maintape_4_6_4.z80
+eprommer_2_9_igd.z80
+tapelist.z80
+dru_3_2.z80 : druckertreiber nach eisenkolb
+dru_3_3.z80 : druckertreiber nach eisenkolb
+centronic_druck.z80 : 
+sprache.z80 : text eingeben und vorlesen lassen
+spektrum_s_l.z80 : 
+ac_1_tape_v_7.z80 : 
+$_feld_brotast.z80 : stringfeld fuer den brosig monitor erstellen
+2mhz___1mhz_s_l.z80 : 
+hcopy(k_6320).z80 : richtiges hcopy
+monitor-rom/4k_monitor.z80 : irgendein 4-k brosig-rom mit rom-abschaltung
+monitor-rom/monitorerweiter.z80 : 
+monitor-rom/rb+.z80 : 
+monitor-rom/prof__mon.z80 : 
+hcopy_2_rb_mon.z80 : 
+header_menue_4.z80 : 
+headersave_5_95.z80 : 
+header_soft_2.z80 : 
+headermenu_v4bek.z80 : 
+turbo_headerm.z80 : 
+monitor-rom/mon_neu.z80 : 
+logicanalysor_sc.z80 : 
+monitor-rom/k7669_brennfer.z80 : 

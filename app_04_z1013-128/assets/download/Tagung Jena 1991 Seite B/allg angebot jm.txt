@@ -1,0 +1,155 @@
+
+@l
+****************************************************************
+*  Allgemeines Angebot                    Version Tagung 6/91  *
+********************************************************MOE*****
+
+
+EJens M|ckelF
+Magdeburger Str.1b           E Ihre Kundennummer:F
+Riesa
+8400 
+
+
+                    Sehr geehrter Z 1013 - User !
+                    =============================
+
+
+Am 25.10.90  hat  sich  die  AG Z1013 der Interessengemeinschaft
+Heimcomputer des Informatikzentrums der TU Dresden aufgel|st und
+damit ihre Arbeit eingestellt.
+W{hrend  des  Bestehens  der AG hat sich eine Menge Software f}r
+verschiedenste  Anwendungen  angesammelt. Mit Hilfe dieser Samm-
+lung, der Softwaresammlung  Rainer Brosigs und auch meiner Soft-
+ware habe ich  eine Art Bibliothek erstellt, aus der ich f}r je-
+den  Interessenten, unter  Einhaltung  der  Beschl}sse  der  AG,
+Kopien  anfertigen  kann.  Zur Zeit enth{lt die Komplettsammlung
+}ber 2000 Files.
+----------------------------------------------------------------
+Es gibt zwei M|glichkeiten, bei mir Software aus der Sammlung zu
+beziehen:
+
+E1. Sie bestellen einzelne Files.F
+
+Dazu lassen Sie sich bitte von mir die Angebotsliste auf Kasset-
+te,  auf  Diskette oder als  gedruckte  Liste  (siehe unten) zu-
+schicken.
+Jetzt k|nnen Sie bestellen. Dazu geben Sie  File-Nr., Typ,  Name
+und Adressen der gew}nschten Files an und schicken mir  Ihre Be-
+stellung. Ich  }berspiele Ihnen alles auf von mir gestellte Kas-
+setten und schicke Ihnen diese per Nachnahme zu.
+Entsprechend den Festlegungen  der AG Z1013 der IG-HC erhebe ich
+folgende Geb}hren:
+
+1. Software wird als Ware kostenlos weitergeben.
+2. F}r Arbeitszeit und Technikverschlei~ werden folgende
+   Geb}hren erhoben:
+   a)Grundgeb}hr                                     5.00 DM 
+    (f}r die Bearbeitung der gesamten Bestellung)
+   b)pro kopiertes File      <20 KByte               1.00 DM
+   c)pro kopiertes File     >=20 KByte               1.50 DM
+   d)pro Assemblerquelle                             2.00 DM
+3. Leerkassettenpreis                            je nach Typ
+4. Postgeb}hren f}r P{ckchen, Nachnahme, Postanweisung und evtl.
+   Postverpackung 
+
+Assemblerquellen kann ich Ihnen nur zusenden, wenn Sie den Quel-
+lenbestellzettel (liegt dann der Angebotsliste bei)  ausgef}llt,
+unterschrieben und an mich zur}ckgeschickt  haben.  Echte  CP/M-
+Programme, d.h. solche Programme, die nur das CP/M und nicht den
+Z1013-Monitor  (abgeschalten bei  kompatiblem  CP/M !)  als  Be-
+triebssystem brauchen, k|nnen  auch  auf  Diskette von mir bezo-
+gen werden. Dazu ist das gew}nschte Diskettenformat (624K, 780K,
+800K oder 820K) anzugeben bzw. die zu bespielende  Diskette  ist
+mitzuschicken. Mit  den  Kopiergeb}hren von  10 DM/Diskette hal-
+te ich mich an Preisvorgaben verschiedener Shareware-Hersteller.
+----------------------------------------------------------------
+ E2. Sie bestellen ganze Kassetten der Sammlung  bzw. die  gesamte
+    Sammlung.F  
+
+Dazu lassen Sie sich von mir die Kassettenlistings auf  Kassette
+oder als gedruckte Liste (siehe unten) zuschicken oder bestellen
+sofort mit Hilfe der beiliegenden Informationen.(Kassettenliste)
+Die Files sind auf  den Kassetten nach MC-, Tiny-BASIC-, Pascal-
+KC-BASIC'+', TDL-BASIC-, KC85/2-BASIC-, CP/M- , BASICODE- ,Text-
+Files usw. sortiert.
+
+Sollten Sie sich f}r eine/mehrere/alle Kassetten entschieden ha-
+ben, dann bestellen Sie diese bei mir, ich kopiere sie Ihnen auf
+von mir gestellte Kassetten und schicke Ihnen diese per Nachnah-
+me zu. Zu jeder Kassette erhalten Sie eine kostenlose Kopie  der
+Inhaltsliste.  
+
+Geb}hren: a) Ich erhebe keine Grundgeb}hr wie oben.
+          b) 1-4 Kassetten :   pro Kassette 10 DM  
+             ab 5 Kassetten:   pro Kassette  9 DM
+             (Leerkassettenpreis jeweils inkl.)
+          c) Postgeb}hren wie oben
+
+Assemblerquellen sind von dieser Bestellart ausgeschlossen !
+----------------------------------------------------------------
+Alle Files  werden von mir mit HEADERSAVE zweimal mit 2 MHz Takt
+aufgenommen.  Die Lauff{higkeit der Programme kann ich nicht ga-
+rantieren,  dazu  sind die ben|tigten Hardwarevoraussetzungen zu
+verschieden  (Tastatur,  Grafik,  RAM, Floppys, Betriebssystem).
+Wenn Sie mir eine Information zu Ihrer Hardwarekonfiguration zu-
+kommen  lassen,  kann  ich  Ihnen  vielleicht  ein paar Hinweise
+geben. 
+----------------------------------------------------------------
+
+Wie kommen Sie nun zu der Angebotsliste ?
+
+Es existieren folgende Versionen der Liste:
+
+*Haupts{chlich f}r Einzelbestellung:    -alphabetisch geordnete
+ (Variante a )                           Liste als dBASE - File
+                                         (REDABAS-File)
+
+*Haupts{chlich f}r Kassettenbestellung: -Kassettenlistings als   
+ (Variante b )                           normales Textfile
+Diese Variante der Liste befindet sich in komprimierter Form auf
+der Tagungskassette zur 4. Z1013-Tagung in Jena.
+
+Zum }berspielen der Variante a schicken  Sie mir bitte eine Kas-
+sette ( C60 ) oder  Diskette  ( inkl. R}ckumschlag + ausreichend
+R}ckporto).  Das ]berspielen der Liste  erfolgt kostenlos.
+(Beide Listen k|nnen auf Kassette oder Diskette kopiert werden.)
+
+Sie k|nnen auch eine Kopie der Druckliste anfordern ( jede Vari-
+ante kostet 3.00 DM + Porto ).  Diese sende ich  Ihnen per Nach-
+nahme zu bzw. der Betrag kann in Briefmarken beigelegt sein.
+----------------------------------------------------------------
+Das  Programmieren  von EPROMs f}hre  ich  auf  Wunsch ebenfalls
+durch. Geben Sie mir hierzu bitte den EPROM-Typ (2708-27512) und
+das zu programmierende Programm an. Die  EPROM-Typen  2716, 2732
+und 2764 stelle ich auf Wunsch zur Verf}gung.
+
+Preise:   EPROMs   leer     programmiert
+          ------------------------------
+          2716     1.50 DM      5.00 DM
+          2732     2.00 DM      5.50 DM
+          2764     4.50 DM      8.00 DM
+          ------------------------------
+
+Bei zugeschickten EPROMs }bernehme ich aus verschiedenen Gr}nden
+keine Garantie f}r die Programmierung.  Bei  nicht-ex-DDR-EPROMs
+bitte  unbedingt die Programmierspannung angeben, wenn sie nicht
+eindeutig am Schaltkreis erkennbar ist.
+
+Programmierung zugeschickter EPROMs: 2708-2764      4.00 DM
+                                    27128-27512     6.00 DM
+
+----------------------------------------------------------------
+Sollten Sie bei mir schon einmal etwas bestellt haben, dann  ge-
+ben Sie bitte bei weiterem Schriftverkehr Ihre Kundennummer an !
+----------------------------------------------------------------
+Weitere Angebote an Bauelementen und Hardware -> siehe  Textfile
+zum Hardwareangebot Dresden.
+----------------------------------------------------------------
+
+
+                                 Mit freundlichem Gru~
+
+                                      J. M|ckel
+$...FRAKTALE 
+0033 3401 505

@@ -1,0 +1,277 @@
+***************************************************************
+* KDT-Buna, AG Mikrocomputer  Halle-Neustadt                   *
+* Z1013.SUPER-URLADER (SURL)    Kurzbeschreibung               *
+*--------------------------------------------------------------*
+* Autor: Michael Gaertner       C.-Schorlemmer-Str.103         *
+*                               Merseburg, 4 2 0 0             *
+*                               Tel.: dienst.: 495210          *
+*                               priv.:   215634                *
+*--------------------------------------------------------------*
+* Version: 5.00  vom 20.06.89                                  *
+* (Hardware nach IG-HC Dresden u. AG-Mikrocomputer Ha-Neu !!!) *
+****************************************************************
+
+HINWEIS: Von der IG-HC der TU Dresden wurde ein fehlerhaftes
+-------- Textfile in Umlauf gesetzt. Aus Zeitgruenden mu~te fuer
+         die vorliegende Tagungskassette eine Bearbeitung
+         erfolgen, die mit dem Autor abgestimmt wurde.
+
+         ***Computer-Club robotron Lpz./H.-J.Bachmann/10-89***
+
+
+Original Standort: F000H - F7FFH                       >CRC=E12A
+         (1000H - 17FFH  als EPROM-File verschoben) 
+
+1. Allgemeines
+--------------
+
+Der SURL ist ein Programm, das anstelle des ueblichen Monitors
+auf dem PROM des Z1013 geschrieben werden musz. In Verbindung
+mit nachfolgend beschriebenen Hardware-Voraussetzungen dient
+dieser SURL dem Laden beliebiger Monitore bzw. Betriebsysteme in
+den Speicher des Z1013. Eine Tastatur wird dazu nicht benoetigt,
+so dasz diese erst durch die geladene Software spezifiziert
+wird. Durch diese Vorgehensweise musz zwar nach jedem
+Einschalten zunaechst mindesten eine Datei von Kassette geladen
+werden, doch sind Monitorverbesserungen, unterschiedliche
+Tastaturen sowie die Nutzung ganzer MR-Betriebssysteme (z.B.
+CP/M) zukuenftig ohne weitere Hardware-Aenderungen moeglich.
+
+2. Hardware-Voraussetzungen
+---------------------------
+
+ - 64k-RAM
+ - Moeglichkeit Abschaltung des
+   SURL-PROMs
+   OUT 04H,DB4=0: ROM ein (Grundzustand nach RESET)
+   OUT 04H,DB4=1: ROM aus
+ - Moeglichkeit eines RAM-Schreibschutzes
+   (nicht unbedingt notwendig aber mind.fuer den Bereich
+   F000H-FFFFH empfehlenswert)
+   OUT 04H,DB2=0: Schreibschutz F000-F7FF ein
+           DB1=0: Schreibschutz F800-FFFF ein
+           (Grundzustand nach RESET)
+   OUT 04H,DB2=1: Schreibschutz F000-F7FF aus
+           DB1=1: Schreibschutz F800-FFFF aus
+ - 2 MHz Takt (bei Einschalten bzw. RESET)
+
+Mit diesen Hardwarevoraussetzungen ber}cksichtigt der SURL.5.00 
+die Empfehlungen der IG-HC-Dresden zur Nutzung eines 8-Bit
+Schaltports (OUT/IN 04H) als auch eine einzeln aufgebaute
+Schaltung fuer ROM-Abschaltung und Schreibschutz lt.
+AG-Mikrocomputer Halle-Neustadt. Somit gibt es ab Version 5.00
+nur noch eine einheitliche SURL-Ausfuehrung. In ihrem
+Funktionsumfang ist sie identisch mit den Versionen 3.00 u. 3.10
+(AG Mikrocomputer Halle-Neustadt) und 4.00 (IG-HC-Dresden).
+
+Die realisierte Schaltung finden Sie als Anlage in den
+Tagungsunterlagen.
+
+3. Funktionsbeschreibung
+------------------------
+
+Der SURL-PROM (F000-FFFF) enthaelt einen Urlader, der nach jedem
+RESET vesucht, eine Reihe beliebiger Programme und/oder
+Betriebssysteme von Kassette in den Speicher des Z1013 zu laden.
+Die Dateien muessen mit dem allg. verbreiteten Header-Save-
+Verfahren (R.Brosig,IG-HC) erzeugt worden sein. Diese Dateien
+enthalten in ihrem Kopfteil (Header) folgende, fuer das Urladen
+wichtigen, Angaben:
+
+ - Lade-Anfangsadresse AAD
+ - Lade-Endadresse     EAD
+ - Startadresse        SAD
+ - Dateityp (A,B,C ... Z)
+
+Damit arbeitet der Urlader wie folgt:
+
+a) TYP=X, AAD, EAD, SAD:
+   Laden von F000 bis (F000+EAD-AAD) und Starten bei SAD
+
+b) TYP=Y, AAD, EAD, SAD:
+   Laden von AAD bis EAD und Starten bei SAD
+
+c) TYP=Z, AAD, EAD:
+   Laden wie a) aber kein Start, d.h. Weiterladen
+
+d) TYP nicht X,Y o. Z, AAD, EAD:
+   Laden wie b) aber kein Start, d.h. Weiterladen
+
+Der Fall a) dient hauptsaechlich zum Laden eines 4K-Monitors, da
+der Bereich F000-FFFF nicht direkt mit Header-Save ausgelagert
+werden kann, sondern dazu auf andere Adressen verschoben werdn
+musz. Mit b) lassen sich beliebige Betriebssysteme bzw.
+Programme laden, die sofort gestartet werden. Die Faelle c) u.
+d) dienen dem stueckweisen Laden mehrer Programme oder Daten
+bevor mit einer Datei vom Typ X oder Y der Ladevorgang
+abgeschlossen wird. So kann man z.B. Kassetten erzeugen, von
+denen nach Einschalten o. RESET autom. der 4K-Monitor (Typ Z),
+der BASIC-Interpreter gemeinsam mit BASIC-Programm (Typ B) und
+ein Starthilfsprogramm (Typ Y) zum autom. Starten des
+BASIC-Programms (o. anderer Programme, s.a.Abschnitt 5.). Vor
+dem Urladen erfolgt zuaetzlich ein zerstoerungsfreier RAM-Test
+ueber alle 64 KByte in Schritten von 1 Kbyte. Fuer jedes
+getestete Kbyte wird auf dem Bildschirm die H-Adresse angezeigt,
+die im Fehlerfall mit einem '*' markiert wird. Dadurch kann der
+SURL zur Inbetriebnahme des Z1013 verwendet werden. Bei
+RAM-Fehlern im Bereich 0000-EBFF u. F000-FFFF wird das Urladen
+fortgesetzt (!!!). RAM-Fehler im Bereich EC00-EFFF fuehren zum
+HALT, ebenso ein defekter SURL-PROM (Pruefsumme <> 0). Ein
+erneuter Urlade-Versuch ist mit RESET moeglich. Da sich der
+SURL-PROM auf den gleichen Adressen befindet wie evtl. zu
+ladende Dateien, besteht der SURL aus 2 Teilen mit folgenden
+Funktionen:
+
+URLAD1:
+ - NMI kurzschlieszen (RETN)
+ - Init Stackpointer
+ - Init PIO Port B   (Kassette)
+ - Bildschirm loeschen
+ - URLAD2 in obere BS-Haelfte umladen
+ - SURL-PROM-Selbsttest, evtl. HALT
+ - RAM-Test (0000-FFFF), evtl. HALT
+ - NMI Initialisieren fuer 4K-Monitor-Restart (JMP F000)
+ - Urladen (siehe a)-d) oben)
+ - Steuerungsuebergabe an Programm vom Typ X o. Y
+
+URLAD2 (zur Laufzeit im BWS):
+
+ - RSTORE: Laden von Bytes im Bereich F000-FFFF
+ - RAMT2:  RAM-Test F000-FFFF
+ - ROSRT:  SURL-PROM abschalten, Programmstart
+
+Waehrend des Urladens werden Informationen ueber den laufenden
+Speichertest, sowie Informationen zur Kassettenarbeit in der
+unteren BS-Haelfte eingeblendet. Das Urladen erfolgt ohne
+Bedienereingriff, so dasz keine bestimmte Tastatur am Z1013
+gefordert ist. Diese wird ausschlieszlich durch die geladene
+Software spezifiziert. Das gilt auch bei Lesefehlern waehrend
+des Ladens. In diesem Fall musz die Kassette vor den
+fehlerhaften Block zurueckgespult werden (s.a. Ausschriften in
+den untersten BS-Zeilen). Folgende Ausschriften sind moeglich:
+
+    "Next file please !"
+
+erscheint zu Beginn des Urladens und nach jeder vollstaendig
+geladenen Datei und fordert zum Anbieten einer neuen Datei
+(Kassette starten, Weiterlaufen lassen, Kassettenwechsel) auf.
+
+    "TYP u. DATEINAME"
+
+Typ und Name einer gerade geladenen Datei.
+
+    "bad rec., rewind"
+
+Lesefehler, Kassette ist vor die fehlerhafte Stelle zu spulen
+und weiterlaufen zu lassen.
+
+    "Wait a moment ! "
+
+Kassette ist genuegend zurueckgespult, das Lesen geht
+(hoffentlich) gleich weiter.
+
+Weiterhin gibt es Anzeigen ueber AAD, EAD, SAD (lt. geladenem
+Header) sowie die akt. Ladeadresse und akt. Blockerwar-
+tungsadresse.
+
+Der Urlader wird mit allen seinen oben genannten Funktionen nach
+jedem Einschalten oder RESET aktiv. Ist aber bereits ein
+Monitor/Betriebssystem geladen, und kann unter deren Steuerung
+ein Programm nur mit RESET verlassen werden, so kann der SURL
+nach dem RAM-Test durch Druecken einer NMI-Taste zum Abbruch
+gezwungen werden. Es erfolgt dann ein Restart des 4K- Monitors
+(Zelle 66H = 00, JMP F000H). Dieser Restart erfolgt also immer
+auf die fixe Adresse F000. Das musz bei anderen
+Monitoren/Betriebssystemen beachtet werden.
+
+4. Applikationen
+----------------
+
+In diesem Abschnitt werden die Dateien einer vom Autor erstellen
+Anwendungskassette erlaeutert.
+
+ 1. Z1013.SURL.50.T
+    T  1C00 469A 0000
+ 2. Z1013.SURL.50
+    E  1000 17FF 0000
+ 3. 4K.MONITOR.7652
+    Z  1000 1FFF 0000
+ 4. B+CENTIPEDE
+    B  0100 481C 0000
+ 5. START.BASIC
+    Y  EA80 EBFF EB00
+
+Datei 1 enthaelt diese SURL-Beschreibung. Datei 2 enthaelt den
+Inhalt des SURL-PROMS (Version 5.00) Die Dateien 3 - 5 stellen
+eine Demonstration des SURL dar. Dazu ist mit eingebauten
+SURL-PROM der Z1013 einzuschalten. Das Kassettengeraet ist nach
+erfolgten RAM-Test und der Auschrift "Next file please !" mit
+Datei 3 zu starten. Danach passiert folgendes:
+
+ - Datei 3 wird als 4K-Monitor nach F000-FFFF geladen. Der
+   Dateityp Z sorgt dafuer, dasz die urspruenglich auf 1000-
+   1FFF ausgelagerte Datei richtig geladen wird. Die
+   verwendete Monitorversion untestuetzt die Tastatur K7652;
+   weitere Versionen f. K7659 bzw. Monitor A.2 sind existent.
+
+ - Datei 4 ist der BASIC-Interpreter, der zusammen mit
+   einem BASIC-Spielprogramm nach einem Probestart ausge-
+   lagert wurde. Diese Datei wird nur geladen und nicht
+   gestartet (Typ nicht X o. Y).
+
+ - Datei 5 ist ein START-Hilfs-Programm. Dieses Programm be-
+   endet das Urladen, indem es auf seiner SAD (EB00) gestartet
+   wird. Es ist ein universell einsetzbares Programm
+   zum automatischen Starten beliebiger anderer Programme.
+   Im konkreten Fall wurde es zum autom. Starten eines
+   BASIC-Programmes installiert.
+   Nach dem Start von Datei 5 wird also CENTIPEDE autom.
+   gestartet.
+
+5. START.xxxxx -  ein universell einsetzbares Startprogramm
+-----------------------------------------------------------
+
+START veraendert den 4K-Monitor,der ja nach dem Urladen im RAM
+steht derart, dasz dieser nach seinem Start (JMP F000H)
+automatisch eine vorgegebene Zeichenfolge ohne Betaetigung
+der Tastatur abarbeitet. Danach wird der Monitor gestartet.
+Zusaetzlich wird der Bereich 00H-7FH mit einer waehlbaren
+Belegung vorgeladen. Dies ist z.B. beim BASIC-Interpreter
+notwendig, damit dieser sofort nach seinem Laden mit einem
+RESTART gestartet werden kann.  
+In diesem Fall ist der Interpreter 1x neu zu starten
+und danach die Belegung von 00H-7FH zu copieren. START.xxxxx hat
+folgenden Aufbau:
+
+EA80-EAFF: Daten, die nach 00H-7FH umgeladen werden.
+
+EB00-EB7F: Das eigentliche START-Programm
+
+EB80-EBFF: Zeichenkette, die  nach Monitor-Start 
+           autom. abgearbeitet wird. Endekennzeichen ist FFH.
+           
+           4A 20 33 30 32 0D
+           0D 52 55 4E 0D FF
+           
+           startet ein BASIC-Programm. Das entspricht den
+           Eingaben
+ 
+           J 302 <Enter>
+           <Enter>
+           RUN <Enter>
+
+Das Programm kann damit durch Installationen in den Bereichen 
+EA80-EAFF u. EB80-EBFF an andere Auto-Starts angepaszt
+werden. Das gesamte Programm kann auch auf andere Adressen
+verschoben werden, da es bis auf folgende Randbedingung frei
+verschieblich programmiert wurde: 
+
+Das Programm beginnt auf EB00 mit dem Befehl "LD HL,0EA80H",  
+d.h. auf den Adressen SAD+1 und SAD+2 steht die Adresse des
+Ladepunkts von START.xxxx. Wird hier ein anderer Ladepunkt
+eingetragen laeuft es auch auf anderen Adressen bei gleicher
+rel. Bereichsaufteilung.
+
+	** Ende ***** MicroWord-Textfile ****
+
+   adr n --  

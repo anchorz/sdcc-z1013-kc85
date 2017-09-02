@@ -1,0 +1,144 @@
+******************************************************************************
+*                                                                            *
+*                   BIOS 5.03 Vorabversion                                   *
+*							                     *
+*   Bearbeiter : Carsten Dellori O-7500 Cottbus,Finsterwalder str. 27b       *
+*									     *
+******************************************************************************
+
+1. Allgemeine Bemerkungen :
+----------------------------
+
+Das BIOS stellt die hardwareabhaengige Componente des CP/M dar.
+Deswegen wird es an den jeweiligen Computer und an dessen Schnitt-
+stellen angepasst.
+Das BIOS 5.03V integriert neben RAM-Floppy's, einem Floppylaufwerk,
+64/80 - Zeichenbildschirm, Tastatur, Maus und Druckerschnittstelle.
+Bei jedem Warmstart kann der CCP vom RAM / ROM nachgeladen werden.
+Eine ROM-Abschaltung ist unbedingt notwendig. Das CP/M wird durch
+den Urlader LADER5 fuer 1 Laufwerk automatisch nach dem Reset von
+einer Systemdiskette geladen. Das BIOS kann auch von einer Kassette
+geladen und ab 100H gestartet werden.
+
+Voraussetzungen :
+-----------------
+
+- 64 k Hauptspeicher
+- Tastaturplatine nach MP 7/88
+- ROM - Abschaltung
+
+Bedienung :
+-----------
+
+Alle Handlungen sind äquivalent zum CP/M 2.0 . Bis zu 4 RAM - Floppy's
+werden als LW A und/oder bis 4 RAF - Floppy's (8 Mbyte) als LW G
+eingebunden. 
+Die Laufwerke B..E entsprechen den verschiedenen Diskettenformaten.
+Die eingebundene Hardware wird nach dem Systemstart angezeigt.
+Wenn das System fuer nicht vorhandene Hardware konfiguriert wurde,
+kann es zum Abbruch des Systems (WAIT) kommen, weil die entsprechende
+Hardware nicht gefunden wurde.
+
+2. Hardwaremodifikationen durch das BIOS
+----------------------------------------
+
+- CP/A COMPATIBEL
+- SCP  COMPATIBEL 
+Laufwerkstypen
+---------------
+- 1.2 LAUFWERK
+- 1.4 LAUFWERK EINSEITIG  (1*80)
+- 1.4 LAUFWERK ZWEISEITIG (2*40)
+- 1.6 LAUFWERK
+- 2-TE PHYSISCHE 1.6 er FLOPPY  * in Arbeit *
+Floppy Disk Controller  U8272D
+------------------------------
+- SCHNEIDER-KARTE
+- KRAMER-SCHALT.
+- VOLLER FEHLERTEST DES FDC
+Tastaturvarianten
+-----------------
+- TASTATUR K7659
+- TASTATUR K7652
+- TASTATUR K7669
+- TASTATUR 12KE080B
+- TASTATUR RAINER DAVID   
+- PHILIPS-TASTATUR 102 TASTEN
+STRINGFELD VARIANTEN
+--------------------
+- STRINGFELD FUER K7659
+- MINIMALE TASTENBELEGUNG
+- TP BELEGUNG  
+USER PORT / PIO-KARTE FUER DRUCKERTREIBER  
+-----------------------------------------
+- CENTRONICS-ANSCHLUSS
+- V 24 PIO-MODUL 
+- V 24 UBER USERPORT
+BILDSCHIRMKARTEN (32x32,64x16,80x24 K1520,80x25 yA7220/U 82720)
+------------------------------------------------------------------
+- K 1520 BILDSCHIRMKARTE   BC 5120
+- 80 ZEICHEN BILDSCHIRM MIT GDC-KARTE
+- Z1013 64*16 BILDSCHIRM
+- VIS 3 A (1020x1024 PUNKTE) * in Arbeit *   
+RAM FLOPPY'S a 256KB
+--------------------
+- EINE RAM-FLOPPY NACH MP 3/88
+- 2 RAM-FLOPPY-KARTEN NACH MP 3/88
+- 3 RAM-FLOPPY-KARTEN
+- RB-SPEZIAL-RAM-FLOPPY (3 Floppys)
+- 4 RAM-FLOPPY-KARTEN
+- BIS 4   K 1520-RAF-FLOPPY a 2 MBYTE 
+MAUSTREIBER FUER EINE PARALLELMAUS
+----------------------------------
+- MAUS UEBER USER-PORT 0  
+UHRTREIBER MIT EINER CTC ODER DEM RTC 72421 A 
+---------------------------------------------
+- UHR ]BER EINE CTC
+- UHR ]BER RTC 72421 A  
+- UHR ]BER RTC 72421 A MIT  DATUMSAUSGABE
+ANFANGSLADE UND VERSCHIEBEROUTINE
+---------------------------------
+- WENN CP/M VON KASSETTE GELADEN WIRD   
+CCP-COPIE  
+---------
+- OHNE CCP-COPIE (SOLLTE NICHT VERWENDET WERDEN)
+- CCP-COPIE IM HAUPTSPEICHER
+- CCP-COPIE IM ANFANGSLADEROM
+- ]BERPR]FUNG DES LADENS DES CCP
+
+Weitere Hardware kann angepasst werden. Das Austesten der Soft -
+ware kann aber nur bei vorliegender Hardware erfolgen. Weiterhin
+kann beim Nutzer vorhandene Software z.B. S3004 .. , mit in das
+entsprechende CP/M eingebunden werden. In solch einem Fall bitte
+eine Diskette ( 800 Kb ) Formatiert an den Verfasser oder den
+CC Cottbus mit Angabe der eigenen Hardware schicken. Der Programm -
+austausch sollte nur auf der Basis von Disketten erfolgen, da
+dies eine schnellere Bearbeitung zulaesst.
+
+Die Automatische Formaterkennung wird ersteinmal nicht weiter
+bearbeitet, da sich das wechseln der verschiedenen Disketten -
+formate ohne Warmstart als guenstiger und weniger Zeitaufwendig 
+erwiesen hat.
+
+3. Programmaustausch
+--------------------
+
+Der Austausch von Programmen durch den CC Cottbus erfolgt auf
+der Basis von Disketten. Das Betriebssystem und Programme
+werden NUR gegen einen ausrechend frankierten Rueckumschlag
+und eine Bearbeitungsgebuehr von 2,- DM in Briefmarken 
+schickt. Weitere Aufwendungen werden nicht erhoben ! Beim
+gegenseitigen Austausch von Programmen entfaellt auch die
+Bearbeitungsgebuehr.
+Sollten Fragen entstehen, kann eine Nachfrage (mit frankierten
+Rueckumschlag) erfolgen.    
+
+			   Viel Spasz beim Arbeiten !!
+
+
+CC Cottbus 				Carsten Dellori
+Rainer David				Finsterwalder str 27b
+Dostojewski str. 13			O-7500  Cottbus
+O-7513 Cottbus
+  
+*********************************Tagungskassette Jena'91******************** zu

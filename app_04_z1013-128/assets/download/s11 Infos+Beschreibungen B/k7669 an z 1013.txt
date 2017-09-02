@@ -1,0 +1,186 @@
+
+    /-------/  Lothar Maul
+   / *ACMT*/   Vorwerksgasse 15
+  /-------/    Tiefenort
+ / 9.89  / 
+/-------/      6215
+
+
+*******************************
+* Tastatur K 7669 an Z 1013 RB*
+*******************************
+
+
+
+Schaltung: Z-1013-Tastatur mit  Raffinessen von Rainer Brosig
+           (MP 88/7 S.215)
+Eine einfachere Variante der    Tastaturleiterplatte ist in der
+praktic 3/89 Seite 137 zu finden
+Verwendet wurde fuer den EPROM  das Prog. E..MON.2.028 K7659
+im  Prog. E..MON.2.028 K7669*   ist die geaenderte 
+Tastenbelegungstabelle unserer  Variante enthalten.
+
+Hardwareanpassung an unseren Z 1013 wurde von
+
+Olaf Fischer
+H.Beimlerstr. 3
+Weimar
+5300
+
+durchgefuert.
+Anfragen dazu an obige Adresse.
+
+
+Die akuelle Anordnung meiner Tastatur:
+ 
+20 Funktions-Tasten ueber der Tastatur!
+
+Sie sind ueber die Spalten 8..11 angeschlossen.
+Taster 1..4 liegen ueber dem Umschalter(59) an Zeile 0 oder 1
+Taster 5..8 liegen ueber den Ausschalter(56) an Zeile 2
+Damit sind die Funktionen 1,2,3,4,5,6 abschaltbar!
+Es koennen damit die Funkt.und Steuerzeichen erzeugt werden.
+
+Ta:Zeil,Spal:1./2.Code:Funkt(o) Ta:Z,Sp:1.:2.:Funkt.(m.Steuerz.
+_______________________________________________________________
+.1:0, 8:00:00:SCREEN COPY       .3:0,10:1D:1D:NORM DRUCK
+.2:0, 9:00:00:HARD COPY         .4:0,11:1C:1C:FETT DRUCK 
+                                 1:1, 8:11:1F:
+                                 2:1, 9:7F:02:
+                                 3:1,10:05:1D:
+                                 4:1,11:01:1C:       FETT DRUCK
+a5:2, 8:00:00:RST 38             9:3, 9:06:1E:TAB(Dum)/NL(S1000
+a6:2, 9:00:00:J 100             10:3,10:17:17:
+a7:2,10:00:00:J 200             11:3,11:15:0F:RUN(Basic)
+a8:2,11:00:00:J 300             12:4, 9:04:04:
+                                13:4,10:F9:88:(Grafigzeichen)
+                                14:4,11:14:13:LIST(Basic)
+                                15:5, 9:0E:0E:
+                                16:5,10:FA:99:(Grafigzeichen)
+                                17:5,11:0C:0C:CLS
+                                __:6, 8:00:00:____frei___=
+                                18:6, 9:16:16:
+                                19:6,10:FB:C0:(Grafigzeichen)
+                                20:6,11:1E:1E:
+21:7, 8:00:00:BEEP              22:7,10:1A:1A:
+23:7, 9:00:00:ESCAPE            24:7,11:B2:C8:(Grafigzeichen)
+
+______________________________________________________________
+
+        T A S T A T U R
+        ________________
+______________________________________________________________
+[ ! ^ ! ! ! " ! ` ! $ ! % ! & ! / ! ( ! ) ! = ! + !   ! ' !E/A
+{ ! ~ ! 1 ! 2 ! 3 ! 4 ! 5 ! 6 ! 7 ! 8 ! 9 ! 0 ! - ! _ ! # !SLOW
+_______________________________________________________________
+] !Shift!   !   !   !   !   !   !   !   !   !   !(H)! * !STOP
+} !LOCK ! Q ! W ! E ! R ! T ! Z ! U ! I ! O ! P !(H)! : !STOP 
+______________________________________________________________ 
+| ! CTRL !   !   !   !   !   !   !   !   !   !(L)!(T)!(R)!ENT
+\ ! CTRL ! A ! S ! D ! F ! G ! H ! J ! K ! L !(L)!(T)!(R)!ENT
+_________________________________________________________!ENT_
+@ ! Shift !   !   !   !   !   !   !   ! < ! > ! ? !Shift !ENT
+@ ! Shift ! Y ! X ! C ! V ! B ! N ! M ! , ! . ! ; !Shift !ENT
+______________________________________________________________
+            DEL         SPACE         INS
+          CRSRanf.                   CRSRend.
+-----------------------------------------------------------
+
+                    
+Der Anschluss an die Tastatur
+____________________________
+
+ueber die Steckverbindung:   X01 an die Tastaturleiterplatte
+und an die Verteilung der Sondertasten.
+
+Tastatur: Leiterpl. zus.Tasten
+
+
+Lpl. X01         Tasten         .
+_______________________________
+A1 --A1                                  Spalte  0
+           
+A2 --A2                                  Spalte  	
+						 1   
+A3 --A3                                  Spalte  2
+
+A4 --A4                                  Spalte  3
+
+A5 --A5                                  Spalte  4
+
+A6 --A6                                  Spalte  5
+
+A7 --A7                                  Spalte  6
+
+     A8---(49.1)-+./.+./.+./.+./         Zeile   0
+     :  Umschalt + 1 + 2 + 3 + 4
+     A9---(49.2)-+./.+./.+./.+./         Zeile   1
+                 +   +   +   +  
+        Aussch.  + 5 + 6 + 7 + 8
+     A10--(56)---+./.+./.+./.+./         Zeile   2 
+  :--A11                                 Spalte  8
+A9:--A12++++++++++   +   +   +           Spalte  8
+  :--A13         +   +   +   +           Spalte  8
+B1---B1          +   +   +   +           5P
+     B2          +   +   +   +           LED(ShiftL)
+B3---B3          +   +   +   +           Zeile   0
+B4---B4          +   +   +   +           Zeile   1
+B5---B5          +   + 9 +10 +11         Zeile   2
+B6---B6----------+---+./.+./.+./         Zeile   3
+                 +   +12 +13 +14
+B7---B7----------+---+./.+./.+./         Zeile   4
+                 +   +15 +16 +17
+B8---B8----------+---+./.+./.+./         Zeile   5
+                 +   +18 +19 +20
+B9---B9----------+---+./.+./.+./         Zeile   6
+                 +21 +22 +23 +24
+B10--B10---------+./.+./.+./.+./         Zeile   7
+A7:--B11             +   +   +           Spalte  7
+  :--B12             +   +   +           Spalte  7
+     B13             +   +   +           LED(Status
+A10+++++++++++++++++++   +   +           Spalte  9
+A11+++++++++++++++++++++++   +           Spalte 10
+A12+++++++++++++++++++++++++++           Spalte 11
+ 
+
+
+
+
+
+
+
+
+      Tastenbelegungstabelle
+
+
+ # Aadr: F9EC Eadr: FAAB  
+   
+F9EC 31 51 41 59 32 57 53 58 250
+F9F4 33 45 44 43 34 52 46 56 221
+F9FC 35 54 47 42 36 5A 48 4E 238
+FA04 37 55 4A 4D 38 49 4B 2C 21B
+FA0C 39 4F 4C 2E 30 50 08 3B 1C5
+FA14 2D 0B 0A 03 5F 3A 09 7E 165
+FA1C 23 00 10 12 5B 5D 0D 20 12A
+FA24 00 00 00 00 00 00 00 00 000
+FA2C 00 11 00 40 00 5C 00 00 0AD
+FA34 00 7E 00 06 04 0E 16 1B 0C7
+FA3C 1D 05 00 17 F9 FA FB 1A 341
+FA44 1C 01 00 15 14 0C 1E B2 122
+FA4C 21 71 61 79 22 77 73 78 2F0
+FA54 60 65 64 63 24 72 66 76 2FE
+FA5C 25 74 67 62 26 7A 68 6E 2D8
+FA64 2F 75 6A 6D 28 69 6B 3C 2B3
+FA6C 29 6F 6C 3E 3D 70 08 3F 236
+FA74 2B 0B 0A 03 7F 2A 09 5E 153
+FA7C 27 00 19 18 7B 7D 0D 20 17D
+FA84 00 00 00 00 00 00 00 00 000
+FA8C 00 1F 00 40 00 7C 00 00 0DB
+FA94 00 02 00 1E 04 0E 16 1B 063
+FA9C 1D 1D 00 17 88 99 C0 1A 24C
+FAA4 1C 1C 00 0F 13 0C 1E C8 14C
+
+
+
+ 
+--

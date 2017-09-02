@@ -1,0 +1,261 @@
+	PN	K6325
+
+;Druckertreiber CENTRONICS fuer Z1013
+
+;V.Pohlers,Nov. 1989/Jul. 1990/Jan. 1991
+
+
+ARG1:	EQU	0001BH
+TAB:	EQU	0E000H
+
+NL:	EQU	1EH
+CR:	EQU	0DH
+LF:	EQU	0AH
+ESC:	EQU	27
+
+	ORG	0E800H
+
+JMP	DRINI	;Treiber init.
+JMP	DRZEL	;Druck (ARG1)
+JMP	DRAKK	;log. Treiber
+JMP	ZEIDR	;phys. Treiber
+JMP	BSDR	;Bildschirmdruck
+JMP	HARDC	;Hardcopytreiber
+JMP	INIT	;Treiber einbinden
+
+MINTR:	DB	0
+INTAB:	DA	INTS	;INT-Tabelle, gerade Adr!
+MODUS:	DB	0
+
+;Bildschirmkopie
+;
+MBSDR:	PUSH	DE
+	PUSH	HL
+	LD	HL,0EC00H	;Bildschirmadr.
+	LD	DE,0
+	LD	A,CR
+	CALL	ZEIDR
+MBSD1:	LD	A,M
+	CMP	0FFH		;Cursor erreicht?
+	JRZ	MBSD2-#
+	CMP	80H
+	JRC	MBSD3-#
+	LD	A,'*'
+MBSD3:	CALL	ZEIDR
+	INC	HL
+	INC	E
+	LD	A,E
+	CMP	20H
+	JRNZ	MBSD1-#
+	LD	E,0
+	LD	A,CR
+	CALL	ZEIDR
+	LD	A,LF
+	CALL	ZEIDR
+	INC	D
+	LD	A,D
+	CMP	20H
+	JRNZ	MBSD1-#
+MBSD2:	POP	HL
+	POP	DE
+	XOR	A
+	RET
+;
+DRINI:	LD	A,(ARG1)
+	AND	1
+	LD	(MODUS),A
+;
+	LD	HL,INLST
+	CALL	LSTOT
+	RET
+;
+INLST:	DB	7	;Anzahl
+	DB	ESC
+	DB	'@'
+	DB	ESC
+	DB	'8'	;PE aus
+	DB	ESC
+	DB	'l'
+	DB	8	;linker Rand
+
+DRZEL:	PUSH	AF
+	LD	A,(ARG1)
+	CALL	DRAKK
+	POP	AF
+	RET
+
+DRAKK:	PUSH	AF
+	LD	A,(MODUS)
+	OR	A
+	JRZ	DRAK2-#
+	POP	AF
+	PUSH	AF
+	CMP	80H
+	JRNC	GZEDR-#	;wenn Grafikzeichen
+DRAK2:	POP	AF
+	PUSH	AF
+	CMP	NL	;NL --> CRLF
+	JRNZ	DRAK1-#
+	LD	A,CR
+	CALL	ZEIDR
+	LD	A,LF
+DRAK1:	CALL	ZEIDR
+	POP	AF
+	RET
+
+LSTOT:	LD	B,M	;<HL>-Liste
+LST1:	INC	HL
+	LD	A,M
+	CALL	ZEIDR
+	DJNZ	LST1-#	;<B> mal
+	RET
+
+ZEIDR:	PUSH	AF
+	DI
+	LD	A,I
+	LD	(MINTR),A	;retten I-Register
+	LD	A,0FH	;PIO - Mode 0
+	OUT	1
+	LD	A,16H	;L(INTAB)
+	OUT	1
+	LD	A,83H	;INT ein
+	OUT	1
+	LD	A,0E8H	;H(INTAB)
+	LD	I,A
+;
+	POP	AF
+	OUT	0	;ausgeben
+	SCF
+	EI
+ZEID1:	JRC	ZEID1-#
+	LD	A,(MINTR)
+	LD	I,A
+	RET
+;
+INTS:	DI
+	OR	A	;Cy=0
+	RETI
+;
+;***
+;
+GZEDR:	LD	C,A
+	PUSH	BC
+	LD	HL,LTX1
+	CALL	LSTOT	;Stringausgabe
+	POP	BC
+	CALL	LOZ1
+	POP	AF
+	RET
+
+LOZ1:	LD	HL,TAB	;Zeichentabelle
+	LD	B,0
+	SLA	C	;C=Zeichen
+	RL	B
+	SLA	C
+	RL	B
+	SLA	C
+	RL	B	;BC:=BC*8
+	ADD	HL,BC	;Beginn Code
+	LD	B,8
+LOZ2:	LD	A,M
+	PUSH	HL
+	CALL	ZEIDR	;Ausgabe
+	POP	HL
+	INC	HL
+	DJNZ	LOZ2-#
+	RET
+;
+LTX1:	DB	5	;Anzahl
+	DB	27
+	DB	'*'
+	DB	4
+	DA	8	;8x Grafikdaten
+;
+;
+BSDR:	LD	A,(MODUS)
+	OR	A
+	JPZ	MBSDR	;zum Monitor
+
+	PUSH	HL	;sonst Grafikdruck
+	LD	HL,LTX2	;Grafik anmelden
+	CALL	LSTOT
+	LD	B,32	;Zeilenanzahl
+	LD	HL,0EC00H
+PRN4:	PUSH	BC
+	PUSH	HL
+	LD	HL,LTX3	;neue Zeile
+	CALL	LSTOT
+	POP	HL
+	LD	B,32	;Spaltenanzahl
+PRN3:	PUSH	BC
+	PUSH	HL
+	LD	C,M
+	CALL	LOZ1
+	POP	HL
+	POP	BC
+	INC	HL
+	DJNZ	PRN3-#
+	PUSH	HL
+	LD	HL,LTX4	;Zeilenende
+	CALL	LSTOT
+	POP	HL
+	POP	BC
+	DJNZ	PRN4-#
+	LD	HL,LTX5
+	CALL	LSTOT
+	POP	HL
+	XOR	A
+	RET
+;
+LTX2:	DB	5	;Anzahl
+	DB	CR
+	DB	LF
+	DB	ESC
+	DB	'A'	;Zeilenabstand
+	DB	8	;8/72-Zoll
+
+LTX3:	DB	9	;Anzahl
+	DB	'    '	
+	DB	ESC
+	DB	'*'	;Grafikmode
+	DB	5
+	DA	256	;256 Zeichen
+
+LTX4:	DB	2	;Anzahl
+	DB	CR
+	DB	LF
+
+LTX5:	DB	4	;Anzahl
+	DB	ESC
+	DB	'2'	;Zeilenabstand 1/6-Zoll
+	DB	CR
+	DB	LF
+;
+HARDC:	RET
+;
+INIT:	IN	4
+	AND	0F0H
+	PUSH	AF
+	OR	06H
+	OUT	4	;WRenable f}r F800H..FFFFH
+;
+	LD	HL,ZEIDR
+	LD	(0FFCBH),HL
+	LD	HL,DRINI
+	LD	(0FFCEH),HL
+	LD	HL,DRZEL
+	LD	(0FFE0H),HL
+	LD	HL,HARDC
+	LD	(0FFE3H),HL
+	LD	HL,BSDR
+	LD	(0FFE6H),HL
+	LD	HL,DRAKK
+	LD	(0FFE9H),HL
+;
+	POP	AF
+	OUT	4
+	RST	38H
+;
+PEND:	EQU	#
+
+END

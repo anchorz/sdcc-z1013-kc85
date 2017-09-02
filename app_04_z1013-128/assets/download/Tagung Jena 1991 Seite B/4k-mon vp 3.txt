@@ -1,0 +1,121 @@
+***************************************************************
+*                  4K-Monitor VP Version 3                    *
+***************************************************************
+
+
+
+
+Standort:  0F000H-0FFFFH
+
+
+Der Monitor VP entstand aus dem bekannten und verbreiteten
+Brosig-Monitor. Er verf}gt }ber dessen Funktionen, wobei Fehler
+entfernt wurden und einige Routinen hinzukamen.
+Hier werden also nur die Besonderheiten bzw. Unterschiede be-
+schrieben:
+
+
+1. Zum HEADERSAVE/LOAD
+
+Es wurde die M|glichkeit des Einlesens von Nicht-Header-Program-
+men durch das Kommando @LA entfernt. Dadurch ist eine einheit-
+liche Behandlung der LORUF-Routine garantiert.
+Au~erdem erfolgt beim Aufruf der Routinen LORUF/SARUF }ber den
+Sprungverteiler oder direkt durch @L/@S ein Abfrage
+
+            Cassette or Disk:
+
+Es mu~ mit C oder D geantwortet werden. Dann geht es wie }blich
+weiter. Bei Antwort mit D wird das HEADERDISK45 ab der Adresse
+0D800H verwendet, welches nat}rlich geladen und initialisiert
+sein mu~.
+Damit ist es m|glich geworden, aus allen Programmen wie BASIC,
+PASCAL o. Assembler heraus die Programme von der RAM-Disk direkt
+zu laden oder sie dorthin zu schreiben.
+
+
+2. Tastatur
+
+In meinem Monitor stehen die Tastaturtabellen f}r eine K7659.
+Hier wurden einige wenige Sondertasten umgelegt, so da~ jetzt
+alle ASCII-Zeichen }bergeben werden k|nnen. Das wichtigste ist
+jedoch eine Erweiterung der Funktionstasten: Durch die Taste
+in der obersten Reihe }ber "2" und "3" wird eine neue 'SHIFT'-
+Ebene erreicht. Die Benutzung erfolgt aber wie bei der SCND-
+Taste eines Taschenrechners:  E R S T diese Taste dr}cken und
+wieder loslassen, D A N N  die n{chste Taste dr}cken. Als zweite
+Taste kommen nur die Ziffern 1 bis 6 in Betracht (alle anderen
+Zeichen werden }bergangen) und bewirken folgendes:
+
+     SCND 1 - Bildschirmformat 32x32
+     SCND 2 - Bildschirmformat 64x16
+     SCND 3 - Taktfrequenz 2 Mhz
+     SCND 4 - Taktfrequenz 4 Mhz
+     SCND 5 - Standartzeichensatz
+     SCND 6 - Zeichensatz 2
+
+Ein Benutzen dieser Tastenkombinationen ist nur sinnvoll, wenn
+die Hardware um die 64x16-Schaltung von Peters erweitert wurde.
+Ein evtl. eingebauter Schreibschutz f}r die RAM-Bereiche von
+0F000H bis 0FFFFH wird bei Verwendung obiger Tasten jedesmal
+zur}ckgesetzt. Damit bleibt bei RAM-Versionen der Monitor stets
+vor ]berschreiben gesch}tzt (n}tzlich bei Verwendung eines Ur-
+laders).
+
+Leider war der Speicher im Monitor ziemlich knapp, so da~ die
+Tastaturstringtabelle nur noch die Kommandos HLOAD und HSAVE
+enth{lt. Aber eine solche Tabelle ist ja von au~en leicht einzu-
+binden.
+
+
+4. Zum Drucker
+
+Da st{ndig ben|tigt, wurde ein Druckertreiber CENTRONICS mit
+eingebunden. Zur Hardware siehe Textfile "CENTRONICS-Drucker-
+treiber fuer Z1013". Er wird }ber das Monitorkommando  @I ini-
+tialisiert. Auf das Kommando @D konnte verzichtet werden.
+F}r eine Bildschirmkopieroutine war ebenfalls kein Platz mehr;
+wird eine solche ben|tigt, sollte der Druckertreiber CENTRO G
+nachgeladen werden. Beim Druck auf die Bildschirmkopie-Taste
+wird n{mlich ein Sprung zur Adresse 0E80CH ausgef}hrt. Hier
+kann dann auch ein Graphikausdruck erfolgen. Beide Programme
+vertragen sich recht gut; am besten ist es jedoch, wenn der
+Monitor im RAM steht und so leicht ge{ndert werden kann: Beim
+Initialisieren von CENTRO G werden die Sprungverteileradressen
+zum eigenen Sprungverteiler hin umgelenkt, um keine Komplikati-
+onen aufkommen zu lassen.
+
+
+5. Joystickeinbindung
+
+Im Brosigmonitor ist eine Joystickroutine f}r die Hardware nach
+'practic 1/88' enthalten. Diese nutzend, wurde eine kurze Rou-
+tine geschrieben, die die Nutzung des linken Joysticks parallel
+zu den Tasten zur Cursorsteuerung und zu SPACE erm|glicht. Viele
+Spiele sind damit ohne [nderung mit dem Joystick nutzbar.
+Leider sind Joystick- und Druckerhardware beide f}r den USER-
+PORT 0 bestimmt. Deshalb kann nur mit einem von beiden gearbei-
+tet werden. Ist ein Joystickmodul angeschlossen, mu~ dieses mit
+@I 1 initialisiert werden. Mit jedem Monitorreset geht diese Zu-
+ordnung verloren und mu~ wiederholt werden.
+Wenn nur ein Joystick genutzt werden soll, kann er auch direkt
+an das USER-Port angeschlossen werden:
+
+
+USER-Port                           9pol. Joystickbuchse
+
++5V (A1) -------------------------------- +5V    (7)
+A0  (A4) -------------------------------- LEFT   (3)
+A1  (B4) -------------------------------- RIGHT  (4)
+A2  (C4) -------------------------------- DOWN   (2)
+A3  (A3) -------------------------------- UP     (1)
+A4  (B3) -------------------------------- Taste  (6)
+0V  (A5) -------------------------------- 0V     (8)
+
+Bei einem solchen Anschlu~ k|nnen westliche Joysticks ohne [n-
+derungen genutzt werden. Eventuell ist es bei einigen Typen
+n|tig, die Leitungen A0..A4 am Z1013 mit 10k-Widerst{nden gegen
++5V abzublocken.
+
+Volker Pohlers, Lomonossowallee 41/81, O-2200 Greifswald
+20.3.1991

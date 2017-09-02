@@ -1,0 +1,81 @@
+    B E S C H R E I B U N G     
+    -----------------------     
+      M  O  N  L  I  S  T       
+      -------------------       
+
+PROGRAMMSTANDORT : 8000H...85FFH
+           START : 8000H
+            oder : 0100H...06FFH
+           START : 0100H
+
+Das Programm MONLIST wurde ge-
+schrieben um in einem gegebenen
+Maschinenprogramm saemtliche   
+Monitoraufrufe zu listen bzw.
+zu editieren . Das macht sich
+notwendig , wenn das Maschinen-
+programm Direktrufe in den
+Monitor ( CALL UP ) verwendet ,
+und dieses mit einem anderen    
+als dem "Standartmonitor" /2.02
+zusammenarbeiten soll . Aber    
+auch bei Verwendung von RST-    
+Aufrufen ist es oftmals von     
+Vorteil zu wissen , an welcher  
+Stelle sich Monitorrufe         
+befinden .
+
+Nach Start von MONLIST kann     
+das zu bearbeitende Programm    
+mittels "R" geladen werden .    
+Hierbei wird der HEADERSAVE     
+ueber Sprungverteiler aufge-    
+rufen(muss vorher geladen sein).
+Danach erfolgt mit "L" ein      
+listen der entsprechenden       
+Monitorrufe im Bereich von      
+FIRST bis LAST . Gleichzeitig   
+wird eine Tabelle der Rufe      
+angelegt (ab 8600H) . In dieser 
+Tabelle koennen bis zu 256      
+Rufe erfasst werden ( sonst     
+LIST-Bereich verkleinern).Sofern
+Ausschrift "KEINE MONITORRUFE"  
+erscheint bezieht sich diese    
+nur den gewaehlten Buchstaben   
+(R) , (A) oder (F) .            
+Verlischt der Cursor , so ist   
+des Suchen beendet . Es kann    
+mit ^C oder "M" oder ENTER      
+in das Menue zurueckgegangen    
+werden . Mit "E" kann nun       
+editiert werden . Diese Routine 
+bezieht sich auf das MEM-UP    
+des Monitors . Entsprechend     
+ist mit ";" abzuschliessen .    
+Mit "S" kann das Programm nur   
+gesichert werden , wenn es      
+vorher mit "R" geladen          
+und MONLIST zwischendurch       
+nicht verlassen wurde .         
+Andernfalls ist in den Monitor  
+des Z 1013 zu springen und      
+der HEADERSAVE von dort aufzu-  
+rufen .                         
+
+    VIEL SPASS MIT
+
+    M O N L I S T
+
+   Anfragen,Hinweise,Fehler
+   bitte an :
+
+      Holger  Tschirschky
+      Weinbergstrasse  19
+      R U D O L S T A D T
+             6 8 2 0
+
+
+
+----------END OF TEXT-----------
+

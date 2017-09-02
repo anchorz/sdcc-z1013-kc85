@@ -1,0 +1,425 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="The Z1013-Emulator Manual">
+   <meta name="keywords" content="MANUAL">
+   <meta name="resource-type" content="document">
+   <meta name="distribution" content="global">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; Linux 2.0.33 i586) [Netscape]">
+   <title>The Z1013-Emulator Manual</title>
+</head>
+<body LANG="EN">
+
+<h1>
+<a href="#0. Z1013 and Introduction">0. Z1013 and Introduction</a></h1>
+
+<ul>
+<h2>
+<a href="#0.1 First Steps & MainWindow">0.1 First Steps &amp; MainWindow</a></h2>
+</ul>
+
+<h1>
+<a href="#1. PopupMenu Z1013EMU">1. PopupMenu "Z1013EMU"</a></h1>
+
+<ul>
+<h2>
+<a href="#1.1 Load">1.1 Load</a></h2>
+
+<ul>
+<h3>
+<a href="#1.1.1">1.1.1 There is only a "Load" item</a></h3>
+</ul>
+
+<h2>
+<a href="#1.2 Keyboard">1.2 Keyboard</a></h2>
+
+<ul>
+<h3>
+<a href="#1.2.2 Save keyboard-layout">1.2.1 Save keyboard-layout</a></h3>
+
+<h3>
+<a href="#1.2.3 Load keyboard-layout">1.2.2 Load keyboard-layout</a></h3>
+</ul>
+
+<h2>
+<a href="#1.3 Performance">1.3 Performance</a></h2>
+
+<h2>
+<a href="#1.4 Debugger">1.4 Debugger</a></h2>
+
+<h2>
+<a href="#1.5 Toggle Bestmode ON/OFF">1.5 Toggle Bestmode ON/OFF</a></h2>
+
+<h2>
+<a href="#1.6 Load Status">1.6 Load Status</a></h2>
+
+<h2>
+<a href="#1.7 Save Status">1.7 Save Status</a></h2>
+
+<h2>
+<a href="#1.8 Quit">1.8 Quit</a></h2>
+<a href="screen.html">Appendix A Screenshots</a>
+<br><a href="file.html">Appendix B fileformats</a>
+<br><a href="command.html">Appendix C commandline options</a>
+<br><a href="faq.txt">Appendix D FAQ</a></ul>
+<a href="history.txt">History up to V1.33 99/09/07</a> by <a href="mailto:iagam@cluster.urz.uni-halle.de">Hobbes</a>
+<br>
+<hr WIDTH="100%">
+<h1>
+<a NAME="0. Z1013 and Introduction"></a>0. Z1013 and Introduction</h1>
+The intension to write this program was, I found some cassettes
+and have tried to sample the contents into computer.
+<br>I realized the quality of the recorded software was very bad
+and so I made algorithms that recognizes the incoming
+<br>digitized data and write the binaries to disk. What should I
+do with this living history?!......
+<br>Special thanks to <a href="http://www.cs.umd.edu/users/fms/">Marat
+Fayzullin</a> . His <a href="http://www.cs.umd.edu/users/fms/EMUL8/">portable
+Z80-prozessor</a> was used to build a portable Z1013 emulator.
+<p>I&acute;ve got my first Z1013 at the beginning of 1988. Together with
+a cassette recorder it cost about 1000,- M + 500,- M
+<br>(M means Mark - currency of GDR). A lot of money. The configuration
+was: 16KBytes RAM, 1KB (32x32 chars) ScreenMemory, 8x4 foil-keyboard, 
+HF-modulator and - a new feature - a 2 Mhz U880 (Z80) CPU.
+<br>Once you&acute;ve bought such thing, you need a power pack - 220V AC
+in - 12 V/3A AC out (take a transformer and good
+<br>luck). And after you have soldered the foil-keyboard onto the motherboard
+- turn on and much fun.
+<br>Next steps were:
+<br>Prepare the elastomer-keyboard (in reality there were 3 of telephon-keypads
+(3x4 matrix) - sold as a computer keyboard).
+<br>Take a deep look into my "Junost 402B" (Russian TV-Set) - figure out
+where is the video-composite signal and connect to computers video-signal. 
+Without an HF-modulator you get a better picture.
+<br>Pick up the soldering iron again and improve memory to incredible 64KBytes.
+<p>By the end of the year 1989 (before the German Wall fall) this
+computer had floppy-disks (up to 720K-CPM compatible drives or Commodore1541),
+it runs with 4MHz, with do-it-yourself- mices, giant 512KBytes ram, pixelgraphics
+and hundreds of different keyboards (mainly from typewriters). And most
+important: there where a lot of people developing software.
+<p>After the German Wall has fallen I&acute;ve&nbsp; bought a printer
+and a serious keyboard. Now my favourite computer was perfectly equiped - and should live no more then a year.
+<br>
+<h2>
+<a NAME="0.1 First Steps & MainWindow"></a>0.1 First Steps &amp; MainWindow</h2>
+When you start the emulator a window will be opend and it may looks like
+this:
+<br>
+<table BORDER WIDTH="500" HEIGHT="100" NOSAVE >
+<tr NOSAVE>
+<td HEIGHT="256" NOSAVE><img SRC="main_1.gif" height=282 width=266></td>
+
+<td><img SRC="main_2.gif" height=282 width=266></td>
+</tr>
+</table>
+
+<p>Two different fonts are included within the emulators package.
+<br>Now you can enter a command "<tt>D 300 400 </tt>&lt;Enter>" and
+look at screen.
+<table WIDTH="640" NOSAVE >
+<tr NOSAVE>
+<td WIDTH="266" NOSAVE><img SRC="display.gif" height=282 width=266></td>
+
+<td WIDTH="500" NOSAVE>You&acute;ve entered you first command. Another
+command is "<tt>T F000 EC00 400</tt>" - means Transfer 0x400 bytes from
+0xf000 to 0xec00.
+<br>To start a programm, just load <a href="#1.1 Load">load</a> and type
+something like "<tt>J 100</tt>" - 100 should be the starting address
+of the program you&acute;ve loaded.
+<br>For a detailed list of commands refer handbook - not included this
+package.</td>
+</tr>
+</table>
+
+<h1>
+<a NAME="1. PopupMenu Z1013EMU"></a>1. PopupMenu "Z1013EMU"</h1>
+<table BORDER WIDTH="640" NOSAVE >
+<tr NOSAVE>
+<td WIDTH="180" NOSAVE><img SRC="main_pop.gif" height=183 width=180></td>
+
+<td WIDTH="440" NOSAVE>The main-windows popup: It provides various functions
+to use the emulator in a more comfortable way.</td>
+</tr>
+</table>
+<br>
+<br>
+<h2>
+<a NAME="1.1 Load"></a>1.1 Load</h2>
+<img SRC="load.gif" height=226 width=450>
+<br>The first 7 colums show the contens of a Z1013-file. This information
+is stored in the 32 first byte of each .z80 program. The last colum shows
+the real disk-filename to you.
+<br>
+<table BORDER WIDTH="640" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><tt>TYP</tt></td>
+
+<td>theres no strict definition <a href="file.html#letter">what letters to use</a>. Most common are the
+following:
+<br>C - exeCutable( start it with command J [SAdr]
+<br>B - Basic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+M-Memorydump/Machinecode&nbsp;
+<br>D - (hex)Dump&nbsp; s- AssemblerSource</td>
+</tr>
+
+<tr>
+<td><font face="Courier New,Courier">...</font></td>
+
+<td>headermark used for cassette-interface to detect first block</td>
+</tr>
+
+<tr NOSAVE>
+<td WIDTH="10" NOSAVE><tt>Z1013 Filename</tt></td>
+
+<td>16-Bytes "all characters are possible" filename</td>
+</tr>
+
+<tr NOSAVE>
+<td WIDTH="30%" NOSAVE><tt>AAdr</tt></td>
+
+<td>first address in memory</td>
+</tr>
+
+<tr>
+<td><tt>EAdr</tt></td>
+
+<td>last address in memory</td>
+</tr>
+
+<tr>
+<td><tt>SAdr</tt></td>
+
+<td>address you need to start a executable with the "J" command</td>
+</tr>
+</table>
+Just left-click on the row and the file will be loaded between the addresses
+AAdr and EAdr. Be careful not clicking during a runnig program. See, if
+there is a running program and you load new machine-code whithin the running
+code - most time it results an unstable mutation.
+<br>But you can use this feature to load an Basic-program.
+<br>&nbsp;&nbsp; 1. &acute;Load&acute; KC-Basic ("<tt>KC-BASIC m+ 0100
+2Aff 0300 ..Duch kc_basic.z80</tt>"&nbsp; is the interpreter)
+<br>&nbsp;&nbsp; 2. type F8 or<tt> "J 300"</tt> to start the interpreter
+<br>&nbsp;&nbsp; 3. he asks for maximum ramsize - press enter
+<br>&nbsp;&nbsp; 4. after prompt OK> the basic interpreter is initialized
+<br>&nbsp;&nbsp; 5. now you can &acute;Load&acute; basic programs directly
+into the memory.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; But be carefuly ONLY basic-programs!
+And don&acute;t overwrite memory below 0x2BC0!
+<h3>
+<a NAME="1.1.1"></a>1.1.1
+There is only a "Load" item - How can I save something?</h3>
+The emulator patches the rom-code and hooks into the rom-codes&acute; save-subroutine.
+So if you call the monitors save command like this "<tt>@S 100 1000 100</tt>"
+, it will work. Even other programs that calls the monitors save-subroutine
+works fine. Note: if you see this message:
+<p><tt>w can't patch ROM-code @0xFD0E ( 21 0e 00) - wrong rom image?</tt>
+<br><tt>w saving is currently not available.</tt>
+<p>That means the emulator hasn&acute;t found these bytes at address and
+can&acute;t patch the rom-code. If you want to save, in such a case you
+should try the original monitor-rom "monitor.z80" i packed with.
+<p>The ROMcode will be patched for load-command too. So you can use <tt>@L
+... . </tt>Most time the hard - dump directly into the memory - method
+works fine. I think only pascal-compiler needs this type of load. If it&acute;s
+not possible to patch ROMcode a message raises:
+<p><tt>w can't patch ROM-code - wrong rom image?</tt>
+<br><tt>w loading is currently not available.</tt>
+<h2>
+<a NAME="1.2 Keyboard"></a>1.2 Keyboard</h2>
+Because it was such a gracious idea to sell a foile-keyboard with 8x4 matrix,
+many improvments have been introduced. Over all there are different types
+to adopt a keyboard:
+<ul>
+<li>
+keyboards compatible to original rom-code and matrix (lookup tables with
+EPROM, even expensive U880 (Z80) solutions )</li>
+
+<li>
+A2 - keyboard layout - some of the z1013 had been delivered with a 4KByte
+ROM, so you where able to switch between 8x8 matrix and 8x4 matrix, by
+setting a jumper</li>
+
+<li>
+R. Brosig came up with 8x12 electronical typewriter keyboard and 4k adopted
+rom-code, later G. Eisenkolb introduced a simple hardware solution conform
+with Brosig-ROM-code</li>
+
+<li>
+many others developed their own circuit soulutions</li>
+</ul>
+I will refer to the first three points. If you don&acute;t ask the 
+operating systems input function for a keyboard-input or have code like
+this "<tt>OUT column; IN row</tt>", it raises problems, because selected
+key&acute;s you try to catch(by colum/row) differ from 8x4 to 8x8 or 8x12
+matrix. Even on 8x12 keyboards there exists various layouts, depends on
+the typewriter it cames from.
+<p>When you open the keyboard window it looks like this:
+<br><img SRC="keyboard.gif" height=357 width=856>
+<p>These are the rows( 0..7 ) and colums ( 0..B ). If there are 2 key in
+one cell (up/down) upper means don&acute;t set shift key and lower this
+is a key together with shift. In column 7 there&acute;s only a shift key.
+Originally there was a control-key too, but at this moment there&acute;s
+no need. Because if you press e.g. CTRL-K it will be mapped to row0/column0
+and most of the CTRL-codes mapped to keys you don&acute;t need CTRL.
+<br>Keys marked with S0x... has a special function. They has been used
+in BASIC -Interpreter; if you press a key, sends a keycode above 0x7f the
+monitor-rom take a look into a additional function keytable and returns
+strings like <tt>GOTO</tt>, <tt>GOSUB </tt>... . I didn&acute;t matter
+these type of keys. If your keyboard can send keycodes >=0x80, it will
+work. If not, you don&acute;t miss it.
+<br>On a Z1013 8x12 keyboard there are real funktion keys F1 to F10. I&acute;ve
+tried to figure out what does they do:
+<ul>
+<li>
+F1&nbsp; graphics mode&nbsp;&nbsp;&nbsp; ; adds 0x80 to each keycode -
+so you can display chars with code >0x80</li>
+
+<li>
+F2&nbsp; shift-lock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+; similar to the keyboards shift-lock - it inverts the meaning of the shift
+key</li>
+
+<li>
+F3&nbsp; speed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+; switches between slow(original)keyboard-subroutine and fast Brosig-subroutine</li>
+
+<li>
+F4&nbsp; ?</li>
+
+<li>
+F5&nbsp; RST38H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+;- something like a esc-funktion - quit to monitor when ever a keyboard-funtion
+is called and this key is pressed, then manchine-code 0xff==RST38h will
+be executed (jumps to address 0x38)</li>
+
+<li>
+F6&nbsp; ?</li>
+
+<li>
+F7&nbsp; ?</li>
+
+<li>
+F8&nbsp; start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+; starts a loaded program - internal the monitor looks on cell 0xec if
+its an executable &acute;C&acute; then jump to [0xe4] (staring address
+in file header after load)</li>
+
+<li>
+F9&nbsp; HCopy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+; every char printed on screen will be tailed to printer </li>
+
+<li>
+F10 SCopy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+; make a screendump to printer </li>
+</ul>
+Cursor functions where realized with key-codes 0x08,&nbsp; 0x09,&nbsp;
+0x0a,&nbsp; 0x0b that is excatly the same as ^H ^I ^J ^K.&nbsp; &lt;Enter>
+is same as&nbsp; ^M.
+<p>F12 & F11 have special meanings.<br>
+F11: If save file <a href="file.html#save">&quot;z1013save.txt&quot;</a> is set, a block will be saved automatically.
+ Refer  <a href="file.html#save">save file mechanism.</a><br>
+F12: Outside U880(Z80)-CPU it sets instruction-pointer
+PC to 0xf000 - same as you press the reset key on the original computer.
+"ESC"key is mapped to code 0x3 (break). So it will if you press ESC you
+can break a basic program or quit a running program (escape from).
+<p>This is how the keyboard works. Every time you press a key it will be
+translated to row/colum with shift/no-shift.
+<p>In the emulator you can change your keyboard-layout. Most time the default
+layout "keyboard.z80" works fine, but for instance program "ghost.z80"
+needs the "oldkeys.z80"(see <a href="#1.2.3 Load keyboard-layout">load
+keyboard-layout</a>, if you want to change your layout).&nbsp; Another
+way to change the layout : just drag&amp;drop and <a href="#1.2.2 Save keyboard-layout">save
+keyboard-layout</a>.
+<br>In "oldkeys.z80" I&acute;ve changed only "&lt;-", "&lt;Space>", "->",
+"U" to match "cursor-left", "cursor-up", "cursor-right", "cursor-down".
+So most games should work.
+<br>
+<table WIDTH="640" NOSAVE >
+<tr NOSAVE>
+<td VALIGN=BOTTOM NOSAVE><img SRC="keyboard_pop.gif" BORDER=1 height=69 width=180></td>
+
+<td ALIGN=LEFT VALIGN=BASELINE NOSAVE>Lets see what brings "Z1013 Emu/keyboard
+control" popup</td>
+</tr>
+</table>
+
+<h3>
+<a NAME="1.2.2 Save keyboard-layout"></a>1.2.1 Save keyboard-layout</h3>
+Let take an example:
+<br><a NAME="Example"></a>If you start the program "wizard_of_danger.z80"
+you will see - Up/Down and &lt;ENTER>/&lt;SPACE> could be changed.
+<br>I think you should drag-drop from <tt>^M</tt> to <tt>&acute; &acute;
+</tt>and
+<tt>^J</tt>
+to <tt>^K. </tt>If you have changed your keyboard layout by drap&amp;drop
+and you think its a good choice. Save this example under system/ with filename
+wizard_keys.z80.
+<br>Next time you want to play "wizard_of_danger.z80" you have to <a href="#1.2.3 Load keyboard-layout">load
+this layout</a>.
+<h3>
+<a NAME="1.2.3 Load keyboard-layout"></a>1.2.2 Load keyboard-layout</h3>
+If you want to use a special keyboard-layout, with this options you can
+load it. See <a href="#Example">Example</a> at point Save keyboard-layout.
+To prevent to load a keyboard-layout every-time you change the running
+program, just edit the file <a href="file.html#z1013keys">z1013keys.txt</a>.
+<h2>
+<a NAME="1.3 Performance"></a>1.3 Performance</h2>
+<table COLS=2 WIDTH="100%" NOSAVE >
+<tr NOSAVE>
+<td ALIGN=CENTER VALIGN=CENTER WIDTH="280" NOSAVE><img SRC="perfwn.gif" height=139 width=280></td>
+
+<td>
+<table COLS=1 WIDTH="100%" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>current "MIPS" rate</td>
+</tr>
+
+<tr>
+<td>This emulator has the same performance than a 2,1 MHz Z1013 - based
+mainly on my subjective impression</td>
+</tr>
+
+<tr>
+<td>after each read cylce - 0 rounds to wait ; lower ist faster</td>
+</tr>
+
+<tr>
+<td>after each write cylce - wait 0 rounds ; lower is faster</td>
+</tr>
+
+<tr>
+<td>how many opcodes it has to pass, bevor a system-call will be processed
+; lower ist better - higher ist faster</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<h2>
+<a NAME="1.4 Debugger"></a>1.4 Debugger</h2>
+Breaks into runnig emulator. Sometime its very interesting for me, why
+a program not work or what does the program do. So you can use single-step
+debugger - figure out what key are used - patch your lives ....
+<h2>
+<a NAME="1.5 Toggle Bestmode ON/OFF"></a>1.5 Toggle Bestmode ON/OFF</h2>
+If window size multiplicator 1 or 2 (means 512x512 or 768x768 pixel) I've
+designed an anti-aliased font-set. It looks fine, so you want to
+use these fonts.
+<h2>
+<a NAME="1.6 Load Status"></a>1.6 Load Status</h2>
+Restores machine state from saved file "z1013emu_freeze.bin". 
+<h2>
+<a NAME="1.7 Save Status"></a>1.7 Save Status</h2>
+Writes the current emulator-state to disk into a file "z1013emu_freeze.bin".
+It writes all internal registers and a memory dump. If a special hardware
+is available, the hardware-state will be written too.
+<br>Next time you want to restore machine-state use emulator with <i>-st
+filename </i>option.
+<h2>
+<a NAME="1.8 Quit"></a>1.8 Quit</h2>
+Just leave the emulator. There&acute;s no data written to disk.
+<p><i><a href="mailto:iagam@cluster.urz.uni-halle.de">Hobbes</a> 99/09/07</i>
+</body>
+</html>

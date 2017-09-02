@@ -1,0 +1,64 @@
+*************************************************************
+* Hardwareangebot CC Jena      Version Tagung '91           *
+****************************************************MOE******
+
+Schaltnetzteil 5 V / 20 A     15,- DM
+Schaltnetzteil 5 V / 10 A     15,- DM
+Schaltnetzteil 5 V / 3,3 A mit zus{tzlichem galvan. getrenntem
+  Wechselstromausgang z.B. f}r -5 V Erzeugung        10,- DM
+Schaltnetzteil 5 V / 1 A und 12 V /1,2 A   Ausgang
+  f}r 110 V AC Eingang              10,- DM
+Analog geregeltes Netzteil ca. 50 W Pv, einstellbare Spannung
+  und elektron. Strombegrenzung mit 2 keram. Spindeleinstell-
+  reglern, geeignet f}r 5 - 30 V Ausgangsspannung   10,- DM
+
+K 1520-Einschub mit F}rungsschienen und 11-fach R}ckverdrahtung
+  (exakt passend f}r Z1013-Grundplatine, RAM-Floppy usw.)  20,-
+R}ckverdrahtung 5-fach best}ckt  K 1520-Buchsenl.   15,- DM
+-"-            11-fach best}ckt  K 1520-Buchsenl.   20,- DM"
+-"-      (DKL)  5-fach unbest. f}r   -"-            10,- DM 
+-"-     (NDKL)  5-fach unbest. f}r 3*2reih.+2*3reih.STV 15,- DM
+
+Alpha-Tastatur mit getr. Zifferneingabeblock, Anschl.-belegung,
+Flachbandkabel zum direkten Einstecken in entspr. SLOT's
+6*16 -Matrix, ungebraucht   8,- DM
+
+Zusatzplatine mit Power-on-Reset, V24 (RS 232), Joystickports,
+ RAM-Floppy-Zugriffsanzeige und Safe-Reset (Reset ohne Speicher-
+ fehler) NDKL          25,- DM
+E/A-Modul mit CTC und PIO mit 30V-Erzeugung zum Direktanschlu~
+ des Eprommers nach U. Hinz (IGD) zur Zeit-, Freqenz-, Perioden-
+ dauermessung, Impulsz{hlung, Uhrbetrieb u.a. bis max. halbe
+ Systemtaktfreqenz (hardwarem{~ig noch erweiterbar)  35,- DM
+FDC-Karte f}r LW 1.2 1.4 1.6 f}r max. 2 LW mit PLL-Schaltung,
+ U 8272 D04 als Controler, Einbindung in CP/M BIOS entsprechend
+ Ihrer Rechnerkonfiguration, mit Dok.                35,- DM
+GDC-(80)-Zeichen-Karte, steckbare Textgraphikkarte mit U 82720
+ 8k- Zeichengenerator, 2k-BWS UL6516, TTL-Ausgang, BAS-Ausgang
+ f}r 80*25 Zeichen-Bildschirm, softwarem{~ig auch auf andere
+ Bildschirmformate programmierbar, Einbindung in BIOS vorh.
+ mit Dok.   35,- DM
+Farbvollgraphik, die kaum noch W}nsche offenl{~t
+ wahlweise Best}ckung mit 16*4164 oder 41256, d.h. 1 bzw. 4 Mbit
+ Bildwiederholspeicher, 16 Farben und max. 1024*1024 Bildpunkte
+ Lichtstiftanschlu~, schneller Zooming, umfangreiches Software-
+ angebot, Einbindung in Basic und Turbo-Pascal, mit Dok., RGB-
+ Ausgang  35,-DM
+f}r die letzten drei DKL's sind auch die BE-Sets bei uns erh{lt-
+lich und auch best}ckte funktionst}chtige Baugruppen. Preise:
+GDC-Set mit yA 7220 (U 82720 4 MHz) 79.50 DM
+ best}ckt                          159,-  DM 
+FDC-SET mit U 8272 D04              67.90 DM
+-"-         -"-    S1               54.90 DM
+ best}ckt                          159,-  DM
+Farbvollgraphik-BE-SET  ohne Speicher 106.- DM
+16* U2164 S1 4 MHz gepr.               24.- DM
+16* U2164 D20/D25                      54,- DM
+16* 41256                              64,- DM
+ best}ckt                           + 100,- DM
+                              
+ Kontakt }ber:  Georg Franke
+                Buttelstedter Str. 12
+                Weimar
+             O - 5300                
+e Li

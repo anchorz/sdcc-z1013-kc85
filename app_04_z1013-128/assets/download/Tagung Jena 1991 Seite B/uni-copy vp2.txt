@@ -1,0 +1,163 @@
+***************************************************************
+*                                                             *
+*             Beschreibung U N I - C O P Y                    *
+*                Version vp2 und nanos 2                      *
+*                                                             *
+***************************************************************
+                                 (c) wlsoft 29.10.89
+                                     +vp-soft'91
+
+Das Programm dient dem schnellen Kopieren von Headersave-
+programmen zum Softwaretausch und Ordnen von Programmen. Da es
+im Gegensatz zu den bekannten Headermenueversionen nicht nur mit
+dem Hauptspeicher, sondern auch mit mindestens einer RAM-FLOPPY
+zusammenarbeitet, ist das gleichzeitige Einladen von max. 512
+KByte moeglich.
+
+ACHTUNG: Das Programm nutzt ausser der RAM-FLOPPY den gesamten
+         Hauptspeicher des Rechners.
+
+Bedingungen:
+------------
+
+  1.Hardware:  RAM-FLOPPY nach MP 3/88
+               oder eine nanos-RAM-Floppy
+
+  2.Software: -Die Blockroutinen des Headersave muessen ueber
+               den Sprungverteiler erreichbar sein.
+              -In dem Programm ist eine Headerdisk 45-Variante
+               enthalten.(Standort D800H-DFFFH)
+               Diese Headerdiskvariante ist nach dem Start von
+               Uni-Copy normal nutzbar.
+              -Unicopy nutzt die Headerdiskroutinen (!!! nicht
+               nur Sprungverteiler)
+
+Programmstandort: 0D000H - 0DFFFH
+Start:            0D000H
+Arbeitsbereich:   00E0H  - 0CFFFH
+
+Bedienung:
+----------
+
+Nach dem Start des Programms wird abgefragt, ob die FLOPPY
+geloescht werden soll. Da diese damit auch zugleich
+initialisiert wird, ist das bei dem ersten Start unbedingt
+notwendig. Anschliessend wird die Anzahl der nacheinander vom
+Magnetband zu ladenden Files abgefordert. Das Druecken von
+'ENTER' ueberspringt diese Funktionen ohne Aktivitaeten.
+
+Das Menue enthaelt 4 Teile:
+
+ -In der ersten Zeile wird st{ndig Laufwerk, Nr. des aktuellen
+  Files bzw. das aktuelle Kommando angezeigt.
+ 
+ -Im oberen Drittel wird staendig ein aktuelles Teildirektory
+  der Floppy erzeugt. Mit den Kursortasten ist ein Rollen des
+  Direktorys moeglich.
+  Der Kursor '>' zeigt auf das aktuelle File.
+
+ -Im 2.Drittel wird ein Hilfsmenue fuer alle moeglichen
+  Funktionen von Unicopy angezeigt.
+
+ -Im unteren Drittel ist ein Fenster installiert, in dem die
+  Kommandoeingabe bzw. der Dialog erfolgt.
+
+Kommandobeschreibung
+--------------------
+
+L - Load: Laden eines File's von Magnetband auf den naechsten
+          freien Platz der FLOPPY.
+          Dabei wird keine Namensabfrage o.ae. durchgefuehrt.
+
+S - Save: Schreiben des aktuellen File's von FLOPPY auf Magnet-
+          band.
+
+C - Copy: Es wird abgefragt, ob alle (A) oder nur die File's ab
+          Kursorposition kopiert werden sollen. Alle Files der
+          Floppy werden nacheinander als einzelne File's auf
+          Magnetband geschrieben.
+
+M - Move: Das aktuelle File wird auf die andere Diskette
+          kopiert.
+
+V - Veri: Vergleichen eines Files auf Magnetband auf ordnungs-
+          gemaesse Aufzeichnung.
+          Abbruch mit ^C bei Kopfblocksuche bzw. nach einer
+          Fehlermeldung moeglich.
+
+T - Type: Das aktuelle File wird im Kommandofenster in ASCII
+          angezeigt. Dabei wird keine Auswertung von Steuer-
+          zeichen vorgenommen.
+          ^C bricht diese Funktion ab, alle anderen Tasten
+          erzeugen die naechste Seite des File's.
+
+K - Kill: Das aktuelle File wird nach einer Sicherheitsabfrage
+          geloescht.
+
+J - Jump: Das aktuelle File wird auf den originalen Speicher-
+          bereich geladen, falls es sich nicht mit Uni-Copy
+          ueberschneidet. 
+          Ist das File vom Typ 'C', wird es gestartet. Eine
+          Rueckkehr nach Uni-Copy ist moeglich, wenn das MC-    
+          Programm mit einem RST 38-Ruf endet.
+          !!! Das Programm ist nicht gegen das Ueberschreiben
+              durch Anwenderprogramme gesichert.
+              Z.B. der Start von KC-Basic ohne Speicherbegren-
+              zung fuehrt zum Systemabsturz nach 'Bye'.
+
+O - sOrt: Das aktuelle File wird an den naechsten freien Platz
+          kopiert. Anschliessend wird es an der Kursorposition
+          geloescht. Durch diese Funktion ist das Umsortieren
+          von File's moeglich.
+
+A - Addr: Anzeige von Anfangs-, End- und Startadresse des
+          aktuellen File's.
+
+R - dRiv: Laufwerkswechsel
+
+N - New:  Es wird ein Neustart des Programms ausgefuehrt.
+
+D - Down: Der Kursor rueckt um 13 File nach unten.
+
+U - Up:   Der Kursor rueckt um 13 File nach oben.
+
+P - Prin: Das Inhaltsverzeichnis der Floppy wird auf den Drucker
+          ausgegeben.
+
+X - mal:  Die Zahl vor dem X gibt an, wie oft hintereinander
+          ein File automatisch gesavet wird. Das ist n}tzlich
+          f}r Sicherheitskopien. Die Anzahl wechselt zwischen 1
+          und 2 und ist auch beim Kommando COPY wirksam.
+
+^C:       Beenden von Unicopy.
+
+
+
+Im Original UNI-COPY 6.2+ waren noch folgende Fehler und wurden
+entfernt:
+  - Mit Save auf Kassette gebrachte Files konnte der Urlader
+    SURL5.0 nicht lesen; der Kopfblock hatte eine falsche
+    Adresse. 
+  - Der Pr}fsummencheck funktioniert so: Beim Laden mit LOAD
+    wird die Summe aller 16 Zeichen des Filenamens gebildet und
+    in 0E6/0E7H eingetragen. Die Summe aller Bytes des eigent-
+    lichen Files kommt in die Kopfblockzellen 0E8/0E9H.
+    Bei Routinen, die Files von der Disk holen, efolgt ein Test
+    der Filenamenpr}fsumme. Ist diese gleich, wird noch das
+    File selbst }berpr}ft.
+    Wird von anderen Programmen ein File ver{ndert und dabei der
+    Name beibehalten, so "erkennt" UNI-COPY einen "CRC-Error",
+    obwohl gar keiner entstanden ist.
+    Deshalb wird in der neuen Version ein "go Y/n?" erfragt. Mit
+    Eingabe von "Y" wird die Pr}fsumme korrigiert und es kann
+    weitergehen, jede andere Taste bricht das Kommando ab.
+    Dabei wird jedoch der ge{nderte Kopfblock nicht automatisch
+    auf die Disk zur}ckgeschrieben! Dies kann z.B. durch die
+    Kommandos SORT oder MOVE erfolgen.      
+
+
+
+
+Bernd Wilske, Kantstr.4, O-1552 Brieselang
+Volker Pohlers, Lomonossowallee 41/81, O-2200 Greifswald
+as M-Kommando des 

@@ -1,0 +1,402 @@
+             ***************************************
+             *                                     *
+             *     KC-BASIC+ fuer "Z 1 0 1 3"      *
+             *                                     *
+             ***************************************
+*************************** 10-K-BASIC-INTERPRETER ************
+
+Adressbereich  : 100H - 2AFFH         >CRC=0AFF<
+Startadresse   : 300H
+Restart        : 302H
+
+KC-BASIC+ m ist im CLOAD/CSAVE verbessert (keine ofizielle
+            Mitteilung an unsere IG, aber verbessertes Verhal-
+            ten - vor allem bei Rundfunk-Mischnitt - zu beobach-
+            ten.
+KC-BASIC+ m1 wurde noch 'verify'-Funktion bei Kommando 'LIST #'
+             ausgebessert. (Dr.Trog/CC-URANIA Berlin)  
+Der Interpreter meldet sich mit:
+
+HC-BASIC
+MEMORY SIZE?   :"ENTER" bzw. neues Speicherende
+
+Der im Programm enthaltene Speichertest prueft bis zur Adresse
+0E7FFH nichtzerstoerend; bei Bedarf kann der  Testabbruch  auf
+einer niedrigeren Adresse erfolgen (um z.B. den HEADER auf der
+Adresse 0E000H zu schuetzen). Dazu ist in die Zelle 0343H  des
+Interpreters der Highteil der gewuenschten Adresse einzutragen.
+z.B.:        alt      neu 
+     343H    E7H      E0H
+
+KOMMANDOS :
+==============================================================
+mit "/" gekennzeichnete Parameter koennen entfallen!
+AUTO /ZN ab/,ZN     Automatische Zeilennummerierung.Ohne
+                    Parameter 10,10
+                    Parameter : ab Zlnr.,Schrittweite
+                    Abbruch   : BREAK
+CLEAR /I,J          Loeschen aller Variablen
+                    Parameter : I Neureservierung Stringbereich
+                                J neues Speicherende
+DELETE ZN/,ZN bis   Loeschen Programmzeile bzw. von,bis
+LIST /ZN            Auflisten des Programmes ab niedrigster
+                    Zlnr. bzw. ab ZN.Es werden 10 Zeilen
+                    aufgelistet.Veraenderbar durch LINES N.
+                    Fortsetzung mit ENTER.
+LINES/N             Neuvereinbarung N-Zeilen bei LIST.
+                    Bleibt bis auf Wiederruf erhalten.
+RENUMBER /ZN ab/,ZN bis/,ZN 1/,SW
+                    Neunummerierung des Programmes.
+                    ab Zlnr.,bis Zlnr.,neue Zlnr,niedr. Schrw.
+                    Standard: Niedrigste,hoechste,niedr. =10
+EDIT/ZN             Editieren des Programmes ab ZN.Der Kursor
+                    steht am Zeilenende und kann zur fehler-
+                    haften Stelle gefuehrt werden.
+                    Abbruch : BREAK
+RUN/ZN              Loeschen aller Variablen und Starten des
+                    Programmes ab niedrigster oder ab ZN.
+                    Sollen Variablen erhalten bleiben,
+                    dann Start mit GOTO ZN.
+SAVE/LOAD/DRUCK/JOYSTICK   weiter unten zusammengefasst.
+BYE                 Verlassen des Interpreters.
+TRON                Trace-Modus.Bei Abarbeitung des Programmes
+                    werden die Zlnrn. mit ausgegeben.
+TROFF               Ausschalten des Trace-Modus.
+
+Jedes laufende Programm kann mit BREAK (03H) abgebr. werden.
+In diesem Fall erfolgt Meldung: BREAK AT Zlnr..
+
+- max. Zeilenlaenge 70 Zeichen.
+- mehrere Anweisungen durch Doppelpunkt getrennt.
+- Zahlenbereich : Festpunktzahlen sechsstellig + Vorzeichen
+                  Gleitpunktzahlen Mantisse wie Festpunktz.
+                                   Exponent max. +/- 38
+- Variablen   : Namen = 2 Stellen,erstes Zeichen ein Buchstabe
+                IF,OR,ON als Namen verboten.
+                num.Variable z.B. A1, AA ...
+                String       z.B. B$, U$ ...
+- Anweisungen ohne Zlnr. werden sofort ausgefuehrt.
+- Basic-Programme sind ab 2C00H abgelegt. Ende durch 00 00 00.
+- HSAVE speichert das Programm ab 2BC0H mittels Headersave ab,
+  der Ansprung erfolgt ueber Srungverteiler. (Typ B)
+
+
+ANWEISUNGEN
+==============================================================
+DATA N1/,N2/,N3 ... Bereitstellen von Daten fuer die READ-Anw.
+                    Zahlen oder Strings (Strings ohne "...")
+READ N/,N1...       Die in DATA bereitgestellten Daten werden
+                    der Reihe nach ausgelesen und dem entspr.
+                    Namen zugeordnet.Es koennen nicht mehr Da-
+                    ten gelesen werden als bereitstehen.
+RESTORE /ZN         Ruecksetzen des DATA-Zeigers auf erste 
+                    DATA-Zeile bzw. Zlnr. ZN.
+DIM N(I)/,N1(I,J,..) Dimensionieren von Indexvariablen.Menge
+                    beliebig.Auch Strings(dann Stringzeichen)
+                    Theoretisch 255 Dimensionen moeglich.
+PRINT N, N$ ,"N"    Statt PRINT ist auch " ? " moeglich.
+                    Ausdruck der folgenden Werte ab letzter
+                    Cursorposition. Variablen,Strings ("...")
+PRINT               ohne Ausdruck ergibt Leerzeile.
+PRINT AT (Z,S);...  Ausgabe auf ZEILE 0-31,SPALTE 0-31.
+                    Kursor bleibt aber auf Spaltenposition
+                    wird intern weitergezaehlt. Aufzaehlungen
+                    mit Kommas trennen!
+LET N=...           Wertzuweisung,kann entfallen.
+                    Additive Verknuepfung von Strings moeglich.
+DEF FNA(I)=...      Definieren einer Funktion mit dem Namen A
+                    und einer Variablen I.
+OUT P,I             Ausgabe eines Wertes I auf dem Port P.
+A=INP(P)            lesen Port P und der Variablen A zuweisen
+WAIT P,U/,X         Stop bis Wert von Port P kommt.Wert wird
+                    mit U UND-verknuepft.Wenn =0 dann weiter.
+                    X=Erstverknuepfungswert XOR (normal =0)
+WIDTH N             Laenge einer Ausgabezeile N Zeichen.
+NULL N              Anzahl N der DUMMY-Zeichen, die in eine
+                    Zeile gesetzt werden. (Wichtig bei LIST#)               
+A=POS(X)            aktuelle Cursorpos. wird in A uebergeben
+PAUSE/N             Ohne Variable Unterbrechung bis BREAK
+                    mit Variable Unterbr. fuer N/10 Sekunden.
+BEEP                Tonsignal auf TB-Buchse
+                    Tonhoehe kann mit POKE 110,X (0<=X<=255)
+                    veraendert werden.
+GOSUB ZN            Sprung in ein Unterprogramm ab ZN.
+                    Abschluss des Unterprogramms mit RETURN
+GOTO ZN             Unbedingter Sprung zu Zeile ZN.
+ON A GOTO ZN1/,ZN2..Verteilersprung.Es wird zur A-ten Zeile
+                    gesprungen.Ist A gleich oder grosser als
+                    ZN angegeben sind,so wird zur folgenden
+                    ZN gesprungen.
+IF...THEN.../ELSE ..Bedingte Anweisung.Statt THEN kann auch 
+                    GOTO stehen.ELSE kann entfallen.
+FOR I=A TO B/STEP C Laufanweisung.A=Anfangswert,B=Endwert
+                    C=Schrittweite.(Standard SW=1)
+NEXT/I/J            Ende einer Laufanweisung.Mehrere Schleifen
+                    koennen verschachtelt sein, duerfen sich
+                    aber nicht ueberlappen.
+WINDOW Z1,Z2,S1,S2  Fenster von Z1-Z2,S1-S2
+WINDOW              ohne Werte = volles Fenster
+CALL N              Aufruf Maschinenunterprogramm (Ende 0C9H)
+                    Ist N groesser 32767,dann N=N-65536
+                    Auch HEX-Werte moeglich.Bsp. CALL*37A0
+POKE A,N            Auf Adresse A wird der Wert N abgelegt.
+N=PEEK(A)           Der Wert von Speicherplatz A wird N.
+DOKE A,N            Auf Adresse A u. A+1 wird N abgelegt.
+N=DEEK(A)           Ab A werden 2 Bytes gelesen (NWT,HWT)
+A=JOYST(N)          Liefert Zahlenwert fuer Stellung des JOYST
+                    N (1 oder 2); Abfrage ueber Sprungvert.!
+CLS                 Bildschirm loeschen
+REM                 Kommentarzeile
+                    (Statt REM kann auch ! geschrieben werden)
+END                 Programmende.(wenn Unterprogr.folgen)
+STOP                Programmierter Abbruch (BREAK IN ZN)
+CONT                Fortsetzung des Programms nach STOP.
+N=FRE(A)            N erhaelt Anzahl der noch freien Speicher-
+                    plaetze. Klammerausdruck definiert
+                    Variablentyp z.B. PRINT FRE(A$) gibt Platz
+                    fuer Strings an.
+SPC(N)              Nach PRINT Ausgabe von N Leerzeichen.
+TAB(N)              Nach PRINT Ausgabe ab N-ter Spalte.
+INPUT"Text";N,N$,T6 Eingabe eines Wertes bzw.einer Zeichen-
+                    kette wird erwartet. (Abschluss mit ENTER)
+                    Es werden so viele Werte abgefragt, wie
+                    angegeben sind.
+                    Bei zu wenig Werten  : ??
+                        zu vielen        : EXTRA IGNORED
+                        unzulaessig      : REDO FROM START
+N$=INKEY$           Abfrage Tastatur bis Taste gedrueckt und
+                    danach N$ zugew. Programm haelt nicht an.
+
+STRINGVERARBEITUNG
+==============================================================
+ASC (X$)          liefert ASCII-Code des 1. Zeichens in X$
+CHR$ (I)          wandelt I in ASCII-Code um
+LEFT$ (X$,I)      liefert I Zeichen von links aus X$
+RIGHT (X$,I)      liefert I Zeichen von rechts aus X$
+MID$ (X$,I        liefert die Zeichen ab der i-ten Position
+                  ab X$
+STR$ (A)          wandelt den Zahlenwert von A in ein String
+VAL (X$)            "  X$ in eine Zahl (Umkehr von STR$ (A))
+LEN (X$)          liefert die Laenge von X$
+STRING$ (I,X$)    setzt I-mal X$ zu einem neuen Str. zusammen.
+INSTR(A$,B$)      Posit. des ersten Auftretens von A$ in B$
+
+MATHEMATISCHE FUNKTIONEN
+==============================================================
+ABS (N)   Absolutbetrag von N
+INT (N)   Wert vor dem Komma (Integer)
+SGN (N)   Signum-Funktion (Vorzeichen)
+SQR (N)   Wurzel aus N
+SIN (N)   Sinus N in Bogenmass
+COS (N)   Cosinus N in Bogenmass
+TAN (N)   Tangens N in Bogenmass
+ATN (N)   Arcus-Tangens in Bogenmass
+LN  (N)   Natuerlicher Logarithmus von N
+EXP (N)   Exponentialfunktion N
+RND (N)   Zufallszahl groesser 0 kleiner 1
+          N=0 dann Wert ZZ normal
+          N>0 dann naechster Wert der ZZ-Reihe
+          N<0 dann neue Folge von ZZ (neu initialisieren)
+PI        Konstante PI=3.14159
+LOGISCHE OPERATIONEN
+==============================================================
+AND       logisches UND
+OR        logisches ODER
+NOT       logische Negation
+
+ARITHMETISCHE und VERGLEICHSOPERATIONEN
+=============================================================
++ plus,  - minus,  * mal,  / durch,  = ist gleich
+() Klammern,  ^ hoch,  < kleiner als,  > groesser als (auch g)
+<> ungleich (auch u),( ) Klammer auf / zu (auch verschachtelt)
+
+FEHLERMELDUNGEN
+============================================================
+BS   Feldelement ausserhalb DIM-Bereich aufgerufen.
+     Subscript out of range
+CN   Fortsetzung mit CONT unerlaubt.
+     Can't continue
+DD   Feld mehrfach dimensioniert.
+     Double defined array
+FC   Unzulaessiger Funktionsaufruf.
+     Illegal function call
+ID   Fehlerhaftes Kommando.
+     Illegal direct
+IO   I/O Fehler
+     Input/Output - Error
+LS   String laenger als zulaessig.
+     String to long
+MO   Unvollstaendig / Operand fehlt.
+     Missing operand
+NF   Variablen FOR/NEXT passen nicht.
+     Next without for
+OD   Zuwenig Daten fuer READ.
+     Out of data
+OM   Speicherplatz reicht nicht.
+     Out of memory
+OS   Speicherplatz fuer Strings reicht nicht.
+     Out of string space
+OV   Zahl zu gross (max. 10 hoch 38).
+     Numeric overflow
+RG   RETURN ohne GOSUB
+     Return without Gosub
+SN   Syntax-Fehler
+     Syntax error
+ST   String zu lang oder zu komplex
+     Literal string pool table full
+TM   Falscher Variablentyp
+     Type mismatch
+UF   Funktion nicht definiert
+     Undefined user function
+UL   Sprung zu nicht vorhandener Zlnr.
+     Undefined line
+/0   Division durch Null
+     Division by zero
+
+- Programmtext ab 2C00H in Tokens
+- Anfangs-Byte 00
+- Adresse 2 Byte    Low,High
+- Zeilennr. 2 Byte  Low,High
+- Zeileninhalt
+- Zeilenabschluss 1 Byte 00
+- Programmabschluss 4 Byte 00 (Zeilenende + 3*00)
+Als Ergaenzung zu den  Befehlen CSAVE und CLOAD (KC-kompatibles
+Interface) wurden die Befehle HSAVE und HLOAD aufgenommen. Die-
+se benoetigen das Programm "Header". Der Ansprung erfolgt ueber
+Sprungverteiler. Weiterhin gestattet  diese  Interpreterversion
+die Ausgabe LIST auf TAPE und von LIST und PRINT auf einen Druk-
+ker.
+Die Joystickabfrage erfolgt nach /1/. Das dort veroeffentlichte
+Abfrageprogramm wird ueber Sprungverteiler angesprungen und mu~
+im Betriebssystem enthalten sein.
+...............................................................
+
+ANWEISUNGEN  zur Nutzung aller SAVE/LOAD-Routinen, Druck- und
+Joystick-Routinen:
+===============================================================
+
+SAVE/LOAD-Kommandos:
+====================
+
+CSAVE"name"         KC-Save-Kommando
+CLOAD"name"         KC-Load-Kommando. 'name' bei beiden max.
+                    8 Zeichen.   
+HSAVE u.
+HLOAD               HEADERSAVE-Interface, Abfrage nach  
+                    'filename': Wie bei HEADERS. ueblich.
+                    Nimmt nur Typ B; mit 'verify'-Funktion   
+
+CSAVE*"Filename";Feldname
+		    Abspeichern einer DATEI
+CLOAD*"Filename";feldname
+		    Laden einer DATEI
+Beim Einlesen von Dateien aus Zeichenkettenfeldern ist darauf
+zu achten, das der Zeichenkettenbereich ausreichend gross ist.
+Gegebenenfalls mit CLEAR-Kommando neu festlegen.
+
+Ebenso kann mit LIST und CLOAD ein Programm in ASCII auf Kasset-
+te ausgeladen werden. (siehe /4/ Seite 27 "Verkettungvon zwei
+                       BASIC-Programmen") 
+LIST#1"Filename"   zum Abspeichern, (Version m1 mit 'verify')
+                   und
+CLOAD#1"Filename"  zum einladen.
+
+Diese Kommandos, (mit Null verlaengert) gestatten, Teile eines
+Programmes getrennt zu schreiben und in ein Programm nach Zei-
+lennummern sortiert, einzubauen.		   
+
+
+Druck-Kommandos:
+================
+LIST#2"X",PRINT#2,LIST#3"X",PRINT#"3".
+(LIST#N, PRINT#N  bedeutet N = Ausgabegeraet:
+                0 = Bildschirm
+                1 = Kassettenger{t
+                2 = Drucker mit Bildschirm
+                3 =    "    ohne    "  
+
+ACHTUNG: Bei allen LIST# wird LINES intern auf 65535 gestellt.
+Nach Abbruch des Abspeichern mit I/O ERROR muss man dies mit 
+LINES 10 wieder normal einstellen. 
+
+Joystick-Abfrage:
+=================
+JOYST(spielhebel)   Spielhebelabfrage;'spielhebel' = numerischer
+                    Ausdruck (ganzzahliger Wert: 1 o. 2) 
+
+==============================================================
+Ansprung des Headers, des Druckers und der Joystickabfrage:
+29D1H : CALL 0FFE8H (DRUCK AKKU)
+0157H : CALL 0FFF4H (SARUF)
+0149H : CALL 0FFF1H (LORUF)
+018CH : CALL 0FFBBH (GETST)
+Auf diesen Adressen die direkten Rufe z.B. des HEADERSAVE 
+(als Beispiel bei 16-K der HEADERSAVE 5.95 ab EC00H) eingetra-
+gen, funktioniert der KC-BASIC auch ohne Sprungverteiler (SV).
+(Aber geaendert nicht weitergeben!)  
+...............................................................
+Uebersicht der Steuertasten:
+============================
+
+HEX CTRL S4 Funktion
+
+01  A    I  CURSR an Anf.
+02  B    J  CLLN (CLEAR LINE)
+03  C    K  BREAK
+05  E    M  CURSR ans Ende
+08  H    P  LEFT
+09  I    Q  RIGHT
+0C  L    T  CLS
+0D  M    U  ENTER
+10  P    @  DEL
+12  R    B  INS
+13  S    C  STOP
+14  T    D  LIST
+15  U    E  RUN
+16  V    F  CONT
+17  W    G  GRAPHIK
+
+Hinweis fuer Nutzer des A2-Betriebssystems des Z1013.16 und
+Z1013.64
+==============================================================
+Bei der Realisierung der Abfrage fuer Schreibmaschinentastatu-
+ren hat ROBOTRON die INKEY-Funktion (RST20H/DB4) leider nicht
+voll kompatibel zur bisherigen des Monitors 2.02 gestaltet.
+(Andere Verwaltung der Tastaturmerkzelle 4H.) Dadurch kommt es
+bei der INPUT-Funktion zum Tastenprellen.Abhilfe kann u.U. das
+Entfernen eines Loeschbefehls auf 116H des Interpreters schaf-
+fen (3 Byte: 116,117,118H durch 00 ersetzen).
+
+Literatur
+=========
+/1/  Mehrere KC 85/1 kompatible Joysticks an X4
+     PRACTIC 1/88, S.41f
+/2/  V.Luehne: Sprungverteiler fuer Z1013 - Betriebssystem-
+               Erweiterungen
+     FUNKAMATEUR 10/88, S.484
+/3/  Heimcomputer ROBOTRON Z9001 Programmierhandbuch
+     VEB Robotron-Software-Vertrieb
+/4/  H.Gutzer: BASIC mit dem Z1013
+     VEB Robotron-Elektronik Riesa
+/5/  R.Erlekampf: Mikroelektronik in der Amateurpraxis 3
+     Militaerverlag der DDR 1987
+================================================================
+ACHTUNG: Wir bitten darum, nur Original-Programme weiter zu
+geben, und keine von Ihnen geaenderten Versionen. Geben Sie ein
+Programm geaendert weiter, ist unbedingt folgendes zu tun:
+
+ 1.  Tragen Sie im Kopf (Filename) einen Aenderungsvermerk ein.
+ 2.  Geben Sie das Original dazu mit weiter.
+ 3.  Schreiben Sie in die Beschreibung einen Zusatz zur Aende-
+     rung. Besser noch, Sie schreiben zur Aenderung einen ge-
+     trennt mitzugebenden Text.
+Aenderungen, die Ihrer Meinung nach den Interpreter verbessern, 
+sind der IG-HC zur Begutachtung vorzulegen.	 
+
+Programme stets mit der Beschreibung dazu weiterreichen. An der
+Checksumme CRC ist der Originalzustand erkennbar.
+==ŸžžžžžžžžžžžžžžOOOOOOOOOOHG-HC TU Dresden =================
+*********************** ueberarbeitet  hofmann ****************
+24.08.89
+^^^^^
+ten auf 4 MHz 

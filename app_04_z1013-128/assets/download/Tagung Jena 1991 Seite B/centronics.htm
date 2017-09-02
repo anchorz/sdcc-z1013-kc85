@@ -1,0 +1,240 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<pre>
+***************************************************************
+*           CENTRONICS-Druckertreiber fuer Z1013              *
+********************************************************MOE****&#29;
+
+
+
+Es wird eine grafikdruckfähige Komplettlösung zum Anschlu~ eines
+Matrixdruckers mit ESC/P-Standard }ber eine  CENTRONICS-Schnitt-
+stelle  vorgestellt. Dabei  wurde Wert auf minimale Hardware und
+eine universell nutzbare Software gelegt.
+
+
+
+1. Hardware
+-----------
+
+
+Der  Drucker  wird direkt am USER-Port des Z1013  angeschlossen,
+es  sind  k e i n e r l e i  Umbauarbeiten am Rechner notwendig.
+Folgende  Verbindungen zwischen USER-Port und CENTRONICS-Stecker
+sind zu realisieren:
+
+
+
+Z1013, USER-Port A                                  CENTRONICS
+
+AD0 ---------------------------------------------------- D0
+AD1 ---------------------------------------------------- D1
+...                                                      ...</pre>
+<pre>AD6 ---------------------------------------------------- D6
+AD7 ---------------------------------------------------- D7
+/ASTRB ------------------------------------------------- /ACK
+
+
+        +------------+
+       5!    D121    !
+ARDY ---!Eb         Q!
+       3!            !
+      +-!Ea1         !
+      ! !            ! 1
+0V ---+-!Ea2       /Q!---------------------------------- /STROBE
+       4!            !
+        +------------+
+               !11  !10
+               !    !                R ... 4,7K
+       +----+  ! !! !                C ... 10nF
++5V ---+    +--+-!!-!                IC .. D121 o.ä.
+       +----+    !!    
+         R         C
+
+Die Spannungszuführung für das Monoflop nicht vergessen!
+
+
+
+Der Aufbau kann so kompakt erfolgen, daß der Steckverbinder zum
+Z1013, der Schaltkreis und die Zugentlastung für das CENTRONICS-
+Kabel in das Plastgehäuse eines Kleinrelais passen.
+
+Wer  einen Drucker besitzt, der nur eine Strobeflanke und nicht
+einen  Impuls erwartet, kann auf den D121 ganz  verzichten  und
+/ASTRB direkt mit /STROBE verbinden. Das funktioniert  z.B. mit
+einem LX86; leider  n i c h t  mit den DDR-Druckern K63xx.
+
+Wer  den  Brosig-Monitor o.{.  besitzt, der  Portausgaben erm|g-
+licht, kann  die  Hardware bei angeschlossenem Drucker wie folgt
+testen:
+
+     # O 1 0F                    Port initialisieren
+     # O 1 07                    kein Interrupt
+     # O 0 41                    Ausgabe 'A'
+     # O 0 0D                    Ausgabe CR
+
+Es müßte der Buchstabe A gedruckt werden.
+
+
+
+&#28;2. Software
+-----------&#29;
+
+Zur Ansteuerung eines Druckers ist im Z1013  ein  extra  Sprung-
+verteiler zu verwenden, der von vielen Programmen genutzt werden
+kann und }ber den Sprungverteiler 0FF.. erreichbar ist.
+In  der  folgenden  Beschreibung  ist  die erste Adresse die des
+Sprungverteilers,  die  zweite  die,  auf die im Sprungverteiler
+verwiesen wird. 
+
+
+0FFCDH (0E800H):   JMP   DRINI
+
+     - Druckertreiber initialisieren
+     - es wird eine ESC-Folge an den Drucker }bersendet,
+       die folgende Parameter einstellt:
+            R}cksetzen Drucker        ESC @
+            Paper end off             ESC 8
+            linker Rand 8 Zeichen     ESC l 8
+
+
+0FFEBH (0E803H):   JMP   DRZEL
+
+     - logischer Druckertreiber, druckt (ARG1)
+     - eigentlich, um aus BASIC heraus zu drucken; wird m.E.
+       nicht genutzt
+
+
+0FFE8H (0E806H):   JMP   DRAKK
+
+     - logischer Druckertreiber, druckt A
+     - wandelt Code NL (1EH) in CR (0DH) + LF (0AH)
+
+
+
+0FFCAH (0E809H):   JMP   ZEIDR
+
+     - physischer Druckertreiber, druckt A
+     - sollte verwendet werden, wenn Steuerzeichen an den
+       Drucker gesendet werden sollen
+
+
+0FFE5H ,0E80CH:    JMP   BSDR
+
+     - druckt eine Bildschirmkopie
+     - im BROSIG-Monitor ist bereits eine Routine enthalten,
+       die allerdings den Bildschirm nur bis zum Cursor bzw.
+       dem Graphikzeichen 0FFH druckt und au~erdem die Verar-
+       beitung von Graphikzeichen dem Drucker }berl{~t. Es
+       werden dann entweder Buchstaben o. der interne Zeichen-
+       satz des Druckers genutzt o. der Drucker &quot;spinnt&quot;.
+       Bei Druck auf die Bildschirmkopietaste wird ebenfalls
+       diese Routine angesprungen (direkt und intern im Moni-
+       tor). Daher ist  k e i n e  Kopie eines Graphikbildes
+       mittels dieser Taste m|glich!
+     - Bei Nutzung meiner Druckertreiber empfehle ich daher,
+       in den Programmen die Adresse 0E80CH direkt einzutragen
+       o. einfacher anstelle des BROSIG-Monitors den voll kom-
+       patiblen Monitor &quot;4k-MON VP 3&quot; zu verwenden.
+
+
+0FFE2H (0E80FH):   JMP   HARDC
+
+     - druckt A, wenn Flag im Speicher gesetzt ist
+     - welche Speicheradresse gemeint ist, wird leider nicht
+       spezifiert. Ich denke, da~ es 006EH, Bit 0 sein k|nnte.
+       Das ist das Druckflag f}r den Original-10k-BASIC-Inter-
+       preter von Riesa, allerdings m}~te dann das Zeichen im
+       Register E }bergeben werden, nicht in A !?
+     - ist bei mir also mit einem RET kurzgeschlossen
+
+
+Den Druckertreiber gibt es nun in zwei Varianten: einen k}rzeren
+und einen ziemlich langen, letzteren f}r Graphikdruck:
+
+C...CENTONICS          E800-E86F, Start E800
+C...CENTRO G           E000-E97A, Start E812
+
+Die kleinere Minimalvariante wertet Zeichen mit Bit7=1 (das sind
+die Graphikzeichen) nicht weiter aus und }bergibt sie direkt  an
+den Drucker. Damit ist sie besonders f}r solche Drucker verwend-
+bar,  die  keine  Einzelnadelansteuerung besitzen bzw. bei denen
+das  Bit 7  nicht ausgewertet wird. Die Funktion Bildschirmkopie
+ist mit RET kurzgeschlossen, da sie wie oben beschrieben bereits
+im BROSIG-Monitor enthalten ist. 
+
+In  der  G-Variante (G steht f}r Graphik) sind 2 Modi verf}gbar:
+ein  Direktmodus, bei dem Codes mit Bit7=1 direkt }bergeben wer-
+den und den Graphikmodus, bei dem Graphikzeichen auch als solche
+gedruckt werden.
+
+Der Direktmodus wird durch     @I
+der Graphikmodus durch         @I  1
+initialisiert.
+
+Dabei ist @I  ein Zusatzmonitorkommando des BROSIG-Monitors, bei
+dem die Routine DRINI angesprungen wird.
+Sollte  Ihr  Monitor  diese  Funktion nicht besitzen, m}ssen Sie
+die Routine DRINI direkt rufen. Dabei mu~ in ARG1 eine 01H }ber-
+geben  werden;  ein  Ansprung mit J E800 ist m|glich, allerdings
+ist dann  der  Direktmodus eingestellt. Es mu~ dann nachtr{glich
+eine  01H  auf  die  Adresse  0E818H gebracht werden, z.B. durch
+das M-Kommando des Monitors.
+
+Nach Initialisierung des CENTRO G-Treibers kann nun z.B. aus dem
+&quot;KC-BASIC'+' m1&quot; mittels PRINT#2&quot;..&quot; gedruckt o. durch LIST#2&quot;@&quot;
+ein  Programmlisting erzeugt werden. Graphikzeichen werden dabei
+in ihrem richtigen Aussehen in der Schriftart Pica gedruckt.
+Durch  ein  CALL*E80C  im BASIC-Programm kann auch eine Graphik-
+kopie des Bildschirms gedruckt werden. 1 zu 1 ohne Verzerrungen.
+
+
+
+&#28;3. Bemerkungen
+--------------&#29;
+
+Im Graphiktreiber CENTRO G befindet sich eine Kopie des Zeichen-
+satzes des Z1013 von 0E000H bis 0E7FFH. Dieser mu~ bei [nderung-
+en  des  Quelltextes  und  nachfolgender Assemblierung nat}rlich
+voll erhalten bleiben.
+
+Sobald  Ihr Drucker einige ESC/P-Steuerzeichen versteht und }ber
+eine  CENTRONICS - Schnittstelle  verf}gt,  k|nnen die Programme
+genutzt  werden.  Wird  auf die Graphik verzichtet, arbeitet der 
+Treiber  auch  mit  Typenraddruckern etc. zusammen. Auch Drucker
+mit  IBM-Steuerzeichen  sind  zu  gebrauchen, allerdings gibt es
+hier  Probleme  mit  der  Graphik, da IBM den Befehl ESC * nicht
+versteht. 
+
+Wenn Sie einen Drucker haben, der nur  eine V.24 - Schnittstelle
+besitzt, so kann auch hier mit den Treibern gearbeitet werden:
+Zum  einen  k|nnen  sie  den Quelltext der Treiber an Ihre Hard-
+ware {ndern oder  Sie schreiben eine V.24-Grundroutine ZEIDR und
+schreiben  in  die  Treiber  an die Stelle, zu der von 0E809 aus
+hingesprungen wird, den Befehl JMP V.24-ZEIDR.
+
+Mein Drucker K6325 ist wie folgt voreingestellt:
+
+     - Schriftart PICA
+     - kein autom. CR bei LF und umgekehrt
+     - Zeichensatz US-ASCII
+     - NLQ aus
+     - Zeilenabstand 1/6 Zoll
+     - Steuercode EPSON
+
+Diese  Parameter  sind nach dem Einschalten o. nach dem Kommando
+ESC @ aktiv.
+
+
+
+Volker Pohlers, Lomonossowallee 41/81, O-2200 Greifswald
+20. M{rz 1991
+--------------
+
+0001 3000 6059 0

@@ -1,0 +1,27 @@
+documentation and information about these programs:
+
+assembler_5_3_I.z80
+chess_master_h_I.z80
+header_disk_45_I.z80
+headersave_5_9_I.z80
+hexdump_1_021_I.z80
+hisoft_pascal_I.z80
+oc_editor_4_1_I.z80
+z1013_forth_doc_I.z80
+c_test_doc.z80          : condensator tester
+kc_basic+_doc.z80       : basic interpeter
+leipzig_doc.z80         ; messestadt leipzig wissenstest
+mt4_6_doc.z80           : maintape ( advanced load/save )
+r_80_doc_1_2.z80        : r80 reassembler
+scp_2rf_2_38_doc.z80    : scp with 2 ram-floopys ( CP/M derivat)
+z1013_forth_doc_I.z80   : z1013 forth
+z1013_surl_doc.z80      : z1013 super-urlader
+rf_am_z1013.z80         : how to use 256k-ram-floppy-project with z1013
+rom_disc_bild.z80
+z1013_scr.z80 : titelbild
+tast1_scr.z80 : tastaturlayout hobbes 1/3
+tast2_scr.z80 : tastaturlayout hobbes 1/3
+tast3_scr.z80 : tastaturlayout hobbes 1/3
+k7669_1_scr.z80 : tastaturlayout hobbes 1/3
+k7669_2_scr.z80 : tastaturlayout hobbes 1/3
+k7669_3_scr.z80 : tastaturlayout hobbes 1/3

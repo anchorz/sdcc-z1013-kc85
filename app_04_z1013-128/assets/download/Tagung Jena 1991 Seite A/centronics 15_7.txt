@@ -1,0 +1,96 @@
+	PN	K6325
+
+;Druckertreiber CENTRONICS fuer Z1013
+
+;V.Pohlers,Nov. 1989/Jul. 1990
+
+
+ARG1:	EQU	001BH
+
+NL:	EQU	1EH
+CR:	EQU	0DH
+LF:	EQU	0AH
+ESC:	EQU	27
+
+	ORG	0E800H
+
+JMP	DRINI	;Treiber init.
+JMP	DRZEL	;Druck (ARG1)
+JMP	DRAKK	;log. Treiber
+JMP	ZEIDR	;phys. Treiber
+	RET
+	NOP
+	NOP
+	RET	;Hardcopytreiber
+	NOP
+	NOP
+
+INTAB:	DA	INTS	;INT-Tabelle
+MINTR:	BER	1
+
+DRINI:	LD	HL,INLST
+	CALL	LSTOT
+	RET
+	;
+INLST:	DB	7	;Anzahl
+	DB	ESC
+	DB	'@'
+	DB	ESC
+	DB	'8'	;PE aus
+	DB	ESC
+	DB	'l'
+	DB	8	;linker Rand
+
+DRZEL:	PUSH	AF
+	LD	A,(ARG1)
+	CALL	DRAKK
+	POP	AF
+	RET
+
+DRAKK:	PUSH	AF
+	CMP	NL	;NL-->CRLF
+	JRNZ	DRAK1-#
+	LD	A,CR
+	CALL	ZEIDR
+	LD	A,LF
+DRAK1:	CALL	ZEIDR
+	POP	AF
+	RET
+
+LSTOT:	LD	B,M	;<HL>-Liste
+LST1:	INC	HL
+	LD	A,M
+	CALL	ZEIDR
+	DJNZ	LST1-#	;<B> mal
+	RET
+
+ZEIDR:	PUSH	AF
+	DI
+	LD	A,I
+	LD	(MINTR),A	;retten I-Register
+	LD	A,0FH	;PIO - Mode 0
+	OUT	1
+	LD	A,12H	;L(INTAB)
+	OUT	1
+	LD	A,83H	;INT ein
+	OUT	1
+	LD	A,0E8H	;H(INTAB)
+	LD	I,A
+	;
+	POP	AF
+	OUT	0	;ausgeben
+	SCF
+	EI
+ZEID1:	JRC	ZEID1-#
+	LD	A,(MINTR)
+	LD	I,A
+	RET
+	;
+INTS:	DI
+	OR	A	;Cy=0
+	RETI
+
+PEND:	EQU	#
+
+END
+Neu      O=Seit

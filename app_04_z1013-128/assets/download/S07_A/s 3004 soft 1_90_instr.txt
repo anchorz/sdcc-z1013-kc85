@@ -1,0 +1,424 @@
+Falko Trojahn, Computer-Club Robotron   Leipzig, Januar 1990
+
+S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004
+S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004
+
+                3004S300 S3004S300   00  3004S   4S300
+                3004S300 S3004S300   00 S3004S3 04S3004
+                3004S300 S3004S300   00 S3   S3 04   04
+                300         04S         S3   S3 04   04
+                300         04S         S3004S3 04   04
+ 3004    4S30   3004S30     04S          3004S3 04   04
+S3004S  04S300  3004S30     04S              S3 04   04
+S3     004  004 300         04S              S3 04   04
+S3004  00    04 300         04S              S3 04   04
+ 3004S 00    04 300         04S              S3 04   04
+    4S 00    04 300         04S              S3 04   04
+S   4S 004  004 300         04S             4S  04   04
+S3004S  04S300  300         04S          3004S  04S3004
+ 3004    4S30   300         04S           004    4S300 
+
+S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004
+S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004S3004
+
+
+
+
+
+
+Jedem S 3004-/ Z 1013-Besitzer seinen eigenen Druckertreiber____________________________________________________________
+
+
+WARUM?   Damit die S 3004 bestmoeglich genutzt werden kann und 
+         jeder seine eigenen Sonder- und Steuerzeichen verwenden
+         und "fremde" Texte original ausdrucken kann!
+
+WOZU?    Zur effektiven, individuellen Textgestaltung, zur Imple-
+         mentierung auslaendischer Zeichensaetze ... Ausserdem - 
+         man braucht nicht zu warten, bis der Drucker fertig
+         ist, man kann nebenbei weiterarbeiten! 
+
+WIEVIEL? Nur 1,5 kByte Programmkern von 0E600H bis 0EBFFH und
+         Zeichensatztabellen ab 0,5 kByte, beliebig erweiterbar.
+
+WAS?     Fettdruck, Doppeldruck, Unterstreichung, Ausstreichung,
+         alternativer Zeichensatz, alternative Zeichendichte,
+         Hochstellen, Tiefstellen, Weitschrift, Kursivschrift,
+         Farbbandwechsel, Seitenstop sind moeglich.
+
+SERVICE? * logischer/physischer Druckertreiber (Ausgabe jeweils
+           direkt auf Drucker oder in Ram-Bereich moeglich)
+         * Druck des gesamten Zeichensatzes
+         * Druck des Typenradsatzes
+         * Druck einzelner ASCII-Zeichen - Eingabe in Hexcode
+         * Druck eines Files aus dem Ram direkt oder parallel
+           zur Consolarbeit
+
+WOMIT?   Mit S 3004, Z 1013 und drei Leitungen von einem belie-
+         bigen PIO-Port zur S 3004-Schnittstelle oder einem ent-
+         sprechenden Interface, mit einem Textverarbeitungssy-
+         stem, z. B. Microword.
+
+WIE?     Das lesen Sie in der folgenden Beschreibung!
+
+
+
+
+INSTALLATION:
+
+Laden des Programmes. Eintragen der Datenwortadresse des ge-
+wuenschten PIO-Ports in Adresse 0E821H (1 Byte). Verbinden von:
+Rechner-Masse mit a13, Portleitung 0 mit Dateneingang a11, be-
+liebige Portleitung dieses PIO-Ports mit Freigabesignal a12 der
+S 3004 und Setzen des dazugehoerigen Bits (nicht Bit 0!) in 
+Adresse 0E822H.
+
+Verwenden Sie geschirmte Leitung und moeglichst eine galvanische
+Trennung zwischen Z 1013 und S 3004 - s. z. B. Funkamateur 5/89.
+Der Schalter fuer Zeichendichte ist auf 10 Zeichen/" zu stellen! 
+
+LADEN DES ZEICHENSATZES: Dieser muss in Adr. 0E5FFH enden; es
+werden ein Zeichensatz mit Wordstar-kompatiblen Steuerzeichen
+(Bereich 80 - FFH identisch Bereich 0 - 7FH) und ein tschechi-
+scher Zeichensatz (Bereich 80H - FFH mit tschechischen Sonder-
+zeichen) mit dazugehoerigem Zeichengenerator-Inhalt ausgelie-
+fert, weitere sind in Vorbereitung. Wird der Headersave auf
+0E000H genutzt, ist der tsch. Zeichensatz auf andere Adressen um-
+zuinstallieren (s. u.).
+
+Abspeichern des angepassten Druckertreibers nicht vergessen!
+Funktionstest ist moeglich durch A-bis-Z-Druck (s. u.).
+
+UNTERPROGRAMM-SPRUNGVERTEILER:
+(kompatibel mit Brosig-Monitor)
+
+Adr. Funktion  Beschreibung  
+
+E800 JMP DRINI initialisiert log. und physischen Druckertreiber,
+               Eingabe ^P (zur Funktion des Treibers NICHT not-
+               wendig, PIO wird bei jedem Zeichen initialisiert)
+E803 JMP DRZEL wie DRAKK, aber Zeichen aus Zelle 1BH
+E806 JMP DRAKK gibt Zeichen aus Akku an log. Druckertreiber - 
+               Zeilenzahl je Seite und Zeichenzahl je Zeile wer-
+               den kontrolliert - dieser uebergibt an physischen
+               Druckertreiber.                       
+               ACHTUNG: Das Zeichen 0DH (eigtl. CR) wird in 1EH
+                        (CRLF) gewandelt.
+E809 JMP ZEIDR gibt Zeichen aus Akku an physischen Druckertrei-
+               ber, der es druckt oder in log. File ablegt.
+
+ERWEITERTER SPRUNGVERTEILER
+(Aufruf aus Monitor mit J ... aadr eadr)
+
+Adr. Funkt. Beschreibung
+
+E80C MULTI  Drucken eines Ram-Bereiches von aadr bis eadr oder
+            Fileende - s. u. (Seitenstop s. Print) 
+E80F LFILE  Definition eines Ram-Bereiches von aadr bis eadr
+            oder vorherige Adressen bzw. Aufheben der Def. s. u.
+E812 PRINT  Direktes Drucken von aadr bis eadr bzw. Fileende
+            oder, wenn aadr,eadr = 0 Drucken des aktuellen Be-
+            reichs von MULTI. Bei Seitenstop-   bzw. Fileende-
+            Zeichen (Piepton): ^P Weiterdrucken bzw. Abbruch
+                               ^R Druck-Wiederholung ab aadr
+E815 STOP   Beenden von MULTI; durch Aufruf von MULTI oder PRINT
+            ohne Parameter wird an gleicher Stelle fortgesetzt. 
+E818 AbisZ  Drucken aller Zeichen von 20 bis 7F und A0 bis FF 
+            entsprechend eingestellter Parameter (Zeichensatz..)
+E81B ASCII  Druck des eingegebenen Hex-Codes als ASCII-Zeichen
+            ueber phys. Druckertreiber (immer auf Drucker)
+E81E TYPEs  Druck des kompletten Typenradsatzes mit Punkt als 
+            Trennzeichen
+
+WICHTIGE SYSTEMZELLEN
+
+Adr. Bez.  Beschreibung
+
+E821 PIOAD Adresse Daten PIO-Port (so, dass Adr. Steuerwort
+           gleich Adresse Daten plus 1), vom Nutzer einzutragen
+E822 MASKE E/A-Maske fuer PIO-Port; gesetztes Bit wird als 
+           Acknowledge-Eingang gewertet, vom Nutzer einzutragen
+E823 DICHT Zeichen pro Zoll: 0 - 10 Zeichen
+                             1 - 12 Zeichen
+                             2 - 15 Zeichen
+E824 ZEIG1 Bit 0: Unterstreichung
+           Bit 1: Doppeldruck
+           Bit 2: Fettdruck
+           Bit 3: Durchstreichen
+           Bit 4: Druckstop bei MULTI
+           Bit 5: Logicfile aktiviert
+           Bit 6: Escape - naechstes Zeichen direkt drucken
+           Bit 7: Alternativer Zeichensatz
+E825 ZEIG2 Bit 0: Weitschrift (kursiv)
+           Bit 1: Hochstellung
+           Bit 2: Tiefstellung
+E826 ZZAHL Konstante: Zeilen je Seite, vom Nutzer einzutragen
+E827 VZEIL Variable: Zeilen je Seite, vom Nutzer gleich ZZAHL 
+           einzutragen
+E828 SZAHL Konstante Zeichen je Zeile, vom Nutzer einzutragen
+E829 VZEIC Variable Zeichen je Zeile, vom Nutzer gleich SZAHL 
+           einzutragen
+E82A LAADR Anfangsadresse des Logicfiles
+E82C LZADR Zwischenadresse Logicfile
+E82E LEADR Endadresse Logicfile
+E830 UPADR Adresse des Unterprogrammaufrufs bei MULTI
+E832 MCONT Sprung zu Unterprogramm der Tastaturschleife bei MULTI 
+E835 MAADR Anfangsadresse fuer MULTI bzw. PRINT
+E837 MZADR Zwischenadresse fuer MULTI bzw. PRINT
+E839 MEADR Endadresse fuer MULTI bzw. PRINT
+E83B OUTPT Anfang der eigentlichen Ausgaberoutine, gibt Zeichen 
+           im Akku direkt auf den Drucker aus
+
+ZEICHENCODIERUNG
+
+Die S 3004 "versteht" Zeichen von 0 bis 0AFH, die entweder als
+"Druck eines Zeichens" oder "Ausfuehrung einer Funktion" ver-
+standen werden. Diese werden in einer Umkodiertabelle abgelegt,
+wo sie der Druckertreiber entnimmt und an den Drucker ausgibt.
+Die uebrigbleibenden Zeichen von 0B0H bis 0FFH koennen daher an-
+derweitig benutzt werden. Folgende Einteilung wird hier verwen-
+det:
+
+0B0H - 0BFH Zeichen, die bei Verwendung des alternativen Zei-
+            chensatzes eine andere Bedeutung erhalten
+0C0H - 0EFH Sonderzeichen, die nicht nur aus einem Druckzeichen
+            zusammengesetzt sind, sondern aus beliebig vielen
+            aufeinanderfolgenden bestehen koennen
+0F0H - 0FEH Funktionen, die den Druckertreiber betreffen; diese 
+            werden nicht unmittelbar an Maschine weitergegeben 
+0FFH     a) im Moment mit Return belegt, vorgesehen fuer Grafik-
+            einbindung
+         b) in den Zeichenketten der Funktionsunterprogramme: 
+            Einfuegen des aktuellen Zeichens (vom Anwender nicht
+            benutzt)
+
+Ab Adresse 0E5F8H befinden sich 4 Zeiger (= Adressen) fuer fol-
+gende Tabellen, die dadurch beliebig erweitert bzw. veraendert 
+werden koennen:
+
+AMTAB: Tabelle Anfangsadressen Zeichenketten Sonderzeichen 
+       B0 bis BF fuer amerikanischen Zeichensatz
+DETAB: Tabelle Anfangsadressen Zeichenketten Sonderzeichen
+       B0 bis BF fuer deutschen Zeichensatz
+SOTAB: Tabelle Anfangsadressen Zeichenketten Sonderzeichen
+       fuer C0 bis EF
+UMTAB: Umkodiertabelle fuer ASCII-Zeichen zwischen 0 und FFH;
+       Steuerzeichen kompatibel zu Wordstar, bei Zeichensatz
+       Deutsch alternativer Zeichensatz durch Umlaute, normaler
+       Zeichensatz durch eckige und geschweifte Klammer belegt; 
+       bei Zeichensatz Tschechisch Grafikzeichen mit tschechi-
+       schen Sonderzeichen belegt, alternativer Zeichensatz hat 
+       keine Funktion
+
+Weiterhin existiert auf Adresse 0EBDEH eine Tabelle UPTAB fuer 
+die Adressen der Funktionen F0 bis FF, die aber nach Moeglich-
+keit nicht veraendert werden sollte. Lediglich der Eintrag in 
+der Umkodiertabelle ist variabel. Der Code FF ist frei, dort
+traegt sich der Grafiktreiber "FZG + S 3004 soFT" fuer den 
+freiprogrammierbaren Zeichengenerator ein. ACHTUNG: Eigentlich
+sollte die Tabelle auf Adr. 0EBFFH (jetzt 0EBFDH) enden, dabei 
+wurde festgestellt, dass u. a. MicroWORD die unangenehme Eigen-
+schaft hat, die Adr. 0EBFFH zu beschreiben!
+
+Folgende Funktionen existieren (Zuordnung zu Wordstar wird durch
+den Zeichensatz festgelegt, ist damit aenderbar; Demonstration
+aller Moeglichkeiten in "TEST S 3004 soFT"): 
+
+Fkt. Word Bedeutung
+     star
+F0   ^S   Unterstreichung ein/ausschalten
+F1   ^D   Doppeldruck ein/ausschalten
+F2   ^B   Fettdruck ein/ausschalten
+F3   ^X   Durchstreichung ein/ausschalten
+F4   ^L   Seitenstop: weiter mit ^P oder neu mit ^R von letzter 
+          Anfangsadresse beginnend; alle Funktionen ausser alter-
+          nativer Zeichensatz werden auf Normal zurueckgesetzt
+F5  ^C,1A Fileende: Abbruch mit ^P oder von vorn mit ^R,
+          alle Funktionen werden auf Normal gestellt
+F6   ^R   Alternativen Zeichensatz umschalten
+F7   ^E   Normalisator (Kursiv/Weitschrift auf Normal setzen)
+F8   ^A   Alternative Zeichendichte; im Unterschied zu WordStar
+          fuehrt hier zweimaliges Anwenden zu 15 Zeichen/".
+F9   ^T   Hochstellen der eingeschlossenen Zeichen um eine halbe
+          Zeile
+FA   ^V   Tiefstellen der eingeschlossenen Zeichen
+FB   ^W   Weitschrift einschalten
+FC   ^Q   Kursivdruck ein; an dieser Stelle wird ein einfacher
+          Stop OHNE Wagenruecklauf eingefuegt, um das Einlegen
+          eines anderen Typenrades zu ermoeglichen
+     ^Y   eingeschlossene Textteile koennen in anderer Farbe ge-
+          schrieben werden, bei Anfang und Ende erfolgt ein Stop
+          OHNE Wagenruecklauf, um ein anderes Farbband einzulegen
+FD   ^N   Normale Zeichendichte; es wird von 15 Zeichen/" auf
+          12 Zeichen/" bzw. von 12 Zeichen/" auf 10 Zeichen/"
+          geschaltet
+FE  (00)  Seitenstop: alle Fkt ausser Zeichendichte und alter-
+          nativer Zeichensatz werden auf Normal gestellt, wei-
+          ter mit ^P oder von vorn mit ^R
+FF  (7F)  Vorgesehen zur Einbindung des FZG-Grafiktreibers
+
+Nun einige Beispiele fuer die Kodierung eigener Zeichensaetze
+anhand des ausgelieferten Zeichensatzes Deutsch.
+
+ASCII Funktion code Beschreibung
+
+20H   Leerz.   71   In UMTAB wird der Code 71 an der Stelle 
+                    20H eingetragen, die Adresse von UMTAB steht
+                    in 0E5FEH
+7FH   Initial. 95   wie Leerz., nur wird statt Zeichenausgabe
+                    ein Druckerreset ausgefuehrt
+5B    Klamm.   B0   In UMTAB wird der Sonderzeichencode B0 ein-
+                    getragen, ab der Adresse AMTAB+0, die in 
+                    0E5F8H eingetragen wird, steht die Adresse
+                    des Anfanges der Zeichenkette der Zeichen,
+                    die zusammen eine eckige Klammer entstehen
+                    lassen   ACHTUNG: Zeichenketten muessen ohne
+                    Vorschub (Weiterruecken des Wagens der S3004)
+                    arbeiten, damit die Funktionen Fettdruck,
+                    Unterstreichung usw. moeglich sind!!!
+      ae       B0   In DETAB+0 wird die Adresse der Zeichenkette
+                    fuer das ae eingetragen; diese wird verwen-
+                    det, falls der alternative Zeichensatz ein-
+                    geschaltet ist.  
+5E    ^        C0   In UMTAB wird an Stelle 5EH der Sonderzei-
+                    chencode C0 eingetragen. In SOTAB+0 kommt
+                    die Adresse der Zeichenkette fuer das Zei-
+                    chen, da normalerweise die Maschine das Zei-
+                    chen nur ohne Vorschub drucken wuerde.  
+
+Anmerkung: alle Zeichenketten werden mit 0 abgeschlossen!!
+ 
+SPEZIELLE PROGRAMMTEILE
+
+MUP   UP druckt Zeichen entsprechen MAADR, wenn MAADR < MEADR 
+      (s.RAM) und ACKN = L; wenn MAADR > MEADR wird die Adresse 
+      MCONT nach Adresse UPADR zurueckgeschrieben und kann damit
+      nicht mehr aufgerufen werden.
+
+MULTI Wenn LFILE aktiviert ist, wird vor Start dieses Programmes
+      eine Kontrolle durchgefuehrt, dass sich die angegebenen
+      Adressen nicht mit denen des Logicfile ueberschneiden.
+      Zweck von MULTI ist es, waehrend des Druckens eines Files 
+      in einem beliebigen System, z.B. Microword, OCE etc. wei-
+      terarbeiten zu koennen, also quasi-Multitaskbetrieb.
+      Dazu versucht MULTI, in der Eingaberoutine des Monitors ab
+      0F130H einen UP-Aufruf zu finden; ist das erfolgreich, 
+      wird getestet, ob sich dort die Adresse von MUP einschrei-
+      ben laesst, was natuerlich nur geht, wenn der Monitor in 
+      den RAM umgeladen wurde (am Ende der Beschreibung ist ein
+      kleines Programm dafuer aufgefuehrt).
+      Steht der Monitor im ROM bzw. ist kein Einschreiben
+      moeglich, wird dafuer der RST 20 genutzt.
+      Das funktioniert aber nur bei Programmen gut, die mit 
+      INKEY (RST 20, DB 4) direkt arbeiten, wie z.B. OCE, waeh-
+      rend bei Programmen, die mit INCH (RST 20, DB 1) arbeiten,
+      nur pro Tastendruck ein Zeichen gedruckt wird, wie z.B. bei
+      MicroWORD. In diesem Fall kann in dessen Sprungverteiler
+      ein UP eingetragen werden, welches INCH nachbildet
+      (Beispielprogramm am Ende).
+
+LUP   Beschreibt, anstelle ein Zeichen zu drucken ueber ZEIDR,
+      logisches File entspr. LZADR und LEADR; wenn LZADR > LEADR
+      oder wenn bei 0DH oder 1EH weniger als 50H Speicherzellen
+      zur Verfuegung stehen, erfolgt eine Ausschrift auf dem
+      Bildschirm (diese Ausschriften gelangen NICHT in das
+      log. File) mit den Optionen:
+       
+      I  Ignorieren - File wird von vorn beschrieben,
+         ohne es zu retten 
+      G  File wird gerettet und anschliessend von vorn
+         beschrieben
+      C  File wird gerettet, anschliessend wird der Direktaus-
+         gabezustand fuer ZEI wiederhergestellt. 
+
+LFILE Zweck dieses Programmes ist es, Druckdaten erstmal in ein
+      File zu speichern (um es evtl. noch zu bearbeiten),
+      waehrend moeglicherweise etwas Anderes, Wichtigeres
+      gedruckt wird mit MULTI. Anstelle von ZEIDR wird im Sprungver-
+      teiler LUP eingetragen, was fuer das aufrufende Programm 
+      keinerlei Aenderung bringt.Die angegebenen Adressen fuer
+      das logische File werden hinsichtlich ihrer Ueberschneidung
+      mit MULTI getestet und duerfen nicht ueber E000H hinausgehen.
+      Wenn beim Start von LFILE bereits ein log. File existiert,
+      wird abgefragt, ob es geschlossen und ob es geloescht oder 
+      ob der bisherige Inhalt gerettet werden soll.
+
+
+Adressenangabe fuer MULTI und LFILE:        J .... Aadr Eadr. 
+
+Ist eine dieser Adressen kleiner als 100H, werden die bisher 
+aktuellen Adressen beibehalten. Wenn die Anfangsadresse kleiner 
+ist als die Endadresse, dann Ende.
+
+Bei MULTI fuehrt z.B. die Eingabe J E80C 0200 0100 zum Stop des
+laufenden Druckes.
+
+Monitorumladeprogramm: 
+
+UMLAD: LD HL,F000H
+       LD DE,1000H
+       LD C,4
+       IN B
+UMLD1: RES 4,B
+       OUT B     ; ROM eingeschaltet
+       LD  A,M
+       SET 4,B
+       OUT B     ; ROM abgeschaltet
+       LD  M,A
+       INC HL
+       DEC DE
+       LD A,D
+       OR E
+       JRNZ UMLD1-#
+       JMP  F000H ; oder auch Sprung zu MULTI
+
+Nachbildung INCH
+
+INCH:  RST 20H
+       DB  04H    ;INKEY
+       OR  A
+       JRZ INCH
+       RET
+
+AUSBLICK
+
+Ab Februar kann fuer den freiprogrammierbaren Zeichengenerator
+FZG 3.1 ein Grafiktreiber genutzt werden, der es moeglich macht,
+Abbildungen in Texte einzubinden auf dem Bildschirm sichtbar zu
+machen und auszudrucken. 
+
+Denkbar waere weiterhin ein kurzes Installationsprogramm fuer 
+die Zeichentabellen, was allerdings vom Aufwand her nicht unbe-
+dingt gerechtfertigt ist. Als weiterer Zeichensatz wird der
+unter dem Namen IBM verbreitete Zeichengenerator vorbereitet.
+
+Bei Verbesserungswuenschen, Auftreten von Fehlern,
+Implementierungswuenschen auf andere Adressen o. ae. bitte ich,
+direkt an mich zu schreiben.       
+
+
+                                  Falko Trojahn
+                                  Calvisiusstr. 26
+                                  Leipzig
+                                  7 0 3 3
+
+Ab Februar kann fuer den freiprogrammierbaren Zeichengenerator
+FZG 3.1 ein Grafiktreiber genutzt werden, der es moeglich macht,
+Abbildungen in Texte einzubinden auf dem Bildschirm sichtbar zu
+machen und auszudrucken. 
+
+Denkbar waere weiterhin ein kurzes Installationsprogramm fuer 
+die Zeichentabellen, was allerdings vom Aufwand her nicht unbe-
+dingt gerechtfertigt ist. Als weiterer Zeichensatz wird der
+unter dem Namen IBM verbreitete Zeichengenerator vorbereitet.
+
+Bei Verbesserungswuenschen, Auftreten von Fehlern,
+Implementierungswuenschen auf andere Adressen o. ae. bitte ich,
+direkt an mich zu schreiben.       
+
+
+                                  Falko Trojahn
+                                  Calvisiusstr. 26
+                                  Leipzig
+                                  7 0 3 3
+ æÿë  kb33B.

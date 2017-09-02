@@ -1,0 +1,125 @@
+
+****************************************************************
+*                                                              *
+*   Hardwareangebot         Version f}r die 4. Z1013-Tagung    *
+*   ---------------         am 29.06.1991 in Jena              *
+*                                                              *
+****************************************************************
+
+
+Jens M|ckel
+Magdeburger Str. 1b
+Riesa
+O-8400
+
+
+Aus verschiedenen Lagerverk{ufen k|nnen folgende Bauelemente und 
+Leiterplatten zu Sonderpreisen angeboten werden:
+----------------------------------------------------------------
+
+1. IC's:
+--------
+
+CPU     UA 880             1.00 DM    ab 3 St. a 0.90 DM
+PIO     UA 855             1.00 DM    ab 3 St. a 0.90 DM
+SIO     UA 8560            0.90 DM    ab 3 St. a 0.80 DM
+CTC     UA 857             1.00 DM    ab 3 St. a 0.90 DM
+DMA     UA 858             0.90 DM    ab 3 St. a 0.80 DM
+EMR     UB 8821            1.30 DM    ab 3 St. a 1.20 DM
+RAM     U 2164 C20         0.50 DM    ab 32 St. a 0.45 DM
+RAM    (U) 61256           3.00 DM    ab 16 St. a 2.80 DM
+RAM     UL 6516            0.90 DM    ab 3 St. a 0.85 DM 
+EPROM   2716               1.50 DM    ab 3 St. a 1.30 DM
+EPROM   2732               2.00 DM    ab 3 St. a 1.80 DM
+EPROM   2764               4.50 DM    ab 3 St. a 4.20 DM
+FDC     U 8272 D08         9.90 DM    ab 2 St. a 9.40 DM
+GDC     U 82720, yA 7220  26.00 DM    ab 2 St. a 24.80 DM
+A/D     C 520              1.50 DM    ab 3 St. a 1.30 DM
+A/D     C 570              1.60 DM    ab 3 St. a 1.40 DM
+A/D     C 7136             1.80 DM    ab 2 St. a 1.70 DM
+D/A     C 5650             2.00 DM    ab 2 St. a 1.80 DM
+D/A     C 5658             2.00 DM    ab 2 St. a 1.80 DM
+Treiber DS 8282            1.00 DM    ab 3 St. a 0.90 DM
+Treiber DS 8283            1.00 DM    ab 3 St. a 0.90 DM
+Treiber DS 8286            1.00 DM    ab 3 St. a 0.90 DM
+Treiber DS 8287            1.00 DM    ab 3 St. a 0.90 DM
+
+Weitere Schaltkreise zu Sonderpreisen auf spezielle Anfrage !
+
+
+2. Leiterplatten (unbest}ckt)
+-----------------------------
+
+Grundplatine Z1013 (Originalplatine von Robotron)   9.90 DM
+                               ab 2 St}ck        a  8.90 DM
+
+RAM-Floppy-Platine 256K (Pr{citronic)              12.00 DM
+                               ab 2 St}ck        a 10.80 DM
+
+Lochrasterplatine (K1520-Format, DKL, 2.5 mm-
+                   Raster, universell verwendbar)   5.00 DM
+                               ab 3 St}ck        a  4.50 DM
+
+3. Steckverbinder
+-----------------
+
+Prinzipiell biete ich alle g{ngigen ex-DDR-Steckverbinder an.
+Hier ein Auszug aus dem Angebot:
+
+Z 1013 - Steckverbinder
+
+15-polig     a 0.60 DM   ab 3 St. einer Sorte  a 0.55 DM
+26-polig     a 1.00 DM   ab 3 St. einer Sorte  a 0.90 DM
+58-polig     a 1.50 DM   ab 3 St. einer Sorte  a 1.35 DM
+
+Bitte den gew}nschten Steckverbinder genau beschreiben !
+Dazu bitte angeben:  Stecker oder Buchse
+                     Polzahl
+                     Reihenzahl (2- oder 3-reihig)
+                     gerade oder gewinkelte Anschl}sse
+
+Bitte  nach  M|glichkeit  Austauschtypen  in  Bezug  auf die An-
+schl}sse (gerade/gewinkelt) angeben.
+Es  kann  auch mit der TGL-Bezeichnung  bestellt  werden,  falls 
+diese bekannt ist.   
+
+Weitere  Steckverbinder (direkte  Verbinder,  Schneid-Klemm-Aus-
+f}hrungen, 10...87-polige  etc.) auf spezielle Anfrage. 
+
+
+4. Sonstiges
+------------
+
+-Tastatur K7669           20.00 DM
+ (EPROM 2732 mit Brosig-Monitor K7669 -> allgemeines Angebot)
+ 
+-Diskettenlaufwerk  5.25",  1.6, geeignet f}r den Betrieb an der 
+ Floppy-Karte  nach  Kramer und CC Jena,  neu und  gepr}ft,  auf 
+ Wunsch mit Dokumentation
+ Hersteller: TEAC Japan
+ Preis: 149.00 DM
+
+-Schaltnetzteile:  5 V / 5 A         15.00 DM
+                  12 V / 2 A         15.00 DM
+ passende Steckverbinder:   1 St. BL 328-3
+                            1 St. BL 402-15
+          Preis zusammen:   1.00 DM
+ passender Netzfilter:      3.00 DM
+
+ F}r die Beschaltung der Schaltnetzteile kann auf Wunsch ein In-
+ formationsblatt mitgeliefert werden.  
+----------------------------------------------------------------
+   
+Wegen  der  ausgelaufenenen Produktion einiger Bauelemente  sind
+teilweise nur noch geringe St}ckzahlen verf}gbar.
+Deshalb ist baldige Bestellung erforderlich.
+Den Mindestbestellgesamtwert von 10 DM  bitte ich  nicht  zu un-
+terschreiten. 
+Bei  Anfragen ohne Bestellungen ist ein frankierter R}ckumschlag
+beizulegen. 
+Bestellungen an:  Jens M|ckel
+                  Magdeburger Str. 1b
+                  Riesa
+                  O-8400
+----------------------------------------------------------------
+..LADER5.TXT     

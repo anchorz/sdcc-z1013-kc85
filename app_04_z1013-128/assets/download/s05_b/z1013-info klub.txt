@@ -1,0 +1,280 @@
+================================================================
+
+Werte Z-1013-Freunde!
+Da wir auch in den naechsten Jahren nicht damit rechnen duer-
+fen, Software fuer unsere Rechner Z1013 in ausreichender Menge
+auf dem Markt zu erhalten, (fuer Viele auch kein Beduerfnis, da 
+sie lieber selbst Software schreiben), muessen wir selbst fuer
+die Verbreitung dieser sorgen.
+Die Freunde des AC-1 zeigen uns den Weg, wie dieses Problem zu
+loesen ist. Sie haben in jeden Bezirk Beauftagte, die Anfragen
+aus dem Bezirk bearbeiten und mitteilen, wo welche Software er-
+haeltlich ist. 
+Wir gehen einen etwas anderen Weg, zumal der Z1013 mitlerweile
+der Rechner mit der groessten Verbreitung in der DDR ist, noch 
+ueber ATARI und COMODORE steht. Wir organisieren die Klubarbeit.
+Wenn in jeder Kreistadt ein Klub oder Arbeitsgemeinschaft be-
+steht, ist der SOFTWARE-Tausch oder Abgabe fuer Neueinsteiger
+kein Problem. Dann brauche ich nicht meine Freizeit opfern, um 
+mehr als 400 Kassetten zu bespielen.
+Alle Klubs oder Gemeinschaften muessen die Moeglichkeit schaf-
+fen, den Z1013-Anhaengern ihrer Umgebung mit Rat und Tat, auch
+mit Software zur Seite zu stehen. 
+Desweiteren wollen wir ab 1990 nur noch Tagungen unter den Klubs
+und Gemeinschaften durchfuehren. Alle Tagungsmaterialien stehen
+allen dann ueber diese und ueber  Veroeffentlichungen zur Ver-
+fuegung.
+Ich bitte um Wortmeldungen und Anregungen noch vor der Leipziger
+Tagung. Dort halte ich einen Vortrag zu dieser Thematik.
+
+Fragen, Rueckfragen u.a. beantworte ich Ihnen gern. Fuegen Sie 
+mir bitte einen Freiumschlag oder das Rueckporto bei und geben
+Sie Ihre Registriernummer mit an. Sie steht auf der Abrechnung.
+
+Nun zu den Programmwuenschen:
+-----------------------------
+Alle Zuschriften zeigen mir etwas grundsaetzliches. Die we-
+nigsten verfuegen ueber einen 64-K-Speicherbereich, fast keiner
+weiss etwas ueber den Sprungverteiler /1/ und den HEADERSAVE.
+Beides sind aber notwendige Zutaten, um mit unseren Programmen
+zufriedenstellend zu arbeiten.
+Ich habe mich deshalb in Abstimmung mit unserer IG zu folgendem
+Vorgehen entschlossen:
+
+1. Privatpersonen erhalten einheitlich folgende Programme und 
+   Dokumentationen von mir:
+   
+      HEADERSAVE 5.95 
+      UNI-TEXTLESER
+      MicroWORD 1.520U 
+      eine Auflistung des Sprungverteiler, Systemzellen und 
+      I/O-Adressen
+      und den 10-KByte KC-BASIC+ 
+      Dazu kommen alle Beschreibungen.
+
+Fuer Klubs und Gemeinschaften werden aber alle die zur Verfue-
+gung stehenden Programme weitergegeben, die notwendig sind, ei-
+ne gute Arbeit zu leisten, insbesondere zur Erarbeitung von Soft-
+ware. Ausserdem koennen sich dann andere Z1013-Freunde bei die-
+sen Klubs und Gemeinschaften auch diese Software erwerben.  
+
+2. Sie bekommen Informationen zu den Programmen und zu den im 
+   weiteren zu beziehenden Programmen.
+
+3. Ich gebe Ihnen Hinweise darueber, wie Sie am zweckmaesigsten
+   und billigsten zu einem 64-K-Speicher kommen und damit ueber
+   die RAM-Floppy, die Leipziger Tagung u.a..
+
+Von der Dresdner Tagungskassette sind neben dem gebotenen fuer 
+16-K Speichergroesse nur noch der CHESS-MASTER als Schachpro-
+gramm nutzbar, sowie der LOGICANALYSOR. Der TEXTED. ist ueber-
+holt, da MicroWORD 100mal besser ist und DEMO ist nur ein Re-
+klameprogramm, ohne grossen Nutzen. Spiele lasse ich weg, da 
+meine Zeit auch nur beschraenkt ist. Wir wollen noch den IDAS 
+als kleinen Assembler fuer 16-K  zurecht machen, da er fuer An-
+faenger gut geeignet ist. Sie schreiben hier direkt den Quell-
+text, er uebersetzt sofort und meckert, wenn Sie etwas falsch 
+machen. Als Lern-ASSEMBLER gut geeignet.
+
+Etwas zum MicroWORD: Bei der 16-K-Version, wie bei der 64-K-
+Version steht die Beschreibung im Textpuffer. Nun kann man den 
+Text mit "W" nach dem Lesen ausladen (Textkassette), loescht 
+danach den Textpuffer mit "&" und kann den MicroWORD fuer wei-
+tere Texte zum lesen laden, oder Texte schreiben. Ausgeladen 
+wird der MicroWORD selbst mit
+
+    @S 0100 1456 0100 >ENTER< 
+   Typ C Filename M.WORD 1.520U  >ENTER<
+(bei 16-K: Filename MicroWORD 1.520U 16 >ENTER< , der MicroWORD
+ 1.519O entsprechend.)
+
+ueber HEADERSAVE ausladen.
+
+
+KC-BASIC+ ist der gleiche 10-KByte-Interpreter, wie auf der Rie-
+saer BASIC-Kassette, nur weitaus verbessert. Er kann BASIC-Pro-
+gramme im KC-Modus wie auch mit dem HEADERSAVE laden und saven.
+In der Beschreibung steht, wie Sie ihn aendern oder fuer Ihre
+Zwecke anpassen koennen.
+
+ACHTUNG: Geben Sie kein Programm weiter, welches Sie geaendert
+haben. Nur die Originalversion. Nur dafuer uebernehmen wir die
+Garantie. Und nur mit der Beschreibung!! (s.a. weiter unten).
+
+Wer die RAM-Floppy hat und das Programm HEADERDISK 45 nutzt,
+kann auf den SARUF und LORUF-Adressen des MicroWORD (s.MW-Be-
+schreibung, ebenso KC-BASIC+ und R-80) die Direktadressen des 
+HEADERSAVE auf E000H fuer SAVE und LOAD
+eitragen. Diese Adressen sind kompatibel zum HEADERDISK. Damit
+kann man dann Texte, Programm-Files usw. direkt auf die RAM-
+Floppy laden bzw. von dort in den MicroWORD, KC-BASIC+ holen, 
+oder den reassemblierten Quelltext des R-80 ausladen. Vorher die
+HEADERSAVE-Beschreibung gut studieren.
+
+Der Sprungverteiler: Er ist nur bei 64-K-RAM nutzbar, bzw. wenn
+er im MONITOR steht. Hier werden auf festgelegten Adressen von 
+FFFFH abwaerts die Adressen von staendig nutzbaren Routinen ein-
+getragen. Ein Beispiel: 
+Sie haben Ihren HEADERSAVE auf E000-E3FFH stehen. Bei Ihnen wird
+im Sprungverteiler auf FFF1H C3 00 E0 stehen. (LORUF). 
+Mein HEADERSAVE (LORUF) steht im Monitor auf der Adresse FAC1H.
+Bei mir steht deshalb auf FFF1H C3 C1 FA. Ruft nun ein Programm
+die Adresse FFF1H als LORUF auf, wird bei mir genau wie bei 
+Ihnen der LORUF des HEADERSAVE angesprungen. Damit wird er-
+reicht, dass die verschiedenen Programme bei verschiedenen In-
+stallationen lauffaehig bleiben.
+Im sog. Brosig-Monitor ist neben den geaenderten Tastatur-
+Routinen der Sprungverteiler und der Headersave mit enthalten.
+
+****************************************************************
+
+Wie kommen Sie am besten zu einem 64-K-Speicher? :
+Ab Sommer wird auch ROBOTRON Riesa nur noch 64-K-Z-1013 bauen.
+Wenn Sie auf Ihrer Z-1013-Platine moeglichst nichts aendern wol-
+len, gibt es eine preiswerte Moeglichkeit, da Riesa den Z-1013
+fast K-1520-kompatibel gebaut hat: Die RAM-Floppy aus Dresden!!
+
+Information: "Mikroprozessortechnik" Heft 3 1988.
+
+Preis: 64.- M fuer die 2-seitig-kasschierte und gebohrte Leiter-
+platte (K-1520-Format). Dazu die schriftliche Aufbauinformation.
+Dazu auf Wunsch ein gedrucktes Heft mit Information zum Einbau
+in den Z-1013. (Preis ca. 5.- M, ist noch im Druck).
+
+RAM-IC U 2164 D S1 5.65 M/Stueck, 45.20 M fuer 8 Stueck. Etwa
+20.- M fuer den Rest und etwas Erfahrung und Geduld.
+
+Was kostet ein KC-RAM-Erweiterungsmodul? Und dabei nicht mal 
+64-K-Byte. 
+Anschluss: Der Hauptspeicher benoetigt nur ein /RDY-Signal vom
+Z-1013, damit er bei Monitor-Zugriff und Bildschirm-Zugriff 
+schweigt. Dazu sind 5 Dioden (oder eine SAM 65) noetig und eine
+Kratzstelle am Systemstecker C 25, da hier das nie benoetigte
+/CASG liegt. Spaeter koennen Sie dann noch den 256-K-RAM-Bereich
+ausbauen.
+Wer einen 64-K-RAM hat und nur die RAM-Floppy nutzen will, hat 
+es noch einfacher, er kann sie direkt an dem Systemstecker an-
+schliessen. Laeuft selbst ohne Treiber bei 2 und 4 MHz wie ein 
+Uhr-Werk.
+BEZUG: Mit Z-1013-Information nur in Dresden (Wird nachgeliefert
+wenn noch nicht vorhanden). Fuer Auswaertige auch im Versand. 
+
+Fa. "hoppy-electronic-dresden"
+Schwerinerstr. 36 DRESDEN 8010
+***
+
+Wer 32-K oder 48-K Speicherbereiche hat, muss sich die Program-
+me selbst anpassen.
+***
+
+Wer die Multiplexer-Tastatur und den Monitor A.2 nutzt, hat Pro-
+bleme mit vielen der Programme, da die Inkey-Routine ueber 
+RST-20/DB 4 trotz aller Zusagen Riesas nicht kompatibel zum 
+ersten Monitor 2.02 ist. (Im Text der MicroWORD-Erklaerung steht
+ein kleiner Quelltext zur Anpassung der Programme, die nicht lau-
+fen. Auch im KC-BASIC+.DOC steht ein Vermerk ueber die Anpassung
+Sie koennen auch folgendes machen: Bei Anliegen eines Zeichens 
+auf Zelle 04H einen RST 20/DB1 durchfuehren.
+
+	RST 20,DB4
+	OR A
+	JRNZ M1-# 
+	LD 04H,A
+	RET
+  M1:   RST 20,DB1
+	RET
+
+***
+
+Wer also die Multiplexer-Tastatur nutzt und will im MicroWORD 
+einen Text schreiben, und erlebt ploetzlich, wie bei einem Tas-
+tendruck das Zeichen gleich bis 10 mal erscheint, weiss jetzt
+warum.
+*** 
+
+Wer noch nicht als Klub oder Gemeinschaft registriert wurde
+und keine gesellschaftliche Einrichtung als Traeger hat, kann
+sich
+  -bei dem zustaendigen Rat des Kreises (oder Stadt) Abt. Kultur
+   melden.
+  -Wer keine Traegereinrichtung findet, wende sich an den Kul-
+   turbund der DDR. Auch die FDJ oder GST kann angesprochen wer-
+den.
+   -Sollte alles nicht klappen, wenden Sie sich an mich, ich wer-
+   de dann einen Weg finden.
+
+****************************************************************
+
+Ein Wort zu Bearbeitungsgebuehren: Die fuehrenden Klubs der Z-
+1013-Gemeinde sind zu der Ansicht gelangt, dass eine Bearbei-
+tungsgebuehr von etwa 5.- M fuer gute Programme etwa 2.- bis
+3.- M fuer Dokumentation auf Kassette, bei Druck entsprechend,
+gerechtfertigt sind. Zu diesem Thema, der Software-Verteilung
+und der Klubarbeit, werde ich in Leipzig sprechen. 
+(Siehe auch /2/)
+****************************************************************
+
+Auf Grund dessen, dass sich viele Schulen gemeldet haben, auch
+noch nicht alle Klubs/AG's ueber 64-K-RAM verfuegen, und nicht
+zuletzt ja auch 16-K-Besitzer sich Programme holen wollen, wer-
+den am Ende noch 3 Versionen des MicroWORD fuer 16-K mit ausge-
+geben.
+Es sind 2 Versionen mit Druckertreiber und eigenen HEADERSAVE,
+und ein gekuerzter Normal-MicroWORD. Auch diese haben Ihre Be-
+schreibung im Textpuffer.
+Alle Klubs/AG's sollten nur saubere und gepruefte Programme ab-
+geben, alle mit der Beschreibung, wenn sie sich nicht selbst er-
+klaeren, und nur die jeweils neueste, aktuellste Version. Geben
+Sie keinen MicroWORD unter 1.519 weiter, keinen HEADERSAVE unter
+5.95 usw.
+
+****************************************************************
+
+Folgende Programme oder Dokumentationen kann bei Bestellung ge-
+gen angegebene Bearbeitungsgebuehr noch nachgeliefert werden:
+
+Beschreibung der Brosig-Tastaturmit Eprom-Programm  
+  (Tastatur K-7652 o. K-7659, mit angeben!)
+  oder mit Programmieren des EPROM (2732) mit gew. Brosig-Monit.
+   Beschreibung: 5.- M (mit EPROM-Programm)
+   nur EPROM-Programm: 2.- M
+   Programmieren EPROM: 3.- M  
+Beschreibung RAM-Floppy am Z1013
+           3.- M   
+
+Fuer RAM-Floppy gibt es dann die 3 Programme mit Beschreibung:
+
+HEADERDISK 45  5.- M
+SCP-2RF 2.38M (m.HEADERSAVE) 5.- M
+RF-TEST 4.4  3.- M
+
+Z1013-FORTH    0100-27FFH
+         Bearbeitungsgebuehr: 5.- M
+         Beschreibung: 3.- M
+
+In Aussicht steht ein verbesserter Cyruss-Chess mit Moeglich-
+keit, die Partie stehen zu lassen, um sie mit Warmstart spaeter 
+weiter zu spielen. (Ist schon vorhanden, in deutsch und mit ei-
+ner ordentlichen Beschreibung.)
+Die Preise sind nur Richtlinien. Voraussichtlich bleibe ich bei
+den bisher geforderten 2.- M fuer ein Programm und 1.- M fuer
+eine Beschreibung. 
+
+Auf Ihrer Kassette befindet sich noch das BILD-MicroWORD 6. Es 
+gibt nur ein Bild vor dem Laden des MicroWORD, wird von diesem
+ueberschrieben. Es ruft den HEADERSAVE fuer den MicroWORD auf.
+ 
+Programm-Listings aller zur Verfuegung stehenden Programme, 
+(etwa 500 Programme haben wir) werden nach der Leipziger Tagung
+nur an Computergemeinschaften oder Klubs abgegeben. Dort koennen
+sie dann eingesehen werden. Diese Frage wird in Leipzig ge-
+klaert.
+
+ Bei telefonischen Anfragen bitte nur Privat-Nummer nutzen:
+Radeberg 3810
+=====
+HIER ENDE TEIL 1 (Teil 2 wird im naechsten Text (Sprungvertei-
+ler mit stehen. Sie koennen die Teile, wenn Sie 64-K-RAM haben,
+wieder im MicroWORD zusammenstzen.
+^^
+gramms kann 

@@ -1,0 +1,126 @@
+**************************************************************
+* Angebot CC Jena               Version: Tagung '91          *
+****************************************************MOE*******
+
+A.M}ller
+Bauersfeldstr. 17
+6908 Jena
+
+Werte User!
+Da leider eine Kommunikation auf dem Z1013-Gebiet nicht mehr so
+gut moeglich ist,moechten wir uns mit folgendem Anliegen an
+Sie wenden. Vor einem Jahr stellten wir unsere FDC- und GDC-
+Leiterplatten fuer interessierte User zur Verfuegung. Seitdem
+st Zeit verflossen und das CP/M wurde teilweise stark verbessert
+bzw. erweitert. Da wir die Option Kramer FDC-Karte auch zur Ver-
+fuegung haben, laesst sich das CP/M auch fuer andere User
+nutzen. Auf Wunsch schreiben wir das CP/M auch auf die System-
+spuren (Spur 0-2, Z1013-Monitor Spur3) und extra auf Diskette
+bzw. Kassette. (Kassette nur wenn's nicht anders geht!). Bitte
+bei allen, auch folgenden, Angeboten beachten, dass die Diskette
+formatiert und beschriftet in einem "postsicheren" Umschlag, der
+gleichzeitig als Rueckumschlag genutzt werden kann, an uns ge-
+schickt wird. Je nach Umfang des Wunsches berechnen wir unter-
+schiedliche Bearbeitungsgebuehren (und nur diese, Verpackung
+inclusive). Da wir eine weitere grundlegendere Erweiterung des
+CP/M nicht mehr anstreben, geben wir auch die wichtigsten Quel-
+len als Paket raus, mit guter Dokumentation zu CP/M und anderen
+guten Quellen. Hier ist ungefaehr mit einem Umfang von 200-500k
+zu rechnen. Folgende BIOS-Versionen sind einstellbar und muessen
+bei Bestellung genauestens angegeben werden!!!!
+
+CPA 	CPA kompatibel
+SCP	SCP "
+LW 1.2	1.2 LW (SS) einseitig 1*40
+LW 1.41	1.4 LW (SD) "         1*80 Sp.
+LW 1.42	1.4 LW (DS) zweiseitig 2*40 Sp.
+LW 1.6	1.6 LW (DD) "          2*80 Sp.
+LW2   	zweites phys. Diskettenlaufwerk
+K7659	Tastatur K7659 nach MP 7/88
+K7652	"        K7652 (S6009) "
+K7669	"        K7669 (S3004) "
+K080B   "        12KE080B
+CENTRO	Anschluss einer Centronic-Schnittstelle nach Practic 1/90
+V24MOD	Druck ueber E/A-Modul oder Userport Bit0->RxD; Bit 4->DTR
+S3004	Druck ueber S3004 Bit0->Rxd,Bit1->DTR
+SFDCK	entweder unsere FDC-Karte oder die Kramer-FDC-Karte
+GDCk	bei 80*25 Zeichen-Bildschirm
+Z1013BS	bei 64*16 Zeichen Bildschirm
+Ram-	1.) 768k (3*256k) 2.) 512k (2*256k-RF) 3.) 256k (eine
+floppy	RF) alle RF nach MP 3/88
+RTC	Anschluss der Echtzeituhr 72421A entweder Adresse 20-
+	2fH oder 70-7FH (bitte mit angeben!!!!!)
+Tape	wenn CPM von Kassette geladen werden soll
+CCPCOPI	wenn CCP-Kopie angelegt werden soll, d.h. bei
+	WBOOT wird CCP von F800H runtergeladen!
+
+Eine entsprechende Beschreibung zum CP/M, die erforderlichen Pa-
+rameter u.s.w. werden natuerlich mitgeliefert. Weiterhin koennen
+Formatierungsprogramme aller Art, Urlader, die von Diskette,Kas-
+sette und Eprommer als CP/M laden koennen, geliefert werden.
+Als letzte Option ist zur Zeit eine automatische Formaterkennung
+in Arbeit. Mit dieser erkennt das BIOS selbsttaetig wichtige
+Formate (z.B: 148,200,360,400,624,800k). Diese Option ist noch
+nicht fertig und kann bei Bestellung Ihrerseits nicht garantiert
+werden!!!!
+2. RTC-72421
+Zu unserer BIOS-Option Echtzeituhr bieten wir als weiteren
+Service die Lieferung der Leiterplatte mit Bestueckungsplan und
+Kurzbeschreibung, sowie das vollstaendige und kostenguenstige Bau-
+elementeset. Diese Leiterplatte ist mit einem Memopuffer und
+Spannungsueberwachungsschaltkreis ausgestattet, der beim
+Ausschalten des  Rechners ein NC-Memo-Akku zuschaltet und beim
+Einschalten ein sauberes Reset gewaehrleistet, so das ein einwand-
+freies Arbeit der RTC gewaehrleistet ist.
+Preis: RTC-Leiterplatte   6,- DM
+
+       Bauelementeset    48,70DM (Preise lt. Voelknerkatalog)
+3. Software
+Auf Zusenden einer Diskette kann von uns unsere CP/M-Programmda-
+tei abgefordert werden. Diese liegt als REDABASfile vor! Sie ist
+kommentiert und enthaelt mehr als 450 Eintraege. Auch unsere
+Z1013- Datenbank kann abgefordert werden. Auch hier bitte nicht
+Behaeltnis und Rueckporto vergessen!
+
+4. Farbvollgraphik VIS-3
+Wir freuen uns sehr, dass wir jetzt allen Z1013-Usern eine ausge-
+zeichnete und kostenguenstige Farbvollgraphik (FGR) anbieten koen-
+nen. Folgende Kurzcharackteristik:(mehr in MP 3/88 S. 66)
+*K 1520 Format (wie Z1013) durchkontaktiert, Industriequalitaet
+*Bildwiederholspeicher mit 64 (1MBit)oder 256kbit(4MBit)-Schalt-
+kreisen, d.h. von 512*512 bis 1024*1024 Bildpunkte
+*Auswahl verschiedener Monitore bis zum Junost, wo wir auf
+Wunsch eine RGB-BAS Konvertierungsleiterplatte liefern
+*bis zu 16 Farben bzw. Graustufen
+*Programmierung der Groesse des BWS
+*ein oder zwei Bildfenster, dabei unabhaengige Veschiebung der
+Bildausschnitte
+*bis 16-faches Zooming
+*Zeichnen von Kreisen, Boegen, Linien, Rechtecken, Fuellen von
+Flaechen und Textzeichenausgabe (also auch Alpha-Mode)
+*Lichtstiftabfrage
+*Anschluss an Z1013-Bus ohne Eingriff in den Rechner (5V/900mA)
+*verschiedene Monitorausgaenge bis zur Scartkompatiblitaet, sowie
+Moeglichkeit Anschluss an Junost
+*mit Graphik-IC U82720DC04
+*mit umfangreicher Dokumentation >200k (ausfuehrlichst) mit
+"kleinlicher" Beschreibung a l l e r  Parameter, dazu die
+vollstaendige Ansteuersoftware mit Turbopascal und Basic-Schnitt-
+stelle, sowie Testprogramme und Beispielprogramme, alle an den
+Z1013 von uns angepasst und mit PD-Erlaubnis vom Autor 
+*alles zusammen ungefaehr 400-600k (Achtung Diskettengroesse)
+*kann auf viele Formate ueberspielt werden
+Preis: Leiterplatte + Bestueckungsplan, Schaltplan und Block-
+schaltbild, sowie a l l e r Software  70,- DM
+RGB-BAS-Konverter aufgebaut  45,-DM 
+bei Einzelkomponentenbestellung gelten folgende Preise:
+Leiterplatte + Plaene     35,- DM
+Software (alles)         60.- DM
+Eine Weitergabe der Software von Dritten ausser uns verstoesst
+gegen die Forderungen vom Urheber. Eine Garantie der ordnungsge-
+maessen Anpassung und Vollstaendigkeit kann nur bei Lieferung
+durch uns gewaehrleistet werden. Bitte bei der VIS schnell
+ueberlegen, da die Produktion der Leiterplatten ausgelaufen
+ist!!! Bestellungen an: A. Mueller, Bauersfeldstr. 17, 6908 Jena                  	      		                      
+
+A. Mueller, S. Breiterndli

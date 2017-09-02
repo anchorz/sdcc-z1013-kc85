@@ -1,0 +1,219 @@
+Hinweise zur Installation eines 1.2 Diskettenlaufwerkes an den Z1013,
+(bzw. 1.4 oder 1.6 Laufwerk 5/89)
+____________________________________________________________________
+
+   Schaltung nach Applikation U 8272 und "Praktische Mikrocomputer-
+   technik" von Kramer sowie "Anschluss Ramfloppy" von Brosig.
+
+1) Taktfrequenz des Rechners von 2 MHz reicht nicht aus. Dem U 8272 
+   muessen wenigstens 2.5 MHz angeboten werden. Das bedeutet also den
+   Rechner mit 4 MHZ laufen zu lassen oder durch Einsatz eines zu-
+   saetzlichen 10 MHz Quarzes eine Taktfrequenz von 2.5 MHZ zu er-
+   reichen. Ich selbst arbeite jetzt mit 2.5 MHz.
+   Um die Load- und Saveroutinen weiterhin nutzen zu koennen (nach
+   alt) sind saemtliche Zeitkonstanten bei 4 MHZ durch 0.5 und bei
+   2.5 MHz durch 0.8 zu dividieren.
+
+2) Das BIOS ist ROM-faehig und kann mit CPM bzw. CPM64 (64 Zeichen).
+   Oder Jump DE00 bzw. Jump E47E  aufgerufen werden.
+   Mit Aufruf des Programms (Kaltstart) wird W8272 und R8272 (Schrei-
+   ben und Lesen) auf E800 H und saemtliche Arbeitszellen auf E900 H
+   geladen.
+   Eprom muesste also von DE00 bis E7FF sein.
+
+3) Laufwerk B ist momentan noch von 7000 H bis C800 H eingebunden,
+   laesst sich aber durch vorhandenen Quelltext leicht umschreiben.
+   Siehe auch den Beitrag in MP ueber RAM-FLOPPY.
+
+4) Die Leiterplatte ist entsprechend Bestueckungsplan zu bestuecken
+   und hat als Systemsteckverbinder K 1520-Bus. Vorsichtshalber
+   sind nach dem Bohren der Leiterplatte alle Leiterzuege auf Haar-
+   risse durchzuklingeln !!!!
+   Das Laufwerk 1.2 (K 5600.10/20) einschl. Leiterplatte benoetigen
+   5V , 1.25A und 12V , 600mA. Ein stabile Stromversorgung ohne "Span-
+   nungseinbrueche" ist unbedingt fuer die einwandfreie Funktion zu
+   garantieren.
+   Ein 1.4 Laufwerk benoetigt ca. bei 5V 600 mA und 12V 300mA.
+
+5) Ebenfalls wird Motor ON nicht Softwaremaessig gesteuert, es wird
+   durch CS ueber den DL 123 gesteuert. Achtung !!! bei einigen 1.2
+   Laufwerken reicht das L-Potential, welches der DL 123 liefert,
+   nicht aus um bei Schreibvorgaengen des Laufwerkes ein ordentliches
+   arbeiten zu garantieren.
+   Am einfachsten laesst sich das ordentliche Arbeiten mit dem For-
+   matierungsprogramm testen. Sollte es da beim Schreiben Probleme
+   geben muesste ueber den DL 123 noch ein Relais angesteuert werden,
+   welches dann direkt Masse an Motor ON legt.
+   Bei 1.4 oder 1.6 Laufwerken treten diese Probleme nicht auf.         
+   (Motor ON siehe Steckerbelegung am Laufwerk)
+
+6) Vorgehensweise beim ersten Formatieren einer Diskette :
+   
+   - System einschl. BIOS von Kassette laden (C800 H)
+   - Format von Kassette laden ( 100 H )
+   - Kurzes Programm schreiben und dieses dann anspringen. Diskette
+     wird formatiert und gleichzeitig das System draufgeschrieben.
+
+   Programm fuer das erste formatieren:
+   
+   Org 1000 H
+
+   LD HL,AN1         21 3B E1
+   LD DE,E800H       11 00 E8
+   LD BC,50H         01 50 00
+   LDIR              ED B0
+
+   LD HL,AN2         21 D4 E4
+   LD DE,E900H       11 00 E9
+   LD BC,250H        01 50 02
+   LDIR
+
+   CALL INIT         CD 4C E2
+   CALL INIFD        CD 08 E1
+   JMP FORM+16       C3 10 01
+
+7) Bei einem 1.2er Laufwerk ist es guenstig, das FAULT-RESET vom
+   Schreibflipflop zu trennen, da es sonst zu Aufzeichnugsfehlern
+   kommen kann (siehe Bild 1).
+   Am Schaltkreis IC5 (Laufwerk) ist Pin 9 auf +5V zu legen ! 
+
+8) Belegung Steckverbinder am Laufwerk 1.2 bzw. 1.4 und an der Lei-
+   terkarte.
+
+   Leiterplatte         Steckverbinder      Steckverbinder
+   8272                 1.2 Laufw.          1.4 Laufw.   
+   
+   A1  Masse             Masse              2  
+   A2  Masse 		 + 5		    4   Head Load---|
+   A3  Select DS 0       Motor ON           6               |  
+   A4  Index             Ready              8   Index       |
+   A5  Write Data        Track 0            10  DS 0 	----|
+   A6  Read Data         Write Protect      12
+   A7  Head Load         Fault Write        14
+   A8  Write Enable      Read Data          16 Motor ON
+   A9  Step Direction    Index              18 Step Direction
+   A10 Step              Fault Reset        20 Step
+   A11 Write Protect     Masse              22 Write Data
+   A12 Track 0           Masse              24 Write Enable
+   A13                   Masse              26 Track 0
+   B1  +12               Masse              28 Write Protect
+   B2  +12               + 5                30 Read Data
+   B3  +12               + 5                32 Head Select
+   B4                    Head Load          34 Ready (nicht angesch.)
+   B5                    Select---| Verbindung muss 
+   B6  Head Select       Step     | hergestellt werden !!!!
+   B7                    Lock-----|-wird an DS 0 angeschl.
+   B8  Motor ON          Write Data
+   B9                    Write Enable
+   B10                   Step Direction
+   B11 + 5               + 12
+   B12 + 5               + 12
+   B13 + 5               + 12
+
+   Steckverbinder am 1.4 Laufwerk!(von oben auf das Laufwerk gesehen)
+
+        
+      +12,0,0,+5                ______________________                        
+      _________ (Spannungen)    ||.............|...|||  
+      |       |                 |34            8   42|     
+   _____________________________|                    |____ 
+
+     	
+9) Auf der Kassette sind die folgenden Programme:
+
+   *  Quelltext BIOS  (MikroWord)
+   *  Quelltext FORMAT
+   *  Maschinenprogramm System+BIOS (auf E47EH ist E7 04
+          einzutragen!!!),(System von C800 bis DDFF und BIOS von DE00
+          bis E7FF)
+   *  Maschinenprogramm Format (100 bis 22B)
+   *  Mein Betriebssystem mit geaenderten Zeitkonstaten als
+          Beispiel.(Betriebssystem ist das Riesaer A2 mit
+          Erweiterungen, durch Eingabe von Help werden alle Funkionen
+          angezeigt.
+   *  Hinweise zur Installation Laufwerk.....in Micro-Word
+
+
+
+
+Zusaetzlich Hinweise !!!!
+
+
+Bisher wurden insgesamt mit der Leiterplatte 5   1.2er Laufwerke 
+sowie 2   1.4er Laufwerke und 3 1.6er installiert. Die Leiterplatte 
+funktionierte immer sofort.
+Lediglich bei den 1.2er Laufwerken gab es die unterschiedlichsten
+Erscheinungen, die aber mit der Leiterplatte nichts zu tun haben.
+
+- bei einigen muessen die 12Volt wenigstens 12ms vor den 5Volt an-
+  liegen. Verzoegerung ueber Relais reicht aus.
+- das Motor On ueber den DL123 geht auch nicht bei allen Laufwerken,
+  siehe Hinweise Pkt.5.(Zusaetzlicher Schalter oder Relais)
+- die Spannungen 5 und 12 Volt muessen stabil anliegen
+- auf der Grundplatte des Z1013 ist der PIO vorsichtshalber voll-
+  staendig auszudecodieren!!!
+- eine 64*16 Zeilenumschaltung ist eingebunden (Aufruf mit CPM64)
+- ein 1.4 oder ein 1.6 Laufwerk laesst sich sofort mit der vor-
+  handenen Software anschliessen, es stehen dann aber ebenfalls
+  nur 148k zur Verfuegung.
+  Will man z.B. bei einem 1.4 Laufwerk 305k erreichen muss im BIOS
+  das Unterprogramm STRCK und eine Aenderung im DPBF erfolgen,
+  ebenfalls muss natuerlich eine Aenderung im Formatprogramm
+  erfolgen.Bei 305k ist man voll kompatibel zu den Disketten
+  eines 1.2 Laufwerkes 148k.Ich selbst arbeite mit 305k.
+ 
+Noch etwas zu den geaenderten Zeitkonstanten fuer die Load/-und
+Saveroutinen in meinen Betriebssystem, ich habe das Riesaer fuer
+eine grosse Tastatur (A.2) mit Erweiterungen ab F800H.
+
+
+Adresse       alt       neu
+              2.0MHz    2.5MHz  
+
+F3C3          06 70     06 8C
+F3D1          06 35     06 42
+F3E3          06 12     06 16
+F3E8          06 0F     06 12
+F3FC          06 0E     06 11
+F405          06 10     06 14
+F415          06 03     06 03 
+F41F          06 19     06 1F
+F428          06 15     06 1A
+F35C          11 10 09  11 54 0B
+F45F          3E 07     3E 08
+F481          3E 44     3E 55
+F48E          3E 1E     3E 25
+F49B          3E 1A     3E 20
+F4B8          3E 01     3E 01
+F4C2          3E 12     3E 16
+F4C9          3E 12     3E 16
+F4F0          3E 1E     3E 25
+
+Header steht ab F800H
+
+FA9C          06 70     06 8C
+FAAA          06 35     06 42
+FAB7          06 12     06 16
+FABE          06 0F     06 12
+FAD2          06 0E     06 11
+FADB          06 10     06 14
+FAEB          06 03     06 04
+FAF5          06 19     06 1F
+FBFE          06 15     06 1A
+FB35          11 10 09  11 0B 54
+FB38          3E 07     3E 08
+FB5A          3E 44     3E 55
+FB67          3E 1E     3E 25
+FB76          3E 1A     3E 20
+FB95          3E 01     3E 01
+FB9F          3E 12     3E 16
+FBA6          3E 12     3E 16
+FBCF          3E 1E     3E 25
+                    
+Fuer Hinweise und Veraenderungen bin ich dankbar.
+
+                             Norbert Zimmermann
+                             H.-Grade-Str.67
+                             Magdeburg
+                             3038
+  >          

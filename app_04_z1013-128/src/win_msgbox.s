@@ -58,59 +58,55 @@ _win_msgbox::
         ld      (hl),#0xc1
         ld      d,b     ; d(h)
         ld      e,c     ; e(w)
-        ld      b,e
-mbox1$:
-        inc     hl
-        ld      (hl),#0x9e
-        djnz    mbox1$
-        inc     hl
-        ld      (hl),#0x89
-        inc     hl
+
+        ld      a,#0x9e
+        ld      c,#0x89
+        call    fill_line$
         ld      (hl),#0xb3
         inc     d
 next_line$:
-        ld      a,e
-        neg
-        add     #32-2
-        ld      c,a
-        add     hl,bc
+        call    correct_address$
 
         dec     d
         jr      z,lines_done$
 
         ld      (hl),#0x9f
-        ld      c,e
-        inc     c
-        add     hl,bc
-        ld      (hl),#0xc0
-        inc     hl
+        ld      a,#0x20
+        ld      c,#0xc0
+        call    fill_line$
+
         ld      (hl),#0xb4
         jr      next_line$
 lines_done$:
         ld      (hl),#0x88
-        ld      b,e
-mbox2$:
-        inc     hl
-        ld      (hl),#0xf8
-        djnz    mbox2$
-        inc     hl
-        ld      (hl),#0xc8
-        inc     hl
+        ld      a,#0xf8
+        ld      c,#0xc8
+        call    fill_line$
         ld      (hl),#0xb4
+        call    correct_address$
 
+        ld      (hl),#0xb1
+        inc     e
+        ld      a,#0xb6
+        ld      c,#0xb0
+        call    fill_line$
+        ret
+
+fill_line$:
+        ld      b,e
+fill_spaces$:
+        inc     hl
+        ld      (hl),a
+        djnz    fill_spaces$
+        inc     hl
+        ld      (hl),c
+        inc     hl
+        ret
+
+correct_address$:
         ld      a,e
         neg
         add     #32-2
         ld      c,a
         add     hl,bc
-        ld      (hl),#0xb1
-        inc     e
-        ld      b,e
-mbox3$:
-        inc     hl
-        ld      (hl),#0xb6
-        djnz    mbox3$
-        inc     hl
-        ld      (hl),#0xb0
-
         ret
