@@ -1,11 +1,12 @@
 typedef struct {
-    const char * name;
-    unsigned int  src;
-    unsigned int dst;
-    unsigned int start;
-    unsigned int len;
-} MENU_ENTRY;
+    char name[17];
+    unsigned char bankStart;
+    unsigned int  bankOffset;
+    unsigned int  bankLength;
+    unsigned int  destAddr;
+    unsigned int  destStart;
+} ENTRY;
 
-extern unsigned char menuEntriesCount;
-extern MENU_ENTRY menuEntries[10];
-extern void menuEntriesCreate();
+extern const unsigned char menuEntriesCount;
+extern const ENTRY menuEntries[];
+
