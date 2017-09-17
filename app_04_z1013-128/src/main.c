@@ -5,7 +5,7 @@
 #include <keys.h>
 #include "menu.h"
 
-static __at (0x800b) void (* execute)(unsigned int src,unsigned int des,unsigned int len,unsigned int start) __z88dk_callee;
+extern const DIRECTORY const dir; 
 
 #define MENU_W 24
 #define MENU_X ((SCR_WIDTH-MENU_W-1)/2)
@@ -15,9 +15,9 @@ static __at (0x800b) void (* execute)(unsigned int src,unsigned int des,unsigned
 void draw_main_menu() {
     char idx = MENU_Y + 1;
 
-    for (int i = 0; i < menuEntriesCount; i++, idx += 2) {
+    for (int i = 0; i < dir.menuEntriesCount; i++, idx += 2) {
         gotoxy(MENU_X + 4, idx);
-        cputs(menuEntries[i].name);
+        cputs(dir.menuEntries[i].name);
     }
 }
 
@@ -30,13 +30,13 @@ char cnt;
 #define PROGRESS_BAR_W 2
 #endif
 
-const char *bottomLines[] = { "\xeb","\xea","\xe9","\xe8" };
-const char *topLines[] = { "\xe8","\xe7","\xe6","\xe5" };
+const char * const bottomLines[] = { "\xeb","\xea","\xe9","\xe8" };
+const char * const topLines[] = { "\xe8","\xe7","\xe6","\xe5" };
 
 void paint()
 {
     char id=first_visible_item;
-    const ENTRY *ptr=menuEntries;
+    const ENTRY *ptr=dir.menuEntries;
     unsigned char y=0;
     
  //   clrscr();
@@ -71,8 +71,8 @@ void paint()
        //Annahme: line wird immer in 4er Schritten hochgezählt
        //TODO lines ist nicht konstant, der Scrollbar muss immer "von item-line" "bis-item-line" gezeichnet werden 
        unsigned char lines=MENU_H*8-4;
-       unsigned char firstLine=(first_visible_item*(MENU_H*8-4))/menuEntriesCount;
-       unsigned char visibleLines=(MENU_H*(MENU_H*8-4))/menuEntriesCount;
+       unsigned char firstLine=(first_visible_item*(MENU_H*8-4))/dir.menuEntriesCount;
+       unsigned char visibleLines=(MENU_H*(MENU_H*8-4))/dir.menuEntriesCount;
        unsigned char line=0;
        while (id<MENU_H*2-1)
        {
@@ -95,7 +95,7 @@ void paint()
           line+=4;
     }
     gotoxy(0,20);
-    printf("to=%d(%d) vis=%d(%d) at=%d(%d)",menuEntriesCount,lines,MENU_H,visibleLines,first_visible_item,firstLine);
+    printf("to=%d(%d) vis=%d(%d) at=%d(%d)",dir.menuEntriesCount,lines,MENU_H,visibleLines,first_visible_item,firstLine);
     }
 }
 
@@ -106,10 +106,10 @@ unsigned char handle_main_menu()
     for (;;) {
         c = getch();
         if (c == VK_DOWN) {
-            if (active_item<menuEntriesCount-1)
+            if (active_item<dir.menuEntriesCount-1)
                active_item++;
             
-            if (active_item==first_visible_item+MENU_H && active_item<menuEntriesCount)
+            if (active_item==first_visible_item+MENU_H && active_item<dir.menuEntriesCount)
             {
               first_visible_item++;
             }
@@ -147,7 +147,7 @@ unsigned char handle_main_menu2() {
             gotoxy(MENU_X + MENU_W - 1- PROGRESS_BAR_W, active_item * 2 + 1 + MENU_Y);
             cputs("  ");
             active_item++;
-            if (active_item >= menuEntriesCount)
+            if (active_item >= dir.menuEntriesCount)
                 active_item = 0;
         } else if (c == VK_UP) {
             gotoxy(MENU_X + 1, active_item * 2 + 1 + MENU_Y);
@@ -155,17 +155,17 @@ unsigned char handle_main_menu2() {
             gotoxy(MENU_X + MENU_W - 1- PROGRESS_BAR_W, active_item * 2 + 1 + MENU_Y);
             cputs("  ");
             if (active_item == 0)
-                active_item = menuEntriesCount;
+                active_item = dir.menuEntriesCount;
             active_item--;
         }
         if (c == VK_ENTER) {
             break;
         }
         if (c == VK_ESCAPE) {
-            return menuEntriesCount - 1;
+            return dir.menuEntriesCount - 1;
         }
         if (c == VK_CTRL_C) {
-            return menuEntriesCount - 1;
+            return dir.menuEntriesCount - 1;
         }
     }
     //printf("%d ",active_item);
@@ -195,11 +195,11 @@ int main() {
         //draw_main_menu();
         paint();
         item = handle_main_menu();
-        if (item == menuEntriesCount - 1)
+        if (item == dir.menuEntriesCount - 1)
             break;
         else
             execute_item(item);
-    } while (item != menuEntriesCount - 1);
+    } while (item != dir.menuEntriesCount - 1);
 
     __asm__("jp 0xf000");
     return 0;

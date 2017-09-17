@@ -1,9 +1,98 @@
 #!/usr/bin/perl -w
 
-print "erstellt die 32K-Images für den Z1013-128\n";
-print "Annahme: Bereich 0x8000-0xEC00 für 32K ROM nutzbar\n";
-print "suche in \"assets/rom*\" \n";
+$folder="assets";
+$file="$folder/list.txt";
+$filesystem="obj/z1013/filesystem.bin";
 
+@files=();
+
+sub write_directory($)
+{
+    my $file=shift;
+  
+    open(INFO, ">", $file) or die("Could not open file: ".$file);
+    print INFO pack('c',0x2);
+    #print INFO pack('A16',"0123456789abcdef0123--");
+    print INFO pack('A16',"erster Eintrag");
+    print INFO pack('a','C'); #typ: executable 
+    print INFO pack('c',0x00); #bankStart
+    print INFO pack('v',0x0001);#bankOffset
+    print INFO pack('v',0x0001);#length
+    
+    print INFO pack('A16',"...EXIT");
+    close(INFO);
+}
+
+sub check($)
+{
+    my $file=shift;
+    
+    #(my $file,my $menu)=split(/=/,$line);
+    my $len=-s $file;
+    open(my $FILE, $file) or die $!;
+    binmode($FILE);
+    read($FILE,my $content,$len);
+    close $FILE;
+
+    my $aadr=ord(substr($content,0,1));
+    $aadr+=ord(substr($content,1,1))*256;
+    
+    my $eadr=ord(substr($content,2,1));
+    $eadr+=ord(substr($content,3,1))*256;
+    
+    my $imageSize=$eadr-$aadr+1;
+
+    my $sadr=ord(substr($content,4,1));
+    $sadr+=ord(substr($content,5,1))*256;
+    
+    if ($imageSize>$len-32)
+    {
+        printf("Warnung %s: Dateilänge ist %d Byte kleiner als im Header angegeben\n",$file,$imageSize-$len+32);
+        printf ("        len=%d image+32=%d\n",$len,$imageSize+32);  
+    }
+    # elsif ($imageSize!=$len-32)
+    #{
+    #    printf("Info %s: Dateilänge ist %d Byte größer als im Header angegeben\n",$file,$len-32-$imageSize);
+    #}
+
+    my $typ=substr($content,12,1);
+
+    printf ("[%04x %04x %04x %s...",$aadr,$eadr,$sadr,$typ);  
+    for (my $cnt=0; $cnt<16; $cnt++)
+    {
+        my $ch=substr($content,$cnt+16,1);
+        if ($ch eq "\n" || $ch eq "\t" || $ch eq "\r")
+        {
+            $ch="\x00";
+        }
+        my $pr=$ch;
+        if (ord($ch)<0x20)
+        {
+           $pr="?";
+        }
+        printf ("%s",$pr);  
+    }
+    printf ("]\n");
+}
+
+
+print "erstellt das ROM-Images für den Z1013-128\n";
+print "benutze dafür Dateien aus \"".$file."\" \n";
+
+open(INFO, $file) or die("Could not open file.");
+
+foreach $line (<INFO>)  {   
+    chomp $line;
+    if (substr($line, 0, 1) ne "#" && $line ne "")
+    {
+        check($folder."/".$line);
+    }
+}
+close(INFO);
+
+write_directory($filesystem);
+
+exit 0;
 chdir("assets");
 @dir=glob("rom*");
 chdir("..");

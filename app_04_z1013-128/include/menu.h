@@ -1,12 +1,14 @@
 typedef struct {
-    char name[17];
+    char name[16]; //nicht null-terminiert!
+    unsigned char typ; //C-executable
     unsigned char bankStart;
     unsigned int  bankOffset;
-    unsigned int  bankLength;
-    unsigned int  destAddr;
-    unsigned int  destStart;
+    unsigned int  length;
 } ENTRY;
 
-extern const unsigned char menuEntriesCount;
-extern const ENTRY menuEntries[];
+typedef struct {
+    const unsigned char menuEntriesCount;
+    const ENTRY menuEntries[];
+} DIRECTORY;
+
 

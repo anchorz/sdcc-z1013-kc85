@@ -1,26 +1,29 @@
 #
 # getestete Dateien 
 #
-# 2 Original Tastatur
+# 2 Original Tastatur 2.02
 # A A2 Tastatur
-# B Brosig Tastatur
+# B Brosig Tastatur (von Ausnahmen abgesehen, soweit gesehen ohne direkte Spaltenabfrage)
 #
-# H Hobi's Joystick  - PIO_A Bit 6-8 müssen 0 sein, 000FOURL 
-# P Practic Joystick 01/88 lt. JKCEmu - Pinbelegung wie oben, xxxFOURL
+# H Hobi's Joystick  PIO_A Bit 6-8 müssen 0 sein, 0-0-0-Feuer-Oben-Unten-Rechts-Links 
+# P Practic Joystick 01/88 Pinbelegung wie oben, aber bit 5&6 selektiert Joystick, x-x-x-Feuer-Oben-Unten-Rechts-Links 
 # J anderer Joystick
 #
-# Kommentare:
-#
-# RST20 benutzt RST 20h Aufrufe
-# SPALT fragt Spalten direkt ab
-#
-#geht nicht
-767800e41f00e87b7b801acf0966ad27         *GHOST HUT+J.z80  ;0x100 ist die falsche Startaddresse, 0x200 sollte es wohl sein
-# funktionieren
-d7cc9d243acde235b0fc411de89839f9 2.....  *3K+CRASH.z80     ;SPALT
-36882f677d6be5b5c2530da36f7b2bd3 2AB...  *JUMPING-JACK.z80 ;RST20
-af119ebfecd1a42c89d147a02e06d0ed 2AB...  *KC-BASIC.z80     ;RST20
-031c7ef52c5a7e01c4a8c316b176df6e 2ABHP.  *MINEFIELD.z80    ;RST20
+# geht nicht
+767800e41f00e87b7b801acf0966ad27         *GHOST HUT+J.z80  ;[9d244366a5aec22b97dc7f91e5e93a4c] 0x100 ist die falsche Startaddresse, 0x200 sollte es wohl sein
+36882f677d6be5b5c2530da36f7b2bd3         *JUMPING-JACK.z80 ;[71e7473bef203f31b7c3f844166bd850] letztes Byte der .Z80 Datei fehlt
+af119ebfecd1a42c89d147a02e06d0ed         *KC-BASIC.z80     ;[28107373ce86e4492ee5f0850daac981] letztes Byte der .Z80 Datei fehlt
+
+# sonstiges
+71e7473bef203f31b7c3f844166bd850 2.B...  *JUMPING-JACK.z80 ;[6a2b89d0db56afa89fe9aee6d8ac4bab] alte Version; benutzt CALL, direkte Monitor-Aufrufe; neue Version benutzt RST20-Aufrufe                                            
+
+# funktioniert
+28107373ce86e4492ee5f0850daac981 2AB...  *KC-BASIC.z80     ;benutzt RST20-Aufrufe
+6a2b89d0db56afa89fe9aee6d8ac4bab 2AB...  *jumping-jack.z80 ;benutzt RST20-Aufrufe
+d7cc9d243acde235b0fc411de89839f9 2.....  *3K+CRASH.z80     ;nur Originaltastatur, fragt Spalten direkt ab
+4f7fa5cc3f81b6320d2adc1327d4e146 2ABHP.  *minefield.z80    ;benutzt RST20-Aufrufe 
+
+#nochmal prüfen
 f844aa6d981ff3bff30927a1d104cf52 ...H..  *AUTO+J.z80
 6becb943855bd6245c42e33ed1a19be6 ...H..  *ENCOUNTER+J.z80
 33d0622303dbe6341c1bf83f89ac7f0b ...H..  *HEARTRUNNER+J.z80
@@ -41,4 +44,6 @@ dced692ddba89e7dd7064a30fb319fb2 ...H..  *GALAXIS+J.z80
 7e8d567986137f27499ecd4628c5de54 ...H..  *NEW YORK+J.z80
 dfb83fca953529e6e0551be16b7f0fc4 ...H..  *WALL+J.z80
 db05942e104fc236ca3f6945a4c9358f .....J  *WALL+J.z80
+
+
 
