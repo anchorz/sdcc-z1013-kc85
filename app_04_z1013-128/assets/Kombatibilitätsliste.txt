@@ -15,13 +15,16 @@
 af119ebfecd1a42c89d147a02e06d0ed         *KC-BASIC.z80     ;[28107373ce86e4492ee5f0850daac981] letztes Byte der .Z80 Datei fehlt
 
 # sonstiges
-71e7473bef203f31b7c3f844166bd850 2.B...  *JUMPING-JACK.z80 ;[6a2b89d0db56afa89fe9aee6d8ac4bab] alte Version; benutzt CALL, direkte Monitor-Aufrufe; neue Version benutzt RST20-Aufrufe                                            
+71e7473bef203f31b7c3f844166bd850 2.B...  *JUMPING-JACK.z80 ;[6a2b89d0db56afa89fe9aee6d8ac4bab] dies ist eine veraltete Version; benutzt CALL, direkte Monitor-Aufrufe; neue Version benutzt RST20-Aufrufe                                            
 
 # funktioniert
 28107373ce86e4492ee5f0850daac981 2AB...  *KC-BASIC.z80     ;benutzt RST20-Aufrufe
 6a2b89d0db56afa89fe9aee6d8ac4bab 2AB...  *jumping-jack.z80 ;benutzt RST20-Aufrufe
 d7cc9d243acde235b0fc411de89839f9 2.....  *3K+CRASH.z80     ;nur Originaltastatur, fragt Spalten direkt ab
 4f7fa5cc3f81b6320d2adc1327d4e146 2ABHP.  *minefield.z80    ;benutzt RST20-Aufrufe 
+
+#wird geprüft
+9d244366a5aec22b97dc7f91e5e93a4c 2.BH..  *GHOST HUT+J.z80  ;benutzt CALL, direkte Monitor-Aufrufe; fragt Spalten direkt ab                                      
 
 #nochmal prüfen
 f844aa6d981ff3bff30927a1d104cf52 ...H..  *AUTO+J.z80
@@ -30,7 +33,6 @@ f844aa6d981ff3bff30927a1d104cf52 ...H..  *AUTO+J.z80
 6a178e545b6c56f6f73176e8de370e60 ...H..  *HINDERNISLAUF+J.z80
 03079907ee098d5a306ce9b5473afc39 ...H..  *JUMPING JACK+J.z80
 473e0603395314f21244e3d3349a1e27 ...H..  *LABY+J.z80
-9d244366a5aec22b97dc7f91e5e93a4c ...H..  *GHOST HUT+J.z80
 a318c2899b6ae0ed7f2ac92ab6b5d4d8 2..H..  *ALADIN+J.z80     ;verwendet Folien-Tastenlayout EFG MOU ...  
 d8ac189da8cb0520ca3d8c1fd45853d3 ...H..  *MAZOG+J.z80
 d3d549147660e00b0f52c4c47878f8f8 ...H..  *TETRIS+J.z80

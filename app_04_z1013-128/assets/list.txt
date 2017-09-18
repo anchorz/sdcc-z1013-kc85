@@ -1,7 +1,8 @@
 #Directory-Einträge
 db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/kc_basic_m+.z80
 db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80
-db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/3K+CRASH.z80
-db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/minefield.z80
-db/b0f41d174b0327899fb9b2dc0e055d31-joystick_demo/joystick_demo.z80
+#db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/3K+CRASH.z80
+#db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/minefield.z80
+#db/b0f41d174b0327899fb9b2dc0e055d31-joystick_demo/joystick_demo.z80
+#GHOST HUT+J.z80
 

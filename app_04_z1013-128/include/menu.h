@@ -1,6 +1,7 @@
 typedef struct {
     char name[16]; //nicht null-terminiert!
     unsigned char typ; //C-executable
+    unsigned char hw; //C-executable
     unsigned char bankStart;
     unsigned int  bankOffset;
     unsigned int  length;

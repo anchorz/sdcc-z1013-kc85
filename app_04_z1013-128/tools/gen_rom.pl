@@ -1,25 +1,70 @@
 #!/usr/bin/perl -w
 
-$folder="assets";
+use Data::Dumper;
+
+$origin=$ARGV[0];
+$folder=$ARGV[1];
+$result=$ARGV[2];
+
 $file="$folder/list.txt";
-$filesystem="obj/z1013/filesystem.bin";
 
 @files=();
 
-sub write_directory($)
+sub write_directory($ $)
 {
-    my $file=shift;
+    my $origin=shift;
+    my $result=shift;
   
-    open(INFO, ">", $file) or die("Could not open file: ".$file);
-    print INFO pack('c',0x2);
-    #print INFO pack('A16',"0123456789abcdef0123--");
-    print INFO pack('A16',"erster Eintrag");
-    print INFO pack('a','C'); #typ: executable 
-    print INFO pack('c',0x00); #bankStart
-    print INFO pack('v',0x0001);#bankOffset
-    print INFO pack('v',0x0001);#length
+    open(INFO, "+>", $result) or die("Could not open file: ".$result);
+
+    my $len= -s $origin;
+    open(IN, $origin) or die("Could not open file: ".$origin);
+    binmode(IN);
+    read(IN,my $content,$len);
+    close(IN);
     
+    print INFO $content;
+    my $aadr=unpack('v',$content);
+    my $offset=$aadr+$len-32;
+    printf("offset: %x\n",$offset);
+    
+    print INFO pack('c',$#files+2);#einer extra für den ...EXIT Eintrag am Schluss
+    $offset++;
+    
+    $entrySize=16+3+2+2;
+    $filepos=$offset+($#files+1)*$entrySize+16;#extra für den ...EXIT Eintrag am Schluss
+    foreach my $line (@files) {
+        my @dirent=@{$line};
+        printf("entry: %s[%x %d=%x]\n",$dirent[0],$offset,$dirent[1],$dirent[1]);
+        print INFO pack('A16',$dirent[0]);
+        print INFO pack('a','C'); #typ: executable 
+        print INFO pack('c',0x00); #keine Angabe zur verwendeten HW 
+        print INFO pack('c',0x00); #bankStart
+        printf("filepos: %x\n",$filepos);
+        print INFO pack('v',$filepos);#bankOffset
+        print INFO pack('v',$dirent[1]);#length
+        $offset+=$entrySize;
+        $filepos+=$dirent[1];
+    }
     print INFO pack('A16',"...EXIT");
+    $offset+=16;
+    
+    foreach my $line (@files) {
+        my @dirent=@{$line};
+        printf("entry: %s[%x %d=%x]\n",$dirent[0],$offset,$dirent[1],$dirent[1]);
+        print INFO $dirent[2];
+        $offset+=$dirent[1];
+    }
+
+
+    
+    seek(INFO,2,0);
+    read(INFO,$content,2);
+    my $eadr=unpack('v',$content);
+    $eadr=$offset-1;
+    printf("offset: %x\n",$offset);
+    seek(INFO,2,0);
+    print INFO pack('v',$eadr);#new length
     close(INFO);
 }
 
@@ -27,7 +72,9 @@ sub check($)
 {
     my $file=shift;
     
+    
     #(my $file,my $menu)=split(/=/,$line);
+    #printf("check: \"%s\"\n", $file);
     my $len=-s $file;
     open(my $FILE, $file) or die $!;
     binmode($FILE);
@@ -56,30 +103,36 @@ sub check($)
     #}
 
     my $typ=substr($content,12,1);
-
+    my $name="";
     printf ("[%04x %04x %04x %s...",$aadr,$eadr,$sadr,$typ);  
     for (my $cnt=0; $cnt<16; $cnt++)
     {
         my $ch=substr($content,$cnt+16,1);
-        if ($ch eq "\n" || $ch eq "\t" || $ch eq "\r")
-        {
-            $ch="\x00";
-        }
+        #if ($ch eq "\n" || $ch eq "\t" || $ch eq "\r")
+        #{
+        #    $ch="\x00";
+        #}
         my $pr=$ch;
         if (ord($ch)<0x20)
         {
            $pr="?";
         }
+        $name.=$ch;
         printf ("%s",$pr);  
     }
     printf ("]\n");
+    push(@files,[$name,$len,$content]);
 }
 
 
-print "erstellt das ROM-Images für den Z1013-128\n";
-print "benutze dafür Dateien aus \"".$file."\" \n";
+print "erstellt das ROM-Images für den Z1013-128 aus \"$origin\"\n";
+print "und den Dateien aus \"".$file."\" \n";
+print "Ergebnis ist \"".$result."\" \n";
 
 open(INFO, $file) or die("Could not open file.");
+
+
+my @files=();
 
 foreach $line (<INFO>)  {   
     chomp $line;
@@ -90,7 +143,7 @@ foreach $line (<INFO>)  {
 }
 close(INFO);
 
-write_directory($filesystem);
+write_directory($origin,$result);
 
 exit 0;
 chdir("assets");

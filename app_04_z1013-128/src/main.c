@@ -5,21 +5,12 @@
 #include <keys.h>
 #include "menu.h"
 
-extern const DIRECTORY const dir; 
+extern const DIRECTORY dir; 
 
 #define MENU_W 24
 #define MENU_X ((SCR_WIDTH-MENU_W-1)/2)
 #define MENU_Y 5
 #define MENU_H 5
-
-void draw_main_menu() {
-    char idx = MENU_Y + 1;
-
-    for (int i = 0; i < dir.menuEntriesCount; i++, idx += 2) {
-        gotoxy(MENU_X + 4, idx);
-        cputs(dir.menuEntries[i].name);
-    }
-}
 
 char active_item;
 char first_visible_item;
@@ -33,27 +24,39 @@ char cnt;
 const char * const bottomLines[] = { "\xeb","\xea","\xe9","\xe8" };
 const char * const topLines[] = { "\xe8","\xe7","\xe6","\xe5" };
 
-void paint()
+void print_name(const char *ptr) __z88dk_fastcall
 {
-    char id=first_visible_item;
-    const ENTRY *ptr=dir.menuEntries;
-    unsigned char y=0;
-    
- //   clrscr();
-    
-    ptr+=first_visible_item;
-    while (y<MENU_H*2)
+    char len=17;
+    for (;--len;)
     {
-        gotoxy(MENU_X+1,y+MENU_Y+1);
+        putch(*ptr++);
+    }
+} 
+
+
+void paint_items()
+{
+    char count=MENU_H;
+    const ENTRY *ptr=dir.menuEntries;
+    char y=MENU_Y+1;
+    char id=first_visible_item;
+    
+    if (dir.menuEntriesCount<count)
+      count=dir.menuEntriesCount;
+    count++;
+    ptr+=first_visible_item;
+    
+    while(--count)
+    {
+        gotoxy(MENU_X+1,y);
         if (active_item==id)
         {
-            cputs("->");
+            cputs("-> ");
         } else
         {
-            cputs("  ");
+            cputs("   ");
         }
-        gotoxy(MENU_X+4,y+MENU_Y+1);
-        cputs(ptr->name);
+        print_name(ptr->name);
         if (active_item==id)
         {
             cputs(" <-");
@@ -62,10 +65,19 @@ void paint()
             cputs("   ");
         }
         ptr+=1;
-        id++;
         y+=2;
+        id++;
     }
+}
 
+void paint()
+{
+    char id;
+   
+    paint_items();
+    if (dir.menuEntriesCount<=MENU_H)
+        return;
+    
     id=0;
     {
        //Annahme: line wird immer in 4er Schritten hochgezählt
@@ -128,7 +140,9 @@ unsigned char handle_main_menu()
         }
         paint();
     }
-    return 0;
+    gotoxy(0,21);
+    printf("active=%d\n",active_item);    
+    return active_item;
 }
 
 unsigned char handle_main_menu2() {
@@ -168,14 +182,25 @@ unsigned char handle_main_menu2() {
             return dir.menuEntriesCount - 1;
         }
     }
-    //printf("%d ",active_item);
+    printf("%d ",active_item);
     return active_item;
 }
 
-void execute_item(char item) {
-item=item;
-//    execute(menuEntries[item].src, menuEntries[item].dst, menuEntries[item].len,
-//            menuEntries[item].start);
+void execute_item(const ENTRY * item) __z88dk_fastcall
+{
+    item=item;
+    __asm__("ld de,#18"); //name[16]+hw+typ
+    __asm__("add hl,de"); //name[16]+hw+typ
+    __asm__("ld a,(hl)"); //name[16]+hw+typ
+    __asm__("inc hl"); //name[16]+hw+typ
+    __asm__("ld e,(hl)"); //name[16]+hw+typ
+    __asm__("inc hl"); //name[16]+hw+typ
+    __asm__("ld d,(hl)"); //name[16]+hw+typ
+    __asm__("inc hl"); //name[16]+hw+typ
+    __asm__("ld c,(hl)"); //name[16]+hw+typ
+    __asm__("inc hl"); //name[16]+hw+typ
+    __asm__("ld b,(hl)"); //name[16]+hw+typ
+    __asm__("call _banked_copy"); //name[16]+hw+typ
 }
 
 extern void win_msgbox(unsigned char x, unsigned char y, unsigned char w,
@@ -192,13 +217,12 @@ int main() {
         gotoxy((SCR_WIDTH - 22) / 2, MENU_Y - 2);
         cputs("Z1013-128 VORFUEHRMODUS");
         win_msgbox(MENU_X, MENU_Y, MENU_W, 2 * MENU_H - 1);
-        //draw_main_menu();
         paint();
         item = handle_main_menu();
         if (item == dir.menuEntriesCount - 1)
             break;
         else
-            execute_item(item);
+            execute_item(&dir.menuEntries[item]);
     } while (item != dir.menuEntriesCount - 1);
 
     __asm__("jp 0xf000");
