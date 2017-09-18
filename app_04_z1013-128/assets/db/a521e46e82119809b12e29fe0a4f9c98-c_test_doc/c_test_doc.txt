@@ -1,0 +1,65 @@
+CTEST-Kondensatoren mit dem Computer messen
+-------------------------------------------
+
+Für  den  Computerbausatz Z 1013 wurde ein Zusatz  entwickelt, 
+der es gestattet,  die Kapazität von Kondensatoren und anderen 
+Bauelementen im Bereich ab etwa 10 pF aufwärts zu bestimmen.
+
+1.Schaltung
+-----------
+Im Bild 1 ist die zur Kapazitätsmessung erforderliche  Zusatz-
+schaltung  dargestellt,  welche über das PIO-Port 0 (Userport) 
+mit dem Z 1013 verbunden wird.  Wie in (1) wird ein B555D  als 
+Monoflop mit der unbekannten Kapazität im zeitbestimmenden RC-
+Glied  beschaltet.  Durch  die  Leitung RDY der PIO  wird  das 
+Monoflop gestartet (OUT-Befehl),  es löst beim  Zurückschalten 
+über  /STB  einen Interrupt aus.  So ist es möglich,  mit  dem 
+Computer die unbekannte Kapazität "auszuzählen". Um über einen 
+großen Kapazitätsbereich günstige Zeitkonstanten zu  erhalten, 
+erfolgt eine Umschaltung des zeitbestimmenden Widerstandes mit 
+Reed-Relais.  Der  zur Ansteuerung eingesetzte D492D kann auch 
+durch andere geeignete Treiber (z.B.  Einzeltransistoren)  er-
+setzt werden.  Der exakte Widerstand von R1-R5 ist unkritisch, 
+man sollte Metallschichttypen verwenden.  Ein Siebglied in der 
+5V-Leitung  des B555D empfiehlt sich bei verbrummter Spannung. 
+Als Beispiel für die praktische Realisierung zeigen Bild 2 und 
+3 einen Platinenentwurf,  der für das Gehäuse eines ausgedien-
+ten Antennensymmetriergliedes gedacht ist.
+
+2.Software
+----------
+Für  die Messung und Auswertung entstand  ein  maschinenunter- 
+stütztes  BASIC-Programm  (Bild  4).  Die  interruptgesteuerte 
+Zeitmessung erfolgt durch das Maschinenprogramm (DATA-Zeilen). 
+Da diese mit einfachen ADD-Befehlen erfolgt, ist sie natürlich 
+taktfrequenzabhängig  (hier 2 MHz).  Mit Hilfe des BASIC-Teils 
+ist  eine  komfortable Verarbeitung und Anzeige  der  Meßwerte 
+möglich, Modifikationen sind jerderzeit durchführbar. Es wurde 
+eine automatische Umschaltung der Meßbereiche sowie eine Akku-
+mulation über mehrere Werte zur Erhöhung der Genauigkeit  rea-
+lisiert.
+
+3.Abgleich und Modifikationen
+-----------------------------
+Da der C-Meßzusatz nur ein interruptfähiges PIO-Port benötigt, 
+ist  eine Anpassung an andere Computertypen und Taktfrequenzen 
+leicht  möglich.  In  Abhängigkeit  von  den  zeitbestimmenden 
+Widerständen  (und der Taktfrequenz) sind  die  Proportionali-
+tätsfaktoren  für  die einzelnen Meßbereiche (Zeile 430)  ein-
+malig  mit Hilfe von Kondensatoren möglichst  genau  bekannter 
+Kapazität zu bestimmen. In Zeile 35 kann außerdem eine Korrek-
+tur  der Eigenkapazität erfolgen (ohne C soll etwa 0 pF  ange-
+zeigt  werden!).  Der  vorgestellte Meßzusatz  kann  natürlich 
+keine Präzisionsmeßgeräte ersetzen,  wird aber vor allem durch 
+seinen  großen  Meßbereich bei der schnellen  Überprüfung  von 
+Kondensatoren  unbekannter  oder zweifelhafter Kapazität  gute 
+Dienste leisten.  Bei Elektrolytkondensatoren ist der  Einfluß 
+des  Reststromes  zu beachten.  Dieser sollte vor der  Messung 
+überprüft  werden,  denn er täuscht höhere  C-Werte  vor.  Ich 
+hoffe,  mein Beitrag dient als Anregung für weitere Veröffent-
+lichungen  zum  Einsatz der Kleincomputer,  speziell  auf  dem 
+Gebiet der Meßtechnik.
+
+(1) G.Holz: Kapazitätsmeßzusatz zum Vielfachmesser
+    FUNKAMATEUR 35(1986), H.9, S.430
+

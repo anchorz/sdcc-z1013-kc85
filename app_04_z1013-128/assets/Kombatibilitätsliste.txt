@@ -24,7 +24,7 @@ d7cc9d243acde235b0fc411de89839f9 2.....  *3K+CRASH.z80     ;nur Originaltastatur
 4f7fa5cc3f81b6320d2adc1327d4e146 2ABHP.  *minefield.z80    ;benutzt RST20-Aufrufe 
 
 #wird geprüft
-9d244366a5aec22b97dc7f91e5e93a4c 2.BH..  *GHOST HUT+J.z80  ;benutzt CALL, direkte Monitor-Aufrufe; fragt Spalten direkt ab                                      
+9d244366a5aec22b97dc7f91e5e93a4c 2.BH..  *GHOST HUT+J.z80  ;benutzt CALL, direkte Monitor-Aufrufe; fragt Spalten direkt ab - Joystick initalisierung stimmt nicht                                      
 
 #nochmal prüfen
 f844aa6d981ff3bff30927a1d104cf52 ...H..  *AUTO+J.z80
@@ -47,5 +47,6 @@ dced692ddba89e7dd7064a30fb319fb2 ...H..  *GALAXIS+J.z80
 dfb83fca953529e6e0551be16b7f0fc4 ...H..  *WALL+J.z80
 db05942e104fc236ca3f6945a4c9358f .....J  *WALL+J.z80
 
-
+4d17b007dc569594d85f2e14d5c7f3d8         *mt4_6_doc; Datei fehlerhaft - 3 Stellen korrigiert
+2cae3816b75d7c877e573c0bdc0062b5         *oc_editor_4_1_I; Datei fehlerhaft - 1 Stelle korrigiert
 

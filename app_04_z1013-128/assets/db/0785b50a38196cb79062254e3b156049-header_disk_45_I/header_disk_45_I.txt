@@ -1,0 +1,82 @@
+*************************************************************
+*         Beschreibung zum Programm HEADER-DISK 45          *
+*           (c) by Rainer Brosig  IG-HC   1/89              *
+*************************************************************
+
+HEADER-DISK 41 ist ein Programm zur HEADERSAVE-kompatiblen Ver-
+waltung von max. 2 RAM-Disketten nach MP 3/88. Um die Disk moeg-
+lichst optimal auszulasten, wurde auf ein Directory verzichtet,
+sodass die Files sequentiell auf der Floppy, beginnend mit einem
+HEADERSAVE-kompatiblen Kopf, angelegt sind. Die damit verbunde-
+nen Suchzeiten sind unmerklich und werden durch die verkuerzte
+Ladezeit wieder kompensiert. 
+Beim Einschalten des Rechners ist es wichtig, vor dem ersten Be-
+schreiben der Disk diese komplett zu loeschen.
+
+Kommandos HEADER-DISK 45:
+-------------------------
+
+@R      READ
+        - laden File entsprechend abgefragter Filenummer mit
+          Autostart bei Typ=C vom  aktuellem Disk
+
+@RRR    - wie @R, aber Autostartverbot
+
+@RN     - wie @R aber nach Name+Typ vom aktuellen Disk
+
+@RNN    - wie @RN, aber Autostartverbot
+
+@R aadr - auf aadr vom aktuellen Disk verschoben laden
+
+@RA     - wie @R, nur mit zusaetzlicher Umschaltung auf Disk A
+          (@RB->auf Disk B)     
+
+@W aadr eadr sadr ENT -> Typ+Name
+        WRITE
+        - saven File auf aktuelles Laufwerk
+
+@W:     - wie @W, aber es wird der alte Kopfinhalt genommen
+          z.B. nach @LLL (!!nach @F ist der Kopf zerstoert!!)
+
+
+@F      FILES
+        - Anzeige der Files auf dem aktuellem Disk
+
+@FA     - wie @F, aber zusaetzlicher Zwangsumschaltung des Disk
+
+
+@K      KILL
+        - loeschen eines Files entsprechend abgefragter Nummer
+          auf aktuellem Disk
+
+@KA     - wie @K, aber mit zusaetzlicher Zwangsumschaltung des
+          Disk auf A (B) 
+
+@KN     - wie @K, aber loeschen nach Name+Typ statt Nummer
+
+@KAG    - Komplettloeschung Disk A
+@KBG    -        -"-             B
+
+
+@A      - Umschalten auf Disk A
+
+@B      - Umschalten auf Disk B
+
+
+Der Aufruf der Unterprogramme erfolgt HEADERSAVE-kompatibel
+ueber den Sprungverteiler auf E000H. Dabei kann ein auf Adr.
+E000H stehender HEADERSAVE-Treiber gegen das HEADER-DISK-Pro-
+gramm ausgetauscht werden ohne das Aenderungen am rufenden
+Programm erfolgen muessen. Bei den Blockroutinen bestehen ein-
+schraenkungen bezueglich der max. Groesse des Files auf 60K.
+Die Ankopplung des R-80 Reassemblers mit den Blockroutinen
+ist möglich.
+Die Grundadressen der Disks werden in E024H (A) und E025H (B)
+eingetragen.
+Die Version HEADERDISK 41 ist leider fehlerhaft. Wir bitten
+dies zu entschuldigen.
+
+                                                 R. Brosig
+                                                   IG-HC
+                                                  Dresden
+

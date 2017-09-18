@@ -1,0 +1,1 @@
+Zeigt den Inhalt den Zeichensatzes von 0x00-0xff an.
