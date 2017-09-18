@@ -270,7 +270,8 @@ extern void z1013_spvt_bload();
 extern void OUTCH(unsigned char); //UP:00
 extern unsigned char INCH();  //UP:01
 extern unsigned char INKEY();  //UP:04
-extern void OUTHX(unsigned char); //UP:06
+extern void OUTHL(unsigned int); //UP:06
+extern void OUTHX(unsigned char); //UP:07
 
 __at (0x04) unsigned char Z1013_KEYCODE;
 __at (0x1f) unsigned char Z1013_CODE;

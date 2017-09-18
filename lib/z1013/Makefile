@@ -2,6 +2,8 @@ CFLAGS=--std-sdcc11 -Wall --Werror --fomit-frame-pointer
 AS = sdasz80
 AR = sdar
 
+SDAS_OPT=-plowgff
+
 INC         = $(wildcard src/*.inc)
 # files for conio library
 CONIO_SRC   = $(wildcard src/conio_*.s)
@@ -15,13 +17,13 @@ KRT_OBJ   = $(KRT_SRC:src/%.s=obj/%.rel)
 all: obj crt0.rel header.rel krt.lib conio.lib \
           z1013.lib
 
-z1013.lib: obj/putchar.rel obj/exit.rel obj/outhx.rel  obj/inkey.rel obj/outch.rel obj/inch.rel \
+z1013.lib: obj/putchar.rel obj/exit.rel obj/outhx.rel  obj/outhl.rel obj/inkey.rel obj/outch.rel obj/inch.rel \
     obj/z1013_spvt_poll.rel obj/z1013_spvt_getst.rel obj/z1013_mdelay.rel
 	$(AR) rcD $@ $^
 
 %.rel: obj/%.rel
 	cp $< $@
-
+	cp $(<:.rel=.lst) .
 obj:
 	mkdir obj
 
@@ -33,11 +35,11 @@ obj:
 #removed: 
 # g all unresolved symbols are external - not declaring externals hides too many problems
 obj/%.rel : src/%.s
-	$(AS) -plosff $@ $<
+	$(AS) $(SDAS_OPT) $@ $<
 
 obj/%.rel : src/%.c
 	sdcc -mz80 -S -o $(@:obj/%.rel=obj/%.asm) --nostdlib  --nostdinc -I../../include $(CFLAGS) -D__Z1013__ "$<"
-	$(AS) -plosff $@ $(@:obj/%.rel=obj/%.asm)
+	$(AS) $(SDAS_OPT) $@ $(@:obj/%.rel=obj/%.asm)
 
 conio.lib: $(CONIO_OBJ) $(INC)
 	$(AR) rcD $@ $(CONIO_OBJ)

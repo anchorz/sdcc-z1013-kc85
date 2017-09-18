@@ -6,10 +6,10 @@
 
         .globl init
         .globl s__CODE
-        .globl s__STACK
+        .globl s__GSEXITFINAL
 
         .dw s__CODE
-        .dw s__STACK
+        .dw s__GSEXITFINAL
         .dw init
 
         .ascii 'sdcc80'

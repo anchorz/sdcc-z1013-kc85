@@ -1,0 +1,44 @@
+                              1 ; specific header to automatic generate KCC format 
+                              2 ; (which is used by simulator, disk, tape, USB, etc...)
+                              3 
+                              4         .module header
+                              5         .area   _HEADER (ABS)
+                              6 
+                              7         .globl init
+                              8         .globl s__CODE
+                              9         .globl s__GSEXITFINAL
+                             10 
+   0000r00r00                11         .dw s__CODE
+   0002r00r00                12         .dw s__GSEXITFINAL
+   0004r00r00                13         .dw init
+                             14 
+   0006 73 64 63 63 38 30    15         .ascii 'sdcc80'
+   000C 43                   16         .ascii 'C'
+   000D D3 D3 D3             17         .db 0xd3,0xd3,0xd3
+   0010 20 20 20 20 20 20    18         .ascii '                '
+        20 20 20 20 20 20
+        20 20 20 20
+                             19 
+                             20 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+    init                                                           **** GX
+    s__CODE                                                        **** GX
+    s__GSEXITFINAL                                                 **** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size    0   flags    0
+   1 _HEADER                                    size   20   flags    8
+

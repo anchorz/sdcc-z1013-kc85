@@ -1,0 +1,166 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  crt0.s - adapted for a Z1013, HC900, KC85(2..5)
+                              3 ;
+                              4 ;  Copyright (C) 2014, Andreas Ziermann
+                              5 ;                2015, Bert Lange
+                              6 ;
+                              7 ;  This library is free software; you can redistribute it and/or modify it
+                              8 ;  under the terms of the GNU General Public License as published by the
+                              9 ;  Free Software Foundation; either version 2, or (at your option) any
+                             10 ;  later version.
+                             11 ;
+                             12 ;  This library is distributed in the hope that it will be useful,
+                             13 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             14 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             15 ;  GNU General Public License for more details.
+                             16 ;
+                             17 ;  You should have received a copy of the GNU General Public License 
+                             18 ;  along with this library; see the file COPYING. If not, write to the
+                             19 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             20 ;   MA 02110-1301, USA.
+                             21 ;
+                             22 ;  As a special exception, if you link this library with other files,
+                             23 ;  some of which are compiled with SDCC, to produce an executable,
+                             24 ;  this library does not by itself cause the resulting executable to
+                             25 ;  be covered by the GNU General Public License. This exception does
+                             26 ;  not however invalidate any other reasons why the executable file
+                             27 ;   might be covered by the GNU General Public License.
+                             28 ;--------------------------------------------------------------------------
+                             29         .module crt0
+                             30 
+                             31         .globl  _main
+                             32         .globl  exit
+                             33 
+                             34         .globl l__INITIALIZER
+                             35         .globl s__INITIALIZED
+                             36         .globl s__INITIALIZER
+                             37         .globl l__DATA
+                             38         .globl s__DATA
+                             39 
+                             40         ; Ordering of segments for the linker.
+                             41         .area   _HOME
+                             42         .area   _CODE
+                             43         .area   _INITIALIZER
+                             44         .area   _GSINIT
+                             45         .area   _GSFINAL
+                             46         .area   _GSEXIT
+                             47         .area   _GSEXITFINAL
+                             48         .area   _DATA
+                             49         .area   _INITIALIZED
+                             50         .area   _BSEG
+                             51         .area   _BSS
+                             52         .area   _STACK
+                             53         .area   _HEAP
+                             54 
+                             55         .area   _CODE
+                             56 
+   0000                      57 init::
+   0000 C3r0Dr00      [10]   58         jp      init2
+   0003 20 20 20 20 20 20    59         .ascii      '        ' ; patch in the program name needed by Z9001 commando processor
+        20 20
+   000B 00                   60         .db      0x00
+   000C 00                   61         .db      0x00
+   000D                      62 init2:
+                             63         ; Stack at the top of memory.
+   000D 31r04r04      [10]   64         ld      sp,#end_of_stackframe
+                             65         ; mark stack frame
+   0010 21 BB BB      [10]   66         ld      hl,#0xbbbb
+   0013 22r00r00      [16]   67         ld      (#start_of_stackframe),hl
+   0016 E5            [11]   68         push    hl
+                             69 
+                             70         ; Initialise global variables
+   0017 CDr00r00      [17]   71         call    gsinit
+   001A CDr00r00      [17]   72         call    _main
+   001D CDr00r00      [17]   73         call    gsexit
+   0020 C3r00r00      [10]   74         jp      exit
+                             75 
+                             76         .area   _GSINIT
+   0000                      77 gsinit::
+                             78         ; copy initialized variables to 'RAM'
+   0000 01r00r00      [10]   79         ld      bc, #l__INITIALIZER
+   0003 78            [ 4]   80         ld      a, b
+   0004 B1            [ 4]   81         or      a, c
+   0005 28 08         [12]   82         jr      Z, gsinit_zero
+   0007 11r00r00      [10]   83         ld      de, #s__INITIALIZED
+   000A 21r00r00      [10]   84         ld      hl, #s__INITIALIZER
+   000D ED B0         [21]   85         ldir
+                             86 
+   000F                      87 gsinit_zero:
+                             88         ; did we have data to zero?
+   000F 01r00r00      [10]   89         ld      bc, #l__DATA
+   0012 78            [ 4]   90         ld      a, b
+   0013 B1            [ 4]   91         or      a, c
+   0014 28 0F         [12]   92         jr      Z, gsinit_next
+                             93 
+                             94         ; zero uninitialized stuff
+   0016 AF            [ 4]   95         xor     a              ; clear a and carry
+   0017 11r01r00      [10]   96         ld      de, #s__DATA+1
+   001A 21r00r00      [10]   97         ld      hl, #s__DATA
+   001D 77            [ 7]   98         ld      (hl), a
+   001E 0B            [ 6]   99         dec     bc
+   001F 78            [ 4]  100         ld      a, b
+   0020 B1            [ 4]  101         or      a, c
+   0021 28 02         [12]  102         jr      Z, gsinit_next
+   0023 ED B0         [21]  103         ldir
+                            104 
+   0025                     105 gsinit_next:
+                            106         .area   _GSFINAL
+   0000 C9            [10]  107         ret
+                            108 
+                            109         .area   _GSEXIT
+   0000                     110 gsexit:
+                            111         .area   _GSEXITFINAL
+   0000 C9            [10]  112         ret
+                            113 
+                            114         .area   _STACK
+                            115         ; for now just allocate 1k for stack.
+   0000                     116 start_of_stackframe:
+   0000                     117         .ds     2    ; stack frame marker - top
+   0002                     118         .ds     1024
+   0402                     119         .ds     2    ; stack frame marker - bottom
+   0404                     120 end_of_stackframe:
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+    _main                                                          **** GX
+  B end_of_stackframe                                              0404 R
+    exit                                                           **** GX
+  5 gsexit                                                         0000 R
+  3 gsinit                                                         0000 GR
+  3 gsinit_next                                                    0025 R
+  3 gsinit_zero                                                    000F R
+  0 init                                                           0000 GR
+  0 init2                                                          000D R
+    l__DATA                                                        **** GX
+    l__INITIALIZER                                                 **** GX
+    s__DATA                                                        **** GX
+    s__INITIALIZED                                                 **** GX
+    s__INITIALIZER                                                 **** GX
+  B start_of_stackframe                                            0000 R
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size   23   flags    0
+   1 _HOME                                      size    0   flags    0
+   2 _INITIALIZER                               size    0   flags    0
+   3 _GSINIT                                    size   25   flags    0
+   4 _GSFINAL                                   size    1   flags    0
+   5 _GSEXIT                                    size    0   flags    0
+   6 _GSEXITFINAL                               size    1   flags    0
+   7 _DATA                                      size    0   flags    0
+   8 _INITIALIZED                               size    0   flags    0
+   9 _BSEG                                      size    0   flags    0
+   A _BSS                                       size    0   flags    0
+   B _STACK                                     size  404   flags    0
+   C _HEAP                                      size    0   flags    0
+
