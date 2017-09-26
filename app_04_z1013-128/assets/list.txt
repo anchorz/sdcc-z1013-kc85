@@ -1,8 +1,17 @@
 #Directory-Einträge
 db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/kc_basic_m+.z80
 db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80
-#db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/3K+CRASH.z80
-#db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/minefield.z80
-#db/b0f41d174b0327899fb9b2dc0e055d31-joystick_demo/joystick_demo.z80
-#GHOST HUT+J.z80
-
+db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/3K+CRASH.z80
+db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/minefield.z80
+db/522d05b0294bf46ba18ddb5304f1c76a-digger/digger.z80
+db/bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/joystick_demo.z80
+db/452c590ae916c40ee8be3ed486eb4279-ghost_hut+j/ghost_hut+j.z80
+db/4c14695729d76bce2f69adfe0eac75f1-AUTO+J/AUTO+J.z80
+db/f7c9048bd060cc7dbc491893b4676fcc-encounter+prJ/encounter+prJ.z80
+db/956e4d067515ec3a9083a16b32051c43-heartrunner+prJ/heartrunner+prJ.z80
+db/c5fd4cc8a1ac5bfcf154ba9a7f83fca4-kings_valley/kings_valley.z80
+db/e82e4344ad97062448b83e1d89fc2926-ladder_prJ/ladder_prJ.z80
+db/ecaa82cdd9b23d9f9f8971b59b123726-voice_dice_autostart/voice_dice_autostart.z80
+db/495129edca7979b7a228c8dca443b567-HINDERNISLAUF+J/HINDERNISLAUF+J.z80
+db/602a69f762181fc115b05b0145b4199b-jumping_jack+prJ/jumping_jack+prJ.z80
+db/a7c929dc8f0a2d4c51e0c71e214895b0-laby_prJ/laby_prJ.z80

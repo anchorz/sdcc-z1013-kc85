@@ -189,18 +189,18 @@ unsigned char handle_main_menu2() {
 void execute_item(const ENTRY * item) __z88dk_fastcall
 {
     item=item;
-    __asm__("ld de,#18"); //name[16]+hw+typ
-    __asm__("add hl,de"); //name[16]+hw+typ
-    __asm__("ld a,(hl)"); //name[16]+hw+typ
-    __asm__("inc hl"); //name[16]+hw+typ
-    __asm__("ld e,(hl)"); //name[16]+hw+typ
-    __asm__("inc hl"); //name[16]+hw+typ
-    __asm__("ld d,(hl)"); //name[16]+hw+typ
-    __asm__("inc hl"); //name[16]+hw+typ
-    __asm__("ld c,(hl)"); //name[16]+hw+typ
-    __asm__("inc hl"); //name[16]+hw+typ
-    __asm__("ld b,(hl)"); //name[16]+hw+typ
-    __asm__("call _banked_copy"); //name[16]+hw+typ
+    __asm__("ld de,#18"); //add name[16]+hw+typ -> ENTRY.bankStart
+    __asm__("add hl,de"); 
+    __asm__("ld a,(hl)"); //ENTRY.bankStart
+    __asm__("inc hl"); 
+    __asm__("ld e,(hl)"); //ENTRY.bankOffset
+    __asm__("inc hl"); 
+    __asm__("ld d,(hl)");
+    __asm__("inc hl"); 
+    __asm__("ld c,(hl)"); //ENTRY.length
+    __asm__("inc hl"); 
+    __asm__("ld b,(hl)"); 
+    __asm__("call _banked_copy"); 
 }
 
 extern void win_msgbox(unsigned char x, unsigned char y, unsigned char w,

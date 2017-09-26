@@ -26,32 +26,37 @@ sub write_directory($ $)
     print INFO $content;
     my $aadr=unpack('v',$content);
     my $offset=$aadr+$len-32;
-    printf("offset: %x\n",$offset);
+    #printf("end of image [%x]\n",$offset);
     
     print INFO pack('c',$#files+2);#einer extra für den ...EXIT Eintrag am Schluss
     $offset++;
     
     $entrySize=16+3+2+2;
     $filepos=$offset+($#files+1)*$entrySize+16;#extra für den ...EXIT Eintrag am Schluss
+    my $bankStart=0;
     foreach my $line (@files) {
         my @dirent=@{$line};
-        printf("entry: %s[%x %d=%x]\n",$dirent[0],$offset,$dirent[1],$dirent[1]);
+        printf("dirent: %s[%x->%02x+%05x len=%5d(%04x)]\n",$dirent[0],$offset,$bankStart,$filepos,$dirent[1],$dirent[1]);
         print INFO pack('A16',$dirent[0]);
         print INFO pack('a','C'); #typ: executable 
         print INFO pack('c',0x00); #keine Angabe zur verwendeten HW 
-        print INFO pack('c',0x00); #bankStart
-        printf("filepos: %x\n",$filepos);
+        print INFO pack('c',$bankStart); #bankStart
+        #printf("filepos: %x\n",$filepos);
         print INFO pack('v',$filepos);#bankOffset
         print INFO pack('v',$dirent[1]);#length
         $offset+=$entrySize;
         $filepos+=$dirent[1];
+        if ($filepos>0xffff) {
+            $filepos-=$aadr;
+            $bankStart+=($aadr/8192); #8k Schritte
+        }
     }
     print INFO pack('A16',"...EXIT");
     $offset+=16;
     
     foreach my $line (@files) {
         my @dirent=@{$line};
-        printf("entry: %s[%x %d=%x]\n",$dirent[0],$offset,$dirent[1],$dirent[1]);
+        printf("entry:  %s[%5x %d=%x]\n",$dirent[0],$offset-$aadr,$dirent[1],$dirent[1]);
         print INFO $dirent[2];
         $offset+=$dirent[1];
     }
@@ -76,7 +81,7 @@ sub check($)
     #(my $file,my $menu)=split(/=/,$line);
     #printf("check: \"%s\"\n", $file);
     my $len=-s $file;
-    open(my $FILE, $file) or die $!;
+    open(my $FILE, $file) or die $!." \"$file\"";
     binmode($FILE);
     read($FILE,my $content,$len);
     close $FILE;
@@ -92,19 +97,13 @@ sub check($)
     my $sadr=ord(substr($content,4,1));
     $sadr+=ord(substr($content,5,1))*256;
     
-    if ($imageSize>$len-32)
-    {
-        printf("Warnung %s: Dateilänge ist %d Byte kleiner als im Header angegeben\n",$file,$imageSize-$len+32);
-        printf ("        len=%d image+32=%d\n",$len,$imageSize+32);  
-    }
-    # elsif ($imageSize!=$len-32)
-    #{
-    #    printf("Info %s: Dateilänge ist %d Byte größer als im Header angegeben\n",$file,$len-32-$imageSize);
-    #}
-
+    
+    
+    
     my $typ=substr($content,12,1);
     my $name="";
-    printf ("[%04x %04x %04x %s...",$aadr,$eadr,$sadr,$typ);  
+    printf ("check [%04x %04x %04x %s...",$aadr,$eadr,$sadr,$typ);  
+    
     for (my $cnt=0; $cnt<16; $cnt++)
     {
         my $ch=substr($content,$cnt+16,1);
@@ -120,7 +119,24 @@ sub check($)
         $name.=$ch;
         printf ("%s",$pr);  
     }
-    printf ("]\n");
+    printf ("]");
+    
+    if ($len%32==0) {
+        if ($len-$imageSize-32!=0) 
+        { 
+            printf(" %2d Bytes unbenutzt",$len-$imageSize-32);
+        }
+    } else {
+        printf("\n  Warnung: \"%s\" Dateilänge muss vielfaches von 32 (%d Bytes fehlen) sein.",$file,32-$len%32);
+    }
+    
+    if ($imageSize>$len-32)
+    {
+        printf("\n  Warnung %s: Dateilänge ist %d Byte kleiner als im Header angegeben",$file,$imageSize-$len+32);
+        printf ("        len=%d image+32=%d\n",$len,$imageSize+32);  
+    }
+    
+    printf("\n");
     push(@files,[$name,$len,$content]);
 }
 
