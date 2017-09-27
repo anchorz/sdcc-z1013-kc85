@@ -1,0 +1,45 @@
+****************************************************************
+*                                                              *
+*        Beschreibung des MC-Spiels 'SUPER-SKI'                *
+*                                                              *
+****************************************************************
+
+Programmstandort  :  100H - 1200H
+
+Start             :  100H
+
+Spielinhalt :
+-------------
+Der Start des Programms erfolgt mit der Taste 'SPACE'. Dann kann
+der Skifahrer mit den Cursortasten bewegt werden. Es sollen bis
+zum Ziel 31 Tore durchfahren werden. Die Zeit läuft oben rechts
+auf dem BS mit. Fährt man gegen ein Tor oder die Randbegrenzung,
+so erscheint der Krankenwagen. Fährt man am Tor vorbei, wird der
+Skifahrer von Krankenträgern abgeholt.
+ACHTUNG !!!  Je weniger Kurven man fährt, desto schneller fährt
+der Skifahrer. Außerdem kann die Geschwindigkeit durch jede an-
+dere Taste erhöht werden.
+Wenn das Ziel erreicht wurde, erfolgt die Eingabe der Initialen.
+Danach werden die besten 5 Fahrer angezeigt.
+Nun erfolgt die Abfrage nach einem neuen Spiel. Dann kann noch
+eingegeben werden, ob eine neue Strecke gewünscht wird.
+Während des Spiels das Tonband auf Aufnahme stellen, da dieses
+Spiel mit Sound ist.
+
+Anpassung :
+-----------
+512H    20H    (Space)
+B7BH    08H    (links)
+B8BH    09H    (rechts)
+
+Eine Änderung der Tasten ist nicht notwendig, da diese auf jeder
+Tastatur vorhanden sind.
+Es sollte auch aus anderen Gründen keine Änderung der Tasten für
+die Bewegung der Spielfigur vorgenommen werden. (links, rechts)
+
+Beschreibung :     RACYsoft
+--------------     Boris Prey
+                   Willy-Krause-Str.7
+                   Schwarzenberg
+                   9430
+                   Tel. 2992

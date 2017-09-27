@@ -1,0 +1,162 @@
+AD-Wandlermodul Z 1013
+
+0. Allgemeines
+1. Vorteile von AD-Wandlern an MR
+2. Messtechnische Besonderheiten des AD-Wandler C500/C504
+2.1Spezielle Erfahrungen mit C500/C504
+3. Aufgebaute Variante
+4. Weiterer geplanter Ausbau der Konzeption
+5. Schlussbemerkungen
+6. Literatur
+
+0. Allgemeines
+
+AD-Wandler werden in steigenden Mazse seit ueber einem Jahrzehnt in der
+Amateurtechnik angewendet. Weit verbreitet ist der Schaltkreis C 520.
+Wesentlich bessere Parameter bringt das AD-Wandlersystem C 500/C 501 als
+Analogteil und C 502/C 504 als Digitalkomponente dieses Systemes.
+
+1. Vorteile von AD-Wandlern anMR
+
+Multimeter besitzen eine Anzeige. Der Anzeigewert in den verschiedenen
+Mezsbereichen kann meist nur ueber den Eingangsteiler abgeglichen werden. AD-
+Wandler an MR haben folgende Vorteile:
+
+-keine Hardware fuer Anzeige
+-kein Abgleich des Eingangsteilers notwendig; wird ueber Software korigiert
+-bei Mehrkanalbetrieb lassen sich  Widerstaede mit hohen TK-Werten verwenden;
+ Temperaturkoefizent kann ueber einen Kanal mit Temperatursensor
+ softwaremaessig korigiert werden
+-Umsetzerweiterungen ueber Software bei einkalkulierbarem Fehler sind moeglich
+-Bei der Erfassung anderer physikalischer Messgroessen ueber den Wandler
+ ist eine Korektur der Kenlinie moeglich.
+
+Nachteile:
+-MR mit Bildschirm ist notwendig
+-Software muss entwickelt werden
+
+
+2. Messtechnische Besonderheiten des Wandlersystem C500/C504
+
+Das Wandelsystem wurde als Grundlage fuer die Ankopplung an den Z 1013 genutzt.
+Dieses System kann optimal an die entsprechende Messaufgabe angepasst werden.
+Hier nur einige Besonderheiten:
+
+-Der Wandler laesst sich 3.5 auf 4.5 stelligen Betrieb umschalten
+-Die Referenzspannung ist von 0.1 bis 5 Volt waehlbar
+-Der Nullpunktfehler wird erfasst und gegenkompensiert
+-Die Taktfrequenz laesst sich im Bereich von 200 kHz bis 1 MHz veraendern
+
+Weitere Hinweise siehe Literaturnachweis.
+
+
+2.1 Spezielle Erfahrungen mit C500/C504
+
+-Es muessen fuer die Kondensatoren fuer Referenzspannung (Pin 6,7 C500) und der
+ Integationskondensator (Pin 13,14 C500) hochwertige Typen eingesetzt werden.Am
+ besten sind KP-Kondensatoren;auch moeglich sind bei entsprechender Auswahl
+ MKPI,MKC-Kondensatoren.MKT-kondensatoren sind nur bedingt einsetztbar.Je
+ hochwertiger die eingesetzten Kondensatoren,unso genauer setzt das System um.
+
+-Die Leiterplattengestaltung muss optimal sein. Bei der Gestaltung der
+ Masseleitungen muss beachtet werden das eine Zusammenschaltung der Analogmasse
+ und der Digitalmasse erst im Sternpunkt des Netzteiles erfolgen darf. Es
+ entstehen sonst Masseschleifen die das System instabil arbeiten lassen.
+
+-Die Taktfrequenz ist ein entscheidendes Kriterium fuer die Sabilitaet und
+ Umsetzgenauigkeit des Systemes. Sehr ausfuehrlich ist dieses Thema in (2)
+ behandelt.Um die Brummspannungsunterdueckung wirksam zu gestalten wurde eine
+ Takterzeugung mit PLL-Schaltung vorgesehen. Besonders positiv wirkt sich diese
+ Massnahme in den AC-Bereichen aus. Abzuraten ist Takterzeugung mit B 555.
+ Dievorgeschlagenne netzsynchronisierte Taktversorgung des Digitalprozessors C
+ 504 ist anderen Loesungen ueberlegen. Der erhoehte Schaltungsaufwand macht sich
+ bezahlt.
+
+-Die Leiterplatte muss frei von Verunreiniungen sein. Dies trifft speziell auf
+ das Analogteil zu.Abschirmung ist ratsam.
+
+-Die Referenzspannungserzeugung kann bei 3.5 stelligen Betrieb (oder geringen
+ Anspuechen) mit der internen Quelle (Pin3 C500) erfolgen. Bei 4.5 stelligen
+ Betrieb ist die Erzeugung mit der Refenzspannungsquelle B589Nq anzuraten. Fuer
+ besonders hohe Anspueche ist ein Termostat fuer die Referenzspannungsquelle
+ motwendig.
+
+3. Aufgebaute Variante
+
+Die hier vogestellte Variante ist Hard -und Softwaremaessig aufgebaut und
+erprobt. Das Eingabe/Ausgabemodul ist erforderlich. Vorlaeufig ist nur eine
+Einkanalvariante mit Takterzeugung auf PLL-Basis und externer
+Referenzspannungserzeugung (B589Nq) aufgebaut worden. Die Ankopplung an den MRB
+Z 1013 wurde nach (3) realisiert. Die Abfrageroutine ist ebenfals (3) entnommen.
+Die Spannungsversorgung fuer C 500 muss extern erfolgen. Die Netzfrequenz fuer
+die PLL-Schaltung wird ebenfals entnommen.
+
+Software
+
+Das Progamm wurde absichtlich in 10K-Basic geschrieben.Es laesst den Anwender
+viele Moeglichkeiten der Erweiterung, Anpassung und Korektur offen. Es ist somit
+eine Softwaremaessige Anpassung an das entsprechende Messproblem moeglich. Die
+Abfrageroutine wird ueber PEEK-Befehl in den Speicher auf die Adesse 3F00
+gebracht. Der Messwert des Wandlers wird auf Adresse 3F80 gebracht. Es ist somit
+moeglich mit der 16K Grundvariante zu arbeiten. Ein Umlegen des Progammes in
+andere Seicherbereiche ist moeglich. Soll der Messwert auf einer anderen Adresse
+hinterlegt werden so ist im Progamm Zeile 222 (    ) auf die entspechende
+Adresse zu aendern. Bei Verlegung in einen anderen Speicherbereich ist Zeile 222
+und  222 entsprechen zu veraendern.
+
+
+4. Weiterrer Ausbau der Konzeption
+
+Als Endvariante ist eine 8-Kanalvariante geplant.
+Weierhin ist folgendes vorgesehen:
+
+-automatische Messbereichsumschaltung
+-U/I/R Umschaltung
+-AC/DC Umschaltung
+--Korektur des Eingangsteilers softwaremaessig
+-Korektur des Temperaturkoefizenten softwaremaessig
+-Umschaltung der Referenzspannung
+
+Diese Variante wird wahrscheinlich nur auf K 1520 Format (215*230) moeglich sein.
+
+
+5. Schlussbemerkungen
+
+Der hier vorgestellte AD-Wandler entspicht hohen Anforderungen in der
+Messtechnik. Mit der aufgebauten  Variante ist eine hohe Genauigkeit
+moeglich.Ereicht wurden Werte v.+-2 Digit v.Messwert. Dazu ist allerding ein
+sauberer Aufbau und Abschirmung des evt. vorhandenen Eingangsteilers notwendig.
+Ich selbst nutzte das System schon seit etwa 2.5 Jahren in Form eines Multimeter
+und bin mit der reproduzierbarkeit und Genauigkeit sehr zufrieden. Es wurde kein
+Thermostat genutzt. Um dem Amateur den Abgleich zu erleichter schlage ich
+folgendes vor:
+
+Die Referenzspannung wird zum Abgleich mit Pin1 C500 ohne Zwischenschaltung von
+Widerstaenden verbunden. Die Anzeige entspricht der Referenzspannung.
+
+ACHTUNG
+
+Bei Messung der Netzspannung ist der Rechner einseitig geerdet. Die galvanische
+Trennung vom Netz ist aufgehoben.
+
+Zur Unterbindung dieses Problemes ist der Einsatz von Optokopplern notwendig.
+Der Einbau wird in der 8 Kanal Variante evt. vorgesehen sein.
+
+
+6. Literaturnachweis
+
+(1) Mikroelektronik Information Applikation Heft 32 A/D-Wandlersystem C 500-Reihe
+
+(2)RFE 87 Heft 8 Seiten 496-498
+
+(3)RFE 88 Heft 4 Seiten 243-247
+
+(4)FA 86 Heft 6 Seiten 299-302
+
+(5)RFE 86 Heft 3 Seiten 182-186
+    und   Heft 4 Seiten 243-247
+
+
+
+                  M.Doebbeling
+ 

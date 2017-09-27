@@ -1,0 +1,11 @@
+bank0.bin:	bank0.asm system\hd_mega3.bin z1013.asm
+megarom.bin:	megarom.asm packedRoms.bin
+megarom_1.bin:	megarom_1.asm packedRoms.bin
+megarom_2.bin:	megarom_2.asm packedRoms.bin
+megarom_3.bin:	megarom_3.asm packedRoms.bin
+packedroms.bin:	packedroms.asm bank0.bin fileXname soft1/Z1013-DVU2_A000.z80 soft1/Z1013-HeaderUSB_E000.z80 soft1/moner_su_1_31.z80 z80files.inc
+rom_1.bin:	rom_1.asm packedRoms.bin
+rom_2.bin:	rom_2.asm packedRoms.bin
+rom_3.bin:	rom_3.asm packedRoms.bin
+rom_4.bin:	rom_4.asm packedRoms.bin
+rom_5.bin:	rom_5.asm packedRoms.bin

@@ -1,0 +1,183 @@
+   ******************************************************
+   ***                                                ***
+   ***           A  S  S  E  M  B  L  E  R            ***
+   ***                                                ***
+   ***                   V 5.3                        ***
+   ***                                                ***
+   ***                  01.10.87                      ***
+   ***                                                ***
+   ******************************************************
+
+
+   * Programmstandort : 
+          100H....5C0H  Zusatzmonitor
+         1000H...2C6FH  Assembler
+         2E00H...2F6FH  Systemzellen 
+          800H...0FFFH  Symboltabelle 
+
+
+   * Programmstart : 
+          100H  Neustart , Befehl '#HALT' = 'END' 
+         1003H  Restart 
+         1006H  Restart , BEFEHL '#HALT' = Kommentar 
+
+
+   * Quellformat:
+      - Die Marken sind max. 5 Zeichen lang und beginnen mit 
+        Buchstaben.
+      - Marken werden mit Doppelpunkt abgeschlossen.
+      - SPACE und TAB werden als Trennzeichen gewertet. Sie
+        koennen mehrfach auftreten.
+      - Das Namensfeld kann entfallen.
+      - Die Quellzeile darf ohne Kommentar max. 85 Zeichen
+        lang sein. Der Kommentarteil wird bei der Uebersetzung
+        ausgeblendet.
+      - Die Zeile kann mit NL oder CRLF abgeschlossen werden.
+      - Eine leere Zeile wird als Kommentar gewertet.
+      - Registernamen gelten als vereinbarte Symbole,
+        die Befehlsmnemonik nicht.
+
+   * Variablen:
+      - Alle 16-bit-Werte koennen durch einen mehrteiligen
+        Ausdruck aus Variablen gebildet werden.
+      - Alle 8-bit-Konstanten koennen mit einem Ausdruck 
+        definiert werden. Es werden dabei die niederen 8 Bit
+        der Variablen verwendet und die oberen 8 Bit geprueft.
+      - Ein Ausdruck kann durch + und - verknuepft werden.
+        Er kann mit - anfangen.
+        Durch das Zeichen * werden die Teile und-verknuepft,
+        durch / oder-verknuepft.
+        Die Verknuepfungen werden von links nach rechts
+        ohne Prioritaet abgearbeitet.
+      - Als Variable / Konstante sind zugelassen :
+             4 Zeichen hex, mit Ziffer beginnend und mit 'H' abgeschl.
+             4 Zeichen oktal, mit 'Q' abgeschl.
+             4 Zeichen dezimal ohne Abschluss
+             Name
+             # ergibt den Wert des PC vor Befehlsausfuehrung
+             1 Zeichen Literal in Hochkomma
+             2 Zeichen Literal in Hochkomma
+                (linkes Zeichen = NWT )
+            16 Zeichen dual, mit 'B' abgeschlossen
+        Die Werte koennen vorzeichenbehaftet sein.
+   
+   * Spezielle Formate:
+      - Die Befehle  LD  X,H(nn)  
+            und      LD  X,L(nn)
+        sind zugelassen. nn kann dabei ein Ausdruck sein.
+      - Bei den Anweisungen  DA,ORG,EQU,BER darf nur ein
+        Wert erscheinen, der durch einen Ausdruck gebildet 
+        werden kann.
+      - Beim Befehl DB sind numerische Werte, Marken und
+        Textketten zugelassen. Sie sind durch Komma zu trennen.
+      - Fuer (HL) muss M geschrieben werden.
+   
+   * Programmende durch 'END' oder '#HALT' gleichberechtigt.
+     Die Bewertung des Befehls '#HALT' ist abhaengig von der Start- 
+     adresse. 
+   
+   * Zusatzbefehle:
+      - HEX      Definition von 2-stelligen Hex-Konstanten, durch
+                 Komma getrennt. Der Buchst. H und Fuehrungsnullen
+                 entfallen.
+                 z.B.:  HEX   11,55,AA,1B,F3,00,DC
+      - PRNT     Listensteuerung  volle Liste
+      - PRNO             ="=      Fehlerliste
+      - PRTH             ="=      Hex-Liste
+      - PN       wird ignoriert
+      - TITL             ="=
+      - alle Befehle mit LX,HX,LY,HY
+      - SLL      Rotation
+   
+   * Fehlerausschriften:
+      M   Speicherfehler
+      U   unbekannter Befehl
+      K   Konstantenfehler (Wert zu gross)
+      F   Formatfehler
+      A   Adressenfehler
+      N   unbekannter Name
+      T   Tabellenueberlauf
+      L   Befehlszeile zu lang (ohne Komm.)
+      V   Adressenversatz zwischen 1. und 2. DL
+      I   Input-Fehler 
+
+   * Systembedienung:
+      - Start:          100H
+      - Restart:       1003H
+
+      - Durchlaufsteuerung:
+    
+        N    Neustart (loescht Symboltabelle)
+        1    1. DL  (keine Liste, sonst = 2.DL)
+        2    2. DL  (Uebersetzung)
+        ^C   Ende der Nutzung  (CTRL-C = 03H = S4-K)
+
+        Es koennen mehrere Programme hintereinander uebersetzt
+        werden. Ein Programm kann dabei auf Marken aus den anderen
+        Programmen zugreifen.
+
+      - Laufsteuerung (Anforderung mit 'A >' )
+
+        Ausgabeformat     S   Symbolliste  
+                              (Zeile - Name - Wert) 
+                          H   Hexliste (ohne Quelliste)
+                          F   Fehlerliste
+                          L   volle Liste
+                          M   Symboltabelle ausgeben (ohne Lauf)
+                              (Name - Wert ) 
+                          P   Zuschalten des Druckprotokolls 
+                          V   Seitenvorschub und Abschalten des 
+                              Druckers 
+                          I   Initialisierung des Druckers 
+
+        Zeitsteuerung     N   max. Geschwindigkeit
+                          T XXXX    Zeitlauf (Zeit in ms bis max. 1000)
+
+        Adressen          A XXXX    Zwangsadr. fuer ORG
+                                    (Aenderung der ORG-Anweisung 
+                                     im Dialog) 
+                          O XXXX    Offset zu ORG
+                                    (ergibt Speicherbereich,auf dem 
+                                     der MC abgelegt wird
+                                     Zweier-Komplement in Hex) 
+                          Q XXXX    Quellanf.-Adr. (nur bei
+                                    Mehrfachuebersetzungen im 2.DL)
+                          K         Aufhebung der A-Anweisung
+
+        Lauf              R   Run
+
+                          ^C  Ende der Nutzung
+
+        Bei Zeitsteuerung = T kann die Uebersetzung durch SPACE
+        nach jeder Zeile unterbrochen werden. Fortgesetzt wird
+        durch Betaetigen einer beliebigen Taste.
+
+     *  Interne Funktionen
+
+        Marken mit (TAB) als erstes Zeichen koennen mehrfach 
+        verwendet werden. Ihr Wert wird auch im 2.DL veraendert,
+        wodurch sie nur fuer Rueckwaertsspruenge zu verwenden 
+        sind oder unmittelbar vor ihrer Nutzung zu definieren 
+        sind.
+
+        Die Eingabe von ORG-Adressen wird gekellert . Es koennen
+        max. 10 Adressen eingegeben werden. Die Adresse 0000 ruft
+        dabei keine Wirkung hervor .
+
+
+     *  Modifikationen: 
+
+        1) Bei fehlendem Druckeranschluss muss auf den Adresssen
+           447H/448H und 449H/44AH  0D4H/03H eingetragen werden.
+           Adresse Druckertreiber in 449H/44AH eintragen.
+           Adresse Druckersynchr. in 447H/448H    -"-
+
+        2) Die Lage und Groesse der Symboltabelle kann durch 
+           Veraenderung der folgenden Zellen geaendert werden:
+
+                < 2C02H / 2C03H >  =  Anfangsadresse 
+                < 2C04H / 2C05H >  =  Laenge 
+
+
+                                       Autor: Gerd Schoenfelder
+                          letzter Bearbeiter: Rainer Brosig 

@@ -1,0 +1,1298 @@
+***************************************************************
+***************************************************************
+*****                                                     *****
+*****       V O L L G R A P H I K  mit  Z  1 0 1 3        *****
+*****                                                     *****
+*****               (c) Oktober 1988 by TS                *****
+*****                                                     *****
+***************************************************************
+***************************************************************
+
+ 
+ Die mit Software nutzbaren Faehigkeiten eines Computers 
+werden von verschiedensten technischen Parametern bestimmt.
+Eine besondere Rolle spielen neben Speicherkapazitaet,
+Verarbeitungsbreite und Schnittstellenverfuegbarkeit sicher
+auch die graphischen Moeglichkeiten.
+ In der Literatur wurden bereits verschiedene Varianten zur
+Realisierung eines voll graphisch orientierten Bildschirms
+beschrieben (s. z.B. Literaturhinweise). Die Rechner des
+Kombinats Mikroelektronik sind serienmaessig mit einer ent-
+sprechenden Schaltung ausgestattet.
+ Die klare, leicht ueberschaubare Schaltungsstruktur des
+Mikrorechnerbausatzes robotron Z 1013 fordert eine eigene
+Loesung fuer eine HRG-Stufe (HRG- high resolution graphic,
+hochaufloesende Graphik) geradezu heraus. Eine Moeglichkeit
+wurde bereits in (1) vorgestellt, eine andere, einfachere,
+soll Inhalt dieses File sein.
+
+===============================================================
+
+HRG-Modul fuer Z 1013
+
+
+Leistungen
+
+ Die hier beschriebene Schaltung realisiert hardwaremaessig
+zunaechst nur das Prinzip eines programmierbaren Zeichengene-
+rators, keine Vollgraphik im Sinne etwa des KC 85/3.
+Vielmehr wird in Hinblick auf die hardwareseitigen Voraus-
+setzungen des Z 1013 eine softwaremaessige Vollgraphik
+gestuetzt. Die angefuegte Standardsoftware, speziell fuer diese
+Schaltung entwickelt bzw. hacked ,gestattet u.a. das Setzen,
+Ruecksetzen und Testen einzelner von insgesamt 256*256 Pixeln.
+Damit wird es moeglich, hochaufgeloeste Fraktale oder
+Funktionsbilder ueber Programme in BASIC, PASCAL oder FORTH
+darzustellen.
+ Aufgrund des Arbeitsprinzips ist ausserdem eine freie
+Aenderung des sonst festgelegten Zeichensatzes moeglich,
+was insbesondere fuer deutsche Textverarbeitung ein entschei-
+dender Vorteil ist (Umlaute,"sz" oder auch ein TVP mit
+64 Zeichen auf 32 Zeilen auf einem Bildschirm).
+
+
+  1. HARDWARE
+ _____________
+
+
+1.1 Geraetetechnische Voraussetzungen
+
+ Ich habe die Umruestung an einem Z 1013.16 mit 64KByte dRAM
+vorgenommen. Eine erweiterte Stromversorgung ist
+aufgrund des Stromverbrauchs der Zusatzschaltung unumgaenglich.
+ Hochaufloesende Graphik erfordert ein einwandfreies Fernseh-
+bild. Bei mir war das auch bei Einspeisung in die Antennen-
+buchse eines JUNOST 402 WE gewaehrleistet, gegebenenfalls ist
+das BAS-Signal an der Bruecke E7 zu nutzen, wobei allerdings
+der TV noch zum Monitor umzubauen ist.
+ Das Modul benoetigt fuer seine Arbeit 4 PIO-Bits des internen
+Ports A. Fuer den Anschluss von Steuerschaltungen oder
+Joystick, die ein gesamtes Port benoetigen, ist das E/A-Modul
+notwendig.
+
+ Da die Schaltung direkt an der Originalplatine verdrahtet wird
+und einige Trassierungsaenderungen nicht zu vermeiden sind,
+ist der Nachbau nur erfahrenen Elektronik-Freaks anzuraten !!!
+
+
+
+1.2 Arbeitsprinzip
+
+ Die HRG-Stufe arbeitet direkt mit der originalen Bildschirm-
+steuerung des Z 1013 zusammen. Deren Funktion ist im Handbuch
+Teil I im Abschnitt 3.4.4. in Verbindung mit den Schaltbildern
+ausfuehrlich beschrieben, weshalb darauf im wesentlichen ver-
+zichtet werden soll.
+ Nur noch einmal dazu, wie ein Zeichen aufgebaut wird.
+Das Bitmuster zur Darstellung eines Zeichens ist im Zeichen-
+generator-ROM als Folge von 8 Bytes gespeichert (ein Zeichen
+besteht aus 8*8 Pixeln).
+Dies wird am Beispiel des Buchstaben "A" klar :
+
+  ....*...  84218421 => 08H
+  ...*.*..              14H
+  ..*...*.  Bit 7...0   22H
+  ..*...*.              22H
+  ..*****.              3EH
+  ..*...*.              22H
+  ..*...*.              22H
+  ........              00H
+
+ (Das Setzen eines einzelnen Punktes ist also nichts anderes als
+das Beeinflussen eines einzelnen Bits.)
+ Die Bytes sind fuer den Nutzer nicht veraenderbar, da sie eben
+in einem Nur-Lese-Speicher enthalten sind.
+ Hier wird nun zur Schaffung der Voraussetzungen fuer eine Voll-
+graphik eingegriffen.
+Waehrend der Arbeit mit Vollgraphik wird der originale Zeichen-
+generator ueber CS und OE abgeschaltet. Dessen Funktion ueber-
+nimmt ein 1K sRAM, der auf die gleiche Weise wie der BWS 
+beschrieben oder gelesen wird (Multiplexbetrieb).
+ Doch nun koennte man sagen: Die Arbeit als programmierbarer
+Zeichengenerator ist so moeglich, aber softwaregestuetzte
+256*256 Punkte Graphik nicht.
+ Das stimmt auch. Mit einem RAM der Kapazitaet 1K liessen
+sich maximal 256*32 Punkte ansteuern. Deshalb wird der Bildschirm
+in 8 Bereiche geteilt. Fuer jeden dieser Bereiche wird immer nur
+ein RAM als Zeichengenerator angesteuert. Der Graphikspeicher
+besteht also aus 8KByte RAM. Diese 8K RAM belegen im Adressraum
+des Z 1013-Systems aber nur 1KByte, in dem dann nach
+einem Bank-Switching-Prinzip mit OUT-Befehlen auf alle Zeichen-
+generatoren zugegriffen werden kann.
+ Zur Ansteuerung bestimmter RAMs beim zyklischen Auslesen und
+somit zur Teilung des Bildschirms in 8 Bereiche werden
+Ausgaenge der Zaehlkaskade ueber einen B/D-Decoder benutzt.
+ Mit Software wird nun realisiert, dass auf dem Bildschirm der
+Inhalt der 8 Zeichengenerator-RAMs mit steigender ASCII-Zahl
+ausgedruckt (8* 0...127) wird, so dass gesetzte Punkte an den
+jeweiligen Positionen sichtbar werden.
+ Die Zeichengeneratoren koennen demnach als normale Pixel-
+speicher betrachtet und behandelt werden, gestatten darueber
+hinaus aber auch noch die Verwendung verschiedener Zeichen-
+saetze (in jedem der 8 Bildschirmbereiche ist prinzipiell ein
+spezifischer Zeichensatz moeglich) bei Beibehaltung der hohen
+Auslesegeschwindigkeit.
+
+
+
+1.3 Schaltung
+
+ Im folgenden soll nun zunaechst das Schaltbild der HRG-Stufe
+mit Schluessel und anschliessend deren genaue Beschreibung
+wiedergegeben werden. Die Darstellung sollte nur als Vorlage
+zum Abzeichnen dienen.
+
+===============================================================
+
+1.3.1
+
+A28       ---------  Pin  ----------   Pin   -----------
+         |  |   |  |     |  |   |   |       |   |   |   |
+ 2-AB0- 2|A0|MX | 0| 4- 5|A0|RAM|   |       |1/2|BST| 1 |
+ 5-AB1- 5|A1| 1 |  |     |  | 8K|   |       |   |   |   |   A15
+11-AB2-11|A2|   |  |     |  |   L   |       |   |   |   |
+14-AB3-14|A3|   | 1| 7- 6|A1|   | D0| 14-19 |DB0|   |DA0|1-  14
+	 |  |   |  |     |  |   O   |       |   |   |   | 
+A44	 |--|   |  |     |  |   | D1| 13-18 |DB1|   |DA1|2-  13
+	 |  |   | 2| 9- 7|A2|   W   |       |   |   |   |
+ 8--A0- 3|B0|   |  |     |  |   | D2| 12-17 |DB2|   |DA2|3-  12
+ 7--A1- 6|B1|   |  |     |  |   |   |       |   |   |   | 
+ 6--A2-10|B3|   | 3|12- 4|A3|   | D3| 11-16 |DB3|   |DA3|4-  11
+ 5--A3-13|B4|   |  |     |  |   |   |       |   |   |   |
+	 |  |   |  |     |  |   |   |       |   |   |   |
+A23	 |--|   |  |     |  |   |---|       |   |   |   |   A16
+	 |  |   |  |     |  |   |   |       |   |   |   |
+3-DK12- 1|WS|   |  |     |  |   H   |       |   |   |DA4|5-  14
+	 |--|   |  |     |  |   | D4| 14-15 |DB4|   |   |
+Masse--15| S|   |  |     |  |   I   |       |   |   |DA5|6-  13
+         |  |   |  |     |  |   | D5| 13-14 |DB5|   |   |
+A41	  ---------      |  |   G   |       |   |   |DA6|7-  12
+	 |  |   |  |     |  |   | D6| 12-13 |DB6|   |   |
+ 2-AB4- 2|A0|MX | 0| 4- 3|A4|   H   |       |   |   |DA7|8-  11
+ 5-AB5- 5|A1| 2 |  |     |  |   | D7| 11-12 |DB7|   |   |
+11-AB6-11|A2|   |  |     |  |   |   |       |   |   |---|
+	 |  |   |  |     |  |   |   |       |   |   |   |
+A28      |  |   |  |     |  |   |---|       |   |   | 2 |
+	 |  |   |  |     |  |   |   |       |   |   |   |   A44
+ 3-AB7-14|A3|   | 1| 7- 2|A5|   | CS|  z    |   |   |   |
+	 |  |   |  |     |  |   |   |  u    |   |   |DA0|1-   9
+A44      |--|   |  |     |  |   |   |       |   |   |   |
+	 |  |   | 2| 9- 1|A6|   |  1|8      |   |   |DA1|2-  10
+ 4--A4- 3|B0|   |  |     |  |   |   |  D    |   |   |   |
+ 3--A5- 6|B1|   |  |     |  |   |   |  e    |   |   |DA2|3-  11
+ 2--A6-10|B2|   | 3|12-17|A7|   |  2|8 c    |   |   |   |
+ 1--A7-13|B3|   |  |     |  |   |   |  o    |   |   |DA3|4-  13
+	 |  |   |  |     |  |   |   |  d    |   |   |   |
+A23      |--|   |  |     |  |   |  3|8 e    |   |   |DA4|5-  14
+	 |  |   |  |     |  |   |   |  r    |   |   |   |
+3-DK12- 1|WS|   |  |     |  |   |   |  a    |   |   |DA5|6-  15
+	 |--|   |  |     |  |   |  4|8 u    |   |   |   |
+Masse--15| S|   |  |     |  |   |   |  s    |   |   |DA6|7-  16
+	 |  |   |  |     |  |   |   |  g    |   |   |   |
+A28       ---------      |  |   |  5|8 a    |   |   |DA7|8-  17
+	 |  |   |  |     |  |   |   |  e    |   |   |   |
+ 6-AB8- 2|A0|MX | 0| 4-16|A8|   |   |  n    |   |   |   |
+10-AB9- 5|A1| 3 |  |     |  |   |  6|8 g    |   |   |---|   A23
+         |  |   |  |     |  |   |   |  e    |   |   |   |
+A18      |  |   |  |     |  |   |   |  n    |   |   |CS1|9-   3
+	 |  |   |  |     |  |   |  7|8      |   |   |---|
+11-/WR-11|A2|   |  |     |  |   |   |  0    |   |   |   |   A43
+	 |  |   |  |     |  |   |   |  .    |   |   |   |
+Masse--14|A3|   | 1| 7-15|A9|   |  8|8 .    |   |   |DR1|11- 11
+	 |  |   |  |     |  |   |   |  .    |   |   |   |
+A44      |--|   |  |     |--|   |   |  7    |   |   |---|   A45
+	 |  |   | 2| 9-10|WE|   |   |       |   |   |   |
+23--A8- 3|B0|   |  |      ----------        |   |   |CS2|9-   7
+22--A9- 6|B1|   |  |                        |   |   |---|
+	 |  |   |  |                        |   |   |DR2|11-
+5P-----10|B2|   | 3|12--> A18/Pin13         |   |   |   |Masse
+	 |  |   |  |                        |   |   |   |
+A13      |  |   |  |                         -----------
+	 |  |   |  |
+12-Z1--13|B3|   |  |
+	 |  |   |  |
+A23      |--|   |  |
+	 |  |   |  |
+3-DK12- 1|WS|   |  |
+	 |--|   |  |
+Masse--15| S|   |  |
+	 |  |   |  |
+	  ---------
+
+A45       ---------       ---------
+	 |  |   |  |     |  |   |  |
+10-PA4- 2|A0|MX | 0| 4-15| 1|B/D|  |
+ 9-PA5- 5|A1| 4 |  |     |  |   |  |
+ 8-PA6-11|A2|   |  |     |  |   | 0|1--CS1
+	 |  |   |  |     |  |   | 1|2--CS2
+Masse--14|A3|   | 1| 7-14| 2|   | 2|3--CS3
+	 |  |   |  |     |  |   | 3|4--CS4
+A8       |--|   |  |     |  |   | 4|5--CS5
+	 |  |   | 2| 9-13| 4|   | 5|6--CS6
+13-ZK7- 3|B0|   |  |     |  |   | 6|7--CS7
+	 |  |   |  |     |  |   | 7|9--CS8
+A18      |  |   |  |     |  |   |  |
+	 |  |   |  |     |  |   |  |
+ 3-ZK8- 6|B1|   |  |     |  |   |  |
+ 6-ZK9-10|B2|   | 3|12-12| 8|   |  |
+         |  |   |  |     |  |   |  |
+A45      |  |   |  |      ---------
+	 |  |   |  |
+ 7-PA7-13|B3|   |  |
+	 |  |   |  |
+A23      |--|   |  |
+	 |  |   |  |
+3-DK12- 1|WS|   |  |
+	 |--|   |  |
+Masse--15| S|   |  |
+	 |  |   |  |
+	  ---------
+
+A45       ---      A44
+	 |   |
+7-PA7----| & |o--> 18/20--CS/OE
+	 |   |
+	  ---
+
+A23                  A8
+
+3--DK12-----|<|-     5--CAS nur fuer
+                |--> 64K dRAM
+4--DK13-----|<|-     
+	  Dioden     A19
+
+		     1--Bildschirmsteuerung bei
+			BWS/GPS-Zugriff umschalten
+
+===============================================================
+
+Schluessel:
+
+ICs- MX 1...4   Multiplexer
+		DL 257
+
+     RAM        statische RAMs
+		2*8 U 214 D = 8KByte
+
+     B/D        Binaer-zu-dezimal-Decoder
+		MH 7442
+
+     BST 1/2    Bustreiber
+		2* DS 8286 D
+		 1-CPU-seitig
+		 2-ROM-  ="=
+
+     &          NAND-Gatter
+		1/4 D 100 D
+
+   -|<|-	Dioden
+		2* SAY 30
+
+
+Hinweis: Im Interesse definierter Pegel an
+	den mit PIO-Leitungen belegten Eingaengen
+	sind PA4...PA7 mit 100kOhm gegen 5P
+	zu definieren.
+	 Ausserdem ist der Ausgang der Dioden-ODER-
+	Verknuepfung mit 12K gegen 5P vorzuspannen !
+	 Alle ICs sind mit 100nF direkt an den
+	ICs abzublocken. Bei den RAMs kann darauf
+	verzichtet werden.
+
+
+1. linke Seite: Leitungen zu den
+   Multiplexereingaengen, NAND-Gatter, Dioden-ODER
+
+1.1
+
+xxx            IC-Nr.Grundplatine
+
+aa--bb--cc     Pin-Nr. -- Signal -- Pin-Nr.
+	       am IC xxx  name      an MX ...(Nr.im IC-Symbol)
+
+Bsp: A28
+
+     2--AB0--2|A0|MX1
+
+     Leitung von A28/Pin2 zu Pin2 des MX1 fuehrt
+     Adressbussignal AB0
+
+1.2
+
+aaaa--cc       Spannungsart -- Pin-Nr.
+			       an MX ...(Nr.im IC-Symbol)
+
+Bsp: Masse---15| S|MX3
+
+     Pin 15 von MX3 mit Masse verbinden
+
+
+2. Zwischen Multiplexern und RAM bzw.
+   B/D-Decoder und zwischen RAM und Bustreibern
+
+aa--bb    Pin am  -- Pin am
+	  IC links   IC rechts
+
+Bsp: MX1| 0|4--5|A0|RAM
+
+     Pin4 des Multiplexers MX1 wird mit
+     Pin5 des RAM-Komplexes verbunden
+
+
+3. Ausgaenge des B/D-Decoders
+
+aa--bb    Pin-Nr.   -- Nr.des gelieferten
+	  am Decoder   CS-Signals
+
+Bsp:  B/D| 0|1--CS1
+
+      Pin1 des B/D-Decoders muss mit Pin8 (CS-Anschluss)
+      der beiden RAMs, die den ersten 1K-Block
+      bilden, verbunden werden
+      (1K = 2* U 214 D) 
+
+
+4. Datenein-/ausgaenge der RAMs
+
+ Die 8K Graphikspeicher werden gebildet durch 2 Bloecke mit
+jeweils 8* U 214 D. Ein Block ist verantwortlich fuer
+Bit 0...3, der andere fuer Bit 4...7. Bis auf die
+Daten- und CS-Leitungen liegen an allen RAMs die gleichen
+Signale an (s.Schaltbild). Die Datenleitungen liegen innerhalb
+eines Blocks bei allen RAMs parallel.
+ CS wird an Pin8 der U 214 geschalten, wobei der CS-Eingang,
+der im Block des niederwertigen Halbbytes (0...3) den
+x-ten RAM auswaehlt, mit der CS-Leitung der selben Position
+im High-Byte parallel liegt (x-ter RAM: 1...8 aus 8KByte).
+ Die CS-Eingaenge jedes RAM-Paars werden mit den entsprechenden
+Ausgaengen des B/D-Decoders verbunden.
+
+Bsp: RAM| CS|
+	|  1|8 zu Decoderausgaengen 0...7(gilt fuer CS 1-8)
+
+  Die CS-Eingaenge der beiden RAMs, die den ersten der 8
+  1K-Bereiche auswaehlen, werden mit dem Ausgang 1 des
+  B/D-Decoders verbunden.
+
+
+5. Leitungen von den Ausgaengen der
+   Bustreiber 1/2
+
+         xxx    IC-Nr.auf Grundplatine
+
+      aa--bb    Pin-Nr.       -- Pin-Nr.
+		an Bustreiber    an IC xxx
+		Nr. ...
+		(siehe Eingren-
+		 zung bzw.Zahl
+		 im Symbol)
+
+Bsp:       A15
+
+BST1|DA0|1--14
+
+ Der Ein-bzw.Ausgang DA0, Pin1 an Bustreiber 1, wird mit
+Pin 14 von A15 verbunden.
+
+
+Andere Formate koennen aus den angegebenen Schluesselpunkten
+abgeleitet werden.
+
+================================================================
+
+
+1.3.2
+
+ Die Arbeit der Schaltung laesst sich prinzipiell mit der
+des originalen Bildwiederholspeichers vergleichen.
+Es werden auch hier 2 Betriebsarten unterschieden:
+
+  1. Asynchrone Arbeit (kein CPU-Zugriff)
+
+  1.1 HRG-Modul (und damit Graphikspeicher GPS) inaktiv
+  1.2 Modul und somit GPS aktiv, zyklisches Auslesen und
+      Darstellen des BWS-Inhalts mit dem spezifischen
+      Zeichensatz jedes der 8 Zeichengeneratoren
+
+  2. Zugriff der CPU
+
+ Zunaechst zur asynchronen Arbeitsweise. Das Modul und der GPS
+sind solange inaktiv, wie die PIO-Leitung PA7 H-Pegel fuehrt.
+Da kein CPU-Zugriff auf den GPS erfolgt, fuehrt das Speicher-
+bereichsauswahlsignal /DK12 H-Pegel.
+Dieses Signal liegt an den WriteSelect-Eingaengen der
+Multiplexer und am ChipSelect-Eingang des Bustreibers 1.
+Es ist klar, dass so der Datentreiber inaktiv ist und von den
+Multiplexern alle "B"-Werte weitergegeben werden.
+Demnach werden ueber die Ausgaenge der Multiplexer 1-3 die
+Adresssignale des Zeichengenerators an die Adresseingaenge der
+RAMs gelegt. WE fuehrt H-Pegel (geschaltet ueber MX3,Ausgang 2).
+ Der Ausgang 3 des MX3 schliesslich schaltet in dieser
+Betriebsart das normale Signal(Z1) fuer den Steuereingang V
+des Parallel-Serien-Wandlers an A18/Pin 13.
+ Der 4.Multiplexer legt die 3 hoechstwertigsten Signale der
+Zaehlkaskade(ZK7..9) an den B/D-Decoder. Die Ausgaenge des
+Decoders fuehren H = die RAMs sind im Ruhezustand mit ver-
+ringerter Stromaufnahme.
+ Der Graphikspeicher wird aktiviert, wenn die PIO-Leitung
+PA7 L fuehrt; der originale Zeichengenerator wird dann mit
+NAND-Gatter ueber CS/OE abgeschaltet.
+ Der B/D-Decoder waehlt nun nacheinander fuer jeden der 8 Bild-
+schirmbereiche, spezifiert durch ZK7...9, aus den 8K RAM jeweils
+einen Zeichengenerator aus, der dann gelesen wird.
+ Die bei aktiviertem RAM gelesenen Daten liegen an den ent-
+sprechenden RAM-Pins und an den DB-Pins beider Bustreiber.
+Auf den CPU-Datenbus gelangen diese Daten nicht, da, wie schon
+gesagt, Bustreiber 1 inaktiv ist.
+Ueber den 2.Bustreiber gelangen auch nur dann Daten an den
+Parallel-Serien-Wandler, wenn der GPS aktiviert ist. Die Rich-
+tung des Datentransports ist mit DIRection auf Masse (bei Bus-
+treiber 2) auf DB-->DA festgelegt.
+Die zyklisch gelesenen Daten fuer alle Bildschirmbereiche
+bilden das vollgraphische Bildsignal.
+ Nun moechte man den Graphikspeicher auch lesen und beschrei-
+ben.
+Dazu wird das Speicherbereichsauswahlsignal /DK12 verwendet.
+Es wird mit dem Adressdecoder A23 erzeugt und realisiert einen
+Speicherzugriff auf den Bereich E800...EBFFH. Wie in diesem
+1K-Bereich 8KByte programmiert werden koennen, dazu spaeter.
+ Bei einem CPU-Zugriff auf den GPS wird /DK12 auf LOW gezogen.
+Die Multiplexer der HRG-Stufe schalten um, so dass nun alle
+"A"-Daten an den MX-Ausgaengen liegen, der Bustreiber 1
+wird aktiviert.
+ MX1 bis MX3 legen also den benoetigten Teil des CPU-Adressbus
+und das Signal /WR an den RAM-Komplex. Die Richtung des Daten-
+transportes wird mit /RD am DIRection-Eingang des Bustreibers 1
+festgelegt.
+ Wie koennen nun aber in dem 1K-Bereich E800...0EBFF 8K RAM
+programmiert werden ?
+Der Multiplexer 4 schaltet 3 PIO-Leitungen (PA4-PA6) an den
+B/D-Decoder, der die Auswahl eines 1K-Blocks aus den
+8K Graphikspeicher realisiert. Welcher RAM gewaehlt wird, also
+in welchem Bildschirmbereich ein Bit = ein Punkt beeinflusst
+wird, haengt nur vom Zustand dieser PIO-Bits ab (Prinzip des
+Bank-Switching - mehrfache Belegung eines Speicherbereichs und
+Tangierung ueber OUT-Leitungen).
+ Es ist egal, in welchem Zustand sich die PA7 waehrend eines
+Speicherzugriffs befindet, denn die Bildschirmsteuerung wird in
+der Zugriffszeit so beschalten, als ob die CPU den BWS lesen/
+schreiben moechte, so dass jegliche Konflikte vermieden werden.
+Das Bildsignal wird wie bei einem normalen BWS-Zugriff kurz
+gestoert.
+ Die erwaehnte Umschaltung  geschieht zum einen damit, dass
+Pin 13 von A18 auf Masse gezogen wird (Steuereingang V des
+Parallel-Serien-Wandlers dann auch auf Masse), zum anderen
+liegt Pin 1 von A19 auch auf L, wenn /DK12 aktiviert ist
+(Dioden-ODER von /DK12 + /DK13).
+Das zuletzt beschriebene Signal muss bei 64KByte dRAM an die
+CAS-Blockierung Pin5/A8 gefuehrt werden, damit sowohl BWS als
+auch GPS ausgeblendet sind.
+
+ Fuer das Verstaendnis der Schaltung ist eine genaue Kenntnis
+der Arbeit der Bildschirmsteuerung und der Funktionsweise der
+im HRG-Modul verwendeten ICs oberste Voraussetzung. Ein
+ausfuehrliches Studium der Schaltungsunterlagen, insbesondere
+der Anlage 16.3 des Handbuchs und der IC-Beschreibungen im
+Handbuch Teil II/B sind deshalb vor dem Aufbau nochmals
+dringend anzuraten.
+
+
+
+1.4 Aufbau
+
+ Der Aufbau des Moduls beinhaltet die Realisierung des dar-
+gestellten Schaltbilds, also der Zusatzschaltung, und die
+Aenderung des Layouts der 1013-Platine zu deren Einbindung.
+
+ Fuer den Amateur, der fuer seinen Z 1013 nur ein HRG-Modul
+benoetigt, bietet sich der Aufbau auf einer Lochraster-
+Leitplatte oder auf einem Stueck einer K 1520-Karte an.
+Die interne Verdrahtung kann dann leicht mit Schaltdraht er-
+folgen.
+ ComputerClubs oder AGs, die alle Rechner nach dem genannten
+Prinzip umruesten wollen, ist die Erstellung einer Leiterplatte
+zu empfehlen, da die Verschaltung so schwierig nicht ist (akt.
+Nachtrag 7.12. : LP entsteht z.Zt. bei Uwe Rehn).
+
+ Ob waehrend des Aufbaus und der Verdrahtung Funktions-
+kontrollen durchgefuehrt werden, liegt im Ermessen des
+jeweiligen Amateurs. Dann sollte aber unbedingt der Abschnitt
+"Fehlerhinweise" beachtet werden.
+
+ Im folgenden wird nun eine Schrittfolge fuer einen
+moeglichst umkomplizierten Aufbau angegeben.
+
+-Aufloeten aller ICs, ausser RAMs, auf eine Leiterkarte
+-Verdrahten der RAM-ICs in zwei Tuermen (s.(1)) und Aufloeten
+  auf einem externen Stueck Leiterkarte
+-Ausfuehrung der internen Verdrahtung, z.B. Spannungsver-
+  sorgungsleitungen, Verbinden der WS-Eingaenge, Herstellung
+  der Verbindungen zu den RAMs mit Schaltdraht, Stuetzkonden-
+  satoren, Ziehwiderstaende usw., laut Schaltbild
+-Untersuchung der Zusatzschaltung auf Fehlschluesse, fehlende
+  interne Verbindungen laut Schaltbild
+-Anloeten von Schaltdraht entsprechender Laenge an die An-
+  schlusspunkte auf der Z 1013-Platine, z.B.Adress-/Datenlei-
+  tungen  CPU/ROM usw., laut Schaltbild
+-Aufbau des Dioden-ODERs, Anloeten der Katoden direkt an
+  den IC-Pins laut Schaltbild
+-Ausloeten des Kondensators C 1.11 (am ROM) und Trennen des
+  Leiterzuges von dem Loetauge, in dem vorher C 1.11 sass, zu
+  Pin 18/20 des ROMs
+-Trennen an A19 von Pin1 und mit den Anoden der Dioden ver-
+  binden
+-Bei 64K RAM: Trennen an A8/Pin5 von A23/Pin4 und mit den
+  Anoden der Dioden verbinden
+-Trennen an A18 von Pin13
+-Herstellung der Spannungsversorgung zur Zusatzschaltung
+-Verbinden der Adress-/Datenleitungen der CPU mit den ent-
+  sprechenden IC-Pins der HRG-Stufe laut Schaltbild
+-Herstellung aller weiteren Verbindungen laut Schaltbild
+
+
+
+
+1.5 Inbetriebnahme
+
+ Vor der Inbetriebnahme mit Modul ist unbedingt die Checkliste
+im Abschnitt "Fehlerhinweise" durchzugehen !
+
+ Ist das Modul vollstaendig aufgebaut und angeschlossen, kann
+mit einem kurzen Programm und Anweisungen im Dialog dessen
+Funktion getestet werden. Falls beim Nachvollziehen dieses
+Tests Fehler auftreten sollten, siehe Fehlerhinweise.
+
+ Nach dem Einschalten des Rechners ist zunaechst der Graphik-
+speicher mit
+
+K E800 EBFF
+
+zu loeschen. Dieses Kommando loescht nicht den gesamten GPS,
+sondern nur die RAMs, die fuer den untersten Bildschirmbereich
+verantwortlich sind.
+ Geben Sie nun ab 100H folgendes Programm ein:
+
+3E CF D3 01 3E 00 D3 01 3E 7F D3 00 FF
+
+ Diese Routine ist zwar keineswegs effektiv,
+die Mnemonic laesst aber erkennen, dass es seinen
+Zweck erfuellt :
+
+LD A,0CFH      ;A:=CFH --> PIO-Init auf
+	       ;Bit E/A
+
+OUT 1
+
+LD A,0         ;A:=0
+
+OUT 1          ;alle PIO-Leitungen auf Ausgabe
+
+LD A,7FH       ;A:=7FH
+
+OUT 0          ;Modul einschalten und RAM fuer
+	       ;untersten Bildschirmbereich in den
+	       ;Programmiersektor des Moduls legen (/DK12)
+
+RST 38H        ;in Monitor
+
+
+ Dann veraendern Sie die Zelle
+
+   EA08 
+
+mit dem "M"-Kommando von
+
+   00H in 08H
+
+EA08 enthaelt das erste Byte, das im 8.Zeichengenerator zur
+Darstellung des Buchstabens "A" verantwortlich ist
+(s. Abschnitt 1.2).
+ Fuehren Sie jetzt den Cursor auf eine der letzten 4 Zeilen
+des Bildschirms.
+Nun starten Sie das eingegebene Programm mit
+
+   J 100
+
+ Auf dem Bildschirm werden jetzt in den oberen 7 Bildschirm-
+bereichen verschiedene "Muster" sichtbar. Nur der unterste
+Bereich ist "leer".
+ Druecken Sie nun die Taste "A", so wird an der Stelle, an der
+im normalen Betrieb das Zeichen "A" erscheinen wuerde, ein
+einzelner Punkt sichtbar.
+
+ Sie haben jetzt einen Rechner mit programmierbaren Zeichen-
+generatoren, der mit entsprechender Software den Zugriff auf
+256*256 Bildpunkte einer Vollgraphik ermoeglicht.
+
+ Den Normalzustand des Rechners erreichen Sie in diesem Test
+mit RESET oder indem Sie vorher einen Vektor so definieren,
+dass er bei Aufruf PA4...7 auf H legt, und diesen Vektor
+dann mit NMI anspringen, z.B.
+
+0066 C3 00 10
+  .
+  .
+  .
+
+1000 3E FF D3 00 FF
+
+
+
+
+1.6 Fehlerhinweise
+
+ Beim Aufbau einer mikroelektronischen Baugruppe und bei Loet-
+arbeiten an einem Mikrorechner ist es fast selbstverstaendlich,
+dass auch verschiedenste Fehler auftreten. Bei mir nahm die
+Beseitigung von Fehlern etwa 60% der gesamten Entwicklungszeit
+fuer das Modul in Anspruch.
+ Oberstes Gebot ist Sauberkeit bei jeglichen Arbeiten. Bereits
+kleinste Zinnspritzer oder Drahtreste blockieren manchmal die
+Arbeit des gesamten Rechnersystems. Es sollte unbedingt
+streng nach Schaltbild gearbeitet, Stuetzkondensatoren
+und Ziehwiderstaende nicht vergessen werden. Eigene Modifi-
+kationen sollten erst bei vollstaendigem Funktionieren dieser
+Schaltung ausgefuehrt werden. ICs, Widerstaende und der ver-
+wendete Schaltdraht sollten moeglichst vor dem Einbau noch
+einmal gruendlich geprueft werden.
+
+ Zur Fehlersuche soll folgende Checkliste dienen.
+Sie ist vor der ersten Inbetriebnahme und bei Auftreten von
+Fehlern vollstaendig durchzugehen.
+
+-Ueberpruefung von Zuleitungen
+  auf Durchlass und Fehlschluesse mit benachbarten
+  und Stromversorgungsleitungen
+
+  * Adress-/Datenleitungen der CPU und des Zeichengenerator-
+     ROMs
+  * CS/OE des ROM
+  * /DK12
+  * /RD und /WR
+  * PA4...7
+  * ZK7...9
+  * Leitungen fuer Steuersignal Z1
+  * alle Verbindungen zwischen Modul und RAMs
+  * Spannungsversorgungsleitungen
+
+-Sind alle Ziehwiderstaende laut Schaltung verdrahtet und
+  die Stuetzkondensatoren angebracht ?
+
+-Ueberpruefung der gesamten internen
+  Verdrahtung auf Fehlschluesse, insbesondere
+  an den Steuereingaengen CS/WS
+
+-gruendliche Reinigung beider Platinen von
+  Zinnspritzern und Arbeitsrueckstaenden
+
+ Falls trotz Ausfuehrung der Kontrollen
+Fehler auftreten, koennen evtl. nachfolgende Beschreibungen
+helfen.
+
+
+Fehlerbild         Ursache                  Behebung
+
+kein Monitor       Leitung des CPU-Busses   Kontrolle aller
+		   nicht angeschlossen      entsprechenden
+		   oder Kurzschluss mit     Leitungen nach den
+		   mit anderer Leitung,     genannten Ursachen
+		   auch Versorgungs-
+		   spannung
+
+keinerlei Arbeit   es wurde vergessen,      Trennen des er-
+des Rechners, da   nach Ausloeten von       waehnten Leiter-
+Kurzschluss        C 1.11 den Leiterzug     zuges
+zwischen 5P und    von dessen Loetauge
+Masse              zu den ROM-Pins durch-
+		   zutrennen
+
+nach Eintritt in   Graphikspeicher arbeitet Ueberpruefung
+Monitor erscheinen bereits als Zeichen-
+auf dem Bildschirm generator
+nur undefinierte   -PA7 bereits auf L       +des PA7-Pegels
+Zeichen	oder das                             muss H fuehren)
+Bild ist gestoert  -B/D-Decoder falsch be-  +des Pegels am Ein-
+		    schalten)                gang "8" und der
+					     Ausgaenge (alles H)
+		   -CS-Kurzschluss nach     +aller CS-Eingaenge
+		    Masse                    (muessen H fuehren)
+		   -falsche Beschaltung der +der Pegel an den
+		    Steueingaenge am Modul   Steuereingaengen
+					     des Moduls
+					     (WS/CS auf H)
+
+		   Adress-/Datenleitungen   Ueberpruefung der
+		   des ROMs sind mitein-    am ROM angeschlos-
+		   ander oder mit Versor-   senen Draehte auf
+		   gungsspannungen kurz-    Fehlschluesse
+		   geschlossen
+
+
+nach einigen       Adressmultiplexer A28/41 genannte Multi-
+Minuten Betrieb    ueberlastet bzw. schal-  plexer stillegen
+des Rechners       ten infolge zu enger     und getypte DL257
+treten im dyna-    Toleranzen undefiniert   fuer deren Funktion
+mischen RAM 				    verdrahten
+Datenfehler auf
+
+
+
+
+1.7 Modifikationen
+
+ Jede Schaltung, also auch die vorliegende, erfuellt nur dann
+ihren Zweck, wenn sie entsprechend den Gegebenheiten und
+Beduerfnissen des Anwenders modifiziert und weiterentwickelt
+wird.
+Ich moechte hier nur eine Vereinfachung erwaehnen und so
+genuegend Raum fuer Eigenes lassen.
+ Falls nur die Arbeit als programmierbarer Zeichengenerator ge-
+wuenscht wird, ist ein Graphikspeicher von 1KByte ausreichend.
+Damit koennen dann die ASCII-Characters 0...127 modifiziert
+werden, abzueglich der Steuerzeichen.
+Fuer eine solche Vereinfachung koennen der B/D-Decoder und die
+Leitungen PA4...PA6 und ZK7...ZK9 entfallen.
+Der CS-Eingang des 1K-Blocks wird an den Ausgang 3 des MX4
+gelegt, womit die hardwaremaessigen Veraenderungen schon ab-
+geschlossen waeren.
+ In den Graphik-RAM wird nun das Datenfeld fuer andere Zeichen-
+bilder geladen. Die Umschaltung zwischen normalem Zeichensatz
+und geaendertem erfolgt ganz normal mit PA7 auf L.
+
+
+===============================================================
+===============================================================
+
+
+   2.SOFTWARE
+  ____________
+
+ Die Moeglichkeiten, die dem Nutzer von Mikrorechnersystemen
+mit Hardwareerweiterungen gegeben werden, sind ohne geeignete
+Software kaum effektiv auszunutzen. Das trifft in besonderem
+Masse auf das hier beschriebene HRG-Modul fuer Z 1013 zu.
+Ohne ein Graphik-Programmpaket liesse sich zwar ein program-
+mierbarer Zeichengenerator, nicht aber eine 256*256 Punkte an-
+steuernde Graphik realisieren.
+ Im folgenden soll nun eine Assemblerquelle wiedergegeben
+werden, die es nach Bearbeitung mit ASSEMBLER Scf gestattet,
+
+-das Modul einzuschalten
+  Einsprungmarke GPON:
+
+-den Bildwiederholspeicher fuer Vollgraphik
+ zu definieren
+  Einsprungmarke BWSWR:
+
+-das Modul auszuschalten
+  Einsprungmarke GCOFF:
+
+-den Graphikspeicher dunkel oder weiss zu loeschen
+  Einsprungmarke CLS: bzw. CLSW:
+
+-einen Punkt zu setzen
+  Einsprungmarke PSET:
+
+-die PSET-Routine so zu modifizieren, dass Punkte
+ auch getestet und geloescht werden koennen
+  Einsprungmarken PTST: und PRES:
+
+-den normalen PSET-Mod einzuschalten
+
+
+ Einige Routinen enstanden in Anlehnung an Listings in (2),
+andere wurden speziell fuer die angegebene Hardware ent-
+wickelt.
+ Das Paket ist teilweise nicht ROM-faehig, was aber durch
+kurze Laufzeiten gerechtfertigt wird. Der Aufruf der
+einzelnen Sequenzen, z.B. aus BASIC, erfolgt wie
+ueblich in der Form CALL (adr); davor muss evtl die x-Koordi-
+nate in Zelle 1BH (=ARG1) und die y-Koordinate in 1CH
+(=ARG1+1)gepokt werden. Fuer eine Registerrettung der im
+Graphikprogramm verwendeten Register wird standardmaessig
+gesorgt.
+ 
+Achtung !
+  Innerhalb des Graphikgrundprogrammes werden einige Zellen
+ im Z 1013-Systembereich genutzt. Im Monitor A.2 des 
+ Z 1013.16 waren diese Zellen unbelegt, in der 2.02-Variante
+ teilweise nicht. Es sollte also unbedingt der Systembereich
+ des eigenen Rechners ueberprueft und eventuell Aenderungen 
+ in der Quelle ausgefuehrt werden.
+
+
+	PN GS
+	TITL 'GRAPHIK 1'
+
+;HACKED FOR >Z 1013< by TS
+
+;LAST at 29.10.1988
+
+;DEFINITIONEN
+
+OUTCH:  EQU      0      ;Spezifikationen
+ARG1:   EQU   001BH     ;Systemzelle fuer Koordinaten-
+			;uebernahme
+			;ARG1=x / ARG1+1=y
+TSTZ:   EQU   002FH     ;test-point-Zelle
+GPMZ:   EQU   003FH     ;Graphikmerkzelle 
+GPS:    EQU  0E800H     ;Start Graphikspeicher
+BWS:    EQU  0EC00H     ; ="=  Bildwiederholsp.
+
+	ORG 0E400H
+
+;1.1 init pio & bws
+
+GPON:   PUSH AF
+	PUSH BC
+	PUSH HL
+
+	LD A,0CFH       ;Bit E/A
+
+	LD C,0FH        ;High-Bits Ausgabe 
+
+	OUT 1
+
+	LD A,C          ;Maskenwort
+
+	OUT 1
+
+	XOR A
+
+	OUT 0
+
+	LD (GPMZ),A
+
+BWSWR:  LD HL,BWS       ;BWS definieren 
+
+	LD B,0
+
+B1:	XOR A
+
+B2:	LD M,A          ;mit ASCII-Char's 0...255
+
+	CMP 255         ;=Ausdrucken der Zeichengeneratoren
+
+	JRZ B3-# 
+
+	INC HL
+
+	INC A
+
+	JR B2-#
+
+B3:     LD A,B 	        ;8 Bildschirmbereiche
+
+	CMP 7
+
+	JRZ B4-#
+
+	INC B
+
+	INC HL
+
+	JR B1-#
+
+B4:     POP HL
+
+	POP BC
+
+	POP AF
+
+	RET
+
+;1.2 all off
+
+GCOFF:  PUSH AF
+
+	LD A,0CH        ;CLS  
+
+	RST 20H
+
+	DB OUTCH
+
+	LD A,0F0H       ;und normal
+
+	OUT 0
+
+	LD A,80H
+
+	LD (GPMZ),A
+
+	POP AF
+
+	RET
+
+;1.3 cls's
+
+CLS:    PUSH AF
+
+	XOR A           ;dunkel loeschen
+
+	JR C2-#
+
+CLSW:   PUSH AF
+
+	LD A,255        ;weiss loeschen	
+
+C2:     PUSH BC
+	PUSH DE
+	PUSH HL
+
+	LD B,A
+
+C3:     LD A,(GPMZ)     ;Modulzustand
+
+	LD (C5+1),A
+
+	XOR A
+
+C4:	RLCA            ;wegen Ausgabebyte
+	RLCA
+	RLCA
+	RLCA
+
+C5:	OR 10000000B
+
+	OUT 0
+
+	RRCA            ;zurueck
+	RRCA
+	RRCA
+	RRCA
+
+	PUSH AF
+
+	LD A,B
+
+	LD HL,GPS       ;Quelladresse
+
+	LD M,A          ;1.Speicherplatz laden
+
+	LD DE,GPS+1     ;1.Zieladresse
+
+	LD BC,3FFH      ;verbleibende Blocklaenge
+
+	LDIR            ;durchschleifen
+
+	LD B,A
+
+	POP AF
+
+	PUSH AF         ;wegen Test
+
+	OR 1000B
+
+	CMP 0FH         ;ob alle RAMs geloescht
+
+	JRZ C6-#        ;ja
+
+	POP AF
+
+	INC A
+
+	JR C4-#
+
+C6:     POP AF          ;fuer RET
+
+	POP HL
+	POP DE
+	POP BC
+	POP AF
+
+	RET
+
+
+;1.4 set point
+
+PSET:   PUSH AF
+	PUSH HL
+
+	LD HL,(ARG1)    ;Koordinatenuebernahme
+
+	LD A,(GPMZ)     ;Uebernahme der Sequenz
+
+	LD (P1+1),A     ;und patchen
+
+	LD A,H
+
+	CPL
+
+	LD (P3+1),A     ;da mehrmals
+
+	AND 11100000B   ;RAM auswaehlen
+
+	RRCA
+
+P1:     OR 10000000B
+
+	OUT 0
+
+	LD A,(P3+1)
+
+	AND 111B        ;y-Position
+
+	LD (P4+1),A
+
+	LD A,(P3+1)
+
+	AND 11000B      ;High-Adressbyte
+
+	RRCA
+	RRCA
+	RRCA
+
+	OR 11101000B    ;(0;0) unten links
+
+	LD H,A
+
+	LD A,L          ;x-Adresse 
+
+	AND 111B        ;vordere Bits zu 0
+
+	RLCA            ;*8 wegen Code der 
+	RLCA            ;Bitbefehle
+	RLCA
+
+	CPL             ;Bits negieren
+
+	DEC A           ;x-Koordinate 0 setzt 
+                        ;7.Bit
+
+P2:	AND 11111111B   ;Bit / Set / Reset
+
+	LD (P3+1),A     ;patchen
+
+	LD A,L          ;Low-Adressbyte 
+
+	AND 11111000B
+
+P4:     OR 111B
+
+	LD L,A
+
+P3:	SET 7,M         ;set point
+
+	JRNZ P5-#       ;fuer Part Bit x,M weil
+
+	XOR A           ;Flagregister auch 
+
+	DB 1            ;entkellert wird
+
+P5:     LD A,255        ;Punkt gesetzt 
+
+	LD (TSTZ),A     ;(TSTZ):=0FFH
+
+	POP HL
+	POP AF
+
+	RET
+
+;1.5 test point
+
+PTST:   PUSH AF
+	PUSH BC         ;wegen DB 1
+
+	LD A,(P2+1)     ;aktuellen Code retten
+
+	LD (PTST2+1),A
+
+	LD A,01111111B  ;Bit x,M
+
+	LD (P2+1),A
+
+	CALL PSET       ;Punkt testen
+
+PTST2:  LD A,0          ;anschliessend PSET
+
+	LD (P2+1),A
+
+	POP BC
+	POP AF
+
+	RET
+
+;1.6 erase point on  or  normal on
+
+PRES:   PUSH AF
+
+	LD A,10111111B  ;Reset x,M 
+
+	JR PEN1-#
+
+PEN:	PUSH AF
+
+	LD A,11111111B  ;Set x,M
+
+PEN1:	LD (P2+1),A
+
+	POP AF
+
+	RET
+
+
+	END
+;
+
+
+Beschreibung
+der Graphiksoftware
+
+Routine GPON
+ -initialisiert PIO auf Bit E/A und alle
+   Leitungen Ausgabe
+ -legt PA4...7 auf L: Einschalten des Moduls,
+   erster 1K-Block (CS1) im Programmiersektor
+ -laed die Graphikmerkzelle GPMZ (003FH)
+   mit 0 (entspricht Modul an)
+ -fuehrt Routine BWSWR aus und kehrt dann zurueck
+
+Routine BWSWR
+ -definiert den BWS vier mal mit den ASCII-Chars
+   0...255 (entspricht, da 7.Bit aus BWS vom Modul
+   nicht ausgewertet wird, dem Laden aller 8 Bild-
+   schirmbereiche mit 0...127)
+
+Routine GCOFF
+ -loescht BWS
+ -legt PA4...7 auf H: Ausschalten des Moduls,
+   letzter 1K-Block im Programmiersektor
+ -laden der GPMZ mit 80H(=128) - entspricht Modul aus
+
+Routinen CLS/CLSW
+ -dunkel oder weiss loeschen, je nach Einsprung, unter
+   Beachtung, ob Modul an oder aus
+ -durchschalten aller 1K-RAM-Komplexe, so dass alle
+   einmal im Programmiersektor E800...EBFFH lagen
+ -8* Durchschleifen des Loeschbytes mit LDIR
+
+Routine PSET
+ -Koordinatenuebernahme und Umrechnung der Koordinaten
+   auf RAM-Block und genaue Byteposition in diesem Block
+   (Punkt 0;0 unten links)
+ -Beeinflussen des ermittelten Bits entsprechend dem
+   programmierten Zustand (SET/RESET/BIT)
+ -fuer "Punkt testen": bei gesetztem Punkt Testzelle TSTZ
+   (002FH) mit 0, ansonsten mit FFH laden
+
+Routine PTST
+ -aktuellen Zustand der PSET-Routine(PSET/RESET) retten
+ -PSET auf BIT x,M modifizieren, Punkt testen und Ergebnis
+   (s.oben) in TSTZ laden
+ -vorherigen, geretteten Zustand wiederherstellen
+
+Routinen PRES/PEN
+ -Modi Punkt setzen oder Punkt loeschen, je nach
+   Einsprungmarke
+ -PSET wird entsprechend modifiziert
+ -vorheriger Zustand wird nicht gerettet
+
+
+===============================================================
+===============================================================
+
+
+Nachbetrachtung
+
+ Das HRG-Modul fuer Z1013 eroeffnet voellig neue
+Moeglichkeiten bei der Arbeit mit dem Rechner. Mit relativ
+geringem hardwaremaessigen Aufwand (nur 8 ICs zum Ansteuern
+der RAMs) wird die Arbeit als programmierbarer Zeichengenerator
+und, mit entsprechender Software, eine 65536 Pixel
+umfassende Vollgraphik realisiert. Das dazu direkt
+in den Rechner eingegriffen werden muss, duerfte ein
+akzeptabler Kompromiss sein.
+ Die beschriebene Schaltung und Software wurde unter Verwendung
+verschiedenster in der DDR erschienener Literatur entwickelt,
+weshalb kein Anspruch auf Originalitaet erhoben wird.
+ Ich hoffe, dass dieses File allen interessierten Amateuren
+die Moeglichkeit gibt, meine Loesung praktisch nachzuvoll-
+ziehen. Falls irgendwelche Fragen, Unklarheiten auftreten,
+Fehler und Unkorrektheiten im File gefunden werden sollten,
+so moechte ich Sie bitten, mir dies mitzuteilen.
+Sehr bin ich auch an Modifikationen und weiterfuhrender
+Software zum HRG-Modul interessiert.
+
+
+
+ Abschliessend noch die mehrfach erwaehnten Literaturhinweise
+
+*Vollgraphik auf Mikrorechnern
+
+ (1) Vollgraphik mit dem Z 1013
+      Angela & Ulf Kindermann
+      practic 2/88 S.87
+
+ (2) BASIC-Kleincomputer mit Grafik
+      Bernd Huebler
+      Mikroelektronik in der Amateurpraxis III
+      Militaerverlag, S.62
+
+*64KByte dRAM fuer Z 1013
+
+ (3) RAM-Speichererweiterung fuer Z 1013
+      Hans-Jochen Bachmann
+      MP Mikroprozessortechnik 4/88 S.119
+
+*Bildschirmsteuerung Z 1013
+
+ (4) Handbuch zum MRB Z 1013
+     Teil I, Abschnitt 3.4.4. S.33
+     Anlage 16.3
+     Firmenschrift RER
+
+*ICs- Daten und Funktionen
+
+ (5) Handbuch zum MRB Z 1013
+     Teil II/B, Anlage 9 "Verwendete Schaltkreise"
+     Firmenschrift RER
+
+ (6) Aktive elektronische Bauelemente I/II
+     1988 
+     Taschenbuch
+     Kombinat Mikroelektronik
+
+
+Nachtrag (7.12.88)
+
+ In den letzten Wochen hat sich das Angebot an statischen
+RAMs weiter verbessert, so dass es sinnvoll erscheint, die
+hier noch verwendeten U 214 durch einen U 6264 zu ersetzen.
+Hierzu entf{llt der B/D-Decoder; die Leitungen, die an dessen
+Eing{nge 1...3 f}hrten, kommen nun direkt an die noch freien
+h|chstwertigsten Adre~eing{nge des 6264. F}r CS beim Prozessor-
+zugriff ist nach wie vor /DK 12 verwendbar, da es, wie bei
+CMOS-RAMs zur Adre~}bernahme notwendig, H-L schaltet. Es wird
+}ber den Ausgang "3" des MX 4 an den RAM gelegt (/DK 12 also
+an Pin 14 -A3- von MX 4).
+ Etwas mehr Ueberlegung erfordert die Realisierung des Zugriffs
+der Bildschirmsteuerung. Ein neues Byte liegt am Ausgang des 
+BWS immer dann an, wenn der Pegel an A0 des BWS gewechselt hat
+(H-L bzw. L-H). Dies geschieht mit einer Frequenz von 500 kHz.
+Die anliegenden Daten werden am Zeichengenerator als Adresse
+}bernommen. Es ist im Interesse eines m|glichst ruhigen Bildes
+sinnvoll, vom nunmehrigen Graphik-RAM 6264 jede dieser Adressen
+}bernehmen zu lassen. Das mu~ mit einer Frequenz von 1 MHz aus-
+gef}hrt werden. Diese Frequenz, bei fr}heren 1013-Versionen der
+CPU-Takt, liegt an Pin 8 von A3 (siehe Handbuch), also an einem
+Ausgang der Z{hlkaskade an. Das Signal wird mit PA7 so ver-
+kn}pft, da~ nur bei aktiviertem Modul eine H-L-Flanke bereitge-
+stellt wird. Das Ergebnis der Verkn}pfung kommt an B3 (Pin 13)
+von MX 4 , und wird beim zyklischen Auslesen an CS geschalten.
+ Eine Garantie f}r die ordnungsm{~ige Funktion dieser Modifi-
+kation kann nicht }bernommen werden, da sie praktisch noch
+nicht ausprobiert wurde.
+ Bei allen eigenen Modifikationen ist im Interesse des Z1013-
+Standards auf unbedingte Softwarekompatibilit{t zur Original-
+version zu achten !!!
+ Der Vertrieb des Files unter anderen Freaks ist nur auf nicht-
+kommerzieller Basis erlaubt !!! Eine Ver|ffentlichung des Ori-
+ginals und hier beschriebener Modifikationen in Fachzeitschrif-
+ten ist Uwe Rehn und dem Autor vorbehalten.
+ Dies betrifft nicht eigene Erweiterungen !
+
+
+Letzte Bearbeitung:  7.12.1988
+
+Tino Sander
+ Nr.34, Springen, 6201

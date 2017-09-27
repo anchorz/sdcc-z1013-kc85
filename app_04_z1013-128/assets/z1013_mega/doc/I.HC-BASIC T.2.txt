@@ -1,0 +1,97 @@
+ARITHMETISCHE und VERGLEICHSOPERATIONEN
+=============================================================
++ plus,  - minus,  * mal,  / durch,  = ist gleich
+() Klammern,  ^ hoch,  < kleiner als,  > groesser als (auch g)
+<> ungleich (auch u),( ) Klammer auf / zu (auch ineinander verschachtelt)
+
+FEHLERMELDUNGEN
+============================================================
+BS   Feldelement ausserhalb DIM-Bereich aufgerufen.
+     Subscript out of range
+CN   Fortsetzung mit CONT unerlaubt.
+     Can't continue
+DD   Feld mehrfach dimensioniert.
+     Double defined array
+FC   Unzulaessiger Funktionsaufruf.
+     Illegal function call
+ID   Fehlerhaftes Kommando.
+     Illegal direct
+IO   I/O Fehler
+     Input/Output - Error
+LS   String laenger als zulaessig.
+     String to long
+MO   Unvollstaendig / Operand fehlt.
+     Missing operand
+NF   Variablen FOR/NEXT passen nicht.
+     Next without for
+OD   Zuwenig Daten fuer READ.
+     Out of data
+OM   Speicherplatz reicht nicht.
+     Out of memory
+OS   Speicherplatz fuer Strings reicht nicht.
+     Out of string space
+OV   Zahl zu gross (max. 10 hoch 38).
+     Numeric overflow
+RG   RETURN ohne GOSUB
+     Return without Gosub
+SN   Syntax-Fehler
+     Syntax error
+ST   String zu lang oder zu komplex
+     Literal string pool table full
+TM   Falscher Variablentyp
+     Type mismatch
+UF   Funktion nicht definiert
+     Undefined user function
+UL   Sprung zu nicht vorhandener Zeilennummer
+     Undefined line
+/0   Division durch Null
+     Division by zero
+
+-Programmtext ab 2C00H in Tokens
+-Anfangs-Byte 00
+-Adresse 2 Byte    Low,High
+-Zeilennr. 2 Byte  Low,High
+-Zeileninhalt
+-Zeilenabschluss 1 Byte 00
+-Programmabschluss 4 Byte 00 (Zeilenende + 3*00)
+Als Ergaenzung zu den  Befehlen CSAVE und CLOAD (KC-kompatibles
+Interface) wurden die Befehle HSAVE und HLOAD aufgenommen. Die-
+se benoetigen das Programm "Header". Der Ansprung erfolgt ueber
+Sprungverteiler. Weiterhin gestattet  diese  Interpreterversion
+die Ausgabe von LIST und PRINT auf einen Drucker ueber LIST#2"X"
+/PRINT#2.
+Ansprung des Headers und des Druckers:
+======================================
+
+02FDH : JMP  FFE8H (DRUCK AKKU)
+262DH : CALL FFF4H (SARUF)
+28FDH : CALL FFF1H (LORUF)
+
+Uebersicht der Steuertasten:
+============================
+
+HEX CTRL S4 Funktion
+
+01  A    I  CURSR an Anf.
+02  B    J  CLLN (CLEAR LINE)
+03  C    K  BREAK
+05  E    M  CURSR ans Ende
+08  H    P  LEFT
+09  I    Q  RIGHT
+0C  L    T  CLS
+0D  M    U  ENTER
+10  P    @  DEL
+12  R    B  INS
+13  S    C  STOP
+14  T    D  LIST
+15  U    E  RUN
+16  V    F  CONT
+17  W    G  GRAPHIK
+
+letzter Bearbeiter:
+===================
+
+Volkmar Luehne
+PF 139
+Wormsleben
+4251

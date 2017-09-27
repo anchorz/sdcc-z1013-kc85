@@ -1,0 +1,904 @@
+***************************************************************
+*         B E S C H R E I B U N G    HIS.-PASCAL 1.03         *
+***************************************************************
+HINWEIS: Die Pascal-Compiler "Hisoft-Pascal" und
+"HISOFT-PASCAL^" haben Fehler, die in dieser Version behoben
+wurden. Weiterhin wurden noch einige Aenderungen durchgefuehrt.
+
+Standort des PASCAL-COMPILER:       0100-4080H    >CRC=F1F7
+                 Neustart   :       100H (1800H)
+                 Warmstart  :       103H (1803H)
+
+Ladeadressen:
+
+            Anf.Adr.MC-File :       0330H
+            St.Adr. MC-File :       03F9H 
+
+Die Quelltextadresse aendert sich entsprechend der Werte bei der
+Speicherabfrage!
+
+*************************************************************
+1.      Laden des Compilers, Speicherkonfiguration:
+*************************************************************
+
+Ihr Z-1013 muss mindestens mit 32-Kbyte-RAM ausgeruestet sein. 
+Das Laden erfolgt mit dem HEADERSAVE-Kommando:
+
+   @L (oder @LN Typ: C Filename: HIS.-PASCAL^Tg.B )  >ENTER<    
+
+Nach beendetem Ladevorgang startet der Compiler automatisch. 
+
+       (Monitor-Modus L 0100 4080 ; Startadresse ist
+        100H.(1800H)) 
+
+Beim Kalt- und Warmstart wird die Zelle 003DH bzw. 003EH
+abgefragt, ob dort der Sprung zum Stringfeld des Brosig-Monitors
+eingetragen ist. Wenn ja, dann wird ein Stringfeld mit Pascal-
+Worten aufgerufen. Tastenkodierung entsprechend der Brosig-
+Tastatur (vgl. MP 2(1988)7. - S. 215 - 218).
+Die gleiche Abfrage erfolgt beim Verlassen des Compilers mit dem
+B-Kommando.
+   
+Nach dem Start erscheint auf dem Bildschirm:
+
+Top of RAM?     Es handelt sich um den RAM-Top (Speicherplatz)
+                fuer den Quelltext.
+                Sie haben jetzt eine Zahl einzugeben, die den
+                Speicherbereich festlegt. Eine Zahl zwischen:
+                16696 und 59391, je nach Speicherkonfiguration,
+                kann eingegeben werden.
+                Die Eingabe von >ENTER< legt das Speicherende
+                fest auf den Wert, der auf der Adresse 03C8H
+                eingetragen ist (jetzt E7FFH). Diesen Wert
+                koennen Sie aendern!
+                        03C8H : FF
+                        03C9H : E7
+
+Es folgt:
+
+Top of RAM for "T"?   Es handelt sich um den RAM-Top fuer
+                das zu erzeugende Objektcode-Programm. Sie koen-
+                nen jetzt: 
+                >ENTER< oder eine Zahl zwischen: 
+                        5024 und 59391
+                (wieder je nach Speicher) eingeben.
+                >ENTER< bewirkt die Uebernahme des 
+                'Top of RAM'-Bereiches als Top of RAM for "T".
+
+Zuletzt erscheint:
+
+Table Size?     Laenge des internen Arbeitsspeichers, die von
+                Variablen, Funktionen, Prozeduren etc. abhaengt.
+                >ENTER< oder eine angemessen grosse Zahl
+                max. 42710.
+
+Die unteren Zahlenangaben haben mehr theoretischen Charakter.
+Die oberen Werte gelten fuer diese Pascal-Version mit
+Speicherbegrenzung auf E7FFH.
+
+HINWEISE:
+* Wollen Sie eine der Groessen aendern, muessen Sie den Compiler
+  ueber das B-Kommando verlassen und neu starten.
+* Neustart ist nur mit J 100 (1800) (ohne Quell-Text im Editor)
+                  oder J 103 (1803) (mit Quell-Text im Editor).
+                  moeglich.
+  (mit 'PASNEW' oder 'PASOLD' wie im KC 85/1 ist im Z-1013 kein
+  Neustart moeglich !!)
+
+
+*************************************************************
+2.      Der Hisoft-Pascal, Programme laden u. saven:
+*************************************************************
+
+Diese Version von Hisoft wurde fuer den ZX-Spectrum entwickelt.
+Es handelt sich um eine Standardpascalversion, die im  Compiler
+stark abgeruestet wurde. Ebenfalls wurde die  Schnittstelle  zu
+anderen Editoren mit Uebergabe von ASCII-Text  zu  Gunsten  des
+Speicherplatzbedarfes entfernt.
+Die angepasste Version fuer den Z-1013 ist gegen einige  Aende-
+rungen geschuetzt, dieser Schutz beeintraechtigt die Arbeit mit
+dem Compiler in keiner Weise und braucht nicht entfernt werden.
+
+Als Kassetteninterface wird fuer diese Version der >HEADER-
+SAVE< von Rainer Brosig ueber Sprungverteiler (SV) genutzt.
+Damit  eroeffnen  sich fuer den  Anwender  folgende  
+Moeglichkeiten:
+
+  1. Abspeichern von Quelltexten:
+
+Pm,n    P(ut)   m,n = Zeile m bis n     z.B.: P10,130 >ENTER<
+
+        Die SAVE-Routine meldet sich mit der ueblichen Abfrage:
+        'typ' u. 'filename'. Der Quelltext sollte den Typ:'P'
+        erhalten. 
+
+  2. Lesen von Quelltexten:
+
+G        G(et)  ohne Parameter! z.B.: G >ENTER<
+
+         Der HEADERSAVE fragt Typ und Filename ab. Es werden
+         auch nicht-Pascal-Quellen gelesen!!!
+
+  3. Verbinden von Quelltexten:
+
+G        G(et)   ohne Parameter! z.B. G >ENTER<
+
+         jeder weitere Pascal-Quelltext, auch der gleiche wie
+         bereits geladen, wird in den Quelltextspeicher
+         uebernommen. Die Zeilennummer des Queltextes wird
+         automatisch geaendert und an die vorherige Numerierung
+         angeschlossen. Es koennen also verschiedene Pascal-
+         Teile getrennt geschrieben und getestet werden, um sie
+         nun zu verbinden.
+         (Abfrage wie oben!)
+
+  4. Abspeichern von lauffaehigen MC-Programmen:
+
+T,m            z.B. T,10 >ENTER<
+               oder T    >ENTER<
+
+         Das Programm wird daraufhin uebersetzt und meldet sich
+         mit "Ok?". Hierauf wird ein "Y" eingegeben. Nach dem
+         Y erfolgt ein Linken des Programmes, wobei der Pascal-
+         editor und Compiler zerstoert werden. Am Ende wird die
+         SAVE-Routine angesprungen und meldet sich mit
+         "filename". Nach dem Saven, auch mit 'verify'-Funktion,
+         erfolgt noch ein Probelauf des Programmes und dann mel-
+         det sich der Monitor.
+         Jede andere Taste bringt den Pascal wieder in den
+         Schreibmodus zurueck.
+
+
+*************************************************************
+3.      Steuer- und Editierkommandos
+************************************************************* 
+
+Obwohl die Programmiersprache PASCAL keine Zeilen-Abarbeitung
+kennt, wie z.B. BASIC, wird bei dem Erstellen des Quelltextes
+mit einer Zeilen-Numerierung gearbeitet.
+
+Nach der Speicherfestlegung meldet sich der Compiler mit einem
+Kopf und dem Promtzeichen:
+
+>_      (_=Cursor)
+
+        Hier wird jetzt folgendermassen vorgegangen:
+ 
+ZEILEN:
+=======
+
+I(nsert) oder Im,i 
+
+    z.B. I10,5 (ab Zeile 10 in 5er Schritten)
+
+         m = erste Zeilennummer
+         i = Schrittweite
+
+         (Zahl unmittelbar an Steuerzeichen anschliessen)
+         Wenn nur I eingegeben wird, beginnt ab Zeile 10 (oder,
+         wenn I einen Wert im Parameterspeicher hat, ab dieser
+         Zeilennummer), der Editor in 10er Schritten zu
+         arbeiten.
+         - mit angegebener Zeilennummer, sowie, wenn angegeben,
+         der Schrittweite, gelten diese Zeile und Schrittweite.
+
+Der Editor meldet sich mit
+
+  > 10 _
+
+Hier ein kurzes Beispiel-Programm:
+(gegeben sind Pi und Radius, gesucht wird der Umfang und die
+Flaeche eines Kreises)
+
+    10 PROGRAM KREIS;
+    20 CONST PI=3.1416;
+    30 VAR R,U,A:REAL;
+    40 BEGIN PAGE;
+    50  WRITE('EINGABE RADIUS: ');
+    60  READ(R);
+    70   U:=2*PI*R;
+    80   A:=PI*R*R;
+    90  WRITELN;
+   100  WRITELN('UMFANG: U=',U:10:4);
+   110  WRITELN;
+   120  WRITE('FLAECHE:A=',A:10:4)
+   130 END.
+
+Am Ende der Texterstellung ist das Schreiben mit >CTRL-C<
+abzubrechen. Eventuelle Fehler laesst man am besten erst ein-
+mal stehen und aendert sie spaeter im Editier-Modus.
+
+( >CTRL-C< = S4-K = >BREAK< )
+
+Nach jeder beendeten Arbeit meldet sich der Compiler wieder mit
+
+>_
+
+und wartet auf ein Steuerzeichen.
+
+LISTEN:
+=======
+
+        L(ist) oder Lm,n    z.B.: L10,120
+
+        Listet Quelle ab erster Zeilennummer oder ab Zeile m
+        bis Zeile n. (oder Ende, wenn letzter Parameter fehlt.
+
+Zahl der Bildschirmzeilen, die gelistet werden:
+
+        Ki                   z.B.: K20
+
+        Normal werden 15 BS-Zeilen gelistet. Aber mit K und 
+        einer Zahl i kann die Zeilenzahl veraendert werden.
+
+Nach dem Listen des Textes und der Feststellung von Fehlern,
+kann man diese im Editier-Modus beseitigen.
+
+EDITIEREN:
+==========
+
+        E(dit) oder En
+
+        Mit E und der Zeilenzahl n wird nach >ENTER< die Zeile
+        aufgelistet und darunter erscheint die Zeilennummer noch
+        einmal.
+
+>E100  >ENTER< 
+
+     100  WRITELN('UMFANG: U=',U:10:4)
+     100  _
+
+Mit >SPACE< wird der CURSOR nach rechts, mit ' <-- ' nach links
+und mit ' --> ' in Tabulator-Schritten bewegt, 
+- nun kann der Text aufgeblaettert werden, um an die Stelle der
+vorgesehenen Aenderung zu gelangen.
+
+Folgende Editier-Kommandos und Wirkungen gibt es:
+
+        I       Insert   die folgenden Zeichen werden einge-
+                         fuegt. Der Cursor erscheint dabei
+                         als "*". Mit >ENTER< wird dieser
+                         Modus verlassen, es kann weiter edi-
+                         tiert werden.
+
+        C       Change   die folgenden Zeichen ueberschreiben 
+                         den urspruenglichen Text. Cursor er-
+                         scheint als "+". Mit >ENTER< wird
+                         dieser Modus verlassen.
+
+        X                setzt Cursor an das Ende der Zeile und
+                         geht in den Insert-Modus ueber.
+
+        L        List    Listet die Zeile noch einmal
+
+        K        Kill    Loescht aktuelles Zeichen (mehrfaches
+                         K loescht weitere Zeichen ohne BS-
+                         Anzeige.)
+
+        Z                Kill ab Cursor bis Zeilenende.
+
+        R        Reload  bringt den Zustand der Zeile vor der
+                         Aenderung zurueck.
+
+        Q        Quit    geht in den Zustand vor Edit zurueck.
+
+      >ENTER<            beendet Editieren.
+
+Im Zusammenhang mit anderen Steuerkommandos gibt es noch zwei
+weitere Editierkommandos:
+
+FIND:
+=====
+
+        F(ind)m,n,$1,($2)
+
+
+>F10,130,UMFANG,KREISUMFANG
+     
+    100 WRITELN('_
+
+        Mit der Meldung der Zeile bis zum gesuchten String
+        geht der Compiler wieder in den Editiermodus.
+
+        F       Weitersuchen, falls nicht der gesuchte String
+
+        S       Substitute, tauscht String 1 gegen String 2
+                aus.
+
+Wenn sich der Compiler nach Start zum compilieren mit >error<
+meldet, gibt es noch zwei Moeglichkeiten zum Editieren:
+
+        E       listet die aktuelle Zeile zum Editieren auf
+
+        P       listet die vorherige Zeile auf.
+
+Da beim Uebersetzungslauf die Zeilen mitgelistet werden, ist
+ein Fehler auffindbar.
+
+Eine fehlerhafte Zeile kann geloescht werden, indem nur die
+Zeilennummer und >ENTER< eingegeben wird.
+
+
+DELETE:
+=======
+
+        D(elete)m,n     Der Text von Zeile m bis einschl. n 
+                        wird geloescht.
+
+KOPIEREN:
+=========
+
+        M(ove)m,n       kopiert Zeile m auf Zeile n.
+                        (ueberschreibt Zeile n)
+
+NEUE ZEILENNUMERIERUNG:
+=======================
+
+        Nn,i    Number   Die Zeilen werden mit Zeilennummer
+                         n beginnend im Schrittmass i umnu-
+                         meriert.
+
+UEBERSETZEN:
+============
+
+        C(ompile) oder Cm  oder Cm,n    Der Quelltext wird 
+                         von der ersten, oder der angegebenen,
+                         Zeile bis Ende, oder von Zeile m
+                         bis Zeile n uebersetzt.
+
+Liegt ein Fehler vor, wird der Uebersetzungslauf beendet und
+der Compiler meldet:
+
+   >error<          ^ XX_
+
+XX ist dabei die Nummer des Fehlers, unter welcher der Fehler
+in der Liste steht. Siehe unten.
+
+Liegen keine Fehler vor, meldet sich der Compiler nach abge-
+schlossenem Uebersetzungslauf mit
+
+RUN?    Hier wird die Eingabe von "Y" (Yes) erwartet, wenn ein
+        Probelauf gestartet werden soll. Im anderen Fall geht
+        der Compiler wieder in den Schreib-Modus.
+
+Bei einem mit Y gestarteten Probelauf, werden Editor und Com-
+piler nicht zerstoert. Dieser Fall tritt nur wie oben be-
+schrieben, beim Uebersetzen und Linken zum MC-File auf. 
+Nach Ende des Laufes kann der Probelauf mit:
+
+        R(un)   noch weiteremale gestartet werden.
+
+Damit kann das Programm nach allen Seiten getestet werden, be-
+vor es in ein MC-File mit dem T-Kommando uebersetzt wird.
+
+Weitere Steuerzeichen:
+======================
+
+Wie weiter oben beschrieben:
+  Pm,n          Put, Text auf Kassette schreiben (s.o.)
+  G             Get, Texte von Kassette lesen (s.o.)
+  T,m oder T    MC-Programm, Adressen umrechnen und linken.
+
+Dazu kommen noch:
+  B             Bye, Systemaustritt
+  X             Ausgabe der Anfangsadresse des Textpuffers
+  W             Write, Ausgabe der Quelle auf den Drucker.
+
+FOLGENDER HINWEIS:
+==================
+
+Fuer die  Kommandoparameter m, n, und i existiert ein Speicher.
+Nach jeder Kommandoeingabe mit neuen Parametern, werden diese
+dort abgelegt.
+Im Kommando nicht belegte Parameter bleiben dabei unveraendert.
+Anschliessend erfolgt die Ausfuehrung der Kommandos, wobei die 
+Parameter aus dem Parameterspeicher verwendet werden.
+
+Nach der Initialisierung hat der Parameterspeicher den Zustand
+
+     10     10     leere Zeichenkette     leere Zeichenkette
+
+Bei diesem Zustand ist das Kommando
+
+     I     gleichbedeutend dem Kommando   I10,10
+
+Beachten Sie dabei: Wenn ein ausgelassener Parameter nicht der
+letzte ist, muss das ihm folgende Komma gesetzt werden!!
+Aus diesen Regeln ergibt sich die Moeglichkeit, bei oft verwen-
+deten Kommandos die Parametereingabe abzukuerzen.
+
+z.B.:   F10,,KREIS,RADIUS
+
+Ausnahmen:
+
+C         Uebersetzen ab niedrigster Zeilennummer
+
+Dm,n      Verkuerzung nicht moeglich
+
+Em        weitere Verkuerzung nicht moeglich, ausser bei einer
+          Fehlermeldung.
+
+K         wirkt wie K15
+
+Lm,n      L,n: ohne m listen ab niedrigster Zeilennummer
+          Lm: ohne n listen bis Textende
+          L : ohne n und m listen vom Anfang bis Ende
+
+Nm,n      Verkuerzung nicht moeglich
+
+T         Uebersetzen ab niedrigster Zeilennummer und Auslagern
+
+
+*************************************************************
+4.       Beschreibung des Sprachumfangs:
+*************************************************************
+Ein Lehrgang in Pascal kann hier nicht gegeben werden. Hier ver-
+weisen wir auf einschlaegige Fachliteratur oder Lehrgaenge an 
+der Volkshochschule o.ae. Einrichtungen. Literaturhinweis a.E.d.
+Beschreibung.
+----------------------------------------------------------------
+
+Hier wird nur der Sprachumfang erleutert.
+
+4.1. PASCAL-Symbole
+
+Im Pascal koennen alle Symbole gross oder klein geschrieben 
+werden. Wird der Bezeichner einer Variablen aber in einer 
+Schreibweise festgelegt, muss sie im gesamten Text eingehalten
+werden.
+
+Bezeichner (Identifizierer) muessen mit einem Buchstaben begin-
+nen und koennen eine Folge von Buchstaben und Ziffern enthal-
+ten, (10 Zeichen signifikant.) z.B.:
+
+     a  ,  B  ,  a1B  , KREIS , UMFANG  , u.a..
+
+a) Arithmetische und logische Verknuepfungen
+
+     Ergibtzeichen            :=
+     Real-und Integerzahlen   +  -  *  /
+     Integerzahlen            DIV   MOD
+     Boole'sche Variable      OR    AND   NOT
+
+b) Relationen
+     =,<>,<,>,<=,>=
+     IN  (fuer Set-Arithmetik)
+
+c) Klammern, Trennzeichen etc.
+
+     ([{ }]) . , ; : # $ @ ^ ~ .. | \ 
+
+d) Programm-Grundstrukturen
+
+     PROGRAM    BEGIN    END    FUNCTION    PROCEDURE   END.
+
+e) Deklarationen
+
+     TYPE    LABEL    ARRAY...OF...    PACKED ARRAY...OF...
+     VAR     CONST    SET              RECORD...END
+
+f) Schleifen
+
+     FOR...:=...TO...DO...          WHILE...DO...
+     FOR...:=...DOWNTO...DO...      REPEAT...UNTIL...
+
+Der Abbruchtest wird bei den FOR-Anweisungen zu Beginn der 
+Schleife ueberprueft, so dass das Uebergehen der FOR-Anweisung 
+moeglich ist.
+
+g) Verzweigungen
+
+     IF...THEN...ELSE...            CASE...OF...ELSE...
+                                    CASE...OF...END
+
+     GOTO       Das Sprungziel muss im gleichen Block liegen und
+                mit LABEL deklariert sein.
+
+h) Records
+
+     WITH...DO...
+
+i) Pointer (dynamische Variable)
+
+     NIL
+
+k) Rekursive gegenseitig definierte Funktionen und Prozeduren
+
+     FORWARD
+
+4.2. Identifikatoren
+
+a) Konstanten
+
+     FALSE    TRUE    MAXINT            es gilt  MAXINT = 32767
+
+b) Type-Konstanten
+
+     INTEGER    Mit vorgesetztem # koennen INTEGER als Hexazahlen
+                programmiert werden. In der WRITE-Anweisung kann
+                durch die Formateingabe :n:H die Ausgabe in Hex-
+                form erreicht werden. (n=Konstante vom INTEGER- 
+                Typ).
+
+     Beispiel: 1210D = 4BAH . Die Anweisung 
+
+               WRITE(1210:n:H)
+
+     ergibt fuer n=1 : A...niederwertigstes Halbbyte
+                 n=2 : BA...niederwertiges Byte
+                 n=3 : 04BA...vollstaendige Hexazahl 
+                 n>4 : rechtsbuendiges Schreiben von 04BA im
+                       angegebenen Format.
+
+                       (H heisst hier Hexaausgabe)
+
+     REAL       Die REAL-Zahlen werden in 4-Byte-Gleitkomma-
+                arithmetik verknuepft.
+
+     CHAR
+     BOOLEAN
+
+c) Arithmetische, mathematische und Boole'sche Funktionen
+
+     ROUND(R)    FRAC(R)    ODD(I)    ENTIER(R)    COS(R)
+     TRUNC(R)    ABS(R)     SQR(R)    SQRT(R)      SIN(R)
+     EXP(R)      LN(R)      TAN(R)    ARCTAN(R)
+
+     (R=REAL/I=INTEGER)
+
+
+     RANDOM     Erzeugung von ganzzahligen Zufallszahlen z mit
+                0 <= z <= 255   (Abfrage Refreshregister).
+
+     EOLN       Wird TRUE, falls das naechste einzulesende Zeichen
+                CR (Code 13) ist , sonst FALSE.
+
+     Beispiel:  Eingabe einer Zeichenkette variabler Laenge
+
+                I:=1;
+
+                REPEAT READ(a[I]); I:=I+1 UNTIL EOLN
+
+
+d) Prozeduren fuer dynamische Variable
+
+NEW(P)     Erzeugung einer dynamischen Variablen
+
+RELEASE(P) Abmeldung aller nach P erzeugten dynamischen
+           Variablen
+MARK(P)    Markierung der dynamischen Variablen P
+
+e) Ordnungsfunktionen fuer Skalartypen
+
+     ORD(A)     liefert Position des Skalarwertes A in der durch
+                den Typ von A festgelegten Wertmenge
+
+     CHR(I)     liefert ASCII-String mit Code I
+
+     SUCC(A)    Nachfolger von A
+
+     PRED(A)    Vorgaenger von A
+
+     Beispiel:  SUCC(3) = 4,  SUCC('B') = 'C',
+                PRED(TRUE) = FALSE
+
+f) Ein-und Ausgabe
+
+     READ(A)    READLN(A)     ACHTUNG! Beim Lesen von Zeichen-
+                ketten aus dem Eingabepuffer ist das erste
+                Zeichen stets CR (Code 13) 
+
+     WRITE(A)   WRITELN(A)
+
+Beispiel:       zur Formatsteuerung:
+
+                VAR X: REAL;I: INTEGER;
+                .
+                .
+                WRITE(X:10:2,I:6:H) ...
+
+     PAGE       Seitenvorschub am Drucker bzw. Bildschirm 
+                loeschen im Programm
+     INCH       Tastaturabfrage, entspr. INKEY$ im BASIC
+     INP(P)     Entspricht den Assemblerbefehlen IN und OUT. 
+ und OUT(P,C)   Die Zahl P ist Kanaladresse (0<P<255)
+                C ist eine Konstante oder Variable vom 
+                Typ CHAR.
+
+   Beispiel:    OUT(1,A)
+                bewirkt die Ausgabe des Wertes einer Variab-
+                len A ueber den PIO-Port.
+
+g) Speicherzugriff
+
+   adr, N, size koennen dezimal oder mit vorgesetztem # auch
+                hexadezimal eingegeben werden.
+
+   'name'       wird einschl. Typ bei den Save- und
+                Load-Routinen nochmals abgefragt.
+
+
+     SIZE(V)                 Laenge der Variablen V in Byte
+
+     ADDR(V)                 Adresse des ersten Byte der
+                             Variablen V
+     POKE(N,V)               Eintragen des Wertes der Variablen
+                             V ab Adresse N
+     TIN('name',adr.)        Laden vom Band nach Adresse adr.
+     
+     TOUT('name',adr.,size)  Sichern auf Band von adr. mit
+                             Umfang size
+
+     PEEK(N,T)               Ab Adresse N wird der Speicher-
+                             inhalt entsprechend dem Typ T aus-
+                             gewertet.
+                             Typ T kann sein: INTEGER, CHAR,
+                             REAL, oder ARRAY(1...n) OF...
+
+h) Benutzung von Maschinen-Code
+
+     INLINE(F)  Einfuegen der durch die Parameterfolge F defi-
+                nierten Code-Anweisungen. Als Parameter sind 
+                Ausdruecke vom Typ INTEGER oder CHAR zugelas-
+                sen.
+                F  = dezimal oder 
+                #F = hexadezimal
+
+                z.B.: INLINE(14,17,205,...)
+                      INLINE(#CD,#00,#70,#...)
+
+     USER(N)    Aufruf eines MC-Programmes mit der Adresse N
+                N  = dezimal oder
+                #N = hexadezimal
+
+i) Programm-Abbruch
+
+     HALT       beendet den Programmlauf mit Ausschrift des
+                Befehlszaehlers
+
+Weiter unten befindet sich eine Auflistung aller implementier-
+ten Schluesselwoerter.
+
+
+*************************************************************
+5. Kontrollfunktionen des Compilers
+*************************************************************
+
+Der Compiler hat eine Reihe von Kontrollfuntionen, die abge-
+schaltet werden koennen, um die Bearbeitungsgeschwindigkeit zu
+erhoehen. Sie werden geschaltet durch das entsprechende Funk-
+tionszeichen mit vorangestelten "$" zu Beginn eines Kommentars
+z.B.: (*$L-,C-*) bzw. {$L-,C-}. 
+Die Kontrollfuktionen A,L,O,C,S sind standardmaessig auf +
+eingestellt, die Kontrollfunktion I auf -, und die Kontroll-
+funktion P auf Bildschirm.
+
+Kontrollfunktion A: Im Zustand A+ werden alle Feldindizes auf
+     Einhaltung der Feldgrenzen ueberprueft.
+
+Kontrollfunktion L: Im Zustand L+ wird beim Uebersetzen der
+     Quelle mit den Objektcode-Adressen gelistet. Bei L- wer-
+     den Zeilen nur dann gelistet, wenn in ihnen Fehler auftre-
+     ten.
+
+Kontrollfunktion O: Alle Gleitkommaoperationen sowie die
+     Multiplikation und Division bei ganzen Zahlen unterliegen 
+     einer staendigen Ueberlaufkontrolle. Bei O+ unterliegen
+     auch die Addition und Subtraktion von ganzen Zahlen dieser
+     Kontrolle.
+
+Kontrollfuntion C: Im Zustand C+ wird waehrend des Programm-
+     laufs in allen Schleifen, Funktionen, und Prozeduren die
+     Tastatur auf Druecken der >CTRL-C<-Taste ueberprueft, ge-
+     gebenenfalls der Programmlauf unterbrochen und auf eine 
+     weitere Tastenbetaetigung gewartet. Nochmaliges Druecken
+     von >CTRL-C< fuehrt zum Abbruch, auf jede andere Taste
+     wird das Programm fortgesetzt. Bei C- wird auf die 
+     Tastaturkontrolle verzichtet.
+
+Kontrollfunktion S: Sie kontrolliert die Ausdehnung des Stacks.
+
+Kontrollfunktion I: Bei der Relationsbildung mit >,<,>=,>= von
+     Integer-Zahlen kann es zu Ueberlauf kommen, wenn Unter-
+     schiede groesser als MAXINT auftreten. Bei I- wird Korrek-
+     tur bei Overflow, bei I+ keine durchgefuehrt.
+
+Kontrollfunktion P: Steuert die Ausgabe zum Bildschirm oder
+      zum Drucker. Das Kommando P wirkt umschaltend, es folgt
+      nicht + oder -.
+
+
+************************************************************
+5.      Fehlermeldung des Laufzeitsystems
+************************************************************
+
+Halt                kein Fehler, HALT wurde programmiert oder
+                    Stop bzw. BREAK zweimal betaetigt
+Overflow            arithmetischer Ueber- oder Unterlauf
+Out of RAM          Top of RAM reicht nicht aus
+/ by Zero           Division durch Null  ( /; DIV; MOD )
+Index to Low        Feldindex zu klein
+Index to High       Feldindex zu gross
+Math Call Error     Fehler beim Aufruf einer mathematischen
+                    Funktion
+Number to large     Zahl ist zu gross
+Number expected     bei READ wurde Zahl erwartet
+Exponent expectet   Ein Exponent wurde erwartet
+
+
+*************************************************************
+6.      FEHLERMELDUNGEN COMPILER:                                                           **
+*************************************************************
+
+1    ZAHL ZUGROSS
+2    ;ERWARTET
+3    UNDEF. NAME
+4    NAME ERWARTET
+5    BEI CONST = UND NICHT :=
+6    =ERWARTET
+7    EINE ANWEISUNG DARF NICHT MIT DIESEM NAMEN BEGINNEN
+8    :=ERWARTET
+9    )ERWARTET
+10   TYPFEHLER
+11   .ERWARTET
+12   FACTOR ERWARTET
+13   CONSTANT ERWARTET
+14   NAME IST KEINE CONSTANTE
+15   THEN ERWARTET
+16   DO ERWARTET
+17   TO ODER DOWNTO ERWARTET
+18   ( ERWARTET
+19   AUSDRUCK TYP KANN NICHT GESCHRIEBEN WERDEN
+20   OF ERWARTET
+21   ,ERWARTET
+22   :ERWARTET
+23   PROGRAM ERWARTET
+Z4   VARIABLE EWARTET,DA PARAMETER VARIABEL IST
+25   BEGIN ERWARTET
+26   BEI READ VARIABLE ERWARTET
+27   AUSDRUECKE DIESES TYPS KOENNEN NICHT VERGLICHEN WERDEN
+28   INTEGER / REAL ERWARTET
+29   VARIABLENTYP KANN NICHT GELESEN WERDEN
+30   DIESER NAME IST KEIN TYP
+31   BEI REAL IST EXPONENT VERLANGT
+32   SCALARER AUSDRUCK , KEIN NUMERISCHER ERWARTET
+33   LEERSTRINGS VERBOTEN, CHR(0) VERWENDEN
+34   (/ERWARTET
+35   /)ERWARTET
+36   ARRAYINDEX MUSS SCALAR SEIN
+37   ..ERWARTET
+38   (/ ODER , ERWARTET IN ARRAY DECLARATION
+39   OBERGRENZE<UNTERGRENZE!
+40   ZU LANG! MAX.256 ELEMENTE
+41   ERGEBNIS VOM TYP NAME ERWARTET
+42   , ODER /) ERWARTET IN SET
+43   ../ ,/ /) ERWARTET
+44   PARAMETERTYP MUSS NAME SEIN
+45   LEERES SET KANN NICHT FACTOR IN NICHT-ZUWEISUNGSANW.
+     SEIN
+46   SCALARTYP (+REELLE ZAHL) ERWARTET
+47   SCALARTYP REELLE ZAHLEN ERWARTET
+48   SETS NICHT VERTRAEGLICH
+49   < AND > SETS NICHT DAMIT VERGLEICHEN
+50   FORWARD,LABEL,CONST,VAR,TYPE BEGIN ERWARTET
+51   HEXAZAHL ERWARTET
+52   SETS KOENNEN NICHT GEPOKED WERDEN
+53   ARRAY ZU GROSS
+54   END ODER : IN RECORDDEFINITION FEHLT
+55   FELDNAME ERWARTET
+56   NACH WITH VARIABLE ERWARTET
+57   WITH-VARIABLE MUSS RECORD-TYP SEIN
+58   FELDNAME NICHT MIT WITH ANWEISUNG IN VERBINDUNG
+59   NACH LABEL VORZEICHENLOSE INTEGERZAHL
+60   NACH GOTO VORZEICHENLOSE INTEGERZAHL
+61   MARKE IN FALSCHER PROGRAMMEBENE
+62   MARKE NICHT VEREINBART
+63   PARAMETER VON SIZE MUSS VARIABLE SEIN
+64   AUF ZEIGER NUR GLEICHHEITSTEST ANGEWANDT
+65   ZULAESSIGE WRITE-PARAMETER FUER INTEGER: E:M:H
+66   $ ENTHAELT KEIN ZEILENENDEZEICHEN
+67   PARAMETER VON NEW,MARK,REALISE MUSS ZEIGERVARIABLE SEIN
+68   PARAMETER VON ADDR MUSS VARIABLE SEIN
+
+*************************************************************
+7.      Folgende Pascalbefehle sind implementiert:
+*************************************************************
+
+FRAC      EXP       LN        ARCTAN    TAN       COS
+SIN       INP       OUT       SIZE      ADDR      INLINE
+ENTIER    USER      RANDOM    INCH      HALT      EOLN
+PAGE      SQRT      ROUND     TRUNC     MAXINT    SUCC
+PRED      ORD       PEEK      POKE      RELEASE   MARK
+NEW       TOUT      TIN       CHR       ODD       ABS
+SQR       FALSE     TRUE      BOOLEAN   CHAR      REAL
+INTEGER   READLN    READ      WRITELN   WRITE     PACKED
+NIL       FORWARD   PROGRAM   OR        OF        TO
+DO        IF        SET       NOT       MOD       DIV
+VAR       AND       FOR       END       GOTO      WITH
+TYPE      CASE      ELSE      THEN      LABEL     CONST
+ARRAY     UNTIL     WHILE     BEGIN     RECORD    DOWNTO
+REPEAT    FUNCTION  PROCEDURE IN
+
+
+STRINGS MUESSEN ALS ARRAY OF CHAR VEREINBART WERDEN.
+
+*************************************************************
+8.      Literaturhinweise:
+*************************************************************
+Speziell zu diesem PASCAL existiert keine ausfuehrliche Lite-
+ratur, auch nicht im ROBOTRON-Software-Angebot vom Industrie-
+Vertrieb Erfurt.
+Aber das Angebot an Literatur kann dafuer von Nutzen sein.
+/1/  Lehrbriefe fuer das Hochschulfernstudium - Grundlagen der
+     Informatik Heft 3 u. 4 "Programmieren in PASCAL" 
+     (Nr: 02 1019 03 0 und 02 1019 04 0) (zu beschaffen in den 
+     Lehrmittelverkaufstellen von Hochschulen)
+/2/  Paulin,G., Schiemangk,H.: Programmieren mit PASCAL
+     2.Auflage, Akademieverlag-Verlag Berlin 1986
+/3/  Goldammer,G.: PASCAL fuer die Anwendung in der Wirtschaft
+     Verlag Die Wirtschaft,  Berlin, 1987   
+
+Fuer die methodische Form der Programmierung in PASCAL und an-
+deren Programmiersprachen, vor allem der Modultechnik gut geeig-
+net ist
+/4/  Lindner,U., Trautloft,R.: Grundlagen der problemorientier-
+     ten Programmentwicklung, 2. Auflage, Verlag Technik Berlin,
+     1988
+/5/  Kofer,C.: PASCAL Teil 1-6 Mikroprozessortechnik
+     Teil 1 1987 H.9/271
+     Teil 2      H.11/335
+     Teil 3 1988 H.3/79
+     Teil 4      H.6/175
+     Teil 5      H.9/271
+     Teil 6      H.11/335
+
+Der TURBO-PASCAL ist eine Erweiterung des Standart-PASCAL und
+baut auf diesem auf.
+
+==============================================================
+
+
+Wichtige Adressen:
+
+196D    enthaelt Anfangsadresse Quelltext
+1A07    enthaelt Endadresse Quelltext
+03C8    enthaelt Speicherende
+
+Sprung zu HSAVE: CD F4 FF
+0211    fuer MC-Programm saven 
+0429    fuer Quelltext saven
+
+Sprung zu HLOAD: CD F1 FF
+03A2    fuer Quelltext
+
+Spruenge zum Drucker:
+1CC4    CD EB FF
+0359    CD CD FF
+0391    CD CA FF
+
+Ende PASCAL mit B-Kommando:
+199C    42     = B
+199D    27 01  = Sprung nach 0127H
+                 (hier ist die Eintragung einer anderen An-
+                 sprungadresse moeglich)
+
+Kommandos + Sprungadresse sind wie bei B-Kommando ab
+          ## Adresse 199C ##
+eingetragen.
+
+Das Stringfeld liegt ab Adresse 013EH.
+
+__________________________
+
+TEXTBEARBEITUNG NACH VORLAGEN VON 
+N.HILDEBRAND und A.KRETSCHMER.
+(letzter Bearbeiter Programm u. Text:
+Dr.Trog, Berlin, Juli 1989)
+==============================================================
+Bitte geben Sie nur Originalversionen einschliesslich der Be-
+schreibung weiter. Geaenderte Versionen, die noch nicht hinrei-
+chend getestet sind, nur mit der Originalversion zusammen wei-
+tergeben und im Kopf (Filenamen) kennzeichnen. Dabei auch in der
+Beschreibung entsprechende Vermerke dazu machen.
+==============================================================
+^^^^^

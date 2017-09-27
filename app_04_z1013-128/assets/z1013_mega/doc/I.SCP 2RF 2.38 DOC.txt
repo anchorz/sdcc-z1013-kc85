@@ -1,0 +1,97 @@
+***************************************************************
+*                      IG - HC                                *
+*            Beschreibung der Besonderheiten des              *
+*       CP/M-kompatiblen Betriebssystems SCP-2RF 2.38M        *
+*            fuer den Z1013 mit einer oder zwei               *
+*                RAM-Floppys nach  MP 3/88                    *
+*                  (c) by Rainer Brosig                       *
+***************************************************************
+
+
+Standort: C800H-E7FFH  Start: DE00H
+
+          C800H-CFFFH - CCP
+          D000H-DDFFH - BDOS
+          DE00H-E7FFH - BIOS
+
+
+Voraussetzungen:
+----------------
+
+- 64K Hauptspeicher (eventuell der auf der RF-Karte)
+- mindestens eine RAM-Floppy nach MP 3/88
+    IO-Grundadr. Disk A=98H  (in DE3CH aenderbar)
+                 Disk B=58H  (   DE3DH          )
+- Tastatur nach MP 7/88 bzw. andere, die entsprechend schnell
+  sind, und alle CTRL-Zeichen erzeugen koennen
+  Sie muss in den Funktionen INKEY (RST 20H DB 4) sowie INCHAR
+  (RST 20H DB 1) logisch genauso reagieren, wie die originale
+  Flachfolientastatur oder die nach MP 7/88 (Tastatur mit A.2-
+  Monitor ergibt Schwierigkeiten, da diese nicht logisch kompa-
+  tibel reagiert).
+
+Beguenstigungen:
+----------------
+
+- 4 MHz Takt
+- hardwaremaessige Bildschirmorganisation 16*64 Zeichen 
+  (BWS-Anfang auf Adr. EC00H)
+
+Bedienung:
+----------
+
+Nach dem Start auf DE00H kann das physische Loeschen oder das
+komplette Laden einer RAM-Floppy angefordert werden. Wurde das
+System lediglich neu gestartet, wird durch Eingabe von ENTER
+sofort in die Kommando-Aufrufschleife des CCP gesprungen.
+Alle weiteren Handlungen entsprechen denen der normalen SCP-
+Bedienung, wie sie vom PC her bekannt sind:
+
+DIR                    Anzeige des Diskettenverzeichnisses
+ERA filename.atr       Loeschen eines Files
+TYPE filename.atr      Anzeigen von Textdateien auf dem Bildschirm
+USER nn                Wechsel des Nutzerbereichs
+SAVE blkz filename.atr Saven eines Files von 100H auf die aktu-
+                       elle RAM-Floppy mit einer Laenge von n
+                       Bloecken; blkz= Anzahl der 100H-Bloecke
+                       dezimal z.B. SAVE 58 POWER.COM
+                       wenn vorher POWER mit Hilfe des Monitors
+                       auf 100H-3AFFH gebracht wurde.
+
+Nach jedem Warmstart wird abgefordert, ob das SCP verlassen und
+ob die aktuelle RF geladen oder gesaved werden soll.
+Die Aufzeichnung erfolgt unter Nutzung einer eigenen Headersave-
+routine. Die Bloecke haben Blocknummern, die entgegen des Hea-
+dersave-Standards den Abstand 1 haben. Damit ist eine lineare
+Aufzeichnung bis zu einer max. Floppy-Groesse von 2 MByte in
+einem File moeglich. Ein Laden des Disk-Files mit dem normalen 
+Headersave in den Hauptspeicher ist aus eben genannten sowie aus
+Kapazitaetsgruenden nicht mehr moeglich.
+Die Darstellung der Hex-Zahlen waehrend des Saven oder Ladens
+der Floppy entsprechen den Spuren, die gerade gelesen oder ge-
+schrieben werden. Ein Lesefehler wird durch Ausgabe von BEEP und
+einem Spulpfeil, der die Richtung, in die das Band zu spulen 
+ist, anzeigt, gekennzeichnet. ENTER mu~ nicht zusaetzlich einge-
+geben werden. Ein Unterprogrammruf zu einem BEEP-Ausgabeprogramm
+kann in den Adressen E195H und E515H eingetragen werden (z.B.
+Sprungverteiler FFDCH).
+Die Druckerschnittstelle ist f}r das V.24 Druckermodul von Riesa
+intern realisiert. Sollte aus verschiedenen Gruenden ein anderer
+Druckertreiber genutzt werden m}ssen, kann in DE3A/3BH die Auf-
+rufadresse des Treibers eingesetzt werden und der Schalter zum
+Kennzeichnen eines externen Treibers auf DE3EH ungleich 0 ge-
+setzt werden.
+Auf DE3FH kann durch Eintragen einer 2 oder 4 die Taktfrequenz
+des Rechners fuer 9600 bit/s angepasst werden, sofern diese
+nicht durch das Ruecklesen des Bit 6 der IO-Adr. 4  erfolgen
+kann.
+
+Unter dem Betriebssystem SCP-2RF 2.3 laufen alle CP/M Program-
+me, die sich fuer einen Bildschirm von 16*64 installieren lassen
+und die Groesse einer Floppy nicht ueberschreiten. Programme mit
+einer 24*80 Zeichen-Installation laufen nur mit Einschraenkungen
+und koennen meist nur so bedient werden, dass waehrend des Bild-
+schirmrollens mit Hilfe von ^S der Rollvorgang gestoppt wird,
+damit nicht die Haelfte aus dem Bildschirmbereich laeuft.
+Programme wie TP, die direkt auf den BWS schreiben, muessen ent-
+sprechend uminstalliert werden.

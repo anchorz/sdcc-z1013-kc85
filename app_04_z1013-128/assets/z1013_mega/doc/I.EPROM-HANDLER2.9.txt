@@ -1,0 +1,77 @@
+     *********************************************************
+     *                                                       * 
+     *      Beschreibung zum EPROM-Programmierprogramm       *
+     *       EPROM-Handler V 2.9 (RAM) fuer Z 1013           * 
+     *        (C) by Rainer Brosig, Coswig                   *
+     *                                                       *
+     *********************************************************           
+            
+
+Programmstandort: 100H - 8FFH  Start: 100H     >CRC=96DF
+          
+Hardware: - Z 1013  
+          - EPROM-Programmiergeraet der IG-HC TU Dresden, nach
+            electronica Bd.227/228 weiterentwickelt. 
+          - in Leipzig (2. Z1013-Tagung) von der IG-HC TU Dres-
+            den vorgestellt. Leiterplatte bei 
+            Fa. E.Gerlich 
+            2000 Neubrandenburg 
+            Markscheidenweg 08/417
+            zu beziehen. (Nachnahme)
+          - zusaetzliche PIO im Z 1013 fuer Programmiergeraet 
+            keine Interruptfaehigkeit gefordert. (Zusatzbau-
+            gruppe Robotron Riesa ab I/O-Adr. 30H)
+          
+I/O-Adressen: Port A Daten : 30H
+                      SW   : 31H
+              Port B Daten : 32H
+                      SW   : 33H
+          
+Beschreibbare EPROM-Typen: 555, 2708, 2716, 2732, 2764, 
+                           27128, 27256, 27512 u.a. 
+              
+Realisierte Funktionen:  
+           
+ - Typenauswahl durch Eingabe der Typenbezeichnung ohne 
+   fuehrende Buchstaben; die letzten zwei Zahlen sind signifi-
+   kant 
+ - Lesen des EPROM-Inhalts und Speichern auf RAM-Bereich; 
+   dabei Ausgabe der CRC-Pruefsumme
+ - Programmieren von beliebigem Speicherbereich, 
+   dabei automatischer Loeschtest und bei negativen Ergebnis 
+   Vertraeglichkeitstest; waehrend der Programmierung wird 
+   der laufende Programmierzyklus bzw. Sicherheitszyklus durch 
+   verschiedene Grafikzeichen angezeigt ; es werden so viele 
+   Zyklen ausgefuehrt bis alle Zellen fehlerfrei beschrieben
+   sind (max. 100); daran schliessen sich halb so viele Sicher-
+   heitszyklen an, wie Programmierzyklen gebraucht wurden, 
+   jedoch mindestens 15 ; 
+   Zellen mit Inhalt FFH werden nicht mitprogrammiert, dadurch
+   erfolgt Programmierung besonders schnell; 
+   nach Beendigung der Programmierung Ausgabe der CRC-Pruefsumme
+ - Vergleichen des EPROM-Inhalts mit gewaehltem Speicherbereich, 
+   dabei Ausgabe ungleicher Zellen mit deren Inhalt 
+ - Loeschtest mit Ausgabe aller nichtgeloeschten Zellen und de-
+   ren Inhalt;
+   diese Funktion kann auch zum schnellen Betrachten des EPROM-
+   Inhalts genutzt werden 
+ - Wiederholen der zuvor ausgefuehrten Funktion mit gleichen 
+   Parametern 
+ - Fortsetzen der vorher ausgefuehrten Funktion mit gleichen 
+   Parametern ausser der sich an den alten Bereich anschliessen-
+   den RAM-Adressse 
+ 
+ Alle Funktionen koennen auf den gesamten EPROM-Speicherbereich 
+ sowie auf einen Teilbereich angewendet werden, wobei der 
+ kleinste Bereich die Einzelzelle darstellt; 
+ zusaetzlich erfolgt eine Bereichskontrolle entsprechend des 
+ gewaehlten EPROM-Typs. Aus allen Funktionen kann durch BREAK 
+ (CTRL-C,S4-K) auf die Menueebene zurueckgekehrt werden. 
+ Durch BREAK kann auf der Menueebene zum Monitor zurueckgekehrt 
+ werden sowie durch Eingabe von N ein anderer EPROM-Typ 
+ gewaehlt werden. Sollte bei grossen EPROM-Typen der RAM zu 
+ klein sein, kann bereichsweise programmiert werden. 
+******************************** korrigiert: hofmann **********
+23.08.89
+^^^^^
+  

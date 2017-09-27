@@ -1,0 +1,42 @@
+****************************************************************
+*                                                              *
+*        Beschreibung des MC-Spiels 'JUMPING-JACK'             *
+*                                                              *
+****************************************************************
+
+Programmstandort  :  100H - DFFH
+
+Start             :  100H
+
+Spielinhalt :
+-------------
+Ziel des Spiels ist es, mit der Spielfigur den Pfeil auf der
+obersten Linie zu erreichen. Die Steuerung erfolgt durch die
+Cursortasten. Ein Sprung durch ein Loch in der Linie kann durch
+'SPACE' erfolgen. Springt man von der untersten Etage gegen die
+Linie oder f{llt in die unterste Etage, so geht ein Leben verlo-
+ren. Insgesamt besitzt man 6 Leben.
+Hat man das Ziel erreicht, so erfolgt ein weiteres Spiel mit ei-
+nem neuen Hindernis. Wird man von diesem ber}hrt, so bleibt die
+Spielfigur kurz liegen. (keine Steuerung m|glich)
+Wenn das Spiel beendet ist, erfolgt die Eingabe der Initialen
+des Spielers. Dann wird die Platzierung angezeigt.
+W{hrend des Spiels l{uft rechts oben auf dem BS die aktuelle
+Punktzahl mit.
+
+Anpassung :
+-----------
+27AH    20H    (Space)
+27FH    08H    (links)
+284H    09H    (rechts)
+78EH    0DH    (Enter)
+
+Eine [nderung der Tasten ist eigentlich nicht notwendig, da sie
+auf jeder Tastatur vorhanden sind.
+
+Beschreibung :     RACYsoft
+--------------     Boris Prey
+                   Willy-Krause-Str.7
+                   Schwarzenberg
+                   9430
+                   Tel. 2992

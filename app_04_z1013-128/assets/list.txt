@@ -15,3 +15,15 @@ db/ecaa82cdd9b23d9f9f8971b59b123726-voice_dice_autostart/voice_dice_autostart.z8
 db/495129edca7979b7a228c8dca443b567-HINDERNISLAUF+J/HINDERNISLAUF+J.z80
 db/602a69f762181fc115b05b0145b4199b-jumping_jack+prJ/jumping_jack+prJ.z80
 db/a7c929dc8f0a2d4c51e0c71e214895b0-laby_prJ/laby_prJ.z80
+db/374eb67967a2948f82b09bd6cb2ba8a9-ALADIN+J/ALADIN+J.z80
+db/e4076a4c1394be5357fbe1746c6576ce-mazog+j/mazog+j.z80
+db/3d6fb742662480be4362d5c1386a95e5-tetris+prJ/tetris+prJ.z80
+db/58d5584eacb0f5bb95208dc74bc042ae-graverobber+prJ/graverobber+prJ.z80
+db/40eaf15d723d89e7695e5a9445e2229e-miami+prJ/miami+prJ.z80
+db/c7dd147108d05c5575f8872fd9987358-reaktor+prJ/reaktor+prJ.z80
+db/0fd7e15a38d589f921094f0112d6344a-hase+wolf+prJ/hase+wolf+prJ.z80 
+db/a91675b35f87b1f131f2bbe4db2ecb9b-mauer+prJ/mauer+prJ.z80
+db/01ab733cd715e108ed59279a8976fc4e-vampir+prJ/vampir+prJ.z80
+db/2b79807c7ef3e2d87d98d4911995dbbd-galaxis+prJ/galaxis+prJ.z80
+db/e6c9f922dee443d81989a82e6e35bb8f-new_york+prJ/new_york+prJ.z80
+

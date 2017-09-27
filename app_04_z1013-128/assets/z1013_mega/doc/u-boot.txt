@@ -1,0 +1,22 @@
+****************************************************************
+*                                                              *
+*        Beschreibung des MC-Spiels 'U-BOOT'                   *
+*                                                              *
+****************************************************************
+
+Programmstandort  :  200H - 
+
+Start             :  200H
+                     Passwort ROVERS
+
+Spielinhalt :
+-------------
+
+Schiffe versenken
+
+In diesem Spiel muessen Sie     
+mindestens 10 feindliche Schiffe
+von Ihrem U-Boot aus vernichten 
+
+R.Riedel          
+*** Y43RK *** 

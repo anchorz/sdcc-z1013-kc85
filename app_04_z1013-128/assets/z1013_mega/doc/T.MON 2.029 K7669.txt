@@ -1,0 +1,740 @@
+Tastatur mit Raffinessen mit der K 7669 fuer den Z 1013
+-------------------------------------------------------
+
+Dipl.-Ing. R. Brosig, BPC 12/89
+
+
+1. Vorbetrachtung
+
+Seit  1985 befindet sich ein 4-K-Monitor fuer die Tastatur 
+K 7659  und  spaeter  auch fuer K 7652 in der Anwendung der
+Z-1013-User (2.028 RB).  Durch  die Entwicklung der Amateur-
+tastatur K 7669 wurde es  notwendig, diesen 4-K-Monitor auch 
+fuer diese Tastatur anzupassen.  Die groessten Schwierigkeiten
+enstanden  durch die wesentlich kleinere  Matrix  und damit 
+geringere Tastenzahl,  da die gleiche Funktionsvielfalt erhalten  
+bleiben sollte.  In der Zwischenzeit erschien auch die  Umbauan-
+leitung  des  Z 1013 zur Darstellung von 64 Zeichen/Zeile gekop-
+pelt mit einigen  anderen Hardwareschaltfunktionen ( 2/4  MHz,
+Zeichengeneratorumschaltung ASCII-DIN).  Diese Zusatzfunktionen,  
+die ueber die I/O-Adresse 4  geschaltet werden koennen, fanden
+in der folgenden Anpassung des Monitors  an die K7669 Berueck-
+sichtigung.  Leider mussten fast alle Tasten doppelt belegt wer-
+den,  so auch die Cursor-Tasten, die Space- und auch  die
+ENTER-Taste. 
+
+2. Loesungsprinzip der Tastaturvariante
+
+Es  wird eine K 7669 mit einer speziellen Hardwareanpassung ver-
+wendet, die  an den gleichen Hardwareschnittstellen wie  die  
+Originaltastatur betrieben  wird.  Dadurch  gibt es wenig Pro-
+bleme  bei  Software,  die direkt  auf die Originalmatrix zu-
+greift.  Die Tastaturabfrage  erfolgt durch  ein neues komfor-
+tables Programm,  welches  verstaendlicherweise laenger  als
+das originale ist und deshalb ausserhalb des  2K-Monitors  gene-
+riert  wird  (ab 0F800H).  Um Softwarekompatibilitaet zu  si-
+chern, wurde am Anfang der originalen Tastaturroutine ein
+Sprung zum externen  Tastaturprogramm eingetragen.  Damit ist 
+verstaendlich,  dass der alte Monitor geringfuegig geaendert 
+werden muss. Auf den durch den Wegfall der Originalroutine frei-
+gewordenen  Speicherplatz im Monitor wurden kleine Hilfs-
+routinen,  wie die Ausgabe auf  einen  Port (mit O padr abyte) 
+und die Anzeige des  Kommandoverteilers auf  0B0H (Z),  gelegt.
+Weiterhin befindet sich dort eine  NMI-Unterbrechungsroutine,
+wo,  mit Hilfe einer NMI-Taste,  ein  Maschinenprogramm  mit 
+Registeranzeige abgebrochen werden kann, was sich  bisher
+als  eine ausserordentliche Hilfe bei der Testung von Assembler-
+programmen erwiesen hat.
+Zur Aenderung des Monitor-EPROMs muss nicht unbedingt ein Ein-
+griff auf der orig. Leiterkarte erfolgen, was evtl. Garantiean-
+sprueche loeschen koennte.  Es besteht die Moeglichkeit, den 
+Z1013 im Originalzustand zu belassen  und  den geaenderten Moni-
+tor-EPROM von  aussen  zuzuschalten (mit Hilfe einer
+MEMDI-Steuerung).  Einfacher ist es aber, den  originalen  Moni-
+tor-EPROM  auszuloeten und durch einen  anderen  EPROM  mit 
+Fassung  zu  ersetzen.  Das  Ausloeten kann entweder auf  einem
+Minischwall, wie er in Elektronikwerkstaetten vorhanden ist
+oder mit Hilfe  einer  Entloetpumpe erfolgen.  Letztere gibt es
+zu einem Preis von  75  Kronen  in Fachgeschaeften der CSSR zu
+kaufen.  Damit ist ein  gefahr loses Arbeiten fuer
+Leiterplatte und EPROM moeglich. Derzeitig  wird fuer den 4 K-
+Monitor ein U 2732  benutzt.  Somit  kann  beim  Z1013.16  der 
+originale EPROM geloescht und wieder neu  programmiert einges-
+etzt werden. Es muss aber beachtet werden, dass die Adres-
+sierung  des EPROM's veraendert werden muss.  Im neuen  Monitor
+wurde  weiterhin  das  Headersave sowie ein Sprungverteiler
+fuer  Peripherie-Schnittstellen untergebracht.
+
+3. Hardware
+
+Die zusaetzliche Hardware beschraenkt sich auf einen
+1-aus-16-Decoder,  die Statussteuerung und einen 8-auf-4-Coder.
+Zur Anzeige von CAPS-lock  und Hardcopy werden zwei Anzeige-
+Flip-Flops verwendet.  Durch die zwei  LED's in der Tastatur 
+ist dabei nur die Status- und CAPS-lock-Funktion  anzeigbar. 
+Ansonsten muesste noch eine LED nachgeruestet werden.
+Damit die Statussteuerung funktionieren kann,  muss die 4-bit
+Spalteninformation neu decodiert werden, da der originale Spal-
+tendecoder  nur bis 10 decodiert.  Dazu ist es erforderlich, 
+dass die 4-bit-Spalteninformation  vom Spaltenlatch A47 ueber 
+die vier freien  Kontakte  auf dem  Loetkamm  bzw.  Stecker 
+des Tastaturanschlusses  gefuehrt  wird.   Sollten  auch  diese
+vier Draehte zu viel Aenderung  auf  der  Platine   darstellen,
+so  kann  das Spaltenlatch auch extern ueber den  Systemstecker
+neu ausdecodiert werden.  Die verbleibenden vier Digits vom 
+1-aus-16-Decoder werden fuer die Ansteuerung der Flip-Flops,
+der Status steuerung  und des Tastenbeeps (generatorloser 
+Piezoschwinger  o.ae.)  genutzt.  Die  Ausgaenge des Decoders 
+steuern die Spaltenleitungen der Tastaturmatrix,  die ueber 
+Dioden entkoppelt sind.  Diese  Entkopplung ist  notwendig,  um
+bei der Betaetigung von zwei Tasten (SHIFT,  CTRL, CODE)  
+keine  Spalten kurzzuschliessen.  Die  Zeilenausgaenge  werden 
+durch  einen  Coder auf einen negierten binaeren  Code  gewan-
+delt, um wieder die originalen 4-bit-Zeileneingangsleitungen zu
+erhalten. Deshalb  sind  prinzipiell Direktzugriffe auf die  Ma-
+trix  moeglich,  die allerdings  nicht die gleiche Tastenbele-
+gung wie die  Originaltastatur aufweist (Korrespondenztabelle 
+benutzen).  An dieser  Stelle soll auch darauf hingewiesen wer-
+den,  dass solch unnoetigen   Praktiken,  direkt auf die Matrix
+zuzugreifen, immer zu Softwareinkompatibilitaeten fuehren und 
+deshalb zu vermeiden sind.
+Das  verwendete  Abfrageprinzip weist eine Besonderheit  auf,  
+die  in einer Statussteuerung liegt.  Diese Statussteuerung hat
+die  Aufgabe,  alle  Spalten  der Tastatur (ausser Spalte 7) 
+aktiv  zu  schalten,  um einerseits  eine schnelle Tastaturab-
+frage zu  realisieren (der Rechner muss  nicht staendig alle 
+Spaltenleitungen abfragen) und  andererseits die  Interrupt-
+faehigkeit zu ermoeglichen (wird momentan  nicht  ausgenutzt).  Die  Abfrage der Tastatur bei unbetaetigten Tasten wird durch 
+die  Statussteuerung  etwa 100 mal schneller als  bei  der  
+originalen Tastaturroutine (Vers.  2.02).  Dieser Zeitvorteil 
+hat aber  nicht nur positive  Seiten.  Programme,  die die Ab-
+arbeitungszeit fuer bestimmte Zwecke ausnutzen,  laufen dadurch
+zu schnell (z.B. blinkender Cursor). Deshalb kann per Tasten-
+druck fuer solche Anwendungen eine zusaetzliche Zeitschleife 
+eingeschaltet werden (Tastenfunktion s/f (slow/fast)).
+Die Funktion der Statussteuerung wird mittels LED angezeigt, die damit 
+die Bereitschaft einer Dateneingabe ueber die Tastatur signali-
+siert. Die  schaltungstechnische Realisierung kann mit verschie-
+denen  Mitteln  erfolgen.  Die einfachste Moeglichkeit besteht 
+in der Decodierung  mit einem  74154,  der  Codierung mit 2 
+DL 021 und einem DL 074  fuer  die Anzeige.  Somit kann die ge-
+samte Hardware auf 4 IC's beschraenkt bleiben.  Um aber den 
+arg strapazierten Netzteil nicht noch mehr zu  belasten,  wurde
+eine etwas aufwendigere CMOS-Schaltung  entwickelt,  die dazu 
+noch die hoehere Sicherheit gegen unerwuenschte Uebergangswider-
+staende  aufweist.  Eine ebenfalls anwendbare Hardware ist die 
+von  A. Eisenkolb entwickelte Schaltung,  die sich zu der be-
+schriebenen kompatibel  verhaelt,  aber  andere Bauelemente ver-
+wendet  (Coder  ist  mit Dioden realisiert).
+Die Spalte 7 (SHIFT,  CODE, CTRL) wird durch die Statussteuerung 
+nicht aktiviert  (Fehlen  einer Diode),  damit beim alleinigen 
+Druecken  von  SHIFT,  CODE oder CTRL der Tastaturstatus nicht 
+veraendert wird. Diese Spalte wird erst nach Erkennung einer an-
+deren Taste abgefragt,  um die SHIFT-Ebene umzuschalten bzw.
+eine Control-Maske (1FH)  aufzulegen. Da  sich  die  mit CTRL 
+beschriftete Taste nicht als Einzeltaste  mit  der Spalte 7 ver-
+binden laesst, musste die mit SHIFT-LOCK bezeichnete Taste 
+zur CTRL-Taste umfunktioniert werden.  Entsprechend ist die
+CTRL-Taste  dann die SHIFT-LOCK (CAPS-LOCK)-Taste. Es ist des-
+halb eine Umbeschriftung noetig. 
+Die  geringe Anzahl zur Verfuegung stehender zusaetzlicher 
+Steuerleitungen macht es erforderlich,  fuer die Anzeige der  
+Funktionen  CAPS-LOCK  und Hardcopy zusaetzliche Flip-Flops mit
+einer gemeinsamen  Resetleitung zu verwenden.  Bei jeder Neube-
+legung  eines Flip-Flops werden deshalb durch den Rechner immer
+beide  Flip-Flops neu gesetzt.  An der Resetleitung ist eben-
+falls der  Tastenklick angeschlossen, wodurch die  Flip-Flops 
+auch  nach der Ausgabe des Tones neu  gesetzt  werden muessen.
+Der Tastenklick wird  softwaremaessig erzeugt und ist  durch 
+Tastendruck ein- und ausschaltbar.
+Die fuer die Tastaturtypen K7659 und K7652 eingesetzten  Zusatz-
+leiterplatten  fuer die Ansteuerschaltung koennen unveraendert 
+auch fuer die K7669 eingesetzt werden.  Die nichtvorhandenen 
+Spalten werden  einfach nicht  angeschlossen (Achtung!  Die An-
+schlussbelegung an den Tastatursteckern ist bei allen Tastaturen
+nterschiedlich).  Die Spalte 7  der  Matrix  wird  durch  die 
+Verbindung der Tasten SHIFT,  CODE  und  CTRL gebildet,  die 
+Spalte 8 durch die Verbindung der Tasten 59 und 52. Das Layout 
+der Leiterplatte entspricht dem in MP 7/88  veroeffentlichten. 
+Vom Computerclub Leipzig bzw.  Berlin Hohenschoenhausen kann 
+versucht  werden, eine ungebohrte Leiterplatte zu bekommen.
+Fuer  die  Verbindung  der Tastatur mit dem Rechner ist nur 
+eine  10- adrige flexible Leitung erforderlich, fuer die Tele-
+fonkabel Verwendung fand.  Bei einer Anschlusslaenge von 5 m 
+konnten noch keine Fehlefunktionen beobachtet werden.
+
+
+4. Software
+
+Fuer  die Tastaturabfrage wurde ein neues Abfrageprogramm 
+entwickelt,  welches der verwendeten Hardware angepasst ist.
+Es hat mit   Tabellen eine  Laenge  von  einem 3/4 K und kann 
+deshalb nicht  den  originalen Standort  beziehen.  Durch den 
+auf der  Originalaufrufadresse  (F130H) eingetragenen  Sprung  
+zum neuen Standort (F800H)  wird die  SoftwareKompatibilitaet  
+zum Originalmonitor erreicht.  Es  muss  aber  eingeschraenkt 
+werden,  dass Programme,  die in die originale  Tastaturrou-
+tine hineinspringen (eine laienhafte Unsitte),  nicht  mehr
+fehlerfrei  laufen.  Darunter  faellt auch der originale 
+10K-BASIC-Interpreter von Robotron.  Deshalb ist es ratsam nur 
+saubere Software (KC-BASIC+  bzw. KC-BASIC m+) zu benutzen. 
+Bei der Realisierung des Programms wurde ein in jeder Hinsicht
+offenes  Prinzip verwendet.  Das heisst,  dass der Nutzer in
+der Lage ist, sich  die Tastatur nach eigenen Wuenschen
+zusammenzustellen. Bis auf zwei Tasten (SHIFT, CTRL, CODE) sind
+alle Tasten neu belegbar. Weiterhin  kann auch wahlweise ein
+String auf beliebige Tasten  gelegt  werden.  Wenn  dafuer
+keine besonderen Tasten verwendet werden sollen,  koennen 
+Strings  auch durch gemeinsames Druecken von SHIFT  und  CTRL  
+sowie einer dritten Zeichentaste erzeugt werden.  Desweiteren
+sind die  F-Tasten  in Verbindung mit der Taste CODE fuer
+diesen Zweck  verwend bar.  Der Tastaturtreiber erzeugt dazu
+intern einen Grafikcode (>80H),  mit  dem ein mit diesem
+Zeichen versehener String in einem  Stringfeld  gesucht und
+ausgegeben wird. Sollte kein String mit diesem Kennzeichen 
+existieren, wird dieses interne Grafikzeichen ausgegeben. Die
+Ausgabe von Grafikzeichen im Grafikmode wird dadurch nicht  be-
+einflusst.
+Fuer  die einzelnen Felder (Stringfeld,  Tastencodefeld,  Funk-
+tionstastenfeld und Funktionstastenadressfeld) gibt es ein 
+Pointerfeld,  welches auf dem ehemaligen Tastencodefeld ab 3BH 
+angelegt wurde.
+Damit ist es dem Anwender moeglich,  sich durch das Veraendern 
+dieser Pointer an beliebiger Stelle im RAM ein neues Feld 
+aufzubauen.  Diese Moeglichkeit hat besonders fuer das
+Stringfeld grosse Bedeutung,  da man dadurch in der Lage ist, 
+Strings fuer verschiedene Anwendungen  zu laden (z.B. BASIC-
+Schluesselwoerter, Assemblermnemonik, Briefflos keln  u.ae.). 
+Durch die Moeglichkeit,  auch die  anderen  Felder  neu  zusam-
+menzustellen,  kann  auch dem Problem begegnet werden, dass 
+z.B.  Programme  verschiedene Tastencodes fuer gleiche Steuer-
+funktionen  benutzen.
+Das  Pointerfeld  wird  durch den Monitor beim ersten  Reset  
+auf  die Standardwerte  gestellt (nochmaliges Reset wird am 
+C3H  auf  Adr.  66H erkannt),  womit  gesichert  ist,  dass bei
+jedem weiteren Reset   ein  evtl. geaendertes Pointerfeld erhal-
+ten bleibt. Das  hat  aber die Konsequenz,  dass ein Programm-
+absturz  auch  dieses Pointerfeld  ungewollt  zerstoeren  kann 
+und der Rechner  trotz  Reset nicht  mehr  bedienbar  ist.  
+Dann  hilft  nur  noch  Ausschalten  des Rechners!  Aendert man
+folgende vier Zellen,  so kann erreicht werden, dass die Neuini-
+tialisierung bei jedem Reset erfolgt.
+ 
+F02AH  02H --> F2H
+F02BH  F2H --> F1H
+F02DH  43H --> 33H
+F030H  0AH --> 1AH
+ 
+Man sollte dann aber auch darauf achten, dass aus Programmen
+nicht mit Reset  oder  Sprung zu F000H herausgegangen  wird,  
+sondern  mit   der  Monitorrueckkehrtaste  (RST 38H). 
+Ansonsten muss die Pointerinitialisierung neu erfolgen. 
+Fuer die einzelnen Modes der Tastatur  (Grafik,  CAPS-lock, 
+Hardcopy,  Stringmode,  Beep, Slow/Fast) existieren Flags, die
+in der Systemzelle  27H stehen (ehemaliger Schalter
+Grafik/Alpha).  Ein gesetztes Flag (1) bedeutet darin:
+
+Bit 0 - lange Repeatverzoegerung durchlaufen
+    1 - Stringmode on
+    2 - Grafikmode on
+    3 - Hardcopy on
+    4 - Shift-lock (gilt nur fuer Buchstaben)
+    5 - Tastenbeep on
+    6 - Slow
+    7 - Taste war betaetigt
+
+Diese  Flags  werden durch den Tastaturtreiber gesetzt  bzw. 
+rueckgesetzt.  Indem man diese Flags anderweitig setzt oder 
+ruecksetzt,  kann die Betriebsart der Tastatur von aussen mani-
+puliert werden.  Es sollte aber  aus Kompatibilitaetsgruenden 
+aus Anwenderprogrammen heraus  vermieden  werden,  da  keine 
+spezielle Software  fuer  einen bestimmten Monitor geschrieben 
+werden sollte. Bei  den Tasten gibt es eine Unterscheidung 
+zwischen  Zeichen-,  Funktions- und Wahltasten.  Zu den Zeichen-
+tasten gehoeren alle,  bei denen der  Tastaturtreiber an den Mo-
+nitor ein Druck- oder Steuerzeichen liefert (z.B. A-Z, Cursor-
+Tasten, ENTER). Funktionstasten aendern dagegen entweder   die 
+Funktionsweise  der   Tastatur (CAPS-lock, Grafik,slow/fast),
+fuehren Funktionen aus (z.B.  Hardcopy-Funktion einschalten, 
+zum Monitor zurueckkehren (RST 38H),  zu Adresse 100H springen),
+oder  steuern die Funktionsweise der Hardware (z.B.  64 
+Zeichen/Zeile  ein schalten,  Taktfrequenz  oder  Zeichenge-
+nerator  umschalten).  Alle Funktionen  funktionieren dabei nur,  
+wenn die Tastatur durch ein Programm bzw.  durch den Monitor 
+noch abgefragt wird.  Zu den  Wahltasten gehoeren die Tasten 
+SHIFT, CTRL und CODE, die gleichzeitig mit anderen Tasten zu 
+betaetigen sind und diese dadurch spezifizieren. 
+Bei der Rueckkehr zum Monitor ueber die MON-Taste wird auch
+gleichzei tig  eine  Reinitialisierung  des  Zusatz-Kommando-
+verteilers  auf  B0H durchgefuehrt,  so  dass   die standard-
+maessig auf  B0H  eingetragenen Kommandos   (@L=Headersave-
+laden,    @S=HS-saven,   @D=Drucker-delete, @I=Drucker-ini-
+tialisieren) wieder  verfuegbar werden.
+Bei  der  Ausfuehrung des Sprungs zu 100H auf Tastendruck zum 
+Starten  eines Programms auf dieser Adresse wird der Stack
+jeweils neu auf  B0H  gesetzt.
+Eine  weitere wichtige Taste ist die Screen-Copy-Taste 
+(S-COPY).  Mit   ihr ist es moeglich,  eine Bildschirmkopie auf
+dem Drucker zu erzeugen  (Druckereinbindung  ueber 
+Sprungverteiler DRAKK),  ohne das  laufende  Programm zu
+unterbrechen.  Dabei ist zu beachten,  dass waehrend   der 
+Bildschirmkopie  der  Stack  des  laufenden  Programms  genutzt
+wird  (Stackbelastung je nach Druckertreiber). In Abhaengigkeit
+der Funktion  64/32  Zeichen pro Zeile erfolgt der Zeilenvor-
+schub entsprechend  nach  32  oder  nach  64 Zeichen.  An der 
+Cursorposition wird  die  Funktion abgebrochen, um sinnloses 
+Drucken von Leerzeichen zu vermeiden.
+Die Tastenentprellung erfolgt positiv und negativ,  d.h., 
+damit  eine  Taste als betaetigt erkannt wird,  muss mindestens
+15 ms (2 MHz)  lang  ein  prellfreies Signal anliegen (positive
+Entprellung).  Das  gleiche  gilt  uebertragen fuer das
+Loslassen der Taste (negative Entprellung).  Dadurch kommt es
+nicht vor,  dass selbst bei sehr schlechten Kontakten  eine
+Fehlfunktion auftritt. Wird eine Taste laenger als 0.5 s (2 MHz)
+betaetigt, wird die Repeat funktion (Echofunktion) bei Zeichen-
+tasten aktiviert.  Der  Normalaustritt  aus der Tastaturroutine
+erfolgt kompatibel zur  Originalroutine mit dem Zeichen im Akku
+und in Zelle 4. Eine "blinde" Tastaturabfrage erfolgt, indem vor 
+dem Aufruf der  Routine die Zelle 4 auf 0 gesetzt wird.
+
+
+4.1. Standard-Tastenbelegung
+
+Funktionstasten (erzeugen keinen Code):
+
+SHIFT-52 - RST 38H
+SHIFT-62 - JMP 100H
+SHIFT-54 - SCREEN-COPY
+      59 - GRAFIK ON/OFF
+SHIFT-55 - HARDCOPY ON/OFF
+SHIFT-43 - SLOW/FAST
+SHIFT-59 - BEEP ON/OFF
+      54 - CAPS-LOCK ON/OFF
+SHIFT-44 - Zeichengenerator umschalten
+SHIFT-42 - Umschalten auf 2 MHz Takt
+SHIFT-45 - Umschalten auf 4 MHz Takt
+SHIFT-64 - Umschalten Bildschirmformat 64 <-> 32 Zeichen/Zeile
+
+
+Steuerzeichentasten (derzeitige Belegung)
+
+44 - Cursor hoch     0BH
+43 - Cursor runter   0AH
+42 - Cursor links    08H
+45 - Cursor rechts   09H
+52 - CTRL-C          03H  (BREAK)
+55 - DEL             7FH
+61 - ENT             0DH
+64 - TAB             14H  (TAB-Dummy)
+62 - Escape          1BH
+
+
+Diese Steuerzeichen stehen mit in der Tastenbelegungstabelle und koen
+nen somit anderen Erfordernissen angepasst werden.
+
+TASTENBELEGUNGSTABELLE
+
+ ERSTE SHIFTEBENE               ZWEITE SHIFTEBENE
+
+         POSITIONSCODE                   POSITIONSCODE
+ZEI TASTE  INTERN HEX         ZEI  TASTE  (INTERN HEX)          
+'1'   1        0              '!'    1       60 
+'Q'   2        1              'q'    2       61 
+'A'   3        2              'a'    3       62 
+'Y'   5        3              'y'    5       63 
+'2'   4        4              '"'    4       64 
+'W'   6        5              'w'    6       65 
+'S'   7        6              's'    7       66 
+'X'   9        7              'x'    9       67 
+'3'   8        8              '@'    8       68 
+'E'   10       9              'e'   10       69 
+'D'   11       A              'd'   11       6A 
+'C'   13       B              'c'   13       6B 
+'4'   12       C              '$'   12       6C 
+'R'   14       D              'r'   14       6D 
+'F'   15       E              'f'   15       6E 
+'V'   17       F              'v'   17       6F 
+'5'   16       10             '%'   16       70
+'T'   18       11             't'   18       71
+'G'   19       12             'g'   19       72
+'B'   21       13             'b'   21       73
+'6'   20       14             '&'   20       74
+'Z'   22       15             'z'   22       75
+'H'   23       16             'h'   23       76
+'N'   25       17             'n'   25       77
+'7'   24       18             '/'   24       78
+'U'   26       19             'u'   26       79
+'J'   27       1A             'j'   27       7A
+'M'   29       1B             'm'   29       7B
+'8'   28       1C             '('   28       7C
+'I'   30       1D             'i'   30       7D
+'K'   31       1E             'k'   31       7E
+','   33       1F             '<'   33       7F
+'9'   32       20             ')'   32       80
+'O'   34       21             'o'   34       81
+'L'   35       22             'l'   35       82
+'.'   37       23             '>'   37       83
+'0'   36       24             '='   36       84
+'P'   38       25             'p'   38       85
+':'   39       26             '*'   39       86
+';'   41       27             '?'   41       87
+'-'   40       28             '+'   40       88
+08H   42       29 CUR.LINKS    0    42       89    2 MHz              
+0AH   43       2A CUR.RUNTER   0    43       8A    SLOW/FAST          
+7FH   55       2B DEL          0    55       8B    HARDCOPY ON/OFF    
+0BH   44       2C CUR.HOCH     0    44       8C    ZG DIN/ASCII       
+09H   45       2D CUR.RECHTS   0    45       8D    4 MHz              
+'@'   46       2E             '#'   46       8E
+'\'   48       2F             '|'   48       8F
+'~'   51       30             "'"   51       90
+0     54       31 CAPS-LOCK    0    54       91    SCREEN COPY        
+1BH   62       32 ESCAPE       0    62       92    JP 100             
+09H   64       33 TAB          0    64       93    32/64 ZEI/ZEILE
+'['   50       34             '{'   50       94
+']'   53       35             '}'   53       95
+0DH   61       36 ENTER       '^'   61       96    SHIFT ENTER = ^    
+' '   63       37 SPACE       '_'   63       97    SHIFT SPACE = _    
+0   49.1       38              0  49.1       98
+0   49.2       39              0  49.2       99
+0     56       3A              0    56       9A
+0              3B              0             9B
+0              3C              0             9C
+0     57       3D CODE-TASTE   0    57       9D    CODE-TASTE         
+0  47/60       3E SHIFT        0 47/60       9E    SHIFT              
+0     58       3F CTRL-TASTE   0    58       9F    CTRL-TASTE         
+0              40              0             A0
+0              41              0             A1
+0              42              0             A2
+0     59       43 GRAFIK       0    59       A3    BEEP ON/OFF        
+03H   52       44 ^C           0    52       A4    KALTSTART          
+0              45              0             A5
+0              46              0             A6
+0              47              0             A7
+0              48              0             A8
+0              49              0             A9
+0              4A              0             AA
+0              4B              0             AB
+0              4C              0             AC
+0              4D              0             AD
+0              4E              0             AE
+0              4F              0             AF
+0              50              0             B0
+0              51              0             B1
+0              52              0             B2
+0              53              0             B3
+0              54              0             B4
+0              55              0             B5
+0              56              0             B6
+0              57              0             B7
+0              58              0             B8
+0              59              0             B9
+0              5A              0             BA
+0              5B              0             BB
+0              5C              0             BC
+0              5D              0             BD
+0              5E              0             BE
+0              5F              0             BF  
+
+
+Den  Standort der Tastenbelegungstabelle kann man dem Tastenbe-
+legungsfeldpointer  (auf 3BH) entnehmen,  der auf die  Tastenbe-
+legungstabelle der  ersten SHIFT-Ebene im ROM zeigt (nach Reset).
+Die zweite  SHIFT- Ebene schliesst sich dahinter an (faengt 60H
+weiter hinten an). 
+Die am Ende auftretenden mit 0 belegten Positionen resultieren
+aus der  urspruenglichen max. aufruestbaren 8*12 Matrix.
+
+
+4.2. Aufbau des Pointerfeldes
+
+Das  Pointerfeld  befindet  sich auf dem Platz des  jetzt 
+nicht  mehr  benoetigten Tastaturcodefeldes und wird vom
+Monitor initialisiert. Das  originale Tastaturcodefeld beginnt
+auf Adresse 35H und wird durch  den  Monitorsprung RST 38H
+unterbrochen. Die ersten drei Zellen werden fuer  Zaehlzellen 
+des Druckertreibers genutzt und sind mit 0 initialisiert.  Das
+Pointerfeld beginnt erst hinter dem  RST 38H auf 3BH mit folgen-
+dem  Aufbau:
+
+3BH - Tastenbelegungsfeldpointer
+3DH - Stringfeldpointer
+3FH - Pointer auf naechstes auszug. Stringzeichen
+41H - Laenge Funktionstastenpos.-feld
+43H - Funktionstastenpositionsfeldpointer
+45H - Funktionstastenadressfeldpointer
+
+
+4.3. Aufbau des Stringfeldes
+
+Das Stringfeld hat einen sehr einfachen und codeeffektiven
+Aufbau. Der  auszugebende String beginnt mit dem Namen des
+Strings, welcher nur aus  einem  Grafikzeichen  besteht.  Es
+werden solange Zeichen  von  diesem  String ausgegeben,  bis
+ein neues Grafikzeichen auftritt oder das Ende  des
+Stringfeldes - gekennzeichnet mit einer 0 - erreicht  ist.  
+Damit  ist auch klar,  dass sich im String keine Grafikzeichen 
+befinden duerfen,  da diese fuer die Adressierung der Strings 
+reserviert sind.  Die Strings koennen eine beliebige Laenge ha-
+ben und in beliebiger  Reihenfolge angeordnet sein.
+
+Stringfeldaufbau:
+
+1.  Grfk-Z. 1.String
+2.  erstes Stringz.
+    .
+    .
+    .
+n.  letztes Stringz.
+n+1 Grfk.Z. 2. String
+n+2 erstes Zeichen 2. String
+    .
+    .
+    .
+    0     
+Ende des Feldes
+
+Guenstig  ist es,  sich auf Kassette einige Felder  vorzuberei-
+ten  und diese mit einer kleinen Umladeroutine zu versehen,
+welche das  Eintragen  des  Stringfeldpointers  entsprechend
+des  Standortes   vornimmt.  Somit  ist das jeweilige
+Stringfeld nach einem Autostart sofort  nutzbar. Weiterhin kann
+auch ein Stringfeld an ein  Programm  angehaengt werden,
+welches sich beim Start des Programms automatisch einbindet.
+Die fuer die Adressierung der Strings benoetigten
+Grafikzeichen,  welche bei Betaetigung der entsprechenden Taste
+wirksam werden,   koennen  in der Tastenbelegungstabelle
+stehen,  worauf der dazugehoerige String  ausgegeben wird. 
+Eine einfachere Moeglichkeit besteht  in der gleichzeitigen 
+Betaetigung  von SHIFT und CTRL sowie  einer   Zeichentaste, 
+worauf folgende interne Grafikzeichen erzeugt  werden:  
+
+SHIFT+CTRL+                           CODE-Taste+
+Zeichentaste                          Zeichentaste
+-------------------                   -------------------------
+Taste   Code                           Taste     Code
+  A	81H                             F1        B1H
+  B	82H                             F2        B2H
+  C	83H                             F3        B3H 
+  D	84H                             F4        B4H
+  E	85H                             F5        B5H
+  F	88H                             F6        B6H
+  G	87H                             F7        B7H
+  H	8BH                             F8        B8H
+  I	89H                                  .
+  J	8AH                                  .
+  K	9CH
+  L	8CH
+  M	8DH
+  N	8BH        DOPPELBEL. ZU H
+  O	8FH
+  P	90H
+  Q	91H
+  R	92H
+  S	86H
+  T	94H
+  U	95H
+  V	88H        DOPPELBEL. ZU F
+  W	97H
+  X	86H        DOPPELBEL. ZU S
+  Y	99H
+  Z	9AH
+  [	9BH
+  \	9EH
+  ]	9DH
+  0	90H        DOPPELBEL. ZU P
+  1	91H         - " -        Q
+  2	92H         - " -        R
+  3	93H
+  4	94H         - " -        T
+  5	95H         - " -        U
+  6	96H
+  7	97H         - " -        W
+  8	98H
+  9	99H         - " -        Y
+
+Die  Unregelmaessigkeiten zu den korrespondierenden
+CTRL-Zeichen  entstehen  beim  gleichzeitigen  Druecken von 
+SHIFT und CTRL  durch das Kurzschliessen  der  Matrixzeilen 7 
+und 8, da  diese hardwaremaessig nicht entkoppelt sind. Bei der
+Nutzung der CODE-Taste ergibt sich eine regelmaessige Code-
+Struktur,  da keine Zeilen kurzgeschlossen  werden. 
+Der  mit  der  CODE-Taste erzeugte interne Code zur  Adres-
+sierung  der Strings, die uebrigens auch aus nur einem Zeichen 
+bestehen koennen (z. B.  bestimmte  Steuerzeichen oder Folgen 
+davon),  ergibt sich aus  dem ASCII-Wert  der  Taste  +  80H.  
+Zum  Beispiel  entsteht  mit  CODE  A  41H+80H=C1H.
+Im EPROM wurde ein Standardstringfeld mit den am haeufigsten   
+vorkommenden Basic-Schluesselwoertern eingerichtet.  Auf die 
+ersten F-Tasten (mittels  CODE angesprochen) wurden Steuer-
+strings fuer die HeadersaveBedienung gelegt (z.B. @LLL, @S:,
+@LNN) die die Bedienung des Rechners  erleichtern.
+
+
+4.4. Direktzugriffe auf die Matrix
+
+Obwohl  das direkte Zugreifen auf die Tastaturmatrix von einem 
+Anwenderprogramm  aus unnoetig und nur in sehr seltenen Faellen
+gerechtfertigt ist, gibt es eine Vielzahl von Programmen (meist
+Spielprogramme),  die diese Methode anwenden.  Um solche Pro-
+gramme ohne Aenderung nutzen  zu koennen, soll folgende Korres-
+pondenztabelle dienen:
+
+ orig.    neu     Pos.
+----------------------
+  @        1       1
+  A        3       8
+  B        5      16
+  C        7      24
+  D        9      32
+  E        -      40
+  F        ~      51
+  G
+  H        Q       2
+  I        E      10 
+  J        T      18
+  K        U      26
+  L        O      34
+  M       <-      42
+  N   CAPS-Lock   54
+  O 
+  P        Y       5
+  Q        C      13
+  R        B      21
+  S        M      29
+  T        .      37
+  U       DEL     55
+  V       TAB     64
+  W     GRAPHIK   59
+ S1        X       9
+ S2        V      17
+ S3        N      25
+ S4        ,      33
+ <-        ;      41
+SPACE      \      48
+ ->      SPACE    63
+ENT       CTRL    58
+
+Zwei Tasten koennen nicht konvertiert werden,  da diese
+Positionen bei  der K 7669 nicht besetzt sind. Die
+Korrespondenztabelle kann auch dazu  benutzt werden, um die
+Hardware mit dem originalen Tastaturprogramm zu  testen.
+
+
+4.5. Aenderungen am originalen Monitorprogramm
+
+Eine  der  wichtigsten Aenderungen ist das Eintragen  des 
+Aussprunges   aus dem originalen Tastaturprogramm und der
+veraenderten  Initialisie rung  des ehemaligen Tastaturcode-
+felds.  Alles andere koennte original  bleiben.  Es  werden  
+aber weitere Aenderungen  vorgenommen,  die  die Softwarekompa-
+tibilitaet nicht wesentlich verringern.
+Solche Veraenderungen sind:
+
+- NMI-Unterbrechung mit Registeranzeige (Init.66H bei Reset)
+- Hardcopyfunktion des Bildschirmtreibers
+- Beschreiben eines I/O-Ports vom Monitor aus ("O" ehemals "H")
+- Auflistung der im Zusatzkommandoverteiler stehenden Kommandos
+  ("Z" ehemals "A")
+- Initialisierung des Zusatzkommandoverteilers mit
+  Standardwerten   (@L-->Headersave  load,  @S-->Headersave 
+  save,  @D-->Drucker  reset,  @I--> Druckerinitialisierung)
+
+Da  der  zusaetzliche  Speicher mit dem  Tastaturprogramm  noch
+nicht  ausgelastet ist, wurden auf dem Rest des Speichers das 
+Headersave, das Screencopyprogramm, die Joystickabfrage sowie 
+der Sprungverteiler fuer die Systemerweiterung fest installiert.
+Fuer die Uebernahme der Software ist es guenstig, die kompletten
+4K ab F000H zu uebernehmen. Die  umfassende  Vorstellung des 
+Sprungverteilers wuerde hier zu  weit fuehren.  Deshalb sollen 
+nur die wichtigsten Spruenge beschrieben werden:
+
+FFF7H - JMP STAT uebergibt Tastaturstatus im Akku
+        A=0   - keine Taste gedr.
+        A=FFH - Taste gedr. (ausser SHIFT o. CTRL)
+
+FFF4H - JMP SARUF ruft SAVE-Routine des Headersave
+        Parameteruebergabe entspr. Beschr. Headersave
+
+FFF1H - JMP LORUF 
+        Parameteruebergabe entspr. Beschr. Headersave
+
+FFEBH - JMP DRDEL setzt den logischen Druckertreiber zurueck
+        (Zaehlzellen fuer Zeile- und Spaltenposition werden zu 0)
+
+FFE8H - JMP DRAKK uebergibt den Akkuinhalt an den logischen
+        Druckertreiber
+
+FFE5H - JMP BSDR druckt den Inhalt des BWS bis zur Cursorposit.
+        und kehrt in das aufrufende Programm zurueck
+
+FFDFH - JMP DRZEL wie DRAKK, nur dass das Zeichen in Zelle 1BH
+        uebergeben wird (vorgesehen, um im Basic mit POKE Zelle
+        und CALL 0FFDFH zu drucken)
+
+FFCDH - JMP DRINI Initialisierung des logischen Druckertreibers
+
+FFCAH - JMP ZEIDR uebergibt ein Zeichen im Akku an physischen
+        Druckertreiber
+
+FFBBH - JMP GETST Abfrage der Joysticks und Uebergabe des Ergeb-
+        nisses in BC (B-links,C-rechts) mit folgender Bit-Be-
+	deutung (1)
+        Bit 0 - links
+            1 - rechts
+            2 - runter
+            3 - hoch
+            4 - Aktionstaste
+        Z-Flag=1, wenn keine Betaetigung vorliegt
+        CY-Flag=1, wenn Spielhebel nicht angeschlossen sind
+
+FFB8H - JMP SOUND  Ausgabe einer vollen Periode auf die Tonband-
+        buchse, sowie auf Bit 7 vom Systemport 
+        Uebergabe der Periodendauer in C mit T=n*33mks+20mks
+        (2MHz) 
+Die Routinen DRINI,  DRZEL,  DRAKK und ZEIDR sind nicht in den  oberen  
+4K realisiert und sind mit JMP 0E800H, 0E803H, 0E806H und E809H
+initi alisiert, wo man einen Unterverteiler fuer den verwende-
+ten Druckertreiber installieren kann.
+
+
+5. Zusammenfassung
+
+Es wurde eine alternative Tastaturvariante beschrieben, die 
+professionellen Anspruechen gerecht wird und durch folgende Vor-
+teile gekennzeichnet ist:
+
+- geringer, leistungsarmer Hardwareaufwand
+- zwischen Tastatur und Rechner nur 10-adriges Kabel
+  erforderlich 
+- Anzeige der Tastaturmodes durch LED's
+- schaltbarer Tastenklick 
+- schnelle und sichere Abfrage
+- Interruptfaehigkeit
+- hohe Softwarekompatibilitaet
+- freie Belegbarkeit der Tasten (ausser SHIFT, CTRL und CODE)
+- frei programmierbare Stringausgabe
+- Repeatfunktion auf allen Zeichentasten
+- einfache Monitorrueckkehr durch RST 38H-Taste 
+- direkter UP-Aufruf Screencopy aus der Tastaturroutine heraus
+- Direktspruenge zu festen Adressen (100H) 
+- es koennen gegenueber der alten Routine alle Steuerzeichen
+  erzeugt werden  
+- Abfrage einer maximal 8*12 Matrix
+- einfache Erweiterung der Tastatur auf 96 Tasten, indem die
+  nicht besetzten Positionen aufgefuellt und in der Belegungs-
+  tabelle eingetragen werden
+
+
+Dem gegenueber stehen die Nachteile:
+
+- es wird zusaetzlicher Adressraum des Hauptspeichers benutzt
+- es muss eine Aenderung des originalen Monitorprogramms
+  erfolgen 
+- nur bedingte Kompatibilitaet bei Direktzugriffen auf die
+  Matrix und bei Spruengen in die originale Routine hinein
+
+Betrachtet man Vor- und Nachteile, so kann festgestellt werden,
+dass es sich lohnt, die Nachteile in Kauf zu nehmen, zumal eine
+Aenderung des Monitors nur einmal erfolgen muss. In jedem  Fall
+stellt diese Tastatur eine echte Alternative zu den bisher vor-
+handenen,  meist  weniger leistungsfaehigen Konzepten dar.

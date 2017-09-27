@@ -1,0 +1,212 @@
+
+
+Einige wichtige Adressen:
+
+1.Produzent des Z 1013
+
+  VEB Robotron-Elektronik Riesa
+  Pausitzer Strasse 60 (PSF 9)
+  Riesa,8400
+
+
+2.Reparatur
+
+  VEB Industrievertrieb Rundfunk
+  und Fensehen Berlin
+  Betriebsteil Friedrichshain
+  Neue Bahnhofstrasse 30
+  Berlin,1035
+  (Oeffnungszeiten Mo-Fr.:
+   10.oo-13.oo und 15.oo-19.oo)
+
+
+3.Verkauf
+
+  -Robotron- Fachgeschaeft fuer
+   Heimelektronik
+   Juri-Gagarin-Ring 25
+   Erfurt,5020
+
+  -HO Bastlerbedarf
+   E.-Thaelmann-Str.39
+   Riesa,8400
+   (auch f.gesellsch.Bedarfstr.)
+
+
+4.Bauelemente
+
+ -Konsum-Elektronik-Versand
+  Clara-Zetkin-Str.21
+  Wermsdorf,7264
+  (Versand per Nachnahme)
+
+ -hobby-electronic
+  Inh.Reinhard Sullus 
+  Schweriner Strasse 36
+  Dresden,8010
+  (RAM-Floppy Lp)
+
+ -Gerlich
+  Markscheiderweg 08/417
+  Neubrandenburg,2000
+  (Lp Versand per Nachnahme)
+
+
+Literaturuebersicht:
+
+
+**** Mikroprozessortechnik ****
+
+-H.-J. Bachmann,Elektronische Taktfrequenzumschaltung beim Z1013
+ (Variante 1:1xD150,Variante 2:D150,DL000,DL074,Variante 3:
+ 2xDL000,DL074),9/87,Seite 282
+-H.-J.Bachmann,BASIC-Interpreter fuer Z1013 (Hinweise zur 
+ Nutzung bei 64 KByte-RAM),2/88,S.61
+-Wolfgang Kammerer,Wolfgang Spindler,RAM-Disk fuer
+ K-1520-Systeme,3/88,S.74
+-Weiss,30.ZMMM(Erweiterungsbaugruppen Z1013),3/88,S.92
+-H.-J.Bachmann,RAM-Speichererweiterungen fuer Z1013 
+ (zusaetzliche 16KByte-Baenke/16KByte-RAM-Module/64KBit-Schalt-
+ kreise/Speicherbereich E000-E3FF),4/88,S.119 
+-H.-U.Moik,Erste Z 1013-Tagung (Bericht),4/88,S.128
+-Rainer Brosig,Z 1013-Tastatur mit Raffinessen,7/88,S.215
+-R.Buettner,Z 1013-Service(neue Reparaturwerkstatt),10/88,S.314
+
+
+**** rfe ****
+
+-Leipziger Fruehjahrsmesse 1986,Teile 1,Computertechnik DDR
+ (Vorstellung Z 1013),6/86,S.346
+-H.-J.Bachmann,MRB Z 1013 (Vorstellung),10/86,S.622
+-Dr.-Ing.Thomas Heinke,Tastatur K 7659 am Z 1013
+ (EPROM-Inhalt/BASIC-Programm zum Erarbeiten des EPROM's bei
+ anderen Tastaturen), 10/86,S.623
+-Leipziger Fruehjahrsmesse 1987,Computertechnik,DDR
+ (Vorstellung Erweiterungsbaugruppen),6/87,S.347
+-H.-J.Bachmann,Elektronische Taktfrequenzumschaltung (D150),
+ 6/87,S.403
+-Sven Stoelzer,8-bit-Refresh oder Probleme bei der Speicher-
+ erweiterung des Z1013,7/88,S.47
+-Herbert Schneider,Eigenbauplotter (4.Computertagung,Fft./O),
+ 11/88,S.722
+-Dipl.-Ing.Herbert Mathes,Einsatz von 256-Kbit-dRAMs in U-880-
+ Systemen (Schaltung/keine Lp/keine Software), 1/89,S.26
+
+
+****  technikus ****
+
+-Mikrorechner zum Einsteigen,7/86,S.41
+-W.Hoffmeister,Neues vom Z 1013,7/88,S.41
+-Dipl.Ing.K.Schlenzig,Z 1013 Tipp-Tips(BAS-Signal
+ direkt/Stromvesorgung verbessert/Cursor mit Turboantrieb,
+ Tastenklick),12/87,S.36
+
+
+
+
+**** practic ****
+
+-Lutz Wolfien,Sternschnuppe(Tiny-BASIC-Spielprogramm),1/87,S.30
+-R.Besser,MRB Z1013(Technische Daten,Bezug,Erweiterungen),
+ 2/87,S.54
+-Uwe Rehn,Tastaturpiep(2xDL000,DL020,DL123),2/87,S.55
+-Gerd Melcher,Gehaeuse fuer den Z 1013(Piacryl),2/87,S.56
+-Peter Berg,Frequenzumschaltung (D103),3/87,S.110
+-Reiner Jaenisch,Effektives Programmieren von Blockgrafik,
+ 3/87,S.111
+-DT 64 uebertraegt Computerprogramme(Wissenstest VR
+ China/Berlin-Quiz),3/87,S.112
+-Joysticks(U.Kindermann,4xMikrotaster/Juergen Kampf,Messing-
+ platte,4xDrucktaster/Besser,4xMikrotaster und Aktionsknopf/
+ U.Kindermann,Anschluss und Programmierung),4/87,S.18
+-R.Besser,Erweiterungsbaugruppen von Robotron,4/87,S.160
+-R.Besser,Gehaeuse fuer den Z 1013(Riesaer Konzept),1/88,S.37
+-R.Besser,Computer Tastaturen(Folienflachtastatur mit Halterung/
+ Modelleisenbahntasten/Schuettoff,Eigenbautasten aus Holz),
+ 1/88,S.40 
+-Joachim Nolte,Mehrere KC 85/1 kompatible Joysticks an X4,
+ 1/88,S.41
+-Rainer Brosig,Joystickabfrage(Quelle und MC),1/88,S.42
+-Andrea und Ulf Kindermann,Vollgrafik mit dem Z 1013(Spectrum-
+ "Umbau"),2/88,S.87
+-Ralf Kuenstler,Zweikugelmaus(mit MC),3/88,S.135
+-Bernd Matzke,Andreas Koehler,Mini-Synthesizer am Z 1013
+ (2xV4066,B555),3/88,S.136
+-Volker Erlenbach,Tiny-BASIC auf dem Z 1013,3/88,S.138
+-Uwe Rehn,D.Bittner,Systemuhr fuer den Z 1013 ohne CTC (mit
+ externem Sekundentakt),4/88,S.181
+-Peter Berg,Uwe Rehn,Ein frei verschiebbarer Druckertreiber
+ (Quelle fuer die Riesaer V24),4/88,S.182
+-Peter Berg,Uwe Rehn,Umschaltbarer Zeichengenerator (Huckepack
+ auf A44),4/88,S.183
+-R.Besser,Computer-Infos (Tastaturbausatz von Nordhausen/
+ Solibasar der Jugendmedien/ 256KByte-RAM-Floppy/ Service vom 
+ Robotron Computerclub Leipzig),4/88,S.184
+-Andreas Strasser,Junost als Monitor,1/89,S.39
+-Rolf Adomeit,Bildroehrenersatz im Junost,1/89,S.40
+-Klaus Steglich,Linearer Frequenzgang beim Geracord
+ (Entfernung von 4 Kondensatoren),1/89,S.41
+-M.und W.Michel,Retten defekter BASIC-Programme,1/89,S.41
+-Wolfgang Boehnisch,Einlesehilfe(externer Verstaerker),
+ 1/89,S.42 
+-H.-J.Bachmann,2.Z-1013-Tagung (Ankuendigung),1/89,S.42
+-R.Besser,...und bitte um alle Programme..."(zum Softwaretausch)
+-R.Besser,Solitag der Jugendmedien(Ergebnis),1/89,S.42
+
+geplant bzw. in Vorbereitung:
+2/89: - V 24- und CENTRONICS-Eigenbau 
+      - S 3004 am Z 1013
+      - Speicherservice (MC-Programm)
+      - Programmkopierer mit 10 Anschluessen
+
+3/89: - 64-Zeichen-Leiterplatte
+      - C-Messgeraet
+
+
+
+
+**** FUNKAMATEUR ****
+
+-Analoges E/A-Modul zum MRB Z 1013 (Unverbindliche Bedarfser-
+ mittlung von Robotron Hoyerswerda),4/86,S.202
+-T.Wulff,Einfache Tastatur fuer den MRB Z 1013 (Klingeltaster),
+ 11/86,S.567
+-Ing.E.Kahl,Halltastatur fuer den MRB Z 1013 (TSH 19),3/87,S.150
+-W.Bremer,Tastatur fuer den MRB Z 1013 (Halltasten MH 1 SS 1),
+ 4/87,S.203
+-Dr.H.Gutzer,Kleincomputer in der DDR-eine Uebersicht,
+ 6/87,S.268 und 7/87,S.325
+-B.Elendt,Verbesserte Tastatur fuer den MRB Z 1013(Hall-Tasten),
+ 8/87,S.406
+-Ing.H.Simmerling,Ing.M.Muetze,RTTY-Programm (MC-Listing),
+ 9/87,S.458
+-Uwe Rehn,Speichererweiterung auf 32 KByte(Huckepack),
+ 12/87,S.614
+-Dipl.-Ing.R.Brosig,Richtlinien zur Softwareentwicklung fuer
+ den MRB Z 1013,2/88,S.65
+-K.Zietkowski,AC1-Tatatur am Z 1013,3/88,S.117
+-Uwe Rehn,1-K-RAM-Speichererweiterung (E000-E3FF),3/88,S.119
+-Peter Berg,Ein Werkzeug fuer den Z 1013 (Hex-ASCII-Dump),
+ 3/88,S.121
+-O.Matthaei,Einfache Funktionskontrolle des Z 1013 (ohne
+ Monitor- LED-Blinken als Anzeige),6/88,S.275
+-S.Guenther,Dr.-Ing.U.Hinz,RESET-Logik fuer den Z 1013,
+ 6/88,S.276
+-O.Matthaei,Kassettenlisten auf IRM fuer den Z 1013,7/88,S.327
+-H.-J.Bachmann,Z 1013 - 64KByte auch mit Baugruppentraeger,
+ 8/88,S.379
+-Uwe Rehn,Diskussion:Ein Werkzeug fuer den Z 1013 (siehe 3/88),
+ 10/88,S.484
+-Dipl.-Ing.V.Luehne,Sprungverteiler fuer den Z 1013 -
+ Betriebsystem-Erweiterungen, 10/88,S.484
+-B.Schubert,FORTH fuer den MRB Z 1013 (Beschreibung und
+ Bezugsmoeglichkeit),12/88,S.586
+-U.Reiser,Tips zur Flachtastatur des MRB Z 1013 (Tastaturpiep/
+ Funktionstasten),1/89,S.18 
+
+
+**** Elektronisches Jahrbuch ****
+
+-Obering.Karl-Heinz Schubert,Mikrorechnerbausatz MRB Z 1013
+ (ausfuehrliche Beschreibung/Vorschlaege fuer Stromversorgung/
+ Tastaturpiep),S.70

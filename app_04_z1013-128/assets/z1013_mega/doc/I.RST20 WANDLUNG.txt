@@ -1,0 +1,56 @@
+	Programmbeschreibung RST 20 Wandlung
+
+Das Programm realisiert das Auffinden und die Wandlung der als
+Untugend bekannten CALLs zum Aufruf von Monitorroutinen. Es ist
+relokatibel also an keine bestimmte Laufadresse gebunden.
+Zur Bedienung: Anfangsadresse ist gleich Startadresse. Nach dem
+Start erfolgt eine Abfrage der Anfangsadresse ab der gewandelt
+werden soll. Die Endadresse ist mit E000 H fest im Programm
+vorgeben. Die Eingabe einer groesseren Adresse fuehrt zum Rueck-
+sprung in den Monitor.
+ Nach ENTER erfolgt sofort der Suchlauf und gegebenenfalls die
+Wandlung. Der Stand der Abarbeitung ist auf dem Bildschirm in
+Form der Nummern der Spezifikationsbytes (00 - 13 H) ablesbar. 
+Gefundene CALLs werden in die Form 00 E7 DB gewandelt und deren
+Adresse angezeigt. Die Routinen HEXUM DB 12 und ALFA DB 13
+werden mit gewandelt und muessen bei Bedarf kurzgeschlossen
+werden. Die Adressen dieser Routinen sind auf dem Bildschirm
+ablesbar. Nach Abarbeitung des Programms wird zum Monitor
+zurueckgekehrt.
+Zur Funktion des Programmes: Aus der eingegebenen Anfangs-
+adresse und der Endadresse E000 H wird die Anzahl der Bytes
+berechnet die durchsucht werden sollen. Anschliessend ermittelt
+das Programm seine eigene Adresse und berechnet daraus die An-
+fangsadresse der Tabelle mit den Adressen der CALLs . Diese
+Tabelle befindet sich unmittelbar nach dem Programm. Das IX
+Register wird als Zeiger gesetzt. Die Hauptfunktion des
+Programms uebernimmt der Blocksuchbefehl CPIR . Geladen mit der
+Anfangsadresse (HL), der Bytezahl (BC) und dem zu suchenden Byte
+ CD fuer CALL  (A) wird bei jedem CALL mit dem Inhalt der
+Tabelle verglichen, deren Adresse durch IX gezeigert wird. Bei
+Uebereinstimmung wird gewandelt ansonsten mit CPIR fortgefahren.
+Ist die gesammte Bytezahl durchsucht wir mittels IX die naechste
+Adresse in der Tabelle eingestellt und der CPIR Befehl neu durch-
+laufen. Nach jedem 19.(=13 H) Durchlauf wird die Tabelle auf
+ihr Ende (FF H) geprueft. Ist das Ende erreicht wird zum Monitor
+zurueckgesprungen. Ist das Ende noch nicht erreicht wird wieder
+mit Datenbyte 00 angefangen zu wandeln. Somit sind leicht
+mehrere Monitorvarianten mit unterschiedlichen Adressen der 
+einzelnen Routinen ueberpruefbar . Bedingung ist, dass die Tabel-
+le immer um ein Vielfaches von 38 (=19 Adressen je 2 Byte = 13 H
+ = Anzahl der RST 20 Routinen) erweitert wird und als Ende FF H
+enthaelt.
+Im vorliegenden Programm sind zwei Varianten in der Tabelle ent-
+halten. 1. die Adressen der Monitorroutinen 2.02
+2. die Adressen der Monitorroutinen A.2 .
+    
+November 1988
+
+Kostenlose Weitergabe sowie Fehlerhinweise und Programmtausch
+erwuenscht.
+
+
+	Karl-Heinz Reuther
+	Querstrasse 4
+	Frohburg
+	7233

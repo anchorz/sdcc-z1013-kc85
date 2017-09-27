@@ -1,0 +1,25 @@
+;------------------------------------------------------------------------------
+; Z1013-DVU2_A000.z13
+;------------------------------------------------------------------------------
+
+es gibt auch nur das Z1013DVU  welches auf A000H läuft ! Diese Version 
+unterstützt auf den HeaderSaveSprungverteiler und klingt sich da ein  Am 
+Programmanfang liegt der Sprungverteiler:
+
+Sprungverteiler_Anfang:            ; Sprungverteiler für Aufruf
+         JP  0FFF1H                ; UP LORUF
+         JP  0FFF4H                ; UP SARUF
+         JP  Kaltstart             ;
+
+Das heißt, DVU wird einmalig mit JP A006H initialisiert (eintragen 
+Kennbuchstaben, Sprungverteiler etc..) und kann dann wie HeaderSave verwendet 
+werden.
+
+Gruß Ralph
+ralphhaensel@gmx.de
+
+http://ac1.spdns.de Benutzername und Passwort "ac1-user"
+
+;------------------------------------------------------------------------------
+; 
+;------------------------------------------------------------------------------

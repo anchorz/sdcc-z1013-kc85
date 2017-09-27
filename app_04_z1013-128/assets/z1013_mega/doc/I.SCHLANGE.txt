@@ -1,0 +1,39 @@
+****************************************************************
+*                                                              *
+*            Beschreibung des MC-Spiels 'SCHLANGE'             *
+*                                                              *
+****************************************************************
+
+Programmstandort  :  100H - 6FFH
+
+Start             :  100H
+
+Spielinhalt :
+-------------
+Zuerst erfolgt die Eingabe der Spielstärke. (0-9) Dann erscheint
+das Spielfeld mit der Schlange. Nun muß man die Schlange so steu-
+ern, daß das Inhaltszeichen (40H) berührt wird. Danach wird die
+Schlange immer um ein Feld länger.
+ACHTUNG !!!  Es darf aber nicht das Hindernis oder der Rand be-
+rührt werden. Der Rekord wird oben links auf dem BS angezeigt,
+die aktuelle Punktzahl oben rechts.
+Während des Spiels Tonband auf Aufnahme stellen, da dieses Spiel
+mit Sound ist.
+
+Anpassung :
+-----------
+26EH    08H    (links)
+264H    0BH    (hoch)
+278H    0AH    (runter)
+282H    09H    (rechts)
+
+Wenn eine Tastatur ohne die Cursortasten für 'runter' und 'hoch'
+genutzt wird, so müssen die Werte in diesen Zellen entsprechend
+den eigenen Anforderungen geändert werden.
+
+Beschreibung :     RACYsoft
+--------------     Boris Prey
+                   Willy-Krause-Str.7
+                   Schwarzenberg
+                   9430
+                   Tel. 2992

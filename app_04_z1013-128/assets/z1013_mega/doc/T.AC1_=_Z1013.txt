@@ -1,0 +1,114 @@
+
+
+*****************************************************************
+
+
+                    AC 1 TAPE FUER Z 1013
+
+
+*****************************************************************
+
+
+Das Programm AC 1 Tape realisiert die Kassettenroutinen des AC 1
+im Z 1013.
+Damit wird es dem Z 1013-Nutzer moeglich,AC 1 Files einzulesen,
+zu vergleichen und auszugeben.Es dient damit dem Austausch von
+Programmen, Textfiles usw. unter Amateuren,die diese beiden
+Rechner nutzen.
+
+Hardwarevoraussetzungen:
+
+-Taktfrequenz des Z 1013: 2MHz
+-Kassettengeraet optimal eingestellt,gute Hoehenwiedergabe
+
+Softwarevoraussetzungen:
+
+-Z 1013 mit Originalmonitorfunktionen
+-Alle verwendeten Monitor-Unterprogramme werden ueber RST 20 
+ aufgerufen und muessen bei einem geaenderten Monitor ueber 
+ diesen Ruf erreichbar sein.
+
+Programmfunktionen:
+
+SAVE AC 1:
+Es wird ein File von der Anfangs-bis zur Endadresse ausgegeben.
+Als drittes Argument wird die Startadrese angegeben. Die
+Adressen werden gespeichert. Maximal 70 Zeichen sind fuer den
+Programmnamen zulaessig. Beispiel:W aC 0100 05AF 0100 AC 1
+TAPE FUER Z 1013
+
+VERIFY AC 1:
+Ein AC 1 File wird mit dem im Kopf des Files eingetragenen
+Speicherinhalt verglichen.Stimmen di Daten nicht ueberein, so
+fuehrt das zum Programmabruch. Es werden die Abbruchadresse,
+die Daten des Speicherplatzes und des Files ausgegeben.
+Bei Uebereinstimmung des Files wird am Progrmende die Zelle
+fuer Argument 1 mit der Startadresse glden un auf dem Bild-
+schirm ausgegeben.
+Ein lauffaehiges Programm kann mit J: gestartet werden. Beim
+Vergleich mit Offsett muss als Argument 1 die Diferenz als Hex-
+Zahl eingegeben werden.Ohne Leerzeichn folgt darauf di Angabe +
+oder -. Beispiel:W aCv 1000-
+Die Angabe des +Zeichens kann entfallen.
+Wird beim Lesen ein Pruefsummenfehler ermittelt, erfolgt der Ab-
+bruch mit Checksummenbreak.
+
+LOAD AC 1:
+Alle Routinen wie bei VERIFY. Es erfolgt ein Vegleich,ob die
+Daten eingelesen wurden. Beim fehlerhaften Einlesen bzw. beim 
+Einlesen auf einen nicht vorhandenen Speichrplatz wird abge-
+brochen.
+
+Das Programm belegt den Bereich von 100H bis 5AFH und ist nicht
+verschiebbar. Alle Funktionen werden ueber WaC-Kennbuchstaben
+aufgerufen. Sollen andere als di eingtragenen Kennbuchstaben           
+verwendet werden,koennen diese als ASCII-Codes in den Zellen
+ 0157 fuer SAVE
+ 0190 fuer LOAD
+ 01CD fuer VERIFY
+ 020A fuer MENUE
+eingetragen werden.
+In der Zelle 0548 steht eine Zeitkonstant (3C).Sie kann zur An-
+passung an geringfuegige Frequenz- bzw. Bandgeschwindigkeits-
+differenzen veraendert werden.
+Der Z 1013 befindet sich staendig im Monitor.Dadurc sind alle 
+Monitorfunktionen staendig verfuegbar.
+
+Besonderheiten:
+Der Arbeitsspeicher des AC 1 beginnt bi 1900H. Alle Programme 
+fuer den AC 1 sind deshalb beim Ausladen auf diesen Bereich zu
+verschieben.
+Die Programmfunktion STOP wurde nicht uebernommen, weil die 
+Tastaturabfrage des Z 1013 zu lang ist. Das File laesst sich
+nicht synchronisieren. Ein Abbruch waehrnd SAVE,LOAD oder
+VERIFY ist nur mit RESET oder NMI moeglich.
+Die meisten AC 1 verarbeiten nur eine Namensroutine von 16
+Zeichen. Laengere Zeichen werden nicht zur Anzeige gebracht,das
+File wird aber trotzdem richtig gelesen.
+Andere Programme koennen, wenn sie nicht den gleichen Speicher-
+bereich oder die gleichen Kennbuchstaben benutzen,im Z 1013 ver-
+bleiben und nacheinander genutzt werden. Der Sprungverteiler
+(im RAM) wird durch dieses Programm nur zerstoert, wenn gleiche
+Kennbuchstaben verwendet werden oder die Zellen ab D4H auch
+belegt sind.
+BASIC-Files koennen mit diesem Programm nicht wechselseitig ge-
+lesen werden.Die jeweiligen Intepreter besitzen unterschiedlche 
+Routinen.
+
+Hiermit moechte ich mich bei den Z 1013 Freunden bedanken,die 
+an der Programmerstellung und beim Testen mitgwirkt haben.
+
+
+    Viel Erfolg beim
+
+                Programmaustausch
+
+                                wuenscht
+
+                                         H.Venzke
+                                         John Schehr Str. 23
+                                         Berlin
+                                         1055
+   
+
+ 

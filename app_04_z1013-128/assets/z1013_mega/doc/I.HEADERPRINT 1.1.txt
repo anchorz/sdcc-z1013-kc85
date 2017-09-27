@@ -1,0 +1,41 @@
+***************************************************************
+               Beschreibung zum Headerprint 1.1      (C) by RB
+***************************************************************
+
+
+
+Das Headerprint-Programm dient der automatischen Erfassung von 
+Kassetteninhalten, die mit dem Headersave-Programm aufgezeichnet 
+wurden, auf einen Drucker. 
+
+
+Standort: 100H - 37FH  Start: 100H
+
+
+Anpassung: 103H: JMP DRDEL ;Ruecksetzen logischer Druckertreiber 
+           106H: JMP DRAKK ;Uebergabe Zeichen (Akku) an Druckertr.
+
+
+Nach dem Start des Programms wird abgefragt, ob ein neues Ver-
+zeichnis angelegt werden soll. Wenn ja, wird die Kassettenseite 
+(A,B o. 1,2) sowie der Name der Kassette abgefragt (beliebiger
+String). Diese Angaben werden danach als Kopf ausgedruckt.
+Auf die Aufforderung START TAPE kann die Kassette entweder
+von vorn oder ab der aktuellen zu protokollierenden Position ge-
+startet werden. Nun wird immer dann, wenn ein Programmkopf gele-
+sen wird, der Inhalt des Kopfes als ASCII-String zeichenweise
+an den Druckertreiber uebergeben. Bei sehr langsamen Druckern
+ist zu beachten, dass der naechste Kopf erst dann gelesen werden
+kann, wenn der vorherige Kopf fertig gedruckt ist (kann vor al-
+lem bei sehr kurzen Programmen vorkommen). Der Abbruch des Pro-
+gramms kann, so lange ein Signal anliegt, mit BREAK (S4-K) er-
+folgen, ansonsten mit RESET.
+Nach dem Start des Programms wird ein Programm zum Ruecksetzen 
+des Druckertreibers angesprungen (kann auch zum Initialisieren 
+benutzt werden). Wird ein solches Programm nicht benoetigt, kann
+der entspr. Sprung auf 103H mit RET (C9H) kurzgeschlossen werden.
+
+
+Zweckdienliche Hinweise bitte an Rainer Brosig, W.-Florin-Str. 2c
+COSWIG, 8270.
+
