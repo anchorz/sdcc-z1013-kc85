@@ -40,6 +40,18 @@ a3ab030687267999d321c94fb16f73c6 *MAUER+J.z80 ; [] Joystick wird nicht korrekt i
 f64b69fdc0d9f2f4b8081fda9220a698 *VAMPIR+J.z80
 dced692ddba89e7dd7064a30fb319fb2 *GALAXIS+J.z80
 7e8d567986137f27499ecd4628c5de54 *NEW YORK+J.z80
+a46e092fea01195ee5179655cfa695e2 *SUPER_SKI+J.z80 ; Joystick wird nicht korrekt initialisiert
+425c7242c7c41cd7fe4ce38c94593fe3 *GALAKTIKA+J.z80 ; Joystick wird nicht korrekt initialisiert
+480c188d959c33fa5470b7103d2c5c0e *TURTLE_PLAYER+J.z80  ; Joystick wird nicht korrekt initialisiert
+f05e2c61882aa08fe25029f713a6309e *WIZARD_ANG.z80 ; Tasten für Hoch und Runter vertauscht
+248587e81b551e5dfda48acad5572764 *SOKOBAN.z80    ; header ist nicht korrekt, Endaddresse ausserhalb der Datei
+2da98e810bf7d299f4fe7c0750d73992 *DIGGER.z80     ; identisch mit [] - aber Dateilänge kein Vielfaches der Blocklänge 
+387d07b8b13826fceb37a0e888ba1160 *the last chance1.z80  2.B..   ; Header stimmt nicht - Image ist 1 Byte zu kurz
+47f2e0f7c360c4222fad98994d53acdc *the last chance3.z80  2.B..   ; Header stimmt nicht - Image ist 1 Byte zu kurz
+
+
+
+
 
 # sonstiges
 71e7473bef203f31b7c3f844166bd850 2.B...  *JUMPING-JACK.z80 ;[6a2b89d0db56afa89fe9aee6d8ac4bab] dies ist eine veraltete Version; benutzt CALL, direkte Monitor-Aufrufe; neue Version benutzt RST20-Aufrufe                                            
@@ -75,8 +87,30 @@ a91675b35f87b1f131f2bbe4db2ecb9b *mauer+prJ.z80       2ABP.
 01ab733cd715e108ed59279a8976fc4e *vampir+prJ.z80      2ABP.
 2b79807c7ef3e2d87d98d4911995dbbd *galaxis+prJ.z80     2ABP.
 e6c9f922dee443d81989a82e6e35bb8f *new_york+prJ.z80    2.BP.
+fdda4f9dfa412d18c09865a44a628019 *fighter+prJ.z80     2ABP.
+2128ac8fbed268e760cc2df576d980d2 *SCHIESSBUDE.z80     ..B.J ; Joystick Richtungen nicht identisch mit Practic01/88, SPV: CALL 0xfffa
+8aa99a62c003cd7d767499cd8605ca56 *schiessbude+prJ.z80 ..BP. ; SPV
+0b8094eb545d9e3b48c0cb636663ae17 *super+ski+prJ.z80   2.BP. ; CALL
+635f14dbd74d510b8915598a0fbe0356 *galaktika+prJ.z80   2ABP. ; RST20 
+174e08f7fd0f8f404e908f91fb13e2e7 *turtle_player+prJ.z80 2ABP. ; RST20
+25fa3cab3b66d9ac9b2e1b25bc00fc34 *wizard_ang.z80        2.B..   ; CALL
+4df50045ce689f42fe3c56f0de5ce676 *PING_PONG.z80         2.B..   ; RST20 Tasten 1,2 oder (E)nde
+cd45bcb2865af839772f929810af4227 *sokoban.z80
+c318e23b99cb8353a4ab5d494f64198d *WURMI.z80             2....   ; es laeuft auch auf Brosig und A2, aber leider zu schnell
+e23e3f9502a6b428d42fb88f5539eefa *wurmi_bro.z80         2.B..   ; identisch zu [] aber bit 6 bei 27h wird gesetzt, das bewirkt ein langsames Tasturverhalten
+9d218dd29b31e742aba5c505150a2a4e *aladin.z80            2...J   ; anderer Joystick
+3f548188256c80c201be5eb2a48c7bf0 *alf.z80               2AB..   ;
+b8c97ca003ad9c3c961e72f0990b5718 *demo_z1013_v1.z80     2AB..
+3880394d85b4f2270213eff306bc6216 *u-boot.z80            2AB..   ; PASSWORT ist ROVERS
+7fa44466f2cf9cdd94182faf9bc6991c *the_last_chance3.z80  2AB..
+51dc68d45ba32710900f14ea78cc4215 *the_last_chance1.z80  2AB..
+ed03e0be1d049a28f46fbe0de362ab6a *edas_a+d+h+ae_ub.z80  2AB..   ; 0x1f4 end of text. wichtig wennn man quelltexte einlesen will, dann muss man die Stelle nach dem Laden aktualisieren
+f4e80cb63a5825206a098a61021243a5 *edas_text.z80                 ; dok zu edas
+e2b0bd5ed5f1f063c34d7d7bfaa44f5c *edas.com.z80                  ; aeltere Version von [ed03]
+b10d8c886aff1ff78d45c70d2c96180c *edas_3_1.z80          2AB     ; anderer Editor/Assembler 
 
-#nochmal prüfen
+
+#nochmal prüfen  
 
 4d17b007dc569594d85f2e14d5c7f3d8         *mt4_6_doc; Datei fehlerhaft - 3 Stellen korrigiert
 2cae3816b75d7c877e573c0bdc0062b5         *oc_editor_4_1_I; Datei fehlerhaft - 1 Stelle korrigiert

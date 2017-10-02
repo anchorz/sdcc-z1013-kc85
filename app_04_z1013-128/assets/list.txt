@@ -21,9 +21,30 @@ db/3d6fb742662480be4362d5c1386a95e5-tetris+prJ/tetris+prJ.z80
 db/58d5584eacb0f5bb95208dc74bc042ae-graverobber+prJ/graverobber+prJ.z80
 db/40eaf15d723d89e7695e5a9445e2229e-miami+prJ/miami+prJ.z80
 db/c7dd147108d05c5575f8872fd9987358-reaktor+prJ/reaktor+prJ.z80
-db/0fd7e15a38d589f921094f0112d6344a-hase+wolf+prJ/hase+wolf+prJ.z80 
+db/0fd7e15a38d589f921094f0112d6344a-hase+wolf+prJ/hase+wolf+prJ.z80
 db/a91675b35f87b1f131f2bbe4db2ecb9b-mauer+prJ/mauer+prJ.z80
 db/01ab733cd715e108ed59279a8976fc4e-vampir+prJ/vampir+prJ.z80
 db/2b79807c7ef3e2d87d98d4911995dbbd-galaxis+prJ/galaxis+prJ.z80
 db/e6c9f922dee443d81989a82e6e35bb8f-new_york+prJ/new_york+prJ.z80
+db/fdda4f9dfa412d18c09865a44a628019-fighter+prJ/fighter+prJ.z80
+db/8aa99a62c003cd7d767499cd8605ca56-schiessbude+prJ/schiessbude+prJ.z80
+db/0b8094eb545d9e3b48c0cb636663ae17-super+ski+prJ/super+ski+prJ.z80
+db/635f14dbd74d510b8915598a0fbe0356-galaktika+prJ/galaktika+prJ.z80
+db/174e08f7fd0f8f404e908f91fb13e2e7-turtle_player+prJ/turtle_player+prJ.z80
+db/25fa3cab3b66d9ac9b2e1b25bc00fc34-wizard_ang/wizard_ang.z80
+db/4df50045ce689f42fe3c56f0de5ce676-PING_PONG/PING_PONG.z80
+db/cd45bcb2865af839772f929810af4227-sokoban/sokoban.z80
+db/e23e3f9502a6b428d42fb88f5539eefa-wurmi_bro/wurmi_bro.z80
+db/3f548188256c80c201be5eb2a48c7bf0-alf/alf.z80
+db/b8c97ca003ad9c3c961e72f0990b5718-demo_z1013_v1/demo_z1013_v1.z80
+db/7fa44466f2cf9cdd94182faf9bc6991c-the_last_chance3/the last chance3.z80
+db/ed03e0be1d049a28f46fbe0de362ab6a-edas_a+d+h+ae_ub/edas_a+d+h+ae_ub.z80
+db/2d7a9a200ed1e1f344e61da19c933543-his__pascal_1_04/his__pascal_1_04.z80
+db/0ec6a4cb664baed278fa1941576ffe32-microword_1_5gs1/microword_1_5gs1.z80
+db/5849394be28a5fa9e843ced911cd676a-cyrus_v_3_dt/cyrus_v_3_dt.z80
+db/786d4edbdb0e9f7a74cfdad54a68cefc-cosmic_ball/cosmic_ball.z80
+db/1447f1aafc89290ad5a5aae1311714ca-river_raid_ls/river_raid_ls.z80
+db/7a4d3f8af84dcb0726b04c051d2e06fd-ohio_judith/ohio_judith.z80
+db/fc6d276a637b1c11ca4c8adae99736ca-solo_commotion/solo_commotion.z80
+db/bd2ca052b27a8b364b0f038c0a713aea-boulderdash_1_0/boulderdash_1_0.z80
 

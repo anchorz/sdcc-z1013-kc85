@@ -278,6 +278,8 @@ __at (0x1f) unsigned char Z1013_CODE;
 __at (0x2b) unsigned char * Z1013_CURSR;
 __at (0xec00) unsigned char Z1013_BWS[32*32];
 
+#define GOTOXY(X,Y) Z1013_CURSR=(char*)0xec00+(Y)*32+(X)
+
 /*
  BYTES PER LINE
  Anzahl der Zeichen pro Zeile

@@ -15,7 +15,8 @@ ROM_BANK    .equ 0x14
 
     .area _INITIALIZER
 __xinit_banked_copy:
-    out   (ROM_BANK),a
+    ld (hl),a
+    ;out   (ROM_BANK),a
     ex    af,af
     ld    a,#BWS_SWITCH   ; BWS ausschalten
     out   (MEMORY_CONF),a    
@@ -36,8 +37,10 @@ copy_byte:
     jr    nz,bank_is_set
     set   7,h ; set HL=0x8000
     ex    af,af
-    add   a,#0x04
-    out   (ROM_BANK),a
+    add   a,#0x01
+    ld (hl),a
+    ;add   a,#0x04
+    ;out   (ROM_BANK),a
     ex    af,af
 bank_is_set: 
     ld    a,c
@@ -64,8 +67,11 @@ copy_byte2:
     jr    nz,bank_is_set2
     set   7,h ; set HL=0x8000
     ex    af,af
-    add   a,#0x04
-    out   (ROM_BANK),a
+
+    add   a,#01
+    ld (hl),a
+    ;add   a,#0x04
+    ;out   (ROM_BANK),a
     ex    af,af
 bank_is_set2: 
     ld    a,c

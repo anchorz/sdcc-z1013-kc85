@@ -3,6 +3,7 @@
 file=$1
 
 pushd . >/dev/null
+
 dbroot=`dirname "$0"`/../assets/db
 cd $dbroot
 dbroot=`pwd`
@@ -16,3 +17,8 @@ mkdir "$dbroot/$md5-$base"
 
 echo Ziel: "$dbroot/$md5-$base"
 mv "$file" "$dbroot/$md5-$base/"
+
+echo list.txt:
+echo db/$md5-$base/$file
+echo Kompatibilitätsliste.txt:
+echo $md5 "*"$file

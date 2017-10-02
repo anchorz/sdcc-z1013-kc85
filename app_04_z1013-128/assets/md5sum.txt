@@ -1,0 +1,2095 @@
+a0f376c71f560f12cc5945f8aa218092 *./.DS_Store
+01ab733cd715e108ed59279a8976fc4e *./db/01ab733cd715e108ed59279a8976fc4e-vampir+prJ/vampir+prJ.z80
+2375983d36ad2d91594d076316d00164 *./db/0367b49e890ef6d5c92fa28b7f5e5b27-kc_basic+_doc/kc_basic+_doc.txt
+0367b49e890ef6d5c92fa28b7f5e5b27 *./db/0367b49e890ef6d5c92fa28b7f5e5b27-kc_basic+_doc/kc_basic+_doc.z80
+c94ff6c4b486b7dfb38cab22d717aad6 *./db/0785b50a38196cb79062254e3b156049-header_disk_45_I/header_disk_45_I.txt
+0785b50a38196cb79062254e3b156049 *./db/0785b50a38196cb79062254e3b156049-header_disk_45_I/header_disk_45_I.z80
+0b8094eb545d9e3b48c0cb636663ae17 *./db/0b8094eb545d9e3b48c0cb636663ae17-super+ski+prJ/super+ski+prJ.z80
+604654b12961850885ae56c9186791ae *./db/0cc48f65621a7478c0a3aaaed675e7bf-headersave_5_9_I/headersave_5_9_I.txt
+0cc48f65621a7478c0a3aaaed675e7bf *./db/0cc48f65621a7478c0a3aaaed675e7bf-headersave_5_9_I/headersave_5_9_I.z80
+0ec6a4cb664baed278fa1941576ffe32 *./db/0ec6a4cb664baed278fa1941576ffe32-microword_1_5gs1/microword_1_5gs1.z80
+0fd7e15a38d589f921094f0112d6344a *./db/0fd7e15a38d589f921094f0112d6344a-hase+wolf+prJ/hase+wolf+prJ.z80
+b507517f3de5a28dd1e4e200e5e20599 *./db/10040f6ed4dd893a980a8932b7831101-z1013_surl_doc/z1013_surl_doc.txt
+10040f6ed4dd893a980a8932b7831101 *./db/10040f6ed4dd893a980a8932b7831101-z1013_surl_doc/z1013_surl_doc.z80
+1447f1aafc89290ad5a5aae1311714ca *./db/1447f1aafc89290ad5a5aae1311714ca-river_raid_ls/river_raid_ls.z80
+174e08f7fd0f8f404e908f91fb13e2e7 *./db/174e08f7fd0f8f404e908f91fb13e2e7-turtle_player+prJ/turtle_player+prJ.z80
+2cf5ad5c3efcb93e128e3bbfcdc78f3b *./db/1fe83766bf2dd8fb849853aef93bf5b4-zgorig+breit/screenshot_01.png
+5eb72500024b7705a10f0461d3d8fb1f *./db/1fe83766bf2dd8fb849853aef93bf5b4-zgorig+breit/zgorig+breit.bin
+1fe83766bf2dd8fb849853aef93bf5b4 *./db/1fe83766bf2dd8fb849853aef93bf5b4-zgorig+breit/zgorig+breit.z80
+2128ac8fbed268e760cc2df576d980d2 *./db/2128ac8fbed268e760cc2df576d980d2-SCHIESSBUDE/SCHIESSBUDE.z80
+25fa3cab3b66d9ac9b2e1b25bc00fc34 *./db/25fa3cab3b66d9ac9b2e1b25bc00fc34-wizard_ang/wizard_ang.z80
+946ebc6d2603e25fd6e861e3eec07711 *./db/26455e9618c8d20a53d90ec185c3505a-scp_2rf_2_38_doc/scp_2rf_2_38_doc.txt
+26455e9618c8d20a53d90ec185c3505a *./db/26455e9618c8d20a53d90ec185c3505a-scp_2rf_2_38_doc/scp_2rf_2_38_doc.z80
+22ca96a88638e86826da33d45f7e1ddd *./db/26a7292133036e2795c32674093300c9-assembler_5_3_I/assembler_5_3_I.txt
+26a7292133036e2795c32674093300c9 *./db/26a7292133036e2795c32674093300c9-assembler_5_3_I/assembler_5_3_I.z80
+7422f4bf89d062bde2fc2468b6ded847 *./db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/jkcemu.gif
+28107373ce86e4492ee5f0850daac981 *./db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/kc_basic_m+.z80
+612adb245b1c61f1a441dd7b833b5e6f *./db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/screenshot_01.png
+2b79807c7ef3e2d87d98d4911995dbbd *./db/2b79807c7ef3e2d87d98d4911995dbbd-galaxis+prJ/galaxis+prJ.z80
+f286e2b83f72699acd40fc52dea042df *./db/2cae3816b75d7c877e573c0bdc0062b5-oc_editor_4_1_I/oc_editor_4_1_I.txt
+2cae3816b75d7c877e573c0bdc0062b5 *./db/2cae3816b75d7c877e573c0bdc0062b5-oc_editor_4_1_I/oc_editor_4_1_I.z80
+2d7a9a200ed1e1f344e61da19c933543 *./db/2d7a9a200ed1e1f344e61da19c933543-his__pascal_1_04/his__pascal_1_04.z80
+ca5c764bd6b6c03252b62ac5c6a274c8 *./db/2d7a9a200ed1e1f344e61da19c933543-his__pascal_1_04/pascal_1_i.doc.txt
+374eb67967a2948f82b09bd6cb2ba8a9 *./db/374eb67967a2948f82b09bd6cb2ba8a9-ALADIN+J/ALADIN+J.z80
+3880394d85b4f2270213eff306bc6216 *./db/3880394d85b4f2270213eff306bc6216-u-boot/u-boot.z80
+3d6fb742662480be4362d5c1386a95e5 *./db/3d6fb742662480be4362d5c1386a95e5-tetris+prJ/tetris+prJ.z80
+3f548188256c80c201be5eb2a48c7bf0 *./db/3f548188256c80c201be5eb2a48c7bf0-alf/alf.z80
+40eaf15d723d89e7695e5a9445e2229e *./db/40eaf15d723d89e7695e5a9445e2229e-miami+prJ/miami+prJ.z80
+452c590ae916c40ee8be3ed486eb4279 *./db/452c590ae916c40ee8be3ed486eb4279-ghost_hut+j/ghost_hut+j.z80
+ff767cd98f47446410899826660874e6 *./db/47ac5b223eb40f12728ccbee1e806c2e-z1013_forth_doc_I/z1013_forth_doc_I.txt
+47ac5b223eb40f12728ccbee1e806c2e *./db/47ac5b223eb40f12728ccbee1e806c2e-z1013_forth_doc_I/z1013_forth_doc_I.z80
+495129edca7979b7a228c8dca443b567 *./db/495129edca7979b7a228c8dca443b567-HINDERNISLAUF+J/HINDERNISLAUF+J.z80
+4c14695729d76bce2f69adfe0eac75f1 *./db/4c14695729d76bce2f69adfe0eac75f1-AUTO+J/AUTO+J.z80
+4c83963cfca689f47c5813c12e970fba *./db/4c83963cfca689f47c5813c12e970fba-wall+j/wall+j.z80
+bdad3158157274d41e249e6d9dcf58de *./db/4d17b007dc569594d85f2e14d5c7f3d8-mt4_6_doc/mt4_6_doc.txt
+4d17b007dc569594d85f2e14d5c7f3d8 *./db/4d17b007dc569594d85f2e14d5c7f3d8-mt4_6_doc/mt4_6_doc.z80
+4df50045ce689f42fe3c56f0de5ce676 *./db/4df50045ce689f42fe3c56f0de5ce676-PING_PONG/PING_PONG.z80
+4e52988b7e48446fb41bc457785c6ac3 *./db/4e52988b7e48446fb41bc457785c6ac3-wall+prJ/wall+prJ.z80
+817bc3207dd137ac93eb366baf99134e *./db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/jkcemu.gif
+4f7fa5cc3f81b6320d2adc1327d4e146 *./db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/minefield.z80
+d3d4dbfffc7e8ff11b89bd2daccc3993 *./db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/screenshot_01.png
+cf779671299af738c89867791cadde4f *./db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/screenshot_02.png
+51dc68d45ba32710900f14ea78cc4215 *./db/51dc68d45ba32710900f14ea78cc4215-the_last_chance1/the_last_chance1.z80
+522d05b0294bf46ba18ddb5304f1c76a *./db/522d05b0294bf46ba18ddb5304f1c76a-digger/digger.z80
+094bb6849d550c61d63b9e84ca317d85 *./db/522d05b0294bf46ba18ddb5304f1c76a-digger/jkcemu.gif
+2be2250f514c18302ad141909b7c4f07 *./db/522d05b0294bf46ba18ddb5304f1c76a-digger/screenshot_01.png
+9808b3d6bef6d712a9a0290f9161329c *./db/522d05b0294bf46ba18ddb5304f1c76a-digger/screenshot_02.png
+1418b7cf603e01f2da14f7b39b285a94 *./db/522d05b0294bf46ba18ddb5304f1c76a-digger/screenshot_03.png
+5849394be28a5fa9e843ced911cd676a *./db/5849394be28a5fa9e843ced911cd676a-cyrus_v_3_dt/cyrus_v_3_dt.z80
+58d5584eacb0f5bb95208dc74bc042ae *./db/58d5584eacb0f5bb95208dc74bc042ae-graverobber+prJ/graverobber+prJ.z80
+37291f59a086b842f9372ee377d2952d *./db/59fc467989b3b211c653d62c3b2aa285-rf_am_z1013/rf_am_z1013.txt
+59fc467989b3b211c653d62c3b2aa285 *./db/59fc467989b3b211c653d62c3b2aa285-rf_am_z1013/rf_am_z1013.z80
+ce9531b721456362467119a7b9c398e9 *./db/5b9cec8af8a707bb7cbc47cfde6d888d-hisoft_pascal_I/hisoft_pascal_I.txt
+5b9cec8af8a707bb7cbc47cfde6d888d *./db/5b9cec8af8a707bb7cbc47cfde6d888d-hisoft_pascal_I/hisoft_pascal_I.z80
+602a69f762181fc115b05b0145b4199b *./db/602a69f762181fc115b05b0145b4199b-jumping_jack+prJ/jumping_jack+prJ.z80
+635f14dbd74d510b8915598a0fbe0356 *./db/635f14dbd74d510b8915598a0fbe0356-galaktika+prJ/galaktika+prJ.z80
+d64c47733a895483c545ef85a15412a4 *./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jkcemu.gif
+6a2b89d0db56afa89fe9aee6d8ac4bab *./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80
+e7ec51f41ca9fd843a33b59fbb22b578 *./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/screenshot_01.png
+f588658d7b76e62843e60916499204a8 *./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/screenshot_02.png
+d64c47733a895483c545ef85a15412a4 *./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/jkcemu.gif
+71e7473bef203f31b7c3f844166bd850 *./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/JUMPING-JACK.z80
+e7ec51f41ca9fd843a33b59fbb22b578 *./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/screenshot_01.png
+f588658d7b76e62843e60916499204a8 *./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/screenshot_02.png
+111838d0c5537966064aaeb904e3fe3a *./db/75d967332d89fdcdddd6232970512a8d-beschr edas t2/beschr edas t2.txt
+75d967332d89fdcdddd6232970512a8d *./db/75d967332d89fdcdddd6232970512a8d-beschr edas t2/beschr edas t2.z80
+786d4edbdb0e9f7a74cfdad54a68cefc *./db/786d4edbdb0e9f7a74cfdad54a68cefc-cosmic_ball/cosmic_ball.z80
+7a4d3f8af84dcb0726b04c051d2e06fd *./db/7a4d3f8af84dcb0726b04c051d2e06fd-ohio_judith/ohio_judith.z80
+7fa44466f2cf9cdd94182faf9bc6991c *./db/7fa44466f2cf9cdd94182faf9bc6991c-the_last_chance3/the last chance3.z80
+8055123eb539c021ed5d48cf64f94586 *./db/8055123eb539c021ed5d48cf64f94586-voice_dice/voice_dice.z80
+8aa99a62c003cd7d767499cd8605ca56 *./db/8aa99a62c003cd7d767499cd8605ca56-schiessbude+prJ/schiessbude+prJ.z80
+5dd6a9321e49dd3d84c693baa142806a *./db/8e620d06eef21b01691026cfc6614830-chess_master_h_I/chess_master_h_I.txt
+8e620d06eef21b01691026cfc6614830 *./db/8e620d06eef21b01691026cfc6614830-chess_master_h_I/chess_master_h_I.z80
+956e4d067515ec3a9083a16b32051c43 *./db/956e4d067515ec3a9083a16b32051c43-heartrunner+prJ/heartrunner+prJ.z80
+a9f34c4e00d393b36a6c8798c40617c7 *./db/9c96876368b9c7fd79980bec061560d8-edas_i.doc/edas_i.doc.txt
+9c96876368b9c7fd79980bec061560d8 *./db/9c96876368b9c7fd79980bec061560d8-edas_i.doc/edas_i.doc.z80
+9d218dd29b31e742aba5c505150a2a4e *./db/9d218dd29b31e742aba5c505150a2a4e-aladin/aladin.z80
+c3d9122abe6ed54f2d7d301c1bfcd2f6 *./db/a521e46e82119809b12e29fe0a4f9c98-c_test_doc/c_test_doc.txt
+a521e46e82119809b12e29fe0a4f9c98 *./db/a521e46e82119809b12e29fe0a4f9c98-c_test_doc/c_test_doc.z80
+a7c929dc8f0a2d4c51e0c71e214895b0 *./db/a7c929dc8f0a2d4c51e0c71e214895b0-laby_prJ/laby_prJ.z80
+a91675b35f87b1f131f2bbe4db2ecb9b *./db/a91675b35f87b1f131f2bbe4db2ecb9b-mauer+prJ/mauer+prJ.z80
+b10d8c886aff1ff78d45c70d2c96180c *./db/b10d8c886aff1ff78d45c70d2c96180c-edas_3_1/edas_3_1.z80
+b8c97ca003ad9c3c961e72f0990b5718 *./db/b8c97ca003ad9c3c961e72f0990b5718-demo_z1013_v1/demo_z1013_v1.z80
+bd2ca052b27a8b364b0f038c0a713aea *./db/bd2ca052b27a8b364b0f038c0a713aea-boulderdash_1_0/boulderdash_1_0.z80
+306ed677a47f2967b797d1b962b46474 *./db/bdd805a74e20a7671261592bee1aebf6-leipzig_doc/leipzig_doc.txt
+bdd805a74e20a7671261592bee1aebf6 *./db/bdd805a74e20a7671261592bee1aebf6-leipzig_doc/leipzig_doc.z80
+43d6a6c7bfb983ecf5ba56ce4abd4717 *./db/bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/jkcemu.gif
+bfb5dc224824015ebe221433dc4b2bdf *./db/bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/joystick_demo.z80
+1c4a7b6b7c50505d3a8e830a5d207f6a *./db/bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/screenshot_01.png
+c318e23b99cb8353a4ab5d494f64198d *./db/c318e23b99cb8353a4ab5d494f64198d-WURMI/WURMI.z80
+c5fd4cc8a1ac5bfcf154ba9a7f83fca4 *./db/c5fd4cc8a1ac5bfcf154ba9a7f83fca4-kings_valley/kings_valley.z80
+c7dd147108d05c5575f8872fd9987358 *./db/c7dd147108d05c5575f8872fd9987358-reaktor+prJ/reaktor+prJ.z80
+421fd3690892b0be7c7f230c4da16f48 *./db/c95a380b801fb90da730e5e189ad6b50-cowboy_s.edasASM/cowboy.txt
+c95a380b801fb90da730e5e189ad6b50 *./db/c95a380b801fb90da730e5e189ad6b50-cowboy_s.edasASM/cowboy_s.edasASM.z80
+cd45bcb2865af839772f929810af4227 *./db/cd45bcb2865af839772f929810af4227-sokoban/sokoban.z80
+e87d94bb56d546ea4ffd2c71fe1a04e2 *./db/cd5d4958779622b3e545ea0072d0a8db-zeichensatz/info.txt
+1fa7912766882004fb45733a0fd325a9 *./db/cd5d4958779622b3e545ea0072d0a8db-zeichensatz/screenshot_01.png
+cbf93e90f775ebdbaf296ba3eb37da9d *./db/cd5d4958779622b3e545ea0072d0a8db-zeichensatz/screenshot_02.png
+cd5d4958779622b3e545ea0072d0a8db *./db/cd5d4958779622b3e545ea0072d0a8db-zeichensatz/zeichensatz.z80
+d7cc9d243acde235b0fc411de89839f9 *./db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/3K+CRASH.z80
+d002c13450f11c12750dd6cb417cf6b9 *./db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/jkcemu.gif
+0387af15b25710b525eefcb059690ea8 *./db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/screenshot_01.png
+783cf638d872c1913fcf6dca153647c8 *./db/db41592e1ff9551f583f537b727c37bd-beschr edas t1/beschr edas t1.txt
+db41592e1ff9551f583f537b727c37bd *./db/db41592e1ff9551f583f537b727c37bd-beschr edas t1/beschr edas t1.z80
+80b83235a5cbbd34c999458ec188ae1d *./db/dbc2a1017cc1c21aec6f06566b130f51-r_80_doc_1_2/r_80_doc_1_2.txt
+dbc2a1017cc1c21aec6f06566b130f51 *./db/dbc2a1017cc1c21aec6f06566b130f51-r_80_doc_1_2/r_80_doc_1_2.z80
+e23e3f9502a6b428d42fb88f5539eefa *./db/e23e3f9502a6b428d42fb88f5539eefa-wurmi_bro/wurmi_bro.z80
+e2b0bd5ed5f1f063c34d7d7bfaa44f5c *./db/e2b0bd5ed5f1f063c34d7d7bfaa44f5c-edas.com/edas.com.z80
+e4076a4c1394be5357fbe1746c6576ce *./db/e4076a4c1394be5357fbe1746c6576ce-mazog+j/mazog+j.z80
+e0aebccde1f9807e280cd830e5515cc2 *./db/e47db608460e1b2c182f61ad60bf974b-hexdump_1_021_I/hexdump_1_021_I.txt
+e47db608460e1b2c182f61ad60bf974b *./db/e47db608460e1b2c182f61ad60bf974b-hexdump_1_021_I/hexdump_1_021_I.z80
+e6c9f922dee443d81989a82e6e35bb8f *./db/e6c9f922dee443d81989a82e6e35bb8f-new_york+prJ/new_york+prJ.z80
+e82e4344ad97062448b83e1d89fc2926 *./db/e82e4344ad97062448b83e1d89fc2926-ladder_prJ/ladder_prJ.z80
+ecaa82cdd9b23d9f9f8971b59b123726 *./db/ecaa82cdd9b23d9f9f8971b59b123726-voice_dice_autostart/voice_dice_autostart.z80
+ed03e0be1d049a28f46fbe0de362ab6a *./db/ed03e0be1d049a28f46fbe0de362ab6a-edas_a+d+h+ae_ub/edas_a+d+h+ae_ub.z80
+a9f34c4e00d393b36a6c8798c40617c7 *./db/ed03e0be1d049a28f46fbe0de362ab6a-edas_a+d+h+ae_ub/edas_i.doc.txt
+a9f34c4e00d393b36a6c8798c40617c7 *./db/ed03e0be1d049a28f46fbe0de362ab6a-edas_a+d+h+ae_ub/edas_text.txt
+f4e80cb63a5825206a098a61021243a5 *./db/f4e80cb63a5825206a098a61021243a5-edas_text/edas_text.z80
+f7c9048bd060cc7dbc491893b4676fcc *./db/f7c9048bd060cc7dbc491893b4676fcc-encounter+prJ/encounter+prJ.z80
+fc6d276a637b1c11ca4c8adae99736ca *./db/fc6d276a637b1c11ca4c8adae99736ca-solo_commotion/solo_commotion.z80
+fdda4f9dfa412d18c09865a44a628019 *./db/fdda4f9dfa412d18c09865a44a628019-fighter+prJ/fighter+prJ.z80
+718aaed28985793fdf355a68f56b9ea2 *./download/doc/files.txt
+f560d82cb5fa44d949b3c5c34c01e56d *./download/doc/k7669_1_scr.z80
+1216543e3c3b605674308d96d78b7c29 *./download/doc/k7669_2_scr.z80
+498d97e1964aebefaee0cdb1029a6ad6 *./download/doc/k7669_3_scr.z80
+fe39387d15db0527b2210e105098c106 *./download/doc/rom_disc_bild.z80
+cf53481f476e0a0539843fb338fb8231 *./download/doc/tast1_scr.z80
+95b9aec81428388a1cc5e29695213f09 *./download/doc/tast2_scr.z80
+e074001129ce4984b80ec59fab1ee4de *./download/doc/tast3_scr.z80
+47c325513f6f5decd08fde4cf6bc568a *./download/doc/z1013_scr.z80
+3faf38ff42c2276f5986354bf379435c *./download/faq.txt
+0c5a40b5f1746dce08a3e6e775e48e69 *./download/file.html
+a2bfb57eea9600c71081fd602bed626c *./download/games/3d_muehle.z80
+9c1a246e5d350c3aef76632535f7b1c8 *./download/games/alzan.z80
+36536a1502774c5e0d97931d52a8b4e0 *./download/games/auto.z80
+11d5c952b20f8922d9ae21b2f2c0b346 *./download/games/auto_laby(900).z80
+519d53175141afb37da4057fb3f38af0 *./download/games/boalab.z80
+036066184ed76817ae71a2217551ee5a *./download/games/boerse.z80
+c94ddbf517ac1c1f125ff449d018273d *./download/games/bohrturm.z80
+bd2ca052b27a8b364b0f038c0a713aea *./download/games/boulderdash_1_0.z80
+e27e0cb0b8e752c56ef28a2de0010d47 *./download/games/box1.z80
+303a9fff4af21078f4b559e48b017740 *./download/games/centipede.z80
+43eae3486d5ea914ef6384f4b1f31d6a *./download/games/champion.z80
+cb41f24e6fb026d665b5237803172db7 *./download/games/chaos(laeuft)g_a.z80
+5d80283acf94ae55c4f93be2c74e2c18 *./download/games/chess-master.z80
+c0fb5c98d21be8387d895ba8141bbc36 *./download/games/climber.z80
+786d4edbdb0e9f7a74cfdad54a68cefc *./download/games/cosmic_ball.z80
+54a4157b16a8295d0b840d79f03ab9b1 *./download/games/cyrus_header_v_3.z80
+1f854f856ef25902a894145cf2586084 *./download/games/cyrus_v_2_dt.z80
+5849394be28a5fa9e843ced911cd676a *./download/games/cyrus_v_3_dt.z80
+8e715f9ef18ef1d0b944a0d7e3d6bc9f *./download/games/demolation.z80
+4d69a7b661cd10658ef249490e48b374 *./download/games/dicker.z80
+b90f450acc0cda7d4afcb552db98d62a *./download/games/egw.z80
+489c6702493689a252f5bca0dadf7db7 *./download/games/eidechse_a_2.z80
+856ec3de9e03d5db77cd164223c33724 *./download/games/encounter.z80
+aae41d1a5966c6e4a5c39b4bc1108e73 *./download/games/enterprise.z80
+1457c26024fa21e057459fb5019e6bc5 *./download/games/fighter_ls.z80
+3e521e753eede59dce64593e9bffa521 *./download/games/files.txt
+9a89ceab3357341141e8bf86ecfb4b43 *./download/games/flipper.z80
+45ab07dfbf1fba0aae75ce6f6a7b6f80 *./download/games/frogger.z80
+2f4b2c000c99b2b158c2ad31bcaa12fd *./download/games/fussball.z80
+783cd4e89fc0aadf585957641a7102cb *./download/games/galactica.z80
+6c5bd875ff0996695ec535583195d851 *./download/games/ganymed.z80
+91425ac8ce7487cfc5ba977d52edd6d7 *./download/games/geisterfahrer.z80
+cd97c36d3f01b8c09d9114c8f55458d0 *./download/games/ghost+voice.z80
+8da51a0f9e96a2f3faabc9b1a872909e *./download/games/gost_hut.z80
+c9490afb5f6a0b7b428456e5eda153b1 *./download/games/graverobber.z80
+701732139296da2a16126ef357e8e4e5 *./download/games/hacker_com.z80
+2ae851edc0378818f97c75107dc9dcda *./download/games/heartrunner.z80
+d57ff178a0249ab48e80c0776abf8b78 *./download/games/heartrunner__bro.z80
+a36a733231ada33800f6bde25fa9ee6c *./download/games/helen.z80
+2e5f86ea78f9fd689c60d95a8b62d508 *./download/games/hindernislauf.z80
+02524a57af835381679805ada712af3c *./download/games/huby_flie.z80
+f07e35b0489276917b59292501a455ce *./download/games/invasion.z80
+7cf05230adda7ce79c4248eabf795c9d *./download/games/invasion_2.z80
+aef564c589f1bb60d65fb90b7f0be9b4 *./download/games/irrgarten.z80
+6bef4a9878807f0b56a6f8d454301e39 *./download/games/jaeger.z80
+d8a1c2932096db92560c85fe1761eee6 *./download/games/katze_maus.z80
+5c469a2bd39c04926c9f00e465f632a2 *./download/games/king_korr.z80
+b5acc7e1d8f7495ee50ba94d7d85f296 *./download/games/knossost_[b].z80
+b637e47d80e6d3b3d6387f4b564fcf56 *./download/games/kraftfeld.z80
+478c623bfe47812fe1637b22a31ae0d6 *./download/games/labyrinth.z80
+0ef9a99c07c18fe29395e1b09ba2da46 *./download/games/labyrinth1.z80
+0e5275f0123a3af7077d1d0d96389239 *./download/games/ladder_8_4.z80
+0744f2b1e88dc26ec6e8a90605ead7cf *./download/games/ladder_bas.z80
+6c07046eb5676317dce6034065812241 *./download/games/last_chance_iii.z80
+6b3b500959b5ffb9c903c977323b4d16 *./download/games/lebenserwartung.z80
+4455a79ce9ccf116d729417a5a1d7371 *./download/games/leipzig.z80
+1a2de00cbf67dbdbcf119d2263621e59 *./download/games/master_of_soft_1.z80
+2ba1e7e566270d94adcac60525b6857b *./download/games/mauer.z80
+4b3ac9d8bda7ab460ca921f76b09ccd5 *./download/games/mazog_deutsch.z80
+5da1272aeddb5d6c417e8ff3e23eb0ff *./download/games/memory.z80
+a2db74db249848de9c32615f596f7954 *./download/games/miami.z80
+f89ecb672501b99f6526491feafa75ed *./download/games/minefild.z80
+6690421d7ac71d10deb9d7d2025d54bf *./download/games/mondbasis.z80
+3b947bedc9b2470354ed2d7519960930 *./download/games/monopoly.z80
+a547e73840d6333f30f6b1e42649a7c6 *./download/games/new_york.z80
+7a4d3f8af84dcb0726b04c051d2e06fd *./download/games/ohio_judith.z80
+35625dda6b2fdb39261cda5914ce2b3a *./download/games/ohne_fleiss_k_pr.z80
+afe889158d35c066ce7011e24acba561 *./download/games/oldkeyb/super_ski.z80
+21116d60ec96b5bad5067552e3949b67 *./download/games/oldkeyb/vampi.z80
+a7d2e313d797fe685830eae09cd26af5 *./download/games/othello.z80
+75b9fcd76fa39557454f08460b34e45b *./download/games/paravia.z80
+c729d0ac37bbf7be0c06d20d31e4728b *./download/games/parskat.z80
+f3ba5cc7e616e88eb267981b7f345bc8 *./download/games/pilot.z80
+4df50045ce689f42fe3c56f0de5ce676 *./download/games/ping-pong.z80
+168ba9e7333af82116ef92149e530fb8 *./download/games/puzzel.z80
+394f2a0bb7be25783b2e456a784ed303 *./download/games/pyramide(laeuft).z80
+ecbcf0a2aa858cd4272f64073f08d108 *./download/games/pyramide.z80
+a4cad0906333c48fe646175676102fa7 *./download/games/ratetier.z80
+00c2a04a3153ef619efcc5290cfb2d6f *./download/games/reaktor.z80
+0610275be4ec8b7d74d7595cf8b2e16d *./download/games/reise.z80
+1447f1aafc89290ad5a5aae1311714ca *./download/games/river_raid_ls.z80
+aa2d88cbf839c341848a23a71b25ffb7 *./download/games/roulette_m_bild.z80
+9260262070b3e3ea23e3f48998f034f8 *./download/games/santa_paravia_1.z80
+b7a9e2f138a0651a74985ef27d224f00 *./download/games/schach.z80
+5c945eb6624c406cf543ce727092b67b *./download/games/schatz.z80
+fdddead732f378ba5d0261a727891da2 *./download/games/schiffe.z80
+4d60a668334e5db51ec494ee528cc628 *./download/games/skat.z80
+7e6ed1969fe2ba438a9d69475310006b *./download/games/slalom.z80
+226aabc62a2f4cf7f00adc88eb8ba95e *./download/games/snake.z80
+fc6d276a637b1c11ca4c8adae99736ca *./download/games/solo_commotion.z80
+f80ef153cb08982e99d68158596262e6 *./download/games/spiele_1.z80
+e54d8b323c21852fde192d1baa00bd85 *./download/games/star.z80
+192001615a6366647d114d25771e58e5 *./download/games/superdame.z80
+588bcb12b2c4087a5bdb47d46e19d2eb *./download/games/superdame_b.z80
+38484f348f3a99ecb6f62452170a6802 *./download/games/supertrucker_g&a.z80
+74ab0a1676b18c8470e8099d7c8cc483 *./download/games/tatum.z80
+8af63e10df0930981bfc3631392f41d2 *./download/games/tennis.z80
+8134e835b06a3d4ec1a44fd411a6ffc3 *./download/games/tetris.z80
+946693edd98828ca3516e02f7bde16bc *./download/games/trap.z80
+191d6e102408fcf5113c4ff8fbb48aef *./download/games/triplett.z80
+a8cff5e6e8f1dfacc4eb44c04a1dc9a8 *./download/games/turtle_player.z80
+8366f79d610bd66c9e5e97b0eb2220ff *./download/games/uboot.z80
+69a99c11fb175caa559ee338997bba88 *./download/games/ufo.z80
+b096ba4a45b7c3d1ce9f994cead0b328 *./download/games/univers.z80
+5bdb666cbca1e0c8fb0a78b5c5cbae5e *./download/games/vampi.z80
+67d48f2de0c40d41fafaa5110300b5e4 *./download/games/vampir_f1.z80
+6f00a9e848157e3fa9d72f38e7156b40 *./download/games/voegeln(g&a).z80
+9e77e3766a792b3d90010dc89346eab6 *./download/games/wueste.z80
+354ce58815b289df1c356e2c4e326696 *./download/ghost.z80
+0aa01736e6022188ebb4af7aa236e2b9 *./download/hase_wolf.z80
+344b454765b029ccee17f4f1ea5a815a *./download/history.txt
+36882f677d6be5b5c2530da36f7b2bd3 *./download/jumping_jack.z80
+af119ebfecd1a42c89d147a02e06d0ed *./download/kc_basic.z80
+9e324e91b6f0a6e4c265c99f1afc24b7 *./download/kc_basic_dump.z80
+18003e71d28a30376753986116257950 *./download/keyboard.gif
+f5a377bdc7d90824de93914bb352e36a *./download/keyboard.z80
+d999f43c464e9a0e56f2d59b0bd2a525 *./download/keyboard_pop.gif
+be84f3d68a9bc09c65b749bb0c614750 *./download/king_keys.z80
+54956be6187454c20225e8a080ccddeb *./download/ladder.z80
+2e8ec1972878a054848406af8c7ff998 *./download/lang/23stueck.z80
+8c7b3c71dc9ce9f9808e5e2d965ea870 *./download/lang/asm_soft_1_05.z80
+08ce060c5a69fb6e923b0313201298a4 *./download/lang/ASSEMBL. Scf 5.3.Z80
+acfed5847ac8860408daed246607abf6 *./download/lang/assembler_v_5_4.z80
+426f34466e77060736b7d0a4fe5cd285 *./download/lang/basic/12k_tdl++s3004.z80
+2d22cfe7cdb4b05f7e86df98cc604b04 *./download/lang/basic/13k-tpe-basic.z80
+5d029479bb6b112fc45da6926721493b *./download/lang/basic/ABLEI           .Z80
+a97a3e7cb3582fd01db076f97ab4f95b *./download/lang/basic/adressen.z80
+5153b90dace42296f2cf59a5f6ddd32e *./download/lang/basic/adressen_2.z80
+6d964bc17870c845ca4068deb5dba590 *./download/lang/basic/afrika.z80
+96329673ae7c7eb88659d17f3e4c45f2 *./download/lang/basic/anaborea.z80
+da06c74f37c8aed8be834e3c155287b4 *./download/lang/basic/bascoder_test2_2.z80
+7c3c3eecca5312fd978d89fe1e9e1db1 *./download/lang/basic/bascon_test_2_0.z80
+d27a1b76482be72602da9a4bc6b4af94 *./download/lang/basic/basic_a_old.z80
+5c462674a25d81058875dfb9049ba999 *./download/lang/basic/basic_comp.z80
+76fc978e9da1ef803ea8dd60f4915fc6 *./download/lang/basic/basic_old.z80
+3305b978e27be0350aee422900e70662 *./download/lang/basic/basic_pset_sound.z80
+48fac5ae007ac14a4a234983fb8db992 *./download/lang/basic/c-test.z80
+68fcce0b8ee355a6d210caaa3592d16d *./download/lang/basic/c_test.z80
+8bd54ec145ceaeade95b644e0ae259e8 *./download/lang/basic/cag_basicint.z80
+0cb7e1a7d01de09d2f2397d08ea7ee48 *./download/lang/basic/chemiepruefung.z80
+afa86836142801a405ebb6450891ab05 *./download/lang/basic/dev/softchef_0_9.z80
+15cd336a276e2af08409602f026abc8e *./download/lang/basic/dev/softchef_m__hcb.z80
+5edaca33adee4ef07a6c9062c8f91c9b *./download/lang/basic/east/east26_2.z80
+4175b8451ed7ec7555d63e284c43555f *./download/lang/basic/east/east30_5.z80
+269a693a324632d056e72db5cb4724fe *./download/lang/basic/east/east30_6.z80
+038fa547517ee1d902448f69941192ff *./download/lang/basic/east/readme.txt
+d58565cef2b653422c6d4a663e59fc04 *./download/lang/basic/elektronik.z80
+d16651f05b5de525000489ed94897951 *./download/lang/basic/entropia.z80
+8957381b34c155fa3dd41d5a9fd8f2e8 *./download/lang/basic/fuss_71.z80
+2513a1bbe996cb5be91da38ee0108e3c *./download/lang/basic/gammon.z80
+70d9c43c74897e02b782ca71479285c7 *./download/lang/basic/gwbasic1_0.z80
+2ed9c4c844ff91a3980a8e686a41c309 *./download/lang/basic/hb9cv.z80
+de1672a2e3d30db633655bef99601bde *./download/lang/basic/hc_bi_v__4_1.z80
+08e70c66dcdd6cb414c7916013777115 *./download/lang/basic/kc-basic+.z80
+28107373ce86e4492ee5f0850daac981 *./download/lang/basic/kc_basic_m+.z80
+a0785e98128be885a7d31b65fd690e6d *./download/lang/basic/kc_rom_basic+1_0.z80
+874096bc01bd1f96663297828b14edde *./download/lang/basic/kc_save.z80
+90e409c4ae1d428e0301e6c7991f0a63 *./download/lang/basic/kegeln.z80
+be954099adc227d6bb2cf141b4b3e66f *./download/lang/basic/kss.z80
+e267a5823a4955e3e825fe608d2a223b *./download/lang/basic/load_kc_3e80_mc.z80
+816b87b26c5c2d1bb8bc56a89f16a166 *./download/lang/basic/load_kc_ce80_mc.z80
+8584a05945324561ced9379726999bd3 *./download/lang/basic/main_kc_if.z80
+a2e37e9e4c75bb39b1d3b94c90aef6e3 *./download/lang/basic/rom_basic.z80
+177cd59da02359479481c79520d40239 *./download/lang/basic/rombasic_v2.z80
+a1f47c705da33327185f8c045fe6b417 *./download/lang/basic/tiny+main_4_6_4.z80
+38380a733076c18e8197bd4422300887 *./download/lang/basic/tpe_basic.z80
+b4875a7e31313688abb31f3e89ea4e49 *./download/lang/basic/trafo.z80
+a6ef210a1c305795936ac4264ef9a7a1 *./download/lang/basic/willi.z80
+43d2429e3503c2d89bf2c327746cf2c7 *./download/lang/call_rst_a.z80
+91629c6a242a17685acc6a45b3aa0fa8 *./download/lang/call_rst_f.z80
+42c4d5a7edffdbd811d48653de275136 *./download/lang/debug_3_02.z80
+d29e1d6f00e7ab887ef8193f41ab5e5e *./download/lang/debugger.z80
+21115b35603658e0cbc90eea5e2d062d *./download/lang/debugger_v2arb.z80
+4bb03195e6709d7f5fb97a1fb91f6dda *./download/lang/ed81.z80
+236faef42f9d85fc92bd9d8cefdb3c6f *./download/lang/ed81_v2_2.z80
+7ca39c3700e8e5dcc73a4813897c4300 *./download/lang/emr_reass.z80
+e92ec24918efac46659875a77418a7c1 *./download/lang/EXREAS 2.01     .Z80
+6b70a9667654043f72f3e2668e8c8740 *./download/lang/exreas_2_01.z80
+16796aef7c27d8a0252b0f7aac6cccfb *./download/lang/files.txt
+dd7e5666ae5d0daf9ea6a1ca5fac5911 *./download/lang/forth/extended_forth.z80
+3d4e2d7a6deef3255b6ba5dfacfab776 *./download/lang/forth/z1013_forth.z80
+6f741a1bd0909d2572788dc449c0410f *./download/lang/gens3m.z80
+06aca58b62e46737fc0ab4af645c225f *./download/lang/gens_assembler.z80
+5caece0d209b751ca91950dd91387a9a *./download/lang/hex_ascii_dump_o.z80
+efbe64d174799349beb0b0ec3c83ff46 *./download/lang/hex_ascii_dump_u.z80
+0b94acb72835ea444af6c0ff2f0d8041 *./download/lang/HISOFT-PASCAL   .Z80
+a6f9e937b22bac5090a5f93831833530 *./download/lang/hisoft-pascal.z80
+56448535d9fa729c4b5508f2ef19c902 *./download/lang/oc_editor_4_0.z80
+5ec0d7434b564f18043b3305839b1223 *./download/lang/oc_editor_4_1.z80
+7c9167d8738a45c0c695174944a77690 *./download/lang/pascal/ausgleich.z80
+c8a3f6a459d3a64db352902effe3e891 *./download/lang/pascal/ENQUIRY         .Z80
+f932c824eff32227e578f45389875d85 *./download/lang/pascal/enquiry.z80
+a8cff4345ad05c4afe940a7ed5f7800f *./download/lang/pascal/fehlberg.z80
+1d9723ecb9d389ef4c10df605f073878 *./download/lang/pascal/graph.z80
+01aaa2ee30a78dc170c4ee7c45e9340e *./download/lang/pascal/hisoft_pascal1_3.z80
+4cdc51495521fb47d9644c68153c5e87 *./download/lang/pascal/kurve_graf.z80
+3c997b5759fe323ebe71043ef322e0ae *./download/lang/pascal/mastermind1_P.z80
+6e0ad1df190a3b87e4725ff609febc32 *./download/lang/pascal/mastermind2_C.z80
+4fb54b1156b02a1e357930203b8c3a17 *./download/lang/pascal/mastermind2_P.z80
+b196f78025ad024c08c8bfb5b6485f45 *./download/lang/pascal/mathe_frank.z80
+1170d28fad299ad205d6e95eb2eb19a7 *./download/lang/pascal/matrix.z80
+1136d8ae3f87e96395255efe60826d11 *./download/lang/pascal/newton2.z80
+def5971e0496ce8080adb6fa31fa13dc *./download/lang/pascal/PASCAL-TEACH    .Z80
+fcf8ad2ca61607accd4cb7e94f7cec24 *./download/lang/pascal/pascal_teach.z80
+ba2d325c4aa680b31bb152b76c65b72f *./download/lang/pse+line.z80
+fba1b0d327ad69c9be0416f32e48ee44 *./download/lang/r_80_spv.z80
+60be9f572f56a80f8083d0e960576194 *./download/lang/reass+display.z80
+b51ce93e276f63a117449a73f6311160 *./download/lang/reass.z80
+6b721a58f7c1c8e52e8e806eb1d53977 *./download/lang/reassembler.z80
+f4f16a917f45559770191057ea346366 *./download/lang/reassembler_0ff0.z80
+810706a1b8018d2fa39da33fd41d0a8b *./download/lang/rst_20_wandlung.z80
+77847d7482afed3d54fd0028f05e70f8 *./download/lang/speicherservice.z80
+9673758e09f8c6946404cf43fb420e81 *./download/lang/speicherservice_100.z80
+eaca720f7a229434c9d2dcd1ef573951 *./download/lang/TEXED. 6.1 Scf  .Z80
+eaca720f7a229434c9d2dcd1ef573951 *./download/lang/texed__6_1_scf.z80
+00ae2da636329b8fab768b9c5314805e *./download/lang/tool_v1_1.z80
+ee313a13d2a4ea9cde15af4d601bd747 *./download/lang/tool_v1_1_u.z80
+e4e2a130d7055a660d64ddb14052fccd *./download/lang/z1013_forth.z80
+8d5674f457bc8c8e5114b53721fadddd *./download/load.gif
+0179e058c69a7c800e865de80d1dd375 *./download/main_1.gif
+a341d58956eb0668a4c22f730b759e22 *./download/main_2.gif
+23da43174d71c42118ccd98fabb1642a *./download/main_pop.gif
+1a64d65fd0671207540d0bffe88e8b2d *./download/MANUAL.html
+4b3ac9d8bda7ab460ca921f76b09ccd5 *./download/mazog_dt.z80
+5da1272aeddb5d6c417e8ff3e23eb0ff *./download/memory.z80
+ddf2b799b846268f2f300c18d4333980 *./download/minefield_keys.z80
+f89ecb672501b99f6526491feafa75ed *./download/minefild.z80
+4f37f13fe815b994c7d1a62d29d40e18 *./download/monitor.z80
+506f82aaebb89cbd753448bc66c7ddf4 *./download/nu/$_feld_brotast.z80
+f7bb840ed938a01a5ff32baa0389f030 *./download/nu/2mhz___1mhz_s_l.z80
+a337fe1ec221e5eba5fbf1e5533d8f3c *./download/nu/8k_basic_kern.z80
+0b788aa8f4625cc15c8a00add462de5a *./download/nu/ac_1_tape_v_7.z80
+1e084fe0464f7a146796ab2896bae963 *./download/nu/centronic_druck.z80
+0821e61842266f3b847ce714cb41e17c *./download/nu/crc_pruef.z80
+cfe5ab6db2c396dc277a594874c6d54f *./download/nu/datex.z80
+52ef21df4d07a164940e287514603d96 *./download/nu/demolation_joy.z80
+bc0f3457a1a0632b752eceafbd025aaf *./download/nu/disassembler.z80
+8a790582c1346fad7f068776663c8c20 *./download/nu/dru_3_2.z80
+7f1a6c6d0991d9006f72f7bce1803e05 *./download/nu/dru_3_3.z80
+9959e264ef4094f38c1a75b78ed3399c *./download/nu/dumpx.z80
+81f7b48494f7cddf860b211554b1a381 *./download/nu/eprommer_2_9_ccl.z80
+542e31451386ec4b0a067b6802e2521a *./download/nu/eprommer_2_9_igd.z80
+a6afadd794593f8a1f5981f914f369f3 *./download/nu/files.txt
+190e1a4c19179294fb54db50b6d151bb *./download/nu/HCOPY           .Z80
+5dd1d1e682a22c562935bca1ecb9d43e *./download/nu/hcopy(k_6320).z80
+5f2341e61b4061eb479a141fde0ea3aa *./download/nu/hcopy_2_rb_mon.z80
+0f7a18396f27377880303663a01d212e *./download/nu/header_menue_4.z80
+07f2a481d37587e34f1a6130c34fdd36 *./download/nu/header_soft_2.z80
+7a640cec37d3687607aa696441213590 *./download/nu/headerbank_zeit.z80
+ea3a72325370ceaee3ee56279c3ec2fc *./download/nu/headermenu_v4bek.z80
+77bda55094cc9352c1ca949ba2c85c0a *./download/nu/headerprint_1_1.z80
+9a866da5a40845ddfcac5f3898eba8ec *./download/nu/HEADERSAVE 5.95 .Z80
+1463deeff07fa51d44d3fb88f0ef0b0d *./download/nu/headersave_5_95.z80
+be6d104c63a86ae3305593be336b94c3 *./download/nu/headersave_gv.z80
+6994897818017d5a5828e27f0ddb3169 *./download/nu/headerwrite_1_0.z80
+b750ebbd99afcfac14e05b24113a0308 *./download/nu/joyinit/init_joyst.z80
+4367dbe09e3bcd63815729848aa0b7c4 *./download/nu/joyinit/j1.z80
+6b7e04a025fafcfbab561c9f1538edc9 *./download/nu/joyinit/j10.z80
+bbd544a9117ca0876821ad417af5c67e *./download/nu/joyinit/j11.z80
+cab2db0941959c8dc5a80fdd33064a67 *./download/nu/joyinit/j12.z80
+8eca6ec1c48ad829f5118a6d29f286ad *./download/nu/joyinit/j_8.z80
+9fed6a1a1349eaa2242280a488728927 *./download/nu/joyinit/j_9.z80
+5b3626dd81d7a1efc8337905f1a7d5e6 *./download/nu/joyinit/jo1.z80
+c5ece9cf7998d5aa0f79434cfe3a5905 *./download/nu/joyinit/jo10.z80
+3302e144bb4603ad24072860e159f0a4 *./download/nu/joyinit/jo13.z80
+762a59cd4bbec4ade2a5a68c77766a67 *./download/nu/joyinit/jo16.z80
+e672228c5865fd9c9859f4e5eefacd83 *./download/nu/joyinit/jo18.z80
+add8d3c7df4935b2570ae7c496c1efa3 *./download/nu/joyinit/jo2.z80
+a8b7b3cf77c5314e975aa49df3859e46 *./download/nu/joyinit/jo20.z80
+78d50a4c4f13847cb863cc73105f61f1 *./download/nu/joyinit/jo21.z80
+33724b2ea38e10bffdccbc4c3bd6f3e0 *./download/nu/joyinit/jo33.z80
+6adccfa0d0da7f892b5b5a0e6573487e *./download/nu/joyinit/jo4.z80
+d8e4d9a548571adeb0d603a76e44cdae *./download/nu/joyinit/jo5.z80
+e19ce1c323b08680618ba9a7c2d9b924 *./download/nu/joyinit/jo8.z80
+90bbd2a02478c4a86cb5e1930f918ba5 *./download/nu/joyinit/jo9.z80
+0143cdb0ea7578ded85abbaf190c5e45 *./download/nu/joyinit/jo_11.z80
+237440e5d14dd524740c2afb1cb4a744 *./download/nu/joyinit/jo_12.z80
+589e9ef30b09f8a05773bb188709adf6 *./download/nu/joyinit/jo_14.z80
+b1b5142ae785712a11112679f29401b2 *./download/nu/joyinit/jo_15.z80
+491e874f829f8e93e8074093232d27c1 *./download/nu/joyinit/jo_3.z80
+4234587ab43f314a69f2be8da6cef028 *./download/nu/joyinit/jo_6.z80
+71d965e480ee55e09da1159a0b2d8db5 *./download/nu/joyinit/joy_5.z80
+0d72e289fcaf694ad1ee965189edca1c *./download/nu/joyinit/joy_6.z80
+b595f8ff84f7592b258dc53289cb5144 *./download/nu/joyinit/joy_7.z80
+f12af0571cec51e7ff97ec6d82fd2c43 *./download/nu/joyinit/JOYINIT V.2     .Z80
+374b31d369fc05c850d341bc360ce8b0 *./download/nu/joyinit/JOYINIT V.2   _src_.Z80
+305ceb2e74494f707a93a32685bcf9b8 *./download/nu/joyinit/joyinit.z80
+3ef96bda4f043b18f77258f786c2f0c2 *./download/nu/joyinit/joyinit______fek.z80
+374b31d369fc05c850d341bc360ce8b0 *./download/nu/joyinit/joyinit_v_2.1.z80
+f12af0571cec51e7ff97ec6d82fd2c43 *./download/nu/joyinit/joyinit_v_2.z80
+8b510acf9464adb3b4030cdb4c703d34 *./download/nu/KC87-_1013 MC   .Z80
+cd484c040218eef767d2acbcf4d78258 *./download/nu/logicanalysor_sc.z80
+8ce2780c0ad702f6923246932a94664c *./download/nu/mainsave_4_6_4.z80
+619e5daa1f725f2bc3a3f9c14f229f31 *./download/nu/maintape_4_6.z80
+610cdb1f50d6f3882a7e1be121bf5ab9 *./download/nu/maintape_4_6_4.z80
+58d6ae69fd7b2ea0b2c8c6492a75d32f *./download/nu/monitor-rom/4k_mon_k7652.z80
+79d56757216d1ccf0d260f68bf2974f5 *./download/nu/monitor-rom/4k_moni_k7659.z80
+86bd1e98eef7a98cbefc9eac3deb4ebe *./download/nu/monitor-rom/4k_monitor.z80
+ce257a8b72a4e88c65dcaa5780212b45 *./download/nu/monitor-rom/INCOM.XXX       .Z80
+cf5deaff505422c4e74ba0a84ecc67dd *./download/nu/monitor-rom/k7669_brennfer.z80
+635309e24e58ab5331b0c78ff1564a84 *./download/nu/monitor-rom/mon_neu.z80
+533e0ce8dae11c9f03a2e1a9a5add22e *./download/nu/monitor-rom/monitorerweiter.z80
+0d83e30ab040349b4f4c3d6d5d06c29c *./download/nu/monitor-rom/prof__mon.z80
+b6a6c60adc862570682d8ae3e6d5775a *./download/nu/monitor-rom/rb+.z80
+24933e18ddfde0d7a6021b07069228ce *./download/nu/monitor-rom/z1013_surl_3_00.z80
+70001a8f7561d5d181a0f798c33ff2d5 *./download/nu/oel.z80
+fef1f9ced2174b26a88743c42c86d9e3 *./download/nu/orgel_32.z80
+db7abd7e14ab959f31a3d785a1772f07 *./download/nu/orgel_8.z80
+6393f4619b5ba7bc1df585ef185f9f29 *./download/nu/r_t_t_y_ohne_txt.z80
+42de7983191e0c4f21e726b57a7a13ba *./download/nu/recorderjustage.z80
+dc54866b79af92ecd80e5d4c3c4bb4c8 *./download/nu/rtty.z80
+e04bda355db1bb27a369e94726c8eda6 *./download/nu/spektrum_s_l.z80
+66ea9d45656d232768e50365ef4d6d22 *./download/nu/sprache.z80
+34496b92ca707a1966a2825711e48ebd *./download/nu/Systemuhr o. CTC(1).Z80
+977ae83f0811a53a6214ebd78640ddae *./download/nu/Systemuhr o. CTC(2).Z80
+45cc4f222fad3539274328ad581c897a *./download/nu/tapelist.z80
+5d171fea0ddc4bd5755a37febfe2f9c3 *./download/nu/turbo_headerm.z80
+be250aef8b281d103584920db2bf5936 *./download/nu/video_list.z80
+f65e3595dd22a96ea9817a7af86c3f67 *./download/nu/voice_dump.z80
+2ae579914e3bac1752e96dba5c2e6c6a *./download/nu/zaehlermodul.z80
+72375251131b7b3ea24cb4ecb9aebb81 *./download/oldkeys.z80
+6d787b35ebc06f78197b764e4933a041 *./download/original.z80
+73b9f45064a509fe923dc2392d4e7868 *./download/perfwn.gif
+f3ba5cc7e616e88eb267981b7f345bc8 *./download/pilot.z80
+6f0b90ab6cb3cd7f76e849e8d05373bf *./download/s01_a/3k basic int.z80
+2f396e8bd29b537dc925d8b52b9666cc *./download/s01_a/3k-bas_h-save_sv.z80
+3ebf65c4eadf7a186626436816125844 *./download/s01_a/basic 3_75k v4_0.z80
+af97a993de91d0c0c3ce36c7a56d6915 *./download/s01_a/hc-basic kc87_z.z80
+1e1221322ce478804d10a3d1bbf84294 *./download/s01_a/hc-basic m_h_.z80
+b4354572b52baeedcef6d58e4ae8bbce *./download/s01_a/hc-basic org.z80
+69068756d06c13b14e7dd2d712b721bf *./download/s01_a/hc-basic+hedi.z80
+fe60c95df41013302a61f3b25d966e08 *./download/s01_a/hdiskcopy 1_5(i).z80
+2f63a799672dafe2ea5df6718ac8c55c *./download/s01_a/hdiskcopy 1_5.z80
+0b394067c58e9c7e88cf00f130cef6d0 *./download/s01_a/hdiskcopy_1_6.1.z80
+50d3fc1e02cc36880f376305c9b53472 *./download/s01_a/hdiskcopy_1_6.z80
+d25ae38820662e249179993daf807c03 *./download/s01_a/header-bank-copy.z80
+972b16a9d1afb7855422f7936106b0b2 *./download/s01_a/header-menue.z80
+e6eb2761ed562d685f6c979c12d78fdf *./download/s01_a/headersave 5_95(2).z80
+2b17819d63b1f6abd55c70f66c6a5e55 *./download/s01_a/headersave 5_95.z80
+6622a15b5a57eaf956f0327e742eb921 *./download/s01_a/headersave.z80
+c9628ad7d5bc2680594e364d2c124f53 *./download/s01_a/kc-basic m1 (c).z80
+0c2e190bf63abb70766075d88d8535ee *./download/s01_a/kc-basic m1.z80
+d1cfd541a20e2511130947f956f2fc46 *./download/s01_a/kc-basic+ a_2_hs.z80
+ad95532d2add682c55b3374ee1b3256b *./download/s01_a/mainsave 4_6_4.z80
+dde210f74ad0d9467ab49fe521f03207 *./download/s01_a/maintap_4_6_4_16.z80
+94b4bba3ebc1d3be127af36031e50671 *./download/s01_a/maintape 4_6.z80
+987584654df46b96b0d9fa7ab310cd74 *./download/s01_a/maintape 4_6_4_m.z80
+0c38f4d518394ac2d2283efed2f1ab82 *./download/s01_a/maintp_4_6_4_64k.z80
+99df6833b407eea46b21fb722a63b23f *./download/s01_a/tiny+main 4_6_4.z80
+8b9ed6c5d14dbe2c6d58dd5b82a6f630 *./download/s01_a/tiny-basic org.z80
+c6df3133afe37304857a0e9dcab6a15a *./download/s01_b/debug 1.z80
+2f4a3e92933bebc5bb3f1d639a624c6c *./download/s01_b/debug 2.z80
+671baaf0cb690ee83053e1e7f7c1a84f *./download/s01_b/debugger doc.z80
+096961d3f37bcc92bbb7542ef3de89a0 *./download/s01_b/f83 1_3 bcb2.z80
+e9e6a4eae68e741b112bf8758781de7d *./download/s01_b/f83 1_3 glo 3.z80
+9fbe59eda195494908d21a5737336252 *./download/s01_b/f83 1_3 glo 4.z80
+13af0d0c5ceb6fbf7ec607406932a622 *./download/s01_b/f83 1_3 glo 5.z80
+79d07daf5d8f7efa89da9937aa33ddd8 *./download/s01_b/f83 1_3 glo 6.z80
+042c880384c9c98d02f93c87c8d16e06 *./download/s01_b/f83 1_3 glo1.z80
+b851138c4da0e7adfb3c12ff8911de0f *./download/s01_b/f83 1_3 glo2.z80
+c9f942cff51160b0f35567284d04ce60 *./download/s01_b/forth as5.z80
+0480cb5a9f41593b188c47b2215c7055 *./download/s01_b/forth_doc-t1.z80
+a520649586c4054d598fd01ff936d616 *./download/s01_b/forth_doc-t2.z80
+7cfb38caa0ce4373f2609c43e51ad10c *./download/s01_b/forth_doc-t3.z80
+e9b880750c0173427aa8113b97af913d *./download/s01_b/get_put orig_br.z80
+21ccc6b78ef385f67f683693d9c4af8a *./download/s01_b/his-pascal 12.z80
+02e21d5f0bbfa7c5d49ae160a1d1b007 *./download/s01_b/sedit 1.z80
+e78df56e0fbcf8a6600eea50e7e00dd8 *./download/s01_b/sedit 2.z80
+e95be82ebd4886fc5825a3f0adf74185 *./download/s01_b/sedit-doc 5_89.z80
+e4e2a130d7055a660d64ddb14052fccd *./download/s01_b/z1013_forth.z80
+08e2c9bc8c99394fb66c0d38218879d9 *./download/s01_b/z80 - forth as1.z80
+68c14ba36357ceba988a4f9e7fb10460 *./download/s01_b/z80 - forth as2.z80
+c072629c0dc2951f7d9804a14e6b4b39 *./download/s01_b/z80 - forth as3.z80
+96c65cde9b9a224f67a94767237e5c49 *./download/s01_b/z80 - forth as4.z80
+6839841be6b411af44a9b944a1d88fb0 *./download/s01_b/z80 - forth as6.z80
+098a9c8a3c4b63094a8f46d0f0b605bc *./download/s02_a/64-zeichen-bs.z80
+c4c490a15a2d7f9729c7ec3278cc5cdf *./download/s02_a/bros_mon+tastat_.z80
+c09086115d4b2419419987fc79ac8ee2 *./download/s02_a/copy_doc.z80
+647278a34f14c25c03216a3f018a1860 *./download/s02_a/cp_a 98pd beschr.z80
+b6d57167e5c1133342a66f677f34817c *./download/s02_a/cp_a_com 98pd.z80
+b0c0bb986db0e9c8b8f3e7e9b8196741 *./download/s02_a/cp_a_com_200pd.z80
+44dd6bbdcc36933fed0d71f1ab0992c9 *./download/s02_a/cpa64_com.z80
+afa94c4e1324ca378b36b6da5c52be75 *./download/s02_a/cpm-2rf lauffae.z80
+9bd66404e1ace673a58c5738beaa2fb6 *./download/s02_a/elektion_com.z80
+159831b1b37c83cabe4bd482dad1cd52 *./download/s02_a/eprom-handl_2_9.z80
+29b7d85b475d67e385479b539ee3c6a5 *./download/s02_a/eprom-prog_1_25.z80
+c3a8716027b627b750da484fc1d5b828 *./download/s02_a/head_disk 45_me(2).z80
+d83c275b948b2cced485646bd3270c37 *./download/s02_a/head_disk 45_me(i).z80
+e2061ff9994c890dac06b31f9c20436c *./download/s02_a/head_disk 45_me.z80
+16caff5fc3c7f315085eb4c0bc0645f0 *./download/s02_a/headerdisk 45(1).z80
+fd94b1c803e324c42e2f95be2d532b1c *./download/s02_a/headerdisk 45(2).z80
+373ef1f8d2683d9b1e330dee679ef2a4 *./download/s02_a/headerdisk 45(3).z80
+55b8d0c94182c25731a6d74ffa6a2aad *./download/s02_a/headerdisk 45(4).z80
+351b066438012a646d2593c0e72a7313 *./download/s02_a/headerprint 1_1(2).z80
+402584fe223f2fefaf991b70ec61cd77 *./download/s02_a/headerprint 1_1.z80
+9c218adb4c77460e5ca2f79dc95ca76b *./download/s02_a/rf-test 5_0.z80
+eb5429f22a818ca79bd06d98a08a7202 *./download/s02_a/rf_am_z1013.doc.z80
+70b0a1b22ffc5f723df8466f54ffff12 *./download/s02_a/scp-2rf 2_40m(i).z80
+771ec434ad0d4ef45a659638cbbb3096 *./download/s02_a/scp-2rf 2_40m.z80
+8d81ce06d3f9f4723f787d624cf66124 *./download/s02_b/64k-basicode 2_1.z80
+74df58ba3a9d304d0b32d72f77857a15 *./download/s02_b/bascoder+demo.z80
+7a29ccc22ea563ee1ad85510c35783ef *./download/s02_b/basicode_mod.z80
+48997bf22b0ed04e53758853be2992a7 *./download/s02_b/caps min.z80
+572caf99402f8748ed1a40f3313a0b53 *./download/s02_b/copy z1013.z80
+44dd6bbdcc36933fed0d71f1ab0992c9 *./download/s02_b/cpa64_com.z80
+fa6a1c890e9cf1f385a84c96f81eaff8 *./download/s02_b/ed81__v2_2.z80
+236faef42f9d85fc92bd9d8cefdb3c6f *./download/s02_b/ed81_v2_2.z80
+b28ef8fdb845fecb27946137e71ac769 *./download/s02_b/kontenfuehrung.z80
+49e5f3c9b8db9dbe003ea83d963ebec6 *./download/s02_b/makedir.z80
+4baf5363eba640ddb0590e10e8143c87 *./download/s02_b/monitor 1_31.z80
+f46d1c3e26efac6b0e03761d81966253 *./download/s02_b/nsweep_com.z80
+87460b5acc0c201cecc0a77c18190059 *./download/s02_b/pixelgrafik.z80
+81b1f69c473039070f0a6ffad7b806b8 *./download/s02_b/rf-sichttest 3_6.z80
+347b18f23f7a136e89dd09948fcbe081 *./download/s02_b/sauger_com.z80
+4c0264419bd6b25ff683391e082ed68f *./download/s02_b/sauger_pas.z80
+e61ad068800cc40410eeadf1247d5e5f *./download/s02_b/scp f_moni 1_31.z80
+8cf89f1435b6c96abce8e433cef09309 *./download/s02_b/stopuhr.z80
+17e35266c48fe37056ad7bebf9e22b18 *./download/s02_b/turbosave.z80
+cb41f24e6fb026d665b5237803172db7 *./download/s03_a/chaos(laeuft)g_a.z80
+91e734fd814b30ebdae69cd077e2695d *./download/s03_a/copy32_com.z80
+47ff8be10153bad257119daad912307f *./download/s03_a/copy64___com.z80
+2775a5a6a3d34670ff8e365591b3c7d9 *./download/s03_a/cosmic ball.z80
+f6ea8a533d2c70d1857683a475768824 *./download/s03_a/eliza.z80
+a169d3f51eee16e24e860766994c61b4 *./download/s03_a/fahrschule.z80
+38230f34dad4b2e6158bcab7905bc453 *./download/s03_a/goldkeller.z80
+eb3884964cc4ce939d613bc83242206d *./download/s03_a/horoscope.z80
+9763e9c2d5df1806a2184f7c9d80b0c6 *./download/s03_a/joker(m) 2_02.z80
+90e409c4ae1d428e0301e6c7991f0a63 *./download/s03_a/kegeln.z80
+ff46d63c2a192ced314fc139d344958f *./download/s03_a/komba.z80
+9c5f8c5a2ab594a5bbf0683d3687ebe6 *./download/s03_a/othello-new.z80
+394f2a0bb7be25783b2e456a784ed303 *./download/s03_a/pyramide(laeuft).z80
+2d643c0b374c7ff7edfebabc788b3402 *./download/s03_a/roulette.z80
+9de516279f9cfa799f2645befbde03c7 *./download/s03_a/spiel-box 1.z80
+593840f2b0ffbb66f9c3539596b95297 *./download/s03_a/tabkalk.z80
+05b03068e96ce7b2f7bf1052807dc233 *./download/s03_b/ascii.z80
+0ea40d226a1ba70c40e03e5f3ee8342d *./download/s03_b/astrojaeger.z80
+ac0911066ef8574d8050608a0d9f4c9d *./download/s03_b/boerse.z80
+6627e84778daadb6c6d2e8839625e86d *./download/s03_b/climber.z80
+69f68ed5bd59f71062d8a3454aec8555 *./download/s03_b/cp_m.z80
+4a62d6e6485702683ebc93400b838743 *./download/s03_b/ctc systemuhr.z80
+9ddaf04a2e6e346a6a95f3c2fe099a5d *./download/s03_b/dez-roem.z80
+aad816c6aeb9ec88bd537b84607fde42 *./download/s03_b/ghost voice.z80
+9f8dff83563a9f37099b4a929001581f *./download/s03_b/heade-trans.z80
+df947e233a6a41ba89d16deb9b50d5fe *./download/s03_b/header-menue 4.z80
+d8d11a3433e60740e3f78cf7cf3b83ef *./download/s03_b/init-header.z80
+0bcc9da9e009477341f60c7c1ba16e8e *./download/s03_b/kutscherspiel.z80
+eea520f81dd0ef55f3ae797cae1f3855 *./download/s03_b/leiter.z80
+4334ea553601ec3230a754259051ee01 *./download/s03_b/load z9001 mc.z80
+36f02e8259e508535e7d5525ce7e1b2c *./download/s03_b/mau 2.z80
+3084516c15ef0c7940bacb57e65e7173 *./download/s03_b/melodieprogramm.z80
+ecbb37731544b17c979bb8fa78fc8160 *./download/s03_b/peng 3_1.z80
+2e29b6e592ff788c8a771e2c8141721b *./download/s03_b/pilot 5_2.z80
+512d5192fcaefc63d0421c7547034ff9 *./download/s03_b/pilot 6_0.z80
+538e3890bc951b400443b68b4c7353d1 *./download/s03_b/poker.z80
+b4e0dc40af307a28d67d5c6be18b5e02 *./download/s03_b/scherzfragen 1.z80
+8f8c419a7b4f6e9d72ae821a94799f10 *./download/s03_b/scherzfragen 2.z80
+75eed0c21ae4aeaf17221613afce1165 *./download/s03_b/simu spectrum.z80
+cf125aedd9c8a563ef9b7e57319cc3a8 *./download/s03_b/sinus.z80
+123c2d301b15c533d479f975deba627b *./download/s03_b/speicherservice.z80
+63e67015b55f9450621c0fb5818fab95 *./download/s03_b/spektrum-lader.z80
+2b61052c58c032078a2fed1e412d5505 *./download/s03_b/standardadressen.txt
+b9a03cf0baeac3182bc7b998a81dd8d4 *./download/s03_b/starfire_2.z80
+3ccb6d8bbcf1e729d67af7aa5fd3fb5f *./download/s03_b/summe.z80
+5844a8d63ff55d3874b43abdfd881d15 *./download/s03_b/supertrucker.z80
+bac8e3d3be8e68f7cd2082cb066c6d77 *./download/s03_b/uebersicht 1_4.z80
+66c524d8aa14f84bf78bc9549d08353f *./download/s03_b/verschiebepr.z80
+f4e67e0be1477d7e8e009709a0424292 *./download/s04_a/64k-bascoder_txt.z80
+8d81ce06d3f9f4723f787d624cf66124 *./download/s04_a/64k-basicode 2_1.z80
+0b788aa8f4625cc15c8a00add462de5a *./download/s04_a/ac_1_tape_v_7.z80
+c6df3133afe37304857a0e9dcab6a15a *./download/s04_a/debug 1.z80
+2f4a3e92933bebc5bb3f1d639a624c6c *./download/s04_a/debug 2.z80
+489c6702493689a252f5bca0dadf7db7 *./download/s04_a/eidechse_a_2.z80
+81f7b48494f7cddf860b211554b1a381 *./download/s04_a/eprommer_2_9_ccl.z80
+542e31451386ec4b0a067b6802e2521a *./download/s04_a/eprommer_2_9_igd.z80
+096961d3f37bcc92bbb7542ef3de89a0 *./download/s04_a/f83 1_3 bcb2.z80
+e9b880750c0173427aa8113b97af913d *./download/s04_a/get_put orig_br.z80
+225c811f40a47e68eb65347bb815c33a *./download/s04_a/go.z80
+9f047094245c5f1a82d3f098fc766241 *./download/s04_a/hdiskcopy 1_61.z80
+9e7356f3f22dae89fb959ea78f723463 *./download/s04_a/headersave 5_95o.z80
+e9005e779eb3c03b44f3c99380b70f51 *./download/s04_a/headersave 5_95u.z80
+481e2947674d97e4d5f1d5a0aedacce5 *./download/s04_a/hymnen.z80
+c9628ad7d5bc2680594e364d2c124f53 *./download/s04_a/kc-basic m1 (c).z80
+4015d5bad22767571942c5a9a104c85d *./download/s04_a/kc85_1-load.z80
+631b7b9036e50ce9fcfd22d2aa5d9ddb *./download/s04_a/kc85_1-save.z80
+4858f92e201912aa125d94c003815378 *./download/s04_a/lied.z80
+69bdfb099d0068896c9dae5160e51fff *./download/s04_a/lotto-analyse.z80
+707d7496de49036b49e919061a686925 *./download/s04_a/lotto-simulation.z80
+8406c916fd2fb9cd64d1b71c3cff6529 *./download/s04_a/melodiegong.z80
+371299e8600c76a8c6d0adef27ad787c *./download/s04_a/melodieprogramm.z80
+5da1272aeddb5d6c417e8ff3e23eb0ff *./download/s04_a/memory.z80
+802684c54895371438e51b395171051b *./download/s04_a/memory_c.z80
+089d1503dda0c2e02baf8309e63f1652 *./download/s04_a/microword_1_5gs1.z80
+f47ff217a5f67dff83c0f64969e8e0c0 *./download/s04_a/microword_1_5gv1.z80
+3c5ce73dfb66f1f7f629a373f9de3adc *./download/s04_a/monlist.z80
+4df50045ce689f42fe3c56f0de5ce676 *./download/s04_a/ping-pong.z80
+42de7983191e0c4f21e726b57a7a13ba *./download/s04_a/recorderjustage.z80
+810706a1b8018d2fa39da33fd41d0a8b *./download/s04_a/rst_20_wandlung.z80
+02e21d5f0bbfa7c5d49ae160a1d1b007 *./download/s04_a/sedit 1.z80
+e78df56e0fbcf8a6600eea50e7e00dd8 *./download/s04_a/sedit 2.z80
+192001615a6366647d114d25771e58e5 *./download/s04_a/superdame.z80
+d48e671a3c5018b11784a2207c8fabc8 *./download/s04_a/uni_textleser.z80
+63dacd949ac014122b2ede37119ff569 *./download/s04_a/wizard of danger.z80
+f05e2c61882aa08fe25029f713a6309e *./download/s04_a/wizard_angepasst.z80
+6ae16f4a095ee1e1da7d79f72ec30772 *./download/s04_a/z1013_lit.doc.z80
+08e2c9bc8c99394fb66c0d38218879d9 *./download/s04_a/z80 - forth as1.z80
+68c14ba36357ceba988a4f9e7fb10460 *./download/s04_a/z80 - forth as2.z80
+c072629c0dc2951f7d9804a14e6b4b39 *./download/s04_a/z80 - forth as3.z80
+96c65cde9b9a224f67a94767237e5c49 *./download/s04_a/z80 - forth as4.z80
+7a4c39f7d3ad00fb195862fd16edf60b *./download/s04_a/z80 - forth as5.z80
+6839841be6b411af44a9b944a1d88fb0 *./download/s04_a/z80 - forth as6.z80
+f7ed7ee4354c59b1a5c6b284e7f3794c *./download/s04_b/4k-mon k7652.z80
+dd3808bc6b6848a666d93dc970b31c5d *./download/s04_b/ac1=z1013.txt
+da06c74f37c8aed8be834e3c155287b4 *./download/s04_b/bascoder_test2_2.z80
+7c3c3eecca5312fd978d89fe1e9e1db1 *./download/s04_b/bascon_test_2_0.z80
+671baaf0cb690ee83053e1e7f7c1a84f *./download/s04_b/debugger doc.z80
+11c15fb73c932435e49be0dbc5489508 *./download/s04_b/druck-tast s3004.z80
+95c9f39f000f28eb09bff903fad832b0 *./download/s04_b/eprom-besch_1_25.z80
+0ed7650ee436f3a346b2ab415db24465 *./download/s04_b/eprom-handler2_9.z80
+95fe53f66f02ff22e6a2f3c172ef944b *./download/s04_b/eprom_dok_ccl.z80
+2699563a24bc7faf4274a90cbd903aaa *./download/s04_b/f83 1_3 glo 1.z80
+dbc803d940a6e53575d44eda5e6e61c6 *./download/s04_b/f83 1_3 glo 2.z80
+2d3eef4710060ce9635915449896e435 *./download/s04_b/f83 1_3 glo 3.z80
+6622a15b5a57eaf956f0327e742eb921 *./download/s04_b/headersave.z80
+4e535e15299458a066506aefee8e9912 *./download/s04_b/ibm_zg+din.z80
+5d83beb8c53bc09acfa6e6f0b4eab547 *./download/s04_b/instal 5_89.z80
+6a2b89d0db56afa89fe9aee6d8ac4bab *./download/s04_b/jumping-jack.z80
+c9923e1603a834dda2b5da7cee820c2d *./download/s04_b/jumping__i.doc.z80
+0c2e190bf63abb70766075d88d8535ee *./download/s04_b/kc-basic m1.z80
+1905fb7443cf07c23d4c07bcd4440dc4 *./download/s04_b/kc-save_load.z80
+a0785e98128be885a7d31b65fd690e6d *./download/s04_b/kc_rom_basic+1_0.z80
+0fc569a73feeb23271ea015746fa047e *./download/s04_b/ladder_c.com.z80
+331de0d9936d6ae462bf792e83463686 *./download/s04_b/ladder_i.doc.z80
+a2f79d3297e4bb53b6c1d2a499f2d050 *./download/s04_b/mikroword s3004.z80
+1a67b672f58a9c32ef7538161143eeb1 *./download/s04_b/moner su 1_31.z80
+f7517ade162596aac5e820f579161b42 *./download/s04_b/monlist_i.doc.txt
+47d30368711024f2f9fbffd07bcd314a *./download/s04_b/monlist_i.doc.z80
+e84b526456fc5c0f64f3ca79aec603dd *./download/s04_b/mword+asm+tc1.z80
+2dbcf74e9478a2ac6ae875a1570e67b7 *./download/s04_b/mword+asm_alpha.z80
+c73576561351dcc7c9bf8a46e6f6857b *./download/s04_b/mword_alpha.z80
+d966758bc01f05ed68adad16cbbb0efa *./download/s04_b/rst20_i.doc.txt
+0186fddf3c1db5a4f76a1540d6e27a9b *./download/s04_b/rst20_i.doc.z80
+e93a30bd8125503f78cfa05a96e59d4f *./download/s04_b/schlange.z80
+75bed5e5b8f9a6ea24f248c5be8624f6 *./download/s04_b/schlange_i.doc.z80
+cad931cd7c0f53c35de6e106eced4a07 *./download/s04_b/sedit-doc 5_89.z80
+da3d3c73f4f281112f63b1e4511db487 *./download/s04_b/sprungverteiler.doc.z80
+1472e85a8a5a0fb766d8bf54484fa52d *./download/s04_b/super-ski.z80
+c9183ab630c3738204f23ff7315f7427 *./download/s04_b/super_sk_i.doc.z80
+6c6ce43df15159504c6bb3548e9cbada *./download/s04_b/z1013_surl50_rom.z80
+ccef2fbe5ee7ff090c380119c78ca4e9 *./download/s04_b/zg_1013_orig.z80
+128947d8f9a3fa363eb602b79615e858 *./download/s04_b/zg_m_uml_+inv.z80
+0790dfcc9c181dc105f3b79a493c6a56 *./download/s05_a/basicode-info.z80
+2841c2051f8a0408cb7c4053cb21e920 *./download/s05_a/bc-3 testjournal.z80
+9f1ffa3624b0e16e50334ace47701979 *./download/s05_a/bios12v16.asm
+8a5729706d2f005d5c58523af7d8cda1 *./download/s05_a/bios12v16.z80
+a521e46e82119809b12e29fe0a4f9c98 *./download/s05_a/c_test_doc.z80
+035a6c5ffee24b723fadca3b502f5e64 *./download/s05_a/ccp+bios12v_16.z80
+684a6a1d14ff1de5b3ce1132eb3921dd *./download/s05_a/dc-monitor.z80
+4e103298542349a10117392e2728711d *./download/s05_a/druck-tast s3004.z80
+65d861afa079809e84af853a4e373e94 *./download/s05_a/ed81  v2_1(i).z80
+25218d8c42d5d055e69a0713b345379e *./download/s05_a/ed81  v2_1.z80
+1e780b294fa11a83988f455a39006b96 *./download/s05_a/f83 1_3 glo 4.z80
+d54b2755cad065584335110f05951055 *./download/s05_a/f83 1_3 glo 5.z80
+f583b5bdf79cc8cefc1d6bdb4193000b *./download/s05_a/f83 1_3 glo 6.z80
+e44125ca641aabf1049725a18861eef9 *./download/s05_a/form12v_16(m).z80
+a702e3dbae12bb781c40ddc9f7bcf07f *./download/s05_a/form12v_16.asm
+e732e8694a9e57021e379cb2e5c9f2f1 *./download/s05_a/form12v_16.z80
+fe60c95df41013302a61f3b25d966e08 *./download/s05_a/hdiskcopy 1_5(i).z80
+2f63a799672dafe2ea5df6718ac8c55c *./download/s05_a/hdiskcopy 1_5.z80
+f7b142bbd99d610d411cb0393d1854cf *./download/s05_a/headerdisk_45.doc.z80
+efbe64d174799349beb0b0ec3c83ff46 *./download/s05_a/hex_ascii_dump_u.z80
+e47db608460e1b2c182f61ad60bf974b *./download/s05_a/hexdump_1_021_I.z80
+19b47d52012bc931c5afbafffdcf2d9c *./download/s05_a/hinweise disk.z80
+28e2bf3f34db66e93375551e1cf22f4a *./download/s05_a/kc-rom-basic+1_0.txt
+fe53dbffb1d70c451b12e96e2bf5a4a0 *./download/s05_a/kc-rom-basic+1_0.z80
+a7da84a51c2134f2781c0ce63525bf69 *./download/s05_a/kc_basicplus.doc.z80
+0ef9a99c07c18fe29395e1b09ba2da46 *./download/s05_a/labyrinth1.z80
+50dd57d0484198a51141088c24f70b59 *./download/s05_a/labyrinth2.z80
+7e227c20d4c35966de597dc95c7908c9 *./download/s05_a/moner su 1_31 k.z80
+eef144e0e8fea4ddd04f0807cb5c1f98 *./download/s05_a/mword+asm.z80
+2548127c72a63bc97a5d9597524ff61d *./download/s05_a/r_80_doc_1_3.doc.z80
+50b934cde4b60c4400ab7712fe399a3e *./download/s05_a/scp_2rf_doc.doc.z80
+ecb2377190c03ea2eb09af69612844ff *./download/s05_a/status i_o-adr 4(i).txt
+8251f536a53c6bdc14a6aa23ce0cb800 *./download/s05_a/status i_o-adr 4(i).z80
+4ecda4209404d427de3e0655f24ceb68 *./download/s05_a/status i_o-adr 4.z80
+bd64cef7de857a0844fb9194455896d3 *./download/s05_a/uni-copy 4_2+.z80
+75f905d6ecf9c5c6d6ad3d7e340f2bca *./download/s05_a/uni-copy 4_2.z80
+bd393feaeea4b8e7fc1d365a37f209af *./download/s05_a/z1013-surl v5_0.txt
+f2333f886008d48b591a926a32be8888 *./download/s05_a/z1013-surl v5_0.z80
+47ac5b223eb40f12728ccbee1e806c2e *./download/s05_a/z1013_forth_doc_I.z80
+cd8ef6c8004d2da5250db8fe993310e4 *./download/s05_b/64_zeichen_bs.doc.txt
+6c337ee06c9a914b67e12bfc6f5f448b *./download/s05_b/assembler 5_3 nf.z80
+2de8a7374eb61d29f5606e3166d941fc *./download/s05_b/bs-text klub.z80
+8e620d06eef21b01691026cfc6614830 *./download/s05_b/chess_master_h_I.z80
+6f3c87dfd5138824e75974cde0bd4956 *./download/s05_b/dr_trb_ s 3004.z80
+c422bb31b1c01006d95795e3e95a7788 *./download/s05_b/epr_prog_geraet.txt
+73dde2b07033ff19468be861e6619723 *./download/s05_b/eprom-handler.z80
+71ded347fd2bd09707a8efc23a8f1b93 *./download/s05_b/headerwrite 1_0.z80
+d51f29d17855789f997776310e9b1389 *./download/s05_b/kas_list-klub.z80
+2f178fc726df8cbb285c5818c8073e6b *./download/s05_b/kc-basic+ new.z80
+4455a79ce9ccf116d729417a5a1d7371 *./download/s05_b/leipzig.z80
+bdd805a74e20a7671261592bee1aebf6 *./download/s05_b/leipzig_doc.z80
+079a94ca4140af5afd4dddf58f6a27ea *./download/s05_b/logikanalysator.z80
+58047cbee5a98c312ea7e9e3cd0b3ce9 *./download/s05_b/oc-editor_doc _.z80
+41f2715efc992d82ffaeb71301d38ea8 *./download/s05_b/r80 rb new 1_3.txt
+a44a7f93f6db1bb9f85437b1b523d7ec *./download/s05_b/r80 rb new 1_3.z80
+59fc467989b3b211c653d62c3b2aa285 *./download/s05_b/rf_am_z1013.z80
+68a537bed3b3e777a9abdcba5871d9ef *./download/s05_b/sprungvert_u_a_.htm
+6d9d459911ef808f91be846aa90aebbe *./download/s05_b/sprungvert_u_a_.z80
+2f9adfd14aa9bc66633d099d553c8882 *./download/s05_b/z1013-info klub.txt
+0b9e97eb1f99696b58557c8e9571d300 *./download/s05_b/z1013_surl_doc.txt
+10040f6ed4dd893a980a8932b7831101 *./download/s05_b/z1013_surl_doc.z80
+c9eb669cd031e518542428193da17b63 *./download/s06_a/10k_basic s_ps.z80
+93ee079aaea16a50f7a97aba7fab4161 *./download/s06_a/boerse 3.z80
+ce86f19aa469adb6289c8c9d1352869d *./download/s06_a/brun_com.z80
+6791d5df9655a3ed2f24ada8d3b5e8d7 *./download/s06_a/cad-spiel.z80
+0e95ac77b026577178c1038fbd452eab *./download/s06_a/ddr.z80
+4918d19c4c6d7c6aa6d879832b338768 *./download/s06_a/demo 2 z1013.z80
+b7cb50fb4505f8c0e1594cf2d1fde065 *./download/s06_a/digitaluhr.z80
+178e6584e73bbe4d323984764894fb4c *./download/s06_a/fabas.z80
+8a07c6966bf648a527b8a2db62fe8ea8 *./download/s06_a/funktion.z80
+272517a33d5cde8e47f0a1a82b94cc0f *./download/s06_a/fussball.z80
+62dbe3fe0021c7a6befcf3e18898ef7b *./download/s06_a/g-algol.z80
+7fd2ca38ec510de9a1e17cea809deec1 *./download/s06_a/header-bank +.z80
+8414d1fd0e589a1233ff10d9cb9cb6f4 *./download/s06_a/headerprint_pioa.z80
+6994897818017d5a5828e27f0ddb3169 *./download/s06_a/headerwrite_1_0.z80
+2a872c35945b41821cf59554b613048b *./download/s06_a/hund 1.z80
+1e197e36ba5ca84372a7a5c2af76abab *./download/s06_a/kc-basic org_dru.z80
+98997ccc0148253b80862c3abbed435b *./download/s06_a/kc-basic-drucker.z80
+6eb7623b0bb766aa75079ae581ed176d *./download/s06_a/keyword(opal).z80
+ced822a360b1d1cf4689c82229dbb7c1 *./download/s06_a/kundendatei.z80
+cd3dd73b2ba44a917d756c7ab1b17944 *./download/s06_a/kurzzeitgedaecht.z80
+48ea0aec3caeb9cff534c1a8c602e55d *./download/s06_a/lager.z80
+f31912ee296976c8dc5aec22ef3a8425 *./download/s06_a/lec.z80
+290161bf6eabe01fadd0bf9612724a63 *./download/s06_a/lec_1.z80
+ea803c99110767fc2db51e74416f2efb *./download/s06_a/lib     _com.z80
+32c289fe3a94de0c424fdc2b9d82d6bf *./download/s06_a/licht(pio).z80
+9e3a60135825922ddb573d25aa75b6b5 *./download/s06_a/mathetraining.z80
+cbcdef1d20da5b834224b55f1b6db387 *./download/s06_a/morse.z80
+22255fc6e65df6af4ebefd023b11c41e *./download/s06_a/motor.z80
+3c885aafbf07c474817187326c12447b *./download/s06_a/musikdatei.z80
+6b7bab1115eb466d7f7dc8002cda191c *./download/s06_a/muster.z80
+795f13166e64d8c590ef06410750304c *./download/s06_a/opv_1.z80
+14615a1f85d7eb6a50ee30049e06c456 *./download/s06_a/puzzle.z80
+5110c725b9cb44ee49e5149d829696db *./download/s06_a/pythagoras.z80
+6a73154d6d6e1a171e43c6e331910a98 *./download/s06_a/rallye.z80
+1ff16a3b511f89d41dba5f0d0b8437c9 *./download/s06_a/roboter demo.z80
+c27832513f5794aa9247c8ad95da61dd *./download/s06_a/s 3004.z80
+7f2066bf87f2a5578c339bdd6c211506 *./download/s06_a/s3004-druck.z80
+fc28695b7dca002a65fed8770b361d32 *./download/s06_a/s3004-z1013-tast.z80
+d4a69331b39baee021cfaf8e5870ad60 *./download/s06_a/scp-centronic.z80
+0fd40a6c753fb4e7b481c5dbb70a741d *./download/s06_a/sepak 2_1_s3004.z80
+69db5cbc0716ed7c7ca3c3c28ed60b96 *./download/s06_a/soft-zaehler.z80
+1b6221cd410937158d658cef160f232c *./download/s06_a/sort 2.z80
+15d27a05e44e757708dd3e855ae9eb9c *./download/s06_a/speicherservice.z80
+60798ac3c688f7ea64a7ee424fece1f7 *./download/s06_a/sporttabelle.z80
+a0ac837939a4be07773ea8c70c30c22e *./download/s06_a/stichwortverz.z80
+0c7ca9098668b797e2ae04d0d488a5f3 *./download/s06_a/tabelle.z80
+b9f6be997e73446d96fe3f6d2194da23 *./download/s06_a/trafo m_ei.z80
+1424d467be5691b41397761553bf2645 *./download/s06_a/trafo m_l.z80
+87faf3f3afd31b0c84f9f7b742d87f89 *./download/s06_a/tu 144 2_02.z80
+16f60fa0a789419df94e4f021db83efa *./download/s06_a/ufo-angriff.z80
+2bfb57be6f04269506cc6d1928a9f5c9 *./download/s06_a/up-joystik.z80
+20f2b038072859e5b5a2efb1985cb22c *./download/s06_a/vokabeln.z80
+a9ba6875600b284ace05ceda2259727d *./download/s06_a/zahlen.z80
+f966865ffdfa543a7f40afed68779ff6 *./download/s06_a/zylinderspule.z80
+c9eb669cd031e518542428193da17b63 *./download/s06_b/10k_basic s_ps.z80
+b10132be4be29f763a85c66defc26391 *./download/S07_A/3k-)10k-basic.z80
+fd3f169134b1cd5bdc4c40703b0158b5 *./download/S07_A/ad-1kanal.z80
+9a694fb4f59665785cf31d1dfee73b4e *./download/S07_A/autoeditex.z80
+06e6e54c205b1b61ee7fd3e628fe413c *./download/S07_A/basic tips.z80
+95ee77d47bae9be14fb54a07a29009ed *./download/S07_A/beschr_datenbank.z80
+4bfaee62c168a7d5539f4aa16f23b11c *./download/S07_A/billard.z80
+ab600b124197ca443239bd35eee622c6 *./download/S07_A/CCL-Grafik soFT.z80
+f55eda1a588a97f1bf68b55571d482ce *./download/S07_A/COMP-OSZI.z80
+836a002523cd4be44a69e8c68da7ef17 *./download/S07_A/copy z1013.z80
+57602eb0b22c4bcc9c30d8f4537c5680 *./download/S07_A/DATENBANK.z80
+4f84f13a519f26f552a7535b31679eff *./download/S07_A/datex.z80
+fcaa1dbc4cbe66714eaa81174364c78b *./download/S07_A/debugger_a-2.z80
+33292b9bbb754d8f8e38e897fe8f27bf *./download/S07_A/display  rz-soft.z80
+bc213cf60380de7c362b3d2554da0e95 *./download/S07_A/Display.z80
+3c611def831aa51812aad5d6bf16d783 *./download/S07_A/dvm 2_89 us_sof.z80
+75b0111a1256fcf31be9169092959fd2 *./download/S07_A/floor.z80
+b597e39cd72780cbc04aa4585eb66312 *./download/S07_A/flug 110.z80
+3cc85b73e176cfb9c9ba0f2871e117af *./download/S07_A/fzg+s 3004 soft instr.z80
+c58d28aed556453c73e3c7b7aebf20b2 *./download/S07_A/fzg+s 3004 soft.z80
+7ce8ef3789634094f2374cb320d9c9ee *./download/S07_A/ganymed.z80
+58941ced286665b2bb6798cb71da214f *./download/S07_A/GEDIT 2_24 prog.z80
+9de0d8f022bf2dcf88f3988c55fbb754 *./download/S07_A/GEDIT 2_24.z80
+ce6991c61ca60727ef68db36ea4b165a *./download/S07_A/hase+wolf.z80
+5e5d2e16251253f9f4839302c9137816 *./download/S07_A/header-bank + t.z80
+7fd2ca38ec510de9a1e17cea809deec1 *./download/S07_A/header-bank +.z80
+34597f7b69c9592a959015801b5f54dc *./download/S07_A/header-bank zeit.z80
+d85e4b68b247c4864149111644f9f748 *./download/S07_A/headerbank zeit.z80
+8496d2399aa0586b6b03ebad09f4b245 *./download/S07_A/headerdisk 45 prog.z80
+17106a0c9a8e42022931f5ed861adb3a *./download/S07_A/headerdisk 45.z80
+8414d1fd0e589a1233ff10d9cb9cb6f4 *./download/S07_A/headerprint_pioa.z80
+9b46ffc1e7f2d93f442f2d77595a1d9d *./download/S07_A/headerwrite 1_0.z80
+77397d2d01594dcc4ebb1d5a99b373b8 *./download/S07_A/ic-test.z80
+2eff2c145af104db38ee3ec1306d9b38 *./download/S07_A/kass-list.z80
+d5997071f63d055f98139a2136e3127d *./download/S07_A/lebenserwartung.z80
+c097462d7664e9a8b77bb211703dfb52 *./download/S07_A/MicroWORD DRAKK.z80
+7f0d1cf2fb73ce77abfca515e388268f *./download/S07_A/nf-modul.z80
+bdea07c191ea1f0f898fa7205eb6c4ac *./download/S07_A/rakete.z80
+d90b01fe18326d51718bdc0e9937d889 *./download/S07_A/reaktor.z80
+eced9a2bb8c7c6ddb39398d77d03df7d *./download/S07_A/s 3004 280289.txt
+675ec5d2eda853fd51d71e5f53cf84b6 *./download/S07_A/s 3004 ft 280289.z80
+066640749f59560d948a2e56bfef0438 *./download/S07_A/s 3004 soft 1_90.z80
+e7bd683e9670d8bdd9d88de255a79765 *./download/S07_A/s 3004 soft 1_90_instr.txt
+f5a1eb514163c83cf50aaa2c6cd5fe68 *./download/S07_A/s 3004 soft deut.z80
+69f0ba8d6c81a0d82f244b7681241440 *./download/S07_A/s 3004 t.z80
+b992dbb0a3e4bae880fea8ebec406fb2 *./download/S07_A/s 3004.z80
+49c911ca0e587ec1128d4d2e9d1ccd73 *./download/S07_A/s3004 soft 81289.z80
+31fa798c6b3998b3c0a95a78fca86f38 *./download/S07_A/s3004 soft 81289_c.z80
+de764a90e77dc878fa963fc9e3fdb2cd *./download/S07_A/sex.z80
+4f10137cb69aa34212bd7a1818d9acd1 *./download/S07_A/test s 3004 soft.z80
+0c655ad946b8e2a8304f29748cd826dd *./download/S07_A/trafo.z80
+ead55b5ee8bfb9bebd330acdea8f9ebf *./download/S07_A/turm v babel.z80
+37e62b948cfe4f5bd2011aa856ffcc9a *./download/S07_A/up 3k-)10k.z80
+9e77e3766a792b3d90010dc89346eab6 *./download/S07_A/wueste.z80
+deab64cf75eb31a12bb374a5899b8f45 *./download/S07_A/z1013.z80
+8e78704d8b0f9d956e5e0287ee40f1d9 *./download/S07_A/ZKM.z80
+dd7d791a270b3fb357e2c11d4aa0d2f1 *./download/S07_b/airlines.z80
+2828d9d64b35cd56c926d7be25e218a5 *./download/S07_b/anaborea.z80
+64566f2a83a2a3ce905544bc84c32633 *./download/S07_b/arktis.z80
+7c9167d8738a45c0c695174944a77690 *./download/S07_b/ausgleich.z80
+2a276554df7f0cb6e0c4c6490c25b3b9 *./download/S07_b/bolderdash.z80
+ed63a2662c643d88d31ec60094bc2bbd *./download/S07_b/case.z80
+95acb53b6740d486efaac3d15e0c5d3c *./download/S07_b/du_com.z80
+1afe452f0a88fec64e302615be1efbf6 *./download/S07_b/fehlberg.z80
+72f501c3d297f19af22ddcbd55b12df3 *./download/S07_b/feld.z80
+1a2823803d187df654334d8b1ab3a9e6 *./download/S07_b/graph.z80
+c4210dcf295dd2de616f3f65f311a720 *./download/S07_b/halma.z80
+ca7800fe9e97b3fa8e552180aafe27c3 *./download/S07_b/luftkampf.z80
+954a7c90f3bf74b7377195fd54d4682e *./download/S07_b/mars.z80
+1170d28fad299ad205d6e95eb2eb19a7 *./download/S07_b/matrix.z80
+ca6024fef6bd6aaa6a463698f93abfca *./download/S07_b/mienenfeld.z80
+9c1f6900c34d7b58ea03ba5b3f7edf53 *./download/S07_b/multi beispiel.z80
+b020a68446b9e58b6ac1efd47066c7b4 *./download/S07_b/multitask1.z80
+5c3d8ca7d3797ef47d1276b82c173314 *./download/S07_b/multitask2.z80
+1136d8ae3f87e96395255efe60826d11 *./download/S07_b/newton2.z80
+ee8258ef3858514918b535b090e4eae2 *./download/S07_b/polynom.z80
+e322ce44c3f6b1338f64f6bd981bf472 *./download/S07_b/river raid.z80
+c64f76e0ab4cc146f80baeb4760960ed *./download/S07_b/sdi+mc.z80
+67ea3fd231b2de4905dec1d06a861742 *./download/S07_b/see 1.z80
+4bc2a093ec55e88a91745dc04a39cfe3 *./download/S07_b/see 2.z80
+25b3b28a9ef91d58de5a5878b293602c *./download/S07_b/see 3.z80
+44b852c8c928d630da00be2fe1ef1ecd *./download/S07_b/tetris.z80
+3f632505ba848613704f0036dce1813f *./download/S07_b/tp_com z1013.z80
+2d39cf46c2b12a06631264bd757d3d3e *./download/S07_b/tpdruck_ovr.z80
+beef3db0973025efdd941540b4ab43b3 *./download/S07_b/tpht_ovr.z80
+f913662f7fc98461414f1249c60a0b53 *./download/S07_b/tpovly1_ovr.z80
+7642f02c1f665ebb7edc91d438b0aa66 *./download/S07_b/tpsv_com.z80
+e054b86afa9a5725d05b479bbae067fd *./download/S07_b/turbo_com z1013.z80
+4cb00853984f60cfe2ce3fe3e17ca691 *./download/S07_b/turbo_msg.z80
+b7ede151ab7c4062be22e7d8036a456e *./download/S07_b/turbo_ovr.z80
+76f1c9d095834f919303ebb6024db27f *./download/S07_b/vogeljagd.z80
+f5916c6d9cdc9ed4e89f5ddcd604312c *./download/S08_a(CPM)/asm_com.z80
+ebdfe236a227855d0092ac8f8e1cdad9 *./download/S08_a(CPM)/cp-a beschreib_doc.z80
+994907fc12e6a4bfa116a7a8d1d61860 *./download/S08_a(CPM)/cp-m.z80
+0327805e222c3f84264dca10f47ed852 *./download/S08_a(CPM)/du_com doc.z80
+301630761db6406e80de5e33698f2116 *./download/S08_a(CPM)/link_com doc.z80
+0807fe315002bd4ff31f7b53e0637d78 *./download/S08_a(CPM)/linkmt_com.z80
+b256a3e36196ab70603f389e6b97e23c *./download/S08_a(CPM)/power-doc.z80
+122bdba7058a577948b75c8a3c82b610 *./download/S08_a(CPM)/tp_doc.z80
+45601546c8aed2258fed87bf1d5b206d *./download/S08_a(CPM)/wordstarinst_doc.z80
+0248e41bff5e37dff7c34a7f25485bab *./download/S08_a(CPM)/ws_com        55.z80
+6615f624a52f23cfa478b08e45b716e4 *./download/S08_a(CPM)/wsmsgs_ovr  110.z80
+7b91211dd56323a613515c798e549624 *./download/S08_a(CPM)/wsovly1_ovr 111.z80
+67529770340d64acd4047a05be9934e1 *./download/S08_a(CPM)/wssv_com      3.z80
+19db5a8b5f2cdcaa67c30a7eb83a6ac9 *./download/S08_b/1x1.z80
+a2bfb57eea9600c71081fd602bed626c *./download/S08_b/3d_muehle.z80
+fd3f169134b1cd5bdc4c40703b0158b5 *./download/S08_b/ad-1kanal.z80
+5c92c28d669ce3d5ee0ec76f246c2e15 *./download/S08_b/adressen_telefon.z80
+05b03068e96ce7b2f7bf1052807dc233 *./download/S08_b/ascii.z80
+1339698333992e19f2a2f3317d174477 *./download/S08_b/auslese.z80
+2615617ce46c847fdcdb4fae54ac73d1 *./download/S08_b/automat.z80
+cd7aea2dd9951f203deb83dfc1a576df *./download/S08_b/basic tips.z80
+4bfaee62c168a7d5539f4aa16f23b11c *./download/S08_b/billard.z80
+d49b673f2a64b0c04d3b7a2d832d0d08 *./download/S08_b/boerse.z80
+c518e6a128b1bec02b9ee2b74f7afa3b *./download/S08_b/bremswegtabelle.z80
+c19ba9617f1aa3ebc677a5608296b588 *./download/S08_b/c-test.z80
+6791d5df9655a3ed2f24ada8d3b5e8d7 *./download/S08_b/cad-spiel.z80
+342a270432a7fe1ece4cc55ce1078a37 *./download/S08_b/cave.z80
+e098ebbb63645af3979df0fbe3f05bd9 *./download/S08_b/chaos(laeuft)g_a.z80
+a77eddefe3d2bfa64e30de10dc20dbad *./download/S08_b/chaos.z80
+e7c3b8c6abd500e6b5b16125ce886e54 *./download/S08_b/climber 3.z80
+6627e84778daadb6c6d2e8839625e86d *./download/S08_b/climber.z80
+0e95ac77b026577178c1038fbd452eab *./download/S08_b/ddr.z80
+54b6715b69eae85af7ad895c05f86527 *./download/S08_b/dezimal-binaerza.z80
+5f293487f748ffb6d436298444126c3b *./download/S08_b/dezimal-roemzahl.z80
+155979eae749dffad78561f408d2c6be *./download/S08_b/digitaluhr.z80
+f6ea8a533d2c70d1857683a475768824 *./download/S08_b/eliza.z80
+13e711fc2794ad5250837e02dad754ea *./download/S08_b/entern.z80
+178e6584e73bbe4d323984764894fb4c *./download/S08_b/fabas.z80
+388a536548c30ec142f26dfdd8a33827 *./download/S08_b/fahrschule.z80
+a5afa2347c8e05b2ea272e1d3bb17d9d *./download/S08_b/floor.z80
+b597e39cd72780cbc04aa4585eb66312 *./download/S08_b/flug 110.z80
+8a07c6966bf648a527b8a2db62fe8ea8 *./download/S08_b/funktion.z80
+aa16d5823cceb6161604c7b1ac891af4 *./download/S08_b/galtonbrett.z80
+48643801e9289e45bdc9d248e512d5b0 *./download/S08_b/gammon.z80
+7ce8ef3789634094f2374cb320d9c9ee *./download/S08_b/ganymed.z80
+04311c191f6589f948e20adf4060ef86 *./download/S08_b/gedicht.z80
+31ae5dedc416d243cd0cf4e4e6b8cfab *./download/S08_b/gewicht.z80
+c4210dcf295dd2de616f3f65f311a720 *./download/S08_b/halma.z80
+ce6991c61ca60727ef68db36ea4b165a *./download/S08_b/hase+wolf.z80
+a36a733231ada33800f6bde25fa9ee6c *./download/S08_b/helen.z80
+5ba9a1f2cfb26e2ad3a5e6c769f8bc5f *./download/S08_b/hex-dez-uni v2.z80
+98b287573544b0bd047e747f8573aea7 *./download/S08_b/hex-dez-uni.z80
+eb3884964cc4ce939d613bc83242206d *./download/S08_b/horoscope.z80
+1c20dfd0c94c61c8c4d00cbf2bf99691 *./download/S08_b/invasion.z80
+d20c284f3a1b5b4088b53d8124481f1a *./download/S08_b/irrgarten.z80
+c62a5fe60251429adec2d4491ff24fc1 *./download/S08_b/jagd.z80
+d8a1c2932096db92560c85fe1761eee6 *./download/S08_b/katze_maus.z80
+8c8a4bb5fb3fd0f3f2b55bef58df2889 *./download/S08_b/kegeln.z80
+ff46d63c2a192ced314fc139d344958f *./download/S08_b/komba.z80
+e6922cfddef917b2efa3d7256940f566 *./download/S08_b/kontenfuehrung.z80
+cd3dd73b2ba44a917d756c7ab1b17944 *./download/S08_b/kurzzeitgedaecht.z80
+48ea0aec3caeb9cff534c1a8c602e55d *./download/S08_b/lager.z80
+6b14960f326d557754fae77efaec8414 *./download/S08_b/wer passt zu wem.z80
+906c1e858a84e8ad69f5cf4e8808a609 *./download/s09_a/laufschrift.z80
+d5997071f63d055f98139a2136e3127d *./download/s09_a/lebenserwartung.z80
+f31912ee296976c8dc5aec22ef3a8425 *./download/s09_a/lec.z80
+4455a79ce9ccf116d729417a5a1d7371 *./download/s09_a/leipzig.z80
+eea520f81dd0ef55f3ae797cae1f3855 *./download/s09_a/leiter.z80
+f913f69b0bd95eb7eea38700b28852d6 *./download/s09_a/lichtorgel.z80
+657c3936f7a1ee6bf852bc1e3c2a6919 *./download/s09_a/mancala.z80
+954a7c90f3bf74b7377195fd54d4682e *./download/s09_a/mars.z80
+9e3a60135825922ddb573d25aa75b6b5 *./download/s09_a/mathetraining.z80
+36f02e8259e508535e7d5525ce7e1b2c *./download/s09_a/mau 2.z80
+afbcc3ce2d6215c36b4d81880c35a748 *./download/s09_a/memory.z80
+2bbacee233cc993a1af6fc170e759c48 *./download/s09_a/michael.z80
+0cb32e66879d0742440d093e87285b4a *./download/s09_a/mondlandung.z80
+f9efe820d3d65564f49fbb5822d52b50 *./download/s09_a/muster.z80
+0233b2b600373340de0cd13729bb0e97 *./download/s09_a/ogino_knaus.z80
+97e592dda59c18015c30dc54d8d6a04f *./download/s09_a/opv-add_sub netz.z80
+9c5f8c5a2ab594a5bbf0683d3687ebe6 *./download/s09_a/othello-new.z80
+87460b5acc0c201cecc0a77c18190059 *./download/s09_a/pixelgrafik.z80
+538e3890bc951b400443b68b4c7353d1 *./download/s09_a/poker.z80
+1cb990c324e3846f59b072f6e09cfb43 *./download/s09_a/pong.z80
+c1d905e4b8fcff0bcec8b029457db44a *./download/s09_a/prognose.z80
+60f6319876b85fb2d1d89f802747ac10 *./download/s09_a/push.z80
+81a4c102dac8e3d7c6712396b12ca14c *./download/s09_a/puzzle.z80
+fce9497e4a23fc4bf569a7ddde391428 *./download/s09_a/pyramide(laueft).z80
+5110c725b9cb44ee49e5149d829696db *./download/s09_a/pythagoras.z80
+918dc76e3b6b53cae43a2b9be5498c13 *./download/s09_a/radius.z80
+26406f564a96bc07da17d073c7253a1b *./download/s09_a/rakete.z80
+ebcf1faac5df362efda8ad9389b7bee0 *./download/s09_a/rallye.z80
+d90b01fe18326d51718bdc0e9937d889 *./download/s09_a/reaktor.z80
+b85eceb6dcdc9a02ad9b5d4129ef0a57 *./download/s09_a/rechteck.z80
+e3ef50f81f478fc21dcd14e8a2ad4ca2 *./download/s09_a/roemisch-dezimal.z80
+81b9f402f2e697e323e5383fe9867329 *./download/s09_a/rostock.z80
+2d643c0b374c7ff7edfebabc788b3402 *./download/s09_a/roulette.z80
+b4e0dc40af307a28d67d5c6be18b5e02 *./download/s09_a/scherzfragen 1.z80
+8f8c419a7b4f6e9d72ae821a94799f10 *./download/s09_a/scherzfragen 2.z80
+cf125aedd9c8a563ef9b7e57319cc3a8 *./download/s09_a/sinus.z80
+4d60a668334e5db51ec494ee528cc628 *./download/s09_a/skat.z80
+1b6221cd410937158d658cef160f232c *./download/s09_a/sort 2.z80
+9de516279f9cfa799f2645befbde03c7 *./download/s09_a/spiel-box 1.z80
+0f91ce9e177ee121135eb91f1cf68d02 *./download/s09_a/sporttabelle.z80
+70e8e228b6d1ad11d0cefbc763687968 *./download/s09_a/sterne.z80
+a0ac837939a4be07773ea8c70c30c22e *./download/s09_a/stichwortverz.z80
+3ccb6d8bbcf1e729d67af7aa5fd3fb5f *./download/s09_a/summe.z80
+5844a8d63ff55d3874b43abdfd881d15 *./download/s09_a/supertrucker.z80
+593840f2b0ffbb66f9c3539596b95297 *./download/s09_a/tabkalk.z80
+74ab0a1676b18c8470e8099d7c8cc483 *./download/s09_a/tatum.z80
+f7125057d48359a9df0fa99cf1a87673 *./download/s09_b/kc basic pctrans.z80
+74ab0a1676b18c8470e8099d7c8cc483 *./download/s09_b/tatum.z80
+390c037dbf4ff5e75bf43b528ba79ecd *./download/s09_b/tdl basic pctran.z80
+2fb45eb1a25df087138fb1d9754c314b *./download/s09_b/tedit 9 pc trans.z80
+b9f6be997e73446d96fe3f6d2194da23 *./download/s09_b/trafo m_ei.z80
+0c655ad946b8e2a8304f29748cd826dd *./download/s09_b/trafo.z80
+191d6e102408fcf5113c4ff8fbb48aef *./download/s09_b/triplett.z80
+ead55b5ee8bfb9bebd330acdea8f9ebf *./download/s09_b/turm v babel.z80
+bac8e3d3be8e68f7cd2082cb066c6d77 *./download/s09_b/uebersicht 1_4.z80
+53dd175a66b9e2c5d330841e5cfefe74 *./download/s09_b/uni-datenbank.z80
+90a17f44ca04f3ac1028ab45c4d1322b *./download/s09_b/uni-mathe.z80
+175187897088bf84d564e78e28af2f7e *./download/s09_b/user-plot+demo.z80
+fdaff4fcd60bb65fa86317b1457b7224 *./download/s09_b/user-plot_bild.z80
+64d4ee3d98f1fe39f61b007f1faf1860 *./download/s09_b/usr-plot beisp.z80
+20f2b038072859e5b5a2efb1985cb22c *./download/s09_b/vokabeln.z80
+26e17f14d9a765719f9de17efc63cd7f *./download/s09_b/wildsau.z80
+e178e4efd4daf85b080c22629ff9b7f8 *./download/s09_b/wuerfelspiel.z80
+9e77e3766a792b3d90010dc89346eab6 *./download/s09_b/wueste.z80
+e6be22a0d8e26ffe2dd788f72eb388ce *./download/s09_b/yoyo.z80
+70bcb56de22c15afc51fee6ab74df5ef *./download/s09_b/zylinderspule.z80
+5dc57973c76a696e126a011b11dc75d3 *./download/s11 Infos+Beschreibungen A/basicode-info.z80
+fce061267e9bd1bcd217924433f9d612 *./download/s11 Infos+Beschreibungen A/druck-tast s3004.txt
+2fd8540e5ea16b024c443f201925bf24 *./download/s11 Infos+Beschreibungen A/druck-tast s3004.z80
+c14fe57f34119f1ddd2f43b22e8b5754 *./download/s11 Infos+Beschreibungen A/ed81 v2_1.z80
+e9e6a4eae68e741b112bf8758781de7d *./download/s11 Infos+Beschreibungen A/f83 1_3 glo 3.z80
+9fbe59eda195494908d21a5737336252 *./download/s11 Infos+Beschreibungen A/f83 1_3 glo 4.z80
+13af0d0c5ceb6fbf7ec607406932a622 *./download/s11 Infos+Beschreibungen A/f83 1_3 glo 5.z80
+79d07daf5d8f7efa89da9937aa33ddd8 *./download/s11 Infos+Beschreibungen A/f83 1_3 glo 6.z80
+042c880384c9c98d02f93c87c8d16e06 *./download/s11 Infos+Beschreibungen A/f83 1_3 glo1.z80
+b851138c4da0e7adfb3c12ff8911de0f *./download/s11 Infos+Beschreibungen A/f83 1_3 glo2.z80
+0319284e837061901b8a77c8af07e455 *./download/s11 Infos+Beschreibungen A/hdiskcopy 1_5.z80
+52b4e0b58a815a88efd27672dca53c82 *./download/s11 Infos+Beschreibungen A/hinweise disk.txt
+3af419b0ac01cb25125ef7fac677555c *./download/s11 Infos+Beschreibungen A/hinweise disk.z80
+fe53dbffb1d70c451b12e96e2bf5a4a0 *./download/s11 Infos+Beschreibungen A/kc-rom-basic+1_0.z80
+7e227c20d4c35966de597dc95c7908c9 *./download/s11 Infos+Beschreibungen A/moner su 1_31 k.z80
+223a5f4eef0523818ed9976ecfefff43 *./download/s11 Infos+Beschreibungen A/mword+asm.z80
+64fb9efab9cb2cf739ed58f8aa8643aa *./download/s11 Infos+Beschreibungen A/status i_o-adr 4.txt
+a9ee5480bd9da6a05e007ef2b388f670 *./download/s11 Infos+Beschreibungen A/uni-copy 4_2.z80
+d823189384c5758db70e6ec5abae7bd2 *./download/s11 Infos+Beschreibungen A/z1013-surl v5_0.z80
+d2d63d10ce5331ab6d893e569939948f *./download/s11 Infos+Beschreibungen B/k7669 an z 1013.txt
+82687a8ed643065b3e5cc5623381aa80 *./download/s23 Eprominhalte Beschr A/4k-moni k7669.z80
+71b1ab0701b817eb5a5ae40c5fcba2b2 *./download/s23 Eprominhalte Beschr A/4k-moni-k7652.z80
+79d56757216d1ccf0d260f68bf2974f5 *./download/s23 Eprominhalte Beschr A/4k-moni-k7659.z80
+a337fe1ec221e5eba5fbf1e5533d8f3c *./download/s23 Eprominhalte Beschr A/8k-basic-kern.z80
+e6eb2761ed562d685f6c979c12d78fdf *./download/s23 Eprominhalte Beschr A/headersave 5_95(2).z80
+024537b61765d0f1bead8eabd8aa8eda *./download/s23 Eprominhalte Beschr A/moner su 1_31.z80
+177cd59da02359479481c79520d40239 *./download/s23 Eprominhalte Beschr A/rombasic_v2.bin
+4fee6ca21ba800556bd592821d5de011 *./download/s23 Eprominhalte Beschr A/z1013_surl50_rom.z80
+24933e18ddfde0d7a6021b07069228ce *./download/s23 Eprominhalte Beschr A/z1013_surl_3_00.z80
+7dd3361f2b116da003387c08e40f43f8 *./download/s23 Eprominhalte Beschr A/zg 1013 org.z80
+ccef2fbe5ee7ff090c380119c78ca4e9 *./download/s23 Eprominhalte Beschr A/zg_1013_orig.z80
+128947d8f9a3fa363eb602b79615e858 *./download/s23 Eprominhalte Beschr A/zg_m_uml_+inv.z80
+7129c10cd4e9fcc0ac2c6de4fd080f7f *./download/s23 Eprominhalte Beschr B/ccl epromer_pio.z80
+a5e18b95a9ed8f3842c9ddb62afd91d9 *./download/s23 Eprominhalte Beschr B/ep_prog_g_1_25.z80
+69c9cff2bd3612d90bbf6016bac2def1 *./download/s23 Eprominhalte Beschr B/epr_prog_geraet.txt
+f15ffa1cb21fad42a85d280895de0e62 *./download/s23 Eprominhalte Beschr B/epr_prog_geraet.z80
+d9be249bfcfb35ea3a117be915590b9b *./download/s23 Eprominhalte Beschr B/eprom prog.z80
+f556a3b928c0014f9f8756fca452ab27 *./download/s23 Eprominhalte Beschr B/eprom-handl_2_9.txt
+e5b7f753dcf716fc03883abf809e5ec1 *./download/s23 Eprominhalte Beschr B/eprom-handl_2_9.z80
+13744b53e8dcc8503f3f934374907c5e *./download/s23 Eprominhalte Beschr B/eprom-handler.z80
+ec3c14d54074517d4489c79cd3ed8d90 *./download/s23 Eprominhalte Beschr B/epromer 2_9_igd.z80
+b8f3a131456afbbf910254666036a718 *./download/s23 Eprominhalte Beschr B/uni-textleser.z80
+3fbd270185dcf99a839fb6d9a784b346 *./download/scr_digger.gif
+fbcae880d3d5afccb44847a7166a138f *./download/scr_hawo.gif
+00ce46b76c5a9b3fc3aa74015d72a671 *./download/scr_ladder.gif
+a7389ea843cdc4247bc1054abe69c35b *./download/scr_sokoban.gif
+2cda5f1fafc5ba79b80bbc8410fb8a05 *./download/screen.html
+d86c7086f9fd98bc880913153799a964 *./download/skat.z80
+72a580fe86da477c10f6f87bc161f4f5 *./download/sonst/basicramdisk3_5.z80
+2450624d6bee91fcf7b6a66883a497b5 *./download/sonst/bild_master.z80
+41e4028b2a5e9d95d418e6b7f237a259 *./download/sonst/btx+info.z80
+e5f553c2a5f2d855da0265584fccf782 *./download/sonst/byte_ersetzen.z80
+4e535e15299458a066506aefee8e9912 *./download/sonst/charset/ibm_zg+din.z80
+1266ffd29b91f88ed85593a90c986d59 *./download/sonst/charset/original.z80
+6c01681535b7f7ce54fb903f63a282a4 *./download/sonst/charset/zeicheneditor_32.z80
+a11dd2ae626d1b31e304144afdcd6255 *./download/sonst/charset/ZG-INCOM        .Z80
+ccef2fbe5ee7ff090c380119c78ca4e9 *./download/sonst/charset/zg_1013_orig.z80
+128947d8f9a3fa363eb602b79615e858 *./download/sonst/charset/zg_m_uml_+inv.z80
+020c9435b518e343ca43b9b9b284bbbc *./download/sonst/charset/ZGORIG+BREIT    .Z80
+91e734fd814b30ebdae69cd077e2695d *./download/sonst/copy32_com.z80
+47ff8be10153bad257119daad912307f *./download/sonst/copy64___com.z80
+b0c0bb986db0e9c8b8f3e7e9b8196741 *./download/sonst/cp_a_com_200pd.z80
+34ea8103b43c83264af2a7bd680383e7 *./download/sonst/cp_a_com_98pd.z80
+bed3e89df6fe841d8fc8bb0d3376a620 *./download/sonst/cpm_2rf_2_50m.z80
+faa5eebf19ae37095ff2871942fd9f61 *./download/sonst/demo_z1013.z80
+3cbe016815e7ecf813dbbcc9b8bff61e *./download/sonst/editex+header.z80
+a9fb0c1cf823a239e274124356c5c04f *./download/sonst/enter_version.z80
+60e51b16e88b27d60a567e748b8fcaec *./download/sonst/files.txt
+596993d3d354443b9d8bbe5e1885d16b *./download/sonst/gedit_1_22.z80
+9c6d23267e022fa36851dd61e146fddd *./download/sonst/gedit_2_24.z80
+2624a0f70e6da06aa2e04961b879205f *./download/sonst/hdiskcopy_1_3.z80
+50d3fc1e02cc36880f376305c9b53472 *./download/sonst/hdiskcopy_1_6.z80
+12f88f469c5b4ebf29bd6c9626b7ed0e *./download/sonst/headerdisk_45.z80
+03c7c1b2c875145d622c587fcb0602ee *./download/sonst/hramdiskauto18_5.z80
+d6481cb269df58a651fab47c25df9af3 *./download/sonst/hundi13.z80
+e9720d5c1fe31d708423877936788019 *./download/sonst/kc87_monitor.z80
+580c88def826005b36a6ae9c6963664b *./download/sonst/kino.z80
+0a91a982a5bffd76eaaffc0e9b314c7b *./download/sonst/memorytest_1.z80
+f4878fd71a49ed7a6746f120684752fb *./download/sonst/memorytest_2.z80
+7c5c527e08b3c3da1a6af25e3868ea5b *./download/sonst/microword.z80
+5a18e8c1aa433f3325a85a28727a02e7 *./download/sonst/microword_1_519o.z80
+84dd31d986f57ee575a8fd61d65c3b9d *./download/sonst/microword_1_520u.z80
+4d6e168e081215024207c4a7ba6a02aa *./download/sonst/microword_1_5_16.z80
+3e534dfeda5dff441d7f5da2d0e25be6 *./download/sonst/microword_1_5_ei.z80
+5fc67ec8c3a5e7f65da41d5cadc320a8 *./download/sonst/microword_1_5_f3.z80
+089d1503dda0c2e02baf8309e63f1652 *./download/sonst/microword_1_5gs1.z80
+f47ff217a5f67dff83c0f64969e8e0c0 *./download/sonst/microword_1_5gv1.z80
+4764ff9a00d9209ca9cbf8c9cfa3457b *./download/sonst/mons3_2.z80
+52a294a5edc9a7d5b0bc01692479f922 *./download/sonst/olidat_2_3.z80
+a93508716dbfbcee84f3a1a7a47260d2 *./download/sonst/ram_&_pio_test.z80
+eb495eb5bb010694a6597cf3993355a3 *./download/sonst/ram_floppy_test.z80
+51d0977b34524611008fbcfe91b59c0f *./download/sonst/rf_test_4_4.z80
+7f5cd166c4a50dc7c361c07843842b77 *./download/sonst/rf_test_5_0.z80
+078fddff762dac582b5521b99b6726dc *./download/sonst/scp+f800.z80
+b87d3790aff8069e61d80f379765e38d *./download/sonst/scp_2rf_2_38m.z80
+db6fda43ecd3032601b983edd5125aea *./download/sonst/scp_2rf_2_40m.z80
+157aef760d9f18ea3b0fca90104806c3 *./download/sonst/speichertest.z80
+0d1951692cd94d8f6f57f382ccdb99d1 *./download/sonst/tedit_9_0.z80
+d48e671a3c5018b11784a2207c8fabc8 *./download/sonst/uni_textleser.z80
+3507a900756054601b71b3604cbf5d77 *./download/sonst/wsconvert3.z80
+cc621784072b3d318f365ad25b7f5373 *./download/star_trek.z80
+192001615a6366647d114d25771e58e5 *./download/super_dame.z80
+d0df93f2a600f446e119e4e140cf1d3e *./download/Tagung Jena 1991 Seite A/4k-mon vp 3.z80
+b066970e030008db72b8ffd0400bdf7f *./download/Tagung Jena 1991 Seite A/centro g+.txt
+2d0ee0e4402096babb4c7734b139c7ca *./download/Tagung Jena 1991 Seite A/centro g+.z80
+ddb828d1cf8c916e88378ca7c7d1f83f *./download/Tagung Jena 1991 Seite A/centronics 15_7.txt
+889f3d64479c325d509300107cbf5dc8 *./download/Tagung Jena 1991 Seite A/centronics.z80
+8540d44bc77779956eb20eb87d0e40b9 *./download/Tagung Jena 1991 Seite A/cyrus v_2_dt.z80
+ff8bd0e3558c780534895acb95c3b719 *./download/Tagung Jena 1991 Seite A/datenbank-6.z80
+7bee2a9aa4a4a2b420fadca3bba2933f *./download/Tagung Jena 1991 Seite A/galactika.z80
+c30c314de56bede66f27d0114e0864fc *./download/Tagung Jena 1991 Seite A/hase & wolf.z80
+35f0fd4700f1c39b04b7aba88b43a508 *./download/Tagung Jena 1991 Seite A/header 5_95-16kb.z80
+55e318573db445015d16899d60519d39 *./download/Tagung Jena 1991 Seite A/headersave 5_95.z80
+e2e9f92faafed65c3e3c22efdf9af578 *./download/Tagung Jena 1991 Seite A/headersave 5_95_2.z80
+af6f677f7b8ac092158e3598f07617fe *./download/Tagung Jena 1991 Seite A/kc-basic+ m1.z80
+204eca71edac77f08eb304152700dbe7 *./download/Tagung Jena 1991 Seite A/kings-valley.z80
+fbf69d46185483bce93aa8a5c29d9fb7 *./download/Tagung Jena 1991 Seite A/melodie.z80
+c3b017db7de1bfb3568370a90c455360 *./download/Tagung Jena 1991 Seite A/microword 1_5 vp.z80
+43a269cfd96abb030393c362430b3dfc *./download/Tagung Jena 1991 Seite A/MICROWORD 1_5GV1.z80
+a04e482c936b07e11131df2b64dc9917 *./download/Tagung Jena 1991 Seite A/mon 2_029 k7659.z80
+ddc8c75079d1a969956855a9c674c115 *./download/Tagung Jena 1991 Seite A/mon 2_029 k7669.z80
+51232dab154f7ec3fb783dc8471dff83 *./download/Tagung Jena 1991 Seite A/oel.z80
+5240cf0155d26deb6e1e9457ca02f16a *./download/Tagung Jena 1991 Seite A/rubic's cubes.z80
+91b44a280410f7d8922607d1ee93401d *./download/Tagung Jena 1991 Seite A/rumpi 1.z80
+75562355ad7be8244c0b7d396e48b492 *./download/Tagung Jena 1991 Seite A/supertrucker_g&a.z80
+71069e12eee61b1d9c6ff254339b2c23 *./download/Tagung Jena 1991 Seite A/t-rechner.z80
+cbe27bc0894d7e207adf3f676c1239b1 *./download/Tagung Jena 1991 Seite A/talk-master 3_0.z80
+8ebc932c5f12ad9f798e9ab5277e6559 *./download/Tagung Jena 1991 Seite A/UNI-COPY VP2.z80
+935619e4fbdffa4437994e51113551ab *./download/Tagung Jena 1991 Seite B/4k-mon vp 3.txt
+d84cf7f5733c183f6d10bfb80f5f7c4d *./download/Tagung Jena 1991 Seite B/4k-mon vp 3.z80
+d38be077232bbe8df0133db03dccc2f0 *./download/Tagung Jena 1991 Seite B/allg angebot jm.txt
+7aa1b777d35bde6b96ccf33cacc2374e *./download/Tagung Jena 1991 Seite B/angebot cottbus.txt
+d4fad2489d121ac54b4e70da4df9b78e *./download/Tagung Jena 1991 Seite B/angebot cottbus.z80
+b18e5995e341e814a5fb3d4c72817ab9 *./download/Tagung Jena 1991 Seite B/angebot jena.txt
+25ffc0683df40158fead482248972ca3 *./download/Tagung Jena 1991 Seite B/centronics.htm
+d0c9e64aafec3668901be253375eb219 *./download/Tagung Jena 1991 Seite B/centronics.z80
+2cb6d42b1218c00e686a6a3f74f51f46 *./download/Tagung Jena 1991 Seite B/cyrus-chess v_2.z80
+522a91a5b853f6fb87a7a5e4c97ce8ab *./download/Tagung Jena 1991 Seite B/hardw_cc_jena.txt
+9677baab14ab7527d901b0b20d72228a *./download/Tagung Jena 1991 Seite B/hardw_dresden.txt
+2ec100cc34bbbf197503adf2af7f5122 *./download/Tagung Jena 1991 Seite B/headersave 5_95.txt
+8e7cece809aa72ac4879540f3bebf590 *./download/Tagung Jena 1991 Seite B/headersave 5_95.z80
+300e12776a8812843e0a315237ffb24c *./download/Tagung Jena 1991 Seite B/inhalt.z80
+44fe5f5ff74accb94898178e099e44fb *./download/Tagung Jena 1991 Seite B/kc-basic m1.txt
+5cb8137150ba8ed5ee49a1a8b2e7de0d *./download/Tagung Jena 1991 Seite B/kc-basic m1.z80
+c3c4fc2120ea462383d5a4dcf341bf6d *./download/Tagung Jena 1991 Seite B/lader5_rom.z80
+a4e6db4ec70fad5db1593af43f7291cf *./download/Tagung Jena 1991 Seite B/lader5_txt.z80
+e52fc8cdf7c56766e0d13e4d251bb1b6 *./download/Tagung Jena 1991 Seite B/liste dresden 01.txt
+02a965c5273840576feb35bd34e73073 *./download/Tagung Jena 1991 Seite B/liste dresden 02.txt
+3b6fa4bcc9e935841d9e28a9adad3186 *./download/Tagung Jena 1991 Seite B/liste dresden 03.txt
+aa3b0906fdf73705a7b9ac30652815f1 *./download/Tagung Jena 1991 Seite B/liste dresden 04.z80
+38914bfb15fb09b88c3fe0a2c48fc7ad *./download/Tagung Jena 1991 Seite B/mon 2_029 k7669.z80
+b5dba24c0f09c1fb7ded1bc1bf2cd5c4 *./download/Tagung Jena 1991 Seite B/murphy-doc_vp.z80
+1f55fcc9e17c14ea389dc921579948a6 *./download/Tagung Jena 1991 Seite B/rf am z1013.txt
+999dfa1c0f66542713d3d42c88b2b790 *./download/Tagung Jena 1991 Seite B/t-rechner.z80
+83cef56730b558b692e45001081963f1 *./download/Tagung Jena 1991 Seite B/uni-copy vp2.txt
+4599ecfe95906f69d53aa6a8b982f8de *./download/turtle_keys.z80
+3bdcc1713980219b4672c749ae4f3203 *./download/turtle_player.z80
+f7bb840ed938a01a5ff32baa0389f030 *./download/unsorted1/2mhz___1mhz_s_l.z80
+08ce060c5a69fb6e923b0313201298a4 *./download/unsorted1/assembl__scf_5_3.z80
+2fe13609981eb49b461769f6341d8c2b *./download/unsorted1/auto_laby(900).1.z80
+2fe13609981eb49b461769f6341d8c2b *./download/unsorted1/auto_laby(900).z80
+2a276554df7f0cb6e0c4c6490c25b3b9 *./download/unsorted1/bolderdash.z80
+e8f18b4ce5fc666bf976b693d2b637cd *./download/unsorted1/btx+info.z80
+6af3c5a5ac5d7ef520da0cb4f8e4a509 *./download/unsorted1/byte_ersetzen.z80
+361917e83db1f40a908135626cc64f64 *./download/unsorted1/centr_tr_miwo.z80
+b228205be51941d7b654587192d54f1f *./download/unsorted1/centronic_doc.z80
+531f2468289edcf1d4fb72ded82361bf *./download/unsorted1/centronic_druck.z80
+cb41f24e6fb026d665b5237803172db7 *./download/unsorted1/chaos(laeuft)g_a.z80
+fda464fb42b23928778f9808f182985b *./download/unsorted1/chemiepruefung.z80
+8fabbd24a9c863e3ee394c4126ed48b9 *./download/unsorted1/chess_master_h.1.z80
+8fabbd24a9c863e3ee394c4126ed48b9 *./download/unsorted1/chess_master_h.z80
+2075db98a6959f709fa01de9abebadbb *./download/unsorted1/compact.z80
+91e734fd814b30ebdae69cd077e2695d *./download/unsorted1/copy32_com.z80
+47ff8be10153bad257119daad912307f *./download/unsorted1/copy64___com.z80
+97cda3a2c877095909a98e3d851251f1 *./download/unsorted1/copy_doc.z80
+01a6ff2f59eabf525650723323dcdc7b *./download/unsorted1/crc__summe.z80
+dd71669d43cd60b89e53135dd0ae4e8b *./download/unsorted1/cyrus_chess_v_2.z80
+8c8e2dcdb3e451af5fe27b7ccf7adeeb *./download/unsorted1/cyrus_v_2_dt.z80
+d00b89091cd88992b6694cac816c7f76 *./download/unsorted1/debug_3_02.1.z80
+42c4d5a7edffdbd811d48653de275136 *./download/unsorted1/debug_3_02.z80
+49b8b90e3bf4c2d3bcf8e55319b4e3e0 *./download/unsorted1/dicker.1.z80
+49b8b90e3bf4c2d3bcf8e55319b4e3e0 *./download/unsorted1/dicker.z80
+fa6a1c890e9cf1f385a84c96f81eaff8 *./download/unsorted1/ed81__v2_2.z80
+236faef42f9d85fc92bd9d8cefdb3c6f *./download/unsorted1/ed81_v2_2.z80
+ae9094eac70997ab82a648f15b5b933a *./download/unsorted1/editex+header.1.z80
+ae9094eac70997ab82a648f15b5b933a *./download/unsorted1/editex+header.z80
+2c1b149b4ed82ad0f9ff5f613e0cc8b0 *./download/unsorted1/enter_version.z80
+01894971a4adf7e9b5cb5b7e98fc1fff *./download/unsorted1/eprommer_2_9_igd.z80
+b0d5e014c6193f81e46789eef1a4b251 *./download/unsorted1/files.txt
+2cfe301518a704ce2e7bbaccefebfb87 *./download/unsorted1/frogger.z80
+2df733254f2ac0133752d91255cb9532 *./download/unsorted1/galactica.1.z80
+2df733254f2ac0133752d91255cb9532 *./download/unsorted1/galactica.z80
+596993d3d354443b9d8bbe5e1885d16b *./download/unsorted1/gedit_1_22.z80
+fe4253e80dc427a90b0fe152f7c60000 *./download/unsorted1/gens3m.1.z80
+fe4253e80dc427a90b0fe152f7c60000 *./download/unsorted1/gens3m.z80
+8115fed006df9df2f702a2a5db10bd6c *./download/unsorted1/gens_assembler.z80
+8da51a0f9e96a2f3faabc9b1a872909e *./download/unsorted1/gost_hut.z80
+180036f4c15551e570d75c6795fb384f *./download/unsorted1/hb9cv.1.z80
+180036f4c15551e570d75c6795fb384f *./download/unsorted1/hb9cv.z80
+0b394067c58e9c7e88cf00f130cef6d0 *./download/unsorted1/hdiskcopy_1_6.1.z80
+50d3fc1e02cc36880f376305c9b53472 *./download/unsorted1/hdiskcopy_1_6.z80
+0684569ae0c34caf23c7bc6d294e68f9 *./download/unsorted1/header_bank_zeit.1.z80
+0684569ae0c34caf23c7bc6d294e68f9 *./download/unsorted1/header_bank_zeit.z80
+0f7a18396f27377880303663a01d212e *./download/unsorted1/header_menue_4.z80
+07f2a481d37587e34f1a6130c34fdd36 *./download/unsorted1/header_soft_2.z80
+f7ce2b1513ec8daf4414a16854e77308 *./download/unsorted1/headerbank_zeit.1.z80
+f7ce2b1513ec8daf4414a16854e77308 *./download/unsorted1/headerbank_zeit.z80
+ea3a72325370ceaee3ee56279c3ec2fc *./download/unsorted1/headermenu_v4bek.z80
+66b93bc54e657a09ed13605aae8d01dc *./download/unsorted1/headersave_5_95.1.z80
+66b93bc54e657a09ed13605aae8d01dc *./download/unsorted1/headersave_5_95.z80
+174c5cba3b76e082759d136ff176f4b4 *./download/unsorted1/hex_ascii_dump_u.z80
+25810b9ead3de2b7fe34f6e54b3888fe *./download/unsorted1/hindernislauf.1.z80
+25810b9ead3de2b7fe34f6e54b3888fe *./download/unsorted1/hindernislauf.z80
+0ca5ea3d8ac6c39f379d80df2cc9be33 *./download/unsorted1/hisoft_gens3_asm.z80
+9b1707ef8e4e810ac507a13f53448268 *./download/unsorted1/jumping_jack.1.z80
+9b1707ef8e4e810ac507a13f53448268 *./download/unsorted1/jumping_jack.z80
+44a602c3a7f9e5bf56c231088a31e223 *./download/unsorted1/kc_basic+.z80
+28107373ce86e4492ee5f0850daac981 *./download/unsorted1/kc_basic_m+.1.z80
+28107373ce86e4492ee5f0850daac981 *./download/unsorted1/kc_basic_m+.z80
+90e409c4ae1d428e0301e6c7991f0a63 *./download/unsorted1/kegeln.z80
+d52125dab6e04b6e53885a93229b33cf *./download/unsorted1/king_korr.z80
+6c07046eb5676317dce6034065812241 *./download/unsorted1/last_chance_iii.z80
+93d91a54e7db1cb79a6f28b5c33adcbb *./download/unsorted1/main_kc_if.1.z80
+93d91a54e7db1cb79a6f28b5c33adcbb *./download/unsorted1/main_kc_if.z80
+9cdfcef051845751136fa7473dc200a5 *./download/unsorted1/maintape_v4_5.1.z80
+9cdfcef051845751136fa7473dc200a5 *./download/unsorted1/maintape_v4_5.z80
+2ba1e7e566270d94adcac60525b6857b *./download/unsorted1/mauer.1.z80
+2ba1e7e566270d94adcac60525b6857b *./download/unsorted1/mauer.z80
+4b3ac9d8bda7ab460ca921f76b09ccd5 *./download/unsorted1/mazog_deutsch.z80
+f8bcb07b2a1c22c2fdb5ff251cc37aed *./download/unsorted1/memorytest_1.z80
+734a6f5c0ff2e55abb3394e293a60f86 *./download/unsorted1/miami.1.z80
+734a6f5c0ff2e55abb3394e293a60f86 *./download/unsorted1/miami.z80
+7e4499789460da37a4ae6da71e740f1c *./download/unsorted1/microword1_5cent.z80
+0ec6a4cb664baed278fa1941576ffe32 *./download/unsorted1/microword_1_5gs1.z80
+9c0c7ebc76b7165752bcc779188a66b7 *./download/unsorted1/microword_1_5gv1.z80
+5c6a36202af819b5dd940f6eb1ec74c4 *./download/unsorted1/minefild.z80
+3c5773e9c9fa9f6f1a85a9f34c0a6b97 *./download/unsorted1/mondbasis.1.z80
+3c5773e9c9fa9f6f1a85a9f34c0a6b97 *./download/unsorted1/mondbasis.z80
+a547e73840d6333f30f6b1e42649a7c6 *./download/unsorted1/new_york.1.z80
+a547e73840d6333f30f6b1e42649a7c6 *./download/unsorted1/new_york.z80
+b3ba2ecf4cba53c924620bb208fdecba *./download/unsorted1/ohne_fleiss_k_pr.1.z80
+b3ba2ecf4cba53c924620bb208fdecba *./download/unsorted1/ohne_fleiss_k_pr.z80
+21f172603347330136334ae9fa515714 *./download/unsorted1/pyramide(laeuft).z80
+247736afd6dcbc1f5b8a56271a77152e *./download/unsorted1/ram_&_pio_test.z80
+81b1f69c473039070f0a6ffad7b806b8 *./download/unsorted1/rf_sichttest_3_6.z80
+2225c04c3918d2b1c475c748212cc304 *./download/unsorted1/roulette_m_bild.z80
+c2da7d5ff8f083150d0cc906629f0730 *./download/unsorted1/schach.1.z80
+c2da7d5ff8f083150d0cc906629f0730 *./download/unsorted1/schach.z80
+b9a03cf0baeac3182bc7b998a81dd8d4 *./download/unsorted1/starfire_2.z80
+30b82b36e88b5dda192dad9c126e80ab *./download/unsorted1/superdame.z80
+b18f1c42a8fbbc8fc730edcd660ff112 *./download/unsorted1/supertrucker_g&a.z80
+eaca720f7a229434c9d2dcd1ef573951 *./download/unsorted1/texed__6_1_scf.1.z80
+eaca720f7a229434c9d2dcd1ef573951 *./download/unsorted1/texed__6_1_scf.z80
+469cc71c9ada6c334547a656a95fe25e *./download/unsorted1/tiny+main_4_6_4.1.z80
+469cc71c9ada6c334547a656a95fe25e *./download/unsorted1/tiny+main_4_6_4.z80
+3a4f30ff6223a947a010693450d9ce02 *./download/unsorted1/uni_copy_6_2+.1.z80
+9a5c57b24bb9bf678231d5e3c0523d89 *./download/unsorted1/uni_copy_6_2+.z80
+aed405ccc7553450f1accb335f10d9b0 *./download/unsorted1/via_link.z80
+e899b959984204acb3adb8e853b865bf *./download/unsorted1/via_link3.1.z80
+e899b959984204acb3adb8e853b865bf *./download/unsorted1/via_link3.z80
+764de03a93b5b71ad07b9f305fad635a *./download/unsorted1/via_link4.1.z80
+764de03a93b5b71ad07b9f305fad635a *./download/unsorted1/via_link4.z80
+3609e69c8f981e014a8cb22d6bdbf77c *./download/unsorted1/vialink2.1.z80
+3609e69c8f981e014a8cb22d6bdbf77c *./download/unsorted1/vialink2.z80
+ed6b0c5a32b7ea98f327f2026142f3f7 *./download/unsorted1/voegeln(g&a).z80
+3507a900756054601b71b3604cbf5d77 *./download/unsorted1/wsconvert3.z80
+fff0d3aac5784891a0464c4c2c5e0307 *./download/unsorted1/wuerfellabyrinth.z80
+e4e2a130d7055a660d64ddb14052fccd *./download/unsorted1/z1013_forth.z80
+2abd5c4551955d9558efc9377f24dd74 *./download/unsorted2/files.txt
+574553c5bca931f81ddd8156b5db8d26 *./download/unsorted2/info/64_z_bs_i.doc.z80
+d28d1256e16378a5456427f417c6eac8 *./download/unsorted2/info/ac1_i.doc.z80
+e8940dca29b286ef944f18cf3aab2e0b *./download/unsorted2/info/assemble_i.doc.z80
+da1a5ef4c864ab282ce33fedd0275413 *./download/unsorted2/info/basicode_i.doc.z80
+c2de013d85d4a435cf4ef3c21395e817 *./download/unsorted2/info/centroni_i.doc.z80
+a3fd3fe67a4800630a024af45fd84481 *./download/unsorted2/info/copy_i.doc.z80
+ce216cbceed0433c5882546f526b2e7e *./download/unsorted2/info/cpm_2rf__i.doc.z80
+917dc979f8add4184b23d1ce149a2cc3 *./download/unsorted2/info/cyrus_ch_i.doc.z80
+6beaa600d78ddd086c2ae4da439f31c3 *./download/unsorted2/info/debug_3_i.doc.z80
+06796ab1333c9a5812653c53d43a9152 *./download/unsorted2/info/dru_3_i.doc.z80
+be1139f2525c3a9c5f2b5312ea510005 *./download/unsorted2/info/ed81__v2_i.doc.z80
+84490e1820a1a3ac5347391e14c6fb2f *./download/unsorted2/info/farbnorm_i.doc.z80
+ce7423d8953cc07fec592a51404d2fd0 *./download/unsorted2/info/gedit_2_i.doc.z80
+c7eb7a86e0dbf69c9506cd752c0d42a8 *./download/unsorted2/info/hdisk2_i.doc.z80
+ccc3dbb3673d523999181d7fcfecb3c2 *./download/unsorted2/info/hdisk_45_i.doc.z80
+fb7e785f30aa2cc89abce0bc28976173 *./download/unsorted2/info/hdiskcop_i.doc.z80
+6229896e1a7bc8da356c3b05dcc2d2a9 *./download/unsorted2/info/header_b_i.doc.z80
+d6de3311c24f88f9b528282f373ba007 *./download/unsorted2/info/header_m_i.doc.z80
+f06d8fabfa8021a3925c377e4aee6f2d *./download/unsorted2/info/headers_i.doc.z80
+8258808f3529c23abe1ef76d3bd4d3b0 *./download/unsorted2/info/headersa_i.doc.z80
+d19b0f82fa2261fb11c60d3a0a1257bb *./download/unsorted2/info/hex_d_i.doc.z80
+3ffbf5ffae791b3c78d27a86b2d83502 *./download/unsorted2/info/his_gens_i.doc.z80
+c9923e1603a834dda2b5da7cee820c2d *./download/unsorted2/info/jumping__i.doc.z80
+a7b84e9672bb8c2f696856f064d8c284 *./download/unsorted2/info/kc_basic_i.doc.z80
+6ff6f310c3012109e79b47e379d8e0a4 *./download/unsorted2/info/kc_rom_b_i.doc.z80
+331de0d9936d6ae462bf792e83463686 *./download/unsorted2/info/ladder_i.doc.z80
+b51b4c2ad313bee54ff6a397d77d4a25 *./download/unsorted2/info/leipzig_i.doc.z80
+811cbd530f1d4c2befffa3323f73db91 *./download/unsorted2/info/logicana_i.doc.z80
+29891cee8f1b42d02ccd66676b4896c5 *./download/unsorted2/info/maintape_i.doc.z80
+fc9e14e1e550fd0d1f2bb2300f89c0b2 *./download/unsorted2/info/microwor_i.doc.z80
+b823c45b7f7a7167147b18d736eb1d8a *./download/unsorted2/info/mikro_ba_i.doc.z80
+47d30368711024f2f9fbffd07bcd314a *./download/unsorted2/info/monlist_i.doc.z80
+15e9dcb583fe3d1f201da53ef00db2fd *./download/unsorted2/info/oc_edito_i.doc.z80
+7b91546e30f8149a76ea761fe5114261 *./download/unsorted2/info/oce_4_i.doc.z80
+493504ff5d0715dd875e77440638a54e *./download/unsorted2/info/pascal_1_i.doc.z80
+19c2794d1c597999e2528d47ce1e6fbe *./download/unsorted2/info/r80_1_i.doc.z80
+8628c72a42843f7a7d35686df206504c *./download/unsorted2/info/r80_disk_i.doc.z80
+01e71bd05b74d1ab98e94cbdc84d405c *./download/unsorted2/info/rf_am_z1_i.doc.z80
+8a705120bae61bc8f0e1c542c415b757 *./download/unsorted2/info/rom_disc_i.doc.z80
+0186fddf3c1db5a4f76a1540d6e27a9b *./download/unsorted2/info/rst20_i.doc.z80
+98d03b1974255292a0d256efa50b5ea8 *./download/unsorted2/info/s_dienst_i.doc.z80
+75bed5e5b8f9a6ea24f248c5be8624f6 *./download/unsorted2/info/schlange_i.doc.z80
+09cb4c0e19d3114f1a9a1a70288018c7 *./download/unsorted2/info/scp_2rf__i.doc.z80
+c9183ab630c3738204f23ff7315f7427 *./download/unsorted2/info/super_sk_i.doc.z80
+f51503d7cec6623ef64d13cec99f1081 *./download/unsorted2/info/textedit_i.doc.z80
+5b8b447721887a857bc08d256e11a591 *./download/unsorted2/info/ucopy42_i.doc.z80
+fe13b912378d32aecfab579762f81ef0 *./download/unsorted2/info/uni_copy_i.doc.z80
+58ad8f86d83fd16135a9d82ae5e6090f *./download/unsorted2/info/uni_copy_prg.com.z80
+481ca174449578b8ea1f1727e39fdaa3 *./download/unsorted2/Lost&found/asm_crnl_com.com.z80
+cb97d0af08b2fad385392c1735be411c *./download/unsorted2/Lost&found/cowboy_com.com.z80
+558d6085b235a70dd8d5498bf2c96904 *./download/unsorted2/Lost&found/cyrus1_gam.com.z80
+c1aa1bccb9403d57c7fdd72885016666 *./download/unsorted2/Lost&found/cyrus2_gam.com.z80
+7b9e50189d2836ab77412b9483a65044 *./download/unsorted2/Lost&found/d_bank_bas.bas.z80
+ea436920e48abf34d4ad3692bbea9c66 *./download/unsorted2/Lost&found/fibonacc_bas.bas.z80
+dc7c3701f6ee023225e5ec14463861dc *./download/unsorted2/Lost&found/fighter_com.com.z80
+91198675e0f99f81795641915cb5f370 *./download/unsorted2/Lost&found/iic_emr_bin.dump.z80
+eb8284336a5bed213b0f104c1ecd0a0e *./download/unsorted2/Lost&found/impuls_pic.bitmap.z80
+c4bdef6ce893e323ab2a0eaf945f4598 *./download/unsorted2/Lost&found/kassette_bas.bas.z80
+13533377e5f33b796e9ec8f282505532 *./download/unsorted2/Lost&found/kc87plot_com.com.z80
+144ee97ccae117e7bab6ff1ec068d78c *./download/unsorted2/Lost&found/mexico_prg.com.z80
+89e0c7b9588d62125d10e129cc1e079f *./download/unsorted2/Lost&found/mouse_asm.asm.z80
+2179b98fd5cd7e1f838b2550a65a5b11 *./download/unsorted2/Lost&found/mw_bild_com.com.z80
+e98241fa379aa41c10a6856a79a74ff4 *./download/unsorted2/Lost&found/plsc2_pic.bitmap.z80
+2eb7a781c4fad6d54c6d0c969ce44f99 *./download/unsorted2/Lost&found/plsc3_pic.bitmap.z80
+6f494dcbf7c4a15b5b439577ad5cc2ff *./download/unsorted2/Lost&found/plsc4_pic.bitmap.z80
+322142fa22c35bcdc4cac0f2b7c3365f *./download/unsorted2/Lost&found/pyramide_com.com.z80
+272098af1a4e2c0b90f673a5e00ff73a *./download/unsorted2/Lost&found/sing_s.edasASM.z80
+5a0e8a06e59a170f13cea09a369cba80 *./download/unsorted2/Lost&found/sinola_prg.com.z80
+2ab340b1212fa1c3606445e79c3ae68a *./download/unsorted2/Lost&found/sprache_com.com.z80
+31442438e2ff38bdf457257a35cfe94d *./download/unsorted2/Lost&found/videotex_asm.asm.z80
+83e344e5958083bab2f35e0fd80d085e *./download/unsorted2/Lost&found/vtext_zs.dump.z80
+ae249cb4469f552f16a7d49d9971e560 *./download/unsorted2/play/alf_c.com.z80
+3e77daf26ce342e05d5c216ed1e5e41b *./download/unsorted2/play/centiped_b.bas.z80
+00212221905267fd56e21c088d813a12 *./download/unsorted2/play/climber_b.bas.z80
+5d21704a50a8395272fb40669f041abe *./download/unsorted2/play/cyrus_c.com.z80
+0e44a9558f8269b12e8bd504c94dd373 *./download/unsorted2/play/digger_1_c.com.z80
+75645119c3882be95ef6cdb7fcdd16d5 *./download/unsorted2/play/enterpri_b.bas.z80
+e2f01ab325079ab4734476bba7361ed7 *./download/unsorted2/play/gammon_b.bas.z80
+8e768e4790c69a960110bcc235949b7c *./download/unsorted2/play/ghost_c.com.z80
+291600a2ce94cbbc7f461370528e7c1e *./download/unsorted2/play/labyrint_c.com.z80
+0fc569a73feeb23271ea015746fa047e *./download/unsorted2/play/ladder_c.com.z80
+f9ae25c26542459252e972500af543a1 *./download/unsorted2/play/last_cha_c.com.z80
+a396b02a12ffb207e5bb94780f942f27 *./download/unsorted2/play/lebensze_b.bas.z80
+9274ac27115acd96abfcf8ebf4156e5e *./download/unsorted2/play/mazogs_c.com.z80
+9b57f167c30b79b286da1677d014e00b *./download/unsorted2/play/minen_c.com.z80
+09186f62c1ad001d1335069be2697ee8 *./download/unsorted2/play/othello_c.com.z80
+0401edabbdce36535969699d0badb34a *./download/unsorted2/play/paravia_b.bas.z80
+f19f7c4e869bb2aa5b73a9024ef8fd8b *./download/unsorted2/play/pursuit_c.com.z80
+77c7f82d6d4333801ae3cda34e55a426 *./download/unsorted2/play/schach_c.com.z80
+d5b5a06742e36f850b35e569651375cc *./download/unsorted2/play/schiessb_c.com.z80
+ae288d3eb7e90395c6eca92624df78c5 *./download/unsorted2/play/skat_b.bas.z80
+24971a87e32a9a62454126b02077ac8e *./download/unsorted2/play/soko_ban_c.com.z80
+00e01abad07dc3ec790df966e1a42852 *./download/unsorted2/play/super_sk_c.com.z80
+8de19e8d56a498992e05376d1483ccb6 *./download/unsorted2/play/tatum_b.bas.z80
+b3fd6b1f0d83d4e25b30e862b3df560f *./download/unsorted2/play/tetris_c.com.z80
+f4bc857e00d718770ac16b148f986d56 *./download/unsorted2/play/vampir_c.com.z80
+d8a482a82c877b3d5dc2f3cb8a29b250 *./download/unsorted2/play/wizard_c.com.z80
+74a94ff1613a2506035739c2610168df *./download/unsorted2/tools/anlay_a.asm.z80
+9b4312e25c631c541938c5f4f538c4a5 *./download/unsorted2/tools/av_plati_pic.bitmap.z80
+46561fa05dfedf42661e3fa5300d06be *./download/unsorted2/tools/c64_text_a.asm.z80
+33d9001d42edf516b11923ae23b77356 *./download/unsorted2/tools/crc_disp_a.asm.z80
+a7b2b793e7dc361ab2826c3343de2be5 *./download/unsorted2/tools/datenban_b.bas.z80
+0f248a6c94bfe34336d32a9abcf0024a *./download/unsorted2/tools/dir_prin_a.asm.z80
+8ca06f83d6728c689c636053ae91e2ec *./download/unsorted2/tools/fl_mem_a.asm.z80
+fe987cb9d4a02a6f52f1d8769e749939 *./download/unsorted2/tools/fl_memor_a.asm.z80
+038ef2c3bb646df40e832431d87a606d *./download/unsorted2/tools/floppy_a.asm.z80
+23e3eec99e3ae5720fb29be223ac8326 *./download/unsorted2/tools/freq1_a.asm.z80
+9a643a6169f6648a6ed6dba78b1c9890 *./download/unsorted2/tools/freq2_a.asm.z80
+8e8088e4ae4ef668ed80edb9d7720eaf *./download/unsorted2/tools/frequenz_a.asm.z80
+88d4c5158a6d8f91a16f184bf333363d *./download/unsorted2/tools/graph_pas.pas.z80
+fca4694c087c64d04009a3ea1e99457b *./download/unsorted2/tools/hex_data_a.asm.z80
+2f3cc88ea486b7476fb037b2538aa74c *./download/unsorted2/tools/i2c_trei_a.asm.z80
+f3b6bdf07723932a70dbd4a11a56c9ad *./download/unsorted2/tools/iic_bus_bin.dump.z80
+596d09a21b1358155c16e2e4623be0b5 *./download/unsorted2/tools/iic_hear_a.asm.z80
+5d038083afefc3e621a719b98efdbb55 *./download/unsorted2/tools/kc_tape_s.edasASM.z80
+2f89251d2b4d216fb81313e3dec5998a *./download/unsorted2/tools/labels_a.asm.z80
+6bec72716d850fc61977c0b19941faf6 *./download/unsorted2/tools/layout_a.asm.z80
+a81db6333da5a06cab56d01d150264dd *./download/unsorted2/tools/mt_81_t.doc.z80
+8b4d3978288088154b54f379a42f6b3a *./download/unsorted2/tools/paint_a.asm.z80
+f09449d9f7ee3d6ab3edece9651828d5 *./download/unsorted2/tools/pf_pictu_a.asm.z80
+21711c2f06fd0d2616891d7080a3aedd *./download/unsorted2/tools/pio_test_a.asm.z80
+ed6341eb41e33224382cb301cf8cd83f *./download/unsorted2/tools/pl_scann_a.asm.z80
+a5c9ddb90b301d3b0207de8d87ed8d60 *./download/unsorted2/tools/plotter_a.asm.z80
+fbbcedb565169826b04c716cea5565a3 *./download/unsorted2/tools/plotter_pic.bitmap.z80
+38fd5e7552e21c1448797c616f172586 *./download/unsorted2/tools/say_pic.bitmap.z80
+a9c2bd9913a6cb0ba76a1f9c7bb3102f *./download/unsorted2/tools/sprach_i_a.asm.z80
+2c64083b4dc4e98c5463f719e9ab807a *./download/unsorted2/tools/textform_a.asm.z80
+a59a2404ca06d683d4b88df7ec61646a *./download/unsorted2/tools/videotex_a.asm.z80
+3ff0c11412d87d157986c92b8be9c401 *./download/unsorted2/tools/videotex_z.dump.z80
+523952e333c3b1feec9efc579127f979 *./download/unsorted2/tools/vt_edit_pic.bitmap.z80
+b147635006b59f053a6c628c55cde6fe *./download/unsorted2/tools/z1013_an_a.asm.z80
+f712b062aae16e7c694eede018970a85 *./download/unsorted2/tools/z1013_an_c.com.z80
+6c7501ad07dc3c8bc7689412ccacc832 *./download/unsorted2/tools/z1013_mo_a.asm.z80
+e64d200f7e875c927987bbe57d2ec341 *./download/unsorted2/tools/z1013_mo_c.com.z80
+9ceb0e45613d30b8b52baa1365a3d7e3 *./download/unsorted2/tools/z1013_z.dump.z80
+86559b7ed2230fc6772c0d142e601a72 *./download/unsorted2/tools/zs_konv_a.asm.z80
+efddac820496f9a6fdcdf59d742a852b *./download/unsorted2/tools/zsatz_9__z.dump.z80
+9820e649f2d70c4122e44636ef6bd116 *./download/unsorted2/unsorted/lachetta/adressen_b.bas.z80
+957e7fbb6fa74deb6ab15d3cfd660850 *./download/unsorted2/unsorted/lachetta/bac854v_b.bas.z80
+21f7940e3e80d41a32b5b11c5da7fc9c *./download/unsorted2/unsorted/lachetta/bc3_v2_prg.com.z80
+65c04d05355bcd0db19b412c3185ef16 *./download/unsorted2/unsorted/lachetta/bc3c_sub_prg.com.z80
+eabadab32dffdec9343d9061a6dff797 *./download/unsorted2/unsorted/lachetta/bsc_asci_b.bas.z80
+eb573156c50154bb630cf22893dcc02b *./download/unsorted2/unsorted/lachetta/bsc_cbm_b.bas.z80
+12f9ad9331b8e43755fbf662f4c47097 *./download/unsorted2/unsorted/lachetta/dc_monit_p.com.z80
+7b17bb254e1cc3bc2be89b60dd597b84 *./download/unsorted2/unsorted/lachetta/ddr_b.bas.z80
+2626d573ff88b1f4de42c4eb6c011e76 *./download/unsorted2/unsorted/lachetta/de_tijdm_b.bas.z80
+744c08211d64121a9ec69ece4af3720f *./download/unsorted2/unsorted/lachetta/debug_3_prg.com.z80
+a1d8a857d2557a66fe160b3b49f4e1aa *./download/unsorted2/unsorted/lachetta/debugger_prg.com.z80
+2338d42062702c9c5eac60aef81836ca *./download/unsorted2/unsorted/lachetta/englisch_b.bas.z80
+12a1dab74a0171894388aea977ef49a0 *./download/unsorted2/unsorted/lachetta/eprom_ha_prg.com.z80
+893271209751cd196a73c9c9e77f609c *./download/unsorted2/unsorted/lachetta/eprommer_p.com.z80
+e6d3e8f4f11e61c7b7946e304e461f4d *./download/unsorted2/unsorted/lachetta/file_b.bas.z80
+cf850bf03adfd21ee9a880745036af5b *./download/unsorted2/unsorted/lachetta/fkt_3d_b.bas.z80
+f683c4b2e08ef0cb135dfd47f81c8498 *./download/unsorted2/unsorted/lachetta/globe_b.bas.z80
+049c5bf9366f6c3f42ae220fb414bd32 *./download/unsorted2/unsorted/lachetta/grafik_b.bas.z80
+d014bec387f6fae8da5ce109e51a7295 *./download/unsorted2/unsorted/lachetta/hymnen_b.bas.z80
+f418e12b00fbe185cbd966bd77848df4 *./download/unsorted2/unsorted/lachetta/ic_datei_prg.com.z80
+d2ff77b575032ec6ee041b112a3895e1 *./download/unsorted2/unsorted/lachetta/journal__b.bas.z80
+29bdc16dcb9637fd9020bacac132b8ff *./download/unsorted2/unsorted/lachetta/kcbascod_b.bas.z80
+6c366cf3a743046b0114c901744b8f77 *./download/unsorted2/unsorted/lachetta/leb_bild_b.bas.z80
+bc2a8179387020a97854a2e7623e99ed *./download/unsorted2/unsorted/lachetta/mus_b.bas.z80
+ee5f96cc4e8334c4b9c98b88cff7d894 *./download/unsorted2/unsorted/lachetta/nsweep_prg.com.z80
+7871b98b1e51cb224fc7af98ab9a39d1 *./download/unsorted2/unsorted/lachetta/pascal_prg.com.z80
+7cc4b9ac3a95a2a224bf19d5956e27d8 *./download/unsorted2/unsorted/lachetta/power_prg.com.z80
+fdafc017d0400bcf92ec9fe48d14708a *./download/unsorted2/unsorted/lachetta/scp_z101_prg.com.z80
+ae703082ebd125ac0cd8a4d85f17ae56 *./download/unsorted2/unsorted/lachetta/sinterkl_b.bas.z80
+a6602e85cd05ad0c9074c4653300e230 *./download/unsorted2/unsorted/lachetta/verlag_b.bas.z80
+7e5ef1f424bfccbe8f3ee806f0c801a9 *./download/unsorted2/unsorted/lachetta/z1013bas_b.bas.z80
+843712c97f4b5661b1270b5b2fb7dd2b *./download/unsorted2/unsorted/Reinsberger/3k_basic_prg.com.z80
+7f159fa85a7ec7bfdd5347808e2d58c5 *./download/unsorted2/unsorted/Reinsberger/billard_b.bas.z80
+c0bdf3ce05c4e42a4b95a2bc78f7695a *./download/unsorted2/unsorted/Reinsberger/c_test_b.bas.z80
+6d0d972b8759d7c8de17c3acd2caa0ab *./download/unsorted2/unsorted/Reinsberger/chemie_b.bas.z80
+7d6321beb265a9fa19f1eb6e44e16e22 *./download/unsorted2/unsorted/Reinsberger/chess_ma_prg.com.z80
+7c6ae8651443d437cbe4362f4427d941 *./download/unsorted2/unsorted/Reinsberger/cleaner_b.bas.z80
+604139def8352de560783ed2d7cf2885 *./download/unsorted2/unsorted/Reinsberger/elektron_b.bas.z80
+10e70304560abba72cc290e067c306b7 *./download/unsorted2/unsorted/Reinsberger/helen_b.bas.z80
+5eb00d672e132e2a48d5de43e75b52cf *./download/unsorted2/unsorted/Reinsberger/idas_v_1_prg.com.z80
+2a3c872caf42e645497ffa283ab34530 *./download/unsorted2/unsorted/Reinsberger/jumping__prg.com.z80
+13951581af57382ddc273f9d2b19593a *./download/unsorted2/unsorted/Reinsberger/list_ida_is.idasASM.z80
+245dc356e1181e3cb0db9bbb386ae569 *./download/unsorted2/unsorted/Reinsberger/main_kc__b.bas.z80
+c0bd72ffefe7113dd47d2238c74d217d *./download/unsorted2/unsorted/Reinsberger/mintex_z_prg.com.z80
+22a60f5990b94aa137659149e6ced2e2 *./download/unsorted2/unsorted/Reinsberger/muehle_prg.com.z80
+2dfb87dfb88641fcc95d08f08c174962 *./download/unsorted2/unsorted/Reinsberger/oc_edito_prg.com.z80
+d7511f161f2cd4d8228f5a9d036e4b65 *./download/unsorted2/unsorted/Reinsberger/r_80_dis_prg.com.z80
+078504bdb91c8b750c05efca8444c28b *./download/unsorted2/unsorted/Reinsberger/rechnen_prg.com.z80
+0a7bb225b450f6220100d038f3637db1 *./download/unsorted2/unsorted/Reinsberger/rom_disc_prg.com.z80
+6376e6b49f1fef8d9f8fcc2175892ad3 *./download/unsorted2/unsorted/Reinsberger/skeet_b.bas.z80
+72f0f0d8cca6873bf771a9469c974d7a *./download/unsorted2/unsorted/Reinsberger/speicher_prg.com.z80
+0a12452884f0afb88c9c757ca33bae8b *./download/unsorted2/unsorted/Reinsberger/texkon_1_prg.com.z80
+59ef121d843a8cd20eae9048c795c651 *./download/unsorted2/unsorted/Reinsberger/trafo_b.bas.z80
+012b241fe8300dbcb86cfb833018b4c3 *./download/unsorted2/unsorted/Reinsberger/unidat_b.bas.z80
+26f14e24d35caa4239b3de1928d3e5f9 *./download/unsorted2/unsorted/Reinsberger/usr_plot_b.bas.z80
+1346fed560dd8473a7ddcb1c4625da25 *./download/unsorted2/unsorted/Reinsberger/wanze_v__is.idasASM.z80
+299c484fb2c875bafea7a9fd1fde3cf4 *./download/unsorted2/unsorted/schuett/billard_b.bas.z80
+3b640d01c3a4fd4d5fb9b61c5575f61d *./download/unsorted2/unsorted/schuett/chaos_of_b.bas.z80
+eca327c006a5c1ac1920f49d76ba109c *./download/unsorted2/unsorted/schuett/eprom_ha_t.doc.z80
+129271f58ddb7c46fd088fe7b09fb028 *./download/unsorted2/unsorted/schuett/eprom_pr_i.doc.z80
+56d599ca0af05455e5cf0a0795643c78 *./download/unsorted2/unsorted/schuett/eprom_pr_t.doc.z80
+fdd5fd3de35be1d705802391e93c532e *./download/unsorted2/unsorted/schuett/eprommer_c.com.z80
+f0aa5c55932e53354bd40349a5a640f8 *./download/unsorted2/unsorted/schuett/galacica_c.com.z80
+7ba9bd9426f2033d78769ba38edb01fe *./download/unsorted2/unsorted/schuett/galton_b_b.bas.z80
+b54a5f64feb6192d7ab1dd254b197f65 *./download/unsorted2/unsorted/schuett/sumeria_b.bas.z80
+60c4a775773742b4d3a121eb802be9bb *./download/unsorted2/unsorted/schuett/susi_b.bas.z80
+e6940238aa671343eb999850d7071656 *./download/unsorted2/unsorted/schuett/typen_le_t.doc.z80
+8b093e4dcb8e64807f03903c67b03bdb *./download/unsorted2/use/ableitun_b.bas.z80
+4ed93b35a593f4975ea19f2280d4fd81 *./download/unsorted2/use/ac1_tape_c.com.z80
+c10d390a3a79915ef80cb187f3def52c *./download/unsorted2/use/asm_soft_c.com.z80
+9ddd90331b587765b2c82cc53e005006 *./download/unsorted2/use/bascon_t_c.com.z80
+5adabc4a8b08d34c9a38ec68fddbbae5 *./download/unsorted2/use/basic_c.com.z80
+fdc18c58abb5b3cb8238851fdada771a *./download/unsorted2/use/basicode_c.com.z80
+26e1b6bfb293de0f54f0e9fccd74d08a *./download/unsorted2/use/copy_c.com.z80
+687a8b8e2dcf6f7b42d42a072a65f4d2 *./download/unsorted2/use/cpm_2rf__c.com.z80
+d834e58b5bb3c4dc6bd97bd1bae1515d *./download/unsorted2/use/crc_d_7d_c.com.z80
+ecfcdff9dd0ef2c63f3abff98be791c7 *./download/unsorted2/use/crc_disp_c.com.z80
+8defee6a9edfa82c7b043c674c8f8a40 *./download/unsorted2/use/debugger_c.com.z80
+9cec3933f47e2e5dac07f15fd4411c55 *./download/unsorted2/use/dir_prn_c.com.z80
+622f2e40600812ae570fa952ab7856a3 *./download/unsorted2/use/forth_c.com.z80
+c25e65ae3109fceec241e2e1b49d1162 *./download/unsorted2/use/hardcopy_c.com.z80
+692cf080b58e745bc6a4f75207d49799 *./download/unsorted2/use/hdiskcop_c.com.z80
+85828bcac3d06b1f7431c0eed6dd1c73 *./download/unsorted2/use/headerdi_c.com.z80
+45852cfa54c6859270fa10c1042fd064 *./download/unsorted2/use/hex_data_c.com.z80
+b7221b7127ffe817565f803668347b41 *./download/unsorted2/use/hsave_7c_c.com.z80
+618f9ac2e96ca382fc47838a643239a5 *./download/unsorted2/use/hundi_c.com.z80
+a27edd62a3d1ae28314f46035ddf188e *./download/unsorted2/use/kalender_b.bas.z80
+28d86b3d749c5563304c1795d1abe1aa *./download/unsorted2/use/kc_tape_c.com.z80
+d31dfa50283b7c6df4e8353592f930a3 *./download/unsorted2/use/key_rast_c.com.z80
+9b27700e07457c19137fd46884fe8238 *./download/unsorted2/use/labels_c.com.z80
+bb1f2d2956c72afdbc4e0aec12f30d1d *./download/unsorted2/use/layout_c.com.z80
+804a1180a43d71f578f988a1a64e3209 *./download/unsorted2/use/m_word_c.com.z80
+b886fc9558e57480fcc4405d8b292fe8 *./download/unsorted2/use/mathe_b.bas.z80
+028396ab5711effb58b499826e21af9c *./download/unsorted2/use/mesee_c.com.z80
+f4a54f109d2fcf31a217603acd635860 *./download/unsorted2/use/pascal_c.com.z80
+693ab797222d6e91668659c8442b6a45 *./download/unsorted2/use/pf_pic_c.com.z80
+b271ea09ddcfcaff7e447a5ae9203d47 *./download/unsorted2/use/pio_test_c.com.z80
+0f98a1e4ff98cdc48bbcbc69602334ca *./download/unsorted2/use/rdisk_e0_c.com.z80
+34518a9bf5bb866771c7b34cbcf48f5a *./download/unsorted2/use/rf_disp__c.com.z80
+de8e5d0c6d3b36f454f02db7b01c1ff3 *./download/unsorted2/use/rf_test__c.com.z80
+d48e8917467bbc96d4320346c64fb008 *./download/unsorted2/use/rom_bas_c.com.z80
+15977515cf259e3849510e9ba634056d *./download/unsorted2/use/rst_20_c.com.z80
+8184a331163caca671189d9164b80d13 *./download/unsorted2/use/show_zs_c.com.z80
+8599e672b6bb7d4633fe15ec53316eed *./download/unsorted2/use/spectrum_c.com.z80
+e086e97ee03bf6d291566dcd29566abd *./download/unsorted2/use/tb_analy_c.com.z80
+754750174ee39408549e7a0aa9987bbb *./download/unsorted2/use/tiny_bas_c.com.z80
+4d6d89ada559f150c03af3885ad4d0aa *./download/unsorted2/use/top_secr_c.com.z80
+cdaed18a69573acbcc1109b976b6d51e *./download/unsorted2/use/urlader_c.com.z80
+e89683772aaee93ce7807e14f87eb4a7 *./download/unsorted2/use/v_text_c.com.z80
+7513ce1052241c15271745a7f7f9e46e *./download/unsorted2/use/zs_konv_c.com.z80
+506f82aaebb89cbd753448bc66c7ddf4 *./download/unsorted3/$_feld_brotast.com.z80
+d7cc9d243acde235b0fc411de89839f9 *./download/unsorted3/3kpluscrash.com.z80
+9e90636dc6ef5be5ee972fefc669f83a *./download/unsorted3/3kpluspoke_kurs_1.com.z80
+79d56757216d1ccf0d260f68bf2974f5 *./download/unsorted3/4k_moni_k7659.dump.z80
+0e705ccf02b960a91547a542eaebfab3 *./download/unsorted3/64_zeichen_bs.doc.z80
+fe6c7dfa839e1ebfa22c6b4fbb03eb54 *./download/unsorted3/adressen.bas.z80
+7c9167d8738a45c0c695174944a77690 *./download/unsorted3/ausgleich.pas.z80
+afd7c978a277c2252fcf630453e8d7fa *./download/unsorted3/beschr_hramdisk.doc.z80
+639f0c94fe292dc46772396d4139b521 *./download/unsorted3/boerse.bas.z80
+102f12df5880d9326510d2dbdf768219 *./download/unsorted3/bpluscentipede.bas.z80
+14c0a0f2c41da953be38162067e538f3 *./download/unsorted3/c_test_doc.doc.z80
+74c964eac1358f9ec43f623473054b6c *./download/unsorted3/climber.bas.z80
+786d4edbdb0e9f7a74cfdad54a68cefc *./download/unsorted3/cosmic_ball.com.z80
+40140c5896bab22433ff637216165bf0 *./download/unsorted3/cyros_8_8.com.z80
+defa8a18548e3d583db0f67a122bb6f7 *./download/unsorted3/cyrus_v_1_dt.doc.z80
+7cfd96cca9a8ca3b9dfb5bf35615ab39 *./download/unsorted3/documentation.doc.z80
+aae41d1a5966c6e4a5c39b4bc1108e73 *./download/unsorted3/enterprise.bas.z80
+542e31451386ec4b0a067b6802e2521a *./download/unsorted3/eprommer_2_9_igd.com.z80
+7aba6f7e42b9191addf7d15218b288aa *./download/unsorted3/esc_folgen.doc.z80
+6b70a9667654043f72f3e2668e8c8740 *./download/unsorted3/exreas_2_01.com.z80
+47ea968726dc4ea77c35892fb59356f2 *./download/unsorted3/fehlberg.pas.z80
+59d860a9d4320c4105f6ad9e94002072 *./download/unsorted3/files.txt
+9a89ceab3357341141e8bf86ecfb4b43 *./download/unsorted3/flipper.com.z80
+2f4b2c000c99b2b158c2ad31bcaa12fd *./download/unsorted3/fussball.com.z80
+9a8c1e32a589d7023e89f9e1a5feede0 *./download/unsorted3/ghostplusvoice.com.z80
+1d9723ecb9d389ef4c10df605f073878 *./download/unsorted3/graph.pas.z80
+ac559be453153ac534c19059ce754b32 *./download/unsorted3/hc_900_basic.com.z80
+f4c08520df7069cb61d7e50cd34354da *./download/unsorted3/hc_bi_v__4_1.com.z80
+a69fa27d60f1841ffaecb14d1ac68343 *./download/unsorted3/headerdisk_45.com.z80
+f7b142bbd99d610d411cb0393d1854cf *./download/unsorted3/headerdisk_45.doc.z80
+3ebc6012b25c7fdcb86803ca6e687e3f *./download/unsorted3/headersave_5_9.doc.z80
+1463deeff07fa51d44d3fb88f0ef0b0d *./download/unsorted3/headersave_5_95.com.z80
+2ae851edc0378818f97c75107dc9dcda *./download/unsorted3/heartrunner.com.z80
+fe328c505f2722faf92af8463fc0e49a *./download/unsorted3/hexdump_1_021.doc.z80
+f560d82cb5fa44d949b3c5c34c01e56d *./download/unsorted3/k7669_1_scr.scr.z80
+e9720d5c1fe31d708423877936788019 *./download/unsorted3/kc87_monitor.com.z80
+a7da84a51c2134f2781c0ce63525bf69 *./download/unsorted3/kc_basicplus.doc.z80
+4e4a55c7ec6f1eeb4a0fe4e85139518f *./download/unsorted3/labyrint.com.z80
+5cca922e3262402120177bbccd35a798 *./download/unsorted3/lebenserwartung.bas.z80
+586c7d1e1458082a6f084a1448793fed *./download/unsorted3/leipzig.bas.z80
+6032ddbd0bda2efb81703485cd4048ca *./download/unsorted3/leipzig_doc.doc.z80
+cd484c040218eef767d2acbcf4d78258 *./download/unsorted3/logicanalysor_sc.com.z80
+6efbb1e4d162f184624d2fcda78961cd *./download/unsorted3/main_kc_if.bas.z80
+0cdcec6998a53b72a9d4433bdfc95534 *./download/unsorted3/maintape_v4_5.doc.z80
+1170d28fad299ad205d6e95eb2eb19a7 *./download/unsorted3/matrix.pas.z80
+b5a1f07ff9638bdf90f5fe45763b8a89 *./download/unsorted3/micro_basiccompl.com.z80
+332dac07be7c64cb4e9807d19cc8ce4a *./download/unsorted3/microword_1_5gs1.com.z80
+dec40cfdd390c70810cf0d3458ec33cb *./download/unsorted3/monitor_1_1brenn.com.z80
+5295b67bbbfafa1415057adb6f9b38e4 *./download/unsorted3/mons3_2.com.z80
+533e0ce8dae11c9f03a2e1a9a5add22e *./download/unsorted3/montorerweiter.com.z80
+1136d8ae3f87e96395255efe60826d11 *./download/unsorted3/newton2.pas.z80
+52a294a5edc9a7d5b0bc01692479f922 *./download/unsorted3/olidat_2_3.com.z80
+92d23d4f25f58c775289bc50276a3786 *./download/unsorted3/paharo_2_2.edasASM.z80
+e808eea3f1bed05e0042e3d9a65eef4c *./download/unsorted3/pharao_3_6.edasASM.z80
+2548127c72a63bc97a5d9597524ff61d *./download/unsorted3/r_80_doc_1_3.doc.z80
+d5695fe325b4a85dd84055017759b376 *./download/unsorted3/r_80_spv.com.z80
+ef0310c52d92bf32e34b8f636656016d *./download/unsorted3/raum_1_2pggs.dump.z80
+b6a6c60adc862570682d8ae3e6d5775a *./download/unsorted3/rbplus.dump.z80
+eb5429f22a818ca79bd06d98a08a7202 *./download/unsorted3/rf_am_z1013.doc.z80
+f8ee9e5bb1998d9d1a937183243522dd *./download/unsorted3/rom_4000.dump.z80
+2b0074091d5ffe3fbd3e85b3290ffbc0 *./download/unsorted3/scp_2rf_2_40m.com.z80
+50b934cde4b60c4400ab7712fe399a3e *./download/unsorted3/scp_2rf_doc.doc.z80
+00f77046758dd9a20a2403e960cbd7ea *./download/unsorted3/scp_plus_f800.com.z80
+00f77046758dd9a20a2403e960cbd7ea *./download/unsorted3/scpplusf800.com.z80
+d8cefea0ce256ae3ca79fef01c815e59 *./download/unsorted3/skat.bas.z80
+4500f1c3a09ca19913a678a0f7e108cd *./download/unsorted3/snake.bas.z80
+4960683f103baf0bfc2078cc5a29139d *./download/unsorted3/solo_commotion.com.z80
+68fe426ec9062d986b2da9ae66b20d57 *./download/unsorted3/spektrum_s_l.com.z80
+66ea9d45656d232768e50365ef4d6d22 *./download/unsorted3/sprache.com.z80
+da3d3c73f4f281112f63b1e4511db487 *./download/unsorted3/sprungverteiler.doc.z80
+7e0fe2ecee6d5087457a65ba10069233 *./download/unsorted3/star_treck__1_1.bas.z80
+0b81dfd73e45c17fadf36b4e9b7940d5 *./download/unsorted3/tapelist.com.z80
+af2d955b021ee36a0d2519ed53776e43 *./download/unsorted3/tatum.bas.z80
+0d1951692cd94d8f6f57f382ccdb99d1 *./download/unsorted3/tedit_9_0.com.z80
+14940125bb972c6a8bc61129152f58b9 *./download/unsorted3/tedit_9_0_doc.doc.z80
+d55bd77ac464668e50b5616eb915894f *./download/unsorted3/texteditor.com.z80
+38380a733076c18e8197bd4422300887 *./download/unsorted3/tpe_basic.com.z80
+191d6e102408fcf5113c4ff8fbb48aef *./download/unsorted3/triplett.bas.z80
+5d171fea0ddc4bd5755a37febfe2f9c3 *./download/unsorted3/turbo_headerm.com.z80
+c27c1982477c15b3e97f7b01201403e1 *./download/unsorted3/turtle_player.com.z80
+a3fdcc1c4f6c6bb28964493a49b68cd2 *./download/unsorted3/vampi.dump.z80
+000be92806becac01e02ee850d2d6432 *./download/unsorted3/voice_dice.com.z80
+c318e23b99cb8353a4ab5d494f64198d *./download/unsorted3/wurmi.com.z80
+6ae16f4a095ee1e1da7d79f72ec30772 *./download/unsorted3/z1013_lit.doc.z80
+24933e18ddfde0d7a6021b07069228ce *./download/unsorted3/z1013_surl_3_00.dump.z80
+10040f6ed4dd893a980a8932b7831101 *./download/unsorted3/z1013_surl_doc.doc.z80
+5adbd3b0b3e4d26dc9079742cf73fb8a *./download/wiz_keys.z80
+f05e2c61882aa08fe25029f713a6309e *./download/wizard_of_danger.z80
+2ff6ca044140b1a52faad508bd6eded5 *./download/Z1013V202.BIN
+ed03e0be1d049a28f46fbe0de362ab6a *./edas_a+d+h+ae_ub.z80
+02ff6c222fe73b95d5a6f8a0a32db7de *./fail/02ff6c222fe73b95d5a6f8a0a32db7de-GRAVEROBBER+J.z80
+03079907ee098d5a306ce9b5473afc39 *./fail/03079907ee098d5a306ce9b5473afc39-JUMPING_JACK+J.z80
+08b2d1b45a1f6f73ef5abe4675d66098 *./fail/08b2d1b45a1f6f73ef5abe4675d66098-REAKTOR+J.z80
+248587e81b551e5dfda48acad5572764 *./fail/248587e81b551e5dfda48acad5572764-SOKOBAN.z80
+27f2f848d57c175063698f93f96ceffc *./fail/27f2f848d57c175063698f93f96ceffc-beschr_edas_t1.z80
+2da98e810bf7d299f4fe7c0750d73992 *./fail/2da98e810bf7d299f4fe7c0750d73992-DIGGER.z80
+33d0622303dbe6341c1bf83f89ac7f0b *./fail/33d0622303dbe6341c1bf83f89ac7f0b-HEARTRUNNER+J.z80
+36882f677d6be5b5c2530da36f7b2bd3 *./fail/36882f677d6be5b5c2530da36f7b2bd3-JUMPING-JACK.z80
+387d07b8b13826fceb37a0e888ba1160 *./fail/387d07b8b13826fceb37a0e888ba1160-the_last_chance1.z80
+425c7242c7c41cd7fe4ce38c94593fe3 *./fail/425c7242c7c41cd7fe4ce38c94593fe3-GALAKTIKA+J.z80
+473e0603395314f21244e3d3349a1e27 *./fail/473e0603395314f21244e3d3349a1e27-LABY+J.z80
+480c188d959c33fa5470b7103d2c5c0e *./fail/480c188d959c33fa5470b7103d2c5c0e-TURTLE_PLAYER+J.z80
+5b18b2c1abf4bf7c5e9d414eb3423b4b *./fail/5b18b2c1abf4bf7c5e9d414eb3423b4b-ladder_joy.z80
+68352614f53689be3241edcf6305b43a *./fail/68352614f53689be3241edcf6305b43a-HASE&WOLF+J.z80
+6a178e545b6c56f6f73176e8de370e60 *./fail/6a178e545b6c56f6f73176e8de370e60-HINDERNISLAUF+J.z80
+6becb943855bd6245c42e33ed1a19be6 *./fail/6becb943855bd6245c42e33ed1a19be6-ENCOUNTER+J.z80
+767800e41f00e87b7b801acf0966ad27 *./fail/767800e41f00e87b7b801acf0966ad27-GHOST HUT+J.z80
+7e8d567986137f27499ecd4628c5de54 *./fail/7e8d567986137f27499ecd4628c5de54-NEW_YORK+J.z80
+896a4389c4b4d3f0f7ba04588107b381 *./fail/896a4389c4b4d3f0f7ba04588107b381-MIAMI+J.z80
+9d244366a5aec22b97dc7f91e5e93a4c *./fail/9d244366a5aec22b97dc7f91e5e93a4c-GHOST HUT+J.z80
+a318c2899b6ae0ed7f2ac92ab6b5d4d8 *./fail/a318c2899b6ae0ed7f2ac92ab6b5d4d8-ALADIN+J.z80
+a3ab030687267999d321c94fb16f73c6 *./fail/a3ab030687267999d321c94fb16f73c6-MAUER+J.z80
+a46e092fea01195ee5179655cfa695e2 *./fail/a46e092fea01195ee5179655cfa695e2-SUPER_SKI+J.z80
+af119ebfecd1a42c89d147a02e06d0ed *./fail/af119ebfecd1a42c89d147a02e06d0ed-KC-BASIC.z80
+b1c268f910e87228376fc72f1feff9f0 *./fail/b1c268f910e87228376fc72f1feff9f0-beschr_edas_t2.z80
+b3f46b9a09b2a7a8a71ae4023664f7c0 *./fail/b3f46b9a09b2a7a8a71ae4023664f7c0-KINGS_VALLEY+B.z80
+d3d549147660e00b0f52c4c47878f8f8 *./fail/d3d549147660e00b0f52c4c47878f8f8-TETRIS+J.z80
+d8ac189da8cb0520ca3d8c1fd45853d3 *./fail/d8ac189da8cb0520ca3d8c1fd45853d3-MAZOG+J.z80
+db05942e104fc236ca3f6945a4c9358f *./fail/db05942e104fc236ca3f6945a4c9358f-Wall+J.z80
+dced692ddba89e7dd7064a30fb319fb2 *./fail/dced692ddba89e7dd7064a30fb319fb2-GALAXIS+J.z80
+dfb83fca953529e6e0551be16b7f0fc4 *./fail/dfb83fca953529e6e0551be16b7f0fc4-WALL+J.z80
+f013e98808d80e1c2221f108154cf6f2 *./fail/f013e98808d80e1c2221f108154cf6f2-FIGHTER+J.z80
+f05e2c61882aa08fe25029f713a6309e *./fail/f05e2c61882aa08fe25029f713a6309e-WIZARD_ANG.z80
+f64b69fdc0d9f2f4b8081fda9220a698 *./fail/f64b69fdc0d9f2f4b8081fda9220a698-VAMPIR+J.z80
+f844aa6d981ff3bff30927a1d104cf52 *./fail/f844aa6d981ff3bff30927a1d104cf52-AUTO+J.z80
+f5802eff1d08e05657cf193ec49314f9 *./files.txt
+a345e445fba71267cb9742742ca303c5 *./help.txt
+1b6c4ec96ac6fc8c2db76f261ab8f8f1 *./Kompatibilitätsliste.txt
+96cb46ac2659cb7b7d242d81176294df *./list.txt
+8f29b458ec71ad467ee3c8aacec1fbd8 *./md5sum.txt
+c8aa048e94d4fb6697f50be8eb6fb1f4 *./MicroWORD 1.5 JP.Z80
+b42a07781e3907b9c2034a3f055c2274 *./MicroWORD 1.5 VP.Z80
+e808eea3f1bed05e0042e3d9a65eef4c *./pharao_3_6.edasASM.z80
+5d2fe0206a4f4112390dd5bd2afddc03 *./z1013_mega/.depend
+b57e859e070d7aca0e6a4e9041bff2c4 *./z1013_mega/.DS_Store
+449f787dccf2a1f7de3214d8b9fecf00 *./z1013_mega/00liesmich
+5507cd26c92dbbe2bbfba6837272b629 *./z1013_mega/doc/HeaderUSB 2.1 Beschreibung.TXT
+eeffad2ae6b7dc1b9453d82d03293b9b *./z1013_mega/doc/I.ASSEMBLER 5.3.txt
+08e9f9ada03c4897288f0d11b8490ef0 *./z1013_mega/doc/I.C-TEST.DOC.txt
+ba866788064ff5609578dde5e071e825 *./z1013_mega/doc/I.CHESS-MASTER H.txt
+6d22223358411eb43dcec41ecce2de7a *./z1013_mega/doc/I.CP_A-200PD Besch.txt
+649227167eb3fc46d549ee5af114868b *./z1013_mega/doc/I.CPM-2RF 2.50M.txt
+e0c4d259fb1493d09f489d1b4817ec54 *./z1013_mega/doc/I.CYRUS-CHESS V.2.txt
+6e65f12e260bc61e342b3d3ea26b726c *./z1013_mega/doc/I.ED81  V2.1.txt
+ede5a47840e2e08d6ea6d3202b0e87d4 *./z1013_mega/doc/I.Edas 1.1 A+D+H.txt
+68ddbf239c146c7e7e72dfe4a1018236 *./z1013_mega/doc/I.EPROM-HANDLER2.9.txt
+32d0bd491ae59bcb685170c8d43e9421 *./z1013_mega/doc/I.HC-BASIC T.1.txt
+551d8581e8f996889f107d8dc25015ac *./z1013_mega/doc/I.HC-BASIC T.2.txt
+859c80244103fe1cc85c893fc7261651 *./z1013_mega/doc/I.HEADER DISK 45.txt
+5d4f4b5fdf35483656291fbbb5a29943 *./z1013_mega/doc/I.HEADER-MENUE 2.txt
+f39b2cc00bd7231cc8351273088f7983 *./z1013_mega/doc/I.HEADERPRINT 1.1.txt
+be451d129806af73c023474d442107e1 *./z1013_mega/doc/I.HEADERSAVE 5.9.txt
+3029fdc1d20b82235201fc18f15b0d68 *./z1013_mega/doc/I.HEXDUMP 1.021.txt
+b1ec82808e6c6be1c2759103a8fe9823 *./z1013_mega/doc/I.HIS.-PASCAL 1.03.txt
+cffb8ff6e6dcdadf9c834c5f00e73735 *./z1013_mega/doc/I.HISOFT-PASCAL.txt
+659170f0b99bb812c31ddb83583e3834 *./z1013_mega/doc/I.HRG GRAFIK DOC.txt
+a9b1447698a06b0d2d8cff0ce77b0c76 *./z1013_mega/doc/I.IC-DATEI.txt
+9197f942ab4c4b6a63baaf9fa00200d0 *./z1013_mega/doc/I.IDAS.txt
+2be7b50cd581b5aa3e17710d1e4a1540 *./z1013_mega/doc/I.JUMPING-JACK.txt
+b917aee27115cabed529d2a114aa6f2f *./z1013_mega/doc/I.KC-BASIC m1.txt
+bd944b6994d2026164a06c5c4dea7ec4 *./z1013_mega/doc/I.KC-BASIC+.DOC.txt
+edc26e3768aa965a37213c9c19fa600a *./z1013_mega/doc/I.KC-SAVE_LOAD 1.3.txt
+d802f94d25356788a893c12ee2ecf93f *./z1013_mega/doc/I.LADDER.txt
+d8b2d232eee40a6f3dd59877512f8b89 *./z1013_mega/doc/I.LEIPZIG DOC.txt
+b747e71bbe480398921fa52d86f41f4d *./z1013_mega/doc/I.LOGIKANALYSATOR.txt
+350e0ee4b2eeec14a95a533455eb0191 *./z1013_mega/doc/I.Micro-BASIC '85.txt
+31f4b03a7dab22b82127f9352231a728 *./z1013_mega/doc/I.MONER SU 1.31.txt
+2b7f8f135b53755d2f415c9f40546512 *./z1013_mega/doc/I.OC-EDITOR 4.1.txt
+56502699cbf747715a656e68d8a05094 *./z1013_mega/doc/I.OCE 4.0.txt
+1db4d43ace1ca8bec08ddc9cc45518d7 *./z1013_mega/doc/I.R-80.DOC 1.2.txt
+26581e9f7b6769200925c5c2ab525ff8 *./z1013_mega/doc/I.R-80.DOC 1.3.txt
+3811a51497c963edaa020b74ede000a8 *./z1013_mega/doc/I.RST20 WANDLUNG.txt
+f127fd101de0e3a69692204eddaf2ffd *./z1013_mega/doc/I.S 3004 280289.txt
+7bea8d8c4f30b342078ccc44122f4ba1 *./z1013_mega/doc/I.SCHLANGE.txt
+2ada901faddf48d90a8bd2510c9a6817 *./z1013_mega/doc/I.SCP 2RF 2.38 DOC.txt
+dc918820b2a2e234ec429d5c44112853 *./z1013_mega/doc/I.SPRUNGVERTEILER.txt
+4e73a19f7a1670f497ea842252c51185 *./z1013_mega/doc/I.STATUS I_O-ADR 4.txt
+c5659c85c46c2773517b368bd21e3c45 *./z1013_mega/doc/I.SUPER-SKI.txt
+6e6ad170f7d20cc743d9ac3a99b6d485 *./z1013_mega/doc/I.TEXTED. 6.1 Scf.txt
+c6ac346e2ab7dfe563542ff51e43af47 *./z1013_mega/doc/I.UNI-COPY 4.2.txt
+9a0115a9ffb2a02c0af316b18f6313a1 *./z1013_mega/doc/I.Z1013-FORTH.DOC.txt
+54749d8e3ee3e42ace707b7ea536074b *./z1013_mega/doc/I.Z1013-SURL.DOC.txt
+21d238dacb689664b0d1e4108be3a950 *./z1013_mega/doc/T.AC1_=_Z1013.txt
+94f4f0f3e5f04cd893db72b8f652a49b *./z1013_mega/doc/T.BASICODE-INFO.txt
+5b656e43d0c13e53e52a573b0f8ceef5 *./z1013_mega/doc/T.BROS.MON+TASTAT..txt
+997547cd356fec3ef5e3e584519a983f *./z1013_mega/doc/T.CENTRONIC-K63XX.txt
+024f781d475c5007cbe2b4748fab85cb *./z1013_mega/doc/T.EDAS.DOK.txt
+fa87056fe85699e4580a53e40a19160f *./z1013_mega/doc/T.EDITEX.txt
+be148106bd8f8ae5a88ad70f3dc1f126 *./z1013_mega/doc/T.EPROM-BESCH.1.25.txt
+bcff71cc478c71bde0f2613d33488610 *./z1013_mega/doc/T.EPROM.DOK.CCL.txt
+4a6c6524430bff760dd92ec646fb8129 *./z1013_mega/doc/T.GENS DOC NEW.txt
+373b9efd83ebdf8c46ca4c76347086a5 *./z1013_mega/doc/T.GENS DOK.txt
+e4a3198ea08c5e8dafcda75b14bff4df *./z1013_mega/doc/T.MON 2.029 K7669.txt
+c8edbbab200ee7f1502e0d2f22bfe868 *./z1013_mega/doc/T.MONLIST-DOC.txt
+920375e5ace795151b13f4099af87d8a *./z1013_mega/doc/T.mt4.6 DOC..txt
+da21419eb18a7c1817f45161a061972c *./z1013_mega/doc/T.RF AM Z1013.txt
+1308544e60a91494bd1f98d3fa4eca5d *./z1013_mega/doc/T.SPRUNGVERT. 5_90.txt
+5cff7665b15c5d571671f47848a14cdc *./z1013_mega/doc/T.STANDARDADRESSEN.txt
+3444881f37632d0311ec3a16ca8904e5 *./z1013_mega/doc/T.TDL-BASIC DOC.txt
+a2376c1ed5b6c6d8d73b44e0b805f640 *./z1013_mega/doc/T.Z1013-Lit..txt
+e4e4d2ee1db36b44aad922e26bfb266b *./z1013_mega/doc/T.Z1013-SURL V5.0.txt
+af5750614f44350c573c0332041422fa *./z1013_mega/doc/u-boot.txt
+505eb30e78edb7808f31d29845f683a7 *./z1013_mega/doc/Z1013-DVU2_A000.txt
+ba90dab89b41836b887e0223137e1c91 *./z1013_mega/modul/eprommer 2.9_ccl.z80
+01894971a4adf7e9b5cb5b7e98fc1fff *./z1013_mega/modul/eprommer 2.9_igd.z80
+3b165ea8ac66135aee3bff0beec0ab96 *./z1013_mega/modul/f83 64k v2.z80
+0b2d181fba5f2ca23a5315075e727c05 *./z1013_mega/modul/ic-datei 2.z80
+0a70131d841dc8b4030092fe9ebd4d9b *./z1013_mega/modul/KC-BASIC+ m1.Z80
+9e53ce7a2036a8d1b3267195dc9db260 *./z1013_mega/modul/microword v1.z80
+cc17909b38c9efaba33bb2b9d37bb7dc *./z1013_mega/modul/Speichertest.Z80
+89ad4cce8ba3f48c1895992faf498e0b *./z1013_mega/modul/tiny-basic 3.20h.z80
+c6906f94ed2618fbec6917ca9e14406e *./z1013_mega/modul/z1013-basic 4.01.z80
+f5fe8d723249552a1ef5e5d7a7ae6ae5 *./z1013_mega/modul2/.DS_Store
+06352fc0b0d458bdf85e1acaa6b07613 *./z1013_mega/modul2/igd01a Games/10k basik+skeet.z80
+55227882f402834c731a206272dcbab3 *./z1013_mega/modul2/igd01a Games/autocrash.z80
+ce47c18c4a8a4ce5dcb43031e4363b4c *./z1013_mega/modul2/igd01a Games/Autograf.Z80
+f47b8013af1aab05028ad8c16f495c4f *./z1013_mega/modul2/igd01a Games/chess-master h.z80
+e439a8f7be1c34757856f8a182dccb2d *./z1013_mega/modul2/igd01a Games/cyrus-chess h.z80
+50f5be4afc2ada8a47ead6a631a4a0ec *./z1013_mega/modul2/igd01a Games/gohst rb.z80
+8a2bdf7e4463d866a3f5902dfca5386e *./z1013_mega/modul2/igd01a Games/heartrunner rb.z80
+413b8ded37b14622b9aff8c20d288913 *./z1013_mega/modul2/igd01a Games/jumping jack rb.z80
+c3e512db246882c1e4e08a50fddcfbb6 *./z1013_mega/modul2/igd01a Games/mazogs 2.8.z80
+284d4fa07375e305990b4cf94f2f7003 *./z1013_mega/modul2/igd01a Games/mazogs rb int 2.z80
+0b02a44994adc3840fa762d8c1233e69 *./z1013_mega/modul2/igd01a Games/othello v1.z80
+8a08f129b198f624e6dc17264b9ccb72 *./z1013_mega/modul2/igd01a Games/schach z1013_sc2.z80
+20a335eb3c2d6495d41bf2394215de60 *./z1013_mega/modul2/igd01a Games/super ski rb.z80
+9f7389ce9c932eb0c044a89ea3ee6b24 *./z1013_mega/modul2/igd01a Games/super-ski joybox.z80
+5bdc586af866a5bfd510675e04b4c833 *./z1013_mega/modul2/igd01a Games/the last chance.z80
+3a3c93cf8f340f920d7b0b8ada7bb982 *./z1013_mega/modul2/igd01a Games/universe rb.z80
+f784a3a5b2484c40d74f7e8dbcd63d3a *./z1013_mega/modul2/igd01a Games/voice-demo.z80
+85ca414b15bce3a1b4f8b75323661adb *./z1013_mega/modul2/igd01a Games/voice-dice kompl.z80
+357e89323b1699c978ad1605569219b7 *./z1013_mega/modul2/igd01a Games/wurmi zk_16eh.z80
+4010a62eacf38f830b6bc492fed8caa2 *./z1013_mega/modul2/igd01b Games/aladin k j+t-joy.z80
+b7a7ce0ddcb5d64717764700ff1a180a *./z1013_mega/modul2/igd01b Games/aladin8x4j+t-joy.z80
+09aede144559f95dd2e2792057817fd3 *./z1013_mega/modul2/igd01b Games/aladin_j+t-joyst.z80
+456ddbc333091f3d51099ff1ded9e2d5 *./z1013_mega/modul2/igd01b Games/altjessnitz.z80
+c0617b58cf7e60bdc81acc2c56af77e4 *./z1013_mega/modul2/igd01b Games/auto (cursor).z80
+bb95e017c5e3b8d07575fff6f9d7e892 *./z1013_mega/modul2/igd01b Games/biorythmus.z80
+74fc8c37ec9bf0dd7441e39bd90a11ec *./z1013_mega/modul2/igd01b Games/cosmic-ball.z80
+eac5bb52c1cb1784199d147bab87e331 *./z1013_mega/modul2/igd01b Games/cyrus nr.2.z80
+00ded91d3b8d64d3f74e923740acad35 *./z1013_mega/modul2/igd01b Games/encounter.z80
+d93142bcd4fe195caa2514e2926df465 *./z1013_mega/modul2/igd01b Games/flug.z80
+eb36cb1bfbb7d0b4662fc52c2f5e03ac *./z1013_mega/modul2/igd01b Games/ghost pio.z80
+278a6d12f04b89ccc23d8510b60070cd *./z1013_mega/modul2/igd01b Games/graverobber.z80
+4ad2274129576c49e395b96b583fed57 *./z1013_mega/modul2/igd01b Games/pyramide.z80
+3f8363f70bfba12a583c72a130167229 *./z1013_mega/modul2/igd01b Games/schlange ang..z80
+7dd371d72fae2988d887a1a2a5bb596d *./z1013_mega/modul2/igd01b Games/super-dame.z80
+0f77ee54324087dfec6acca9153af4ec *./z1013_mega/modul2/igd01b Games/SUPERSKI m.PIO.Z80
+adcb8d06f448727c185577ff368f3c3d *./z1013_mega/modul2/igd05a KC-Basic+ 1/ascii.z80
+682abc1b735f354919caf9771ead34cc *./z1013_mega/modul2/igd05a KC-Basic+ 1/bohrturm.z80
+547545fd8a952dfd744e09cbb51d1786 *./z1013_mega/modul2/igd05a KC-Basic+ 1/box1.z80
+ed91e2afdef9a665c1840bee45fa5a85 *./z1013_mega/modul2/igd05a KC-Basic+ 1/casino.z80
+be4dc721c7dade6f3994098f65340144 *./z1013_mega/modul2/igd05a KC-Basic+ 1/CHAOS(laeuft)G_A.Z80
+3a6a4690107395110f68d83b68d6b6f4 *./z1013_mega/modul2/igd05a KC-Basic+ 1/dez-_roem.z80
+1e731a4339282f9163792a93f8fed12d *./z1013_mega/modul2/igd05a KC-Basic+ 1/doprot.z80
+777a962ba4fe61aafb69f8c84010f2aa *./z1013_mega/modul2/igd05a KC-Basic+ 1/eliza d.z80
+d4a1277fb3ebcb300a6b827e88fa6358 *./z1013_mega/modul2/igd05a KC-Basic+ 1/fl.u.koe.z80
+1be30e51ceedf31441cd97419bad3eb6 *./z1013_mega/modul2/igd05a KC-Basic+ 1/fraktale.z80
+3b50d9f890bde383a12bd232c610e574 *./z1013_mega/modul2/igd05a KC-Basic+ 1/Hauptstaedte.Z80
+81d859823f0ccfa6cfba52c24bb0c607 *./z1013_mega/modul2/igd05a KC-Basic+ 1/kasse.z80
+8c6f148072321776e04751989c6f712d *./z1013_mega/modul2/igd05a KC-Basic+ 1/meteor.z80
+9208019409a0fd72725c871daf42eaec *./z1013_mega/modul2/igd05a KC-Basic+ 1/monster.z80
+80f751d8def0236d0b5384fbb94ce94a *./z1013_mega/modul2/igd05a KC-Basic+ 1/poet.z80
+a1318b52f71555cb8426505156df52d5 *./z1013_mega/modul2/igd05a KC-Basic+ 1/Poltersnack.Z80
+1f2ffa1ef9cdcddb2f5194a133941028 *./z1013_mega/modul2/igd05a KC-Basic+ 1/poly-aproxima 2.z80
+2e463ca2ffe3fc7ac1995c16657b3acd *./z1013_mega/modul2/igd05a KC-Basic+ 1/PYRAMIDE(laeuft).Z80
+b9f0cf0c0fbef161023a1e0d672fb2b4 *./z1013_mega/modul2/igd05a KC-Basic+ 1/rakete.z80
+2ecadc9db3145952d4751282d7a386df *./z1013_mega/modul2/igd05a KC-Basic+ 1/riesa.z80
+374c3c5e4fecacf5f154c2baa6e21263 *./z1013_mega/modul2/igd05a KC-Basic+ 1/Scherzfragen 1.Z80
+79d0d7bf1c721f96e8f6a2a15d5ed59d *./z1013_mega/modul2/igd05a KC-Basic+ 1/Scherzfragen 2.Z80
+7dad19bb49fb20f7b23486418be86f4c *./z1013_mega/modul2/igd05a KC-Basic+ 1/snake.z80
+37fb03d50b7eff0e1ae97a90a9e87505 *./z1013_mega/modul2/igd05a KC-Basic+ 1/spiedi2.z80
+be84834dfd7b0ba9c24889e1f06b9bfc *./z1013_mega/modul2/igd05a KC-Basic+ 1/summe.z80
+27451a477d0be1b15b985a8855f7a754 *./z1013_mega/modul2/igd05a KC-Basic+ 1/supertrucker_g&a.z80
+7ff137b46edf61b44cab3230fcc6cade *./z1013_mega/modul2/igd05a KC-Basic+ 1/traders.z80
+4befe95ee33436690c50f8d7ba494c79 *./z1013_mega/modul2/igd05a KC-Basic+ 1/u-boot 2.z80
+ff20aa984be7ffdac654ec4f5630bb4d *./z1013_mega/modul2/igd05a KC-Basic+ 1/u-boot.z80
+8ac1c66a3d7a27c98d4000d0c00c5a28 *./z1013_mega/modul2/igd05a KC-Basic+ 1/voegeln(g&a).z80
+6257a7e847ca18ea4d7b06f62ecac416 *./z1013_mega/modul2/igd05a KC-Basic+ 1/Zahlenkonvert..Z80
+628fdf93bf50f32c4147579f58ef4e15 *./z1013_mega/modul2/igd05b KC-Basic+ 1/akt-z1013.z80
+3970c375c1013a5ad18bdb4d999f4706 *./z1013_mega/modul2/igd05b KC-Basic+ 1/aproximation.z80
+58fa9fb07d574ca46b3be53bb50881df *./z1013_mega/modul2/igd05b KC-Basic+ 1/auslese.z80
+65cd9c17fc2e0a9a980c45c2a477d80f *./z1013_mega/modul2/igd05b KC-Basic+ 1/auto.z80
+63d8b2dc1b701b852e34306655c4b703 *./z1013_mega/modul2/igd05b KC-Basic+ 1/bandit.z80
+4f31004f89e41e91c4681da0c40d1590 *./z1013_mega/modul2/igd05b KC-Basic+ 1/boxauto.z80
+e7ed39ba94f52f15c5526dc0e480fbd1 *./z1013_mega/modul2/igd05b KC-Basic+ 1/data.z80
+f8a06cb0979344d725ca6cb7f0a876e7 *./z1013_mega/modul2/igd05b KC-Basic+ 1/ddr-staedte.z80
+130d049acd69b1dd94c3e48968a7fe39 *./z1013_mega/modul2/igd05b KC-Basic+ 1/emitter.z80
+08f4a0e1f57a3ac2532a57404098e404 *./z1013_mega/modul2/igd05b KC-Basic+ 1/entenjagd.z80
+b98b93a14c2733a1bd2466baab2cd265 *./z1013_mega/modul2/igd05b KC-Basic+ 1/enterprise.z80
+b7b00c99dc28aaf5bfbfdeafddf3a53e *./z1013_mega/modul2/igd05b KC-Basic+ 1/funktionen.z80
+0e1ea92e8ab2e3d915769595b462830e *./z1013_mega/modul2/igd05b KC-Basic+ 1/go 10_10.z80
+f9903c28df3754aad3d581ed6799afb5 *./z1013_mega/modul2/igd05b KC-Basic+ 1/hauptstaedte.z80
+61365a8b3fb168552a8340ed2540cd7f *./z1013_mega/modul2/igd05b KC-Basic+ 1/hilfe basicsuche.z80
+a805d4379e332114d41b1aad71ad2e1c *./z1013_mega/modul2/igd05b KC-Basic+ 1/kalkuel.z80
+d247b4f93eadee86a9062d2ec24da2a9 *./z1013_mega/modul2/igd05b KC-Basic+ 1/konto.z80
+0bc834a877b5c0e8efcab011c15b78d6 *./z1013_mega/modul2/igd05b KC-Basic+ 1/ladder.z80
+c6cba296e78b3b5a2f2b1cfd0242aa00 *./z1013_mega/modul2/igd05b KC-Basic+ 1/mancala.z80
+499215d187df9a826ca81241efc2c985 *./z1013_mega/modul2/igd05b KC-Basic+ 1/MC-IN (Eingabe).Z80
+460e9ed7a3f78eec5e193b14f90e0854 *./z1013_mega/modul2/igd05b KC-Basic+ 1/mini-dame.z80
+bb5c0a9968bb074c61d5488347cfe8b2 *./z1013_mega/modul2/igd05b KC-Basic+ 1/mintex w6.z80
+84966bda526502fd07540eb4547bf0d0 *./z1013_mega/modul2/igd05b KC-Basic+ 1/mintex.z80
+833894d74774792fbd9725b77b068de3 *./z1013_mega/modul2/igd05b KC-Basic+ 1/muehle.z80
+e5b1c75aa318ae07c0aac7f882793332 *./z1013_mega/modul2/igd05b KC-Basic+ 1/nixe.z80
+2716507387423465fbf8183dc91d0c75 *./z1013_mega/modul2/igd05b KC-Basic+ 1/othello.z80
+806ccc199df5eb5e8d4499146fa31970 *./z1013_mega/modul2/igd05b KC-Basic+ 1/polynom-nullst..z80
+06e9cc5bdabb62890bde90b13240961a *./z1013_mega/modul2/igd05b KC-Basic+ 1/poster 13.z80
+0fcd0780019d0dfaa6edaeb9a6f59940 *./z1013_mega/modul2/igd05b KC-Basic+ 1/poster-maker.z80
+146a2d37a114f36d2ff831760c4575f7 *./z1013_mega/modul2/igd05b KC-Basic+ 1/praezisionswider.z80
+e39a2ca485d6e6fdb425f148f796d154 *./z1013_mega/modul2/igd05b KC-Basic+ 1/r+hanoi.z80
+abba7c5773707f0ac11cf0c0273116bd *./z1013_mega/modul2/igd05b KC-Basic+ 1/r-l-c frequenzg..z80
+92c479775b89577afbbdcef4345869db *./z1013_mega/modul2/igd05b KC-Basic+ 1/reass.z80
+937e451534766359f5c339745c451d8e *./z1013_mega/modul2/igd05b KC-Basic+ 1/rem-listing.z80
+6ba532b83c0ffb799edbdf66ac89952e *./z1013_mega/modul2/igd05b KC-Basic+ 1/skat1.z80
+5dfb469c94d4c3fda6e2289c835c5139 *./z1013_mega/modul2/igd05b KC-Basic+ 1/spielbox.z80
+0943573d7224094d17a4ca42eb53f857 *./z1013_mega/modul2/igd05b KC-Basic+ 1/tefra z1013.z80
+52a4998a1c295f32854e5a042d2a25bf *./z1013_mega/modul2/igd05b KC-Basic+ 1/tips.z80
+b4d222bb4cb28357f0ca26ded1c65371 *./z1013_mega/modul2/igd05b KC-Basic+ 1/torero.z80
+1b571f9a50ada9f0d234601269295010 *./z1013_mega/modul2/igd05b KC-Basic+ 1/vari-suche basic.z80
+3bf7eda70a032df2edaf806950a37412 *./z1013_mega/modul2/igd05b KC-Basic+ 1/wurm-t.z80
+a4ea46566c11f8f9e0325c4912b02b4d *./z1013_mega/modul2/igd06a MC 1/autograf ak 1.0.z80
+cc39ba0eddafe284b8b86ce042828240 *./z1013_mega/modul2/igd06a MC 1/Beist-Assembler.Z80
+36a9c04017cc080df344ebe0f99f8cb0 *./z1013_mega/modul2/igd06a MC 1/Bild Disassembl..Z80
+49ed4b8645d1135042bbcf53a835c043 *./z1013_mega/modul2/igd06a MC 1/Bild EPROM-Prog..Z80
+60410bd00a598b4d677c06cdbe6de01d *./z1013_mega/modul2/igd06a MC 1/Bild HexDump 2.Z80
+f444be245a1c8d09ff878305cfdcfca5 *./z1013_mega/modul2/igd06a MC 1/Bild HexDump.Z80
+fdf5752896b2369d754d1d37167377be *./z1013_mega/modul2/igd06a MC 1/BILD-MicroWORD 6.Z80
+6cf86e5a36ca08c4a3d1f14f6a968ee3 *./z1013_mega/modul2/igd06a MC 1/cyrus-header.z80
+a3a3dea61ed70229121b84bdcc9ef3f5 *./z1013_mega/modul2/igd06a MC 1/disassembler rb.z80
+ae50b2b4cc16a768fe73c941ce4eb117 *./z1013_mega/modul2/igd06a MC 1/display-@a,t,f.z80
+e4c2bdd43c6b5db8f850525f1f3dd88f *./z1013_mega/modul2/igd06a MC 1/Graf.Fkt.+12K-B..Z80
+44158b6cc3fc53d6eaf12060aa227328 *./z1013_mega/modul2/igd06a MC 1/hd 54k+dr.tr.2m.z80
+7f7b6be3da7722b7f95c47f6b24f05e6 *./z1013_mega/modul2/igd06a MC 1/header-disk 27k.z80
+60976443adafe7822446eae7d8ee8399 *./z1013_mega/modul2/igd06a MC 1/hex-ascii dump.z80
+34b19b06900fb6d578d27fe9c7b2778a *./z1013_mega/modul2/igd06a MC 1/HexDump 1.01.Z80
+1b9549608a803e4538777c80aff33975 *./z1013_mega/modul2/igd06a MC 1/HexDump 1.021.Z80
+57ecc8b1d826667a7ad3a7b402e3c59f *./z1013_mega/modul2/igd06a MC 1/Ladder.Z80
+040a1dc3950361700857898dd4244f1a *./z1013_mega/modul2/igd06a MC 1/MicroWORD 1.520U.Z80
+2048a06a8d600be01928911b32e3ca04 *./z1013_mega/modul2/igd06a MC 1/mtx 0.0 turbo.z80
+18cf53a6a9dfcab53876d60363e45e90 *./z1013_mega/modul2/igd06a MC 1/oel.z80
+5b036302d9c2e51c7acb859b916de965 *./z1013_mega/modul2/igd06b MC 1/1.6 text + v.24.z80
+f244b895a83d938862cc8f63dd80fe65 *./z1013_mega/modul2/igd06b MC 1/3k-rs-basic 1.03.z80
+75790c6287ea7302d2a4b7e819474752 *./z1013_mega/modul2/igd06b MC 1/bild auto.z80
+cd095d289dcdbde85f9a3ac54b8daf31 *./z1013_mega/modul2/igd06b MC 1/bild ostern.z80
+e4af92c9f3d1b6572411dda1346d0f61 *./z1013_mega/modul2/igd06b MC 1/bild ufo.z80
+f09a83639e54d455ed5baa0993cfa9fc *./z1013_mega/modul2/igd06b MC 1/bild urlaub.z80
+43e0c32654fc5e783f708335e70eeefe *./z1013_mega/modul2/igd06b MC 1/cad-haus.z80
+93ee00fdd15105d9934adaa52d686926 *./z1013_mega/modul2/igd06b MC 1/dat.z80
+4f576d9a5fb17d6fcf5c30c2a7753dad *./z1013_mega/modul2/igd06b MC 1/eprommer-abgl..z80
+db9081b7399711d552cbb7061e94a258 *./z1013_mega/modul2/igd06b MC 1/hd27+hp+v.24.z80
+a5625f87913d191a6b5581d7a407698c *./z1013_mega/modul2/igd06b MC 1/headerprint 1.04.z80
+0bd99f5ae5aa047a0336c6abfeff5bb3 *./z1013_mega/modul2/igd06b MC 1/headerprint 22vl.z80
+129ff5229634824c883eed71ba93d124 *./z1013_mega/modul2/igd06b MC 1/headerprnt turbo.z80
+c6771567d675dcdd548d3e49f9c1694e *./z1013_mega/modul2/igd06b MC 1/jyst x=d00 y+1.z80
+5c28edaa755516c7ef7ba20aeef17913 *./z1013_mega/modul2/igd06b MC 1/lauf+brief.z80
+ac697337556150fef21ea3a2f1120570 *./z1013_mega/modul2/igd06b MC 1/picture.z80
+69dd9f3f2a2737a010ab766ad84aa8ff *./z1013_mega/modul2/igd06b MC 1/ramdisk-slave.z80
+0e7d464532f910753319abd5bbe67eff *./z1013_mega/modul2/igd06b MC 1/scp 41.z80
+7065d1a0ac549d1a1db23477d4c1a5a6 *./z1013_mega/modul2/igd06b MC 1/scp-2+1 3.83 52.z80
+968e8ba3bff9ac1faf78f8eb22744d71 *./z1013_mega/modul2/igd06b MC 1/scp-2+1 3.83 59.z80
+6f8d74adefee5a380c7396b884894569 *./z1013_mega/modul2/igd06b MC 1/syd.z80
+37753087d1dd200c097a368d9ebb1599 *./z1013_mega/modul2/igd06b MC 1/t-rechner.z80
+9d22a7d18116160eaffaa633ee5bb5ac *./z1013_mega/modul2/igd06b MC 1/tad1.z80
+7958312673257f739cbda52e441082a8 *./z1013_mega/modul2/igd06b MC 1/text+sd1156 1.9.z80
+87b834f9d7294920573c1a82685ac96c *./z1013_mega/modul2/igd06b MC 1/text+sm4000 1.5.z80
+f3d58762fa396fb58f9360d6b818a4c3 *./z1013_mega/modul2/igd06b MC 1/text+v.24 1.7.z80
+a981e9be13a0dbf326970f43a905be03 *./z1013_mega/modul2/igd06b MC 1/trbo+rd+hprt+sm.z80
+4d4dfe125aad608c6d5ab889472cf59b *./z1013_mega/modul2/igd06b MC 1/trbo+rd+sd1156.z80
+5ca3b3d7aa7909720e80b5319e4eea93 *./z1013_mega/modul2/igd06b MC 1/turbo+v.24+rf10.z80
+c8055d8ffb305b688bb00fd14432720a *./z1013_mega/modul2/igd06b MC 1/voice.z80
+681471e9076210beed8f026275729ad1 *./z1013_mega/modul2/igd08a KC-Basic+ 2/back.z80
+333ca21ba47badcffa5620eda126a2d6 *./z1013_mega/modul2/igd08a KC-Basic+ 2/billard.z80
+5b6ca8bec9a42fb5a22783b3d17fea33 *./z1013_mega/modul2/igd08a KC-Basic+ 2/cave.z80
+eb12bac83038f03921b9268a18d75bb9 *./z1013_mega/modul2/igd08a KC-Basic+ 2/expansion.z80
+a6f155e9e85f3f877eafc902f75dc7be *./z1013_mega/modul2/igd08a KC-Basic+ 2/farbkode.z80
+89cb59455fbfa3da24878a5185764bd5 *./z1013_mega/modul2/igd08a KC-Basic+ 2/filter.z80
+c2cd08ddb09e36f42879fcd5f3df25d8 *./z1013_mega/modul2/igd08a KC-Basic+ 2/flug.z80
+1abf14888e79a134370710ee3869ffe3 *./z1013_mega/modul2/igd08a KC-Basic+ 2/funktion.z80
+be04fdd340c04d42fc7b590955272148 *./z1013_mega/modul2/igd08a KC-Basic+ 2/gauss.z80
+db8df71312538533768225790b9f0a3d *./z1013_mega/modul2/igd08a KC-Basic+ 2/lebenserwartung.z80
+7a99b46d64f86a1b912b7e9c6671e95f *./z1013_mega/modul2/igd08a KC-Basic+ 2/magsum.z80
+fd7f379983f5eaeef53ab8a17d33488d *./z1013_mega/modul2/igd08a KC-Basic+ 2/mathe+voice.z80
+fdd32f2d86346338111fa35eafd2350f *./z1013_mega/modul2/igd08a KC-Basic+ 2/meteo.z80
+84043526196a727e50907d48485367b9 *./z1013_mega/modul2/igd08a KC-Basic+ 2/partner.z80
+eff9c1bf7ac9c5f8a4f3e7852171afe9 *./z1013_mega/modul2/igd08a KC-Basic+ 2/phobos.z80
+8cb254353833787646961429f22f4658 *./z1013_mega/modul2/igd08a KC-Basic+ 2/polynom.z80
+bc8e1c2a5683a177140ad05a71588a5b *./z1013_mega/modul2/igd08a KC-Basic+ 2/prognose.z80
+097935b7928223cb9880ecba5fd74136 *./z1013_mega/modul2/igd08a KC-Basic+ 2/pyramide.z80
+46dbcf83f8d22deb08df721840f98afa *./z1013_mega/modul2/igd08a KC-Basic+ 2/sexquotient.z80
+c6088f656ede1f4821965511c6f9d498 *./z1013_mega/modul2/igd08a KC-Basic+ 2/stern.z80
+3987ef68f4c5a350603152c2621742eb *./z1013_mega/modul2/igd08a KC-Basic+ 2/Town.Z80
+f4ef7f0f3d8b050c555c28b14fc470c0 *./z1013_mega/modul2/igd08a KC-Basic+ 2/weisheit.z80
+f25256be54bd39605f2d27b519f2a960 *./z1013_mega/modul2/igd08b KC-Basic+ 2/c-test.z80
+98fe2014a8051a3668134d2343607dea *./z1013_mega/modul2/igd08b KC-Basic+ 2/cleaner.z80
+402e84c94463d754e5102af75093154b *./z1013_mega/modul2/igd08b KC-Basic+ 2/ehe.z80
+24ec76736828ca5549fc3948f3047334 *./z1013_mega/modul2/igd08b KC-Basic+ 2/enterprise.z80
+58f9ff55d80d4120f0dd2d374aa8d9f6 *./z1013_mega/modul2/igd08b KC-Basic+ 2/formel i.z80
+9840ba37ecc9c35c46fa1c3ad3d65897 *./z1013_mega/modul2/igd08b KC-Basic+ 2/gammon.z80
+90b80d55622eec30e799ffa14f07b15c *./z1013_mega/modul2/igd08b KC-Basic+ 2/gedicht.z80
+478d5105778638e41b13e7d0ff5a753f *./z1013_mega/modul2/igd08b KC-Basic+ 2/hase&wolf.z80
+de8d5d892ae7067147fbef39707fd868 *./z1013_mega/modul2/igd08b KC-Basic+ 2/helen.z80
+961708333b0cd0cd47938cd97d677717 *./z1013_mega/modul2/igd08b KC-Basic+ 2/invasion.z80
+315eaf9dbfd14aabb02102499d2fe540 *./z1013_mega/modul2/igd08b KC-Basic+ 2/katzmaus.z80
+16f94a1c897a60ee89d971216d4c1eaf *./z1013_mega/modul2/igd08b KC-Basic+ 2/knaus-ogino.z80
+a896e4bde6d0e5b4a5885ce278077bec *./z1013_mega/modul2/igd08b KC-Basic+ 2/labyrint.z80
+1a86390a4cc9dabdf3453b2f9185c3a0 *./z1013_mega/modul2/igd08b KC-Basic+ 2/leipzig.z80
+9f6d75c62c8f6654d47591e0ea8b946a *./z1013_mega/modul2/igd08b KC-Basic+ 2/othello.z80
+c0c4a1d8ac0ebd19a9af138c27ecc8f2 *./z1013_mega/modul2/igd08b KC-Basic+ 2/party+sound.z80
+36bed9fe06771db0337b9713538abfa4 *./z1013_mega/modul2/igd08b KC-Basic+ 2/push.z80
+0b77ec698e8aa3334548f67b62fe7d9b *./z1013_mega/modul2/igd08b KC-Basic+ 2/rostock.z80
+dfb40be832d895e19aba8477927a020b *./z1013_mega/modul2/igd08b KC-Basic+ 2/schuss.z80
+cb4f2b5445174c31e4a0ca2f5934bb78 *./z1013_mega/modul2/igd08b KC-Basic+ 2/sumeria.z80
+d7f342e33b673f7a8327a64437046425 *./z1013_mega/modul2/igd08b KC-Basic+ 2/tatum.z80
+49d26aa0d18e41ea5b32f2d982c928af *./z1013_mega/modul2/igd08b KC-Basic+ 2/trafo.z80
+9ea526df5c9432561b2c3f6a3d342633 *./z1013_mega/modul2/igd08b KC-Basic+ 2/triplett.z80
+8431d645fac3e0c1d2e5d02599f02669 *./z1013_mega/modul2/igd08b KC-Basic+ 2/zeichenprogramm.z80
+e74eaec2575e026972cdf594f8fdb5ed *./z1013_mega/modul2/igd12a KC-Basic+ 3/4gewinnt.z80
+ab28e66f77f29244d9947608a1452c43 *./z1013_mega/modul2/igd12a KC-Basic+ 3/alzan.z80
+198a71a161b6e2836536821df1500490 *./z1013_mega/modul2/igd12a KC-Basic+ 3/business.z80
+6c5e036c3a0b92faf21c1207dd4f7c87 *./z1013_mega/modul2/igd12a KC-Basic+ 3/climber.z80
+f771a95c42b501c9dd22e8fda6b256c6 *./z1013_mega/modul2/igd12a KC-Basic+ 3/climber2.z80
+6f5e2d3ba64653acf51186603aae5059 *./z1013_mega/modul2/igd12a KC-Basic+ 3/dicker.z80
+4bef20079a7b48590976a42f131b0ea6 *./z1013_mega/modul2/igd12a KC-Basic+ 3/dyna-l.z80
+9ad53f6ee49653666f15d1603726768c *./z1013_mega/modul2/igd12a KC-Basic+ 3/galopp.z80
+5bf9be0d396613196fef7c0a80b76233 *./z1013_mega/modul2/igd12a KC-Basic+ 3/halma.z80
+3096f4831acadc7b76c67fee34e7f53e *./z1013_mega/modul2/igd12a KC-Basic+ 3/kesa-l.z80
+943175452a0965370fbbb1aac7345937 *./z1013_mega/modul2/igd12a KC-Basic+ 3/king 1.z80
+1d5955e797385e72332408285551963a *./z1013_mega/modul2/igd12a KC-Basic+ 3/kreis.z80
+9c3f0008a4d1c4a0b0c7e669981c6769 *./z1013_mega/modul2/igd12a KC-Basic+ 3/lin.regression.z80
+18b0d57ffa81a988bb24e45ae305a7ed *./z1013_mega/modul2/igd12a KC-Basic+ 3/messe.z80
+8c7710ce508140a74afaf104475c5470 *./z1013_mega/modul2/igd12a KC-Basic+ 3/oel.z80
+fd8bfafff7be93a2e47379ebcef50f91 *./z1013_mega/modul2/igd12a KC-Basic+ 3/pong2.z80
+40ec71c0ef17d373484a2d62a04f5d7a *./z1013_mega/modul2/igd12a KC-Basic+ 3/roulette.z80
+315d690ad698114f7a1d984fbc1213e3 *./z1013_mega/modul2/igd12a KC-Basic+ 3/skat.z80
+715c58caada839a7274eefd37bf22784 *./z1013_mega/modul2/igd12a KC-Basic+ 3/sort.z80
+af82c2210b6db351366fd9a7e4087a53 *./z1013_mega/modul2/igd12a KC-Basic+ 3/startrek.z80
+316240f59a639f893e634e30ef255488 *./z1013_mega/modul2/igd12a KC-Basic+ 3/suche-monitorruf.z80
+1240ba9b0b0db6eabb9d27d0af2f05d9 *./z1013_mega/modul2/igd12b KC-Basic+ 3/ad-1kanal.z80
+28cc1f987bb8ee840116c52f7c646324 *./z1013_mega/modul2/igd12b KC-Basic+ 3/adressen.z80
+8dca7302be0fd86cbbe2c3867f7e84a8 *./z1013_mega/modul2/igd12b KC-Basic+ 3/adw.txt
+25e708a986bf72674a38a8fecb8b497f *./z1013_mega/modul2/igd12b KC-Basic+ 3/adw.txt.z80
+fd7d6ce170b9f3d9a8aab57bbce227d7 *./z1013_mega/modul2/igd12b KC-Basic+ 3/anaborea.z80
+2146d009100c3412057cc7be6e66db31 *./z1013_mega/modul2/igd12b KC-Basic+ 3/automat.z80
+d298f24336ad758f7ebd90584ba6242d *./z1013_mega/modul2/igd12b KC-Basic+ 3/datagen..z80
+1a3dd9d7783d039a93256761f43b4f53 *./z1013_mega/modul2/igd12b KC-Basic+ 3/elektronik.z80
+9feabd9e82800504ed7a239129bde06a *./z1013_mega/modul2/igd12b KC-Basic+ 3/galton.z80
+a405c1e0d2d892417c8ffbac2afa0bfd *./z1013_mega/modul2/igd12b KC-Basic+ 3/ganymed.z80
+8901d15e564652f25c4b5138901efe24 *./z1013_mega/modul2/igd12b KC-Basic+ 3/geo-test.z80
+6c062f62ed5454d58883993f2270ea9e *./z1013_mega/modul2/igd12b KC-Basic+ 3/hirnverwinder.z80
+71594aea330bc7d927414d2a58041321 *./z1013_mega/modul2/igd12b KC-Basic+ 3/kalkulation.z80
+35c2585d9ce0ef791c08e52960aa29b7 *./z1013_mega/modul2/igd12b KC-Basic+ 3/puzzle.z80
+d4f8bcde651c77f30f348a54a06f07a5 *./z1013_mega/modul2/igd12b KC-Basic+ 3/quielie.z80
+07cfffbb42dfa9d0dc5c610cb48b0787 *./z1013_mega/modul2/igd12b KC-Basic+ 3/reise 2.z80
+2ebd6677a1cbf1823492550a3ddd7779 *./z1013_mega/modul2/igd12b KC-Basic+ 3/reise.z80
+07ab2398681546f43a725b6340f3a332 *./z1013_mega/modul2/igd12b KC-Basic+ 3/wueste.z80
+8aed64ab909311a1c93ac5d2da9531dd *./z1013_mega/modul2/igd15a MC 4/17 und 4.Z80
+e52dd6a85e260049193146eb2a3d79e8 *./z1013_mega/modul2/igd15a MC 4/casino.z80
+043ddcbe1268da58c3dd947c40f09482 *./z1013_mega/modul2/igd15a MC 4/CAVE-Die Hoehle.Z80
+a2f9ec6fddbbe5f174bf3501e811d85d *./z1013_mega/modul2/igd15a MC 4/cyrus.z80
+742d51df49797a824f9eade8b5ae1d40 *./z1013_mega/modul2/igd15a MC 4/mazogs 2.1.z80
+0db0cebb7628b8909045f65c12543afe *./z1013_mega/modul2/igd15a MC 4/minefield 2.1.z80
+3a547e27862930058537d3df453d80e3 *./z1013_mega/modul2/igd15a MC 4/ohio.z80
+2da12b50c03ae5f7ba2738ced808f0f4 *./z1013_mega/modul2/igd15a MC 4/pp spiele 1.z80
+a8a02d64aaad1f386f07589a9ce7dc58 *./z1013_mega/modul2/igd15a MC 4/river riad.z80
+5b8b7ce8d57e5499098f6a96c9337c0e *./z1013_mega/modul2/igd15a MC 4/Spieldisk-2.Z80
+40ddd34d37eb37eae90ef9e1e10ab01a *./z1013_mega/modul2/igd15a MC 4/superski 2.1.z80
+c775c4c41694d106598679126cdaa00d *./z1013_mega/modul2/igd15a MC 4/the last chance.z80
+a235402193825a25688f8552d9c92d3b *./z1013_mega/modul2/igd15a MC 4/turtle player.z80
+b255608090d69ec9a9e8c03757082c92 *./z1013_mega/modul2/igd15a MC 4/u-boot.z80
+d15e5e2c311bb1238c929bac34ef8fca *./z1013_mega/modul2/igd15b MC 4/basic v4.1.z80
+67eb24ded890cc3fd0c1d66e9dae57c6 *./z1013_mega/modul2/igd15b MC 4/cyrus 16k_3ff3.z80
+c8269104af8c7119e9717530e56fc40d *./z1013_mega/modul2/igd15b MC 4/CYRUS V.2_dt..Z80
+fc8c73322c1566ea2c079e2130d29aff *./z1013_mega/modul2/igd15b MC 4/digitaltester.z80
+dcb6a783fd47ee247befd20297225841 *./z1013_mega/modul2/igd15b MC 4/edas.z80
+385b7758f84e9ee055a01eb01a287633 *./z1013_mega/modul2/igd15b MC 4/flipper.z80
+6be585a54e43c4fdf5b709b6a65503f2 *./z1013_mega/modul2/igd15b MC 4/fussball.z80
+661ac44365e91314613ba62e727fa4d5 *./z1013_mega/modul2/igd15b MC 4/galactika.z80
+0932d6d2c7b5696692a8b669c09d5a2d *./z1013_mega/modul2/igd15b MC 4/ghost v2.z80
+08dd134579022c488d5bdd1f72c0b16c *./z1013_mega/modul2/igd15b MC 4/ghost_s.z80
+9837dba97cd9ad12a56cac9a143cf52f *./z1013_mega/modul2/igd15b MC 4/graphik-machine.z80
+87b65b800cc39a3127b219d632949636 *./z1013_mega/modul2/igd15b MC 4/jumping jack v2.z80
+10e4b179b604820c42a018883d2db061 *./z1013_mega/modul2/igd15b MC 4/kc-forth.z80
+8ffe088844e167b354a02c6c8c06404b *./z1013_mega/modul2/igd15b MC 4/kc-progr.einl..z80
+4e9f4769b9a93d36ac9ccf0f2614404f *./z1013_mega/modul2/igd15b MC 4/kc85_3-interface.z80
+56e8170832b4e0f4b0777371ec78d9aa *./z1013_mega/modul2/igd15b MC 4/kings-valley.z80
+1b09b58380e2abc9b5959ebc782472ef *./z1013_mega/modul2/igd15b MC 4/laufschrift.z80
+fe2ed33f0ce5e17d66a15151de00b7f1 *./z1013_mega/modul2/igd15b MC 4/MicroWORD 1.519U.Z80
+ac98a1d413db815e53cde5c689a1ba32 *./z1013_mega/modul2/igd15b MC 4/TDL-BAS modif_3.Z80
+9d93142982cee458a8f9f28fbac93590 *./z1013_mega/modul2/igd16a MC 5/3k basic.z80
+010698102dc17c08c80e8d18f9d69426 *./z1013_mega/modul2/igd16a MC 5/ASSEMBL. Scf 5.3.Z80
+fc9dc3397f83d00374202eed457828fe *./z1013_mega/modul2/igd16a MC 5/basic+fs.z80
+528628916edf896a364d9d273e90f11b *./z1013_mega/modul2/igd16a MC 5/debugger.z80
+d5efa644bed05cf16481df709aea366f *./z1013_mega/modul2/igd16a MC 5/disass._d2-plus.z80
+8fb20e47ea35e0a615df62606904e921 *./z1013_mega/modul2/igd16a MC 5/Display.Z80
+18a5c25e7d9053372a68a58b143cab68 *./z1013_mega/modul2/igd16a MC 5/editex+header.z80
+4e0cfbe1dba555b6ebd7866bb7722c73 *./z1013_mega/modul2/igd16a MC 5/f-Zaehler -12kHz.Z80
+576b5253974f8994d0d559a7dc2d9b60 *./z1013_mega/modul2/igd16a MC 5/gen rambug.z80
+eb1618758b3b3019f2da6d4df82fc798 *./z1013_mega/modul2/igd16a MC 5/gens (100_11a).z80
+a14ffd5d395af42b675294b93ecb9443 *./z1013_mega/modul2/igd16a MC 5/grafik-demo fzg.z80
+aea713e3a58d1596734e138fec221b2a *./z1013_mega/modul2/igd16a MC 5/headerprint 1.1.z80
+9d2f64ac607bc189e8eeb6e401557c3b *./z1013_mega/modul2/igd16a MC 5/lissajou zu basi.z80
+3bd4966cd9fa97febfe27ff303ef4f30 *./z1013_mega/modul2/igd16a MC 5/LOGICANALYSOR Sc.Z80
+a471bf3c1ba1dce86bbb615a32357da7 *./z1013_mega/modul2/igd16a MC 5/mc-hilfe(-_b0h).z80
+b06a1109df9c058276c70d6896b02d37 *./z1013_mega/modul2/igd16a MC 5/micro-basic 85.z80
+e8090d5035ac5e959867f7c83806e296 *./z1013_mega/modul2/igd16a MC 5/mons.z80
+a67b7cc3ef1a50dc6f4ef34924316bd7 *./z1013_mega/modul2/igd16a MC 5/oc-editor 4.0.z80
+db2453ade1c6dfb443bece805845afea *./z1013_mega/modul2/igd16a MC 5/oce_200h.z80
+c67de515da7c5ed4733330fe05f42e3b *./z1013_mega/modul2/igd16a MC 5/ram-pio-tester.z80
+de90f0aabb9050628fa22fc395c2119a *./z1013_mega/modul2/igd16a MC 5/rambug.z80
+e93464f1b116450e9ff31a78fc04f31e *./z1013_mega/modul2/igd16a MC 5/tapelist-vt.z80
+72f4ba60753c962a1b4e137148ca78ae *./z1013_mega/modul2/igd16a MC 5/TEXED. 6.1 Scf.Z80
+c6dff672882ce8a3306e48119a8ed442 *./z1013_mega/modul2/igd16a MC 5/uni-textleser.z80
+ab24b117f0d0be89103072716922b3c4 *./z1013_mega/modul2/igd16a MC 5/videobuch.z80
+220f4516711cc4b58bcd92fa20c2be6e *./z1013_mega/modul2/igd16a MC 5/z 1013 forth 2.z80
+08b290fed469e698cca3382b0a081b65 *./z1013_mega/modul2/igd16b MC 5/8k-basic-kern.z80
+e197f569589551ac35bd27c49cacf1fb *./z1013_mega/modul2/igd16b MC 5/debugger v2arb..z80
+d5c099704e5358275b9fa9d62681c3af *./z1013_mega/modul2/igd16b MC 5/debugger.z80
+55f6df17ea5ec4e95b24d920d68708df *./z1013_mega/modul2/igd16b MC 5/DVM 2_89us._soft.Z80
+45e99a59dad33619d826a00d8b6e5323 *./z1013_mega/modul2/igd16b MC 5/emr-reass..z80
+45f6dc77d23eac3318b08d41615a1cd5 *./z1013_mega/modul2/igd16b MC 5/eprommer 2.9_ccl.z80
+553fbc7cce26211e8ea5d6e93f9838c9 *./z1013_mega/modul2/igd16b MC 5/gze v.64k mb-eq.z80
+90a5783ddbe3d24a569708a355e2da6d *./z1013_mega/modul2/igd16b MC 5/HCopy FT F800.Z80
+e23f19e0d415a46750df59aabda6de9b *./z1013_mega/modul2/igd16b MC 5/HCopy FT Hs_E000.Z80
+6f0a3085d4a235e1f124d6341c4420b9 *./z1013_mega/modul2/igd16b MC 5/HCopy FT RB-Moni.Z80
+78e88b89bcb3626681e6d117c3d90528 *./z1013_mega/modul2/igd16b MC 5/header menue.z80
+bc0ce61f78d69fe172ed85722f0090e9 *./z1013_mega/modul2/igd16b MC 5/headerbank zeit.z80
+0321a5b27707bc1b87a8918fae29750a *./z1013_mega/modul2/igd16b MC 5/headerdisk 45.z80
+f3f37470aafe3c26017956392d23df99 *./z1013_mega/modul2/igd16b MC 5/hex-ascii-dump_u.z80
+a600166fb922b15cc4ee1fac6d4588c9 *./z1013_mega/modul2/igd16b MC 5/hisoft-pascal^.z80
+25ca18ba9d203f1ace09fed1becdba65 *./z1013_mega/modul2/igd16b MC 5/kc-basic+.z80
+aa59feed3dcffef4c4382f6a2025712e *./z1013_mega/modul2/igd16b MC 5/mdedas_7.z80
+037fe8d4dee6d9147aa5d2bf3af41d02 *./z1013_mega/modul2/igd16b MC 5/memorytest 1.z80
+9196c75ae3459cd5818475fd91531ccd *./z1013_mega/modul2/igd16b MC 5/memorytest 2.z80
+fe7d2859ecfb4a28dae8f27ca3288bb5 *./z1013_mega/modul2/igd16b MC 5/microword 1.5gv1.z80
+26e92d93178a7a35eadcc2004dfe711a *./z1013_mega/modul2/igd16b MC 5/oc-editor 4.1 nh.z80
+af90ab92c1d2b683c261efce9d66508a *./z1013_mega/modul2/igd16b MC 5/r-80 spv.z80
+b153fa977c0c30d0640beb8537bd695c *./z1013_mega/modul2/igd16b MC 5/ram & pio-test.z80
+2cd59c0366a39df16af8be99ffd74c9d *./z1013_mega/modul2/igd16b MC 5/reass+display.z80
+e5af3beb9152127d2518d73ffac8449b *./z1013_mega/modul2/igd16b MC 5/rombasic-v2.z80
+1f6b4fd5f9106b6d18e0b0f3078d8df7 *./z1013_mega/modul2/igd16b MC 5/scp-2rf 2.38m.z80
+aa678e459c2660cb0b4039c264d6172a *./z1013_mega/modul2/igd16b MC 5/spiel menue _jd_.z80
+e4299d471a30bd258c7bc69abf2664d0 *./z1013_mega/modul2/igd16b MC 5/video-list.z80
+c8a51e25ae4255d239241b9a60d9406f *./z1013_mega/modul2/igd16b MC 5/zeichenpr. fzg.z80
+17adc477942184d2752587ee36933ef9 *./z1013_mega/modul2/SCHIEBEFAX.z80
+5507cd26c92dbbe2bbfba6837272b629 *./z1013_mega/soft1/HeaderUSB 2.1 Beschreibung.TXT
+b5371d78ca4f95ec2708bceadf08f5fe *./z1013_mega/soft1/moner_su_1_31.z80
+505eb30e78edb7808f31d29845f683a7 *./z1013_mega/soft1/Z1013-DVU2_A000.txt
+7014f85333e3036d39de116ca0f05f62 *./z1013_mega/soft1/Z1013-DVU2_A000.z80
+9907a1e4133d258104c36460f5f36623 *./z1013_mega/soft1/Z1013-HeaderUSB_E000.z80
+afe9f4f2d6a62ede87c9ff25f626674a *./z1013_mega/vp/exreass_202.asm
+938d5e572f034534246d8ac896648819 *./z1013_mega/vp/exreass_202.z80
+dd7e36a485407064ca2d94a4036b56c7 *./z1013_mega/vp/ramtest.asm
+4cef1387a9341acba8edee0158b5107e *./z1013_mega/vp/ramtest.z80

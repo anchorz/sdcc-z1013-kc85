@@ -3,17 +3,38 @@
 #include <stdlib.h>
 #include <string.h>
 #include <keys.h>
-#include "menu.h"
+#include <delay.h>
+#include <z1013.h>
 
-extern const DIRECTORY dir; 
+#include "menu.h"
+#include "joystick.h"
+#include "version.h"
+
+#ifndef __SDCC
+#define __z88dk_fastcall
+#define __z88dk_callee
+#define __naked
+#define __sfr char
+#define __banked
+#define __at(X)
+#define inline
+#endif
+
+extern void win_msgbox(unsigned char x, unsigned char y, unsigned char w,
+        unsigned char h) __z88dk_callee;
+
+void help();
+
+extern const DIRECTORY dir;
 
 #define MENU_W 24
 #define MENU_X ((SCR_WIDTH-MENU_W-1)/2)
 #define MENU_Y 5
-#define MENU_H 5
+#define MENU_H 9
 
 char active_item;
 char first_visible_item;
+char last_item;
 char cnt;
 
 #define PROGRESS_BAR
@@ -21,203 +42,278 @@ char cnt;
 #define PROGRESS_BAR_W 2
 #endif
 
-const char * const bottomLines[] = { "\xeb","\xea","\xe9","\xe8" };
-const char * const topLines[] = { "\xe8","\xe7","\xe6","\xe5" };
+char getKey() __naked {
+    __asm__("xor a");
+    __asm__("ld (0x0004),a");
+    __asm__("rst 0x20");
+    __asm__(".db 0x04");
+    __asm__("ld l,a");
+    __asm__("ret");
+}
+
+char getchEx() {
+    char c;
+    mdelay(100);
+
+    c = getKey();
+
+    if (c) {
+        return c;
+    }
+
+    c = joystick_get_selected();
+
+    if (c == 0x07) {
+        return VK_PAGE_UP; //PG_UP
+    }
+    if (c == 0x0b) {
+        return VK_PAGE_DOWN; //PG_DOWN
+    }
+    if (!(c & 0x04)) {
+        return VK_DOWN;
+    }
+    if (!(c & 0x08)) {
+        return VK_UP;
+    }
+    if (!(c & 0x01)) {
+        return VK_LEFT;
+    }
+    if (!(c & 0x02)) {
+        return VK_RIGHT;
+    }
+    if (!(c & 0x10)) {
+        return VK_ENTER;
+    }
+    return 0;
+}
 
 void print_name(const char *ptr) __z88dk_fastcall
 {
-    char len=17;
-    for (;--len;)
-    {
+    char len = 17;
+    for (; --len;) {
         putch(*ptr++);
     }
-} 
+}
 
+void paint_items() {
+    char count = MENU_H;
+    const ENTRY *ptr = dir.menuEntries;
+    char y = MENU_Y + 1;
+    char id = first_visible_item;
 
-void paint_items()
-{
-    char count=MENU_H;
-    const ENTRY *ptr=dir.menuEntries;
-    char y=MENU_Y+1;
-    char id=first_visible_item;
-    
-    if (dir.menuEntriesCount<count)
-      count=dir.menuEntriesCount;
+    if (dir.menuEntriesCount < count)
+        count = dir.menuEntriesCount;
     count++;
-    ptr+=first_visible_item;
-    
-    while(--count)
-    {
-        gotoxy(MENU_X+1,y);
-        if (active_item==id)
-        {
+    ptr += first_visible_item;
+
+    while (--count) {
+        gotoxy(MENU_X + 1, y);
+        if (active_item == id) {
             cputs("-> ");
-        } else
-        {
+        } else {
             cputs("   ");
         }
         print_name(ptr->name);
-        if (active_item==id)
-        {
+        if (active_item == id) {
             cputs(" <-");
-        } else
-        {
+        } else {
             cputs("   ");
         }
-        ptr+=1;
-        y+=2;
+        ptr += 1;
+        y += 2;
         id++;
     }
 }
 
-void paint()
+void cursor_next(char c) __z88dk_fastcall
 {
-    char id;
-   
+    char *ptr=Z1013_CURSR;
+    *ptr=c;
+    ptr+=32;
+    Z1013_CURSR=ptr;
+}
+
+void paint_scrollbar() {
+
+    char checkLine;
+    char cnt,height;
+    int c;
+
+    height=MENU_H*2-1;
+    c = first_visible_item;
+    c *= (MENU_H * 8 - 4);
+    checkLine = c / dir.menuEntriesCount;
+    GOTOXY(MENU_X + MENU_W, MENU_Y+1);
+    cnt = checkLine >> 2;
+    while (cnt) {
+        cursor_next(' ');
+        cnt--;
+        height--;
+    }
+    cnt = checkLine & 0x03;
+    if (cnt) {
+        cursor_next(0xe8-cnt);
+        height--;
+    }
+    checkLine = (MENU_H * (MENU_H * 8 - 4)) / dir.menuEntriesCount;
+    checkLine -= cnt;
+    cnt = checkLine >> 2;
+    while (cnt) {
+        cursor_next('\xe8');
+        cnt--;
+        height--;
+    }
+    cnt = checkLine & 0x03;
+    if (cnt) {
+        cursor_next(0xe8+cnt);
+        height--;
+    }
+    cnt=height;
+    while (cnt) {
+        cursor_next(' ');
+        cnt--;
+    }
+}
+
+void paint() {
     paint_items();
-    if (dir.menuEntriesCount<=MENU_H)
+    if (dir.menuEntriesCount > MENU_H) {
+        paint_scrollbar();
+    }
+}
+
+void handle_end() {
+    char m;
+    first_visible_item = last_item;
+    m = dir.menuEntriesCount;
+    --m;
+    active_item = m;
+}
+
+void handle_home() {
+    first_visible_item = 0;
+    active_item = 0;
+}
+
+void handle_pg_down() {
+    if (active_item < last_item)
+        active_item += MENU_H;
+    first_visible_item += MENU_H;
+    if (first_visible_item > last_item)
+        first_visible_item = last_item;
+}
+
+void handle_pg_up() {
+    if (active_item < MENU_H)
         return;
-    
-    id=0;
-    {
-       //Annahme: line wird immer in 4er Schritten hochgezählt
-       //TODO lines ist nicht konstant, der Scrollbar muss immer "von item-line" "bis-item-line" gezeichnet werden 
-       unsigned char lines=MENU_H*8-4;
-       unsigned char firstLine=(first_visible_item*(MENU_H*8-4))/dir.menuEntriesCount;
-       unsigned char visibleLines=(MENU_H*(MENU_H*8-4))/dir.menuEntriesCount;
-       unsigned char line=0;
-       while (id<MENU_H*2-1)
-       {
-          gotoxy(MENU_X+MENU_W,MENU_Y+1+id);
-          if (line==(firstLine&0xfc) )
-          {
-            int ofs=firstLine-line;
-            cputs(topLines[ofs]);
-          }
-          else if (line==((firstLine+visibleLines-1)&0xfc) )
-          {
-            int ofs=firstLine+visibleLines-line-1;
-            cputs(bottomLines[ofs]);
-          }
-          else if (line>=(firstLine|0x03) && line<((firstLine+visibleLines-1)&0xfc) )
-            cputs("\xe8");
-          else
-            cputs(" ");
-          id++;
-          line+=4;
-    }
-    gotoxy(0,20);
-    printf("to=%d(%d) vis=%d(%d) at=%d(%d)",dir.menuEntriesCount,lines,MENU_H,visibleLines,first_visible_item,firstLine);
+    active_item -= MENU_H;
+    if (first_visible_item >= MENU_H) {
+        first_visible_item -= MENU_H;
+    } else {
+        first_visible_item = 0;
     }
 }
 
-unsigned char handle_main_menu() 
-{
-    char c;
-
-    for (;;) {
-        c = getch();
-        if (c == VK_DOWN) {
-            if (active_item<dir.menuEntriesCount-1)
-               active_item++;
-            
-            if (active_item==first_visible_item+MENU_H && active_item<dir.menuEntriesCount)
-            {
-              first_visible_item++;
-            }
+void handle_down() {
+    char m = active_item + 1;
+    if (m < dir.menuEntriesCount) {
+        char t = first_visible_item + MENU_H;
+        if (m == t) {
+            first_visible_item++;
         }
-        if (c == VK_UP) {
-            if (active_item>0)
-            active_item--;
-     
-            if (active_item==first_visible_item-1 && first_visible_item>0)
-            {
-              first_visible_item--;
-            }
-        }
-        if (c == VK_ENTER) {
-            break;
-        }
-        paint();
+        active_item = m;
     }
-    gotoxy(0,21);
-    printf("active=%d\n",active_item);    
-    return active_item;
 }
 
-unsigned char handle_main_menu2() {
-    char c;
-
-    for (;;) {
-        gotoxy(MENU_X + 1, active_item * 2 + MENU_Y + 1);
-        cputs("->");
-        gotoxy(MENU_X + MENU_W - 1 - PROGRESS_BAR_W, active_item * 2 + 1 + MENU_Y);
-        cputs("<-");
-        c = getch();
-        paint();
-        if (c == VK_DOWN) {
-            gotoxy(MENU_X + 1, active_item * 2 + 1 + MENU_Y);
-            cputs("  ");
-            gotoxy(MENU_X + MENU_W - 1- PROGRESS_BAR_W, active_item * 2 + 1 + MENU_Y);
-            cputs("  ");
-            active_item++;
-            if (active_item >= dir.menuEntriesCount)
-                active_item = 0;
-        } else if (c == VK_UP) {
-            gotoxy(MENU_X + 1, active_item * 2 + 1 + MENU_Y);
-            cputs("  ");
-            gotoxy(MENU_X + MENU_W - 1- PROGRESS_BAR_W, active_item * 2 + 1 + MENU_Y);
-            cputs("  ");
-            if (active_item == 0)
-                active_item = dir.menuEntriesCount;
-            active_item--;
+void handle_up() {
+    char m = active_item;
+    if (m > 0) {
+        char t = first_visible_item;
+        if (m == t) {
+            first_visible_item--;
         }
-        if (c == VK_ENTER) {
-            break;
-        }
-        if (c == VK_ESCAPE) {
-            return dir.menuEntriesCount - 1;
-        }
-        if (c == VK_CTRL_C) {
-            return dir.menuEntriesCount - 1;
-        }
+        active_item = m - 1;
     }
-    printf("%d ",active_item);
-    return active_item;
+}
+
+void paint_frame() {
+    clrscr();
+    gotoxy((SCR_WIDTH - 22) / 2, MENU_Y - 2);
+    cputs("Z1013-128 VORFUEHRMODUS");
+    win_msgbox(MENU_X, MENU_Y, MENU_W, 2 * MENU_H - 1);
+    gotoxy(27, 31);
+    cputs("R"VERSION);
+}
+
+unsigned char handle_main_menu() {
+    for (;;) {
+        char c = getchEx();
+        switch (c) {
+        case VK_END:
+            handle_end();
+            break;
+        case VK_HOME:
+            handle_home();
+            break;
+        case VK_PAGE_DOWN:
+            handle_pg_down();
+            break;
+        case VK_PAGE_UP:
+            handle_pg_up();
+            break;
+        case ' ':
+        case VK_DOWN:
+            handle_down();
+            break;
+        case 'U':
+        case VK_UP:
+            handle_up();
+            break;
+        case '?':
+        case 'H':
+            help();
+            break;
+        case VK_ENTER:
+            return active_item;
+        default:
+            continue;
+        }
+        paint();
+    }
 }
 
 void execute_item(const ENTRY * item) __z88dk_fastcall
 {
-    item=item;
-    __asm__("ld de,#18"); //add name[16]+hw+typ -> ENTRY.bankStart
-    __asm__("add hl,de"); 
-    __asm__("ld a,(hl)"); //ENTRY.bankStart
-    __asm__("inc hl"); 
-    __asm__("ld e,(hl)"); //ENTRY.bankOffset
-    __asm__("inc hl"); 
+    item = item;
+    __asm__("ld de,#18");
+    //add name[16]+hw+typ -> ENTRY.bankStart
+    __asm__("add hl,de");
+    __asm__("ld a,(hl)");
+    //ENTRY.bankStart
+    __asm__("inc hl");
+    __asm__("ld e,(hl)");
+    //ENTRY.bankOffset
+    __asm__("inc hl");
     __asm__("ld d,(hl)");
-    __asm__("inc hl"); 
-    __asm__("ld c,(hl)"); //ENTRY.length
-    __asm__("inc hl"); 
-    __asm__("ld b,(hl)"); 
-    __asm__("call _banked_copy"); 
+    __asm__("inc hl");
+    __asm__("ld c,(hl)");
+    //ENTRY.length
+    __asm__("inc hl");
+    __asm__("ld b,(hl)");
+    __asm__("call _banked_copy");
 }
 
-extern void win_msgbox(unsigned char x, unsigned char y, unsigned char w,
-        unsigned char h)
-__z88dk_callee;
-
-int main() {
+int main() __naked {
 
     char item;
 
-    clrscr();
+    last_item = dir.menuEntriesCount - MENU_H;
 
+    joystick_initialize();
+
+    paint_frame();
+    paint();
     do {
-        gotoxy((SCR_WIDTH - 22) / 2, MENU_Y - 2);
-        cputs("Z1013-128 VORFUEHRMODUS");
-        win_msgbox(MENU_X, MENU_Y, MENU_W, 2 * MENU_H - 1);
-        paint();
         item = handle_main_menu();
         if (item == dir.menuEntriesCount - 1)
             break;
@@ -226,5 +322,4 @@ int main() {
     } while (item != dir.menuEntriesCount - 1);
 
     __asm__("jp 0xf000");
-    return 0;
 }

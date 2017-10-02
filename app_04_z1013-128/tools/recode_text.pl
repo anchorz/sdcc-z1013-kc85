@@ -21,7 +21,7 @@ $sonderzeichen=0;
 #%keine_umlaute=(" | "=>1," |\n"=>1);
 
 %map=("{"=>"ä","|"=>"ö","}"=>"ü","~"=>"ß","["=>"Ä","\\"=>"Ö","]"=>"Ü");
-$do_map=0;
+$do_map=1;
 #%map=();
 
 for($i=32; $i<length $content; $i++)

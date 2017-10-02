@@ -31,6 +31,8 @@ sub write_directory($ $)
     print INFO pack('c',$#files+2);#einer extra für den ...EXIT Eintrag am Schluss
     $offset++;
     
+    #$steps=8192;
+    $steps=32768;
     $entrySize=16+3+2+2;
     $filepos=$offset+($#files+1)*$entrySize+16;#extra für den ...EXIT Eintrag am Schluss
     my $bankStart=0;
@@ -48,7 +50,7 @@ sub write_directory($ $)
         $filepos+=$dirent[1];
         if ($filepos>0xffff) {
             $filepos-=$aadr;
-            $bankStart+=($aadr/8192); #8k Schritte
+            $bankStart+=($aadr/$steps); #8k Schritte
         }
     }
     print INFO pack('A16',"...EXIT");
@@ -67,7 +69,12 @@ sub write_directory($ $)
     read(INFO,$content,2);
     my $eadr=unpack('v',$content);
     $eadr=$offset-1;
-    printf("offset: %x\n",$offset);
+    my $used=($offset-$aadr)/1024.0;
+    my $free=(512*1024-($offset-$aadr))/1024.0;
+    printf("Ende: 0x%x (%.2f KiB) %.2f%%\n",$offset-$aadr-1,$used,$used*100/(512));
+    printf("Frei:  %6d (%.2f KiB) %.2f%%\n",512*1024-($offset-$aadr),$free,100-$used*100/(512));
+    
+    
     seek(INFO,2,0);
     print INFO pack('v',$eadr);#new length
     close(INFO);
@@ -161,40 +168,3 @@ close(INFO);
 
 write_directory($origin,$result);
 
-exit 0;
-chdir("assets");
-@dir=glob("rom*");
-chdir("..");
-
-$final_length=32768;
-
-foreach $subdir ( @dir )
-{
-	printf("%s\n",$subdir);
-	$out="obj/z1013/$subdir.bin";
-	system("dd if=obj/z1013/rom_boot.bin of=\"$out\" 2>/dev/null");
-	@files=glob("assets/$subdir/*.z80");
-	foreach $in ( @files )
-	{
-		printf("%s\n",$in);
-		system("dd bs=1 if=\"$in\" of=\"$out\" skip=0 count=2 oflag=append conv=notrunc 2>/dev/null");
-		system("perl -e \"print pack('v',`stat -c %s \"$in\"`-32)\" | dd bs=1 of=\"$out\" count=2 oflag=append conv=notrunc 2>/dev/null");
-		system("dd bs=1 if=\"$in\" of=\"$out\" skip=4 count=2 oflag=append conv=notrunc 2>/dev/null");
-		system("basename -z -s .z80 \"$in\" | dd of=\"$out\" oflag=append conv=notrunc 2>/dev/null");
-		system("dd bs=1 if=\"$in\" of=\"$out\" skip=32 oflag=append conv=notrunc 2>/dev/null");
-		#printf("Ende: 0x%4X\n",0x8000+`stat -c %s \"$out\"`);
-		#printf("Frei: %4d\n",32768-4096-1024-`stat -c %s \"$out\"`);
-	}
-	printf("*************\nEnde: 0x%4X\n",0x8000+`stat -c %s \"$out\"`);
-	printf("Frei: %4d\n*************\n",32768-4096-1024-`stat -c %s \"$out\"`);
-	$len=-s $out;
-	$todo=$final_length-$len-2;
-	print ("current $todo\n");
-	open(FH, '>>', $out);
-	print FH pack('v',0);
-	for ($i=0;$i<$todo;$i++)
-	{
-		print FH pack('C',0xff);
-	}
-	close FH;
-}

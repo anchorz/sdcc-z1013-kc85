@@ -1,0 +1,496 @@
+
+
+Z1013+K7659/2.028 RB
+ # 
+
+robotron Z 1013 Edas H+D V1
+
+Neustart J/(N):J
+
++    
++    LIST
+00010 ANF:   JMP  BEGIN
+00020 MANL:  DB   '¾å '
+00030        DB   '¿ÿæ '
+00040        DB   'Ó»ùØ'
+00050        DB   ' ê '
+00060        DB   ' ´  '
+00070 LSPA:  DB   0
+00080 LZEI:  DB   25
+00090 MANR:  DB   ' ß¾'
+00100        DB   ' öÿ'
+00110        DB   'ÛùºÐ'
+00120        DB   ' òÿ '
+00130        DB   '  µ '
+00140 RSPA:  DB   28
+00150 RZEI:  DB   25
+00160 LTOT:  DB   '    '
+00170        DB   '    '
+00180        DB   '    '
+00190        DB   'üÜä '
+00200        DB   '½ºÿ·'
+00210 RTOT:  DB   '    '
+00220        DB   '    '
+00230        DB   '    '
+00240        DB   ' à÷ü'
+00250        DB   '·ÿ»¼'
+00260 MGO:   DB   '    '
+00270        DB   '    '
+00280        DB   '    '
+00290        DB   '    '
+00300        DB   '    '
+00310 HIND:  DB   'Ç³'
+00320        DB   '£  ¥'
+00330        DB   '£  ¥'
+00340        DB   '£  ¥'
+00350        DB   '§¤¤ª'
+00360 BAUM:  DB   '  '
+00370        DB   ''
+00380        DB   ''
+00390        DB   ''
+00400        DB   ' ôè '
+00410 HANZ:  DB   0
+00420 HSPA:  DB   14
+00430 HZEI:  DB   0
+00440 LSH:   DB   0
+00450 LRT:   DB   0
+00460 LSS:   DB   0
+00470 LSZ:   DB   0
+00480 LANZ:  DB   0
+00490 RSH:   DB   0
+00500 RRT:   DB   0
+00510 RSS:   DB   0
+00520 RSZ:   DB   0
+00530 RANZ:  DB   0
+00540 AUTM:  DB   0
+00550        DB   0
+00560 AUTS:  DB   0
+00570 MGET:  CALL CPOS
+00580        LD   C,5
+00590 GLP2:  LD   B,4
+00600 GLP:   LD   A,(DE)
+00610        LD   (HL),A
+00620        INC  HL
+00630        INC  DE
+00640        DJNZ GLP-#
+00650        PUSH BC
+00660        LD   BC,28
+00670        ADD  HL,BC
+00680        POP  BC
+00690        DEC  C
+00700        JRNZ GLP2-#
+00710        RET  
+00720 CPOS:  PUSH BC
+00730        PUSH DE
+00740        PUSH HL
+00750        POP  BC
+00760        PUSH AF
+00770        LD   A,B
+00780        CMP  32
+00790        JRNC OUT-#
+00800        LD   A,C
+00810        CMP  32
+00820        JRNC OUT-#
+00830        LD   HL,0EBDFH
+00840        LD   DE,32
+00850        INC  B
+00860        INC  C
+00870 ADDZ:  ADD  HL,DE
+00880        DJNZ ADDZ-#
+00890        ADD  HL,BC
+00900 CEND:  POP  AF
+00910        POP  DE
+00920        POP  BC
+00930        RET  
+00940 OUT:   LD   HL,0EBF0H
+00950        JR   CEND-#
+00960 INKEY: LD   A,(AUTS)
+00970        OR   A
+00980        JRNZ DEMO-#
+00990        LD   A,B
+01000        OR   A
+01010        JRNZ JOYST-#
+01020        CALL 0FFFAH
+01030        RET  
+01040 JOYST: CALL 0FFBBH
+01050        RET  
+01060 DEMO:  PUSH HL
+01070        LD   HL,(AUTM)
+01080        LD   A,(HL)
+01090        INC  HL
+01100        LD   (AUTM),HL
+01110        LD   (AUTS),A
+01120        POP  HL
+01130        RET  
+01140 LBEW:  LD   A,D
+01150        DEC  A
+01160        ADD  B
+01170        LD   D,A
+01180        CMP  28
+01190        LD   A,0
+01200        RC   
+01210        PUSH HL
+01220        POP  DE
+01230        RET  
+01240 LCOW:  LD   HL,(LSPA)
+01250        LD   B,0
+01260        CALL INKEY
+01270        PUSH HL
+01280        POP  DE
+01290        CMP  'A'
+01300        CAZ  LBEW
+01310        LD   B,2
+01320        CMP  'Z'
+01330        CAZ  LBEW
+01340        CMP  'X'
+01350        CAZ  LSHOT
+01360        DEC  B
+01370        CMP  'S'
+01380        CAZ  LSHOT
+01390        DEC  B
+01400        CMP  'W'
+01410        CAZ  LSHOT
+01420        LD   A,H
+01430        CMP  D
+01440        JRZ  LSW-#
+01450        LD   (LSPA),DE
+01460        LD   DE,MGO
+01470        CALL MGET
+01480        LD   HL,(LSPA)
+01490        LD   DE,MANL
+01500        CALL MGET
+01510        JR   LSW-#
+01520 LSHOT: LD   A,(LSH)
+01530        OR   A
+01540        RNZ  
+01550        LD   A,(LANZ)
+01560        OR   A
+01570        RZ   
+01580        DEC  A
+01590        LD   (LANZ),A
+01600        LD   A,B
+01610        LD   (LRT),A
+01620        LD   A,4
+01630        LD   (LSS),A
+01640        LD   (LSH),A
+01650        LD   A,(LZEI)
+01660        INC  A
+01670        INC  A
+01680        LD   (LSZ),A
+01690        RET  
+01700 LSW:   LD   A,(LSH)
+01710        OR   A
+01720        RZ   
+01730        LD   HL,(LSS)
+01740        CALL CPOS
+01750        LD   (HL),32
+01760        INC  HL
+01770        LD   A,(HL)
+01780        CMP  32
+01790        JRNZ LNTR-#
+01800        LD   A,(LSS)
+01810        INC  A
+01820        INC  A
+01830        CMP  31
+01840        JRNC LSTR-#
+01850        LD   (LSS),A
+01860        LD   A,(LSZ)
+01870        DEC  A
+01880        LD   B,A
+01890        LD   A,(LRT)
+01900        ADD  B
+01910        LD   (LSZ),A
+01920        LD   HL,(LSS)
+01930        CALL CPOS
+01940        LD   A,(HL)
+01950        CMP  32
+01960        JRNZ LNTR-#
+01970        LD   (HL),0DAH
+01980        RET  
+01990 LNTR:  LD   (HL),32
+02000        CMP  0DAH
+02010        CAZ  RSTR
+02020        LD   A,(LSS)
+02030        CMP  27
+02040        JRNC RMT-#
+02050 LSTR:  XOR  A
+02060        LD   (LSH),A
+02070        RET  
+02080 RSTR:  XOR  A
+02090        LD   (RSH),A
+02100        RET  
+02110 RMT:   LD   HL,(RSPA)
+02120        LD   DE,RTOT
+02130        CALL MGET
+02140 END:   LD   A,(AUTS)
+02150        OR   A
+02160        JPNZ BE2
+02170        LD   HL,0ED07H
+02180        LD   (0002BH),HL
+02190        RST  020H
+02200        DB   2
+02210        DB   'NOCH EINMAL'
+02220        DB   ' (J/N) ?'
+02230        DB   089H
+02240 FRAG:  RST  020H
+02250        DB   1
+02260        CMP  'J'
+02270        JPZ  PENG
+02280        CMP  'N'
+02290        JRNZ FRAG-#
+02300        RST  020H
+02310        DB   2
+02320        DB   08CH
+02330        RST  038H
+02340 PAUSE: LD   B,15
+02350 PA3:   LD   C,0
+02360 PA2:   DEC  C
+02370        JRNZ PA2-#
+02380        DJNZ PA3-#
+02390        RET  
+02400 RCOW:  LD   HL,(RSPA)
+02410        LD   B,1
+02420        CALL INKEY
+02430        PUSH HL
+02440        POP  DE
+02450        LD   B,2
+02460        CMP  01BH
+02470        CAZ  LBEW
+02480        CMP  01AH
+02490        CAZ  RSHOT
+02500        DEC  B
+02510        CMP  01EH
+02520        CAZ  RSHOT
+02530        DEC  B
+02540        CMP  016H
+02550        CAZ  RSHOT
+02560        CMP  017H
+02570        CAZ  LBEW
+02580        LD   A,H
+02590        CMP  D
+02600        JRZ  RSW-#
+02610        LD   (RSPA),DE
+02620        LD   DE,MGO
+02630        CALL MGET
+02640        LD   HL,(RSPA)
+02650        LD   DE,MANR
+02660        CALL MGET
+02670        JR   RSW-#
+02680 RSHOT: LD   A,(RSH)
+02690        OR   A
+02700        RNZ  
+02710        LD   A,(RANZ)
+02720        OR   A
+02730        RZ   
+02740        DEC  A
+02750        LD   (RANZ),A
+02760        LD   A,B
+02770        LD   (RRT),A
+02780        LD   A,27
+02790        LD   (RSS),A
+02800        LD   (RSH),A
+02810        LD   A,(RZEI)
+02820        INC  A
+02830        INC  A
+02840        LD   (RSZ),A
+02850        RET  
+02860 RSW:   LD   A,(RSH)
+02870        OR   A
+02880        RZ   
+02890        LD   HL,(RSS)
+02900        CALL CPOS
+02910        LD   (HL),32
+02920        DEC  HL
+02930        LD   A,(HL)
+02940        CMP  32
+02950        JRNZ RNTR-#
+02960        LD   A,(RSS)
+02970        DEC  A
+02980        DEC  A
+02990        CMP  50
+03000        JPNC RSTR
+03010        LD   (RSS),A
+03020        LD   A,(RSZ)
+03030        DEC  A
+03040        LD   B,A
+03050        LD   A,(RRT)
+03060        ADD  B
+03070        LD   (RSZ),A
+03080        LD   HL,(RSS)
+03090        CALL CPOS
+03100        LD   A,(HL)
+03110        CMP  32
+03120        JRNZ RNTR-#
+03130        LD   (HL),0DAH
+03140        RET  
+03150 RNTR:  LD   (HL),32
+03160        CMP  0DAH
+03170        CAZ  LSTR
+03180        LD   A,(RSS)
+03190        CMP  4
+03200        JPNC RSTR
+03210 LMT:   LD   HL,(LSPA)
+03220        LD   DE,LTOT
+03230        CALL MGET
+03240        JMP  END
+03250 STEST: LD   A,(LANZ)
+03260        OR   A
+03270        RNZ  
+03280        LD   A,(RANZ)
+03290        OR   A
+03300        RNZ  
+03310        LD   A,(LSH)
+03320        OR   A
+03330        RNZ  
+03340        LD   A,(RSH)
+03350        OR   A
+03360        RNZ  
+03370        JMP  END
+03380 HBEW:  LD   A,(HANZ)
+03390        INC  A
+03400        CMP  15
+03410        LD   (HANZ),A
+03420        RC   
+03430        XOR  A
+03440        LD   (HANZ),A
+03450        LD   A,(AUTS)
+03460        OR   A
+03470        RNZ  
+03480        LD   HL,(HSPA)
+03490        LD   DE,MGO
+03500        CALL MGET
+03510        LD   A,(HZEI)
+03520        INC  A
+03530        CMP  28
+03540        JRC  HGO-#
+03550        XOR  A
+03560 HGO:   LD   (HZEI),A
+03570        LD   HL,(HSPA)
+03580        LD   DE,HIND
+03590        CALL MGET
+03600        RET  
+03610 AUTO:  DB   'S
+ZZZZ'
+03620        DB   'Z
+ZZZZ'
+03630        DB   'WA A '
+03640        DB   'WA 
+A '
+03650        DB   'A A A A A '
+03660        DB   'SZZ
+ZZ'
+03670        DB   'AAASA'
+03680        DB   'A
+AAZZ'
+03690        DB   'ZSAAA'
+03700        DB   '      '
+03710        DB   0
+03720 TEST:  XOR  A
+03730        LD   (LSH),A
+03740        LD   (RSH),A
+03750        LD   (HZEI),A
+03760        LD   A,255
+03770        LD   (LANZ),A
+03780        LD   (RANZ),A
+03790        LD   A,20
+03800        LD   (LZEI),A
+03810        LD   (RZEI),A
+03820        RST  020H
+03830        DB   2
+03840        DB   08CH
+03850        LD   HL,(RSPA)
+03860        LD   DE,MANR
+03870        CALL MGET
+03880        LD   HL,(LSPA)
+03890        LD   DE,MANL
+03900        CALL MGET
+03910        RET  
+03920 BAPOS: DB   8
+03930        DB   1
+03940        DB   5
+03950        DB   8
+03960        DB   7
+03970        DB   15
+03980        DB   9
+03990        DB   25
+04000        DB   21
+04010        DB   2
+04020        DB   23
+04030        DB   8
+04040        DB   22
+04050        DB   17
+04060        DB   20
+04070        DB   24
+04080 DRBA:  LD   DE,BAUM
+04090        LD   B,8
+04100        LD   HL,BAPOS
+04110 NEBA:  PUSH HL
+04120        PUSH DE
+04130        PUSH BC
+04140        LD   A,(HL)
+04150        INC  HL
+04160        LD   H,(HL)
+04170        LD   L,A
+04180        CALL MGET
+04190        POP  BC
+04200        POP  DE
+04210        POP  HL
+04220        INC  HL
+04230        INC  HL
+04240        DJNZ NEBA-#
+04250        RET  
+04260 FELD:  LD   H,0
+04270 FELD2: LD   L,13
+04280        PUSH HL
+04290        CALL CPOS
+04300        LD   (HL),''
+04310        POP  HL
+04320        PUSH HL
+04330        LD   L,18
+04340        LD   A,31
+04350        SUB  H
+04360        LD   H,A
+04370        CALL CPOS
+04380        LD   (HL),''
+04390        LD   B,6
+04400        CALL PA3
+04410        POP  HL
+04420        LD   A,H
+04430        CMP  31
+04440        RZ   
+04450        INC  H
+04460        JR   FELD2-#
+04470 TE2:   LD   HL,AUTO
+04480        LD   (AUTM),HL
+04490        LD   A,1
+04500        LD   (AUTS),A
+04510 TE3:   CALL LCOW
+04520        CALL RCOW
+04530        CALL STEST
+04540        CALL HBEW
+04550        CALL PAUSE
+04560        JR   TE3-#
+04570 BEGIN: LD   SP,000B0H
+04580        CALL TEST
+04590        JR   TE2-#
+04600 BE2:   LD   SP,000B0H
+04610        XOR  A
+04620        LD   (AUTS),A
+04630        LD   HL,0EF98H
+04640        LD   (0002BH),HL
+04650        RST  020H
+04660        DB   2
+04670        DB   '>ENTER'
+04680        DB   0BCH
+04690        RST  020H
+04700        DB   1
+04710        CMP  3
+04720        JPZ  00038H
+04730        CMP  13
+04740        JRNZ BEGIN-#
+04750 PENG:  CALL TEST
+04760        CALL FELD
+04770        CALL DRBA
+04780        JR   TE3-#
+04790        JMP  ENDE
++    
