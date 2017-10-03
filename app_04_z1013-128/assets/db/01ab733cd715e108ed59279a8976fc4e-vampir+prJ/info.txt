@@ -1,0 +1,15 @@
+<kurz>Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus</kurz>
+<lang>Durch die naechtlichen Strassen schleichen VAMPI und seine Freunde.
+
+Als freundlicher und hilfsbereiter Mensch fuerst du die armen,
+aengstlichen Jungfrauen natuerlich gerne nach Hause.
+VIEL GLUECK !!
+
+Steuertasten : <Hoch>,<Runter>,<Links>,<Rechts>
+
+Schwierigkeitsgrad
+Feuer+Hoch Anfaenger
+Feuer+Runter Profi
+
+modifiziert für Joystick, Original ist wahrscheinlich <link>67d48f2de0c40d41fafaa5110300b5e4</link></lang>
+<requires>Joystick-Practic01/88</requires>

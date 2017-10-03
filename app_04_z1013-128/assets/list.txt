@@ -47,4 +47,5 @@ db/1447f1aafc89290ad5a5aae1311714ca-river_raid_ls/river_raid_ls.z80
 db/7a4d3f8af84dcb0726b04c051d2e06fd-ohio_judith/ohio_judith.z80
 db/fc6d276a637b1c11ca4c8adae99736ca-solo_commotion/solo_commotion.z80
 db/bd2ca052b27a8b364b0f038c0a713aea-boulderdash_1_0/boulderdash_1_0.z80
-
+download/ladder.z80
+download/s04_b/ladder_c.com.z80

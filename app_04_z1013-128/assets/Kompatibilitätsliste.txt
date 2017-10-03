@@ -50,8 +50,9 @@ f05e2c61882aa08fe25029f713a6309e *WIZARD_ANG.z80 ; Tasten für Hoch und Runter v
 47f2e0f7c360c4222fad98994d53acdc *the last chance3.z80  2.B..   ; Header stimmt nicht - Image ist 1 Byte zu kurz
 
 
-
-
+9c96876368b9c7fd79980bec061560d8 edas_i.doc.z80 ; header hatte 2e2e2e statt d3d3d3: kann sein, dass es aber auch so gewollt ist
+b10d8c886aff1ff78d45c70d2c96180c edas_3_1.z80 ; header hatte 2e2e2e statt d3d3d3: kann sein, dass es aber auch so gewollt ist
+c95a380b801fb90da730e5e189ad6b50 cowboy_s.edasASM.z80 ; header hatte 2e2e2e statt d3d3d3: kann sein, dass es aber auch so gewollt ist
 
 # sonstiges
 71e7473bef203f31b7c3f844166bd850 2.B...  *JUMPING-JACK.z80 ;[6a2b89d0db56afa89fe9aee6d8ac4bab] dies ist eine veraltete Version; benutzt CALL, direkte Monitor-Aufrufe; neue Version benutzt RST20-Aufrufe                                            

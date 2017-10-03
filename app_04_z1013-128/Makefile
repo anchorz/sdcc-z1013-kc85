@@ -20,3 +20,5 @@ include ../mk/rules.make
 copy:
 	cp obj/z1013/rom_boot.bin ../../jkcemu/src/rom/z1013/
 
+html:
+	cd assets/db; ../../tools/generate_html.pl

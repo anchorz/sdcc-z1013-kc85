@@ -6,7 +6,7 @@ $output=$file;
 $output =~ s/\.z80$/.txt/g;
 
 open(OUT,">",$output);
-open(IN,"$file");
+open(IN,"<:raw",$file);
 
 $len= -s $file;
 
@@ -20,8 +20,11 @@ $sonderzeichen=0;
 #%umlaute=("m|g"=>1);
 #%keine_umlaute=(" | "=>1," |\n"=>1);
 
-%map=("{"=>"ä","|"=>"ö","}"=>"ü","~"=>"ß","["=>"Ä","\\"=>"Ö","]"=>"Ü");
+%map=("{"=>"ä","|"=>"ö","}"=>"ü","~"=>"ß","["=>"Ä","\\"=>"Ö","]"=>"Ü",
+);
 $do_map=1;
+
+%others=("\xc4"=>"Ä","\xe4"=>"ä","\xdf"=>"ß","\xf6"=>"ö","\xfc"=>"ü");
 #%map=();
 
 for($i=32; $i<length $content; $i++)
@@ -69,7 +72,7 @@ for($i=32; $i<length $content; $i++)
         next;
     }
     $flag=$i;
-    printf("[0x%x] ESC+$c\n",$i);
+    printf("[0x%x] ESC+%s\n",$i,$c);
   } elsif (ord($c)==0x1e)
   {
      printf(OUT "\n");
@@ -87,8 +90,15 @@ for($i=32; $i<length $content; $i++)
       printf(OUT "%s",$c);
   } else
   {
-     $flag=$i;
-     printf("[0x%x] unbekanntes Zeichen: 0x%02x]\n",$i,ord($c));
+     if ($others{$c})
+     {
+        printf(OUT "%s",$others{$c});
+        printf("[0x%x] ungewöhnliches Zeichen: 0x%02x]\n",$i,ord($c));
+     } else {
+        $flag=$i;
+        printf("[0x%x] unbekanntes Zeichen: 0x%02x]\n",$i,ord($c));
+         
+    }
   }
 }
 

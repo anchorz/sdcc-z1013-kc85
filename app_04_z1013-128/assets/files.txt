@@ -1,0 +1,1844 @@
+./.DS_Store
+./db/01ab733cd715e108ed59279a8976fc4e-vampir+prJ/vampir+prJ.z80
+./db/0367b49e890ef6d5c92fa28b7f5e5b27-kc_basic+_doc/kc_basic+_doc.txt
+./db/0367b49e890ef6d5c92fa28b7f5e5b27-kc_basic+_doc/kc_basic+_doc.z80
+./db/0785b50a38196cb79062254e3b156049-header_disk_45_I/header_disk_45_I.txt
+./db/0785b50a38196cb79062254e3b156049-header_disk_45_I/header_disk_45_I.z80
+./db/0b8094eb545d9e3b48c0cb636663ae17-super+ski+prJ/super+ski+prJ.z80
+./db/0cc48f65621a7478c0a3aaaed675e7bf-headersave_5_9_I/headersave_5_9_I.txt
+./db/0cc48f65621a7478c0a3aaaed675e7bf-headersave_5_9_I/headersave_5_9_I.z80
+./db/0ec6a4cb664baed278fa1941576ffe32-microword_1_5gs1/microword_1_5gs1.z80
+./db/0fd7e15a38d589f921094f0112d6344a-hase+wolf+prJ/hase+wolf+prJ.z80
+./db/10040f6ed4dd893a980a8932b7831101-z1013_surl_doc/z1013_surl_doc.txt
+./db/10040f6ed4dd893a980a8932b7831101-z1013_surl_doc/z1013_surl_doc.z80
+./db/1447f1aafc89290ad5a5aae1311714ca-river_raid_ls/river_raid_ls.z80
+./db/174e08f7fd0f8f404e908f91fb13e2e7-turtle_player+prJ/turtle_player+prJ.z80
+./db/1fe83766bf2dd8fb849853aef93bf5b4-zgorig+breit/screenshot_01.png
+./db/1fe83766bf2dd8fb849853aef93bf5b4-zgorig+breit/zgorig+breit.bin
+./db/1fe83766bf2dd8fb849853aef93bf5b4-zgorig+breit/zgorig+breit.z80
+./db/2128ac8fbed268e760cc2df576d980d2-SCHIESSBUDE/SCHIESSBUDE.z80
+./db/25fa3cab3b66d9ac9b2e1b25bc00fc34-wizard_ang/wizard_ang.z80
+./db/26455e9618c8d20a53d90ec185c3505a-scp_2rf_2_38_doc/scp_2rf_2_38_doc.txt
+./db/26455e9618c8d20a53d90ec185c3505a-scp_2rf_2_38_doc/scp_2rf_2_38_doc.z80
+./db/26a7292133036e2795c32674093300c9-assembler_5_3_I/assembler_5_3_I.txt
+./db/26a7292133036e2795c32674093300c9-assembler_5_3_I/assembler_5_3_I.z80
+./db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/jkcemu.gif
+./db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/kc_basic_m+.z80
+./db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/screenshot_01.png
+./db/2b79807c7ef3e2d87d98d4911995dbbd-galaxis+prJ/galaxis+prJ.z80
+./db/2cae3816b75d7c877e573c0bdc0062b5-oc_editor_4_1_I/oc_editor_4_1_I.txt
+./db/2cae3816b75d7c877e573c0bdc0062b5-oc_editor_4_1_I/oc_editor_4_1_I.z80
+./db/2d7a9a200ed1e1f344e61da19c933543-his__pascal_1_04/his__pascal_1_04.z80
+./db/2d7a9a200ed1e1f344e61da19c933543-his__pascal_1_04/pascal_1_i.doc.txt
+./db/374eb67967a2948f82b09bd6cb2ba8a9-ALADIN+J/ALADIN+J.z80
+./db/3880394d85b4f2270213eff306bc6216-u-boot/u-boot.z80
+./db/3d6fb742662480be4362d5c1386a95e5-tetris+prJ/tetris+prJ.z80
+./db/3f548188256c80c201be5eb2a48c7bf0-alf/alf.z80
+./db/40eaf15d723d89e7695e5a9445e2229e-miami+prJ/miami+prJ.z80
+./db/452c590ae916c40ee8be3ed486eb4279-ghost_hut+j/ghost_hut+j.z80
+./db/47ac5b223eb40f12728ccbee1e806c2e-z1013_forth_doc_I/z1013_forth_doc_I.txt
+./db/47ac5b223eb40f12728ccbee1e806c2e-z1013_forth_doc_I/z1013_forth_doc_I.z80
+./db/495129edca7979b7a228c8dca443b567-HINDERNISLAUF+J/HINDERNISLAUF+J.z80
+./db/4c14695729d76bce2f69adfe0eac75f1-AUTO+J/AUTO+J.z80
+./db/4c83963cfca689f47c5813c12e970fba-wall+j/wall+j.z80
+./db/4d17b007dc569594d85f2e14d5c7f3d8-mt4_6_doc/mt4_6_doc.txt
+./db/4d17b007dc569594d85f2e14d5c7f3d8-mt4_6_doc/mt4_6_doc.z80
+./db/4df50045ce689f42fe3c56f0de5ce676-PING_PONG/PING_PONG.z80
+./db/4e52988b7e48446fb41bc457785c6ac3-wall+prJ/wall+prJ.z80
+./db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/jkcemu.gif
+./db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/minefield.z80
+./db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/screenshot_01.png
+./db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/screenshot_02.png
+./db/51dc68d45ba32710900f14ea78cc4215-the_last_chance1/the_last_chance1.z80
+./db/522d05b0294bf46ba18ddb5304f1c76a-digger/digger.z80
+./db/522d05b0294bf46ba18ddb5304f1c76a-digger/jkcemu.gif
+./db/522d05b0294bf46ba18ddb5304f1c76a-digger/screenshot_01.png
+./db/522d05b0294bf46ba18ddb5304f1c76a-digger/screenshot_02.png
+./db/522d05b0294bf46ba18ddb5304f1c76a-digger/screenshot_03.png
+./db/5849394be28a5fa9e843ced911cd676a-cyrus_v_3_dt/cyrus_v_3_dt.z80
+./db/58d5584eacb0f5bb95208dc74bc042ae-graverobber+prJ/graverobber+prJ.z80
+./db/59fc467989b3b211c653d62c3b2aa285-rf_am_z1013/rf_am_z1013.txt
+./db/59fc467989b3b211c653d62c3b2aa285-rf_am_z1013/rf_am_z1013.z80
+./db/5b9cec8af8a707bb7cbc47cfde6d888d-hisoft_pascal_I/hisoft_pascal_I.txt
+./db/5b9cec8af8a707bb7cbc47cfde6d888d-hisoft_pascal_I/hisoft_pascal_I.z80
+./db/602a69f762181fc115b05b0145b4199b-jumping_jack+prJ/jumping_jack+prJ.z80
+./db/635f14dbd74d510b8915598a0fbe0356-galaktika+prJ/galaktika+prJ.z80
+./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jkcemu.gif
+./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80
+./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping__i.doc.txt
+./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/screenshot_01.png
+./db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/screenshot_02.png
+./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/jkcemu.gif
+./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/JUMPING-JACK.z80
+./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/jumping__i.doc.txt
+./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/screenshot_01.png
+./db/71e7473bef203f31b7c3f844166bd850-JUMPING-JACK/screenshot_02.png
+./db/75d967332d89fdcdddd6232970512a8d-beschr edas t2/beschr edas t2.txt
+./db/75d967332d89fdcdddd6232970512a8d-beschr edas t2/beschr edas t2.z80
+./db/786d4edbdb0e9f7a74cfdad54a68cefc-cosmic_ball/cosmic_ball.z80
+./db/7a4d3f8af84dcb0726b04c051d2e06fd-ohio_judith/ohio_judith.z80
+./db/7fa44466f2cf9cdd94182faf9bc6991c-the_last_chance3/the last chance3.z80
+./db/8055123eb539c021ed5d48cf64f94586-voice_dice/voice_dice.z80
+./db/8aa99a62c003cd7d767499cd8605ca56-schiessbude+prJ/schiessbude+prJ.z80
+./db/8e620d06eef21b01691026cfc6614830-chess_master_h_I/chess_master_h_I.txt
+./db/8e620d06eef21b01691026cfc6614830-chess_master_h_I/chess_master_h_I.z80
+./db/956e4d067515ec3a9083a16b32051c43-heartrunner+prJ/heartrunner+prJ.z80
+./db/9c96876368b9c7fd79980bec061560d8-edas_i.doc/edas_i.doc.txt
+./db/9c96876368b9c7fd79980bec061560d8-edas_i.doc/edas_i.doc.z80
+./db/9d218dd29b31e742aba5c505150a2a4e-aladin/aladin.z80
+./db/a521e46e82119809b12e29fe0a4f9c98-c_test_doc/c_test_doc.txt
+./db/a521e46e82119809b12e29fe0a4f9c98-c_test_doc/c_test_doc.z80
+./db/a7c929dc8f0a2d4c51e0c71e214895b0-laby_prJ/laby_prJ.z80
+./db/a91675b35f87b1f131f2bbe4db2ecb9b-mauer+prJ/mauer+prJ.z80
+./db/b10d8c886aff1ff78d45c70d2c96180c-edas_3_1/edas_3_1.z80
+./db/b8c97ca003ad9c3c961e72f0990b5718-demo_z1013_v1/demo_z1013_v1.z80
+./db/bd2ca052b27a8b364b0f038c0a713aea-boulderdash_1_0/boulderdash_1_0.z80
+./db/bdd805a74e20a7671261592bee1aebf6-leipzig_doc/leipzig_doc.txt
+./db/bdd805a74e20a7671261592bee1aebf6-leipzig_doc/leipzig_doc.z80
+./db/bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/jkcemu.gif
+./db/bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/joystick_demo.z80
+./db/bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/screenshot_01.png
+./db/c318e23b99cb8353a4ab5d494f64198d-WURMI/WURMI.z80
+./db/c5fd4cc8a1ac5bfcf154ba9a7f83fca4-kings_valley/kings_valley.z80
+./db/c7dd147108d05c5575f8872fd9987358-reaktor+prJ/reaktor+prJ.z80
+./db/c95a380b801fb90da730e5e189ad6b50-cowboy_s.edasASM/cowboy.txt
+./db/c95a380b801fb90da730e5e189ad6b50-cowboy_s.edasASM/cowboy_s.edasASM.z80
+./db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.bin
+./db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80
+./db/cd45bcb2865af839772f929810af4227-sokoban/sokoban.z80
+./db/cd5d4958779622b3e545ea0072d0a8db-zeichensatz/info.txt
+./db/cd5d4958779622b3e545ea0072d0a8db-zeichensatz/screenshot_01.png
+./db/cd5d4958779622b3e545ea0072d0a8db-zeichensatz/screenshot_02.png
+./db/cd5d4958779622b3e545ea0072d0a8db-zeichensatz/zeichensatz.z80
+./db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/3K+CRASH.z80
+./db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/jkcemu.gif
+./db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/screenshot_01.png
+./db/db41592e1ff9551f583f537b727c37bd-beschr edas t1/beschr edas t1.txt
+./db/db41592e1ff9551f583f537b727c37bd-beschr edas t1/beschr edas t1.z80
+./db/dbc2a1017cc1c21aec6f06566b130f51-r_80_doc_1_2/r_80_doc_1_2.txt
+./db/dbc2a1017cc1c21aec6f06566b130f51-r_80_doc_1_2/r_80_doc_1_2.z80
+./db/e23e3f9502a6b428d42fb88f5539eefa-wurmi_bro/wurmi_bro.z80
+./db/e2b0bd5ed5f1f063c34d7d7bfaa44f5c-edas.com/edas.com.z80
+./db/e4076a4c1394be5357fbe1746c6576ce-mazog+j/mazog+j.z80
+./db/e47db608460e1b2c182f61ad60bf974b-hexdump_1_021_I/hexdump_1_021_I.txt
+./db/e47db608460e1b2c182f61ad60bf974b-hexdump_1_021_I/hexdump_1_021_I.z80
+./db/e6c9f922dee443d81989a82e6e35bb8f-new_york+prJ/new_york+prJ.z80
+./db/e82e4344ad97062448b83e1d89fc2926-ladder_prJ/ladder_prJ.z80
+./db/ecaa82cdd9b23d9f9f8971b59b123726-voice_dice_autostart/voice_dice_autostart.z80
+./db/ed03e0be1d049a28f46fbe0de362ab6a-edas_a+d+h+ae_ub/edas_a+d+h+ae_ub.z80
+./db/ed03e0be1d049a28f46fbe0de362ab6a-edas_a+d+h+ae_ub/edas_i.doc.txt
+./db/f4e80cb63a5825206a098a61021243a5-edas_text/edas_text.z80
+./db/f7c9048bd060cc7dbc491893b4676fcc-encounter+prJ/encounter+prJ.z80
+./db/fc6d276a637b1c11ca4c8adae99736ca-solo_commotion/solo_commotion.z80
+./db/fdda4f9dfa412d18c09865a44a628019-fighter+prJ/fighter+prJ.z80
+./download/doc/files.txt
+./download/doc/k7669_1_scr.z80
+./download/doc/k7669_2_scr.z80
+./download/doc/k7669_3_scr.z80
+./download/doc/rom_disc_bild.z80
+./download/doc/tast1_scr.z80
+./download/doc/tast2_scr.z80
+./download/doc/tast3_scr.z80
+./download/doc/z1013_scr.z80
+./download/faq.txt
+./download/file.html
+./download/games/3d_muehle.z80
+./download/games/alzan.z80
+./download/games/auto.z80
+./download/games/auto_laby(900).z80
+./download/games/boalab.z80
+./download/games/boerse.z80
+./download/games/bohrturm.z80
+./download/games/box1.z80
+./download/games/centipede.z80
+./download/games/champion.z80
+./download/games/chaos(laeuft)g_a.z80
+./download/games/chess-master.z80
+./download/games/climber.z80
+./download/games/cyrus_header_v_3.z80
+./download/games/cyrus_v_2_dt.z80
+./download/games/demolation.z80
+./download/games/dicker.z80
+./download/games/egw.z80
+./download/games/eidechse_a_2.z80
+./download/games/encounter.z80
+./download/games/enterprise.z80
+./download/games/fighter_ls.z80
+./download/games/files.txt
+./download/games/flipper.z80
+./download/games/frogger.z80
+./download/games/fussball.z80
+./download/games/galactica.z80
+./download/games/ganymed.z80
+./download/games/geisterfahrer.z80
+./download/games/ghost+voice.z80
+./download/games/gost_hut.z80
+./download/games/graverobber.z80
+./download/games/hacker_com.z80
+./download/games/heartrunner.z80
+./download/games/heartrunner__bro.z80
+./download/games/helen.z80
+./download/games/hindernislauf.z80
+./download/games/huby_flie.z80
+./download/games/invasion.z80
+./download/games/invasion_2.z80
+./download/games/irrgarten.z80
+./download/games/jaeger.z80
+./download/games/katze_maus.z80
+./download/games/king_korr.z80
+./download/games/knossost_[b].z80
+./download/games/kraftfeld.z80
+./download/games/labyrinth.z80
+./download/games/labyrinth1.z80
+./download/games/ladder_8_4.z80
+./download/games/ladder_bas.z80
+./download/games/last_chance_iii.z80
+./download/games/lebenserwartung.z80
+./download/games/leipzig.z80
+./download/games/master_of_soft_1.z80
+./download/games/mauer.z80
+./download/games/mazog_deutsch.z80
+./download/games/memory.z80
+./download/games/miami.z80
+./download/games/minefild.z80
+./download/games/mondbasis.z80
+./download/games/monopoly.z80
+./download/games/new_york.z80
+./download/games/ohne_fleiss_k_pr.z80
+./download/games/oldkeyb/super_ski.z80
+./download/games/oldkeyb/vampi.z80
+./download/games/othello.z80
+./download/games/paravia.z80
+./download/games/parskat.z80
+./download/games/pilot.z80
+./download/games/puzzel.z80
+./download/games/pyramide(laeuft).z80
+./download/games/pyramide.z80
+./download/games/ratetier.z80
+./download/games/reaktor.z80
+./download/games/reise.z80
+./download/games/roulette_m_bild.z80
+./download/games/santa_paravia_1.z80
+./download/games/schach.z80
+./download/games/schatz.z80
+./download/games/schiffe.z80
+./download/games/skat.z80
+./download/games/slalom.z80
+./download/games/snake.z80
+./download/games/spiele_1.z80
+./download/games/star.z80
+./download/games/superdame.z80
+./download/games/superdame_b.z80
+./download/games/supertrucker_g&a.z80
+./download/games/tatum.z80
+./download/games/tennis.z80
+./download/games/tetris.z80
+./download/games/trap.z80
+./download/games/triplett.z80
+./download/games/turtle_player.z80
+./download/games/uboot.z80
+./download/games/ufo.z80
+./download/games/univers.z80
+./download/games/vampi.z80
+./download/games/vampir_f1.z80
+./download/games/voegeln(g&a).z80
+./download/games/wueste.z80
+./download/ghost.z80
+./download/hase_wolf.z80
+./download/history.txt
+./download/kc_basic_dump.z80
+./download/keyboard.gif
+./download/keyboard.z80
+./download/keyboard_pop.gif
+./download/king_keys.z80
+./download/ladder.z80
+./download/lang/23stueck.z80
+./download/lang/asm_soft_1_05.z80
+./download/lang/assembler_v_5_4.z80
+./download/lang/basic/12k_tdl++s3004.z80
+./download/lang/basic/13k-tpe-basic.z80
+./download/lang/basic/ABLEI           .Z80
+./download/lang/basic/adressen.z80
+./download/lang/basic/adressen_2.z80
+./download/lang/basic/afrika.z80
+./download/lang/basic/anaborea.z80
+./download/lang/basic/bascoder_test2_2.z80
+./download/lang/basic/bascon_test_2_0.z80
+./download/lang/basic/basic_a_old.z80
+./download/lang/basic/basic_comp.z80
+./download/lang/basic/basic_old.z80
+./download/lang/basic/basic_pset_sound.z80
+./download/lang/basic/c-test.z80
+./download/lang/basic/c_test.z80
+./download/lang/basic/cag_basicint.z80
+./download/lang/basic/chemiepruefung.z80
+./download/lang/basic/dev/softchef_0_9.z80
+./download/lang/basic/dev/softchef_m__hcb.z80
+./download/lang/basic/east/east26_2.z80
+./download/lang/basic/east/east30_5.z80
+./download/lang/basic/east/east30_6.z80
+./download/lang/basic/east/readme.txt
+./download/lang/basic/elektronik.z80
+./download/lang/basic/entropia.z80
+./download/lang/basic/fuss_71.z80
+./download/lang/basic/gammon.z80
+./download/lang/basic/gwbasic1_0.z80
+./download/lang/basic/hb9cv.z80
+./download/lang/basic/hc_bi_v__4_1.z80
+./download/lang/basic/kc-basic+.z80
+./download/lang/basic/kc_rom_basic+1_0.z80
+./download/lang/basic/kc_save.z80
+./download/lang/basic/kegeln.z80
+./download/lang/basic/kss.z80
+./download/lang/basic/load_kc_3e80_mc.z80
+./download/lang/basic/load_kc_ce80_mc.z80
+./download/lang/basic/main_kc_if.z80
+./download/lang/basic/rom_basic.z80
+./download/lang/basic/rombasic_v2.z80
+./download/lang/basic/tiny+main_4_6_4.z80
+./download/lang/basic/tpe_basic.z80
+./download/lang/basic/trafo.z80
+./download/lang/basic/willi.z80
+./download/lang/call_rst_a.z80
+./download/lang/call_rst_f.z80
+./download/lang/debug_3_02.z80
+./download/lang/debugger.z80
+./download/lang/debugger_v2arb.z80
+./download/lang/ed81.z80
+./download/lang/ed81_v2_2.z80
+./download/lang/emr_reass.z80
+./download/lang/EXREAS 2.01     .Z80
+./download/lang/exreas_2_01.z80
+./download/lang/files.txt
+./download/lang/forth/extended_forth.z80
+./download/lang/forth/z1013_forth.z80
+./download/lang/gens3m.z80
+./download/lang/gens_assembler.z80
+./download/lang/hex_ascii_dump_o.z80
+./download/lang/hex_ascii_dump_u.z80
+./download/lang/HISOFT-PASCAL   .Z80
+./download/lang/hisoft-pascal.z80
+./download/lang/oc_editor_4_0.z80
+./download/lang/oc_editor_4_1.z80
+./download/lang/pascal/ausgleich.z80
+./download/lang/pascal/ENQUIRY         .Z80
+./download/lang/pascal/enquiry.z80
+./download/lang/pascal/fehlberg.z80
+./download/lang/pascal/graph.z80
+./download/lang/pascal/hisoft_pascal1_3.z80
+./download/lang/pascal/kurve_graf.z80
+./download/lang/pascal/mastermind1_P.z80
+./download/lang/pascal/mastermind2_C.z80
+./download/lang/pascal/mastermind2_P.z80
+./download/lang/pascal/mathe_frank.z80
+./download/lang/pascal/matrix.z80
+./download/lang/pascal/newton2.z80
+./download/lang/pascal/PASCAL-TEACH    .Z80
+./download/lang/pascal/pascal_teach.z80
+./download/lang/pse+line.z80
+./download/lang/r_80_spv.z80
+./download/lang/reass+display.z80
+./download/lang/reass.z80
+./download/lang/reassembler.z80
+./download/lang/reassembler_0ff0.z80
+./download/lang/rst_20_wandlung.z80
+./download/lang/speicherservice.z80
+./download/lang/speicherservice_100.z80
+./download/lang/texed__6_1_scf.z80
+./download/lang/tool_v1_1.z80
+./download/lang/tool_v1_1_u.z80
+./download/lang/z1013_forth.z80
+./download/load.gif
+./download/main_1.gif
+./download/main_2.gif
+./download/main_pop.gif
+./download/MANUAL.html
+./download/minefield_keys.z80
+./download/monitor.z80
+./download/nu/$_feld_brotast.z80
+./download/nu/2mhz___1mhz_s_l.z80
+./download/nu/ac_1_tape_v_7.z80
+./download/nu/centronic_druck.z80
+./download/nu/crc_pruef.z80
+./download/nu/datex.z80
+./download/nu/demolation_joy.z80
+./download/nu/disassembler.z80
+./download/nu/dru_3_2.z80
+./download/nu/dru_3_3.z80
+./download/nu/dumpx.z80
+./download/nu/eprommer_2_9_ccl.z80
+./download/nu/eprommer_2_9_igd.z80
+./download/nu/files.txt
+./download/nu/HCOPY           .Z80
+./download/nu/hcopy(k_6320).z80
+./download/nu/hcopy_2_rb_mon.z80
+./download/nu/header_menue_4.z80
+./download/nu/header_soft_2.z80
+./download/nu/headerbank_zeit.z80
+./download/nu/headermenu_v4bek.z80
+./download/nu/headerprint_1_1.z80
+./download/nu/HEADERSAVE 5.95 .Z80
+./download/nu/headersave_5_95.z80
+./download/nu/headersave_gv.z80
+./download/nu/headerwrite_1_0.z80
+./download/nu/joyinit/init_joyst.z80
+./download/nu/joyinit/j1.z80
+./download/nu/joyinit/j10.z80
+./download/nu/joyinit/j11.z80
+./download/nu/joyinit/j12.z80
+./download/nu/joyinit/j_8.z80
+./download/nu/joyinit/j_9.z80
+./download/nu/joyinit/jo1.z80
+./download/nu/joyinit/jo10.z80
+./download/nu/joyinit/jo13.z80
+./download/nu/joyinit/jo16.z80
+./download/nu/joyinit/jo18.z80
+./download/nu/joyinit/jo2.z80
+./download/nu/joyinit/jo20.z80
+./download/nu/joyinit/jo21.z80
+./download/nu/joyinit/jo33.z80
+./download/nu/joyinit/jo4.z80
+./download/nu/joyinit/jo5.z80
+./download/nu/joyinit/jo8.z80
+./download/nu/joyinit/jo9.z80
+./download/nu/joyinit/jo_11.z80
+./download/nu/joyinit/jo_12.z80
+./download/nu/joyinit/jo_14.z80
+./download/nu/joyinit/jo_15.z80
+./download/nu/joyinit/jo_3.z80
+./download/nu/joyinit/jo_6.z80
+./download/nu/joyinit/joy_5.z80
+./download/nu/joyinit/joy_6.z80
+./download/nu/joyinit/joy_7.z80
+./download/nu/joyinit/joyinit.z80
+./download/nu/joyinit/joyinit______fek.z80
+./download/nu/joyinit/joyinit_v_2.1.z80
+./download/nu/joyinit/joyinit_v_2.z80
+./download/nu/KC87-_1013 MC   .Z80
+./download/nu/logicanalysor_sc.z80
+./download/nu/mainsave_4_6_4.z80
+./download/nu/maintape_4_6.z80
+./download/nu/maintape_4_6_4.z80
+./download/nu/monitor-rom/4k_mon_k7652.z80
+./download/nu/monitor-rom/4k_monitor.z80
+./download/nu/monitor-rom/INCOM.XXX       .Z80
+./download/nu/monitor-rom/k7669_brennfer.z80
+./download/nu/monitor-rom/mon_neu.z80
+./download/nu/monitor-rom/monitorerweiter.z80
+./download/nu/monitor-rom/prof__mon.z80
+./download/nu/monitor-rom/rb+.z80
+./download/nu/oel.z80
+./download/nu/orgel_32.z80
+./download/nu/orgel_8.z80
+./download/nu/r_t_t_y_ohne_txt.z80
+./download/nu/recorderjustage.z80
+./download/nu/rtty.z80
+./download/nu/spektrum_s_l.z80
+./download/nu/sprache.z80
+./download/nu/Systemuhr o. CTC(1).Z80
+./download/nu/Systemuhr o. CTC(2).Z80
+./download/nu/tapelist.z80
+./download/nu/turbo_headerm.z80
+./download/nu/video_list.z80
+./download/nu/voice_dump.z80
+./download/nu/zaehlermodul.z80
+./download/oldkeys.z80
+./download/original.z80
+./download/perfwn.gif
+./download/s01_a/3k basic int.z80
+./download/s01_a/3k-bas_h-save_sv.z80
+./download/s01_a/basic 3_75k v4_0.z80
+./download/s01_a/hc-basic kc87_z.z80
+./download/s01_a/hc-basic m_h_.z80
+./download/s01_a/hc-basic org.z80
+./download/s01_a/hc-basic+hedi.z80
+./download/s01_a/hdiskcopy 1_5(i).z80
+./download/s01_a/hdiskcopy_1_6.1.z80
+./download/s01_a/header-bank-copy.z80
+./download/s01_a/header-menue.z80
+./download/s01_a/headersave 5_95.z80
+./download/s01_a/kc-basic+ a_2_hs.z80
+./download/s01_a/mainsave 4_6_4.z80
+./download/s01_a/maintap_4_6_4_16.z80
+./download/s01_a/maintape 4_6.z80
+./download/s01_a/maintape 4_6_4_m.z80
+./download/s01_a/maintp_4_6_4_64k.z80
+./download/s01_a/tiny+main 4_6_4.z80
+./download/s01_a/tiny-basic org.z80
+./download/s01_b/forth as5.z80
+./download/s01_b/forth_doc-t1.z80
+./download/s01_b/forth_doc-t2.z80
+./download/s01_b/forth_doc-t3.z80
+./download/s01_b/his-pascal 12.z80
+./download/s01_b/sedit 1.z80
+./download/s01_b/sedit-doc 5_89.z80
+./download/s02_a/64-zeichen-bs.z80
+./download/s02_a/bros_mon+tastat_.z80
+./download/s02_a/copy_doc.z80
+./download/s02_a/cp_a 98pd beschr.z80
+./download/s02_a/cp_a_com 98pd.z80
+./download/s02_a/cpm-2rf lauffae.z80
+./download/s02_a/elektion_com.z80
+./download/s02_a/eprom-handl_2_9.z80
+./download/s02_a/eprom-prog_1_25.z80
+./download/s02_a/head_disk 45_me(2).z80
+./download/s02_a/head_disk 45_me(i).z80
+./download/s02_a/head_disk 45_me.z80
+./download/s02_a/headerdisk 45(1).z80
+./download/s02_a/headerdisk 45(2).z80
+./download/s02_a/headerdisk 45(3).z80
+./download/s02_a/headerdisk 45(4).z80
+./download/s02_a/headerprint 1_1(2).z80
+./download/s02_a/headerprint 1_1.z80
+./download/s02_a/rf-test 5_0.z80
+./download/s02_a/rf_am_z1013.doc.z80
+./download/s02_a/scp-2rf 2_40m(i).z80
+./download/s02_a/scp-2rf 2_40m.z80
+./download/s02_b/bascoder+demo.z80
+./download/s02_b/basicode_mod.z80
+./download/s02_b/caps min.z80
+./download/s02_b/copy z1013.z80
+./download/s02_b/cpa64_com.z80
+./download/s02_b/kontenfuehrung.z80
+./download/s02_b/makedir.z80
+./download/s02_b/monitor 1_31.z80
+./download/s02_b/nsweep_com.z80
+./download/s02_b/rf-sichttest 3_6.z80
+./download/s02_b/sauger_com.z80
+./download/s02_b/sauger_pas.z80
+./download/s02_b/scp f_moni 1_31.z80
+./download/s02_b/stopuhr.z80
+./download/s02_b/turbosave.z80
+./download/s03_a/cosmic ball.z80
+./download/s03_a/fahrschule.z80
+./download/s03_a/goldkeller.z80
+./download/s03_a/joker(m) 2_02.z80
+./download/s03_b/astrojaeger.z80
+./download/s03_b/boerse.z80
+./download/s03_b/cp_m.z80
+./download/s03_b/ctc systemuhr.z80
+./download/s03_b/dez-roem.z80
+./download/s03_b/ghost voice.z80
+./download/s03_b/heade-trans.z80
+./download/s03_b/header-menue 4.z80
+./download/s03_b/init-header.z80
+./download/s03_b/kutscherspiel.z80
+./download/s03_b/load z9001 mc.z80
+./download/s03_b/melodieprogramm.z80
+./download/s03_b/peng 3_1.z80
+./download/s03_b/pilot 5_2.z80
+./download/s03_b/pilot 6_0.z80
+./download/s03_b/simu spectrum.z80
+./download/s03_b/speicherservice.z80
+./download/s03_b/spektrum-lader.z80
+./download/s03_b/standardadressen.txt
+./download/s03_b/verschiebepr.z80
+./download/s04_a/64k-bascoder_txt.z80
+./download/s04_a/64k-basicode 2_1.z80
+./download/s04_a/debug 1.z80
+./download/s04_a/debug 2.z80
+./download/s04_a/f83 1_3 bcb2.z80
+./download/s04_a/get_put orig_br.z80
+./download/s04_a/go.z80
+./download/s04_a/hdiskcopy 1_61.z80
+./download/s04_a/headersave 5_95o.z80
+./download/s04_a/headersave 5_95u.z80
+./download/s04_a/hymnen.z80
+./download/s04_a/kc-basic m1 (c).z80
+./download/s04_a/kc85_1-load.z80
+./download/s04_a/kc85_1-save.z80
+./download/s04_a/lied.z80
+./download/s04_a/lotto-analyse.z80
+./download/s04_a/lotto-simulation.z80
+./download/s04_a/melodiegong.z80
+./download/s04_a/melodieprogramm.z80
+./download/s04_a/memory_c.z80
+./download/s04_a/microword_1_5gs1.z80
+./download/s04_a/monlist.z80
+./download/s04_a/sedit 2.z80
+./download/s04_a/wizard of danger.z80
+./download/s04_a/z1013_lit.doc.z80
+./download/s04_a/z80 - forth as1.z80
+./download/s04_a/z80 - forth as2.z80
+./download/s04_a/z80 - forth as3.z80
+./download/s04_a/z80 - forth as4.z80
+./download/s04_a/z80 - forth as5.z80
+./download/s04_a/z80 - forth as6.z80
+./download/s04_b/4k-mon k7652.z80
+./download/s04_b/ac1=z1013.txt
+./download/s04_b/debugger doc.z80
+./download/s04_b/druck-tast s3004.z80
+./download/s04_b/eprom-besch_1_25.z80
+./download/s04_b/eprom-handler2_9.z80
+./download/s04_b/eprom_dok_ccl.z80
+./download/s04_b/f83 1_3 glo 1.z80
+./download/s04_b/f83 1_3 glo 2.z80
+./download/s04_b/f83 1_3 glo 3.z80
+./download/s04_b/headersave.z80
+./download/s04_b/instal 5_89.z80
+./download/s04_b/kc-basic m1.z80
+./download/s04_b/kc-save_load.z80
+./download/s04_b/ladder_c.com.z80
+./download/s04_b/ladder_i.doc.z80
+./download/s04_b/mikroword s3004.z80
+./download/s04_b/moner su 1_31.z80
+./download/s04_b/monlist_i.doc.txt
+./download/s04_b/monlist_i.doc.z80
+./download/s04_b/mword+asm+tc1.z80
+./download/s04_b/mword+asm_alpha.z80
+./download/s04_b/mword_alpha.z80
+./download/s04_b/rst20_i.doc.txt
+./download/s04_b/rst20_i.doc.z80
+./download/s04_b/schlange.z80
+./download/s04_b/schlange_i.doc.z80
+./download/s04_b/sedit-doc 5_89.z80
+./download/s04_b/super-ski.z80
+./download/s04_b/super_sk_i.doc.z80
+./download/s04_b/z1013_surl50_rom.z80
+./download/s05_a/basicode-info.z80
+./download/s05_a/bc-3 testjournal.z80
+./download/s05_a/bios12v16.asm
+./download/s05_a/bios12v16.z80
+./download/s05_a/ccp+bios12v_16.z80
+./download/s05_a/dc-monitor.z80
+./download/s05_a/druck-tast s3004.z80
+./download/s05_a/ed81  v2_1(i).z80
+./download/s05_a/ed81  v2_1.z80
+./download/s05_a/f83 1_3 glo 4.z80
+./download/s05_a/f83 1_3 glo 5.z80
+./download/s05_a/f83 1_3 glo 6.z80
+./download/s05_a/form12v_16(m).z80
+./download/s05_a/form12v_16.asm
+./download/s05_a/form12v_16.z80
+./download/s05_a/hdiskcopy 1_5.z80
+./download/s05_a/headerdisk_45.doc.z80
+./download/s05_a/hinweise disk.z80
+./download/s05_a/kc-rom-basic+1_0.txt
+./download/s05_a/kc_basicplus.doc.z80
+./download/s05_a/labyrinth2.z80
+./download/s05_a/mword+asm.z80
+./download/s05_a/r_80_doc_1_3.doc.z80
+./download/s05_a/scp_2rf_doc.doc.z80
+./download/s05_a/status i_o-adr 4(i).txt
+./download/s05_a/status i_o-adr 4(i).z80
+./download/s05_a/status i_o-adr 4.z80
+./download/s05_a/uni-copy 4_2+.z80
+./download/s05_a/uni-copy 4_2.z80
+./download/s05_a/z1013-surl v5_0.txt
+./download/s05_a/z1013-surl v5_0.z80
+./download/s05_b/64_zeichen_bs.doc.txt
+./download/s05_b/assembler 5_3 nf.z80
+./download/s05_b/bs-text klub.z80
+./download/s05_b/dr_trb_ s 3004.z80
+./download/s05_b/epr_prog_geraet.txt
+./download/s05_b/eprom-handler.z80
+./download/s05_b/headerwrite 1_0.z80
+./download/s05_b/kas_list-klub.z80
+./download/s05_b/kc-basic+ new.z80
+./download/s05_b/logikanalysator.z80
+./download/s05_b/oc-editor_doc _.z80
+./download/s05_b/r80 rb new 1_3.txt
+./download/s05_b/r80 rb new 1_3.z80
+./download/s05_b/sprungvert_u_a_.htm
+./download/s05_b/sprungvert_u_a_.z80
+./download/s05_b/z1013-info klub.txt
+./download/s05_b/z1013_surl_doc.txt
+./download/s06_a/boerse 3.z80
+./download/s06_a/brun_com.z80
+./download/s06_a/demo 2 z1013.z80
+./download/s06_a/digitaluhr.z80
+./download/s06_a/funktion.z80
+./download/s06_a/fussball.z80
+./download/s06_a/g-algol.z80
+./download/s06_a/hund 1.z80
+./download/s06_a/kc-basic org_dru.z80
+./download/s06_a/kc-basic-drucker.z80
+./download/s06_a/keyword(opal).z80
+./download/s06_a/kundendatei.z80
+./download/s06_a/lec_1.z80
+./download/s06_a/lib     _com.z80
+./download/s06_a/licht(pio).z80
+./download/s06_a/morse.z80
+./download/s06_a/motor.z80
+./download/s06_a/musikdatei.z80
+./download/s06_a/muster.z80
+./download/s06_a/opv_1.z80
+./download/s06_a/puzzle.z80
+./download/s06_a/rallye.z80
+./download/s06_a/roboter demo.z80
+./download/s06_a/s 3004.z80
+./download/s06_a/s3004-druck.z80
+./download/s06_a/s3004-z1013-tast.z80
+./download/s06_a/scp-centronic.z80
+./download/s06_a/sepak 2_1_s3004.z80
+./download/s06_a/soft-zaehler.z80
+./download/s06_a/speicherservice.z80
+./download/s06_a/sporttabelle.z80
+./download/s06_a/tabelle.z80
+./download/s06_a/trafo m_l.z80
+./download/s06_a/tu 144 2_02.z80
+./download/s06_a/ufo-angriff.z80
+./download/s06_a/up-joystik.z80
+./download/s06_a/zahlen.z80
+./download/s06_a/zylinderspule.z80
+./download/s06_b/10k_basic s_ps.z80
+./download/S07_A/3k-)10k-basic.z80
+./download/S07_A/autoeditex.z80
+./download/S07_A/basic tips.z80
+./download/S07_A/beschr_datenbank.z80
+./download/S07_A/CCL-Grafik soFT.z80
+./download/S07_A/COMP-OSZI.z80
+./download/S07_A/copy z1013.z80
+./download/S07_A/DATENBANK.z80
+./download/S07_A/datex.z80
+./download/S07_A/debugger_a-2.z80
+./download/S07_A/display  rz-soft.z80
+./download/S07_A/Display.z80
+./download/S07_A/dvm 2_89 us_sof.z80
+./download/S07_A/floor.z80
+./download/S07_A/fzg+s 3004 soft instr.z80
+./download/S07_A/fzg+s 3004 soft.z80
+./download/S07_A/GEDIT 2_24 prog.z80
+./download/S07_A/GEDIT 2_24.z80
+./download/S07_A/header-bank + t.z80
+./download/S07_A/header-bank +.z80
+./download/S07_A/header-bank zeit.z80
+./download/S07_A/headerbank zeit.z80
+./download/S07_A/headerdisk 45 prog.z80
+./download/S07_A/headerdisk 45.z80
+./download/S07_A/headerprint_pioa.z80
+./download/S07_A/headerwrite 1_0.z80
+./download/S07_A/ic-test.z80
+./download/S07_A/kass-list.z80
+./download/S07_A/MicroWORD DRAKK.z80
+./download/S07_A/nf-modul.z80
+./download/S07_A/rakete.z80
+./download/S07_A/s 3004 280289.txt
+./download/S07_A/s 3004 ft 280289.z80
+./download/S07_A/s 3004 soft 1_90.z80
+./download/S07_A/s 3004 soft 1_90_instr.txt
+./download/S07_A/s 3004 soft deut.z80
+./download/S07_A/s 3004 t.z80
+./download/S07_A/s 3004.z80
+./download/S07_A/s3004 soft 81289.z80
+./download/S07_A/s3004 soft 81289_c.z80
+./download/S07_A/sex.z80
+./download/S07_A/test s 3004 soft.z80
+./download/S07_A/turm v babel.z80
+./download/S07_A/up 3k-)10k.z80
+./download/S07_A/z1013.z80
+./download/S07_A/ZKM.z80
+./download/S07_b/airlines.z80
+./download/S07_b/anaborea.z80
+./download/S07_b/arktis.z80
+./download/S07_b/bolderdash.z80
+./download/S07_b/case.z80
+./download/S07_b/du_com.z80
+./download/S07_b/fehlberg.z80
+./download/S07_b/feld.z80
+./download/S07_b/graph.z80
+./download/S07_b/luftkampf.z80
+./download/S07_b/mienenfeld.z80
+./download/S07_b/multi beispiel.z80
+./download/S07_b/multitask1.z80
+./download/S07_b/multitask2.z80
+./download/S07_b/polynom.z80
+./download/S07_b/river raid.z80
+./download/S07_b/sdi+mc.z80
+./download/S07_b/see 1.z80
+./download/S07_b/see 2.z80
+./download/S07_b/see 3.z80
+./download/S07_b/tetris.z80
+./download/S07_b/tp_com z1013.z80
+./download/S07_b/tpdruck_ovr.z80
+./download/S07_b/tpht_ovr.z80
+./download/S07_b/tpovly1_ovr.z80
+./download/S07_b/tpsv_com.z80
+./download/S07_b/turbo_com z1013.z80
+./download/S07_b/turbo_msg.z80
+./download/S07_b/turbo_ovr.z80
+./download/S07_b/vogeljagd.z80
+./download/S08_a(CPM)/asm_com.z80
+./download/S08_a(CPM)/cp-a beschreib_doc.z80
+./download/S08_a(CPM)/cp-m.z80
+./download/S08_a(CPM)/du_com doc.z80
+./download/S08_a(CPM)/link_com doc.z80
+./download/S08_a(CPM)/linkmt_com.z80
+./download/S08_a(CPM)/power-doc.z80
+./download/S08_a(CPM)/tp_doc.z80
+./download/S08_a(CPM)/wordstarinst_doc.z80
+./download/S08_a(CPM)/ws_com        55.z80
+./download/S08_a(CPM)/wsmsgs_ovr  110.z80
+./download/S08_a(CPM)/wsovly1_ovr 111.z80
+./download/S08_a(CPM)/wssv_com      3.z80
+./download/S08_b/1x1.z80
+./download/S08_b/ad-1kanal.z80
+./download/S08_b/adressen_telefon.z80
+./download/S08_b/ascii.z80
+./download/S08_b/auslese.z80
+./download/S08_b/automat.z80
+./download/S08_b/basic tips.z80
+./download/S08_b/billard.z80
+./download/S08_b/boerse.z80
+./download/S08_b/bremswegtabelle.z80
+./download/S08_b/c-test.z80
+./download/S08_b/cad-spiel.z80
+./download/S08_b/cave.z80
+./download/S08_b/chaos(laeuft)g_a.z80
+./download/S08_b/chaos.z80
+./download/S08_b/climber 3.z80
+./download/S08_b/climber.z80
+./download/S08_b/ddr.z80
+./download/S08_b/dezimal-binaerza.z80
+./download/S08_b/dezimal-roemzahl.z80
+./download/S08_b/digitaluhr.z80
+./download/S08_b/eliza.z80
+./download/S08_b/entern.z80
+./download/S08_b/fabas.z80
+./download/S08_b/fahrschule.z80
+./download/S08_b/floor.z80
+./download/S08_b/flug 110.z80
+./download/S08_b/galtonbrett.z80
+./download/S08_b/gammon.z80
+./download/S08_b/ganymed.z80
+./download/S08_b/gedicht.z80
+./download/S08_b/gewicht.z80
+./download/S08_b/halma.z80
+./download/S08_b/hase+wolf.z80
+./download/S08_b/hex-dez-uni v2.z80
+./download/S08_b/hex-dez-uni.z80
+./download/S08_b/horoscope.z80
+./download/S08_b/invasion.z80
+./download/S08_b/irrgarten.z80
+./download/S08_b/jagd.z80
+./download/S08_b/kegeln.z80
+./download/S08_b/komba.z80
+./download/S08_b/kontenfuehrung.z80
+./download/S08_b/kurzzeitgedaecht.z80
+./download/S08_b/lager.z80
+./download/S08_b/wer passt zu wem.z80
+./download/s09_a/laufschrift.z80
+./download/s09_a/lebenserwartung.z80
+./download/s09_a/lec.z80
+./download/s09_a/leiter.z80
+./download/s09_a/lichtorgel.z80
+./download/s09_a/mancala.z80
+./download/s09_a/mars.z80
+./download/s09_a/mathetraining.z80
+./download/s09_a/mau 2.z80
+./download/s09_a/memory.z80
+./download/s09_a/michael.z80
+./download/s09_a/mondlandung.z80
+./download/s09_a/muster.z80
+./download/s09_a/ogino_knaus.z80
+./download/s09_a/opv-add_sub netz.z80
+./download/s09_a/othello-new.z80
+./download/s09_a/pixelgrafik.z80
+./download/s09_a/poker.z80
+./download/s09_a/pong.z80
+./download/s09_a/prognose.z80
+./download/s09_a/push.z80
+./download/s09_a/puzzle.z80
+./download/s09_a/pyramide(laueft).z80
+./download/s09_a/pythagoras.z80
+./download/s09_a/radius.z80
+./download/s09_a/rakete.z80
+./download/s09_a/rallye.z80
+./download/s09_a/reaktor.z80
+./download/s09_a/rechteck.z80
+./download/s09_a/roemisch-dezimal.z80
+./download/s09_a/rostock.z80
+./download/s09_a/roulette.z80
+./download/s09_a/scherzfragen 1.z80
+./download/s09_a/scherzfragen 2.z80
+./download/s09_a/sinus.z80
+./download/s09_a/sort 2.z80
+./download/s09_a/spiel-box 1.z80
+./download/s09_a/sporttabelle.z80
+./download/s09_a/sterne.z80
+./download/s09_a/stichwortverz.z80
+./download/s09_a/summe.z80
+./download/s09_a/supertrucker.z80
+./download/s09_a/tabkalk.z80
+./download/s09_b/kc basic pctrans.z80
+./download/s09_b/tdl basic pctran.z80
+./download/s09_b/tedit 9 pc trans.z80
+./download/s09_b/trafo m_ei.z80
+./download/s09_b/trafo.z80
+./download/s09_b/uebersicht 1_4.z80
+./download/s09_b/uni-datenbank.z80
+./download/s09_b/uni-mathe.z80
+./download/s09_b/user-plot+demo.z80
+./download/s09_b/user-plot_bild.z80
+./download/s09_b/usr-plot beisp.z80
+./download/s09_b/vokabeln.z80
+./download/s09_b/wildsau.z80
+./download/s09_b/wuerfelspiel.z80
+./download/s09_b/yoyo.z80
+./download/s09_b/zylinderspule.z80
+./download/s11 Infos+Beschreibungen A/basicode-info.z80
+./download/s11 Infos+Beschreibungen A/druck-tast s3004.txt
+./download/s11 Infos+Beschreibungen A/druck-tast s3004.z80
+./download/s11 Infos+Beschreibungen A/ed81 v2_1.z80
+./download/s11 Infos+Beschreibungen A/f83 1_3 glo 3.z80
+./download/s11 Infos+Beschreibungen A/f83 1_3 glo 4.z80
+./download/s11 Infos+Beschreibungen A/f83 1_3 glo 5.z80
+./download/s11 Infos+Beschreibungen A/f83 1_3 glo 6.z80
+./download/s11 Infos+Beschreibungen A/f83 1_3 glo1.z80
+./download/s11 Infos+Beschreibungen A/f83 1_3 glo2.z80
+./download/s11 Infos+Beschreibungen A/hdiskcopy 1_5.z80
+./download/s11 Infos+Beschreibungen A/hinweise disk.txt
+./download/s11 Infos+Beschreibungen A/hinweise disk.z80
+./download/s11 Infos+Beschreibungen A/kc-rom-basic+1_0.z80
+./download/s11 Infos+Beschreibungen A/moner su 1_31 k.z80
+./download/s11 Infos+Beschreibungen A/mword+asm.z80
+./download/s11 Infos+Beschreibungen A/status i_o-adr 4.txt
+./download/s11 Infos+Beschreibungen A/uni-copy 4_2.z80
+./download/s11 Infos+Beschreibungen A/z1013-surl v5_0.z80
+./download/s11 Infos+Beschreibungen B/k7669 an z 1013.txt
+./download/s23 Eprominhalte Beschr A/4k-moni k7669.z80
+./download/s23 Eprominhalte Beschr A/4k-moni-k7652.z80
+./download/s23 Eprominhalte Beschr A/4k-moni-k7659.z80
+./download/s23 Eprominhalte Beschr A/8k-basic-kern.z80
+./download/s23 Eprominhalte Beschr A/headersave 5_95(2).z80
+./download/s23 Eprominhalte Beschr A/moner su 1_31.z80
+./download/s23 Eprominhalte Beschr A/z1013_surl50_rom.z80
+./download/s23 Eprominhalte Beschr A/z1013_surl_3_00.z80
+./download/s23 Eprominhalte Beschr A/zg 1013 org.z80
+./download/s23 Eprominhalte Beschr B/ccl epromer_pio.z80
+./download/s23 Eprominhalte Beschr B/ep_prog_g_1_25.z80
+./download/s23 Eprominhalte Beschr B/epr_prog_geraet.txt
+./download/s23 Eprominhalte Beschr B/epr_prog_geraet.z80
+./download/s23 Eprominhalte Beschr B/eprom prog.z80
+./download/s23 Eprominhalte Beschr B/eprom-handl_2_9.txt
+./download/s23 Eprominhalte Beschr B/eprom-handl_2_9.z80
+./download/s23 Eprominhalte Beschr B/eprom-handler.z80
+./download/s23 Eprominhalte Beschr B/epromer 2_9_igd.z80
+./download/s23 Eprominhalte Beschr B/uni-textleser.z80
+./download/scr_digger.gif
+./download/scr_hawo.gif
+./download/scr_ladder.gif
+./download/scr_sokoban.gif
+./download/screen.html
+./download/skat.z80
+./download/sonst/basicramdisk3_5.z80
+./download/sonst/bild_master.z80
+./download/sonst/btx+info.z80
+./download/sonst/byte_ersetzen.z80
+./download/sonst/charset/ibm_zg+din.z80
+./download/sonst/charset/original.z80
+./download/sonst/charset/zeicheneditor_32.z80
+./download/sonst/charset/ZG-INCOM        .Z80
+./download/sonst/charset/zg_m_uml_+inv.z80
+./download/sonst/charset/ZGORIG+BREIT    .Z80
+./download/sonst/copy64___com.z80
+./download/sonst/cp_a_com_200pd.z80
+./download/sonst/cp_a_com_98pd.z80
+./download/sonst/cpm_2rf_2_50m.z80
+./download/sonst/demo_z1013.z80
+./download/sonst/editex+header.z80
+./download/sonst/enter_version.z80
+./download/sonst/files.txt
+./download/sonst/gedit_1_22.z80
+./download/sonst/gedit_2_24.z80
+./download/sonst/hdiskcopy_1_3.z80
+./download/sonst/hdiskcopy_1_6.z80
+./download/sonst/headerdisk_45.z80
+./download/sonst/hramdiskauto18_5.z80
+./download/sonst/hundi13.z80
+./download/sonst/kino.z80
+./download/sonst/memorytest_1.z80
+./download/sonst/memorytest_2.z80
+./download/sonst/microword.z80
+./download/sonst/microword_1_519o.z80
+./download/sonst/microword_1_520u.z80
+./download/sonst/microword_1_5_16.z80
+./download/sonst/microword_1_5_ei.z80
+./download/sonst/microword_1_5_f3.z80
+./download/sonst/microword_1_5gv1.z80
+./download/sonst/mons3_2.z80
+./download/sonst/olidat_2_3.z80
+./download/sonst/ram_&_pio_test.z80
+./download/sonst/ram_floppy_test.z80
+./download/sonst/rf_test_4_4.z80
+./download/sonst/rf_test_5_0.z80
+./download/sonst/scp+f800.z80
+./download/sonst/scp_2rf_2_38m.z80
+./download/sonst/scp_2rf_2_40m.z80
+./download/sonst/speichertest.z80
+./download/sonst/tedit_9_0.z80
+./download/sonst/uni_textleser.z80
+./download/sonst/wsconvert3.z80
+./download/star_trek.z80
+./download/Tagung Jena 1991 Seite A/4k-mon vp 3.z80
+./download/Tagung Jena 1991 Seite A/centro g+.txt
+./download/Tagung Jena 1991 Seite A/centro g+.z80
+./download/Tagung Jena 1991 Seite A/centronics 15_7.txt
+./download/Tagung Jena 1991 Seite A/centronics.z80
+./download/Tagung Jena 1991 Seite A/cyrus v_2_dt.z80
+./download/Tagung Jena 1991 Seite A/datenbank-6.z80
+./download/Tagung Jena 1991 Seite A/galactika.z80
+./download/Tagung Jena 1991 Seite A/hase & wolf.z80
+./download/Tagung Jena 1991 Seite A/header 5_95-16kb.z80
+./download/Tagung Jena 1991 Seite A/headersave 5_95.z80
+./download/Tagung Jena 1991 Seite A/headersave 5_95_2.z80
+./download/Tagung Jena 1991 Seite A/kc-basic+ m1.z80
+./download/Tagung Jena 1991 Seite A/kings-valley.z80
+./download/Tagung Jena 1991 Seite A/melodie.z80
+./download/Tagung Jena 1991 Seite A/microword 1_5 vp.z80
+./download/Tagung Jena 1991 Seite A/MICROWORD 1_5GV1.z80
+./download/Tagung Jena 1991 Seite A/mon 2_029 k7659.z80
+./download/Tagung Jena 1991 Seite A/mon 2_029 k7669.z80
+./download/Tagung Jena 1991 Seite A/oel.z80
+./download/Tagung Jena 1991 Seite A/rubic's cubes.z80
+./download/Tagung Jena 1991 Seite A/rumpi 1.z80
+./download/Tagung Jena 1991 Seite A/supertrucker_g&a.z80
+./download/Tagung Jena 1991 Seite A/t-rechner.z80
+./download/Tagung Jena 1991 Seite A/talk-master 3_0.z80
+./download/Tagung Jena 1991 Seite A/UNI-COPY VP2.z80
+./download/Tagung Jena 1991 Seite B/4k-mon vp 3.txt
+./download/Tagung Jena 1991 Seite B/4k-mon vp 3.z80
+./download/Tagung Jena 1991 Seite B/allg angebot jm.txt
+./download/Tagung Jena 1991 Seite B/angebot cottbus.txt
+./download/Tagung Jena 1991 Seite B/angebot cottbus.z80
+./download/Tagung Jena 1991 Seite B/angebot jena.txt
+./download/Tagung Jena 1991 Seite B/centronics.htm
+./download/Tagung Jena 1991 Seite B/centronics.z80
+./download/Tagung Jena 1991 Seite B/cyrus-chess v_2.z80
+./download/Tagung Jena 1991 Seite B/hardw_cc_jena.txt
+./download/Tagung Jena 1991 Seite B/hardw_dresden.txt
+./download/Tagung Jena 1991 Seite B/headersave 5_95.txt
+./download/Tagung Jena 1991 Seite B/headersave 5_95.z80
+./download/Tagung Jena 1991 Seite B/inhalt.z80
+./download/Tagung Jena 1991 Seite B/kc-basic m1.txt
+./download/Tagung Jena 1991 Seite B/kc-basic m1.z80
+./download/Tagung Jena 1991 Seite B/lader5_rom.z80
+./download/Tagung Jena 1991 Seite B/lader5_txt.z80
+./download/Tagung Jena 1991 Seite B/liste dresden 01.txt
+./download/Tagung Jena 1991 Seite B/liste dresden 02.txt
+./download/Tagung Jena 1991 Seite B/liste dresden 03.txt
+./download/Tagung Jena 1991 Seite B/liste dresden 04.z80
+./download/Tagung Jena 1991 Seite B/mon 2_029 k7669.z80
+./download/Tagung Jena 1991 Seite B/murphy-doc_vp.z80
+./download/Tagung Jena 1991 Seite B/rf am z1013.txt
+./download/Tagung Jena 1991 Seite B/t-rechner.z80
+./download/Tagung Jena 1991 Seite B/uni-copy vp2.txt
+./download/turtle_keys.z80
+./download/turtle_player.z80
+./download/unsorted1/assembl__scf_5_3.z80
+./download/unsorted1/auto_laby(900).z80
+./download/unsorted1/btx+info.z80
+./download/unsorted1/byte_ersetzen.z80
+./download/unsorted1/centr_tr_miwo.z80
+./download/unsorted1/centronic_doc.z80
+./download/unsorted1/centronic_druck.z80
+./download/unsorted1/chemiepruefung.z80
+./download/unsorted1/chess_master_h.z80
+./download/unsorted1/compact.z80
+./download/unsorted1/copy32_com.z80
+./download/unsorted1/copy_doc.z80
+./download/unsorted1/crc__summe.z80
+./download/unsorted1/cyrus_chess_v_2.z80
+./download/unsorted1/cyrus_v_2_dt.z80
+./download/unsorted1/debug_3_02.1.z80
+./download/unsorted1/dicker.z80
+./download/unsorted1/ed81__v2_2.z80
+./download/unsorted1/editex+header.z80
+./download/unsorted1/enter_version.z80
+./download/unsorted1/files.txt
+./download/unsorted1/frogger.z80
+./download/unsorted1/galactica.z80
+./download/unsorted1/gens3m.z80
+./download/unsorted1/gens_assembler.z80
+./download/unsorted1/hb9cv.z80
+./download/unsorted1/header_bank_zeit.z80
+./download/unsorted1/headerbank_zeit.z80
+./download/unsorted1/headersave_5_95.z80
+./download/unsorted1/hex_ascii_dump_u.z80
+./download/unsorted1/hindernislauf.z80
+./download/unsorted1/hisoft_gens3_asm.z80
+./download/unsorted1/jumping_jack.z80
+./download/unsorted1/kc_basic+.z80
+./download/unsorted1/king_korr.z80
+./download/unsorted1/main_kc_if.z80
+./download/unsorted1/maintape_v4_5.z80
+./download/unsorted1/memorytest_1.z80
+./download/unsorted1/miami.z80
+./download/unsorted1/microword1_5cent.z80
+./download/unsorted1/microword_1_5gv1.z80
+./download/unsorted1/minefild.z80
+./download/unsorted1/mondbasis.z80
+./download/unsorted1/ohne_fleiss_k_pr.z80
+./download/unsorted1/pyramide(laeuft).z80
+./download/unsorted1/ram_&_pio_test.z80
+./download/unsorted1/roulette_m_bild.z80
+./download/unsorted1/schach.z80
+./download/unsorted1/starfire_2.z80
+./download/unsorted1/superdame.z80
+./download/unsorted1/supertrucker_g&a.z80
+./download/unsorted1/tiny+main_4_6_4.z80
+./download/unsorted1/uni_copy_6_2+.1.z80
+./download/unsorted1/uni_copy_6_2+.z80
+./download/unsorted1/via_link.z80
+./download/unsorted1/via_link3.z80
+./download/unsorted1/via_link4.z80
+./download/unsorted1/vialink2.z80
+./download/unsorted1/voegeln(g&a).z80
+./download/unsorted1/wuerfellabyrinth.z80
+./download/unsorted2/files.txt
+./download/unsorted2/info/64_z_bs_i.doc.z80
+./download/unsorted2/info/ac1_i.doc.z80
+./download/unsorted2/info/assemble_i.doc.z80
+./download/unsorted2/info/basicode_i.doc.z80
+./download/unsorted2/info/centroni_i.doc.z80
+./download/unsorted2/info/copy_i.doc.z80
+./download/unsorted2/info/cpm_2rf__i.doc.z80
+./download/unsorted2/info/cyrus_ch_i.doc.z80
+./download/unsorted2/info/debug_3_i.doc.z80
+./download/unsorted2/info/dru_3_i.doc.z80
+./download/unsorted2/info/ed81__v2_i.doc.z80
+./download/unsorted2/info/farbnorm_i.doc.z80
+./download/unsorted2/info/gedit_2_i.doc.z80
+./download/unsorted2/info/hdisk2_i.doc.z80
+./download/unsorted2/info/hdisk_45_i.doc.z80
+./download/unsorted2/info/hdiskcop_i.doc.z80
+./download/unsorted2/info/header_b_i.doc.z80
+./download/unsorted2/info/header_m_i.doc.z80
+./download/unsorted2/info/headers_i.doc.z80
+./download/unsorted2/info/headersa_i.doc.z80
+./download/unsorted2/info/hex_d_i.doc.z80
+./download/unsorted2/info/his_gens_i.doc.z80
+./download/unsorted2/info/jumping__i.doc.z80
+./download/unsorted2/info/kc_basic_i.doc.z80
+./download/unsorted2/info/kc_rom_b_i.doc.z80
+./download/unsorted2/info/leipzig_i.doc.z80
+./download/unsorted2/info/logicana_i.doc.z80
+./download/unsorted2/info/maintape_i.doc.z80
+./download/unsorted2/info/microwor_i.doc.z80
+./download/unsorted2/info/mikro_ba_i.doc.z80
+./download/unsorted2/info/oc_edito_i.doc.z80
+./download/unsorted2/info/oce_4_i.doc.z80
+./download/unsorted2/info/pascal_1_i.doc.z80
+./download/unsorted2/info/r80_1_i.doc.z80
+./download/unsorted2/info/r80_disk_i.doc.z80
+./download/unsorted2/info/rf_am_z1_i.doc.z80
+./download/unsorted2/info/rom_disc_i.doc.z80
+./download/unsorted2/info/s_dienst_i.doc.z80
+./download/unsorted2/info/scp_2rf__i.doc.z80
+./download/unsorted2/info/textedit_i.doc.z80
+./download/unsorted2/info/ucopy42_i.doc.z80
+./download/unsorted2/info/uni_copy_i.doc.z80
+./download/unsorted2/info/uni_copy_prg.com.z80
+./download/unsorted2/Lost&found/asm_crnl_com.com.z80
+./download/unsorted2/Lost&found/cowboy_com.com.z80
+./download/unsorted2/Lost&found/cyrus1_gam.com.z80
+./download/unsorted2/Lost&found/cyrus2_gam.com.z80
+./download/unsorted2/Lost&found/d_bank_bas.bas.z80
+./download/unsorted2/Lost&found/fibonacc_bas.bas.z80
+./download/unsorted2/Lost&found/fighter_com.com.z80
+./download/unsorted2/Lost&found/iic_emr_bin.dump.z80
+./download/unsorted2/Lost&found/impuls_pic.bitmap.z80
+./download/unsorted2/Lost&found/kassette_bas.bas.z80
+./download/unsorted2/Lost&found/kc87plot_com.com.z80
+./download/unsorted2/Lost&found/mexico_prg.com.z80
+./download/unsorted2/Lost&found/mouse_asm.asm.z80
+./download/unsorted2/Lost&found/mw_bild_com.com.z80
+./download/unsorted2/Lost&found/plsc2_pic.bitmap.z80
+./download/unsorted2/Lost&found/plsc3_pic.bitmap.z80
+./download/unsorted2/Lost&found/plsc4_pic.bitmap.z80
+./download/unsorted2/Lost&found/pyramide_com.com.z80
+./download/unsorted2/Lost&found/sing_s.edasASM.z80
+./download/unsorted2/Lost&found/sinola_prg.com.z80
+./download/unsorted2/Lost&found/sprache_com.com.z80
+./download/unsorted2/Lost&found/videotex_asm.asm.z80
+./download/unsorted2/Lost&found/vtext_zs.dump.z80
+./download/unsorted2/play/alf_c.com.z80
+./download/unsorted2/play/centiped_b.bas.z80
+./download/unsorted2/play/climber_b.bas.z80
+./download/unsorted2/play/cyrus_c.com.z80
+./download/unsorted2/play/digger_1_c.com.z80
+./download/unsorted2/play/enterpri_b.bas.z80
+./download/unsorted2/play/gammon_b.bas.z80
+./download/unsorted2/play/ghost_c.com.z80
+./download/unsorted2/play/labyrint_c.com.z80
+./download/unsorted2/play/last_cha_c.com.z80
+./download/unsorted2/play/lebensze_b.bas.z80
+./download/unsorted2/play/mazogs_c.com.z80
+./download/unsorted2/play/minen_c.com.z80
+./download/unsorted2/play/othello_c.com.z80
+./download/unsorted2/play/paravia_b.bas.z80
+./download/unsorted2/play/pursuit_c.com.z80
+./download/unsorted2/play/schach_c.com.z80
+./download/unsorted2/play/schiessb_c.com.z80
+./download/unsorted2/play/skat_b.bas.z80
+./download/unsorted2/play/soko_ban_c.com.z80
+./download/unsorted2/play/super_sk_c.com.z80
+./download/unsorted2/play/tatum_b.bas.z80
+./download/unsorted2/play/tetris_c.com.z80
+./download/unsorted2/play/vampir_c.com.z80
+./download/unsorted2/play/wizard_c.com.z80
+./download/unsorted2/tools/anlay_a.asm.z80
+./download/unsorted2/tools/av_plati_pic.bitmap.z80
+./download/unsorted2/tools/c64_text_a.asm.z80
+./download/unsorted2/tools/crc_disp_a.asm.z80
+./download/unsorted2/tools/datenban_b.bas.z80
+./download/unsorted2/tools/dir_prin_a.asm.z80
+./download/unsorted2/tools/fl_mem_a.asm.z80
+./download/unsorted2/tools/fl_memor_a.asm.z80
+./download/unsorted2/tools/floppy_a.asm.z80
+./download/unsorted2/tools/freq1_a.asm.z80
+./download/unsorted2/tools/freq2_a.asm.z80
+./download/unsorted2/tools/frequenz_a.asm.z80
+./download/unsorted2/tools/graph_pas.pas.z80
+./download/unsorted2/tools/hex_data_a.asm.z80
+./download/unsorted2/tools/i2c_trei_a.asm.z80
+./download/unsorted2/tools/iic_bus_bin.dump.z80
+./download/unsorted2/tools/iic_hear_a.asm.z80
+./download/unsorted2/tools/kc_tape_s.edasASM.z80
+./download/unsorted2/tools/labels_a.asm.z80
+./download/unsorted2/tools/layout_a.asm.z80
+./download/unsorted2/tools/mt_81_t.doc.z80
+./download/unsorted2/tools/paint_a.asm.z80
+./download/unsorted2/tools/pf_pictu_a.asm.z80
+./download/unsorted2/tools/pio_test_a.asm.z80
+./download/unsorted2/tools/pl_scann_a.asm.z80
+./download/unsorted2/tools/plotter_a.asm.z80
+./download/unsorted2/tools/plotter_pic.bitmap.z80
+./download/unsorted2/tools/say_pic.bitmap.z80
+./download/unsorted2/tools/sprach_i_a.asm.z80
+./download/unsorted2/tools/textform_a.asm.z80
+./download/unsorted2/tools/videotex_a.asm.z80
+./download/unsorted2/tools/videotex_z.dump.z80
+./download/unsorted2/tools/vt_edit_pic.bitmap.z80
+./download/unsorted2/tools/z1013_an_a.asm.z80
+./download/unsorted2/tools/z1013_an_c.com.z80
+./download/unsorted2/tools/z1013_mo_a.asm.z80
+./download/unsorted2/tools/z1013_mo_c.com.z80
+./download/unsorted2/tools/z1013_z.dump.z80
+./download/unsorted2/tools/zs_konv_a.asm.z80
+./download/unsorted2/tools/zsatz_9__z.dump.z80
+./download/unsorted2/unsorted/lachetta/adressen_b.bas.z80
+./download/unsorted2/unsorted/lachetta/bac854v_b.bas.z80
+./download/unsorted2/unsorted/lachetta/bc3_v2_prg.com.z80
+./download/unsorted2/unsorted/lachetta/bc3c_sub_prg.com.z80
+./download/unsorted2/unsorted/lachetta/bsc_asci_b.bas.z80
+./download/unsorted2/unsorted/lachetta/bsc_cbm_b.bas.z80
+./download/unsorted2/unsorted/lachetta/dc_monit_p.com.z80
+./download/unsorted2/unsorted/lachetta/ddr_b.bas.z80
+./download/unsorted2/unsorted/lachetta/de_tijdm_b.bas.z80
+./download/unsorted2/unsorted/lachetta/debug_3_prg.com.z80
+./download/unsorted2/unsorted/lachetta/debugger_prg.com.z80
+./download/unsorted2/unsorted/lachetta/englisch_b.bas.z80
+./download/unsorted2/unsorted/lachetta/eprom_ha_prg.com.z80
+./download/unsorted2/unsorted/lachetta/eprommer_p.com.z80
+./download/unsorted2/unsorted/lachetta/file_b.bas.z80
+./download/unsorted2/unsorted/lachetta/fkt_3d_b.bas.z80
+./download/unsorted2/unsorted/lachetta/globe_b.bas.z80
+./download/unsorted2/unsorted/lachetta/grafik_b.bas.z80
+./download/unsorted2/unsorted/lachetta/hymnen_b.bas.z80
+./download/unsorted2/unsorted/lachetta/ic_datei_prg.com.z80
+./download/unsorted2/unsorted/lachetta/journal__b.bas.z80
+./download/unsorted2/unsorted/lachetta/kcbascod_b.bas.z80
+./download/unsorted2/unsorted/lachetta/leb_bild_b.bas.z80
+./download/unsorted2/unsorted/lachetta/mus_b.bas.z80
+./download/unsorted2/unsorted/lachetta/nsweep_prg.com.z80
+./download/unsorted2/unsorted/lachetta/pascal_prg.com.z80
+./download/unsorted2/unsorted/lachetta/power_prg.com.z80
+./download/unsorted2/unsorted/lachetta/scp_z101_prg.com.z80
+./download/unsorted2/unsorted/lachetta/sinterkl_b.bas.z80
+./download/unsorted2/unsorted/lachetta/verlag_b.bas.z80
+./download/unsorted2/unsorted/lachetta/z1013bas_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/3k_basic_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/billard_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/c_test_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/chemie_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/chess_ma_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/cleaner_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/elektron_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/helen_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/idas_v_1_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/jumping__prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/list_ida_is.idasASM.z80
+./download/unsorted2/unsorted/Reinsberger/main_kc__b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/mintex_z_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/muehle_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/oc_edito_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/r_80_dis_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/rechnen_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/rom_disc_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/skeet_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/speicher_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/texkon_1_prg.com.z80
+./download/unsorted2/unsorted/Reinsberger/trafo_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/unidat_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/usr_plot_b.bas.z80
+./download/unsorted2/unsorted/Reinsberger/wanze_v__is.idasASM.z80
+./download/unsorted2/unsorted/schuett/billard_b.bas.z80
+./download/unsorted2/unsorted/schuett/chaos_of_b.bas.z80
+./download/unsorted2/unsorted/schuett/eprom_ha_t.doc.z80
+./download/unsorted2/unsorted/schuett/eprom_pr_i.doc.z80
+./download/unsorted2/unsorted/schuett/eprom_pr_t.doc.z80
+./download/unsorted2/unsorted/schuett/eprommer_c.com.z80
+./download/unsorted2/unsorted/schuett/galacica_c.com.z80
+./download/unsorted2/unsorted/schuett/galton_b_b.bas.z80
+./download/unsorted2/unsorted/schuett/sumeria_b.bas.z80
+./download/unsorted2/unsorted/schuett/susi_b.bas.z80
+./download/unsorted2/unsorted/schuett/typen_le_t.doc.z80
+./download/unsorted2/use/ableitun_b.bas.z80
+./download/unsorted2/use/ac1_tape_c.com.z80
+./download/unsorted2/use/asm_soft_c.com.z80
+./download/unsorted2/use/bascon_t_c.com.z80
+./download/unsorted2/use/basic_c.com.z80
+./download/unsorted2/use/basicode_c.com.z80
+./download/unsorted2/use/copy_c.com.z80
+./download/unsorted2/use/cpm_2rf__c.com.z80
+./download/unsorted2/use/crc_d_7d_c.com.z80
+./download/unsorted2/use/crc_disp_c.com.z80
+./download/unsorted2/use/debugger_c.com.z80
+./download/unsorted2/use/dir_prn_c.com.z80
+./download/unsorted2/use/forth_c.com.z80
+./download/unsorted2/use/hardcopy_c.com.z80
+./download/unsorted2/use/hdiskcop_c.com.z80
+./download/unsorted2/use/headerdi_c.com.z80
+./download/unsorted2/use/hex_data_c.com.z80
+./download/unsorted2/use/hsave_7c_c.com.z80
+./download/unsorted2/use/hundi_c.com.z80
+./download/unsorted2/use/kalender_b.bas.z80
+./download/unsorted2/use/kc_tape_c.com.z80
+./download/unsorted2/use/key_rast_c.com.z80
+./download/unsorted2/use/labels_c.com.z80
+./download/unsorted2/use/layout_c.com.z80
+./download/unsorted2/use/m_word_c.com.z80
+./download/unsorted2/use/mathe_b.bas.z80
+./download/unsorted2/use/mesee_c.com.z80
+./download/unsorted2/use/pascal_c.com.z80
+./download/unsorted2/use/pf_pic_c.com.z80
+./download/unsorted2/use/pio_test_c.com.z80
+./download/unsorted2/use/rdisk_e0_c.com.z80
+./download/unsorted2/use/rf_disp__c.com.z80
+./download/unsorted2/use/rf_test__c.com.z80
+./download/unsorted2/use/rom_bas_c.com.z80
+./download/unsorted2/use/rst_20_c.com.z80
+./download/unsorted2/use/show_zs_c.com.z80
+./download/unsorted2/use/spectrum_c.com.z80
+./download/unsorted2/use/tb_analy_c.com.z80
+./download/unsorted2/use/tiny_bas_c.com.z80
+./download/unsorted2/use/top_secr_c.com.z80
+./download/unsorted2/use/urlader_c.com.z80
+./download/unsorted2/use/v_text_c.com.z80
+./download/unsorted2/use/zs_konv_c.com.z80
+./download/unsorted3/3kpluspoke_kurs_1.com.z80
+./download/unsorted3/64_zeichen_bs.doc.z80
+./download/unsorted3/adressen.bas.z80
+./download/unsorted3/beschr_hramdisk.doc.z80
+./download/unsorted3/boerse.bas.z80
+./download/unsorted3/bpluscentipede.bas.z80
+./download/unsorted3/c_test_doc.doc.z80
+./download/unsorted3/climber.bas.z80
+./download/unsorted3/cyros_8_8.com.z80
+./download/unsorted3/cyrus_v_1_dt.doc.z80
+./download/unsorted3/documentation.doc.z80
+./download/unsorted3/esc_folgen.doc.z80
+./download/unsorted3/fehlberg.pas.z80
+./download/unsorted3/files.txt
+./download/unsorted3/ghostplusvoice.com.z80
+./download/unsorted3/hc_900_basic.com.z80
+./download/unsorted3/hc_bi_v__4_1.com.z80
+./download/unsorted3/headerdisk_45.com.z80
+./download/unsorted3/headersave_5_9.doc.z80
+./download/unsorted3/hexdump_1_021.doc.z80
+./download/unsorted3/kc87_monitor.com.z80
+./download/unsorted3/labyrint.com.z80
+./download/unsorted3/lebenserwartung.bas.z80
+./download/unsorted3/leipzig.bas.z80
+./download/unsorted3/leipzig_doc.doc.z80
+./download/unsorted3/main_kc_if.bas.z80
+./download/unsorted3/maintape_v4_5.doc.z80
+./download/unsorted3/micro_basiccompl.com.z80
+./download/unsorted3/microword_1_5gs1.com.z80
+./download/unsorted3/monitor_1_1brenn.com.z80
+./download/unsorted3/mons3_2.com.z80
+./download/unsorted3/paharo_2_2.edasASM.z80
+./download/unsorted3/pharao_3_6.edasASM.z80
+./download/unsorted3/r_80_spv.com.z80
+./download/unsorted3/raum_1_2pggs.dump.z80
+./download/unsorted3/rom_4000.dump.z80
+./download/unsorted3/scp_2rf_2_40m.com.z80
+./download/unsorted3/scp_plus_f800.com.z80
+./download/unsorted3/skat.bas.z80
+./download/unsorted3/snake.bas.z80
+./download/unsorted3/solo_commotion.com.z80
+./download/unsorted3/spektrum_s_l.com.z80
+./download/unsorted3/sprungverteiler.doc.z80
+./download/unsorted3/star_treck__1_1.bas.z80
+./download/unsorted3/tapelist.com.z80
+./download/unsorted3/tatum.bas.z80
+./download/unsorted3/tedit_9_0_doc.doc.z80
+./download/unsorted3/texteditor.com.z80
+./download/unsorted3/turtle_player.com.z80
+./download/unsorted3/vampi.dump.z80
+./download/unsorted3/voice_dice.com.z80
+./download/wiz_keys.z80
+./download/Z1013V202.BIN
+./edas_a+d+h+ae_ub.z80
+./fail/02ff6c222fe73b95d5a6f8a0a32db7de-GRAVEROBBER+J.z80
+./fail/03079907ee098d5a306ce9b5473afc39-JUMPING_JACK+J.z80
+./fail/08b2d1b45a1f6f73ef5abe4675d66098-REAKTOR+J.z80
+./fail/248587e81b551e5dfda48acad5572764-SOKOBAN.z80
+./fail/27f2f848d57c175063698f93f96ceffc-beschr_edas_t1.z80
+./fail/2da98e810bf7d299f4fe7c0750d73992-DIGGER.z80
+./fail/33d0622303dbe6341c1bf83f89ac7f0b-HEARTRUNNER+J.z80
+./fail/36882f677d6be5b5c2530da36f7b2bd3-JUMPING-JACK.z80
+./fail/387d07b8b13826fceb37a0e888ba1160-the_last_chance1.z80
+./fail/425c7242c7c41cd7fe4ce38c94593fe3-GALAKTIKA+J.z80
+./fail/473e0603395314f21244e3d3349a1e27-LABY+J.z80
+./fail/480c188d959c33fa5470b7103d2c5c0e-TURTLE_PLAYER+J.z80
+./fail/5b18b2c1abf4bf7c5e9d414eb3423b4b-ladder_joy.z80
+./fail/68352614f53689be3241edcf6305b43a-HASE&WOLF+J.z80
+./fail/6a178e545b6c56f6f73176e8de370e60-HINDERNISLAUF+J.z80
+./fail/6becb943855bd6245c42e33ed1a19be6-ENCOUNTER+J.z80
+./fail/767800e41f00e87b7b801acf0966ad27-GHOST HUT+J.z80
+./fail/7e8d567986137f27499ecd4628c5de54-NEW_YORK+J.z80
+./fail/896a4389c4b4d3f0f7ba04588107b381-MIAMI+J.z80
+./fail/9d244366a5aec22b97dc7f91e5e93a4c-GHOST HUT+J.z80
+./fail/a318c2899b6ae0ed7f2ac92ab6b5d4d8-ALADIN+J.z80
+./fail/a3ab030687267999d321c94fb16f73c6-MAUER+J.z80
+./fail/a46e092fea01195ee5179655cfa695e2-SUPER_SKI+J.z80
+./fail/af119ebfecd1a42c89d147a02e06d0ed-KC-BASIC.z80
+./fail/b1c268f910e87228376fc72f1feff9f0-beschr_edas_t2.z80
+./fail/b3f46b9a09b2a7a8a71ae4023664f7c0-KINGS_VALLEY+B.z80
+./fail/d3d549147660e00b0f52c4c47878f8f8-TETRIS+J.z80
+./fail/d8ac189da8cb0520ca3d8c1fd45853d3-MAZOG+J.z80
+./fail/db05942e104fc236ca3f6945a4c9358f-Wall+J.z80
+./fail/dced692ddba89e7dd7064a30fb319fb2-GALAXIS+J.z80
+./fail/dfb83fca953529e6e0551be16b7f0fc4-WALL+J.z80
+./fail/f013e98808d80e1c2221f108154cf6f2-FIGHTER+J.z80
+./fail/f05e2c61882aa08fe25029f713a6309e-WIZARD_ANG.z80
+./fail/f64b69fdc0d9f2f4b8081fda9220a698-VAMPIR+J.z80
+./fail/f844aa6d981ff3bff30927a1d104cf52-AUTO+J.z80
+./files.txt
+./help.txt
+./Kompatibilitätsliste.txt
+./list.txt
+./md5sum.txt
+./md5sum_sorted.txt
+./MicroWORD 1.5 JP.Z80
+./MicroWORD 1.5 VP.Z80
+./z1013_mega/.depend
+./z1013_mega/.DS_Store
+./z1013_mega/00liesmich
+./z1013_mega/doc/I.ASSEMBLER 5.3.txt
+./z1013_mega/doc/I.C-TEST.DOC.txt
+./z1013_mega/doc/I.CHESS-MASTER H.txt
+./z1013_mega/doc/I.CP_A-200PD Besch.txt
+./z1013_mega/doc/I.CPM-2RF 2.50M.txt
+./z1013_mega/doc/I.CYRUS-CHESS V.2.txt
+./z1013_mega/doc/I.ED81  V2.1.txt
+./z1013_mega/doc/I.Edas 1.1 A+D+H.txt
+./z1013_mega/doc/I.EPROM-HANDLER2.9.txt
+./z1013_mega/doc/I.HC-BASIC T.1.txt
+./z1013_mega/doc/I.HC-BASIC T.2.txt
+./z1013_mega/doc/I.HEADER DISK 45.txt
+./z1013_mega/doc/I.HEADER-MENUE 2.txt
+./z1013_mega/doc/I.HEADERPRINT 1.1.txt
+./z1013_mega/doc/I.HEADERSAVE 5.9.txt
+./z1013_mega/doc/I.HEXDUMP 1.021.txt
+./z1013_mega/doc/I.HIS.-PASCAL 1.03.txt
+./z1013_mega/doc/I.HISOFT-PASCAL.txt
+./z1013_mega/doc/I.HRG GRAFIK DOC.txt
+./z1013_mega/doc/I.IC-DATEI.txt
+./z1013_mega/doc/I.IDAS.txt
+./z1013_mega/doc/I.JUMPING-JACK.txt
+./z1013_mega/doc/I.KC-BASIC m1.txt
+./z1013_mega/doc/I.KC-BASIC+.DOC.txt
+./z1013_mega/doc/I.KC-SAVE_LOAD 1.3.txt
+./z1013_mega/doc/I.LADDER.txt
+./z1013_mega/doc/I.LEIPZIG DOC.txt
+./z1013_mega/doc/I.LOGIKANALYSATOR.txt
+./z1013_mega/doc/I.Micro-BASIC '85.txt
+./z1013_mega/doc/I.MONER SU 1.31.txt
+./z1013_mega/doc/I.OC-EDITOR 4.1.txt
+./z1013_mega/doc/I.OCE 4.0.txt
+./z1013_mega/doc/I.R-80.DOC 1.2.txt
+./z1013_mega/doc/I.R-80.DOC 1.3.txt
+./z1013_mega/doc/I.RST20 WANDLUNG.txt
+./z1013_mega/doc/I.S 3004 280289.txt
+./z1013_mega/doc/I.SCHLANGE.txt
+./z1013_mega/doc/I.SCP 2RF 2.38 DOC.txt
+./z1013_mega/doc/I.SPRUNGVERTEILER.txt
+./z1013_mega/doc/I.STATUS I_O-ADR 4.txt
+./z1013_mega/doc/I.SUPER-SKI.txt
+./z1013_mega/doc/I.TEXTED. 6.1 Scf.txt
+./z1013_mega/doc/I.UNI-COPY 4.2.txt
+./z1013_mega/doc/I.Z1013-FORTH.DOC.txt
+./z1013_mega/doc/I.Z1013-SURL.DOC.txt
+./z1013_mega/doc/T.AC1_=_Z1013.txt
+./z1013_mega/doc/T.BASICODE-INFO.txt
+./z1013_mega/doc/T.BROS.MON+TASTAT..txt
+./z1013_mega/doc/T.CENTRONIC-K63XX.txt
+./z1013_mega/doc/T.EDAS.DOK.txt
+./z1013_mega/doc/T.EDITEX.txt
+./z1013_mega/doc/T.EPROM-BESCH.1.25.txt
+./z1013_mega/doc/T.EPROM.DOK.CCL.txt
+./z1013_mega/doc/T.GENS DOC NEW.txt
+./z1013_mega/doc/T.GENS DOK.txt
+./z1013_mega/doc/T.MON 2.029 K7669.txt
+./z1013_mega/doc/T.MONLIST-DOC.txt
+./z1013_mega/doc/T.mt4.6 DOC..txt
+./z1013_mega/doc/T.RF AM Z1013.txt
+./z1013_mega/doc/T.SPRUNGVERT. 5_90.txt
+./z1013_mega/doc/T.STANDARDADRESSEN.txt
+./z1013_mega/doc/T.TDL-BASIC DOC.txt
+./z1013_mega/doc/T.Z1013-Lit..txt
+./z1013_mega/doc/T.Z1013-SURL V5.0.txt
+./z1013_mega/doc/u-boot.txt
+./z1013_mega/doc/Z1013-DVU2_A000.txt
+./z1013_mega/modul/eprommer 2.9_ccl.z80
+./z1013_mega/modul/eprommer 2.9_igd.z80
+./z1013_mega/modul/f83 64k v2.z80
+./z1013_mega/modul/ic-datei 2.z80
+./z1013_mega/modul/KC-BASIC+ m1.Z80
+./z1013_mega/modul/microword v1.z80
+./z1013_mega/modul/Speichertest.Z80
+./z1013_mega/modul/tiny-basic 3.20h.z80
+./z1013_mega/modul/z1013-basic 4.01.z80
+./z1013_mega/modul2/.DS_Store
+./z1013_mega/modul2/igd01a Games/10k basik+skeet.z80
+./z1013_mega/modul2/igd01a Games/autocrash.z80
+./z1013_mega/modul2/igd01a Games/Autograf.Z80
+./z1013_mega/modul2/igd01a Games/chess-master h.z80
+./z1013_mega/modul2/igd01a Games/cyrus-chess h.z80
+./z1013_mega/modul2/igd01a Games/gohst rb.z80
+./z1013_mega/modul2/igd01a Games/heartrunner rb.z80
+./z1013_mega/modul2/igd01a Games/jumping jack rb.z80
+./z1013_mega/modul2/igd01a Games/mazogs 2.8.z80
+./z1013_mega/modul2/igd01a Games/mazogs rb int 2.z80
+./z1013_mega/modul2/igd01a Games/othello v1.z80
+./z1013_mega/modul2/igd01a Games/schach z1013_sc2.z80
+./z1013_mega/modul2/igd01a Games/super ski rb.z80
+./z1013_mega/modul2/igd01a Games/super-ski joybox.z80
+./z1013_mega/modul2/igd01a Games/the last chance.z80
+./z1013_mega/modul2/igd01a Games/universe rb.z80
+./z1013_mega/modul2/igd01a Games/voice-demo.z80
+./z1013_mega/modul2/igd01a Games/voice-dice kompl.z80
+./z1013_mega/modul2/igd01a Games/wurmi zk_16eh.z80
+./z1013_mega/modul2/igd01b Games/aladin k j+t-joy.z80
+./z1013_mega/modul2/igd01b Games/aladin8x4j+t-joy.z80
+./z1013_mega/modul2/igd01b Games/aladin_j+t-joyst.z80
+./z1013_mega/modul2/igd01b Games/altjessnitz.z80
+./z1013_mega/modul2/igd01b Games/auto (cursor).z80
+./z1013_mega/modul2/igd01b Games/biorythmus.z80
+./z1013_mega/modul2/igd01b Games/cosmic-ball.z80
+./z1013_mega/modul2/igd01b Games/cyrus nr.2.z80
+./z1013_mega/modul2/igd01b Games/encounter.z80
+./z1013_mega/modul2/igd01b Games/flug.z80
+./z1013_mega/modul2/igd01b Games/ghost pio.z80
+./z1013_mega/modul2/igd01b Games/graverobber.z80
+./z1013_mega/modul2/igd01b Games/pyramide.z80
+./z1013_mega/modul2/igd01b Games/schlange ang..z80
+./z1013_mega/modul2/igd01b Games/super-dame.z80
+./z1013_mega/modul2/igd01b Games/SUPERSKI m.PIO.Z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/ascii.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/bohrturm.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/box1.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/casino.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/CHAOS(laeuft)G_A.Z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/dez-_roem.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/doprot.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/eliza d.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/fl.u.koe.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/fraktale.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/Hauptstaedte.Z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/kasse.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/meteor.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/monster.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/poet.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/Poltersnack.Z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/poly-aproxima 2.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/PYRAMIDE(laeuft).Z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/rakete.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/riesa.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/Scherzfragen 1.Z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/Scherzfragen 2.Z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/snake.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/spiedi2.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/summe.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/supertrucker_g&a.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/traders.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/u-boot 2.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/u-boot.z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/voegeln(g&a).z80
+./z1013_mega/modul2/igd05a KC-Basic+ 1/Zahlenkonvert..Z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/akt-z1013.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/aproximation.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/auslese.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/auto.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/bandit.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/boxauto.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/data.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/ddr-staedte.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/emitter.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/entenjagd.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/enterprise.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/funktionen.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/go 10_10.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/hauptstaedte.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/hilfe basicsuche.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/kalkuel.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/konto.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/ladder.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/mancala.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/MC-IN (Eingabe).Z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/mini-dame.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/mintex w6.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/mintex.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/muehle.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/nixe.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/othello.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/polynom-nullst..z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/poster 13.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/poster-maker.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/praezisionswider.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/r+hanoi.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/r-l-c frequenzg..z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/reass.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/rem-listing.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/skat1.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/spielbox.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/tefra z1013.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/tips.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/torero.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/vari-suche basic.z80
+./z1013_mega/modul2/igd05b KC-Basic+ 1/wurm-t.z80
+./z1013_mega/modul2/igd06a MC 1/autograf ak 1.0.z80
+./z1013_mega/modul2/igd06a MC 1/Beist-Assembler.Z80
+./z1013_mega/modul2/igd06a MC 1/Bild Disassembl..Z80
+./z1013_mega/modul2/igd06a MC 1/Bild EPROM-Prog..Z80
+./z1013_mega/modul2/igd06a MC 1/Bild HexDump 2.Z80
+./z1013_mega/modul2/igd06a MC 1/Bild HexDump.Z80
+./z1013_mega/modul2/igd06a MC 1/BILD-MicroWORD 6.Z80
+./z1013_mega/modul2/igd06a MC 1/cyrus-header.z80
+./z1013_mega/modul2/igd06a MC 1/disassembler rb.z80
+./z1013_mega/modul2/igd06a MC 1/display-@a,t,f.z80
+./z1013_mega/modul2/igd06a MC 1/Graf.Fkt.+12K-B..Z80
+./z1013_mega/modul2/igd06a MC 1/hd 54k+dr.tr.2m.z80
+./z1013_mega/modul2/igd06a MC 1/header-disk 27k.z80
+./z1013_mega/modul2/igd06a MC 1/hex-ascii dump.z80
+./z1013_mega/modul2/igd06a MC 1/HexDump 1.01.Z80
+./z1013_mega/modul2/igd06a MC 1/HexDump 1.021.Z80
+./z1013_mega/modul2/igd06a MC 1/Ladder.Z80
+./z1013_mega/modul2/igd06a MC 1/MicroWORD 1.520U.Z80
+./z1013_mega/modul2/igd06a MC 1/mtx 0.0 turbo.z80
+./z1013_mega/modul2/igd06a MC 1/oel.z80
+./z1013_mega/modul2/igd06b MC 1/1.6 text + v.24.z80
+./z1013_mega/modul2/igd06b MC 1/3k-rs-basic 1.03.z80
+./z1013_mega/modul2/igd06b MC 1/bild auto.z80
+./z1013_mega/modul2/igd06b MC 1/bild ostern.z80
+./z1013_mega/modul2/igd06b MC 1/bild ufo.z80
+./z1013_mega/modul2/igd06b MC 1/bild urlaub.z80
+./z1013_mega/modul2/igd06b MC 1/cad-haus.z80
+./z1013_mega/modul2/igd06b MC 1/dat.z80
+./z1013_mega/modul2/igd06b MC 1/eprommer-abgl..z80
+./z1013_mega/modul2/igd06b MC 1/hd27+hp+v.24.z80
+./z1013_mega/modul2/igd06b MC 1/headerprint 1.04.z80
+./z1013_mega/modul2/igd06b MC 1/headerprint 22vl.z80
+./z1013_mega/modul2/igd06b MC 1/headerprnt turbo.z80
+./z1013_mega/modul2/igd06b MC 1/jyst x=d00 y+1.z80
+./z1013_mega/modul2/igd06b MC 1/lauf+brief.z80
+./z1013_mega/modul2/igd06b MC 1/picture.z80
+./z1013_mega/modul2/igd06b MC 1/ramdisk-slave.z80
+./z1013_mega/modul2/igd06b MC 1/scp 41.z80
+./z1013_mega/modul2/igd06b MC 1/scp-2+1 3.83 52.z80
+./z1013_mega/modul2/igd06b MC 1/scp-2+1 3.83 59.z80
+./z1013_mega/modul2/igd06b MC 1/syd.z80
+./z1013_mega/modul2/igd06b MC 1/t-rechner.z80
+./z1013_mega/modul2/igd06b MC 1/tad1.z80
+./z1013_mega/modul2/igd06b MC 1/text+sd1156 1.9.z80
+./z1013_mega/modul2/igd06b MC 1/text+sm4000 1.5.z80
+./z1013_mega/modul2/igd06b MC 1/text+v.24 1.7.z80
+./z1013_mega/modul2/igd06b MC 1/trbo+rd+hprt+sm.z80
+./z1013_mega/modul2/igd06b MC 1/trbo+rd+sd1156.z80
+./z1013_mega/modul2/igd06b MC 1/turbo+v.24+rf10.z80
+./z1013_mega/modul2/igd06b MC 1/voice.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/back.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/billard.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/cave.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/expansion.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/farbkode.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/filter.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/flug.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/funktion.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/gauss.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/lebenserwartung.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/magsum.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/mathe+voice.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/meteo.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/partner.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/phobos.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/polynom.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/prognose.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/pyramide.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/sexquotient.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/stern.z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/Town.Z80
+./z1013_mega/modul2/igd08a KC-Basic+ 2/weisheit.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/c-test.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/cleaner.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/ehe.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/enterprise.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/formel i.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/gammon.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/gedicht.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/hase&wolf.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/helen.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/invasion.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/katzmaus.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/knaus-ogino.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/labyrint.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/leipzig.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/othello.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/party+sound.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/push.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/rostock.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/schuss.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/sumeria.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/tatum.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/trafo.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/triplett.z80
+./z1013_mega/modul2/igd08b KC-Basic+ 2/zeichenprogramm.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/4gewinnt.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/alzan.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/business.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/climber.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/climber2.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/dicker.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/dyna-l.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/galopp.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/halma.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/kesa-l.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/king 1.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/kreis.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/lin.regression.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/messe.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/oel.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/pong2.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/roulette.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/skat.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/sort.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/startrek.z80
+./z1013_mega/modul2/igd12a KC-Basic+ 3/suche-monitorruf.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/ad-1kanal.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/adressen.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/adw.txt
+./z1013_mega/modul2/igd12b KC-Basic+ 3/adw.txt.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/anaborea.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/automat.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/datagen..z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/elektronik.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/galton.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/ganymed.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/geo-test.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/hirnverwinder.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/kalkulation.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/puzzle.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/quielie.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/reise 2.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/reise.z80
+./z1013_mega/modul2/igd12b KC-Basic+ 3/wueste.z80
+./z1013_mega/modul2/igd15a MC 4/17 und 4.Z80
+./z1013_mega/modul2/igd15a MC 4/casino.z80
+./z1013_mega/modul2/igd15a MC 4/CAVE-Die Hoehle.Z80
+./z1013_mega/modul2/igd15a MC 4/cyrus.z80
+./z1013_mega/modul2/igd15a MC 4/mazogs 2.1.z80
+./z1013_mega/modul2/igd15a MC 4/minefield 2.1.z80
+./z1013_mega/modul2/igd15a MC 4/ohio.z80
+./z1013_mega/modul2/igd15a MC 4/pp spiele 1.z80
+./z1013_mega/modul2/igd15a MC 4/river riad.z80
+./z1013_mega/modul2/igd15a MC 4/Spieldisk-2.Z80
+./z1013_mega/modul2/igd15a MC 4/superski 2.1.z80
+./z1013_mega/modul2/igd15a MC 4/the last chance.z80
+./z1013_mega/modul2/igd15a MC 4/turtle player.z80
+./z1013_mega/modul2/igd15a MC 4/u-boot.z80
+./z1013_mega/modul2/igd15b MC 4/basic v4.1.z80
+./z1013_mega/modul2/igd15b MC 4/cyrus 16k_3ff3.z80
+./z1013_mega/modul2/igd15b MC 4/CYRUS V.2_dt..Z80
+./z1013_mega/modul2/igd15b MC 4/digitaltester.z80
+./z1013_mega/modul2/igd15b MC 4/edas.z80
+./z1013_mega/modul2/igd15b MC 4/flipper.z80
+./z1013_mega/modul2/igd15b MC 4/fussball.z80
+./z1013_mega/modul2/igd15b MC 4/galactika.z80
+./z1013_mega/modul2/igd15b MC 4/ghost v2.z80
+./z1013_mega/modul2/igd15b MC 4/ghost_s.z80
+./z1013_mega/modul2/igd15b MC 4/graphik-machine.z80
+./z1013_mega/modul2/igd15b MC 4/jumping jack v2.z80
+./z1013_mega/modul2/igd15b MC 4/kc-forth.z80
+./z1013_mega/modul2/igd15b MC 4/kc-progr.einl..z80
+./z1013_mega/modul2/igd15b MC 4/kc85_3-interface.z80
+./z1013_mega/modul2/igd15b MC 4/kings-valley.z80
+./z1013_mega/modul2/igd15b MC 4/laufschrift.z80
+./z1013_mega/modul2/igd15b MC 4/MicroWORD 1.519U.Z80
+./z1013_mega/modul2/igd15b MC 4/TDL-BAS modif_3.Z80
+./z1013_mega/modul2/igd16a MC 5/3k basic.z80
+./z1013_mega/modul2/igd16a MC 5/ASSEMBL. Scf 5.3.Z80
+./z1013_mega/modul2/igd16a MC 5/basic+fs.z80
+./z1013_mega/modul2/igd16a MC 5/debugger.z80
+./z1013_mega/modul2/igd16a MC 5/disass._d2-plus.z80
+./z1013_mega/modul2/igd16a MC 5/Display.Z80
+./z1013_mega/modul2/igd16a MC 5/editex+header.z80
+./z1013_mega/modul2/igd16a MC 5/f-Zaehler -12kHz.Z80
+./z1013_mega/modul2/igd16a MC 5/gen rambug.z80
+./z1013_mega/modul2/igd16a MC 5/gens (100_11a).z80
+./z1013_mega/modul2/igd16a MC 5/grafik-demo fzg.z80
+./z1013_mega/modul2/igd16a MC 5/headerprint 1.1.z80
+./z1013_mega/modul2/igd16a MC 5/lissajou zu basi.z80
+./z1013_mega/modul2/igd16a MC 5/LOGICANALYSOR Sc.Z80
+./z1013_mega/modul2/igd16a MC 5/mc-hilfe(-_b0h).z80
+./z1013_mega/modul2/igd16a MC 5/micro-basic 85.z80
+./z1013_mega/modul2/igd16a MC 5/mons.z80
+./z1013_mega/modul2/igd16a MC 5/oc-editor 4.0.z80
+./z1013_mega/modul2/igd16a MC 5/oce_200h.z80
+./z1013_mega/modul2/igd16a MC 5/ram-pio-tester.z80
+./z1013_mega/modul2/igd16a MC 5/rambug.z80
+./z1013_mega/modul2/igd16a MC 5/tapelist-vt.z80
+./z1013_mega/modul2/igd16a MC 5/TEXED. 6.1 Scf.Z80
+./z1013_mega/modul2/igd16a MC 5/uni-textleser.z80
+./z1013_mega/modul2/igd16a MC 5/videobuch.z80
+./z1013_mega/modul2/igd16a MC 5/z 1013 forth 2.z80
+./z1013_mega/modul2/igd16b MC 5/8k-basic-kern.z80
+./z1013_mega/modul2/igd16b MC 5/debugger v2arb..z80
+./z1013_mega/modul2/igd16b MC 5/debugger.z80
+./z1013_mega/modul2/igd16b MC 5/DVM 2_89us._soft.Z80
+./z1013_mega/modul2/igd16b MC 5/emr-reass..z80
+./z1013_mega/modul2/igd16b MC 5/eprommer 2.9_ccl.z80
+./z1013_mega/modul2/igd16b MC 5/gze v.64k mb-eq.z80
+./z1013_mega/modul2/igd16b MC 5/HCopy FT F800.Z80
+./z1013_mega/modul2/igd16b MC 5/HCopy FT Hs_E000.Z80
+./z1013_mega/modul2/igd16b MC 5/HCopy FT RB-Moni.Z80
+./z1013_mega/modul2/igd16b MC 5/header menue.z80
+./z1013_mega/modul2/igd16b MC 5/headerbank zeit.z80
+./z1013_mega/modul2/igd16b MC 5/headerdisk 45.z80
+./z1013_mega/modul2/igd16b MC 5/hex-ascii-dump_u.z80
+./z1013_mega/modul2/igd16b MC 5/hisoft-pascal^.z80
+./z1013_mega/modul2/igd16b MC 5/kc-basic+.z80
+./z1013_mega/modul2/igd16b MC 5/mdedas_7.z80
+./z1013_mega/modul2/igd16b MC 5/memorytest 1.z80
+./z1013_mega/modul2/igd16b MC 5/memorytest 2.z80
+./z1013_mega/modul2/igd16b MC 5/microword 1.5gv1.z80
+./z1013_mega/modul2/igd16b MC 5/oc-editor 4.1 nh.z80
+./z1013_mega/modul2/igd16b MC 5/r-80 spv.z80
+./z1013_mega/modul2/igd16b MC 5/ram & pio-test.z80
+./z1013_mega/modul2/igd16b MC 5/reass+display.z80
+./z1013_mega/modul2/igd16b MC 5/rombasic-v2.z80
+./z1013_mega/modul2/igd16b MC 5/scp-2rf 2.38m.z80
+./z1013_mega/modul2/igd16b MC 5/spiel menue _jd_.z80
+./z1013_mega/modul2/igd16b MC 5/video-list.z80
+./z1013_mega/modul2/igd16b MC 5/zeichenpr. fzg.z80
+./z1013_mega/modul2/SCHIEBEFAX.z80
+./z1013_mega/soft1/HeaderUSB 2.1 Beschreibung.TXT
+./z1013_mega/soft1/moner_su_1_31.z80
+./z1013_mega/soft1/Z1013-DVU2_A000.z80
+./z1013_mega/soft1/Z1013-HeaderUSB_E000.z80
+./z1013_mega/vp/exreass_202.asm
+./z1013_mega/vp/exreass_202.z80
+./z1013_mega/vp/ramtest.asm
+./z1013_mega/vp/ramtest.z80

@@ -1,0 +1,14 @@
+div.filelist {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 100%;
+	font-family: monospace;
+	vertical-align: baseline;
+	background-color: white;
+	color: #1f2126;
+	line-height: 1;
+	text-align: left;
+}

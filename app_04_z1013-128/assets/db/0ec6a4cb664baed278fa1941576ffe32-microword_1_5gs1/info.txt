@@ -1,0 +1,3 @@
+<kurz>Textverarbeitung</kurz>
+<lang><include>microword_1_5gs1.txt</include></lang>
+<requires></requires>
