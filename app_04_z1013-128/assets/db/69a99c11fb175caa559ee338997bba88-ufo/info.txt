@@ -1,0 +1,14 @@
+<kurz>UFO's sinnlos im Weltall</kurz>
+<lang>5 UFO'S SIND ABZUSCHIESSEN.
+
+SCHUSSTASTEN:B,C,D,E,F,G,H
+
+TASTE A: HYPERSPRUNG + AUFTANKEN
+
+
+JEDER SCHUSS,SPRUNG UND TREFFER
+VERBRAUCHT ENERGIE.
+
+
+ACTION!</lang>                      
+<requires></requires>

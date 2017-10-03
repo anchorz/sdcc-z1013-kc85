@@ -1,0 +1,8 @@
+<kurz>Schiffe versenken, diesmal mit einem U-Boot</kurz>
+<lang>
+In diesem Spiel muessen Sie
+
+mindestens 10 feindliche Schiffe
+
+von Ihrem U-Boot aus vernichten</lang>                      
+<requires></requires>

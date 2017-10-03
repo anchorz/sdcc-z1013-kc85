@@ -1,0 +1,4 @@
+<kurz>Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus</kurz>
+<lang>Eine Version von Vampir ohne Titelbildschirm.
+Tastatur funktioniert mit Cursortasten</lang>                      
+<requires></requires>

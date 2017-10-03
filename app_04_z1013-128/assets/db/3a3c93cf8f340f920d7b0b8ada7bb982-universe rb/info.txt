@@ -1,0 +1,32 @@
+<kurz>UNIVERSE-DAS SPIEL IM ALL!</kurz>
+<lang>
+Angepasste Version für die K7659. Der Joystick ist nicht kompatibel zur Practic01/88 Version.
+
+UNIVERSE-DAS SPIEL IM ALL!
+
+Im Universum gibt es:
+    Rote Riesen-------O
+    Weisse Zwerge-----.
+    Schwarze Loecher--█
+
+Sie steuern Ihren Stern--* mit
+Spielhebel oder Tastatur.
+Treffen Sie auf einen Roten
+Riesen,erhalten Sie 25 Punkte
+und einen Reservestern.
+Sollten Sie in ein Schwarzes
+Loch geraten, wird Ihr Stern
+vernichtet. Wenn Sie keine Re-
+servesterne mehr haben,ist
+fuer Sie alles zu spaet.
+Beruehren Sie einen Weissen
+Zwerg, erhalten Sie 15 Punkte.
+Aber Achtung!
+Dass All ist veraenderlich,so
+dass oefter neue Sterne erschei-
+nen.
+      Viel Glueck!!!
+
+Alternative Version: <link>3a3c93cf8f340f920d7b0b8ada7bb982</link>      
+      </lang>                      
+<requires>Brosig</requires>

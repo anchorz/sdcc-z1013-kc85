@@ -1,0 +1,16 @@
+<kurz>TEXTADVENTURE - WUESTE</kurz>
+<lang>Gehen Sie auf die Suche nach dem in der Wueste 
+RUROMI verborgenen Schatz.  
+Wagen Sie das Abenteuer, von dem vor Ihnen bisher 
+keiner zurueckkehrte.
+
+Lassen Sie sich fesseln von diesem
+
+TEXTADVENTURE - GAME,
+
+Das Ihnen ein Raetsel nach dem anderen aufgeben wird !
+Aber verzweifeln Sie nicht, wenn Sie beim ersten Anlauf
+scheitern !
+Nur Phantasie kann Ihnen helfen und natuerlich die
+ausfuehrliche Beschreibung ueber Textfile EDITEX</lang>                      
+<requires></requires>

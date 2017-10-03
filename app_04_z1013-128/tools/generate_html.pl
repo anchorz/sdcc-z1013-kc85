@@ -70,7 +70,7 @@ sub print_entry($) {
     read FILE, $bytes, 1;
     my $typ=unpack("a",$bytes);
     
-    my %knownFileTypes=('C'=>1,'T'=>1,'I'=>1,'E'=>1,'s'=>1);
+    my %knownFileTypes=('C'=>1,'T'=>1,'I'=>1,'E'=>1,'s'=>1,'B'=>1);
     if (!$knownFileTypes{$typ})
     {
         my $error=sprintf "e: unbekannter Dateityp '%s' %s\n",$typ,$filename;

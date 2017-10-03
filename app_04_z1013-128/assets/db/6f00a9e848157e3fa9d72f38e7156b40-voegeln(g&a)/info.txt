@@ -1,0 +1,10 @@
+<kurz>Mit einem Panzer Voegel abschiessen</kurz>
+<lang>Code ist "ALARM "
+
+Bei diesem Programm muessen Sie
+mit Hilfe eines Panzers Voegel
+abschiessen.
+
+Die Schusstaste ist ┗━┛ (Space)
+Wir wuenschen Ihnen viel Spass.</lang>                      
+<requires></requires>
