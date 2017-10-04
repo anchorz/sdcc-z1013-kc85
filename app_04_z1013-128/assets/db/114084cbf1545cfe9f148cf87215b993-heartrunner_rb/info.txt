@@ -1,0 +1,3 @@
+<kurz>Version mit RST20</kurz>
+<lang></lang>
+<required></required>

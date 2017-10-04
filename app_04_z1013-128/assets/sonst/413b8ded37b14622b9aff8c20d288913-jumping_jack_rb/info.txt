@@ -1,0 +1,3 @@
+<kurz></kurz>
+<lang>ähnlich wie [d27e3f683d8721cadce77c19fadf9612], nur wird hier Cursor Hoch statt SPACE zum Springen verwendet.</lang>
+<required></required>

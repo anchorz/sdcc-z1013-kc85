@@ -1,0 +1,30 @@
+<kurz>Programm zum Erstellen von Pseudografiken</kurz>
+<lang>    AUTOGRAF
+    ~~~~~~~~~~~~~~~~
+Ein Programm zum Erstellen von
+Pseudografiken.
+
+das Programm verwaltet 1 Bild.
+Anfangs- und Endadresse sind auf
+202/204H festgelegt und koennen
+geaendert werden, wenn mehrere
+Bilder bearbeitet werden sollen.
+
+Alle Eingaben sind Hex! 'M' und
+BRK fuehren in das Menu. Der Cursor
+ist nicht gegen das Verlassen des
+Bildbereiches geschuetzt 
+(fuehrt aber nicht zum Absturz)!
+Bei Cursorbewegung fueren alle
+anderen Tasten zum jeweiligen Menu.
+
+Bei LINE ergibt zusaetzlich
+SPACE=schwarz, 'V'=weiss. Cursor
+bewegung ist hier laufend moeglich.
+Die Richtungsangabe ist 0-7
+(0=senkr/hoch; -7 in 
+Uhrzeigersinn vom Cursor).
+
+us./soft wuenscht viel Erfolg
+Erfurt, 02.01.1988</lang>
+<required></required>

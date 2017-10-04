@@ -1,0 +1,3 @@
+<kurz>Finde den Weg zum Schatz, töte die Spinnen (Layout für FF-Tast. IBKL)</kurz>
+<lang></lang>
+<required></required>

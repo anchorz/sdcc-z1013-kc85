@@ -1,0 +1,3 @@
+<kurz>C H E S S M A S T E R  - Z1013</kurz>
+<lang><include>chess_master_h_I.txt</include></lang>
+<required></required>

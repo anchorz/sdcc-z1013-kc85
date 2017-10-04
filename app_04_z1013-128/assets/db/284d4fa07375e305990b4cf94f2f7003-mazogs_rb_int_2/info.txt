@@ -1,0 +1,3 @@
+<kurz>Spezialversion mit Tastaturinterrupt</kurz>
+<lang>Auf meinem Rechner funktioniert es nicht.</lang>
+<required></required>

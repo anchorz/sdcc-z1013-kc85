@@ -1,0 +1,3 @@
+<kurz>Brettspiel, Steine setzen und Felder erobern</kurz>
+<lang></lang>
+<required></required>

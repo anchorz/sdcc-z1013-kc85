@@ -1,0 +1,3 @@
+<kurz>Schach</kurz>
+<lang></lang>
+<required></required>

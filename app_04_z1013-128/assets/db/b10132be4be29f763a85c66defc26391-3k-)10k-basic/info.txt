@@ -1,0 +1,3 @@
+<kurz>3k-Basic-Progamme in 10k-HC-Basic-Programme umwandeln</kurz>
+<lang><include>3k-)10k-basic.txt</include></lang>
+<required></required>
