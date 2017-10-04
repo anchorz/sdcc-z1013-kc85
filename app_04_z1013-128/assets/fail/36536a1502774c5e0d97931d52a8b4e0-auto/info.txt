@@ -1,0 +1,5 @@
+<kurz></kurz>
+<lang>Typ 'M' ist nicht korrekt, sollte wohl 'C' werden
+[c0617b58cf7e60bdc81acc2c56af77e4]
+</lang>
+<required></required>

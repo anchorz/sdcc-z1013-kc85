@@ -1,0 +1,3 @@
+<kurz></kurz>
+<lang><include>hexdump_1_021_I.txt</include></lang>
+<required></required>

@@ -1,0 +1,3 @@
+<kurz>BASIC Variante mit PSET-Funktion (HC900)</kurz>
+<lang></lang>
+<required></required>

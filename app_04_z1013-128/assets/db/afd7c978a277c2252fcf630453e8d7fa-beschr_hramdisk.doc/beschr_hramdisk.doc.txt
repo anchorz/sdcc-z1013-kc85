@@ -1,0 +1,73 @@
+Beschreibung der Headersave     Ramdiskette mit RB-Monitor.
+by Sieghard Howitz  18.5.89     Bahnhofstr. 13 Reichenbach 8907
+----------------------------------------------------------------
+
+-Programmstandort:
+	E900-EB92 Start: E900
+Am Anfang stehen die Umladerroutinen fuer die Kommandoschleife.
+Durch J E900 kann die Kommandoschleife jederzeit wieder ab 0BCH
+geladen werden.
+-Kommandos:
+-@W: Write, laden eines Programmes in die Ramdisk.
+-@R: Read, ausladen eines Programmes an den Orginalstandort.
+-@N: New, Neustart alte Daten werden geloescht.
+-@Q: Delete, loeschen des letzten Programmes.
+-@A: Automatisches Ausladen der Headersaveprogramme der Ramdisk.
+-@E: Automatisches Einladen in die Ramdisk.
+
+-Beschreibung:
+Zur Nutzung der Ramdisk werden einige Komandos, des Headersave 
+das im Monitor steht, genutzt.  Andere Nutzer des Headersave
+(E000H) mussen folgende Adressenaendern:
+	von		auf
+E955    CD 96 FB	CD DB E0
+E989	CD BE FA	CD 18 E0
+E9A7	C4 EA FA	C4 3E E0
+EA06	FE E8		FE E0
+EA47	FE 68		FE 60
+
+*@W -Write, zum Laden in die Ramdisk, es wird wie beim Headersave
+nach @W die Anfangsadresse - Endadresse - Startadresse geschrieben.
+Nach dem Enter wird der Typ und Name abgefragt.
+Bei Eingabe von "@W:" wird das Programm mit den alten Kopf-
+parametern in die Ramdisk geladen. Diese koennen aus der 
+LOAD-oder SAVE-Funktion stammen.(zu verwenden bei Basic-
+programm die ueber HSAVE oder   HLOAD in den Basicinterpreter 
+eingelesen wurden). Nach dem Abspeichern des Programmes in die
+Ramdisk wird der freie Speicher  vom letzten Programm bis E7FF
+angezeigt. Wird beim Einladen    E7FF ueberschritten erscheint
+die Aufschrift "Ramdiskette ist  voll" und das lezte Programm 
+nicht mehr geladen.
+  
+*@R -Read, nach Betaetigung von @R Enter werden die gespeicherten 
+Programme angezeigt, beginnend mit dem Programm, dass zuerst ein
+gegeben wurde.	Es wird nach jeden Programm gefragt:"Programm 
+laden (J)"-beantwortet man diese Frage mit "J", wird das Programm
+auf die Orginaladressen umgeladen.
+
+*@N -New, Neustart der Ramdiskette, es wird nach dem Beginn der
+Anfangsadresse fuer die Ramdisk gefragt. Nun kann eine selbst-
+gewaehlte Angangsadresse eingegeben werden. Alle nun eingespei-
+cherten Programme werden ab dieser Adresse beginnend abgelegt.
+Beim Neueinlesen in den Computerwird eine Anfangsadresse erwartet
+anderenfalls beginnt die Ramdisk ab 00H.
+
+*@Q -Delete, loeschen des zuletzt eingespeicherten Programmes.
+
+*@A -Automatisches Auslesen von Programmen aus der Ramdisk.
+Nach @A wird eine Zahl eingegeben die der gewuenschten Anzahl 
+von Programmen entspricht, die  auf Kassette gespeicht werden 
+sollen. (Die Zahl darf nicht groesser sein als die Anzahl der 
+Programme die in der Ramdisk stehen.) Bei @A Enter wird nur das 
+1. Programm ausgeladen. 
+Beantwortet man "verify" mit Enter, wird sofort das naechste
+Programm ausgeladen.   
+*@E -Automatisches Einlesen von Programmen in die Ramdisk.
+Nach @E Zahl der zuladenden Programme angeben. Nach Enter TBG
+starten, es wird nun nach dem Einlesen des Programmes dieses 
+sofort in die Ramdisk geladen.  Nach der Anzeige des freien 
+Speichers wird ein weiteres Programm erwartet. Nach dem Einlesen
+ der gewuenschten Anzahl erfolgt der Ruecksprung zum Monitor-
+programm.
+
+<<EOT>><<EOT>><<EOT>>

@@ -1,0 +1,3 @@
+<kurz>Beschreibung Texteditor</kurz>
+<lang><include>documentation.doc.txt</include></lang>
+<required></required>

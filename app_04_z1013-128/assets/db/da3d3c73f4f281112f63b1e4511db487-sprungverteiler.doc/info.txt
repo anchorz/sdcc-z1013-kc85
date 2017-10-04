@@ -1,0 +1,3 @@
+<kurz>SPV: Sprungverteiler fuer Z1013-Erweiterungen</kurz>
+<lang><include>sprungverteiler.doc.txt</include></lang>
+<required></required>

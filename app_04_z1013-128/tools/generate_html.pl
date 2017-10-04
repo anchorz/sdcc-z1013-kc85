@@ -59,6 +59,11 @@ sub print_entry($) {
     }
     
     my $filename="$dir/$z80[0]";
+    my $z80len=-s $filename;
+    if ($z80len%32) {
+        printf STDERR "e: Dateigröße muss es Vielfaches von 32 sein. %d Bytes fehlen.\n", 32-$z80len%32 ;
+        printf STDERR "   %s\n", $filename ;
+    }
     open(FILE,"<:raw","$filename");
     read FILE, my $bytes, 2;
     my $aadr=unpack("v",$bytes);
@@ -69,8 +74,14 @@ sub print_entry($) {
     read FILE, $bytes, 6;
     read FILE, $bytes, 1;
     my $typ=unpack("a",$bytes);
+    my $z80ImageLen=$eadr-$aadr+1;
+    if ($z80ImageLen>($z80len-32)) {
+        printf STDERR "e: Ist %d Bytes kleiner, als im Header angegeben.\n", $z80ImageLen-($z80len-32) ;
+        printf STDERR "   %s\n", $filename ;
+    }
     
-    my %knownFileTypes=('C'=>1,'T'=>1,'I'=>1,'E'=>1,'s'=>1,'B'=>1);
+    my %knownFileTypes=('C'=>1,'T'=>1,'I'=>1,'E'=>1,'s'=>1,'B'=>1,'P'=>1,
+    'G'=>"Grafikeditor");
     if (!$knownFileTypes{$typ})
     {
         my $error=sprintf "e: unbekannter Dateityp '%s' %s\n",$typ,$filename;

@@ -24,7 +24,7 @@ $sonderzeichen=0;
 );
 $do_map=1;
 
-%others=("\xc4"=>"Ä","\xe4"=>"ä","\xdf"=>"ß","\xf6"=>"ö","\xfc"=>"ü");
+%others=("\x88"=>"_","\xc8"=>"_","\xa8"=>"┏","\xa9"=>"┓","\xc4"=>"Ä","\xe4"=>"ä","\xdf"=>"ß","\xf6"=>"ö","\xfc"=>"ü");
 #%map=();
 
 for($i=32; $i<length $content; $i++)
@@ -72,6 +72,7 @@ for($i=32; $i<length $content; $i++)
         next;
     }
     $flag=$i;
+    #printf(OUT "[ESC+%s]",$c);
     printf("[0x%x] ESC+%s\n",$i,$c);
   } elsif (ord($c)==0x1e)
   {

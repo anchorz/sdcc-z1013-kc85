@@ -1,0 +1,5 @@
+<kurz>Loesung eines DGLS</kurz>
+<lang>
+Gleichungen vom Typ
+F[1]=f1(x[1],x[2],x[3]...,</lang>
+<required></required>

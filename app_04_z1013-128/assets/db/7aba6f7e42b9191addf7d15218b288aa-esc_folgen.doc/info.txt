@@ -1,0 +1,6 @@
+<kurz>ESC-Sequenzen für S3004</kurz>
+<lang>Der Text verwendet ESC-Sequenzen für S3004, so
+dass die Darstellung nicht ganz korrekt ist. Am Besten,
+man druckt sich das ersteinmal aus.
+<include>esc_folgen.doc.txt</include></lang>
+<required></required>

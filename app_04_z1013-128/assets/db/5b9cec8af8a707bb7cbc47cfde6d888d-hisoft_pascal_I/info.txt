@@ -1,0 +1,3 @@
+<kurz>Beschreibung HiSoft-Pascal</kurz>
+<lang><include>hisoft_pascal_I.txt</include></lang>
+<required></required>

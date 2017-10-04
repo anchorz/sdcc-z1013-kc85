@@ -1,0 +1,24 @@
+<kurz>KC87 Monitorerweiterung für den Z1013</kurz>
+<lang>
+PSM  V 2.01
+
+Befehle:
+UHEX
+IN
+OUT
+CALC
+DUMP
+CM
+CLOAD
+CSAVE
+CVERIFY
+FIND
+DS
+TRACE
+MOVE
+GO
+FILL
+REG
+HELP            
+</lang>
+<required>2.02</required>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="jkcemu.gif"/></div><div class="filelist">0100 1fff 0103 C ... <a href="texteditor.com.z80">TEXTEDITOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre>Puffer ab 0x2000
+ 
+**********************************************************************
+*            B E S C H R E I B U N G   T E X T E D I T O R           *
+**********************************************************************
+
+
+*** Beschreibung der Funktionen ***
+
+-Frage nach Textanfang kann mit "ENTER" beantwortet werden.
+
+-Alle Funktionen sind aus dem Edit-Modus erreichbar.
+
+┏Taste┓          ┏Funktion┓
+
+  _-- Cursor-Steuerung --_
+
+^X/DOWN         Cursor runter
+^E/UP              "   hoch
+^S/LEFT            "   links
+^D/RIGHT           "   rechts
+^A                 "   an Zeilenanfang
+^F                 "   an Zeilenende
+^W                 "   an Textanfang
+^Y                 "   an Textende
+^R              eine Seite hoch
+^C              eine Seite runter
+^T              Tab-Sprung nach rechts (Orientierung an vorhergehender
+                Zeile)
+
+  _-- Textmanipulation --_
+
+(ohne CTRL)     Zeichen wird in Text eingefuegt
+DEL             Loeschen des Zeichens vor Cursor
+ENTER           neue Zeile (bei INS ein:Zeile einfuegen)
+                Cursor unter Begin der vorherigen Zeile
+^G              Zeichen unter Cursor loeschen
+^Z              Zeile loeschen
+^U              Text auf Magnetband retten
+^L              Text vom Magnetband laden
+^PT             gesamten Text drucken
+^OL             Zeilenmodus: es wird die erste Zeile vom Bildaus-
+                schnitt vollstaendig angezeigt,
+                Blaettern mit "UP" und "DOWN", Zurueck mit "Q"
+^PI             Steuerzeichen; intensiv drucken
+^PN             Steuerzeichen; normal drucken
+^PU             Steuerzeichen; Unterstreichen ein
+^PL             Steuerzeichen; Unterstreichen aus
+^PS             Steuerzeichen; Seitenvorschub
+
+
+_-- Blockbefehle --_
+
+^BA             Blockanfang markieren
+^BE             Blockende markieren
+^BQ             Blockmarkierungen entfernen
+                (wichtig vor Retten bzw. Drucken)
+^BZ             Block loeschen
+^BC             Block kopieren
+^BV             Block verschieben
+^BU             Block auf Magnetband retten
+^PB             Block drucken
+
+  _-- Weitere Befehle --_
+
+^N              Anzeige Textanfang,Textende,Textlaenge (Zeilenzahl)
+^V              Umschaltung INS/OVR und umgekehrt
+^PZ             Einstellen der Zeilenzahl pro Blatt beim Drucken
+^Q              zum Z1013-Monitor
+
+
+Letzte Bearbeitung:
+
+7.2.1989
+
+Rolf Nestler
+&lt;&lt;EOT&gt;&gt;</pre>
+</body>
+</html>

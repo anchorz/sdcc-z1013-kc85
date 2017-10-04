@@ -1,0 +1,4 @@
+<kurz>TEXT-EDITOR Version 2 (C) 1988</kurz>
+<lang>Puffer ab 0x2000
+<include>../7cfd96cca9a8ca3b9dfb5bf35615ab39-documentation.doc/documentation.doc.txt</include></lang>
+<required></required>

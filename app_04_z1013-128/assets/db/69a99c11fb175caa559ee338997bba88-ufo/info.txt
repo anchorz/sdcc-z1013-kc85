@@ -1,4 +1,4 @@
-<kurz>UFO's sinnlos im Weltall</kurz>
+<kurz>UFO's ziellos im Weltall, Rücksturz!</kurz>
 <lang>5 UFO'S SIND ABZUSCHIESSEN.
 
 SCHUSSTASTEN:B,C,D,E,F,G,H

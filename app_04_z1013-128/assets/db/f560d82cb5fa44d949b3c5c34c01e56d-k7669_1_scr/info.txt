@@ -1,0 +1,3 @@
+<kurz>S3004 K7699 Tastaturlayout-Vorlage Teil 1</kurz>
+<lang></lang>
+<required></required>

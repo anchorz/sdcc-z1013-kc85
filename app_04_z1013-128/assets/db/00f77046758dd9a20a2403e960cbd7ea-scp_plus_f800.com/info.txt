@@ -1,0 +1,3 @@
+<kurz>CP/M VERS. 2.2 RAMDISK 7000H-C3FFH</kurz>
+<lang></lang>
+<required></required>

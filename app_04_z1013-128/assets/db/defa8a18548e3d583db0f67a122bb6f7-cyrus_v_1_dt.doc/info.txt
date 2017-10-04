@@ -1,0 +1,3 @@
+<kurz>Schach Beschreibung</kurz>
+<lang><include>cyrus_v_1_dt.doc.txt</include></lang>
+<required></required>

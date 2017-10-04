@@ -1,0 +1,10 @@
+<kurz>Geschicklichkeitsspiel: gegnerische Flugkörper und Schiffe abschießen</kurz>
+<lang><include>Der Spieler steuert in Draufsicht ein 
+Flugzeug über einen Fluss und versucht eine größtmögliche 
+Punkteanzahl durch das Abschießen gegnerischer Flugkörper 
+und Schiffe zu erzielen. Dabei muss durch das Überfliegen 
+von Auftankpunkten verbrauchter Treibstoff nachgefüllt 
+werden. Kollisionen mit Gegnern oder dem Flussufer führen 
+zum unmittelbaren Verlust des eigenen Flugzeugs. Sind alle 
+zur Verfügung stehenden Flugzeuge verloren, so ist das 
+Spiel beendet.</lang>

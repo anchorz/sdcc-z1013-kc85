@@ -1,0 +1,3 @@
+<kurz>Ambras/Ziermann Tastaturlayout-Vorlage Teil 2</kurz>
+<lang></lang>
+<required></required>

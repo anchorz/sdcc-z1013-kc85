@@ -1,0 +1,39 @@
+<kurz>Leitern klettern, Spielfigur zum Ausgang bringen</kurz>
+<lang>* SPIELPROGRAMM C L I M B E R *
+
+Sie muessen ihre Spielfigur im
+Wettlauf mit der Zeit zum
+Ausgang der Spieletage bringen
+und dort auf das Erscheinen der
+naechsten Etage warten. Die
+Spielfigur kann mit Hilfe der
+Kursor-Tasten bewegt werden.
+Beeilen Sie sich, denn Sie
+haben nur wenig Zeit.
+
+Verlassen Sie niemals die Linien
+und Leitern ! Meiden Sie die
+Ungeheuer. Sonst verliert die
+Spielfigur ihr Leben. Zum Glueck
+hat sie drei Leben. Die Waechter
+am Ausgang koennen nur durch das
+Einsammeln von Zauberfruechten
+besiegt werden.
+
+
+           Spielfigur:  ♟
+    Ausgang der Etage:  >-<
+             Waechter:  ♣
+       Zauberfruechte:  $
+       
+In einigen Gefahrensituationen
+kann Ihre Spielfigur durch eine
+Tarnkappe auch unsichtbar werden
+und ist dadurch erst einmal
+gerettet. Durch Bewegung der
+Figur wird Sie wieder sichtbar.
+
+
+
+</lang>
+<required></required>

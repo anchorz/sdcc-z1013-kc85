@@ -1,0 +1,3 @@
+<kurz>32KByte-ROM-Disc über PIO-B4 angesteuert</kurz>
+<lang></lang>
+<required></required>

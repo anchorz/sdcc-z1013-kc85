@@ -1,0 +1,38 @@
+<kurz>Autorennen-und Labyrinth-Kombi</kurz>
+<lang>Startadressen bei 0x800 und 0x900
+
+AUF DEM BILDSCHIRM ERSCHEINT
+EINE STRASSE MIT 11 ZEICHEN
+BREITE UND ZUFAELLIG WECHSELNDER
+RICHTUNG.
+
+DAS AUTO IST MITTELS DER
+TASTEN <- ->SO NACH RECHTS ODER
+LINKS ZU BEWEGEN, DASS ES NICHT
+AN DEN STRASSENRAND STOESST.
+
+ES SIND  50 km UNFALLFREI
+ZU FAHREN. VIEL ERFOLG!
+
+AUSWAHL:
+TASTE V: DIE GESCHWINDIGKEIT
+LAESST SICH DURCH DRUECKEN
+VON TASTE S1   ERHOEHEN
+
+TASTE W:START MIT DER GESCHWIN-
+DIGKEIT DES VORIGEN SPIELS
+
+TASTE U: DIE GESCHWINDIGKEIT
+STEIGERT SICH SELBSTAENDIG  
+
+Labyrinth (Start 0x0900)
+=========
+Die Spielerfigur ist mittels
+der Kursortasten und "U"(oben)
+und der Leertaste (unten) so
+durch das Labyrinth zu fueren,
+dass sie schnellstens den Ausgang
+erreicht. Dabei ist den
+"wilden Tieren" auszuweichen,
+sonst wird die Figur "gefressen"</lang>
+<required></required>

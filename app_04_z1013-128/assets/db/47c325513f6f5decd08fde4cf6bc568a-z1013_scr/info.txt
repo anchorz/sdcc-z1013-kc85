@@ -1,0 +1,3 @@
+<kurz>ASCII Bild Z1013</kurz>
+<lang></lang>
+<required></required>

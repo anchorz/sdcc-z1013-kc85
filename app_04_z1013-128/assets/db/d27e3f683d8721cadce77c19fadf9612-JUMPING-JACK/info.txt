@@ -1,0 +1,3 @@
+<kurz></kurz>
+<lang>Dateigröße muss es Vielfaches von 32 sein. 24 Bytes fehlen.</lang>
+<requires></requires>

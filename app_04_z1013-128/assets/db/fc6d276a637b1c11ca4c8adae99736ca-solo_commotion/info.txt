@@ -1,0 +1,4 @@
+<kurz>Ähnlich wie Billard, versuche mit dem Ball das Loch zu treffen</kurz>
+<lang>identisch mit [4960683f103baf0bfc2078cc5a29139d]
+lediglich einige extra Bytes nach dem Programm sind verschieden</lang>
+<required>2.02</required>

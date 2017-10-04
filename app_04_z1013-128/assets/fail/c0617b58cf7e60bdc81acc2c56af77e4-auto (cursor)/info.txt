@@ -1,0 +1,3 @@
+<kurz>Strassenrennen mit Gegenverkehr</kurz>
+<lang>Header falsch. Image ist 1 Byte zu kurz</lang>
+<required></required>
