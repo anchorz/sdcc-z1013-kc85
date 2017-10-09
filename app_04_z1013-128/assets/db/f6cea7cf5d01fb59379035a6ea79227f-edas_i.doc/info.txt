@@ -1,1 +1,2 @@
-<lang>Dateigröße muss es Vielfaches von 32 sein. 2 Bytes fehlen.</lang>
+<kurz>Edas 1.1 a+d+h</kurz>
+<lang><include>edas_i.doc.txt</include></lang>

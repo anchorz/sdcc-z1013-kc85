@@ -1,3 +1,0 @@
-<kurz>Version mit RST20</kurz>
-<lang>Ist 1 Bytes kleiner, als im Header angegeben</lang>
-<required></required>

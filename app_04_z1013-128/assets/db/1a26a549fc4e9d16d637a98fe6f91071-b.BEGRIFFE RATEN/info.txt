@@ -1,0 +1,3 @@
+<kurz>Buchstaben tippen und Begriffe raten. Ich kaufe ein E!</kurz>
+<lang><include>BEGRIFFE_RATEN.b</include></lang>
+<required></required>

@@ -1,0 +1,20 @@
+<kurz>SPIELBOX Nr. 1, Kompilation verschiedener BASIC-Spiele</kurz>
+<lang>ZUSAMMENGESTELLT VON: P.SCHELLIN
+
+MELANCHTHONSTR.4   GOERLITZ 8900
+
+3D-MUEHLE    = 0
+SCHATZHOEHLE = 1
+TRIPLETT     = 2
+MOND         = 3
+BILLARD      = 4
+MEMORY       = 5
+BOESE 6      = 6
+OTHELLO      = 7
+MAUERSPIEL   = 8
+LAENDERRATEN = 9
+PUZZLE       = P
+ENTEN        = E
+
+<include>box1.B</include></lang>
+<required></required>

@@ -1,0 +1,4 @@
+<kurz>SIMULATION EINER MONDLANDUNG aus "Kleincomputer leichtverständlich" aber noch etwas erweitert</kurz>
+<lang>Inhalt identisch mit [0cb32e66879d0742440d093e87285b4a], 
+Fileformat von .tap konvertiert. Fileformat sollte .z80 sein</lang>
+<required></required>

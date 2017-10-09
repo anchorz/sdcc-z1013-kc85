@@ -1,0 +1,4 @@
+<kurz></kurz>
+<lang>Funktioniert nicht. Zeile <b>1240 X=PEEK(5):POKE 5,0</b> sollte wohl X=PEEK(4);POKE 4,0 lauten 
+Original [aac4dea168acd40c789528585c5c85ff]</lang>
+<required></required>

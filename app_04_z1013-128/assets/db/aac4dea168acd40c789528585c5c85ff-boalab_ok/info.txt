@@ -1,0 +1,12 @@
+<kurz>Schlange muss Monster ausweichen</kurz>
+<lang>Zeile <b>1240 X=PEEK(5):POKE 5,0</b> geändert nach X=PEEK(4);POKE 4,0
+
+aber viel Sinn ergibt das Demo dennoch nicht:
+
+Steuerung ← → U ␣ 
+
+Original [519d53175141afb37da4057fb3f38af0]
+
+<include>boalab_ok.B</include></lang>
+<required></required>
+

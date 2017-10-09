@@ -1,0 +1,3 @@
+<kurz>Original 10K Basic-Interpreter</kurz>
+<lang>hat den Fehler, dass er nicht bei 0EBFFh mit dem Speichertest aufhört.</lang>
+<required></required>

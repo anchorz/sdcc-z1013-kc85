@@ -1,1 +1,2 @@
+<kurz>Quelltext Cowboy</kurz>
 <lang>Dateigröße muss es Vielfaches von 32 sein. 2 Bytes fehlen.</lang>

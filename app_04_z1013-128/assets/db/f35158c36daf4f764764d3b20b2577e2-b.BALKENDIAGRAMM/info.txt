@@ -1,0 +1,3 @@
+<kurz>Balkendiagramm erstellen</kurz>
+<lang><include>BALKENDIAGRAMM.b</include></lang>
+<required></required>

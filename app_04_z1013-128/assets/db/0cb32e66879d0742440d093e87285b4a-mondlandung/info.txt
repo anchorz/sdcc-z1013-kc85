@@ -1,0 +1,22 @@
+<kurz>SIMULATION EINER MONDLANDUNG aus "Kleincomputer leichtverständlich" aber noch etwas erweitert</kurz>
+<lang>Sie haben die Handsteuerung beim Landeanflug auf dem Mond 5000m
+ueber einem geeigneten Landeplatz uebernommen.
+
+Die Sinkgeschwindigkeit betraegt 500m/s. Der Tank enthaelt nur noch 1200l Treibstoff.
+
+HIER DIE VORSCHRIFT FUER DIE
+LANDUNG!:
+
+1.Nach jeder Sekunde werden die Hoehe, die Geschwindigkeit, sowie der verbleibende Tankinhalt gemeldet.
+
+2.Auf Anfrage geben Sie die Menge Treibstoff ein, die Sie in der naechsten Sekunde verbrennen wollen.
+
+3.Der max. Schub Ihrer Triebwerke betraegt 500m/s^2. Das entspricht 300l Treibstoff pro Sekunde.
+
+4.Beim Beruehren der Mondoberflaeche schaltet das Triebwerk automatisch aus und Sie erhalten Angaben 
+  ueber die Landeschwindigkeit und den verbliebenen Treibstoff.
+
+5.Ist der Tank vor der Landung leer, wird der Rapport weitergefuehrt,bis Sie den Mond erreicht haben.
+
+<include>mondlandung.B</include></lang>
+<required></required>

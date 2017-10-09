@@ -1,0 +1,10 @@
+<kurz>Springe über die Löcher in der Bohrplattform</kurz>
+<lang>Sie  sind auf  einer  defekten
+Bohrplattform und muessen ueber
+die  Loecher im Plattformboden
+springen.
+
+Steuerung: ␣ 
+
+<include>bohrturm.B</include></lang>
+<required></required>

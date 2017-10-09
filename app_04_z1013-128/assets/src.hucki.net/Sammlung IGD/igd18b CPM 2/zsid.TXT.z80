@@ -1,0 +1,231 @@
+.PL72
+.FO
+.HEBCU880                                                      ZSID
+
+
+          ****************************************        
+          *    *****     ***      *    ****      *
+          *        *    *   *     *    *   *     *
+          *       *     *         *    *   *     *
+          *      *       ***      *    *   *     *
+          *     *           *     *    *   *     *
+          *    *        *   *     *    *   *     *
+          *    *****     ***      *    ****      *
+          ****************************************    
+
+Aufruf: ZSID_(ufn)_(ufn.SYM)
+
+Laedt  ZSID in den oberen Teil des TPA und liest die  angegebenen 
+Dateien ein ( siehe Read ).
+Mit CTL-C wird XSID beendet.
+
+Kurzbeschreibung von ZSID
+
+ZSID - Ausdruecke:   hexadezimalzahlen  bis 4 Stellen z.B.: 3FF
+       (expr )       dezimalzahlen mit "#" vor der Zahl bis 65535
+                     z.B.:#325
+                     ASCII - Ketten max 2 Zeichen mit "'" vor der 
+                     Kette: 'AB
+                     ^...^ - Stackinhalt m - ten Niveaus                    
+                     Symbole: .sym - adresse
+                               @sym - (addr)(addr+1)
+                               =sym - 00(addr)
+                     Symbolfolgen: s1/s2/s3/.../sn
+                     (sucht s1, dann s2, usw. bis sn und 
+                     benutzt dieses)
+                     Ausdruecke: FE00+#128,+5 = FE80,FE85
+                                 FE00-200,-#512 = FD00,FE00
+
+     a,bb,c,f,s     koennen auch Ausdruecke (expr) sein.
+
+
+Kommandos:
+==========
+
+
+
+A (Assemble)
+     Wird  benutzt um kurze Programme oder Programmteile  zu  er-
+     stellen:
+    
+Aexpr          assemblieren ab expr
+A              ab aktueller Adresse
+-A             verbietet die Disassemblierung bei einigen Kommandos
+     
+
+C (Call)
+     Startet ein Unterprogramm in Echtzeit bis zum Return:
+
+Cexpr          startet das auf expr stehende Unterprogramm
+Cexpr,b        dsgl. BC = b , DE = 00
+Cexpr,b,d      dsgl. BC = b , DE = d
+
+
+
+
+D (Display)
+     Zeigt den Speicherinhalt auf dem Bildschirm an:
+
+Dexpr          zeigt 12 Zeilen ab expr
+Dexpr,expr     zeigt Speicherinhalt von expr bis expr
+D              zeigt 12 Zeilen ab aktueller Adresse
+D,expr         zeigt ab akt. Adresse bis expr
+DW             Anzeige im Wortformat, Parameter wie oben
+
+
+
+
+Ef,s,c (Vergleichen)
+     Vergleichen  des   Speicherinhaltes  von f  bis  s  mit  dem 
+     Bereich  ab  c.   Bei Ungleichheit erfolgt eine Ausgabe  des 
+     Formates:
+
+     AAAA BB CCCC DD mit der Bedeutung:
+     AAAA     - Adresse im ersten Block
+     BB       - Inhalt der Speicherstelle AAAA
+     CCCC     - Adresse im zweiten Block
+     DD       - Inhalt der Speicherstelle CCCC
+
+
+
+F (Fill)
+     Benutzt man, um den Speicher direkt zu beschreiben:
+
+Dexpr,d        fuelle von expr bis expr mit d (1 Byte)
+
+
+
+
+G (Go)
+     Programmstart im Echtzeitlauf
+
+G              Lauf ab aktuellem PC
+Gexpr          Lauf ab expr
+G,expr         Lauf bis expr erreicht wird
+Gexpr,a        Lauf ab expr bis a erreicht wird     
+G,a,b          Lauf bis a oder b erreicht wird
+Gexpr,a,b      Lauf ab expr bis a oder b
+-G             Programm wird nicht unterbrochen, aber Durchgaenge 
+               durch Passpoints gezaehlt, Parameter wie oben
+               Aus dem gestarteten Programm kann man mit RST 7 in 
+               ZSID zurueckkehren.
+
+
+
+
+H (Hex Values)
+     Wird fuer kurze hexadezimale Berechnungen benutzt:
+
+Hexpr1,expr2   Anzeige expr1+expr2, expr1-expr2
+Hexpr          Anz. hhhh #ddddd 'c' .symbol
+H              Anz. der hex. Entsprechung aller
+               Symbole
+
+
+
+
+I  (Input)
+     Eingabe  von  Dateinamen zur  Vorbereitung  einer  Ein- oder 
+     Ausgabe:
+
+Iccc....c      ccc...c  wird in 80H,..  eingetragen und FCB1  in 
+               5CH bzw FCB2 in 6CH vorbereitet.
+               Zur  Vorbereitung  der Eingabe einer  SYM  - Datei 
+               wird Iufn_ufn.SYM bzw I*.*_ufn.SYM eingegeben.
+
+
+
+L (List)
+     Listet das disassemblierte Maschinenprogramm auf:
+
+Lexpr          listet ab expr 12 Zeilen
+Lexpr,expr     listet von expr bis expr
+L              12 Zeilen ab aktueller Adresse
+-L             verbietet SID die Symbolverarbeitung
+
+
+M (Move Memory)
+     Laedt den Speicher um:
+
+Ms,h,d         laedt den Bereich von s bis h in den Bereich ab d
+
+
+P  (Passpoints)
+     Bei  Erreichen eines Passpoints wird der Programmlauf unter-
+     brochen und der CPU - Zustand angezeigt:
+
+P              Anzeige aller Passpoints
+Pf             Passpoint auf f setzen
+Pf,n           Passpoint auf f mit n Durchlaeufen
+-P             alle Passpoints loeschen
+-Pf            Passpoint auf f loeschen
+
+
+Q (Suchen)
+     Suchen nach Speicherbelegungen im RAM 
+
+Qf,s           suche von f bis s
+               - "ASCII
+               - 'Mnemocode ( mit Symbolverarbeitung )
+               - @Adresse
+               - byte (_byte...)
+
+
+R (Read)
+     Einlesen von Dateien:
+
+R              Einlesen der mit Kommando I spezifizierten Datei
+Rd             Einlesen der Datei mit Offset d
+
+               x.HEX  wird  als HEX - Datei geladen  (  evtl.  PC 
+               gesetzt )
+               x.UTL wird als Utility geladen und initialisiert
+               x.SYM  als zweite Datei wird in die  Symboltabelle 
+               eingetragen
+
+
+S (Set Memory)
+     Speicher beschreiben:
+
+Sexpr          ein Byte oder "string ab expr einsetzen
+SWexpr         zwei Byte einsetzen
+ .             verlassen des Set - modes
+
+
+T (Trace)
+     Schreibt die Abarbeitung des Programms,  sowie die  Bewegung 
+     der Registerbelegungen auf den Bildschirm:
+
+Tn             Test n Schritte
+T              Test einen Schritt
+-T             verbietet Symbolverarbeitung
+TW             wie  T,   Unterprogramme   werden   ohne  Anzeige 
+               durchlaufen
+
+
+U (Untrace)
+     Wie T, aber ohne Anzeige der Registerbelegungen:
+
+UW             Unterprogramme  werden  angezeigt,  UP  - Aufrufe 
+               hoeheren Niveaus direkt durchlaufen
+
+               RUBOUT   unterbricht  den  Programmlauf  bei   den 
+               Kommandos T und U
+
+
+X (Examine)
+     Anzeige und Veraendern der Register der CPU
+
+X              Anzeige des CPU - Zustandes
+Xf             Aenderung eines Flags ( f=C,Z,M,P,I )
+Xr             Aenderung eines Registerpaares ( r=A,B,D,H,S,P )
+
+
+W  (Write)
+     Schreiben  einer Datei auf Diskette ab aktuellen PC,  Datei-
+     name vorher mit I eingeben!
+     
+Wexpr          Schreibe von 100H bis expr
+Wf,s           Schreibe von f bis s
+
+

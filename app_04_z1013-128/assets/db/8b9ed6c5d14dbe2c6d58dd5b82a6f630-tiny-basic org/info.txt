@@ -1,0 +1,5 @@
+<kurz>wahrscheinlich gepatchte Version von Robotron 3.01 Tiny-Basic Interpreter</kurz>
+<lang>ähnlich wie [a607237be522ae2b2ccc9013a53d0de5]
+Die Änderungen dieser Version verstehe ich nicht.</lang>
+<required></required>
+

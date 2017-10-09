@@ -1,0 +1,3 @@
+<kurz>4-STELLIGE ZUFALLSZAHL RATEN</kurz>
+<lang><include>MASTERMIND.b</include></lang>
+<required></required>

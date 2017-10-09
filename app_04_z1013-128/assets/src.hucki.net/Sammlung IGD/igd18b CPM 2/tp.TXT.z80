@@ -1,0 +1,238 @@
+.PL 72
+.mb 4
+.pc 40
+    Zusammenfassung der Kommandos fuer das Textverarbeitungssystem
+
+                                                                 
+      - Textprozessor Text 30 - TP 1520
+
+
+
+       Erforderliche Grundeinstellungen
+
+       Nach dem Aufruf des Textprozessors sind folgende Kommandos zu geben:
+          ^OL 8     Einstellen linker Rand auf Position 8 (Heftrand)
+          .PL 72    Einstellen Zeilenzahl auf 72 (normales Druckerpapier)
+          ^OD       Anzeige der Control-Zeichen im Text aus (bei Wunsch)
+
+
+       Kommandos fuer Kursorbewegungen  ^Q   
+
+       ^S        Kursor ein Zeichen nach links
+       ^D          "     "    "      "   rechts
+       ^A        Kursor ein Wort nach links
+       ^F          "     "   "    "   rechts
+       ^E        Kursor eine Zeile nach oben
+       ^X          "     "     "    "   unten
+
+
+       ^QS       Kursor auf 1. Position der Zeile
+       ^QD       Kursor nach letztem Zeichen der Zeile
+
+       ^QE       Kursor auf 1. Zeichen des angezeigten Datensektors
+       ^QX       Kursor nach letztem Zeichen des angezeigten Datensektors
+
+       ^QR       Kursor auf 1. Zeichen der Datei (Dateianfang)
+       ^QC       Kursor nach letztem Zeichen der Datei (Dateiende)
+
+       ^QB       Kursor auf 1. Zeichen eines markierten Blockes
+       ^QK       Kursor nach letztem Zeichen eines markierten Blockes
+
+       ^QP       Kursor an die Position vor letztem Kommando
+       ^QV       Kursor  zurueck  an  die Position  vor  letztem  Such- oder 
+                 Blockkommando
+       ^Q0...9   Kursor auf 1. Zeichen der markierten Textstelle
+
+
+       Kommandos fuer Bildschirmrollen
+
+       ^Z        Rollen des Bildschirminhaltes eine Zeile nach oben
+       ^W          "     "      "      "        "     "     "  unten
+
+       ^C        Rollen ein Bildschirminhalt nach oben
+       ^R          "     "      "      "      "   unten
+
+       ^QZ       Kontinuierliches Rollen nach oben
+       ^QW         "      "        "     "   unten
+
+.pa
+       Kommandos zur Texteingabe
+
+       ^V        Einfuegen ein/aus
+       ET1,ENTER Ende des Absatzes
+       ^N        Einfuegen "Hard Return"                                    
+       ^I        Ausfuehren einer Tabulation 
+
+       ^Px       Eingabe Kontrollzeichen in den Text
+
+
+            x    Wirkung, Besonderheiten
+       --------------------------------------------------------------------
+            S    Unterstreichen ein/aus
+            B    Fettdruck      ein/aus
+            D    Doppeldruck    ein/aus
+            Q    Breitdruck     ein / Anwendersteuerzeichen 1 
+                               (aus: am Ende der Zeile oder ^PA^PN)
+                    Anmerkung: Es passen weniger Zeichen auf eine Zeile !
+            H    Ueberdruck eines Zeichens, muss direkt davor stehen
+            O    Fuelleerzeichen, hat keinen Einfluss auf Zeilenlaenge
+            E    Einschalten 2.Zeichengenerator/ PC Anwenderst.z.:3 Deutsch
+            X    Durchstreichen ein/aus
+            V    Tiefstellen    ein/aus
+            T    Hochstellen    ein/aus 
+
+            W    Schraegdruck   ein /Anwendersteuerzeichen 2 (PC breit aus)
+                    Anmerkung: Wird Zeile nicht mit ^PA^PN abgeschlossen,
+                               so wird na"chste Zeile unkorrekt 1 Stelle
+                               zuweit rechts gedruckt !
+            R    Zurueckschalten auf 1.Zeichengenerator/PC US ASCII
+            Y    Farbbandumschaltung/ PC komprimierte Schrift
+            K    Kein DOT-Kommando, damit kann eine Zeile mit . eing. werden
+            L    neue Seite
+            C    Druck unterbrechen
+            A    Alternativer Druck
+            N    Standarddruck
+            F    Phantom Space
+            G    Phantom RUBOUT
+
+
+       Loeschkommandos
+
+       DEL       Loeschen Zeichen links
+       ^QY           "     bis Zeilenende 
+       ^QDEL         "     bis Zeilenanfang
+       ^G            "     Zeichen
+       ^T            "     Wort rechts
+       ^Y            "     gesamte Zeile
+       ^KY           "     eines Blockes
+
+
+       Kommandos zum Speichern und Abbruch  ^K
+
+       ^KS       Speichern Datei und Weiterarbeit mit der Datei
+       ^KX       Speichern Datei und Weiterarbeit im Betriebssystem
+       ^KD       Speichern Datei und zurueck in das ANFANGSMENUE
+       ^KQ       Abbrechen Datei und Halt im Anfangsmenue
+        
+.pa
+       Markierungskommandos  ^K
+
+       ^K0...9   Setzen/Loeschen einer Platzmarkierung
+       ^Q0...9   Kursor auf Platzmarkierung positionieren
+       ^KB       Setzen Blockanfangsmarke
+       ^KK       Setzen Blockendemarke
+
+
+       Blockkommandos  ^K
+
+       ^KH       Blockmarkierungsanzeige ein/aus
+       ^KC       Kopieren eines Blockes
+       ^KY       Loeschen eines Blockes
+       ^KV       Verschieben Block
+       ^KW       Abspeichern eines Blockes
+       ^KN       Spaltentransport ein/aus
+
+
+       Dateikommandos  ^K
+
+
+       ^KR       Datei einfuegen ab Kursorposition
+       ^KP       Druck einer anderen Datei
+       ^KO       Kopieren einer anderen Datei
+       ^KE       Umbenennen einer Datei
+       ^KJ       Loeschen einer Datei
+       ^KL       Aendern Arbeitslaufwerk
+       ^KF       Anzeige des Inhaltsverz. vom Arbeitslaufwerk ein/aus
+
+
+       Formatierungskommandos  ^O
+
+       ^OI       Setzen variabler Tabulatoren             
+       ^ON       Loeschen     "           "       
+
+       ^OF       Setzen Ra"nder und Tabulatoren nach Musterzeile in der Datei
+       ^OL       Setzen linker Rand
+       ^OR       Setzen rechter Rand
+       ^OC       Zeile zentrieren
+       ^OS       Zeilenabstand setzen
+       ^OX       Randbegrenzung aufheben
+
+       ^OG       Absatz einruecken
+       ^B        Absatz neu formatieren
+
+       ^OW       Wortumbruch ein/aus
+       ^OT       Anzeige Tabulatorzeile ein/aus
+       ^OJ       Schaltet Formatierung aus
+
+       ^OV       Schaltet die Wirkung der variablen Tabulatoren ein/aus
+       ^OH            "    "  halbautomatische Abteilhilfe ein/aus
+       ^OE            "    "  Wirkung "Soft-Bindestrich" ein/aus
+
+       ^OD            "    "  Anzeige der Kontrollzeichen ein/aus 
+       ^OP            "    "    "     des Seitenwechsels ein/aus
+
+.pa
+       Such- und Rueckschreibkommandos
+
+       ^QF       Suchen Text
+       ^QA       Suchen und Rueckschreiben Text
+       ^L        Wiederholen Such- oder Rueckschreibekommando
+       ^QV       Zurueckpositionieren des Kursors vor letztes 
+                 Such-/Rueckschreibekommando
+
+       Parameter
+
+       n         Suchen n-mal
+       U         Ignorierung Gross-/Kleinschreibung
+       W         nur ganze Worte
+
+       B         Rueckwaerts suchen
+       G         Globales Suchen
+       N         Mit automatischem Rueckschreiben
+
+
+       Spezialcharakter im Suchbegriff
+
+       ^A        Jedes Zeichen befriedigt diese Stelle
+       ^S        Jedes Sonderzeichen befreidigt diese Stelle
+       ^Ox       Jedes Zeichen befriedigt diese Stelle, ausser Zeichen "x"
+       n         Jedes Zeilenende befriedigt diese Stelle
+
+
+       Hilfskommandos  ^J
+
+       ^JH       Anzeigen/Setzen Hilfegrad
+       ^JB       Erklaerung Absatzformatierung
+       ^JP       Erklaerungen Platzmarkierungen
+       ^JD       Erlaeuterungen DOT-Kommandos
+       ^JM       Erlaeuterungen Rand- und Tabulatoreinstellung
+
+       ^JS       Erklaerung Statuszeile
+       ^JR       Erklaerung Tabulatorzeile
+       ^JF       Erklaerung Flagzeichen
+       ^JV       Erklaerung Textverschiebung
+
+
+       Sonstige Kommandos
+
+       ^QQ       Wiederholung eingegebenes Zeichen bis Taste bedient wird
+       ^U        Unterbrechen einer Funktion
+
+       DOT-Kommandos
+
+        .PL n     Setzen Zeilen pro Seite (.PL 72 erforderlich)
+        .MT n     Setzen oberer Rand (Standard 3 Zeilen frei)
+        .MB n     Setzen unterer Rand (Standard 8 Zeilen frei)
+        .PO n     Setzen linker Druckrand (Standard 0)
+        .HM n     Setzen Kopfabstand (Abstand zwischen Text und Note)
+        .FM n     Setzen Fussabstand (  - " - , Standard 2)
+        .PN [n]   Seitennummer wieder drucken [bzw. auf n setzen]
+        .OP       keine Seitennumerierung danach mehr
+        .PC n     Setzen Seiten-Nr.-Spalte (Standard 33)
+        .PA       Vorschub neue Seite
+        .CP n     eventuell neue Seite, wenn weniger als n Zeilen frei
+        .HE Text  Seitenkopftext
+        .FO Text  Fusstext
+        ..Text    Ignorieren, nur Kommentar auf Bildschirm
+        .LH       Setzen Zeilenabstand
+        .CW       Setzen Zeichenabstand

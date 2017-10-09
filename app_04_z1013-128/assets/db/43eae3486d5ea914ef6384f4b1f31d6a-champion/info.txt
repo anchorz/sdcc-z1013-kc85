@@ -1,0 +1,3 @@
+<kurz>Derby, Wetten und Rennstallmanagement</kurz>
+<lang><include>champion.B</include></lang>
+<required></required>
