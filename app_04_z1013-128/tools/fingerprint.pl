@@ -10,21 +10,22 @@ sub hist($)
 {
     $file=shift;
     $len=-s $file;
-    open(INFO, $file) or die("Could not open file.");
+
+    open(INFO, $file) or die("$!: \"$file\"");
     read(INFO,$content,$len);
-close(INFO);
+    close(INFO);
 
 
-@hist=();
-for $i (0 .. 255)
-{
-  $hist[$i]=0;
-}
+    @hist=();
+    for $i (0 .. 255)
+    {
+      $hist[$i]=0;
+    }
 
-for $i (0..length($content)-1) {
-    $c=ord(substr($content, $i, 1));
-    $hist[$c]++;
-}
+    for $i (0..length($content)-1) {
+        $c=ord(substr($content, $i, 1));
+        $hist[$c]++;
+    }
 
   return @hist;
 }

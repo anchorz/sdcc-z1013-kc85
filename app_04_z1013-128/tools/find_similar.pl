@@ -44,8 +44,10 @@ $hashref=retrieve($database);
 
 $file1=$ARGV[0];
 @h1=hist($file1);
-    
-for (keys $hashref) {
+
+%distance=();
+
+for (keys %{$hashref}) {
     $file=$_;
     #$md5=$hashref->{$file}[0];
     $hist=$hashref->{$file}[1];
@@ -60,8 +62,20 @@ for (keys $hashref) {
        $sum+=$v;
        #printf("q: %d\n",$v);
     }
-    printf("%d ",sqrt($sum));
-    print "- Abstand der Datei \"$file1\" und \"$file\"  \n";
+    $distance{$file}=sqrt($sum);
+#    printf("%d ",sqrt($sum));
+#    print "- Abstand der Datei \"$file1\" und \"$file\"  \n";
 }
 
+$count=0;
+for (sort { $distance{$a} <=> $distance{$b} } keys %distance) {
+    $file=$_;
+    $count++;
+    printf("%d %s (%d.hex)\n",$distance{$file},get_database_folder()."/".$file,$count);
+    system("hexdump -C \"".get_database_folder()."/$file\" >$count.hex");
+    if ($count>4) {
+        last;
+    }
+}
+system("hexdump -C \"$file1\" >orig.hex");
 

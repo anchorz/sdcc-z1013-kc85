@@ -81,7 +81,9 @@ sub print_entry($) {
     }
     
     my %knownFileTypes=('C'=>1,'T'=>1,'I'=>1,'E'=>1,'s'=>1,'B'=>1,'P'=>1,
-    'G'=>"Grafikeditor");
+      'G'=>"Grafikeditor",
+      'b'=>"TinyBasic",
+);
     if (!$knownFileTypes{$typ})
     {
         my $error=sprintf "e: unbekannter Dateityp '%s' %s\n",$typ,$filename;

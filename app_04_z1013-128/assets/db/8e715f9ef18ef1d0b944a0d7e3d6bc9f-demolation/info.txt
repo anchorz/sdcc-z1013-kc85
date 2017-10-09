@@ -1,0 +1,3 @@
+<kurz>Mauerspiel für A2</kurz>
+<lang>Eigentlich nur auf dem A2 Monitor spielbar, da auf den anderen die Tastaturabfrage nicht korrekt funktioniert.</lang>
+<required></required>

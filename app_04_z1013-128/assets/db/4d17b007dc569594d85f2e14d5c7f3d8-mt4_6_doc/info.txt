@@ -1,0 +1,3 @@
+<kurz>Doku maintape V4.6</kurz>
+<lang><include>mt4_6_doc.txt</include></lang>
+<required></required>

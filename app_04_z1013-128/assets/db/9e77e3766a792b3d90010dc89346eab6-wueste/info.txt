@@ -12,5 +12,7 @@ Das Ihnen ein Raetsel nach dem anderen aufgeben wird !
 Aber verzweifeln Sie nicht, wenn Sie beim ersten Anlauf
 scheitern !
 Nur Phantasie kann Ihnen helfen und natuerlich die
-ausfuehrliche Beschreibung ueber Textfile EDITEX</lang>                      
+ausfuehrliche Beschreibung ueber Textfile EDITEX
+
+<include>wueste.B</include></lang>                      
 <requires></requires>

@@ -1,0 +1,7 @@
+<kurz>Einer gegen Willi</kurz>
+<lang>Fang Willi. Er ist aber trickreich und kann springen.
+
+nach einer Idee aus der Spielshow von Mike Krüger
+
+<include>egw.B</include></lang>
+<required></required>
