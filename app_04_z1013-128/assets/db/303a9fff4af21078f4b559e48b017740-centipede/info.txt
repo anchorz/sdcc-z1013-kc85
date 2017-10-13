@@ -1,5 +1,7 @@
-<kurz>CENTIPEDE IST EIN GIFTIGER WURM AUS SEGMENTEN.</kurz>
-<lang> C E N T I P E D E  IST EIN
+<kurz src="CENTIPEDE IST EIN GIFTIGER WURM AUS SEGMENTEN."/>
+<lang> Das BASIC Programm hat einen LIST-Schutz. Man muss es erst patchen, bevor man den Quellcode sehen kann.
+
+ C E N T I P E D E  IST EIN
 GIFTIGER WURM AUS SEGMENTEN.
 
 ER VERSUCHT, SICH ANZUSCHLEI-
@@ -35,6 +37,6 @@ V I E L   S P A S S   ! !
 
 PUNKTE WERDEN IN EINER LISTE
 MIT DEINEM NAMEN GEMERKT.
-                          
-</lang>
+                        
+<include src="centipede.B"/></lang>
 <required></required>

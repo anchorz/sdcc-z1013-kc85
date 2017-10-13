@@ -1,0 +1,5 @@
+<kurz src="Ball durch 3D-Labyrinth lotsen"/>
+<lang>
+
+<include src="cosmic_ball.b"/></lang>
+<requires></requires>

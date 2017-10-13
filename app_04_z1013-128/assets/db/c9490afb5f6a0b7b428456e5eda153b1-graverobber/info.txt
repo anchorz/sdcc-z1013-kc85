@@ -1,0 +1,18 @@
+<kurz src="Grabraeuber, Schaetze sammeln (Brosig)"/>
+<lang>[RST20]
+Sie befinden sich in Aegypten,
+dem Land der Pyramiden.
+Als Grabraeuber stehen Sie vor
+der Aufgabe eine noch unberuehrte 
+Pyramide um ihre vielen Schaetze
+zu erleichtern.
+
+Dabei muessen Sie aber mit Vorsicht 
+zu Werke gehen, denn die Geister 
+des Pharaonen und der Diener (◯) 
+bewachen die Grabkammern. Fast 
+jeder Zusammenstoss mit den Geistern
+endet toedlich. Wenn alle Grabkammern
+ausgeraeumt sind, erhoeht sich die 
+Geschwindigkeit des Spiels</lang>
+<required></required>

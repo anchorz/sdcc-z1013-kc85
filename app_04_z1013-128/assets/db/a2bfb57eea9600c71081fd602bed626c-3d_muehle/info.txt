@@ -1,4 +1,4 @@
-<kurz>3D-Mühle für zwei Spieler - 3D NOUGHT AND CROSSES</kurz>
+<kurz src="3D-Mühle für zwei Spieler - 3D NOUGHT AND CROSSES"/>
 <lang>Sie sehen gleich einen Wuerfel
 
 mit 27 moeglichen Positionen

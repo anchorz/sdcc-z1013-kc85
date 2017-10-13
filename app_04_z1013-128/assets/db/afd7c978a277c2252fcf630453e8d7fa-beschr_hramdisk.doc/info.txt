@@ -1,3 +1,3 @@
-<kurz>Headersave Ramdiskette mit RB-Monitor</kurz>
-<lang></lang>
+<kurz src="Headersave Ramdiskette mit RB-Monitor"/>
+<lang><include src="beschr_hramdisk.doc.txt"/></lang>
 <required></required>

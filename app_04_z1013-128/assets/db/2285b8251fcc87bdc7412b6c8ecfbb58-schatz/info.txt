@@ -1,0 +1,32 @@
+<kurz src="Leitspiel, kletter die Leitern hoch"/>
+<lang>
+Gibt ?FC-ERROR wenn man aus dem Bild rennt.
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+S C H A T Z H O E H L E  (Sch87)
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ DU SOLLST DEN ZAUBERSCHATZ
+ FINDEN! DAZU MUSST DU DURCH
+ DIE HOEHLE NACH OBEN DURCH DIE
+ BEIDEN LEITERN ! ABER ACHTUNG:
+ IN DER HOEHLE ENTSTEHEN AB UND
+ ZU LOECHER! STUERZE NICHT AB!
+ NUTZE DIE CURSORTASTEN
+ DU MUSST IMMER IN BEWEGUNG
+ SEIN, DENN NUR DIE ERSCHUET-
+ TERUNG DEINER SCHRITTE WIRKT
+ AUF DIE LOECHER! AUSSERDEM
+ SCHRUMPFT DER $CHATZ RAPIDED!
+ HAST DU DEN $CHATZ ERREICHT,
+ SO SCHUETZT ER DICH UND ER
+ BRINGT DICH AUF DEM KUER-
+ ZESTEN WEG ZURUECK!
+            VIEL GLUECK !
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+<include src="schatz.B"/></lang>
+<required></required>

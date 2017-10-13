@@ -1,0 +1,190 @@
+1 CLEAR 10
+2 DIM MF(6,6),CF(6,6)
+3 A=2:B=2:C=2:RM=0:RC=0
+4 V$(1)="                           "
+5 V$(2)="                                       "
+6 V$(3)="                              "
+7 V$(4)="                              "
+8 V$(5)="                                 "
+9 V$(6)="                              "
+10 V$(7)="                           "
+11 V$(8)="                                    "
+12 V$(9)="                        "
+13 V$(10)="                           "
+14 FOR X=1 TO 3
+15 O1=INT(RND(1)*7)
+16 O2=INT(RND(1)*7)
+17 O3=INT(RND(1)*7)
+18 O4=INT(RND(1)*7)
+19 O5=INT(RND(1)*7)
+20 O6=INT(RND(1)*7)
+21 IF CF(O1,O2)>0 OR CF(O3,O4)>0 OR CF(O5,O6)>0 THEN 1
+22 CF(O1,O2)=X*3
+23 CF(O3,O4)=X*3
+24 CF(O5,O6)=X*3
+25 NEXT X
+26 WINDOW:CLS
+27 PRINT AT(0,0);" "
+28 A$="  "
+29 B$="  "
+30 C$="                "
+31 D$="  "
+32 PRINT AT(17,0);A$
+33 FOR L=18 TO 28 STEP 2
+34 PRINT AT(L,0);C$
+35 PRINT AT(L+1,0);D$
+36 NEXT
+37 PRINT AT(30,0);C$
+38 PRINT AT(31,0);B$
+39 PRINT AT(15,0);"  M E N S C H    C O M P U T E R"
+40 FOR X=0 TO 8 STEP 4
+41 WINDOW X,X+5,2,4
+42 PRINT " "
+43 NEXT
+44 WINDOW
+45 PRINT AT(0,0);" "
+46 PRINT AT(1,3);CHR$(20)
+47 PRINT AT(5,3);CHR$(21)
+48 PRINT AT(9,3);CHR$(22)
+49 PRINT AT(1,7);",1'   3 mal ( 3 Punkte )" 
+50 PRINT AT(5,7);",2'   3 mal ( 6 Punkte )"
+51 PRINT AT(9,7);",3'   3 mal ( 9 Punkte )"
+52 PRINT AT(12,12);"<ENTER>"
+53 X$=INKEY$
+54 IF X$=""THEN 53
+55 PRINT AT(12,12);"       "
+56 PRINT AT(18,1);""
+57 IF A+B+C=-3 THEN 100
+58 X$=INKEY$
+59 IF X$=""THEN 58
+60 IF X$="D"THEN MY=MY-1
+61 IF X$="C"THEN MY=MY-1:MX=MX-1    
+62 IF X$="T"THEN MY=MY+1 
+63 IF X$="E"THEN MY=MY-1:MX=MX+1
+64 IF X$="K"THEN MX=MX-1
+65 IF X$="U"THEN MY=MY+1:MX=MX+1
+66 IF X$="M"THEN MX=MX+1 
+67 IF X$="S"THEN MY=MY+1:MX=MX-1
+68 IF MY<0 THEN MY=0
+69 IF MY>6 THEN MY=6
+70 IF MX<0 THEN MX=0
+71 IF MX>6 THEN MX=6
+72 ML=MF(MY,MX)
+73 IF X$="1"THEN 74:ELSE 79
+74 L=3
+75 IF A<0 OR ML>0 THEN 57
+76 PRINT AT(1,12);A
+77 A=A-1
+78 GOTO 96
+79 IF X$="2"THEN 80:ELSE 85
+80 L=6
+81 IF B<0 OR ML>0 THEN 57
+82 PRINT AT(5,12);B
+83 B=B-1
+84 GOTO 96
+85 IF X$="3"THEN 86:ELSE 91
+86 L=9
+87 IF C<0 OR ML>0 THEN 57
+88 PRINT AT(9,12);C
+89 C=C-1
+90 GOTO 96
+91 IF MF(MV,MW)>0 THEN PRINT AT(MV*2+18,MW*2+1);CHR$(MF(MV,MW)/3+19):GOTO 93
+92 PRINT AT(MV*2+18,MW*2+1);" "
+93 PRINT AT(MY*2+18,MX*2+1);""
+94 MV=MY:MW=MX
+95 GOTO 57
+96 MF(MY,MX)=L
+97 PRINT AT(MY*2+18,MX*2+1);CHR$(L/3+19)
+98 MV=MY:MW=MX: 
+99 GOTO 57
+100 WINDOW 0,10,0,31:CLS
+101 GOSUB 157
+102 GOSUB 172
+103 PRINT AT(10,0);""
+104 PRINT AT(13,0);""
+105 PRINT AT(11,0);"Zu beschiessendes Planquadrat"
+106 PRINT AT(12,0);"mit ,L' bestimmen !"
+107 PRINT AT(CY*2+18,CX*2+18);""
+108 X$=INKEY$
+109 IF X$=""THEN 108
+110 IF X$="C"THEN CY=CY-1:CX=CX-1
+111 IF X$="D"THEN CY=CY-1
+112 IF X$="E"THEN CY=CY-1:CX=CX+1
+113 IF X$="M"THEN CX=CX+1
+114 IF X$="U"THEN CY=CY+1:CX=CX+1
+115 IF X$="T"THEN CY=CY+1
+116 IF X$="S"THEN CY=CY+1:CX=CX-1
+117 IF X$="K"THEN CX=CX-1
+118 IF X$="L"THEN 128
+119 IF CY<0 THEN CY=0
+120 IF CY>6 THEN CY=6
+121 IF CX<0 THEN CX=0
+122 IF CX>6 THEN CX=6
+123 IF CF(CV,CW)>9 THEN PRINT AT(CV*2+18,CW*2+18);CHR$(CF(CV,CW)): GOTO 125
+124 PRINT AT(CV*2+18,CW*2+18);" "
+125 PRINT AT(CY*2+18,CX*2+18);""
+126 CV=CY:CW=CX:
+127 GOTO 108
+128 IF CF(CY,CX)>2 AND CF(CY,CX)<10 THEN 133
+129 IF CF(CY,CX)>174 THEN 139
+130 PRINT AT(CY*2+18,CX*2+18);""
+131 CF(CY,CX)=175
+132 GOTO 140
+133 L=CF(CY,CX)
+134 RC=RC+L
+135 PRINT AT(CY*2+18,CX*2+18);""
+136 CF(CY,CX)=202
+137 GOSUB 172
+138 GOTO 140
+139 PRINT AT(CY*2+18,CX*2+18);CHR$(CF(CY,CX))
+140 Q1=INT(RND(1)*7)
+141 Q2=INT(RND(1)*7)
+142 IF MF(Q1,Q2)<175 THEN 147
+143 Q1=Q1+1
+144 IF Q1=7 THEN Q1=0:Q2=Q2+1
+145 IF Q2=7 THEN Q2=0
+146 IF MF(Q1,Q2)<175 THEN 147:ELSE 143
+147 IF MF(Q1,Q2)>2 AND MF(Q1,Q2)<10 THEN 151
+148 MF(Q1,Q2)=175
+149 PRINT AT(Q1*2+18,Q2*2+1);""
+150 GOTO 107
+151 L=MF(Q1,Q2)
+152 RM=RM+L
+153 PRINT AT(Q1*2+18,Q2*2+1);""
+154 GOSUB 157
+155 MF(Q1,Q2)=202
+156 GOTO 107
+157 IF RM>99 THEN END
+158 RM$=STR$(RM)
+159 LM=LEN(RM$)-1
+160 RM$=RIGHT$(RM$,LM)
+161 FOR I=1 TO LM
+162 Q=VAL(MID$(RIGHT$(RM$,I),1,1))
+163 WINDOW 0,10,8-(I-1)*7,12-(I-1)*7
+164 PRINT V$(Q+1)
+165 NEXT
+166 PRINT AT(3,15);""
+167 PRINT AT(6,15);""
+168 WINDOW
+169 PRINT AT(0,0);" "
+170 IF RM=54 THEN 185
+171 RETURN
+172 IF RC>99 THEN END
+173 RC$=STR$(RC)
+174 LC=LEN(RC$)-1
+175 RC$=RIGHT$(RC$,LC)
+176 FOR I=1 TO LC
+177 Q=VAL(MID$(RIGHT$(RC$,I),1,1))
+178 WINDOW 0,10,25-(I-1)*7,29-(I-1)*7
+179 PRINT V$(Q+1)
+180 NEXT
+181 WINDOW
+182 PRINT AT(0,0);" "
+183 IF RC=54 THEN 185
+184 RETURN
+185 PRINT AT(11,0);"            E N D E             "
+186 IF RC=54 THEN PRINT AT(12,0);"  Herzlichen Glueckwunsch  !!!  "
+187 IF RM=54 THEN PRINT AT(12,0);"Sie sind ein guter Verlierer !!!"
+188 X$=INKEY$
+189 IF X$="" THEN 188
+190 CLS:END:

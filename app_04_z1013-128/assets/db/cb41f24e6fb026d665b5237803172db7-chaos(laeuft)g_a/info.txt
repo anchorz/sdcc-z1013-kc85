@@ -1,4 +1,4 @@
-<kurz>FEIERABENDVERKEHR, Überquere eine vielbefahrene Straße</kurz>
+<kurz src="FEIERABENDVERKEHR, Überquere eine vielbefahrene Straße"/>
 <lang>Steuerung: U ␣ 
 
 EIN FUSSGAENGER SOLL EINE STARK
@@ -21,5 +21,5 @@ FUER JEDES HUPEN:3 STRAFPUNKTE
   (VERKEHRSWIDRIGES VERHALTEN)
 - FUER JEDEN UNFALL:250 STRAFP.
 
-<include>chaos(laeuft)g_a.B</include></lang>
+<include src="chaos(laeuft)g_a.B"/></lang>
 <required></required>

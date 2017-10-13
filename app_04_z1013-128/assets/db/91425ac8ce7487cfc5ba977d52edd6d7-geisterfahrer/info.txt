@@ -1,0 +1,26 @@
+<kurz src="Autofahrer in FALSCHER FAHRTRICHTUNG AUF DER AUTOBAHN"/>
+<lang>Tiny-Basic started nicht automatisch, man muss erst noch RUN eingeben
+Ruckelt bei der Tastatureingabe. Ist wohl eher für Brosig oder A2 geeignet.
+
+DU FAEHRST IN FALSCHER FAHRTRICHTUNG 
+AUF DER AUTOBAHN
+
+DEIN AUTO KANN ABER 10 UNFAELLE
+UEBERSTEHEN.
+
+VERSUCHE SOLANGE WIE MOEGLICH
+ZU FAHREN !
+
+DU BEKOMMST FUER 100 METER
+10 PUNKTE,DIE SICH ADDIEREN
+
+DEIN AUTO KANN NACH
+
+LINKS = PFEIL LINKS
+RECHTS = PFEIL RECHTS
+GERADE =TASTE DAZWISCHEN
+
+GELENKT WERDEN   
+
+<include src="geisterfahrer.b"/></lang>
+<required></required>

@@ -42,8 +42,8 @@ nehmen moechte.
 Jeder Spieler kann dabei einen
 der vier grundsaetzlichen Zuege
 machen:
-1-Einen unabhaengigen Aussen-
-  posten gruenden.
+1-Einen unabhaengigen Aussenposten
+  gruenden.
   Wenn ein Spieler einen Platz
   besetzt,der nicht an einen
   Stern, einen anderen Aussen-
@@ -69,44 +69,44 @@ machen:
   Gesellschaft um 600.-je Aktie.
   Jeder Aussenposten bringt
   weitere 100.- je Aktie.
-3-Eine neue Aktiengesel. gruen-
-  den.Belegt ein Spieler einen
+3-Eine neue Aktiengesel. gruenden.
+  Belegt ein Spieler einen
   Platz,der an einen Stern oder
-  einen unabhaengigen Aussen-
-  posten grenzt,aber keine
+  einen unabhaengigen Aussenposten 
+  grenzt,aber keine
   bestehende Firma beruehrt,
   wird eine neue Aktiengesel.
   eroeffnet. Der Spieler be-
   kommt automatisch 5 Aktien
   der neuen Gesellschaft als
-  Anerkennung.Er kann dann wei-
-  terhin Aktien aller aktiven
+  Anerkennung.Er kann dann weiterhin 
+  Aktien aller aktiven
   Gesellschaften handeln.
 4-ZWEI bestehende Gesellschaften
-  werden vermischt.Wird ein Pla-
-  tz direkt neben bestehenden
+  werden vermischt.Wird ein Platz 
+  direkt neben bestehenden
   Firmen belegt, werden diese
   vermischt. Dabei uebernimmt
   die groessere die kleinere
   Firma
  
   Das Kapital der vermischten
-  Firmen wird dem Wert ent-
-  sprechend,der belegten Plae-
-  tzen und Sternen,neu festge-
-  legt. Die Anteile der Spieler
+  Firmen wird dem Wert entsprechend,
+  der belegten Plaetzen 
+  und Sternen,neu festgelegt. 
+  Die Anteile der Spieler
   an der aufgeloesten Firma
   werden im Verhaeltnis 2:1
   durch Aktien der neuen Firmen
-  ersetzt.Weiterhin bekommt je-
-  der Spieler eine Barverguetung
+  ersetzt.Weiterhin bekommt jeder
+  Spieler eine Barverguetung
   entsprechend der prozentualen
   Anteile der aufgeloesten Firma
 
 Der Computer zaelt jedem Spie-
 ler eine Dividende (5% des Wer-
-tes der Aktien in seinen Be-
-sitz) und ermoeglicht den
+tes der Aktien in seinen Besitz) 
+und ermoeglicht den
 Handel mit Aktien aller besteh-
 enden  Gesellschaften.
 Uebersteigt der Marktwert einer
@@ -138,6 +138,452 @@ ATARI               _     A
                     _
 
   
+10 WINDOW:CLS
+50 DIM M(10,13),S(5,4),D1(5),S1(5)
+60 DATA 1,"-chen Software"     
+70 DATA 2,"TOYOTA"             
+80 DATA 3,"COMODORE"        
+90 DATA 4,"SCHNEIDER"  
+100 DATA 5,"ATARI"           
+140 CLS
+150 FOR I=1 TO 5
+160 S1(I)=100:KO(I)=6000                                                    
+170 NEXT I
+180 L$="+*TCSA"      
+190 M$="ABCDEFGHIJKL"
+210 PRINT:PRINT "* * * * * B O E R S E * * * * *"   :PRINT:PRINT:PRINT
+215 WINDOW 4,31,0,31
+220 PRINT "BENOETIGT JEMAND SPIELREGELN ";:INPUT Q$:PRINT:PRINT
+230 IF LEFT$(Q$,1)="J"THEN GOSUB 6000
+240 PRINT "ANZAHL DER SPIELZUEGE ( &lt;50 ) ";:INPUT KM:PRINT:PRINT:KM=KM-1
+245 IF KM&gt;50 THEN PRINT "BITTE NOCH EINMAL !":ELSE 248
+247 PRINT:GOTO 240
+248 CLS:PRINT:PRINT:PRINT
+250 PRINT "GEBEN SIE EINE 3-STELLIGE ZAHL":PRINT:PRINT "EIN ";:INPUT R1:PRINT
+260 R1=RND(-R1/1000)
+270 FOR I=1 TO 9
+280 FOR J=1 TO 12
+290 IF INT(20*RND(R1)+1)&lt;&gt;10 THEN M(I,J)=1:ELSE M(I,J)=3
+300 NEXT J
+310 NEXT I
+320 PRINT "WIEVIEL SPIELER (2-4) ";:INPUT P1:PRINT
+330 IF P1&gt;49 THEN PRINT "BITTE NOCH EINMAL !":ELSE 340
+335 PRINT:GOTO 320
+340        :FOR I=1 TO P1
+350 PRINT "SPIELER";I;"WIE HEISSEN SIE ";:INPUT P$
+360 PRINT
+370 IF I=1 THEN P1$=P$
+380 IF I=2 THEN P2$=P$
+390 IF I=3 THEN P3$=P$
+400 IF I=4 THEN P4$=P$
+410 NEXT I
+430 PRINT:PRINT "ICH ENTSCHEIDE JETZT WER ":PRINT:PRINT "ANFAENGT !":PRINT
+450 I=INT(10*RND(R1)+1):IF I&gt;P1 THEN 450
+460 GOSUB 490
+470 GOTO 540
+490 ON I GOTO 500,510,520,530
+500 PRINT P1$;:P5$=P1$:RETURN
+510 PRINT P2$;:P5$=P2$:RETURN
+520 PRINT P3$;:P5$=P3$:RETURN
+530 PRINT P4$;:P5$=P4$:RETURN
+540 PRINT "  FAENGT AN !"
+545 GOSUB 10000:WINDOW:CLS
+550 K=0
+560 P=I:GOTO 590
+570 K=K+1:IF K&gt;KM THEN 3470
+580 P=P+1:IF P&gt;P1 THEN P=1
+590 FOR I=1 TO 5
+600 ZE(I)=INT(9*RND(R1)+1)
+610 SP(I)=INT(12*RND(R1)+1)
+620 I1=I-1
+630 IF ZE(I)=R(I1)AND SP(I)=C(I1)THEN 600
+640 I1=I1-1:IF I1&gt;=0 THEN 630
+650 IF M(ZE(I),SP(I))&gt;1 THEN 600
+660 I1=1
+670 IF Q(I1)=0 THEN 850
+680 I1=I1+1:IF I1&lt;=5 THEN 670
+690 IF M(ZE(I),SP(I)+1)&gt;3 THEN 850
+700 IF M(ZE(I),SP(I)-1)&gt;3 THEN 850
+710 IF M(ZE(I)+1,SP(I))&gt;3 THEN 850
+720 IF M(ZE(I)-1,SP(I))&gt;3 THEN 850
+730 A1=M(ZE(I),SP(I)+1)
+740 A2=M(ZE(I),SP(I)-1)
+750 A3=M(ZE(I)+1,SP(I))
+760 A4=M(ZE(I)-1,SP(I))
+770 IF A1=2 AND A2&lt;4 AND A3&lt;4 AND A4&lt;4 THEN 600
+780 IF A2=2 AND A1&lt;4 AND A3&lt;4 AND A4&lt;4 THEN 600
+790 IF A3=2 AND A1&lt;4 AND A2&lt;4 AND A4&lt;4 THEN 600
+800 IF A4=2 AND A1&lt;4 AND A2&lt;4 AND A3&lt;4 THEN 600
+810 IF A1=3 AND A2&lt;4 AND A3&lt;4 AND A4&lt;4 THEN 600
+820 IF A2=3 AND A1&lt;4 AND A3&lt;4 AND A4&lt;4 THEN 600
+830 IF A3=3 AND A1&lt;4 AND A2&lt;4 AND A4&lt;4 THEN 600
+840 IF A4=3 AND A1&lt;4 AND A2&lt;4 AND A3&lt;4 THEN 600
+850 NEXT I
+860 I=INT(10*RND(R1)+1):IF I&gt;5 THEN 860
+865 A=I
+870 IF RND(1)&gt;.95 AND Q(I)&lt;&gt;0 THEN 900
+880 I=I+1:IF I&gt;5 THEN I=1
+885 IF I=A THEN 920:ELSE 870
+890 GOTO 920
+900 GOSUB 3430
+910 GOSUB 3710
+920 GOSUB 2050
+925 IF K&gt;0 THEN GOSUB 3280
+930 I=P
+940 WINDOW 0,20,17,31:CLS:PRINT "ZUG NR.:";K+1:PRINT:GOSUB 490:PRINT
+950 PRINT:PRINT "ERLAUBTE ZUEGE:"       
+955 FOR I=1 TO 4
+960 X$=STR$(ZE(I))+MID$(M$,SP(I),1)
+970 PRINT X$;",";
+980 NEXT I:PRINT
+985 WINDOW 10,20,17,31
+990 PRINT:PRINT "WIE LAUTET IHR ZUG ";:INPUT R$ 
+1000 IF LEN(R$)=0 THEN 930
+1080 IF LEN(R$)&lt;&gt;2 THEN 1110
+1090 IF ASC(MID$(R$,2,1))-64&lt;1 THEN 1110
+1100 IF ASC(MID$(R$,2,1))-64&gt;12 THEN 1110:ELSE 1120
+1110 PRINT "DAS VERSTEHE   ICH  NICHT"
+1115 PRINT "BITTE NOCH     EINMAL"  :GOTO 990
+1120 R=VAL(LEFT$(R$,1))
+1130 C=ASC(RIGHT$(R$,1))-64
+1140 I=1
+1150 IF R=ZE(I)AND C=SP(I)THEN 1190
+1160 I=I+1:IF I&lt;=5 THEN 1150
+1170 PRINT:PRINT "UNGUELTIGER ZUG"   
+1180 GOTO 990
+1190 A1=M(R-1,C)
+1200 A2=M(R+1,C)
+1210 A3=M(R,C+1)
+1220 A4=M(R,C-1)
+1230 IF A1&lt;=1 AND A2&lt;=1 AND A3&lt;=1 AND A4&lt;=1 THEN M(R,C)=2:ELSE 1250
+1240 GOTO 1750
+1250 IF A1&gt;3 AND A2&gt;3 AND A2&lt;&gt;A1 THEN GOSUB 2220
+1260 IF A1&gt;3 AND A3&gt;3 AND A3&lt;&gt;A1 THEN GOSUB 2220
+1270 IF A1&gt;3 AND A4&gt;3 AND A4&lt;&gt;A1 THEN GOSUB 2220
+1280 IF A2&gt;3 AND A3&gt;3 AND A3&lt;&gt;A2 THEN GOSUB 2220
+1290 IF A2&gt;3 AND A4&gt;3 AND A4&lt;&gt;A2 THEN GOSUB 2220
+1300 IF A3&gt;3 AND A4&gt;3 AND A4&lt;&gt;A3 THEN GOSUB 2220
+1310 IF A1&lt;4 AND A2&lt;4 AND A3&lt;4 AND A4&lt;4 THEN 1400
+1320 IF A1&gt;3 THEN I=A1-3
+1330 IF A2&gt;3 THEN I=A2-3
+1340 IF A3&gt;3 THEN I=A3-3
+1350 IF A4&gt;3 THEN I=A4-3
+1360 Q(I)=Q(I)+1
+1370 S1(I)=S1(I)+100
+1380 M(R,C)=I+3
+1390 GOTO 1560
+1400 I=1
+1410 IF Q(I)=0 THEN 1450
+1420 I=I+1:IF I&lt;=5 THEN 1410
+1430 IF M(R,C)&lt;3 THEN M(R,C)=2
+1440 GOTO 1750
+1450 GOSUB 3430
+1460 PRINT "EINE NEUE GESELLSCHAFT":PRINT "IST GEGRUENDET WORDEN!":
+1470 PRINT "SIE HEISST :":PRINT
+1480 RESTORE
+1500 READ N,C$
+1510 IF I&lt;&gt;N THEN 1500
+1520 PRINT C$
+1530 S(I,P)=S(I,P)+5
+1540 Q(I)=1
+1550 PRINT
+1560 IF A1=3 THEN S1(I)=S1(I)+500
+1570 IF A2=3 THEN S1(I)=S1(I)+500
+1580 IF A3=3 THEN S1(I)=S1(I)+500
+1590 IF A4=3 THEN S1(I)=S1(I)+500
+1600 IF A1=2 THEN S1(I)=S1(I)+100:ELSE 1630
+1610 Q(I)=Q(I)+1
+1620 M((R-1),C)=I+3
+1630 IF A2=2 THEN S1(I)=S1(I)+100:ELSE 1660
+1640 Q(I)=Q(I)+1
+1650 M(R+1,C)=I+3
+1660 IF A3=2 THEN S1(I)=S1(I)+100:ELSE 1690
+1670 Q(I)=Q(I)+1
+1680 M(R,C+1)=I+3
+1690 IF A4=2 THEN S1(I)=S1(I)+100:ELSE 1720
+1700 Q(I)=Q(I)+1
+1710 M(R,C-1)=I+3
+1720 IF S1(I)&gt;=3000 THEN T1=I:ELSE 1740
+1730 GOSUB 3140
+1740 M(R,C)=I+3
+1750 FOR I=1 TO 5
+1760 KO(P)=KO(P)+INT(.05*S(I,P)*S1(I))
+1770 NEXT I
+1780 FOR I=1 TO 5
+1790 IF Q(I)=0 THEN 2030:ELSE GOSUB 3280
+1800 WINDOW 0,20,17,31:CLS:PRINT "IHR KONTOSTAND (DM)":PRINT;KO(P):PRINT
+1810 PRINT "WIE VIELE AKTIEN VON":PRINT
+1820 RESTORE
+1830 READ N,C$
+1840 IF I&lt;&gt;N THEN 1830
+1850 PRINT C$:PRINT
+1860 PRINT "WOLLEN SIE HANDELN ?"
+1870 PRINT "SIE BESITZEN";S(I,P):PRINT "SIE KOENNEN MAXIMAL":PRINT:PRINT INT(KO(P)/S1(I));
+1880 PRINT "KAUFEN ";:R3=0:INPUT R3
+1970 IF R3*S1(I)&lt;=KO(P)THEN 2000
+1980 PRINT:PRINT "SIE BESITZEN NUR (DM)":PRINT:PRINT KO(P)
+1985 PRINT:PRINT "BITTE NOCH EINMAL !":PRINT
+1990 GOTO 1810
+2000 IF R3=0 THEN 2030
+2010 S(I,P)=S(I,P)+R3
+2020 KO(P)=KO(P)-(R3*S1(I))
+2030 NEXT I
+2040 GOTO 570
+2050 WINDOW 0,20,00,16
+2060 PRINT:PRINT:PRINT "    MARKTLAGE   ":PRINT "   -----------":PRINT             
+2070 PRINT "  ABCDEFGHIJKL":PRINT
+2075 X$="123456789"
+2080 FOR R2=1 TO 9
+2090 PRINT MID$(X$,R2,1);" ";
+2100 FOR C2=1 TO 12
+2110 Z2=M(R2,C2)
+2120 IF Z2=0 THEN Z2=Z2+1
+2130 PRINT MID$(L$,Z2,1);
+2140 NEXT C2
+2150 PRINT " ";MID$(X$,R2,1)
+2160 NEXT R2
+2165 PRINT:PRINT "  ABCDEFGHIJKL"
+2170 RETURN
+2220 REM
+2230 F1=A1-3:IF F1&lt;0 THEN F1=0
+2240 F2=A2-3:IF F2&lt;0 THEN F2=0
+2250 F3=A3-3:IF F3&lt;0 THEN F3=0
+2260 F4=A4-3:IF F4&lt;0 THEN F4=0
+2270 T=Q(F1)
+2280 T1=F1
+2290 IF Q(F2)&gt;Q(F1)THEN T=Q(F2):ELSE 2310
+2300 T1=F2
+2310 IF Q(F3)&gt;T THEN T=Q(F3):ELSE 2330
+2320 T1=F3
+2330 IF Q(F4)&gt;T THEN T=Q(F4):ELSE 2350
+2340 T1=F4
+2350 IF F1=T1 OR A1&lt;4 THEN 2380
+2360 X=F1
+2370 GOSUB 2480
+2380 IF F2=T1 OR A2&lt;4 THEN 2410
+2390 X=F2
+2400 GOSUB 2480
+2410 IF F3=T1 OR A3&lt;4 THEN 2440
+2420 X=F3
+2430 GOSUB 2480
+2440 IF F4=T1 OR A4&lt;4 THEN 2470
+2450 X=F4
+2460 GOSUB 2480
+2470 RETURN
+2480 GOSUB 3430
+2490 RESTORE
+2500 READ N,C$
+2510 IF X&lt;&gt;N THEN 2500
+2520 C1$=C$:PRINT:PRINT C1$:PRINT:PRINT "IST AUFGELOEST"
+2530 PRINT "WORDEN IN :":PRINT:RESTORE
+2540 READ N,C$
+2550 IF T1&lt;&gt;N THEN 2540
+2560 C2$=C$:PRINT C2$:WINDOW 21,31,0,31:CLS
+2570 PRINT "BITTE BEACHTEN SIE DIE TRANSAKTIONEN !"
+2580 PRINT "SPIE- ALTER NEUER GESAMT GUT-"         
+2590 PRINT " LER ANTEIL ANTEIL ANTEIL SCHR."          
+2600 FOR I=1 TO P1
+2610 ZW=0
+2620 GOSUB 490
+2630 ZW=S(X,I):ZW=ZW/2:ZW=ZW+.5:ZW=INT(ZW)
+2640 PRINT TAB(8);S(X,I);TAB(13);ZW;TAB(20);S(T1,I)+ZW;
+2650 X1=0
+2660 FOR I1=1 TO P1
+2670 X1=X1+S(X,I1)
+2680 NEXT I1
+2685 IF X1=0 THEN 2700
+2690 PRINT TAB(25);INT(10*((S(X,I)/X1)*S1(X)))
+2700 NEXT I
+2710 FOR I=1 TO P1
+2720 S(T1,I)=S(T1,I)+INT((.5*S(X,I))+.5)
+2725 IF X1=0 THEN 2740
+2730 KO(I)=KO(I)+INT(10*((S(X,I)/X1)*S1(X)))
+2740 NEXT I
+2750 FOR I=1 TO 9
+2760 FOR J=1 TO 12
+2770 IF M(I,J)=X+3 THEN M(I,J)=T1+3
+2780 NEXT J
+2790 NEXT I
+2800 A1=M(R-1,C)
+2810 A2=M(R+1,C)
+2820 A3=M(R,C+1)
+2830 A4=M(R,C-1)
+2840 F1=A1-3
+2850 IF F1&lt;0 THEN F1=0
+2860 F2=A2-3
+2870 IF F2&lt;0 THEN F2=0
+2880 Q(T1)=Q(T1)+Q(X)
+2890 S1(T1)=S1(T1)+S1(X)
+2900 IF S1(T1)&gt;=3000 THEN GOSUB 3140
+2910 F3=A3-1
+2920 IF F3&lt;0 THEN F3=0
+2930 F4=A4-3
+2940 IF F4&lt;0 THEN F4=0
+2950 S1(X)=100
+2960 Q(X)=0
+2970 FOR I=1 TO P1
+2980 S(X,I)=0
+2990 NEXT I
+3000 M(R,C)=T1+3
+3010 PAUSE 100:RETURN
+3140 GOSUB 3430
+3150 PRINT "DAS KAPITAL VON":PRINT:RESTORE
+3160 READ N,C$
+3170 IF T1&lt;&gt;N THEN 3160
+3180 PRINT C$:PRINT:PRINT "IST IM VERHAELTNIS"
+3190 PRINT "2:1 GETEILT WORDEN !":PRINT
+3200 S1(T1)=INT(S1(T1)/2):GOSUB 10000
+3210 FOR I1=1 TO P1
+3220 S(T1,I1)=2*S(T1,I1)
+3230 NEXT I1
+3240 RETURN
+3280 WINDOW 23,31,0,31:CLS
+3290 PRINT "GESELLSCHAFT      PREIS ANTEILE "                
+3300 FOR I3=1 TO 5
+3310 IF S1(I3)=100 THEN 3400
+3320 RESTORE
+3330 READ N,C$
+3340 IF I3&lt;&gt;N THEN 3330
+3350 PRINT C$;TAB(18)S1(I3);TAB(25)S(I3,P)
+3400 NEXT I3
+3410 RESTORE
+3420 RETURN
+3430 WINDOW 0,20,17,31:CLS
+3450 PRINT "SONDERMELDUNG":PRINT:RETURN
+3460 PRINT:PRINT "* * * * * B O E R S E * * * * *":PRINT:PRINT:PRINT           :GOTO 3471
+3470 WINDOW:CLS:GOSUB 11000:GOTO 3460                                          
+3471 PRINT:PRINT "DAS SPIEL IST VORBEI":PRINT:PRINT
+3475 PRINT TAB(10);"HIER IST DAS ERGENIS !":PRINT                 
+3476 FOR I= 0 TO 31:PRINT AT(11,I);"=" :NEXT I:PRINT:PRINT:PRINT
+3480 PRINT "SPIELER    GEWONNENES GELD"                                    
+3540 PRINT
+3550 FOR I=1 TO P1
+3560 GOSUB 490
+3570 PRINT TAB(15);D1(I)+KO(I);" DM"                                         
+3580 NEXT I
+3590 PRINT:PRINT:END
+3710 WINDOW 21,31,0,31:CLS:RESTORE       
+3720 READ N,C$
+3730 IF I&lt;&gt;N THEN 3720
+3740 PRINT "WIE UNS SOEBEN VON DER NACH-"                
+3750 PRINT "RICHTENAGENTUR NEW YORK POST":PRINT "MITGETEIL WIRD MUSTE DIE FIRMA"
+3770 PRINT C$;" "                 :PRINT:RU=RND(1)
+3780 IF RU&lt;=.33 THEN RESTORE 5000
+3790 IF RU&gt;.33 AND RU&lt;=.66 THEN RESTORE 5010
+3800 IF RU&gt;.66 THEN RESTORE 5020
+3810 READ HI$:PRINT HI$;:GOSUB 10000
+3820 CLS:PRINT "DIE BOERSE REAGIERT MIT "  :PRINT:PRINT "EMPFINDLICH";         
+3830 PRINT "KURSSCHWANK-":PRINT "UNGEN.":PRINT:PRINT "WIR VEROEFFENTLICHEN DIE "
+3840 PRINT "AUGENBLICKLICHEN NOTIERUNGEN !":GOSUB 10000
+3850 S1(I)=INT(S1(I)/4)
+3860 FOR J=1 TO 5
+3870 IF J&lt;&gt;I AND Q(J)&lt;&gt;0 THEN S1(J)=S1(J)+INT(100*RND(R1))
+3880 NEXT J
+3890 CLS:PRINT "   DER BOERSENKURIER MELDET":PRINT
+3900 PRINT "GESELLSCHAFT        AKTIENKURS";:RESTORE 
+3910 FOR J=1 TO 5
+3920 READ N,C$
+3930 IF Q(J)=0 THEN 3950
+3940 PRINT:PRINT C$;TAB(20)S1(J);"DM";
+3950 NEXT J
+3960 GOSUB 10000
+3970 RETURN
+5000 DATA "EINEN GROSSEN TEIL DER AKTIEN   WERTLOS MACHEN."             
+5010 DATA "EIN WERK DAS DURCH EINE EXPLO-  SIEON ZERSTORT IST SCHLIESSEN."   
+5020 DATA "FAST KONKURS ANMELDEN."                                          
+6000 WINDOW 4,31,0,31         :CLS                   
+6010 PRINT "***BOERSE*** ist ein Boerse-"            
+6020 PRINT  "Handel-Spiel. Ziel ist es"                      
+6030 PRINT "moeglichst viel Kapital zu er-"    :PRINT "wirtschaften. Dies wird"
+6040 PRINT "erreicht durch das errichten "                 
+6050 PRINT "von Aktiengesellschaften." :PRINT "Durch den Ankauf von Aktien der"
+6060 PRINT               "Gesellscafften,die diesen Markt"
+6070 PRINT       "besitzen. Im Laufe des Spieles"
+6080 PRINT "steigt der Wert der Aktien in "          
+6090 PRINT   "dem Wert,indem die gesell-":PRINT "schaften groesser werden";   
+6100 PRINT " kleinere";:PRINT   "Gesellschaft koennen in Groes-"     
+6110 PRINT "sere umgewandelt werden,wobei "         
+6120 PRINT      "das Kapital der kleineren":PRINT "Firma in das der Groes";  
+6130 PRINT     "seren,":PRINT "wie nachstehend erlaeutert,"     
+6140 PRINT "ueberfuehrt wird."
+6150 PRINT "In jeder Spielrunde bietet der"           
+6160 PRINT "computer dem Spieler Plaetze an.";            
+6170 PRINT "Der Spieler antwortet, nachdem"         
+6180 PRINT "er sich auf dem Aktienmarkt"                  
+6185 PRINT "umgesehen hat,welchen Platz er":PRINT "nehmen moechte."
+6190 GOSUB 10000
+6200                  PRINT "Jeder Spieler kann dabei einen"           
+6210 PRINT "der vier grundsaetzlichen Zuege":PRINT "machen:" 
+6220 PRINT "1-Einen unabhaengigen Aussen-":PRINT "  posten gruenden." 
+6230 PRINT "  Wenn ein Spieler einen Platz":PRINT "  besetzt,der nicht an einen"
+6250 PRINT "  Stern, einen anderen Aussen-":PRINT "  posten oder Aktiengesel." 
+6260 PRINT "  grenzt,wird dieser Platz mit":PRINT "  '+' gekennzeichnet.Der"   
+6280 PRINT "  kann dann weiter handeln,wie" 
+6290 PRINT "  oben beschrieben ."
+6300                   PRINT "2-Eine bestehende Aktiengesel. "          
+6310 PRINT "  erweitern.Wird ein Platz be-":PRINT "  legt,der an eine einzige" 
+6320 PRINT "  Firma grenzt,so wird dieser     Platz in diese Firma auf-"      
+6340 PRINT       "  genommen und durch den ersten"            
+6350 PRINT "  Buchstaben der Gesellschaft"                    
+6360 PRINT "  markiert.Falls Sterne oder "       :PRINT "  Aussenposten diesen";
+6370 PRINT " Platz ":PRINT "  beruehrt werden sie ebenfalls"                  
+6380 PRINT "  in die Firma aufgennomen.":PRINT            :GOSUB 10000
+6400 PRINT "  Jedes Feld neben einen Stern"         
+6410 PRINT "  erhoeht den Marktwert der ":PRINT "  Gesellschaft um 600.-je ";  
+6415 PRINT "Aktie.";
+6420 PRINT "  Jeder Aussenposten bringt"                 
+6430 PRINT       "  weitere 100.- je Aktie."
+6440 PRINT "3-Eine neue Aktiengesel. gruen-"      
+6450 PRINT "  den.Belegt ein Spieler einen"           
+6460 PRINT "  Platz,der an einen Stern oder   einen unabhaengigen Aussen-"
+6470 PRINT "  posten grenzt,aber keine "           
+6480 PRINT "  bestehende Firma beruehrt,"           
+6490 PRINT "  wird eine neue Aktiengesel." :PRINT "  eroeffnet. Der Spieler be-"
+6500 PRINT "  kommt automatisch 5 Aktien"          
+6510 PRINT "  der neuen Gesellschaft als   "          
+6520 PRINT "  Anerkennung.Er kann dann wei-"                  
+6530 PRINT "  terhin Aktien aller aktiven     Gesellschaften handeln." 
+6540 PRINT "4-ZWEI bestehende Gesellschaften  werden vermischt.Wird ein Pla-";
+6550 PRINT "  tz direkt neben bestehenden"      
+6560 PRINT "  Firmen belegt, werden diese "        
+6570 PRINT         "  vermischt. Dabei uebernimmt "   
+6580 PRINT "  die groessere die kleinere ":PRINT "  Firma":PRINT              
+6590 GOSUB 10000
+6600            PRINT "  Das Kapital der vermischten"        
+6610 PRINT "  Firmen wird dem Wert ent-"                    
+6620 PRINT "  sprechend,der belegten Plae-    tzen und Sternen,neu festge-"
+6630 PRINT "  legt. Die Anteile der Spieler"        
+6640 PRINT "  an der aufgeloesten Firma       werden im Verhaeltnis 2:1"      
+6650 PRINT "  durch Aktien der neuen Firmen":PRINT "  ersetzt";    
+6660 PRINT ".Weiterhin bekommt je-"               
+6670 PRINT "  der Spieler eine Barverguetung";              
+6680 PRINT "  entsprechend der prozentualen"           
+6690 PRINT "  Anteile der aufgeloesten Firma"
+6700 PRINT "Der Computer zaelt jedem Spie-"       
+6710 PRINT "ler eine Dividende (5% des Wer- tes der Aktien in seinen Be-" 
+6720 PRINT "sitz) und ermoeglicht den"          
+6730 PRINT "Handel mit Aktien aller besteh-"        
+6740 PRINT "enden  Gesellschaften.":PRINT  "Uebersteigt der Marktwert einer"
+6750 PRINT "Aktie 3000.- ,so wird diese im "           
+6760 PRINT "Verhaeltnis 2:1 geteilt."   
+6770 PRINT "Gewinner ist der Spieler,mit"           
+6780 PRINT "dem groessten Geldbestand am":PRINT "Schluss !"            
+6790 PRINT:GOSUB 10000
+6800 CLS:RESTORE:PRINT:PRINT TAB(5);"AKTIENMARKT":PRINT:PRINT
+6810 PRINT "  AKTIE-               ZEICHEN"
+6820 PRINT "  GESELLSCHAFT      ":PRINT TAB(20);""
+6825 FOR I=0 TO 31:PRINT TAB(I);"";:NEXT:PRINT:PRINT TAB(20);""              
+6830 FOR I=1 TO 5
+6840 READ I,C$
+6850 PRINT C$;TAB(20);"";TAB(26);LEFT$(C$,1):PRINT TAB(20);""
+6860 NEXT
+6870 GOSUB 10000:CLS:PRINT:PRINT:PRINT:PRINT:RETURN
+10000 PRINT:PRINT TAB(20)"&gt;ENTER&lt;";:INPUT Y$:CLS:RETURN
+11000 FOR I=1 TO P1
+11010 FOR J=1 TO 5
+11020 D1(I)=D1(I)+(S1(J)*S(J,I))
+11030 NEXT J,I
+11040 RETURN
 </pre>
 </body>
 </html>

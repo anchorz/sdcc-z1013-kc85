@@ -2,7 +2,10 @@ Fortsetzung Beschreibung Editor
 
 Binder
 
-Relativspruenge mit zu grosser Distanz werden durch Absolutspr. ersetzt. Nach jeder Fehlerausschrift wird ENTER betätigt, um weitere Fehler zu finden. Erst wenn beim Bindelauf keine Fehlerausschrift erfolgte, war dieser erfolgreich und ist das Progr. lauffaehig! Die Markentabelle  wird beim Binden nicht verändert.
+Relativspruenge mit zu grosser Distanz werden durch Absolutspr. ersetzt. Nach jeder 
+Fehlerausschrift wird ENTER betätigt, um weitere Fehler zu finden. Erst wenn beim 
+Bindelauf keine Fehlerausschrift erfolgte, war dieser erfolgreich und ist das Progr. 
+lauffaehig! Die Markentabelle  wird beim Binden nicht verändert.
 
 RAM-Modus
 
@@ -16,7 +19,15 @@ bbbb>   08 09 0A 0B 0C 0D 0E 0F
         30 31 32 33 34 35 36 37 
         38 39 3A 3B 3C 3D 3E 3F
 
-Die Anfangsadresse steht links  oben (aaaa). Die vor dem Zeichen> stehende Adr bezeichnet die RAM-Zelle, auf die sich die naechste Eingabe bezieht. Der Kursor steht nach dem > . Hier können Datenbytes als Hexaziffern eingetragen werden. Falsche Eingaben werden mit S4-W geloescht. Die Eingabe eines Byte wird mit ENTER vollzogen. Die gleichen Daten koennen durch weiteres Betätigen von ENTER auf die nächsten Eingabeadressen gegeben werden. Das Zeichen > ist in der Datenbyteausschrift wiederzufinden und kennzeichnet nochmals das aktuell anstehende Byte. Es wirkt hier gleichzeitig als Cursor und lässt sich mit  den Kursorsteuertasten bewegen  (-> <- S4-S S4-R). Am oberen und unteren Bildrand wird gerollt. Das aktuelle Datenbyte bleibt so immer im Anzeigebereich. Die Adressen am linken oberen Bildrand werden ständig aktualisiert.  
+Die Anfangsadresse steht links  oben (aaaa). Die vor dem Zeichen> stehende Adr bezeichnet 
+die RAM-Zelle, auf die sich die naechste Eingabe bezieht. Der Kursor steht nach dem > . 
+Hier können Datenbytes als Hexaziffern eingetragen werden. Falsche Eingaben werden mit S4-W 
+geloescht. Die Eingabe eines Byte wird mit ENTER vollzogen. Die gleichen Daten koennen durch 
+weiteres Betätigen von ENTER auf die nächsten Eingabeadressen gegeben werden. Das Zeichen > 
+ist in der Datenbyteausschrift wiederzufinden und kennzeichnet nochmals das aktuell anstehende 
+Byte. Es wirkt hier gleichzeitig als Cursor und lässt sich mit  den Kursorsteuertasten bewegen  
+(-> <- S4-S S4-R). Am oberen und unteren Bildrand wird gerollt. Das aktuelle Datenbyte bleibt 
+so immer im Anzeigebereich. Die Adressen am linken oberen Bildrand werden ständig aktualisiert.  
 
 Kommandos im RAM-Progr.:
                                         
@@ -50,17 +61,32 @@ I    }    Ignorieren der Kdo's
 M    }OFF
 G    }
 
-Das Kommando "I" dient zum Eingeben von Daten im Block bis zu einer Endadresse. Nach dem Betätigen von I steht der Cursor in der 3. Zeile. Hier wird die  4-Stellige hexadezimale Endadresse verlangt. Die Eingabe   wird mit ENTER abgeschlossen bzw. mit OFF ignoriert. Die Übernahme der nach > angegebenen Daten in erfolgt nur bei richtigen Angaben und wenn die Endadresse größer als die Anzeigeadresse ist. 
+Das Kommando "I" dient zum Eingeben von Daten im Block bis zu einer Endadresse. Nach dem 
+Betätigen von I steht der Cursor in der 3. Zeile. Hier wird die  4-Stellige hexadezimale 
+Endadresse verlangt. Die Eingabe   wird mit ENTER abgeschlossen bzw. mit OFF ignoriert. 
+Die Übernahme der nach > angegebenen Daten in erfolgt nur bei richtigen Angaben und wenn 
+die Endadresse größer als die Anzeigeadresse ist. 
 
-Das Kommando "M" dient dem Verschieben von Bytes. Verschoben  wird auf den Bereich ab Anzeigeadresse. Nach "M" werden die Anfangs und die Endadresse des Quellbereiches angefordert. Sie werden jeweils mit ENTER bestätigt. Beim Umladen wird der Quellbereich gelöscht (zu FFH). Die Überlappung von Quelle und Ziel ist teilweise möglich.
+Das Kommando "M" dient dem Verschieben von Bytes. Verschoben  wird auf den Bereich ab 
+Anzeigeadresse. Nach "M" werden die Anfangs und die Endadresse des Quellbereiches angefordert. 
+Sie werden jeweils mit ENTER bestätigt. Beim Umladen wird der Quellbereich gelöscht (zu FFH). 
+Die Überlappung von Quelle und Ziel ist teilweise möglich.
 
 Die Kommandos "M" (move) bzw.   "I" (initialise) entsprechen den Monitorkommandos "T" (Transfer) bzw. "K" (Kill).
 
-Ein besonderer Vorteil des RAM-Modus ist seine Echtzeitfähigkeit (im Gegensatz zu "D" oder  "M" des Monitors). D.h. die Anzeige der Speicherzellen erfolgt dynamisch, sodass sich ändernde RAM-Inhalte beobachtet werden können. Durch die Möglichkeit der Vorbereitung der Dateneing. (Ausführung gezielt mit ENTER) kann auch in laufende Programme (Interruptebenen) eingegriffen  werden. Ebenso ist die Einbindung nur des RAM-Programmes in  ein Echtzeitbetriebssystem denkbar (ohne Editor). Damit werden auch Programme beobachtbar, die nicht über Interrupt laufen, sondern von dem genannten EZ-BS verwaltet werden. Wie der RAM-  Modus ohne Editor zu handhaben  ist, wird im folgenden Abschnitt erlaeutert.
+Ein besonderer Vorteil des RAM-Modus ist seine Echtzeitfähigkeit (im Gegensatz zu "D" oder  
+"M" des Monitors). D.h. die Anzeige der Speicherzellen erfolgt dynamisch, sodass sich ändernde 
+RAM-Inhalte beobachtet werden können. Durch die Möglichkeit der Vorbereitung der Dateneing. 
+(Ausführung gezielt mit ENTER) kann auch in laufende Programme (Interruptebenen) eingegriffen  
+werden. Ebenso ist die Einbindung nur des RAM-Programmes in  ein Echtzeitbetriebssystem denkbar 
+(ohne Editor). Damit werden auch Programme beobachtbar, die nicht über Interrupt laufen, sondern 
+von dem genannten EZ-BS verwaltet werden. Wie der RAM-  Modus ohne Editor zu handhaben  ist, 
+wird im folgenden Abschnitt erlaeutert.
 
 Nutzung des RAM-Programms ohne Editor
 
-Das RAM-Programm benutzt die   Zellen 00D4 und 00D5 als Arbeitszellen. Es ist als Unterprogr. geschrieben, endet also mit RET. Die Startadresse ist 2EBE.
+Das RAM-Programm benutzt die   Zellen 00D4 und 00D5 als Arbeitszellen. Es ist als Unterprogr. 
+geschrieben, endet also mit RET. Die Startadresse ist 2EBE.
 Zuerst wird der Editor V8 geladen. Zum Start des Pr. werden2 MC-Befehle auf beliebigen Adr.(zB. 0200H) benötigt:
 
 0200    CALL 2EBEH
@@ -70,7 +96,10 @@ Wird nun mit dem Monitor-Kdo.
 
  # J 0200  
 
-gestartet, ist der RAM wie im Editor manipulierbar. Die Betätigung der OFF-Taste führt in das BS zurück. Diese Nutzungsmoegl. hat den Nachteil, dass der gesamte Editorbereich (2C00-3FFF)belegt ist. Das RAM-Pr. lässt  sich durch folgende Schritte im Monitor einfach auf 1K (2C00-2FFF) abrüsten. Damit steht der Bereich 3000-3FFF wieder zur freien Verfügung. 
+gestartet, ist der RAM wie im Editor manipulierbar. Die Betätigung der OFF-Taste führt in das BS 
+zurück. Diese Nutzungsmoegl. hat den Nachteil, dass der gesamte Editorbereich (2C00-3FFF)belegt 
+ist. Das RAM-Pr. lässt  sich durch folgende Schritte im Monitor einfach auf 1K (2C00-2FFF) abrüsten. 
+Damit steht der Bereich 3000-3FFF wieder zur freien Verfügung. 
 
 # M 3B77      ENTER                                               
   E5 # 12 2C; ENTER                                             
@@ -81,7 +110,8 @@ gestartet, ist der RAM wie im Editor manipulierbar. Die Betätigung der OFF-Tast
   74 # 2F 2C;    ENTER          
 # K 3000 3FFF FF ENTER
 
-Diese Reihenfolge ist einzuhalten. Nun kann wieder wie oben beschrieben gestartet werden. Es ist weiterhin möglich, vor dem Start die gewünschte Anzeigeadr in 00D4 und 00D5 (L-H) einzutragen.
+Diese Reihenfolge ist einzuhalten. Nun kann wieder wie oben beschrieben gestartet werden. Es 
+ist weiterhin möglich, vor dem Start die gewünschte Anzeigeadr in 00D4 und 00D5 (L-H) einzutragen.
 
 SPEICHERBELEGUNG EDITOR
 
@@ -114,7 +144,8 @@ EDFF
 
 Außer den hier angegebenen Speichern werden mit Ausnahme der MTB(+20H Byte) keine weiteren benötigt, benutzt oder geändert. 
 
-Bei Nutzung nur des RAM-Pr. wird der Anwenderstack des Z1013 genutzt. Bei Nichtausreichen des Stacks, insbesondere in Verbindung mit Interruptroutinen, ist dieser entspr. auf einen größeren Adressraum zu verlegen. 
+Bei Nutzung nur des RAM-Pr. wird der Anwenderstack des Z1013 genutzt. Bei Nichtausreichen des Stacks, 
+insbesondere in Verbindung mit Interruptroutinen, ist dieser entspr. auf einen größeren Adressraum zu verlegen. 
 
 Vom Betriebssystem des Z1013 werden die Routinen OUTCH u. INKEY genutzt.
                                                              
@@ -146,7 +177,11 @@ Ende
       JPZ CCC
 3127  CMP 058H
       JPZ XXX                   
-Damit verändert sich die Prüfsumme. Diese wird ab 2C2FH berechnet (Summe über gesamten Programmspeicher = 0).Im Anschl. an die Prüfsummenberechnung folgt das erforderliche Ausgl.-byte( nach RET). Die eigenen Erweiterungen müssen mit RET enden und führen in den Anzeigemodus zurück.
+Damit verändert sich die Prüfsumme. Diese wird ab 2C2FH berechnet (Summe über gesamten 
+Programmspeicher = 0).Im Anschl. an die Prüfsummenberechnung folgt das erforderliche 
+Ausgl.-byte( nach RET). Die eigenen Erweiterungen müssen mit RET enden und führen in 
+den Anzeigemodus zurück.
+
 Folgende Unterprogramme können zum Dialog auf dem kleinen BS des Editors genutzt werden:
 BSS 2C06     BBZ 2C1E
 BSL 2C09     TXS 2C21

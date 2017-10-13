@@ -1,0 +1,6 @@
+<kurz src="Schiffe versenken gegen Computer (8x4)"/>
+<lang>
+Steuerung: D C T E K U M S
+
+<include src="schiffe.B"/></lang>
+<required></required>

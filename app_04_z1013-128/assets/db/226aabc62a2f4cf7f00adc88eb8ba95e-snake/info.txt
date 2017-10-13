@@ -1,0 +1,3 @@
+<kurz src="Schlange frisst Zahlen und wird dabei immer länger"/>
+<lang><include src="snake.B"/></lang>
+<required></required>

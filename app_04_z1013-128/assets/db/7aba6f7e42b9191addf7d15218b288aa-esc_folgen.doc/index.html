@@ -17,68 +17,6 @@
 <pre>Der Text verwendet ESC-Sequenzen für S3004, so
 dass die Darstellung nicht ganz korrekt ist. Am Besten,
 man druckt sich das ersteinmal aus.
-                       
-Codes und Funktionen
-durch  Folge  ESC(1BH) - Zeichen
-_____________________________________________________
-ESC 0   (hoch 3)		 ESC 1  
-ESC 2  			 ESC 3  
-ESC 5  			 ESC 7  
-ESC 8   (grad)		 ESC 9   (hoch 2)
-ESC :   (ä-punkte)		  ESC 3CH  
-ESC =  			 ESC 3EH  
-ESC B  Papiereinzug		ESC C  SYNC
-ESC E  1-zeilig			ESC F  1.5-zeilig
-ESC B  2-zeilig			ESC H  Halbschritt links
-ESC I  Halbschritt rechts	ESC J  Halbschritt runter
-ESC K  Halbschritt hoch		ESC L  10 Zeichen/Zoll
-ESC M  12 Zeichen/Zoll		ESC N  Mikrostep runter
-ESC O  Mokrostep hoch		ESC P  T+
-ESC Q  T-			ESC R  t+
-ESC S  t-			ESC T  linker Rand
-ESC U  rechter Rand		ESC V  Randlöser
-ESC W  nächstes Zeichen kein Vorschub (für Doppeldrucke)
-ESC 5CH  Reversdruck ON		ESC 5DH  Reversdruck OFF
-ESC 5EH  Tastatur ON		ESC 5FH  Tastatur OFF
-    
- 
- S 3004 - Sonderzeichen durch ESC-Folgen  --12 Zei./"--
---------------------------------------------------------
-
-eckige Klammer rts.:
-________________________________________________________
- ESC = ESC H ESC K - ESC J ESC J ESC H ESC H - ESC K 
-
-eckige Klammer lks.:
-________________________________________________________
- ESC J - ESC K ESC K ESC H ESC H - ESC J ESC H ESC = 
-
-     nnn -- nn -- nnn
-
-geschweifte Klammer rts.:		lks:
-________________________________________________________
- ESC W ( +	 nnn (+ nn )+ nnn	      ESC W ) +
-
-
-kleiner:			größer:
-________________________________________________________
- - ESC H (    12 -( 45 )- 34     ) ESC H -  
-
-Pfeil:
-________________________________________________________
- - ESC W ) +    -)+ nn (+-   ESC W ( + -
-
-com.a:  
-________________________________________________________
- ESC W aC	nnn aC nnn
-
-Fettdruck:
-________________________________________________________
-durch:  String ESC N ESC 5CH String rückw.
-        ESC 5DH ESC W ESC N String ESC O ESC O
-         FETTDRUCKKCURDTTEFFETTDRUCK
-
-
-&lt;&lt;EOT&gt;&gt;</pre>
+<include>esc_folgen.doc.txt</include></pre>
 </body>
 </html>

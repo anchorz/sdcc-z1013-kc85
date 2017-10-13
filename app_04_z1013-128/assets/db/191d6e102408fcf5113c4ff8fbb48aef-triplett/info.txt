@@ -1,0 +1,30 @@
+<kurz src="KOMBINATIONSSPIEL, Es verliert derjenige, der den letzten Stein nehmen muss!"/>
+<lang> KOMBINATIONSSPIEL
+     ━━━━━━━━━━━━━━━━━━━
+
+Wer nimmt den letzten Stein?
+
+Es bestehen 3 Haufen mit einer
+
+vom Rechner zufaellig festgelegten 
+
+Anzahl von Steinen.
+
+Sie und der Rechner duerfen nun
+
+abwechselnd eine beliebige Anzahl
+
+von Steinen von einem beliebigen 
+
+Haufen wegnehmen
+
+(mindestens einen, max. alles).
+
+Es verliert derjenige, der den
+
+letzten Stein nehmen muss!
+                                
+
+
+<include src="triplett.B"/></lang>
+<required></required>

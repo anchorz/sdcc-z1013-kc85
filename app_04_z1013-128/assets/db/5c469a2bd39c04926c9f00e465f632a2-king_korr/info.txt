@@ -1,0 +1,10 @@
+<kurz src="SANTA PARAVIA, Z9001 Version mit Anpassungen an 32 Zeichen"/>
+<lang>schreibt hin und wieder über den Bildschirmrand. Es sieht so nach einer 
+Zwischenversion verglichen mit [75b9fcd76fa39557454f08460b34e45b] aus. Manche 
+Stellen wurden angepasst, andere noch nicht.
+Diese Version unterscheidet sich nur durch Änderungen im Text.
+
+Irgendwo gab es noch eine Version PARSKAT, bei der das korrigiert wurde.
+
+<include src="king_korr.B"/></lang>
+<required></required>

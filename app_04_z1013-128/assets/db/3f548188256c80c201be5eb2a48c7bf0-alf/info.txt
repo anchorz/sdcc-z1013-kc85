@@ -1,0 +1,11 @@
+<kurz src="ALF sammelt Luky und Tomaten ein"/>
+<lang>ALF hat es wieder einmal auf 'Luky mit Tomaten' 
+abgesehen. Er hat aber ein grosses Problem , dass 
+gar nicht 'Null Problemo !' ist.
+
+Die Waende stehen unter Strom und dass gefaellt
+ALF ueberhaupt nicht. 9 elektrische Schlaege
+verkraftet er, doch dann verschwindet er ...
+
+... zuruek nach MELMAK !  </lang>                      
+<requires></requires>

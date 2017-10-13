@@ -12,3 +12,19 @@ div.filelist {
 	line-height: 1;
 	text-align: left;
 }
+
+div.even {
+	padding: 2px;
+	background: #ffffff;
+}
+
+div.odd {
+	padding: 2px;
+	background: #f8f8f0;
+}
+
+pre {
+	font-family: Z1013, monospace;
+	padding: 2px;
+	background: #f8f8f0;
+}

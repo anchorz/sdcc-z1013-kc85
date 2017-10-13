@@ -1,0 +1,11 @@
+<kurz src="Ladder 8x4 Folientastatur, Cheat: Wartet vor jeder Tastaturabfrage"/>
+<lang>[RST20]
+Programm benutzt statt INKEY die INCH Tastaturabfrage, so wird immer gewartet.
+
+T Klettern Hoch
+L Springen
+M Rechts
+K Links
+D Klettern Runter
+</lang>
+<required></required>

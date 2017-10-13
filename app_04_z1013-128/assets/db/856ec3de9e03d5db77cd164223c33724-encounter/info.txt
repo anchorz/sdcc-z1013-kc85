@@ -1,0 +1,15 @@
+<kurz>Ballspiel</kurz>
+<lang>ENCOUNTER
+
+DAS PROGRAMM IST EIN BALLSPIEL,
+WO SIE MIT GESCHICK UND GLUECK,
+VERSUCHEN MUESSEN, SICH 10 LEBEN ZU
+ERKAEMPFEN. 
+
+S1 unten 
+S2 oben
+
+VIEL SPASS...(SPACE)
+
+<include>encounter.b</include></lang>
+<required></required>

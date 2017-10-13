@@ -1,0 +1,3 @@
+<kurz src="Ball gegen die Wand spielen"/>
+<lang>[RST20]</lang>
+<required></required>

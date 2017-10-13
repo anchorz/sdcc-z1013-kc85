@@ -1,0 +1,17 @@
+<kurz src="verbesserter BOALAB clone, weiche der Kugel aus"/>
+<lang>Versuche so viel wie moeglich
+Punkte mit Deinem Viereck zu
+sammeln. Dabei darft Du aber
+nicht der Kugel begegnen. Du
+kannst Deine Figur auf den
+freien Flaechen mit S1 nach
+oben, mit S4 nach unten, mit 
+→ nach rechts und mit ← nach
+links steuern.
+
+Stelle Dein Tonbangeraet noch auf AUFNAHME !
+
+ALLES KLAR ? <ENT>
+
+<include src="3K+CRASH.b"/></lang>
+<required>2.02</required>

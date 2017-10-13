@@ -14,6 +14,252 @@
 </head>
 <body>
 <div></div><div class="filelist">0200 3fff 0200 C ... <a href="beschr edas t1.z80">Beschr.&nbsp;EDAS&nbsp;T1&nbsp;</a></div>
+<pre>Editor-Beschreibung             
+Bestandteile: Editor/Assembler                
+              Reassembler            
+	      Binder            
+	      
+Es erfolgt eine Speicherung von Maschinencode (MC) und Markenta-
+belle. Die Eingabe der Befehle erfolgt zeilenweise;Syntaxfehler
+werden sofort erkannt. Es gibt 3 Betriebsarten mit spezifischen  
+Kommandos: Anzeigemodus 
+           Quellcode-Eingabe-Mod
+           RAM-Modus            
+	   
+Aufruf des Editors:              
+ J 2C03 NEUSTART                 
+ J 2C00 RESTART zur Weiterbearbeitung vorhandener MC und MTB  (Markentabelle)                 Ausschrift:  EDIT MTB#1C20      
+Die Vorzugsadresse der MTB kann ueberschrieben werden, wenn diese auf anderem 
+RAM-Bereich liegen  soll. Vor MTB werden noch 20H Byte Arbeitsspeicher benoetigt.
+Das 1.Byte der MTB muss 00 sein. Bei Start auf 2C03H ist das in  der angegebenen 
+MTB der Fall.   
 
+Nach der Betaetigung von ENTER  befindet sich der Editor im Anzeigemodus. Von hier aus sind
+alle Modi erreichbar. Mit dem Kommando "G#adr" kann man die  gewuenschte Programmstelle
+ (Adr)anwaehlen. Zur Bestaetigung von Kommandos dient immer die ENTER-Taste, 
+zur Ablehnung dient in der Regel die OFF-Taste.       
+
+Folgende Tasten erhielten fuer  den Editor zusaetzliche Funktionen:  
+  @     =  OFF
+  S4-S  = Kursor nach oben        
+  S4-R  = Kursor nach unten       
+  S4-J  = Kursor an Bildanfang    
+  S4-O  = Kursor an Zeilenanfang  
+  S4-V  = Tabulator               
+  S4-W  = Zeichen loeschen        
+  S4-N  = Zeile loeschen          
+  S4-T  = BS loeschen
+
+Uebergaenge zwischen den Modi:  
+
+________________________________
+|Anzeigemodus(OFF-&gt;&gt;Betr.-Syst)|
+________________________________ 
+ |"R"    ^       |"Q"       ^    
+ |Enter  |OFF    |          |OFF 
+ V       |       V          |   
+| RAM-Mod. |    | Eingabe-Mod.|   
+
+Das Ende der MTB ist immer 0. Werden bei der Eingabe Marken vereinbart, wird MTB automatisch gefuellt
+(127 Marken sind moeglich). Ein Ueberlaufen der MTB  (in den Bereich des Editors zB.) wird nicht verhindert. 
+Der Bediener kann sich aber jederzeitim RAM-Modus ueber die Ausdehnung der MTB (belegter RAM-Bereich) informieren. 
+Ausserdem kann mit dem Kommando "P" im An-zeigemodus der Editor auf Vollstaendigkeit und Fehlerfreiheit
+getestet werden. Erfolgt nach dem Kdo "P" der Sprung ins Betriebssystem, ist der Editor zerstoert
+(zB. auch im Ergebnis eines fehlerhaften Anwendertestlaufes) 
+und muss wieder vom Bandgeladen werden.
+
+Verlassen des Editors:       
+    
+ Der Editor wird durch Betaetigung der OFF-Taste in das Betriebssystem verlassen. 
+Mittels Monitorkommandos werden nun die RAM-Bereiche des Maschinencodes und der MTB auf Band ausgelagert 
+(Ausdehnung vorher im RAM-Modus oder mit "D" feststellen). Es ist zweckmaessig, aber nicht Bedingung, 
+die MTB einschliessl. der 20H Byte Arbeitsspeicher    (also ab 1C00H) auszugeben. Nachdem Laden von MC 
+und MTB sowie  Start des Editors befindet sich in diesem Fall der Editor auf  der Anzeigeadresse, von 
+der aus er verlassen wurde. Das Auslagern von Programmen erfolgt vor deren Test, sonst gibt es meist Aerger! 
+Ein ordnungsgemaess ausgelagertes Programm (MC+MTB) kann jederzeit wieder geladen und 
+im Editor erweitert, geaendert oder korrigiert werden. Zur Lauffaehigkeit eines fertigen 
+und gebundenen Progr. ist die MTB nicht erforderlich.           
+Nach dem Einschalten des Z1013ist zuerst der Editor zu laden, auf 2C03H zu starten (definierte RAM-Belegung) 
+und mitOFF wieder zu verlassen. Erst jetzt werden vorhandene Programme und deren  MTB geladen 
+und der Editor auf 2C00H gestartet.                                            
+
+Folgend werden die einzelnen Modi und deren Kommandos beschrieben. 
+
+Anzeigemodus
+ Hier ist es moeglich, bereits erstellte Programme zu kontrollieren, interessierende Stellen zu suchen, 
+anzuwaehlen und zu korrigieren. Der Anzeigemodus ist durch folgende Bildschirmausschrift gekennzeichnet(Bsp):
+
+EDIT 02EF      MAR 02D0         
+*    LD HL,0123H                 
+ MA1:ADD HL,DE                       
+     INC A                               
+     JRNZ MA1                        
+     LD A,B                          
+     POP DE                          
+     RET                       
+
+Das * steht vor der Befehlsausschrift des zur Bearbeitung anstehenden Befehls. Die oberste  Zeile 
+enthaelt nach der Kennung EDIT die Adresse (hex) des zur  Bearbeitung anstehenden Befehls (Anzeigeadresse). 
+Danach folgt  die Angabe der davor stehenden Globalmarke. Das ist eine Marke, die als 3. Zeichen einen 
+Buchstaben enthaelt. Es folgt die   Adresse dieser Marke. Bezeichnet man Programmanfaenge oder markante 
+Stellen im Programm mit   Globalmarken, so erhaelt man einen Ueberblick, in welchem Programmstueck man 
+sich befindet. Danach folgt die Auflistung der Befehle. 
+
+ Im Anzeigemodus gibt es Anzeige- und Korrekturkommandos. Die Anzeigekommandos dienen der Kontrolle 
+des Programms und der Positionierung zwecks Korrektur und Eingabe. Angezeigt wird das, was der 
+Reassembler an MC aus dem RAM angeboten bekommt. 
+
+Demzufolge werden auch Daten oder  Texte (ASCII) als Befehle ausgeschrieben. Ausserdem werden die 
+Informationen aus der MTB genutzt. Liegt zu einer Befehlsadresse eine Markenvereinbarung vor, so
+wird die Marke mit angegeben. Gibt es bei einer Befehlsadresse einen Markenzugriff, so wird statt 
+der im RAM stehenden Hexazahl die Marke ausgegeben.
+
+Kdo's im Anzeigemodus:
+
+Taste Zusatz Funktion %Hinweisnr
+________________________________
+R #adr ENTER  RAM-Anz.ab adr,Eintritt in RAM-Mod.%7
+R ENTER       RAM-Anz.ab Anz.-adr Eintr. in RAM-Mod. 
+
+G #adr ENTER  Anzeige ab adr %7
+G #0 ENTER    Anzeige der mit EXT zugewiesenen Marken
+G ENTER       Anzeige ab Programm ende %3
+
+B ENTER       Binden des Progr. auf Anzeigeadr.
+B #adr ENTER  Binden des Progr.so dass angezeigter Befehl auf adr laeuft
+
+M #adr1 ENTER Verschieben d.Prog  
+  #adr2 ENTER mit Marken von:               
+             *adr1 bis ausschl.               
+              adr2 auf Bereich                
+              ab Anzeigeadr %4%5                                
+M #adr ENT R *adr bis Progr.Ende       
+       ENTER  auf Anz-Adr %3%4
+
+V #adr1 ENTER Verschieben nur     
+  #adr2 ENTER der Marken von:                
+             *adr1 bis ausschl.               
+              adr2 auf Bereich                
+              ab Anzeigeadr.%5%6                                
+V #adr ENTER *adr bis Progr.Ende       
+       ENTER  auf Anz.Adr %3%6 
+
+E #adr ENTER  Schaffen eines Eingabebereiches ab Anzeigeadr bis
+              auschl. adr ;das folgende Progr. wird mit Marken auf adr
+              verschoben %4
+E ENTER       Schaffen 1 Byte Eingabebereich %4
+
+S #adr ENTER  Streichen der Befehle ab Anz.adr bis adr %5%7
+S ENTER       Str.angez.Befehl 
+
+OFF           Verlassen des Editors
+
+P             Pruefen des Editors %8
+
+Q             Eintritt in Quelleingabemodus
+
++             Anz.Adr.increment. %2
+
+A             Anzeige ab letzter Globalmarke
+
+N             Naechste Seite anzeigen
+
+Z             Vorige Seite anzeigen (zurueck)    %1
+
+S4-R          Anzeigeadr := Adresse des naechsten Befehls
+
+S4-S          Davorstehender Befehl  wird aktueller Befehl
+
+Hinweise:
+%1 Ein Befehlsblock benoetigt anseiner Anfangsadresse immer eine Globalmarke. Existiert im Bereich 
+von 256 Bytes vor der aktuellen Befehlsadresse keine Globalmarke, so werden die Kommandos "Z" u. 
+"S4-S" nicht ausgefuehrt. In diesem Fall muss man sich mit dem "G"-Kommando an den Progr.-anfang 
+oder eine markante Programmstelle zurueckbewegen und eine Globalmarke eingeben.
+
+%2 Dieses Kdo ist noetig, um zwischen Datenbloecken einen Befehlsanfang wiederfinden zu  
+koennen (mit Globalmarke kennzeichnen; dann besser findbar).
+
+%3 Programmende = Adresse, ab der mindestens 4 Mal 0FFH als Speicherinhalt steht.
+
+%4 Verschieben ist nur in einem Speicherbereich moeglich, der zuvor mit 00H oder 0FFH geladen wurde
+ (verhindert versehentliche Zerstoerung von Programmen). 
+"M" geht nur in einen genuegend grossen Freibereich.            
+"E" benoetigt am Progr.ende genuegend freie Speicherplaetze. Sonst werden diese Kdo's ignoriert.
+
+%5 Bei Angabe von 2 Adressen muss Endadr&gt;Anfangsadr sein.
+Bei "S" muss die angegebene Adresse&gt;Anzeigeadr sein. Sonst erfolgt keine Kdo-Ausfuehrung.  
+Angabe der Adresse 0 bei "S" verhindert also das Streichen.
+%6 Verwenden, wenn der zugehoerige MC schon auf dem Zielbereich steht und der ursprüngliche 
+RAM nicht mehr verfuegbar ist (zB anderweitig belegt).
+%7 Unter adr kann eine Hexazahl mit fuehrender Ziffer oder eine vereinbarte Marke eingegeben werden.
+%8 Bei defektem Editor erfolgt ein Sprung in das Betriebssystem Er ist dann neu zu laden.
+
+Quellcode-Eingabemodus
+ Nach Eintritt in diesen Modus  kann der anstehende Befehl korrigiert oder ueberschrieben werden 
+(ACHTUNG BEIM UEBERSCHREIBEN: Soll zB. ein 1Byte-Befehl durch einen 2Byte-Befehl ersetzt werden, ist vorher der noetige Freibereich [E-Kdo] zu schaffen,
+sonst werden folgende Befehle zerstoert. Ebenso sind umgekehrt die Restbytes zu streichen.    
+Marken duerfen nicht ueberschrieben werden, sie sind mit dem S-Kdo zu streichen und nach der Schaffung 
+eines Freibereiches  neu einzugeben. Anderenfalls verschwindet die Marke zwar aus derAnzeige, aber 
+nicht aus MTB. Bei dem Bindelauf passieren dann sehr schwer zu findende Fehler. Der Aufruf einer 
+Marke kann hingegen bedenkenlos ueberschrieben werden zB. CALL MUL o.JR EM1 .)
+
+Nach Betaetigen von ENTER wird uebersetzt. Liegt ein Syntaxfehler vor, wird F ausgeschrieben. 
+Wird eine Marke zum 2. Mal vereinbart, erfolgt die Ausschrift M. In diesen Faellen wird korrigiert 
+und erneut ENTER betaetigt  Der richtig uebersetzte Befehlwird im MC ab Anzeigeadr abgelegt. Marken 
+werden in MTB eingetragen. Der uebersetzte Befehl und folgende werden reassembl. zur Kontrolle 
+angezeigt. Vor dem aktuellen Befehl steht + . Nach Betaetigen von ENTER wird das   Programm ab 
+der naechsten Befehlsadr angezeigt und die Eingabe des naechsten Befehles kannerfolgen. Die 
+OFF-Taste fuehrt  wieder in den Anzeigemodus.
+
+Eingabeformat:
+ Das Markenfeld beginnt ab der 2.Position der Eingabezeile (Position des Kursors am Anfang). 
+EineMarke muss aus 3 Zeichen bestehen! Die Trennung Markenfeld - Operationscodefeld erfolgt durch 
+mindestens 1 Leerzeichen. Wird keine Marke eingegeben, genuegt die Eingabe eines Leerzeichens bis 
+zum Operationscode oder das Betaetigen des Tabulators. Operationscode und Operanden duerfen 
+nur durch 1 Leerzeichen getrennt werden. Kommentar ist nicht moeglich.
+
+Befehlssatz
+ Der Befehlssatz entspricht dem der Anlage 1 des Handbuches des MRB Z1013. Abweichend davon 
+werden die RST-Befehle nicht mit ihrer Adresse dargestellt:
+RST 00 = RST 0                  RST 08 = RST 1                  RST 10 = RST 2                 
+RST 18 = RST 3                  RST 20 = RST 4                  RST 28 = RST 5                  
+RST 30 = RST 6                  RST 38 = RST 7  
+
+Zahlen koennen hexadezimal oder dezimal eingegeben werden. Sie muessen mit einer Ziffer beginnen 
+(zB. 27F0H ; 0FF35H). Hexazahlen sind mit dem Zeichen H abzuschliessen, bei Dezimalzahlen erfolgt 
+keine weitere Kennzeichnung. Fuer alle Zahlen koennen Marken angegeben werden, die geeignet 
+vereinbart werden. Nach Angabe einer Marke kann beginnend mit der Kennzeichnung   "+" oder "-" 
+ein Offset als Zahl im Bereich von +127...-128 angegeben werden (zB. CALL DIV+3). Diese Informationen 
+werden in  der MTB gespeichert. Die Zuweisung des Zahlenwertes erfolgt beim Binden. 
+ Das Zeichen # mit der folgenden Angabe eines Offsets kann fuer die Angabe des Zuweisungszaehlers 
+geschrieben werden, wird aber sofort uebersetzt und reassembliert.
+ Folgende Pseudooperationen werden verarbeitet: 
+
+DB nn    Definiere Byte mit Wert nn
+DW nnnn  Definiere Doppelbyte mit Wert nnnn
+DM 'ABC' Definiere ASCII-Zeichenkette (hier:ABC)
+MAR EXT nnnn
+         Definiere Marke mit der externen Adr nnnn (entspr.EQU-Anweisg)
+
+Binden
+Es kann nur das erstellte Progr.als Gesamtmodul gebunden werden. Die Bindeoperation bezieht sich auf die 64K
+ des U880. Alle Zahln die symbolisch mit einer Marke angegeben wurden, werden entspr. dem Markenwert in den 
+MC des erstellten Programms eingetragen. Damit wird der MC lauffaehig. Beim Binden auf Anzeigeadresse 
+entspr. den Marken die Adressen, auf denen sie vereinbart wurden. Beim Binden auf angegebene Adr. 
+werden die Markenwerte so ver-  schoben, dass das Progr. auf der angegebenen Adr. lauffaehig ist. 
+Marken, die mittels Pseudo-operation EXT vereinbart wurden, werden dabei nicht mit verschoben, sondern 
+behalten ihren Wert bei. EXT-Marken sind solche, die sich auf Eintrittsadr. anderer fertiger oder noch 
+zu erstellender Programme beziehen. 
+
+Sie lassen sich im Anzeigemodus auf einen beliebigen Bereich verschieben oder koennen im Q-Modus durch 
+erneute Eingabe anderen Adressen zugewiesen werden. So koennen sie entsprechend der Bindeadresse eines 
+anderen Progr. positioniert werden. Ein modularer Aufbau sehr umfangreicher Gesamtprogramme ist so ohne 
+weiteres moeglich.
+
+Fehlermeldungen des Binders:    
+ Nicht zugewiesene Markennamen werden mit der Adr., an der auf sie zugegriffen wird, ausgeschrieben. 
+Zu grosse Distanzen bei Relativspruengen fuehren zur Ausschrift der Adr.,auf der der Relativsprung steht
+
+</pre>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<kurz>Headersave Erweiterung</kurz>
+<kurz src="Headersave Erweiterung"/>
 <lang>Lädt wahlweise das Hauptprogramm oder eine Partie Normal oder im Turbo-Modus.
 Wichtig vielleicht auch für die 1/2 MHz Varianten.</lang>
 <required></required>

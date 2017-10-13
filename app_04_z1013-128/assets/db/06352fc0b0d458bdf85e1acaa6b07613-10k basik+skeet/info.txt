@@ -1,4 +1,4 @@
-<kurz>SKEET Wurftauben schießen</kurz>
+<kurz src="SKEET Wurftauben schießen"/>
 <lang>DURCH DRUECKEN DER TASTE >SPACE<
 MUESSEN SIE DIE ANFLIEGENDEN
 WURFTAUBEN ABSCHIESSEN.
@@ -7,5 +7,7 @@ WURFTAUBEN ABSCHIESSEN.
 WAEHLEN SIE BITTE SCHWIERIGKEITS
 STUFE A ODER B .
 WARTEN SIE EINIGE SEKUNDEN.
-</lang>
+
+
+<include src="skeet.B"/></lang>
 <required></required>

@@ -1,0 +1,4 @@
+<kurz src="GHOST Original, Geist ausweichen und $ aufsammeln (2.02-Tastatur)"/>
+<lang>ähnlich wie [cd97c36d3f01b8c09d9114c8f55458d0]
+[2.02-SPALT]</lang>
+<required>2.02</required>

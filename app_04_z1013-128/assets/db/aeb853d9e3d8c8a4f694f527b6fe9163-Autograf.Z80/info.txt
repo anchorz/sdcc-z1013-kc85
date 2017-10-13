@@ -1,4 +1,4 @@
-<kurz>Programm zum Erstellen von Pseudografiken</kurz>
+<kurz src="Programm zum Erstellen von Pseudografiken"/>
 <lang>    AUTOGRAF
     ~~~~~~~~~~~~~~~~
 Ein Programm zum Erstellen von

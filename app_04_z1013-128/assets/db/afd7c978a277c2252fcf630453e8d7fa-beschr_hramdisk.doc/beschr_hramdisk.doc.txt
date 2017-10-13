@@ -70,4 +70,4 @@ Speichers wird ein weiteres Programm erwartet. Nach dem Einlesen
  der gewuenschten Anzahl erfolgt der Ruecksprung zum Monitor-
 programm.
 
-<<EOT>><<EOT>><<EOT>>
+<<EOT>>

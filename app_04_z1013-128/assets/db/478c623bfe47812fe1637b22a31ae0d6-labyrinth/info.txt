@@ -1,0 +1,10 @@
+<kurz src="Ähnlich Graverobber, Schätze einsammeln, Wächtern ausweichen"/>
+<lang>
+Unbekannter Joystick
+
+Steuerung:
+ Links,Rechts,Hoch(U),Runter(Space)
+ 0     Einsammeln
+ ENTER Ablegen
+</lang>
+<required></required>

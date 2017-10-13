@@ -1,0 +1,3 @@
+<kurz src="Ski fahren, Tore treffen"/>
+<lang><include src="slalom.B"/></lang>
+<required></required>

@@ -1,0 +1,12 @@
+<kurz src="Menschenmenge durchqueren(8x4)"/>
+<lang>
+noch für die Originaltastatur
+Steuerung: 
+Links
+Rechts
+S1 Runter
+S2 Hoch
+Space Feuer
+
+<include src="new_york.b"/></lang>
+<required>2.02</required>

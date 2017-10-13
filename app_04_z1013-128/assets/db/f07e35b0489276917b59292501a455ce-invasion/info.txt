@@ -1,0 +1,31 @@
+<kurz src="Ihre Stadt wird von Frogs ♘ aus dem Weltraum amgegriffen"/>
+<lang>Es ruckelt - Wahrscheinlich besser am A2 Monitor spielen.
+
+Ihre Stadt wird von Frogs (♘)
+
+aus dem Weltraum angegriffen.Sie
+
+fressen Steine. Jeder verlorene
+
+Stein gibt 1 Minuspunkt. Jeder
+
+abgeschossene Frog 40 Pkt.
+
+Achten Sie auf ihren Treibstoff!
+
+Auf jedem Flugplatz wird Muni-
+
+tion und Treibstoff automatisch
+
+aufgefuellt. Der Flugplatz sieht
+
+so aus  ________ . Schiessen Sie
+
+keine Loecher in die Haeuser(10
+
+Minuspunkte).
+
+K=hoch F=Feuer ␣ =runter
+
+<include src="invasion.B"/></lang>
+<required></required>

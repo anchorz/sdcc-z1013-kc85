@@ -1,4 +1,4 @@
-<kurz>Autorennen-und Labyrinth-Kombi</kurz>
+<kurz src="Autorennen-und Labyrinth-Kombi"/>
 <lang>Startadressen bei 0x800 und 0x900
 
 AUF DEM BILDSCHIRM ERSCHEINT

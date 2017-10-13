@@ -1,0 +1,3 @@
+<kurz src="Invasion Teil 2, feindliche Invasoren abschiessen"/>
+<lang><include src="invasion_2.B"/></lang>
+<required></required>

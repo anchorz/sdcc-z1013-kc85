@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png"/></div><div class="filelist">2bc0 3554 0000 B ... <a href="ratetier.z80">RATETIER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre>5 CLEAR 1000
+7 CLS
+60 PRINT
+70 DIM A$(500)
+80 FOR I=0 TO 37
+90 READ A$(I)
+100 NEXT I
+110 N=VAL(A$(0))
+120 CLS:PRINT:PRINT:PRINT:PRINT:PRINT "********TIERRATEN************"
+121 PRINT:PRINT:PRINT "Denke Dir ein Tier aus, der"
+122 PRINT:PRINT "der Computer wird es erraten !"
+123 PAUSE 100
+125 CLS:PRINT:PRINT:PRINT:PRINT:
+130 PRINT:INPUT "Hast Du Dir ein Tier ausgedacht?";A$:PRINT 
+140 IF INSTR(A$,"LIST")&gt;0 THEN 600
+150 IF LEFT$(A$,1)&lt;&gt;"J"THEN 120
+155 CLS
+160 K=1
+170 GOSUB 390
+180 IF LEN(A$(K))=0 THEN 999
+190 IF LEFT$(A$(K),2)="#Q"THEN 170
+200 PRINT "IST ES EIN ";RIGHT$(A$(K),LEN(A$(K))-2);
+210 INPUT A$
+220 A$=LEFT$(A$,1)
+230 IF A$="J"THEN PRINT "VERSUCHE NOCH EIN ANDERES TIER.":PAUSE 30:GOTO 130:
+235 PRINT
+240 INPUT "DAS VON DIR GEDACHTE TIER WAR EIN";V$
+245 PRINT
+250 PRINT "GIB BITTE EINE FRAGE EIN, DIE EIN"
+260 PRINT V$;" VOM ";RIGHT$(A$(K),LEN(A$(K))-2);" UNTERSCHEIDET"
+270 INPUT X$
+275 PRINT
+280 PRINT "FUER ";V$;" WAERE DIE ANTWORT ";
+290 INPUT A$
+300 A$=LEFT$(A$,1):IF A$&lt;&gt;"J"AND A$&lt;&gt;"N"THEN 280
+310 IF A$="J"THEN B$="N"
+320 IF A$="N"THEN B$="J"
+330 Z1=VAL(A$(0))
+340 A$(0)=STR$(Z1+2)
+350 A$(Z1)=A$(K)
+360 A$(Z1+1)="#A"+V$
+370 A$(K)="#Q"+X$+"#"+A$+STR$(Z1+1)+"#"+B$+STR$(Z1)+"#"
+380 GOTO 120
+390! UP ZUM AUSDRUCKEN DER FRAGEN
+400 Q$=A$(K)
+410 FOR Z=3 TO LEN(Q$)
+415 IF MID$(Q$,Z,1)&lt;&gt;"#"THEN PRINT MID$(Q$,Z,1);:NEXT Z
+420 INPUT C$
+430 C$=LEFT$(C$,1)
+440 IF C$&lt;&gt;"J"AND C$&lt;&gt;"N"THEN 410
+450 T$="#"+C$
+455 FOR X=3 TO LEN(Q$)-1
+460 IF MID$(Q$,X,2)=T$THEN 480
+470 NEXT X
+475 STOP
+480 FOR Y=X+1 TO LEN(Q$)
+490 IF MID$(Q$,Y,1)="#"THEN 510
+500 NEXT Y
+505 STOP
+510 K=VAL(MID$(Q$,X+2,Y-X-2))
+520 RETURN
+530 DATA 38,#QIST ES EIN SAEUGETIER#J3#N2#
+540 DATA#QIST ES EIN INSEKT#J5#N4#
+541 DATA#QIST ES EIN HAUSTIER#J 13#N 12#
+550 DATA#QLEBT ES IM WASSER#J7#N6#
+551 DATA#QKANN ES STECHEN#N 9#J 8#
+552 DATA#ASINGVOGEL
+560 DATA#AFISCH
+561 DATA#ABIENE
+562 DATA#QKANN ES FLIEGEN#N 11#J 10#
+563 DATA#ASCHMETTERLING
+564 DATA#ASPINNE
+565 DATA#QFRISST ES ROTKAEPPCHEN#J 17#N 16#
+566 DATA#QHAT ES HOERNER#J 15#N 14#
+567 DATA#QHAT ES EINEN RINGELSCHWANZ#N 19#J 18#
+568 DATA#QGIBT ES WOLLE#J 27#N 26#
+569 DATA#QHAT ES EIN ROTES FELL#J 21#N 20#
+570 DATA#AWOLF
+571 DATA#ASCHWEIN
+572 DATA#QHAT ES EINE KALTE SCHNAUZE#N 23#J 22#
+573 DATA#QBRUMMT ES#N 25#J 24#
+574 DATA#AFUCHS
+575 DATA#AHUND
+576 DATA#QTRAEGT ES LASTEN#J 31#N 30#
+577 DATA#ABAER
+578 DATA#QKLETTERT ES AUF BAEUME#N 33#J 32#
+579 DATA#QMACHT ES 'MUHH'#J 29#N28#
+580 DATA#ASCHAF
+581 DATA#AZIEGE
+582 DATA#AKUH
+583 DATA#AKATZE
+584 DATA#AESEL
+585 DATA#AAFFE
+586 DATA#QHAT ES EINEN RUESSEL#J 35#N 34#
+587 DATA#QFREUEN SICH OSTERN DIE KINDER DARAUF#J 37#N 36#
+588 DATA#AELEFANT
+589 DATA#AMAUS
+590 DATA#AHASE
+600 CLS:PRINT:PRINT "DIE FOLGENDEN TIERE KENNE ICH SCHON:"
+605 X=0
+610 FOR I=1 TO 500
+620 IF LEFT$(A$(I),2)&lt;&gt;"#A"THEN 650
+624 PRINT TAB(16*X);
+630 FOR Z=3 TO LEN(A$(I))
+640 IF MID$(A$(I),Z,1)&lt;&gt;"#"THEN PRINT MID$(A$(I),Z,1);:NEXT Z
+645 X=X+1:IF X=3 THEN X=0:PRINT
+650 NEXT I
+660 PRINT
+670 PRINT
+680 PAUSE 100: GOTO 130
+999 END
+</pre>
+</body>
+</html>

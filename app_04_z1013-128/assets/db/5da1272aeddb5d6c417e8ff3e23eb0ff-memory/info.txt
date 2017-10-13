@@ -1,0 +1,3 @@
+<kurz src="Merkspiel, Karten umdrehen"/>
+<lang><include src="memory.B"/></lang>
+<required></required>

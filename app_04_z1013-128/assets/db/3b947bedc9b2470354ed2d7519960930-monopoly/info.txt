@@ -1,0 +1,3 @@
+<kurz src="Monopoly für 2-6 Spieler, nett animiert, mit Pseudo-3D Grafik"/>
+<lang><include src="monopoly.B"/></lang>
+<required></required>

@@ -1,0 +1,3 @@
+<kurz src="klassisches Dame-Spiel"/>
+<lang><include src="superdame.B"/></lang>
+<required></required>

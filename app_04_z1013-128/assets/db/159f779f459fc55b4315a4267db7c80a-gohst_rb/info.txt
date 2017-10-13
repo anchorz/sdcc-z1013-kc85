@@ -1,4 +1,4 @@
-<kurz>GHOST, Geist ausweichen und $ aufsammeln (Brosig-Tastatur)</kurz>
+<kurz src="GHOST, Geist ausweichen und $ aufsammeln (Brosig-Tastatur)"/>
 <lang>keine Direktabfrage mehr der Tastaturmatrix.
 Es sollte jetzt auf allen Rechnern laufen.</lang>
 <required></required>

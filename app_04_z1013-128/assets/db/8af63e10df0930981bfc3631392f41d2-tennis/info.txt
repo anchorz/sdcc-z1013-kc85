@@ -1,0 +1,9 @@
+<kurz src="Tennis gegen Computer Spielen (8x4)"/>
+<lang>Steuerung : 
+
+CDE
+K M
+STU
+
+<include src="tennis.B"/></lang>
+<required></required>

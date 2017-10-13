@@ -1,0 +1,3 @@
+<kurz src="Maze, Monster ausweichen+Joystick nach Practic 01/88"/>
+<lang></lang>
+<required></required>

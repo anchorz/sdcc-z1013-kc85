@@ -15,7 +15,7 @@
 <body>
 <div></div><div class="filelist">2000 3bba 0000 I ... <a href="headersave_5_9_I.z80">HEADERSAVE&nbsp;5.9&nbsp;&nbsp;</a></div>
 <pre>
-&lt;a href="headersave_5_9_I.txt"&gt;headersave_5_9_I.txt&lt;/a&gt;
+<link>headersave_5_9_I.txt</link>
 *****************************************************************
 
                      
@@ -154,14 +154,14 @@ CALL LORUF
   Parameteruebergabe:
 
    * H(IY)=0 - Typ wird abgefragt
-     H(IY)=Typkennzeichen -&amp;&gt;gt; Typvorgabe -&amp;&gt;gt; keine Abfrage Typ
+     H(IY)=Typkennzeichen -> Typvorgabe -> keine Abfrage Typ
    * A=0     - ohne signifikante Kopfkontrolle
-     A=4EH   - mit signifik. Kopfkontrolle, Typ- &amp;&gt;amp;&amp;&gt;gt; Namenabfrage
+     A=4EH   - mit signifik. Kopfkontrolle, Typ- & Namenabfrage
      A=41H   - ohne Kopfkontrolle
    * L(IY)=20H  - Freigabe des Autostarts bei COM-FILE's
 
 -Beim Laden auf eine neue Anfangsadresse muss auf Zelle 1BH die
- neue Anfangsadresse uebergeben werden ( &amp;&gt;gt; 0FFH), ansonsten muss 
+ neue Anfangsadresse uebergeben werden ( > 0FFH), ansonsten muss 
  die Zelle mit 0 initialisiert werden.
 -Fuer den externen Aufruf wurden noch weitere Unterprogramme zu-
  gaenglich gemacht:

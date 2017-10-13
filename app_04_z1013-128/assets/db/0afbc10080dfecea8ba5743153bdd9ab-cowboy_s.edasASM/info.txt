@@ -1,2 +1,2 @@
-<kurz>Quelltext Spiel</kurz>
-<lang><include>cowboy.txt</include></lang>
+<kurz src="Quelltext Spiel"/>
+<lang><include src="cowboy.txt"/></lang>

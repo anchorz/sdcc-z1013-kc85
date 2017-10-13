@@ -1,10 +1,10 @@
-<kurz>Springe über die Löcher in der Bohrplattform</kurz>
+<kurz src="Springe über die Löcher in der Bohrplattform"/>
 <lang>Sie  sind auf  einer  defekten
 Bohrplattform und muessen ueber
 die  Loecher im Plattformboden
 springen.
 
-Steuerung: ␣ 
+Steuerung: ␣ - Springen
 
-<include>bohrturm.B</include></lang>
+<include src="bohrturm.B"/></lang>
 <required></required>

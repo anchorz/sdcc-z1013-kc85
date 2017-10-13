@@ -1,0 +1,4 @@
+<kurz src="Herzchen aufsammeln (Brosig)"/>
+<lang>[SPALT]  
+Version [114084cbf1545cfe9f148cf87215b993] ist besser, verwendet RST20</lang>
+<required></required>

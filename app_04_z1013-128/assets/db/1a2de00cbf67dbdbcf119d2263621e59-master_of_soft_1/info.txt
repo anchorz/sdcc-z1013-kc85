@@ -1,0 +1,5 @@
+<kurz src="überarbeitete Version SOFTCHEF"/>
+<lang>Wenn ich nur noch wüsste, was OUT16 und OUT20 macht! eventuell Zeichensatzumschaltung?
+Ggf. muss man diese Zeilen entfernen.
+<include src="master_of_soft_1.B"/></lang>
+<required></required>

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="jkcemu.gif"/><img src="screenshot_01.png"/></div><div class="filelist">2bc0 3bd8 0000 B ... <a href="invasion.z80">INVASION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre>Es ruckelt - Wahrscheinlich besser am A2 Monitor spielen.
+
+Ihre Stadt wird von Frogs (♘)
+
+aus dem Weltraum angegriffen.Sie
+
+fressen Steine. Jeder verlorene
+
+Stein gibt 1 Minuspunkt. Jeder
+
+abgeschossene Frog 40 Pkt.
+
+Achten Sie auf ihren Treibstoff!
+
+Auf jedem Flugplatz wird Muni-
+
+tion und Treibstoff automatisch
+
+aufgefuellt. Der Flugplatz sieht
+
+so aus  ________ . Schiessen Sie
+
+keine Loecher in die Haeuser(10
+
+Minuspunkte).
+
+K=hoch F=Feuer ␣ =runter
+
+10 CLS:RESTORE 600:PRINT AT(15,10);"Bitte warten"
+12 FOR K=15728 TO 16031:READ A:POKE K,A:NEXT
+14 WINDOW 0,24,0,31:CLS
+16 PRINT AT(0,0);STRING$(32,CHR$(198))
+18 PRINT AT(25,0);STRING$(32,CHR$(198))
+22 PRINT AT(7,12);"Invasion"
+24 FOR K=-4951 TO-4939:POKE K,185:BEEP:POKE K+128,185:NEXT
+26 FOR K=-4951 TO-4823 STEP 32:POKE K,185:BEEP:POKE K+13,185:NEXT
+28 PRINT AT(19,19);"Hinweise...H"
+30 PRINT AT(21,19);"Start......S"
+32 PRINT AT(23,19);"Ende.......E"
+34 A$=INKEY$:IF A$=""THEN 34
+36 IF A$="E"THEN WINDOW 0,31,0,31:END
+38 IF A$="H"THEN 950
+39 V=3:DOKE 16037,0
+40 PRINT AT(27,0);"Treibstoff:        Punkte:      "
+42 PRINT AT(29,2);"Munition:        Rekord:"  
+44 CLS:POKE 16045,1
+46 DOKE 16033,-4330:POKE 16039,30:POKE 16040,250:POKE 16041,1
+48 GOSUB 900
+50 N=425:RESTORE 200
+52 READ A:POKE 16046,A:POKE 16044,1
+53 IF PEEK(4)=70 THEN BEEP:BEEP
+54 POKE 4,0   
+56 CALL* 3D70
+58 PRINT AT(27,11);PEEK(16040):PRINT AT(29,11);PEEK(16039)
+59 PRINT AT(27,27);DEEK(16037)
+60 IF PEEK(16044)=1 THEN GOSUB 800
+62 IF PEEK(16045)=0 THEN GOSUB 900
+64 N=N-1:IF N=0 THEN 50
+66 IF PEEK(16041)=1 THEN 52
+68 K=DEEK(16033):A1=2:A2=-29:A3=4:POKE K,140:FOR M=1 TO 3:POKE K+A1,32
+69 BEEP
+70 POKE K+A2,32:POKE K+A3,32:A1=A1-32:A2=A2-31:A3=A3+1:POKE K+A1,255
+71 POKE K+A2,190:POKE K+A3,128:PAUSE 3:BEEP:NEXT
+72 FOR K=0 TO 25:PRINT SPC(31):NEXT
+74 PRINT AT(25,0);STRING$(32,CHR$(198))
+75 V=V-1:IF V&gt;0 THEN 40
+76 R=DEEK(16037):IF R&gt;H THEN H=R:PRINT AT(29,27);H
+84 GOTO 14
+200 DATA 6,7,7,6,1,1,1,7,9,11,11,12,11,11,9,7,1,1,1,1,10,13,14,13,10,8
+202 DATA 1,1,1,1,1,3,3,5,5,7,7,11,7,7,5,5,3,3,2,2,2,2,2,2,2,2,1,4,4,5,5
+204 DATA 6,6,8,6,6,1,1,12,12,14,16,1,1,1,1
+206 DATA 3,3,5,24,5,3,3,1,1,1,1,1,11,10,11,10,11,10,14,15,16,15,14,10,11
+208 DATA 10,11,1,1,1,1,2,2,2,2,2,7,8,9,9,9,9,9,9,9,9,17,17,1,1,1,1,1,1,1
+210 DATA 12,13,14,15,15,15,15,18,18,18,19,20,19,18,18,18,15,15,15,15,14,13
+212 DATA 12,1,1,1,1,1,1,1,1,1,3,1,9,3,1,1,1,1,1,1,3,5,7,9,11,9,7,5,3,1,1
+214 DATA 10,10,1,1,8,6,6,6,4,4,4,4,4,1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,3
+216 DATA 4,4,3,1,8,9,10,10,1,1,1,1,1,1,1,1,1       
+218 DATA 4,5,6,6,6,6,6,6,6,7,6,6,6,7,6,6,6,5,4,1,1,1,4,5,6,6,6,7,7,6,6,6,5
+220 DATA 4,1,1,4,5,6,6,6,7,7,6,6,6,5,4,1,1,4,5,6,6,6,7,7,6,6,6,5,4,1,1,1
+222 DATA 9,9,7,7,7,7,7,7,1,1,1,3,6,8,9,10,10,9,8,6,3,1,1,1,4,4,4,4,1,1,1,1
+224 DATA 1,1,2,2,2,2,2,2,2,1,1,1,3,3,3,3,3,1,1,1,3,4,5,6,6,6,6,6,6,8,8,8,1
+226 DATA 1,1,1,8,1,9,1,8,1,9,1,11,1,12,1,11,1,14,1,14,1,14,1,11,1,10,1,8,1
+228 DATA 8,1,8,1,6,1,4,4,1,3,3,1,1,1,3,3,4,3,3,1,1,1,2,2,2,2,2,2,1,1,1,1,1
+230 DATA 1,3,3,3,3,4,3,3,3
+600 DATA 42,161,62,6,5,54,32,35,16,251,17,34,0,237,82,54,32,17,29,0
+605 DATA 25,17,32,0,58,168,62,254,0,40,27,61,50,168, 62,58,4,0,254,75,32,2
+610 DATA 237,82,254,08,32,1,43,254,09,32, 1,35,254,32,32,1,25,34,161,62,42
+615 DATA 163,62,58,175,62,60,50,175,62,254,1,40,6,126,254,25,40,1,175,54,32
+620 DATA 245,229,0,33,30,239,1,0,3,17,31,239,237,184,225,241,254,0,40,14
+625 DATA 237,91,170,62,25,126,254,32,40,23,254,198,32,6,175,50,173,62,24,18
+630 DATA 229,17,2,0,42,165,62,237,82,34,165,62,225,34,163,62
+635 DATA 54,25,42,161,62,17,32,0,6,4,126,254,32,40,4,175,50,169,62,25
+640 DATA 126,254,197,40,4,175,50,172,62,237,82,35,16,232,54,128,43,54,255
+645 DATA 43,54,255,43,54,195,43,54,148,17,29,0,237,82,54,190,33,32,239,229
+650 DATA 17,32,0,6,24,54,32,237,82,16,250,225,58,174,62,71,54,199,237,82,16
+655 DATA 250,254,2,32,2,54,197,58,4,0,254,70,192,58,167,62,254,0,40,63 
+660 DATA 61,50,167,62,42,161,62,6,15,43,126,229,42,165,62,254,32,40,15,254
+665 DATA 25,32,6,17,50,0,25,24,5,17,10,0,237,82,34,165,62,225,54,212
+670 DATA 14,255,13,32,253,16,218,17,14,0,25,6,15,54,32,43,14,255,13,32
+675 DATA 253,16,246,201
+800 F=DEEK(16033):POKE F-1,250:POKE F-2,255:POKE F-3,194:POKE F-4,190:BEEP      
+820 M=PEEK(16039):FOR K=M TO 30:PRINT AT(29,11);K:BEEP:PAUSE 6:NEXT:POKE 16039,30
+823 POKE F-1,146:PAUSE 15:BEEP
+825 T=PEEK(16040):FOR K=T TO 250:PRINT AT(27,11);K:BEEP:NEXT:POKE 16040,250
+827 POKE F-1,32:POKE F-2,32:POKE F-3,32:POKE F-4,32:PAUSE 5
+830 DOKE 16033,F-32:POKE F,32:POKE F+1,32:POKE F+2,32:POKE F+3,32:POKE F+4,32
+835 RETURN
+900 A=INT(RND(19)*837):D=-5120+INT(RND(A)*18):DOKE 16035,D
+905 E=31+INT(RND(A)*4):DOKE 16042,E
+910 POKE 16045,1:POKE 16047,0:RETURN
+950 WINDOW 0,26,0,31:CLS
+955 PRINT:PRINT "Ihre Stadt wird von Frogs (";:PRINT CHR$(25);")"   
+960 PRINT:PRINT "aus dem Weltraum angegriffen.Sie"
+962 PRINT "fressen Steine. Jeder verlorene "
+965 PRINT "Stein gibt 1 Minuspunkt. Jeder  "
+966 PRINT "abgeschossene Frog 40 Pkt.      "
+980 PRINT "Achten Sie auf ihren Treibstoff!"
+982 PRINT "Auf jedem Flugplatz wird Muni-  "
+984 PRINT "tion und Treibstoff automatisch "
+986 PRINT "aufgefuellt. Der Flugplatz sieht"
+988 PRINT "so aus  ÅÅÅÅÅÅÅÅ . Schiessen Sie"
+990 PRINT "keine Loecher in die Haeuser(10 "
+992 PRINT "Minuspunkte).K=hoch F=Feuer"
+1070 PRINT AT(24,23);"Weiter ?"
+1075 C$=INKEY$:IF C$=""THEN 1075
+1080 GOTO 14
+</pre>
+</body>
+</html>

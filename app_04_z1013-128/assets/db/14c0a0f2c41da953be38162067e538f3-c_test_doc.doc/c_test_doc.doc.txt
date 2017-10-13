@@ -62,8 +62,4 @@ Gebiet der Meßtechnik.
 
 (1) G.Holz: Kapazitätsmeßzusatz zum Vielfachmesser
     FUNKAMATEUR 35(1986), H.9, S.430
-    <<EOT>> dem 
-Gebiet der Meßtechnik.
-
-(1) G.Holz: Kapazitätsmeßzusatz zum Vielfachmesser
-    FUNKAMATEUR 35(1986), H.9, S.43
+    <<EOT>>

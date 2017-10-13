@@ -1,0 +1,19 @@
+<kurz src="Geschicklichkeitsspiel mit Simulation von Anziehungskräften"/>
+<lang>
+
+Im Spielfeld befinden sich Kraftzentren, in deren
+Einfluss sich das bewegte Objekt befindet. Dieses
+kann mit den Cursortasten beschleunigt werden. 
+
+Ziel ist es, alle Diamanten ◊ einzusammeln, 
+ohne in die Kraftzentren zu stuertzen.
+  _
+_                            _
+         Viel Spass !!!        _
+_ _    _               _      _
+    _                    _   _ _
+                        _
+      _                _
+   _                      _
+       (c)'90 Sven Behnke  </lang>
+<required></required>

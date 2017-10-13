@@ -202,5 +202,4 @@ beruecksichtigt.
 durchgesehen und korrigiert	
 Spulendaten eingetragen:	HOFMANN
 				AG Z1013
-^<<EOT>>===================
-<<EOT>>l
+^<<EOT>>

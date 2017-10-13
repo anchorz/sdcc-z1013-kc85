@@ -1,0 +1,21 @@
+<kurz src="Basic-Clone von KINGS-VALLEY"/>
+<lang>
+Sie wollen eine Pyramide
+ausrauben. Zwei boese Gespenster
+wollen Sie  daran hindern.
+
+Sie koennen sich mit den Tasten
+   Q-E-A-D-Y-C bewegen und mit
+   S-W oder X springen.
+
+Wenn Sie ein Schwert oder
+eine Hacke tragen, bewirken
+W oder X das Werfen des Schwerts
+oder das Hacken eines Lochs.  Am
+besten probieren Sie es selbst.
+(Zum Glueck haben Sie 10 Leben.)
+Koennen Sie  nicht mehr weiter,
+druecken Sie ' U '.         
+
+<include src="pyramide(laeuft).B"/></lang>
+<required></required>

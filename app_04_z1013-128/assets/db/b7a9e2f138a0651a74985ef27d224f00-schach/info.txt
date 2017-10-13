@@ -1,0 +1,3 @@
+<kurz src="Einfaches und kleines Schachprogramm"/>
+<lang></lang>
+<required></required>

@@ -1,0 +1,5 @@
+<kurz src="Tischfussball"/>
+<lang>[2.02-SPALT]
+H/P Links
+O/W Rechts</lang>
+<required>2.02</required>

@@ -1,6 +1,9 @@
-<kurz>Schach - startet im Demo-Modus</kurz>
-<lang>Menu:
-take-Back  Change-pos'n  Level  new-Game   
+<kurz src="Schach - startet im Demo-Modus"/>
+<lang>
+
+Menu:
+
+take-Back  Change-pos'n  Level  new-Game   
 take-Forward  Enter  Next-best  Demo  Replay  
 Move   Orient'n   
 5,6,7,8-cursor</lang>

@@ -1,0 +1,3 @@
+<kurz src="Schlange, Pursuit, Mazog, Jumping Jack, Wurmi, Othello, Minefield"/>
+<lang>Spielebox</lang>
+<required></required>

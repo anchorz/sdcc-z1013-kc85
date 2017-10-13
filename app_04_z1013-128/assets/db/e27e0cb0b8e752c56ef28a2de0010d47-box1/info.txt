@@ -1,4 +1,4 @@
-<kurz>SPIELBOX Nr. 1, Kompilation verschiedener BASIC-Spiele</kurz>
+<kurz src="SPIELBOX Nr. 1, Kompilation verschiedener BASIC-Spiele"/>
 <lang>ZUSAMMENGESTELLT VON: P.SCHELLIN
 
 MELANCHTHONSTR.4   GOERLITZ 8900
@@ -16,5 +16,5 @@ LAENDERRATEN = 9
 PUZZLE       = P
 ENTEN        = E
 
-<include>box1.B</include></lang>
+<include src="box1.B"/></lang>
 <required></required>

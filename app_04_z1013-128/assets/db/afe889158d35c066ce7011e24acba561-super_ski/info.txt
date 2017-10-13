@@ -1,0 +1,3 @@
+<kurz src="Slalom, fahre zwischen den Flaggen durch (8x4)"/>
+<lang>[SPAL]</lang>
+<required>2.02</required>

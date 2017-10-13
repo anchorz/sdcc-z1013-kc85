@@ -1,0 +1,3 @@
+<kurz src="Version mit erweiterten Tastenkombinationen"/>
+<lang>[114084cbf1545cfe9f148cf87215b993] ist die bessere Wahl</lang>
+<required></required>

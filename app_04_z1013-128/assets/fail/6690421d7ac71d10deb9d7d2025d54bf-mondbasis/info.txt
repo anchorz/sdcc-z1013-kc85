@@ -1,0 +1,15 @@
+<kurz src=""/>
+<lang>es verwendet zwar [RST20], aber verwendet auch die Annahme, dass HL=0004 danach ist
+
+1279  E7               RST     20H
+127A  04               DB      04H               ;INKEY
+127B  CD B2 18         CALL    18B2H
+127E  00               NOP
+127F  00               NOP
+1280  00               NOP
+1281  00               NOP
+1282  7E               LD      A,(HL)
+1283  36 00            LD      (HL),00H
+
+</lang>
+<required></required>

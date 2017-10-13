@@ -14,6 +14,278 @@
 </head>
 <body>
 <div></div><div class="filelist">0200 3fff 0200 C ... <a href="beschr edas t2.z80">Beschr.&nbsp;EDAS&nbsp;T2&nbsp;</a></div>
+<pre>Fortsetzung Beschreibung Editor
 
+Binder
+
+Relativspruenge mit zu grosser Distanz werden durch Absolutspr. ersetzt. Nach jeder 
+Fehlerausschrift wird ENTER betätigt, um weitere Fehler zu finden. Erst wenn beim 
+Bindelauf keine Fehlerausschrift erfolgte, war dieser erfolgreich und ist das Progr. 
+lauffaehig! Die Markentabelle  wird beim Binden nicht verändert.
+
+RAM-Modus
+
+Der RAM-Modus meldet sich mit 64 Datenbytes in folgender Form:
+aaaa    00 01 02 03 04 05 06 07 
+bbbb&gt;   08 09 0A 0B 0C 0D 0E 0F
+        10 11 12&gt;13 14 15 16 17 
+        18 19 1A 1B 1C 1D 1E 1F 
+        20 21 22 23 24 25 26 27 
+        28 29 2A 2B 2C 2D 2E 2F 
+        30 31 32 33 34 35 36 37 
+        38 39 3A 3B 3C 3D 3E 3F
+
+Die Anfangsadresse steht links  oben (aaaa). Die vor dem Zeichen&gt; stehende Adr bezeichnet 
+die RAM-Zelle, auf die sich die naechste Eingabe bezieht. Der Kursor steht nach dem &gt; . 
+Hier können Datenbytes als Hexaziffern eingetragen werden. Falsche Eingaben werden mit S4-W 
+geloescht. Die Eingabe eines Byte wird mit ENTER vollzogen. Die gleichen Daten koennen durch 
+weiteres Betätigen von ENTER auf die nächsten Eingabeadressen gegeben werden. Das Zeichen &gt; 
+ist in der Datenbyteausschrift wiederzufinden und kennzeichnet nochmals das aktuell anstehende 
+Byte. Es wirkt hier gleichzeitig als Cursor und lässt sich mit  den Kursorsteuertasten bewegen  
+(-&gt; &lt;- S4-S S4-R). Am oberen und unteren Bildrand wird gerollt. Das aktuelle Datenbyte bleibt 
+so immer im Anzeigebereich. Die Adressen am linken oberen Bildrand werden ständig aktualisiert.  
+
+Kommandos im RAM-Progr.:
+                                        
+Kdo  Zusatz  Funktion           
+________________________________
+S4-R         Rollen
+
+S4-S         Rollen
+
+-&gt;           Eingabeadr incr.
+
+&lt;-           Eingabeadr decr.
+
+0...9        Eingabedaten
+A...F        angeben            
+S4-W         
+
+ENTER        Eingabedaten uebernehmen;Adr incr.
+
+I    eeee    Eingabedaten auf        
+     ENTER   Bereich ab Eingabeadr bis ausschl. eeee eintragen
+
+M qqqq ENTER Daten ab Adr qqqq    
+  eeee ENTER bis ausschliessl. eeee auf Bereich ab Eingabeadr verschieben.
+
+G aaaa ENTER Anzeige der Zieladr aaaa    
+
+OFF       Verlassen des RAM-Mod.
+
+I    }    Ignorieren der Kdo's
+M    }OFF
+G    }
+
+Das Kommando "I" dient zum Eingeben von Daten im Block bis zu einer Endadresse. Nach dem 
+Betätigen von I steht der Cursor in der 3. Zeile. Hier wird die  4-Stellige hexadezimale 
+Endadresse verlangt. Die Eingabe   wird mit ENTER abgeschlossen bzw. mit OFF ignoriert. 
+Die Übernahme der nach &gt; angegebenen Daten in erfolgt nur bei richtigen Angaben und wenn 
+die Endadresse größer als die Anzeigeadresse ist. 
+
+Das Kommando "M" dient dem Verschieben von Bytes. Verschoben  wird auf den Bereich ab 
+Anzeigeadresse. Nach "M" werden die Anfangs und die Endadresse des Quellbereiches angefordert. 
+Sie werden jeweils mit ENTER bestätigt. Beim Umladen wird der Quellbereich gelöscht (zu FFH). 
+Die Überlappung von Quelle und Ziel ist teilweise möglich.
+
+Die Kommandos "M" (move) bzw.   "I" (initialise) entsprechen den Monitorkommandos "T" (Transfer) bzw. "K" (Kill).
+
+Ein besonderer Vorteil des RAM-Modus ist seine Echtzeitfähigkeit (im Gegensatz zu "D" oder  
+"M" des Monitors). D.h. die Anzeige der Speicherzellen erfolgt dynamisch, sodass sich ändernde 
+RAM-Inhalte beobachtet werden können. Durch die Möglichkeit der Vorbereitung der Dateneing. 
+(Ausführung gezielt mit ENTER) kann auch in laufende Programme (Interruptebenen) eingegriffen  
+werden. Ebenso ist die Einbindung nur des RAM-Programmes in  ein Echtzeitbetriebssystem denkbar 
+(ohne Editor). Damit werden auch Programme beobachtbar, die nicht über Interrupt laufen, sondern 
+von dem genannten EZ-BS verwaltet werden. Wie der RAM-  Modus ohne Editor zu handhaben  ist, 
+wird im folgenden Abschnitt erlaeutert.
+
+Nutzung des RAM-Programms ohne Editor
+
+Das RAM-Programm benutzt die   Zellen 00D4 und 00D5 als Arbeitszellen. Es ist als Unterprogr. 
+geschrieben, endet also mit RET. Die Startadresse ist 2EBE.
+Zuerst wird der Editor V8 geladen. Zum Start des Pr. werden2 MC-Befehle auf beliebigen Adr.(zB. 0200H) benötigt:
+
+0200    CALL 2EBEH
+0203    JMP 0F000H
+
+Wird nun mit dem Monitor-Kdo.
+
+ # J 0200  
+
+gestartet, ist der RAM wie im Editor manipulierbar. Die Betätigung der OFF-Taste führt in das BS 
+zurück. Diese Nutzungsmoegl. hat den Nachteil, dass der gesamte Editorbereich (2C00-3FFF)belegt 
+ist. Das RAM-Pr. lässt  sich durch folgende Schritte im Monitor einfach auf 1K (2C00-2FFF) abrüsten. 
+Damit steht der Bereich 3000-3FFF wieder zur freien Verfügung. 
+
+# M 3B77      ENTER                                               
+  E5 # 12 2C; ENTER                                             
+# M 3B7B      ENTER
+  E5 # 12 2C  ENTER
+# T 3B74 2C2F 0B ENTER          
+# M 2C28         ENTER
+  74 # 2F 2C;    ENTER          
+# K 3000 3FFF FF ENTER
+
+Diese Reihenfolge ist einzuhalten. Nun kann wieder wie oben beschrieben gestartet werden. Es 
+ist weiterhin möglich, vor dem Start die gewünschte Anzeigeadr in 00D4 und 00D5 (L-H) einzutragen.
+
+SPEICHERBELEGUNG EDITOR
+
+002B  Kursorpos.
+002C  Zwischensp. Kursor
+
+00D0- Tabulatoren               
+00D3             
+
+00D4  Merkzellen f."RAM"
+00D5
+
+0100- Stack                     
+01FF
+
+2C00- Unterpr.f.Editor u."RAM"
+2EBD  
+
+2EBE- "RAM"-Pr.d.Editors
+2FFF
+
+3000- Editor
+3BFF
+
+3C00- Listen f. Editor          
+3FFF  
+
+ED00- Bildwiederholspeicher     
+EDFF
+
+Außer den hier angegebenen Speichern werden mit Ausnahme der MTB(+20H Byte) keine weiteren benötigt, benutzt oder geändert. 
+
+Bei Nutzung nur des RAM-Pr. wird der Anwenderstack des Z1013 genutzt. Bei Nichtausreichen des Stacks, 
+insbesondere in Verbindung mit Interruptroutinen, ist dieser entspr. auf einen größeren Adressraum zu verlegen. 
+
+Vom Betriebssystem des Z1013 werden die Routinen OUTCH u. INKEY genutzt.
+                                                             
+         VIEL ERFOLG BEI DER             
+         ERSTELLUNG VON MA-              
+         SCHINENPROGRAMMEN!!     
+
+Ende
+
+Änderungen und Hinweise nach Redaktionsschluss
+——————————————————————— 
+- als Cursorzellen werden statt 2BH und 2CH die Zellen D6H und D7H genutzt.
+- die Beschreibung bezieht sich auf die Version 9 (ohne Test)
+- Namen von gestrichenen Marken sollten notiert werden. Sie können mit 
+  gleichem Namen spaeter wiederverwendet werden. Nur so ist die Nutzung aller
+  127 moeglichen Marken realisierbar.
+- externe Marken sollten ausserhalb des Speicherbereiches liegen, auf dem das
+  Progr. geschrieben wird. Andernfalls wer  den diese bei Nutzung der Kdos  
+  E# und S# mit verschoben. Erforderlichenfalls muss hier die Zuweisung der 
+  Adressen unmittelbar vor dem Binden erfolgen bzw mit G#0 überprüfen
+- ein mit EXT vereinbarter Markenname bleibt extern, auch nach Streichung und
+  Wiederverwendung. Eine einfache Marke kann in eine EXT-Marke geändert werden.
+- für eigene Erweiterungen des Editors stehen im Anzeigemodus  die Kdo's "X" 
+  und "C" zur Verfügung. Diese werden auf 3127 bzw. 3122H abgefragt und können
+  von dort mit JPZ verzweigt werden:
+
+3122  CMP 043H  ;"C"?
+3122  CMP 043H 
+      JPZ CCC
+3127  CMP 058H
+      JPZ XXX                   
+Damit verändert sich die Prüfsumme. Diese wird ab 2C2FH berechnet (Summe über gesamten 
+Programmspeicher = 0).Im Anschl. an die Prüfsummenberechnung folgt das erforderliche 
+Ausgl.-byte( nach RET). Die eigenen Erweiterungen müssen mit RET enden und führen in 
+den Anzeigemodus zurück.
+
+Folgende Unterprogramme können zum Dialog auf dem kleinen BS des Editors genutzt werden:
+BSS 2C06     BBZ 2C1E
+BSL 2C09     TXS 2C21
+BKS 2C0C     BSZ 2C24
+BKL 2C0F     HDS 2C27
+HBS 2C12     BSN 2C2D
+HDA 2C15
+ZLE 2C18     Erläuterungen     
+BBS 2C1B     folgen
+
+UP      EING-REG    AUSG-REG    
+--------------------------------
+BSN     A           A           
+BSS     A,DE        -           
+BSL     DE          A           
+BKS     DE          -           
+BKL     -           DE          
+HBS     A,DE        -  
+HDS     HL,DE       -            
+HBA     DE          A            
+HDA     DE          HL           
+ZLE     A,DE        HL,AF        
+BSZ     A,DE,C      -            
+BBS     -           Cy           
+BBZ     DE,C        Cy           
+TXS     HL          HL;A=undef.
+
+Funktionen:                     
+BSN Zeichen auf Cursorposition bzw. Steuerzeichen ausführen    
+BSS Zeichen schreiben           
+BSL   -"-   lesen               
+BKS Cursor setzen               
+BKL  -"-  -pos. lesen           
+HBS Byte schreiben             
+HDS Doppelbyte schreiben        
+HBA Byte lesen (mit Anforderg.) 
+HDA Doppelbyte wie HBA          
+ZLE Zahl lesen;bit7,A=1-&gt;HEX  
+                     =0-&gt;DEZ    
+BSZ Zeichen in Zeile schreiben  
+BBS Taste auf BS bis ENTER/OFF  
+BBZ Taste auf Zeile (wie BBS)  
+TXS Text ausschreiben
+
+Reg.DE gibt eine Displayposition an nach: D=Zeile  (0-7)                 
+                                          E=Spalte (0-31);E&gt;32-&gt;                   
+                                                   next line
+
+Um alle möglichen Steuerzeichen zu nutzen, sollte die Tastaturroutine des Editors (2C2AH) verwendet werden.                  
+BSN: schreibt das Zeichen in A (ASCII) ab Cursor auf Bildschirm und rückt den Cursor.Steuerzeichen werden ausgeführt:
+08 Cursor links
+09   -"-  rechts
+0A   -"-  nach unten
+0B   -"-  -"-  oben
+0C CLS
+0D Cursor an Zeilenanfang
+1A Zeichen streichen
+18 Zeile löschen ; 
+02 home
+BBS: schreibt Zeichen in A auf Position DE
+BSL: liest Zeichen von Pos. DE  nach A
+BKS: setzt Cursor auf Pos. DE
+BKL: liest Cursorposition nach DE
+HBS: schreibt Zahl aus A in 2 Hexaziffern auf Pos. DE
+HDS: schreibt Zahl aus HL ab Position DE
+HDA: fordert hex.Zahlenwert in  Form von 4 Hexaziffern ab Position DE (aktiviert Tastatur)
+ZLE: liest beliebig lange Zahl hex oder dez ab Position DE. Maximal zu lesende Ziffernzahl wird in Bit
+     0...6,A übergeben. Bit7,A=0 als Dezimalzahl; Bit7,A=1 als Hexazahl. Gelesener Wert in HL   
+     Cy Z  A  HL   Kommentar         
+     0  0  *1 Zahl mit allen Ziff gel
+     0  1  *1 00   Zahl ist 0        
+     1  0  *2 Zahl weniger Ziff geles
+     1  1  0  00   1.Pos.keine Ziffe
+     *1 (A)=ASCII des letzten Zeichen
+     *2 (A)=Anzahl der gelesenen Ziffern (binär)
+BSZ: ASCII-Zeichen in A auf Cursorposition, wenn Cursor auf einer Pos. der Zeile D und der Spalten
+     E bis E+C befindet.
+BBS: Taste auf Bildschirm bis ENTER oder OFF betätigt wurde  Cy=1:OFF betätigt; Cy=0:ENTER
+BBZ: wie BBS, aber in Grenzen wie BSZ
+TXS: Schreiben eines durch HL gezeigerten Textes (Folge von ASCII und Steuerzeichen). Das 1. und das
+     letzte Byte des Textes wird durch Bit 7=1 markiert.
+TNS: nummerierten Text schreiben; wie TXS, nur dass mehrere mit Bit7 gekennzeichnete Texte 
+     hintereinander stehen. HL zeigert den Anfang der Texttabelle; A gibt die lfd. Nr. des Textes an.
+     (verwendet TXS)
+
+Die Beschreibung der Unterprogramme ist als Hinweis zu verstehen und erhebt keinen Anspruch auf Vollständigkeit!!!!
+
+Sie ist sozusagen eine Hacker-Hilfe.
+</pre>
 </body>
 </html>

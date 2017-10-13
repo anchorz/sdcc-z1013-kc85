@@ -1,0 +1,3 @@
+<kurz src="GHOST mit Sound Effekten, Geist ausweichen und $ aufsammeln (2.02-Tastatur)"/>
+<lang>[2.02-SPALT]</lang>
+<required></required>

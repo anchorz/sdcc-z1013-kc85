@@ -1,0 +1,45 @@
+<kurz src="Strategiespiel"/>
+<lang>In diesem Spiel koennen Sie sich
+wie ein Computerfreak in ein
+Computernetz einwaehlen.
+
+Dazu stehen  folgende Hilfen
+zur Verfuegung :
+
+Notizblock.............N
+
+Wahlwiederholung.......#
+
+Automatische Wahl......+
+
+Scollen Hoch/Runter, Ende CTRL-C
+
++ Eingeben, dann die Nummer, dann Enter
+
+13,14,110 - noch nicht erreichbar
+18 Auskunft:
+>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<
+##                            ##
+##                            ##
+## Auskunft                18 ##
+##                            ##
+## Abe Helmut          520137 ##
+##                            ##
+## Adam Wilfried        40572 ##
+##                            ##
+## ADN s.Allgemeiner Deutscher##
+##       Nachrichtendienst >  ##
+##                            ##
+## Agrarwissenschaftliche Ge- ##
+## sellschaft der DDR         ##
+## Bezirksverband       22708 ##
+##                            ##
+## Allgem. Deut. Nachrichten- ##
+## dienst             ♣ 22547 ##
+##                            ##
+## Amthor Erika         52715 ##
+##                            ##
+## Andritzke Ruth       20471 ##
+##                            ##
+</lang>
+<required>RB</required>

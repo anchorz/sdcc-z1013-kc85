@@ -1,4 +1,4 @@
-<kurz>Aktienhandel für 2-4 Personen</kurz>
+<kurz src="Aktienhandel für 2-4 Personen"/>
 <lang>***BOERSE*** ist ein Boerse-
 Handel-Spiel. Ziel ist es
 moeglichst viel Kapital zu 
@@ -27,8 +27,8 @@ nehmen moechte.
 Jeder Spieler kann dabei einen
 der vier grundsaetzlichen Zuege
 machen:
-1-Einen unabhaengigen Aussen-
-  posten gruenden.
+1-Einen unabhaengigen Aussenposten
+  gruenden.
   Wenn ein Spieler einen Platz
   besetzt,der nicht an einen
   Stern, einen anderen Aussen-
@@ -54,44 +54,44 @@ machen:
   Gesellschaft um 600.-je Aktie.
   Jeder Aussenposten bringt
   weitere 100.- je Aktie.
-3-Eine neue Aktiengesel. gruen-
-  den.Belegt ein Spieler einen
+3-Eine neue Aktiengesel. gruenden.
+  Belegt ein Spieler einen
   Platz,der an einen Stern oder
-  einen unabhaengigen Aussen-
-  posten grenzt,aber keine
+  einen unabhaengigen Aussenposten 
+  grenzt,aber keine
   bestehende Firma beruehrt,
   wird eine neue Aktiengesel.
   eroeffnet. Der Spieler be-
   kommt automatisch 5 Aktien
   der neuen Gesellschaft als
-  Anerkennung.Er kann dann wei-
-  terhin Aktien aller aktiven
+  Anerkennung.Er kann dann weiterhin 
+  Aktien aller aktiven
   Gesellschaften handeln.
 4-ZWEI bestehende Gesellschaften
-  werden vermischt.Wird ein Pla-
-  tz direkt neben bestehenden
+  werden vermischt.Wird ein Platz 
+  direkt neben bestehenden
   Firmen belegt, werden diese
   vermischt. Dabei uebernimmt
   die groessere die kleinere
   Firma
  
   Das Kapital der vermischten
-  Firmen wird dem Wert ent-
-  sprechend,der belegten Plae-
-  tzen und Sternen,neu festge-
-  legt. Die Anteile der Spieler
+  Firmen wird dem Wert entsprechend,
+  der belegten Plaetzen 
+  und Sternen,neu festgelegt. 
+  Die Anteile der Spieler
   an der aufgeloesten Firma
   werden im Verhaeltnis 2:1
   durch Aktien der neuen Firmen
-  ersetzt.Weiterhin bekommt je-
-  der Spieler eine Barverguetung
+  ersetzt.Weiterhin bekommt jeder
+  Spieler eine Barverguetung
   entsprechend der prozentualen
   Anteile der aufgeloesten Firma
 
 Der Computer zaelt jedem Spie-
 ler eine Dividende (5% des Wer-
-tes der Aktien in seinen Be-
-sitz) und ermoeglicht den
+tes der Aktien in seinen Besitz) 
+und ermoeglicht den
 Handel mit Aktien aller besteh-
 enden  Gesellschaften.
 Uebersteigt der Marktwert einer
@@ -123,5 +123,5 @@ ATARI               _     A
                     _
 
   
-</lang>
+<include src="boerse.B"/></lang>
 <required></required>

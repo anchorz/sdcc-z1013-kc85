@@ -1,3 +1,4 @@
-<kurz>Adressen- und Telefondatenbank</kurz>
-<lang><include>ADRESSEN_TELEFON.b</include></lang>
+<kurz src="Adressen- und Telefondatenbank"/>
+<lang><include src="ADRESSEN_TELEFON.b"/></lang>
 <required></required>
+

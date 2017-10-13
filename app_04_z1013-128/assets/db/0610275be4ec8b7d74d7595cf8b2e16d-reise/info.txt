@@ -1,0 +1,3 @@
+<kurz src="Handelssimulation"/>
+<lang><include src="reise.B"/></lang>
+<required></required>

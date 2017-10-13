@@ -1,0 +1,30 @@
+<kurz src="Meteoritenschauer auf die Mondbasis abwehren (+Bugfix)"/>
+<lang>Original [6690421d7ac71d10deb9d7d2025d54bf] verwendet zwar [RST20], aber auch die Annahme, dass danach HL=0004 ist.
+
+      M O N D B A S I S
+  ************************
+
+
+Sie sind ein hochdekorierter
+Raumpilot der Sonderklasse, der
+auf dem Mond seinen wohlverdienten
+Urlaub verbringen will. Gerade 
+haben Sie den Raumanzug fuer
+einen kleinen Kraterspaziergang
+angezogen, da kommt
+
+:ALARM **** METEORITENWARNUNG **
+
+Natuerlich stellen Sie Ihre
+enormen Raumerfahrungen bedingungslos 
+in den Dienst der Meteoritenabwehr.
+
+:Machen Sie sich mit Ihrer Kampf
+maschine vertraut !
+
+Steuertasten  links   <-
+              rechts  ->
+              Schuss  -_- 
+
+</lang>
+<required></required>

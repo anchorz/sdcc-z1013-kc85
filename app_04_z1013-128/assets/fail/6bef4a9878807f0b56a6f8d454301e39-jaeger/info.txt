@@ -1,0 +1,27 @@
+<kurz src="METEORe abschießen"/>
+<lang>Dateigröße muss es Vielfaches von 32 sein. 12 Bytes fehlen.
+
+ JAEGER
+
+      BEDIENFUNKTIONEN
+  TASTE (P)  -->    LINKS
+  TASTE (R)  -->   RECHTS
+  LEERTASTE  -->   FEUER
+
+  BEACHTEN:
+   JEDER SCHUSS BEDEUTET
+       ENERGIEVERLUST!
+   .JE EHER DER METEOR
+   GETROFFEN WIRD,DESTO !
+   HOEHER IST DIE PUNKTZAHL.
+
+
+
+
+ SCHUSSVORRAT:30  METEORE:MAX.10
+
+
+   START? DANN -> <ENTER>  
+
+<include src="jaeger.B"/></lang>
+<required></required>

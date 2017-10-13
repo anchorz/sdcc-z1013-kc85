@@ -1,0 +1,3 @@
+<kurz src=""/>
+<lang>Überarbeitete Version für Brosig Monitor [4f7fa5cc3f81b6320d2adc1327d4e146]</lang>
+<required></required>

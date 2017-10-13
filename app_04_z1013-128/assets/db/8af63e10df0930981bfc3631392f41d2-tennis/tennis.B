@@ -1,0 +1,115 @@
+1 DIM V$(11)
+2 WINDOW: CLS:
+3 WINDOW 0,10,0,31: CLS:
+4 R=0: GOSUB 61
+5 FOR X=0 TO 15
+6 PRINT AT(12,31-X);""
+7 PRINT AT(12,15-X);""
+8 PRINT AT(12+X,0);"" 
+9 PRINT AT(28,X);""
+10 PRINT AT(28,15+X);""
+11 PRINT AT(28-X,31);""
+12 IF X/2=INT(X/2) THEN PRINT AT(13+X,15);"":PRINT AT(28-X,15);""
+13 NEXT X
+14 PRINT AT(12,0);""
+15 PRINT AT(28,0);""
+16 PRINT AT(28,31);""
+17 PRINT AT(12,31);""
+18 WINDOW 13,27,16,30: CLS:
+19 WINDOW: PRINT AT(0,0);" "
+20 IF BW<31 THEN 21 ELSE PRINT AT(BV,31);"":
+21 MZ=14: MS=30: MV=14: MW=30:
+22 BZ=14: BS=29: BV=14: BW=29:
+23 CZ=27: CS=1:  CV=27: CW=1:
+24 F=2: Z=0:
+25 X=-1: Y=1:
+26 PRINT AT(MZ,MS);""
+27 PRINT AT(MZ-1,MS);""
+28 PRINT AT(MZ+1,MS);""
+29 IF BZ=27 THEN Y=-1: 
+30 IF BZ=13 THEN Y=1:  
+31 IF BS=1 OR BS=2 THEN X=1:
+32 IF BZ=MZ OR BZ=MZ-1 OR BZ=MZ+1 THEN 33: ELSE 35
+33 IF BS=MS-1 OR BS=MS-2 AND X=1 THEN X=-1: Z=Z+1: 
+34 IF Z=5 THEN R=R+1: GOSUB 61: Z=0:
+35 IF X=1 AND (BS=30 OR BS=31) THEN R=R-1: GOSUB 61: GOTO 18
+36 BZ=BZ+Y:
+37 BS=BS+X*F:
+38 A$=INKEY$
+39 IF A$="D" THEN MZ=MZ-1
+40 IF A$="E" THEN MZ=MZ-1: MS=MS+2:
+41 IF A$="T" THEN MZ=MZ+1
+42 IF A$="U" THEN MZ=MZ+1: MS=MS+2:
+43 IF A$="M" THEN MS=MS+2
+44 IF A$="S" THEN MZ=MZ+1: MS=MS-2:
+45 IF A$="K" THEN MS=MS-2 
+46 IF A$="C" THEN MZ=MZ-1: MS=MS-2:
+47 IF MZ=13 THEN MZ=14
+48 IF MZ=27 THEN MZ=26
+49 IF MS<=15 THEN MS=16
+50 IF MS>=31 THEN MS=30
+51 IF BW=15 THEN PRINT AT(BV,BW);"": ELSE PRINT AT(BV,BW);" "
+52 PRINT AT(BZ,BS);""  
+53 BV=BZ: BW=BS:
+54 IF MV=MZ AND MW=MS THEN 29
+55 WINDOW MV-1,MV+1,MW,MW 
+56 PRINT "   "
+57 WINDOW MZ-1,MZ+1,MS,MS
+58 PRINT ""
+59 MV=MZ: MW=MS:
+60 GOTO 29
+61 V$(1)="                           "
+62 V$(2)="                                       "
+63 V$(3)="                              "
+64 V$(4)="                              "
+65 V$(5)="                                 "
+66 V$(6)="                              "
+67 V$(7)="                           "
+68 V$(8)="                                    "
+69 V$(9)="                        "
+70 V$(10)="                           "
+71 V$(11)="                                          "
+72 IF ABS(R)=11 THEN 86
+73 R$=STR$(R)
+74 L=LEN(R$)-1
+75 R$=RIGHT$(R$,L)
+76 FOR I=1 TO L
+77 Q=VAL(MID$(RIGHT$(R$,I),1,1))
+78 WINDOW 0,10,17-(I-1)*7,21-(I-1)*7:
+79 PRINT V$(Q+1)
+80 NEXT I
+81 IF R<0 THEN WINDOW 0,10,17-(I-1)*7,21-(I-1)*7: PRINT V$(11): GOTO 83:
+82 WINDOW 0,10,17-(I-1)*7,21-(I-1)*7: CLS:
+83 WINDOW
+84 PRINT AT(0,0);" "
+85 RETURN
+86 WINDOW 0,11,0,31: CLS
+87 WINDOW 3,11,3,31:
+88 PRINT "           "
+89 PRINT "                "
+90 PRINT "            "
+91 PRINT "                "
+92 PRINT "             "
+93 IF R=11 THEN 97
+94 WINDOW MZ,MZ,MS,MS:
+95 X$=INKEY$: IF X$="" THEN 95
+96 WINDOW: CLS: END
+97 WINDOW 12,31,0,31: CLS
+98 WINDOW 16,31,3,31:
+99 PRINT "           "
+100 PRINT "               "
+101 PRINT "          "
+102 PRINT "               "
+103 PRINT "               "
+104 PRINT
+105 PRINT
+106 PRINT
+107 PRINT "           "
+108 PRINT "          "
+109 PRINT "        "
+110 PRINT "           "
+111 PRINT "            "
+112 WINDOW 20,31,26,31
+113 X$=INKEY$: IF X$="" THEN 113
+114 IF X$="Y" THEN 2
+115 WINDOW: CLS: END:

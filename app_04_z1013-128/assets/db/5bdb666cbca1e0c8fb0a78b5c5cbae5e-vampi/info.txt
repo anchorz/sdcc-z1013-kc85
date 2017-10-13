@@ -1,4 +1,4 @@
-<kurz>Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus</kurz>
+<kurz src="Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus"/>
 <lang>Eine Version von Vampir ohne Titelbildschirm.
 Tastatur funktioniert mit Cursortasten</lang>                      
 <requires></requires>

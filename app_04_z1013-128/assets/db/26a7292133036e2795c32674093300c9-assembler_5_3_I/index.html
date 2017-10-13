@@ -14,6 +14,611 @@
 </head>
 <body>
 <div></div><div class="filelist">0800 5d65 0000 I ... <a href="assembler_5_3_I.z80">ASSEMBLER&nbsp;5.3&nbsp;&nbsp;&nbsp;</a></div>
+<pre>*************************************************************
+*                                                           *
+*        A  S  S  E  M  B  L  E  R    5.3  Scf              *  
+*                                                           *
+*************************************************************
 
+
+
+Programmstandort:
+=================
+
+          100H....5C0H  Zusatzmonitor
+          600H....7FFH  Bildschirmtreiber          
+          800H...0FFFH  interne Symboltabelle (s.a.u.)
+         1000H...2C6FH  Assembler
+         2E00H...2F6FH  Arbeitszellen 
+
+Ein Quelltext kann ab Adresse 3000H geladen werden, auch andere 
+Standorte sind oberhalb 3000H moeglich. Da der Quelltext im
+ASCII-Code geschrieben wird, ist er im Speicher frei verschieb-
+lich. Zum Schreiben wird daher ein Texteditor verwendet ( z.B.:
+eignet sich der EDITOR "MicroWORD 1.5..O"(O=oben! ab CC00H)
+dafuer sehr gut, da er mit dem ASSEMBLER 5.3 zur gleichen Zeit
+im Speicher stehen kann und den Text ab 3000H schreibt. Aber
+auch mit anderen EDITOREN wie TEXTED 6.1, MTX, MicroWORD 1.5 U
+usw. kann gearbeitet werden, wobei dann vorteilhaft eine RAM-
+Floppy mit Headerdisk verwendet werden sollte, um das haeufige
+Wechseln von Assembler und Editor zu vereinfachen).
+Wer ueber einen Drucker verfuegt, kann sich die Quelle vor dem 
+Uebersetzen zur Dokumentation ausdrucken oder mit einem zusaetz-
+lichen logischen und physischen Druckertreiber ein Assemblerpro-
+tokoll anfertigen lassen. Dabei ist zu beachten, das die Version
+5.3 zwischen den einzelnen Spalten einen TAB (09H) ausgibt, die
+der logische Druckertreiber in eine der aktuellen Druckposition
+entsprechenden Zahl Space wandeln muss. Auch eine Seitenforma-
+tierung muss im logischen Druckertreiber erfolgen, da der Assem-
+bler keinerlei Foramtierungsfunktionen besitzt.
+Bei sehr langen Quelltexten ist auch die Arbeit mit der RAM-
+Floppy sehr vorteilhaft, da der ASSEMBLER das Nacheinander-
+uebersetzen von Teilen eines Quelltextes gestattet. 
+
+
+* Programmstart:
+================
+
+          100H  Neustart
+         1006H  Restart
+
+
+Beispiel-Quelltext:
+===================
+
+Um die Arbeit des ASSEMBLER's zu demonstrieren, arbeiten wir
+mit einem kleinen Beispieltext (TEXT aus Z-1013-Bedienhand-
+buch, Schachfiguren).
+Wie sieht nun ein Assembler-Quelltext fuer dieses Beispiel
+aus:  
+
+;Programmueberschrift
+;
+        PN      SF         ;Programmname "SF" (kann auch entf.)
+;******************************
+;Quelltext "Schachfiguren"
+;******************************
+;
+	ORG	1000H	   ;vorgesehener Standort des Programms
+;
+;Vereinbarungsteil
+;
+BS:	EQU	0EE08H	   ;Adresse der Bidschirm-Position
+;
+;Programmtext
+;
+BEGIN: 	LD	B,6	   ;Zahl der Schachfiguren
+	LD	IX,BS	   ;Position der ersten Figur auf
+	LD	DE,TAB	   ;Adresse der Tabelle fuer den
+			   ;Zeichencode der Schachfiguren
+MARKE: 	LD	A,(DE)	   ;oberer Teil der Schachfigur
+	LD	(IX+0),A   ;auf BS	
+	INC	DE	   ;naechsten Zeichencode
+	LD	A,(DE)	   ;unterer Teil der Schachfigur
+	LD	(IX+20H),A ;auf BS
+	INC	DE	   ;naechsten Zeichencode
+	INC	IX	   ;Abstand zum naechsten Zei-
+	INC	IX	   ;chen einstellen
+	INC	IX	   ;
+	DJNZ	MARKE-#	   ;naechste Figur, bis alle 6
+			   ;abgebildet
+	RST	38H	   ;Ruecksprung in Monitor
+;	
+;TABELLE fuer Zeichencode auf dem BS
+;
+TAB:	DB 	0EH,11H,0FH,11H,10H,11H,12H,13H,14H,16H,15H,16H
+;
+	END
+
+
+Algemeines Format eines Assembler-Quelltextes:
+==============================================
+
+ - Die Marken sind max. 5 Zeichen lang und beginnen mit 
+   Buchstaben (z.B. BEGIN und MARKE).
+ - Marken werden mit Doppelpunkt abgeschlossen.
+ - Namenvereinbarungen muessen ebenfalls mit Doppelpunkt
+   abgeschlossen werden (z.B. BS:  EQU  0EE08H)
+ - SPACE und TAB werden als Trennzeichen gewertet. Sie
+   koennen mehrfach auftreten.
+ - Das Namensfeld kann entfallen.
+ - Die Quellzeile darf ohne Kommentar max. 85 Zeichen
+   lang sein. Der Kommentarteil wird bei der Uebersetzung
+   ausgeblendet.
+ - Die Zeile kann mit NL oder CRLF (New Line (1EH) oder Carriage
+   Return Line Feed (0DH,0AH)) abgeschlossen werden.       
+ - Eine leere Zeile wird als Kommentar gewertet, sie sollte
+   aber mit einem Semikolon beginnen.
+ - Registernamen gelten als vereinbarte Symbole,
+   die Befehlsmnemonik nicht (d.h. Registernamen duerfen
+   nicht als Marken verwendet werden).
+ - Ein Kommentar oder eine Kommentarzeile muss mit einem
+   Semikolon beginnen (z.B. ;Vereinbarungsteil)
+
+Nun am Beispiel unserer Quelle:
+
+BEGIN:    -ist eine Marke die nicht laenger als 5 Zeichen lang
+           ist. Es darf kein Leerzeichen dazwischen sein, dafuer
+           kann aber ein "_" genutzt werden (z.B. Nr_1:)
+  
+BS:    EQU     0EE08H  
+
+          -Ein Name gilt als vereinbart, wenn ihm mit einer
+           EQU-Anweisung (von equal=gleich) ein Wert zugeordnet
+           wird. Dem Namen darf nur einmal im Programm ein
+           Wert zugeordnet werden. Im Beispiel wird BS die
+           Bildschirmadresse EE08H zugeordnet.
+
+ORG    1000H
+
+          -Mit der ORG-Anweisung wird dem Assembler mitgeteilt,
+           auf welche Adresse das Programm zu uebersetzen ist,
+           d.h. auf welcher das Programm lauffaehig ist.
+           Bei der Uebersetzung im Duchlauf 2 ist allerdings
+           zu beachten, dass auf dieser Adresse der Assembler
+           selbst oder auch der Quelltext stehen kann. Der
+           Assembler hat keine Schutzfunktionen gegen ein As-
+           semblieren auf sich selbst! Deshalb muss der ueber-
+           setzte Maschinencode um einen einstellbaren Offset
+           verschoben abgelegt werden.          
+
+DJNZ   MARKE-#
+
+         -DJNZ ist ein Schleifenbefehl mit einer Sprungdistanz
+          MARKE-#. MARKE ist dabei eine definierte Marke, und
+          damit die 16-Bit Adresse dieser Marke. Mit # wird
+          der Standort des DJNZ-Befehls+2 von der Adresse der
+          Marke abgezogen, womit sich die 8-Bit-Sprungdistanz
+          ergibt. 
+
+TAB:   DB	0EH,11H,0FH,11H,10H,11H,12H,13H,14H,16H,15H,16H,
+
+         -ab der Stelle, die mit TAB bezeichnet wird, werden
+          Bytes definiert (DB=definiere Byte) 
+
+END      -jedes Assemblerprogramm muss mit END abgeschlossen
+          werden (+nachfolgender Zeilenschaltung!). Dies gilt
+          auch fuer Einzelteile einer grossen Quelle.  
+
+       
+Variablen:
+==========
+
+Beispiele zu dem folgenden wieder am Ende dieses Abschnittes.
+
+ - Alle 16-bit-Werte koennen durch einen mehrteiligen
+   Ausdruck aus Variablen gebildet werden.
+ - Alle 8-bit-Konstanten koennen mit einem Ausdruck 
+   definiert werden. Es werden dabei die niederen 8 Bit
+   der Variablen verwendet und die oberen 8 Bit geprueft -
+   ob obere 8-Bit vorhanden, damit kein 8-Bit-Wert!)
+ - Ein Ausdruck kann durch + und - verknuepft werden.
+   Er kann mit - anfangen.
+ - Durch das Zeichen * werden die Teile und-verknuepft,
+   durch / oder-verknuepft.
+   Die Verknuepfungen werden von links nach rechts
+   ohne Prioritaet abgearbeitet.
+ - Als Variable / Konstante sind zugelassen :
+       4 Zeichen Hex, mit Ziffer beginnend und mit 'H' 
+         abgeschl.
+       4 Zeichen oktal, mit 'Q' abgeschl.
+       4 Zeichen dezimal ohne Abschluss
+         Name
+       # ergibt den Wert des PC vor Befehlsausfuehrung
+       1 Zeichen Literal in Hochkomma (Zeichenkette)
+       2 Zeichen Literal in Hochkomma (Zeichenkette)
+         (linkes Zeichen = NWT )
+       8 Zeichen dual, mit 'B' abgeschlossen
+         Die Werte koennen vorzeichenbehaftet sein.
+
+Nun am Beispiel unseres Quelltextes:
+
+BS:   EQU     0EE08H    ;BS ist eine 16-Bit Variable, der
+                        ;eine hexadezimale Adresse zugeordnet
+                        ;wurde
+
+Ob eine Variable eine 8-Bit-Variable oder eine 16-Bit-Variable
+ist, entscheidet der zugeordnete Wert. 
+Neben dieser Variablen koennte man noch andere Konstanten
+als Variable definieren:
+
+BSA:    EQU     0EC00H  ;Adresse des BWS
+DIST:   EQU     108H    ;Distanz auf Bildschirm
+ANZ:    EQU     6       ;Anzahl der Schachfiguren
+
+        LD      B,ANZ
+
+;Hier ist die Konstante 6, ein 8-Bit-Wert, mit einem Ausdruck
+;definiert worden.
+
+        LD      IX,BSA+DIST
+
+;BSA als 16-Bit-Adresse plus den Wert der Distanz ergeben
+;einen mehrteiligen Ausdruck. Gleichzeitig ist hier ein Bei-
+;spiel einer "+"-Verknuepfung.
+
+	LD	DE,TAB
+MARKE:	LD	A,(DE)
+	LD	(IX+0),A
+	.
+	.
+	.
+	INC	IX
+	DJNZ	MARKE-#
+
+;# ist hier der Wert des Programm-Zaehlers (PC)
+
+	RST	38H
+
+TAB:	DB	0EH,11H,0FH,11H,10H,11H,12H,13H,14H,16H,15H,16H
+
+;Es koennen in dieser Tabelle auch Zeichenketten oder Ausdruek-
+;ke stehen (s.dazu w.unten).
+
+        END
+
+
+Die Mnemonik des ASSEMBLER entspricht fast 100%ig dem SYPS-
+K-1520 Format (nicht ZILOG-Mnemonik!!), wobei zusaetzlich fol-
+gende Befehle aufgenommen wurden: 
+ 
+
+Spezielle Formate:
+==================
+
+ - Die Befehle  LD  Z,H(nn)  
+   und          LD  Z,L(nn)
+   (Z=Registername)
+   sind zugelassen. nn kann dabei ein Ausdruck sein.
+
+ - Bei den Anweisungen  DA,ORG,EQU,BER darf nur ein
+   Wert erscheinen, der durch einen Ausdruck gebildet 
+   werden kann.
+   z.B: BEGIN:  EQU     0C00H
+                ORG     BEGIN
+
+ - Beim Befehl DB sind numerische Werte, Marken und
+   Textketten zugelassen. Sie sind durch Komma zu trennen,
+   s.z.B.unser Quelltext. Aber auch folgendes ist moeglich:
+
+        DB      0FFH,7BH,'Otto',22,0FFEDH,11001001B  usw.
+
+
+Zusatzbefehle:
+==============
+
+ - HEX      Definition von 2-stelligen Hex-Konstanten, durch
+            Komma getrennt. Der Buchst. H und Fuehrungsnullen
+            entfallen.
+ 
+            z.B.:  HEX   11,55,AA,1B,F3,00,DC
+
+Es sollte aber nur in persoenlichen Quellen Verwendung finden,
+da es nicht dem SYPS-K1520-Standard entspricht.
+
+ - PRNT     Listensteuerung  volle Liste
+ - PRNO             ="=      Fehlerliste
+ - PRTH             ="=      Hex-Liste
+
+Diese Zusatzbefehle, im Text eingearbeitet, steuert den AS-
+SEMBLER in seiner Arbeit. Es lassen sich damit Teile des Textes
+auflisten, die nochmals bei der Uebersetzung geprueft werden 
+sollen, andere Teile, die bereits sicher laufen, nicht.
+
+ - PN       wird ignoriert
+ - TITL             ="=
+
+Diese Kopfsymbole von anderen Assemblern oft gefordert, koen-
+nen erscheinen, sind aber weder stoerend, noch erforderlich.
+
+ - alle Befehle mit LX,HX,LY,HY (low-, high-Teil der Dop-
+   pelregister IX bzw. IY)  
+
+     z.B.: LD   B,LY  -lade Register B mit dem Low-Teil
+                       des IY-Registers 
+ 
+ - SLL      Rotation
+   
+
+Fehlerausschriften:
+===================
+
+      M   Speicherfehler
+      U   unbekannter Befehl
+      K   Konstantenfehler (Wert zu gross)
+      F   Formatfehler
+      A   Adressenfehler
+      N   unbekannter Name
+      T   Tabellenueberlauf
+      L   Befehlszeile zu lang (ohne Komm.)
+      V   Adressenversatz zwischen 1. und 2. DL
+      I   Input-Fehler 
+
+
+
+Erzeugen eines Maschinencodes mit dem ASSEMBLER:
+================================================
+
+Nachdem wir unser Beispielprogramm mit einem Texteditor abge-
+tippt und auf eine Adresse oberhalb 3000H gebracht haben,
+koennen wir den Assembler laden und starten.
+
+ Start:  J  100
+
+Der ASSEMBLER meldet sich mit der BS-Aufschrift:
+
+ASSEMBLER Z80  V5.3
+
+
+DURCHLAUF:    Bei Erststart wird hier "N" (new) ein-
+              gegeben (siehe Durchlaufsteuerung). Da-
+              nach erscheint die Abfrage:
+&gt;A 
+ 
+Sollte dies nicht geschehen, so ist der Druckerruf (Initiali-
+sierung) entweder nicht kurzgeschlossen (z.B. wenn nicht vor-
+handen) oder der Drucker ist nicht eingeschaltet. 
+
+&gt;A      hier wird nun ein Buchstabe erwartet.
+        Im Allgemeinen wird im N-Durchlauf sofort ein R (RUN)
+        eingegeben, es kann aber durch Eingabe von Axxxx die
+        ORG-Adresse ausgetauscht werden (z.B. zum Probelauf).
+        Das &gt;A (assign) wiederholt sich, bis mit "R" (run) der
+        Durchlauf gestartet wird. Bei Durchlauf N und 1 fragt 
+        der ASSEMBLER nun:
+
+   ANF.-ADR.QUELLE:
+
+        hier wird jetzt die Anfangs-Adresse der Quelle abge-
+        fragt, wo der Quelltext steht. (Nicht die ORG- oder
+        Offsetadresse!). Wir geben also z.B. 3000 ein, wenn
+        der Quelltext ab 3000H steht. Mit &gt;ENTER&lt; abschliessen. 
+
+ACHTUNG !! ** Der CURSOR laesst sich bei Adresseingaben nicht 
+        zuruecknehmen, wenn man sich mal vertippt hat. Er hat
+        keinen Eingabepuffer. Es hilft nur &gt;RESET&lt;, bzw. man 
+        gibt die richtige Zahl ab erkanntem Fehler einfach wei-
+        ter ein. Der Assembler wertet die letzten vier Ziffern.
+        Im A-Modus (assign) ist es einfacher, dieser Modus
+        bleibt, bis "R" (run) eingegeben wird. Dabei kann eine 
+        Anweisung wiederholt werden, mit dem richtigen Wert, 
+        Adresse o.a., es wird die zuletzt eingegebene Anweisung
+        ausgefuehrt.
+        Es sind mehrere Durchlaeufe moeglich, auch die gleichen.
+
+Waehrend des "N"-Durchlaufes koennen bereits Fehler erkannt
+werden (z.B.: Markenfehler). Sie werden direkt mit einem * aus-
+gegeben und sind vor dem 2. Durchlauf durch nochmaliges Editie-
+ren mit dem Texteditor zu beseitigen.
+Eine abschliessende Fehlersumme hat jedoch keine Bedeutung.
+Sie kennzeichnet lediglich die Zahl der Marken, die bei ihrem
+ersten Auftreten noch nicht definiert waren.
+Der 1. Durchlauf wird nur angewendet, wenn mehrere Quelltexte
+oder Quelltext-Teile uebersetzt werden.
+Beim N- und 1-Durchlauf wird eine Markentabelle durch den Assem-
+bler erstellt, die im 2. Durchlauf zur eigentlichen Uebersetzung
+benoetigt wird. Der N-Durchlauf loescht eine schon vorhandene
+Markentabelle, wogegen der 1. Durchlauf gefundene Marken an eine
+schon vorhandene Markentabelle anhaengt. Wird also nur ein ein-
+zelner geschlossener Quelltext uebersetzt, entfaellt der 1. 
+Durchlauf.
+Wenn sich der Assembler nach dem N-(1-)Durchlauf mit einer
+Fehlerzahl und einer Durchlaufanforderung zurueckgemeldet hat,
+koennen wir den 2. Durchlauf starten. Der 2. Durchlauf ist der
+eigentliche Uebersetzungslauf.
+Hier kann auch bei Mehrfachuebersetzung die jeweilige Quelltext-
+Anfangsadresse mit QXXXX  neu festgelegt werden. 
+Mit &gt;CRTL C&lt; (BREAK) bzw. S4-K kann der ASSEMBLER an dieser
+Stelle auch verlassen werden.
+Es erscheint wieder das Assign-Promtsymbol &gt;A
+Entsprechend der Durchlaufsteuerung koennen wir nun verschie-
+dene Optionen einstellen. Da wir erst einmal nur eine einfache
+Uebersetzung moechten, verzichten wir auf ein Druckprotokoll
+(kein P eingeben!).
+Wir geben ein L ein, um eine volle Uebersetzungsliste auf dem
+Bildschirm zu erhalten und ein T200, damit es beim Uebersetzen
+nicht so schnell geht und das Protokoll noch lesbar ist.
+Wenn wir spaeter sicherer sind, koennen wir auch auf L und Txxxx
+verzichten, und dafuer ein F (nur Fehler werden ausgegeben) ein-
+geben, worauf der Assembler mit maximaler Geschwindigkeit arbei-
+tet.
+Nun muss noch der Offset zur Ablage des Maschinenprogramms
+eingegeben werden, da wir wuenschen, dass das fertige Programm
+auf der Adresse 1000H laufen soll (ORG 1000H) und an dieser 
+Stelle zur Zeit der Assembler selbst steht. Dieser Offset
+berechnet sich aus der Differenz von ORG-Adresse und Ablage-
+adresse (siehe Punkt Offset). Nehmen wir an, auf Adresse
+6000H ist freier Speicher, so geben wir O5000 ein.
+Bevor wir die Uebersetzung starten, koennen wir mit dem
+Kommado M die Markentabelle ausgeben lassen, um zu wissen,
+bis zu welcher Adresse unser Maschinenprogramm geht (!Ori-
+ginaladressen!). 
+Mit R (RUN) starten wir den 2. Durchlauf und auf dem Bildschirm
+laeuft das Protokoll der Uebersetzung. Da wir einen Zeitlauf
+gewaehlt haben, koennen wir den Ablauf mit Space anhalten und
+weiterlaufen lassen. Fehler werden entsprechen den -&gt;Fehler-
+meldungen mit einem Buchstaben angezeigt. Am Ende muss bei
+einer fehlerfreien Uebersetzung die Fehlerzahl 0000 stehen.
+Die folgende Durchlaufanforderung quitieren wir mit BREAK 
+(S4-K, ^C) und haben damit die Uebersetzung beendet. Der
+uebersetzte Maschinencode steht nun aber auf Adresse 6000H
+auf der er nicht lauffaehig ist. Mit dem T-Kommando des Moni-
+tors schieben wir das Maschinenprogramm auf die ORG-Adresse
+(in diesem Fall auf die 1000H). Die Laenge konnten wir vorher
+der Markentabelle entnehmen.
+Ein Start des Programms mit J 1000 zeigt uns den Erfolg der
+Uebersetzung.
+
+
+Durchlaufsteuerung:
+===================
+
+N    Neustart (loescht Symboltabelle)
+1    1. DL  (nur bei mehreren Teilen, ansonsten entfaellt er)
+2    2. DL  (Uebersetzung)
+^C   Ende der Nutzung  (CTRL-C = 03H = S4-K)
+
+Es koennen mehrere Programme hintereinander uebersetzt
+werden. Ein Programm kann dabei auf Marken aus dem an-
+deren Programmen zugreifen.
+
+
+
+Laufsteuerung (Anforderung mit 'A &gt;' )
+======================================
+
+ Ausgabeformat C   S   Symbolliste  
+                       (Zeile - Name - Wert) 
+                   H   Hexliste (ohne Quelliste)
+                   F   Fehlerliste
+                   L   volle Liste
+                   M   Symboltabelle ausgeben (ohne Lauf)
+                       (Name - Wert ) 
+                       (Symboltabelle ist die Markentabelle)
+                   P   Zuschalten des Druckprotokolls 
+                       waehrend des Laufes
+                   V   Seitenvorschub und Abschalten des 
+                       Druckers 
+                   I   Initialisierung des Druckers 
+
+Zeitsteuerung      N   max. Geschwindigkeit, dabei keine
+                       Tastaturabfrage.
+              TXXXX    Zuschaltung einer Zeitschleife 
+                       (Zeit in ms bis max. 1000)
+                       Lauf mit veringerter Geschwindigkeit.
+
+Bei Zeitsteuerung = T kann die Uebersetzung durch SPACE nach 
+jeder Zeile unterbrochen werden. Fortgesetzt wird durch 
+Betaetigen einer beliebigen Taste.
+
+Adressen      AXXXX    Zwangsadr. fuer ORG
+                       (Aenderung der ORG-Anweisung im Dialog) 
+
+Die Eingabe von ORG-Adressen wird gekellert . Es koennen
+max. 10 Adressen mit dem A-Kommando eingegeben werden. 
+Die Adresse 0000 ruft dabei keine Wirkung hervor.
+
+              OXXXX    Offset zu ORG
+                       (ORG+Offset ergibt Speicherbereich,
+                       auf dem der MC abgelegt wird)
+                       Offsetberechnung wird weiter unten
+                       erlaeutert.
+
+              QXXXX    Quellanf.-Adr. (nur bei
+                       Mehrfachuebersetzungen im 2. DL)
+
+                  K    Aufhebung der A-Anweisung
+  
+
+Lauf              R    Run
+
+                 ^C    Ende der Nutzung
+
+
+Wahl des Offset's:
+==================
+
+Nicht immer kann der MC-File direkt dahin
+geschrieben werden, wo er spaeter stehen und laufen
+soll, z.B. wenn die Anfangsadresse des MC-Files im
+Arbeitsbereich des Assemblers steht.
+Die Differenz der beiden Adresen wird mit dem Offset
+gegeben. Das heisst, der Assembler uebersetzt das Pro-
+gramm mit den Originaladressen auf den Adressbereich,
+der sich aus dem Offset ergibt.
+Die Offsetberechnung ist nicht einfach der
+Abstand zwischen der in der ORG-Anweisung festgeleg-
+ten Startadresse des Programmes und der Anfangs-Adres-
+se, in der der MC-File abgelegt wird, sondern muss fol-
+gendermassen berechnet werden (Zweierkomplement):
+
+
+BEISPIEL:
+_________ 
+
+1.
+ORG-Adr.: 0100, 1000H lang - Quelltext 3000H-7000H 
+MC-File soll in A100H bis B0FFH abgelegt werden.
+OFFSET-ABSTAND: 0100H bis A100H = A000H
+Wir geben im 2.Durchlauf  OA000 ein.
+
+2.
+ORG-Adr.: F800, 800H lang - Quelltext von 3000H-7C00H
+MC-File soll in C000H beginnen:
+OFFSET-ABSTAND: F800H bis C000H nicht, wie vermutet 3800H,
+sondern weiterzaehlen bis FFFFH und dann von unten bis C000H.
+Das ergibt: C800H !!
+Wir geben OC800 ein.
+
+
+Interne Funktionen:
+===================
+
+        Marken mit "*" als erstes Zeichen koennen mehrfach 
+        verwendet werden. Ihr Wert wird auch im 2.DL veraendert,
+        wodurch sie nur fuer Rueckwaertsspruenge zu verwenden 
+        sind oder unmittelbar vor ihrer Nutzung zu definieren 
+        sind.
+
+
+
+Modifikationen: 
+===============
+
+Wichtig!
+  1) Bei fehlendem Druckeranschluss muss auf den Adresssen
+     447H/44WH und 449H/44AH  0D4H/03H eingetragen werden.
+     Adresse Druckertreiber in 449H/44AH eintragen.
+     Adresse Druckersynchr. in 447H/448H    -"-
+     Im Original ist die Druckerschnittstelle ueber den
+     Sprungverteiler (SV) realisiert.
+
+DRAKK:  0FFE8H  ;uebergibt Zeichen in AKKU an log. Druckertreib.
+DRINI:  0FFCDH  ;Initialisierung des log. Druckertreiber
+
+Der Druckertreiber muss das Steuerzeichen "TAB" (09H) verarbei-
+ten koennen !!
+
+  2) Falls die Leange des Symboltabellenbereiches nicht
+     ausreicht (bei laengeren Programmen), kann die Lage und 
+     Groesse der Symboltabelle durch Veraenderung der folgenden
+     Zellen geaendert werden: 
+
+    &lt; 2C02H / 2C03H &gt;  =  Anfangsadresse 
+    &lt; 2C04H / 2C05H &gt;  =  Laenge 
+
+     (steht im Original auf 0800H und 7D0H Laenge)
+
+
+Literaturhinweise:
+------------------
+
+/1/   Assemblersprache SYPS K 1520  (Robotron)
+      Bezug ueber Industrievertrieb Robotron, im VEB Robotron-
+      Vertrieb Erfurt, Juri-Gagarinring 25, Erfurt, 5020
+/2/   Baeurich/Barthold: 8-Bit-Mikrorechentechnik, Militaerver-
+      lag der DDR  1988 
+/3/   Kieser/Meder: Mikroprozessortechnik, Verlag der Technik
+      Berlin  3., stark bearbeitete Auflage  1985
+/4/   Lampe/Jorke/Wengel: Algorithmen der Mikrorechentechnik
+      Verlag der Technik Berlin  2. Auflage  1983
+/5/   R.Brosig: Software-Richtlinien fuer den Z1013, FUNKAMA-
+      TEUR 2/88, S.
+/6/   V.Luehne: Sprungverteiler f. Z1013 - Betriebssystemer-
+      weiterungen, FUNKAMATEUR 10/88, S.484 
+
+ACHTUNG: Wir bitten darum, nur Original-Programme weiter zu
+geben, und keine von Ihnen geaenderten Versionen. Geben Sie
+lieber ein Programm original weiter und Aenderungen dazu
+schriftlich, damit sich der Nutzer selbst aendern kann, was er
+fuer richtig haelt. Programme stets mit der Beschreibung dazu
+weiterreichen. An der Checksumme CRC ist der Originalzustand 
+erkennbar.
+
+ 
+                                       IG-HC der KdT Dresden
+                                       a. Informatikzentrum
+                                         d. TU-Dresden 
+</pre>
 </body>
 </html>

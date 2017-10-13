@@ -1,0 +1,3 @@
+<kurz src="Beschreibung Original-Editor/Assembler Reassembler Binder"/>
+<lang><include src="beschr edas t1.txt"/></lang>
+<required></required>

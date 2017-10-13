@@ -1,0 +1,5 @@
+<kurz src="Reversi, Go - Felder mit X oder O besetzen"/>
+<lang><include src="othello.B"/></lang>
+<required></required>
+
+

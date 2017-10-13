@@ -1,4 +1,4 @@
-<kurz>23 STREICHHOELZER, WER DAS LETZTE NIMMT, HAT VERLOREN.</kurz>
+<kurz src="23 STREICHHOELZER, WER DAS LETZTE NIMMT, HAT VERLOREN"/>
 <lang>
 <link>Z1013_m0111.jpg</link>
 <link>z1013_m0111.pdf</link>
@@ -17,5 +17,5 @@ NIMMT, HAT VERLOREN.
 
 VERSTANDEN ? ES GEHT LOS !!!
 
-<include>23STREICHHOELZER.b</include></lang>
+<include src="23STREICHHOELZER.b"/></lang>
 <required></required>

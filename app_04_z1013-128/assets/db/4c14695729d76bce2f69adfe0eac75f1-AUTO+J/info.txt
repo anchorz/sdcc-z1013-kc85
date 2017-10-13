@@ -1,0 +1,3 @@
+<kurz src="Strassenrennen mit Gegenverkehr, Joystick nach Practic 01/88"/>
+<lang></lang>
+<required></required>

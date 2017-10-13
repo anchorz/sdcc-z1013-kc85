@@ -168,8 +168,8 @@ ENTEN        = E
 1020 READ X$
 1022 REM PRINTAT(15,1);X$
 1024 REM PRINT AT(17,1);LEN(X$)
-1026 FOR C=8 TO LEN(X$)+7:PRINT AT(3,C);"ø":PRINT AT(2,C);"Ç"
-1028 PRINT AT(4,C);"Ç":NEXT
+1026 FOR C=8 TO LEN(X$)+7:PRINT AT(3,C);"":PRINT AT(2,C);""
+1028 PRINT AT(4,C);"":NEXT
 1030 DATA IRAN,IRAK,LAOS,MALI,PERU,KUBA,POLEN,KOREA,JAPAN,BURMA,NEPAL
 1032 DATA PAPUA,NIGER,SUDAN,CHILE,ISLAND,INDIEN,LIBYEN,IRLAND,MALAYA
 1034 DATA ANGOLA,MEXIKO,KANADA,SYRIEN,TSCHAD,PANAMA,BELGIEN,ENGLAND 
@@ -186,23 +186,23 @@ ENTEN        = E
 1056 NEXT
 1058 PRINT AT(10,18);"BUCHSTABEN:"
 1060 PRINT AT(10,29);C-8
-1062 PRINT AT(7,7);"ÉÉÉÉÉÉ"
-1064 PRINT AT(8,3);"A-Z É    É"
-1066 PRINT AT(9,7);"ÉÉÉÉÉÉ"
+1062 PRINT AT(7,7);""
+1064 PRINT AT(8,3);"A-Z     "
+1066 PRINT AT(9,7);""
 1068 WINDOW 8,8,8,11:CLS:GOTO 1106
 1070 BEEP:CLS
-1072 PRINT AT(5,7);"²ºþýýÜ         ßþýýýÜ"
-1074 PRINT AT(6,7);" Óÿÿ´·Ü  ²ß¼ÿþþÿÿÿÿ¼»"
-1076 PRINT AT(7,7);" ¾ÿÿÿ¼Ó  ßþþÿÿÿÿÿÿÿ»" 
-1078 PRINT AT(8,7);" ½ÿÿ    ±Ð½ºÿÿÿÿÿÿ²"
-1080 PRINT AT(9,7);" Ó¼     ßºÿþ¹ÿ¼¶ÿÿÿ±"
-1082 PRINT AT(10,7);"  ¿     µÿÿÿÿ¹¶ ¿Ð½ß"
-1084 PRINT AT(11,7);"   ÿþÜ  Ó¶½ÿÿÿÐ   ÓÐ³"
-1086 PRINT AT(12,7);"   µÿÿ   Óÿÿ¼     ± ²"             
-1088 PRINT AT(13,7);"   Óÿÿÿ    ÿÿ´      ß²°"
-1090 PRINT AT(14,7);"    µÿ    µÿÐ     ¾ÿÿ"
-1092 PRINT AT(15,7);"    µÿ     ±Ð      ¶½ÿ"
-1094 PRINT AT(16,7);"    Ó¼              ÓÐ"
+1072 PRINT AT(5,7);"         "
+1074 PRINT AT(6,7);"   "
+1076 PRINT AT(7,7);"   " 
+1078 PRINT AT(8,7);"     "
+1080 PRINT AT(9,7);"      "
+1082 PRINT AT(10,7);"        "
+1084 PRINT AT(11,7);"        "
+1086 PRINT AT(12,7);"            "             
+1088 PRINT AT(13,7);"             "
+1090 PRINT AT(14,7);"             "
+1092 PRINT AT(15,7);"               "
+1094 PRINT AT(16,7);"                  "
 1096 PRINT AT(21,10);"LAENDER RATEN!":PRINT AT(0,0);" "        
 1098 FOR I=1 TO 10:BEEP:NEXT I 
 1100 FOR I=1 TO 14:BEEP:NEXT I
@@ -253,84 +253,84 @@ ENTEN        = E
 1190 IF K=9 THEN 1328
 1192 IF K=10 THEN 1350
 1194 RETURN
-1196 PRINT AT(30,29);"Ã Ã"
-1198 PRINT AT(29,29);"Ã Ã"
-1200 PRINT AT(28,29);"ÃÃÃ"
-1202 PRINT AT(27,29);"ÃÃÃ"
-1204 PRINT AT(26,29);"ÃÃÃ"
-1206 PRINT AT(25,29);"ÃÃÃ"
-1208 PRINT AT(24,29);"ÃÃÃ"
-1210 PRINT AT(23,29);"ÃÃÃ"
-1212 PRINT AT(22,29);"  Ã"
+1196 PRINT AT(30,29);" "
+1198 PRINT AT(29,29);" "
+1200 PRINT AT(28,29);""
+1202 PRINT AT(27,29);""
+1204 PRINT AT(26,29);""
+1206 PRINT AT(25,29);""
+1208 PRINT AT(24,29);""
+1210 PRINT AT(23,29);""
+1212 PRINT AT(22,29);"  "
 1214 PRINT AT(21,29);"   "
 1216 GOTO 1110
-1218 PRINT AT(22,23);"ûûûûûûûû"   
+1218 PRINT AT(22,23);""   
 1220 GOTO 1110
-1222 WINDOW 17,21,29,31:CLS:PRINT AT(17,29);   "×Ï "
-1224 PRINT AT(18,29);       "«µ­"
-1226 PRINT AT(19,29);       " µ±"    
-1228 PRINT AT(20,29);       " ¡è"
-1230 PRINT AT(21,29);       "º ½"
+1222 WINDOW 17,21,29,31:CLS:PRINT AT(17,29);   " "
+1224 PRINT AT(18,29);       ""
+1226 PRINT AT(19,29);       " "    
+1228 PRINT AT(20,29);       " "
+1230 PRINT AT(21,29);       " "
 1232 PRINT AT(25,1);"JETZT ABER  "
 1234 PRINT AT(26,1);"ANSTRENGEN! "
 1236 GOTO 1110
 1238 WINDOW 17,21,27,31:CLS
-1240 PRINT AT(17,27);   "ÛÏ "
-1242 PRINT AT(18,27);   "¬µ"
-1244 PRINT AT(19,27);   " º "
-1246 PRINT AT(20,27);   "ô¡ "
-1248 PRINT AT(21,27);   "º ½ "
+1240 PRINT AT(17,27);   " "
+1242 PRINT AT(18,27);   ""
+1244 PRINT AT(19,27);   "  "
+1246 PRINT AT(20,27);   " "
+1248 PRINT AT(21,27);   "  "
 1250 GOTO 1110
 1252 WINDOW 17,21,24,31:CLS
-1254 PRINT AT(17,25);   " "
-1256 PRINT AT(18,25);   " ©"  
-1258 PRINT AT(19,25);   "ªµ "
-1260 PRINT AT(20,25);   " èè"
-1262 PRINT AT(21,25);   "º ´"
+1254 PRINT AT(17,25);   " "
+1256 PRINT AT(18,25);   " "  
+1258 PRINT AT(19,25);   " "
+1260 PRINT AT(20,25);   " "
+1262 PRINT AT(21,25);   " "
 1264 GOTO 1110
 1266 WINDOW 17,21,23,29:CLS
-1268 PRINT AT(17,23);   " Ï "
-1270 PRINT AT(18,23);       "½"
-1272 PRINT AT(19,23);       " µ "
-1274 PRINT AT(20,23);       " Áè"
-1276 PRINT AT(21,23);       "ïàè "
+1268 PRINT AT(17,23);   "  "
+1270 PRINT AT(18,23);       ""
+1272 PRINT AT(19,23);       "  "
+1274 PRINT AT(20,23);       " "
+1276 PRINT AT(21,23);       " "
 1278 PRINT AT(28,1);"ERST DENKEN,"
 1280 PRINT AT(29,1);"DANN TIPPEN!"
 1282 GOTO 1110
 1284 WINDOW 17,21,20,27:CLS
-1286 PRINT AT(18,20);   " Ï "
-1288 PRINT AT(19,20);   "  µ"
-1290 PRINT AT(20,20);       "   "
-1292 PRINT AT(21,20);       "  ß¾"
+1286 PRINT AT(18,20);   "  "
+1288 PRINT AT(19,20);   "  "
+1290 PRINT AT(20,20);       "   "
+1292 PRINT AT(21,20);       "  "
 1294 GOTO 1110
 1296 WINDOW 17,21,25,31:CLS
-1298 PRINT AT(20,27);  "¾ûûê"
-1300 PRINT AT(21,27);      "àôàô":PAUSE 2
+1298 PRINT AT(20,27);  ""
+1300 PRINT AT(21,27);      "":PAUSE 2
 1302 WINDOW 17,21,25,31:CLS
-1304 PRINT AT(20,26);  "¾ûûª"
-1306 PRINT AT(21,26);      "àôàô":PAUSE 2
+1304 PRINT AT(20,26);  ""
+1306 PRINT AT(21,26);      "":PAUSE 2
 1308 WINDOW 17,21,25,31:CLS
-1310 PRINT AT(20,24);"¾ûûé"  
-1312 PRINT AT(21,24);    "àôàô"
+1310 PRINT AT(20,24);""  
+1312 PRINT AT(21,24);    ""
 1314 WINDOW 17,21,16,23:CLS
-1316 PRINT AT(17,20); "   ã"  
-1318 PRINT AT(18,20); "­¾è"
-1320 PRINT AT(19,20); "¿"
-1322 PRINT AT(20,20); " ­ ô"
-1324 PRINT AT(21,20); "   "
+1316 PRINT AT(17,20); "   "  
+1318 PRINT AT(18,20); ""
+1320 PRINT AT(19,20); ""
+1322 PRINT AT(20,20); "  "
+1324 PRINT AT(21,20); "   "
 1326 GOTO 1110
 1328 WINDOW 17,21,20,23:CLS
 1330 WINDOW 18,25,20,23:CLS
-1332 PRINT AT(19,21);  "ç¨"
-1334 PRINT AT(20,21);  "¡ "
-1336 PRINT AT(21,21);  "µ´"
-1338 PRINT AT(22,21);  "µ´"
-1340 PRINT AT(23,21);  "Ï"
-1342 PRINT AT(24,21);  " è":PRINT AT(18,20);" ":PAUSE 5
+1332 PRINT AT(19,21);  ""
+1334 PRINT AT(20,21);  " "
+1336 PRINT AT(21,21);  ""
+1338 PRINT AT(22,21);  ""
+1340 PRINT AT(23,21);  ""
+1342 PRINT AT(24,21);  " ":PRINT AT(18,20);" ":PAUSE 5
 1344 WINDOW 18,30,17,23:CLS
-1346 PRINT AT(28,17);  "ö  "
-1348 PRINT AT(29,17);  "õ ¾­"
-1350 PRINT AT(30,17);  " ÿ"
+1346 PRINT AT(28,17);  "  "
+1348 PRINT AT(29,17);  " "
+1350 PRINT AT(30,17);  " "
 1352 PRINT AT(18,17);" ":PAUSE 15:WINDOW 18,30,17,23:CLS:BEEP
 1354 GOTO 1170
 2000 WINDOW:CLS:PRINT AT (10,10); "M A U E R S P I E L":PAUSE 10:BEEP:CLS
@@ -455,38 +455,38 @@ ENTEN        = E
 2240 POKE -B-2,182:POKE -B-1,142:POKE -B,32:POKE -B+1,191:GOTO 2242
 2242 RETURN
 3000 WINDOW:CLS
-3002 PRINT STRING$(32,"Ç"):PRINT
+3002 PRINT STRING$(32,""):PRINT
 3004 L$="=== 3D - NOUGHT AND CROSSES ===":PRINT L$:PRINT
 3006 PRINT SPC(12);"3D-Muehle":PRINT
-3008 PRINT STRING$(32,"Ç")
+3008 PRINT STRING$(32,"")
 3010 PRINT AT(9,0);" "
 3012 PAUSE 10
 3014 A=10:B=27:F=0
-3016 PRINT AT(A,B);"²ºÿ´ ":X=A+1:Y=B+1
-3018 PRINT AT(X,Y);"ºÿ´ ":X=A+2
-3020 PRINT AT(X,Y);"±ÿ° ":X=A+3
-3022 PRINT AT(X,Y);"µÿ´ ":X=A+4
-3024 PRINT AT(X,Y);"µÿ´ ":X=A+5:IF F=1 THEN RETURN
-3026 PRINT AT(X,Y);"¾ÿ ":X=A+6
-3028 PRINT AT(X,Y);"½µ ":X=A+7
-3030 PRINT AT(X,Y);"¶º "
-3032 PRINT AT(A,B);"·ÿÿ ":X=A+1
-3034 PRINT AT(X,B);"²ÿÿ ":X=A+2:Y=B+1
-3036 PRINT AT(X,Y);"½¼ ":X=A+3
-3038 PRINT AT(X,Y);"ÿÿ ":X=A+4
-3040 PRINT AT(X,Y);"ÿÿ ":X=A+5:IF F=2 THEN RETURN
-3042 PRINT AT(X,B);"²ÿ´ ":X=A+6
-3044 PRINT AT(X,B);"µ » ":X=A+7
-3046 PRINT AT(X,B);"¶ º "
+3016 PRINT AT(A,B);" ":X=A+1:Y=B+1
+3018 PRINT AT(X,Y);" ":X=A+2
+3020 PRINT AT(X,Y);" ":X=A+3
+3022 PRINT AT(X,Y);" ":X=A+4
+3024 PRINT AT(X,Y);" ":X=A+5:IF F=1 THEN RETURN
+3026 PRINT AT(X,Y);" ":X=A+6
+3028 PRINT AT(X,Y);" ":X=A+7
+3030 PRINT AT(X,Y);" "
+3032 PRINT AT(A,B);" ":X=A+1
+3034 PRINT AT(X,B);" ":X=A+2:Y=B+1
+3036 PRINT AT(X,Y);" ":X=A+3
+3038 PRINT AT(X,Y);" ":X=A+4
+3040 PRINT AT(X,Y);" ":X=A+5:IF F=2 THEN RETURN
+3042 PRINT AT(X,B);" ":X=A+6
+3044 PRINT AT(X,B);"  ":X=A+7
+3046 PRINT AT(X,B);"  "
 3048 F=1:B=B-1
 3050 GOSUB 3016
-3052 Z=B+2:PRINT AT(X,Z);"ÿ³ ":X=A+6
-3054 PRINT AT(X,Y);"µ°» ":X=A+7
-3056 PRINT AT(X,Y);"º º ":F=2
+3052 Z=B+2:PRINT AT(X,Z);" ":X=A+6
+3054 PRINT AT(X,Y);" ":X=A+7
+3056 PRINT AT(X,Y);"  ":F=2
 3058 GOSUB 3032
-3060 PRINT AT(X,Y);"µ´ ":X=A+6
-3062 PRINT AT(X,Y);"µ» ":X=A+7
-3064 PRINT AT(X,Y);"º¹ ":F=0
+3060 PRINT AT(X,Y);" ":X=A+6
+3062 PRINT AT(X,Y);" ":X=A+7
+3064 PRINT AT(X,Y);" ":F=0
 3066 B=B-1
 3068 IF B&lt;0 THEN 3080:ELSE 3016
 3070 FOR V=0 TO 7
@@ -515,11 +515,11 @@ ENTEN        = E
 3116 PRINT "Das Ziel ist,moeglichst viele"
 3118 PRINT "vollstaendige Dreierreihen zu"
 3120 PRINT "besetzen.":PAUSE 30
-3122 PRINT "Der erste Spieler(Ï) hat den"
+3122 PRINT "Der erste Spieler() hat den"
 3124 PRINT "Vorteil am Ende ein Feld mehr"
 3126 PRINT "besetzen zu koennen.Als Aus-"
 3128 PRINT "gleich darf erst der zweite"
-3130 PRINT "Spieler(Ç) das zentrale Feld B5"
+3130 PRINT "Spieler() das zentrale Feld B5"
 3132 PRINT "besetzen.":PAUSE 30
 3134 PRINT:PRINT "Die Zuege werden durch Eingabe"
 3136 PRINT "eines Buchstabens sowie einer"
@@ -530,11 +530,11 @@ ENTEN        = E
 3146 WIDTH 255:CLS:PRINT "Darf ich um die Namen der":PRINT
 3148 PRINT "Spieler bitten!"
 3150 PRINT STRING$(32,"-"):PRINT:PRINT:PRINT
-3152 INPUT "Wer spielt mit Ï ? ===&gt;";M$
+3152 INPUT "Wer spielt mit  ? ===&gt;";M$
 3154 PRINT:PRINT:PRINT
-3156 INPUT "Wer spielt mit Ç ? ===&gt;";N$
+3156 INPUT "Wer spielt mit  ? ===&gt;";N$
 3158 DIM A(30),Z(30),C(18),R(18),X(30),Y(30)
-3160 ZZ$="Ï":ZY$="Ç"
+3160 ZZ$="":ZY$=""
 3162 X$="020814020814020814061218061218061218101622101622101622"
 3164 Y$="060606121212181818040404101010161616020202080808141414"
 3166 FOR Z=1 TO 27
@@ -595,23 +595,23 @@ ENTEN        = E
 3276 RETURN
 3278 PRINT AT(0,6);"3D-NOUGHT AND CROSSES"
 3280 PRINT AT(1,0);STRING$(32,"=")
-3282 PRINT AT(3,10);"1     2     3"
-3284 PRINT AT(4,7);"â î¡        â î¡"
-3286 PRINT AT(5,6);"1   ¡ 2     3   ¡"
-3288 PRINT AT(6,3);"â î    ¡    â î    ¡"
-3290 PRINT AT(7,2);"1     2     3       ¡"
-3292 PRINT AT(8,2);"¡       ¡   ¡       ¡"
-3294 PRINT AT(9,2);"¡       4   ¡ 5     6 "
-3296 PRINT AT(10,2);"¡       ¡   ¡       ¡"
-3298 PRINT AT(11,2);"¡   4   ¡ 5 ¡   6   ¡"
-3300 PRINT AT(12,2);"¡       ¡   ¡       ¡"
-3302 PRINT AT(13,2);"4     5 ¡   6       ¡"
-3304 PRINT AT(14,2);"¡       ¡   ¡       ¡"
-3306 PRINT AT(15,2);"¡       7   ¡ 8     9    C"
-3308 PRINT AT(16,2);"¡    â î    ¡    â î"
-3310 PRINT AT(17,2);"¡   7     8 ¡   9     B"
-3312 PRINT AT(18,2);"¡â î        ¡â î"
-3314 PRINT AT(19,2);"7     8     9     A"
+3282 PRINT AT(3,10);"123"
+3284 PRINT AT(4,7);"        "
+3286 PRINT AT(5,6);"1    2     3   "
+3288 PRINT AT(6,3);"            "
+3290 PRINT AT(7,2);"123       "
+3292 PRINT AT(8,2);"                 "
+3294 PRINT AT(9,2);"       4    5     6 "
+3296 PRINT AT(10,2);"                 "
+3298 PRINT AT(11,2);"   4    5    6   "
+3300 PRINT AT(12,2);"                 "
+3302 PRINT AT(13,2);"4     5    6       "
+3304 PRINT AT(14,2);"                 "
+3306 PRINT AT(15,2);"       789    C"
+3308 PRINT AT(16,2);"            "
+3310 PRINT AT(17,2);"   7     8    9     B"
+3312 PRINT AT(18,2);"        "
+3314 PRINT AT(19,2);"789     A"
 3316 PRINT AT(21,0);STRING$(32,"=")
 3318 RETURN
 3320 WINDOW:CLS
@@ -742,7 +742,7 @@ ENTEN        = E
 4119 Z=1
 4120 GOTO 4057
 4121 FOR Q=1 TO 8
-4122 IF C$(Q)=X$THEN 4125
+4122 IF C$(Q)=X$ THEN 4125
 4123 NEXT Q
 4124 GOTO 4111
 4125 J=Q
@@ -857,7 +857,7 @@ ENTEN        = E
 4234 PAUSE 200:CLS:RETURN
 5000 WINDOW:CLS
 5001 PRINT:PRINT:PRINT:PRINT "      M E M O R Y"
-5002 REM Peter  Schellin Melanchthonstr.4
+5002 REMPeter  Schellin Melanchthonstr.4
 5003 REM G O E R L I T Z  8 9 0 0       
 5004 PRINT:PRINT:PRINT:PRINT:INPUT "SCHWIERIGKEITSGRAD A/F/G";A$
 5005 IF A$="A"THEN SG=4:PRINT:PRINT "FUER ANFAENGER"
@@ -1072,12 +1072,12 @@ ENTEN        = E
 7000 CLS
 7002 PRINT:PRINT:PRINT:PRINT:PRINT
 7004 PRINT:PRINT:PRINT:PRINT
-7006 PRINT "   ÿÿ ÿ ÿ   ÿ   ¾ÿ ÿÿ ÿÿ"
-7008 PRINT "   ÿ ÿ ÿ ÿ   ÿ   ÿ ÿ ÿ ÿ ÿ ÿ"
-7010 PRINT "   ÿÿ ÿ ÿ   ÿ   ÿÿÿ ÿÿ ÿ ÿ"
-7012 PRINT "   ÿ ÿ ÿ ÿ   ÿ   ÿ ÿ ÿ ÿ ÿ ÿ"
-7014 PRINT "   ÿÿÿ ÿ ÿÿÿ ÿÿÿ ÿ ÿ ÿ ÿ ÿÿÿ"
-7016 PRINT "ÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇÇ"     
+7006 PRINT "             "
+7008 PRINT "                 "
+7010 PRINT "              "
+7012 PRINT "                 "
+7014 PRINT "           "
+7016 PRINT ""     
 7018 PRINT:INPUT "WIEVIELE VERSUCHE?";MM
 7020 INPUT "Mit wievielen Banden?";R0
 7022 PRINT
@@ -1085,7 +1085,7 @@ ENTEN        = E
 7026 IF R0&gt;4 THEN PAUSE 10:PRINT "Sehr mutig fuer den Anfang!":PAUSE 20
 7028 PRINT
 7030 PRINT "SPIELANLEITUNG:"
-7032 PRINT "ýýýýýýýýýýýýýýý"
+7032 PRINT ""
 7034 PRINT
 7036 PRINT "1.Steht der Cursor hinter         POSITION? ,so kann die Ab-"
 7038 PRINT "  schussposition mit den Tasten   Cursor LINKS bzw. RECHTS"
@@ -1108,7 +1108,7 @@ ENTEN        = E
 7072 WINDOW
 7074 P=INT((V-V0)*RND(1))+V0
 7076 Q=INT((H-H0)*RND(1))+H0
-7078 A$="Ç"
+7078 A$=""
 7080 IF M&gt;1 THEN 7296
 7082 FOR K1=1 TO 1024
 7084 PRINT A$;
@@ -1125,7 +1125,7 @@ ENTEN        = E
 7106 PRINT AT(22,0);"&lt;"
 7108 PRINT AT(22,31);"&gt;"
 7110 WINDOW
-7112 PRINT AT(V,X);"Ï"
+7112 PRINT AT(V,X);""
 7114 WINDOW 25,25,17,30
 7116 PRINT "POSITION?";
 7118 Z$=INKEY$
@@ -1169,8 +1169,8 @@ ENTEN        = E
 7194 IF Z=3 OR Z=4 THEN I=I-1
 7196 IF Z=1 OR Z=3 THEN J=J+1
 7198 IF Z=2 OR Z=4 THEN J=J-1
-7200 PRINT AT(I,J);"Ï"
-7202 PRINT AT(I0,J0);"Ù"
+7200 PRINT AT(I,J);""
+7202 PRINT AT(I0,J0);""
 7204!trefferuntersuchung
 7206 IF I&lt;P OR I&gt;P+1 THEN 7162
 7208 IF J&lt;Q OR J&gt;Q+1 THEN 7162
@@ -1196,18 +1196,18 @@ ENTEN        = E
 7248 PAUSE 50:CLS
 7250 PRINT AT(11,10);"Auf Wiedersehen!"
 7252 PAUSE 20:RUN
-7254 PRINT AT(V,X);"Ï"
-7256 PRINT AT(V-1,X-1);""
-7258 PRINT AT(V-1,X+1);""
+7254 PRINT AT(V,X);""
+7256 PRINT AT(V-1,X-1);""
+7258 PRINT AT(V-1,X+1);""
 7260 RETURN
 7262 PRINT AT(V,X);" "
 7264 PRINT AT(V-1,X-1);" "
 7266 PRINT AT(V-1,X+1);" "
 7268 RETURN
-7270 PRINT AT(P,Q);"®"
-7272 PRINT AT(P,Q+1);"­"
-7274 PRINT AT(P+1,Q);"«"
-7276 PRINT AT(P+1,Q+1);"¬"
+7270 PRINT AT(P,Q);""
+7272 PRINT AT(P,Q+1);""
+7274 PRINT AT(P+1,Q);""
+7276 PRINT AT(P+1,Q+1);""
 7278 RETURN
 7280 PRINT AT(23,11);"Billard"
 7282 PRINT AT(25,4);R0
@@ -1231,13 +1231,13 @@ ENTEN        = E
 8003 A5$="MONDLANDUNG"
 8004 WINDOW:CLS:PRINT AT(0,0);" "
 8005 PRINT AT(2,2);A$  
-8006 PRINT AT(4,0);"Á",STRING$(29,""),"" 
-8007 PRINT AT(5,0);"":PRINT AT(5,30);"À"         
-8008 PRINT AT(6,0);"",STRING$(29,"ø"),"È"     
+8006 PRINT AT(4,0);"",STRING$(29,""),"" 
+8007 PRINT AT(5,0);"":PRINT AT(5,30);""         
+8008 PRINT AT(6,0);"",STRING$(29,""),""     
 8009 PRINT AT(5,2);A2$
-8010 PRINT AT(8,0);STRING$(31,"ÿ")
-8011 FOR I=9 TO 13:PRINT AT(I,0);"ÿ":PRINT AT(I,30);"ÿ":NEXT I     
-8012 PRINT AT(14,0);STRING$(31,"ÿ") 
+8010 PRINT AT(8,0);STRING$(31,"")
+8011 FOR I=9 TO 13:PRINT AT(I,0);"":PRINT AT(I,30);"":NEXT I     
+8012 PRINT AT(14,0);STRING$(31,"") 
 8013 PRINT AT(10,29-LEN(A4$));A4$:PRINT AT(12,29-LEN(A5$));A5$    
 8014 PRINT AT(19,2);"* VEB ROBOTRON-ELEKTRONIK *    
 8015 PRINT AT(21,13);"RIESA" 
@@ -1401,7 +1401,7 @@ ENTEN        = E
 9028 PRINT AT(5,1);"SCHATZSUMME:"
 9029 IF F$&lt;&gt;"F"THEN PRINT AT(5,21);"MARK":GOTO 9031
 9030 PRINT AT(5,21);"DOLLAR"
-9031 A$="Î":B$=" ":C$="Ä"
+9031 A$="":B$=" ":C$=""
 9032 PRINT AT(20,C);A$:C=C+1
 9033 IF C=10 THEN C=C+1
 9034 IF C=15 THEN C=C+1
@@ -1432,7 +1432,7 @@ ENTEN        = E
 9059 IF L2=25 THEN 9061
 9060 GOTO 9058
 9061 D=INT(2*RND(1))+1:GOSUB 9075:GOSUB 9108:GOSUB 9075
-9062 IF F$="F"THEN 9063:ELSE A$="Í"
+9062 IF F$="F"THEN 9063:ELSE A$=""
 9063 IF D=2 THEN G$=B$
 9064 IF D=1 THEN G$=A$
 9065 PRINT AT(15,10);G$
@@ -1495,24 +1495,24 @@ ENTEN        = E
 9122 IF W=10 OR W=15 THEN 9140
 9123 IF W=20 THEN 9140
 9124 GOTO 9109
-9125 IF W=10 AND G$=B$THEN 9129
-9126 IF W=15 AND G$=B$THEN 9129
-9127 IF W=20 AND G$=B$THEN 9129
+9125 IF W=10 AND G$=B$ THEN 9129
+9126 IF W=15 AND G$=B$ THEN 9129
+9127 IF W=20 AND G$=B$ THEN 9129
 9128 GOTO 9109
 9129 PRINT AT(Q,W);B$
 9130 Q=Q+1:PRINT AT(Q,W);C$
 9131 IF Q=19 THEN 9109
 9132 GOTO 9129
-9133 IF W=10 AND G$=A$THEN 9109
-9134 IF W=15 AND G$=A$THEN 9109
-9135 IF W=20 AND G$=A$THEN 9109
+9133 IF W=10 AND G$=A$ THEN 9109
+9134 IF W=15 AND G$=A$ THEN 9109
+9135 IF W=20 AND G$=A$ THEN 9109
 9136 PRINT AT(Q,W);B$
 9137 Q=Q+1:PRINT AT(Q,W);C$
 9138 IF Q=24 THEN 9109
 9139 GOTO 9136
-9140 IF W=10 AND G$=A$THEN 9109
-9141 IF W=15 AND G$=A$THEN 9109
-9142 IF W=20 AND G$=A$THEN 9109
+9140 IF W=10 AND G$=A$ THEN 9109
+9141 IF W=15 AND G$=A$ THEN 9109
+9142 IF W=20 AND G$=A$ THEN 9109
 9143 PRINT AT(Q,W);B$
 9144 Q=Q+1:PRINT AT(Q,W);C$
 9145 IF Q=30 THEN 9147
@@ -1578,7 +1578,7 @@ ENTEN        = E
 10045 CLS
 10050 PRINT
 10055 PRINT "      KOMBINATIONSSPIEL"
-10060 PRINT "                        "
+10060 PRINT "     "
 10065 PRINT:PRINT "Wer nimmt den letzten Stein?"
 10070 PRINT
 10075 PRINT "Es bestehen 3 Haufen mit einer":PRINT
@@ -1760,29 +1760,29 @@ ENTEN        = E
 15000 REM ERSTELLT VON D.SCHROETER;    E.REICHARDT-STR.3;NORDHAUSEN;   50
 15002 CLS
 15004 PRINT AT(0,0);" "
-15006 PRINT AT(7,10);"¾ÿ ÿ ÿ ÿÿÿ"
-15008 PRINT AT(8,10);"ÿ ÿ ÿ ÿ ÿ"
-15010 PRINT AT(9,10);"ÿýÿ ÿ ÿ ÿý"
-15012 PRINT AT(10,10);"ÿ ÿ ÿÿÿ ÿ"
-15014 PRINT AT(13,6);"ÿÿÿ  ÿ ÿÿÿ ÿÿÿ  ÿ"
-15016 PRINT AT(14,6);"ÿ   ÿÿ  ÿ  ÿ   ÿÿ á³"
-15018 PRINT AT(15,6);"ÿü  ÿ¿ÿ  ÿ  ÿý  ÿ¿ÿ"
-15020 PRINT AT(16,6);"ÿþþ ÿ ¿  ÿ  ÿþþ ÿ ¿"
-15022 PRINT AT(19,10);"ÿÿÿ ¾ÿ ¾ÿ ÿÿ"
-15024 PRINT AT(20,10);"  ÿ ÿ ÿ ÿ   ÿ ÿ"
-15026 PRINT AT(21,10);"û ÿ ÿýÿ ÿ±ÿ ÿ ÿ"
-15028 PRINT AT(22,10);"¿ÿÿ ÿ ÿ ¿ÿÿ ÿÿ"
-15030 PRINT AT(25,6);"ô" 
-15032 PRINT AT(26,6);"®­ è               "
-15034 PRINT AT(27,6);"®­®­              è"
-15036 PRINT AT(28,4);"ô­è®­              ô® "
-15038 PRINT AT(29,4);"ô  ­è             ¬ ô "
-15040 PRINT AT(30,4);"ô    ­            ®   ô "
-15042 PRINT AT(31,5);"ÇÇÇÇÇ            ÇÇÇÇÇ  "
+15006 PRINT AT(7,10);"   "
+15008 PRINT AT(8,10);"    "
+15010 PRINT AT(9,10);"   "
+15012 PRINT AT(10,10);"   "
+15014 PRINT AT(13,6);"      "
+15016 PRINT AT(14,6);"           "
+15018 PRINT AT(15,6);"        "
+15020 PRINT AT(16,6);"        "
+15022 PRINT AT(19,10);"   "
+15024 PRINT AT(20,10);"         "
+15026 PRINT AT(21,10);"     "
+15028 PRINT AT(22,10);"    "
+15030 PRINT AT(25,6);"" 
+15032 PRINT AT(26,6);"                "
+15034 PRINT AT(27,6);"              "
+15036 PRINT AT(28,4);"               "
+15038 PRINT AT(29,4);"                 "
+15040 PRINT AT(30,4);"                    "
+15042 PRINT AT(31,5);"              "
 15044 FOR H=0 TO 5 
-15046 PRINT AT(14,26);"áâ³":PRINT AT(15,27);""
+15046 PRINT AT(14,26);"":PRINT AT(15,27);""
 15048 PAUSE 2
-15050 PRINT AT(15,27);" ":PRINT AT(14,26);"á³"
+15050 PRINT AT(15,27);" ":PRINT AT(14,26);""
 15052 NEXT H
 15054 CLS:PRINT AT(0,0);" ":PRINT AT(10,12);"SPIELREGELN"  
 15056 PRINT AT(11,11);"*************"
@@ -1795,56 +1795,56 @@ ENTEN        = E
 15070 GOSUB 15074
 15072 END
 15074 CLS
-15076 PRINT AT(16,27);"®­":PRINT AT(17,26);"® ­":PRINT AT(18,25);"®    "
-15078 PRINT AT(19,0);"ô ô                      «   ­ "
-15080 PRINT AT(20,0);"®­®­ô              ô         "     
-15082 PRINT AT(21,0);"®­®­®­           ô ®­     «  ¬ "
-15084 PRINT AT(22,0);"ô ô ®­   ß ³     ®­®­     øø¬  "
-15086 PRINT AT(23,0);"¾ÿÿÿèøù ³Ý      ®­®­       Ç   "
-15088 PRINT AT(24,0);"ÿÿÿÿÿÿÿÿ,,,,,,,,ô,ô,,,,,,,,Ç,,,"
+15076 PRINT AT(16,27);"":PRINT AT(17,26);" ":PRINT AT(18,25);"    "
+15078 PRINT AT(19,0);"                           "
+15080 PRINT AT(20,0);"                       "     
+15082 PRINT AT(21,0);"                    "
+15084 PRINT AT(22,0);"                  "
+15086 PRINT AT(23,0);"                 "
+15088 PRINT AT(24,0);",,,,,,,,,,,,,,,,,,,,"
 15090 PRINT AT(24,9);CHR$(156):PRINT AT(24,10);CHR$(152)
 15092 PRINT AT(25,0);",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
 15094 PRINT AT(26,0);",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
-15096 PRINT AT(3,3);"® ­":PRINT AT(4,2);"®   ­":PRINT AT(2,5);"ø"
-15098 PRINT AT(5,2);"«   ¬":PRINT AT(6,2);"¬«¬"
-15100 PRINT AT(21,24);" ":PRINT AT(22,23);" ":PRINT AT(23,22);" Æ"
-15102 PRINT AT(24,22);"ÿ":PRINT AT(25,22);" èè" :PRINT AT(29,10);"TREFFER:"
+15096 PRINT AT(3,3);" ":PRINT AT(4,2);"   ":PRINT AT(2,5);""
+15098 PRINT AT(5,2);"   ":PRINT AT(6,2);""
+15100 PRINT AT(21,24);" ":PRINT AT(22,23);" ":PRINT AT(23,22);" "
+15102 PRINT AT(24,22);"":PRINT AT(25,22);" " :PRINT AT(29,10);"TREFFER:"
 15104 PRINT AT(29,18);Z:PRINT AT(31,10);"SCHUSS :":PRINT AT(31,18);S
 15106 A=INT(6*RND(1))+6
 15108 FOR B=1 TO 28
 15110 C=INT(3*RND(1))-1:A=A+C:IF A&lt;0 THEN A=0:IF A&gt;14 THEN A=14
-15112 PRINT AT(A,B);"á³"
+15112 PRINT AT(A,B);""
 15114 IF INKEY$=CHR$(32)THEN GOSUB 15128
 15115 IF INKEY$="E"THEN RUN
-15116 PRINT AT(A,B);"áú³"
+15116 PRINT AT(A,B);""
 15118 PRINT AT(A,B);"   "
-15120 PRINT AT(3,3);"® ­":PRINT AT(4,2);"®   ­":PRINT AT(2,5);"ø"
-15122 PRINT AT(5,2);"«   ¬":PRINT AT(6,2);"¬«¬":PRINT AT(16,27);"®­"
+15120 PRINT AT(3,3);" ":PRINT AT(4,2);"   ":PRINT AT(2,5);""
+15122 PRINT AT(5,2);"   ":PRINT AT(6,2);"":PRINT AT(16,27);""
 15124 PRINT AT(0,0);" ":NEXT
 15126 GOTO 15100
 15128!
-15130 S=S+1:PRINT AT(21,24);"è"
-15132 PRINT AT(22,23);"è":PRINT AT(23,22);"±Æª"
-15134 PRINT AT(24,22);" ÿ":PRINT AT(25,22);"ô è"
+15130 S=S+1:PRINT AT(21,24);""
+15132 PRINT AT(22,23);"":PRINT AT(23,22);""
+15134 PRINT AT(24,22);" ":PRINT AT(25,22);" "
 15136 FOR F=0 TO 15  
-15138 B=B+1:PRINT AT(A,B-1);"á³"
+15138 B=B+1:PRINT AT(A,B-1);""
 15140 IF B&gt;=31 THEN B=B-1
 15142 PRINT AT(20-F,24);"*" 
 15144 IF A=19-F AND B  =24 THEN GOTO 15158
 15146 IF A=19-F AND B+1=24 THEN GOTO 15158
 15148 PRINT AT(20-F,24);" "
-15150 PRINT AT(A,B-1);" ùú³"
+15150 PRINT AT(A,B-1);" "
 15152 PRINT AT(A,B);"    "
 15154 NEXT F
 15156 GOTO 15096
 15158 Z=Z+1:FOR G=0 TO 20
 15160 PRINT AT(A+G,B-2);"      "
-15162 PRINT AT(A+G,B);"æ":PRINT AT(A+G+1,B);"":PRINT AT(A+G+2,B);"°"
+15162 PRINT AT(A+G,B);"":PRINT AT(A+G+1,B);"":PRINT AT(A+G+2,B);""
 15164 PAUSE 1:PRINT AT(A+G,B);" ":PRINT AT(A+G+1,B);" "
 15166 PRINT AT(A+G+2,B);" "
-15168 PRINT AT(17,26);"®":PRINT AT(18,25);"®"
-15170 PRINT AT(19,25);"«"
-15172 PRINT AT(20,25);""
+15168 PRINT AT(17,26);"":PRINT AT(18,25);""
+15170 PRINT AT(19,25);""
+15172 PRINT AT(20,25);""
 15174 IF(A+G)=19 THEN GOTO 15096
 15176 NEXT G
 </pre>

@@ -1,0 +1,70 @@
+<kurz src="Überarbeitete Version der Enterprise Simulation, Klingonen und so"/>
+<lang>
+
+ BEFEHLSLISTE :              
+ --------------              
+                             
+ NAV - NAVIGATION IM RAUM     
+ SRS - KURZSTRECKENSENSOREN   
+ LRS - LANGSTRECKENSENSOREN   
+ PHA - PHASER STEUERN         
+ TOR - PHOTONENTORPEDO        
+ SHE - SCHILD AUFLADEN        
+ DAM - FEHLERUEBERWACHUNG     
+ COM - COMPUTERDIALOG         
+ XXX - AUFGEBEN               
+                           
+Der Weltraum -
+
+unendliche Weiten...
+
+Dies sind die Abenteuer
+
+des Raumschiffs ENTERPRISE
+
+die mit ihrer 400 Mann starken
+
+Besatzung unterwegs ist, um
+
+die feindliche Bedrohung durch
+
+die Klingonen abzuwehren und
+
+die Planeten der Foederation
+
+vor feindlichen Angriffen zu
+
+schuetzen.
+
+IHRE MISSION IST FOLGENDE
+-------------------------
+
+
+ZERSTOEREN SIE DIE 26 KLINGONEN-
+
+KRIEGSSCHIFFE, DIE IN DIE
+
+GALAXIS EINGEDRUNGEN SIND,
+
+BEVOR SIE DAS HAUPTQUARTIER
+
+DER FOEDERATION ANGREIFEN.
+
+KOENNEN, BIS ZUR STERNZEIT 2627
+
+SIE HABEN 27 TAGE DAFUER ZEIT.
+
+ES BEFINDEN SICH 2 STERNBASEN
+
+IN DER GALAXIS, UM IHR SCHIFF ZU
+
+VERSORGEN.
+
+
+
+SIND SIE BEREIT DAS KOMMANDO
+
+ZU UEBERNEHMEN (Y/N) █      
+
+<include src="star.B"/></lang>
+<required></required>

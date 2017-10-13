@@ -1,0 +1,3 @@
+<kurz src="Denke dir Tier aus, der Computer versucht es zu erraten!"/>
+<lang><include src="ratetier.B"/></lang>
+<required></required>

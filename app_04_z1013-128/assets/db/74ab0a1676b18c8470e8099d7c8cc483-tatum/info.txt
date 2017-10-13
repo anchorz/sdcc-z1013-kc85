@@ -1,0 +1,41 @@
+<kurz src="Adventure, PHANTASTISCHES ABENTEUER IM ZAUBERREICH "/>
+<lang>
+Am  'MEER  DER EWIGEN  TRAEUME' steht  die Burg  TATUM, in  ihr
+leben der  boese Zauberer AKRAN und seine Kobolde. Der Zauberer
+hat vor etwa 99Jahren die Prinzessin  LAILA  WANDA  entfuehrt
+und in Tiefschlaf versetzt, und noch niemandem ist es gelungen,
+bis zu ihr vorzudringen.
+
+Alle, die es versuchten,mussten sterben, denn ausser dem boesen
+Zauberer  und  seinen  Kobolden gibt es auch  noch viele Fallen
+und Orte, die  mit einem Zauber belegt wurden.Aber es gibt auch
+gute  Geister  und das  Wunderschwert, und  wenn  es  Dir ge-
+lingt, dem  guten  Geist   sein Amulett  zurueckzubringen, dann
+wird er Dir hilfreich zur Seite stehen.
+
+Uebrigens wird NIEMANDSLAND von den Menschen auch  'REICH  DER
+PHANTASIE'  genannt !!!  
+
+Deine  Taten  im  Niemandsland musst Du mit  Eingabe von 
+Handlungen auf die Frage 'WAS NUN?' steuern.
+
+Welche Worte und Saetze wirksam sind, sollst Du  selbst
+herausfinden.
+
+Einige Beispiele als Hilfe:
+
+ICH GEHE NACH NORDEN
+ICH SEHE ZUR WAND
+ICH NEHME ...
+ICH WILL AUFGEBEN
+
+RICHTUNGEN AUCH ABGEKUERZT:
+
+'N'=NORDEN      'S'=SUEDEN
+'W'=WESTEN      'O'=OSTEN
+'H'=HOCH        'R'=RUNTER
+
+'I'=INVENTUR                
+
+<include src="tatum.B"/></lang>
+<required></required>

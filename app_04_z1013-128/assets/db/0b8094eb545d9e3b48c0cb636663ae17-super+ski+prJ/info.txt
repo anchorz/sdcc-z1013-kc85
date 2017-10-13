@@ -1,4 +1,4 @@
-<kurz>Slalom, fahre zwischen den Flaggen durch</kurz>
+<kurz src="Slalom, fahre zwischen den Flaggen durch"/>
 <lang>****************************************************************
 *                                                              *
 *        Beschreibung des MC-Spiels 'SUPER-SKI'                *

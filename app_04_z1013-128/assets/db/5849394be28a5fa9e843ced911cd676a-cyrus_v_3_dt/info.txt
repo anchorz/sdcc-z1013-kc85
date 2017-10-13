@@ -1,0 +1,3 @@
+<kurz src="gutes Schachprogramm"/>
+<lang></lang>
+<requires></requires>

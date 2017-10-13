@@ -1,0 +1,16 @@
+<kurz src="Labyrinth mit 3D Effekt+Tiny-Basic"/>
+<lang>Am Anfang etwas warten, bevor es los geht.
+
+
+Erlaeuterungen zur Eingabe:
+
+Space      - 1 Schritt vorwaerts
+
+Kursor re. - Drehung rechts
+
+Kursor li. - Drehung links
+
+Q          - Programmende
+                       
+<include src="knossost.b"/></lang>
+<required></required>

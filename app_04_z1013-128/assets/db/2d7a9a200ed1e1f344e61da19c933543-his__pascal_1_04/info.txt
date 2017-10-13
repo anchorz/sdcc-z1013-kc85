@@ -1,0 +1,11 @@
+<kurz src="Pascal-Compiler"/>
+<lang>
+
+siehe Beschreibung: Wichtige Adressen
+
+196D    enthält Anfangsadresse Quelltext
+1A07    enthält Endadresse Quelltext
+
+<include src="pascal_1_i.doc.txt"/>                
+</lang>
+<required></required>

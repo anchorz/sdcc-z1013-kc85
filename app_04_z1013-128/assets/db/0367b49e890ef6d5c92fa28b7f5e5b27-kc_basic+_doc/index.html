@@ -15,11 +15,11 @@
 <body>
 <div></div><div class="filelist">1800 518f 0000 I ... <a href="kc_basic+_doc.z80">KC-BASIC+.DOC&nbsp;&nbsp;&nbsp;</a></div>
 <pre>Wofür das + im Dateinamen steht weiss ich nicht.
-&lt;a href="kc_basic+_doc.txt"&gt;kc_basic+_doc.txt&lt;/a&gt;
+<link>kc_basic+_doc.txt</link>
 
 KC-BASIC+ fuer "Z 1 0 1 3"
 ==========================
-&amp;&gt;gt;CRC=AA85&amp;&gt;lt;
+>CRC=AA85<
 
 Adressbereich  : 100H - 2AFFH
 Startadresse   : 300H
@@ -126,7 +126,7 @@ A=POS(X)            aktuelle Cursorpos. wird in A uebergeben
 PAUSE/N             Ohne Variable Unterbrechung bis BREAK
                     mit Variable Unterbr. fuer N/10 Sekunden.
 BEEP                Tonsignal auf TB-Buchse
-                    Tonhoehe kann mit POKE 110,X (0&amp;&gt;lt;=X&amp;&gt;lt;=255)
+                    Tonhoehe kann mit POKE 110,X (0<=X<=255)
                     veraendert werden.
 GOSUB ZN            Sprung in ein Unterprogramm ab ZN.
                     Abschluss des Unterprogramms mit RETURN
@@ -203,8 +203,8 @@ LN  (N)   Natuerlicher Logarithmus von N
 EXP (N)   Exponentialfunktion N
 RND (N)   Zufallszahl groesser 0 kleiner 1
           N=0 dann Wert ZZ normal
-          N&amp;&gt;gt;0 dann naechster Wert der ZZ-Reihe
-          N&amp;&gt;lt;0 dann neue Folge von ZZ (neu initialisieren)
+          N>0 dann naechster Wert der ZZ-Reihe
+          N<0 dann neue Folge von ZZ (neu initialisieren)
 PI        Konstante PI=3.14159
 LOGISCHE OPERATIONEN
 ==============================================================
@@ -215,8 +215,8 @@ NOT       logische Negation
 ARITHMETISCHE und VERGLEICHSOPERATIONEN
 =============================================================
 + plus,  - minus,  * mal,  / durch,  = ist gleich
-() Klammern,  ^ hoch,  &amp;&gt;lt; kleiner als,  &amp;&gt;gt; groesser als (auch g)
-&amp;&gt;lt;&amp;&gt;gt; ungleich (auch u),( ) Klammer auf / zu (auch verschachtelt)
+() Klammern,  ^ hoch,  < kleiner als,  > groesser als (auch g)
+<> ungleich (auch u),( ) Klammer auf / zu (auch verschachtelt)
 
 FEHLERMELDUNGEN
 ============================================================

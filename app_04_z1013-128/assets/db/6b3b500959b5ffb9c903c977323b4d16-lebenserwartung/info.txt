@@ -1,0 +1,13 @@
+<kurz src="LEBENSERWARTUNGSPROGNOSE"/>
+<lang>  
+LEBENSERWARTUNGSPROGNOSE
+________________________
+NACH PROF.DR.ROBERT ALLEN
+HUMAN RESOURCES INSTITUTS
+MORRISTOWN (NEW JERSEY) USA
+
+BITTE BEANTWORTEN SIE DAZU
+FOLGENDE FRAGEN:   ...
+
+<include src="lebenserwartung.B"/></lang>
+<required></required>

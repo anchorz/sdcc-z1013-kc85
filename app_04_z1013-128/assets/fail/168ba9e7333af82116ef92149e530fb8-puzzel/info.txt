@@ -1,0 +1,9 @@
+<kurz src="Schiebepuzzle"/>
+<lang>Dateigröße muss es Vielfaches von 32 sein. 12 Bytes fehlen.
+Verschiebe solange,
+bis die Grafikzeichen
+zeilenweise geordnet    
+sind !  
+
+<include src="puzzel.B"/></lang>
+<required></required>

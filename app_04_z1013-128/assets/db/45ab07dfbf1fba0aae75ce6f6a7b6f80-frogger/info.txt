@@ -1,0 +1,15 @@
+<kurz>FROGGER AND SNAIL, Schnecken einsammeln</kurz>
+<lang>Das ist das Froesche-Schnecken-
+spiel !
+
+
+  Geschicklichkeit ist gefragt!
+
+
+* * ADAPTET FROM PC ZX 81 * *
+
+
+         Aufgepasst!
+                      
+<include>frogger.B</include></lang>
+<required></required>

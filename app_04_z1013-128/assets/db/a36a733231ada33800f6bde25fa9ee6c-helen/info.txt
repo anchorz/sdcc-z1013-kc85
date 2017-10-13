@@ -1,0 +1,5 @@
+<kurz src="ELIZA Variante: Tell me you problem..."/>
+<lang>ein bisschen langsam beim Antworten
+
+<include src="helen.B"/></lang>
+<required></required>

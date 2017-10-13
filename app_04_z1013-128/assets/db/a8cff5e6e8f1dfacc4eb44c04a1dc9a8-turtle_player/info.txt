@@ -1,0 +1,3 @@
+<kurz src="Kokosnüsse über Schildkröten tragen (8x4)"/>
+<lang>[SPALT]</lang>
+<required>2.02</required>

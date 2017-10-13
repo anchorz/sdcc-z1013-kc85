@@ -1,0 +1,7 @@
+<kurz src="SKAT und SANTA PARAVIA als Bundle"/>
+<lang>
+
+Die Version von SANTA PARAVIA wurde auch noch nicht vollständig angepasst.
+
+include src="parskat.B"/</lang>
+<required></required>

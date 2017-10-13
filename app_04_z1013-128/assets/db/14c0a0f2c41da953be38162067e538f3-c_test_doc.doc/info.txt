@@ -1,3 +1,3 @@
-<kurz>Kondensator-Tester</kurz>
-<lang><include>c_test_doc.doc.txt</include></lang>
+<kurz src="Kondensator-Tester"/>
+<lang><include src="c_test_doc.doc.txt"/></lang>
 <required></required>

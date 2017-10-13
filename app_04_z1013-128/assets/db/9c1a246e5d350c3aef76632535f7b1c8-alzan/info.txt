@@ -1,10 +1,10 @@
-<kurz>Adventure: finde den Weg aus der Stadt</kurz>
+<kurz src="Adventure: finde den Weg aus der Stadt"/>
 <lang>Piept am Anfang 90 mal bevor es losgeht.
 
 +++ WILLKOMMEN IN ALZAN +++
 
-SIE MUESSEN DIE MAUERN UEBERWIN-
-DEN, UM AUS DIESER STADT VON
+SIE MUESSEN DIE MAUERN UEBERWINDEN, 
+UM AUS DIESER STADT VON
 DIEBEN UND HALSABSCHNEIDERN ZU
     E N T K O M M E N !!
     
@@ -31,5 +31,7 @@ Was machen Sie nun ?
  Nehme     Trage              
  Werfe     Aufheben           
  Lege                         
- Bastle</lang>
+ Bastle
+
+<include src="alzan.B"/></lang>
 <required></required>

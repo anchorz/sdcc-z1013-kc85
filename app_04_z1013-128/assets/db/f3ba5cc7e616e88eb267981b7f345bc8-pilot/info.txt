@@ -1,0 +1,40 @@
+<kurz src="Hubschrauber, Rettungsmissionen fliegen"/>
+<lang>
+Du bist Kadett an einer Fliegerschule 
+
+fuer Hubschrauber. Heute hast Du Pruefung.
+
+Dazu hast Du 5 Tests zu absolvieren. 
+
+Die Position der Tests werden durch ♠ - angezeigt.
+
+Achte auf die entgegenkommenden Voegel !
+
+Tankmoeglichkeit besteht nur an der Basis.
+
+
+      nach einer Idee von
+
+         Klaus Greiner
+
+
+Die Steuerung des Hubschraubers
+
+erfolgt mit den Cursortasten.
+
+weitere Bedeutung:
+
+
+Space - Halt
+
+ 'T'  - Tanken
+
+ 'G'  - Beschleunigen
+
+ 'B'  - Bremsen
+
+ 'L'  - Leiter
+
+                         
+</lang>
+<required></required>

@@ -1,0 +1,3 @@
+<kurz src="Skat gegen den Computer"/>
+<lang><include src="skat.B"/></lang>
+<required></required>

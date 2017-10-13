@@ -1,0 +1,3 @@
+<kurz src="SANTA PARAVIA, Wirtschaftssimulation, finale und korrigiere Variante"/>
+<lang><include src="santa_paravia_1.B"/></lang>
+<required></required>

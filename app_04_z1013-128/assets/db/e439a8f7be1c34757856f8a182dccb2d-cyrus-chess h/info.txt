@@ -1,6 +1,6 @@
-<kurz>Cyrus Schach (englisch)</kurz>
+<kurz src="Cyrus Schach (englisch)"/>
 <lang>wie [40140c5896bab22433ff637216165bf0]=A2 Variante?, 
 aber wahrscheinlich für den Original-Monitor
 
-<include>I.CYRUS-CHESS V.2.txt</include></lang>
+<include src="I.CYRUS-CHESS V.2.txt"/></lang>
 <required></required>
