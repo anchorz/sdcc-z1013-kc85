@@ -1,0 +1,4 @@
+<kurz src="Slalom, fahre zwischen den Flaggen durch - anderer Joystick"/>
+<lang>Dies ist eine neuere Version von [afe889158d35c066ce7011e24acba561],
+Eingabe via Port 0, Joystick. Geht leider nicht richtig mit dem Practic Joystick.</lang>
+<required></required>

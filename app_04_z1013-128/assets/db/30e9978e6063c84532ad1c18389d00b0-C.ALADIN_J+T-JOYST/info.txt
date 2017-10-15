@@ -1,0 +1,7 @@
+<kurz src="ALADIN UND DIE WUNDERLAMPE (Brosig)"/>
+<lang>Tastaturlayout:
+wer
+snd 
+yxc
+</lang>
+<required></required>

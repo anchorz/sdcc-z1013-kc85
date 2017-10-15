@@ -1,0 +1,23 @@
+<kurz src="nur noch 120s Zeit um aus der Pyramide zu finden, Unterschied unbekannt"/>
+<lang>[RST20] Die Dateien unterscheiden sich sehr stark. Vielleicht wird ja dieser Teil
+(der unterschiedlich ist) ja gar nicht verwendet.
+
+gleich? [ecbcf0a2aa858cd4272f64073f08d108]
+
+Joe hat sich in einer Pyramide
+verirrt. Zu seinem Unglueck
+findet noch ein Erdbeben statt.
+Er hat nur noch 120s Zeit um
+aus dem Labyrint herauszufinden.
+Die Durchgaenge werden zeitweise
+durch Geroell blockiert!
+
+HELFEN SIE IHM !!!
+Joe koennen Sie mit der Tastatur
+fuehren.Bei Space geht Joe nach
+unten und bei Betaetigen der U-
+Taste nach oben.
+Fuer die geretteten Schaetze und
+die nicht benoetigte Zeit gibt
+es Punkte.</lang>
+<required></required>

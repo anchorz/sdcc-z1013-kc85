@@ -1,4 +1,4 @@
-<kurz>Ballspiel</kurz>
+<kurz src="Ballspiel, Solo-Tennis"/>
 <lang>ENCOUNTER
 
 DAS PROGRAMM IST EIN BALLSPIEL,
@@ -11,5 +11,5 @@ S2 oben
 
 VIEL SPASS...(SPACE)
 
-<include>encounter.b</include></lang>
+<include src="encounter.b"/></lang>
 <required></required>
