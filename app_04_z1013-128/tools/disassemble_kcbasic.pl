@@ -79,7 +79,7 @@ while(1) {
     $line_no=unpack("v",substr($content,$index,$len));
     $index+=$len;
     #printf("eol=%x index=%x\n",$eol,$index);
-    $token=sprintf("%d",$line_no); 
+    $token=sprintf("%5d",$line_no); 
     $token_space=1; #need space between tokens
     $token_type=GENERIC;
     $parse_line=1;

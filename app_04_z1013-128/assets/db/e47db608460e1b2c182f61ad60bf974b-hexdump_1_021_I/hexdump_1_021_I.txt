@@ -1,9 +1,9 @@
-
-************************************************************
+@l
+E************************************************************
      Beschreibung zum Service-Programm
      "Hex-ASCII-Dump" V 1.021 (RAM) fuer Z1013
      (c) by W.Bernhardt, Berlin 1988
-************************************************************
+************************************************************F
 
 
 
@@ -43,7 +43,7 @@ Dieses Programm realisiert folgende Funktionen:
 
 
 ************
-Anfangsmenue
+EAnfangsmenueF
 ************
 
 
@@ -62,7 +62,7 @@ akustisch signalisiert.
 
 
 ************
-Anzeigemodus
+EAnzeigemodusF
 ************
 
 Erwartet wird eine vierstellige Eingabe der hexadezimalen
@@ -97,7 +97,7 @@ gaben interpretiert und mit einem akustischen Signal quittiert.
 
 
 ************
-Editiermodus
+EEditiermodusF
 ************
 
 
@@ -112,7 +112,7 @@ des betrachteten RAM-Bereiches dargestellt.
 
 
 
-Cursorbewegungen im Dump
+ECursorbewegungen im DumpF
 
 
 Der Cursor (_) befindet sich auf dem 1.Halbbyte des ersten an-
@@ -138,7 +138,7 @@ nissen besonders gut fuer Hex-Eingaben zu EPROM-Programmierung.
 
 
 
-Hexadezimale Aenderungen
+EHexadezimale AenderungenF
 
  
 Entsprechend der aktuellen Cursorposition koennen Aenderungen
@@ -156,7 +156,7 @@ ziemlich schnell gemacht.
 
 
 
-Aenderungen im ASCII-Code
+EAenderungen im ASCII-CodeF
 
 
 Im Editiermodus ist auch die Eingabe von ASCII-Zeichen in den
@@ -166,7 +166,7 @@ ein "." (Punkt) einzugeben. Die Eingabe eines Punktes in das
 2.Halbbyte ist nur zulasessig, wenn im ersten ebenfalls ein
 Punkt eingegeben wurde. Ansonsten ist das eine Fehleingabe und
 wird mit einem akustischen Signal quittiert.
-In das 2.Halbbyte m u s s nach dem Punkt im 1.Halbbyte dann
+In das 2.Halbbyte Em u s sF nach dem Punkt im 1.Halbbyte dann
 das gwuenschte ASCII-Zeichen (von 20H bis 7EH) eingegeben wer-
 den.
 Nach erfolgter Eingabe des ASCII-Zeichens wird sofort konver-
@@ -174,17 +174,17 @@ tiert und das Zeichen neu im Hex-Dump und auch im ASCII-Dump
 zur Anzeige gebracht.
 Wurde im ersten Halbbyte der Punkt versehentlich eingegeben,
 dann ist ein normales Verlassen des 2.Halbbyte mit den Cursor-
-tasten nicht moeglich.
+tasten EnichtF moeglich.
 Durch Betaetigen von ^C wird die Punkteingabe rueckgaengig ge-
 macht und das urspruengliche Byte (1.u.2.Halbbyte) wieder an-
 gezeigt.
-Achtung ! Das Betaetigen von ^C ohne Punkt im 1.Halbbyte
+EAchtung !F Das Betaetigen von ^C ohne Punkt im 1.Halbbyte
 fuehrt zum Abbruch des Editiermodus, ohne die Aenderungen in
 den RAM zurueckzuschreiben.
 
 
 
-Rueckschreiben in RAM
+ERueckschreiben in RAMF
 
 
 Mit Betaetigen von CR (ENTER) werden alle auf dem Bildschirm
@@ -208,7 +208,7 @@ Programm ueber das Anfangsmenue beendet werden.
  
 
 **********
-Druckmodus
+EDruckmodusF
 **********
 
 
@@ -319,7 +319,7 @@ alle anderen Tasten fuehren zur Druckfortsetzung.
 
 
  
-Anmerkungen
+EAnmerkungenF
 
 
 
@@ -346,7 +346,7 @@ Anmerkungen
 
  
 
-Tastencodeabweichungen
+ETastencodeabweichungenF
 
 
 Funktion    Code Schreibmaschinen-         Folientastatur
@@ -361,7 +361,7 @@ Abbruch      03H        CTRL C                  S4/K
 
 
 
-Fehleingaben
+EFehleingabenF
 
 
 - Anfangsmenue:  Zeichen <> CR, Curs.hoch, Curs.runter
@@ -384,7 +384,7 @@ Fehleingaben
 
 
 
-Hinweise:
+EHinweise:F
 
 Ist kein Sprungverteiler im Rechner integriert, kann das fol-
 gende Unterprogramm ab Adresse 0D608H mit C3 xx xx aufgerufen
@@ -402,7 +402,7 @@ abgearbeitet werden.
 
 
   
-Kontaktadresse:         Wolfgang Bernhardt
+EKontaktadresse:F         Wolfgang Bernhardt
                         Marienburger Str. 35 a
                         Berlin
                         1 0 5 5

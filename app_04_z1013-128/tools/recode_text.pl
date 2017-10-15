@@ -1,6 +1,54 @@
 #!/usr/bin/perl -w
 
-$file=$ARGV[0];
+use Data::Dumper;
+use utf8;
+
+%epson_map=("{"=>"ä"   ,"|"=>"ö"   ,"}"=>"ü"   ,"~"=>"ß"   ,"["=>"Ä"   ,"\\"=>"Ö"  ,"]"=>"Ü");
+%ibm_map=  ("\xe4"=>"ä","\xf6"=>"ö","\xfc"=>"ü","\xdf"=>"ß","\xc4"=>"Ä","\xd6"=>"Ö","\xdc"=>"Ü");
+
+sub print_char($) {
+    my $c=shift;
+    
+    my $mapped=$c;
+   
+    if ($encoding eq "UML" && $epson_map{$c}) {
+        $mapped=$epson_map{$c};
+        utf8::encode($mapped);
+    }
+    if ($encoding eq "IBM" && $ibm_map{$c}) {
+        $mapped=$ibm_map{$c};
+        utf8::encode($mapped);
+    }
+   
+    if ($epson_map{$c}) {
+        printf("[0x%04x]=%02x Ersetze '%s' durch '%s'\n",$i,ord($c),$c,$mapped);
+    }
+    if ($ibm_map{$c}) {
+        printf("[0x%04x]=%02x '%s' Umlaut oder Klammer, verwende '%s'\n",$i,ord($c),$c,$c);
+    }
+
+    if ($encoding eq "UML" && $epson_map{$c}) {
+        printf(OUT $mapped);       
+    } elsif (ord($c)>=0x00 && ord($c)<=0x1f) {
+        my $txt=chr(0xf120+ord($c));
+        utf8::encode($txt);
+        printf(OUT "$txt");
+    } elsif (ord($c)>=0x20 && ord($c)<=0x7e){
+        printf(OUT "%s", $c);
+    } else {
+        my $txt=chr(0xf100+ord($c));
+        utf8::encode($txt);
+        printf(OUT "$txt");
+    }
+}
+
+if (!defined $ARGV[0] || !$ARGV[1]) {
+    print(STDERR "recode_from_z1013.pl (IBM|UML|Z) <file.z80>\n");
+    exit 1;
+}
+
+$encoding=$ARGV[0];
+$file=$ARGV[1];
 
 $output=$file;
 $output =~ s/\.z80$/.txt/g;
@@ -14,19 +62,6 @@ read(IN,$content,$len);
 
 close(IN);
 
-$flag=0;
-$sonderzeichen=0;
-
-#%umlaute=("m|g"=>1);
-#%keine_umlaute=(" | "=>1," |\n"=>1);
-
-%map=("{"=>"ä","|"=>"ö","}"=>"ü","~"=>"ß","["=>"Ä","\\"=>"Ö","]"=>"Ü",
-);
-$do_map=1;
-
-%others=("\x88"=>"_","\xc8"=>"_","\xa8"=>"┏","\xa9"=>"┓","\xc4"=>"Ä","\xe4"=>"ä","\xdf"=>"ß","\xf6"=>"ö","\xfc"=>"ü");
-#%map=();
-
 for($i=32; $i<length $content; $i++)
 {
 #0e 14 breit an
@@ -35,84 +70,24 @@ for($i=32; $i<length $content; $i++)
 #14 20 breit aus
 
 #http://lprng.sourceforge.net/DISTRIB/RESOURCES/PPD/epson.htm?cm_mc_uid=58037215166515057054208&cm_mc_sid_50200000=1505705420
-  $c=substr($content,$i,1);
-  if (ord($c)==0x03 || ord($c)==0 || ord($c)==0x1a )
-  {
-     printf(OUT "<<EOT>>");
-  #end of text
-  }  elsif (ord($c)==0x08)
-  {
-  #backspace
-  }  elsif (ord($c)==0x0a)
-  {
-     printf(OUT "\n");
-  }  elsif (ord($c)==0x0c)
-  {
-     printf(OUT "\n");
-  }  elsif (ord($c)==0x0d)
-  {
-  }  elsif (ord($c)==0x1c)
-  {
-    #page break? FS -fett on sperrschrift
-     printf(OUT "\n");
-  }  elsif (ord($c)==0x1d)
-  {
-    #page break? GS fett off, sperrschrift
-     printf(OUT "\n");
-  }  elsif (ord($c)==0x09)
-  {
-     printf(OUT "\t");
-  }  elsif (ord($c)==0x1b)
-  {
-    #ESC
-    $i++;
     $c=substr($content,$i,1);
-    if ($c eq "E" || $c eq "F" || $c eq "@"  || $c eq "l")
-    {
-        next;
+
+    if (ord($c)==0x0a || ord($c)==0x1e) {
+        printf(OUT "\n");
+    } elsif (ord($c)==0x0d) {
+        $i++;
+        $c=substr($content,$i,1);
+        if (ord($c)==0x0a) {
+            printf(OUT "\n");
+        } else {
+            print_char($c);
+        }
+    } elsif (ord($c)==0x09) {
+        printf(OUT "\t");
+    } else {
+        print_char($c);
     }
-    $flag=$i;
-    #printf(OUT "[ESC+%s]",$c);
-    printf("[0x%x] ESC+%s\n",$i,$c);
-  } elsif (ord($c)==0x1e)
-  {
-     printf(OUT "\n");
-  } elsif (ord($c)>=0x20 && ord($c)<0x7f)
-  {
-      if ((ord($c)>=0x7b && ord($c)<=0x7e) || (ord($c)>=0x5b && ord($c)<=0x5d))
-      {
-        $sonderzeichen=$i;
-      }
-      $mapped=$map{$c};
-      if ($do_map && $mapped) {
-        printf("[0x%0x] Umlaut\n",$i);
-        $c=$mapped;
-      }
-      printf(OUT "%s",$c);
-  } else
-  {
-     if ($others{$c})
-     {
-        printf(OUT "%s",$others{$c});
-        printf("[0x%x] ungewöhnliches Zeichen: 0x%02x]\n",$i,ord($c));
-     } else {
-        $flag=$i;
-        printf("[0x%x] unbekanntes Zeichen: 0x%02x]\n",$i,ord($c));
-         
-    }
-  }
 }
 
-if ($flag !=0 )
-{
-    printf("Text enthält nicht konvertierte Zeichen\n");
-}
-if ($sonderzeichen != 0)
-{
-    printf("Text enthält wahrscheinlich Umlaute\n");
-}
-
-#TODO 
-#check text after EOT
 
 close(OUT);

@@ -1,2 +1,0 @@
-<kurz>Edas 1.1 a+d+h</kurz>
-<lang><include>edas_i.doc.txt</include></lang>

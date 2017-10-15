@@ -1,6 +1,9 @@
-<kurz>ESC-Sequenzen für S3004</kurz>
+<kurz src="ESC-Sequenzen für S3004"/>
 <lang>Der Text verwendet ESC-Sequenzen für S3004, so
-dass die Darstellung nicht ganz korrekt ist. Am Besten,
-man druckt sich das ersteinmal aus.
-<include>esc_folgen.doc.txt</include></lang>
+dass die Darstellung nicht ganz korrekt sein wird. Am Besten,
+man druckt sich das ersteinmal an der Schreibmaschine aus.
+
+Wenn man die den Z1013-Zeichensatz installiert hat, 
+kann man die Steuerzeichen sehen.
+<include src="esc_folgen.doc.txt"/></lang>
 <required></required>

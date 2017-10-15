@@ -29,6 +29,6 @@ echo Kompatibilitätsliste.txt:
 echo $md5 "*"$file
 
 mv ~/jkcemu.gif "$dbroot/$md5-$base/"
-echo '<kurz></kurz>' >"$dbroot/$md5-$base/info.txt"
+echo '<kurz src=""/>' >"$dbroot/$md5-$base/info.txt"
 echo '<lang></lang>' >>"$dbroot/$md5-$base/info.txt"
 echo '<required></required>' >>"$dbroot/$md5-$base/info.txt"

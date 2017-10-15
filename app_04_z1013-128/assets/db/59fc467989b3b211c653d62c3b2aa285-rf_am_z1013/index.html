@@ -14,6 +14,232 @@
 </head>
 <body>
 <div></div><div class="filelist">1800 3e3f 0000 T ... <a href="rf_am_z1013.z80">RF&nbsp;AM&nbsp;Z1013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre><pre>    Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013
+   ===================================================
 
+Durch den Einsatz einer RAM-Floppy nach MP 3/88 kann der Z1013
+zu einem sehr leistungsfaehigen Rechner ausgebaut werden. Zum
+einen ist es dadurch moeglich, CP/M-kompatible Software zu nutzen,
+und zum anderen die Verarbeitungsgeschwindigkeiten bei dieser
+Software extrem zu steigern. Auch die Nutzung der RAM-Floppy 
+ohne ein CP/M-Betriebssystem ist mit entsprechender Software
+moeglich, die nur den originalen Monitor mit eventueller Erweite-
+rung durch den Sprungverteiler (BEEP-Funktion) der IG-HC (AG
+Z 1013) benoetigt (HEADERDISK). 
+Die Bestueckung der RAM-Floppy kann wahlweise mit oder ohne 
+Hauptspeicher erfolgen, was besonders fuer die Z1013-Nutzer guen-
+stig ist, die den Hauptspeicher bereits auf 64K aufgeruestet
+haben. 
+
+
+1. Vollbestueckung fuer Z 1013
+==============================
+
+Da es im Z1013 durch das Fehlen des Koppelbusses keine /MEMDI1-
+und /MEMDI2-Signale gibt, brauchen folgende IC's nicht bestueckt
+zu werden:
+D51, D52, D53, D54 und D49
+Damit enfallen auch die DIL-Schalter und das Wickelfeld C.
+Es ist aber unbedingt darauf zu achten, dass die in diesen IC's
+vorgesehenen Durchkontaktierungen durch entsprechende Draht-
+bruecken realisiert werden. Dies gilt im besonderen auch fuer
+das Wickelfeld A, an dem einige Durchkontaktierungen wichtig
+fuer die Adressierung der RAM-Floppy sind.
+Um den Rechner auch mit 4 MHz Takt betreiben zu koennen, war es
+erforderlich, die RC-Kombinationen R33-R36 und C3-C6 im Wert zu
+aendern: 150 Ohm / 100 pF, C3 musste sogar ganz entfallen.
+Die RC-Werte der RAM-Floppy (R1/R2, C1/C2) konnten beibehalten
+werden (390 pF, 180 Ohm).
+Um den Monitor-EPROM sowie den Bildwiederholspeicher aus dem 
+64K Hauptspeicher auszublenden, muss durch den Z1013 das /RDY-
+Signal fuer diesen Speicherbreich erzeugt werden.  Dieses
+Signal an der Bussteckerleiste (C25) ist im Z1013  mit CASG
+belegt, welches aber am Busstecker in keiner Weise fuer externe
+Baugruppen benoetigt wird und ausserdem nicht der K1520-Stecker-
+norm entspricht. Das Signal CASG wird deshalb auf der Z1013-
+Grundplatine direkt an der Steckerleiste (C25) abgeritzt.
+An diese Stelle tritt nun das /RDY-Signal, welches folgender-
+massen erzeugt wird:
+Entsprechend Bild 1 werden an den Adressdekoder A23 fuenf Dioden
+mit der Katode an Pin 4,5,6,7,9 angeschlossen, wozu sich am
+besten Mehrfach-Dioden SAM 65 eignen. Die Anoden der Dioden
+werden zusammengeschaltet und ueber einem pull-up-Widerstand an
++5V gelegt. Der Verbindungspunkt der Dioden-Anoden ist schon
+das benoetigte /RDY-Signal, welches an das nun freie Pin C25
+des Systemsteckers angeschlossen wird.
+Neben der /RDY-Signalgenerierung muss der auf der Originalplatine
+vorhandene 16 KByte-RAM inaktiv geschaltet werden. Am einfach-
+sten erfolgt dies, indem das /CAS-Signal fuer die 16-KByte-IC's
+vom Ausgang (Pin 6) des IC's A8 getrennt wird und speicherseitig
+ueber einen Widerstand von 1 KOhm auf +5V gelegt wird.
+Es wird aber davor gewarnt, die Betriebsspannung der U 256 abzu-
+schalten, da diese dann den Bus extrem  stark belasten. 
+Eine andere Variante besteht darin, den 16 KByte-RAM auf der 
+Grundplatine weiter zu nutzen und diesen im externen 64K-Block
+mit auszublenden. Das erfolgt, indem das /CAS-Signal der U256
+mit noch einer Diode auf die /RDY-Leitung geklemmt wird. Die
+Katode liegt dazu am /CAS der U256, die Anode am /RDY-Signal.  
+Bei der Wahl der IO-Grund-Adresse der RAM-Floppy muss darauf ge-
+achtet werden, dass diese nicht mit der unvollstaendigen Dekodie-
+rung der IO-Adressen der Grundplatine in Konflikt geraten. Da
+ausserdem die Wahl der IO-Grundadresse im Wickelfeld D einge-
+schraenkt ist, wurde die 98H (bei einer RF-Karte) bzw. die 58H
+fuer eine zweite RF-Karte gewaehlt. Dazu sind folgende Verbindun-
+gen im Wickelfeld D zu realisieren:
+
+1. 98H
+29-34, 31-36, 33-30, 35-32, 37-38
+
+2. 58H
+29-34, 31-36, 33-30, 35-38, 37-32
+
+Die Verbindung der RF-Karte mit dem Z1013 erfolgt entweder ueber
+den Erweiterungsbaugruppentraeger, wobei dann ein zweireihiger
+58-poliger Steckverbinder benutzt werden muss, oder, was wesent-
+lich effektiver ist, man verbindet die RF-Karte ueber einen
+1:1 Adapterstecker direkt mit dem Busstecker des Z1013. Pro-
+bleme mit dem dann ungetriebenen Bus entstanden weder bei 2
+noch bei 4 MHz Takt.
+  
+
+2. Teilbestueckung der RF-Karte (ohne Hauptspeicher)
+====================================================
+
+Wenn der verwendete Z1013 schon mit 64K auf der Grundplatine 
+ausgeruestet ist, kann ein grosser Teil der Bauelemente einge-
+spart werden. Folgende IC's koennen entfallen:
+D51, D52, D53, D54, D49, (D46), D47, D48, D45, D54-D61, D43
+und D44
+D46 kann nur dann entfallen, wenn eine Bruecke zwischen Pin 8
+und 9 eingefuegt wird.
+Weiterhin koennen R22-R29, R31-R47 sowie C3-C6 entfallen.
+Sehr kritisch ist die Realisierung der Durchkontaktierungen
+an den nichtbestueckten IC's, was sehr haeufig zu Fehlern fuehrt.
+Veraenderungen am Z1013 sind bei der Teilbestueckung der RF-Karte
+nicht notwendig. Sie kann 1:1 an Busstecker des Z1013 ange-
+schlossen werden. Fuer die IO-Grundadresse gilt das unter Pkt. 1
+Gesagte.
+
+
+3. Inbetriebnahme am Z1013
+===========================
+
+Bevor die RF-Karte an den Z1013 angesteckt wird, muss eine gruend-
+liche Sichtkontrolle aller Loetstellen und Durchkontaktierungen
+erfolgen. Mit Sicherheit findet man immer wieder noch eine Stel-
+le, an der man vergessen hat, ein Bauelement von der Bauelemen-
+teseite her anzuloeten. Es hat sich bewaehrt, die gesamte Platte
+oder wenigstens die Loetaugen vor allem auf der Bauelementeseite
+vor dem Bestuecken zu verzinnen. Damit sinkt auch die Gefahr von
+Haarrissen ganz erheblich.
+Als erstes empfiehlt es sich, die Stromaufnahme der Platte im
+Ruhezustand zu messen. Bei einer vollbestueckten Platte liegt die
+Stromaufnahme etwa bei 0,5 A, bei einer teilbestueckten bei etwa
+0,35 A (abhängig von den eingesetzten IC-Typen). 
+Nach dem Aufstecken der Platte (im spannungslosen Zustand!!)
+muss sich der Rechner wieder ganz normal melden. Danach kann das im 
+Anhang befindliche Testprogramm geladen und gestartet werden
+(Standort 100H-4B7H, Start: 100H). Werden beim Test alle Sekto-
+ren und Tracks als fehlerhaft gemeldet, so liegt der Fehler 
+wahrscheinlich in der Adressierung oder im Datenbustreiber bzw.
+in dessen Ansteuerung. Wird immer ein bestimmter Speicher-IC
+als fehlerhaft ausgegeben, so kann der IC selbst Bitfehler auf-
+weisen oder die Zuleitungen zu ihm sind in irgendeiner Weise
+unterbrochen (meist fehlende Durchkontaktierung). Es kommt auch
+vor, dass bei jedem Durchlauf ein anderer IC als fehlerhaft er-
+kannt wird. In diesem Fall liegen meist Refresh-Fehler vor, 
+oder die Betriebsspannung ist durch die nun hoehere Belastung
+des Netzteils verbrummt bzw. hat nicht die vorgeschriebene Hoehe.
+Aus Erfahrung kann gesagt werden, dass die Speicher bei einer
+Spannung von 4,8 V nicht mehr ordentlich laufen (Basteltypen!).
+
+
+
+*************************************************************
+*         Beschreibung zum Programm HEADER-DISK 45          *
+*           (c) by Rainer Brosig  IG-HC   1/89              *
+*************************************************************
+
+Standort: E000-E7FFH (mit Puffer)     Start: E01BH
+
+HEADER-DISK 45 ist ein Programm zur HEADERSAVE-kompatiblen Ver-
+waltung von max. 2 RAM-Disketten nach MP 3/88. Um die Disk moeg-
+lichst optimal auszulasten, wurde auf ein Directory verzichtet,
+sodass die Files sequentiell auf der Floppy, beginnend mit einem
+HEADERSAVE-kompatiblen Kopf, angelegt sind. Die damit verbunde-
+nen Suchzeiten sind unmerklich und werden durch die verkuerzte
+Ladezeit wieder kompensiert. 
+Beim Einschalten des Rechners ist es wichtig, vor dem ersten Be-
+schreiben der Disk diese komplett zu loeschen (initialisieren).
+
+Kommandos HEADER-DISK 45:
+-------------------------
+
+@R      READ
+        - laden File entsprechend abgefragter Filenummer mit
+          Autostart bei Typ=C vom  aktuellen Disk
+
+@RRR    - wie @R, aber Autostartverbot
+
+@RN     - wie @R, aber nach Name+Typ vom aktuellen Disk
+
+@RNN    - wie @RN, aber Autostartverbot
+
+@R aadr - auf aadr vom aktuellen Disk verschoben laden
+
+@RA     - wie @R, nur mit zusaetzlicher Umschaltung auf Disk A
+          (@RB-&gt;auf Disk B)     
+
+@W aadr eadr sadr ENT -&gt; Typ+Name
+        WRITE
+        - saven File auf aktuelle Disk
+
+@W:     - wie @W, aber es wird der alte Kopfinhalt genommen
+          z.B. nach @LLL (!!nach @F ist der Kopf zerstoert!!)
+
+
+@F      FILES
+        - Anzeige der Files auf dem aktuellen Disk
+
+@FA     - wie @F, aber mit zusaetzlicher Zwangsumschaltung des Disk
+
+
+@K      KILL
+        - loeschen eines Files entsprechend abgefragter Nummer
+          auf aktuellem Disk
+
+@KA     - wie @K, aber mit zusaetzlicher Zwangsumschaltung des
+          Disk auf A (B) 
+
+@KN     - wie @K, aber loeschen nach Name+Typ statt nach Nummer
+
+@KAG    - Komplettloeschung Disk A
+@KBG    -        -"-            B
+
+
+@A      - Umschalten auf Disk A
+
+@B      - Umschalten auf Disk B
+
+
+Der Aufruf der Unterprogramme erfolgt HEADERSAVE-kompatibel
+ueber den Sprungverteiler auf E000H. Dabei kann ein auf Adr.
+E000H stehender HEADERSAVE-Treiber gegen das HEADER-DISK-Pro-
+gramm ausgetauscht werden, ohne dass Aenderungen am rufenden
+Programm erfolgen muessen. Bei den Blockroutinen bestehen Ein-
+schraenkungen bezueglich der max. Groesse des Files auf 64K bzw.
+es darf die Grenze von FFFFH nicht überschritten werden, da
+ansonsten ein späteres Laden des Files von der Disk nicht mehr
+ohne weiteres möglich ist.
+Die Grundadressen der Disks koennen in E024H (A) und E025H (B)
+bei Bedarf geaendert werden.
+
+
+                                         Rainer Brosig
+                                         Ltr. AG Z1013
+                                         in der IG-HC
+ 
+</pre>
+</pre>
 </body>
 </html>

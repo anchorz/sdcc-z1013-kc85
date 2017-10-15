@@ -1,2 +1,2 @@
-<kurz>Z1013.SUPER-URLADER</kurz>
-<lang><include>z1013_surl_doc.txt</include></lang>
+<kurz src="Z1013.SUPER-URLADER"/>
+<lang><include src="z1013_surl_doc.txt"/></lang>

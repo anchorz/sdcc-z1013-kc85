@@ -256,7 +256,7 @@ Sprungverteiler. Weiterhin gestattet  diese  Interpreterversion
 die Ausgabe von LIST und PRINT auf einen Drucker ueber:
 LIST#2"X",PRINT#2,LIST#3"X",PRINT#"3".
 Die Joystickabfrage erfolgt nach /1/. Das dort veroeffentlichte
-Abfrageprogramm wird ueber Sprungverteiler angesprungen und mu~
+Abfrageprogramm wird ueber Sprungverteiler angesprungen und muß
 im Betriebssystem enthalten sein.
 Ansprung des Headers, des Druckers und der Joystickabfrage:
 Es koennen noch zwei weitere KC-Save-Routinen genutzt werden:
@@ -344,3 +344,4 @@ Programm geaendert weiter, ist unbedingt folgendes zu tun:
 Programme stets mit der Beschreibung dazu weiterreichen. An der
 Checksumme CRC ist der Originalzustand erkennbar.
 =================================================================
+

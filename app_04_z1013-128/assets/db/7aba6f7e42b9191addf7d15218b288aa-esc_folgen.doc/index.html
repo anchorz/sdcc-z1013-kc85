@@ -15,8 +15,73 @@
 <body>
 <div></div><div class="filelist">1900 20f0 0000 T ... <a href="esc_folgen.doc.z80">ESC-Folgen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
 <pre>Der Text verwendet ESC-Sequenzen für S3004, so
-dass die Darstellung nicht ganz korrekt ist. Am Besten,
-man druckt sich das ersteinmal aus.
-<include>esc_folgen.doc.txt</include></pre>
+dass die Darstellung nicht ganz korrekt sein wird. Am Besten,
+man druckt sich das ersteinmal an der Schreibmaschine aus.
+
+Wenn man die den Z1013-Zeichensatz installiert hat, 
+kann man die Steuerzeichen sehen.
+<pre>                       
+Codes und Funktionen
+durch  Folge  ESC(1BH) - Zeichen
+KK_____________________________________________________
+ESC 0  0 (hoch 3)		 ESC 1  1
+ESC 2  2			 ESC 3  3
+ESC 5  5			 ESC 7  7
+ESC 8  8 (grad)		 ESC 9  9 (hoch 2)
+ESC :  : (ä-punkte)		  ESC 3CH  &lt;
+ESC =  =			 ESC 3EH  &gt;
+ESC B  Papiereinzug		ESC C  SYNC
+ESC E  1-zeilig			ESC F  1.5-zeilig
+ESC B  2-zeilig			ESC H  Halbschritt links
+ESC I  Halbschritt rechts	ESC J  Halbschritt runter
+ESC K  Halbschritt hoch		ESC L  10 Zeichen/Zoll
+ESC M  12 Zeichen/Zoll		ESC N  Mikrostep runter
+ESC O  Mokrostep hoch		ESC P  T+
+ESC Q  T-			ESC R  t+
+ESC S  t-			ESC T  linker Rand
+ESC U  rechter Rand		ESC V  Randlöser
+ESC W  nächstes Zeichen kein Vorschub (für Doppeldrucke)
+ESC 5CH  Reversdruck ON		ESC 5DH  Reversdruck OFF
+ESC 5EH  Tastatur ON		ESC 5FH  Tastatur OFF
+    
+M 
+ KS 3004 - Sonderzeichen durch ESC-Folgen  =HK-JJHH-K12 Zei./"J-KKHH-JH=
+--------------------------------------------------------
+
+eckige Klammer rts.:
+KK________________________________________________________
+ ESC = ESC H ESC K - ESC J ESC J ESC H ESC H - ESC K 
+
+eckige Klammer lks.:
+KK________________________________________________________
+ ESC J - ESC K ESC K ESC H ESC H - ESC J ESC H ESC = 
+
+     nnn =HK-JJHH-K nn J-KKHH-JH= nnn
+
+geschweifte Klammer rts.:		lks:
+KK________________________________________________________
+ ESC W ( +	 nnn W(+ nn W)+ nnn	      ESC W ) +
+
+
+kleiner:			größer:
+KK________________________________________________________
+ - ESC H (    12 -H( 45 )H- 34     ) ESC H -  
+
+Pfeil:
+KK________________________________________________________
+ - ESC W ) +    -W)+ nn W(+-   ESC W ( + -
+
+com.a:  
+KK________________________________________________________
+ ESC W aC	nnn WaC nnn
+
+Fettdruck:
+KK________________________________________________________
+durch:  String ESC N ESC 5CH String rückw.
+        ESC 5DH ESC W ESC N String ESC O ESC O
+         LFETTDRUCKNÖKCURDTTEFÜWNFETTDRUCKOO
+
+</pre>
+</pre>
 </body>
 </html>

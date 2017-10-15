@@ -1,31 +1,21 @@
-
-*******************************************************************
+*******************************************************************
              Sprungverteiler fuer Z 1013-Erweiterungen
-*******************************************************************
-
+*******************************************************************
 
 Der Zusatzsprungverteiler wurde entsprechend einer Einigung inner-
 halb der Interessengemeinschaft Heimcomputer des IZ an der TU-Dresden
 folgendermassen festgelegt:
 
-Beginnt auf Adresse 
-FFFFH
- abwaertsfuehrend:
+Beginnt auf Adresse FFFFH abwaertsfuehrend:
 
-
-FFFDH - JMP INKEY
-   holt ein Zeichen von Tastatur in den Akku;
+FFFDH - JMP INKEY   holt ein Zeichen von Tastatur in den Akku;
                     kommt beim 2. Aufruf nur zurueck, wenn Taste
                     zwischendurch losgelassen wurde 
 
-
-FFFAH - JMP POLL
-    bringt immer ein Zeichen im Akku zurueck, egal 
+FFFAH - JMP POLL    bringt immer ein Zeichen im Akku zurueck, egal 
                     ob Taste losgelassen wurde oder nicht
 
-
-FFF7H - JMP STAT
-    uebergibt Tastaturstatus im Akku
+FFF7H - JMP STAT    uebergibt Tastaturstatus im Akku
                     A=0   - keine Taste gedrueckt
                     A=FFH - Taste gedrueckt
                     die Abfrage erfolgt ohne Ruecksicht, ob die
@@ -35,9 +25,7 @@ FFF7H - JMP STAT
                     evtl. nachfolgenden INKEY-Routine nicht zu 
                     sperren
 
-
-FFF4 - JMP SARUF
-    ruft die SAVE-Routine des Headersave
+FFF4 - JMP SARUF    ruft die SAVE-Routine des Headersave
                     ! zerstoert 1. Registersatz + AF'
                     Parameteruebergabe:
                     Zellen 1BH - anfadr.
@@ -47,9 +35,7 @@ FFF4 - JMP SARUF
                                  gleichem Kopf
                     H(IY)  Typvorgabe (in ASCII), sonst 0
 
-
-FFF1H - JMP LORUF
-   ruft LOAD-Routine des Headersave
+FFF1H - JMP LORUF   ruft LOAD-Routine des Headersave
                     ! zerstoert 1. Registersatz + AF'
                     Parameteruebergabe:
                     Zellen 1BH - neue Anfangsadresse des Files
@@ -61,69 +47,41 @@ FFF1H - JMP LORUF
                            Typkennzeichen (in ASCII), keine Typabfr. 
                     L(IY)  20H - Freigabe Autostart bei COM-Files 
 
+FFEEH - JMP ZMINI   Initialisierung der Z-Monitorrufe auf B0H
 
-FFEEH - JMP ZMINI
-   Initialisierung der Z-Monitorrufe auf B0H
+FFEBH - JMP DRDEL   setzt den logischen Druckertreiber zurueck
 
-
-FFEBH - JMP DRDEL
-   setzt den logischen Druckertreiber zurueck
-
-
-FFE8H - JMP DRAKK
-   uebergibt den Akkuinhalt an den logischen 
+FFE8H - JMP DRAKK   uebergibt den Akkuinhalt an den logischen 
                     Druckertreiber
 
-
-FFE5H - JMP BSDR
-    druckt den Inhalt des BWS und kehrt in das
+FFE5H - JMP BSDR    druckt den Inhalt des BWS und kehrt in das
                     rufende Programm zurueck
 
-
-FFE2H - JMP HARDC
-   uebergibt den Akkuinhalt an logischen Drucker-
+FFE2H - JMP HARDC   uebergibt den Akkuinhalt an logischen Drucker-
                     treiber wenn ein Flag im Rechner gesetzt ist;
                     wandelt CR (0DH) in NL (1EH/0DH-0AH)
                     ! nur verwenden, wenn Programm eine eigene
                     Bildschirmverwaltung hat
 
-
-FFDFH - JMP DRZEL
-   wie DRAKK, nur das der Inhalt von 1BH uebergeben 
+FFDFH - JMP DRZEL   wie DRAKK, nur das der Inhalt von 1BH uebergeben 
                     wird (vorgesehen, um im BASIC mit POKE zu drucken)
 
+FFDCH - JMP BEEP    erzeugen eines kurzen Signals
 
-FFDCH - JMP BEEP
-    erzeugen eines kurzen Signals
+FFD9H - JMP ASTA    Ausgabe Akkuinhalt als ASCII-Zeichen an PUNCH
 
+FFD6H - JMP BSTA    Ausgabe Akkuinhalt als Byte an PUNCH
 
-FFD9H - JMP ASTA
-    Ausgabe Akkuinhalt als ASCII-Zeichen an PUNCH
+FFD3H - JMP AIN     Eingabe eines ASCII-Zeichens vom LBL in den Akku
 
+FFD0H - JMP BIN     Eingabe eines Bytes vom LBL in den Akku
 
-FFD6H - JMP BSTA
-    Ausgabe Akkuinhalt als Byte an PUNCH
+FFCDH - JMP DRINI   Initialisierung des logischen Druckertreibers
 
-
-FFD3H - JMP AIN
-     Eingabe eines ASCII-Zeichens vom LBL in den Akku
-
-
-FFD0H - JMP BIN
-     Eingabe eines Bytes vom LBL in den Akku
-
-
-FFCDH - JMP DRINI
-   Initialisierung des logischen Druckertreibers
-
-
-FFCAH - JMP ZEIDR
-   uebergibt ein Zeichen im Akku an physischen
+FFCAH - JMP ZEIDR   uebergibt ein Zeichen im Akku an physischen
                     Druckertreiber
 
-
-FFC7H - JMP BLMK
-    Lesen eines Blocks vom Headersave
+FFC7H - JMP BLMK    Lesen eines Blocks vom Headersave
                     Parameteruebergabe:
                     Zellen 25H/26H * Kopfinhalt des zu lesenden Bl.
                     HL             * Ladeadresse des Blocks
@@ -133,9 +91,7 @@ FFC7H - JMP BLMK
                    Abbruch des Lesens bei Kopfinhalt=0FFFFH 
                    oder DMA > Endadr in ARG2 (1DH)
 
-
-FFC4H - JMP BSMK
-    Schreiben eines Blocks im Headersave
+FFC4H - JMP BSMK    Schreiben eines Blocks im Headersave
                     Parameteruebergabe:
                     HL  * Quelladresse Block
                     IX  * Kopfinhalt
@@ -143,19 +99,13 @@ FFC4H - JMP BSMK
                    Return:
                     HL  * HL:=HL+20H
 
-
-FFC1H - JMP SUCHK
-   Suchen eines Kopfblocks und Uebergabe des Inhalts
+FFC1H - JMP SUCHK   Suchen eines Kopfblocks und Uebergabe des Inhalts
                     im Kopfpuffer (E0-FF), keine Auswertung
 
-
-FFBEH - JMP AKP
-     Aufbereitung Kopfpuffer mit Namenabfrage
+FFBEH - JMP AKP     Aufbereitung Kopfpuffer mit Namenabfrage
                     Parameteruebergabe wie bei SARUF
 
-
-FFBBH - JMP GETST
-   Abfrage der Joysticks und Uebergabe des Er-
+FFBBH - JMP GETST   Abfrage der Joysticks und Uebergabe des Er-
                     gebnisses in BC (B-links,C-rechts) mit folgen-
                     den Bit-Bedeutungen (Belegung mit 1):
                     Bit 0 - links
@@ -166,11 +116,9 @@ FFBBH - JMP GETST
                      Z-Flag=1, wenn keine Betaetigung vorliegt
                     CY-Flag=1, wenn Spielhebel nicht angeschlossen
  
-
-FFB8H - JMP SOUND
-   Ausgabe einer vollen Periode auf die Tonband-
+FFB8H - JMP SOUND   Ausgabe einer vollen Periode auf die Tonband-
                     buchse, sowie auf Bit 7 vom Systemport (User-P)
                     Uebergabe der Periodendauer in C mit 
                     T=n*33mks+20mks (2MHz)
 
-                    <<EOT>>
+

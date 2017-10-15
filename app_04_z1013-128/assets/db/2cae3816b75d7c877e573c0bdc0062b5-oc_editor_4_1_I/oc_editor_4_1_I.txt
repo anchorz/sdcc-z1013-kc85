@@ -1,8 +1,6 @@
-
-*****************************************************************
+*****************************************************************
                    OBJEKTCODEEDITOR OCE FUER Z1013
-*****************************************************************
-
+*****************************************************************
 
 
 Der Objektcodeeditor enthaelt einen Assembler zur Uebersetzung von
@@ -61,8 +59,7 @@ UP   vorstehender Befehl
  B   Bindekommando (ersetzt symb. Adr. durch hexadez.)
      erzeugt lauffaehiges Programm
      B CR Binden auf Anzeigeadr.
-     B adr CR
-
+     B adr CR
                               -2-
 
  M   Verschieben von Programmen mit Marken
@@ -122,8 +119,7 @@ UP   vorstehender Befehl
      - mit EXT vereinbarte Marken werden nicht verschoben
      - nach Fehlermeldung mit CR weitere Fehler angezeigt
        ( Bindeoperation unterbrochen!)
-     - MTB beim Binden nicht veraendert!
-
+     - MTB beim Binden nicht veraendert!
                               -3-
 
 + RAM-Modus

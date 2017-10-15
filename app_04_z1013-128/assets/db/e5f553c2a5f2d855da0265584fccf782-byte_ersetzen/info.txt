@@ -1,0 +1,3 @@
+<kurz src="Kommandoerweiterung (Brosig) @E Bytes-Ersetzen"/>
+<lang></lang>
+<required></required>

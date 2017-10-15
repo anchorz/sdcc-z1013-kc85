@@ -1,5 +1,7 @@
-<kurz>Loesung eines DGLS</kurz>
+<kurz src="Loesung eines DGLS"/>
 <lang>
 Gleichungen vom Typ
-F[1]=f1(x[1],x[2],x[3]...,</lang>
+F[1]=f1(x[1],x[2],x[3]...,
+
+<include src="fehlberg.P"/></lang>
 <required></required>

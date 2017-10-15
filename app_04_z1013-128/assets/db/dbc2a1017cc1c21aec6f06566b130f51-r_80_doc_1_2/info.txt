@@ -1,0 +1,3 @@
+<kurz src="R-80 REASSEMBLER ver. RB"/>
+<lang><include src="r_80_doc_1_2.txt"/></lang>
+<requires></requires>

@@ -1,3 +1,6 @@
-<kurz>Doku maintape V4.6</kurz>
-<lang><include>mt4_6_doc.txt</include></lang>
+<kurz src="Doku maintape V4.6"/>
+<lang>Die Textdatei ist fehlerhaft. Da sind wohl einige Bits beim Kopieren
+umgefallen...per Hand korrigiert.
+
+<include src="mt4_6_doc.txt"/></lang>
 <required></required>

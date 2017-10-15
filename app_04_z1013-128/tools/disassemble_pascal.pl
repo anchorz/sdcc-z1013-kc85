@@ -18,12 +18,12 @@ $index=32;
 $aadr=unpack("v",substr($content,0,2));
 $eadr=unpack("v",substr($content,2,2));
 $max_index=$eadr-$aadr+32;
-printf("%04x %04x maxindex=[%04x]%02x\n",$aadr,$eadr,$max_index,ord(substr($content,$max_index,1)));
+#DBG printf("%04x %04x maxindex=[%04x]%02x\n",$aadr,$eadr,$max_index,ord(substr($content,$max_index,1)));
 
 $shift=0x43f3-$aadr;
 $aadr+=$shift;
 $eadr+=$shift;
-printf("%04x %04x\n",$aadr,$eadr);
+#DBG Berechnet neue Werte fuers laden. Die ladeadresse ist bei pascal nicht fest, sondern steht irgendwo bei ???? -  printf("%04x %04x\n",$aadr,$eadr);
 
 while(1) {
     $len=2;

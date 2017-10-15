@@ -1,0 +1,3 @@
+<kurz src="ALLcopy 2.1 64 Zeichen für CP/M"/>
+<lang></lang>
+<required></required>

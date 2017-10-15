@@ -1,0 +1,12 @@
+<kurz src="Wofür braucht BASIC eine RAM-Disk?"/>
+<lang>schreibt an Position 4..7 in der Kommando-Erweiterung (Brosig) die Befehle.
+Kleiner Schönheitsfehler: alles was davor stand wird überschrieben und es müssen vorher
+mind 4. Befehle drin stehen, was per Default auch der Fall ist.
+
+
+@N - lädt einen Pointer
+@W 
+@R
+@Q
+</lang>
+<required></required>

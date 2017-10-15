@@ -138,8 +138,7 @@ Aus Erfahrung kann gesagt werden, dass die Speicher bei einer
 Spannung von 4,8 V nicht mehr ordentlich laufen (Basteltypen!).
 
 
-
-
+
 *************************************************************
 *         Beschreibung zum Programm HEADER-DISK 45          *
 *           (c) by Rainer Brosig  IG-HC   1/89              *
@@ -223,4 +222,4 @@ bei Bedarf geaendert werden.
                                          Rainer Brosig
                                          Ltr. AG Z1013
                                          in der IG-HC
- <<EOT>>
+ 

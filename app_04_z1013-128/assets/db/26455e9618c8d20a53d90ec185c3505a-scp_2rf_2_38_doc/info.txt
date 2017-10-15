@@ -1,0 +1,5 @@
+<kurz src="Besonderheiten des Betriebssystems SCP-2RF 2.38M für den Z1013"/>
+<lang>
+
+<include src="scp_2rf_2_38_doc.txt"/></lang>
+<requires></requires>

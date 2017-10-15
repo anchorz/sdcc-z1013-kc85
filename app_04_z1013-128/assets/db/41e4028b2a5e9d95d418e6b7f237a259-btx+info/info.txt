@@ -1,0 +1,3 @@
+<kurz src="BILDSCHIRMTEXT IST EIN EINFACHES TEXTDARSTELLUNGS-SYSTEM"/>
+<lang><include src="btx+info.txt"/></lang>
+<required></required>

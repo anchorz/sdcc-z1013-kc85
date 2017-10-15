@@ -14,16 +14,9 @@
 </head>
 <body>
 <div></div><div class="filelist">2000 3bba 0000 I ... <a href="headersave_5_9_I.z80">HEADERSAVE&nbsp;5.9&nbsp;&nbsp;</a></div>
-<pre>
-<link>headersave_5_9_I.txt</link>
-*****************************************************************
-
-                     
-HEADER-SAVE V 5.9
-              (C) by RB
-
-*****************************************************************
-
+<pre><pre>*****************************************************************
+                     HEADER-SAVE V 5.9              (C) by RB
+*****************************************************************
 
 -Programmstandort: E000H-E3FFH Start: E3EEH 
                    eigentliche SAVE-LOAD-Routine E000H - E3EDH
@@ -42,11 +35,7 @@ HEADER-SAVE V 5.9
 -Beim Start wird die Kommandoschleife auf B0H geladen (B0H-B5H).
 -Alle weiteren Aufrufe erfolgen mit @ ... .
 
-
-SAVE:
- @S anfadr. endadr. startadr. 
-ENTER
-
+SAVE: @S anfadr. endadr. startadr. ENTER
         danach Abfrage TYP und FILENAME
         TYP: C-COM-File selbststartend
              T-TEXT-File
@@ -73,9 +62,7 @@ ENTER
  Lesen eines Kopfblocks und endet nach dem Lesen der zu dem File 
  gehoerenden letzten Kopfadresse. Alles, was gelesen wird, er-
  scheint als ASCII-Interpretation auf der obersten Bildschirmzeile.
--externer Aufruf: 
-CALL SARUF
- (E003H) moeglichst ueber Sprungver-
+-externer Aufruf: CALL SARUF (E003H) moeglichst ueber Sprungver-
  teiler (FFF4H). Der 1.Registersatz und AF' werden zerstoert!
 
   Parameteruebergabe: Zellen 1BH - Anfangsadresse
@@ -86,16 +73,12 @@ CALL SARUF
                              den Kopf eines vorangegangenen LOAD)
                             -Typuebergabe in H(IY), sonst H(IY)=0
 
--Bei Eingabe von 
-@S::
- wird die SAVE-Funktion mit den alten
+-Bei Eingabe von @S:: wird die SAVE-Funktion mit den alten
  Kopf-Parametern ausgefuehrt. Diese koennen auch von der LOAD-Fkt.
  stammen (Nutzung zum schnellen Kopieren von Files).
 
 
-
-LOAD :
-   @L  - Laden das naechstfolgenden Files ohne Namen-
+LOAD :   @L  - Laden das naechstfolgenden Files ohne Namen-
                und Typkontrolle
          @LN - Laden eines Files mit Namen- und Typkontrolle 
                Es gilt, dass alles signifikant ist, was eingege-
@@ -105,19 +88,11 @@ LOAD :
                geben werden, wie fuer eindeutige Signifikanz 
                notwendig sind.
 
-    
-Achtung:
-   Es muss darauf geachtet werden, dass der ge-
+    Achtung:   Es muss darauf geachtet werden, dass der ge-
                waehlte Name auf dem Bildschirm stehen bleibt, da 
                kein Nameneingabepuffer existiert.
 
--Erfolgt der Aufruf mit 
-X
-, z.B. 
-@LNX
- oder 
-@LXX
-, wird nach
+-Erfolgt der Aufruf mit X, z.B. @LNX oder @LXX, wird nach
  dem Laden auf einen Autostart bei COM-FILE's verzichtet 
  (X=alle Zeichen ausser SPACE).
 -Der Rechner befindet sich so lange in einer Warteschleife, bis
@@ -146,22 +121,20 @@ X
  angezeigt und das Einlesen wird mit "bad record" unterbrochen.
 -Wird ein Blockkopf mit Inhalt 0FFFFH gelesen, wird der Ladevor-
  gang mit "bad record" abgebrochen.
--externer Aufruf: 
-CALL LORUF
- (E000H) moeglichst ueber Sprungver-
+-externer Aufruf: CALL LORUF (E000H) moeglichst ueber Sprungver-
  teiler (FFF1H). Der 1.Registersatz und AF' werden zerstoert.
 
   Parameteruebergabe:
 
    * H(IY)=0 - Typ wird abgefragt
-     H(IY)=Typkennzeichen -> Typvorgabe -> keine Abfrage Typ
+     H(IY)=Typkennzeichen -&gt; Typvorgabe -&gt; keine Abfrage Typ
    * A=0     - ohne signifikante Kopfkontrolle
-     A=4EH   - mit signifik. Kopfkontrolle, Typ- & Namenabfrage
+     A=4EH   - mit signifik. Kopfkontrolle, Typ- &amp;&gt; Namenabfrage
      A=41H   - ohne Kopfkontrolle
    * L(IY)=20H  - Freigabe des Autostarts bei COM-FILE's
 
 -Beim Laden auf eine neue Anfangsadresse muss auf Zelle 1BH die
- neue Anfangsadresse uebergeben werden ( > 0FFH), ansonsten muss 
+ neue Anfangsadresse uebergeben werden ( &gt; 0FFH), ansonsten muss 
  die Zelle mit 0 initialisiert werden.
 -Fuer den externen Aufruf wurden noch weitere Unterprogramme zu-
  gaenglich gemacht:
@@ -198,8 +171,10 @@ Kopfaufbau: Byte 0 - 1  Anf.adr.
                 0DH-0FH 3 x 0D3H = Kopfkennzeichen
                 10H-1FH 16 Byte Namensblock
 
+Hinweise, Fehler bitte an R. Brosig, W.Florin 2c, COSWIG, 8270.
 
-Hinweise, Fehler bitte an R. Brosig, W.Florin 2c, COSWIG, 8270.
+</pre>
+
 </pre>
 </body>
 </html>

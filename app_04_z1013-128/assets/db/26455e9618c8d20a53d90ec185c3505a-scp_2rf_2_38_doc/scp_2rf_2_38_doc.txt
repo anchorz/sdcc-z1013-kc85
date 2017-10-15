@@ -95,4 +95,4 @@ schirmrollens mit Hilfe von ^S der Rollvorgang gestoppt wird,
 damit nicht die Haelfte aus dem Bildschirmbereich laeuft.
 Programme wie TP, die direkt auf den BWS schreiben, muessen ent-
 sprechend uminstalliert werden.
-
+ut G

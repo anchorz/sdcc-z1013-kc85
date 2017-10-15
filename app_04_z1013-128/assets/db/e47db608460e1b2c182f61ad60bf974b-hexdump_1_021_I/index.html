@@ -14,6 +14,416 @@
 </head>
 <body>
 <div></div><div class="filelist">3000 637d 0000 I ... <a href="hexdump_1_021_I.z80">HEXDUMP&nbsp;1.021&nbsp;&nbsp;&nbsp;</a></div>
-<pre><include>hexdump_1_021_I.txt</include></pre>
+<pre><pre>@l
+E************************************************************
+     Beschreibung zum Service-Programm
+     "Hex-ASCII-Dump" V 1.021 (RAM) fuer Z1013
+     (c) by W.Bernhardt, Berlin 1988
+************************************************************F
+
+
+
+Programmstandort:                 0D600H - 0DFF8H   Start:0D600H
+
+fuer 16-K-Variante:               3600H  -  3FF8H   Start: 3600H
+
+
+
+Hardware:  Z1013 mindestens 16K RAM
+           Taktfrequenz 2Mhz
+           fuer Druck 4-K-Monitor mit Sprungverteiler
+
+
+
+Dieses Programm realisiert folgende Funktionen:
+
+  - Anzeige ausgewahlter RAM-Bereiche in hexadezimaler
+    und ASCII-Darstellung
+
+  - Editieren des angezeigten RAM-Bereiches
+
+       a.) durch hexadezimale Eingabe
+       b.) durch ASCII-Zeichen-Eingabe
+
+    mit gleichzeitiger konvertierter bzw.
+    rekonvertierter Anzeige
+
+  - Rueckschreiben des editierten Bereiches in den RAM 
+
+
+  - Druck eines ausgwaehlten RAM-Bereiches ueber angehaengten
+    phys. V.24-Treiber
+
+
+
+
+
+************
+EAnfangsmenueF
+************
+
+
+Nach Programmstart meldet sich dieses mit dem Anfangsmenue.
+Mit den Cursortasten hoch bzw. runter kann die entsprechende
+Auswahl erfolgen.
+Wurde der Pfeil (-&gt;) vor den auszuwaehlenden Programmteil
+gebracht, ist dies mit CR (ENTER) zu bestaetigen.
+Damit wird die Ausfuehrung dieser Programmroutine eingeleitet.
+
+Alle von den 3 o.g. Tastenbetaetigungen abweichenden Ein-
+gaben werden als Fehleingaben betrachtet und entsprechend
+akustisch signalisiert. 
+
+
+
+
+************
+EAnzeigemodusF
+************
+
+Erwartet wird eine vierstellige Eingabe der hexadezimalen
+Anfangsadresse (AAdr) des ausgewaehlten RAM-Bereiches.
+
+Im Anzeigemodus werden auf dem Bildschirm jeweils 24 Zeilen
+zu je 8 Byte hexadezimal sowie rechtsbuendig 8 Byte in ASCII-
+Darstellung angezeigt.
+Insgesamt werden damit jeweils 192 Byte aus dem RAM in den Bild-
+wiederholspeicher gelesen.
+Nicht druckbare Zeichen (&lt;20H, &gt;7EH) werden im ASCII-Teil als 
+Punkte dargestellt.
+
+Die Anfangsadresse (AAdr) und die errechnete Endadresse (EAdr)
+des angezeigten RAM-Bereiches werden ebenfalls dargestellt.
+
+Mit den Cursortasten -&gt; kann ab EAdr+1 vorwaerts, mit &lt;- ab
+AAdr-1 rueckwaerts durch den gesamten RAM geblaettert werden.
+Bei Erreichen von 0FFFFH wird nahtlos ab 0H weitergeblaettert;
+der gleiche Uebergang erfolgt rueckwaerts bei Erreichen von 0H.
+
+Durch Eingabe von CR (ENTER) wird erreicht, dass die Eingabe
+einer neuen AAdr erwartet wird.
+Mit CTRL C (^C) wird das Programm beendet und kehrt in das
+Anfangsmenue zurueck.
+Mit der Eingabe "E" geht das Programm in den Editiermodus
+ueber.
+Alle abweichenden Kommandos bzw. Eingaben werden als Fehlein-
+gaben interpretiert und mit einem akustischen Signal quittiert.
+
+
+
+
+************
+EEditiermodusF
+************
+
+
+Das Editieren wird nur im Bildwiederholspeicher durchgefuehrt
+und beschraenkt sich eingabeseitig auschliesslich auf die
+24 * 8 angezeigten hexadezimalen Byte.
+
+Im Editiermodus wird zusaetzlich zu den bisher angezeigten AAdr
+und EAdr die aktuelle Position des Cursors (CuAdr) innerhalb
+des betrachteten RAM-Bereiches dargestellt.
+
+
+
+
+ECursorbewegungen im DumpF
+
+
+Der Cursor (_) befindet sich auf dem 1.Halbbyte des ersten an-
+gezeigten hexadezimalen Zeichens.
+Mit den Cursorbewegungstasten &lt;- und -&gt; kann der gesamte ange-
+zeigte Hexa-Bereich ueberstrichen werden. (bei Erreichen des
+letzten Halbbyte kehrt Cursor zum Anfang zurueck und umgekehrt)
+
+Mit den Cursortasten hoch und runter kann der Cursor in der
+aktuellen Spalte jeweils bis zur ersten bzw. letzten Zeile
+bewegt werden. Weitere Bewegungen in gleicher Richtung bewirken
+ein akustisches Signal. Der Cursor bleibt in erreichter Zeile
+stehen, bis die Bewegungsrichtung geaendert wird.
+
+Bei den Bewegungen des Cursors sowie bei entsprechenden Ein-
+gaben wird die analoge RAM-Adresse innerhalb der Anzeige CuAdr
+jeweils aktualisiert.
+Die der besseren Uebersicht wegen im Hexdump zwischen den Byte
+befindlichen Leerzeichen werden bei den Cursorbewegungen und
+bei Eingaben uebersprungen.
+Der Editiermodus eignet sich damit nach den bisherigen Erkennt-
+nissen besonders gut fuer Hex-Eingaben zu EPROM-Programmierung.
+
+
+
+EHexadezimale AenderungenF
+
+ 
+Entsprechend der aktuellen Cursorposition koennen Aenderungen
+in einzelnen Byte bzw. Halbbyte vorgenommen werden.
+Dabei sind nur die Zeichen 0-9 sowie A-F (egal, ob Gross- oder
+Kleinschreibung) zugelassen; ansonsten akustisches Signal.
+
+Bei Veraenderung eines Halbbyte wird das Gesamtbyte sofort re-
+konvertiert und im ASCII-Dump zur Ansicht gebracht. Ist auch
+das 2.Halbbyte zu veraendern, steht also erst nach Aenderung
+beider Halbbyte das richtige ASCII-Zeichen im ASCII-Dump.
+Diese Verfahrensweise hat den Vorteil, dass wirklich nur das
+noetigste zu aendern ist. Ausserdem wird das Programm dadurch
+ziemlich schnell gemacht.
+
+
+
+EAenderungen im ASCII-CodeF
+
+
+Im Editiermodus ist auch die Eingabe von ASCII-Zeichen in den
+Hex-Dump-Bereich moeglich.
+Dazu ist jeweils in das 1.Halbbyte des zu veraenderten Byte
+ein "." (Punkt) einzugeben. Die Eingabe eines Punktes in das
+2.Halbbyte ist nur zulasessig, wenn im ersten ebenfalls ein
+Punkt eingegeben wurde. Ansonsten ist das eine Fehleingabe und
+wird mit einem akustischen Signal quittiert.
+In das 2.Halbbyte Em u s sF nach dem Punkt im 1.Halbbyte dann
+das gwuenschte ASCII-Zeichen (von 20H bis 7EH) eingegeben wer-
+den.
+Nach erfolgter Eingabe des ASCII-Zeichens wird sofort konver-
+tiert und das Zeichen neu im Hex-Dump und auch im ASCII-Dump
+zur Anzeige gebracht.
+Wurde im ersten Halbbyte der Punkt versehentlich eingegeben,
+dann ist ein normales Verlassen des 2.Halbbyte mit den Cursor-
+tasten EnichtF moeglich.
+Durch Betaetigen von ^C wird die Punkteingabe rueckgaengig ge-
+macht und das urspruengliche Byte (1.u.2.Halbbyte) wieder an-
+gezeigt.
+EAchtung !F Das Betaetigen von ^C ohne Punkt im 1.Halbbyte
+fuehrt zum Abbruch des Editiermodus, ohne die Aenderungen in
+den RAM zurueckzuschreiben.
+
+
+
+ERueckschreiben in RAMF
+
+
+Mit Betaetigen von CR (ENTER) werden alle auf dem Bildschirm
+angezeigten Byte des Hexdump in den RAM entsprechend der ange-
+gebenen AAdr zurueckgeschrieben und das Programm kehrt in den
+Anzeigemodus zurueck.
+Mit ^C wird der Editiermodus beendet, ohne dass der Bildschirm-
+inhalt in den RAM zurueckgeschrieben wird. Evtl. durchgefuehrte
+Veraenderungen sind damit wirkungslos.
+
+Bei beiden Varianten, Rueckschreiben mit CR oder Abbruch mit ^C,
+wird der aktuelle RAM-Inhalt des gerade bearbeiteten Bereiches
+bei der Rueckkehr in den Anzeigemodus zur Kontrolle nochmals an-
+gezeigt. Mit "E" kommt man sofort in den Editiermodus zurueck
+und kann evtl. notwendige Korrekturen durchfuehren.
+
+Ansonsten kann weitergeblaettert, neu editiert oder auch das
+Programm ueber das Anfangsmenue beendet werden.
+
+
+ 
+
+**********
+EDruckmodusF
+**********
+
+
+Die Druckroutine bedarf des 4-KByte-Monitor von Rainer Brosig
+mit integrierten Sprungverteiler.
+
+Ausser o.g. Sprungverteiler keine weiteren Forderungen, da 
+phys. Druckertriber Bestandteil dieser Version.
+
+Ohne diese Voraussetzungen und ohne angschlossenen Drucker 
+sind die nachfolgenden Zellen mit C9H (RET) zu versehen:
+
+
+
+  - D604H:   (C3H) C9H     [3604H:  (C3H) C9H ]  -  Uebergabe
+    AKKU-Inhalt an Druckertreiber
+
+  - D608H:   (C3H) C9H     [3608H:  (C3H) C9H ]  -  Ruecksetzen
+    Zeilenzaehler ueber Sprungverteiler DRDEL (0FFEBH)
+
+
+
+Im Druckmodus sind eingangs die AAdr und EAdr des zu druckenden
+RAM-Bereiches einzugeben. Desweiteren wird der filename ab-
+gefordert, der dann als Ueberschrift auf dem Hex-ASCII-Dump
+gedruckt wird. (filename max.16 Byte werden beim Druck ueber-
+nommen)
+
+Beispiel fuer Druckueberschrift:
+filename: Assembler Scf
+
+Ab der Version 1.02 mit integriertem Druckertreiber wurden
+programmtechnisch 62 zu druckende Zeilen vorgesehen (ent-
+spricht Format A4)
+Gedruckt wird, indem nach Eingabe des filename die Frage 
+"Start Druck (Y/N)" mit Y beantwortet wird.
+Waehrend des Druckes wird jeweils die Taste BREAK abgefragt,
+so dass der Druck jederzeit mit ^C abgebrochen werden kann.
+(Rueckkehr ins Druckmenue ueber Abfrage des bei Abbruch ge-
+setzten CARRY-Flags)
+Ab der Version 1.02 wird ueber dem am Ende des Programms be-
+findlichen Druckertreiber gedruckt. (Treiber entsprechend des
+V.24-Moduls von Riesa)
+Bei Verwendung eigener Druckroutinen kann ab Zelle 0D604H
+der entsprechende Sprung dahin eingetragen werden.
+Das Ruecksetzen des Zeilenzaehlers kann ebenfalls ueber ein
+eigenes kleines Programm ab Adresse 0D608H angesprungen werden.
+(siehe Hinweise am Ende der Beschreibung)
+
+Der integrierte Druckertreiber befindet sich ab Adresse 0DFBEH.
+
+Als PIO-Adressen werden
+
+    - 34H (Steuerwort) und
+    - 35H (Daten)
+
+verwendet.
+
+Die Druckgeschwindigkeit wurde mit 9600 BAUD festgelegt.
+
+Mit der ESCAPE-Folge 1BH,40H,1BH,6CH,08H wird der Drucker
+am Anfang initialisiert und ein linker Rand von 8 Zeichen
+vorgegeben.(fuer alle EPSON-kompatible Drucker nutzbar)
+Die Initialisierung des Druckers mit der o.g. ESCAPE-Folge
+wird auch jeweils nach dem Druck einer Seite durchgefuehrt, 
+um den Druckpuffer zu entleeren.
+
+Insgesamt werden pro Zeile 70 Zeichen gedruckt; beginnend mit
+der 4-stelligen Adresse, der sich 16 Hexazeichen und die je-
+weiligen 16 ASCII-Zeichen anschliessen.
+Fuer nicht druckbare Zeichen (&lt; 20H, &gt; 7EH) werden Punkte ge-
+druckt.
+Bei Erreichen der Endadresse wird jeweils eine volle Zeile
+ausgedruckt, gegebenenfalls also 15 Byte mehr als die einge-
+bene Endadresse.
+Waehrend des Druckes rollen die ausgegebenen Zeichen inner-
+halb eines Fensters ueber den Bildschirm.
+
+Bei Druckende bzw. Druckabbruch wird der Bildschirm im Fenster
+geloescht.
+Das normale Druckende wird ueber den Vergleich der eingege-
+benen Druckendadresse mit der aktuellen Druckadresse ermittelt
+(Abfrage CARRY-Flag):
+ EAdr - akt.Adr = CARRY-Flag 0 -&gt; drucken
+ EAdr - akt.Adr = CARRY-Flag 1 -&gt; beenden
+
+Da dieser Vergleich jeweils nur aller 16 Byte durchgefuehrt
+wird, ist gesichert, dass der Hexdump auch mit einer vollen
+Zeile abgeschlossen wird.
+Bei EAdr &gt; 0FFE1H kann es vorkommen, dass durch den Vergleich
+aller 16 Byte ein Ueberlauf von 0FFFFH nach 0000H erfolgt und
+der Druck damit nicht ordnungsgemaess beendet wird.
+In solchen Ausnahme-Faellen ist der Druck mit CTRL-C
+abzubrechen. 
+Das Programm befindet sich nach Abbruch bzw. Druckende noch
+im Druckmodus; es kann entweder neu gedruckt oder mit ^C 
+ins Anfangsmenue zurueckgekehrt werden.
+
+Waehrend des Druckes erscheint auf der letzten Zeile des Bild-
+schirms die Ausschrift "printer is working".
+
+Nach dem Druck der vorgegebenen 62 Zeilen pro Blatt wird
+rechts daneben die Frage "go (Y/N) ?" angezeigt.
+Mit der Antwort "N" wird der Druck vorzeitig beendet, "Y" und
+alle anderen Tasten fuehren zur Druckfortsetzung.
+
+
+
+
+ 
+EAnmerkungenF
+
+
+
+- fehlende Moeglichkeit einer Tonausgabe z.B. ueber Tonband-
+  buchse wirken sich nicht weiter nachteilig aus, da Fehlein-
+  gaben auch daran zu sehen sind, dass die Eingabe nicht ange-
+  nommen bzw. der Cursor nicht weiter bewegt wird.
+
+- versuchtes Rueckschreiben in ROM-Bereiche wurde programm-
+  technisch nicht unterbunden; dass Editieren im BWS ist moeg-
+  lich, Rueckschreiben natuerlich nicht moeglich.
+
+- alle im Programm verwendeten Monitorroutinen werden mit 
+  Restartbefehlen aufgerufen. Vor den RST-Befehlen wurde je-
+  weils ein NOP-Befehl eingefuegt.
+
+- im Sinne einer breiten Anwendung dieses Service-Programms auch
+  durch Z1013-Nutzer, die mit der Grundausstattungsvariante
+  arbeiten, wurde die Einbeziehung des Z1013-Sprungvertei-
+  lers von Rainer Brosig (Coswig) nur fuer die Druckroutine
+  verwendet.
+  ab Version 1.02 mit eigenem Druckertreiber nur noch fuer
+  Ruecksetzung Zaehlstellen (siehe Hinweise)
+
+ 
+
+ETastencodeabweichungenF
+
+
+Funktion    Code Schreibmaschinen-         Folientastatur
+---------------------------------------------------------
+
+Cursor       0AH          |                     S4/R
+runter                    V
+Cursor       0BH          ^                     S4/S
+hoch                      |
+Abbruch      03H        CTRL C                  S4/K
+
+
+
+
+EFehleingabenF
+
+
+- Anfangsmenue:  Zeichen &lt;&gt; CR, Curs.hoch, Curs.runter
+
+- Adresseingabe: Zeichen &lt;&gt; 0-9, A-F, &lt;-, -&gt;, ^C, CR
+
+- Anzeigemodus:  Zeichen &lt;&gt; E, CR, ^C, &lt;-, -&gt;
+
+- Editiermodus:  Zeichen &lt;&gt; 0-9, A-F, CR, ^C, .(Punkt im 1.HB),
+                            Cursor hoch, runter, links,rechts
+                 verlassen Zeile 1 mit Cursor hoch
+                 verlassen Zeile 24 mit Cursor runter
+                 Zeichen &lt;&gt; druckbares ASCII-Zeichen oder ^C
+                 (wenn im 1.HB Punkt eingegeben wurde)
+
+- Druckmodus:    Zeichen &lt;&gt; 0-9, A-F bei Adresseingabe
+                 EAdr &lt; oder = AAdr
+                 Eingabe von mehr als 4 Zeichen pro Adresse
+
+
+
+
+EHinweise:F
+
+Ist kein Sprungverteiler im Rechner integriert, kann das fol-
+gende Unterprogramm ab Adresse 0D608H mit C3 xx xx aufgerufen
+werden, um den Zeilenzaehler rueckzusetzen:
+
+xxxx:	PUSH	HL
+	LD	HL,0035H	;= Zaehlzelle
+	LD	M,0
+	POP	HL
+	RET
+
+Damit kann das Programm "HexDump" auch ohne Sprungverteiler
+abgearbeitet werden.
+
+
+
+  
+EKontaktadresse:F         Wolfgang Bernhardt
+                        Marienburger Str. 35 a
+                        Berlin
+                        1 0 5 5
+
+</pre>
+</pre>
 </body>
 </html>

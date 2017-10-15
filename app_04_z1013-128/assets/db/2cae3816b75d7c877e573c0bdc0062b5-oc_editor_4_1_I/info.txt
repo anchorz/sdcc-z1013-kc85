@@ -1,0 +1,3 @@
+<kurz src="Beschreibung OBJEKTCODEEDITOR OCE 4.1"/>
+<lang><include src="oc_editor_4_1_I.txt"/></lang>
+<requires></requires>
