@@ -29,5 +29,7 @@ Zahl eingegeben.
 
 Bei Eingabe von R beginnt das
 
-Spiel von Neuem.</lang>                      
+Spiel von Neuem.
+
+<include src="muehle.B"/></lang>                      
 <requires></requires>

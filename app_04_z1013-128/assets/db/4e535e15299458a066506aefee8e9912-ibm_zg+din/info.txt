@@ -1,0 +1,4 @@
+<kurz src="Zeichensatz, breite CGA Version+IBM Erweiterung"/>
+<lang>äöüÄÖÜ sind doppelt, dafür fehlen die Klammern {[]}
+<include src="zg.html"/></lang>
+<required></required>

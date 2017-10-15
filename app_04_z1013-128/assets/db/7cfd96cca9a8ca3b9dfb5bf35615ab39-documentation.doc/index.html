@@ -14,6 +14,82 @@
 </head>
 <body>
 <div></div><div class="filelist">2000 2938 0000 T ... <a href="documentation.doc.z80">DOCUMENTATION&nbsp;&nbsp;&nbsp;</a></div>
-<pre><include>documentation.doc.txt</include></pre>
+<pre><pre> 
+**********************************************************************
+*            B E S C H R E I B U N G   T E X T E D I T O R           *
+**********************************************************************
+
+
+*** Beschreibung der Funktionen ***
+
+-Frage nach Textanfang kann mit "ENTER" beantwortet werden.
+
+-Alle Funktionen sind aus dem Edit-Modus erreichbar.
+
+Taste          Funktion
+
+  -- Cursor-Steuerung --
+
+^X/DOWN         Cursor runter
+^E/UP              "   hoch
+^S/LEFT            "   links
+^D/RIGHT           "   rechts
+^A                 "   an Zeilenanfang
+^F                 "   an Zeilenende
+^W                 "   an Textanfang
+^Y                 "   an Textende
+^R              eine Seite hoch
+^C              eine Seite runter
+^T              Tab-Sprung nach rechts (Orientierung an vorhergehender
+                Zeile)
+
+  -- Textmanipulation --
+
+(ohne CTRL)     Zeichen wird in Text eingefuegt
+DEL             Loeschen des Zeichens vor Cursor
+ENTER           neue Zeile (bei INS ein:Zeile einfuegen)
+                Cursor unter Begin der vorherigen Zeile
+^G              Zeichen unter Cursor loeschen
+^Z              Zeile loeschen
+^U              Text auf Magnetband retten
+^L              Text vom Magnetband laden
+^PT             gesamten Text drucken
+^OL             Zeilenmodus: es wird die erste Zeile vom Bildaus-
+                schnitt vollstaendig angezeigt,
+                Blaettern mit "UP" und "DOWN", Zurueck mit "Q"
+^PI             Steuerzeichen; intensiv drucken
+^PN             Steuerzeichen; normal drucken
+^PU             Steuerzeichen; Unterstreichen ein
+^PL             Steuerzeichen; Unterstreichen aus
+^PS             Steuerzeichen; Seitenvorschub
+
+  -- Blockbefehle --
+
+^BA             Blockanfang markieren
+^BE             Blockende markieren
+^BQ             Blockmarkierungen entfernen
+                (wichtig vor Retten bzw. Drucken)
+^BZ             Block loeschen
+^BC             Block kopieren
+^BV             Block verschieben
+^BU             Block auf Magnetband retten
+^PB             Block drucken
+
+  -- Weitere Befehle --
+
+^N              Anzeige Textanfang,Textende,Textlaenge (Zeilenzahl)
+^V              Umschaltung INS/OVR und umgekehrt
+^PZ             Einstellen der Zeilenzahl pro Blatt beim Drucken
+^Q              zum Z1013-Monitor
+
+
+Letzte Bearbeitung:
+
+7.2.1989
+
+Rolf Nestler
+
+</pre>
+</pre>
 </body>
 </html>

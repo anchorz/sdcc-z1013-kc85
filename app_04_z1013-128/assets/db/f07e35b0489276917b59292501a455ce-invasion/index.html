@@ -42,7 +42,7 @@ Minuspunkte).
 
 K=hoch F=Feuer ␣ =runter
 
-10 CLS:RESTORE 600:PRINT AT(15,10);"Bitte warten"
+<pre>10 CLS:RESTORE 600:PRINT AT(15,10);"Bitte warten"
 12 FOR K=15728 TO 16031:READ A:POKE K,A:NEXT
 14 WINDOW 0,24,0,31:CLS
 16 PRINT AT(0,0);STRING$(32,CHR$(198))
@@ -140,6 +140,7 @@ K=hoch F=Feuer ␣ =runter
 1070 PRINT AT(24,23);"Weiter ?"
 1075 C$=INKEY$:IF C$=""THEN 1075
 1080 GOTO 14
+</pre>
 </pre>
 </body>
 </html>

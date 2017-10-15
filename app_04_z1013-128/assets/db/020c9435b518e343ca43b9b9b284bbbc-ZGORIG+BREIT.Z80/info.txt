@@ -1,0 +1,5 @@
+<kurz src="Zeichensatz, breite Version, mit DEL-Zeichen"/>
+<lang>wie [1fe83766bf2dd8fb849853aef93bf5b4], DEL Zeichen geändert
+
+<include src="zg.html"/></lang>
+<required></required>

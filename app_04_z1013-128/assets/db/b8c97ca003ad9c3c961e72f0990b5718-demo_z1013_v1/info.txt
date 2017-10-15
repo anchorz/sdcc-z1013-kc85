@@ -1,0 +1,3 @@
+<kurz src="Präsentation der wesentlichen Eigenschaften, Tastaturlayout etc."/>
+<lang></lang>
+<requires></requires>

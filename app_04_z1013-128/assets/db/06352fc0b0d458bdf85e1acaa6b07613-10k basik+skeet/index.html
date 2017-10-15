@@ -24,14 +24,14 @@ STUFE A ODER B .
 WARTEN SIE EINIGE SEKUNDEN.
 
 
-10  !##########################
-20  !#       Programm         #
-30  !#       S K E E T        #
-40  !# bearbeitet:            #
-50  !#       Rolf Zimmer      #
-60  !#       W.-PIECK-STR. 17 #
-70  !# MAERZ 1987             #
-80  !##########################  
+<pre>10 !##########################
+20 !#       Programm         #
+30 !#       S K E E T        #
+40 !# bearbeitet:            #
+50 !#       Rolf Zimmer      #
+60 !#       W.-PIECK-STR. 17 #
+70 !# MAERZ 1987             #
+80 !##########################  
 90 GOSUB 1450
 100 A2$="SPIEL"
 110 A3$="SKEET"
@@ -180,6 +180,7 @@ WARTEN SIE EINIGE SEKUNDEN.
 1540 IF INT(RND(1)*3+.5)&lt;&gt;2 THEN RETURN
 1550 FOR I=1 TO 31:PRINT AT(22,I);CHR$(RND(1)*223+32):PRINT AT(22,I-1);" ":NEXT 
 1560 PRINT AT(22,31);" ":RETURN
+</pre>
 </pre>
 </body>
 </html>

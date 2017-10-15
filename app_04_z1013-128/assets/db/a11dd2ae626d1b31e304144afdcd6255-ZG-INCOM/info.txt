@@ -1,0 +1,5 @@
+<kurz src="Entspricht dem IBM Zeichensatz, diesmal sind die Klammern mit dabei"/>
+<lang>Eine kreative Lösung der Klammerfrage. Die Kodierung ist garantiert INCOMpatibel. 
+wie [4e535e15299458a066506aefee8e9912] aber als breite Variante. 
+<include src="zg.html"/></lang>
+<requires></requires>

@@ -1,11 +1,11 @@
-10  !##########################
-20  !#       Programm         #
-30  !#       S K E E T        #
-40  !# bearbeitet:            #
-50  !#       Rolf Zimmer      #
-60  !#       W.-PIECK-STR. 17 #
-70  !# MAERZ 1987             #
-80  !##########################  
+10 !##########################
+20 !#       Programm         #
+30 !#       S K E E T        #
+40 !# bearbeitet:            #
+50 !#       Rolf Zimmer      #
+60 !#       W.-PIECK-STR. 17 #
+70 !# MAERZ 1987             #
+80 !##########################  
 90 GOSUB 1450
 100 A2$="SPIEL"
 110 A3$="SKEET"

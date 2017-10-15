@@ -10,9 +10,9 @@
 
 -Alle Funktionen sind aus dem Edit-Modus erreichbar.
 
-┏Taste┓          ┏Funktion┓
+Taste          Funktion
 
-  _-- Cursor-Steuerung --_
+  -- Cursor-Steuerung --
 
 ^X/DOWN         Cursor runter
 ^E/UP              "   hoch
@@ -27,7 +27,7 @@
 ^T              Tab-Sprung nach rechts (Orientierung an vorhergehender
                 Zeile)
 
-  _-- Textmanipulation --_
+  -- Textmanipulation --
 
 (ohne CTRL)     Zeichen wird in Text eingefuegt
 DEL             Loeschen des Zeichens vor Cursor
@@ -47,8 +47,7 @@ ENTER           neue Zeile (bei INS ein:Zeile einfuegen)
 ^PL             Steuerzeichen; Unterstreichen aus
 ^PS             Steuerzeichen; Seitenvorschub
 
-
-_-- Blockbefehle --_
+  -- Blockbefehle --
 
 ^BA             Blockanfang markieren
 ^BE             Blockende markieren
@@ -60,7 +59,7 @@ _-- Blockbefehle --_
 ^BU             Block auf Magnetband retten
 ^PB             Block drucken
 
-  _-- Weitere Befehle --_
+  -- Weitere Befehle --
 
 ^N              Anzeige Textanfang,Textende,Textlaenge (Zeilenzahl)
 ^V              Umschaltung INS/OVR und umgekehrt
@@ -73,4 +72,4 @@ Letzte Bearbeitung:
 7.2.1989
 
 Rolf Nestler
-<<EOT>>
+

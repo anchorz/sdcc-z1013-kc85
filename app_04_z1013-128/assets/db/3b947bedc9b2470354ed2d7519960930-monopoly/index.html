@@ -14,7 +14,7 @@
 </head>
 <body>
 <div><img src="screenshot_01.png"/><img src="screenshot_02.png"/></div><div class="filelist">2bc0 5d05 0000 B ... <a href="monopoly.z80">MONOPOLY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-<pre>1 CLEAR 230:WINDOW:CLS:PRINT AT(31,17);"Druecke Taste":GOSUB 241
+<pre><pre>1 CLEAR 230:WINDOW:CLS:PRINT AT(31,17);"Druecke Taste":GOSUB 241
 3 FOR I=1 TO 40:FE(I,1)=0:FE(I,2)=0:FE(I,3)=0:NEXT I
 5 DIM SP$(7,2):SP$(1,2)="É":SP$(2,2)="":SP$(3,2)="Ë":SP$(4,2)="Ê"    
 7 SP$(5,2)="Ï":SP$(6,2)="":SP$(0,2)=" " 
@@ -404,6 +404,7 @@
 775 PRINT "  Sie":PRINT " erhalten:":PRINT:PRINT STR$(GK):PRINT
 777 PAUSE 10:SP(SS,1)=SP(SS,1)+GK:GK=0:GOSUB 569:GOSUB 601
 779 RETURN
+</pre>
 </pre>
 </body>
 </html>

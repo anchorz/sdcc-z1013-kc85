@@ -1,3 +1,3 @@
-<kurz>Beschreibung Texteditor</kurz>
-<lang><include>documentation.doc.txt</include></lang>
+<kurz src="Beschreibung Texteditor"/>
+<lang><include src="documentation.doc.txt"/></lang>
 <required></required>

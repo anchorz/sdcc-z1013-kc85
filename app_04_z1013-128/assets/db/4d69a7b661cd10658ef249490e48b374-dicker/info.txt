@@ -1,3 +1,5 @@
-<kurz>Schiebefaxderivat</kurz>
-<lang></lang>
+<kurz src="Schiebefaxderivat"/>
+<lang>
+
+<include src="dicker.B"/></lang>
 <required></required>

@@ -1,0 +1,3 @@
+<kurz src="Originalzeichensatz mit Umlauten, Control-Zeichen und Inversdarstellung"/>
+<lang><include src="zg.html"/></lang>
+<required></required>

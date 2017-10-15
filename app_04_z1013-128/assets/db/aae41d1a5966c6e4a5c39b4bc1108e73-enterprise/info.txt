@@ -1,3 +1,3 @@
-<kurz>mit einem Raumschiff Klingonen anschießen</kurz>
-<lang><include>enterprise.B</include></lang>
+<kurz src="mit einem Raumschiff Klingonen anschießen"/>
+<lang><include src="enterprise.B"/></lang>
 <required></required>

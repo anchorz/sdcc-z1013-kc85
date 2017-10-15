@@ -1,0 +1,4 @@
+<kurz src="Z1013 Zeichensatz, aber gespiegelt und gedreht"/>
+<lang>Man kann diesen "Originalzeichensatz" ggf. zum Drucken verwenden. 
+<include src="zg.html"/></lang>
+<requires></requires>

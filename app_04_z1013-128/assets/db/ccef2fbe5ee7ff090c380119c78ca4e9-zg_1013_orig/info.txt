@@ -1,0 +1,5 @@
+<kurz src="Original Z1013 Zeichensatz ROM"/>
+<lang>
+
+<include src="zg.html"/></lang>
+<requires></requires>

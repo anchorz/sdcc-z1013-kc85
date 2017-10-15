@@ -1,0 +1,4 @@
+<kurz src="Topspiel von 1990, Knobelspiel, dabei Sand wegschaufeln, Diamanten einsammeln."/>
+<lang>Es ist eine Art Knobelspiel. Das Ziel ist es eine vorgegebene 
+Anzahl von Diamanten einzusammeln.</lang>
+<requires></requires>

@@ -1,0 +1,4 @@
+<kurz src="Zeichensatz, breite Version"/>
+<lang>wie [020c9435b518e343ca43b9b9b284bbbc] allerdings ohne DEL-Zeichen
+<include src="zg.html"/></lang>
+<required></required>

@@ -16,7 +16,7 @@
 <div><img src="screenshot_01.png"/><img src="screenshot_02.png"/><img src="screenshot_03.png"/></div><div class="filelist">2bc0 7730 0000 B ... <a href="master_of_soft_1.z80">Master&nbsp;of&nbsp;Soft&nbsp;1</a></div>
 <pre>Wenn ich nur noch wüsste, was OUT16 und OUT20 macht! eventuell Zeichensatzumschaltung?
 Ggf. muss man diese Zeilen entfernen.
-1 OUT 16,0:GOTO 8000
+<pre>1 OUT 16,0:GOTO 8000
 2 BEEP
 3 A=PEEK(4):IF A=0 THEN 3:ELSE A$=CHR$(A):RETURN
 4 POKE DEEK(43),32:RETURN
@@ -685,6 +685,7 @@ Ggf. muss man diese Zeilen entfernen.
 8260 FOR T=1 TO 9:PRINT PG$(F(1,T))TAB(24)PG(F(1,T)):PRINT STRING$(32,"*");CHR$(11):NEXT
 8270 PRINT PG$(F(1,10))TAB(24)PG(F(1,10)):GOSUB 6
 9000 GOTO 530
+</pre>
 </pre>
 </body>
 </html>

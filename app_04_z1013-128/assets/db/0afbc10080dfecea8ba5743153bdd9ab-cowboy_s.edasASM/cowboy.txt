@@ -1,54 +1,43 @@
-
-
-Z1013+K7659/2.028 RB
- # 
-
-robotron Z 1013 Edas H+D V1
-
-Neustart J/(N):J
-
-+    
-+    LIST
 00010 ANF:   JMP  BEGIN
-00020 MANL:  DB   '¾å '
-00030        DB   '¿ÿæ '
-00040        DB   'Ó»ùØ'
-00050        DB   ' ê '
-00060        DB   ' ´  '
+00020 MANL:  DB   ' '
+00030        DB   ' '
+00040        DB   ''
+00050        DB   '  '
+00060        DB   '   '
 00070 LSPA:  DB   0
 00080 LZEI:  DB   25
-00090 MANR:  DB   ' ß¾'
-00100        DB   ' öÿ'
-00110        DB   'ÛùºÐ'
-00120        DB   ' òÿ '
-00130        DB   '  µ '
+00090 MANR:  DB   ' '
+00100        DB   ' '
+00110        DB   ''
+00120        DB   '  '
+00130        DB   '   '
 00140 RSPA:  DB   28
 00150 RZEI:  DB   25
 00160 LTOT:  DB   '    '
 00170        DB   '    '
 00180        DB   '    '
-00190        DB   'üÜä '
-00200        DB   '½ºÿ·'
+00190        DB   ' '
+00200        DB   ''
 00210 RTOT:  DB   '    '
 00220        DB   '    '
 00230        DB   '    '
-00240        DB   ' à÷ü'
-00250        DB   '·ÿ»¼'
+00240        DB   ' '
+00250        DB   ''
 00260 MGO:   DB   '    '
 00270        DB   '    '
 00280        DB   '    '
 00290        DB   '    '
 00300        DB   '    '
-00310 HIND:  DB   'Ç³'
-00320        DB   '£  ¥'
-00330        DB   '£  ¥'
-00340        DB   '£  ¥'
-00350        DB   '§¤¤ª'
-00360 BAUM:  DB   '  '
-00370        DB   ''
-00380        DB   ''
-00390        DB   ''
-00400        DB   ' ôè '
+00310 HIND:  DB   ''
+00320        DB   ''
+00330        DB   ''
+00340        DB   ''
+00350        DB   ''
+00360 BAUM:  DB   '  '
+00370        DB   ''
+00380        DB   ''
+00390        DB   ''
+00400        DB   '  '
 00410 HANZ:  DB   0
 00420 HSPA:  DB   14
 00430 HZEI:  DB   0
@@ -369,19 +358,14 @@ Neustart J/(N):J
 03580        LD   DE,HIND
 03590        CALL MGET
 03600        RET  
-03610 AUTO:  DB   'S
-ZZZZ'
-03620        DB   'Z
-ZZZZ'
+03610 AUTO:  DB   'SZZZZ'
+03620        DB   'ZZZZZ'
 03630        DB   'WA A '
-03640        DB   'WA 
-A '
+03640        DB   'WA A '
 03650        DB   'A A A A A '
-03660        DB   'SZZ
-ZZ'
+03660        DB   'SZZZZ'
 03670        DB   'AAASA'
-03680        DB   'A
-AAZZ'
+03680        DB   'AAAZZ'
 03690        DB   'ZSAAA'
 03700        DB   '      '
 03710        DB   0
@@ -443,7 +427,7 @@ AAZZ'
 04270 FELD2: LD   L,13
 04280        PUSH HL
 04290        CALL CPOS
-04300        LD   (HL),''
+04300        LD   (HL),''
 04310        POP  HL
 04320        PUSH HL
 04330        LD   L,18
@@ -451,7 +435,7 @@ AAZZ'
 04350        SUB  H
 04360        LD   H,A
 04370        CALL CPOS
-04380        LD   (HL),''
+04380        LD   (HL),''
 04390        LD   B,6
 04400        CALL PA3
 04410        POP  HL
@@ -493,4 +477,3 @@ AAZZ'
 04770        CALL DRBA
 04780        JR   TE3-#
 04790        JMP  ENDE
-+    
