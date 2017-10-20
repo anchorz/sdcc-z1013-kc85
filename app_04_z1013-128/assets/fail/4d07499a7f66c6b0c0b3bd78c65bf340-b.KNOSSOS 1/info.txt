@@ -1,0 +1,12 @@
+<kurz src=""/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.
+ansonsten gleich mit [b5acc7e1d8f7495ee50ba94d7d85f296]
+Erlaeuterungen zur Eingabe:
+
+Space      - 1 Schritt vorwaerts
+Kursor re. - Drehung rechts
+Kursor li. - Drehung links
+Q          - Programmende  
+
+<include src="KNOSSOS 1.b"/></lang>
+<requires></requires>

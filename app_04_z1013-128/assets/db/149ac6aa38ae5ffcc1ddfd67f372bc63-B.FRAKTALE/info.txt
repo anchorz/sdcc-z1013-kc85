@@ -1,0 +1,70 @@
+<kurz src="Fraktale in Pseudografik"/>
+<lang>Die Bilder werden mit Pseudo-
+graphik gezeichnet. Sie ent-
+stehen durch Iteration.
+
+Zu Beginn wird das Editieren
+der Berechnungsformeln ermoeglicht. 
+Weiter mit >ET<.
+Neustart mit >RUN<
+
+Die Formeln muessen fuer das
+Bildspeichern dann eingegeben
+werden und werden gespeichert.
+Sie koennen uebernommen werden.
+
+Zum Grundmenue:
+
+Fuer alle Eingaben sind Werte
+voreingestellt (s.Menue)
+Sollen sie uebernommen werden,
+dann nur >ET<. Sonst Werte
+eingeben.
+
+Grundzeichen = empfohlen 32
+
+Graphikzeichen T = (190)
+2.G.zeichen    U = (137)
+Hiermit werden die Bilder ge-
+bildet.
+
+Zyklen Z empfehlen sich ab 30
+Grenzwert G ab ca. 30.
+Je groesser Z und G desto
+laenger die Berechnung.
+
+X1,X2,Y1,Y2 = Werte der
+X-Y-Achse. Sie sollten:
+zwischen -5 und 5 liegen.
+
+Bei Signalton wird am Bildende 
+ueber das MBG ein Ton
+erzeugt.
+
+Die Uhrzeit ist zur Erinnerung
+eingebbar. Bei Signal auf die
+Uhr sehen und Zeit merken.
+
+Nach Fertigstellung des Bildes 
+wird es in ein Feld gespeichert, 
+die Dauer abgefragt,
+alle Werte angezeigt und
+auch gespeichert.
+Die vewendeten Formeln werden
+auch mit gespeichert.
+Die X- u. Y- Koordinaten
+werden eingeblendet.
+
+Nun kann das Bild gespeichert
+werden oder ins Menue zurueck.
+Alle Daten werden nochmals
+angezeigt.
+Wird ein Bild von Kassette
+geladen, werden diese Daten
+angezeigt. Es kann sofort
+wieder auf Kassette ausge-
+geben werden.       
+
+                             
+<include src="B.FRAKTALE.B"/></lang>
+<requires></requires>

@@ -73,7 +73,7 @@ for (sort { $distance{$a} <=> $distance{$b} } keys %distance) {
     $count++;
     printf("%d %s (%d.hex)\n",$distance{$file},get_database_folder()."/".$file,$count);
     system("hexdump -C \"".get_database_folder()."/$file\" >$count.hex");
-    if ($count>4) {
+    if ($count>14) {
         last;
     }
 }

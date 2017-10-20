@@ -1,0 +1,3 @@
+<kurz src="Berechnung Wechselgeld und Stückelung"/>
+<lang><include src="KASSE.B"/></lang>
+<requires></requires>

@@ -1,0 +1,5 @@
+<kurz src="Spinge durch die freien Stellen nach Oben, CALL Variante"/>
+<lang>ansonsten gleich mit [6a2b89d0db56afa89fe9aee6d8ac4bab].
+Geprungen wird mit SPACE
+<include src="jumping__i.doc.txt"/></lang>
+<requires></requires>

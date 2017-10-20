@@ -1,0 +1,13 @@
+<kurz src="Springe über die Löcher in der Bohrplattform+INKEY$"/>
+<lang>wie [c94ddbf517ac1c1f125ff449d018273d]
+Diese Variante benutzt die INKEY$ Funktion zur Eingabe.
+
+Sie  sind auf  einer  defekten
+Bohrplattform und muessen ueber
+die  Loecher im Plattformboden
+springen.
+
+Steuerung: ␣ - Springen
+
+<include src="bohrturm.B"/></lang>
+<required></required>

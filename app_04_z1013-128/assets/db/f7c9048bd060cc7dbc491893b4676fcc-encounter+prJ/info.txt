@@ -1,0 +1,15 @@
+<kurz src="Ballspiel, Solo-Tennis+Joystick Practic 01/88"/>
+<lang>ENCOUNTER
+
+DAS PROGRAMM IST EIN BALLSPIEL,
+WO SIE MIT GESCHICK UND GLUECK,
+VERSUCHEN MUESSEN, SICH 10 LEBEN ZU
+ERKAEMPFEN. 
+
+S1 unten 
+S2 oben
+
+VIEL SPASS...(SPACE)
+
+<include src="encounter.b"/></lang>
+<required></required>

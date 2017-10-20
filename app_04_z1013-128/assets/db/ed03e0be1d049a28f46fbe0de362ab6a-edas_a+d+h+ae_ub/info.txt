@@ -1,0 +1,5 @@
+<kurz src="neueste Version vom Editor Assembler"/>
+<lang>
+
+<include src="edas_text.txt"/></lang>
+<requires></requires>

@@ -220,9 +220,10 @@ sub print_entry2($ $) {
     my @en=@{$db_entry_list{$filename}};
 
     my $link=basename(dirname($filename));
-    my $srcmd5=(split(/-/,$link))[0];
+    my ($srcmd5,$tag)=split(/-/,$link);
+
     if ($en[5] ne $srcmd5) {
-        printf STDERR "w: md5 stimmt nicht überein %s:%s\n",$en[5],dirname($filename);
+        printf STDERR "w: md5 stimmt nicht überein \"%s\" => \"%s-%s\"\n",$link,$en[5],$tag;
     }
 
     $link.="/index.html";

@@ -1,0 +1,5 @@
+<kurz src="Spinge durch die freien Stellen nach Oben, RST20 Variante"/>
+<lang>Direkte-Call durch RST20 erstezt, ansonsten gleich mit [d27e3f683d8721cadce77c19fadf9612].
+Geprungen wird mit SPACE
+<include src="jumping__i.doc.txt"/></lang>
+<requires></requires>

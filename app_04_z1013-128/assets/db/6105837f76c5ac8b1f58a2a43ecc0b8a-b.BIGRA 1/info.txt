@@ -1,0 +1,6 @@
+<kurz src="Demo Cursorsteuerung, ASCII Zeichen umwandeln"/>
+<lang>So richtig erschließt sich der Sinn des Programmes
+nicht für mich.
+ 
+<include src="BIGRA 1.b"/></lang>
+<requires></requires>

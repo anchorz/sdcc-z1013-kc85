@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png"/></div><div class="filelist">2bc0 33d7 0300 B ... <a href="B.BOHRTURM.z80">BOHRTURM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre>wie [c94ddbf517ac1c1f125ff449d018273d]
+Diese Variante benutzt die INKEY$ Funktion zur Eingabe.
+
+Sie  sind auf  einer  defekten
+Bohrplattform und muessen ueber
+die  Loecher im Plattformboden
+springen.
+
+Steuerung: ␣ - Springen
+
+<pre>   10 WINDOW:CLS:SC=100:N$="Oeli":A$=""
+   20 PRINT AT(24,0);STRING$(16," "):PRINT AT(25,0);STRING$(16," ")
+   30 B$="            ":D$=" ":E$="  ":D$=STRING$(10,D$)
+   40 E$=STRING$(10,E$):R=1:DIM V(20)
+   50 FOR I=26 TO 29 STEP 2
+   60 PRINT AT(I,0);MID$(D$,R,32):PRINT AT(I+1,0);MID$(E$,R,32):R=R+1:NEXT
+   70 PRINT AT(I,0);MID$(D$,R,32)
+   80 WINDOW 16,31,0,31:BEEP
+   90 PRINT "";STRING$(25,""):PRINT A$:PRINT B$
+  100 FOR I=19 TO 26:PRINT AT(I,3);"":PRINT AT(I,12);"":PRINT AT(I,22);""
+  110 NEXT:PRINT AT(I,12);""
+  120 PRINT AT(21,27);"  "
+  130 PRINT AT(22,27);""
+  140 PRINT AT(23,27);"  
+  150 BEEP
+  160 WINDOW 0,14,0,31:CLS
+  170 PRINT "     ";STRING$(19,CHR$(158))
+  180 PRINT "     &gt; B O H R T U R M &lt;":PRINT "     ";STRING$(19,"")
+  190 WINDOW 5,14,0,31
+  200 PRINT " Sie  sind auf  einer  defekten  Bohrplattform und muessen ueber";
+  210 PRINT " die  Loecher im Plattformboden  springen.
+  220 PRINT " Dazu druecken Sie eine Taste!"
+  230 PRINT:PRINT "    Spielgeschwindigkeit":PRINT
+  240 PRINT "      schnell/langsam":PRINT AT(14,0);" ":BEEP
+  250 PRINT AT(13,6);"S":PRINT AT(13,14);"L":PAUSE 2:BEEP
+  260 I$=INKEY$
+  270 IF I$="S"THEN 300
+  280 IF I$="L"THEN 310:PAUSE 2:BEEP:GOTO 240
+  290 PRINT AT(13,6);"s":PRINT AT(13,14);"l":PAUSE 2:BEEP:GOTO 250
+  300 T=1:P=2:GOTO 320
+  310 T=30:P=1
+  320 CLS:BEEP 3:WINDOW 0,18,0,31:PRINT AT(0,0);" ":E=17*32-5119
+  330 B=INT(RND(1)*12+8):C=INT(RND(1)*12+8):A=3
+  340 PRINT AT(17,B);CHR$(158):PRINT AT(17,C);CHR$(158)
+  350 PRINT AT(15,A-1);" ":PRINT AT(16,A-1);"",CHR$(157)
+  360 IF A=B OR A=C THEN 460
+  370 IF A&gt;23 THEN 650
+  380 A=A+1:S=S+P:FOR I=1 TO T:NEXT
+  385 R$=INKEY$
+  390 IF R$&lt;&gt;""THEN GOSUB 410
+  400 GOTO 350
+  410 IF A&gt;20 THEN RETURN
+  420 PRINT AT(16,A-1);""
+  430 PRINT AT(14,A);"":PRINT AT(15,A-1);" ",CHR$(156):A=A+1:BEEP
+  440 PRINT AT(14,A-1);" ":PRINT AT(15,A-1);" ",CHR$(156):A=A+1
+  450 PRINT AT(14,A-1);" ":RETURN
+  460 BEEP:PRINT AT(15,A);" ":PRINT AT(16,A);"":WINDOW:PRINT AT(0,0);" "
+  470 IF A=C THEN B=C
+  480 V(0)=137:V(1)=158
+  490 FOR V=2 TO 14
+  500 V(V)=PEEK(E+B-1+32*(V-1))
+  510 IF V&lt;13 THEN PRINT AT(15+V,B);"":PRINT AT(16+V,B);CHR$(157)
+  520 POKE E+B-1+(V-3)*32,V(V-2):NEXT
+  530 BEEP 3:WINDOW 5,13,0,31
+  540 PRINT AT(17,0);A$
+  550 PRINT "       Score";S:PRINT "  High-Score";
+  560 IF SC&lt;S THEN GOSUB 690:PRINT S;"by ";:INPUT N$:BEEP:SC=S:GOTO 580
+  570 IF SC&gt;=S THEN PRINT SC;"by ";LEFT$(N$,10):BEEP
+  580 PRINT:PRINT "Geschwindigkeit veraendern ?":PRINT
+  590 PRINT AT(10,8);"Enter = nein":PRINT AT(10,0);" "
+  600 U$=INKEY$
+  610 IF U$=CHR$(13)THEN 630
+  620 IF U$="J"THEN 640 ELSE 590
+  630 S=0:GOTO 320
+  640 S=0:GOTO 160
+  650 PRINT AT(15,A);" ":PRINT AT(16,A);""
+  660 PRINT AT(17,0);A$
+  670 S=S+P*5:BEEP
+  680 GOTO 330
+  690 DATA 14,7,14,12,10,8,12,5
+  700 RESTORE 690:FOR I=1 TO 8
+  710 READ P:BEEP:NEXT
+  720 RETURN
+</pre>
+</pre>
+</body>
+</html>

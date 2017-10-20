@@ -1,0 +1,27 @@
+<kurz src="Huepf-Eck durch Hindernisparcour navigieren(8x4)"/>
+<lang>Mit den Tasten E,F,G,M,N,O,U,V
+und W koennen Sie das Huepf-Eck
+auf dem Bildschirm steuern.
+
+EFG
+MNO
+UVW
+
+N ist die Notbremse. Mit den anderen 
+Tasten koennen Sie das sich selbstbewegende 
+Huepf-Eck in der Richtung korrigieren.
+
+Die Richtungsgebung der einzelnen 
+Tasten ergibt sich aus deren Lage auf der 
+Tastatur. Also F nach oben,G nach diagonal
+rechts oben u.s.w.
+
+Jeder Sprung des Huepf-Ecks ist ein Punkt
+fuer Sie. Rammen Sie aber eines der 
+auftauchenden Hindernisse, ist das Spiel 
+beendet und es erfolgt die Auswertung.
+
+                           
+
+<include src="HUEPFECK.b"/></lang>
+<requires></requires>

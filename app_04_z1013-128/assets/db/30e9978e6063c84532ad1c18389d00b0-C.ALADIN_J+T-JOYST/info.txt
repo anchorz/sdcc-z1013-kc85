@@ -1,4 +1,4 @@
-<kurz src="ALADIN UND DIE WUNDERLAMPE (Brosig)"/>
+<kurz src="ALADIN UND DIE WUNDERLAMPE, (Brosig-Layout)"/>
 <lang>Tastaturlayout:
 wer
 snd 

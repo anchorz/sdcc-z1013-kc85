@@ -1,0 +1,20 @@
+<kurz src="Mathe - Kurvendiskussion, kubische Gleichungen"/>
+<lang>
+
+
+
+BEACHTEN SIE BITTE :
+
+DIE BESTE AUFLOESUNG DER GRAPHISCHEN
+DARSTELLUNG ERGIBT SICH BEI 
+INTERVALLEN MIT MEHR ALS 60 
+GANZZAHLIGEN X-WERTEN.
+
+FALLS DER WERTEBEREICH UEBER-
+SCHRITTEN WIRD (Es erscheint die 
+Fehlermeldung: HOW? vom BASIC-
+Interpreter) MUSS MIT >RUN ENTER< 
+NEUGESTARTET WERDEN
+                            
+<include src="KUBI.b"/></lang>
+<requires></requires>

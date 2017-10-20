@@ -1,0 +1,20 @@
+<kurz src="Billard umgekehrt, fange die Kugel mit dem Cursor (8x4)"/>
+<lang>Bei diesem Spiel gilt es, das
+auf dem Bildschirm freibewegliche Ziel 
+mit dem lenkbaren Viereck zu rammen.
+
+Das Viereck laesst sich mit
+Tasten 
+E,F,G,
+M,N,O,
+U,V,W
+steuern. 
+
+Und zwar: F nach oben, G nach diagonal,
+rechts oben u.s.w.
+
+In jeder Runde gibt es maximal 300 Punkte, 
+von denen die Schritte des Faengers und des
+Gejagden abgezogen werden !
+<include src="BILLARD.b"/></lang>
+<requires></requires>

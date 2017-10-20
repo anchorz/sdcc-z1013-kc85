@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png"/></div><div class="filelist">2bc0 3bd7 0000 B ... <a href="B.CASINO.z80">CASINO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre>und leider auch nicht an die 32 Zeichen pro Zeile angepasst.
+Manchmal schreibt das Programm über den Bildschirmrand hinaus.
+<pre>   10 WINDOW:CLS:DIM R(12),S(12)
+   14 FOR J=1 TO 12
+   16 R(J)=INT(25*RND(1))+1
+   18 FOR K=1 TO J
+   20 IF R(J)=R((K-1))THEN 16
+   22 NEXT K
+   24 NEXT J
+   26 FOR J=1 TO 12
+   28 S(J)=INT(25*RND(1))+1
+   30 FOR K=1 TO 12
+   32 IF S(J)=R(K)THEN 28
+   34 NEXT K
+   36 FOR K=1 TO J
+   38 IF S(J)=S((K-1))THEN 28
+   40 NEXT K
+   42 NEXT J
+   48 FOR J=1 TO 12
+   50 FOR K=1 TO 12
+   52 IF R(J)&gt;R(K)THEN 60
+   54 R=R(K):R(K)=R(J):R(J)=R
+   60 NEXT K
+   62 NEXT J
+   64 FOR J=1 TO 12
+   66 FOR K=1 TO 12
+   68 IF S(J)&gt;S(K)THEN 76
+   70 S=S(K):S(K)=S(J):S(J)=S
+   76 NEXT K
+   78 NEXT J
+   80 PRINT
+  100 PRINT "Spielerzahl";:GOSUB 2000:INPUT N
+  105 PRINT "Anfangskapital";:GOSUB 2000 E2:BEEP 
+  130 INPUT GK:DIM A$(N),GK(N),E(N),X(25,N)
+  140 FOR I=1 TO N:BEEP:PAUSE 1:BEEP:PAUSE 1:BEEP
+  150 PRINT "Ihr Name bitte";:BEEP:INPUT A$(I):GK(I)=GK
+  160 NEXT I:CLS:BK=GK*N*10
+  200!
+  210 PRINT "Einfache Chancen - doppelter Einsatz"
+  220 PRINT
+  230 PRINT "1=alle geraden Zahlen"
+  240 PRINT "2=alle ungeraden Zahlen"
+  245 Z$="Zahlen":Z1$="-facher Einsatz"
+  250 PRINT "3=ROT"
+  260 PRINT "4=SCHWARZ"
+  270 PRINT "5=KLEINE"
+  275 PRINT "6=GROSSE"
+  280 PRINT
+  285 PRINT "MEHRFACHE CHANCEN"
+  290 PRINT
+  295 PRINT "7=SECHS";Z$;"/4 ";Z1$
+  300 PRINT "8=VIER "Z$;"/8";Z1$
+  305 PRINT "9=DREI "Z$;"/16";Z1$
+  310 PRINT "10=ZWEI "Z$;"/24";Z1$
+  315 PRINT "11=EINE ZAHL (1-25)/32";Z1$
+  320 PRINT
+  325 WINDOW 21,25,3,31
+  350 FOR I=1 TO N  
+  355 FOR J=1 TO 25
+  360 X(J,I)=0
+  365 NEXT J
+  410 IF GK(I)=0 THEN PRINT A$(I)" ist ausgeschieden!":GOSUB 1450:GOTO 480
+  420 PRINT:PRINT "Es setzt "A$(I)":":PAUSE 10
+  430 PRINT "Sie haben "GK(I);"M.Wieviel"
+  440 INPUT "setzen Sie?";E(I)
+  445 IF E(I)&gt;GK(I)THEN PRINT "So viel haben Sie nicht!":GOTO 430
+  450 PRINT "In welcher Gewinngruppe (1-11)";:INPUT K(I):CLS
+  455 IF K(I)&gt;11 THEN 450
+  460 ON K(I) GOSUB 1000,1050,1100,1100,1200,1250,1300,1310,1320,1330,1340
+  470 GK(I)=GK(I)-E(I):BK=BK+E(I)
+  480 NEXT I
+  500 WINDOW:CLS
+  510 PRINT "RIEN NE VA PLUS........"
+  520 GOSUB 5000
+  700 X=INT(25*RND(1))+1:PRINT "Gewonnen hat "X;
+  710 IF X=0 THEN PRINT "Alle Einsaetze gehen an die Bank!":GOTO 760
+  720 FOR J=1 TO 12
+  730 IF X=R(J)THEN 750
+  740 IF X=S(J)THEN 755
+  745 NEXT J
+  747 PRINT "KEINE FARBE":GOTO 760
+  750 PRINT "ROT":GOTO 760
+  755 PRINT "SCHWARZ"
+  760 FOR I=1 TO N
+  770 IF X=0 THEN 940
+  780 FOR J=1 TO 25
+  790 IF X(J,I)=X THEN 820
+  800 NEXT J
+  810 GOTO 940
+  820 IF K(I)&lt;=6 THEN GF=2
+  830 IF K(I)=7 THEN GF=4
+  840 IF K(I)=8 THEN GF=8
+  850 IF K(I)=9 THEN GF=16
+  860 IF K(I)=10 THEN GF=24
+  870 IF K(I)=11 THEN GF=32
+  880 E(I)=E(I)*GF:GK(I)=GK(I)+E(I)
+  890 PRINT
+  900 PRINT A$(I)" gewinnt ";E(I);"M"
+  910 BK=BK-E(I)
+  920 IF BK&gt;0 THEN 940
+  930 PRINT "Ich bin pleite!";A$(I)" hat die Bank gesprengt!":GOTO 982
+  940 IF GK(I)&lt;&gt;0 THEN 960
+  945 PRINT
+  950 PRINT A$(I)" ist pleite und scheidet aus!"
+  960 NEXT I
+  970 INPUT "Neues Spielchen?";N$:CLS
+  980 IF N$&lt;&gt;"N"THEN 200
+  981 WINDOW:CLS:WINDOW 2,20,4,31
+  982 PRINT "           ENDABRECHNUNG"
+  984 PRINT "           "
+  985 PRINT:GOSUB 5130
+  986 FOR I=1 TO N
+  988 GK(I)=GK(I)-GK:IF GK(I)&gt;0 THEN E$=" Gewinn":ELSE E$=" Schulden"
+  990 PRINT A$(I)" verlaesst das Kasino"
+  992 PRINT "mit "GK(I);"M";E$ 
+  994 PRINT
+  996 NEXT I
+  997 PRINT
+  998 BK=BK-10*N*GK:PRINT "Die Bank schliesst mit ";BK;"M ab":END
+ 1000 PRINT "alle geraden Zahlen"
+ 1010 FOR J=2 TO 24 STEP 2
+ 1020 X(J,I)=J
+ 1030 NEXT J
+ 1040 GOSUB 1450:CLS:RETURN
+ 1050 PRINT "alle ungeraden Zahlen"
+ 1060 FOR J=1 TO 25 STEP 2
+ 1070 X(J,I)=J
+ 1080 NEXT J
+ 1090 GOSUB 1450:CLS:RETURN
+ 1100 IF K(I)=3 THEN PRINT "ROT";:ELSE PRINT "SCHWARZ";
+ 1110 FOR J=1 TO 12
+ 1120 IF K(I)=3 THEN X(J,I)=R(J):GOTO 1130
+ 1125 X(J,I)=S(J)
+ 1130 PRINT X(J,I);
+ 1135 NEXT J
+ 1140 GOSUB 1450:CLS:RETURN
+ 1200 PRINT "die kleinen Zahlen (1-12)"
+ 1210 FOR J=1 TO 12
+ 1220 X(J,I)=J
+ 1230 NEXT J
+ 1240 GOSUB 1450:CLS:RETURN
+ 1250 PRINT "die grossen Zahlen (13-25)"
+ 1260 FOR J=13 TO 25
+ 1270 X(J,I)=J
+ 1280 NEXT J
+ 1290 GOSUB 1450:CLS:RETURN
+ 1300 PRINT "SECHS ";Z$:C=6:GOTO 1370
+ 1310 PRINT "VIER";Z$:C=4:GOTO 1370
+ 1320 PRINT "DREI ";Z$:C=3:GOTO 1370
+ 1330 PRINT "ZWEI ";Z$:C=2:GOTO 1370
+ 1340 PRINT "Eine Zahl"
+ 1350 PRINT "Geben Sie Ihren Tip ein";
+ 1355 INPUT X(1,I)
+ 1360 IF X(1,I)&gt;25 THEN 1355
+ 1365 GOTO 1425
+ 1370 PRINT "Geben Sie die niedrigste Ihrer "C;" Zahlen ein!"
+ 1380 INPUT X(1,I)
+ 1382 IF X(1,I)+C-1&lt;=25 THEN 1390
+ 1385 PRINT "Ihr Tip ueberschreitet die Obrgrenze!":GOTO 1370
+ 1390 FOR J=1 TO C
+ 1395 X((J+1),I)=X(J,I)+1
+ 1400 PRINT X(J,I);
+ 1405 NEXT J:N$="*"
+ 1410 PRINT "Einverstanden?   dann druecken Sie ENTER"
+ 1415 INPUT "Ansonsten geben Sie N  ein";N$
+ 1420 IF N$="N"THEN 1370
+ 1425 CLS:RETURN
+ 1450 PAUSE 20:RETURN
+ 2000 FOR I=1 TO 5:BEEP:PAUSE 1:NEXT:RETURN
+ 5000 WINDOW:CLS
+ 5010 OUT 136,128
+ 5020 OUT 128,7:OUT 128,49:PAUSE 2:OUT 128,3:PAUSE 2
+ 5030 OUT 128,3:OUT 128,7:OUT 128,44:PAUSE 2:OUT 128,3:PAUSE 1
+ 5040 OUT 128,7:OUT 128,49:PAUSE 1
+ 5050 OUT 128,7:OUT 128,58:PAUSE 2:OUT 128,3:PAUSE 2
+ 5060 OUT 128,7:OUT 128,58:PAUSE 2:OUT 128,3:PAUSE 2
+ 5070 OUT 128,7:OUT 128,58:PAUSE 3
+ 5080 OUT 128,7:OUT 128,66:PAUSE 1
+ 5090 OUT 128,7:OUT 128,58:PAUSE 2
+ 5100 OUT 128,7:OUT 128,55:PAUSE 2
+ 5110 OUT 128,7:OUT 128,58:PAUSE 5
+ 5120 OUT 128,7:OUT 128,3:RETURN
+ 5130 OUT 136,128
+ 5140 OUT 128,7:OUT 128,73:PAUSE 7
+ 5150 OUT 128,7:OUT 128,58:PAUSE 2
+ 5160 OUT 128,7:OUT 128,49:PAUSE 5
+ 5170 OUT 128,7:OUT 128,37:PAUSE 5
+ 5180 OUT 128,7:OUT 128,44:PAUSE 5
+ 5190 OUT 128,7:OUT 128,37:PAUSE 2
+ 5200 OUT 128,7:OUT 128,44:PAUSE 2
+ 5210 OUT 128,7:OUT 128,49:PAUSE 7
+ 5220 OUT 128,3:PAUSE 3
+ 5230 OUT 128,7:OUT 128,55:PAUSE 7
+ 5240 OUT 128,7:OUT 128,49:PAUSE 2
+ 5250 OUT 128,7:OUT 128,58:PAUSE 5
+ 5260 OUT 128,7:OUT 128,73:PAUSE 5
+ 5270 OUT 128,7:OUT 128,66:PAUSE 9:OUT 128,3:PAUSE 1
+ 5280 OUT 128,7:OUT 128,73:PAUSE 5
+ 5290 OUT 128,3:PAUSE 10
+ 5300 RETURN
+</pre>
+</pre>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<kurz src="Dollars einfangen (8x4)"/>
+<lang>[SPALT]
+Ich habe die Steuerrung auf meinem Rechner nicht 
+zum funktionieren bekommen. Wahrscheinlich läuft 
+es nur mit dem Originallayout.
+
+
+GOLDREGEN
+
+Ihre Aufgabe besteht darin, soviel 
+wie moeglich, der herabfallenden 
+Dollars zu fangen, sich dabei aber 
+nicht von den Steinen erschlagen
+zu lassen!
+
+Bewegung mit Tasten S,C und S4
+WEITER MIT  K          
+
+<include src="GOLDREGEN 1.b"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="DIESER TEST UNTERSUCHT DEINEN EHRGEIZKOEFFIZIENTEN in der Schule"/>
+<lang><include src="EHRGEIZ 1.b"/></lang>
+<requires></requires>

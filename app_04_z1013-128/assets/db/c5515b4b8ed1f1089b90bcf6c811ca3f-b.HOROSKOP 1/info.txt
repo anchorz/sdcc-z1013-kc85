@@ -1,0 +1,3 @@
+<kurz src="sucht Horoskope nach Datum heraus"/>
+<lang><include src="HOROSKOP 1.b"/></lang>
+<requires></requires>
