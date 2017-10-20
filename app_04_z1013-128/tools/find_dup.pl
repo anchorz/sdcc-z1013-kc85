@@ -4,7 +4,7 @@
 use Data::Dumper;
 
 print "Sucht aus der Datenbankdatei z.B. \"md5sum.txt\" die doppelten Dateien heraus\n";
-print "Erstellung der Datenbank: find . -type f -exec md5sum -b {} \\;\n";
+print "Erstellung der Datenbank: find . -iname \"*.z80\" -type f -exec md5sum -b {} \\;\n";
 
 if (! defined($ARGV[0])) {
     printf("e: Argument fehlt, z.B. md5sum.txt\n"); 
@@ -74,7 +74,7 @@ foreach my $md5 (keys %found){
         printf "double %d s=%s\n",$len,$md5;
         $filesToDelete=0;
         foreach my $array (@{$found{$md5}}){
-            if ($array=~/^.\/src.hucki.net/) { 
+            if ($array=~/^.\/src.theoldcomputer/) { 
                 $filesToDelete++;
                 #printf "  del: %s\n", $array;
             }
@@ -92,9 +92,9 @@ foreach my $md5 (keys %found){
                 $index++;
             }
         } else {
-            printf "l=%d s=%s mind. eine Datei nicht in src.hucki.net\n",$len,$md5;
+            printf "l=%d s=%s mind. eine Datei nicht in src.the oldcomputer\n",$len,$md5;
             foreach my $array (@{$found{$md5}}){
-                if ($array=~/^.\/src.hucki.net/) { 
+                if ($array=~/^.\/src.theoldcomputer/) { 
                    $array=~s/\$/\\\$/sgi;
                    printf "rm \"%s\"\n", $array;
                 } else {
