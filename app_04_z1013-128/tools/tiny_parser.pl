@@ -17,6 +17,9 @@ our $max_index;
 our $aadr;
 our $header_size=32;    #in case of .z80 IMAGE
 
+our $map_ctrl=1;#maps ASCII 0x00..0x1f to CTRL-Characters U+f120..U+f13f
+#our $map_ctrl=0; #maps ASCII 0x00..0x1f,0x7f to FULL-CURSOR and CHESS FIGURES
+
 sub read_word() {
     my $ret=unpack("v",substr($content,$index,2));
     $index+=2;
@@ -51,10 +54,19 @@ sub map_char($) {
     my $mapped=$c;
    
     if (ord($c)>=0x00 && ord($c)<=0x1f) {
-        return chr(0xf120+ord($c));
+        if ($map_ctrl) {
+            return chr(0xf120+ord($c));
+        }
+        if (ord($c)>=0x0e && ord($c)<=0x1f) {
+            return chr(0xf100+ord($c));
+        }
+        return chr(0xf1ff);
     } elsif (ord($c)>=0x20 && ord($c)<=0x7e){
         return $c;
     } else {
+        if ($map_ctrl==0 && ord($c)==0x7f) {
+            return chr(0xf1ff);
+        }
         return chr(0xf100+ord($c));
     }
     return $c;
@@ -74,6 +86,13 @@ if (!defined $ARGV[0] ) {
     print STDERR "        output stored as \"tiny-basic-file.b\"\n\n";
     print STDERR "usage: ".basename($0)." tiny-basic-file.z80\n";
     exit 1;
+}
+
+if (defined $ARGV[1] ) {
+    my $encoding=$ARGV[1];
+    if ($encoding=~m/-CTRL/) {
+        $map_ctrl=0; 
+    }
 }
 
 my $file=$ARGV[0];
@@ -123,17 +142,33 @@ if (map_adr_to_index($end_of_data)-1>$max_index) {
 
 open(OUT,">", $out);
 binmode(OUT, ":utf8");
-print(OUT "Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)\n\n");
+print(OUT "Zeichensatz UTF-8+Z1013()");
+if ($map_ctrl) {
+    print(OUT "+CTRL()");
+} else {
+    print(OUT "-CTRL()");
+}
+print(OUT "-ohne Umlaute(äöüß)\n\n");
 $index=map_adr_to_index(0x1152);
 while($index<map_adr_to_index($end_of_data)) {
     my $line_no=read_word();
-    printf OUT "%d ",$line_no;
+    my $line_length=0;
+    printf OUT "%5d ",$line_no;
     my $c;
     do {
         if ($index<map_adr_to_index($end_of_data)) {
             $c=read_char();
             if ($c ne "\r") {
                 printf OUT "%s",map_char($c);
+                $line_length++;
+                if ($line_length>58 && $c eq ";") {
+                    $line_length=0;
+                    printf OUT "\n      ";
+                }
+                if ($line_length>68) {
+                    $line_length=0;
+                    printf OUT "⇘\n      "; #oder ⮋⬊⤦⇩⮯⮒⮷
+                }
                 #printf "%x %x %x[%02x]%s\n",$index,map_adr_to_index($end_of_data),$max_index,ord($c),$c;
             }
         } else {

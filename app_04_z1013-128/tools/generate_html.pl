@@ -168,22 +168,30 @@ sub do_index_html($)
      my $item_content="";
     
     $item_content.="<div>";
-    if (-f "$dir/jkcemu.gif") {
+    if (-f "$dir/animation.mp4") {
+        $item_content.='<object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">'."\n";
+        $item_content.='<param name="src" value="animation.mp4" />'."\n";
+        $item_content.='<param name="movie" value="animation.mp4" />'."\n";
+        $item_content.='<param name="autoplay" value="true" />'."\n";
+        $item_content.='<param name="autostart" value="1" />'."\n";
+        $item_content.='</object>'."\n";
+        #   $item_content.="<img src=\"animation.mp4\"/>\n"; 
+    } elsif (-f "$dir/jkcemu.gif") {
         $item_content.="<img src=\"jkcemu.gif\"/>"; 
     }
     if (-f "$dir/screenshot_01.png") {
-        $item_content.="<img src=\"screenshot_01.png\"/>"; 
+        $item_content.="<img src=\"screenshot_01.png\" alt=\"Screenshot 1\" height=\"256\" width=\"256\" />\n"; 
     }
     if (-f "$dir/screenshot_02.png") {
-        $item_content.="<img src=\"screenshot_02.png\"/>"; 
+        $item_content.="<img src=\"screenshot_02.png\" alt=\"Screenshot 2\" height=\"256\" width=\"256\" />\n"; 
     }
     if (-f "$dir/screenshot_03.png") {
-        $item_content.="<img src=\"screenshot_03.png\"/>"; 
+        $item_content.="<img src=\"screenshot_03.png\" alt=\"Screenshot 3\" height=\"256\" width=\"256\" />\n"; 
     }
     if (-f "$dir/screenshot_04.png") {
-        $item_content.="<img src=\"screenshot_04.png\"/>"; 
+        $item_content.="<img src=\"screenshot_04.png\" alt=\"Screenshot 4\" height=\"256\" width=\"256\" />\n"; 
     }
-    $item_content.="</div>";
+    $item_content.="</div>\n";
     $item_content.=sprintf "<div class=\"filelist\">%04x %04x %04x %s ... <a href=\"%s\">%s</a></div>\n",$en[0],$en[1],$en[2],$en[3],basename($filename),$en[4];
     
     if (-f "$dir/info.txt") {
@@ -298,10 +306,12 @@ my $len_db=scalar (keys %db_entry_list);
 
 my $len_checked=$len_fail+$len_sonst+$len_db;
 
-$ret.="<div>Es wurden $len_total verschiedene Dateien mit der Endung .z80 in den verschiedenen Z1013 Softwarearchiven gefunden</div>";
-$ret.="<div>$len_checked sind insgesamt getestet worden (".sprintf("%.1f",$len_checked*100.0/$len_total)."%).</div>\n";
-$ret.="<div>$len_db sind hier aufgelistet.</div>\n";
-$ret.="<div>".($len_fail+$len_sonst)." wurden als fehlerhaft oder mit gleichem Inhalt aussortiert.</div>\n";
+$ret.="<p>Es wurden $len_total verschiedene Dateien mit der Endung .z80 in den verschiedenen Z1013 Softwarearchiven gefunden, davon sind:</p>";
+$ret.="<ul>";
+$ret.="<li>$len_checked insgesamt getestet worden (".sprintf("%.1f",$len_checked*100.0/$len_total)."%).</li>\n";
+$ret.="<li>$len_db hier aufgelistet.</li>\n";
+$ret.="<li>und ".($len_fail+$len_sonst)." wurden als fehlerhaft oder mit gleichem Inhalt aussortiert.</li>\n";
+$ret.="</ul>";
 
 $ret.= "<div class=\"filelist\">\n";
 

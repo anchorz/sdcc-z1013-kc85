@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png" alt="Screenshot 1" height="256" width="256" />
+<img src="screenshot_02.png" alt="Screenshot 2" height="256" width="256" />
+</div>
+<div class="filelist">1000 2c23 0000 b ... <a href="b.Mancala 1.z80">Mancala&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    5 GOS.2000
+   10 OUTC.12
+   15 P.;P."   ***** MINNI MANCALA *****"
+   20 P.;P.;P.;P."Werden Spielregeln erwuenscht ?"
+   25 P.;INPUT"( Ja=1 , Nein=0 ) "Z
+   30 IF Z&lt;0 G.10
+   31 IF Z&gt;1 G.10
+   32 IF Z=1 GOS.2500
+   35 P.;P."Wollen Sie gegen mich"
+   40 P.;INPUT"antreten ? ( Ja=1 , Nein=0 ) "L
+   41 IF L=1 G.67
+   42 IF L&lt;0 G.35
+   43 IF L&gt;1 G.35
+   50 P.;P."~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+   51 P.;P."    +++ Na gut , gegen  mich"
+   52 P."haetten Sie sowieso keine"
+   53 P."Chance  !! +++"
+   54 P.;P."~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+   60 FOR I=0 TO 300;NEXT I
+   61 OUT (1)=HEX(0F)
+   62 FOR I=1 TO 30
+   63 OUT(0)=0
+   64 FOR Y=0 TO 2 ;NEXT Y
+   65 OUT(0)=1
+   66 NEXT I
+   67 FOR I=0 TO 300;NEXT I
+   70 P.;P."Bitte Spielernamen eingeben"
+   71 P.;P." 1.Spieler :"
+   72 P.;I$(TOP);P.
+   73 G=LEN
+   74 IF G&gt;16 G=16;PO.(TOP+G),0
+   75 IF L=1 G.90
+   76 P.;P." 2.Spieler :"
+   77 P.;I$(TOP+1+G)
+   78 H=LEN
+   79 IF H&gt;16 H=16;PO.(TOP+G+H+1),0
+   90 OUTC.12
+   95 P.;P.;P.;P."Wer soll anfangen  ?? "
+  100 P.;P.;P.;P. 
+  105 O$(TOP)
+  110 P."    - 1 -"
+  115 IF L=1 G.140
+  120 P.;P.;P.;P. 
+  125 O$(TOP+1+G)
+  130 P."    - 2 -"
+  135 G.145
+  140 P.;P.;P.;P."Computer     - 3 -"
+  145 P.;INPUT"Na wer "M
+  146 A=2;B=2;C=2;D=2;R=0
+  150 IF M=1 G.200
+  155 IF M=2 G.200
+  160 IF M=3 G.200
+  165 G.145
+  200 GOS.1345
+  201 PO.HEX(1B),HEX(20);PO.HEX(1C),HEX(EF)
+  202 PO.HEX(1D),0;PO.HEX(1E),HEX(F0)
+  203 CALL HEX(F6D1)
+  204 IF M&gt;1 G.230
+  205 GOS.300
+  210 GOS.700
+  220 GOS.1640
+  221 FOR I=0 TO 200 ;NEXT I
+  225 GOS.900
+  230 IF L=1 GOS.500
+  235 IF L=0 GOS.400
+  240 GOS.700
+  241 GOS.1640
+  242 FOR I=0 TO 200 ;NEXT I
+  245 GOS.900
+  250 IF R=4 G.1200
+  255 G.205
+  300 PR.;PR.;PR.;PR.;PR.;PR.;PR.
+  305 O$(TOP)
+  310 PR.;INPUT"Schaelchen A=1 oder B=2 ?? "E
+  311 OUT(1)=HEX(0F)
+  312 OUT(0)=0
+  313 FOR I=0 TO 50 ;NEXT I
+  314 OUT(0)=1
+  315 IF E=1 S=0;G.330
+  320 IF E=2 S=1;G.340
+  325 G.300
+  330 IF A=0 G.300
+  335 G.345
+  340 IF B=0 G.300
+  345 T=A+B
+  350 IF T=0 G.900
+  355 RE.
+  400 PR.;PR.;PR.;PR.;PR.;PR.;PR.
+  405 O$(TOP+1+G)
+  410 PR.;INPUT"Schaelchen C=3 oder D=4 ??"F
+  411 OUT(1)=HEX(0F)
+  412 OUT(0)=0
+  413 FOR I=0 TO 50 ;NEXT I
+  414 OUT(0)=1
+  415 IF F=3 S=2;G.430
+  420 IF F=4 S=3;G.440
+  425 G.400
+  430 IF C=0 G.400
+  435 G.445
+  440 IF D=0 G.400
+  445 T=C+D
+  450 IF T=0 G.900
+  455 RE.
+  500 PR.;PR.;PR.;PR.;PR.;PR.;PR."Jetzt bin ich dran !"
+  501 FOR I=0 TO 200;NEXT I
+  505 S=RND(3)
+  510 IF S&lt;2 G.505
+  515 Q=(B+10)*((C+10)*D)
+  520 IF Q=143 S=3
+  525 IF Q=134 S=3
+  530 IF Q=611 S=3
+  535 IF Q=116 S=3
+  540 IF Q=611 R=R+1
+  545 T=C+D
+  550 IF T=0 G.900+
+  555 IF S=2 G.565
+  560 IF S=3 G.580
+  565 IF C=0 S=3;G.560
+  570 PR.;PR."Ich nehme aus Schaelchen - C - "
+  575 G.590
+  580 IF D=0 S=2;G.555
+  585 PR.;PR."Ich nehme aus Schaelchen - D - "
+  590 FOR I=0 TO 400;NEXT I
+  595 OUT(1)=HEX(0F)
+  600 OUT(0)=0
+  605 FOR I=0 TO 50;NEXT I
+  610 OUT(0)=1
+  615 FOR I=0 TO 400;NEXT I
+  620 IF R=4 G.1200
+  625 RE.
+  700 IF S=0 G.720
+  705 IF S=1 G.735
+  710 IF S=2 G.750
+  715 IF S=3 G.765
+  720 A=A-1;X=X+1
+  725 IF A=0 G.780
+  730 G.720
+  735 B=B-1;X=X+1
+  740 IF B=0 G.810
+  745 G.735
+  750 C=C-1;X=X+1
+  755 IF C=0 G.790
+  760 G.750
+  765 D=D-1;X=X+1
+  770 IF D=0 G.800
+  775 G.765
+  780 C=C+1;X=X-1
+  785 IF X=0 G.825
+  790 D=D+1;X=X-1
+  795 IF X=0 G.825
+  800 B=B+1;X=X-1
+  805 IF X=0 G.825
+  810 A=A+1;X=X-1
+  815 IF X=0 G.825  
+  820 G.780
+  825 RE.
+  900 IF A+B=8 G.950
+  905 IF C+D=8 G.1070
+  910 RE.
+  920 PO.HEX(1B),0;PO.HEX(1C),HEX(EC)
+  925 PO.HEX(1D),0;PO.HEX(1E),HEX(F0)
+  930 CALL HEX(F6D1)
+  935 RE.
+  950 GOS.920
+  955 OUTC.12
+  960 FOR I=0 TO 10
+  965 PR.
+  970 NEXT I
+  975 TAB(5)
+  980 O$(TOP);PR.;PR.
+  985 TAB(10)
+  990 PR."Hat gewonnen !!"
+  995 FOR I=0 TO 200;NEXT I
+ 1000 OUT(0)=HEX(0F)
+ 1004 W=100
+ 1005 FOR I=0 TO 10
+ 1010 OUT(0)=0
+ 1015 FOR V=0 TO 20
+ 1020 NEXT V
+ 1025 OUT(0)=1
+ 1030 FOR V=0 TO W
+ 1035 NEXT V
+ 1040 W=W-10
+ 1045 NEXT I
+ 1055 FOR I=0 TO 500;NEXT I
+ 1060 G.1255
+ 1070 GOS.920
+ 1075 OUTC.12
+ 1080 FOR I=0 TO 10
+ 1085 PR.
+ 1090 NEXT I
+ 1095 IF L=1 G.1115
+ 1100 TAB(5)
+ 1105 O$(TOP+1+G);PR.;PR.
+ 1110 TAB(10)
+ 1111 PR."hat gewonnen !!"
+ 1112 G.995
+ 1115 TAB(5)
+ 1120 PR."HA - HA  ";PR.
+ 1125 TAB(10)
+ 1130 PR."Ich habe gewonnen !!"
+ 1135 G.995
+ 1200 OUTC.12
+ 1210 FOR I=0 TO 5
+ 1215 PR.
+ 1220 NEXT I
+ 1225 PR."~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+ 1230 PR.;PR.;PR."Ich gebe auf ...."
+ 1235 PR.;PR."Sie sind zu gut fuer.mich !!!"
+ 1240 PR.;PR.;PR."~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+ 1245 FOR I=0 TO 500;NEXT I
+ 1250 OUTC.12
+ 1255 FOR I=0 TO 10
+ 1260 PR.
+ 1265 NEXT I
+ 1270 INPUT"Noch ein Spiel ? Ja=1 / Nein=0 "K
+ 1275 IF K=1 G.10
+ 1280 IF K=0 G.1290
+ 1285 G.1270
+ 1290 OUTC.12
+ 1295 FOR I=0 TO 12
+ 1300 OUTC.13
+ 1305 NEXT I
+ 1310 TAB(5);PR."Auf Wiederseh'n"
+ 1315 PR.;PR.;PR.
+ 1320 STOP
+ 1345 OUTC.12
+ 1350 PR.;PR."      *** MINNI MANCALA ***"
+ 1355 PR.;PR.;PR.;PR.
+ 1360 TAB(5)
+ 1365 O$(TOP)
+ 1370 PR.;PR.;PR.;PR.;PR.;PR.;PR.;PR.;PR.;PR.
+ 1375 IF L=1 G.1400
+ 1380 PR.
+ 1385 TAB(5)
+ 1390 O$(TOP+1+G)
+ 1395 G.1405
+ 1400 PR."     COMPUTER"
+ 1405 J=HEX(EC60);N=HEX(EC7F);
+ 1410 FOR I=J TO N
+ 1415 PO.I,139
+ 1420 NEXT I
+ 1425 J=HEX(EDA1);N=HEX(EDBE)
+ 1430 FOR I=J TO N
+ 1435 PO.I,160
+ 1440 NEXT I
+ 1445 J=HEX(EEE0);N=HEX(EEFF)
+ 1450 FOR I=J TO N
+ 1455 PO.I,139
+ 1460 NEXT I
+ 1465 J=HEX(EC80);N=HEX(EEC0)
+ 1470 FOR I=J TO N STEP 32
+ 1475 PO.I,139
+ 1480 NEXT I
+ 1485 J=HEX(EC9F);N=HEX(EEDF)
+ 1490 FOR I=J TO N STEP 32
+ 1495 PO.I,139
+ 1500 NEXT I
+ 1505 PO.HEX(ED64),133
+ 1510 J=HEX(ED65);N=HEX(ED6C)
+ 1515 FOR I=J TO N
+ 1520 PO.I,160
+ 1525 NEXT I
+ 1530 PO.HEX(ED6D),132
+ 1535 PO.HEX(ED72),133
+ 1540 J=HEX(ED73);N=HEX(ED7A)
+ 1545 FOR I=J TO N
+ 1550 PO.I,160
+ 1555 NEXT I
+ 1560 PO.HEX(ED7B),132
+ 1565 PO.HEX(EEA4),133
+ 1570 J=HEX(EEA5);N=HEX(EEAC)
+ 1575 FOR I=J TO N
+ 1580 PO.I,160
+ 1585 NEXT I
+ 1590 PO.HEX(EEAD),132
+ 1595 PO.HEX(EEB2),133
+ 1600 J=HEX(EEB3);N=HEX(EEBA)
+ 1604 FOR I=J TO N
+ 1605 PO.I,160
+ 1610 NEXT I
+ 1615 PO.HEX(EEBB),132
+ 1620 PO.HEX(ECE8),65
+ 1625 PO.HEX(ECF7),66
+ 1630 PO.HEX(EE48),67
+ 1635 PO.HEX(EE57),68
+ 1640 J=HEX(ED25)
+ 1645 FOR I=1 TO 8
+ 1650 PO.J,32
+ 1655 J=J+1
+ 1660 NEXT I
+ 1661 IF A=0 G.1690
+ 1665 J=HEX(ED25)
+ 1670 FOR I=1 TO A
+ 1675 PO.J,140
+ 1680 J=J+1
+ 1685 NEXT I
+ 1690 J=HEX(EE85)
+ 1695 FOR I=1 TO 8
+ 1700 PO.J,32
+ 1705 J=J+1
+ 1710 NEXT I
+ 1711 IF C=0 G.1740
+ 1715 J=HEX(EE85)
+ 1720 FOR I=1 TO C
+ 1725 PO.J,140
+ 1730 J=J+1
+ 1735 NEXT I
+ 1740 J=HEX(EE93)
+ 1745 FOR I=1 TO 8
+ 1750 PO.J,32
+ 1755 J=J+1
+ 1760 NEXT I
+ 1761 IF D=0 G.1790
+ 1765 J=HEX(EE93)
+ 1770 FOR I=1 TO D
+ 1775 PO.J,140
+ 1780 J=J+1
+ 1785 NEXT I
+ 1790 J=HEX(ED33)
+ 1795 FOR I=1 TO 8
+ 1800 PO.J,32
+ 1805 J=J+1
+ 1810 NEXT I
+ 1811 IF B=0 G.1840
+ 1815 J=HEX(ED33)
+ 1820 FOR I=1 TO B
+ 1825 PO.J,140
+ 1830 J=J+1
+ 1835 NEXT I
+ 1840 RE.
+ 2000 OUTC.12
+ 2010 PR.;PR.;PR."               "
+ 2020 PR.;PR.;PR."    "   
+ 2030 PR."        "
+ 2040 PR."               "
+ 2050 PR."               "
+ 2060 PR."                        "
+ 2070 PR."       "
+ 2080 PR."                  "
+ 2090 PR."                  "
+ 2100 PR."         "
+ 2110 PR.;PR.;PR.
+ 2120 PR."               "
+ 2130 PR."                    "
+ 2140 PR."                     "
+ 2150 PR."                      "
+ 2160 PR."                      "
+ 2170 PR."                          "
+ 2180 PR."                      "
+ 2190 PR."                          "
+ 2200 PR."    --           --   "
+ 2210 PR."                     "
+ 2220 PR."                     "
+ 2230 PR."               "
+ 2240 PR."                          "
+ 2250 PR."  "
+ 2260 FOR I=0 TO 6000;NEXT I
+ 2265 RE.
+ 2500 OUTC.12
+ 2510 PR.;PR."   ***** MINNI MANCALA *****"
+ 2520 PR.;PR."Das Spiel wird mit 4 Schaelchen"
+ 2525 PR.
+ 2530 PR."gespielt.Von denen zu Beginn"
+ 2535 PR.
+ 2540 PR."jedes 2 Steine enthaelt."
+ 2545 PR.
+ 2550 PR."Die Steine eines Schaelchens"
+ 2555 PR.
+ 2560 PR."werden nun abwechselnd gegen"
+ 2565 PR.
+ 2570 PR."den Uhrzeigersinn auf die
+ 2575 PR.
+ 2580 PR."anderen 3 Schaelchen verteilt,"
+ 2585 PR.
+ 2590 PR."mit dem Ziel,alle Steine in die"
+ 2595 PR.
+ 2600 PR."eigenen zu bekommen !"
+ 2605 PR.;PR.
+ 2610 PR.;PR."        &gt;&gt;&gt;  VieL Erfolg  &lt;&lt;&lt;"
+ 2615 PR.;PR.;PR.;PR.
+ 2620 PR.;PR."                 &gt;ENT&lt;"
+ 2630 W=INCHAR;OUTC.W
+ 2640 OUTC.12
+ 2650 RE.
+</pre>
+</pre>
+</body>
+</html>

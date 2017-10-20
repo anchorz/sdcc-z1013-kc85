@@ -1,0 +1,3 @@
+<kurz src="Mini-Mancala, Bohnenspiel mit 2x2 Feldern"/>
+<lang><include src="Mancala 1.b"/></lang>
+<requires></requires>

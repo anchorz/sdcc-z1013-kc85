@@ -3,7 +3,7 @@
 dass die Darstellung nicht ganz korrekt sein wird. Am Besten,
 man druckt sich das ersteinmal an der Schreibmaschine aus.
 
-Wenn man die den Z1013-Zeichensatz installiert hat, 
-kann man die Steuerzeichen sehen.
+Wenn man den Z1013-Zeichensatz installiert hat, kann 
+man die Steuerzeichen sehen.
 <include src="esc_folgen.doc.txt"/></lang>
 <required></required>

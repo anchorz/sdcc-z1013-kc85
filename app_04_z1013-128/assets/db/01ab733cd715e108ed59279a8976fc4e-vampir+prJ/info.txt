@@ -5,11 +5,11 @@ Als freundlicher und hilfsbereiter Mensch fuerst du die armen,
 aengstlichen Jungfrauen natuerlich gerne nach Hause.
 VIEL GLUECK !!
 
-Steuertasten : <Hoch>,<Runter>,<Links>,<Rechts>
+Steuertasten : &lt;Hoch&gt;,&lt;Runter&gt;,&lt;Links&gt;,&lt;Rechts&gt;
 
 Schwierigkeitsgrad
 Feuer+Hoch Anfaenger
 Feuer+Runter Profi
 
-modifiziert für Joystick, Original ist wahrscheinlich <link>67d48f2de0c40d41fafaa5110300b5e4</link></lang>
+modifiziert für Joystick, Original ist wahrscheinlich [67d48f2de0c40d41fafaa5110300b5e4]</lang>
 <requires>Joystick-Practic01/88</requires>
