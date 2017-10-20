@@ -1,0 +1,3 @@
+<kurz src="Hauptstädte zuordnen"/>
+<lang><include src="Hauptstaedte.B"/></lang>
+<requires></requires>

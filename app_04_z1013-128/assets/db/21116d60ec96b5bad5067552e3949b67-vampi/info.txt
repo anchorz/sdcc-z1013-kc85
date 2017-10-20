@@ -1,4 +1,4 @@
-<kurz src="Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus (8x4)"/>
+<kurz src="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (8x4)"/>
 <lang>[SPAL] alte Version mit Direktabfrage und ohne
 Titelbildschirm</lang>
 <required>2.02</required>

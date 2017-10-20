@@ -1,0 +1,19 @@
+<kurz src="Hangman, Glücksrad, Begriffe raten"/>
+<lang>Man hat gefühlte 30 Versuche, den richtigen Begriff 
+zu erraten.
+
+Die Spielidee besteht darin,
+dass in einer Spielrunde vom Spieler 
+Begriff fuer Begriff abgerufen werden
+kann. 
+Dabei wird jeder Buchstabe des Begriffes
+durch einen Strich angezeigt. Der
+Spieler hat nun die Moeglichkeit 
+den Begriff zu erraten bzw. durch
+Eingabe eines Buchstabens diesen 
+im Begriff an allen vorkommenden
+Stellen aufzublenden. Damit wird 
+der Begriff immer vollstaendiger.
+
+<include src="GALGENRATEN 1.b"/></lang>
+<requires></requires>

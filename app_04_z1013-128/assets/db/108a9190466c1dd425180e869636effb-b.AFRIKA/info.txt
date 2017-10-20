@@ -1,0 +1,23 @@
+<kurz src="Wissenstest AFRIKA"/>
+<lang>Bei diesem Wissenstest koennen
+
+Sie eine beliebige Anzahl von
+
+Fragen ueber AFRIKA beantworten.
+
+
+Am Ende erfolgt eine Auswertung,
+
+die die Anzahl der richtigen
+
+Antworten absolut und in Prozent
+
+angibt.
+
+
+Sie erhalten eine Note, die dem
+
+in Schulen ueblichen Bewertungsgrundsatz entspricht.
+
+<include src="AFRIKA.b"/></lang>
+<requires></requires>

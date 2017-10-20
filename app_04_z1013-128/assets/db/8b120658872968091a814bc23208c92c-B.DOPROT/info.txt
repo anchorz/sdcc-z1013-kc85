@@ -1,0 +1,17 @@
+<kurz src="DOPPELTE ROTATION, Ordne die Buchstaben."/>
+<lang>DOPPELTE ROTATION
+=================
+
+
+Die folgenden Buchstaben sind zu ordnen. 
+
+Nach der Vorgabe eines Buchstabens werden 
+
+die Davor-und die Danachstehenden jeweils
+
+in ihrer Reihenfolge umgedreht.
+
+EDBAGHCIJF ▐ Fester Buchstabe:█
+                   
+<include src="B.DOPROT.B"/></lang>
+<required></required>

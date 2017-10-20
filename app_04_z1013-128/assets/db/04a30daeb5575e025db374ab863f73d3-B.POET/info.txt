@@ -1,0 +1,5 @@
+<kurz src="Automatisierte Prosageneration"/>
+<lang>
+
+<include src="POET.B"/></lang>
+<requires></requires>

@@ -1,0 +1,240 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+1 REM HAUS
+2 GOS.1000;GOS.2000
+3 C=200;D=0;H=0;I=0;J=0;K=0
+4 G.500
+5 GOS.1250
+6 P.""
+7 P." Wuerfel     halt bei >ENTER<"
+9 P."",
+10 CALL(15872);S=PE.(15888)
+15 IF S=13 RET.
+20 A=RND(9)
+22 PO.43,203;P.#1,A,
+25 G.10
+30 REM A=WUERFELERGEBNIS
+31 REM B=Wuefelvariante
+32 REM C=200 Grafik f.Spieler
+33 REM D=Aktelle Spieler
+34 REM E=UNIVERSAL
+35 REM F=MERKZELLE 1.Spieler
+36 REM G=MERKZELLE 2.Spieler
+37 REM H= 1.Spieler
+38 REM I= 2.Spieler
+39 REM J= 3.Spieler
+40 REM K= 4.Spieler
+41 REM L=MERKZELLE 3.Spieler
+42 REM M=MERKZELLE 4.Spieler
+44 REM O=Auswertung
+47 REM R=Schleife Grafik
+48 REM S=UNIVERSAL
+49 REM T=Anzahl der Spieler
+51 REM V=Bezugsp.Grafik
+500 REM SPIELVERLAUF
+501 F=136;G=F;M=F;L=G
+502 GOS.1210
+503 D=D+1;IF D>T D=1
+506 IF D=1 IF H>239 D=2
+507 IF D=2 IF I>239 D=3
+508 IF D=3 IF J>239 D=4
+509 IF D=4 IF K>239 G.503
+510 IFT*240<=H+I+J+K G.2540
+515 IF D>T G.503
+520 P."Der Spieler ",
+521 O.(C+D);P." ist dran."
+529 IFB=0INP."Wuerfelergebnis"A;IFA>6P."UNSINN !!!";GOTO529
+530 IF B=1 GOS.5
+531 GOS.1210;P."Der Spieler ",
+532 O.(C+D);P." ist dran."
+535 IF B=1 S=INC.
+540 IF D=1 G.555
+541 IF D=2 G.605
+542 IF D=3 G.655
+543 IF D=4 G.705
+550 REM SP.1 H F
+553 PO.V+2*H,201
+554 F.S=0 TO 300;N.S
+555 PO.V+2*H,F;H=H+A
+556 IF H>239 H=240
+560 F=PE.(V+2*H)
+562 IF F=202 F=G;G=201
+564 IF F=203 F=L;L=201
+566 IF F=204 F=M;M=201
+568 IF F=32 A=16;G.550
+570 IF F=94 A=-16;G.550
+572 IF F=60 A=-2*A;G.550
+574 IF F=62 G.550
+576 IFF=160O=H;S=201;G.2100
+590 PO.V+2*H,201
+599 G.502
+600 REM SP.2 I G
+602 PO.V+2*I,202
+603 F.S=0 TO 300;N.S
+605 PO.V+2*I,G;I=I+A
+606 IF I>239 I=240
+610 G=PE.(V+2*I)
+612 IF G=201 G=F;F=202
+614 IF G=203 G=L;L=202
+616 IF G=204 G=M;M=202
+618 IF G=32 A=16;G.600
+620 IF G=94 A=-16;G.600
+622 IF G=60 A=-2*A;G.600
+624 IF G=62 G.600
+626 IFG=160O=I;S=202;G.2100
+640 PO.V+2*I,202
+649 G.502
+650 REM SP.3 J L
+652 PO.V+2*J,203
+653 F.S=0 TO 300;N.S
+655 PO.V+2*J,L;J=J+A
+656 IF J>239 J=240
+660 L=PE.(V+2*J)
+662 IF L=201 L=F;F=203
+664 IF L=202 L=G;G=203
+666 IF L=204 L=M;M=203
+668 IF L=32 A=16;G.650
+670 IF L=94 A=-16;G.650
+672 IF L=60 A=A*(-2);G.650
+674 IF L=62 G.650
+676 IFL=160O=J;S=203;G.2100
+690 PO.V+2*J,203
+699 G.502
+700 REM SP.4 K M
+702 PO.V+2*K,204
+703 F.S=0 TO 300;N.S
+705 PO.V+2*K,M;K=K+A
+706 IF K>239 K=240
+710 M=PE.(V+2*K)
+712 IF M=201 M=F;F=204
+714 IF M=202 M=G;G=204
+716 IF M=203 M=L;L=204
+718 IF M=32 A=16;G.700
+720 IF M=94 A=-16;G.700
+722 IF M=60 A=A*(-2);G.700
+724 IF M=62 G.700
+726 IFM=160O=K;S=204;G.2100
+740 PO.V+2*K,204
+749 G.502
+995 GOS.1270
+998 STOP
+999 REM SPIELREGEL
+1000 GOS.1270;GOS.4000
+1001 O.12;P.;P."   S p i e l r e g e l"
+1002 P.;P.""
+1003 P."Dieses  Spiel ist  ein  Wuerfel-"
+1004 P."spiel  bei  dem  max.  4 Spieler"
+1005 P."mitspielen koennen. Ziel ist  es"
+1006 P."als erster von oben  nach  unten"
+1007 P."zu gelangen.Im Haus gibt es ver-"
+1008 P."schiedene Hindernisse zu  ueber-"
+1009 P."winden. Dabei bedeutet:"
+1010 P.;P."< = Die 2-fache Zahl zurueck    "
+1011 P."> = Die gleiche Zahl weiter     "
+1012 P."^ = Fahrstuhl nach oben . Leeres"
+1013 P."Feld nach unten.";P.
+1017 TAB(15);P.">ENTER<";S=INC.
+1018 GOS.4000
+1020 O.12;P.""
+1021 P."Der Wuerfel umfasst die  Ziffern"
+1022 P."von 1 bis 9 .Die Figuren  werden"
+1023 P."wenn das  Wuerfelergebnis  fest-"
+1024 P."steht, erst nach Tastendruck ge-"
+1025 P."setzt.Du kannst aber auch selber"
+1026 P."wuerfeln. Das  Spiel  ist   nach"
+1027 P."jedem  Zieldurchgang abbrechbar."
+1028 P."Alles klar ? (J/N)",;S=INC.;IF S#'J'G.1000
+1030 GOS.1270;GOS.4000;O.12;P.;P.
+1031 INP."Spielerzahl "T;P.
+1032 IFT<1 P."Was soll der Unsinn ?";P.;G.1031
+1034 IFT=1P."Wirklich allein ??";P.;TAB(25)
+1035 P.
+1037 IFT=1S=INC.;IFS#'J'G.1031
+1038 IFT>4 P."Laut Spielregel max. 4 Spieler. ";G.1031
+1040 P.;P."Moechtest Du mit dem Computer"
+1041 P.;P."wuerfeln ?",;B=INC.
+1042 IF B#'J'B=0
+1043 IF B='J'B=1
+1050 GOS.4000
+1060 O.12;TAB(12);P."H A U S"
+1061 P.""
+1065 P.;P.;P.""
+1066 P.;P.;P.;P.
+1075 P."  "
+1079 P." "
+1080 P."",
+1081 P."       >         "
+1082 P."    <            "
+1083 P."                "
+1084 P."  >              "
+1085 P."    <            "
+1086 P."        ^   >     "
+1088 P."         ^        "
+1089 P."         ^        "
+1090 P."     ^    ^       "
+1091 P."     ^           "
+1092 P."    ^           "
+1093 P."    ^  <       >  "
+1094 P."    ^           "
+1095 P."    ^           "
+1096 P."    ^      <     "
+1100 V=HEX(ED80)+479
+1102 F.R=0 TO 15
+1105 V=V-478
+1110 F.S=1 TO 15
+1115 PO.V,198;V=V+32
+1120 N.S;N.R
+1130 V=HEX(ED80)
+1148 P.""
+1149 RET.
+1210 REM FENSTER OBEN
+1220 PO.27,64;PO.28,236
+1225 PO.29,128;PO.30,236
+1230 CALLHEX(F6D1);RET.
+1250 REM FENSTER UNTEN
+1255 PO.27,160;PO.28,239
+1260 PO.29,0;PO.30,240
+1265 CALLHEX(F6D1);RET.
+1270 REM FENSTER VOLL
+1275 PO.27,0;PO.28,236
+1280 PO.29,0;PO.30,240
+1285 CALLHEX(F6D1);RET.
+2000 W=HEX(3E00);PO.W,205
+2005 PO.W+1,48;PO.W+2,241
+2010 PO.W+3,50;PO.W+4,016
+2015 PO.W+5,62;PO.W+6,201
+2020 RET.
+2100 REM AUSWERTUNG
+2103 O=V+2*O
+2105 PO.O,160
+2110 O=O+1;PO.O,S
+2115 IFPE.(O+1)=160IFPE.(O+2)=160 G.2105
+2120 GOS.1210;O.(S);P." ist im Ziel."
+2125 F.S=1TO1000;N.S
+2500 REM SPIELABRUCH ?
+2505 IFT*240<=H+I+J+K G.2540
+2510 P."Spielabruch ?",
+2520 S=INC.;P.
+2521 IF S='J'G.2540
+2525 IF S='N' G.502
+2530 P."Ich verstehe Dich nicht!";G.2510
+2540 REM NEUES SPIEL
+2541 H=0;I=0;J=0;K=0
+2542 D=0
+2545 P."Moechtest Du noch mal Spielen ?";S=INC.
+2550 IF S='J'GOS.1030;G.500
+2555 IFS='N'GOS.1270;G.5000
+2560 P."Antworte Bitte nur mit J oder N.";P.;G.2545
+4000 REM OUTCHAR 12
+4010 F.S=1 TO 32
+4020 P.;F.E=0 TO 20;N.E
+4030 N.S
+4050 RET.
+5000 REM ENDE
+5010 F.A=1 TO 15
+5020 P.;F.B=0 TO 20;N.B
+5030 N.A
+5040 TAB(10);P."E  N  D  E"
+5050 F.A=1 TO 14
+5060 P.;F.B=0 TO 20;N.B
+5070 N.A

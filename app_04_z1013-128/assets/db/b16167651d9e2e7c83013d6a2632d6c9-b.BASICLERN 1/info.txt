@@ -1,0 +1,3 @@
+<kurz src="Lernprogramm, Einführung in Tiny-BASIC"/>
+<lang><include src="BASICLERN 1.b"/></lang>
+<requires></requires>

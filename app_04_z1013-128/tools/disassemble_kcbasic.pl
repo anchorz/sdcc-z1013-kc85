@@ -8,37 +8,51 @@ use Switch;
 use utf8;
 
 sub pr($) {
-    print $token;
+    print OUT $token;
     $token="";
     if ($token_space==1) {
-        print " ";
+        print OUT " ";
     }
     $token=shift;
     $token_space=1;    
 }
 
 sub pq($) {
-    print $token;
+    print OUT $token;
     $token="";
     my $txt=shift;
-    print $txt;
+    print OUT $txt;
     $token_space=0;    
 }
 
+sub map_char($) {
+    my $c=shift;
+    
+    my $mapped=$c;
+   
+    if (ord($c)>=0x00 && ord($c)<=0x1f) {
+        return chr(0xf120+ord($c));
+    } elsif (ord($c)>=0x20 && ord($c)<=0x7e){
+        return $c;
+    } else {
+        return chr(0xf100+ord($c));
+    }
+    return $c;
+}
+
 if (!defined $ARGV[0] ) {
-    print "convert KC-BASIC to text:\n";
-    print "Z1013 maps special Z1013 characters to UTF-Font starting from U+f100\n";
-    print basename($0)." [Z1013|DEFAULT] basic.z80 >basic.B\n";
+    print STDERR "convert KC-BASIC to text:\n";
+    print STDERR "Z1013 maps special Z1013 characters to UTF-Font starting from U+f100\n";
+    print STDERR basename($0)." [Z1013|DEFAULT] basic.z80 >basic.B\n";
     exit 1;
 }
 
-$mode=$ARGV[0];
-$utf_shift=0;
-if ($mode eq "Z1013" ) {
-    $utf_shift=0xf100;
-}
+$file=$ARGV[0];
+$out=$file;
 
-$file=$ARGV[1];
+$out=~s/^B\.//i;
+$out=~s/\.z80//i;
+$out.=".B";
 
 my $len=-s "$file";
 open(FILE,"<:raw", $file);
@@ -46,16 +60,25 @@ read(FILE,my $content,$len);
 close(FILE);
 
 $index=32;
-
 $aadr=unpack("v",substr($content,0,2));
 #TODO When do we have to stop parsing
 #$eadr=unpack("v",substr($content,2,2));
 #$max_index=$eadr-$aadr+32;
 #printf("%04x %04x maxindex=[%04x]%02x\n",$aadr,$eadr,$max_index,ord(substr($content,$max_index,1)));
 
-$ofs=0x2c01-0x2bc0+32;
-$index=$ofs;
+$eadr=unpack("v",substr($content,2,2));
+$basic_end=unpack("v",substr($content,55,2));
 
+$ofs=0x2c01-0x2bc0+32;
+if ($eadr!=$basic_end) {
+    printf (STDERR "error: Das sieht nicht nach einer BASIC Datei aus. Im Header steht EADR=%04x,\n",$eadr);
+    printf (STDERR "       aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+    exit 1;
+}
+
+#$ofs=0x2a21;
+
+$index=$ofs;
 
 use constant {
         GENERIC => 0,
@@ -65,13 +88,16 @@ use constant {
         STRING  => 4,
 };
 
+open(OUT,">", $out);
+binmode(OUT, ":utf8");
+print(OUT "Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)\n\n");
+
 $token="";
 $token_type=0; #0 general 1 rem 2 int float numbers 3 symbol 4 str
 while(1) {
     $len=2;
     $eol=unpack("v",substr($content,$index,$len));
     if ($eol==0) {
-        #printf ("%x %x\n",$index,$max_index);
         last;
     }
     $eol=$eol-$aadr+32;
@@ -88,8 +114,8 @@ while(1) {
         $byte=ord(substr($content,$index++,1));
         if ($index==$eol) {
             if ($byte==0) {
-                print $token;
-                print("\n");
+                print OUT $token;
+                print OUT ("\n");
                 $parse_line=0; #break reset scanner status variables outside the loop
             } else {
                 printf(STDERR " <=\nError: [0x%04x] - NON-NULL character 0x%02x found\n", $index,$byte);
@@ -102,42 +128,31 @@ REDO_CHARACTER:
                     pq("\""); 
                     $token_type=GENERIC;
                 } else {
-                    if ($byte>=0x20 && $byte<=0x7f) {
-                        $token.=chr($byte);
-                    } else {
-                        #$token.=sprintf("\\x%02x",$byte);
-                        switch ($byte)
-                        { 
-                            case [0x80..0xff] {}
-                            else { printf(STDERR "WARNING: [0x%04x] - convert unicode 0x%02x character\n", $index,$byte); }
-                        }
-                        $byte=chr($utf_shift+$byte);
-                        utf8::encode($byte);
-                        $token.=$byte;
-                    }
+                    $token.=map_char(chr($byte));
                 }
             } elsif ($token_type==REM) {
                 switch($byte) { 
-                    case [0x20..0x7e] { $token.=chr($byte); }
-                    else { 
-                        $token.=chr($byte);
-                        printf(STDERR "??<=\nWarning: [0x%04x] - non-printable character 0x%02x found in comment\n", $index,$byte); 
-                        exit 1;
-                    }
+                    $token.=map_char(chr($byte));
                 }
             } elsif ($token_type==NUMBER) {
                 switch($byte) { 
                     case [0x2e,0x30..0x39] { $token.=chr($byte); } #.
-                    else {
+                    case [0x41..0x5a,0x61..0x7a] {
+                        $token_space=0;
                         $token_type=GENERIC;
+                        goto REDO_CHARACTER;
+                    }
+                    else {
                         $token_space=1;
+                        $token_type=GENERIC;
                         goto REDO_CHARACTER;
                     }
                 }
             } elsif ($token_type==SYMBOL) {
                 switch($byte) { 
-                    case [0x24,0x30..0x39,0x41..0x5a] { $token.=chr($byte); }  #$-sign is part of a symbol 
+                    case [0x24,0x30..0x39,0x41..0x5a,0x61..0x7a] { $token.=chr($byte); }  #-$-sign is part of a symbol 
                     else {
+                        #printf("sym[$token_space]\n");
                         $token_type=GENERIC;
                         goto REDO_CHARACTER;
                     }
@@ -145,14 +160,14 @@ REDO_CHARACTER:
             } else {
                 switch($byte)
                 {
-                    case 0x00 { print $token;
-                                print("\n");
+                    case 0x00 { print OUT $token;
+                                print OUT ("\n");
                                 $parse_line=0; $index=$eol; } #TODO WARNING of hidden bytes
                     case 0x22 { pr("\""); $token_type=STRING; }
                     case [0x30..0x39] { pr(chr($byte)); $token_type=NUMBER; }
                     case [0x2d..0x2e] { pq(chr($byte)); $token_type=NUMBER; }  # [-.] #JKCEMU did not add any SPACE on the output  
-                    case [0x41..0x5a] { pr(chr($byte)); $token_type=SYMBOL; }
-                    case [0x20,0x28..0x29,0x2c,0x3a..0x3b] { pq(chr($byte)); } # [ (),:]
+                    case [0x41..0x5a,0x61..0x7a] { pr(chr($byte)); $token_type=SYMBOL; }
+                    case [0x20,0x27..0x29,0x2c,0x3a..0x3b] { pq(chr($byte)); } # [ '(),:]
                     case 0x80 { pr("END"); }
                     case 0x81 { pr("FOR"); }
                     case 0x82 { pr("NEXT"); }
@@ -288,5 +303,7 @@ REDO_CHARACTER:
     }
 }
 
+printf("OK. \"%s\" erstellt.\n",$out);
+close(OUT);
 
 

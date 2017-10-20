@@ -14,6 +14,51 @@
 </head>
 <body>
 <div><img src="jkcemu.gif"/><img src="screenshot_01.png"/><img src="screenshot_02.png"/></div><div class="filelist">0100 0dff 0100 C ... <a href="jumping-jack.z80">JUMPING-JACK&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre>Direkte-Call durch RST20 erstezt, ansonsten gleich mit [d27e3f683d8721cadce77c19fadf9612].
+Geprungen wird mit SPACE
+<pre>****************************************************************
+*                                                              *
+*        Beschreibung des MC-Spiels 'JUMPING-JACK'             *
+*                                                              *
+****************************************************************
 
+Programmstandort  :  100H - DFFH
+
+Start             :  100H
+
+Spielinhalt :
+-------------
+Ziel des Spiels ist es, mit der Spielfigur den Pfeil auf der
+obersten Linie zu erreichen. Die Steuerung erfolgt durch die
+Cursortasten. Ein Sprung durch ein Loch in der Linie kann durch
+'SPACE' erfolgen. Springt man von der untersten Etage gegen die
+Linie oder fällt in die unterste Etage, so geht ein Leben verlo-
+ren. Insgesamt besitzt man 6 Leben.
+Hat man das Ziel erreicht, so erfolgt ein weiteres Spiel mit ei-
+nem neuen Hindernis. Wird man von diesem berührt, so bleibt die
+Spielfigur kurz liegen. (keine Steuerung möglich)
+Wenn das Spiel beendet ist, erfolgt die Eingabe der Initialen
+des Spielers. Dann wird die Platzierung angezeigt.
+Während des Spiels läuft rechts oben auf dem BS die aktuelle
+Punktzahl mit.
+
+Anpassung :
+-----------
+27AH    20H    (Space)
+27FH    08H    (links)
+284H    09H    (rechts)
+78EH    0DH    (Enter)
+
+Eine Änderung der Tasten ist eigentlich nicht notwendig, da sie
+auf jeder Tastatur vorhanden sind.
+
+Beschreibung :     RACYsoft
+--------------     Boris Prey
+                   Willy-Krause-Str.7
+                   Schwarzenberg
+                   9430
+                   Tel. 2992
+&lt;&lt;EOT&gt;&gt;</pre>
+</pre>
 </body>
 </html>

@@ -1,0 +1,5 @@
+<kurz src=""/>
+<lang>
+
+<include src="HEADERTRANS 1.b"/></lang>
+<requires></requires>

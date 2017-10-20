@@ -1,0 +1,5 @@
+<kurz src="textbasiertes Roulette (also ohne Animationen)"/>
+<lang>und leider auch nicht an die 32 Zeichen pro Zeile angepasst.
+Manchmal schreibt das Programm über den Bildschirmrand hinaus.
+<include src="casino.B"/></lang>
+<required></required>

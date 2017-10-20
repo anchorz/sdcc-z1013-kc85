@@ -1,0 +1,4 @@
+<kurz src=""/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+<include src=""/></lang>
+<requires></requires>

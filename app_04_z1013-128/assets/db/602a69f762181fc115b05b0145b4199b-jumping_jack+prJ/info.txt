@@ -1,0 +1,3 @@
+<kurz src="Spinge durch die freien Stellen nach Oben, Joystick nach Practic 01/88"/>
+<lang><include src="jumping__i.doc.txt"/></lang>
+<requires></requires>

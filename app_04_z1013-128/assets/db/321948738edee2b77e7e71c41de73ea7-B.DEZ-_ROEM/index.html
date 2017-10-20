@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png"/></div><div class="filelist">2bc0 2db3 2bc0 B ... <a href="B.DEZ-_ROEM.z80">DEZ-&gt;ROEM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre><pre>   99 CLS
+  100!
+  110 PRINT " UMRECHNUNG DEZIMAL-&gt;ROEMISCH
+  120!
+  130 DIM Z$(13)
+  140 DIM Z(13)
+  150 FOR I=1 TO 13
+  160 READ Z$(I),Z(I)
+  180 NEXT I
+  190!?
+  200 PRINT
+  210 INPUT "DEZIMALZAHL--&gt;:";D:PRINT
+  220 PRINT "  ROEMISCHE ZAHL : " :PRINT
+  230!
+  240 FOR I=1 TO 13
+  250 IF D&lt;Z(I)THEN 290
+  260 PRINT Z$(I);
+  270 LET D=D-Z(I)
+  280 GOTO 250
+  290 NEXT I
+  300 PRINT AT(31,15);"&gt;ENTER&lt;"
+  301 WINDOW 31,31,22,24:INPUT X:WINDOW:CLS
+  310 GOTO 210
+  320!
+  330 DATA M,1000 , CM,900 , D,500 , CD,400 , C,100 , XC,90
+  340 DATA L,50 , XL,40 , X,10 , IX,9 , V,5 , IV,4 , I,1
+  350!
+</pre>
+</pre>
+</body>
+</html>

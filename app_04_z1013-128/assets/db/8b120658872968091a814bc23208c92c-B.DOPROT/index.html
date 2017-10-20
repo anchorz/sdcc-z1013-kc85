@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png"/></div><div class="filelist">2bc0 2f83 0000 B ... <a href="B.DOPROT.z80">DOPROT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre>DOPPELTE ROTATION
+=================
+
+
+Die folgenden Buchstaben sind zu ordnen. 
+
+Nach der Vorgabe eines Buchstabens werden 
+
+die Davor-und die Danachstehenden jeweils
+
+in ihrer Reihenfolge umgedreht.
+
+EDBAGHCIJF ▐ Fester Buchstabe:█
+                   
+<pre>    5! DOPPELTE ROTAION
+   10 CLS
+   20 PRINT "DOPPELTE ROTATION"
+   25 PRINT "================="
+   28 PRINT
+   30 PRINT:PRINT "Die folgenden Buchstaben sind zu"
+   40 PRINT "ordnen.Nach der Vorgabe eines"
+   45 PRINT
+   50 PRINT "Buchstabens werden die Davor- "
+   55 PRINT
+   60 PRINT "und die Danachstehenden jeweils"
+   65 PRINT
+   70 PRINT "in ihrer Reihenfolge umgedreht."
+   80 PRINT:N=0
+   90 FOR I=1 TO 10
+  100 A(I)=I-1
+  110 NEXT I
+  120 FOR I=1 TO 10
+  130 J=INT(10*RND(1))+1:IF J=I THEN 130
+  140 Z=A(I):A(I)=A(J):A(J)=Z
+  150 NEXT I
+  160 FOR I=1 TO 10
+  170 PRINT CHR$(A(I)+65);
+  180 NEXT I
+  190 FOR I=0 TO 9
+  200 IF I&lt;&gt;A(I+1)THEN 230
+  210 NEXT I
+  220 PRINT:PR "Mit";N;VERSUCHEN GELOEST ":GOTO420
+  230 PRINT "  Fester Buchstabe:";
+  240 B$=INKEY$
+  250 IF B$&lt;"A"THEN 240
+  260 IF B$&gt;"J"THEN 240
+  270 PRINT B$
+  280 L=ASC(B$)-65
+  290 FOR K=1 TO 10
+  300 IF A(K)=L THEN 320
+  310 NEXT K
+  320 N=N+1
+  330 IF K&lt;3 THEN 370
+  340 FOR I=1 TO INT(K/2)
+  350 Z=A(I):A(I)=A(K-I):A(K-I)=Z
+  360 NEXT I
+  370 IF K&gt;8 THEN 410
+  380 FOR I=INT((13+K)/2)TO 10
+  390 Z=A(I):A(I)=A(11+K-I):A(11+K-I)=Z
+  400 NEXT I
+  410 GOTO 160
+  420 PRINT:PRINT "Auf ein Neues(J/N)? "
+  430 B$=INKEY$
+  440 IF B$="J"THEN 80
+  450 IF B$="N"THEN 430
+</pre>
+</pre>
+</body>
+</html>

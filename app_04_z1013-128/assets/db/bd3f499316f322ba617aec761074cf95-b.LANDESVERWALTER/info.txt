@@ -1,0 +1,16 @@
+<kurz src="Wirtschaftsimulation statt in Paravia in einer römischen Kolonie"/>
+<lang>L A N D E S V E R W A L T E R
+
+
+DU BIST HERRSCHER DER ROEMISCHEN 
+KOLONIE IN AFRIKA, DEIN VERWALTER 
+GALLIUS TEILT DIR JEDES JAHR DIE 
+DATEN UEBER DEIN LAND MIT.
+
+DU MUSST ENTSCHEIDEN, WAS GETAN WIRD.
+
+DEINE AMTSZEIT BETRAEGT VORERST
+ZEHN JAHRE.
+                               
+<include src="LANDESVERWALTER.b"/></lang>
+<requires></requires>

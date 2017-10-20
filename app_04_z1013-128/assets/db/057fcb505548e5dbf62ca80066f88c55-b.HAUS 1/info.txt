@@ -1,0 +1,27 @@
+<kurz src="Würfelspiel, gelange als erster durch's Haus"/>
+<lang>Dieses Spiel ist ein Würfelspiel  
+bei dem max. 4 Spieler mitspielen koennen. 
+
+Ziel ist es als erster von oben nach unten
+zu gelangen. Im Haus gibt es verschiedene 
+Hindernisse zu überwinden. 
+
+Der Wuerfel umfasst die Ziffern von 1 bis 9.
+Die Figuren  werden wenn das Würfelergebnis
+feststeht, erst nach Tastendruck gesetzt.
+
+Du kannst aber auch selber wuerfeln. Das Spiel
+ist nach jedem  Zieldurchgang abbrechbar.     
+
+Dabei bedeutet:
+
+&lt; = Die 2-fache Zahl zurueck
+
+&gt; = Die gleiche Zahl weiter
+
+^ = Fahrstuhl nach oben . 
+
+Leeres Feld nach unten.
+
+<include src="HAUS 1.b"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Test um festzustellen, ob du gesund lebst"/>
+<lang><include src="GESUNDHEIT 1.b"/></lang>
+<requires></requires>

@@ -1,4 +1,4 @@
-<kurz src="KOMBINATIONSSPIEL, Es verliert derjenige, der den letzten Stein nehmen muss!"/>
+<kurz src="KOMBINATIONSSPIEL. Wer den letzten Stein nehmen muss, verliert!"/>
 <lang> KOMBINATIONSSPIEL
      ━━━━━━━━━━━━━━━━━━━
 
