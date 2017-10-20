@@ -158,7 +158,6 @@ sub do_index_html($)
         open(INFO,"<","$dir/info.txt");
         read(INFO,my $info,$len);
         if ($info=~/<kurz src=\"(.*?)\"\/>/sgi) {
-        #if ($info=~/<kurz/>(.*)<\/kurz>/sgi) {
             $kurz=$1;
         }
         close(INFO);
@@ -166,9 +165,10 @@ sub do_index_html($)
 
 
      my $item_content="";
-    
+    my $has_video=0;    
     $item_content.="<div>";
     if (-f "$dir/animation.mp4") {
+        $has_video=1;
         $item_content.='<object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">'."\n";
         $item_content.='<param name="src" value="animation.mp4" />'."\n";
         $item_content.='<param name="movie" value="animation.mp4" />'."\n";
@@ -218,7 +218,7 @@ sub do_index_html($)
     print FILE $content;
     close(FILE);
         
-    return $kurz;
+    return ($kurz,$has_video);
 }
 
 sub print_entry2($ $) {
@@ -227,21 +227,27 @@ sub print_entry2($ $) {
 
     my @en=@{$db_entry_list{$filename}};
 
-    my $link=basename(dirname($filename));
-    my ($srcmd5,$tag)=split(/-/,$link);
+    my $link_base=basename(dirname($filename));
+    my ($srcmd5,$tag)=split(/-/,$link_base);
 
     if ($en[5] ne $srcmd5) {
-        printf STDERR "w: md5 stimmt nicht überein \"%s\" => \"%s-%s\"\n",$link,$en[5],$tag;
+        printf STDERR "w: md5 stimmt nicht überein \"%s\" => \"%s-%s\"\n",$link_base,$en[5],$tag;
     }
 
-    $link.="/index.html";
-    my $kurz=do_index_html($filename);
+    my $link=$link_base."/index.html";
+    my ($kurz,$has_video)=do_index_html($filename);
     if ($row%2) {
         $row_class="even";
     } else {
         $row_class="odd";
     }
-    my $entry=sprintf "<div class=".$row_class.">%s %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s</div>\n",$en[5],$en[0],$en[1],$en[2],$en[3],$link,$en[4],$kurz;
+    if ($has_video) {
+        $has_video='<a href="'.$link_base."/animation.mp4".'"><img src="../img/if_theaters_326711.png" width="12" height="12"/></a>'."\n";
+    } else {
+        $has_video='<img src="../img/1x1.png" width="12" height="12"/>'."\n";
+    }
+
+    my $entry=sprintf "<div class=".$row_class.">%s %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",$en[5],$en[0],$en[1],$en[2],$en[3],$link,$en[4],$has_video,$kurz;
     return $entry;  
 }
 
