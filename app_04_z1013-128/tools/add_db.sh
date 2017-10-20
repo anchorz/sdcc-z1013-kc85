@@ -29,7 +29,7 @@ echo Kompatibilitätsliste.txt:
 echo $md5 "*"$file
 
 #mv ~/jkcemu.gif "$dbroot/$md5-$base/"
-avconv -i ~/jkcemu.gif -y "$dbroot/$md5-$base/animation.mp4"
+ffmpeg -i ~/jkcemu.gif -r 7 -y "$dbroot/$md5-$base/animation.mp4"
 mv ~/jkcemu.gif ~/jkcemu.gif.old
 
 cp "$dbroot/info.txt" "$dbroot/$md5-$base/"
