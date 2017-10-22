@@ -1,0 +1,5 @@
+<kurz src="identisch mit [51d0977b34524611008fbcfe91b59c0f]"/>
+<lang>
+
+<include src=""/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Simulation Spielautomat"/>
+<lang><include src="AUTOMAT1 L.b"/></lang>
+<requires></requires>

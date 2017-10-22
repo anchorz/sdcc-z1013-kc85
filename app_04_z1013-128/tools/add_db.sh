@@ -9,6 +9,10 @@ file=`eval echo \"$file\"`
 
 pushd . >/dev/null
 
+dbroot_rel=`dirname "$0"`;
+dbroot_rel=`dirname "$dbroot_rel"`;
+dbroot_rel=`dirname "$dbroot_rel"`"/db";
+
 dbroot=`dirname "$0"`/../assets/db
 cd $dbroot
 dbroot=`pwd`
@@ -22,16 +26,23 @@ mkdir "$dbroot/$md5-$base"
 
 echo Ziel: "$dbroot/$md5-$base"
 mv "$file" "$dbroot/$md5-$base/"
-
-echo list.txt:
-echo db/$md5-$base/$file
-echo Kompatibilitätsliste.txt:
-echo $md5 "*"$file
+#kein link /db/ ist noch nicht der Zielordner
+#machen wir spaeter, nachdem es einsortiert wurde
+#ln -s "$dbroot_rel/$md5-$base/$file"
 
 #mv ~/jkcemu.gif "$dbroot/$md5-$base/"
-ffmpeg -i ~/jkcemu.gif -r 7 -y "$dbroot/$md5-$base/animation.mp4"
-mv ~/jkcemu.gif ~/jkcemu.gif.old
+if [ -e ~/jkcemu.gif ]
+then 
+    ffmpeg -i ~/jkcemu.gif -r 5 -y -pix_fmt yuv420p "$dbroot/$md5-$base/animation.mp4"
+    mv ~/jkcemu.gif ~/jkcemu.gif.old
+fi
 
 cp "$dbroot/info.txt" "$dbroot/$md5-$base/"
 
-echo "$dbroot/$md5-$base/"
+#list.txt wird nur für 0.5 MEGArom verwendet 
+#echo list.txt:
+#echo db/$md5-$base/$file
+echo Kompatibilitätsliste.txt:
+echo $md5 "*"$file
+
+

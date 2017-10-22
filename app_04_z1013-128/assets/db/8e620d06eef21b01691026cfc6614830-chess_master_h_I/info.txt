@@ -1,3 +1,3 @@
-<kurz src="Doku ChessMaster"</>
+<kurz src="Doku ChessMaster"/>
 <lang><include src="chess_master_h_I.txt"/></lang>
 <required></required>

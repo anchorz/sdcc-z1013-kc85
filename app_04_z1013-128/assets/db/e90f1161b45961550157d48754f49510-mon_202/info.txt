@@ -1,0 +1,3 @@
+<kurz src="Robotron Z1013/2.02 Monitor"/>
+<lang></lang>
+<requires></requires>

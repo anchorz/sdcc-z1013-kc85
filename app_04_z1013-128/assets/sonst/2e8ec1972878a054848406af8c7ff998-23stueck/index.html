@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div></div>
+<div class="filelist">4000 4bfe 7fff s ... <a href="23stueck.z80">23STUECK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<pre>Adaption in Assembler
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10        PN   HOELZER
+   20        OUT  16
+   30        JMP  START
+   40 END:   EQU  0E000H
+   50 BWS:   EQU  0EC00H
+   60 SOIL:  EQU  16H
+   70 RR:    BER  1
+   80 MM:    BER  1
+   90 ZZ:    BER  1
+  100 QQ:    BER  2
+  110 AA:    BER  2
+  120 POKE:  LD   HL,(QQ)
+  130        LD   (HL),161
+  140        RET  
+  150 START: LD   HL,END
+  160        LD   DE,BWS
+  170        LD   BC,0400H
+  180        LDIR 
+  190        RST  20H
+  200        DB   1
+  210        RST  20H
+  220        DB   2
+  230        DB   8CH
+  240        LD   A,''
+  250        LD   B,32
+  260 M2:    RST  20H
+  270        DB   0
+  280        DJNZ M2-#
+  290        LD   HL,BWS
+  310        LD   BC,1FH
+  320        LD   E,31
+  330 M3:    ADD  HL,BC
+  340        LD   (HL),0C7H
+  350        INC  HL
+  360        LD   (HL),0C7H
+  370        DEC  E
+  380        JRNZ M3-#
+  390        JMP  ENDE
+  400 M250:  RST  20H
+  410        DB   2
+  420        DA   0D0DH
+  430        DA   8D0DH
+  440        LD   A,23
+  450        LD   (MM),A
+  460        XOR  A
+  470        LD   (ZZ),A
+  480 M320:  LD   A,(MM)
+  490        CMP  1
+  500        JPZ  M1000
+  510        RST  20H
+  520        DB   02
+  530        DB   'HIER SIND JETZT'
+  540        DB   160
+  550        LD   A,(MM)
+  560        RST  20H
+  570        DB   6
+  580        RST  20H
+  590        DB   2
+  600        DB   'H HOELZER'
+  610        DB   160
+  620        LD   HL,0EE24H
+  630        LD   (QQ),HL
+  640        LD   A,(MM)
+  650        LD   B,A
+  660 M410:  CALL POKE
+  670        LD   HL,(QQ)
+  680        INC  HL
+  690        LD   (QQ),HL
+  700        DJNZ M410-#
+  710 M510:  RST  20H
+  720        DB   2
+  730        DB   13
+  740        DB   'WIEVIELE NEHMEN SIE ?'
+  750        DB   160
+  760        RST  20H
+  770        DB   5
+  780        LD   DE,(SOIL)
+  790        RST  20H
+  800        DB   3
+  810        LD   A,L
+  820        PUSH HL
+  830        DEC  A
+  840        CMP  3
+  850        JPP  M900
+  860        CMP  0
+  870        JPM  M900
+  880        LD   HL,MM
+  890        CMP  (HL)
+  900        JPP  M900
+  910        POP  HL
+  920        LD   A,(MM)
+  930        SUB  L
+  940        JPZ  M9000
+  950        LD   (MM),A
+  960        CMP  1
+  970        JPZ  M800
+  980        AND  3
+  990        LD   (RR),A
+ 1000        CMP  1
+ 1010        JRNZ M650-#
+ 1020 M1:    LD   A,R
+ 1030        INC  A
+ 1040        AND  3
+ 1050        JRZ  M1-#
+ 1060        JR   M660-#
+ 1070 M650:  INC  A
+ 1080        INC  A
+ 1090        INC  A
+ 1100        AND  0FCH
+ 1110        LD   L,A
+ 1120        LD   A,(RR)
+ 1130        SUB  L
+ 1140        INC  A
+ 1150        INC  A
+ 1160        INC  A
+ 1170 M660:  LD   L,A
+ 1180        LD   A,(MM)
+ 1190        SUB  L
+ 1200        LD   (MM),A
+ 1210        OR   A
+ 1220        JPZ  M800
+ 1230        RST  20H
+ 1240        DB   2
+ 1250        DB   12
+ 1260        DB   'ICH NEHME'
+ 1270        DB   160
+ 1280        LD   A,L
+ 1290        RST  20H
+ 1300        DB   6
+ 1310        RST  20H
+ 1320        DB   2
+ 1330        DB   8DH
+ 1340        JMP  M320
+ 1350 M9000: RST  20H
+ 1360        DB   2
+ 1370        DB   'DAS LETZTE HABEN SIE GENOMMEN'
+ 1380        DB   160
+ 1390        JMP  ENDE
+ 1400 M800:  RST  20H
+ 1410        DB   2
+ 1420        DB   8CH
+ 1430        LD   A,13
+ 1440        LD   B,15
+ 1450 M820:  RST  20H
+ 1460        DB   0
+ 1470        DJNZ M820-#
+ 1480        RST  020H
+ 1490        DB   2
+ 1500        DB   'HERZLICHEN GLUECKWUNSCH,'
+ 1510        DB   13
+ 1520        DB   'SIE HABEN GEWONNEN !!!!'
+ 1530        DB   13
+ 1540        DB   'NOCH EINMAL ?(J/N)'
+ 1550        DB   160
+ 1560        RST  20H
+ 1570        DB   1
+ 1580        CMP  'J'
+ 1590        JPZ  M250
+ 1600        JMP  ENDE
+ 1610 M900:  POP  HL
+ 1620        RST  20H
+ 1630        DB   2
+ 1640        DB   'NA...NICHT MOGELN !'
+ 1650        DB   160
+ 1660        JMP  M510
+ 1670 M1000: LD   A,13
+ 1680        LD   B,20
+ 1690 M1010: RST  20H
+ 1700        DB   0
+ 1710        DJNZ M1010-#
+ 1720        RST  20H
+ 1730        DB   2
+ 1740        DB   'TJA... DAS LETZTE HOLZ WERDEN'
+ 1750        DB   13
+ 1760        DB   'SIE WOHL NEHMEN MUESSEN !!!'
+ 1770        DB   160
+ 1780        LD   HL,0EE28H
+ 1790        LD   (AA),HL
+ 1800 M1050: LD   HL,(AA)
+ 1810        LD   (QQ),HL
+ 1820        LD   (HL),207
+ 1830        LD   HL,(QQ)
+ 1840        INC  HL
+ 1850        LD   (QQ),HL
+ 1860 ENDE:  OUT  16
+</pre>
+</pre>
+</body>
+</html>

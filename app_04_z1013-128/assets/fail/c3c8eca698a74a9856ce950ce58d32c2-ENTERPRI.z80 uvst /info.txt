@@ -1,0 +1,5 @@
+<kurz src=""/>
+<lang>Datei abgeschnitten. Es gibt aber bessere Versionen.
+
+<include src=""/></lang>
+<requires></requires>

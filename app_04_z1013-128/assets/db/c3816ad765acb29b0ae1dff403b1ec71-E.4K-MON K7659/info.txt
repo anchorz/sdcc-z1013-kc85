@@ -1,0 +1,3 @@
+<kurz src="Original Brosig Monitor"/>
+<lang></lang>
+<requires></requires>

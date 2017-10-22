@@ -1,0 +1,19 @@
+<kurz src="HINDERNISRENNEN"/>
+<lang>Steuerung funktioniert nicht so richtig. 
+
+Steuerung: 
+
+TASTE >C<...CURSOR NACH LINKS
+
+TASTE >S4<.CURSOR NACH RECHTS
+
+TASTE >S<.......LOESCHEN
+
+TASTE >K<.......SCHREIBEN
+
+GLEICHZEITIG >S4<
+
+UND >C<.......ENDE  AUFBAU
+
+<include src="HINDERNIS1 L.b"/></lang>
+<requires></requires>

@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
@@ -13,15 +13,12 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-<div><object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">
-<param name="src" value="animation.mp4" />
-<param name="movie" value="animation.mp4" />
-<param name="autoplay" value="true" />
-<param name="autostart" value="1" />
-</object>
+<div><video height="256" width="256" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
 </div>
 <div class="filelist">2bc0 6323 0000 B ... <a href="ladder_bas.z80">LADDER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-<pre><pre>10 CLEAR 500,28000:WINDOW:CLS:POKE DEEK(43),32:GOSUB 3970:DIM NA$(20),SC(20)
+<div class="text"><pre>10 CLEAR 500,28000:WINDOW:CLS:POKE DEEK(43),32:GOSUB 3970:DIM NA$(20),SC(20)
 20!
 30!*** MAIN LEVEL 1 ***
 40!
@@ -460,6 +457,6 @@
 4350 POKE DEEK(43),32:PRINT AT(31,25);"&gt;ENTER&lt;"
 4360 IF INKEY$=""THEN 4360:ELSE RETURN
 </pre>
-</pre>
+</div>
 </body>
 </html>

@@ -4,7 +4,17 @@
 use Data::Dumper;
 
 print "Sucht aus der Datenbankdatei z.B. \"md5sum.txt\" die doppelten Dateien heraus\n";
+
+#> find . -iname "*.bin" -o -iname "*.z80" -type f -exec md5sum -b {} \; >md5sum.txt
 print "Erstellung der Datenbank: find . -iname \"*.z80\" -type f -exec md5sum -b {} \\;\n";
+
+sub get_git_base() {
+    return abs_path(dirname(abs_path($0))."/..");
+}
+
+sub get_database_folder() {
+    return get_git_base()."/assets";
+}
 
 if (! defined($ARGV[0])) {
     printf("e: Argument fehlt, z.B. md5sum.txt\n"); 

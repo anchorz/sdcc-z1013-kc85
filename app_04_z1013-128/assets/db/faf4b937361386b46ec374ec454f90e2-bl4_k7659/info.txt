@@ -1,0 +1,3 @@
+<kurz src="Boot-Lader für RB-Z1013 Computer CP/M"/>
+<lang></lang>
+<requires></requires>

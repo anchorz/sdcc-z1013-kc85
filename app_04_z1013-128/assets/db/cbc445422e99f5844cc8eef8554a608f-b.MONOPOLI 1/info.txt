@@ -1,0 +1,17 @@
+<kurz src="Wirtschafssimulation, zur rechten Zeit das richtige verkaufen oder kaufen"/>
+<lang>
+Dieses Spiel soll das komplexe Denken foerdern 
+und natuerlich Spass machen.
+
+Es existieren die verschiedensten Zahlungsmittel,
+welche im Zusammenhang ein Wirtschaftssystem 
+ergeben.
+
+Es kommt darauf an, zur rechten Zeit das richtige
+zu verkaufen oder zu kaufen.
+
+Je Spielrunde werden die Kurse und der Kontostand 
+angezeigt.
+
+<include src="MONOPOLI 1.b"/></lang>
+<requires></requires>

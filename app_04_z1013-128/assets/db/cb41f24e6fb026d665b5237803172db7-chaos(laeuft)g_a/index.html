@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
@@ -13,17 +13,14 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-<div><object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">
-<param name="src" value="animation.mp4" />
-<param name="movie" value="animation.mp4" />
-<param name="autoplay" value="true" />
-<param name="autostart" value="1" />
-</object>
+<div><video height="256" width="256" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
 <img src="screenshot_01.png" alt="Screenshot 1" height="256" width="256" />
 <img src="screenshot_02.png" alt="Screenshot 2" height="256" width="256" />
 </div>
 <div class="filelist">2bc0 4000 0302 B ... <a href="chaos(laeuft)g_a.z80">CHAOS(laeuft)G/A</a></div>
-<pre>Steuerung: U ␣ 
+<div class="text">Steuerung: U ␣ 
 
 EIN FUSSGAENGER SOLL EINE STARK
 BEFAHRENE STRASSE MOEGLICHST
@@ -226,6 +223,6 @@ FUER JEDES HUPEN:3 STRAFPUNKTE
 1620 NEXT
 1630 PAUSE 30:RETURN
 </pre>
-</pre>
+</div>
 </body>
 </html>

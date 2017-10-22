@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="256" width="256" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+<img src="screenshot_01.png" alt="Screenshot 1" height="256" width="256" />
+</div>
+<div class="filelist">1000 1c82 0000 b ... <a href="b.SKEET%203.z80">SKEET&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<div class="text">Dieses Spiel ahmt das bekannte
+Tontaubenschiessen nach.
+
+Durch einen kurzen Tastendruck
+auf eine beliebige Taste loesen
+Sie den Schuss aus.
+
+
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 O.12
+  100 O.12
+  101 TAB(160)
+  102 P."                 "
+  103 P."                      "
+  104 P."                "
+  105 P."                      "
+  106 P."                    "
+  107 P."                          "
+  117 P."            "
+  118 P."                    "
+  119 P."              "
+  120 P."  "
+  121 P."                  "
+  122 P."                    "
+  123 P."                     "
+  124 P."                   "
+  125 P."                       "
+  126 P."                    "
+  127 P."                      "
+  128 P."                   "
+  129 P."                      "
+  130 P."                 "
+  135 POKEHEX(EF20),32
+  140 FOR J=0 TO 4000
+  150 NEXT J
+  200 O.12;TAB(96)
+  210 P."Dieses Spiel ahmt das bekannte  "
+  220 P."Tontaubenschiessen nach."
+  230 P.;P.
+  240 P."Durch einen kurzen Tastendruck  "
+  250 P."auf eine beliebige Taste loesen "
+  260 P."Sie den Schuss aus."
+  270 P.;P.;P.
+  280 P."Alles klar?                 J/N"
+  290 F=INCHAR
+  292 IF F='N'GOTO 200
+  295 Y=0
+  300 O.12
+  310 TAB(160)
+  320 P."Wieviele Tauben wollen Sie auf's"
+  330 P."Korn nehmen ?"
+  340 P.
+  350 INPUT"Anzahl"H
+  400 B=0
+  410 C=0
+  500 Z=RND(11)
+  505 GOSUB 20000
+  510 O=0
+  515 Q=0
+  520 O.12
+  530 POKEHEX(EC00),32
+  600 IFZ=1S=HEX(EC60);U=33;V=33
+  610 IFZ=2S=HEX(ECBF);U=31;V=31
+  620 IFZ=3S=HEX(EE40);U=1;V=1
+  630 IFZ=4S=HEX(EE9F);U=-1;V=-1
+  640 IFZ=5S=HEX(EE00);U=1;V=33
+  650 IFZ=6S=HEX(EDBF);U=-1;V=31
+  660 IFZ=7S=HEX(EFE2);U=1;V=-31
+  670 IFZ=8S=HEX(EFFF);U=-1;V=-33
+  680 IFZ=9S=HEX(EF60);U=1;V=1
+  690 IFZ=10S=HEX(ED00);U=33;V=33
+  695 IFZ=11S=HEX(ED1F);U=31;V=31
+  700 T=S
+  710 M=T
+  720 P=HEX(EFF0)
+  730 POKEP,214
+  740 N=P
+ 1000 FOR I=0 TO 14
+ 1010 POKEM,32
+ 1015 IFPEEK(T)=214 GOTO 5000
+ 1020 POKET,131
+ 1030 M=T
+ 1040 T=T+U
+ 1050 GOSUB 2000
+ 1055 IFQ=1GOTO5000
+ 1060 POKEM,32
+ 1065 IF PEEK(T)=214 GOTO 5000
+ 1070 POKET,131
+ 1080 M=T
+ 1090 T=T+V
+ 1100 GOSUB 2000
+ 1105 IFQ=1GOTO5000
+ 1110 NEXT I
+ 1200 C=C+1
+ 1210 IFC&lt;H GOTO 500
+ 1220 GOTO 8000
+ 2000 IFO=1 GOTO 2030
+ 2005 CALLHEX(3E00)
+ 2010 G=PEEK(HEX(3E10))
+ 2020 IF G=0 FOR D=0TO20;NEXTD;RETURN
+ 2022 IFG#0 O=1
+ 2030 P=P-32
+ 2040 IFPEEK(P)=131 Q=1;RETURN
+ 2050 POKE N,32
+ 2060 POKE P,214
+ 2070 N=P
+ 2080 RETURN
+ 5000 B=B+1
+ 5100 POKEP,32
+ 5102 POKE(P+32),32
+ 5200 POKE P   ,208
+ 5201 POKE P-64,209
+ 5202 POKE P-62,210
+ 5203 POKE P-29,219
+ 5204 POKE P-32,214
+ 5205 POKE P-34,212
+ 5206 POKE P- 2,223
+ 5207 POKE P+32,216
+ 5208 POKE P+28,222
+ 5209 POKE P+33,211
+ 5250 FOR J=0 TO 100
+ 5255 NEXT J
+ 5260 O.12
+ 5270 POKE HEX(EC00),32
+ 5300 FOR J=0 TO(RND(1000))
+ 5310 NEXT J
+ 5999 GOTO 1200
+ 8000 O.12
+ 8100 TAB(96)
+ 8200 P."Sie haben ",#1,B," von ",H," Tau-"
+ 8250 P.
+ 8300 P."ben getroffen!"
+ 8400 TAB(96)
+ 8500 P."Das sind ",#1,B*100/H,"%."
+ 8600 P.;P.
+ 8700 IFB*100/H&lt;YP."Der Rekord liegt bei ",#1,Y,"%."
+ 8800 IFB*100/H&gt;YP."Das ist neuer Rekord."
+ 8900 IFB*100/H=YP."Sie haben den Rekord egalisiert."
+ 9000 IFB*100/H&gt;YY=B*100/H
+10000 TAB(64)
+11000 P."Noch eine Runde?            J/N"
+12000 F=INCHAR
+13000 IF F='J' GOTO300
+14000 O.12
+15000 STOP
+20000 W=HEX(3E00)
+20010 POKEW,HEX(CD)
+20020 POKEW+1,HEX(30)
+20030 POKEW+2,HEX(F1)
+20040 POKEW+3,HEX(32)
+20050 POKEW+4,HEX(10)
+20060 POKEW+5,HEX(3E)
+20070 POKEW+6,HEX(C9)
+20080 RETURN
+</pre>
+</div>
+</body>
+</html>

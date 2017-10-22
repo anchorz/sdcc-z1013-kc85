@@ -7,6 +7,8 @@ use Cwd 'abs_path';
 use Switch;
 use utf8;
 
+our $map_ctrl=1;
+
 sub read_word() {
     #printf("read idx=%x ",$index);
     my $ret=unpack("v",substr($content,$index,2));
@@ -23,6 +25,30 @@ sub read_byte() {
     return $ret;
 }
 
+sub map_char($) {
+    my $c=shift;
+    
+    my $mapped=$c;
+   
+    if (ord($c)>=0x00 && ord($c)<=0x1f) {
+        if ($map_ctrl) {
+            return chr(0xf120+ord($c));
+        }
+        if (ord($c)>=0x0e && ord($c)<=0x1f) {
+            return chr(0xf100+ord($c));
+        }
+        return chr(0xf1ff);
+    } elsif (ord($c)>=0x20 && ord($c)<=0x7e){
+        return $c;
+    } else {
+        if ($map_ctrl==0 && ord($c)==0x7f) {
+            return chr(0xf1ff);
+        }
+        return chr(0xf100+ord($c));
+    }
+    return $c;
+}
+
 sub read_str() {
     #TODO check encoding
     my $ret="";
@@ -34,11 +60,11 @@ sub read_str() {
         if ($c eq "\0" ) {
             return $ret;
         }
-        if (ord($c)>=0x80) {
-            $c=chr(0xf100+ord($c));
-        }
-        utf8::encode($c);
-        $ret.=$c;
+        #if (ord($c)>=0x80) {
+        #    $c=chr(0xf100+ord($c));
+        #}
+        #utf8::encode(map_char($c));
+        $ret.=map_char($c);
         if ($line_index==$line_length) {
             return $ret;
         }
@@ -48,17 +74,16 @@ sub read_str() {
 if (!defined $ARGV[0]  ) {
     print "convert KC-BASIC to text:\n";
     print "Z1013 maps special Z1013 characters to UTF-Font starting from U+f100\n";
-    print basename($0)." [Z1013|DEFAULT] basic.z80 >basic.B\n";
+    print basename($0)." edas.z80 >edas.s\n";
     exit 1;
 }
 
-$mode=$ARGV[0];
-$utf_shift=0;
-if ($mode eq "Z1013" ) {
-    $utf_shift=0xf100;
-}
+$file=$ARGV[0];
+my $out=$file;
 
-$file=$ARGV[1];
+$out=~s/^s\.//i;
+$out=~s/\.z80//i;
+$out.=".s";
 
 $len=-s "$file";
 open(FILE,"<:raw", $file);
@@ -72,7 +97,16 @@ $src_end_ptr=$eadr-$aadr+32;
 
 $index=32;
 
-#$cnt=83;
+open(OUT,">", $out);
+binmode(OUT, ":utf8");
+print(OUT "Zeichensatz UTF-8+Z1013()");
+if ($map_ctrl) {
+    print(OUT "+CTRL()");
+} else {
+    print(OUT "-CTRL()");
+}
+print(OUT "-ohne Umlaute(äöüß)\n\n");
+
 while(1) {
     $line_index=0; 
     #printf("INFO: line_index=%d\n",$line_index);
@@ -104,41 +138,12 @@ while(1) {
         if ($line_index!=$line_length) {
             $p4=",".read_str();
         }
-#        printf("INFO: len=%d %x %x index=%d\n",$line_length,$opcode,$param16,$line_index);
-#        printf("%05d %-6s %-5s%s%s\n",$line_no,$p1,$p2,$p3,$p4);
-        printf("%-6s %-5s%s%s\n",$p1,$p2,$p3,$p4);
+        printf(OUT "%5s %-6s %-5s%s%s\n",$line_no,$p1,$p2,$p3,$p4);
 
-        #format lineno marke: arg1 arg2
-    #} else {
-    #    printf ("ERROR: unknown opcode [%04x]=%04x\n",$opcode_adr,$opcode);
-    #    exit 1;
-    #}
- #   printf("INFO: INDEX=%d LEN=%D\n",$index,$src_end_ptr);
-#    if ($cnt--==0)    {
-#        exit;
-#    }
     if ($index>=$src_end_ptr)    {
-        exit;
+        last;
     }    
 }
-
-exit;
-
-#$aadr=unpack("v",substr($content,0,2));
-#TODO When do we have to stop parsing
-#$eadr=unpack("v",substr($content,2,2));
-#$max_index=$eadr-$aadr+32;
-#printf("%04x %04x maxindex=[%04x]%02x\n",$aadr,$eadr,$max_index,ord(substr($content,$max_index,1)));
-
-#$ofs=0x2c01-0x2bc0+32;
-#$index=$ofs;
-
-#use constant {
-#        GENERIC => 0,
-#        REM     => 1,
-#        NUMBER  => 2,
-#        SYMBOL  => 3,
-#        STRING  => 4,
-#};
-
+printf("OK. \"%s\" erstellt.\n",$out);
+close(OUT);
 

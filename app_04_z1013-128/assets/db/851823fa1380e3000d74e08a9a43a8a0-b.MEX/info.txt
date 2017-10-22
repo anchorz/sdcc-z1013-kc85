@@ -1,0 +1,14 @@
+<kurz src="Würfelspiel"/>
+<lang>
+Dieses Programm soll neben der Unterhaltung zeigen, 
+wie schnell man beim Gluecksspiel selbst bei gleichen
+Chancen durch Uebermut sein Geld verliert.
+
+Du hast 20 Mark zum Setzen.
+Es wird gewuerfelt.
+Mex (2;1) ist das hoechste,
+dann Pasch (zwei gleiche),
+sonst Summe.
+                           
+<include src="MEX.b"/></lang>
+<requires></requires>

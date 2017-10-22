@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div></div>
+<div class="filelist">1000 1cd7 0000 b ... <a href="b.BEGRIFFERATEN1.z80">*BEGRIFFERATEN1&nbsp;</a></div>
+<pre>
+Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ ⬄ ⇳ ⬀ ⬁ ⬂ ⬃ 
+
+<pre>&lt;pre&gt;Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 OUT(1)=207;OUT(1)=0
+   11 O=5
+   15 OUTC.12
+   20 P.;P.;P."         SPIELAUTOMAT"
+  200 REM
+  420 GOSUB2000
+  421 GOSUB2100
+  422 GOSUB2705
+  430 P.;P.;P.;P."            START MIT  &amp;&gt;gt;ENT&amp;&gt;lt;";A=INC.
+  431 POKEH.(EF80),32
+  440 OUT(0)=1;OUT(0)=0
+  450 OUT(2)=95
+  500 A=H.(EC00)+6*32
+  505 A=A+39
+  510 B=A+7;F=B+7
+  520 C=RND(10)-1;D=RND(10)-1;E=RND(10)-1
+  525 P=0
+  526 O=O-1
+  527 GOSUB2705
+  530 C=C+48;D=D+48;E=E+48
+  540 K=0
+  600 F.I=1TORND(300)+100
+  610 POKEA,C;POKEB,D;POKEF,E
+  620 C=C+1;D=D+1;E=E+1
+  625 IFC=58C=48
+  626 IFD=58D=48
+  627 IFE=58E=48
+  630 IFIN(2)=87OUT(0)=1;G.800
+  700 N.I
+  800 OUT(0)=0;F.I=1TORND(300)+100
+  810 POKEB,D;POKEF,E
+  820 D=D+1;E=E+1
+  830 IFD=58D=48
+  840 IFE=58E=48
+  850 IFIN(2)=91OUT(0)=1;GOTO889
+  880 N.I
+  889 OUT(0)=0
+  900 H=RND(330)+100
+  910 FORI=1TOH
+  920 POKEF,E;E=E+1
+  930 IFE=58E=48
+  950 IFIN(2)=93OUT(0)=1;GOTO999
+  960 N.I
+  999 OUT(0)=0
+ 1000 J=RND(15)+5;K=1;M=100/J
+ 1001 F.I=1TOJ
+ 1004 F.L=1TOK
+ 1005 N.L;K=K+M
+ 1010 POKEF,E;E=E+1
+ 1020 IFE=58E=48
+ 1030 N.I
+ 1042 F.I=1TO300;N.I
+ 1100 GOSUB2500
+ 1102 IFO=0GOTO3000
+ 1105 X=1
+ 1110 T=H.(EF35);U=H.(EF3D)
+ 1120 V=H.(EFBD);W=H.(EFB5)
+ 1180 GOSUB1260
+ 1200 P=INC.
+ 1201 OUT(0)=1;OUT(0)=0
+ 1205 X=0
+ 1210 IFP='N'GOTO1990
+ 1250 T=H.(EC80);U=H.(EC9F)
+ 1255 V=H.(ED7F)
+ 1256 W=H.(ED60)
+ 1260 F.I=TTOU
+ 1265 PO.I,201
+ 1266 PO.I-1,32
+ 1269 N.I
+ 1275 F.I=UTOVSTEP32
+ 1280 PO.I,201
+ 1290 PO.I-32,32
+ 1300 N.I
+ 1310 F.I=VTOWSTEP-1
+ 1320 PO.I,201
+ 1330 PO.I+1,32
+ 1340 N.I
+ 1350 F.I=WTOTSTEP-32
+ 1360 PO.I,201
+ 1370 PO.I+32,32
+ 1380 N.I
+ 1390 PO.I+32,32
+ 1395 IFX=1RETURN
+ 1400 GOTO520
+ 1990 STOP
+ 2000 N=H.(EC86)
+ 2001 N=N+64
+ 2002 F.I=1TO13
+ 2003 P.;N.I
+ 2005 F.I=1TO3
+ 2010 POKEN,168
+ 2012 PO.N+1,160;POKEN+2,169
+ 2020 PO.N+32,161
+ 2022 PO.N+34,161
+ 2024 PO.N+64,167
+ 2026 PO.N+65,160
+ 2027 PO.N+66,170
+ 2040 N=N+7
+ 2050 N.I
+ 2060 RETURN
+ 2100 P."PUNKTE:"
+ 2110 P.;P.;P.;P."GEWINN:",
+ 2115 P.;P.;P.;P.
+ 2200 POKEH.(EE87),32
+ 2300 RETURN
+ 2500 REM
+ 2510 IFC=48C=58
+ 2511 IFD=48D=58
+ 2512 IFE=48E=58
+ 2520 C=C-49;D=D-49;E=E-49
+ 2530 IFE=0P=1
+ 2540 IFABS(C-D)=1IFABS(D-E)=1IFABS(C-E)=2P=4
+ 2550 IFC=DP=2
+ 2560 IFD=EP=2
+ 2570 IFC=EP=2
+ 2575 IFE=0IFD=0P=3
+ 2580 IFC=DIFD=EP=10
+ 2600 F.I=1TO8
+ 2610 IFP=10POKEH.(EE87),49;PO.H.(EE88),48
+ 2615 IFP=0R=H.(EE88);PO.R,78;PO.R+1,73;PO.R+2,67;PO.R+3,72
+ 2616 IFP=0PO.R+4,84;PO.R+5,83;GOTO2621
+ 2620 IFP&amp;&gt;lt;10POKEH.(EE88),P+48
+ 2621 OUT(0)=1
+ 2625 F.Q=1TO50;N.Q
+ 2630 POKEH.(EE87),32;POKEH.(EE88),32
+ 2635 IFP=0F.S=1TO6;PO.R,32;R=R+1;N.S
+ 2640 F.Q=1TO80;N.Q
+ 2641 OUT(0)=0
+ 2650 N.I
+ 2700 O=O+P
+ 2705 IFO&amp;&gt;lt;100POKEH.(EE07),32
+ 2710 IFO&amp;&gt;gt;99POKEH.(EE07),O/100+48
+ 2720 S=O
+ 2730 IFS&amp;&gt;gt;99S=S-100;GOTO2730
+ 2735 IFO&amp;&gt;lt;100IFS&amp;&gt;lt;10POKEH.(EE08),32
+ 2740 IFS&amp;&gt;gt;9POKEH.(EE08),S/10+48
+ 2745 IFO&amp;&gt;gt;99IFS&amp;&gt;lt;10PO.H.(EE08),48
+ 2750 IFS&amp;&gt;gt;9S=S-10;GOTO2750
+ 2755 IFO&amp;&gt;gt;9IFS=0PO.H.(EE09),48
+ 2760 IFS&amp;&gt;gt;-1POKEH.(EE09),S+48
+ 2800 RETURN
+ 3000 OUTC.12;P.;P.;P.;P.
+ 3010 P."SIE HABEN ALLES VERSPIELT !!!";P.;P.;P.
+ 3020 P."NOCH EIN SPIEL ? (J/ENT):",;A=INC.
+ 3030 IFA#13GOTO11
+ 3040 F.I=1TO32
+ 3050 P.
+ 3055 F.U=1TO60;N.U
+ 3060 N.I
+ 3070 P."    ....AUF  WIEDERSEH'N...."
+ 3080 F.I=1TO15;P.;N.I
+ 3090 F.I=1TO5000;N.I
+ 3100 F.I=1TO17;P.;F.U=1TO50;N.U;N.I
+ 3200 OUT(0)=2;F.I=1TO600;N.I;OUT(0)=0
+ 3205 OUTC.12
+ 3210 STOP
+&lt;/pre&gt;
+</pre>
+</pre>
+</body>
+</html>

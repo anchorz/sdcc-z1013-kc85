@@ -1,0 +1,9 @@
+<kurz src="Autorennen"/>
+<lang>Steuerung funktioniert nicht so richtig. 
+
+Die Werte in den Zeilen 1180 und 1190 sollten ggf angepasst werden 
+1180 IFIN(2)=94F=F+1;E=1;IFF=B+APO.C+F,206;G.3000
+1190 IFIN(2)=87F=F-1;E=-1;IFF=A+1PO.C+F,206;G.3100
+
+<include src="FAHRTR.1.b"/></lang>
+<requires></requires>

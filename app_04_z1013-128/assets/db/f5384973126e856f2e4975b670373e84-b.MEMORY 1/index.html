@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png" alt="Screenshot 1" height="256" width="256" />
+<img src="screenshot_02.png" alt="Screenshot 2" height="256" width="256" />
+</div>
+<div class="filelist">1000 1e8e 0000 b ... <a href="b.MEMORY%201.z80">MEMORY&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    2 O.12
+    3 T.(490)
+    4 P."M E M O R Y"
+    5 T.(71)
+    6 P."  Computerspiel"
+    7 GOS.4000;A=INC.;O.12
+    8 F.Q=1TO9
+    9 T=0;J=0;V=0;W=0;K=0
+   10 T.(64)
+   11 P."SPIELREGELN WERDEN VORAUSGESETZT"
+   12 Z=4000;GOS.5000
+   13 T.(64)
+   20 P."BITTE ETWAS GEDULD!"
+   21 P."ICH MUSS ERST MISCHEN."
+   22 Z=1000;GOS.5000
+   30 F.A=1TO70
+   31 PO.H.(3E00)+A,32
+   32 N.A
+   40 F.A=1TO32
+   50 F.F=1TO2
+   51 B=RND(64)
+   54 C=H.(3E00)+B
+   55 D=PEEK(C)
+   70 GOS.390
+   80 IFD=32PO.C,E;G.95
+   90 G.51
+   95 N.F
+   96 PO.H.(EFDF)+A,199
+   97 N.A
+   98 O.12
+  100 P."SPIELERANZAHL?"
+  101 P.;P.
+  110 P."(MAXIMAL VIER)"
+  111 P.
+  115 I=INC.
+  116 I=I-48
+  117 IFI=1G.115
+  120 IFI&gt;4G.115
+  130 P.I
+  131 A=INC.
+  132 GOS.800
+  140 F.A=1TO15
+  141 PO.H.(EC12),32
+  142 PO.H.(EC12),48+Q
+  143 N.A
+  150 F.U=1TOI
+  160 F.A=1TO15
+  161 PO.H.(EC3D),32
+  162 PO.H.(EC3D),48+U
+  163 N.A
+  170 G.700
+  180 N.U
+  181 G.150
+  190 A=H.(ECF6)
+  191 PO.A,83
+  192 PO.A+1,84
+  193 PO.A+2,79
+  194 PO.A+3,80
+  195 PO.A+5,33
+  200 Z=2100;GOS.5000
+  201 O.12
+  202 T.(64)
+  230 P."WERTUNG-------------------------"
+  240 T.(64)
+  250 F.A=1TOI
+  260 P."SPIELER",A,
+  270 IFA=1P.T
+  271 IFA=2P.J
+  272 IFA=3P.V
+  273 IFA=4P.W
+  280 N.A
+  281 A=INC.
+  282 O.12
+  283 T.(288)
+  290 P."NOCH EINE RUNDE?  J/N"
+  300 A=INC.
+  310 IFA=78G.2
+  320 IFA=74G.340
+  330 G.300
+  340 O.12
+  350 N.Q
+  360 P."GEHT NICHT ! ICH DARF"
+  370 P."MICH NICHT"
+  380 P."UE B E R A N S T R E N G E N !"
+  385 STOP
+  390 REM E-FESTLEGUNG
+  400 P=A+64
+  410 IFP&gt;90G.450
+  420 IFP=81E=49;G.520
+  430 IFP=86E=50;G.520
+  440 E=P
+  450 IFA=27E=201
+  460 IFA=28E=202
+  470 IFA=29E=200
+  480 IFA=30E=36
+  490 IFA=31E=203
+  500 IFA=32E=42
+  520 RET.
+  700 REM EINER DRAN
+  701 X=0;Y=0
+  702 F.F=1TO2
+  705 A=INC.
+  706 IFA&lt;65G.705
+  707 IFA&gt;72G.705
+  708 G=(F-1)*32
+  709 PO.H.(EC5D)+G,A
+  710 B=INC.
+  711 IFB&lt;49G.710
+  712 IFB&gt;56G.710
+  713 PO.H.(EC5E)+G,B;A=(A-65)*8
+  714 B=B-48;C=H.(3E00)+A+B
+  715 D=PEEK(C)
+  716 A=(A*8)+H.(EC61)+2*B
+  720 B=PEEK(A)
+  725 IFB=32PO.H.(EC5D)+G,32;PO.H.(EC5E)+G,32;G.705
+  730 IFF=1X=A
+  735 IFF=2Y=A
+  740 IFX=YPO.H.(EC7D),32;PO.H.(EC7E),32;G.705
+  745 PO.A,D
+  746 N.F
+  750 A=PEEK(X)
+  751 B=PEEK(Y)
+  755 IFA=BG.940
+  760 Z=5000;GOS.5000
+  765 PO.X,199
+  766 PO.H.(EC5D),32
+  767 PO.H.(EC5E),32
+  768 PO.Y,199
+  769 PO.H.(EC7D),32
+  770 PO.H.(EC7E),32
+  780 G.180
+  799 STOP
+  800 REM BILD
+  810 O.12;P."MEMORY SPIEL-NR.:"
+  811 T.(22);P."SPIELER";T.(23)
+  820 P."1.FELD"
+  830 P." A",;T.(17);P."A   2.FELD";P.
+  831 P." B",;T.(17);P."B";T.(32)
+  832 P." C",;T.(17);P."C";T.(32)
+  833 P." D",;T.(17);P."D";T.(32)
+  834 P." E",;T.(17);P."E";T.(32)
+  835 P." F",;T.(17);P."F";T.(32)
+  836 P." G",;T.(17);P."G";T.(32)
+  837 P." H",;T.(17);P."H"
+  838 T.(192)
+  839 F.A=1TOI
+  840 P."       SPIELER",#3,A
+  850 N.A
+  851 F.A=H.(EC20)TOH.(EC25)
+  852 PO.A,160
+  853 N.A
+  860 F.A=H.(EC42)TOH.(EE42)STEP32
+  861 F.O=ATOA+16STEP2
+  862 PO.O,161
+  863 N.O
+  864 N.A
+  870 F.A=H.(EE80)TOH.(EE9F)
+  871 PO.A,197;N.A
+  890 F.A=H.(EC81)TOH.(EE02)STEP64
+  891 F.O=ATOA+18STEP2
+  892 PO.O,160
+  893 N.O
+  894 N.A
+  895 B=1
+  900 F.A=H.(EC43)TOH.(EC51)STEP2
+  901 PO.A,48+B
+  902 PO.A+512,48+B
+  903 B=B+1
+  904 N.A
+  910 F.A=H.(EC63)TOH.(EE23)STEP64
+  911 F.O=ATOA+14STEP2
+  912 PO.O,199
+  913 N.O
+  920 N.A
+  930 RET.
+  940 REM TREFFER
+  941 Z=2000;GOS.5000
+  942 PO.X,32;PO.Y,32
+  943 PO.H.(ECB7),A
+  944 PO.H.(ECB9),B
+  945 GOS.5000
+  946 PO.H.(ECB7),32
+  947 PO.H.(ECB9),32
+  950 IFU=1A=T;GOS.1000;T=A
+  951 IFU=2A=J;GOS.1000;J=A
+  952 IFU=3A=V;GOS.1000;V=A
+  953 IFU=4A=W;GOS.1000;W=A
+  955 A=T+J+V+W
+  960 IFA=32G.190
+  970 A=H.(ECF6);PO.A,78
+  971 PO.A+1,79
+  972 PO.A+2,67
+  973 PO.A+3,72
+  974 PO.A+4,77
+  975 PO.A+5,65
+  976 PO.A+6,76
+  980 Z=1000;GOS.5000
+  981 F.H=ATOA+7
+  982 PO.H,32
+  983 N.H
+  984 G.700
+ 1000 REM EINTRAGUNG
+ 1010 A=49+A
+ 1020 IFA&gt;57G.1060
+ 1030 PO.H.(EF12)+(U-1)*32,A
+ 1040 A=A-48
+ 1041 PO.H.(EC5D),32
+ 1042 PO.H.(EC5E),32
+ 1043 PO.H.(EC7D),32
+ 1044 PO.H.(EC7E),32
+ 1050 RET.
+ 1060 B=(A-48)/10
+ 1070 PO.H.(EF12)+(U-1)*32,B+48
+ 1080 C=A-B*10
+ 1090 PO.H.(EF13)+(U-1)*32,C
+ 1100 G.1040
+ 4000 REM RAHMEN
+ 4010 T=H.(EC00);U=199
+ 4020 F.A=0TO31
+ 4030 PO.T+A,U
+ 4040 PO.T+A*32,U
+ 4050 PO.T+A*32+31,U
+ 4060 PO.T+992+A,U
+ 4070 N.A
+ 4080 RET.
+ 5000 REM ZEIT
+ 5010 F.L=1TOZ
+ 5020 N.L
+ 5030 RET.
+</pre>
+</div>
+</body>
+</html>

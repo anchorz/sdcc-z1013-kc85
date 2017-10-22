@@ -1,0 +1,26 @@
+<kurz src="Othello mit Passwort"/>
+<lang>Wie sinnvoll, man braucht ein Passwort, um das Spiel zu starten
+Auf Adresse 0x4500 muss ein Buchstabe stehen .z.B 0x55 'U'. Diesen muss
+man beim Start, dann wieder eingeben.
+
+
+   SPIELERKLAERUNG !!
+
+In diesem Spiel treten Sie gegen Ihren Rechner an.
+Durch gezieltes Setzen der eigenen Steine gilt es ,
+soviel wie moeglich Positionen auf dem Feld zu
+belegen und damit den Rechner zu schlagen !
+
+Diejenigen Steine, welche sich in einer 
+lueckenlosen Linie (Gerade oder Diagonale)
+zwischen gegnerischen Steinen befinden, 
+wechseln stets den Besitzer.
+
+Mit jedem Spielzug sind gegnerische 
+Steine zu erobern !!
+
+Wer zuletzt die meisten Steine
+besitzt hat gewonnen !
+
+<include src="OTHELLO RER.b"/></lang>
+<requires></requires>

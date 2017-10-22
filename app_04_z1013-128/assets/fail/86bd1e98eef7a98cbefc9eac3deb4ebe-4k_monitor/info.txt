@@ -1,0 +1,7 @@
+<kurz src=""/>
+<lang>wieder eine gepatchte Version. Das letzte Byte auf 0xFFFF fehlt. 
+Das Programm wird auf Adresse 0x1000 geladen, von dort wird es auf 0xF000 kopiert.
+Funktioniert nur wenn der Rechner eine Romabschaltung hat.
+
+<include src=""/></lang>
+<requires></requires>

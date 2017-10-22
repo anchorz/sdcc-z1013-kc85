@@ -1,0 +1,7 @@
+<kurz src="Ski fahren, Tore treffen"/>
+<lang>
+
+Steuerung: ⇦ ⇨ 
+
+<include src="SLALOM 1.b"/></lang>
+<requires></requires>

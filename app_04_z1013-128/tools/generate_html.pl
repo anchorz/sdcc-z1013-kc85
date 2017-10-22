@@ -13,6 +13,16 @@ sub get_database_folder() {
     return get_git_base()."/assets";
 }
 
+sub html_encode($) {
+    my $str=shift;
+    $str=~s/ /\%20/sgi;
+    $str=~s/\[/\%5b/sgi;
+    $str=~s/\\/\%5c/sgi;
+    $str=~s/\]/\%5d/sgi;
+    #print STDERR "$str\n";
+    return $str;
+}
+
 sub resolve_links($ $)
 {
     my $dir=shift;
@@ -169,12 +179,15 @@ sub do_index_html($)
     $item_content.="<div>";
     if (-f "$dir/animation.mp4") {
         $has_video=1;
-        $item_content.='<object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">'."\n";
-        $item_content.='<param name="src" value="animation.mp4" />'."\n";
-        $item_content.='<param name="movie" value="animation.mp4" />'."\n";
-        $item_content.='<param name="autoplay" value="true" />'."\n";
-        $item_content.='<param name="autostart" value="1" />'."\n";
-        $item_content.='</object>'."\n";
+        $item_content.='<video height="256" width="256" controls autoplay loop>'."\n";
+        $item_content.='<source src="animation.mp4" type="video/mp4">'."\n";
+        $item_content.='</video>'."\n";
+#        $item_content.='<object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">'."\n";
+#        $item_content.='<param name="src" value="animation.mp4" />'."\n";
+#        $item_content.='<param name="movie" value="animation.mp4" />'."\n";
+#        $item_content.='<param name="autoplay" value="true" />'."\n";
+#        $item_content.='<param name="autostart" value="1" />'."\n";
+#        $item_content.='</object>'."\n";
         #   $item_content.="<img src=\"animation.mp4\"/>\n"; 
     } elsif (-f "$dir/jkcemu.gif") {
         $item_content.="<img src=\"jkcemu.gif\"/>"; 
@@ -192,7 +205,7 @@ sub do_index_html($)
         $item_content.="<img src=\"screenshot_04.png\" alt=\"Screenshot 4\" height=\"256\" width=\"256\" />\n"; 
     }
     $item_content.="</div>\n";
-    $item_content.=sprintf "<div class=\"filelist\">%04x %04x %04x %s ... <a href=\"%s\">%s</a></div>\n",$en[0],$en[1],$en[2],$en[3],basename($filename),$en[4];
+    $item_content.=sprintf "<div class=\"filelist\">%04x %04x %04x %s ... <a href=\"%s\">%s</a></div>\n",$en[0],$en[1],$en[2],$en[3],html_encode(basename($filename)),$en[4];
     
     if (-f "$dir/info.txt") {
         #printf STDERR "i: info.txt existiert $filename\n";
@@ -202,7 +215,7 @@ sub do_index_html($)
         if ($info=~/<lang>(.*)<\/lang>/sgi) {
             #print STDERR $1;
             my $lang=$1;
-            $item_content.="<pre>".resolve_links($dir,$lang)."</pre>";        
+            $item_content.="<div class=\"text\">".resolve_links($dir,$lang)."</div>";        
         }
         close(INFO);
     }
@@ -242,12 +255,12 @@ sub print_entry2($ $) {
         $row_class="odd";
     }
     if ($has_video) {
-        $has_video='<a href="'.$link_base."/animation.mp4".'"><img src="../img/if_theaters_326711.png" width="12" height="12"/></a>'."\n";
+        $has_video='<a href="'.html_encode($link_base."/animation.mp4").'"><img src="../img/if_theaters_326711.png" width="12" height="12" alt="Clip anzeigen"/></a>'."\n";
     } else {
-        $has_video='<img src="../img/1x1.png" width="12" height="12"/>'."\n";
+        $has_video='<img src="../img/1x1.png" width="12" height="12" alt="leer"/>'."\n";
     }
 
-    my $entry=sprintf "<div class=".$row_class.">%s %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",$en[5],$en[0],$en[1],$en[2],$en[3],$link,$en[4],$has_video,$kurz;
+    my $entry=sprintf "<div class=".$row_class.">%s %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",$en[5],$en[0],$en[1],$en[2],$en[3],html_encode($link),$en[4],$has_video,$kurz;
     return $entry;  
 }
 
@@ -312,7 +325,7 @@ my $len_db=scalar (keys %db_entry_list);
 
 my $len_checked=$len_fail+$len_sonst+$len_db;
 
-$ret.="<p>Es wurden $len_total verschiedene Dateien mit der Endung .z80 in den verschiedenen Z1013 Softwarearchiven gefunden, davon sind:</p>";
+$ret.="<p>Es wurden $len_total verschiedene Dateien mit der Endung .z80 oder .bin in den verschiedenen Z1013 Softwarearchiven gefunden, davon sind:</p>";
 $ret.="<ul>";
 $ret.="<li>$len_checked insgesamt getestet worden (".sprintf("%.1f",$len_checked*100.0/$len_total)."%).</li>\n";
 $ret.="<li>$len_db hier aufgelistet.</li>\n";

@@ -1,0 +1,3 @@
+<kurz src="Schiffe versenken"/>
+<lang><include src="SCHIFFE 1.b"/></lang>
+<requires></requires>

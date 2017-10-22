@@ -28,3 +28,10 @@ pre {
 	padding: 2px;
 	background: #f8f8f0;
 }
+
+div.text {
+	font-family: monospace;
+    white-space: pre;
+	padding: 2px;
+	background: #fffff0;
+}

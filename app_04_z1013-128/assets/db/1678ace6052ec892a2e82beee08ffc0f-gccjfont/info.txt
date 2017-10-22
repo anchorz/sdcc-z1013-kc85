@@ -1,0 +1,25 @@
+<kurz src="Font für Grafikkarte CC Jena"/>
+<lang>Wahrscheinlich nur im JKCEMU benutzt. Mh, falls dem so sei,
+wie wurde das ROM-Image dann erstellt? Es hätte ja zum Emulator kein
+Original gegeben.
+
+Der Font hat ein eigenartiges Adresslayout. Das erste Zeichen im ROM ist nicht 0x00.
+
+
+sub_display_cnt() {
+
+ for($j=0;$j<$h;$j++) {
+            my $chr=(($cnt+0x20)&0xff);
+            my $ofs=256;
+            if ($cnt>=0xe0) {
+                $ofs=512;
+            }
+            $index=256*$j+$chr+$ofs;
+            $line=read_byte();
+            for($i=0;$i<8;$i++) {
+               ...
+            }
+}
+
+<include src="zg.html"/></lang>
+<requires></requires>

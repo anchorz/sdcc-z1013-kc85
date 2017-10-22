@@ -1,0 +1,4 @@
+<kurz src="ähnlich wie [a3bad69ac27b26d6f4c5faf62f83f5bc]"/>
+<lang>lediglich die Monitorausschrift ist verschieden. Hier "S6009", 
+[a3bad69ac27b26d6f4c5faf62f83f5bc] "K7652"</lang>
+<requires></requires>

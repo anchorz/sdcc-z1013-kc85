@@ -1,0 +1,3 @@
+<kurz src="Memory mit Buchstaben"/>
+<lang><include src="MEMORY 1.b"/></lang>
+<requires></requires>

@@ -1,0 +1,5 @@
+<kurz src="U555 EPROM Programmierung"/>
+<lang>IO: 0xAD
+
+<include src="U 555 PROGR. 1.b"/></lang>
+<requires></requires>

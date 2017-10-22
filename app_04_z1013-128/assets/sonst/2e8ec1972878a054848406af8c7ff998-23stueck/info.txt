@@ -1,0 +1,11 @@
+<kurz src="Quellcode 23 Hölzer, unvollständig."/>
+<lang>Adaption in Assembler
+
+Da fehlt ein Startbildschirm. Am Anfang wird der Speicherinhalt von 0xE000
+nach 0xEC00 kopiert.
+
+Hier wollte man noch Grafik hinzufügen, als dann plötzlich die Wende
+dazwischen kam.
+
+<include src="23stueck.s"/></lang>
+<requires></requires>

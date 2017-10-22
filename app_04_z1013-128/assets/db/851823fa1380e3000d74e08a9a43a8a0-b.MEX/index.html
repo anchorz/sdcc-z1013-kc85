@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png" alt="Screenshot 1" height="256" width="256" />
+</div>
+<div class="filelist">1000 1a33 0000 b ... <a href="b.MEX.z80">MEX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<div class="text">
+Dieses Programm soll neben der Unterhaltung zeigen, 
+wie schnell man beim Gluecksspiel selbst bei gleichen
+Chancen durch Uebermut sein Geld verliert.
+
+Du hast 20 Mark zum Setzen.
+Es wird gewuerfelt.
+Mex (2;1) ist das hoechste,
+dann Pasch (zwei gleiche),
+sonst Summe.
+                           
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    5 GOTO 1000
+   10 O.12
+   12 TAB(96)
+   14 PRINT"*** WIR SPIELEN WUERFEL-MEX ***"
+   15 FOR I=0 TO 2000;NEXT I
+   16 TAB(480)
+   18 PRINT"Kennst Du die Spielregeln ?
+   20 PRINT"                            J/N"
+   22 F=INCHAR
+   23 IF F='J' GOTO 40
+   25 O.12;TAB(128)
+   27 PRINT"Du hast 20 Mark zum Setzen.";P.
+   28 PRINT"Es wird gewuerfelt.";P.;P.
+   29 PRINT"Mex (2;1) ist das hoechste,";P.
+   30 PRINT"dann Pasch (zwei gleiche),";P.
+   31 PRINT"sonst Summe."
+   32 TAB(64)
+   33 PRINT"Alles klar ?                J/N"
+   34 F=INCHAR
+   35 IF F='N' GOTO 25
+   40 A=20
+   50 O.12;TAB(160)
+   55 PRINT"Du hast jetzt ",#1,A," Mark."
+   57 PRINT
+   60 PRINT;INPUT"Wieviel Mark setzt Du ?"E
+   61 IF E=0 PRINT;PRINT"Was soll denn das ?";GOTO 60
+   62 IF E&gt;A PRINT;PRINT"Na, soviel hast Du nicht mehr !";GOTO 60
+   63 IF E&lt;0 PRINT;PRINT"Nicht mogeln !";GOTO 60
+   65 TAB(96)
+   70 O=RND(6)
+   75 A=A
+   80 N=RND(6)
+   90 M=RND(6)
+   92 A=A
+   95 P=RND(6)
+  100 Q=M+N
+  105 R=O+P
+  110 IF Q=3 PRINT"Ich habe Mex !";GOTO 130
+  120 IF M=N PRINT"Ich habe ",#1,M,"er Pasch !";GOTO 130
+  125 PRINT"Ich habe ",#1,Q," Augen !"
+  130 FOR I=0 TO 1000;NEXT I
+  132 TAB(64)
+  135 IF R=3 PRINT"Du hast Mex !";GOTO 150
+  140 IF O=P PRINT"Du hast ",#1,O,"er Pasch !";GOTO 150
+  145 PRINT"Du hast ",#1,R," Augen !"
+  150 IF Q=3 Q=1000
+  160 IF M=N Q=M*100
+  170 IF R=3 R=1000
+  180 IF O=P R=O*100
+  185 TAB(32)
+  190 IF Q=R PRINT"Unentschieden !"
+  200 IF Q&gt;R PRINT"Verloren !";A=A-E
+  210 IF Q&lt;R PRINT"Gewonnen !";A=A+E
+  211 FOR I=0 TO 500;NEXT I
+  212 IF A&lt;1 TAB(1024)
+  213 IF A&lt;1 O.12;TAB(160)
+  220 IF A&lt;1 PRINT"       Alles verloren !";GOTO 295
+  222 PRINT
+  230 PRINT"Noch eine Runde ?"
+  240 PRINT"                            J/N"
+  242 F=INCHAR
+  244 IF F='J' GOTO 50
+  250 PRINT
+  260 PRINT"Du gehst mit ",#1,A," Mark aus"
+  262 PRINT"dem Spiel !"
+  263 PRINT
+  264 IF A&gt;20 PRINT"Ich gratuliere !"
+  265 IF A=20 PRINT"Da war ja alles umsonst !"
+  266 IF A&lt;20 PRINT"Meistens verliert man !"
+  270 FOR I=0 TO 2000;NEXT I
+  280 PRINT
+  295 FOR I=0 TO 2000;NEXT I
+  298 TAB(96)
+  300 P."Vielleicht doch noch ein Spiel?"
+  310 P."                            J/N"
+  320 F=INCHAR
+  330 IF F='J' GOTO 40
+  340 STOP
+ 1000 O.12
+ 1010 TAB(96)
+ 1015 PRINT"ANMERKUNG :"
+ 1016 PRINT""
+ 1020 PRINT"Dieses Programm soll neben ";P.
+ 1030 PRINT"der Unterhaltung zeigen, wie";P.
+ 1040 PRINT"schnell man beim Gluecksspiel";P.
+ 1050 PRINT"selbst bei gleichen Chancen";P.
+ 1060 PRINT"durch Uebermut sein Geld ver-";P.
+ 1070 PRINT"liert."
+ 1080 PRINT
+ 1090 PRINT
+ 1100 PRINT"Kann's losgehen ?           J/N"
+ 1110 F=INCHAR
+ 1120 IF F='N' GOTO 1000
+ 1130 GOTO 10
+</pre>
+</div>
+</body>
+</html>

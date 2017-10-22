@@ -1,0 +1,3 @@
+<kurz src="Saveroutine speichert bei 2 MHz im alten 1 MHz Format ab."/>
+<lang>Installiert eine Kommandoerweiterung @S</lang>
+<requires></requires>

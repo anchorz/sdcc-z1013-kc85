@@ -1,0 +1,6 @@
+<kurz src="Bewege den Spielstein so lange wie möglich"/>
+<lang>
+Steuerung: ⇦ ⇨ U ␣
+
+<include src="HINTERHALT 1.b"/></lang>
+<requires></requires>

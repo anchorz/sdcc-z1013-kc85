@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
@@ -13,15 +13,12 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-<div><object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">
-<param name="src" value="animation.mp4" />
-<param name="movie" value="animation.mp4" />
-<param name="autoplay" value="true" />
-<param name="autostart" value="1" />
-</object>
+<div><video height="256" width="256" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
 </div>
 <div class="filelist">2bc0 3b9a 0000 B ... <a href="snake.z80">SNAKE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-<pre><pre>5! S N A K E * * * * Z 1013
+<div class="text"><pre>5! S N A K E * * * * Z 1013
 10 WINDOW
 150 DIM R(4),HI(3),SP(8,5),U(4),UM(4)
 160 DATA-1,-32,1,32 
@@ -228,6 +225,6 @@
 2390 PRINT INK 2;AT(28,10);X$:PRINT INK 2;AT(0,10);X$:PAUSE 1
 2400 NEXT K:RETURN
 </pre>
-</pre>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="de">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
@@ -13,16 +13,13 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-<div><object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">
-<param name="src" value="animation.mp4" />
-<param name="movie" value="animation.mp4" />
-<param name="autoplay" value="true" />
-<param name="autostart" value="1" />
-</object>
+<div><video height="256" width="256" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
 <img src="screenshot_01.png" alt="Screenshot 1" height="256" width="256" />
 </div>
 <div class="filelist">2bc0 3973 0302 B ... <a href="jaeger.z80">JAEGER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-<pre> JAEGER
+<div class="text"> JAEGER
 
       BEDIENFUNKTIONEN
   TASTE (P)  -->    LINKS
@@ -185,6 +182,6 @@
 1370 PAUSE 50:RESTORE:PRINT AT(1,28);" 0000":ME=0:K=0:J=0
 1380 WINDOW 0,3,12,31:CLS:WINDOW 3,31,0,31:CLS:ST=0:GOTO 200
 </pre>
-</pre>
+</div>
 </body>
 </html>

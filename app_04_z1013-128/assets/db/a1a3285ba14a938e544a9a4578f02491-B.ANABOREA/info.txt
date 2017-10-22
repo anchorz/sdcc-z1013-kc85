@@ -1,0 +1,12 @@
+<kurz src="Textadventure"/>
+<lang>
+
+https://solutionarchive.com/file/id,12002/
+
+"NORD","SUED","OST","WEST","HINEIN","HINAUS","NEHM","WERF","LEGE"
+"SCHOEPF","TRINK","KLAU","RAUB","STEHLE","TOETE","REIBE","STREICH"
+"DREHE","SCHAU","SEHE","BLICK","TAUSCH"
+"GEBE","TRAENKE","HABE","BESITZ"
+
+<include src="ANABOREA.B"/></lang>
+<requires></requires>

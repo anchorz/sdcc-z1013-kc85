@@ -1,0 +1,20 @@
+<kurz src="AC 1 Kassettenroutine"/>
+<lang>
+* * AC 1 Kassettenroutine * *
+
+            MENUE
+            -----
+
+SAVE AC 1 = @s Anfangsadr.
+Endadr. Startadr. Name ENTER
+
+VERIFY    = @v Verschiebeadr. +
+oder Verschiebeadr. - ENTER
+
+LOAD AC 1 = @l Verschiebeadr. +
+oder Verschiebeadr. - ENTER
+
+MENUE     = @m
+
+           (C) H.Venzke 1988</lang>
+<requires></requires>

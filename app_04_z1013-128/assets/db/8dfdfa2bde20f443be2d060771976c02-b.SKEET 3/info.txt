@@ -1,0 +1,12 @@
+<kurz src="Tontaubenschiessen"/>
+<lang>Dieses Spiel ahmt das bekannte
+Tontaubenschiessen nach.
+
+Durch einen kurzen Tastendruck
+auf eine beliebige Taste loesen
+Sie den Schuss aus.
+
+
+
+<include src="SKEET 3.b"/></lang>
+<requires></requires>

@@ -46,6 +46,9 @@ sub print_utf_line($ $ $) {
 }
 
 
+$filetype_bin=0;
+$h=8;
+
 $file=$ARGV[0];
 
 if(!defined $file) {
@@ -58,17 +61,27 @@ open(FILE,"<:raw", $file);
 read(FILE,$content,$len);
 close(FILE);
 
-$index=32;
+if ($filetype_bin==1) {
+    $index=0;
+} else {
+    $index=32;
+}
 $cnt=0;
 $scale=4;
 
 for($y=0;$y<16;$y++) {
     for($x=0;$x<16;$x++) {
-        my $img = GD::Simple->new(8*$scale, 8*$scale);
+        my $img = GD::Simple->new(8*$scale, $h*$scale);
         $img->bgcolor('black');
         $img->fgcolor('black');
-
-        for($j=0;$j<8;$j++) {
+        for($j=0;$j<$h;$j++) {
+            my $chr=(($cnt+0x20)&0xff);
+            my $ofs=256;
+            if ($cnt>=0xe0) {
+                $ofs=512;
+            }
+            $index=256*$j+$chr+$ofs;
+            printf (STDERR "c=%02x i=%04x\n",$cnt,$index);
             $line=read_byte();
             for($i=0;$i<8;$i++) {
                 if (($line&0x80)==0x80) {

@@ -1,0 +1,12 @@
+<kurz src="Wurm frisst markierte Flächen auf"/>
+<lang>Steuerung: ⇦ ⇨ S ␣ 
+
+Der Wurm ist mittels der Kursortasten
+so zu steuern, dass er mit wenig Zuegen
+alle weissen Flaechen auffrisst. 
+
+Dabei waechst der Wurm. Er darf weder 
+anstossen noch sich selbst auffressen.
+
+<include src="WURM 1.b"/></lang>
+<requires></requires>

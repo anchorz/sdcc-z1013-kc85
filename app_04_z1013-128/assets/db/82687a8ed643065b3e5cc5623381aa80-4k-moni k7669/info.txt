@@ -1,0 +1,3 @@
+<kurz src="Brosig Monitor für K7669/S3004 Tastatur"/>
+<lang></lang>
+<requires></requires>

@@ -1,0 +1,22 @@
+<kurz src="256K-RAM-FLOPPY-TEST 4"/>
+<lang>
+   256K-RAM-FLOPPY-TEST 4
+   ======================
+
+
+Es wird der gesamte Zeichen-
+
+satz jeweils ungerade verscho-
+
+ben und negiert auf die RF ge-
+
+schrieben und abgetestet.
+
+Die IO-Grundadresse kann in
+
+Zelle 103H eingetragen werden.
+
+                     (c) by RB
+
+</lang>
+<requires></requires>
