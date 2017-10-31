@@ -1,0 +1,16 @@
+<kurz src="Mastermind-Variante, erweiterte Version"/>
+<lang>erweiterte  Version von [7a581387bbb87a582e5ec7b6837a2912]
+mit Titelbildschirm, 2 Schwierigkeitsgraden und Bewertung.
+
+ICH HABE EINE 4-STELLIGE ZUFALLSZAHL ERMITTELT.
+
+RATEN SIE DIESE ZAHL ! 
+
+RICHTIGE ZAHL AN RICHTIGER
+STELLE: *
+
+RICHTIGE ZAHL AN FALSCHER
+STELLE: #
+
+<include src="MASTER2 1.b"/></lang>
+<requires></requires>

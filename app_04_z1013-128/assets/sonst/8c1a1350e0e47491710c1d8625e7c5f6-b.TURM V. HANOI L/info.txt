@@ -1,0 +1,5 @@
+<kurz src="fast identisch mit [7cdf6257b3d51f290b7b97941d71f27e]"/>
+<lang>es gibt 2x PRINT mehr in dieser Version.
+
+<include src="TURM V. HANOI L.b""/></lang>
+<requires></requires>

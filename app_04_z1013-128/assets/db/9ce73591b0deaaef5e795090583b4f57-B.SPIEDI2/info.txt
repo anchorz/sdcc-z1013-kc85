@@ -1,0 +1,6 @@
+<kurz src="Mauerspiel, Eingabe über PEEK(4)"/>
+<lang>Steuerung: ⇦ ⇨
+Zeile 17 wurde auf PEEK(4) angepasst. Sonst funktioniert es nicht.
+
+<include src="SPIEDI2.B"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="2.Teil volllustiger Fragen und sinnbefreite Antworten"/>
+<lang><include src="Scherzfragen 2.B"/></lang>
+<requires></requires>

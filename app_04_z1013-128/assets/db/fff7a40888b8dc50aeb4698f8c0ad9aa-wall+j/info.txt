@@ -1,1 +1,3 @@
-<lang>Dateigröße muss es Vielfaches von 32 sein. 17 Bytes fehlen.</lang>
+<kurz src="Mauerspiel mit Extras, unbekannter Joystick"/>
+<lang></lang>
+<requires></requires>

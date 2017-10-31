@@ -1,0 +1,5 @@
+<kurz src="Sprachausgabe Tiny-Basic Beispiel mit Sprachausgabe-Modul"/>
+<lang>Basic Programm identisch mit [2d6f9316be4e5ed000aa8ee5ec6f0f3c]
+ab Adresse 0x5FE0 sind ein paar Daten unterschiedlich
+<include src="VOICE-DEMO.b"/></lang>
+<requires></requires>

@@ -31,11 +31,39 @@ mv "$file" "$dbroot/$md5-$base/"
 #ln -s "$dbroot_rel/$md5-$base/$file"
 
 #mv ~/jkcemu.gif "$dbroot/$md5-$base/"
-if [ -e ~/jkcemu.gif ]
-then 
-    ffmpeg -i ~/jkcemu.gif -r 5 -y -pix_fmt yuv420p "$dbroot/$md5-$base/animation.mp4"
-    mv ~/jkcemu.gif ~/jkcemu.gif.old
+if [ -e ~/jkcemu_video_text.txt ]
+then
+    mv ~/jkcemu_video_text.txt "$dbroot/$md5-$base/"
 fi
+
+if [ -e ~/jkcemu_screen_01.txt ]
+then
+    mv ~/jkcemu_screen_01.txt "$dbroot/$md5-$base/"
+fi
+
+if [ -e ~/jkcemu_screen_02.txt ]
+then
+    mv ~/jkcemu_screen_02.txt "$dbroot/$md5-$base/"
+fi
+
+if [ -e ~/jkcemu_screen_03.txt ]
+then
+    mv ~/jkcemu_screen_03.txt "$dbroot/$md5-$base/"
+fi
+
+if [ -e ~/jkcemu_screen_04.txt ]
+then
+    mv ~/jkcemu_screen_04.txt "$dbroot/$md5-$base/"
+fi
+
+rm -f ~/jkcemu_screen_*
+rm -f ~/jkcemu.gif
+
+#if [ -e ~/jkcemu.gif ]
+#then 
+#    ffmpeg -i ~/jkcemu.gif -r 5 -y -pix_fmt yuv420p "$dbroot/$md5-$base/animation.mp4"
+#    mv ~/jkcemu.gif ~/jkcemu.gif.old
+#fi
 
 cp "$dbroot/info.txt" "$dbroot/$md5-$base/"
 

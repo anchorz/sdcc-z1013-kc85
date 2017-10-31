@@ -1,4 +1,7 @@
 <kurz src="Adressen- und Telefondatenbank"/>
-<lang><include src="ADRESSEN_TELEFON.b"/></lang>
+<lang>es gibt noch eine andere Version [b1f8d678475cbd1842806e8e4e696b26]
+mit einer kleinen Modifikation.
+
+<include src="ADRESSEN_TELEFON.b"/></lang>
 <required></required>
 

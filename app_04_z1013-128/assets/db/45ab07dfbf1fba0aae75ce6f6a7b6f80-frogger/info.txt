@@ -1,4 +1,4 @@
-<kurz>FROGGER AND SNAIL, Schnecken einsammeln</kurz>
+<kurz src="FROGGER AND SNAIL, Schnecken einsammeln"/>
 <lang>Das ist das Froesche-Schnecken-
 spiel !
 
@@ -11,5 +11,5 @@ spiel !
 
          Aufgepasst!
                       
-<include>frogger.B</include></lang>
+<include src="frogger.B"/></lang>
 <required></required>

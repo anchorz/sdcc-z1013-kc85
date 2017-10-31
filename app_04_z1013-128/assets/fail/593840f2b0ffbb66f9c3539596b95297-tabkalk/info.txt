@@ -1,0 +1,8 @@
+<kurz src="wie [593840f2b0ffbb66f9c3539596b95297]"/>
+<lang>UL-ERROR
+ 6906 PRINT AT(28,0);"bei Abbruch GOTO 10 u. >N<)"
+ 6910 I$=INKEY$:IF I$=""THEN 6900
+ 6920 IF I$="N"THEN 930
+
+<include src="tabkalk.B"/></lang>
+<requires></requires>

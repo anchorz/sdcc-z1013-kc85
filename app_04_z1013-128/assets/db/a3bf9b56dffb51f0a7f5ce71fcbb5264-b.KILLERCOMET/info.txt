@@ -1,0 +1,5 @@
+<kurz src="ähnlich Centipede"/>
+<lang>Steuerung: unklar, welche Tastatur verwendet wurde.
+
+<include src="KILLERCOMET.b"/></lang>
+<requires></requires>

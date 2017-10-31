@@ -1,0 +1,8 @@
+<kurz src="Hangman, Tom muss Hauptstädte raten"/>
+<lang>Der Computer denkt sich eine Hauptstadt aus und malt fuer
+jeden Buchstaben ein Karo. Durch Eingabe von Buchstaben(einzeln)
+ist die jeweilige Stadt zu erraten. Fuer jeden falschen 
+Buchstaben muss Tom einen Schritt hoeher!                       
+
+<include src="HAUPTSTAEDTE.B"/></lang>
+<requires></requires>

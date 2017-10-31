@@ -1,0 +1,3 @@
+<kurz src="beantworte 10 Fragen über den Kreis Riesa"/>
+<lang><include src="RIESA.B"/></lang>
+<requires></requires>

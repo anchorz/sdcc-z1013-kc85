@@ -1,0 +1,3 @@
+<kurz src="Runden volllustiger Fragen und teils sinnbefreiter Antworten"/>
+<lang><include src="Scherzfragen 1.B"/></lang>
+<requires></requires>

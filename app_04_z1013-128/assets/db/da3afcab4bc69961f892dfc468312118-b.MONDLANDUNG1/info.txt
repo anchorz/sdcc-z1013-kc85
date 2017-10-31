@@ -1,0 +1,3 @@
+<kurz src="Mondlandung-Variante"/>
+<lang><include src="MONDLANDUNG1.b"/></lang>
+<requires></requires>

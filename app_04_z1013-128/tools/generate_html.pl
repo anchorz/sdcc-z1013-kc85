@@ -4,6 +4,10 @@ use Data::Dumper;
 use Digest::MD5 qw(md5_hex);
 use File::Basename;
 use Cwd 'abs_path';
+use File::stat;
+use utf8;
+
+binmode(STDERR, ":utf8");
 
 sub get_git_base() {
     return abs_path(dirname(abs_path($0))."/..");
@@ -13,8 +17,39 @@ sub get_database_folder() {
     return get_git_base()."/assets";
 }
 
+sub get_tools_root() {
+    return abs_path(dirname(abs_path($0)));
+}
+
+$map_ctrl=0; #map 0x0e..0x1f to Z1013 Chess figures
+
+sub map_char($) {
+    my $c=shift;
+    
+    my $mapped=$c;
+   
+    if (ord($c)>=0x00 && ord($c)<=0x1f) {
+        if ($map_ctrl) {
+            return chr(0xf120+ord($c));
+        }
+        if (ord($c)>=0x0e && ord($c)<=0x1f) {
+            return chr(0xf100+ord($c));
+        }
+        return chr(0xf1ff);
+    } elsif (ord($c)>=0x20 && ord($c)<=0x7e){
+        return $c;
+    } else {
+        if ($map_ctrl==0 && ord($c)==0x7f) {
+            return chr(0xf1ff);
+        }
+        return chr(0xf100+ord($c));
+    }
+    return $c;
+}
+
 sub html_encode($) {
     my $str=shift;
+    $str=~s/&/\%26/sgi;
     $str=~s/ /\%20/sgi;
     $str=~s/\[/\%5b/sgi;
     $str=~s/\\/\%5c/sgi;
@@ -23,10 +58,17 @@ sub html_encode($) {
     return $str;
 }
 
+sub xml_encode($) {
+    my $str=shift;
+    $str=~s/&/&amp;/sgi;
+    return $str;
+}
+
 sub resolve_links($ $)
 {
     my $dir=shift;
     my $content=shift;
+    my $ldata="";
     #print "$dir\n";
     while($content=~s/&lt;link&gt;(.*?)&lt;\/link&gt;/<a href="$1">$1<\/a>/si)
     {
@@ -37,7 +79,8 @@ sub resolve_links($ $)
 
         if (-e "$dir/$str") {
             my $len=-s "$dir/$str";
-            open(LNK,"<:raw","$dir/$str");
+            open(LNK,"<","$dir/$str");
+            binmode(LNK, ":utf8");
             read LNK, $ldata, $len;
             close(LNK);
             if ($str=~m/\.html$/) {
@@ -100,6 +143,8 @@ sub resolve_entry($) {
     
     my %knownFileTypes=(
       'C'=>"Executable",
+      'D'=>"Dump",
+      'M'=>"Executable ohne Autostart",
       'T'=>"Text",
       'I'=>"Dokumentation",
       'E'=>"EPROM",
@@ -123,32 +168,38 @@ sub resolve_entry($) {
         printf STDERR "e: Z80-Header-Tag ist nicht korrekt, statt \"d3d3d3\" steht \"%s\" %s\n",unpack("H*",$tag),$filename;
     }
     
-    my %zeichenMap=("\xff"=>"\xE2\x96\x88","<"=>"&lt;",">"=>"&gt;","&"=>"&amp;"," "=>"&nbsp;");
+    my %zeichenMap=("<"=>"&lt;",">"=>"&gt;","&"=>"&amp;");
     my $displayName="";
     for ($i=0;$i<16;$i++)
     {
         read FILE, $bytes, 1;
-        my $chr=ord($bytes);
-        if ($chr>=0x20 && $chr<=0x7e) {
-            my $subst=$zeichenMap{$bytes};
-            if (!$subst){
-                $subst=$bytes;
-            }
-            $displayName.=$subst;
-        } else {
-            my $subst=$zeichenMap{$bytes};
-            if (!$subst){
-                printf STDERR "w: Zeichenkonvertierung '\\x%02x' %s\n",$chr,$filename;
-                $displayName.="?";
-            } else {
-                $displayName.=$subst;      
-            }
+        $bytes=map_char($bytes);
+        my $subst=$zeichenMap{$bytes};
+        if (!$subst){
+            $subst=$bytes;
         }
+        $displayName.=$subst;
+        #my $chr=ord($bytes);
+        #if ($chr>=0x20 && $chr<=0x7e) {
+        # my $subst=$zeichenMap{$bytes};
+        #    if (!$subst){
+        #        $subst=$bytes;
+        #    }
+        #    $displayName.=$subst;
+        #} else {
+        #    my $subst=$zeichenMap{$bytes};
+        #    if (!$subst){
+        #        printf STDERR "w: Zeichenkonvertierung '\\x%02x' %s\n",$chr,$filename;
+        #        $displayName.="?";
+        #    } else {
+        #        $displayName.=$subst;      
+        #    }
+        #}
     }
     $db_entry[4]=$displayName;
 
     my $len=-s $filename;
-    open(Z80,"<",$filename);
+    open(Z80,"<:raw",$filename);
     read Z80, $bytes, $len;
     $digest = md5_hex($bytes);
     close(Z80);
@@ -166,6 +217,7 @@ sub do_index_html($)
     if (-f "$dir/info.txt") {
         my $len=-s "$dir/info.txt";    
         open(INFO,"<","$dir/info.txt");
+        binmode(INFO, ":utf8");
         read(INFO,my $info,$len);
         if ($info=~/<kurz src=\"(.*?)\"\/>/sgi) {
             $kurz=$1;
@@ -173,36 +225,105 @@ sub do_index_html($)
         close(INFO);
     }
 
+    %screen_shot=(
+        "jkcemu_screen_01.txt"=>"screenshot_01.jpg",
+        "jkcemu_screen_02.txt"=>"screenshot_02.jpg",
+        "jkcemu_screen_03.txt"=>"screenshot_03.jpg",
+        "jkcemu_screen_04.txt"=>"screenshot_04.jpg"
+    );
 
-     my $item_content="";
-    my $has_video=0;    
+    for (keys(%screen_shot)) {
+        if( -f "$dir/$_") {
+            my $timestamp_src=stat("$dir/$_")->mtime;
+            my $timestamp_dst=0;
+            my $file_dst="$dir/$screen_shot{$_}";
+            
+            if( -f $file_dst) {
+                $timestamp_dst=stat($file_dst)->mtime;
+            }
+
+            if ($timestamp_dst<$timestamp_src) {
+                $ret=system("java -jar ".get_tools_root()."/screen2png.jar 32X32 ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$dir/$_\" \"$dir/tmp.png\"" );
+                if ($ret) {
+                    printf("error.");
+                    exit($ret);
+                }
+                $ret=system("convert \"$dir/tmp.png\" -virtual-pixel black -distort Barrel '0.0 0.0 0.04 0.96' -attenuate 0.3 +noise gaussian -motion-blur 1x6+45 -normalize -quality 70% \"$file_dst\"" );
+                if ($ret) {
+                    printf("error.");
+                    exit($ret);
+                }
+                system("rm \"$dir/tmp.png\"");
+            }
+        }
+    }
+
+    my $has_video="no";    
+    my $file_src="$dir/jkcemu_video_text.txt";
+    if( -f $file_src) {
+        $has_video="rendered_video";
+        my $timestamp_src=stat($file_src)->mtime;
+        my $timestamp_dst=0;
+        my $file_dst="$dir/animation.mp4";
+        if( -f $file_dst) {
+            $timestamp_dst=stat($file_dst)->mtime;
+        }
+        if ($timestamp_dst<$timestamp_src) {
+            $ret=0; 
+            $ret=system("java -jar ".get_tools_root()."/screen2png.jar 32X32 ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$file_src\"" ); #\"$file_dst\"" );
+            if ($ret) {
+                printf("error.");
+                exit($ret);
+            }
+        	$ret=system("find \"$dir\" -name \"tmp*.png\" | sort -n | xargs -P 2 -t -I '{}' convert '{}' -virtual-pixel black -distort Barrel '0.0 0.0 0.04 0.96' -motion-blur 1x6+45 -normalize -quality 70% '{}'.jpg");
+            if ($ret) {
+                printf("error.");
+                exit($ret);
+            }
+        	$ret=system("ffmpeg -r 10 -s 512x512 -i \"$dir/tmp%04d.png.jpg\"  -s 512x512 -pix_fmt yuv420p -crf 28 \"$dir/animation.mp4\" -y");
+            if ($ret) {
+                printf("error.");
+                exit($ret);
+            }
+  	        system("find \"$dir\" -name \"tmp*.jpg\" -exec rm {} \\;");
+  	        system("find \"$dir\" -name \"tmp*.png\" -exec rm {} \\;");
+        }
+    }
+
+    my $item_content="";
     $item_content.="<div>";
     if (-f "$dir/animation.mp4") {
-        $has_video=1;
-        $item_content.='<video height="256" width="256" controls autoplay loop>'."\n";
+        if ($has_video eq "no") {
+            $has_video="pixel_video";
+        }
+        $item_content.='<video height="400" controls autoplay loop>'."\n";
         $item_content.='<source src="animation.mp4" type="video/mp4">'."\n";
         $item_content.='</video>'."\n";
-#        $item_content.='<object type="video/mp4" height="256" width="256" standby="Das Video wird geladen..." data="animation.mp4">'."\n";
-#        $item_content.='<param name="src" value="animation.mp4" />'."\n";
-#        $item_content.='<param name="movie" value="animation.mp4" />'."\n";
-#        $item_content.='<param name="autoplay" value="true" />'."\n";
-#        $item_content.='<param name="autostart" value="1" />'."\n";
-#        $item_content.='</object>'."\n";
-        #   $item_content.="<img src=\"animation.mp4\"/>\n"; 
     } elsif (-f "$dir/jkcemu.gif") {
         $item_content.="<img src=\"jkcemu.gif\"/>"; 
     }
-    if (-f "$dir/screenshot_01.png") {
-        $item_content.="<img src=\"screenshot_01.png\" alt=\"Screenshot 1\" height=\"256\" width=\"256\" />\n"; 
+    
+
+    if (-f "$dir/screenshot_01.jpg") {
+        $item_content.="<img src=\"screenshot_01.jpg\" alt=\"Screenshot 1\" height=\"384\"  >\n"; 
+    } elsif (-f "$dir/screenshot_01.png") {
+        $item_content.="<img src=\"screenshot_01.png\" alt=\"Screenshot 1\" height=\"384\"  />\n"; 
     }
-    if (-f "$dir/screenshot_02.png") {
-        $item_content.="<img src=\"screenshot_02.png\" alt=\"Screenshot 2\" height=\"256\" width=\"256\" />\n"; 
+
+    if (-f "$dir/screenshot_02.jpg") {
+        $item_content.="<img src=\"screenshot_02.jpg\" alt=\"Screenshot 2\" height=\"384\"  >\n"; 
+    }elsif (-f "$dir/screenshot_02.png") {
+        $item_content.="<img src=\"screenshot_02.png\" alt=\"Screenshot 2\" height=\"384\"  >\n"; 
     }
-    if (-f "$dir/screenshot_03.png") {
-        $item_content.="<img src=\"screenshot_03.png\" alt=\"Screenshot 3\" height=\"256\" width=\"256\" />\n"; 
+     if (-f "$dir/screenshot_03.jpg") {
+        $item_content.="<img src=\"screenshot_03.jpg\" alt=\"Screenshot 3\" height=\"384\"  >\n"; 
+    } elsif (-f "$dir/screenshot_03.png") {
+        $item_content.="<img src=\"screenshot_03.png\" alt=\"Screenshot 3\" height=\"384\"  />\n"; 
     }
-    if (-f "$dir/screenshot_04.png") {
-        $item_content.="<img src=\"screenshot_04.png\" alt=\"Screenshot 4\" height=\"256\" width=\"256\" />\n"; 
+    if (-f "$dir/screenshot_04.jpg") {
+        $item_content.="<img src=\"screenshot_04.jpg\" alt=\"Screenshot 4\" height=\"384\"  >\n"; 
+    } elsif (-f "$dir/screenshot_04.png") {
+        $item_content.="<img src=\"screenshot_04.png\" alt=\"Screenshot 4\" height=\"384\" />\n"; 
     }
     $item_content.="</div>\n";
     $item_content.=sprintf "<div class=\"filelist\">%04x %04x %04x %s ... <a href=\"%s\">%s</a></div>\n",$en[0],$en[1],$en[2],$en[3],html_encode(basename($filename)),$en[4];
@@ -211,6 +332,7 @@ sub do_index_html($)
         #printf STDERR "i: info.txt existiert $filename\n";
         my $len=-s "$dir/info.txt";    
         open(INFO,"<","$dir/info.txt");
+        binmode(INFO, ":utf8");
         read(INFO,my $info,$len);
         if ($info=~/<lang>(.*)<\/lang>/sgi) {
             #print STDERR $1;
@@ -223,11 +345,13 @@ sub do_index_html($)
     my $template=get_database_folder()."/db/item.templ";
     $len=-s $template;
     open(FILE,"<",$template);
+    binmode(FILE, ":utf8");
     read(FILE,my $content,$len);
     $content=~s/__BODY__/$item_content/s;
     close(FILE);
     
     open(FILE,">","$dir/index.html");
+    binmode(FILE, ":utf8");
     print FILE $content;
     close(FILE);
         
@@ -237,6 +361,8 @@ sub do_index_html($)
 sub print_entry2($ $) {
     my $filename=shift;
     my $row=shift;
+    
+    my $xml_entry="<file "; 
 
     my @en=@{$db_entry_list{$filename}};
 
@@ -254,14 +380,23 @@ sub print_entry2($ $) {
     } else {
         $row_class="odd";
     }
-    if ($has_video) {
+    if ($has_video eq "rendered_video") {
+        $has_video='<a href="'.html_encode($link_base."/animation.mp4").'"><img src="../img/video_capture.png" width="12" height="12" alt="Clip anzeigen"/></a>'."\n";
+    } elsif ($has_video eq "pixel_video") {
         $has_video='<a href="'.html_encode($link_base."/animation.mp4").'"><img src="../img/if_theaters_326711.png" width="12" height="12" alt="Clip anzeigen"/></a>'."\n";
     } else {
         $has_video='<img src="../img/1x1.png" width="12" height="12" alt="leer"/>'."\n";
     }
 
-    my $entry=sprintf "<div class=".$row_class.">%s %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",$en[5],$en[0],$en[1],$en[2],$en[3],html_encode($link),$en[4],$has_video,$kurz;
-    return $entry;  
+    my $remove_space=$en[4];
+    $remove_space=~s/ /&nbsp;/sgi;
+    my $entry=sprintf "<div class=".$row_class.">%s %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",$en[5],$en[0],$en[1],$en[2],$en[3],html_encode($link),$remove_space,$has_video,$kurz;
+    my $url=$filename;
+    $url=~s/^.*?\/db\///sgi;
+    $xml_entry.=sprintf("aadr=\"%04x\" eadr=\"%04x\" sadr=\"%04x\" typ=\"%s\" link=\"%s\" name=\"%s\" kurz=\"%s\" ",$en[0],$en[1],$en[2],$en[3],html_encode($url),$en[4],xml_encode($kurz)); 
+
+    $xml_entry.="/>\n"; 
+    return ($entry,$xml_entry);  
 }
 
 @file_list=();
@@ -312,6 +447,7 @@ sub file_search($ $) {
 my $db_root=get_database_folder()."/db";
 my $index_html=get_database_folder()."/db/index.html";
 my $index_templ=get_database_folder()."/db/index.templ";
+my $xml_file=get_database_folder()."/db/list.xml";
 my $file_root=get_database_folder();
 
 file_search(get_database_folder(),get_database_folder());
@@ -338,21 +474,32 @@ for $db_entry (keys %db_entry_list) {
     resolve_entry($db_entry);
 }
 
+my $xml="<filelist>\n";
 my $row=0;
 for $db_entry (sort { lc $db_entry_list{$a}[4] cmp lc $db_entry_list{$b}[4] } keys %db_entry_list) {
-    $ret.=print_entry2($db_entry,$row);
+    
+    ($html_entry,$xml_entry)=print_entry2($db_entry,$row);
+    $ret.=$html_entry;
+    $xml.=$xml_entry;
     $row++;
 }
+$xml.="</filelist>\n";
+
+open(UTF,">", $xml_file);
+binmode(UTF, ":utf8");
+print UTF $xml;
+close(UTF);
 
 $ret.="</div>";
 
 my $len=-s "$index_templ";
 open(FILE,"<", $index_templ);
+binmode(FILE, ":utf8");
 read(FILE,my $content,$len);
 $content=~s/__BODY__/$ret/s;
-close(FILE);
 
 open(FILE,">",$index_html);
+binmode(FILE, ":utf8");
 print FILE $content;
 close(FILE);
 

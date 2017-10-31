@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+</div>
+<div class="filelist">2bc0 3bc2 0000 B ... <a href="B.EMITTER.z80">EMITTER         </a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 CLS:WIDTH 32
+   20 PRINT AT(0,6);"Verstaerker-Berechnung"
+   30 PRINT AT(3,11);" +Ub"
+   40 PRINT AT(4,11);"     " 
+   50 PRINT AT(5,10);"   "
+   60 PRINT AT(6,10);"      " 
+   70 PRINT AT(7,10);" R1  RC"
+   80 PRINT AT(08,10);"   "
+   90 PRINT AT(09,10);"         "
+  100 PRINT AT(10,11);"      A"      
+  110 PRINT AT(11,11);"        "
+  120 PRINT AT(12,11);"    "
+  130 POKE-4719,152 
+  135 PRINT AT(13,07);"          CK2 "    
+  140 POKE-4688,144 
+  150 PRINT AT(14,2);"E "
+  160 PRINT AT(15,7);"         Si-npn"
+  165 POKE-4624,145
+  170 PRINT AT(16,11);"   "   
+  175 POKE-4591,190 
+  177 POKE-4558,155
+  180 PRINT AT(17,7);"CK1 "    
+  190 PRINT AT(18,11);"      "
+  195 PRINT AT(19,11);"      "
+  200 PRINT AT(20,11);"          "
+  205 PRINT AT(21,10);"       +"
+  210 PRINT AT(22,10);"           "
+  220 PRINT AT(23,10);" R2   RE CE"
+  230 PRINT AT(24,10);"       -"
+  240 PRINT AT(25,10);"           "
+  250 PRINT AT(26,10);"           "
+  260 PRINT AT(27,02);"  Masse"   
+  290 PRINT AT(31,15);"&gt;ENTER&lt;":INPUT S$ 
+  300 CLS:PRINT:PRINT
+  305 M=0
+  310 PRINT "Waehle bitte aus :":PRINT STRING$(18,"-"):PRINT:PRINT
+  320 PRINT:PRINT "statische Berechnung...........1":PRINT
+  330 PRINT "dynamische Berechnung..........2":PRINT:PRINT
+  340 INPUT "Deine Wahl :";A 
+  345 IF A&lt;1 OR A&gt;2 THEN 300
+  350 CLS:PRINT:PRINT
+  360 PRINT "Gebe bitte folgende Daten ein :":PRINT STRING$(31,"-"):PRINT
+  370 INPUT "Betriebsspannung [ V ] :";UB:PRINT
+  380 IF UB&gt;48 THEN PRINT "Wie bitte ?":PRINT:GOTO 370
+  390 PRINT "Ist ein bestimmtes Verhaeltnis":PRINT
+  400 INPUT "von Re/Rc gegeben  (0/1) :";R:PRINT 
+  410 IF R=0 THEN 430
+  420 INPUT "Rc= x*Re  --&gt; Eingabe x :";X:PRINT:X=1/X
+  430 PRINT:INPUT "Ist Uce gegeben ? ( 0/1) :";U:PRINT
+  440 IF U=0 THEN 455
+  450 INPUT "Uce [ V ] :";UC
+  455 CLS:PRINT
+  460 PRINT:PRINT "Ist der Basisstrom gegeben ?":PRINT
+  470 INPUT "(0/1) :";B:PRINT
+  480 IF B=0 THEN 500
+  490 INPUT "Ib [ mA ] =";IB:PRINT
+  495 IB=IB/1000
+  500 PRINT "Ist der Collektorstrom gegeben ?":PRINT
+  510 INPUT "(0/1) :";C:PRINT
+  520 IF C=0 THEN 540
+  530 INPUT "Ic [ mA ] =";IC:PRINT
+  535 IC=IC/1000
+  540 IF C=1 AND B=1 THEN 600
+  545 IF B=0 AND C=0 THEN 546 ELSE 550
+  546 PRINT "Du musst entweder den Basis-":PRINT
+  547 PRINT "oder den Collektorstrom vorgeben":PRINT
+  548 GOTO 460
+  550 INPUT "Stromverstaerkung h21e :";H2:PRINT
+  600 IF A=1 THEN 1000 ELSE 615
+  615 CLS:PRINT
+  620 INPUT "h11e [ Ohm ]    =";H1:PRINT 
+  630 INPUT "h12e [ * 1E-4 ] =";H3:PRINT:H3=H3*1E-4 
+  640 INPUT "h22e [ * 1E-6 ] =";H4:PRINT:H4=H4*1E-6 
+  650 INPUT "untere Grenzfrequenz [Hz] =";FU:PRINT
+  660 PRINT "Widerstand der am Eingang":PRINT
+  670 PRINT "des Verstaerkers angeschlossenen"      
+  680 INPUT "Signalquelle in Ohm :";RG:PRINT
+  685 INPUT "Lastwiderstand in Ohm :";RL:PRINT
+  750 IF M=2 THEN RETURN
+ 1000 IF U=1 THEN 1020
+ 1010 UC=UB/2
+ 1020 IF B=1 AND C=1 THEN 1100
+ 1030 IF B=1 THEN 1200
+ 1040 IF B=0 THEN 1300
+ 1100 H2=IC/IB:GOTO 1400
+ 1200 IC=IB*H2:GOTO 1400
+ 1300 IB=IC/H2:GOTO 1400
+ 1400 IF R=0 THEN 1450
+ 1410 RC=(UB-UC)/(IC+X*(IB+IC))
+ 1420 RE=X*RC
+ 1450 IE=IB+IC:IF R=1 THEN 1470
+ 1460 RE=UB/(6*IE):RC=(UB-UC)/IC-RE
+ 1470 I2=3*IB:BE=.65
+ 1480 R1=(UB-BE-IE*RE)/(IB+I2)
+ 1490 R2=(BE+IE*RE)/I2
+ 1500 CLS:PRINT:PRINT "Ergebniss der Berechnung :":PRINT STRING$(27,"-"):PRINT
+ 1510 PRINT "Betriebsspannung  :";UB;" V":PRINT
+ 1515 PRINT "Uce =";UC;" V":PRINT
+ 1520 PRINT "R1 =";R1/1000;" KOhm":PRINT
+ 1530 PRINT "R2 =";R2/1000;" KOhm":PRINT
+ 1540 PRINT "RC =";RC/1000;" KOhm":PRINT
+ 1550 PRINT "RE =";RE;" Ohm":PRINT
+ 1560 PRINT "Stromverstaerkungsfaktor des":PRINT
+ 1570 PRINT "Transistors ( h21e) =";INT(H2):PRINT
+ 1590 IF A=1 THEN GOTO 2900 
+ 1600 DH=H1*H4-H2*H3:ZQ=1/(1/R1+1/R2+1/RG)
+ 1605 ZL=RC*RL/(RC+RL)
+ 1607 Z1=(H1+DH*ZL)/(1+H4*ZL):Z2=(H1+ZQ)/(H4*ZQ+DH)
+ 1610 ZE=1/(1/R1+1/R2+1/Z1)
+ 1620 ZA=1/(1/RC+1/Z2)
+ 1630 VU=-(H2*ZL)/(H1+DH*ZL):VT=H2/(1+H4*ZL)
+ 1640 T=ZQ/(ZQ+Z1):Y=RC/(RC+RL)
+ 1650 VI=VT*T*Y
+ 1670 TU= 1*ZE*VU/(RG+ZE)
+ 1720 RI=RG+1/(1/R1+1/R2+1/H1):RJ=RL+1/(1/RC+1/H4)
+ 1740 RP=H1+1/(1/RG+1/R1+1/R2) 
+ 1750 PRINT AT(30,20);"&gt;ENTER&lt;"
+ 1760 CI=1.96/(2*PI*FU*RI):CJ=1.96/(2*PI*FU*RJ)
+ 1770 INPUT S$:CLS:PRINT
+ 1780 CE=(1+H2)*1.96/(2*PI*FU*RP)
+ 1810 PRINT "Eingangs-R =";ZE/1000;" KOhm":PRINT
+ 1820 PRINT "Ausgangs-R =";ZA/1000;" KOhm":PRINT
+ 1830 PRINT "Stromverstaerkung :":PRINT STRING$(19,"-"):PRINT
+ 1835 PRINT "des Transistors  :";VT:PRINT
+ 1837 PRINT "des Verstaerkers :";VI:PRINT
+ 1840 PRINT "Spannungsverstaerkung :":PRINT STRING$(23,"-"):PRINT
+ 1850 PRINT "des Transistors  :";VU:PRINT
+ 1860 PRINT "des Verstaerkers :";TU:PRINT
+ 1870 PRINT "untere Grenzfrequenz =";FU;"Hz":PRINT
+ 1880 PRINT "CE =";INT(CE/1E-6);"Mikrofarad":PRINT
+ 1900 PRINT "Eingangs-CK1 :";INT(CI/1E-9);"nF":PRINT
+ 1920 PRINT "Ausgangs-CK2 :";INT(CJ/1E-9);"nF":PRINT
+ 2900 PRINT AT(30,20);"&gt;ENTER&lt;"
+ 2950 INPUT S$:CLS:PRINT
+ 3000 PRINT "Waehle bitte aus :":PRINT STRING$(18,"-"):PRINT
+ 3010 PRINT "Neue Berechnung...............1":PRINT
+ 3020 PRINT "Neue dynamische Berechnung....2":PRINT
+ 3030 PRINT "Ende..........................3":PRINT
+ 3040 INPUT "Deine Wahl :";M:PRINT
+ 3050 ON M GOTO 300,4000,10000
+ 4000 CLS:PRINT:INPUT "h21e =";H2:PRINT:GOSUB 620
+ 4010 GOTO 1600
+10000 CALL*F6C5
+10010 END
+</pre>
+</div>
+</body>
+</html>

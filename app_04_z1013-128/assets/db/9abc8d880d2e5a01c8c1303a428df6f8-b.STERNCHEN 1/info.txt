@@ -1,0 +1,3 @@
+<kurz src="Hölzchenspiel-Variante, mit Sternchen für 2 Personen"/>
+<lang><include src="STERNCHEN 1.b"/></lang>
+<requires></requires>

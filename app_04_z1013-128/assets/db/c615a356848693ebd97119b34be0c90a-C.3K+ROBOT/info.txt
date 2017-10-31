@@ -1,0 +1,4 @@
+<kurz src="Präsentation: Informatik und Technologie"/>
+<lang>
+<include src="Robot.b"/></lang>
+<requires></requires>

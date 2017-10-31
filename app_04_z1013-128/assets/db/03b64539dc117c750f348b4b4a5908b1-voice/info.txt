@@ -1,0 +1,3 @@
+<kurz src="Sprachausgabe API"/>
+<lang></lang>
+<requires></requires>

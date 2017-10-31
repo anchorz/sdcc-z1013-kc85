@@ -1,0 +1,7 @@
+<kurz src="ballistische Rakete mit 5 Versuchen abschiessen"/>
+<lang>ansonsten wie [c53a02838c76dcfd418532e6d679eb19]
+
+Steuerung: ⇦ ⇨ ␣
+
+<include src="rakete.B"/></lang>
+<requires></requires>

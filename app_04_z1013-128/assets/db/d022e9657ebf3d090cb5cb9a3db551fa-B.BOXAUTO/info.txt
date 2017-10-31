@@ -1,0 +1,32 @@
+<kurz src="Spielfiguren auf die gegenüberliegende Seite bringen, Brettspiel 1-2 Personen"/>
+<lang>
+          BOXAUTO
+
+ Beispiel eines Spielbrettes:
+
+  1....
+  2....
+  3....
+  4....
+  .ABCD
+
+Zwei Figuren(Ziffern/Buchstaben) rennen im rechten Winkel ueber
+das Spielbrett. Freie Stellen werden als Punkte gekennzeichnet
+
+Du waehlst die Brettgroesse (Das oben ist 5 Einheiten gross)
+    N
+    :
+  W---O
+    :
+    S
+
+Das Ziel ist, die Figuren ueber die gegenueberliegende Kante zu
+bewegen.Sieger ist,wer zuerst mit allen Figuren d. Spielbrett
+verlaesst. Um eine Figur zu ruecken, gib den Namen und des ersten
+Buchstaben der Richtung ein, z.B. AN oder 1O. Du verlierst,
+wenn du dem Gegner keine Zugmoeglichkeit laesst.
+
+Tippe E f. ENDE oder H f. HILFE.
+
+<include src="BOXAUTO.B"/></lang>
+<requires></requires>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+<img src="screenshot_02.jpg" alt="Screenshot 2" height="384"  >
+</div>
+<div class="filelist">1000 238f 0000 b ... <a href="b.4GEWINNT.z80">4GEWINNT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+<div class="text">
+So richtig scheint das Programm noch nicht fertig zu sein. Ich habe ersteinmal
+die Zeile 1045 gelöscht um überhaupt etwas zu sehen.
+
+    VIER   GEWINNT
+********************************
+Bei diesem Spiel koennen zwei Spieler gegeneinander spielen .
+Jeder darf abwechselnt einen Stein, in eine der sieben Reihen,
+einwerfen. 
+Wer als erster eine Diagonale, Senkrechte oder Waagerechte
+mit 4 Steinen seiner Farbe belegt hat, hat gewonnen.                          
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+  100 OUTCHAR 12
+  110 TAB(320)
+  119 P."   "
+  120 P."BEDIENANLEITUNG   &gt;&gt;&gt;ENTER&lt;&lt;&lt;   "
+  121 P."   "
+  130 POKEHEX(EE00),32
+  140 A=INCHAR
+  150 IF A=13 GOSUB 11500
+  200 REM BILDAUFBAU
+  205 OUTCHAR 12
+  207 POKE HEX(EC00),32
+  210 A=HEX(EC00)
+  220 B=A+5+6*32
+  230 REM SENKRECHT
+  240 FOR X=B TO B+16*32 STEP 32
+  250 POKE X,161
+  260 NEXT X
+  280 POKE X,167
+  290 B=X+1
+  300 REM WAGERECHT
+  310 FOR X=B TO B+19
+  320 POKE X,160
+  330 NEXT X
+  340 POKE X,170
+  350 B=X-32
+  360 REM SENKRECHT
+  370 FOR X=B TO B-16*32 STEP-32
+  380 POKE X,161
+  390 NEXT X
+  400 REM INNEN SENKRECHT
+  405 B=A+8+6*32
+  410 FOR X=B TO B+3*5 STEP 3
+  420 FOR Y=0 TO 16*32 STEP 32
+  430 POKE X+Y, 161
+  440 NEXT Y
+  450 NEXT X
+  460 REM WAGERECHT MITTE
+  470 B=A+6+8*32
+  480 FOR X=B TO B+13*32 STEP 96
+  490 FOR Y=X TO X+18 STEP 3
+  500 FOR Z=Y TO Y+1
+  510 POKE Z,160
+  520 NEXT Z
+  530 IF Y&lt;X+18 POKE Z,32
+  540 NEXT Y
+  550 NEXT X
+  560 REM ZAHLEN
+  570 TAB (2*32+7)
+  580 FOR X=49 TO 55
+  590 OUTCHAR X
+  600 OUTCHAR 32
+  610 OUTCHAR 32
+  620 NEXT X
+  630 X=A+2*32+7+(7*3)
+  640 POKE X,32
+  650 REM SPIELSTEINE LINKS
+  660 X=A+23*32
+  670 W=199
+  680 GOSUB 10200
+  800 REM SPIELSTEINE RECHTS
+  810 X=A+23*32+27
+  820 W=255
+  830 GOSUB 10200
+  840 REM ROLLFENSTER
+  850 GOSUB 10400
+  860 REM RAM 1 INIT
+  870 FOR A=HEX(2FD0) TO HEX(3080)
+  880 POKE A,00
+  890 NEXT A
+  900 REM RAM 2 INIT
+  910 FOR A=HEX(3060) TO HEX(3066)
+  920 POKE A,6
+  930 NEXT A
+  940 REM RAMZELLE 3 INIT
+  950 POKE HEX(3067),41
+  960 REM VARIABLEN FESTLEGEN
+  970 T=HEX(EC60); U=HEX(EC7B)
+  975 R=HEX(ECC6)
+  980 S=1
+  990 REM EIGENTLICHES PROGR.
+ 1000 REM
+ 1005 R=HEX(EC66)
+ 1010 PRINT"Eingabe Spieler",
+ 1020 TAB(S)
+ 1030 PRINT #2,S,
+ 1040 INPUT""F
+ 1045 OUTCHAR 12
+ 1047 POKE HEX(EF20),32
+ 1050 IF F&gt;7 GOTO 1010
+ 1060 IF F&lt;1 GOTO 1010
+ 1070 F=F-1
+ 1074 IF S=1 E=199
+ 1078 IF S=2 E=255
+ 1080 D=PEEK(HEX(3060)+F)
+ 1090 IF D=0 GOTO 1010
+ 1100 D=D-1
+ 1110 POKE HEX(3060)+F,D
+ 1120 GOSUB 11100
+ 1130 GOSUB 11200
+ 1140 F=HEX(3000)+F+(D*16)
+ 1150 POKE F,E
+ 1160 GOSUB 10800
+ 1170 IF C=4 GOTO 1250
+ 1177 IF C=4 GOTO 1250
+ 1180 A=PEEK(HEX(3067))
+ 1190 IF A=0 GOTO 1400
+ 1200 A=A-1
+ 1210 POKE HEX(3067),A
+ 1220 IF E=199 S=2
+ 1230 IF E=255 S=1
+ 1240 GOTO 1000
+ 1250 GOTO 1270
+ 1270 PRINT;PRINT;PRINT
+ 1280 PRINT"Der Spieler Nr.",
+ 1290 PRINT #2,S,
+ 1300 PRINT" hat gewonnen."
+ 1320 PRINT
+ 1330 PRINT"Noch einmal ?  -J-"
+ 1335 GOSUB 10600
+ 1340 A=INCHAR
+ 1350 IF A='J' GOTO 200
+ 1360 OUTCHAR 12
+ 1370 TAB(7*32)
+ 1380 PRINT"Bis zum naechsten Mal !"
+ 1390 TAB(10*32)
+ 1395 STOP
+ 1400 PRINT;PRINT;PRINT
+ 1410 PRINT"Das Spiel endet unentschieden"
+ 1420 GOTO 1310
+10000 STOP
+10093 REM
+10095 REM UP STEIN ZEICHNEN
+10097 REM VARIABLEN:
+10099 REM Z+X Adresre,W Zeichen
+10100 POKE X+Z,W
+10110 Z=Z+1
+10120 POKE X+Z,W
+10130 X=X+Z-33
+10140 RETURN
+10195 REM
+10197 REM SPIELSTEINE AUFBAUEN
+10199 REM W Zeichen; X Anf.Adr.
+10200 Z=RND(4); Z=Z-1
+10210 Y=Z
+10220 GOSUB 10100
+10230 FOR V=1 TO 20
+10240 Z=RND(3); Z=Z-2
+10250 IF Y=0 GOTO 10310
+10260 IF Y&lt;3 GOTO 10320
+10270 REM BEI Y=3
+10280 IF Z=1 Z=0
+10290 GOTO 10320
+10300 REM BEI Y=0
+10310 IF Z=-1 Z=0
+10320 GOSUB 10100
+10330 Y=Y+Z-1
+10340 NEXT V
+10350 RETURN
+10395 REM
+10397 REM CALL Window
+10400 X=HEX (001B)
+10410 Y=HEX (20)
+10420 POKE X,Y
+10430 X=X+1
+10440 Y=HEX (EF)
+10450 POKE X,Y
+10460 X=X+1
+10470 Y=HEX (00)
+10480 POKE X,Y
+10490 X=X+1
+10500 Y=HEX (F0)
+10510 POKE X,Y
+10520 CALL HEX(F6F5)
+10530 RETURN
+10595 REM
+10597 REM CALL Window (zurueck)
+10600 X=HEX (001B)
+10610 Y=HEX (00)
+10620 POKE X,Y
+10630 X=X+1
+10640 Y=HEX (EC)
+10650 POKE X,Y
+10660 X=X+1
+10670 Y=HEX (00)
+10680 POKE X,Y
+10690 X=X+1
+10700 Y=HEX (F0)
+10710 POKE X,Y
+10720 CALL HEX(F6F5)
+10730 RETURN
+10793 REM
+10795 REM UP SPIELENDE ABFRAGEN
+10797 REM in E Zeichen uebergeb
+10798 REM Rueckkehr: &lt;4 C=1
+10799 REM Rueckkehr: =4 C=4
+10800 A=F
+10810 B=1; GOSUB 11000
+10815 IF C=3 GOSUB 11800
+10820 IF C=4 RETURN
+10830 B=-1; GOSUB 11000
+10835 IF C=3 GOSUB 11800
+10840 IF C=4 RETURN
+10850 B=15;  GOSUB 11000
+10855 IF C=3 GOSUB 11800
+10860 IF C=4 RETURN
+10870 B=-15; GOSUB 11000
+10875 IF C=3 GOSUB 11800
+10880 IF C=4 RETURN
+10890 B=16;  GOSUB 11000
+10900 IF C=4 RETURN
+10910 B=-16; GOSUB 11000
+10920 IF C=4 RETURN
+10930 B=17;  GOSUB 11000
+10935 IF C=3 GOSUB 11800
+10940 IF C=4 RETURN
+10950 B=-17; GOSUB 11000
+10955 IF C=3 GOSUB 11800
+10960 IF C=4 RETURN
+10970 C=1
+10980 RETURN
+10995 REM
+10997 REM U-UP SPIELENDE
+11000 C=1
+11010 D=A
+11020 D=D+(B)
+11030 IF PEEK(D)#E RETURN
+11040 C=C+1
+11050 IF C=4 RETURN
+11060 GOTO 11020
+11095 REM
+11097 REM STEIN LOESCHEN
+11099 REM VAR. T;U;S; A;B
+11100 IF S=1 A=T
+11110 IF S=2 A=U
+11120 FOR B=0 TO 4
+11130 POKE (A+B),32
+11140 NEXT B
+11150 A=A+32
+11160 IF S=1 T=A
+11170 IF S=2 U=A
+11180 RETURN
+11190 REM
+11195 REM UP STEIN FALLEN
+11200 X=R; W=E
+11210 Z=F*3
+11220 GOSUB 10100
+11230 X=R+31
+11240 R=X
+11250 GOSUB 10100
+11260 X=R-33
+11270 R=X
+11280 FOR G=0 TO D
+11290 W=32
+11300 GOSUB 10100
+11310 X=R+31
+11320 R=X
+11330 GOSUB 10100
+11340 X=R+63
+11350 R=X
+11360 W=E
+11370 GOSUB 10100
+11380 X=R+31
+11390 R=X
+11400 GOSUB 10100
+11410 X=R-33
+11420 R=X
+11430 NEXT G
+11440 RETURN
+11495 REM
+11497 REM Bedienungsanl.
+11500 OUTCHAR 12
+11505 TAB(4*32)
+11507 P."    V I E R   G E W I N N T     "
+11508 P."********************************"
+11509 P.;P.;P.
+11510 P."Bei diesem Spiel koennen zwei   "
+11520 P."Spieler gegeneinander spielen . "
+11530 P."Jeder darf abwechselnt einen    "
+11540 P."Stein,in eine der sieben Reihen,"
+11550 P."einwerfen . Wer als erster eine "
+11560 P."Diagonale,Senkrechte oder Waage-"
+11570 P."rechte mit 4 Steinen seiner Far-"
+11580 P."be belegt hat,hat gewonnen .    "
+11725 PRINT;PRINT
+11730 PRINT"Viel Spass !"
+11740 POKEHEX(EFC0),32
+11780 A=INCHAR
+11790 IF A#1 RETURN
+11795 REM
+11797 REM SPIELENDE ABFRAGEN
+11799 REM BEI C=3
+11800 D=D-(B*4)
+11810 IF PEEK (D)#E RETURN
+11820 C=C+1
+11830 RETURN
+</pre>
+</div>
+</body>
+</html>

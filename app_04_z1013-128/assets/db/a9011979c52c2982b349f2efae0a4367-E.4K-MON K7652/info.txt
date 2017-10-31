@@ -1,5 +1,3 @@
-<kurz src=""/>
-<lang>
-
-<include src=""/></lang>
+<kurz src="Z1013+K7652/2.028, ansonsten identisch mit [a3bad69ac27b26d6f4c5faf62f83f5bc]"/>
+<lang></lang>
 <requires></requires>

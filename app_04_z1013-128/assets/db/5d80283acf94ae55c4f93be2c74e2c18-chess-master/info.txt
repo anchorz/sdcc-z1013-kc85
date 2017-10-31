@@ -1,4 +1,4 @@
-<kurz>C H E S S M A S T E R  - Z1013</kurz>
-<lang>identisch zu [972eb5c929edd89ccaacbd36e901c5b2], Image ist aber 1 Byte länger<include>chess_master_h_I.txt</include></lang>
+<kurz src="C H E S S M A S T E R  - Z1013"/>
+<lang><include src="chess_master_h_I.txt"/></lang>
 <required></required>
 

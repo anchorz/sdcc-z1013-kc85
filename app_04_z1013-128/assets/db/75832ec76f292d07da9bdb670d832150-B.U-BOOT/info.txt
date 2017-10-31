@@ -1,0 +1,5 @@
+<kurz src="Schiffe versenken, mal ganz ohne Anzeige"/>
+<lang>Im Prizip verteilt er nur die Schiffe. Entwerder man merkt sich
+die Positionen oder schreibt sie sich auf Papier auf!
+<include src="U-BOOT.B"/></lang>
+<requires></requires>

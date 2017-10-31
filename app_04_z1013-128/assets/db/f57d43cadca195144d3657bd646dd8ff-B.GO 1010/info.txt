@@ -1,0 +1,4 @@
+<kurz src="Go 10x10, Othello, Reversi, Brettspiel"/>
+<lang>Computer zieht sehr langsam.
+<include src="GO 1010.B"/></lang>
+<requires></requires>

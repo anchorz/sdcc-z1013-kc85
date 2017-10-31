@@ -1,0 +1,6 @@
+<kurz src="Textadventure"/>
+<lang>Befehle N S O W
+... den Rest kenne ich nicht
+
+<include src="WUNDERLAND.b"/></lang>
+<requires></requires>

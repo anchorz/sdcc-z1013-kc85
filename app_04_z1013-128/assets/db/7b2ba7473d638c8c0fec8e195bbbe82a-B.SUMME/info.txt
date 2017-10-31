@@ -1,0 +1,3 @@
+<kurz src="Mathe, Teilsummen anzeigen und aufsummieren"/>
+<lang><include src="SUMME.B"/></lang>
+<requires></requires>

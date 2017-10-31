@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+</div>
+<div class="filelist">1000 1a04 0000 b ... <a href="b.SKEET%20RER.z80">SKEET RER       </a></div>
+<div class="text">Steuerung: ␣ 
+
+<pre>Zeichensatz UTF-8+Z1013()-CTRL()-ohne Umlaute(äöüß)
+
+   10 OUTCHAR 12
+   20 P.;P.;P.
+   30 P."   Wurftaubenschiessen"
+   40 P.;P.
+   50 P."   Abschuss mit Space"
+   60 P.;P.
+   65 GOSUB 1000
+   70 P."   Sind sie fertig ?"
+   75 POKEH.(ED40),32
+   80 W=INCHAR
+   90 IFW=32 GOTO 200
+  100 IF W=13 GOTO 200
+  110 GOTO 80
+  200 FORI=1TO200;NEXTI
+  205 A=0;B=0
+  210 OUTCHAR12
+  220 P.;P.
+  230 P.;P."Tauben :",A
+  240 P.;P."Treffer:",B
+  245 P.;P.
+  247 POKEHEX(ED00),32
+  248 FORI=1TO400 ;NEXTI
+  250 GOTO(RND(8)*10+290)
+  300 E=HEX(EF00);F=E+31;G=1;GOTO400
+  310 E=HEX(EF1F);F=E-31;G=-1;GOTO 400
+  320 E=HEX(EE00);F=E+31;G=1;GOTO400
+  330 E=HEX(EDBF);F=E-31;G=-1;GOTO400
+  340 E=HEX(ED05);F=E+(23*33);G=33;GOTO400
+  350 E=HEX(ED1A);F=E+(23*31);G=31;GOTO400
+  360 E=H.(ED01);F=E+(23*33);G=33;GOTO400
+  370 E=H.(ED1F);F=E+(23*31);G=31;GOTO400
+  400 Z=HEX(EFF0);POKEZ,204
+  410 A=A+1
+  420 X=0
+  430 FOR K=ETOF STEPG
+  440 POKEK-G,32;POKEK,207;IFK=FPOKEK,32
+  450 IFK=ZGOTO600
+  460 IFX#0GOTO500
+  470 FORI=1TO5;NEXTI
+  472 CALL HEX(3FF0)
+  475 Y=PEEK(HEX(3FFE))
+  480 IF Y=32 GOTO 499
+  490 IF Y#12 GOTO 580
+  499 X=1
+  500 IFZ&lt;HEX(ED00)POKEZ,32;GOTO580
+  510 Z=Z-32;POKEZ,58;POKEZ+32,32
+  515 POKEZ+32,32
+  520 IFZ=KGOTO600
+  530 Z=Z-32;POKEZ,58;POKEZ+32,32
+  550 IF Z=K GOTO600
+  580 NEXTK
+  590 POKEZ,32;IF A=50 GOTO 800
+  595 GOTO210
+  600 B=B+1
+  605 POKEK,202
+  610 POKEK-3,42;POKEK+5,42
+  620 POKEK-14,42;POKEK+17,42
+  630 POKEK-20,42;POKEK+23,42
+  640 POKEK-39,42;POKEK+44,42
+  650 POKEK-56,42;POKEK+67,42
+  660 POKEK-73,42;POKEK+78,42
+  670 POKEK-89,42;POKEK+85,42
+  680 POKEK-117,42;POKEK+135,42
+  690 POKEK-189,42;POKEK+220,42
+  699 FOR I=1TO800; NEXTI
+  700 IF A&lt;50 GOTO210
+  800 OUTCHAR12
+  810 P.;P.;P.;P.
+  820 P."Sie haben bei",#3,A," Tauben"
+  830 P.;P.B," mal getroffen !"
+  835 P.;P.;P.;P.;P.
+  840 IF B&gt;10 GOTO880
+  850 P."Mehr ueben !!!!"
+  860 GOTO960
+  880 IF B&gt;20 GOTO900
+  885 P."Nicht den Mut verlieren !!"
+  890 GOTO960
+  900 IF B&gt;30 GOTO920
+  905 P."Na ja ... !"
+  910 GOTO960
+  920 IF B&gt;40 GOTO940
+  925 P."Nicht schlecht !!!!"
+  930 GOTO960
+  940 IF B&gt;45 GOTO950
+  943 P."Eine gute Leistung !!!"
+  948 GOTO960
+  950 FORI=1TO32;P."*",;NEXTI
+  952 P.;P."Sie sind ein Meisterschuetze !!"
+  954 FORI=1TO32;P."*",;NEXTI
+  960 P.;P.;P.;P.
+  965 P."Noch einmal (J/N) ?",
+  970 W=INCHAR;OUTCHARW
+  980 IF W=74 GOTO10
+  990 OUTCHAR12;P.;P.;P.;P.;P.;P.
+  992 P."   Auf Wiederseh`n ....
+  994 FORI=1TO20;P.;NEXTI
+  996 FOR I=1TO5000;NEXTI
+  998 STOP
+ 1000 U=HEX(3FF0)
+ 1010 POKEU,HEX(CD);U=U+1
+ 1020 POKEU,HEX(30);U=U+1
+ 1030 POKEU,HEX(F1);U=U+1
+ 1040 POKEU,HEX(32);U=U+1
+ 1050 POKEU,H.(FE);U=U+1
+ 1060 POKEU,HEX(3F);U=U+1
+ 1070 POKEU,HEX(C9);U=U+1
+ 1080 RETURN
+ 2000 A=RND(5)
+ 2010 P.A,
+ 2020 GOTO2000
+</pre>
+</div>
+</body>
+</html>

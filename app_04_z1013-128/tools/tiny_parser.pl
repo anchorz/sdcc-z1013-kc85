@@ -84,7 +84,7 @@ if (!defined $ARGV[0] ) {
     print STDERR "remark: maps special Z1013 characters 0x00-0x20 and 0x7f-0xff to\n";
     print STDERR "        UTF-8 font character starting from U+f100\n";
     print STDERR "        output stored as \"tiny-basic-file.b\"\n\n";
-    print STDERR "usage: ".basename($0)." tiny-basic-file.z80\n";
+    print STDERR "usage: ".basename($0)." tiny-basic-file.z80 [-CTRL]\n";
     exit 1;
 }
 

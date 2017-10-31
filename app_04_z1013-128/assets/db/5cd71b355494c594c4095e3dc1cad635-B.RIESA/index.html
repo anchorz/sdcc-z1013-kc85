@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+<img src="screenshot_02.jpg" alt="Screenshot 2" height="384"  >
+<img src="screenshot_03.jpg" alt="Screenshot 3" height="384"  >
+</div>
+<div class="filelist">2bc0 3cb7 0000 B ... <a href="B.RIESA.z80">RIESA           </a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1!H.GRUHLE,RIESA,ENGELS-STR.12
+    2 GOTO 34
+    3 RESTORE 92:RETURN
+    4 RESTORE 93:RETURN
+    5 RESTORE 95:RETURN
+    6 RESTORE 97:RETURN
+    7 RESTORE 99:RETURN
+    8 RESTORE 101:RETURN
+    9 RESTORE 103:RETURN
+   10 RESTORE 105:RETURN
+   11 RESTORE 106:RETURN
+   12 RESTORE 107:RETURN
+   13 G$="Osten  ":RETURN
+   14 G$="Norden ":RETURN
+   15 G$="Sueden ":RETURN
+   16 G$="Westen "
+   17 RETURN
+   18 DATA Heisst dieser Fluss,Fuehrt diese Bahnlinie nach,Heisst diese Stadt
+   19 DATA Ist die hoechste Erhebung im    Kreis Riesa
+   20 DATA Wie hoch ist der Weidaer Berg?,Grenzt im ,an den Kreis    Riesa
+   21 DATA Jahna
+   22 DATA Doellnitz,Floessgraben,Grosse Roeder,Elbe,Falkenberg,Elsterwerda
+   23 DATA Leipzig,Karl-Marx-Stadt,Freiberg,Dresden,Berlin,Riesa,Groeditz
+   24 DATA Strehla,der Bezirk Cottbus,der Kreis Meissen,der Kreis Grossenhain
+   25 DATA der Bezirk Leipzig,Collmberg,Huthuebel,Weidaer Berg,219m,183m,164m
+   26 DATA 1,8,9,10,7,66,356,157,32,1,10,11,8,14,67,452,154,32,1,10,9,11,12,65
+   27 DATA 235,151,32,1,8,12,11,17,67,273,148,32,2,16,18,14,13,67,170,151,32
+   28 DATA 2,17,18,13,13,66,332,154,32,2,13,14,15,14,65,198,151,32,2,16,17,15
+   29 DATA 11,66,455,148,32,2,18,16,17,9,66,485,148,32,2,15,19,13,8,65,420,157
+   30 DATA 32,1,9,12,8,0,66,392,157,32,3,20,21,22,0,65,358,133,255,3,21,22,20
+   31 DATA 0,65,110,32,255,3,22,21,20,0,65,259,32,255,6,23,24,25,0,67,335,148
+   32 DATA 32,6,26,23,24,0,66,70,154,32,6,24,26,25,0,65,585,157,32,6,25,23,26
+   33 DATA 0,67,321,151,32,4,27,28,29,0,66,321,32,32,5,30,31,32,0,67,321,32,32
+   34 CLS:DIM A(20):DIM C(50):V=0 
+   35 FOR I=1 TO 20:A(I)=0:NEXT:P=0
+   36 CLS:FOR I=1 TO 14:PRINT:NEXT:PRINT "       Der Kreis Riesa"
+   37 PRINT "      =================":FOR I=1 TO 5:PRINT:NEXT:PAUSE 30
+   38 PRINT "  Ich stelle Dir 10 Fragen,":PRINT
+   39 PRINT "  welche Du mit A,B oder C":PRINT
+   40 PRINT "  beantworten sollst. Dafuer":PRINT
+   41 PRINT "  erhaeltst  Du am Ende":PRINT
+   42 PRINT "  eine Zensur.":PRINT:PRINT:PRINT
+   43 PRINT "  Viel Erfolg!":FOR I=1 TO 7:PRINT:NEXT
+   44 PRINT AT(25,15);"Verstanden?":WINDOW 2,31,0,31
+   45 B$="":B$=INKEY$:IF B$=""THEN 45:ELSE E=0:CLS:PRINT AT(1,8);"Der Kreis Riesa"
+   46 F=INT(20*RND(1))+1:IF A(F)=1 THEN 46:ELSE A(F)=1:E=E+1
+   47 GOSUB 80:RESTORE 26:FOR I=1 TO F:READ D,A,B,C,M,N,R,S,T:NEXT
+   48 RESTORE 18:FOR I=1 TO D
+   49 IF I=6 THEN READ F$,H$:GOTO 51
+   50 READ F$:NEXT
+   51 RESTORE 18:FOR I=1 TO A:READ A$:NEXT:RESTORE 18:FOR I=1 TO B:READ B$:NEXT
+   52 RESTORE 18:FOR I=1 TO C:READ C$:NEXT
+   53 ON F GOSUB 3,4,5,6,7,8,9,10,11,12,17,17,17,17,13,14,15,16,17,17
+   54 IF D=6 THEN F$=F$+G$+H$
+   55 WINDOW 25,31,0,31:PRINT F$
+   56 IF M&gt;0 THEN GOSUB 81
+   57 PRINT:PRINT "  A  "+A$+" ,":PRINT "  B  "+B$+" oder"
+   58 PRINT "  C  "+C$+" ?":GOSUB 78
+   59 L$="":L$=INKEY$:IF L$=""THEN 59:ELSE WINDOW 2,31,0,31:CLS:L=ASC(L$)
+   60 IF L=N THEN P=P+1:PRINT "Richtig!":PAUSE 2:CLS:ELSE PRINT "Falsch!":PAUSE 2:CLS
+   61 IF E&lt;10 THEN 46
+   62 Z=6-INT(P/2):IF P&lt;2 THEN Z=5
+   63 CLS:PRINT:PRINT:PRINT:PRINT:PRINT "  Von den 10 Fragen hast Du":PRINT
+   64 PRINT "      "P "Fragen richtig":PRINT
+   65 PRINT "  beantwortet.":PRINT
+   66 PRINT "  Dafuer erhaeltst Du":PRINT:PRINT
+   67 PRINT "  eine",Z,"!"
+   68 V=V+1:C(V)=P:C(V+25)=Z
+   69 FOR I=1 TO 7:PRINT:NEXT:PRINT "   Noch ein Schueler?":B$=""
+   70 B$=INKEY$:IF B$=""THEN 70
+   71 IF B$="J"THEN 35
+   72 CLS:PRINT "  Schueler   Punkte   Zensur ":PRINT
+   73 FOR I=3 TO 27:PRINT AT(I,8);I-2:PRINT AT(I,16);C(I-2):PRINT AT(I,29);C(I+23)
+   74 NEXT
+   75 PRINT AT(29,8);"Noch ein Schueler?":B$=""
+   76 B$=INKEY$:IF B$=""THEN 76
+   77 IF B$="J"THEN 35:ELSE WINDOW: END
+   78 PAUSE 20:W=-5049:R=W+R:FOR I=1 TO 20:PAUSE 1:POKE R,S:PAUSE 1:POKE R,T:NEXT
+   79 RETURN
+   80 RESTORE 82:M=73:GOSUB 81:M=24:GOSUB 81:RETURN
+   81 PAUSE 20:W=-5049:FOR I=1 TO M:READ K,L:W=W+K:POKE W,L+100:NEXT:RETURN
+   82 DATA 11,34,1,35,32,56,33,45,1,57,1,148,32,48,33,50,1,49,33,55,32,32
+   83 DATA-1,50,-1,93,31,30,-33,31,32,59,32,28,31,92,32,53,32,61,32,33,1,35
+   84 DATA 32,61,32,32,-1,34,32,61,32,52,32,50,1,130,31,58,-33,45,-33,148,-1,148
+   85 DATA-1,148,-1,148,31,47,-1,50,-33,49,-1,34,32,52,32,55,32,32,-1,60
+   86 DATA-1,60,-1,142,-31,59,-33,92,-32,92,-31,44,-32,92,-32,29,-32,56
+   87 DATA-32,55,-32,59,-32,44,-32,29,-32,48,-32,49,-1,33,-32,53,-32,92,-31,57
+   88 DATA 33,50,1,49,1,46,1,32,-32,34,1,47,-32,92,-31,31,1,148,1,148,1,52
+   89 DATA 34,55,32,61,64,92,33,58,1,73,32,72,31,29,33,50,1,60,1,35,32,61
+   90 DATA 32,61,32,33,1,60,1,60,1,60,1,35,32,56,33,45,32,92,32,92,32,100
+   91 DATA 65,47,-1,34
+   92 DATA 352,47,-31,148,1,36,1,148,1,148,1,46,1,65
+   93 DATA 576,53,-31,44,-31,47,-31,46,1,47,-31,46,1,32,-32,34,1,60,1,32
+   94 DATA-32,35,-1,33,-32,64,187,59
+   95 DATA 361,62,-32,34,1,47,-31,52,-32,53,-31,52,-32,61,-32,53,-31,44
+   96 DATA-31,46,-30,52,-32,34
+   97 DATA 434,60,-1,60,-1,60,-1,33,-32,53,-31,52,-32,61,-32,61,-32,61,-32,55
+   98 DATA-33,45,-33,45,-33,45,-33,92,-31,75,-32,56,1,44
+   99 DATA 47,53,32,52,31,44,31,47,-1,46,31,53,32,52,31,53,32,52,31,44
+  100 DATA-1,148,31,53,32,66
+  101 DATA 359,62,-32,53,1,58,1,45,1,148,33,45,33,45,33,50,1,66,1,49,33,50
+  102 DATA 1,49,1,148
+  103 DATA 7,92,32,92,32,92,32,92,32,92,32,92,32,92,32,92,32,92,32,92
+  104 DATA 32,53,32,66,-256,47,1,59
+  105 DATA 358,63,32,52,32,59,32,59,32,59,32,59,32,59,32,59,32,59,-65,92,1,50
+  106 DATA 359,64,32,32,-1,46,31,44,31,44,31,53,32,52,31,44,31,44
+  107 DATA 358,66,-1,46,-1,148,-1,148,-1,148,-1,148,-1,148,2,36
+</pre>
+</div>
+</body>
+</html>

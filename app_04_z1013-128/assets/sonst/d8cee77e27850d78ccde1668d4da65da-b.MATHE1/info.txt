@@ -1,0 +1,7 @@
+<kurz src="ähnlich wie [fc2c8592c9ec3f6f9a6bc3601a5efd2a]"/>
+<lang>nur der Zahlenbereich ist etwas verschieden
+
+M=RND(5)*20+280  vs. M=RND(4)*20+300
+
+<include src=""/></lang>
+<requires></requires>

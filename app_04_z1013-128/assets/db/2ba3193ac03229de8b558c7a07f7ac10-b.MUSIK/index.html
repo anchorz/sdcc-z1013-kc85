@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+<img src="screenshot_02.jpg" alt="Screenshot 2" height="384"  >
+</div>
+<div class="filelist">1000 2556 0000 b ... <a href="b.MUSIK.z80">MUSIK           </a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()-CTRL()-ohne Umlaute(äöüß)
+
+   10 REM MUSIK
+   15 X=HEX(2FE0);Y=HEX(3500)
+   20 G.2000
+   50 O.12;P.
+   60 P.""
+   61 P." Code  1  2  3  4  5 "
+   62 P.""
+   63 P."Laenge    1  1  1  1 "
+   64 P."der    1 "
+   65 P."Note      2  4  8 16 "
+   66 P.""
+   67 P.;P."Laenge der Note ",;L=INC.;P."1/",
+   68 IFL='1'L=96;P.#1,"1";RET.
+   69 IFL='2'L=48;P.#1,"2";RET.
+   70 IFL='3'L=24;P.#1,"4";RET.
+   71 IFL='4'L=11;P.#1,"8";RET.
+   72 IFL='5'L=6;P."16";RET.
+   73 IFL=13 L=W;P.;RET.
+   74 GOS.50
+   80 REM TONHOEHE
+   85 P.
+   86 P."                 "
+   87 P."C1D2E  F3G4A5H  6"
+   88 P."                 "
+   89 P."            "
+   91 P."C  D  E  F  G  A  H  C"
+   92 P.""
+   93 P.;P."Note:",;M=INC.
+   94 IFM='C'N=0;G.110
+   95 IFM='1'N=2;P."cis";RET.
+   96 IFM='D'N=4;G.110
+   97 IFM='2'N=6;P."dis";RET.
+   98 IFM='E'N=8;G.110
+   99 IFM='F'N=10;G.110
+  100 IFM='3'N=12;P."fis";RET.
+  101 IFM='G'N=14;G.110
+  102 IFM='4'N=16;P."gis";RET.
+  103 IFM='A'N=18;G.110
+  104 IFM='5'N=20;P."ais";RET.
+  105 IFM='H'N=22;G.110
+  106 IFM='6'N=24;P." C ";RET.
+  107 IFM=13N=W;P.;RET.
+  108 G.93
+  110 O.M;P.;RET.
+  120 REM PAUSE
+  122 P.""
+  123 P." Pausenlaenge wie Tonlaenge "
+  124 P.""
+  125 P."Pausenlaenge ",;P=INC.
+  129 IFP=13P=W;P.;RET.
+  130 IFP='1'P=96;P."1 TAKT";RET.
+  131 IFP='2'P=48;P."1/2 TAKT";RET.
+  132 IFP='3'P=24;P."1/4 TAKT";RET.
+  133 IFP='4'P=11;P."1/8 TAKT";RET.
+  134 IFP='5'P=6;P."1/16 TAKT";RET.
+  135 G.125
+  150 REM AUFBAU
+  155 O.12;W=0
+  160 P."  Titel eingeben !"
+  165 P.
+  180 A=INC.;O.A;IFA#13G.180
+  190 PO.27,64;PO.28,236
+  195 PO.29,X;PO.30,X/256
+  197 PO.35,32;PO.36,0
+  198 CALLHEX(F51D)
+  200 REM AUFBAU
+  210 U=HEX(3100)
+  215 O.12
+  220 GOS.60;PO.U,L;U=U+1
+  250 GOS.80;PO.U,N;U=U+1
+  255 P.;P.
+  256 W=8
+  260 GOS.120;PO.U,P;U=U+1
+  270 PO.U,255;U=U+1
+  280 P.
+  300 P."Weiter ?     &gt;ENTER&lt;",
+  310 A=INC.;IFA=13G.215
+  315 IFA='R'U=U-4;G.215
+  320 PO.U,0
+  495 G.2000
+  499 STOP
+  500 REM SPIELEN
+  510 IF48=PE.(HEX(3012))CALLHEX(3000)
+  520 G.2000
+  530 REM AENDERN
+  535 U=HEX(3100);O.12
+  536 INPUT"Welche Note"V;IFV&lt;1G.536
+  537 U=U+(V-1)*4
+  540 O.12;P.
+  545 P.#4,V,". Note  bisher ",
+  548 W=PE.(U)
+  550 IFW=6P."1/16";G.556
+  551 IFW=96P."1";G.556
+  552 IFW=48P."1/2";G.556
+  553 IFW=24P."1/4";G.556
+  554 IFW=11P."1/8";G.556
+  555 P."Keine !";W=11
+  556 GOS.60;PO.U,L;U=U+1
+  560 W=PE.(U);P.
+  561 P."Note bisher ",
+  562 IFW=0 P."C";G.576
+  563 IFW=2 P."cis";G.576
+  564 IFW=4 P."D";G.576
+  565 IFW=6 P."dis";G.576
+  566 IFW=8 P."E";G.576
+  567 IFW=10P."F";G.576
+  568 IFW=12P."fis";G.576
+  569 IFW=14P."G";G.576
+  570 IFW=16P."gis";G.576
+  571 IFW=18P."A";G.576
+  572 IFW=20P."ais";G.576
+  573 IFW=22P."H";G.576
+  574 IFW=24P."C'";G.576
+  575 P."Keine !";W=0
+  576 GOS.80;PO.U,N;U=U+1
+  577 P.;P."Pause bisher ",;W=PE.(U)
+  578 IFW=96P."1 Takt";G.585
+  579 IFW=48P."1/2 Takt";G.585
+  580 IFW=24P."1/4 Takt";G.585
+  581 IFW=11P."1/8 Takt";G.585
+  582 IFW=6P."1/16 Takt";G.585
+  583 P."Keine !";W=6
+  585 GOS.120;PO.U,P;U=U+1
+  586 P."Weiter ?    (J/R/ENT)",
+  587 PO.U,255;U=U+1
+  588 A=INC.;IFA=13 G.3000
+  589 IFA='R'IFV&gt;0U=U-4;G.540
+  590 IFA='J'V=V+1;G.540
+  596 G.586
+  600 REM ANZEIGEN
+  610 GOS.1000
+  620 P."?",;A=INC.
+  630 G.2000
+  650 REM EINLESEN
+  651 P.;P.
+  655 CALLHEX(A0C);CALLHEX(10F)
+  660 F.A=240TO255
+  665 O.(PE.(A));N.A
+  670 CALLHEX(A19);CALLHEX(10F)
+  695 G.2000
+  700 REM AUSLAGERN
+  710 F.A=240TO255;PO.A,32;N.A
+  715 P.;P.
+  720 P."Name:",
+  730 A=240
+  750 W=INC.
+  751 IFW=8 A=A-1;G.760
+  752 IFW=9 A=A+1;G.763
+  753 IFW=13 O.W;G.770
+  755 G.766
+  760 IFA&lt;240 A=A+1;G.750
+  761 G.767
+  763 IFA&gt;255 A=A-1;G.750
+  764 G.767
+  766 PO.A,W;A=A+1
+  767 O.W;IFA#255 G.750
+  768 IFA=255IFW#13A=A-1;O.8;G.750
+  770 PO.224,X;PO.225,X/256
+  775 PO.226,Y;PO.227,Y/256
+  780 CALLHEX(A0C);CALLHEX(10C)
+  785 CALLHEX(A19);CALLHEX(10C)
+  795 G.2000
+  949 STOP
+  950 REM LANGE PAUSE
+  955 E=E+3;H=3
+  957 IFE&gt;D+31D=D+256;E=D
+  960 PO.E+32,166;PO.E+64,166
+  961 PO.E+96,166;PO.E+128,166
+  965 PO.E+160,166
+  970 G.1500
+  999 STOP
+ 1000 REM BLATT
+ 1001 E=HEX(EC20)
+ 1002 D=E;O.12;P.;P.
+ 1005 PO.27,X;PO.28,X/256
+ 1006 PO.29,0;PO.30,236
+ 1007 PO.35,32;PO.36,0
+ 1008 CALLHEX(F51D)
+ 1010 F.B=1TO4
+ 1025 F=32*5
+ 1030 F.A=1 TO F
+ 1035 O.160;N.A
+ 1040 IF B&lt;4 P.;P.;P.
+ 1045 N.B
+ 1095 REM NOTEN
+ 1100 F=HEX(3101)
+ 1110 G=PE.(F)
+ 1120 IFG=0 PO.E+192,140
+ 1121 IFG=1G=30
+ 1122 IFG=2 PO.E+192,130;PO.E+160,131
+ 1123 IFG=3G=30
+ 1124 IFG=4 PO.E+160,140
+ 1125 IFG=5G=30
+ 1126 IFG=6 PO.E+160,130;PO.E+128,131
+ 1127 IFG=7G=30
+ 1128 IFG=8 PO.E+128,140
+ 1129 IFG=9G=30
+ 1130 IFG=10PO.E+96,140
+ 1131 IFG=11G=30
+ 1132 IFG=12PO.E+96,130;PO.E+64,131
+ 1133 IFG=13G=30
+ 1134 IFG=14PO.E+64,140
+ 1135 IFG=15G=30
+ 1136 IFG=16PO.E+64,130;PO.E+32,131
+ 1137 IFG=17G=30
+ 1138 IFG=18PO.E+32,140
+ 1139 IFG=19G=30
+ 1140 IFG=20PO.E+32,130;PO.E,131
+ 1141 IFG=21G=30
+ 1142 IFG=22PO.E,140
+ 1143 IFG=23G=30
+ 1144 IFG=24PO.E,130;PO.E-32,131
+ 1145 IFG&gt;24P.;P." F E H L E R ";RET.
+ 1146 IFG&lt;0 P.;P." F E H L E R ";RET.
+ 1200 REM LAENGE
+ 1210 H=PE.(F+1)
+ 1212 IFH&gt;180 G=30;G.1145
+ 1215 IFH&gt;60 G.950
+ 1216 IFH&lt;6G=30;G.1150
+ 1218 H=H+1
+ 1220 H=H/6
+ 1500 E=E+H
+ 1505 IFE&gt;D+31D=D+8*32;E=D
+ 1507 IF E&gt;HEX(F000)G.1700
+ 1510 F=F+4
+ 1520 IF 0=PE.(F-1) RET.
+ 1600 G.1110
+ 1700 REM NEUE ZEILE
+ 1710 P.;P.;P."?";A=INC.
+ 1715 D=D-256;E=D
+ 1720 F.A=1 TO 5*32;O.160;N.A
+ 1750 G.1110
+ 1900 RET.
+ 2000 REM ERLAEUTERUNG
+ 2005 O.12
+ 2010 P.""
+ 2011 P." Musikmodul "
+ 2012 P.""
+ 2030 P.;P.;P."Menue "
+ 2035 P."";P.;P.
+ 2040 P."Spielen...1";P.
+ 2045 P."Aufbauen..2";P.
+ 2050 P."Anzeigen..3";P.
+ 2055 P."Aendern...4";P.
+ 2060 P."Einlesen..5";P.
+ 2061 P."Auslagern.6";P.
+ 2065 P.
+ 2110 INP."   Auswahl "A
+ 2115 IFA&lt;1G.2000
+ 2120 IFA=1G.500
+ 2125 IFA=2G.150
+ 2130 IFA=3G.600
+ 2135 IFA=4G.530
+ 2140 IFA=5G.650
+ 2150 IFA=6G.700
+ 2999 STOP
+ 3000 REM NEUES ENDE
+ 3010 P."Neues ENDE ?   J/ENT",
+ 3020 A=INC.;IFA='J'PO.U,0
+ 3030 G.2000
+</pre>
+</div>
+</body>
+</html>

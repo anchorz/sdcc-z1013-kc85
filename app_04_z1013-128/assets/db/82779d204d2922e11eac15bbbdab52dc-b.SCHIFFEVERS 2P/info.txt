@@ -1,0 +1,9 @@
+<kurz src="Schiffe versenken für 2 Personen"/>
+<lang>Jeder Spieler muss 2 Schiffe aus 5 
+zusammenhaengenden Segmenten (die aber
+hier nicht kontrolliert werden) einprogrammieren. 
+Durch Eingeben von Koordinaten sind die Schiffe
+des Gegners zu finden.   
+
+<include src="SCHIFFEVERS 2P.b"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Quattro, 4 Spielsteine SENKRECHT, WAAGERECHT oder DIAGONAL anordnen"/>
+<lang><include src="VIER.b"/></lang>
+<requires></requires>

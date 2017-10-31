@@ -1,0 +1,27 @@
+<kurz src="Autorennen"/>
+<lang>
+Steuerung: ⇦ ⇨ ␣ 
+
+Sie muessen Ihren Rennwagen ueber die 1000 Meter lange 
+Teststrecke lenken. Dazu verwenden Sie die Tasten fuer
+die Kursorbewegung (links/rechts) und die Taste 
+'Leerzeichen' fuer gerade.
+
+Fuer jeden gefahrenen Meter gibt es einen Punkt, 
+diese werden mit dem von Ihnen zu waehlenden
+Schwierigkeitsgrad multipliziert und ergeben Ihre
+Punktzahl!
+
+Die Teststrecke wird vom Computer immer neu entwickelt, 
+so dass stets fuer Abwechslung gesorgt ist.
+
+Es besteht darueber hinaus die Moeglichkeit, z.B. fuer 
+Wettbewerbe, dieselbe Strecke zu verwenden.
+
+Der Punkterekord fuer die jeweilige Strecke wird 
+gespeichert und bei der Wertung angezeigt.
+
+Hindernissen ist auszuweichen !
+
+<include src="AUTO 3 1.b"/></lang>
+<requires></requires>

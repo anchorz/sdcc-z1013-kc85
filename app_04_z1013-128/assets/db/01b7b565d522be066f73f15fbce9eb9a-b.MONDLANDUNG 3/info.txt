@@ -1,0 +1,19 @@
+<kurz src="Mondlandung animiert, in Echtzeit!"/>
+<lang>
+
+    M O N D L A N D U N G !
+
+Sie sitzen jetzt in einem Raumschiff und fliegen auf den Mond
+zu. Die Geschwindigkeit betraegt 100 m/s.
+Die Anfangshoehe betraegt 3000 m.
+
+Durch Eingabe der Bremskraft (0-9) koennen Sie das Raumschiff
+abbremsen.
+
+Die Menge des verbrauchten Treibstoffs entspricht dem
+10-fachen der Bremskraft. Entsprechend dem gewaehlten
+Schwierigkeitsgrad haben Sie bis zu 10s Zeit zur Eingabe.
+Sonst wird die Bremskraft uebernommen!
+
+<include src="MONDLANDUNG 3.b"/></lang>
+<requires></requires>

@@ -1,0 +1,23 @@
+<kurz src="Landebahn reparieren"/>
+<lang>
+Steuerung: ⇦ ⇨ ␣ 
+
+Seltsam: wenn ich bei Neustart 'J' eingebe, wartet er auf etwas, aber auf was?
+
+(C) S.Gerhardt & M.Opelt 1987
+
+Sie befinden sich auf einem Himmelskoerper,auf den staendig
+Meteoriten stuerzen. Eine Landefaehre musz unbedingt landen.
+
+Dazu musz natuerlich die Landebahn frei von Meteoritenein-
+schlaegen sein.
+
+Sie steuern also ein Auto, das meteoritensicher ist, und 
+schlieszen die Loecher mit Sand, ihn bekommen Sie durch Druecken
+von 'Space' bei Tast., bzw. 'oben' bei Spielhebel. Das Auto kann
+nach links und rechts gesteuert werden.(Sand nur auf der unter-
+strichenen  Flaeche erhaeltlich !) 
+Ist die Landebahn okay, dann Auto am Haus parken. 
+
+<include src="FAEHRE.b"/></lang>
+<requires></requires>

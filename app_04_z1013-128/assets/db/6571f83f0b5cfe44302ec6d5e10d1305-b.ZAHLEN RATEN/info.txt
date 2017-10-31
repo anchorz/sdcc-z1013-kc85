@@ -1,3 +1,3 @@
-<kurz>Zahlenraten</kurz>
-<lang><include>ZAHLEN RATEN.b</include></lang>
+<kurz src="Zahlenraten"/>
+<lang><include src="ZAHLEN RATEN.b"/></lang>
 <required></required>

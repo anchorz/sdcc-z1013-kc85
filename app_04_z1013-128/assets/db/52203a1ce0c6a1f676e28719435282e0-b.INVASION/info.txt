@@ -1,0 +1,26 @@
+<kurz src="mit der letzten Protonenkanone Cylonen abschießen"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ␣ 
+
+
+**********INVASION*********
+
+
+DIE CYLONEN WOLLEN DIE ERDE EROBERN.
+DU MUST MIT DER LETZTEN PROTONENKANONE 
+DIE INVASION VERHINDERN.
+
+SCHIESSE MIT ⇦ ␣ ⇨ 
+AUF DIE CYLONEN-RAUMSCHIFFE
+
+JEDER TREFFER MIT DER :
+LINKEN KANONE     50 PUNKTE
+MITTLEREN KANONE  75 PUNKTE
+RECHTEN KANONE   100 PUNKTE
+
+JEDES GELANDETE RAUMSCHIFF VERMINDERT 
+DEINE CHANCE !
+                           
+<include src="INVASION.b"/></lang>
+<requires></requires>

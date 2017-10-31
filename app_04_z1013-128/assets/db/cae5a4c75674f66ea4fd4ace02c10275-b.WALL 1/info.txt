@@ -1,0 +1,12 @@
+<kurz src="Mauerspiel mit Extras(8x4)"/>
+<lang>
+
+Steuerung: S1 S4 ⇦  ⇨
+
+Interessante Abwandlung: Ziegelsteine fallen, man kann den Schläger in 4 Richtungen bewegen...
+
+Grafik ist ähnlich [27be4cb3005bddf3ee975db7386c1d2e], aber ansonsten
+sind es verschiedene Programme
+
+<include src="WALL 1.b"/></lang>
+<requires></requires>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+<img src="screenshot_02.jpg" alt="Screenshot 2" height="384"  >
+</div>
+<div class="filelist">2bc0 3a12 2b50 B ... <a href="B.HAUPTSTAEDTE.z80">HAUPTSTAEDTE    </a></div>
+<div class="text">Der Computer denkt sich eine Hauptstadt aus und malt fuer
+jeden Buchstaben ein Karo. Durch Eingabe von Buchstaben(einzeln)
+ist die jeweilige Stadt zu erraten. Fuer jeden falschen 
+Buchstaben muss Tom einen Schritt hoeher!                       
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 CLS
+   20! PIETSCH 16.01.1988
+   30 GOTO 1320
+   40 K=4:M=1:X$="":Y$=""
+   50 A=(INT(57*RND(1)))+1
+   60 RESTORE 140
+   70 FOR I=1 TO A
+   80 READ X$
+   90!PRINTAT(15,1);X$
+  100!PRINTAT(17,1);LEN(X$),A
+  110 FOR C=8 TO LEN(X$)+7:PRINT AT(4,C);""
+  120 PRINT AT(3,C);"":PRINT AT(5,C);""
+  130 NEXT C
+  140 DATA ROM,LIMA,SUVA,ADEN,QUITO,SUERE,PARIS,RABAT,DAKAR,LAGOS
+  150 DATA SOFIA,ATHEN,KAIRO,KABUL,DELHI,DACCA,HANOI,TOKIO,OTTAWA
+  160 DATA MEXIKO,BOGOTA,LONDON,MADRIT,ALGIER,BERLIN,ANKARA,MOSKAU
+  170 DATA BAGDAD,PEKING,MANILA,RANGUN,MAPUTO,LUSAKA,LUANDA,HAVANNA
+  180 DATA CARACAS,TEHERAN,BANKOK,JAKARTA,NAIROBI,CONAKRI,COLOMBO
+  190 DATA BRASILIA,ASUNCION,SANTIAGO,LISSABON,WARSCHAU,BUKAREST
+  200 DATA TRIPOLIS,SINGAPUR,CANBERRA,PRETORIA,REYKJAVIK,STOCKHOLM
+  210 DATA WASHINGTON,MONDEVIDEO,MOGADISCHU
+  220 NEXT I
+  230 Z=31:S=1
+  240 GOSUB 910
+  250 FOR I=2 TO 14
+  260 GOSUB 830
+  270 S=I
+  280 GOSUB 730
+  290 PRINT AT(Z-2,S);CHR$(161),CHR$(155)
+  300 PRINT AT(Z-1,S);CHR$(167),CHR$(167)
+  310 NEXT I
+  320 PRINT AT(15,2);"                   "
+  330 PRINT AT(16,2);"                   "
+  340 PRINT AT(9,3);"A-Z   "
+  350 PRINT AT(9,8);"    "
+  360 C=C-1
+  370 N=0
+  380 PRINT AT(9,8);"    ":BEEP
+  390 PRINT AT(9,9);""
+  400 B$=INKEY$
+  410 IF B$="" THEN 400
+  420 PRINT AT(9,9);B$
+  430 BEEP
+  440 FOR T=1 TO C
+  450 IF B$=MID$(X$,T,1) THEN PRINT AT(4,T+7);B$:GOSUB 570:N=N+1
+  460 NEXT T
+  470 IF N&lt;C-7 THEN 490
+  480 IF N=C-7 THEN 540
+  490 IF B$&lt;&gt;MID$(X$,1,1)AND B$&lt;&gt;MID$(X$,2,1)THEN 500:ELSE 380
+  500 IF B$&lt;&gt;MID$(X$,3,1)AND B$&lt;&gt;MID$(X$,4,1)THEN 510:ELSE 380
+  510 IF B$&lt;&gt;MID$(X$,5,1)AND B$&lt;&gt;MID$(X$,6,1)THEN 520:ELSE 380
+  520 IF B$&lt;&gt;MID$(X$,7,1)AND B$&lt;&gt;MID$(X$,8,1)THEN 530:ELSE 380
+  530 IF B$&lt;&gt;MID$(X$,9,1)AND B$&lt;&gt;MID$(X$,10,1)THEN 600:ELSE 380
+  540 PRINT AT(4,20);"SEHR GUT":BEEP
+  550 PRINT AT(4,8);X$
+  560 GOTO 1140
+  570 PRINT AT(4,20);"RICHTIG ":PAUSE(5)
+  580 PRINT AT(4,20);"           "
+  590 RETURN
+  600 PRINT AT(4,20);"FEHLER  "
+  610 K=K+1
+  620 IF K=5 THEN GOSUB 830:Z=30:S=17:GOSUB 730:GOTO 670
+  630 IF K=6 THEN GOSUB 830:Z=29:S=19:GOSUB 730:GOTO 670
+  640 IF K=7 THEN GOSUB 830:Z=28:S=21:GOSUB 730:GOTO 670
+  650 IF K=8 THEN GOSUB 830:Z=27:S=23:GOSUB 730:GOTO 670
+  660 IF K=9 THEN GOSUB 830:Z=26:S=25:GOSUB 730:GOTO 670
+  670 PRINT AT(10+K,9);B$
+  680 IF K=10 THEN GOSUB 830:Z=25:S=26:GOSUB 730:GOTO 1080
+  690 PAUSE(5)
+  700 PRINT AT(4,20);"              "
+  710 GOTO 380
+  720! TOM
+  730 PRINT AT(Z-6,S);CHR$(129),CHR$(128)
+  740 PRINT AT(Z-5,S);CHR$(174),CHR$(173)
+  750 IF R&gt;10 THEN PRINT AT(Z-4,S-1);CHR$(192),CHR$(153),CHR$(192):GOTO 770
+  760 PRINT AT(Z-4,S);CHR$(159),CHR$(155),CHR$(159)
+  770 PRINT AT(Z-3,S);CHR$(136),CHR$(200)
+  780 PRINT AT(Z-2,S);CHR$(161),CHR$(161)
+  790 IF R&gt;10 THEN PRINT AT(Z-1,S);CHR$(170),CHR$(170):GOTO 810
+  800 PRINT AT(Z-1,S);CHR$(167),CHR$(167)
+  810 RETURN
+  820! TOM LOESCEN
+  830 PRINT AT(Z-6,S);"  "
+  840 PRINT AT(Z-5,S);"  "
+  850 PRINT AT(Z-4,S-1);"    "
+  860 PRINT AT(Z-3,S);"  "
+  870 PRINT AT(Z-2,S);"  "
+  880 PRINT AT(Z-1,S);"  "
+  890 RETURN
+  900!TREPPE
+  910 PRINT AT(16,25);""
+  920 PRINT AT(17,25);"  ",CHR$(145)," "
+  930 PRINT AT(18,25);"   ",CHR$(145),""
+  940 PRINT AT(19,30);""
+  950 PRINT AT(20,30);""
+  960 PRINT AT(21,30);""
+  970 PRINT AT(22,30);""
+  980 PRINT AT(23,30);""
+  990 PRINT AT(24,30);""
+ 1000 PRINT AT(25,30);""
+ 1010 PRINT AT(26,25);""
+ 1020 PRINT AT(27,23);""
+ 1030 PRINT AT(28,21);""
+ 1040 PRINT AT(29,19);""
+ 1050 PRINT AT(30,17);""
+ 1060 PRINT AT(31,0);""
+ 1070 RETURN
+ 1080 PRINT AT(4,20);X$,"        "
+ 1090 FOR I=1 TO 8
+ 1100 PAUSE(2)
+ 1110 GOSUB 830:Z=24+I:S=26:GOSUB 730:GOSUB 910
+ 1120 NEXT I
+ 1130 GOTO 1470
+ 1140 R=20
+ 1150 GOSUB 830:GOSUB 730
+ 1160 S1=S
+ 1170 FOR I=S1 TO 2 STEP -1
+ 1180 S=I
+ 1190 IF Z=31 THEN 1260
+ 1200 GOSUB 830
+ 1210 Z=Z+1
+ 1220 S=S-2:I=I-2
+ 1230 GOSUB 730
+ 1240 PAUSE(2)
+ 1250 GOTO 1190
+ 1260 GOSUB 730
+ 1270 PRINT AT(Z-2,S);CHR$(153),CHR$(161)
+ 1280 PAUSE(2)
+ 1290 GOSUB 830
+ 1300 NEXT I
+ 1310 GOTO 1470
+ 1320 PRINT:PRINT:PRINT " &gt;&gt;&gt;&gt; HAUPTSTAEDTE-RATEN &lt;&lt;&lt;&lt;"
+ 1330 PRINT:PRINT:PRINT "Der Computer denkt sich eine"
+ 1340 PRINT "Hauptstadt aus und malt fuer"
+ 1350 PRINT "jeden Buchstaben ein Karo.Durch"
+ 1360 PRINT "Eingabe von Buchstaben(einzeln)"
+ 1370 PRINT "ist die jeweilige Stadt zu er-"
+ 1380 PRINT "raten.Fuer jeden falschen Buch-"
+ 1390 PRINT "staben muss Tom einen Schritt"
+ 1400 PRINT "hoeher!"
+ 1410 PRINT:PRINT:PRINT "    AUF LOS GEHTS LOS!"
+ 1420 INPUT "                        ENTER";X$
+ 1430 CLS
+ 1440 PRINT AT(15,2);"  Moment Bitte"
+ 1450 PRINT AT(16,2);"Tom kommt gleich"
+ 1460 GOTO 40
+ 1470 R=0
+ 1480 PRINT AT(18,2);"Noch ein Spiel?"
+ 1490 PRINT AT(15,8);"  "
+ 1500 PRINT AT(16,8);"  "
+ 1510 PRINT AT(17,8);"  "
+ 1520 PRINT AT(20,8);"  "
+ 1530 PRINT AT(19,8);"(J/ENTER)"
+ 1540 IF INKEY$="J"OR INKEY$="j"GOTO 1430
+ 1550 IF INKEY$="" THEN 1540
+ 1560 END
+</pre>
+</div>
+</body>
+</html>

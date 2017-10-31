@@ -1,0 +1,3 @@
+<kurz src="Hangman, DDR Städte raten"/>
+<lang><include src="DDR-STAEDTE.B"/></lang>
+<requires></requires>

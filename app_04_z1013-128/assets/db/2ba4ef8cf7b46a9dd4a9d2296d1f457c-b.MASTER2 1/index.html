@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div></div>
+<div class="filelist">1000 1dfb 0000 b ... <a href="b.MASTER2%201.z80">**MASTER**2 1   </a></div>
+<div class="text">erweiterte  Version von [7a581387bbb87a582e5ec7b6837a2912]
+mit Titelbildschirm, 2 Schwierigkeitsgraden und Bewertung.
+
+ICH HABE EINE 4-STELLIGE ZUFALLSZAHL ERMITTELT.
+
+RATEN SIE DIESE ZAHL ! 
+
+RICHTIGE ZAHL AN RICHTIGER
+STELLE: *
+
+RICHTIGE ZAHL AN FALSCHER
+STELLE: #
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    2 @(1)=33
+    5 REM MASTERMIND
+    6 OUTC.12
+    7 @(22)='*'
+    8 P.;P.;P.;P.;P. 
+   10 FOR I=1 TO 32
+   12 OUTC. @(22)
+   13 NEXT I
+   20 FOR I=1 TO 5
+   21 P."*                              *",
+   23 NEXT I
+   24 P."*",
+   25 P."     M A S T E R M I N D      *",
+   26 FOR I=1 TO 5
+   27 P."*                              *",;NEXT I
+   28 FOR I=1 TO 32              
+   29 OUTC. @(22);NEXT I
+   30 P.;P.;P.
+   31 TAB(5);P."JENS MOECKEL 1.2.1986"
+   32 F.I=1TO2000;N.I
+   33 @(9)=0;OUTC.12
+   34 P.;P.;P.;P.;P.
+   35 P."SCHWIERIGKEITSGRAD 1 oder 2  ?"
+   36 P.;P.;P.;INPUT "EINGABE" Z
+   37 IF Z=1 @(9)=1
+   38 OUTC.12
+   39 P.;P.;P.;P.;P.
+   40 P."ICH HABE EINE 4-STELLIGE"
+   50 P.;P."ZUFALLSZAHL ERMITTELT."
+   60 P.;P."RATEN SIE DIESE ZAHL !"
+   70 P.;P."RICHTIGE ZAHL AN RICHTIGER"
+   80 P.;P."STELLE: *"
+   90 P.;P."RICHTIGE ZAHL AN FALSCHER"
+  100 P.;P."STELLE: #"
+  110 P.;P."KANN ICH BEGINNEN ? (ENT):",
+  120 W=INC.;OUTC.W
+  150 IF @(9)=1 P.;P."HINWEIS: JEDE ZIFFER KOMMT NUR "
+  151 I=1
+  152 IF @(9)=I P."E I N M A L  VOR !"
+  154 IF @(9)=0 P.;P."HINWEIS: JEDE ZIFFER KANN "
+  156 IF @(9)=0 P."M E H R F A C H  VORKOMMEN !"
+  200 A=RND(9);M=A
+  210 B=RND(9);N=B
+  215 IF @(9)=1 GOSUB 3000
+  220 C=RND(9);O=C
+  225 IF @(9)=1 GOSUB 3010
+  230 D=RND(9);P=D
+  235 IF @(9)=1 GOSUB 3020
+  240 V=0
+  250 A=M;B=N;C=O;D=P
+  255 V=V+1
+  260 P.;P.#2,V,".",
+  270 INP."EINGABE"F
+  280 TAB(20)
+  290 G=F/1000
+  300 H=(F-(G*1000))/100
+  310 I=(F-(G*1000)-(H*100))/10
+  320 J=F-(G*1000)-(H*100)-(I*10)
+  400 S=0
+  410 IF A#G GOTO 450
+  420 S=S+1
+  430 P."*",
+  440 A=10;G=11
+  450 IF B#H GOTO 500
+  460 S=S+1
+  470 P."*",
+  480 B=10;H=11
+  500 IF C#I GOTO 550
+  510 S=S+1
+  520 P."*",
+  530 C=10;I=11
+  550 IF D#J GOTO 600
+  560 S=S+1
+  570 P."*",
+  580 D=10;J=11
+  590 IF S=4 GOTO 1000
+  600 IF G#B GOTO 630
+  610 P."#",
+  620 B=10;GOTO 690
+  630 IF G#C GOTO 660
+  640 P."#",
+  650 C=10;GOTO 690
+  660 IF G#D GOTO 690
+  670 P."#",
+  680 D=10
+  690 IF H#A GOTO 720
+  700 P."#",
+  710 A=10;GOTO 780
+  720 IF H#C GOTO 750
+  730 P."#",
+  740 C=10;GOTO 780
+  750 IF H#D GOTO 780
+  760 P."#",
+  770 D=10
+  780 IF I#A GOTO 810
+  790 P."#",
+  800 A=10;GOTO 870
+  810 IF I#B GOTO 840
+  820 P."#",
+  830 B=10;GOTO 870
+  840 IF I#D GOTO 870
+  850 P."#",
+  860 D=10
+  870 IF J#A GOTO 900
+  880 P."#",
+  890 A=10;GOTO1000
+  900 IF J#B GOTO 930
+  910 P."#",
+  920 B=10;GOTO 1000
+  930 IF J#C GOTO 1000
+  940 P."#",
+ 1000 P.
+ 1010 IF S=4 GOTO 1200
+ 1020 IF V&lt;30 GOTO 250
+ 1030 P.
+ 1040 P."ES IST ZWECKLOS MIT IHNEN !"
+ 1050 P.;P."DAS ERGEBNIS WAR:",
+ 1060 P.#2,M,#2,N,#2,O,#2,P
+ 1070 P.
+ 1080 P."NOCH EIN SPIEL ? (J/ENT)",
+ 1082 Q=INCHAR;IF Q='J' GOTO@(1)
+ 1100 OUTC.12
+ 1110 F.I=1 TO 10
+ 1120 OUTC.13
+ 1130 N.I
+ 1135 P.;P.
+ 1140 TAB(5)
+ 1150 P."AUF WIEDERSEH'N"
+ 1160 P.;P.;P.
+ 1165 F.I=1TO5000;N.I;OUTC.12
+ 1170 STOP
+ 1200 P.;P."RICHTIG !";P.
+ 1201 IF V&gt;3 GOTO1210
+ 1202 P."SIE SIND JA EINE RICHTIGE"
+ 1203 P."   INTELLIGENZBESTIE !"
+ 1204 GOTO1070
+ 1210 IF V&gt;4 GOTO1232
+ 1220 P."EIN BLINDES HUHN FINDET AUCH"
+ 1225 P.;P."MAL EIN KORN !"
+ 1230 GOTO 1070
+ 1232 IF V&gt;6 GOTO 1236
+ 1233 P."GAR NICHT SO SCHLECHT !"
+ 1234 GOTO1070
+ 1236 IF V&gt;7 GOTO1240
+ 1237 P."MEIN KOMPLIMENT "
+ 1238 GOTO1070
+ 1240 IF V&gt;8 GOTO1261
+ 1250 P."SIE HABEN WAHRSCHEINLICH "
+ 1255 P.;P."NACHGEDACHT !"
+ 1260 GOTO 1070
+ 1261 IF V&gt;9 GOTO1264
+ 1262 P."9 VERSUCHE    DAS WAERE MIR NIE    PASSIERT !!"
+ 1263 GOTO1070
+ 1264 IF V&gt;10 GOTO1268
+ 1265 P."ICH HABE SCHON GEGEN BESSERE";P.
+ 1266 P."GESPIELT"
+ 1267 GOTO1070
+ 1268 IF V&gt;11 GOTO1272
+ 1269 P."SIE SOLLTEN LIEBER MURMELN "
+ 1270 P.;P."SPIELEN !"
+ 1271 GOTO1070
+ 1272 IF V&gt;12 GOTO1275
+ 1273 P."SIE SOLLTEN BESSER DIE FINGER"
+ 1274 P."DAVON LASSEN !!!";GOTO1070
+ 1275 IF V&gt;18 P."GERADE NOCH GESCHAFFT !!"
+ 1290 IF V&gt;12 P."DAS WAR UNTER ALLER WUERDE !!"
+ 1300 GOTO1070
+ 3000 IF A=B GOTO210
+ 3005 RETURN
+ 3010 IF A=C GOTO220
+ 3015 IF B=C GOTO220
+ 3017 RETURN
+ 3020 IF D=A GOTO230
+ 3022 IF D=B GOTO230
+ 3024 IF D=C GOTO230
+ 3030 RETURN
+</pre>
+</div>
+</body>
+</html>

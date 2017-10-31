@@ -1,0 +1,3 @@
+<kurz src="Musikmodul, Musikstücke erstellen und bearbeiten"/>
+<lang><include src="MUSIK.b"/></lang>
+<requires></requires>

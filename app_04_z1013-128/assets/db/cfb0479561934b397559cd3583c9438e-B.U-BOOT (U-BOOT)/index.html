@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+</div>
+<div class="filelist">2bc0 3e4a 0000 B ... <a href="B.U-BOOT%20(U-BOOT).z80">U-BOOT          </a></div>
+<div class="text">Ein SCHNELLBOOT der Laenge 1 wurde in Marsch gesetzt!
+
+Ein FLUGZEUGTRAEGER der Laenge 5 wurde in Marsch gesetzt!
+
+Ein KREUZER der Laenge 4 wurde in Marsch gesetzt!
+
+Ein VERSORGUNGSSCHIFF der Laenge 3 wurde in Marsch gesetzt!
+
+Ein MIENENSUCHBOOT der Laenge 2 wurde in Marsch gesetzt!
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 CLS:CLEAR:!U-BOOTE
+   15 PRINT "-----------SPIELBEGINN---------- "
+   17 PRINT:PRINT "- Schiffe in Position bringen":PRINT
+   20 GOSUB 60
+   22 A=0:B=0
+   25 GOSUB 100
+   30 GOTO 475
+   35! BOOTE ERZEUGEN
+   40!---DEFINITIONEN---
+   45!
+   50! LISTE DER SCHIFFSEINHEITEN
+   55 DATA 1,5,4,3,2,0,
+   60 DIM S$(5)
+   65 S$(1)="SCHNELLBOOT"
+   70 S$(2)="MIENENSUCHBOOT"
+   75 S$(3)="VERSORGUNGSSCHIFF" 
+   80 S$(4)="KREUZER"
+   85 S$(5)="FLUGZEUGTRAEGER"
+   90 RETURN
+   95!  SPIELFELD
+  100 DIM T(12,12)
+  105!
+  110!GROESSENUEBERSICHT
+  115! I,J  HILFSGROESSEN
+  120! H,V  VERT.U.HORIZ.-POSITI.
+  125! L    LAENGE SCHIFF
+  130! DEF FNN(L,U)=INT(RND(1)*(U+1-L)+L) 
+  135!
+  140!  SCHIFFE ERZEUGEN
+  145!
+  150!  SPIELFELD LOESCHEN
+  155 FOR I=0 TO 11
+  160 FOR J=0 TO 11
+  165 T(I,J)=0
+  170 NEXT J
+  175 NEXT I
+  180! SCHIFFSL. AUS DATENLISTE        LESEN
+  185 READ L
+  190 IF L=0 THEN RETURN
+  195! ALLE SCHIFFE FERTIG
+  200 GOSUB 220
+  205 GOTO 180
+  210!
+  215!
+  220 H=INT(RND(1)*10+1)
+  225 V=INT(RND(1)*10+1)
+  230! ANFANGSPKT. MERKEN, ZAHL        GESETZTE PUNKTE AUF NULL
+  235 H0=H
+  240 V0=V
+  245 L0=0
+  250 H1=INT(RND(1)*3-1)
+  255 V1=INT(RND(1)*3-1)
+  260 IF L=1 THEN V1=0:H1=1:GOTO 280
+  265 IF ABS(H1)+ABS(V1)&lt;&gt;1 THEN GOTO 250
+  270! ANFANGSPKT.+RICHTUNGEN FESTGELEGT
+  275!
+  280 FOR I=1 TO L
+  285 IF T(H,V)&lt;&gt;0 THEN GOTO 430
+  290! KREUZENDE SCHIFFE
+  295! TEST AUF ANSTOSS
+  300 IF V&gt;10 THEN 430
+  305 IF V=0  THEN 430
+  310 IF H&gt;10 THEN 430
+  315 IF H=0  THEN 430
+  320! TEST AUF BERUEHREN
+  325 IF T(H-1,V)&gt;0   THEN 430
+  330 IF T(H-1,V-1)&gt;0 THEN 430
+  335 IF T(H,V+1)&gt;0   THEN 430
+  340 IF T(H+1,V+1)&gt;0 THEN 430
+  345 IF T(H-1,V+1)&gt;0 THEN 430
+  350 IF T(H,V-1)&gt;0   THEN 430
+  355 IF T(H+1,V)&gt;0   THEN 430
+  360 IF T(H+1,V-1)&gt;0 THEN 430
+  365 T(H,V)=-1
+  370 V=V+V1
+  375 H=H+H1
+  380 L0=L0+1
+  385 NEXT I
+  390! SCHIFF FERTIG,EINTRAGEN
+  395 PRINT "Ein ";S$(L);" der Laenge":PRINT                                   
+  397 PRINT L;"wurde in Marsch gesetzt!":PRINT
+  400 V=V0:H=H0:!ZURUECK ZUM ANFANGSPUNKT
+  405 FOR I=1 TO L
+  410 T(H,V)=L
+  415 V=V+V1:H=H+H1
+  420 NEXT I
+  425 RETURN
+  430! UNVERTIGES SCHIFF LOESCHEN
+  435 V=V0:H=H0:! ZURUECK ZUM AUSGANGSPUNKT
+  440 IF L0=0 THEN 210
+  445 T(H,V)=0
+  450 V=V+V1       
+  455 H=H+H1
+  460 L0=L0-1
+  465 GOTO 440
+  470!  ENDE SCHIFF 1
+  475!  SCHIFFE VERSENKEN
+  480!
+  485 RESTORE:!ANZAHL SCHIFFE BESTIMMEN
+  490 C=0
+  495 READ I
+  500 IF I&lt;&gt;0 THEN C=C+1:GOTO 495
+  503 PRINT "********************************":PRINT
+  505 PRINT "* ES SIND";C;" SCHIFFE AUFEBAUT  *"
+  507 PRINT "********************************"
+  508 PAUSE 10:CLS:PRINT: 
+  509 PRINT "   +++++ U-BOOT JAGD +++++":WINDOW 3,31,0,31  
+  510 C1=0:! ANZ. DER ABGESCHOSSENEN
+  515 GOSUB 535:!POSITIONSEINGABE
+  520 GOSUB 640:!TREFFERAUSWERTUNG
+  525 IF C=C1 THEN GOSUB 535:PRINT "ALLES VERSENKT !":GOTO 935
+  530 GOTO 515
+  535 FOR I=0 TO 9:T$(I)=" ":FOR J=1 TO 10 
+  540 IF T(I,J)=0 THEN T$(I)=T$(I)+"  ":GOTO 565
+  545 IF T(I,J)&lt;0 THEN T$(I)=T$(I)+"AA":GOTO 565
+  550 IF T(I,J)=1000 THEN T$(I)=T$(I)+"VV":GOTO 565
+  555 IF T(I,J)=2000 THEN T$(I)=T$(I)+"00":GOTO 565
+  560 T$(I)=T$(I)+"  "
+  565 NEXT J:NEXT I:CLS
+  570 PRINT TAB(5) "A B C D E F G H I J"     
+  575 PRINT TAB(5) "___________________"     
+  580 FOR I=0 TO 9:PRINT I;"|";T$(I);"|":PRINT: NEXT I       
+  585 PRINT TAB(5) "-------------------"         
+  590 IF C1=C THEN RETURN
+  595 PRINT "FELD EINGEBEN [A..J,0..9]:";        
+  600 INPUT V$,H:A=A+1
+  605 IF LEN(V$)&lt;&gt;1 THEN 595
+  610 V=ASC(V$)-ASC("A")+1
+  615 IF H&lt;0  THEN 595 
+  620 IF H&gt;9 THEN 595  
+  625 IF V&lt;=0  THEN 595
+  630 IF V&gt;10 THEN 595 
+  632 B=B+1
+  635 RETURN
+  640!-------------------------
+  645! TREFFERAUSWERTUNG
+  650 IF T(H,V)=0 THEN GOSUB 680:RETURN
+  655 IF T(H,V)&gt;0 THEN IF T(H,V)&lt; 1000  THEN GOSUB 690:RETURN
+  660 IF T(H,V)=2000 THEN GOSUB 915
+  665 IF T(H,V)&lt;0 THEN GOSUB 925
+  670 IF T(H,V)= 1000 THEN PRINT "JA FRUEHER - DA WAR DA MAL WAS..." 
+  675 GOTO 595
+  680 PRINT "DER SCHUSS GING INS W A S S E R":T(H,V)=2000
+  685 RETURN
+  690!- TREFFER UNTERSCHEIDUNG     AN-ODER ABGESCHOSSEN
+  695!--------------------------
+  700 L=T(H,V)
+  705! LAENGE FESTHALTEN
+  710 FOR I=-1 TO 1
+  715 FOR J=-1 TO 1
+  720! RICHTUNG DES SCHIFFES BESTIMMEN
+  725 IF 1&lt;&gt;ABS(I)+ABS(J) THEN 735
+  730 IF L=ABS(T(H+I,V+J))THEN 770
+  735 NEXT J
+  740 NEXT I
+  745! KEIN UMGEBUNGSPKT.-&gt; EINER  ABGESCHOSSEN 
+  750 PRINT S$(L); " ABGESCHOSSEN" 
+  755 T(H,V)=1000
+  760 C1=C1+1
+  765 RETURN
+  770! LAENGE&gt;1 TEST OB AN ODER  ABGESCHOSSEN
+  775! SUCHE NACH NICHTABGESCH.   UMGEBUNGSPUNKTEN
+  780! ERFOLGT IN BEIDEN RICHT.        VOM TREFFERPUNKT
+  785 FOR K=1 TO L
+  790 L1=T(H+K*I,V+K*J)
+  795 IF L1=0 THEN 815
+  800 IF L1=2000 THEN 815
+  805 IF L1=L THEN 850
+  810 NEXT K
+  815 FOR K=1 TO L
+  820 L1=T(H-K*I,V-K*J)
+  825 IF L1=0 THEN 865
+  830 IF L1=2000 THEN 865
+  835 IF L1=L THEN 850
+  840 NEXT K
+  845 GOTO 865
+  850 PRINT S$(L); " ANGESCHOSSEN"  
+  855 T(H,V)=-L
+  860 RETURN
+  865! SCHIFF ABGESCHOSSEN            MARKIERUNG MIT 1000
+  870 FOR K=1 TO L
+  875 IF T(H+K*I,V+K*J)&lt;&gt;-L THEN 890
+  880 T(H+K*I,V+K*J)=1000
+  885 NEXT K
+  890 FOR K=1 TO L
+  895 IF T(H-K*I,V-K*J)&lt;&gt;-L THEN 750
+  900 T(H-K*I,V-K*J)=1000
+  905 NEXT K
+  910 GOTO 750
+  915 PRINT "SIE KOENNEN NATUERLICH RUHIG MEHRFACH AUF EIN FELD SCHIESSEN"
+  920 RETURN
+  925 PRINT "DAS FELD WAR ZWAR SCHON GETROFFEN - ABER DOPPELT HAELT BESSER"
+  930 RETURN
+  935 FOR I=1 TO 1000:NEXT I
+  940 CLS:IF B-A=0 THEN 960
+  950 PRINT "SIE HATTEN";A-B;"ROHRKREPIERER"
+  960 RESTORE:Y=0:X=0
+  965 READ C
+  970 IF C=0 THEN 1000
+  980 X=X+C:Y=Y+1
+  990 GOTO 965
+ 1000 PRINT "FUER DIESE";Y;"ZIELE,WAEREN"
+ 1010 PRINT "GENAU";X;"SCHUESSE NOETIG GEWESEN"  
+ 1020 PRINT "SIE BENOETIGTEN";B 
+ 1030 END 
+</pre>
+</div>
+</body>
+</html>

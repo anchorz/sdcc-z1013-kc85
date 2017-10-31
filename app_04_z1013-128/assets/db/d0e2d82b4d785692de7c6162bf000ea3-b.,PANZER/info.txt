@@ -1,0 +1,9 @@
+<kurz src="Zielschießen: Panzer schießt auf Wurftauben"/>
+<lang>Steuerung: ⏎
+
+An einem Panzer laeuft in unterschiedlicher Entfernung ein Ziel
+vorbei.Sie koennen das Ziel vernichten,wenn Sie die 'ENT'-Taste
+druecken.
+                   
+<include src=",PANZER.b/></lang>
+<requires></requires>

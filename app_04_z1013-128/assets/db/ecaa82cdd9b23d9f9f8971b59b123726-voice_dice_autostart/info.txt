@@ -1,0 +1,7 @@
+<kurz src="komplett mit Zusatzprogramm+Autostart"/>
+<lang>Quelltext identisch zu [ccb7d1c70c30d846ea57748084a8e18c]
+Durch Vergleich mit [8055123eb539c021ed5d48cf64f94586] kann man sehen, 
+wie ein Autostart in Tiny-BASIC realisiert wird. Ansonsten wie identisch.
+
+<include src="voice_dice.b"/></lang>
+<requires></requires>

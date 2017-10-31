@@ -1,0 +1,3 @@
+<kurz src="identisch mit [26406f564a96bc07da17d073c7253a1b]"/>
+<lang><include src="rakete.B"/></lang>
+<requires></requires>

@@ -1,0 +1,6 @@
+<kurz src="Durch Meteorschwarm fliegen"/>
+<lang>1 Byte kleiner als im Header angegeben
+Steuerung: S4 C
+
+<include src="SWARM.b"/></lang>
+<requires></requires>

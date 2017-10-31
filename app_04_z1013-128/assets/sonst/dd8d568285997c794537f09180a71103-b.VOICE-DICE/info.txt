@@ -1,0 +1,4 @@
+<kurz src="identisch mit [ecaa82cdd9b23d9f9f8971b59b123726]"/>
+<lang>
+<include src="VOICE-DICE.b"/></lang>
+<requires></requires>

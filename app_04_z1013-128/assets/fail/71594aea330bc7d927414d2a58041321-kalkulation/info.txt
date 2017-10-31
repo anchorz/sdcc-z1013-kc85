@@ -1,0 +1,4 @@
+<kurz src="identisch mit [593840f2b0ffbb66f9c3539596b95297]"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.
+<include src="kalkulation.B"/></lang>
+<requires></requires>

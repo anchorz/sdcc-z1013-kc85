@@ -1,0 +1,7 @@
+<kurz src="Monster ausweichen, Kreise aufsammeln"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩
+
+<include src="MONSTER.B"/></lang>
+<requires></requires>

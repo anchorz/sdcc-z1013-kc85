@@ -1,0 +1,5 @@
+<kurz src="Othello-Variante, variable Spielgröße"/>
+<lang>basiert auf [a17f8e1f56553b8caa8e3b1648927eee]
+
+<include src="OTHELLO var.b"/></lang>
+<requires></requires>

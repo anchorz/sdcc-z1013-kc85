@@ -1,0 +1,14 @@
+<kurz src="Test Reaktionszeit"/>
+<lang>Mit diesem Programm koennen Sie Ihre Reaktionszeit auf 0,1 sec
+genau ermitteln.
+
+Sobald in der Bildmitte ein Zeichen erscheint, muessen Sie eine
+beliebige Taste druecken !
+
+Die Zeit bis dahin wird gemessen und nach jeweils 7 Tests 
+ausgewertet !
+
+Die Graphik wird durch Tastendruck geloescht.                     
+
+<include src="TEST.b"/></lang>
+<requires></requires>

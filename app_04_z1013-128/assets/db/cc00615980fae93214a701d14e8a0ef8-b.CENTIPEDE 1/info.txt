@@ -1,0 +1,6 @@
+<kurz src="Centipede, aber extrem langsam"/>
+<lang>
+Steuerung: ⇦ ⇨  ␣ 
+
+<include src="CENTIPEDE 1.b"/></lang>
+<requires></requires>

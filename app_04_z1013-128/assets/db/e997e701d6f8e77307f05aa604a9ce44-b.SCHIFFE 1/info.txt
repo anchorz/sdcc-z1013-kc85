@@ -1,3 +1,6 @@
 <kurz src="Schiffe versenken"/>
-<lang><include src="SCHIFFE 1.b"/></lang>
+<lang>ähnlich wie [e997e701d6f8e77307f05aa604a9ce44] 
+vielleicht ist die Grafik ein klein wenig unterschiedlich.
+
+<include src="SCHIFFE 1.b"/></lang>
 <requires></requires>

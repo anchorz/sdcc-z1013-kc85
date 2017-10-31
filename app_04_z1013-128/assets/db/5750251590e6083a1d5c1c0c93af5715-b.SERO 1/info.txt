@@ -1,0 +1,9 @@
+<kurz src="ALTSTOFFE (PAPIER, DOSEN, FLASCHEN) SAMMELN"/>
+<lang>Wahnsinnig aufregend!
+SIE SOLLEN VERSUCHEN MIT 200 SCHRITTEN,
+SO VIEL WIE MOEGLICH, ALTSTOFFE SAMMELN.
+ 
+Steuerung: ⇦ ⇨ U ␣
+
+<include src="SERO 1.b"/></lang>
+<requires></requires>

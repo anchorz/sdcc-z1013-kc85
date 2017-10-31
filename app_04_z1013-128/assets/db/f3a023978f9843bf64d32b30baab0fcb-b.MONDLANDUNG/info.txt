@@ -1,0 +1,11 @@
+<kurz src="Mondlandung mit Hintergrundgrafik (275 l,1000 m,100 m/s)"/>
+<lang>Du musst mit Deiner Landefaehre durch Dosieren von 
+Bremstreibstoff moeglichst sanft auf dem Mond landen !
+
+Alle wichtigen Daten werden Dir angezeigt.   
+Es ist zu beachten, dass die Landefaehre umso empfindlicher
+auf Bremsmanoever reagiert, je leichter sie ist, also je mehr
+Treibtoff bereits verbraucht wurde.
+
+<include src="MONDLANDUNG.b"/></lang>
+<requires></requires>

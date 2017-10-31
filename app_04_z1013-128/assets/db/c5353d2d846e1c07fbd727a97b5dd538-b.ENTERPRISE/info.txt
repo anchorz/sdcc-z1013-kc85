@@ -1,0 +1,5 @@
+<kurz src="Enterprise Variante"/>
+<lang>
+
+<include src="ENTERPRISE.b"/></lang>
+<requires></requires>

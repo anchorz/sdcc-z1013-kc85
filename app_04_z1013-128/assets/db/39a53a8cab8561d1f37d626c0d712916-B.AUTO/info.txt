@@ -1,0 +1,32 @@
+<kurz src="AUTORENNEN+unbekannter Joystick"/>
+<lang>
+Der Joystick ist nicht nach Practic 01/88 - nur die unteren 4Bits werden ausgewertet.
+   20 OUT 1,207
+   30 OUT 1,15 //untere 4-bits Eingabe
+...
+ 1020 OUT 0,32:IF INP(0)<>32 THEN 1020
+Warte, solange der Wert ungleich 0x20 ist.
+ 
+    A U T O R E N N E N
+
+    SPIELPLAN
+
+Ziel des Spieles ist es, mit eiem Auto eine Kurvenreiche
+Strasse zu durchfahren. Das Auto wird mit dem Spielhebel
+gesteuert.
+
+     ro  ru -> 1*RECHTS
+          r -> 2*RECHTS
+
+     lo  lu -> 1*LINKS
+          l -> 2*LINKS
+
+Kommt das Auto von der Strasse ab, wird ein Sarg gebaut. Ist der
+Sarg vollstaendig fertig, ist das Spiel beendet.
+Wird das Ziel erreicht, gibt's 100 Punkte dazu.
+
+ACHTUNG DAS SPIEL WIRD MIT SPIELHEBEL 1 NACH practic 1/88
+GESTEUERT ! !
+
+<include src="AUTO.B"/></lang>
+<requires></requires>

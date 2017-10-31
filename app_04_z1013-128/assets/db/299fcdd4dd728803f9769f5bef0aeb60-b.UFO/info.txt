@@ -1,0 +1,23 @@
+<kurz src="Ufojagt von festinstallierten Positionen aus"/>
+<lang>*******************************
+*       U F O - J A G D       *
+*******************************
+
+
+
+  Du bist Schuetze in einer
+  Raumbasis. Deine Basis wird
+  von 15 UFO's angegriffen !!
+
+  Du hast 4 LASER und Energie
+  fuer gesamt 200 Schuss. Die
+  Basis hat ein Automatisches
+  Schutzschild, was aber  pro
+
+  Aufbau des Feldes, Energie
+  fuer 10 Schuss verbraucht .
+
+Steuerung: @ A F G 
+
+<include src="UFO.b"/></lang>
+<requires></requires>

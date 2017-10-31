@@ -1,0 +1,4 @@
+<kurz src="Brettspiel Mühle für 2 Personen, unfertig?!"/>
+<lang>es scheint noch in Arbeit gewesen zu sein.
+<include src="MUEHLE.b"/></lang>
+<requires></requires>

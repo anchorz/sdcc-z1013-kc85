@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png" alt="Screenshot 1" height="384"  />
+</div>
+<div class="filelist">1000 1e58 0000 b ... <a href="b.OTHELLO%201%20L.z80">OTHELLO 1 L     </a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1 B=H.(EC00)
+   10 REM OTHELLO
+   22 OUT(1)=207;OUT(1)=0
+   30 A=H.(ECA3)
+  100 G.4000
+ 1000 REM DREHVARIANTE SUCHEN
+ 1010 D=A;U=0;W=0
+ 1030 F.Y=0TO448STEP64
+ 1040 F.X=DTOD+14STEP2
+ 1050 B=X+Y;V=PEEK(B);U=U+1
+ 1060 IFV#46G.1090
+ 1070 C=@(U)*10;S=1
+ 1080 GOS.1380
+ 1090 N.X
+ 1130 OUTC.12;P.
+ 1135 F.I=1TORND(5);P.;N.I
+ 1140 P."   ICH   DENKE"
+ 1160 N.Y
+ 1170 OUTC.12
+ 1180 Q=0;IFW=0Q=1;RETURN
+ 1190 X=N-(A-1)
+ 1200 Y=M/80+2
+ 1210 RETURN
+ 1220 REM AUSWERTUNG
+ 1225 OUTC.12
+ 1230 OUTC.12;P.;P."AUSWERTUNG"
+ 1235 OUT(0)=1;OUT(0)=0
+ 1240 M=0;N=0
+ 1250 F.I=0TO14STEP2
+ 1260 F.J=0TO448STEP64
+ 1270 IFPEEK(J+I+A)=42M=M+1
+ 1280 IFPEEK(J+I+A)=48N=N+1
+ 1290 N.J
+ 1300 N.I
+ 1310 P."* =",#2,M
+ 1320 P."0 =",#2,N;P.
+ 1322 IFM&lt;NP."GRATULIERE !"
+ 1324 IFM=NP."REMIS !"
+ 1326 IFM&gt;NP."ICH HABE GEWONNEN !"
+ 1330 P."                     &gt;ENT&lt;";O=INC.
+ 1340 OUTC.12;P.;P.;P."NEUES SPIEL ? (J)/N :",
+ 1350 O=INC.
+ 1355 PO.H.(1B),0;PO.H.(1C),H.(EC);PO.H.(1D),0;PO.H.(1E),H.(F0)
+ 1360 CALLH.(F6D1)
+ 1375 IFO='N'OUTC.12;P.;P.
+ 1376 IFO='N'ST.
+ 1378 G.4000
+ 1380 REM
+ 1390 F=0;G=42;T=Z
+ 1400 IFZ=1G=48
+ 1410 F.K=1TO8
+ 1420 R=0
+ 1430 F.I=1TO8
+ 1440 H=B+@(100+K)*I
+ 1450 IFH&lt;AG.1540
+ 1460 IFH&gt;A+462G.1540
+ 1470 V=PEEK(H)
+ 1480 IFV=46G.1540
+ 1490 IFV=GR=1
+ 1500 IFV=48-Z*6R=(R+1)*R
+ 1510 IFR=2G.1580
+ 1520 IFR=0G.1540
+ 1530 N.I
+ 1540 N.K
+ 1550 IFS=1RETURN
+ 1560 Q=0;IFF=0Q=1
+ 1570 RETURN
+ 1580 REM DREHEN
+ 1590 F=1
+ 1600 IFS=1G.1670
+ 1610 IFT=0T=2;GOS.1730
+ 1620 F.L=1TO8
+ 1630 P=B+@(100+K)*L
+ 1640 IFPEEK(P)#GG.1540
+ 1650 POKEP,48-6*Z
+ 1660 N.L
+ 1670 REM BEWERTUNG
+ 1680 C=C+I
+ 1690 IFC&lt;WG.1540
+ 1700 REM ANZ. VARIANTE
+ 1710 N=X;M=Y;W=C;C=0
+ 1720 G.1540
+ 1730 F.I=1TO10;F.E=1TO200;N.E;PO.B,46;F.E=1TO200;N.E;POKEB,48
+ 1735 N.I;RETURN
+ 4000 @(101)=64;@(102)=-64;@(103)=2;@(104)=-2
+ 4002 @(105)=66;@(106)=-66;@(107)=-62;@(108)=62
+ 4020 @(1)=9;@(2)=1;@(3)=8;@(4)=4;@(5)=4;@(6)=8;@(7)=1;@(8)=9
+ 4030 @(9)=1;@(10)=1;@(11)=2;@(12)=2;@(13)=2;@(14)=2;@(15)=1
+ 4032 @(16)=1
+ 4040 @(17)=8;@(18)=2;@(19)=7;@(20)=6;@(21)=6;@(22)=7;@(23)=2
+ 4042 @(24)=8
+ 4050 @(25)=4;@(26)=2;@(27)=6;@(28)=0;@(29)=0;@(30)=6;@(31)=2
+ 4052 @(32)=4
+ 4060 F.I=1TO32
+ 4065 @(65-I)=@(I)
+ 4070 N.I
+ 4075 G.4110
+ 4080 F.I=1TO8
+ 4085 F.W=1TO8
+ 4087 P.#3,@((I-1)*8+W),
+ 4088 N.W
+ 4089 P.
+ 4090 N.I
+ 4110 OUTC.12
+ 4115 P.
+ 4120 P."    O T H E L L O"
+ 4130 P.
+ 4160 P."   1 2 3 4 5 6 7 8"
+ 4165 P.
+ 4170 P." 1 . . . . . . . . 1"
+ 4175 P.
+ 4180 P." 2 . . . . . . . . 2"
+ 4185 P.
+ 4190 P." 3 . . . . . . . . 3"
+ 4195 P.
+ 4210 P." 4 . . . * * . . . 4"
+ 4215 P.
+ 4220 P." 5 . . . 0 0 . . . 5   SIE"
+ 4225 P.
+ 4230 P." 6 . . . . . . . . 6   SPIELEN"
+ 4235 P.
+ 4240 P." 7 . . . . . . . . 7   MIT  0"
+ 4245 P.
+ 4250 P." 8 . . . . . . . . 8"
+ 4255 P.
+ 4260 P."   1 2 3 4 5 6 7 8"
+ 4270 PO.H.(1B),H.(C0);PO.H.(1C),H.(EE);PO.H.(1D),0
+ 4280 PO.H.(1E),H.(F0)
+ 4290 CALLH.(F6D1)
+ 4348 P.;P.;P.
+ 4350 INPUT"SCHWIERIGKEIT ? (1/2)"C
+ 4360 OUT(0)=1;OUT(0)=0
+ 4370 IFC=1F.I=1TO64;@(I)=1;N.I
+ 4380 OUTC.12;P.;P.;P.
+ 4390 P."MOECHTEN SIE BEGINNEN ? (J)/N :",
+ 4400 O=INC.;IFO='N'G.4420
+ 4405 OUT(0)=1;OUT(0)=0
+ 4410 G.4540
+ 4420 REM RECHNER AM ZUG
+ 4425 OUT(0)=1;OUT(0)=0
+ 4460 Z=1;GOS.1000;IFQ=1G.1230
+ 4470 B=N+M
+ 4475 OUT(0)=1;F.I=1TO100;N.I;OUT(0)=0
+ 4480 F.I=1TO10;PO.B,46;F.O=1TO200;N.O;PO.B,42;F.O=1TO200;N.O
+ 4485 N.I
+ 4490 S=0;GOS.1380
+ 4500 REM SPIELER AM ZUG
+ 4540 Z=0;S=0
+ 4560 OUTC.12
+ 4570 P.;P."KOENNEN SIE";P.
+ 4575 P."SETZEN ? (JA=ENT;NEIN=0):",
+ 4590 O=INC.;IFO='H'OUTC.48;F.I=0TO300;N.I;G.1230
+ 4592 OUT(0)=1;OUT(0)=0
+ 4595 OUT(0)=1;OUT(0)=0
+ 4600 OUTC.12
+ 4620 P.;P."IHR ZUG BITTE";P.
+ 4630 P."ZEILE :",
+ 4640 Y=INC.;Y=Y-24;OUTC.Y
+ 4650 Y=Y-48
+ 4655 OUT(0)=1;OUT(0)=0
+ 4660 IFY&gt;0IFY&lt;9G.4670
+ 4662 OUT(0)=1;F.I=1TO300;N.I;OUT(0)=0;G.4600
+ 4670 P.;P."SPALTE:",
+ 4680 X=INC.;X=X-24;OUTC.X
+ 4690 X=X-48
+ 4695 OUT(0)=1;OUT(0)=0
+ 4700 IFX&gt;0IFX&lt;9G.4710
+ 4702 OUT(0)=1;F.I=1TO300;N.I;OUT(0)=0
+ 4705 G.4670
+ 4710 B=2*X+64*(Y-1)+A
+ 4715 B=B-2
+ 4720 C=PEEK(B)
+ 4730 IFC#46P.;P."BESETZT";F.I=1TO1000;N.I;G.4500
+ 4740 POKEB,48-6*Z
+ 4750 GOS.1380
+ 4760 IFQ=1P.;P."FEHLER";GOS.1730;GOS.1730;POKEB,46;G.4500
+ 4770 G.4420
+</pre>
+</div>
+</body>
+</html>

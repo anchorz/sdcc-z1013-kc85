@@ -1,0 +1,3 @@
+<kurz src="Kalkül, Tabellenkalkulation, Summenberechnung"/>
+<lang><include src="KALKUEL.B"/></lang>
+<requires></requires>

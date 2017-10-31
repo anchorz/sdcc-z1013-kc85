@@ -1,0 +1,6 @@
+<kurz src="Vokabeltrainer Englisch/Deutsch"/>
+<lang>Vor dem Start END H.(3FFF)-64 eingeben und
+ggf. die Daten [4d7c7fcb4a0b28fa1399a3a26b002563] laden
+
+<include src="VOKABEL.b"/></lang>
+<requires></requires>

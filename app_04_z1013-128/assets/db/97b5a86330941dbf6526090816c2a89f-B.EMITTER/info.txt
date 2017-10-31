@@ -1,0 +1,3 @@
+<kurz src="Verstärker-Berechnung"/>
+<lang><include src="EMITTER.B"/></lang>
+<requires></requires>

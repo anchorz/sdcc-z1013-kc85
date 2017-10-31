@@ -1,6 +1,6 @@
-Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+Zeichensatz UTF-8+Z1013()-CTRL()-ohne Umlaute(äöüß)
 
-    1 REM MP-RASTER: D>>_0                    
+    1 REM MP-RASTER: D>>_0                    
     2 OUTCHAR12
     3 POKEHEX(1B),HEX(5F)
     4 POKEHEX(1C),HEX(EE)
@@ -9,11 +9,11 @@ Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äö
     8 CALLHEX(F6D1)
     9 A=H.(43B);PO.A,0;PO.A+1,0;PO.A+2,0
    10 GOTO90
-   15 REM 
-   16 REM  BEI VERWENDUNG DER 
-   17 REM   ORIGINALTASTATUR  
-   18 REM   ZEILE 9 LOESCHEN !
-   19 REM  
+   15 REM 
+   16 REM  BEI VERWENDUNG DER 
+   17 REM   ORIGINALTASTATUR  
+   18 REM   ZEILE 9 LOESCHEN !
+   19 REM  
    30 OUTCHAR12
    90 CALLHEX(1163)
    95 GOTO1000

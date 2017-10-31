@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+</div>
+<div class="filelist">1000 1456 0000 b ... <a href="b.TASTATURANALYSE.z80">TASTATURANALYSE </a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1 GOS.250;OUTC.12
+    2 F.I=1TO15;P.;N.I;G.111
+    3 OUTC.12
+    4 F.I=1TO13;P.;N.I
+    5 A=0
+   10 P."Tastaturanalyse"
+   20 P."---------------"
+   21 P.
+   25 M=0
+   40 G.50
+   41 GOS.200
+   50 P."ASCII : ",
+   55 IFA&lt;14P." ",;G.70
+   60 OUTC.A
+   70 P."  HEX : ",
+   80 BYTE(A)
+   90 P."  DEZ : ",
+  100 P.#3,A,
+  101 IFM='A'G.110
+  102 CALLD;A=INC.
+  106 IFM#'A'G.41
+  110 RET.
+  111 P."Analyse oder Liste (A/L) ?",
+  112 CALLD;M=INC.;IF(M#'A')*(M#'L')*(M#'Q')G.112
+  113 IFM='A'G.3
+  114 I=0;Q=0
+  115 OUTC.12
+  116 IFM='Q'OUTC.12;STOP
+  120 F.I=ITOI+15
+  125 IFQ=IP.;G.130
+  126 P.;P.
+  130 A=I;M='A';GOS.50
+  135 IFI=255I=I+1;G.146
+  140 N.I
+  145 Q=I
+  146 CALLD
+  160 T=INC.;IFT='R'I=I-32;Q=I
+  161 IFI&lt;1I=I+256;Q=I
+  162 IFT='Q'G.1
+  165 IFI&lt;255G.115
+  166 G.114
+  170 OUTC.12
+  180 STOP
+  200 F.X=1TO30;OUTC.8;N.X
+  210 RET.
+  250 D=HEX(3FF0)
+  260 @(1)=42;@(2)=43;@(3)=0;@(4)=62
+  270 @(5)=32;@(6)=119;@(7)=201
+  280 F.I=0TO6;PO.D+I,@(I+1);N.I
+  290 RET.
+</pre>
+</div>
+</body>
+</html>

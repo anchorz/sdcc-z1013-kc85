@@ -1,0 +1,3 @@
+<kurz src="OTHELLO-Variante"/>
+<lang><include src="OTHELLO 1 L.b"/></lang>
+<requires></requires>

@@ -1,0 +1,6 @@
+<kurz src="Wörter raten, Mischung aus Kreuzworträtsel und Hangman"/>
+<lang>5 Buchstabige Wörter Raten
+Falls die Position eines Buchstaben stimmt, wird sie kurz angezeigt.
+
+<include src="WORDS.b"/></lang>
+<requires></requires>

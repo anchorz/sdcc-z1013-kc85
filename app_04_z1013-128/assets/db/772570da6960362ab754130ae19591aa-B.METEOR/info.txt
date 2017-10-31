@@ -1,0 +1,5 @@
+<kurz src="Sonde muss Meteoren hinterherjagen oder abfangen"/>
+<lang>Steuerung: ⇦ ⇨ J ␣ E
+
+<include src="METEOR.B"/></lang>
+<requires></requires>

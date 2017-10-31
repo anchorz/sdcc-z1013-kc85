@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+</div>
+<div class="filelist">1000 2357 0000 b ... <a href="b.VIER.z80">VIER            </a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1 REM  * MC-program *!"!"!"!"00*wind/on 1167 * ⇘
+       wind/off 1177 * *bs-trans* 11C7 p:11C1 ******!&lt;trans&gt;EC00:⇘
+      11E2!&lt;000000000000000 BEGIN-BASIC-PGM
+   10 OUT.12
+   20 PR.;PR.;
+   21 PR."Ziel sind 4 Spielsteine  "
+   22 PR.;PR."SENKRECHT,WAAGERECHT"
+   23 PR.;PR."oder DIAGONAL anzuordnen"
+   24 PR.
+   30 PR.'Bitte die Spielernamen eingeben'
+   40 PR.;PR.;
+   43 PR.'erster  Spieler:'
+   44 PR.;I$(TOP);PR.
+   45 D=LEN;IFD&lt;1GOTO43
+   46 IF D&gt;16 D=16;POKE(TOP+D),0
+   48 PR.'zweiter Spieler:'
+   50 PR.;I$(TOP+1+D)
+   52 H=LEN;IFH&lt;1GOTO48
+   53 IF H&gt;16 H=16;POKE(TOP+D+1+H),0
+   55 PR.;PR.;PR.
+   57 O$(TOP)
+   60 PR.' spielt mit '
+   61 TAB(D+12)
+   62 PR.''
+   63 TAB(D+12)
+   64 PR.''
+   70 PR.;PR.;PR.
+   72 O$(TOP+1+D)
+   74 PR.' spielt mit '
+   75 TAB(H+12)
+   77 PR.''
+   80 TAB(H+12)
+   82 PR.''
+   83 PR.;PR.;PR."                       &gt;ENT&lt;"
+   89 Q=0;T=0;N=0
+   99 E=INCH.
+  100 OUT.12
+  101 Q=Q+1
+  110 FOR I=-4318 TO -4290
+  120 POKE I,160
+  130 NEXTI
+  140 POKE -4318,167
+  150 FOR I=-4314 TO -4294 STEP 4
+  160 POKE I,162
+  170 NEXTI
+  180 POKE -4290,170
+  190 L=HEX(EF02);O=HEX(EC42)
+  210 FOR J=1 TO 4
+  220 FOR I=L TO O STEP -32
+  230 POKE I,161
+  240 NEXTI
+  250 L=L+4;O=O+4
+  260 FOR I=O TO L STEP 32
+  270 POKE I,161
+  280 NEXTI
+  290 L=L+4;O=O+4
+  300 NEXT J
+  305 J='A'
+  310 FOR I=HEX(EF44) TO HEX(EF5C) STEP 4
+  320 POKE I,J
+  330 J=J+1
+  340 NEXTI
+  345 POKE HEX(EC00),32
+  350 CALL HEX(11C7)
+  357 CALL HEX(1167)
+  400 GOSUB 1800
+  410 IF N&gt;T GOTO 740
+  440 OUT.12
+  445 CALLHEX(F5CF);CALLHEX(F5CF)
+  450 O$(TOP+D+1)
+  455 CALLHEX(F5CF);CALLHEX(F5CF)
+  457 PR.'denkt nach'
+  460 R=INCHAR
+  465 IF R=78 GOTO 990
+  470 IF R &lt; 65 GOTO 440
+  480 IF R &gt; 71 GOTO 440
+  490 GOSUB 1000
+  500 Z = R - 44
+  510 Y = R - 64
+  512 IF @(Z) = 0 GOTO 440
+  513 IF @(Z) &lt; HEX(3C40) @(Z)=0;GOTO 440
+  515 X=@(Z)
+  520 GOSUB 1400
+  525 GOSUB 2000
+  530 @(Z) = @(Z) - 128
+  740 OUT.12
+  745 CALLHEX(F5CF);CALLHEX(F5CF)
+  750 O$(TOP)
+  765 CALLHEX(F5CF);CALLHEX(F5CF)
+  766 PR.'denkt nach'
+  767 R=INCHAR
+  770 IF R &lt; 65 GOTO 740
+  780 IF R &gt; 71 GOTO 740
+  790 GOSUB 1200
+  800 Z = R - 44
+  810 Y = R - 64
+  812 IF @(Z) = 0 GOTO 740
+  813 IF @(Z) &lt; HEX(3C40) @(Z)=0;GOTO 740
+  815 X=@(Z)
+  820 GOSUB 1400
+  825 GOSUB 2000
+  830 @(Z) = @(Z) - 128
+  845 PR.;PR.
+  900 GOTO 440
+  990 CALL HEX(1177)
+  991 PRINT'   '
+  992 PRINT'   Z1013 eagle-SOFTWARE'
+  993 PRINT'   '
+  999 STOP
+ 1000 REM ****  ****
+ 1010 @(10)=144
+ 1020 @(11)=158
+ 1030 @(12)=145
+ 1040 @(13)=192
+ 1050 @(14)=144
+ 1060 @(15)=248
+ 1070 @(16)=145
+ 1080 @(17)=159
+ 1090 @(18)=175
+ 1100 RETURN
+ 1200 REM ****  ****
+ 1210 @(10)=190
+ 1220 @(11)=255
+ 1230 @(12)=143
+ 1240 @(13)=255
+ 1250 @(14)=142
+ 1260 @(15)=255
+ 1270 @(16)=191
+ 1280 @(17)=255
+ 1290 @(18)=255
+ 1300 RETURN
+ 1400 REM CHIP FAELLT
+ 1405 FOR I=@(Y) TO @(Z) STEP 32
+ 1407 X=I
+ 1410 POKE X-33,@(10)
+ 1420 POKE X-32,@(11)
+ 1430 POKE X-31,@(12)
+ 1440 POKE X+1,@(13)
+ 1450 POKE X+33,@(14)
+ 1460 POKE X+32,@(15)
+ 1470 POKE X+31,@(16)
+ 1480 POKE X-1,@(17)
+ 1490 POKE X,@(18)
+ 1500 CALL HEX(11E2)
+ 1505 IF I = @(Z) RETURN
+ 1510 POKE X-33,32
+ 1520 POKE X-32,32
+ 1530 POKE X-31,32
+ 1540 POKE X+1,32
+ 1550 POKE X+33,32
+ 1560 POKE X+32,32
+ 1570 POKE X+31,32
+ 1580 POKE X-1,32
+ 1590 POKE X,32
+ 1595 X=X+32
+ 1600 NEXT I
+ 1700 RETURN
+ 1800 J=HEX(3EE4);K=HEX(3C04)
+ 1810 FOR I=1 TO 7
+ 1820 @(I)=K
+ 1830 @(I+20)=J
+ 1840 J=J+4
+ 1850 K=K+4
+ 1860 NEXTI
+ 1900 RETURN
+ 2000 REM *** AUSWERTUNG
+ 2010 V=0;O=@(Z);@(30)=O
+ 2020 FOR I=1 TO 3
+ 2030 O=O+128
+ 2040 IF PEEK (O)=@(18) V=V+1;@(V+30)=O
+ 2045 IF PEEK (O)#@(18) GOTO 2060
+ 2050 NEXT I
+ 2060 IF V=3 GOTO 4000
+ 2070 O=@(Z);@(30)=O
+ 2080 FOR I=1 TO 3
+ 2090 O=O-128
+ 2100 IF PEEK (O)=@(18) V=V+1;@(V+30)=O
+ 2105 IF PEEK (O)#@(18) GOTO 2120
+ 2110 NEXT I
+ 2120 IF V &gt; 2 GOTO 4000
+ 2130 V=0;O=@(Z);@(30)=O
+ 2140 FOR I=1 TO 3
+ 2150 O=O+4
+ 2160 IF PEEK (O)=@(18) V=V+1;@(V+30)=O
+ 2165 IF PEEK (O)#@(18) GOTO 2180
+ 2170 NEXT I
+ 2180 IF V=3 GOTO 4000
+ 2190 O=@(Z);@(30)=O
+ 2200 FOR I=1 TO 3
+ 2210 O=O-4
+ 2220 IF PEEK (O)=@(18) V=V+1;@(V+30)=O
+ 2225 IF PEEK (O)#@(18) GOTO 2240
+ 2230 NEXT I
+ 2240 IF V&gt;2 GOTO 4000
+ 2245 O=@(Z);V=0;@(30)=O
+ 2250 FOR I=1 TO 3
+ 2260 O=O+124
+ 2270 IF PEEK (O)=@(18) V=V+1;@(V+30)=O
+ 2275 IF PEEK (O)#@(18) GOTO 2285
+ 2280 NEXT I
+ 2285 IF V&gt;2 GOTO 4000
+ 2290 O=@(Z);@(30)=O
+ 2300 FOR I=1 TO 3
+ 2310 O=O-124
+ 2320 IF PEEK (O)=@(18) V=V+1;@(V+30)=O
+ 2325 IF PEEK (O)#@(18) GOTO 2340
+ 2330 NEXT I
+ 2340 IF V&gt;2 GOTO 4000
+ 2350 O=@(Z);V=0;@(30)=O
+ 2360 FOR I=1 TO 3
+ 2370 O=O+132
+ 2380 IF PEEK (O)=@(18) V=V+1;@(V+30)=O
+ 2385 IF PEEK (O)#@(18) GOTO 2395
+ 2390 NEXT I
+ 2395 IF V&gt;2 GOTO 4000
+ 2400 O=@(Z);@(30)=O
+ 2410 FOR I=1 TO 3
+ 2420 O=O-132
+ 2430 IF PEEK (O)=@(18) V=V+1;@(V+30)=O
+ 2435 IF PEEK (O)#@(18) GOTO 2450
+ 2440 NEXT I
+ 2450 IFV&gt;2GOTO4000
+ 2500 RETURN
+ 4000 OUT.12
+ 4001 IF @(18)=175 O$(TOP+D+1);N=N+1
+ 4002 IF @(18)=255 O$(TOP);T=T+1
+ 4003 PR.'   ist Sieger!'
+ 4004 L=D;W=HEX(B000)
+ 4005 FOR I=1TO 20
+ 4006 D=32
+ 4100 POKE @(30)+W,D
+ 4101 POKE @(31)+W,D
+ 4102 POKE @(32)+W,D
+ 4103 POKE @(33)+W,D
+ 4120 FOR  U=1 TO 400;NEXTU
+ 4200 D=@(18)
+ 4205 X=IN(2)
+ 4206 IF  X=87 GOTO 990
+ 4210 POKE @(30)+W,D
+ 4211 POKE @(31)+W,D
+ 4212 POKE @(32)+W,D
+ 4213 POKE @(33)+W,D
+ 4311 FOR U=1 TO 400;NEXTU
+ 4320 NEXT I
+ 4330 CALLHEX(1177)
+ 4335 OUT.12
+ 4340 PR.;PR.;PR.
+ 4350 PR.'Spielstand nach dem',#3,Q,'. Spiel'
+ 4360 PR.;PR.;PR.
+ 4370 O$(TOP);PR.
+ 4380 D=L
+ 4390 TAB(D+1)
+ 4400 PR. T,' :',#2,N
+ 4401 O$(TOP+D+1);PR.;PR.
+ 4402 PR.'NOCH EIN SPIEL ?   N/ENT'
+ 4403 E=INCHAR
+ 4404 IF E=78 GOTO 990
+ 4405 GOTO 100
+ 4406 STOP
+ 4420 STOP
+ 4500 STOP
+ 5000 STOP
+ 8000 STOP
+ 9000 STOP
+</pre>
+</div>
+</body>
+</html>

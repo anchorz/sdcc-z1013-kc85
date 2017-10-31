@@ -1,0 +1,45 @@
+<kurz src="FLIEGEN MIT FLUGZEUG vv IM ALL. (8x4)"/>
+<lang>
+ähnlich [1457c26024fa21e057459fb5019e6bc5], Tastatureingabe und
+einige Texte sind unterschiedlich.
+
+hier:
+1180  21 A2 11         LD      HL,11A2H
+1183  06 10            LD      B,10H
+1185  7E               LD      A,(HL)
+1186  4F               LD      C,A
+1187  D3 08            OUT     (08H),A
+1189  DB 02            IN      A,(02H)
+118B  E6 0F            AND     0FH
+118D  FE 07            CP      07H
+118F  28 0C            JR      Z,119DH
+1191  10 F2            DJNZ    1185H
+1193  23               INC     HL
+1194  7D               LD      A,L
+1195  FE A7            CP      0A7H
+1197  20 EA            JR      NZ,1183H
+1199  3E 00            LD      A,00H
+119B  18 01            JR      119EH
+119D  79               LD      A,C
+119E  32 FF 00         LD      (00FFH),A
+11A1  C9               RET
+
+[1457c26024fa21e057459fb5019e6bc5]:
+1180  21 99 11         LD      HL,1199H
+1183  E7               RST     20H
+1184  04               DB      04H               ;INKEY
+1185  06 05            LD      B,05H
+1187  11 A2 11         LD      DE,11A2H
+118A  2C               INC     L
+118B  BE               CP      (HL)
+118C  28 07            JR      Z,1195H
+118E  1C               INC     E
+118F  10 F9            DJNZ    118AH
+1191  3E FF            LD      A,0FFH
+1193  18 01            JR      1196H
+1195  1A               LD      A,(DE)
+1196  32 FF 00         LD      (00FFH),A
+1199  C9               RET
+
+<include src="Fighter.b"/></lang>
+<requires></requires>

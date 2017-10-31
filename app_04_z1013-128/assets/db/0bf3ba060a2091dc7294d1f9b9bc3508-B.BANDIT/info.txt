@@ -1,0 +1,3 @@
+<kurz src="Simulation Spielautomat, Einarmiger Bandit"/>
+<lang><include src="BANDIT.B"/></lang>
+<requires></requires>

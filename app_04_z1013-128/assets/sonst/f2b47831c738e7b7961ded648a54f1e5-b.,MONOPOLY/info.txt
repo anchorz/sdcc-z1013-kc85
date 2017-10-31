@@ -1,0 +1,5 @@
+<kurz src="Wirtschaftssimulation billig kaufen/teuer verkaufen"/>
+<lang>identisch mit [cbc445422e99f5844cc8eef8554a608f]
+
+<include src=",MONOPOLY.b"/></lang>
+<requires></requires>

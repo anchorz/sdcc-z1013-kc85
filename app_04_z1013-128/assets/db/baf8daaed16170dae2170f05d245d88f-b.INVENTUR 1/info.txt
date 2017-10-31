@@ -1,0 +1,3 @@
+<kurz src="Inventarliste verwalten"/>
+<lang><include src="INVENTUR 1.b"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Brettspiel, Verfolgungsjagd mit Würfeln"/>
+<lang><include src="VERFOLGUNG 1.b"/></lang>
+<requires></requires>

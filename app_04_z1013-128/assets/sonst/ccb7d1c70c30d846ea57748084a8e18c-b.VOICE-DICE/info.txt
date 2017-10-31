@@ -1,0 +1,5 @@
+<kurz src="BASIC Rumpf-Programm, Tonausgabe muss noch nachgeladen werden"/>
+<lang> Eine bessere Version ist [8055123eb539c021ed5d48cf64f94586]. Dort ist die Tonausgabe schon mit dabei.
+
+<include src="VOICE-DICE.b"/></lang>
+<requires></requires>

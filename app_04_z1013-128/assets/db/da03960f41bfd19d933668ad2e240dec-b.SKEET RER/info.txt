@@ -1,0 +1,5 @@
+<kurz src="Tauben schießen reloaded"/>
+<lang>Steuerung: ␣ 
+
+<include src="SKEET RER.b"/></lang>
+<requires></requires>

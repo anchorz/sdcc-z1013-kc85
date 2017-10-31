@@ -1,0 +1,8 @@
+<kurz src="Schlange frisst Zahlen und wird dabei immer länger+Joystick"/>
+<lang>wie [226aabc62a2f4cf7f00adc88eb8ba95e], aber neuer 
+Steuerung: ⇦ ⇨ ⇧ ⇩
+
+Steuerung mit Cursortasten oder Joystick
+
+<include src="SNAKE.B"/></lang>
+<requires></requires>

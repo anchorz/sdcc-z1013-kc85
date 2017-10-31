@@ -1,0 +1,7 @@
+<kurz src="ähnlich [182179f228ebbf2d86faf53673a67681]"/>
+<lang>Vorgängerversion. Hier fehlt noch die Abfrage auf ein unterbestimmtes System.
+
+72 IF M<N THEN PRINT:PRINT "unterbestimmtes System!":BEEP:PAUSE(50):RUN 10
+
+<include src="aproximation.B"/></lang>
+<requires></requires>

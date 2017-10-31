@@ -7,6 +7,9 @@ use Cwd 'abs_path';
 use Switch;
 use utf8;
 
+our $map_ctrl=1;#maps ASCII 0x00..0x1f to CTRL-Characters U+f120..U+f13f
+#our $map_ctrl=0; #maps ASCII 0x00..0x1f,0x7f to FULL-CURSOR and CHESS FIGURES
+
 sub pr($) {
     print OUT $token;
     $token="";
@@ -31,10 +34,19 @@ sub map_char($) {
     my $mapped=$c;
    
     if (ord($c)>=0x00 && ord($c)<=0x1f) {
-        return chr(0xf120+ord($c));
+        if ($map_ctrl) {
+            return chr(0xf120+ord($c));
+        }
+        if (ord($c)>=0x0e && ord($c)<=0x1f) {
+            return chr(0xf100+ord($c));
+        }
+        return chr(0xf1ff);
     } elsif (ord($c)>=0x20 && ord($c)<=0x7e){
         return $c;
     } else {
+        if ($map_ctrl==0 && ord($c)==0x7f) {
+            return chr(0xf1ff);
+        }
         return chr(0xf100+ord($c));
     }
     return $c;
@@ -45,6 +57,13 @@ if (!defined $ARGV[0] ) {
     print STDERR "Z1013 maps special Z1013 characters to UTF-Font starting from U+f100\n";
     print STDERR basename($0)." [Z1013|DEFAULT] basic.z80 >basic.B\n";
     exit 1;
+}
+
+if (defined $ARGV[1] ) {
+    my $encoding=$ARGV[1];
+    if ($encoding=~m/-CTRL/) {
+        $map_ctrl=0; 
+    }
 }
 
 $file=$ARGV[0];
@@ -70,10 +89,14 @@ $eadr=unpack("v",substr($content,2,2));
 $basic_end=unpack("v",substr($content,55,2));
 
 $ofs=0x2c01-0x2bc0+32;
+if ($eadr<$basic_end) {
+    printf (STDERR "error:  Hier fehlt das Ende. Im Header steht das Ende EADR=%04x,\n",$eadr);
+    printf (STDERR "        aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+}
+
 if ($eadr!=$basic_end) {
-    printf (STDERR "error: Das sieht nicht nach einer BASIC Datei aus. Im Header steht EADR=%04x,\n",$eadr);
+    printf (STDERR "warn:  Im Header steht das Ende EADR=%04x,\n",$eadr);
     printf (STDERR "       aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
-    exit 1;
 }
 
 #$ofs=0x2a21;
@@ -90,7 +113,13 @@ use constant {
 
 open(OUT,">", $out);
 binmode(OUT, ":utf8");
-print(OUT "Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)\n\n");
+print(OUT "Zeichensatz UTF-8+Z1013()");
+if ($map_ctrl) {
+    print(OUT "+CTRL()");
+} else {
+    print(OUT "-CTRL()");
+}
+print(OUT "-ohne Umlaute(äöüß)\n\n");
 
 $token="";
 $token_type=0; #0 general 1 rem 2 int float numbers 3 symbol 4 str
@@ -167,7 +196,7 @@ REDO_CHARACTER:
                     case [0x30..0x39] { pr(chr($byte)); $token_type=NUMBER; }
                     case [0x2d..0x2e] { pq(chr($byte)); $token_type=NUMBER; }  # [-.] #JKCEMU did not add any SPACE on the output  
                     case [0x41..0x5a,0x61..0x7a] { pr(chr($byte)); $token_type=SYMBOL; }
-                    case [0x20,0x27..0x2c,0x2f,0x3a..0x3b] { pq(chr($byte)); } # [ '(),:*/]
+                    case [0x20..0x21,0x23,0x27..0x2c,0x2f,0x3a..0x3f] { pq(chr($byte)); } # [ '(),:*/]
                     case 0x80 { pr("END"); }
                     case 0x81 { pr("FOR"); }
                     case 0x82 { pr("NEXT"); }

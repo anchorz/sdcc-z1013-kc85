@@ -1,0 +1,4 @@
+<kurz src="Schlange frisst Zahlen und wird dabei immer länger (alt)"/>
+<lang>wie [ce4b6a9244248672eb527ff27c7ce83b], aber noch ohne Joystick.
+<include src="snake.B"/></lang>
+<required></required>

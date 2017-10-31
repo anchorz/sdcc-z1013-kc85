@@ -1,0 +1,10 @@
+<kurz src="Ähnlich wie Billard, mit dem Ball das Loch treffen (8x4)"/>
+<lang>
+
+Steuerung: ⇦ ⇨  ␣
+
+identisch mit [fc6d276a637b1c11ca4c8adae99736ca]
+hier aber ohne BASIC Interpreter 
+
+<include src="SOLOCOMMOTION.b"/></lang>
+<required>2.02</required>

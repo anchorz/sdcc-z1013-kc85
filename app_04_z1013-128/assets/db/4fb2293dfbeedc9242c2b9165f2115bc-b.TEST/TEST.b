@@ -1,0 +1,132 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    5 GOSUB 20000
+   10 O.12
+  100 TAB(96)
+  110 P."Mit diesem Programm koennen Sie "
+  120 P."Ihre Reaktionszeit auf 0,1 sec  "
+  130 P."genau ermitteln."
+  140 P.
+  150 P.
+  160 P."Sobald in der Bildmitte ein Zei-"
+  170 P."chen erscheint, muessen Sie eine"
+  180 P."beliebige Taste druecken !      "
+  190 P."Die Zeit bis dahin wird gemessen"
+  200 P."und nach jeweils 7 Tests ausge- "
+  210 P."wertet !"
+  220 P.
+  230 P.
+  240 P."Die Graphik wird durch Tasten-  "
+  250 P."druck geloescht."
+  260 TAB(128)
+  270 P."Alles klar ?                J/N"
+  280 F=INCHAR
+  290 IFF='N'O.12;GOTO 100
+  900 O.12
+  904 TAB(512)
+  905 FOR K=1 TO 5
+  910 TAB(544)
+  920 P."ES GEHT GLEICH LOS !!!"
+  925 NEXT K
+  930 TAB(512)
+  940 FOR J=0 TO 1800
+  950 NEXT J
+ 1000 FOR I=1 TO 7
+ 1100 O.12
+ 1110 TAB(96)
+ 1120 P."TEST Nr. ",#1,I," : ",
+ 1122 POKEHEX(EC6D),32
+ 1130 FOR J=0 TO 500
+ 1140 NEXT J
+ 1200 B=RND(4000)
+ 1210 FOR J=0 TO B
+ 1220 NEXT J
+ 1240 W=HEX(EE0F)
+ 1250 POKEW,201
+ 1300 CALL15872
+ 1400 Z=PEEK(HEX(3E20))
+ 1420 Z=(Z+7)*99/469
+ 1500 P.#1,(Z/10),",",#1,(Z-Z/10*10)," sec"
+ 1510 POKEHEX(EC80),32
+ 1520 IFZ>11FORJ=0TO300;NEXTJ;TAB(96);P."Oh Gott..."
+ 1530 POKEHEX(ED00),32
+ 1540 @(I)=Z
+ 1550 FOR J=0 TO 1000
+ 1560 NEXT J
+ 1600 NEXT I
+ 2000 O.12
+ 2020 P."Hier sehen Sie Ihre Reaktions-  "
+ 2030 P."zeiten graphisch dargestellt."
+ 2032 P.
+ 2034 P."Durchschnitt : ",
+ 2035 Q=0;FORI=1TO7;Q=Q+@(I);NEXTI
+ 2036 Q=Q*10/7+1
+ 2037 P.#1,Q/100,",",#1,Q-Q/100*100," sec"
+ 2038 P.
+ 2040 TAB(64)
+ 2050 P."sec"
+ 2060 P.
+ 2070 P."2,2"
+ 2080 P.
+ 2090 P."2,0"
+ 2100 P.
+ 2110 P."1,8"
+ 2120 P.
+ 2130 P."1,6"
+ 2140 P.
+ 2150 P."1,4"
+ 2160 P.
+ 2170 P."1,2"
+ 2180 P.
+ 2190 P."1,0"
+ 2200 P.
+ 2210 P."0,8"
+ 2220 P.
+ 2230 P."0,6"
+ 2240 P.
+ 2250 P."0,4"
+ 2260 P.
+ 2270 P."0,2"
+ 2280 P."     1   2   3   4   5   6   7",
+ 2290 POKEHEX(EFFE),32
+ 2900 W=HEX(EFE2)
+ 3000 FOR I=1 TO 7
+ 3020 IF@(I)>25 @(I)=26
+ 3030 FOR J=0 TO (@(I)-1)
+ 3040 POKE(W+I*4-J*32),181
+ 3050 POKE(W+1+I*4-J*32),255
+ 3060 NEXT J
+ 3070 NEXT I
+ 3100 F=INCHAR
+ 4000 O.12
+ 5000 TAB(160)
+ 6000 P."Wollen Sie noch einen Test ?"
+ 6010 P.
+ 6020 P."                            J/N"
+ 6100 F=INCHAR
+ 6200 IFF='J' GOTO 900
+ 6300 O.12
+ 6400 STOP
+20000 W=HEX(3E00)
+20010 POKEW,HEX(C5)
+20011 POKEW+1,HEX(01)
+20012 POKEW+2,HEX(00)
+20013 POKEW+3,HEX(00)
+20014 POKEW+4,HEX(03)
+20015 POKEW+5,HEX(C5)
+20016 POKEW+6,HEX(CD)
+20017 POKEW+7,HEX(30)
+20018 POKEW+8,HEX(F1)
+20019 POKEW+9,HEX(C1)
+20020 POKEW+10,HEX(FE)
+20021 POKEW+11,HEX(00)
+20022 POKEW+12,HEX(CA)
+20023 POKEW+13,HEX(04)
+20024 POKEW+14,HEX(3E)
+20025 POKEW+15,HEX(ED)
+20026 POKEW+16,HEX(43)
+20027 POKEW+17,HEX(20)
+20028 POKEW+18,HEX(3E)
+20029 POKEW+19,HEX(C1)
+20030 POKEW+20,HEX(C9)
+20031 RETURN

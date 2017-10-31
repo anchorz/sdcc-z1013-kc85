@@ -1,0 +1,3 @@
+<kurz src="Erstellung eines Tele-Lotto-Tips 5-aus-35"/>
+<lang><include src="TELELOTTO1.b"/></lang>
+<requires></requires>

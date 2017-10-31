@@ -20,7 +20,7 @@ sub hist($)
     $file=shift;
     $len=-s $file;
     
-    open(INFO, $file) or die("Could not open file.");
+    open(INFO, $file) or die("Could not open file:\"$file\"");
     read(INFO,$content,$len);
     close(INFO);
 
@@ -38,7 +38,9 @@ sub hist($)
 }
 
 my $database=get_database_folder()."/fingerprints.db";
-print "read fingerprint database: $database\n";
+print("*********************************************\n");
+print("* read fingerprint database: $database\n");
+print("*\n");
 
 $hashref=retrieve($database);
 

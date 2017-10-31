@@ -1,0 +1,3 @@
+<kurz src="Mathe: Approximation durch Polynome"/>
+<lang><include src="POLY-APROXIMA 2.B"/></lang>
+<requires></requires>

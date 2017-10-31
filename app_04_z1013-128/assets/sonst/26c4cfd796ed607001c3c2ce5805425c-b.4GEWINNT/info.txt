@@ -1,0 +1,15 @@
+<kurz src="Quattro Spiel für 2 Personen"/>
+<lang>
+So richtig scheint das Programm noch nicht fertig zu sein. Ich habe ersteinmal
+die Zeile 1045 gelöscht um überhaupt etwas zu sehen.
+
+    VIER   GEWINNT
+********************************
+Bei diesem Spiel koennen zwei Spieler gegeneinander spielen .
+Jeder darf abwechselnt einen Stein, in eine der sieben Reihen,
+einwerfen. 
+Wer als erster eine Diagonale, Senkrechte oder Waagerechte
+mit 4 Steinen seiner Farbe belegt hat, hat gewonnen.                          
+
+<include src="4GEWINNT.b"/></lang>
+<requires></requires>

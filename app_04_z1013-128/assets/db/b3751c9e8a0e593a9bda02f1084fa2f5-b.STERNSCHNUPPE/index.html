@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+</div>
+<div class="filelist">1000 1a9f 0000 b ... <a href="b.STERNSCHNUPPE.z80">STERNSCHNUPPE   </a></div>
+<div class="text">
+
+Steuerung: ⇦ ⇨ U ␣
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1 REM STERNSCHNUPPE
+    2 OUTC.12
+    3 Z=0
+    4 Z=Z+1
+    5 PR.;PR.;PR.
+    6 PR."       *"
+    7 GOS.1000
+    8 PR."        *"
+    9 GOS.1000
+   10 PR."        *"
+   11 GOS.1000
+   12 PR."        *"
+   13 GOS.1000
+   14 PR."        S"
+   15 GOS.1000
+   16 PR."       T"
+   17 GOS.1000
+   18 PR."      E"
+   19 GOS.1000
+   20 PR."     R"
+   21 GOS.1000
+   22 PR."     N"
+   23 GOS.1000
+   24 PR."      S"
+   25 GOS.1000
+   26 PR."       C"
+   27 GOS.1000
+   28 PR."        H"
+   29 GOS.1000
+   30 PR."        N"
+   31 GOS.1000
+   32 PR."         U"
+   33 GOS.1000
+   34 PR."          P"
+   35 GOS.1000
+   36 PR."         P"
+   37 GOS.1000
+   38 PR."        E"
+   39 GOS.1000
+   40 PR."       *"
+   41 GOS.1000
+   42 PR."       *"
+   43 GOS.1000
+   44 PR.;PR.;PR.""
+   45 F.I=1 TO 1000
+   46 N.I
+   47 OUTC.12
+   48 IF Z&lt;5 G.4
+   50 F.I=1 TO 32
+   60 OUTC.42
+   70 N.I
+   80 F.I=1 TO 11
+   90 PR.
+  100 N.I
+  110 PR."VERSION 1 ODER VERSION 2 ?"
+  120 PR.;INPUT"V="V
+  122 INPUT "GESCHWINDIGKEIT (1-9)"G
+  124 IF G&gt;9 G.122
+  126 IF G&lt;1 G.122
+  128 G=500/G
+  130 OUTC.12
+  140 IF V&lt;1 G.120
+  150 IF V&gt;2 G.120
+  160 REM BILDAUFBAU
+  165 F.I=1 TO V
+  170 P=H.(EC20);Q=H.(EDEF)
+  180 O=H.(EF40);S=0;T=0
+  190 U=0;N=0
+  200 A=RND(42)
+  210 B=RND(42)
+  215 T=RND(24)
+  220 PO.P,140
+  230 P=P+B
+  240 PO.P,213
+  250 P=P+A;T=T+1
+  260 IF P&lt;O G.200
+  270 N.I
+  275 X=H.(3600);GOS.900
+  280 GOS.500
+  285 REM SPIEL
+  290 S=S+1
+  300 C.H.(3600);W=PE.(H.(3A00))
+  301 IF W=0W=Y
+  302 Y=W
+  303 IF Q&lt;O PO.(H.(3A00)),20
+  305 F.I=1 TO  G;N.I
+  306 IF Q&gt;H.(EC00)PO.(H.(3A00)),20
+  310 IF W=8 Q=Q-1; G.360
+  320 IF W=9 Q=Q+1; G.360
+  330 IF W=32 Q=Q+32;G.360
+  335 IF W=10 Q=Q+32;G.360
+  340 IF W=85 Q=Q-32;G.360
+  345 IF W=11 Q=Q-32;G.360
+  350 G.300
+  360 A=PE.(Q)
+  370 IF A#32 GOS.395
+  380 PO.Q,42
+  390 G.290
+  395 REM PUNKTE U. FEHLERZAEHLUNG
+  400 PR.
+  410 IF A=213 U=U+1
+  420 IF A#213 G.470
+  430 PR.U,"-PUNKTE VON ",T
+  440 PR.;PR.
+  450 IF U=T G.600
+  460 RE.
+  470 N=N+1
+  480 PR."Das ist der ",#2,N,". Fehler"
+  490 RE.
+  500 REM FENSTER
+  510 PO.H.(1B),H.(80)
+  520 PO.H.(1C),H.(EF)
+  530 PO.H.(1D),0
+  540 PO.H.(1E),H.(F0)
+  550 C.H.(10A0);REM E7 0B C9
+  560 RE.
+  600 PO.H.(1B),0
+  610 PO.H.(1C),H.(EC)
+  620 PO.H.(1D),0
+  630 PO.H.(1E),H.(F0)
+  640 C.H.(10A0)
+  645 REM  AUSWERTUNG)
+  650 OUTC.12
+  660 PR.U," PUNKTE"
+  670 PR.;PR.
+  680 PR.N," FEHLER"
+  690 PR.;PR.
+  700 PR.S," SCHRITTE"
+  710 PR.;PR.;PR.;PR.
+  720 J=((350-S)*U)/(N+1)
+  730 PR.;PR.;PR.
+  740 PR."DAMIT HAST DU :"
+  750 PR.;PR.J;PR.
+  760 PR."PUNKTE ERREICHT."
+  770 PR.;PR.
+  780 F.I=1 TO 32
+  790 OUTC.203
+  800 N.I
+  810 PR. ;PR. ;PR.
+  820 PR."Noch einmal?                    DANN BITTE"
+  830 PR.;PR."TASTE &gt;J&lt; DRUECKEN !"
+  840 W=INC.
+  850 IF W=74 G.10
+  860 OUTC.12
+  870 PR.;PR.;PR.;PR.
+  880 TAB(6);PR."Bis bald "
+  890 STOP
+  900 PO.X  ,0
+  910 PO.X+1,H.(E7)
+  920 PO.X+2,4
+  930 PO.(X+3),H.(32)
+  940 PO.(X+4),0
+  950 PO.(X+5),H.(3A)
+  960 PO.(X+6),H.(C9)
+  970 RE.
+ 1000 F.I=1 TO 7
+ 1010 NEXT I
+ 1020 RE.
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<kurz src="Billard Variante, fang die Kugel!(8x4)"/>
+<lang>wie [bf03f27debb021c57bcb1a2e23b6eabc], aber verwendet [CALL] 
+als Tastatureingabe und hat noch einen kleinen Rechtschreibfehler.
+
+Bei diesem Spiel gilt es, das auf
+dem Bildschirm freibewegliche Ziel 
+() mit dem lenkbaren Viereck ()
+zu rammen.
+
+Das Viereck laesst sich mit den 
+Tasten:
+
+E,F,G
+M,N,O
+U,V,W
+
+steuern. Und zwar: F nach oben,
+G nach diagonal,rechts oben
+
+Fuer jede Spielrunde erhalten
+300 Punkte, von denen die
+Schritte des Faengers und des
+Gejagden abgezogen werden !                       
+
+<include src="JAGD.b"/></lang>
+<requires></requires>

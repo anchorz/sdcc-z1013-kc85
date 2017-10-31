@@ -1,0 +1,7 @@
+<kurz src="Original Voice-Dice, noch ohne Sprachausgabe"/>
+<lang>
+
+Steuerung:  ␣   ⏎
+
+<include src="PUNKTESPIEL 1.b"/></lang>
+<requires></requires>

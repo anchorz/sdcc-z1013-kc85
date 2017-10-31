@@ -1,0 +1,5 @@
+<kurz src="Sterne auffangen"/>
+<lang>Steuerung: unbekannte Tastatur.
+
+<include src="STERNTALER1.b"/></lang>
+<requires></requires>

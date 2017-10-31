@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+<img src="screenshot_02.jpg" alt="Screenshot 2" height="384"  >
+</div>
+<div class="filelist">1000 19e5 0000 b ... <a href="b.STERNCHEN%201.z80">STERNCHEN 1     </a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    5 M=0;Z=0
+   10 OUTC.12
+   11 P.;P.;P.;P.
+   12 P."STERNCHENSPIEL"
+   13 P."**************"
+   14 P.;P.;P.;P.
+   15 P."WER ZULETZT MIT EINEM STERN"
+   16 P.;P."UEBRIG BLEIBT,HAT VERLOREN"
+   17 P."                  ********"
+   20 P.;P.;P.
+   30 INP."WIEVIEL STERNE HABEN WIR ?"X
+   31 Y=X
+   32 IF X&gt;64 G.30
+   33 P.
+   34 IF X&lt;10 P."DAMIT MACHT ES KEINEN SPASS";P.;G.30
+   40 P.;INP."WIEVIEL KANN MAN NEHMEN  ?"N
+   41 V=N
+   42 IF N&gt;9 G.40
+   43 P.
+   44 IF N&lt;3 P."DA IST ES UNINTERESSANT";P.;G.40
+   45 O.12;P.;P.
+   46 F.I=1TOX
+   47 OUT(1)=H.(CF);OUT(1)=0;O.42
+   48 OUT(1)=H.(CF);OUT(1)=255
+   49 N.I;P.;P.
+   50 Z=0
+   51 P.;P."ES SIND NOCH",#3,X," STERNE VORHANDEN"
+   52 P.;INP."WIEVIEL NIMMT SPIELER 1 "M
+   53 IF M+1&gt;X GOS.600;G.52
+   54 IF M&gt;N GOS.400;G.52
+   56 IF M&lt;1 GOS.500;G.52
+   58 GOS.100
+   60 IF X&lt;=1 P."SPIELER 2 DU HAST VERLOREN !!!";G.200
+   65 Z=0
+   71 P.;P."ES SIND NOCH",#3,X," STERNE VORHANDEN"
+   72 P.;INP."WIEVIEL NIMMT SPIELER 2 "M
+   73 IF M+1&gt;X GOS.600;G.72
+   74 IF M&gt;N GOS.400;G.72
+   76 IF M&lt;1 GOS.500;G.72
+   78 GOS.100
+   80 IF X&lt;=1 P."SPIELER 1 DU HAST VERLOREN !!!";G.200
+   85 G.50
+  100 REM
+  101 O.12
+  110 P.;P.;P.
+  112 X=X-M
+  113 IF X&lt;=1 G.140
+  115 F.I=1TOX
+  116 OUT(1)=H.(CF);OUT(1)=0
+  117 O.42
+  118 IF I=32 P.
+  119 OUT(1)=H.(CF);OUT(1)=255
+  120 N.I
+  130 P.;P.
+  140 RET.
+  200 F.I=1TO10;P.;N.I
+  202 P.;P."DIES IST DER LETZTE STERN,DER"
+  204 P.;P."FUER SIE GEBLIEBEN IST !!!"
+  206 P.;P."DAMIT HABEN SIE DIESMAL VERLOREN"
+  208 GOS.550
+  210 P.;P."ABER SIE KOENNEN GERN NOCH"
+  220 P.;P."EINMAL SPIELEN. (J/N)",
+  315 P.;P.
+  320 W=INC.
+  325 X=Y;N=V
+  327 IF W='J' O.12
+  330 IF W='J' G.45
+  340 O.12;TAB(490);P."AUF WIEDERSEHEN"
+  345 P.;P.;P.;STOP
+  400 P.;P.;P.;P."&gt;&gt;&gt;&gt;&gt;&gt;&gt;  NICHT SCHUMMELN &lt;&lt;&lt;&lt;&lt;&lt;&lt;"
+  410 P.;RET.
+  415 G.100
+  500 P.;P.;P.;P." DU TRAUST DIR WOHL NICHT "
+  502 Z=Z+1
+  504 IF Z=2 G.700
+  510 P.;RET.
+  550 F.I=1TO10
+  555 PO.H.(ED4E),42
+  560 OUT(1)=H.(CF);OUT(1)=0
+  565 F.W=1TO200;N.W
+  570 PO.H.(ED4E),32
+  575 OUT(1)=H.(CF);OUT(1)=255
+  580 F.W=1TO200;N.W
+  585 N.I;PO.H.(ED4E),42;RET.
+  600 P.;P."SOVIELE HABE ICH NICHT MEHR !"
+  610 RET.
+  700 REM
+  705 O.12
+  707 P.;P.;P.;P.
+  710 P.;P.;P."DU BIST EIN FEIGLING,DENN DU"
+  715 P.;P."WEISST,DAS DEIN GEGNER GEWINNT."
+  720 P.;P."DARUM NIMMST DU KEINE STERNE !!!"
+  725 P.;P."ALSO BRECHEN WIR DAS SPIEL AB."
+  728 P.;P.;P.;P.
+  730 F.I=1TO10
+  732 OUT(1)=H.(CF);OUT(1)=0
+  734 F.W=1TO100;N.W
+  736 OUT(1)=H.(CF);OUT(1)=255
+  738 F.W=1TO100;N.W
+  740 OUT(1)=H.(CF);OUT(1)=0
+  742 F.W=1TO300;N.W
+  744 OUT(1)=H.(CF);OUT(1)=255
+  746 F.W=1TO200;N.W
+  748 N.I
+  750 G.210
+</pre>
+</div>
+</body>
+</html>

@@ -1,3 +1,0 @@
-<kurz src="PEEK und POKE Beispiele für Tiny-Basic"/>
-<lang><include src="3kpluspoke_kurs_1.com.b"/></lang>
-<required></required>

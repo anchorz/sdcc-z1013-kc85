@@ -1,0 +1,15 @@
+<kurz src="Kartenspiel ähnlich Mau-Mau: Ablegen passender Karten"/>
+<lang>
+Jeder  Spieler  bekommt 6 Karten von einem Talon von 32 Karten.
+Eine Karte wird aufgedeckt.
+
+Gewonnen hat,wer als erster alle seine Karten ablegen konnte.
+
+Es duerfen nur Karten abgelegt werden, die in Bild und Farbe mit
+der Karte auf dem Tisch uebereinstimmen.
+
+Wer nicht bedienen kann muss solange Nachschub vom Talon nehmen,
+bis er bedienen kann.
+                           
+<include src="Poltersnack.B"/></lang>
+<requires></requires>

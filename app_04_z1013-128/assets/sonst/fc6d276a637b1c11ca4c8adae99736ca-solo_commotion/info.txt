@@ -1,0 +1,7 @@
+<kurz src="Ähnlich wie Billard, versuche mit dem Ball das Loch zu treffen"/>
+<lang>identisch mit [4960683f103baf0bfc2078cc5a29139d]
+lediglich einige extra Bytes nach dem Programm sind verschieden</lang>
+
+identisch mit [a4262000f732a4ef8085e51c0c86e2b3]
+dort aber ohne BASIC Interpreter 
+<required>2.02</required>

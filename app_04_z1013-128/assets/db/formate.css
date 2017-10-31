@@ -25,13 +25,19 @@ div.odd {
 
 pre {
 	font-family: Z1013, monospace;
-	padding: 2px;
+	padding: 10px;
+	margin: 0px;
 	background: #f8f8f0;
+	border: 1px solid red;
 }
 
 div.text {
 	font-family: monospace;
     white-space: pre;
-	padding: 2px;
-	background: #fffff0;
+	padding: 10px;
+	background: #f0f0f0;
+}
+
+span.fntz1013 {
+    font-family: Z1013;
 }

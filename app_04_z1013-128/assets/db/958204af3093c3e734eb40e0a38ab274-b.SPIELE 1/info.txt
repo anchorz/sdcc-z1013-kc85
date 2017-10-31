@@ -1,0 +1,3 @@
+<kurz src="Mastermind, 23, Zahlenraten, Zeichnen"/>
+<lang><include src="SPIELE 1.b"/></lang>
+<requires></requires>

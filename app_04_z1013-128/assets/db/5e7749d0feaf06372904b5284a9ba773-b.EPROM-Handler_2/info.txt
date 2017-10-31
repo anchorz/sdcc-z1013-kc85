@@ -1,0 +1,9 @@
+<kurz src="EPROM Programmierung U555, 2708, 2716, 2732, 2764"/>
+<lang>der Wert "nach Adresse" ist eine Dezimalzahl. Es bietet sich daher an Werte
+größer als 16384 oder 20000 (lässt sich leicher merken) zu verwenden. Auf jedenfall
+sollte die Adresse hinter dem Ende des BASIC Programms liegen.
+
+oder vor dem Start etwas wie END H.(3FFF)-64 eingeben.
+
+<include src="EPROM-Handler_2.b"/></lang>
+<requires></requires>

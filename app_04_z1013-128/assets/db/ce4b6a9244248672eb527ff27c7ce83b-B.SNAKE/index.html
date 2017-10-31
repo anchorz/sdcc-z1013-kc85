@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+</div>
+<div class="filelist">2bc0 3be1 0000 B ... <a href="B.SNAKE.z80">SNAKE           </a></div>
+<div class="text">wie [226aabc62a2f4cf7f00adc88eb8ba95e], aber neuer 
+Steuerung: ⇦ ⇨ ⇧ ⇩
+
+Steuerung mit Cursortasten oder Joystick
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 WINDOW
+   20 DIM R(4),HI(3),SP(8,5),U(4),UM(4)
+   30 DATA-1,-32,1,32 
+   40 RESTORE
+   50 FOR I=1 TO 4:READ R(I):NEXT I
+   60 GOSUB 1240
+   70 CLS
+   80 PRINT AT(8,4);"Stufe Nr. 1, 2 or 3 ?"
+   90 PRINT AT(0,0);" ":Q$=INKEY$
+  100 IF Q$&lt;"1"OR Q$&gt;"3"THEN 90 ELSE ST=ASC(Q$)-48
+  110 H=INT(ST)*10
+  120 E=-4367:ER=-1:C=-1:KR=0:SC=0:T=0:A=-4368:TH=-50
+  130 PRINT AT(8,27);Q$
+  140 PRINT AT(12,4);"Steuerung mit Cursortasten      oder Joystick (C/J)?"  
+  150 C$=INKEY$:IF C$="C"OR C$="J"THEN 160 ELSE 150
+  160 CLS
+  170 GOSUB 550
+  180 POKE A,195
+  190 POKE A+1,207
+  200 PRINT AT(30,0);"HP : ",HI(ST)
+  210 PRINT AT(30,10);"Punkte: ",SC
+  220 PRINT AT(30,22);"Stufe : ",ST
+  230 GOSUB 250
+  240 END
+  250!SPIELSCHLEIFE
+  260 IF C$="C"THEN A$=INKEY$:GOTO 290
+  270 IF C$="J"THEN OUT 1,207:OUT 1,63
+  280 CA=INP(0)
+  290 IF CA=32 OR A$=CHR$(11)THEN C=-32:GOTO 340
+  300 IF CA=2 OR A$=CHR$(9)THEN C=1:GOTO 340
+  310 IF CA=16 OR A$=CHR$(10)THEN C=32 :GOTO 340
+  320 IF CA=1 OR A$=CHR$(8)THEN C=-1 :GOTO 340
+  330 LV=NOT LV:IF ST=1 OR(ST=2 AND LV)THEN 260
+  340 IF E&lt;-5120 OR E&gt;-4192 THEN 820
+  350 IF(PEEK(A+C)=255)OR(PEEK(A+C)=207)THEN 820
+  360 IF(PEEK(A+C)&gt;48)AND(PEEK(A+C)&lt;58)THEN T=Z+1:GOSUB 1160
+  370 POKE A,207:A=A+C:T=T-1
+  380 POKE A,195
+  390 IF PEEK(E)=32 OR PEEK(E)=255 THEN 410
+  400 POKE E,32 
+  410 IF T&gt;0 THEN 260
+  420 IF PEEK(E+ER)=207 THEN 460
+  430 FOR I=1 TO 4
+  440 IF PEEK(E+R(I))=207 THEN ER=R(I):GOTO 460
+  450 NEXT I
+  460 E=E+ER
+  470 IF T=TH THEN GOSUB 490
+  480 GOTO 260
+  490!ZAHL GENERIEREN
+  500 Z=INT(9*RND(1))+1
+  510 P=INT(880*RND(1))+(-5161)
+  520 IF PEEK(P)&lt;&gt;32 THEN 500
+  530 POKE P,Z+48:BEEP:BEEP
+  540 RETURN
+  550 INK 2:FOR I=0 TO 31
+  560 PRINT AT(0,I);CHR$(255)
+  570 PRINT AT(28,I);CHR$(255)
+  580 NEXT I
+  590 FOR I=0 TO 28
+  600 PRINT AT(I,0);CHR$(255)
+  610 PRINT AT(I,31);CHR$(255)
+  620 NEXT I
+  630 FOR I=4 TO 1 STEP-1
+  640 SP(2,I)=-4792+I*32
+  650 SP(4,I)=-4472-I*32
+  660 SP(6,I)=-4777+I*32
+  670 SP(8,I)=-4457-I*32
+  680 NEXT I
+  690 FOR I=4 TO 1 STEP-1
+  700 SP(1,I)=-4637+I*1
+  710 SP(3,I)=-4627-I*1
+  720 SP(5,I)=-4622+I*1
+  730 SP(7,I)=-4612-I*1
+  740 NEXT I
+  750 FOR I=1 TO 9 
+  760 PRINT AT(10+I,8);CHR$(255)
+  770 PRINT AT(10+I,23);CHR$(255)
+  780 PRINT AT(15,3+I);CHR$(255)
+  790 PRINT AT(15,18+I);CHR$(255)
+  800 NEXT I
+  810 RETURN
+  820 U(1)=A+1:U(2)=A+32:U(3)=A-1:U(4)=A-32
+  830 FOR I=1 TO 4:UM(I)=PEEK(U(I)):NEXT I
+  840 Z=42
+  850 FOR I=1 TO 15:BEEP
+  860 FOR K=1 TO 4
+  870 POKE U(K),Z:NEXT K
+  880 FOR K=1 TO 4
+  890 POKE U(K),32:NEXT K:NEXT I
+  900 FOR I=1 TO 4
+  910 POKE U(I),UM(I):NEXT I
+  920 T=SC+1
+  930 POKE A,42:Z=208
+  940 IF PEEK(A+ER)=207 THEN 980
+  950 ER=0:FOR I=1 TO 4
+  960 IF PEEK(A+R(I))=207 THEN ER=R(I)
+  970 NEXT I:IF ER=0 THEN T=0:GOTO 1040
+  980 A=A+ER
+  990 IF Z&gt;223 THEN Z=208
+ 1000 IF PEEK(A+ER)=255 THEN 1020
+ 1010 POKE A,Z:BEEP
+ 1020 T=T-1:Z=Z+1
+ 1030 IF T&gt;0 THEN 940
+ 1040 FOR I=1 TO 1000:NEXT I
+ 1050 CLS:PRINT AT(0,0);" "
+ 1060 PRINT AT(3,10);"Stufe ",ST
+ 1070 PRINT AT(4,10);"========"
+ 1080 PRINT AT(7,10);"Punkte",SC
+ 1090 IF SC&gt;HI(ST)THEN HI(ST)=SC
+ 1100 PRINT AT(11,10);"Hoechst-Punkte :",HI(ST)
+ 1110 PAUSE 10:IF SC=HI(ST)THEN PRINT AT(18,0);"Sie haben die meisten Punkte!"
+ 1120 PRINT AT(22,0);"Neues Spiel  (J)/N ?"
+ 1130 IF INKEY$=""THEN 1130
+ 1140 IF INKEY$="N"THEN 240
+ 1150 GOTO 40
+ 1160 SC=SC+Z
+ 1170 PRINT AT(30,10);"Punkte: ",SC
+ 1180 IF(KR&lt;4)AND(SC&gt;=H)THEN KR=KR+1:GOSUB 1200:H=H+H/KR
+ 1190 RETURN
+ 1200 FOR I=1 TO 8
+ 1210 POKE SP(I,KR),32:POKE SP(I,KR)-1024,52
+ 1220 NEXT I:GOSUB 2010:TH=-50+INT(HI(ST)/4)
+ 1230 RETURN
+ 1240!TITELBILD
+ 1250 CLS:RESTORE 1880:PRINT AT(0,0);" "
+ 1260 FOR I=1 TO 5
+ 1270 READ Z
+ 1280 FOR K=1 TO Z
+ 1290 READ Y,X
+ 1300 PRINT AT(X,Y);""
+ 1310 NEXT K
+ 1320 NEXT I
+ 1330 PRINT AT(24,3);"Fertig? Dann Taste druecken!"
+ 1340 GOSUB 1970:Z=128
+ 1350 POKE-4286,Z+1
+ 1360 POKE-4253,Z+2
+ 1370 POKE-4222,Z+3
+ 1380 POKE-4255,Z+4:Z=Z+4
+ 1390 A=-4107:POKE A,195
+ 1400 E=A:ER=-1
+ 1410 FOR I=1 TO 5
+ 1420 E=E+1:POKE E,207
+ 1430 GOSUB 1970
+ 1440 NEXT I
+ 1450 GOSUB 1780
+ 1460 FOR K=1 TO 4
+ 1470 S=R(K)
+ 1480 IF K=1 THEN X=2:Y=19:P=-4255:Z=Z+1
+ 1490 IF K=2 THEN X=3:Y=18:P=-4286:Z=Z+1 
+ 1500 IF K=3 THEN X=4:Y=19:P=-4253:Z=Z+1
+ 1510 IF K=4 THEN X=3:Y=20:P=-4222:Z=Z+1
+ 1520 IF Z&gt;255 THEN Z=128
+ 1530 POKE P,Z
+ 1540 IF ABS(S)=32 THEN RZ=9:GOTO 1560
+ 1550 RZ=21
+ 1560 FOR I=1 TO RZ
+ 1570 GOSUB 1970
+ 1580 POKE A,207:A=A+S
+ 1590 POKE A,195:POKE E,32
+ 1600 IF PEEK(E+ER)=103 THEN 1640
+ 1610 FOR J=1 TO 4
+ 1620 IF PEEK(E+R(J))=207 THEN ER=R(J):GOTO 1640
+ 1630 NEXT J
+ 1640 E=E+ER
+ 1650 GOSUB 1700
+ 1660 NEXT I
+ 1670 POKE P,Z
+ 1680 NEXT K
+ 1690 GOTO 1460
+ 1700 IF B=-4760 THEN GOSUB 1780
+ 1710 IF(PEEK(B-1)&gt;52)AND(PEEK(B-1)&lt;57)THEN T=N+1
+ 1720 POKE B,207:B=B-1:T=T-1
+ 1730 POKE B,195
+ 1740 POKE F,32
+ 1750 IF T&gt;0 THEN 1770
+ 1760 F=F-1
+ 1770 RETURN
+ 1780 FOR J=0 TO 18
+ 1790 POKE-4760+J,32
+ 1800 NEXT J
+ 1810 B=-4602:F=B+1
+ 1820 POKE B,195:POKE F,207
+ 1830 N=INT(4*RND(1))+5
+ 1840 L=INT(11*RND(1))+(-4618)
+ 1850 POKE L,48+N:BEEP:POKE L-60,48+N
+ 1860 RETURN
+ 1870!
+ 1880 DATA 12,3,0,2,0,1,0,0,1,0,2,1,3,2,3,3,4,3,5,2,6,1,6,0,6  
+ 1890 DATA 19,6,6,6,5,6,4,6,3,6,2,6,1,6,0,7,1,7,2,8,3 
+ 1900 DATA 9,4,9,5,10,6,10,5,10,4,10,3,10,2,10,1,10,0 
+ 1910 DATA 16,13,6,13,5,14,4,14,3,15,2,15,1,16,0,17,1,17 
+ 1920 DATA 2,18,3,18,4,19,5,19,6,15,3,16,3,17,3 
+ 1930 DATA 14,22,6,22,5,22,4,22,3,22,2,22,1,22,0,26 
+ 1940 DATA 0,25,1,24,2,23,3,24,4,25,5,26,6,12,31,6,30,6,29,6 
+ 1950 DATA 29,5,29,4,29,3,29,2,29,1,29,0,30,0,31,0,30,3 
+ 1960 DATA-1,-32,1,40  
+ 1970 B$=""
+ 1980 B$=INKEY$
+ 1990 IF B$=""THEN RETURN
+ 2000 GOTO 70
+ 2010 Y$=" GRATULATION "
+ 2020 X$=""
+ 2030 FOR K=1 TO 20
+ 2040 PRINT INK 4;AT(0,10);Y$:PRINT INK 4;AT(28,10);Y$:BEEP:PAUSE 1
+ 2050 PRINT INK 2;AT(28,10);X$:PRINT INK 2;AT(0,10);X$:PAUSE 1
+ 2060 NEXT K:RETURN
+</pre>
+</div>
+</body>
+</html>

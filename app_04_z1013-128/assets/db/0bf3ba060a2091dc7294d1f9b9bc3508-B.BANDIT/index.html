@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+<img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+</div>
+<div class="filelist">2bc0 3539 0302 B ... <a href="B.BANDIT.z80">BANDIT          </a></div>
+<div class="text"><pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10!    ***EINARMIGER BANDIT***
+   20!    *                     *
+   30!    *   Reinhard Mellin   *
+   40!    *                     *
+   50!    *     Wittenberge     *
+   60!    *                     *
+   70!    **Copyright  Okt.1987**
+   80 CLS
+   90 PRINT AT(8,5);"S P I E L A U T O M A T"
+  100 A1$="* EINARMIGER BANDIT *"
+  110 PRINT AT(18,6);A1$                      
+  120 PAUSE 60
+  130 CLS
+  140 PRINT:PRINT:PRINT:PRINT
+  150 PRINT "       SPIELREGEL"
+  160 PRINT "      ------------":PRINT:PRINT
+  170 PRINT " Zwei gleiche Zahlen ergeben"
+  180 PRINT " den 2-fachen Gewinn.":PRINT
+  190 PRINT " Drei gleiche Zahlen ergeben"
+  200 PRINT " den 4-fachen Gewinn."
+  210 PRINT AT(20,10);"Alles klar?  &gt;ENTER&lt;"
+  220 T$=INKEY$:IF T$="" THEN 220
+  230 CLS       
+  240 PRINT AT(1,5);STRING$(21,"")
+  250 PRINT AT(2,5);"":PRINT AT(2,25);""
+  260 PRINT AT(3,5);STRING$(21,"")
+  270 PRINT AT(2,5);A1$ :PRINT AT(10,10);" "                  
+  280 PRINT AT(6,7);"Wer wagt,gewinnt!"
+  290 PRINT AT(9,2);STRING$(9,CHR$(158))
+  300 PRINT AT(9,1);"":PRINT AT(9,11);CHR$(145)                         
+  310 PRINT AT(10,0);"":PRINT AT(10,12);CHR$(145) 
+  320 PRINT AT(11,0);CHR$(159):PRINT AT(11,12);""
+  330 PRINT AT(12,0);"",STRING$(11,""),""
+  340 FOR I=13 TO 27:PRINT AT(I,0);"":PRINT AT(I,12);"":NEXT I
+  350 PRINT AT(28,0);"",STRING$(11,""),""
+  360 PRINT AT(15,2);"",STRING$(7,CHR$(158)),""
+  370 FOR I=16 TO 18:PRINT AT(I,2);CHR$(159):PRINT AT(I,10);"":NEXT I
+  380 PRINT AT(19,2);"",STRING$(7,""),""
+  390 PRINT AT(16,3);""
+  400 PRINT AT(18,3);""
+  410 PRINT AT(17,4);"*":PRINT AT(17,6);"*" 
+  420 PRINT AT(17,8);"*"                    
+  430 PRINT AT(13,14);"":PRINT AT(17,13);""
+  440 FOR I=14 TO 16:PRINT AT(I,14);"":NEXT I
+  450 PRINT AT(25,2);"",STRING$(7,CHR$(158)),""
+  460 PRINT AT(26,2);CHR$(159):PRINT AT(26,10);""  
+  470 PRINT AT(27,2);"",STRING$(7,""),""  
+  480 WINDOW 9,23,18,31
+  490 PRINT AT(10,2);"Einwurf"
+  500 A3$="Gewinn!"
+  510 A4$="Verlust" 
+  520 DIM Z(4) :G=0
+  530 CLS : BEEP
+  540 INPUT "Ihr Einsatz                 ==&gt;";E:W=1 
+  550 IF E&gt;1000 THEN PRINT "Einsatz ist zuhoch !" : GOTO 540
+  560 IF E&lt;=0 THEN PRINT "Ohne Einsatz  kein Spiel!" : GOTO 540
+  570 FOR I=1 TO 15 : BEEP
+  580 FOR J=1 TO 3          
+  590 Z(J)=INT(RND(1)*10):NEXT J
+  600 PRINT AT(17,3);Z(1)
+  610 PRINT AT(17,5);Z(2)
+  620 PRINT AT(17,7);Z(3)
+  630 FOR K=1 TO I*I       
+  640 NEXT K,I     
+  650 IF Z(1)=Z(2) THEN W=W+1
+  660 IF Z(2)=Z(3) THEN W=W+1
+  670 IF Z(3)=Z(1) THEN W=W+1
+  680 ON W GOTO 690,700,710,710
+  690 S=0 : GOTO 720
+  700 S=E*2 : GOTO 720
+  710 S=E*4
+  720 G=G+S-E : PRINT:PRINT
+  730 IF S&gt;=1 THEN PRINT AT(26,3);A3$:FOR P=1 TO 50:BEEP: NEXT P
+  740 IF S=0 THEN PRINT AT(26,3);A4$:BEEP:BEEP:BEEP
+  750 IF G&gt;5000 THEN PRINT AT(26,3);" LEER! ":GOTO 860
+  760 PRINT:PRINT "Spielgewinn:  ";S:PRINT
+  770 PRINT:PRINT "Gesamtgewinn: ";G
+  780 PRINT:PRINT:PRINT:PRINT:PRINT
+  790 INPUT "Neues Spiel?   &gt;ENTER&lt;";T$
+  800 IF T$=CHR$(13) THEN 530
+  810 WINDOW:CLS
+  820 PRINT AT(15,4);"....Auf Wiedersehen"
+  830 PAUSE 50
+  840 CLS
+  850 END
+  860 PRINT AT(30,1);"Hurra! Die Kasse ist geknackt."
+  870 PAUSE 100 : GOTO 810
+</pre>
+</div>
+</body>
+</html>

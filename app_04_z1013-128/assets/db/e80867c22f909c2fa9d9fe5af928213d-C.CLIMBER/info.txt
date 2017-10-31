@@ -1,0 +1,19 @@
+<kurz src="Climber Variante"/>
+<lang>Steuerung: ⇦ ⇨ J ␣ 
+
+In diesem Spiel haben Sie die Aufgabe mit ihrer Spielfigur
+die im Raum verteilten Diamanten einzusammeln.
+
+Fuer jeden Diamanten gibt es einen Punkt. Ihre Figur kann
+mit den Kursortasten, SPACE ␣, sowie Taste >J< fuer Spruenge 
+gesteuert werden. Spruenge aus der Bewegung sind natuerlich
+hoeher.
+
+Achtung !!!   Achten Sie auf die Kugeln! Sie koennen das 
+Leben kosten !!! Sie sind aber durch einen Zauber mit
+sieben Leben ausgeruestet. 
+
+Sie haben aber nur fuenf Minuten Zeit!!
+                           
+<include src="climber.b"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="wie [9ce73591b0deaaef5e795090583b4f57] Eingabe unterschiedlich"/>
+<lang>Diese hier verwendet Peek(5) um den Tastendruck abzufragen.</lang>
+<requires></requires>

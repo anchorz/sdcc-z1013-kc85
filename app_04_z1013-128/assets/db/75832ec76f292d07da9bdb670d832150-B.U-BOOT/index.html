@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+</div>
+<div class="filelist">2bc0 3146 0000 B ... <a href="B.U-BOOT.z80">U-BOOT          </a></div>
+<div class="text">Im Prizip verteilt er nur die Schiffe. Entwerder man merkt sich
+die Positionen oder schreibt sie sich auf Papier auf!
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    5 WINDOW
+   10 REM FUENF U-BOOTSPIEL
+   11 WINDOW:CLS :WINDOW 8,23,0,31
+   20 CLS:PRINT AT(3,0);"VERSUCHE 5 U-BOOTE DUCH AN-"
+   30 PRINT AT(5,0);"WEISUNGEN ZU VERSENKEN"      
+   40 DIM A(5)
+   50 PRINT:PRINT:PRINT "TIPPE DEZIMALE ZAHL ZWISCHEN    0 UND 1 "             
+   55 PRINT:PRINT " (Z.B. 0.8)  ";
+   60 INPUT S:CLS
+   70 IF S&lt;=0 THEN 50
+   80 IF S&gt;=1 THEN 50
+   90 FOR I=1 TO 5
+  100 S=((3.14159+S)*29)
+  110 S=S-INT(S)
+  120 A(I)=INT(S*100)
+  130 NEXT I
+  140 N=0
+  150 P=0
+  160 PRINT:PRINT "JETZT SCHIESSEN WIR !"
+  170 PRINT:PRINT "SCHUESSE AUF KARIERTEM PAPIER ":PRINT
+  175 PRINT "NOTIEREN"
+  180 PRINT:PRINT "TIPPE X-KOORDINATE (0-9)";
+  190 INPUT X
+  200 X=INT(X)
+  210 IF X&gt;9 THEN 180
+  220 IF X&lt;0 THEN 180
+  230 PRINT:PRINT "TIPPE Y-KOORDINATE (0-9)";
+  240 INPUT Y
+  250 Y=INT(Y)
+  260 IF Y&gt;9 THEN 230
+  270 IF Y&lt;0 THEN 230
+  280 T=10*X+Y
+  290 N=N+1
+  300 F=0
+  310 Q=0
+  320 FOR K=1 TO 5
+  330 V=ABS(T-A(K))
+  340 IF V&lt;&gt;0 THEN 380
+  350 Q=5
+  360 A(K)=200
+  370 P=P+1
+  380 IF V=1 THEN 400
+  390 GOTO 410
+  400 F=F+1
+  410 IF V=9 THEN 430
+  420 GOTO 440
+  430 F=F+1
+  440 IF V=10 THEN 460
+  450 GOTO 470
+  460 F=F+1
+  470 IF V=11 THEN 490
+  480 GOTO 500
+  490 F=F+1
+  500 NEXT K
+  510 IF Q=5 THEN 590
+  520 IF F&gt;0 THEN 700
+  530 PRINT:PRINT "SCHADE DANEBEN, NOCH EIN MAL VERSUCHEN"
+  540 PRINT
+  550 GOTO 180
+  560 PRINT:PRINT "STREIFSCHUSS...WEITERMACHEN !"
+  570 PRINT
+  580 GOTO 180
+  590 PRINT:PRINT "GETROFFEN !"
+  600 IF P&lt;&gt;5 THEN 670
+  610 PRINT:PRINT "ALLE U-BOOTE VERSENKT MIT";N;"SCHUESSEN"
+  620 PRINT:PRINT:PRINT:PRINT "TIPPE 1 FUER NEUES SPIEL  ";
+  630 INPUT Z
+  640 IF Z=1 THEN CLS:GOTO 90
+  650 GOTO 730
+  660 PRINT
+  670 PRINT:PRINT "SCHUESSANZAHL BIS JETZT IST ";N
+  680 PRINT
+  690 GOTO 180
+  700 IF F=1 THEN 560
+  710 PRINT:PRINT F;"STREIF SCHUESSE,BESSER ZIELEN"
+  720 GOTO 570
+  730 END
+</pre>
+</div>
+</body>
+</html>

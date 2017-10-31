@@ -1,0 +1,24 @@
+<kurz src="Bildschirmseiten auf Kassette speichern"/>
+<lang>
+          T E L E T E X T
+      ----------------------
+
+Mit diesem Programm ist es moeglich, einzelne Bildschirmseiten
+auf Kassette zu speichern. 
+
+Bei 'Aufbau' erfolgt das beschreiben des Bildschirmes und
+des Zwischenspeichers. Korrekturen sind ohne weiteres
+moeglich. Zum vorzeitigen Programmierabschluss gelangt man
+durch betaetigen von 'ENT' Mit'Anzeigen/Aendern' wird der
+Speicherinhalt ausgedruckt;
+
+Korrekturen und Abbruch sind nach betaetigen von 'S' wie bei
+'Aufbau' realisierbar. Bei'Daten retten erfolgt das
+Abspeichern auf Kassette. 
+
+Durch 'Start' werden die Bilder auf den Bildschirm und in den
+Zwischenspeicher geladen. Mit 'S4'ist nach jeder vollen Seite
+der Sprung ins Grundmenue vollziehbar.
+          
+<include src="TELETEXT 1.b"/></lang>
+<requires></requires>

@@ -1,0 +1,5 @@
+<kurz src="Schiffe versenken auf einem 15x15 Feld"/>
+<lang>ähnlich [e997e701d6f8e77307f05aa604a9ce44], kleine Unterschiede in der Grafik 
+
+<include src=",SCHIFFE.b"/></lang>
+<requires></requires>

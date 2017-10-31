@@ -1,0 +1,4 @@
+<kurz src="fast identisch mit [a547e73840d6333f30f6b1e42649a7c6]"/>
+<lang>Diese Version hat noch einen kleinen Rechtschreibfehler
+<include src="NEW YORK.b"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Kontoführung"/>
+<lang><include src="KONTO.B"/></lang>
+<requires></requires>

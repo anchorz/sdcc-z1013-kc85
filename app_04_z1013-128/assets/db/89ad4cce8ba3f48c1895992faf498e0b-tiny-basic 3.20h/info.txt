@@ -1,3 +1,3 @@
-<kurz>Z1013 TINY-BASIC 3.20 H (+Hilfe)</kurz>
-<lang></lang>
+<kurz src="Z1013 TINY-BASIC 3.20 H (+Hilfe)"/>
+<lang>funktioniert wahrscheinlich nicht</lang>
 <required></required>

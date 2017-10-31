@@ -1,0 +1,61 @@
+<kurz src="STAR TRADERS, Weltraum-Handels-Spiel 2-4 Spieler"/>
+<lang>
+STAR TRADERS ist ein Weltraum-Handels-Spiel.Ziel ist es,
+Moeglichst viel Kapital zu erwirtschaften. Dies wird erreicht
+durch das errichten interstellarer Handelslinien und durch den
+Ankauf von Aktien der Gesellschaften, die diese Linien
+besitzen. Im Laufe des Spiels steigt der Wert der Aktien in
+dem Mass, indem die Gesellschaften groesser werden.
+Kleine Gesellschaften koennen in groessere umgewandelt werden,
+wobei das Kapital der kleineren Firma in das der groesseren wie
+nachstehend erlaeutert ueberfuehrt wird.
+In jeder Spielrunde bieter der Computer dem Spieler fuenf
+Plaetze an. Der Spieler antwortet, nachdem er sich auf der
+Sternenkarte angesehen hat, welchen Platz er wuenscht.Jeder
+Spieler kann dabei einen der vier grundsaetzlichen Zuege
+machen:
+
+1.Einen unabhaengigen Aussenposten gruenden. Wenn ein Spieler
+einen Platz besetzt, der nicht an einen Stern, einen anderen
+Aussenposten oder eine Handelslinie grenzt, wird dieser Platz
+mit einem '+' gekennzeichnet. Der Spieler kann dann weiter 
+handeln, wie unten beschrieben.
+
+
+2.Eine bestehende Handelslinie erweitern. Wird ein Platz belegt,
+der an eine einzige Linie grenzt so wird dieser Platz in diese
+Linie aufgenommen und und durch den ersten Buchstaben der
+Gesellschaft markiert. Falls Sterne oder Aussenposten diesen
+Platz beruehren, werden sie edenfalls in die Linie aufgenommen.
+
+Jedes Feld neben einem Stern erhoeht den Marktwert der 
+Gesellschaft um 500.- je Aktie, jeder Aussenposten bringt weitere
+100.- je Aktie.
+
+3.Eine neue Handelslinie gruenden.Belegt ein Spieler
+einen Platz der an einen Stern oder einen unabhaengigen 
+Aussenposten grenzt, aber keine bestehende Linie beruehrt, wird
+eine neue Handelslinie eroeffnet Der Spieler bekommt automatisch
+fuenf Aktien der neuen Linie als Anerkennung. Er kann dann 
+weiterhin Aktien aller aktiven Gesellschaften handeln.
+
+4.Zwei bestehende Gesellschaften vermischen. Wird ein Platz direkt
+neben bestehende Linien belegt, werden diese vermischt. Dabei
+uebernimmt die groessere die kleinere Firma. Das Kapital
+der vermischten Linie wird im Wert entsprechend den belegten
+Plaetzen und Sternen neu festgelegt. Die Anteile der Spieler an
+der Aufgeloesten Linie werden im Verhaeltnis 2:1 durch Aktien der
+neuen Linie ersetzt. Weiterhin bekommt jeder Spieler eine Bar
+verguetung entsprechend der prozentualen Anteile an der auf
+geloesten Linie.            
+                   
+Der Computer zahlt jedem Spieler eine Dividende (5% des Wertes
+der Aktien in seinem Besitz) und ermoeglicht den Handel mit
+Aktien aller bestehenden Gesellschaften. Uebersteigt der 
+Marktwert einer Aktie 3000.-DM wird diese im Verhaeltnis 2:1 ge-
+splittet.
+
+Gewinner ist der Spieler mit dem groesstem Geldbestand am Schluss        
+
+<include src="TRADERS.B"/></lang>
+<requires></requires>

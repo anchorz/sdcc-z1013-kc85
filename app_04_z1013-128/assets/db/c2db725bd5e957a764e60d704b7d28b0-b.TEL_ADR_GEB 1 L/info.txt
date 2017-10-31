@@ -1,0 +1,5 @@
+<kurz src="Adressen- und Telefondatenbank mit Geburtsdatum"/>
+<lang>erweiterte Version von [b1f8d678475cbd1842806e8e4e696b26]
+
+<include src="TEL_ADR_GEB 1 L.b"/></lang>
+<requires></requires>

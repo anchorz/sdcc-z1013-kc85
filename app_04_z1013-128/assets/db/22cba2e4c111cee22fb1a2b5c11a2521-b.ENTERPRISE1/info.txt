@@ -1,0 +1,3 @@
+<kurz src="ENTERPRISE 87, Echtzeitsimulation"/>
+<lang><include src="ENTERPRISE1.b"/></lang>
+<requires></requires>

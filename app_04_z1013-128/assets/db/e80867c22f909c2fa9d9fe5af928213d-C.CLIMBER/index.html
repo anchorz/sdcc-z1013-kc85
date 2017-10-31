@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+</div>
+<div class="filelist">0100 3fff 0103 C ... <a href="C.CLIMBER.z80">CLIMBER         </a></div>
+<div class="text">Steuerung: ⇦ ⇨ J ␣ 
+
+In diesem Spiel haben Sie die Aufgabe mit ihrer Spielfigur
+die im Raum verteilten Diamanten einzusammeln.
+
+Fuer jeden Diamanten gibt es einen Punkt. Ihre Figur kann
+mit den Kursortasten, SPACE ␣, sowie Taste >J< fuer Spruenge 
+gesteuert werden. Spruenge aus der Bewegung sind natuerlich
+hoeher.
+
+Achtung !!!   Achten Sie auf die Kugeln! Sie koennen das 
+Leben kosten !!! Sie sind aber durch einen Zauber mit
+sieben Leben ausgeruestet. 
+
+Sie haben aber nur fuenf Minuten Zeit!!
+                           
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1 REM    D.Hartung Soft  !6@!6!6==6= !6!6#6'⇘
+      !6!6&lt;#6&lt;!6!6=#6= !6.i&amp;&gt;D.iD:==2⇘
+      :_H:`a :_H(! 6 :J !6 :⇘
+      (!( *6 #~  "6*60J(s (b((0:&gt;⇘
+      *6 +~ ((&gt; #&gt;6"&gt;*6 #~ ((&gt; +&gt;⇘
+      6"*6&gt; : B &gt;  *6 R~( &gt; ⇘
+      # &gt; +~  Zw6"*#~ (*6  #~ ((6"⇘
+      !~(66*:(++#~ (*(6 !6!66"⇘
+      *{6  #~ ((6"{!~(66*{:(++#~ (*⇘
+      (6 !6!~66"{.*6  #~ ((6"!~(6⇘
+      6*:(++#~ (*(6 !6!66"!;
+      F :~::MMMMMMMMMMMMMMMMMMMMMMMMMMMM⇘
+      MMMMMMMMMMMMMMMMMM
+    4 B=0;C=0
+    5 G.5000
+    7 IFPE.(K)=196A=A-1;P=P+1
+    8 PO.K,138;C.H.(118A);RET.
+   10 REM PUNKTE
+   15 PO.43,88;PO.44,236;P.#5,P,
+   20 PO.H.(EC5D),32;C.H.(1174)
+   25 IFA=1GOS.3000
+   50 RET.
+  200 REM HAUPTPROGRAMM
+  205 F.S=1TO2500
+  206 F.N=1TOQ*12;N.N
+  208 C.H.(143F)
+  210 IF1=PE.(W+3)PO.W+3,0;PO.W,166+RND(20);PO.W+1,236
+  215 IF1=PE.(Y+3)PO.Y,166+RND(20);PO.Y+1,236;PO.Y+3,0
+  225 IF1=PE.(X+3)PO.X,166+RND(20);PO.X+1,236;PO.X+3,0
+  230 IF1=PE.(Y+2)PO.Y+2,0;G.2000
+  240 IF1=PE.(Z)PO.Z,0;P=P+1;A=A-1;GOS.10
+  300 N.S
+  305 C.H.(1199);C.H.(117B)
+  310 PO.43,160;PO.44,236
+  320 F.A=1TO5;GOS.1620;N.A
+  330 P."   Die 5 Minuten sind vorbei  ",
+  335 GOS.1620
+  337 P."   Sie haben die Zeit nicht   ",;GOS.1620
+  339 P."   voll Ausgenutzt. Schade.   ",
+  340 F.A=1TO15
+  350 GOS.1620;N.A
+  360 GOS.2605
+  370 F.A=1TO8000;N.A
+  380 G.2500
+  400 STOP
+ 1000 REM BILD
+ 1005 O=55;P=0;A=7
+ 1006 Q=9
+ 1011 P."",
+ 1012 GOS.1620
+ 1015 P."   Leben:       Punkte:       ",
+ 1016 GOS.1620
+ 1017 P."",
+ 1020 GOS.1620;GOS.1620
+ 1025 GOS.1620
+ 1030 P."      ",
+ 1032 F.T=1TO3;GOS.1610;N.T
+ 1033 GOS.1620
+ 1034 P."                   ",
+ 1036 F.T=1TO3;GOS.1600;N.T
+ 1037 GOS.1620
+ 1040 P."             ",
+ 1045 F.T=1TO4;GOS.1610;N.T
+ 1046 GOS.1620
+ 1050 P."           ",
+ 1051 F.T=1TO4;GOS.1615;N.T
+ 1065 P."* *           * *          * *",
+ 1068 GOS.2605
+ 1155 REM******INITIALISIERUNG
+ 1160 PO.L,O
+ 1170 GOS.10
+ 1175 PO.H.(EFAE),196
+ 1190 F.T=1TO5
+ 1195 C.H.(11A8)
+ 1198 N.T
+ 1200 REM FIGUR
+ 1205 Z=H.(11F5)
+ 1210 PO.Z-4,174;PO.Z-3,239
+ 1215 PO.Z-2,32 ;PO.Z-1,0
+ 1235 Y=H.(11FB);PO.Y,168
+ 1236 PO.Y+1,236;PO.Y+2,0
+ 1237 PO.Y+3,0;PO.Y+4,9
+ 1240 X=H.(137B);PO.X,184
+ 1241 PO.X+1,236;PO.X+2,0
+ 1242 PO.X+3,0;PO.X+4,8
+ 1250 W=H.(13DB);PO.W,175
+ 1251 PO.W+1,236;PO.W+2,0
+ 1252 PO.W+3,0;PO.W+4,9
+ 1260 PO.H.(143B),1
+ 1270 GOS.3000
+ 1275 IFC=1N.S
+ 1276 C=1
+ 1300 G.200
+ 1600 P."                           ",;RET.
+ 1610 P."                        ",;RET.
+ 1615 P."                     ",;RET.
+ 1620 P."",;TAB(30);P."",;RET.
+ 1999 RET.
+ 2000 REM GEFRESSEN
+ 2005 PO.R,32
+ 2010 PO.T,199
+ 2020 O=O-1;PO.L,O;IFO=48G.2500
+ 2100 F.R=1TO10;C.H.(1199);N.R
+ 2120 PO.T,32
+ 2150 Q=9
+ 2200 PO.43,160;PO.44,236
+ 2210 G.1020
+ 2500 REM ENDE
+ 2520 F.T=1TO10
+ 2530 C.H.(117B)
+ 2550 N.T
+ 2580 PO.43,160;PO.44,236
+ 2600 F.A=1TO25;GOS.1620;N.A
+ 2604 GOS.2605;G.2610
+ 2605 P."",;PO.H.(EFE0),32;RET.
+ 2610 PO.43,192;PO.44,236
+ 2620 P." Sie haben ",(55-O)," Leben ver-  ",
+ 2625 GOS.1620
+ 2630 P." spielt !! Aber Sie haben     ",
+ 2635 GOS.1620
+ 2640 P." dafuer immerhin ,",#3,P," Steine  ",
+ 2645 GOS.1620
+ 2650 P." eingesammelt. Das ist  ein   ",
+ 2655 GOS.1620
+ 2660 IFP&lt;12P." schlechtes Ergebnis.         ",;G.2672
+ 2665 IFP&lt;42P." gutes Ergebnis.              ",
+ 2670 IFP&gt;41P." Ausgezeichnetes Ergebnis.    ",
+ 2672 GOS.1620
+ 2674 IFB&gt;PP." Der Rekord liegt bei",#4,B," Pkt.",
+ 2675 IFB&gt;PG.2684
+ 2677 IFB=PP." Der Rekord damit eingestellt.",
+ 2680 IFB&lt;PP." Das ist neuer Rekord !!      ",;B=P
+ 2684 GOS.1620;GOS.1620
+ 2685 P." Moechten Sie noch einmal ?   ",
+ 2687 GOS.1620
+ 2688 P." (J/N)",;TAB(24);P."",
+ 2690 F.A=1TO8
+ 2691 GOS.1620;N.A
+ 2692 GOS.2605
+ 2693 C=0
+ 2695 A=INC.;IFA='J'G.1000
+ 2696 F.A=1TO16;P.;C.H.(117B);N.A
+ 2700 P."Auf Wiedersehen !"
+ 2710 F.A=1TO15;P.;C.H.(117B);N.A
+ 2999 STOP
+ 3000 REM PUNKTE
+ 3005 C.H.(118A)
+ 3007 A=7
+ 3010 K=H.(EEE4);GOS.7
+ 3012 K=H.(EEFB);GOS.7
+ 3020 K=H.(EE27);GOS.7
+ 3021 K=H.(EE38);GOS.7
+ 3030 K=H.(ECE3);GOS.7
+ 3031 K=H.(ECFC);GOS.7
+ 3050 Q=Q-3
+ 3200 RET.
+ 5000 REM SPIELREGEL
+ 5010 O.12
+ 5200 P.;P.;P."          C L I M B E R"
+ 5205 P.;P.;P.
+ 5210 F.A=H.(EC00)TOA+31
+ 5211 PO.A,184;PO.A+128,184
+ 5212 C.H.(1174);N.A
+ 5213 F.A=ATOA+96STEP32
+ 5214 PO.A,184;PO.A+1,184
+ 5215 PO.A+30,184;PO.A+31,184
+ 5220 C.H.(1174);N.A
+ 5300 P.
+ 5305 P."  In diesem  Spiel  haben  Sie  "
+ 5310 P."  die Aufgabe mit ihrer Spiel-  "
+ 5320 P."  figur die im Raum verteilten  "
+ 5330 P."  () Diamanten einzusammeln .  "
+ 5335 P."  Fuer jeden Diamanten gibt es  "
+ 5340 P."  einen Punkt. Ihre Figur kann  "
+ 5350 P."  nach  und  mit den Kursor-  "
+ 5355 P."  tasten, &gt;STOP&lt; mit SP, sowie  "
+ 5360 P."  Taste &gt;J&lt; fuer Spruenge  ge-  "
+ 5370 P."  steuert werden. Spruenge aus  "
+ 5375 P."  der Bewegung sind natuerlich  "
+ 5380 P."  hoeher.   Weiter ?            "
+ 5390 A=INC.
+ 5395 GOS.5400;G.5418
+ 5400 C.H.(1199);C.H.(117B)
+ 5410 PO.27,0;PO.28,236;PO.29,32;PO.30,236
+ 5415 PO.35,0;PO.36,4
+ 5416 F.A=1TO25;C.H.(1174)
+ 5417 C.H.(F51D);N.A;RET.
+ 5418 P.;P.;P.
+ 5420 P."  Achtung !!!   Achten Sie auf"
+ 5425 P."  "
+ 5430 P."  die Kugeln! Sie koennen dem  "
+ 5440 P."  das Leben kosten !!! Das      "
+ 5450 P."   ist aber durch ein Zauber   "
+ 5451 P."  mit sieben Leben ausgeruestet."
+ 5452 P."  Sie haben aber nur fuenf      "
+ 5453 P."  Minuten Zeit dafuer !!        "
+ 5454 P.;P.;P."  Alles klar ?";P.
+ 5455 P."  (J/N)"
+ 5460 P.;P.;P.
+ 5995 A=INC.;IFA#'J'GOS.5400;G.5300
+ 5999 GOS.5400;G.1000
+</pre>
+</div>
+</body>
+</html>

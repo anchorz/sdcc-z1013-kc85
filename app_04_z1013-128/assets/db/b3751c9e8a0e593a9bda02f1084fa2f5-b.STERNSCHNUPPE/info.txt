@@ -1,0 +1,7 @@
+<kurz src="Anaconda-Variante, .'s aufsammeln und *** werden länger"/>
+<lang>
+
+Steuerung: ⇦ ⇨ U ␣
+
+<include src="STERNSCHNUPPE.b"/></lang>
+<requires></requires>

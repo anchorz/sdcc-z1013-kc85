@@ -1,0 +1,6 @@
+<kurz src="Autorennen in Draufsicht"/>
+<lang>
+Steuerung: unbekannte Tastatur. Wieder die IN(2)-Methode
+
+<include src="AUTORENNEN.b"/></lang>
+<requires></requires>

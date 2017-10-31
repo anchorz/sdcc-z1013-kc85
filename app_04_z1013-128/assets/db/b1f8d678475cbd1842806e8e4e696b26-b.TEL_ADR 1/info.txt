@@ -1,0 +1,10 @@
+<kurz src="ADRESSEN-UND TELEFONNUMMERN-VERZEICHNIS"/>
+<lang>modifizierte Version von [29254daf03eb9a8f44833a9f6afaa6f5]
+
+Was soll das bewirken?
+ 5041 IF W=1 GOTO5050
+ 5042 F.Y=H.(3096) TO H.(309F)
+ 5043 POKE Y,32;N.Y
+
+<include src="TEL_ADR 1.b"/></lang>
+<requires></requires>

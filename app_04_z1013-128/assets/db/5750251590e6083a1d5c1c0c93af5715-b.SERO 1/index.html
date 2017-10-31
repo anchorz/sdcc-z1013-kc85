@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png" alt="Screenshot 1" height="384"  />
+<img src="screenshot_02.png" alt="Screenshot 2" height="384"  >
+</div>
+<div class="filelist">1000 1b19 0000 b ... <a href="b.SERO%201.z80">SERO 1          </a></div>
+<div class="text">Wahnsinnig aufregend!
+SIE SOLLEN VERSUCHEN MIT 200 SCHRITTEN,
+SO VIEL WIE MOEGLICH, ALTSTOFFE SAMMELN.
+ 
+Steuerung: ⇦ ⇨ U ␣
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1 OUTCHAR 12
+    2 FOR I=1 TO 32;OUTCHAR 184;NEXT I
+    3 PR.;PR."A L T S T O F F S A M M L U N G";PR.
+    4 F.I=1TO32;OUTC.185;N.I
+    5 PR.;PR."SIE SOLLEN VERSUCHEN MIT 200"
+    6 PR."                         ==="
+    7 PR."SCHRITTEN,SO VIEL WIE MOEGLICH,"
+    8 PR.;PR."ALTSTOFFE IN FORM VON:"
+    9 PR.;PR."     PAPIER   = #"
+   10 PR.;PR."     DOSEN    = "
+   11 PR.;PR."     FLASCHEN = "
+   12 PR.;PR."FUER DIE ABGABE ZU SAMMELN !!!"
+   13 F.I=1TO2000;N.I;F.I=1TO32;OUTC.160;N.I
+   14 PR."ABER ACHTUNG: IHRE ERFOLGLOSEN";PR.;PR."SCHRITTE ",
+   15 PR."WERDEN AUCH NOTIERT !!";F.I=1TO32;OUTC.160;N.I
+   16 F.I=1TO2000;N.I;F.I=1TO32;OUTC.160;N.I;
+   17 PR."SIND SIE SAMMELBEREIT,DANN";PR.;PR."DRUECKEN SIE EINE ",
+   18 PR."TASTE";PR.;PR."VOM STEUERGRIFF"
+   19 F.I=1TO32;OUTC.160;N.I
+   20 W=INCHAR
+   21 IF W#13 GOTO 25
+   25 OUTCHAR 12
+   28 F.I=1TO64;OUTC.166;N.I
+   30 F.B=1 TO 50
+   31 TAB(RND(3))
+   32 OUTCHAR 35
+   33 TAB(RND(3))
+   34 OUTCHAR 14
+   35 TAB(RND(3))
+   36 OUTCHAR 18
+   39 NEXT B
+   40 PR.
+   42 F.I=1TO64;OUTC.166;N.I
+   43 PR.
+   73 B=16;A=15
+   74 Z=-1
+   75 L=0;N=0;O=0;U=0
+   76 P=0
+   78 C=A;D=B
+   90 Z=Z+1
+   92 IF Z=200 GOTO 300
+  100 W=255
+  105 GOSUB 295
+  110 E=INCHAR
+  120 IF E=0 GOTO 110
+  125 W=32
+  126 GOSUB 295
+  127 C=A;D=B
+  130 IF E=85 C=A-1
+  132 IF E=32 C=A+1
+  134 IF E=08 D=B-1
+  136 IF E=09 D=B+1
+  140 IF Z=50  GOS.400
+  142 IF Z=100 GOS.400
+  144 IF Z=150 GOS.400
+  146 IF Z=175 GOS.400
+  148 IF Z=189 GOS.440
+  150 IF P=5 G.450
+  170 M=(HEX(EC00)+(HEX(20)*C)+D)
+  171 IF (PEEK(M))=166 P=P+1
+  173 IF (PEEK(M))=14 L=L+1
+  175 IF (PEEK(M))=18 O=O+1
+  177 IF (PEEK(M))=35 N=N+1
+  179 IF (PEEK(M))=32 U=U+1
+  205 A=C;B=D
+  210 W=23
+  212 GOSUB 295
+  272 IF (PEEK(M))=35 GOTO 100
+  275 GOTO 90
+  295 POKE(HEX(EC00)+(32*A)+B),W
+  296 RETURN
+  300 OUTCHAR 12
+  305 F.I=1TO32;OUTC.197;N.I
+  310 PR.;PR."DER ERFOLG IHRER SAMMELAKTION :"
+  311 PR.
+  315 F.I=1TO32;OUTC.199;N.I
+  320 PR.;PR.;PR."SIE HABEN :",L," PAPIERFETZEN"
+  322 PR.;PR."           ",N," FLASCHEN"
+  324 PR.;PR."           ",O," BLECHDOSEN"
+  326 PR.;PR."FUER DIE ALTSTOFFSAMMLUNG"
+  328 PR.;PR."ERFOLGREICH GESUCHT !!!"
+  329 PR.
+  330 F.I=1TO32;OUTC.139;N.I
+  340 PR.;PR."TROTZDEM HATTEN SIE NOCH",U,"
+  342 PR.;PR."SCHRITTE DIE OHNE ERFOLG BLIEBEN"
+  350 F.I=1TO32;OUTC.166;N.I
+  351 IF P&gt;=1 G.353
+  352 G.356
+  353 PR.
+  354 PR."AUSSERDEM HABEN SIE",#2,P," MAL"
+  355 PR.;PR."DEN ZAUN BESCHAEDIGT !!"
+  356 PR.
+  357 F.I=1TO32;OUTC.166;N.I
+  358 F.I=1TO20000;N.I;G.25
+  400 PR."  SIE HABEN JETZT",#4,Z," SCHRITTE"
+  405 F.I=1TO32;OUTC.160;N.I
+  410 RET.
+  440 F.I=1TO32;OUTC.42;N.I
+  443 PR."  ACHTUNG NUR NOCH 10 SCHRITTE"
+  445 F.I=1TO32;OUTC.42;N.I
+  448 RET.
+  450 PR."NUN REICHT ES MIR ABER !!!"
+  451 PR.;PR."SIE SOLLEN SAMMELN,ABER NICHT"
+  452 PR.;PR."RANDALIEREN."
+  453 PR.;PR."ICH UNTERBRECHE JETZT DAS SPIEL,"
+  454 PR."DAMIT SIE DEN ZAUN WIEDER"
+  455 PR.;PR."REPARIEREN KOENNEN !!"
+  456 G.358
+</pre>
+</div>
+</body>
+</html>

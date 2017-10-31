@@ -1,0 +1,12 @@
+<kurz src="Ball gegen die Mauer spielen"/>
+<lang>Steuerung: ⇦ ⇨  ␣ 
+
+
+ZERSCHIESSEN SIE DIE MAUER MIT 3 BAELLEN!
+
+BEWEGEN SIE DEN SCHLAEGER MIT ⇦  UND ⇨ 
+
+BALLEINGABE MIT DER LEERTASTE                          
+
+<include src="BREAKOUT.b"/></lang>
+<requires></requires>

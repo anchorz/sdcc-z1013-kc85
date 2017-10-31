@@ -1,0 +1,5 @@
+<kurz src="statt Wurftauben auf Enten schießen"/>
+<lang>Steuerung: U
+
+<include src="ENTENJAGD.B"/></lang>
+<requires></requires>

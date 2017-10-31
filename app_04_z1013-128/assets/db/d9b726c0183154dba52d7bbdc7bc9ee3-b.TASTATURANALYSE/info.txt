@@ -1,0 +1,3 @@
+<kurz src="Tastaturcodes und ASCII-Zeichen anzeigen"/>
+<lang><include src="TASTATURANALYSE.b"/></lang>
+<requires></requires>

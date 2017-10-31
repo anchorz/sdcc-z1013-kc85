@@ -1,0 +1,7 @@
+<kurz src="ältere Version von [013e4e8402d0b96894953260821c578c]"/>
+<lang>
+
+Steuerung: G
+
+<include src="jagd.B"/></lang>
+<requires></requires>

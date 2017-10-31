@@ -1,0 +1,9 @@
+<kurz src="ballistische Rakete mit 3 Versuchen abschiessen"/>
+<lang>ähnlich [26406f564a96bc07da17d073c7253a1b]
+
+Steuerung ist etwas anders A statt SPACE, ENTER statt J 
+
+Steuerung: ⇦ ⇨ A
+
+<include src="RAKETE.B"/></lang>
+<requires></requires>

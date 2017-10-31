@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.png" alt="Screenshot 1" height="384"  />
+</div>
+<div class="filelist">1000 1eca 0000 b ... <a href="b.AUTORENNEN.z80">AUTORENNEN      </a></div>
+<div class="text">
+Steuerung: unbekannte Tastatur. Wieder die IN(2)-Methode
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   50 OUT(1)=207;OUT(1)=0;OUT(2)=95
+   60 O=0
+   61 E=0
+   70 A=5;GOS.9000
+   72 P=1
+   75 P."SCHWIERIGKEITSSTUFE:",#2,P,
+   80 P.;P.;P.;P.;P.
+   90 F.I=1TO31;OUTC.160;N.I
+   93 P.;P.
+  100 F.I=1TO3
+  110 F.J=1TO16
+  120 OUTC.160;OUTC.32
+  140 N.J
+  160 P.
+  170 N.I
+  180 F.I=1TO31;OUTC.160;N.I
+  190 P.
+  200 PO.H.(ED45),164;PO.H.(ED45)+8*32,162
+  500 B=H.(EC1E)+352
+  705 GOS.709;G.750
+  709 P.
+  710 TAB(10);P.E
+  715 OUT(0)=1
+  720 P.
+  722 P."       PUNKTE:",
+  724 P.#2,O,
+  725 OUT(0)=0
+  730 RETURN
+  750 REM
+  760 S=25
+  761 K=0
+  770 F.Q=1TO2
+  780 F.R=1TO2
+  785 IFQ=2S=S+1
+  790 G.800
+  792 F.B=BTOB+K-1
+  793 PO.B-1,32;PO.B,206
+  794 OUT(0)=0;F.L=1TO200;N.L
+  795 OUT(0)=1;N.B;OUT(0)=0
+  798 B=B-1
+  799 RETURN
+  800 F.K=1TOS
+  840 PO.B,206
+  850 IFR=2G.910
+  900 F.J=1TOK/4
+  902 IFK&gt;8F.J=1TO(K+1)/7;IFK&gt;21F.J=1TO(K-21)*5
+  903 IFK&gt;24F.J=1TO5
+  904 G.950
+  910 F.J=1TOK/3
+  912 IFK&gt;8F.J=1TO(K+1)/6;IFK&gt;22F.J=1TO(K-22)*6
+  914 IFK=27F.J=1TO10
+  950 REM
+ 1050 D=RND(((K/7)+1)*10)/10;IFD#0G.1100
+ 1060 C=B-31+K
+ 1070 G.1190
+ 1100 C=-4768+RND(39)/10*64
+ 1190 F=(C+4768)/64
+ 1195 O=O+1
+ 1200 F.I=CTOC+31
+ 1220 PO.I,205
+ 1226 G=B
+ 1230 IFIN(2)=95GOTO1260
+ 1240 IFIN(2)=87IFB&lt;H.(EE21)B=B+64;PO.B,206;PO.B-64,32;G.1260
+ 1250 IFIN(2)=94IFB&gt;H.(ED7F)B=B-64;PO.B,206;PO.B+64,32;G.1260
+ 1260 IFPEEK(I)=206G.2000
+ 1270 IFPEEK(I+1)=206G.2000
+ 1280 PO.I,32
+ 1290 N.I
+ 1300 N.J
+ 1350 B=B-1;PO.B+1,32
+ 1400 N.K
+ 1410 PO.B,206
+ 1414 OUT(0)=1;OUT(0)=0
+ 1418 PO.H.(2B),H.(60)
+ 1420 GOS.709;P.
+ 1421 P.
+ 1422 @(1)='S';@(2)='T';@(3)='O';@(4)='P'
+ 1425 F.I=H.(ED60)TOH.(EE20)STEP64
+ 1427 PO.I,@((I-H.(ED60))/64+1)
+ 1428 IFI=H.(EE20)GOS.3000
+ 1429 N.I
+ 1430 P=P+1;IFP=5G.5000
+ 1431 F.I=1TO10
+ 1432 PO.H.(ECB5),32;OUT(0)=1
+ 1433 F.L=1TO100;N.L
+ 1435 PO.H.(ECB5),P+48
+ 1437 OUT(0)=0
+ 1438 F.L=1TO200;N.L;N.I
+ 1600 F.I=H.(EE20)TOH.(ED60)STEP-64
+ 1610 PO.I,32
+ 1612 F.L=1TO500;N.L
+ 1615 N.I
+ 1620 P.
+ 1625 GOS.792
+ 1630 IFQ=2GOS.1710
+ 1632 IFQ=1IFR=2GOS.1710
+ 1635 F.L=10TO1STEP-1
+ 1636 F.I=1TO300;N.I
+ 1637 F.I=1TO1300;N.I
+ 1638 P."  START IN ",#1,L," SEKUNDEN !"
+ 1639 OUT(0)=1
+ 1640 PO.H.(2B),0
+ 1645 OUT(0)=0
+ 1650 N.L
+ 1652 F.L=1TO1330;N.L
+ 1655 P.
+ 1660 PO.H.(2C),H.(EE)
+ 1670 PO.H.(EF20),32
+ 1700 N.R
+ 1705 G.1800
+ 1710 IFQ=2J=-4541;K=H.(ED43)
+ 1711 IFR=2J=-4540;K=H.(ED44)
+ 1718 F.I=1TO10
+ 1720 PO.K,160;PO.K+1,164
+ 1725 POKE J,160;PO.J+1,162
+ 1727 F.L=1TO900;N.L
+ 1728 OUT(0)=1
+ 1730 PO.K,164;PO.K+1,160
+ 1740 PO.J,162;PO.J+1,160
+ 1745 F.L=1TO900;N.L
+ 1746 OUT(0)=0
+ 1750 N.I
+ 1755 RETURN
+ 1800 N.Q
+ 1999 ST.
+ 2000 REM
+ 2005 E=E+1
+ 2010 IFPEEK(I)=206 G.2100
+ 2020 F.L=1TO10
+ 2025 OUT(0)=1
+ 2030 PO.I+1,206
+ 2031 F.M=1TO50;N.M
+ 2033 PO.I,32
+ 2035 F.M=1TO200;N.M
+ 2040 PO.I,205
+ 2041 OUT(0)=0
+ 2042 F.M=1TO50;N.M
+ 2043 PO.I+1,32
+ 2045 F.M=1TO198;N.M
+ 2050 N.L
+ 2060 PO.I+1,206
+ 2080 G.2300
+ 2100 REM
+ 2105 H=PEEK((G+I)/2)
+ 2110 PO.(G+I)/2,206;PO.I,205
+ 2130 F.M=1TO10
+ 2132 OUT(0)=1
+ 2140 PO.(G+I)/2,206
+ 2142 F.L=1TO50;N.L
+ 2145 PO.I,32
+ 2147 F.L=1TO300;N.L
+ 2148 OUT(0)=0
+ 2150 PO.I,205
+ 2157 F.L=1TO50;N.L
+ 2160 PO.(G+I)/2,32
+ 2163 F.L=1TO300;N.L
+ 2165 N.M
+ 2170 PO.(G+I)/2,206
+ 2172 F.L=1TO500;N.L
+ 2174 PO.G,206;B=G;PO.(G+I)/2,H
+ 2220 G.2400
+ 2300 IFF&lt;2G.2350
+ 2310 I=I-32;G=PEEK(I);PO.I,205
+ 2312 PO.I+32,32
+ 2315 F.M=1TO100;N.M
+ 2320 PO.I,G;I=I-32;PO.I,205
+ 2347 G.2400
+ 2350 REM
+ 2352 I=I+32;G=PEEK(I);PO.I,205
+ 2355 PO.I-32,32
+ 2360 F.M=1TO100;N.M
+ 2370 PO.I,G;I=I+32;PO.I,205
+ 2400 F.I=ITOI+30
+ 2405 F.M=1TO100;N.M
+ 2410 PO.I-1,32
+ 2415 IFPEEK(I+1)#32G.2500
+ 2420 PO.I,205
+ 2450 N.I
+ 2500 REM
+ 2505 PO.H.(2B),H.(60)
+ 2507 GOS.709
+ 2510 G.1300
+ 3000 REM ENDE MIT RET !
+ 3050 F.I=1TO10
+ 3055 PO.B,32
+ 3057 F.L=1TO500;N.L
+ 3059 PO.B,206
+ 3061 F.L=1TO500;N.L
+ 3065 N.I
+ 3070 IFP=4RETURN
+ 3100 P.;P.;P.;P." WEITER MIT &gt;ENT&lt;  (N=ENDE)",;L=INC.
+ 3105 IFL='N'G.5300
+ 3106 F.I=1TO128
+ 3107 OUTC.32;OUTC.8;OUTC.8
+ 3108 N.I
+ 3110 PO.H.(2C),H.(EE)
+ 3500 RETURN
+ 5000 REM
+ 5010 F.I=1TO5000;N.I
+ 5020 A=5;GOS.9000
+ 5030 P."SIE HABEN DIE DURCHFAHRT MIT";P.
+ 5035 IFE=1P."EINEM ",;G.5050
+ 5040 P.#1,E," ZUSAMMENSTOESSEN BEWAELTIGT"
+ 5045 IFE#1G.5070
+ 5050 P."ZUSAMMENSTOSS BEWAELTIGT."
+ 5070 REM
+ 5080 P.;P."ERREICHTE PUNKTZAHL:",#2,O
+ 5090 P.;P.;P."WOLLEN SIE WEITERSPIELEN ?"
+ 5100 P.;P."JA=ENT/NEIN=N :",
+ 5110 L=INC.
+ 5200 IFL#'N'G.70
+ 5300 GOS.9000;P."ENDE";ST.
+ 8000 ST.
+ 9000 OUTC.12;F.I=1TOA;P.;N.I
+ 9001 RETURN
+</pre>
+</div>
+</body>
+</html>

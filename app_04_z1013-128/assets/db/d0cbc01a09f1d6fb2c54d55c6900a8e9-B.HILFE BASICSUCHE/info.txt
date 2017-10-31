@@ -1,0 +1,5 @@
+<kurz src="BASIC Parser, Programmstruktur anzeigen FOR/NEXT GOTO GOSUB etc"/>
+<lang>wird nach dem Programm ab Zeile 30000 geladen. 
+Start: GOTO 30000
+<include src="HILFE BASICSUCHE.B"/></lang>
+<requires></requires>

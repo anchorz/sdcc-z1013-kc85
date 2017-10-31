@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+</div>
+<div class="filelist">1000 1eb7 0000 b ... <a href="b.INVASION.z80">INVASION        </a></div>
+<div class="text">
+
+Steuerung: ⇦ ⇨ ␣ 
+
+
+**********INVASION*********
+
+
+DIE CYLONEN WOLLEN DIE ERDE EROBERN.
+DU MUST MIT DER LETZTEN PROTONENKANONE 
+DIE INVASION VERHINDERN.
+
+SCHIESSE MIT ⇦ ␣ ⇨ 
+AUF DIE CYLONEN-RAUMSCHIFFE
+
+JEDER TREFFER MIT DER :
+LINKEN KANONE     50 PUNKTE
+MITTLEREN KANONE  75 PUNKTE
+RECHTEN KANONE   100 PUNKTE
+
+JEDES GELANDETE RAUMSCHIFF VERMINDERT 
+DEINE CHANCE !
+                           
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 OUTC.12
+   15 G.900
+   20 PR.;PR.;PR."**********INVASION*********"
+   30 PR.;PR.;PR."DIE CYLONEN WOLLEN DIE ERDE"
+   40 PR.;PR."EROBERN."
+   50 PR.;PR."DU MUST MIT DER LETZTEN"
+   60 PR.;PR."PROTONENKANONE DIE INVASION"
+   70 PR.;PR."VERHINDERN."
+   80 PR.;PR.;PR."SCHIESSE MIT &lt;- ,LEERTA.UND -&gt;"
+   90 PR.;PR."AUF DIE CYLONEN-RAUMSCHIFFE"
+  100 PR.;PR."JEDER TREFFER MIT DER :"
+  110 PR."LINKEN KANONE     50 PUNKTE"
+  120 PR."MITTLEREN KANONE  75 PUNKTE"
+  130 PR."RECHTEN KANONE   100 PUNKTE"
+  140 PR.;PR."JEDES GELANDETE RAUMSCHIFF"
+  150 PR.;PR."VERMINDERT DEINE CHANCE !"
+  160 PR.;PR."ALLES KLAR? DANN J-TASTE"
+  170 L=INC.
+  180 IF L#74 G.170
+  190 OUTC.12
+  200 F.I=0 TO 992 STEP 32
+  210 PO.H.(EC00)+I,180;PO.H.(EC01)+I,180
+  220 N.I
+  230 F.I=0 TO29
+  240 PO.H.(EF62)+I,182
+  250 N.I
+  260 F.I=0 TO3
+  270 PO.H.(EF5C)+I,255
+  280 N.I
+  290 PO.H.(EF3C),149;PO.H.(EF3D),145;PO.H.(EF3E),156
+  300 PO.H.(EFA6),80;PO.H.(EFA7),85;PO.H.(EFA8),78
+  310 PO.H.(EFA9),75;PO.H.(EFAA),84;PO.H.(EFAB),69
+  320 PO.H.(EFAD),58;PO.H.(EFB3),48
+  330 P=0;Z=0;V=0
+  350 L=32*RND(10);M=L+32*RND(10)
+  360 R=RND(24);S=RND(24)
+  362 IF R=S G.360
+  363 T=RND(24)
+  364 IF T=S G.363
+  365 IF T=R G.363
+  370 I=1;J=1;N=1
+  380 F.K=0  TO 800+M  STEP 32
+  390 GOS.1000
+  400 IF K&gt;800 G.420
+  410 IFI=1 PO.H.(EC23)+K+R,202;PO.H.(EC23)+K+R-32,32
+  420 IF K-L&lt;0 G.450
+  430 IF K-L&gt;800 G.450
+  435 GOS.1000
+  440 IF J=1 PO.H.(EC23)+K-L+S,202;PO.H.(EC23)+K-L+S-32,32
+  450 IF K-M&lt;0 G.465
+  455 GOS.1000
+  460 IF N=1 PO.H.(EC23)+K-M+T,202;PO.H.(EC23)+K-M+T-32,32
+  465 IF V=1 G.710
+  470 IFI=1 G.510
+  480 IF J=1  G.510
+  490 IF N=1 G.510
+  500 G.350
+  510 N.K
+  530 K=I+J+N
+  540 F.I=0 TO K-1
+  550 Z=Z+32
+  560 PO.H.(EC00)+Z-32,32
+  570 IF Z=992 G.600
+  580 N.I
+  590 G.350
+  600 OUTC.12
+  610 IF P&gt;15000 G.660
+  620 PR.;PR.;PR.;PR."DU HAST VERLOREN !"
+  630 PR.;PR."NUR",P,;PR." PUNKTE-BEGIB DICH"
+  640 PR.;PR."IN GEFANGENSCHAFT !"
+  645 PR.;PR."ODER WILLST DU EIN NEUES SPIEL?  DANN J-TASTE"
+  650 G.800
+  660 PR.;PR.;PR.;PR."DU HAST GEWONNEN !"
+  670 PR.;PR."DIE MEHRHEIT DER CYLONEN IST     VERNICHTET."
+  680 PR.;PR."ERREICHTE PUNKTZAHL :",P
+  690 PR.;PR."WILLST DU NOCH EIN SPIEL(J) ?"
+  700 G.800
+  710 F.I=0 TO 4
+  720 OUTC.12
+  722 F.J=0 TO 100
+  725 N.J
+  730 PR.;PR.;PR.;PR."SUPER-DU BIST DER KING !"
+  740 J=0;OUT(0)=H.(A0)
+  750 J=J+1
+  755 IF J&lt;20 G.750
+  757 OUT(0)=15
+  760 N.I
+  770 PR.;PR."HERZLICHEN GLUECKWUNSCH !"
+  780 PR.;PR."DU HAST",P,;PR."PUNKTE ERREICHT!"
+  790 PR.;PR."WIE WAERS NOCH MAL(J) ?"
+  800 I=INC.
+  810 IF I=74 G.190
+  820 STOP
+  900 @(1)=H.(CD);@(2)=H.(30);@(3)=H.(F1);@(4)=H.(32)
+  910 @(5)=H.(C0);@(6)=0;@(7)=H.(C9);X=H.(C0)
+  920 F.I=1TO7
+  930 PO.X+I,@(I)
+  940 N.I;OUT(1)=H.(0F);OUT(1)=H.(03);G.20
+ 1000 C.H.(C1)
+ 1010 C=PE.(H.(C0))
+ 1020 IFC&gt;0D=0;E=0;H=0;GOS.1100
+ 1030 RE.
+ 1100 OUT(0)=H.(C6);OUT(0)=15
+ 1105 IF C=8 G.1140
+ 1110 IF C=32G.1250
+ 1120 IF C=9G.1340
+ 1130 RE.
+ 1140 C=PE.(H.(EF3B));G=24;F=0
+ 1150 IFC=202PO.H.(EF3B),141;D=1;PO.H.(EF3B),32;GOS.1500;RE.
+ 1160 F.A=0TO363STEP33
+ 1170 F.B=0TO1;C=PE.(H.(EF1A)-A-B-F);G=G-1
+ 1190 PO.H.(EF3B)-A-F-(B*33),32;Y=A+B+F
+ 1200 IFC=202PO.H.(EF1A)-Y,141;D=1;PO.H.(EF1A)-Y,32;GOS.1500;RE.
+ 1210 PO.H.(EF1A)-Y,217-(3*B);N.B;F=F+1;N.A;RE.
+ 1250 C=PE.(H.(EF1C));G=25
+ 1260 IFC=202PO.H.(EF1C),141;E=1;PO.H.(EF1C),32;GOS.1500;RE.
+ 1270 F.A=0TO759STEP33;C=PE.(H.(EEFB)-A);G=G-1;PO.H.(EF1C)-A,32
+ 1300 IFC=202PO.H.(EEFB)-A,141;E=1;PO.H.(EEFB)-A,32;GOS.1500;RE.
+ 1310 PO.H.(EEFB)-A,218;N.A;RE.
+ 1340 G=27;F=0
+ 1350 F.A=0TO704STEP64;G=G-1
+ 1370 F.B=0TO1;Y=A+F+B*32
+ 1380 C=PE.(H.(EEFD)-Y);PO.H.(EF1E)-A-(B*33)-F,32
+ 1400 IFC=202PO.H.(EEFD)-Y,141;H=1;PO.H.(EEFD)-Y,32;GOS.1500;RE.
+ 1410 PO.H.(EEFD)-Y,214+(3*B);N.B;F=F+1;N.A;RE.
+ 1500 OUT(0)=H.(94);P=P+50*D+75*E+100*H;U=P;OUT(0)=15
+ 1510 IFP&gt;30000V=1;RE.
+ 1520 F.W=0TO4
+ 1530 X=U-(U/10)*10;PO.H.(EFB3)-W,48+X;U=U/10;N.W
+ 1570 IF G=R I=0
+ 1580 IF G=S J=0
+ 1590 IF G=T N=0
+ 1600 RE.
+ 5000 Co.by Dr.H.Faenger,J.-     Dieckmann-Str.2,Bernburg,4350
+</pre>
+</div>
+</body>
+</html>

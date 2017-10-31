@@ -1,5 +1,9 @@
-<kurz src="FLIEGEN MIT FLUGZEUG vv IM ALL."/>
-<lang>BILD 1:
+<kurz src="FLIEGEN MIT FLUGZEUG vv IM ALL. (Brosig)"/>
+<lang>ähnlich [a9e95b44f607260f45acfb1cbf4943c8], Tastatureingabe und
+einige Texte sind unterschiedlich. Hier wird der Code von INKEY auf
+die Spalten entsprechende Spalte gemapped.
+
+BILD 1:
 
 SIE FLIEGEN MIT IHREM FLUGZEUG vv IM ALL.
 SIE MUESSEN IHRE GEGNER * ABSCHIESSEN, OHNE

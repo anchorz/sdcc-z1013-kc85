@@ -1,0 +1,13 @@
+<kurz src="U-Boot Jagd, 5 Schiffe versenken"/>
+<lang>Ein SCHNELLBOOT der Laenge 1 wurde in Marsch gesetzt!
+
+Ein FLUGZEUGTRAEGER der Laenge 5 wurde in Marsch gesetzt!
+
+Ein KREUZER der Laenge 4 wurde in Marsch gesetzt!
+
+Ein VERSORGUNGSSCHIFF der Laenge 3 wurde in Marsch gesetzt!
+
+Ein MIENENSUCHBOOT der Laenge 2 wurde in Marsch gesetzt!
+
+<include src="U-BOOT (U-BOOT).B"/></lang>
+<requires></requires>

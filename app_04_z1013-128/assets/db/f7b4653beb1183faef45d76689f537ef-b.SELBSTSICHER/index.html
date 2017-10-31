@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+<img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+<img src="screenshot_02.jpg" alt="Screenshot 2" height="384"  >
+</div>
+<div class="filelist">1000 305a 0000 b ... <a href="b.SELBSTSICHER.z80">SELBSTSICHER    </a></div>
+<div class="text">
+
+ICH WUENSCHE MEINE MITMENSCHEN WUERDEN MIR MEHR MUT MACHEN
+Ihre Antwort:    ....
+
+<pre>Zeichensatz UTF-8+Z1013()-CTRL()-ohne Umlaute(äöüß)
+
+    1 OUTC.12
+    5 A=H.(3F00);PO.A,231;PO.A+1,4;PO.A+2,50;PO.A+3,255
+    6 PO.A+4,62;PO.A+5,201
+   15 TAB(320)
+   20 PR."              Der"
+   25 TAB(64)
+   30 PR."        Persoenlichkeits"
+   35 TAB(64)
+   40 PR."              test"
+   45 FORA=1TO5000;N.A
+   50 OUTC.12
+   52 TAB(517);PR."SIND SIE SELBSTSICHER?"
+   55 FORA=H.(EE25)TOH.(EE3B)
+   57 PO.A,248
+   59 N.A
+   75 FORA=1TO5000;N.A
+   80 OUTC.12
+   85 TAB(896)
+   90 PR."Entscheiden Sie sich spontan!"
+   95 PR."Sie haben nur 10 sec. Zeit"
+  100 PO.27,H.(40)
+  101 PO.28,H.(EC)
+  102 PO.29,H.(E0)
+  103 PO.30,H.(EC)
+  110 PO.H.(3EF0),H.(E7);PO.H.(3EF1),H.(B);PO.H.(3EF2),H.(C9)
+  120 C.H.(3EF0)
+  150 GOS.1000
+  190 L=0
+  200 PR."ICH WUENSCHE MEINE MITMENSCHEN"
+  201 PR."WUERDEN MIR MEHR MUT MACHEN"
+  205 GOS.X
+  210 PR."ICH FUEHLE MICH BERUFLICH"
+  211 PR."UEBERFORDERT."
+  212 GOS.X
+  220 PR."WENN ICH AN MEINE ZUKUNFT DENKE"
+  221 PR.",HABE ICH EIN UNGUTES GEFUEHL."
+  222 GOS.X
+  230 PR."VIELE LEUTE FINDEN MICH WENIG"
+  231 PR."SYMPATHISCH."
+  232 GOS.X
+  240 PR."ICH HABE WENIGER TATKRAFT UND"
+  241 PR."INITIATIVE ALS ANDERE."
+  242 GOS.X
+  245 REM VORLAEFIGER ABBRUCH
+  250 PR."ICH DENKE DARUEBER NACH OB ALLE"
+  251 PR."MEINE GEDANKEN NORMAL SIND."
+  252 GOS.X
+  260 PR."ICH HABE ANGST MICH ZU BLAMIE-  REN"
+  265 GOS.X
+  270 PR."ANDERE LEUTE SEHEN BESSER AUS"
+  271 PR."ALS ICH."
+  275 GOS.X
+  280 PR."ICH HABE ANGST VOR FREMDEN MEN-"
+  281 PR."SCHEN EINE REDE ZU HALTEN."
+  285 GOS.X
+  290 PR."VIELES,WAS ICH ANPACKE,GEHT     SCHIEF."
+  295 GOS.X
+  300 PR."ICH WUERDE GERNE WISSEN WIE"
+  301 PR."MAN SICH MIT ANDEREN MENSCHEN   NETT UNTERHALTEN KANN."
+  305 GOS.X
+  310 PR."ICH HAETTE GERNE MEHR SELBST-   VERTRAUEN."
+  315 GOS.X
+  320 PR."ICH UEBERLEGE,WIE ICH MEHR "
+  321 PR."ANERKENNUNG BEI MEINEN MITMEN-  SCHEN FINDEN KANN."
+  325 GOS.X
+  330 PR."ICH BIN ZU BESCHEIDEN."
+  335 GOS.X
+  340 PR."ICH BIN EITEL."
+  345 GOS.X
+  350 PR."ICH WERDE VON DEN MEISTEN LEU-"
+  351 PR."TEN NICHT RICHTIG EINGESCHAETZT"
+  355 GOS.X
+  360 PR."MIR FEHLT JEMAND MIT DEM ICH "
+  361 PR."UEBER PERSOEHNLICHE DINGE REDEN KANN."
+  365 GOS.X
+  370 PR."MAN ERWARTET ZUVIEL VON MIR."
+  375 GOS.X
+  380 PR."MAN INTERESSIERT SICH ZUWENIG"
+  381 PR."FUER DAS,WAS ICH LEISTE."
+  385 GOS.X
+  390 PR."ICH WERDE LEICHT VERLEGEN."
+  395 GOS.X
+  400 PR."ICH HABE DAS GEFUEHL,DASS DIE"
+  401 PR."MEISTEN MENSCHEN MICH NICHT     VERSTEHEN."
+  405 GOS.X
+  410 PR."ICH FUEHLE MICH IN MEINER UM-   GEBUNG NICHT GEBORGEN."
+  415 GOS.X
+  420 PR."ICH MACHE MIR OFT UNBEGRUENDET  SORGEN."
+  425 GOS.X
+  430 PR."ICH HABE EIN UNBEHAGLICHES GE- "
+  431 PR."FUEHL,WENN ICH EINEN RAUM BE-"
+  432 PR."TRETE,IN DEM SICH SCHON VIELE"
+  433 PR."PERSONEN BEFINDEN."
+  435 GOS.X
+  440 PR."ICH HABE DAS GEFUEHL,DASS MAN"
+  441 PR."HINTER MEINEN RUECKEN UEBER"
+  442 PR."MICH SPRICHT."
+  445 GOS.X
+  450 PR."ICH FUEHLE MICH NICHT SO RECHT  WOHL IN MEINER HAUT."
+  455 GOS.X
+  460 PR."ICH GLAUBE,DASS ANDEREN MEN-"
+  461 PR."SCHEN FAST ALLES LEICHTER       FAELLT ALS MIR."
+  465 GOS.X
+  470 PR."ICH HABE DIE BEFUERCHTUNG,DASS"
+  471 PR."MIR ETWAS UNANGENEHMES ZU-      STOSSEN KOENNTE."
+  475 GOS.X
+  480 PR."ICH DENKE DARUEBER NACH,WIE    "
+  481 PR."SICH MEINE MITMENSCHEN MIR"
+  482 PR."GEGENUEBER VERHALTEN."
+  485 GOS.X
+  490 PR."ICH WAERE GERN KONTAKTFREUDIGER"
+  495 GOS.X
+  500 PR."IN DISKUSSIONEN SAGE ICH NUR"
+  501 PR."DANN ETWAS,WENN ICH VON SEINER"
+  502 PR."RICHTIGKEIT UEBERZEUGT BIN."
+  505 GOS.X
+  510 PR."ICH DENKE DARUEBER NACH,OB ICH"
+  511 PR."DIEERWARTUNGEN DER GESELLSCHAFT ERFUELLEN KANN."
+  515 GOS.X
+  600 PO.27,0
+  610 PO.28,H.(EC)
+  620 PO.29,0
+  630 PO.30,H.(F0)
+  631 PO.H.(3EF0),H.(E7);PO.H.(3EF1),H.(B);PO.H.(3EF2),H.(C9)
+  640 C.H.(3EF0)
+  644 OUTC.12
+  650 G.8000
+ 1000 FORA=H.(ED82)TOH.(EF22)STEP32
+ 1010 PO.A,244
+ 1020 NEX.A
+ 1030 FORA=H.(EF43)TOH.(EF5F)
+ 1040 PO.A,238
+ 1050 NEX.A
+ 1060 PO.H.(EF27),251
+ 1070 PO.H.(EF21),48
+ 1080 PO.H.(EF06),110;PO.H.(EF07),105;PO.H.(EF08),101
+ 1090 FORA=H.(EEEC)TOH.(EF2C)STEP32
+ 1100 PO.A,198
+ 1110 NEXTA
+ 1120 PO.H.(EEC1),49
+ 1130 PO.H.(EEC9),115;PO.H.(EECA),101;PO.H.(EECB),108
+ 1140 PO.H.(EECC),116;PO.H.(EECD),101;PO.H.(EECE),110
+ 1150 FORA=H.(EE91)TOH.(EF31)STEP32
+ 1160 PO.A,198
+ 1170 NEX.A
+ 1180 PO.H.(EE61),50
+ 1190 PO.H.(EE6D),109;PO.H.(EE6E),97;PO.H.(EE6F),110
+ 1200 PO.H.(EE70),99;PO.H.(EE71),104;PO.H.(EE72),109
+ 1210 PO.H.(EE73),97;PO.H.(EE74),108
+ 1220 FORA=H.(EE36)TOH.(EF36)STEP32
+ 1222 PO.A,198
+ 1223 NEX.A
+ 1230 FORA=H.(EDDB)TOH.(EF3B)STEP32
+ 1240 PO.A,198
+ 1250 NEX.A
+ 1260 PO.H.(EE01),51;PO.H.(EE15),111;PO.H.(EE16),102
+ 1270 PO.H.(EE17),116
+ 1280 PO.H.(EDA1),52;PO.H.(EDB8),115;PO.H.(EDB9),101
+ 1290 PO.H.(EDBA),104;PO.H.(EDBB),114;PO.H.(EDBD),111
+ 1300 PO.H.(EDBE),102;PO.H.(EDBF),116
+ 1310 FORA=H.(EDA3)TOH.(EDB7)
+ 1320 PO.A,222
+ 1330 NEX.A
+ 1340 FORA=H.(EE03)TOH.(EE14)
+ 1350 PO.A,222
+ 1360 NEX.A
+ 1370 FORA=H.(EE63)TOH.(EE6C)
+ 1380 PO.A,222
+ 1390 NEX.A
+ 1400 FORA=H.(EEC3)TOH.(EEC8)
+ 1410 PO.A,222
+ 1420 NEX.A
+ 1430 PO.H.(ED21),68
+ 1440 FORA=H.(ED41)TOH.(ED5F)
+ 1450 PO.A,158
+ 1460 NEX.A
+ 1470 PO.H.(ED22),97;PO.H.(ED23),115;PO.H.(ED25),80
+ 1480 PO.H.(ED26),114;PO.H.(ED27),111;PO.H.(ED29),108
+ 1490 PO.H.(ED28),98
+ 1500 PO.H.(ED2A),101;PO.H.(ED2B),109;PO.H.(ED2D),98
+ 1510 PO.H.(ED2E),101;PO.H.(ED2F),115;PO.H.(ED30),99
+ 1520 PO.H.(ED31),104;PO.H.(ED32),97;PO.H.(ED33),101
+ 1530 PO.H.(ED34),102;PO.H.(ED35),116;PO.H.(ED36),105
+ 1540 PO.H.(ED37),103;PO.H.(ED38),116;PO.H.(ED3A),109
+ 1550 PO.H.(ED3B),105;PO.H.(ED3C),99;PO.H.(ED3D),104
+ 1560 PO.H.(ED3F),63
+ 1570 FORA=H.(EC00)TOH.(EC1F)STEP2
+ 1580 PO.A,203
+ 1590 NEX.A
+ 1600 FORA=H.(ECE0)TOH.(ECFF)STEP2
+ 1610 PO.A,203
+ 1620 NEX.A
+ 1700 G.5000
+ 2000 FORB=1TO10
+ 2200 FORC=1TO1000
+ 2210 NEX.C
+ 3033 PR." "
+ 4990 F.B=H.(EFE0)TOH.(EFFF);PO.B,32;N.B
+ 5000 F.B=H.(EFE0)TOH.(EFFF)
+ 5005 IFB=H.(EFE6)B=H.(EFF9)
+ 5010 PO.B,255;NEXTB
+ 5020 F.A=1TO9;PO.H.(EFEF),48+A
+ 5030 PO.H.(EFE5)+A,255
+ 5040 PO.H.(EFF9)-A,255
+ 5050 F.B=0TO2000;N.B
+ 5060 REM TAST ABFRAGE
+ 5061 C.H.(3F00)
+ 5065 D=PE.(H.(3EFF))
+ 5067 PO.H.(ECB6),D
+ 5070 IFD#0G.5210
+ 5075 N.A
+ 5095 L=L+4
+ 5110 PO.H.(EFEF),255
+ 5130 F.B=H.(EFE0)TOH.(EFFF)
+ 5140 PO.B,32
+ 5145 NEXTB
+ 5150 F.C=1TO99;NEXTC
+ 5160 F.B=H.(EFE0)TOH.(EFFF)
+ 5165 PO.B,255;NEXTB
+ 5180 A=H.(EFEC)
+ 5190 PO.A,80;PO.A+1,69;PO.A+2,67;PO.A+3,72
+ 5205 G.5220
+ 5210 L=L+D-48
+ 5220 F.A=0TO3000;N.A
+ 5230 RET.
+ 6000 TAB(8)
+ 6001 PR."Ihre Antwort:"
+ 6002 GOS.4990
+ 6005 OUTC.12
+ 6010 RETURN
+ 8000 G.8001
+ 8001 TAB(11);PR."AUSWERTUNG"
+ 8002 TAB(11);PR.""
+ 8030 TAB(32)
+ 8032 PR."COMPUTER an Testperson:"
+ 8033 PR." "
+ 8034 PR."in Auswertung des PSYCHO-Tests"
+ 8036 PR."ergab sich IHR KOEFFIZIENT der  Selbstsicherheit:",L
+ 8040 PR." "
+ 8050 IFL&gt;=0IFL&lt;=12GOS.8500
+ 8052 IFL&gt;=13IFL&lt;=25GOS.8600
+ 8054 IFL&gt;=26IFL&lt;=40GOS.8700
+ 8056 IFL&gt;=41IFL&lt;=59GOS.8800
+ 8058 IFL&gt;=60GOS.8900
+ 8060 STOP
+ 8500 PR."D.h.: Sie besitzen ein ueber-  "
+ 8501 PR."steigertes Selbstbewusstsein!!!"
+ 8505 PR."Sie sind mir nicht sehr         sympatisch !"
+ 8506 PR." "
+ 8510 PR."Aendern Sie sich"
+ 8512 PR." "
+ 8520 PR."DA ICH ABER WEISS,DASS SIE DAS  NICHT INTERESSIERT,"
+ 8525 PR." "
+ 8530 PR."WUENSCHE ICH EINEN GUTEN TAG"
+ 8550 STOP
+ 8600 PR."D.h.:Sie haben ein stark ausge-"
+ 8610 PR."praegtes SELBSTBEWUSSTSEIN !"
+ 8620 PR."Sie beschaeftigen sich selten   damit,wie SIE auf"
+ 8630 PR."andere wirken,haben aber auch  "
+ 8640 PR."kein uebersteigertes Geltungs-"
+ 8650 PR."beduerfnis oder Verlangen nach  Lob und Tadel."
+ 8660 PR."keine SelbstZweifel oder Minder wertigkeitsgefuehle
+ 8670 PR."OPTIMALER CharakterZug          MACHEN SIE WEITER SO!"
+ 8680 TAB(10)
+ 8690 PR."DER COMPUTER"
+ 8695 STOP
+ 8700 PR."D.h.:Sie haben ein nur durch-   schnittliches Selbstb."
+ 8710 PR."Sie brauchen Lob und Tadel als  Ansporn Ihrer Arbeit."
+ 8720 PR."Ab und zu werden Sie von Min-"
+ 8730 PR."derwertigkeitsgefuehlen und     Selbstzweifeln geplagt"
+ 8740 PR."Versuchen Sie Ihre Selbstsicher heit zu verbessern!!!"
+ 8760 PR."     TIPS ZUR STEIGERUNG IHRER        SELBSTSICHERHEIT"
+ 8770 PR."FINDEN SIE DIE URSACHEN IHRER   UNSICHERHEIT."
+ 8775 PR."TRAINIEREN SIE DIESE SCHWAECHEN"
+ 8777 PR."VERBESSERN SIE IHRE VORZUEGE SO"
+ 8778 PR."DASS SCHWAECHEN UNWESENTLICH    WERDEN"
+ 8779 PR."FREUEN SIE SICH UEBER EIGENE"
+ 8780 PR."GUTE LEISTUNGEN,DASS IST WICH-"
+ 8781 PR."TIGER ALS DAS URTEIL ANDERER   "
+ 8782 PR."PROBIEREN SIE ES--DER Computer"
+ 8790 STOP
+ 8800 G.8700
+ 8900 PR."D.h.:Selbstsicherheit ist Ihr   zentrales Problem"
+ 8910 PR."Die Wirkung auf Mitmenschen be-"
+ 8920 PR."schaeftigt Sie oft.SIE wuerden"
+ 8930 PR."gern selbstsicherer,unkompli-"
+ 8940 PR."zierter und innerlich freier "
+ 8950 PR."sein.Verlassen Sie sich auf "
+ 8960 PR."MICH,ich helfe Ihnen!"
+ 8970 PR."TIPS ZUR STEIGERUNG DER           SELBSTSICHERHEIT"
+ 8980 PR."1.Machen Sie sich von anderen   Meinungen frei."
+ 8990 PR."2.Handeln Sie nie gegen Ihre "
+ 9000 PR."persoenliche Ueberzeugung."
+ 9010 PR."Kneifen Sie nicht vor Problemen"
+ 9020 PR."Fehlen im Beruf die Moeglich-"
+ 9030 PR."keiten,schaffen Sie sich ein"
+ 9040 PR."HOBBY,das Sie zufrieden macht   und Ausgleich bietet."
+ 9050 PR."Vergleichen Sie sich nicht zu"
+ 9060 PR."haeufig mit ANDEREN,dass        schaedigt Sie !"
+ 9070 PR."GUTE BESSERUNG--DER COMPUTER"
+</pre>
+</div>
+</body>
+</html>

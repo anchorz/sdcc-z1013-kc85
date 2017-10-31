@@ -1,0 +1,26 @@
+<kurz src="Othello-Variante"/>
+<lang>Jeder erhaelt Spielsteine einer Farbe.
+
+Abwechselnd wird so gesetzt, dass sich Reihen
+ergeben, die gegnerische Steine einschliessen. 
+Diese wandeln sich in eigene um. Mit jedem 
+Satz muss man mindestens einen Stein des 
+Gegners schlagen.
+
+Kann oder will man nicht setzen, darf man 
+aussetzen. Eingabe 0.
+
+Die Position wird als zweistellige Zahl 
+(Zeile/Spalte) eingegeben.    
+
+Sieger ist, wer die meisten Steine placieren 
+kann oder erreicht, dass der Gegner keinen
+Stein mehr hat.
+
+Die Zeit, die der Rechner fuer Kontrolle, 
+Darstellung und eigene Ueberlegungen benoetigt,
+sollte man fuer eigene strategische 
+Ueberlegungen nutzen.
+
+<include src="OTHELLO.b"/></lang>
+<requires></requires>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
+  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
+  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
+  <link rel="stylesheet" type="text/css" href="../formate.css" />
+
+<title>Z1013 Software-Datenbank Eintrag</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+</div>
+<div class="filelist">2bc0 3417 0000 B ... <a href="B.MONSTER.z80">MONSTER         </a></div>
+<div class="text">
+
+Steuerung: ⇦ ⇨ ⇧ ⇩
+
+<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 CLS:PRINT AT(0,0);" "
+   20 GOTO 70 
+   30 PRINT AT(0,0);STRING$(32,"")
+   40 FOR H=0 TO 28:PRINT AT(H,31);"":NEXT H
+   50 FOR H=31 TO 0 STEP-1:PRINT AT(28,H);"":NEXT H
+   60 FOR H=28 TO 0 STEP-1:PRINT AT(H,0);"":NEXT H
+   65 GOTO 140
+   70 PRINT AT(10,4);"DAS SPIEL BEGINNT !"
+   80 PAUSE (10):GGG=10
+   90 PRINT AT(15,20);GGG:GGG=GGG-1:IF GGG&lt;0 GOTO 120
+  100 PAUSE (4)
+  110 GOTO 90
+  120 REM
+  130 PAUSE (10)
+  135 CLS:GOTO 30
+  140 KA=50
+  150 ZA=0
+  160 Z=INT(RND(1)*26)+2
+  170 S=INT(RND(1)*27)+2
+  180 ZST=INT(RND(1)*26)+2
+  190 SST=INT(RND(1)*27)+2
+  200 ZR=INT(RND(1)*26)+2
+  210 SR=INT(RND(1)*27)+2
+  220 IF Z=ZST AND S=SST GOTO 180
+  230 PRINT AT(ZST,SST);""
+  240 PRINT AT(Z,S);""
+  250 PRINT AT(ZR,SR);""
+  260 GOSUB 310
+  270 GOSUB 490
+  280 GOTO 260
+  290!
+  300!W
+  310 E$=" ":E$=INKEY$
+  320 IF E$=CHR$(11) THEN 380
+  330 IF E$=CHR$(10) THEN 400
+  340 IF E$=CHR$(8) THEN 420
+  350 IF E$=CHR$(9) THEN 440
+  360 IF E$=" " THEN GOSUB 760
+  370 RETURN 
+  380 IF Z=1 GOTO 310
+  390 GOSUB 480:Z=Z-1:U=206:GOTO 460
+  400 IF Z=27 GOTO 310
+  410 GOSUB 480:Z=Z+1:U=206:GOTO 460
+  420 IF S=1 GOTO 310
+  430 GOSUB 480:S=S-1:U=205:GOTO 460
+  440 IF S=30 GOTO 310
+  450 GOSUB 480:S=S+1:U=205:GOTO 460
+  460 PRINT AT(Z,S);CHR$(U)
+  470 RETURN
+  480 PRINT AT(Z,S);" ":RETURN 
+  490 IF ZST=Z AND SST=S THEN 660
+  500 GOSUB 310
+  510 B=0:IF ZR=ZST AND SR=SST THEN 1000
+  520 IF ZST&lt;Z THEN A=1:GOTO 550
+  530 IF ZST&gt;Z THEN A=-1:GOTO 550
+  540 IF ZST=Z THEN A=0 
+  550 IF SST&gt;S THEN B=-1:GOTO 580
+  560 IF SST&lt;S THEN B=1:GOTO 580
+  570 IF SST=S THEN B=0
+  580 PRINT AT(ZST,SST);" "
+  590 ZST=ZST+A:SST=SST+B
+  600 PRINT AT(ZST,SST);""
+  610 PRINT AT(31,0);"PUNKTE":PRINT AT(31,7);ZA 
+  620 ZA=ZA+1
+  630 IF ZST=Z AND SST=S THEN 660
+  640 IF KA=&lt;0 GOTO 510
+  650 RETURN
+  660 PRINT AT(ZST,SST);""   
+  670 PAUSE 2
+  690 PRINT AT(31,0);"ANZAHL": PAUSE (30)
+  700 PRINT AT(ZST,SST);"    "
+  710 PRINT AT(ZR,SR);" "
+  720 PRINT AT(31,0);"DAS SPIEL BEGINNT VON VORNE ! ":PAUSE 20
+  750 PRINT AT(31,0);"                               ":GOTO 30 
+  760 FOR QQQ=1 TO 5:FOR HH=1 TO 3
+  770 PRINT AT(ZR,SR);"":KA=KA-1
+  780 IF KA&lt;0 THEN BEEP (8):GOTO 510
+  790 PRINT AT(0,25);KA
+  800 IF ZR=ZST AND SR=SST THEN 1000
+  810 IF ZR&lt;ZST THEN L=1:GOTO 840
+  820 IF ZR&gt;ZST THEN L=-1:GOTO 840
+  830 IF ZR=ZST THEN L=0
+  840 IF SR&lt;SST THEN Q=1:GOTO 880
+  850 IF SR&gt;SST THEN Q=-1:GOTO 880
+  860 IF SR=SST THEN Q=0
+  870 IF ZA=500 THEN KA=50
+  880 IF SR&lt;0 OR SR&gt;30 THEN 980
+  890 IF ZR&lt;0 OR ZR&gt;30 THEN 980
+  900 PRINT AT(ZR,SR);" "
+  910 ZR=ZR+L:SR=SR+Q
+  920 IF SR&lt;0 OR SR&gt;30 THEN 980
+  930 IF ZR&lt;0 OR ZR&gt;30 THEN 980
+  940 PRINT AT(ZR,SR);""
+  950 NEXT HH:GOSUB 510:NEXT QQQ :GOSUB 510
+  960 IF ZR=ZST AND SR=SST THEN 1000
+  970 RETURN
+  980 SR=0:ZR=0
+  990 RETURN
+ 1000 PRINT AT(31,12);"+50":PRINT AT(ZR,SR);""
+ 1010 ZA=ZA+50:PAUSE 20:PRINT AT(31,12);"   "
+ 1020 PRINT AT(ZR,SR);" ":ZR=0:SR=0   
+ 1030 GOTO 180
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+<kurz src="Tonausausgabe, 2:30+0:30 Sek. warten, Klingonen"/>
+<lang><include src="ENTERPRISE.B"/></lang>
+<requires></requires>

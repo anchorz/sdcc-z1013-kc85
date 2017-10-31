@@ -1,0 +1,3 @@
+<kurz src="identisch mit [226aabc62a2f4cf7f00adc88eb8ba95e]"/>
+<lang><include src="snake.bas.B"/></lang>
+<requires></requires>
