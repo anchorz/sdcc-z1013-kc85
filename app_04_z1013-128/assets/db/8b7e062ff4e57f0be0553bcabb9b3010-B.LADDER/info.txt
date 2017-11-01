@@ -1,0 +1,7 @@
+<kurz src="BASIC-Version (2.02, RB)"/>
+<lang>ähnlich wie [0744f2b1e88dc26ec6e8a90605ead7cf], 
+Monitoraufrufe von A2 nach 2.02 angepasst
+Scoretable-Ausgabe Zeile 4290 unterschiedlich 
+
+<include src="LADDER.B"/></lang>
+<required></required>

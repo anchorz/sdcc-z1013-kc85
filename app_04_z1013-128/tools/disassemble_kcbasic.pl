@@ -126,6 +126,7 @@ $token_type=0; #0 general 1 rem 2 int float numbers 3 symbol 4 str
 while(1) {
     $len=2;
     $eol=unpack("v",substr($content,$index,$len));
+    #printf(STDERR "%04x ",$eol);
     if ($eol==0) {
         last;
     }
@@ -322,8 +323,10 @@ REDO_CHARACTER:
                     case 0xe2 { pr("HSAVE"); }                    
                     case 0xe3 { pr("HLOAD"); }
 
-                    case 0xe4 { pr("PSET"); }                    
+                    case 0xe4 { pr("PSET"); }
                     case 0xe5 { pr("PRES"); }
+                    
+                    case 0xf5 { pr("PRINT"); }
                     
                     else { printf(STDERR "??<=\nError: [0x%04x] - unknown character 0x%02x after '%s' found\n", $index,$byte,$token); exit 1;}
                 }

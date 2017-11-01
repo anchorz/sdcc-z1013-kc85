@@ -25,7 +25,7 @@ base=`basename "$file" .z80`
 mkdir "$dbroot/$md5-$base"
 
 echo Ziel: "$dbroot/$md5-$base"
-mv "$file" "$dbroot/$md5-$base/"
+git mv "$file" "$dbroot/$md5-$base/"
 #kein link /db/ ist noch nicht der Zielordner
 #machen wir spaeter, nachdem es einsortiert wurde
 #ln -s "$dbroot_rel/$md5-$base/$file"

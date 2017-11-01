@@ -1,0 +1,3 @@
+<kurz src="Bohnenspiel mit 2x2 Feldern, minimale Grafik"/>
+<lang><include src="MANCALA.B"/></lang>
+<requires></requires>

@@ -1,0 +1,5 @@
+<kurz src="wie [0537d5c60bb448ea0d0f951dcb2dde5d]"/>
+<lang>Quelltext und Grafik etwas anders formatiert. Ansonsten sieht es aus,
+als käme es von der selben Quelle, Buch etc.
+<include src="mancala.B"/></lang>
+<requires></requires>

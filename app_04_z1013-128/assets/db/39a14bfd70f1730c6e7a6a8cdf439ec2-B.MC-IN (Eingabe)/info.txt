@@ -1,0 +1,6 @@
+<kurz src="MC-Programm-Ersteller, Hexdump eingeben und mit Prüfsumme vergleichen."/>
+<lang>
+Dr. H. Gutzer/S. Wendt
+FUNKAMATEUR 2/88
+<include src="MC-IN (Eingabe).B"/></lang>
+<requires></requires>

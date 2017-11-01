@@ -473,7 +473,6 @@ $ret.= "<div class=\"filelist\">\n";
 for $db_entry (keys %db_entry_list) {
     resolve_entry($db_entry);
 }
-
 my $xml="<filelist>\n";
 my $row=0;
 for $db_entry (sort { lc $db_entry_list{$a}[4] cmp lc $db_entry_list{$b}[4] } keys %db_entry_list) {
@@ -484,6 +483,8 @@ for $db_entry (sort { lc $db_entry_list{$a}[4] cmp lc $db_entry_list{$b}[4] } ke
     $row++;
 }
 $xml.="</filelist>\n";
+my $size = keys %db_entry_list;
+$xml.="<status src=\"Datenbank enthalt $size Dateien.\">\n";
 
 open(UTF,">", $xml_file);
 binmode(UTF, ":utf8");
