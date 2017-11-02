@@ -1,0 +1,264 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 CLS
+   20 TU$="Tut mir leit!"
+   30 VE$="Versuche moch einmal."
+   40 PRINT TAB(11);"OTHELLO"
+   50 WINDOW 3,31,0,31
+   55 PRINT "Othello wird auf einem 8x8 "
+   60 PRINT "kariertem Brett gespielt;"
+   65 PRINT "Zeilenbebeichnung von 1 bis 8"
+   70 PRINT "und Spalten von A bis H."
+   75 PRINT "In der Ausgangsstelluung ist"
+   80 PRINT "das Brett leer, mit ausnahme"
+   85 PRINT "der vier Zentrumsquadrate, die"
+   90 PRINT "volgendermassen belegt sind :"
+   95 PRINT:PRINT "       OX"
+  100 PRINT "       XO"
+  105 PRINT
+  110 PRINT "Versuche, deine Steine so zu"
+  115 PRINT "platzieren, dass sie meine ein-"
+  120 PRINT "schliessen. Dabei muss an jedem"
+  125 PRINT "Ende einer horizontalen, verti-"
+  130 PRINT "kalen, oder diagonalen Kette"
+  135 PRINT "meiner Steine einer deiner"
+  140 PRINT "Steine liegen. Meine so einge-"
+  145 PRINT "schlossenen  Steine werden dann"
+  150 PRINT "deine"
+  155 INPUT "                  -Ent-";X$
+  160 CLS:PRINT "Beachte: Du musst unbedingt"
+  165 PRINT "wenigstens einen meiner Steine"
+  170 PRINT "auf einem der moeglichen Wege"
+  175 PRINT "einschliessen."
+  180 PRINT "Ist das nicht moeglich, laesst"
+  185 PRINT "du deinen Zug durch Eingabe von"
+  190 PRINT "00 verfallen."
+  195 PRINT:PRINT:PRINT:PRINT "--STARTE DAS PROGRAMM NEU !!--"
+  200 WINDOW
+  210 DELETE 55,210
+  290 F2=0
+  300 PRINT "Soll ich sehrgut spielen (J/N)?"
+  310 S2=0
+  320 INPUT " ";X$
+  330 IF X$="N"THEN 360
+  350 S2=2
+  360 B=-1
+  370 W=1
+  380 D$(B+2)="X"
+  390 D$(2)=CHR$(213)
+  400 D$(W+2)="O"
+  410 FOR K=1 TO 8
+  420 READ I4(K)
+  430 NEXT K
+  440 DATA 0,-1,-1,-1,0,1,1,1
+  450 FOR K=1 TO 8
+  460 READ J4(K)
+  470 NEXT K
+  480 DATA 1,1,0,-1,-1,-1,0,1
+  490 FOR K=1 TO 8
+  500 READ C$(K)
+  510 NEXT K
+  520 DATA A,B,C,D,E,F,G,H
+  540 FOR I=1 TO 10
+  550 FOR J=I TO 10
+  560 A(I,J)=0
+  570 NEXT J,I
+  590 A(5,5)=W
+  600 A(6,6)=W
+  610 A(5,6)=B
+  620 A(6,5)=B
+  630 C1=2
+  640 H1=2
+  650 N1=4
+  660 Z=0
+  680 PRINT "Moechtest du X oder O haben ?"
+  690 C=W
+  700 H=B
+  710 INPUT " ";X$
+  720 IF X$="X"THEN 760
+  740 C=B
+  750 H=W
+  760 CLS:GOSUB 3000:PRINT "Moechtest du beginnen (J/N) ?"
+  770 INPUT " ";X$
+  780 IF X$="N"THEN 860
+  820 GOTO 1540
+  840 IF 2=2 THEN 860
+  860 B1=-1:PRINT:PRINT "-Moment bitte! Ich denke nach.-" 
+  870 I3=0
+  880 J3=0
+  890 T1=C
+  900 T2=H
+  920 FOR I=2 TO 9
+  930 FOR J=2 TO 9
+  940 IF A(I,J)<>0 THEN 1230
+  970 GOSUB 2500
+  980 IF F1=0 THEN 1230
+ 1020 U=-1
+ 1030 GOSUB 2700
+ 1050 IF S1=0 THEN 1230
+ 1060 IF(I-2)*(I-9)<>0 THEN 1080
+ 1070 S1=S1+S2
+ 1080 IF(J-2)*(J-9)<>0 THEN 1110
+ 1090 S1=S1+S2
+ 1110 IF S1<B1 THEN 1230
+ 1120 IF S1>B1 THEN 1190
+ 1160 R=RND(4)
+ 1170 IF R>.5 THEN 1230
+ 1190 B1=S1
+ 1200 I3=I
+ 1210 J3=J
+ 1230 NEXT J,I
+ 1260 IF B1>0 THEN 1330
+ 1280 PRINT "Ich setze nicht !"
+ 1290 IF Z=1 THEN 2060
+ 1300 Z=1
+ 1310 GOTO 1540
+ 1330 Z=0
+ 1340 WINDOW 29,31,0,31:CLS:PRINT "Ich setze auf ";
+ 1350 ZK$=C$(J3-1)+RIGHT$(STR$(I3-1),1)
+ 1360 PRINT ZK$;
+ 1380 I=I3
+ 1390 J=J3
+ 1400 U=1
+ 1410 GOSUB 2700
+ 1420 C1=C1+S1+1
+ 1430 H1=H1-S1
+ 1440 N1=N1+1
+ 1450 PRINT ", und gewinne"
+ 1460 IF S1=1 THEN PRINT "einen";:ELSE PRINT S1;
+ 1470 PRINT " von deinen Steinen ein."
+ 1490 GOSUB 3000
+ 1510 IF H1=0 THEN 2060
+ 1520 IF N1=64 THEN 2060
+ 1540 T1=H
+ 1550 T2=C
+ 1560 PRINT "Dein Zug--(Spalte Zeile)--"
+ 1570 XX$=INKEY$
+ 1571 IF XX$=""THEN 1570
+ 1572 IF XX$="0"THEN 1574
+ 1573 IF XX$<"A"OR XX$>"H"THEN 1570
+ 1574 X$=XX$:PRINT X$;
+ 1575 XX$=INKEY$
+ 1576 IF XX$=""THEN 1575
+ 1577 IF XX$<"0"OR XX$>"8"THEN 1575
+ 1578 I=VAL(XX$):PRINT I
+ 1600 IF I<>0 THEN 1670
+ 1610 PRINT "Gibst du deinen Zug ab ?";
+ 1620 INPUT " (J/N)";X$
+ 1630 IF X$<>"J"THEN 1560
+ 1640 IF Z=1 THEN 2060
+ 1650 Z=1
+ 1660 GOTO 840
+ 1670 FOR Q=1 TO 8
+ 1680 IF C$(Q)=X$ THEN 1720
+ 1690 NEXT Q
+ 1700 GOTO 1570
+ 1720 J=Q
+ 1730 I=I+1
+ 1740 J=J+1
+ 1750 IF A(I,J)=0 THEN 1790
+ 1760 PRINT TU$;" Dieses Feld ist   besetzt.";VE$
+ 1770 GOTO 1570
+ 1790 GOSUB 2500
+ 1800 IF F1=1 THEN 1840
+ 1810 PRINT TU$;" Dein Stein liegt  nicht neben einem Steine."
+ 1815 PRINT VE$
+ 1820 GOTO 1570
+ 1840 U=-1
+ 1850 GOSUB 2700
+ 1860 IF S1>0 THEN 1900
+ 1870 PRINT TU$;"Das schliesst keineKette meiner Steine ein."
+ 1880 PRINT VE$
+ 1890 GOTO 1570
+ 1900 Z=0
+ 1910 WINDOW 29,31,0,31:CLS:PRINT "Das bringt dir ";
+ 1920 IF S1=1 THEN PRINT "einen":ELSE PRINT S1
+ 1930 PRINT "meiner Steine ein."
+ 1940 U=1
+ 1950 GOSUB 2700
+ 1960 H1=H1+S1+1
+ 1970 C1=C1-S1
+ 1980 N1=N1+1
+ 2000 GOSUB 3000
+ 2020 IF C1=0 THEN 2060
+ 2030 IF N1=64 THEN 2060
+ 2040 GOTO 840
+ 2060 PRINT
+ 2070 PRINT "Du hast ";H1;"Steine und ";
+ 2110 PRINT "ich habe ";C1;"Steine--"
+ 2120 IF H1=C1 THEN 2160
+ 2130 IF H1>C1 THEN 2180
+ 2140 PRINT TU$;" Ich habe GEONNEN."
+ 2150 GOTO 2190
+ 2160 PRINT "UNENTSCHIEDEN !!"
+ 2170 GOTO 2370
+ 2180 PRINT "Du hast GEWONNEN."
+ 2190 C1=C1-H1
+ 2200 IF C1>0 THEN 2220
+ 2210 C1=-1
+ 2220 C1=(64*C1)/N1
+ 2230 PRINT "Das war ein ";
+ 2240 IF C1<11 THEN 2360
+ 2250 IF C1<25 THEN 2340
+ 2260 IF C1<39 THEN 2320
+ 2270 IF C1<53 THEN 2300
+ 2280 PRINT "perfektes Spiel."
+ 2290 GOTO 2370
+ 2300 PRINT "Vorbeimarsch."
+ 2310 GOTO 2370
+ 2320 PRINT "Kampf."
+ 2330 GOTO 2370
+ 2340 PRINT "spannendes Spiel !"
+ 2350 GOTO 2370
+ 2360 PRINT "knappes Spiel !!"
+ 2370 PRINT
+ 2380 PRINT "Noch ein Spiel ? (J/N)"
+ 2390 INPUT " ";X$
+ 2400 IF X$="J"THEN 540
+ 2420 PRINT "DANKE FUERS SPIELEN !":WINDOW
+ 2430 END
+ 2500 F1=0
+ 2510 FOR I1=-1 TO 1
+ 2520 FOR J1=-1 TO 1
+ 2530 IF A(I+I1,J+J1)=T2 THEN F1=1
+ 2550 NEXT J1
+ 2560 NEXT I1
+ 2580 RETURN
+ 2700 S1=0
+ 2710 FOR K=1 TO 8
+ 2720 I5=I4(K)
+ 2730 J5=J4(K)
+ 2740 I6=I+I5
+ 2750 J6=J+J5
+ 2760 S3=0
+ 2770 IF A(I6,J6)<>T2 THEN 2950
+ 2790 S3=S3+1
+ 2800 I6=I6+I5
+ 2810 J6=J6+J5
+ 2820 IF A(I6,J6)=T1 THEN 2850
+ 2830 IF A(I6,J6)=0 THEN 2950
+ 2840 GOTO 2790
+ 2850 S1=S1+S3
+ 2860 IF U<>1 THEN 2950
+ 2880 I6=I
+ 2890 J6=J
+ 2900 FOR K1=0 TO S3
+ 2910 A(I6,J6)=T1
+ 2920 I6=I6+I5
+ 2930 J6=J6+J5
+ 2940 NEXT K1
+ 2950 NEXT K
+ 2960 RETURN
+ 3000 WINDOW 4,14,8,31
+ 3010 PRINT "   ABCDEFGH"
+ 3020 FOR I=2 TO 9
+ 3030 PRINT I-1;
+ 3040 FOR J=2 TO 9
+ 3050 REM
+ 3060 PRINT D$(A(I,J)+2);
+ 3070 NEXT J
+ 3080 PRINT
+ 3090 NEXT I
+ 3100 WINDOW 15,28,0,31:CLS
+ 3110 RETURN
+ 3120 END

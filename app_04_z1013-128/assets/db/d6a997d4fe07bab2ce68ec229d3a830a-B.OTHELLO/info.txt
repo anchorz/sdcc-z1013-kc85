@@ -1,0 +1,3 @@
+<kurz src="Reversi, kompakte 8x8 Darstellung, einfache Eingabe Zeile/Spalte"/>
+<lang><include src="OTHELLO.B"/></lang>
+<requires></requires>

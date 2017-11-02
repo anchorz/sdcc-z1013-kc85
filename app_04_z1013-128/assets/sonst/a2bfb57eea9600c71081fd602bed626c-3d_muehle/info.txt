@@ -1,0 +1,37 @@
+<kurz src="3D-Mühle für zwei Spieler - 3D NOUGHT AND CROSSES, ähnlich [71054f1d02d8189bde3a81e2dad7af0b]"/>
+<lang>Pausen sind länger. Textausgaben geringfügig verändert.
+
+Sie sehen gleich einen Wuerfel
+
+mit 27 moeglichen Positionen
+
+fuer X oder O.
+
+Das Ziel ist,moeglichst viele
+
+vollstaendige Dreierreihen zu
+
+besetzen. 
+
+Der erste Spieler(●) hat den
+
+Vorteil am Ende ein Feld mehr
+
+besetzen zu koennen.Als Aus-
+
+gleich darf erst der zweite
+
+Spieler(▒) das zentrale Feld B5
+
+Die Zuege werden durch Eingabe
+
+eines Buchstabens sowie einer
+
+Zahl eingegeben.
+
+Bei Eingabe von R beginnt das
+
+Spiel von Neuem.
+
+<include src="3d_muehle.B"/></lang>                      
+<requires></requires>

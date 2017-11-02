@@ -1,0 +1,4 @@
+<kurz src="Textverarbeitung, Datenbank, noch ohne Wandeln, falsche FREE(X) ab frage"/>
+<lang>Programm startet nicht, wenn mehr als 32KByte installiert sind
+<include src="MINTEX.B"/></lang>
+<requires></requires>

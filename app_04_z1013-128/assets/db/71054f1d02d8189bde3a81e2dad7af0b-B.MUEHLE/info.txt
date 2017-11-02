@@ -31,5 +31,6 @@ Bei Eingabe von R beginnt das
 
 Spiel von Neuem.
 
-<include src="muehle.B"/></lang>                      
+<include src="MUEHLE.B"/></lang>                      
 <requires></requires>
+

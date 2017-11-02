@@ -1,0 +1,4 @@
+<kurz src="Textverarbeitung, Datenbank, neue Funktion Wandeln"/>
+<lang>Wie funktioniert das Programm? Wozu dient es?
+ <include src="MINTEX W6.B"/></lang>
+<requires></requires>

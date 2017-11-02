@@ -1,0 +1,13 @@
+<kurz src="Nixe fangen, Entfernungen abschätzen, Netze auswerfen"/>
+<lang>
+Eine  Nixe  schwimmt   in  einem  Schwimmbad  mit truebem  Wasser.
+Sie koennen eine Peilung machen, um  Informationen   ueber  ihren
+Standort  einzuholen  ( 2 Strafpunkte )  und/oder  Sie  koennen
+Netze werfen,  indem Sie jeweils 5  Felder  markieren  ( 1 Straf-
+punkt ).  Nach jeder Ihrer Handlungen  schwimmt die Nixe  
+willkuerlich ein Karo weiter.
+
+Fange  die Nixe  mit  moeglichst wenigen Strafpunkten!
+
+<include src="NIXE.B"/></lang>
+<requires></requires>
