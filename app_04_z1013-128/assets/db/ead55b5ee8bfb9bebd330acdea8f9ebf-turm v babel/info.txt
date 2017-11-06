@@ -1,0 +1,6 @@
+<kurz src="wie HANOI, zusätzlich mit Lösungsalgorithmus"/>
+<lang>Grafik geändert. Eingabe muss mit ⏎  abgeschlossen werden.
+ähnlich [9af35414a3ff90797d19fef6b3a4f164]
+Ab Zeile 10000 gibt es die Lösung für beliebige Stapelhöhe
+<include src="turm v babel.B"/></lang>
+<requires></requires>

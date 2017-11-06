@@ -1,0 +1,123 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1 A$="robotron Z1013"
+    2 A2$="SPIEL":A9=2 
+    3 A3$="adapted by M.Lippert"
+    4 A4$="TURM"
+    5 A5$="VON BABEL"
+    8! VERSION 2
+    9 WINDOW:CLS
+   10 PRINT AT(0,0);" "
+   11 PRINT AT(1,0);A$ 
+   12 PRINT AT(2,0);A1$:PRINT AT(4,0);"",STRING$(30,""),"" 
+   13 PRINT AT(5,0);"":PRINT AT(5,31);"" 
+   14 PRINT AT(6,0);"",STRING$(30,""),"" 
+   15 PRINT AT(5,1);A2$:PRINT AT(5,10);A3$ 
+   16 PRINT AT(8,0);STRING$(32,"") 
+   17 FOR I=9 TO 13:PRINT AT(I,0);"":PRINT AT(I,31);"":NEXT I 
+   18 PRINT AT(14,0);STRING$(32,"") 
+   19 PRINT AT(10,30-LEN(A4$));A4$:PRINT AT(12,30-LEN(A5$));A5$ 
+   45 PRINT AT(22,23);">ENTER<"
+   46 T$=INKEY$:IF T$=""THEN 46
+   70 DIM T$(5),P(5,2)
+   80 GOSUB 1000
+  100 CLS
+  110 N=0
+  150 PRINT:PRINT TAB(2)"T U R M   V O N   B A B E L"
+  160 PRINT:PRINT STRING$(32,"*")
+  170 PRINT:PRINT:PRINT TAB(4);1;TAB(14);2;TAB(24);3:PRINT
+  175 WINDOW 9,23,0,31
+  180!1.TURM
+  185 FOR I=1 TO 5:PRINT T$(I):P(I,0)=I:P(I,1)=0:P(I,2)=0:NEXT I
+  205 WINDOW 17,23,0,31
+  208! ABFRAGE
+  210 CLS:PRINT
+  220 PRINT "Sie starten jetzt":PRINT:PRINT "den Versuch Nr.";N+1:PRINT
+  230 INPUT "Transport von Position ";A
+  235 IF A<1 OR A>3 THEN 280
+  240 PRINT:INPUT "Transport nach Position";B
+  250 IF B<1 OR B>3 OR B=A THEN 280:ELSE 300
+  280 GOSUB 1200
+  290 GOTO 210
+  300! VERSUCH
+  310 N=N+1:A1=A-1:B1=B-1:V=0:Q=0
+  320 FOR I=1 TO 5
+  325 IF Q=1 THEN 340
+  330 IF P(I,A1)>0 THEN V=I:VS=P(I,A1):Q=1
+  340 NEXT I
+  360 IF V=0 THEN 210
+  390 W=5:WU=6:Q=0
+  400 FOR I=1 TO 5
+  405 IF Q=1 THEN 420
+  410 IF P(I,B1)>0 THEN W=I-1:WU=P(I,B1): Q=1
+  420 NEXT I
+  450 IF VS<WU OR W=5 THEN 460
+  455 GOSUB 1500:GOTO 210
+  460 P(W,B1)=VS
+  470 P(V,A1)=0
+  500! UMSETZEN
+  505 A=A1*10
+  510 B=B1*10
+  520 PRINT AT(8+V,A);T$(0)
+  530 PRINT AT(8+W,B);T$(VS)
+  540 IF P(1,2)=1 OR N=80 THEN PAUSE 20:GOTO 600:ELSE 210
+  600!AUSW.
+  630 WINDOW:CLS:IF N>31 GOTO 690
+  660 CLS:PRINT TAB(4)"FAST UNMOEGLICH !"
+  670 PRINT:PRINT "31 Zuege sind das minimal":PRINT:PRINT "erreichbare !"
+  680 GOTO 890
+  690 IF N>35 GOTO 750
+  700 PRINT:PRINT "Geben Sie zu, dass Sie nicht"
+  710 PRINT:PRINT "allein gespielt haben!"
+  720 PRINT:PRINT "Fuer eine Einzelperson"
+  730 PRINT:PRINT "sind Sie zu schlau!"
+  740 GOTO 890
+  750 IF N>40 GOTO 800
+  760 PRINT:PRINT "Sie sind schon ganz gut."
+  770 PRINT:PRINT "Ihnen fehlt nur etwas Uebung."
+  780 GOTO 890
+  800 PRINT:PRINT "Verlieren Sie bloss nicht die":PRINT:PRINT "Nerven!!!"
+  810 PRINT:PRINT "Konzentrieren Sie sich,"
+  820 PRINT:PRINT "vielleicht wird noch 'was"
+  830 PRINT:PRINT "Brauchbares aus Ihnen!"
+  890 PRINT:PRINT:W$="N":INPUT "Neues Spiel: (J/N) ";W$
+  900 IF W$="J"THEN 920             
+  910 CLS:PRINT AT(0,0);" ":PRINT AT(12,5);"Auf Wiedersehen !"
+  915 PAUSE 30:CLS:END
+  920 IF N>42 THEN 930:ELSE 100
+  930 CLS
+  940 PRINT "Sie, Sie...Sie waren es, der":PRINT:PRINT "mich eben ";
+  950 PRINT "mit";N:PRINT:PRINT "Versuchen gequaelt hat." 
+  960 PRINT:PRINT "I C H    W I L L    N I C H T":PRINT:PRINT "         M E H R"
+  970 END
+ 1000 T$(0)="           "
+ 1010 T$(1)="          "
+ 1020 T$(2)="        "
+ 1030 T$(3)="      "
+ 1040 T$(4)="    "
+ 1050 T$(5)="  "  
+ 1060 RETURN
+ 1200! FEHLER
+ 1210 CLS:PRINT:PRINT:BEEP
+ 1220 PRINT TAB(2);"Wo soll denn das sein ?":PAUSE 15
+ 1230 RETURN
+ 1500 CLS:PRINT:BEEP 
+ 1505 PRINT TAB(6)"F E H L E R !":PRINT
+ 1510 PRINT TAB(6)"Regel beachten !":PAUSE 20
+ 1530 RETURN
+10000!
+10020 CLS:DIM V(23),N(23),H(23),ZA(23)
+10030 INPUT "ANZAHL DER SCHEIBEN";N
+10040 H1=1:H2=2:H3=3:TI=0
+10050 GOSUB 10070
+10060 END
+10070!
+10080 TI=TI+1
+10090 ZA(TI)=N:V(TI)=H1:H(TI)=H3:N(TI)=H2
+10100 IF ZA(TI)=0 THEN TI=TI-1:RETURN
+10110 N=ZA(TI)-1:H1=V(TI):H3=N(TI):H2=H(TI)
+10120 GOSUB 10080
+10130 PRINT ZA(TI);V(TI);N(TI)
+10140 N=ZA(TI)-1:H1=H(TI):H3=V(TI):H2=N(TI)
+10150 GOSUB 10080
+10160 TI=TI-1:RETURN

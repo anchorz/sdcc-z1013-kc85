@@ -1,0 +1,3 @@
+<kurz src="Berechnung von Präzisionswiderständen, Widerstandsnetzwerken"/>
+<lang><include src="PRAEZISIONSWIDER.B"/></lang>
+<requires></requires>

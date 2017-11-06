@@ -1,4 +1,4 @@
-<kurz>Pursuit-Clone: Kohlköpfe aufsammeln, Wölfen ausweichen</kurz>
+<kurz src="Pursuit-Clone: Kohlköpfe aufsammeln, Wölfen ausweichen"/>
 <lang>'Hase+Wolf' ist ein Geschicklichkeitsspiel. Der 
 Spieler muß mit einem Hasen ein Labyrinth von Kohlköpfen 
 leerfressen. Dabei wird er von Wölfen verfolgt. Ist die 

@@ -1,0 +1,3 @@
+<kurz src="Mathe: Nullstellenbestimmung von Polynomen"/>
+<lang><include src="POLYNOM-NULLST..B"/></lang>
+<requires></requires>

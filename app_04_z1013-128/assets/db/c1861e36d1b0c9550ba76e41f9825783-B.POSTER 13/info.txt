@@ -1,0 +1,17 @@
+<kurz src="einfacher Grafikeditor, Ergebnis als BASIC Programm abspeichern"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ E
+
+  N U T Z E R H I N W E I S E
+  ---------------------------
+
+ZEICHNEN IM GRAPHIKMODUS NACHDEM DER SCHIRM LEER IST. BEENDEN MIT
+>E<. DANACH WIRD DAS BILD IN'S PROGRAMM 'GEPOKT' UND KANN NACH
+DEM 'ABSAVEN' (LIST#1) MIT DEM BEFEHL >LOAD#1< ZU JEDEM PROGRAMM
+DAZUGELADEN WERDEN, DAS DIE ZEILEN 10 BIS 330 NICHT BELEGT HAT.
+VOR DEM 'ABSAVEN' IST DIE ZEILE 350 NOCH ZU 'KILLEN', DIE ZEILE
+320 UM 1 ZU KUERZEN UND ZEILE 330 IN 'GOTO330' ZU AENDERN !
+                              
+<include src="POSTER 13.B"/></lang>
+<requires></requires>

@@ -1,0 +1,29 @@
+<kurz src="Anleitung zum Schreiben von Dokumentationen"/>
+<lang>Hier wird der BASIC Intepreter als Zeileneditor bzw.
+Texteditor missbraucht.
+
+Programme koennen auf vielfaeltige Weise dokumentiert
+werden. Hier soll eine einfache Art aufgezeigt und
+demonstriert werden. Der Grundgedankte besteht in
+der Speicherung des Textes in REM-Programmzeilen.
+Hierzu ist kein weiteres Programm erforderlich, um
+den Text zu laden oder anzuzeigen. Das Laden kann
+mit CLOAD"NAME" oder mit LOAD#1"NAME"{zeilennr}
+erfolgen, je nachdem, wie das Programm auf Kassette
+gespeichert wurde, also entweder mit CSAVE"NAME" oder
+mit LIST#1"NAME"{zeilennr}. Vorteilhaft ist dieses Ver-
+fahren besonders beim Z 1013 mit nur 16-KByte-RAM, da
+jetzt zur Textspeicherung fast 5 KByte zur Verfuegung
+stehen. Auch ist jede Zeile editierbar, mit Hilfe des
+LIST#1- und des CSAVE-Kommandos koennen Bloecke aus-
+gelagert und neu platziert werden. Durch das LIST#1-
+koennen die Textzeilen dann beim Laden bereits ange-
+zeigt werden, was mit dem CLOAD-Kommando nicht reali-
+siert werden kann. Weiterhin ist es moeglich, bis zu 60
+Programmeilen mit etwa 120 Textzeilen zu je 28 Zeichen
+zu speichern. Guenstigerweise sollten die Programmzei-
+len 2-stellig sein, um ein akzeptables Schriftbild zu
+erhalten.
+
+<include src="REM-LISTING.B"/></lang>
+<requires></requires>

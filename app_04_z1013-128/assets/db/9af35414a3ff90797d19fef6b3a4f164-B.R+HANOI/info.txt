@@ -1,0 +1,3 @@
+<kurz src="mathematisches Knobel- und Geduldsspiel"/>
+<lang><include src="R+HANOI.B"/></lang>
+<requires></requires>

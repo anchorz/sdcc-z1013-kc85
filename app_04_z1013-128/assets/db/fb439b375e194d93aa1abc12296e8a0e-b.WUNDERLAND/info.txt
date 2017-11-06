@@ -2,5 +2,10 @@
 <lang>Befehle N S O W
 ... den Rest kenne ich nicht
 
+Anfang (vielleicht in etwa so): 
+W
+RUFE WALDG
+NEHME ZAUBERROLLE
+
 <include src="WUNDERLAND.b"/></lang>
 <requires></requires>

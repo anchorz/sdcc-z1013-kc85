@@ -1,7 +1,7 @@
 #Directory-Einträge
 db/28107373ce86e4492ee5f0850daac981-kc_basic_m+/kc_basic_m+.z80
+db/6da9b791fea934443daa2f21dea83444-B.NIXE/B.NIXE.z80
 db/6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80
-db/d7cc9d243acde235b0fc411de89839f9-3K+CRASH/3K+CRASH.z80
 db/4f7fa5cc3f81b6320d2adc1327d4e146-minefield/minefield.z80
 db/522d05b0294bf46ba18ddb5304f1c76a-digger/digger.z80
 db/bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/joystick_demo.z80
@@ -45,7 +45,8 @@ db/5849394be28a5fa9e843ced911cd676a-cyrus_v_3_dt/cyrus_v_3_dt.z80
 db/786d4edbdb0e9f7a74cfdad54a68cefc-cosmic_ball/cosmic_ball.z80
 db/1447f1aafc89290ad5a5aae1311714ca-river_raid_ls/river_raid_ls.z80
 db/7a4d3f8af84dcb0726b04c051d2e06fd-ohio_judith/ohio_judith.z80
-db/fc6d276a637b1c11ca4c8adae99736ca-solo_commotion/solo_commotion.z80
 db/bd2ca052b27a8b364b0f038c0a713aea-boulderdash_1_0/boulderdash_1_0.z80
-download/ladder.z80
-download/s04_b/ladder_c.com.z80
+db/b7a9e2f138a0651a74985ef27d224f00-schach/schach.z80
+db/0b02a44994adc3840fa762d8c1233e69-othello v1/othello v1.z80
+db/a607237be522ae2b2ccc9013a53d0de5-C.Z1013 BASIC 3K/C.Z1013 BASIC 3K.z80
+
