@@ -1,0 +1,228 @@
+
+Werter Computerfreund !
+
+Mit EDITEX2 haben Sie ein leistungsfähiges Programm zur Textver-
+arbeitung erhalten. Sie sind damit in der Lage, je nach Ausbau-
+stufe Ihres Computers einen max. 56k langen Text zu bearbeiten.
+Sie können zwischen 32 und 128 Zeichen pro Zeile wählen.
+
+
+ Hauptmenü:
+Nach dem Start des Programmes meldet sich das Hauptmenü. Sie se-
+hen hier eine Tabelle der möglichen Eingaben und ihre Bedeutung.
+
+M-Taste: Sie verlassen das Programm und gelangen in den Monitor.
+Am unteren Bildschirmrand können Sie das Promtsymbol und den
+Cursor sehen. Das Programm kann auf der Adresse (#100 Kaltstart)
+oder auf der Adresse (#103 Warmstart) neu gestartet werden. Beim
+Warmstart wird der Textspeicher nicht gelöscht.
+
+L-Taste: Ein auf Kassette abgespeicherter Text wird geladen. Sie
+werden aufgefordert, das Tonband zu starten. Hat das Programm
+den Textkopf erkannt, wird der Textname ausgegeben und der Text
+in den Textpuffer geladen. Auftretende Ladefehler werden wie im
+Monitor angezeigt. Nach dem Laden meldet sich wieder das Haupt-
+menü. Die Funktion der Laderoutine können Sie mit der zum Pro-
+gramm mitgelieferten Beschreibung überprüfen. Es können mehrere
+Texte hintereinander geladen werden.
+
+S-Taste: Der im Textpuffer befindliche Text wird auf Tonband ab-
+gespeichert. Sie werden zunächst aufgefordert, den Namen des
+Textes einzugeben. Dieser kann bis zu 12 Zeichen umfassen. An-
+schließend kann dem Text ein Codewort zugeordnet werden (max.8
+Zeichen). Ist ein Codewort eingegeben worden, wird der Text co-
+diert abgespeichert. Beim späteren Laden dieses Textes wird an-
+gezeigt, daß der Text codiert ist und das Codewort abgefordert.
+Soll der Text beim Abspeichern nicht codiert werden, kann die
+Eingabe des Codewortes durch Drücken der Enter-Taste übergangen
+werden. Als Letztes werden Sie aufgefordert, das Tonband zu
+starten und nach Drücken einer beliebigen Taste beginnt die Auf-
+nahme. Ist die Aufnahme beendet, meldet sich wieder das Haupt-
+menü. Sie sollten den Ablauf des Abspeicherns mit und ohne Code-
+wort und den Ablauf des Ladens üben.
+
+F-Taste: Nach dem Drücken dieser Taste wird der gesamte Textpuf-
+fer gelöscht.
+
+"CLS"-Taste (S4/T): Mit dieser Taste gelangen Sie in das Haupt-
+menü (speziell aus dem Editiermodus).
+
+D-Taste: Die Routine ermöglicht die Ansteuerung eines Druckers
+über das Port A der PIO. Das Port A ist als V24-Schnittstelle
+mit TTL-Pegel programmiert. Die Datenübergabe erfolgt über das
+BIT0, mit Start-und Stopbit, kein Paritätsbit. Zur Synchronisa-
+tion zwischen Computer und Drucker erfolgt die Freigabe durch
+den Drucker mit H-Pegel an BIT1. Die Baudrate beträgt 960 BAUD.
+Die Druckroutine genügt normalen Ansprüchen und gestattet auch
+ein teilweises Ausdrucken des Textes. Der Druckertreiber befin-
+det sich am Ende des Programms und ist leicht durch den Nutzer
+zur Anpassung an bestimmte Druckertypen zu ändern oder zu er-
+gänzen.
+
+E-Taste: Durch Drücken dieser Taste gelangen Sie in den Editier-
+modus.
+
+  Editiermodus :
+In diesem Modus wird der zu bearbeitende Text auf den Bildschirm
+gebracht. Er kann jetzt gelesen, geschrieben oder geändert wer-
+den. Um die vielen Sonderfunktionen in diesem Modus nutzen zu
+können, wurde eine höhere Eingabeebene geschaffen. Diese er-
+reicht man durch Drücken der STOP- Taste (S4/K), im Weiteren
+durch das Symbol "%" gekennzeichnet! Es entsteht der neue Cursor
+"@". Zum Editieren des Textes stehen Ihnen folgende Möglichkei-
+ten zur Verfügung :
+
+*Cursor-Bewegung
+Beim Schreiben des Textes erscheint das eingegebene Zeichen
+immer an der Cursorposition. Der Cursor rückt anschließend um
+eine Stelle nach rechts. Beim Übergang in den Editiermodus er-
+scheint der Cursor immer in der linken oberen Ecke. Die Position
+des Cursors wird zur Orientierung in der am unteren Bildschirm-
+rand sichtbaren Statuszeile angezeigt. Der Cursor kann wie folgt
+bewegt werden :
+ -Cursor rechts und links mit den dazu vorgesehenden Tasten
+ -Cursor hoch mit Taste "{"
+ -Cursor runter mit "|"
+ -Cursor an Textanfang mit "%3"
+ -Cursor an Textende mit "%4"
+
+*Text scrollen
+Um an jede Stelle des Textes zu gelangen, kann man blockweise
+oder zeilenweise hoch und nach unten scrollen. Dabei behält der
+Cursor seine Bildschirmposition, während der Text zu ihm ver-
+schoben wird. Durch Betätigen der Tasten "%\" oder "%[" kann man
+blockweise hoch- bzw. runterscrollen. Zeilenweise gescrollt wird
+durch die Bewegung des Cursors an den oberen oder unteren Bild-
+schirmrand. Sind Sie beim Scrollen am Anfang oder am Ende des
+Textes angelangt, ist ein Weiterscrollen unmöglich. Beim Auspro-
+bieren dieser Funktionen beobachten Sie bitte die Statuszeile.
+
+*Gross- und Kleinschreibung
+Damit man wie bei einer Schreibmaschine mit Kleinbuchstaben
+schreiben kann, ohne ständig die Shift-Taste zu drücken, ist im
+Programm eine Umschaltmöglichkeit vorgesehen. Durch "%1" kann
+festgelegt werden, daß die Buchstaben groß geschrieben und bei
+gleichzeitigem Drücken der Shift-Taste klein geschrieben werden.
+Durch "%0" kann festgelegt werden, daß die Buchstaben klein ge-
+schrieben und bei gleicheitigem Drücken der Shift-Taste groß
+geschrieben werden.
+
+*Tabulator
+Bei einer Schreibmaschine können Sie Tabulatorpositionen fest-
+legen oder löschen, die das Schreiben von Tabellen oder ähnli-
+chem vereinfachen. Dies ist auch hier möglich. Der Tabulator
+wird bei Betätigen der Taste "Cursor rechts" wirksam. Es können
+mehrere Tabulatorpositionen festgelegt werden, durch die Tasten-
+folge "%+". Gelöscht werden sie durch "%-".
+
+*Änderungen am Text
+Sollen im Text Veränderungen vorgenommen werden, dann stehen
+Ihnen die Funktionen Rubout und Insert zur Verfügung. Beim Ro-
+bout in der Zeile mit der Taste "[" verschwindet das Zeichen
+unter dem Cursor. Der Rest der Zeile wird um eine Position her-
+angezogen. Beim Insert in der Zeile mit der Taste "\" wird unter
+dem Cursor ein Freizeichen erzeugt. Der Rest der Zeile ver-
+schiebt sich um eine Position nach hinten. Das geht nur soweit,
+wie es der Platz innerhalb der Zeile zuläßt. Reicht der Platz
+nicht aus, kann durch die Tastenfolge "%2" eine ganze Zeile
+freigemacht werden. Der gesamte nachfolgende Text wird um eine
+Zeile nach hinten verschoben. Mit "%9" wird der Text wieder um
+eine Zeile vorgezogen.
+
+*Formatieren
+Beim Formatieren werden über das Zeilenende hinaus geschriebene
+Worte wieder zusammengefügt und beim Editieren entstandene Lük-
+ken beseitigt. Das Formatieren beginnt an der Cursor-Position
+und endet vor dem folgenden Absatz. Ein Absatz wird erkannt,
+wenn in der vorhergehenden Zeile mindestens 20 Freizeichen auf-
+einanderfolgen oder wenn auf der ersten Position der Zeile ein
+Freizeichen ist. Absatzanfang und Absatzende müssen im Bild-
+schirmbereich liegen.
+-Formatieren mit "%5"
+
+*Rechtsbündig
+Der vorher formatierte Absatz kann durch die Tasten "%6" rechts-
+bündig gemacht werden. Dabei gilt zur Festlegung und zur Abar-
+beitung des Absatzes das bereits im Abschnitt "Formatieren" Ge-
+sagte.
+
+*Arbeit mit Blöcken
+Blöcke sind durch die Zeichen "``" am Anfang und am Ende zu
+kennzeichnen. Sie müssen länger als eine Zeile sein.
+Beispiel:
+``
+Xxxxxxx  xxx xxxxxxx  XXXX Xxx
+xxxx  Xxxxxx xxxx  xxxx.
+``
+Ist ein Block festgelegt, kann er durch "%L" gelöscht, durch
+"%C" an die Cursor-Position kopiert und durch "%T" an die
+Cursor-Position transferiert werden.
+
+*Umlaute
+Die auf der Computertastatur nicht vorhandenen Umlaute werden
+wie folgt eingegeben. Zunächst wird die STOP-Taste gedrückt und
+anschließend der gewünschte Buchstabe ohne Punkte (z.B. %a, %o,
+%u, %A, %O, %U). Der Buchstabe "ß" wird auf dem Bildschirm durch
+das Zeichen "@" dargestellt.
+
+*Steuerzeichen
+Im EDITEX2 können alle die Steuerzeichen eingegeben werden, die
+von der Schreibmaschine S3004 verstanden werden. Zur Eingabe
+aller Steuerzeichen ist als erstes die Tastenfolge "%Z" einzuge-
+ben. Es entsteht der neue Cursor "*", der die dritte Eingabe-
+ebene kennzeichnet. Das dann einzugebene Zeichen kann man be-
+rechnen (Zeichen = ASCII-Code + 30H). Die Steuerzeichen sind auf
+dem Bildschirm als Graphiksymbole (ASCII-Code + 80H) darge-
+stellt.
+In der Tabelle der möglichen Steuerzeichen erscheint als erstes
+der an den Druckertreiber auszugebene Code, als zweites der Code
+des entsprechenden Graphikzeichens, als drittes die einzugebene
+Tastaturfolge und dann die Bedeutung des Steuerzeichens.
+
+00H  80H  %Z0   NOP
+01H  81H  %Z1   halbes Zeichen vor
+02H  82H  %Z2   halbes Zeichen zurück
+03H  83H  %Z3   NOP
+04H  84H  %Z4   halbe Zeile runter
+05H  85H  %Z5   halbe Zeile hoch
+06H  86H  %Z6   Microzeile runter
+07H  87H  %Z7   Microzeile hoch
+08H  88H  %Z8   ein Zeichen zurück
+09H  89H  %Z9   Tabulator anfahren
+0AH  8AH  %Z:   Linefeed
+0BH  8BH  %Z;   hoch 0
+0CH  8CH  %Z<   Papierwechsel
+0DH  8DH  %Z=   Linefeed und Carriage Return
+0EH  8EH  %Z>   hoch 2
+0FH  8FH  %Z?   hoch 3
+10H  90H  %Z@   Tabulator setzen
+11H  91H  %Za   Tabulator löschen
+12H  92H  %Zb   Tabulatorgitter löschen
+13H  93H  %Zc   Tabulatorgitter setzen
+14H  94H  %Zd   Rand links setzen
+15H  95H  %Ze   Rand rechts setzen
+16H  96H  %Zf   Rand lösen
+17H  97H  %Zg   Zeilenabstand 1
+18H  98H  %Zh   Zeilenabstand 1.5
+19H  99H  %Zi   Zeilenabstand 2
+1AH  9AH  %Zj   10 Zeichen pro Zoll
+1BH  9BH  %Zk   12 Zeichen pro Zoll
+1CH  9CH  %Zl   Pfund-Zeichen
+1DH  9DH  %Zm   micro
+1EH  9EH  %Zn   Carriage Return
+1FH  9FH  %Zo   Relocate (grün)
+7EH  7CH  %Z.   senkrechter Strich
+7FH  5FH  %Z/   Underline
+
+Die Arbeit im Editiermodus wird durch die Ausgabe eines Tasten-
+Clicks auf dem Tonbandanschluß unterstützt (Tonband auf Aufnahme
+schalten, Verstärker anschliessen o.ä.). Sollte durch unzweck-
+mäßige Bedienung des Programms der Cursor nicht mehr auf dem
+Bildschirm erscheinen, dann kann durch Drücken der Tasten "%3"
+der Cursor an den Textanfang gebracht und die Arbeit fortgesetzt
+werden.
+
+Ich wünsche Ihnen viel Erfolg bei der Arbeit mit dem Textverar-
+beitungsprogramm "EDITEX2".
+                                           G.F.
+
