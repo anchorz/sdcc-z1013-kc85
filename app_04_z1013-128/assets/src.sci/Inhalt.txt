@@ -1,0 +1,39 @@
+*******************************************************
+Z1013 Software 1986-1989
+entwickelt vom Software Center Ilmenau (SCI) 
+*******************************************************
+
+Anwendungen:
+	Datex		Datenbank
+	Editex		Textverarbeitung, Druckausgabe S3004
+	Editex2.2	Textverarbeitung, Druckausgabe S3004
+
+Programmierung:
+	GENS3Md		Z80-Assembler von Hisoft, portiert auf Z1013, Druckausgabe S3004
+	MONS3M		Z80-Disassembler von Hisoft, portiert auf Z1013
+
+Quellen:
+	ROM-Z1013	Monitor 2.02, kommentierter Quelltext (Text-File und GENS3M-File)
+
+Spiele:
+	Cyrus.0		Schachcomputer, portiert vom ZX Spektrum, selbststartend
+	Cyrus		Schachcomputer, portiert vom ZX Spektrum
+	Graverobber	Labyrinth-Spiel
+	Heartrunner	Labyrinth-Spiel
+	Jumping Jack	Jump & Run
+	Last Chance	Fragespiel
+	Minefield	Sei vorsichtig
+	Schlange	Sei schnell
+
+System:
+	Kass_1-2 MHz	Datenaustausch für 1 MHz Variante Z1013.01
+	SCI-Brenner	EPROM lesen und programmieren
+	SCI-Headersave	Magnetband-Speicher Unterstützung
+	SCI-ZX Spektrum	Kassetten-Interface zum Datenaustausch mit ZX Spektrum
+
+
+
+
+
+
+
