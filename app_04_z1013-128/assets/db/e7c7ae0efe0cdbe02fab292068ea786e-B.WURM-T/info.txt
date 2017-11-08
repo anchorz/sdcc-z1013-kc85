@@ -1,0 +1,11 @@
+<kurz src="Wurmi, Anaconda im Labyrinth, frisst Futterstückchen und wird länger"/>
+<lang>
+
+Steuerung (etwas eigenwillig): 
+⇦ Links
+⇨ Rechts
+2 Runter 
+⇩  Hoch
+
+<include src="WURM-T.B"/></lang>
+<requires></requires>

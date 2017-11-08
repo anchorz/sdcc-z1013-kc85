@@ -1,0 +1,5 @@
+<kurz src="Tools, sucht nach Variablen im BASIC-Programm"/>
+<lang>siehe auch [d0cbc01a09f1d6fb2c54d55c6900a8e9] - Struktursuche FOR/GOTO/GOSUB
+
+<include src="VARI-SUCHE BASIC.B"/></lang>
+<requires></requires>

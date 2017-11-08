@@ -1,0 +1,3 @@
+AADR: equ 0xd600
+EADR: equ 0xdff9
+SADR: equ 0xd600

@@ -1,0 +1,9 @@
+<kurz src="identisch mit [7067a2b2a45805c548fff6588188e6d3]"/>
+<lang>
+Falscher Adressbereich beim Abspeichern.
+
+error:  Hier fehlt das Ende. Im Header steht das Ende EADR=3ca8,
+        aber der BASIC-Speicher meint das Ende sei bei=3cb0
+
+</lang>
+<requires></requires>

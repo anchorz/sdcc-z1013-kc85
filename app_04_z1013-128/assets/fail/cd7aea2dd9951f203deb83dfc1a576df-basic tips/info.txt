@@ -1,0 +1,4 @@
+<kurz src="identisch mit [7067a2b2a45805c548fff6588188e6d3]"/>
+<lang>hier fehlen die drei 0-Bytes Dateioffset:0x110e am Ende des Basic Programs.
+Oder anders das Programm wurde ab 3ca9(ofs=110d) abgeschnitten </lang>
+<requires></requires>

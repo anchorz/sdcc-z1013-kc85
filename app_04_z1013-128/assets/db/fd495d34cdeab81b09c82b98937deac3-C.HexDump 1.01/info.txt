@@ -1,0 +1,3 @@
+<kurz src="Hex-Dump und Hex-Editor (ohne Prüfsummen)"/>
+<lang></lang>
+<requires></requires>

@@ -1,0 +1,10 @@
+<kurz src="Spielautomat, einarmiger Bandit, Schachfiguren als Grafik"/>
+<lang>Es koennen maximal 10 Spieler mitmachen. Jeder Spieler hat
+ein Anfangskapital von 20,-M das verspielt werden kann.
+Der Einsatz betraegt 1.-M. Die Anzahl der Spiele ist bei
+der Eingabe von ⏎ auf 50 begrenzt {max 200}.
+Die Anzahl der Spieler ist bei der Eingabe von ⏎ auf 1
+gesetzt.
+
+<include src="SPIELBOX.B"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="HC-BASIC TIPS+KNIFFE, coole Titelgrafik"/>
+<lang><include src="TIPS.B"/></lang>
+<requires></requires>

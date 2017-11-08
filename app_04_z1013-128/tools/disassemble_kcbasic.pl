@@ -53,9 +53,9 @@ sub map_char($) {
 }
 
 if (!defined $ARGV[0] ) {
-    print STDERR "convert KC-BASIC to text:\n";
-    print STDERR "Z1013 maps special Z1013 characters to UTF-Font starting from U+f100\n";
-    print STDERR basename($0)." [Z1013|DEFAULT] basic.z80 >basic.B\n";
+    print "convert KC-BASIC to text:\n";
+    print "Z1013 maps special Z1013 characters to UTF-Font starting from U+f100\n";
+    print basename($0)." [Z1013|DEFAULT] basic.z80 >basic.B\n";
     exit 1;
 }
 
@@ -88,15 +88,19 @@ $aadr=unpack("v",substr($content,0,2));
 $eadr=unpack("v",substr($content,2,2));
 $basic_end=unpack("v",substr($content,55,2));
 
+
 $ofs=0x2c01-0x2bc0+32;
+printf ("i: EADR(nach Z80 Header)=0x%04x     \@FILE-POS[0x%04x]\n",$eadr,$eadr-$aadr+32);
+printf ("i: PRGM(          \@2BD7)=0x%04x     \@FILE-POS[0x%04x]\n",$basic_end,$basic_end-$aadr+32);
+
 if ($eadr<$basic_end) {
-    printf (STDERR "error:  Hier fehlt das Ende. Im Header steht das Ende EADR=%04x,\n",$eadr);
-    printf (STDERR "        aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+    printf ("r:  Hier fehlt das Ende. Im Header steht das Ende EADR=%04x,\n",$eadr);
+    printf ("    aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
 }
 
 if ($eadr!=$basic_end) {
-    printf (STDERR "warn:  Im Header steht das Ende EADR=%04x,\n",$eadr);
-    printf (STDERR "       aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+    printf (":  Im Header steht das Ende EADR=%04x,\n",$eadr);
+    printf ("   aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
 }
 
 #$ofs=0x2a21;
@@ -134,13 +138,14 @@ while(1) {
     $index+=$len;
     $line_no=unpack("v",substr($content,$index,$len));
     $index+=$len;
-    #printf("eol=%x index=%x\n",$eol,$index);
+    #printf("next_ptr=%x this_content=%x\n",$eol,$index);
     $token=sprintf("%5d",$line_no); 
     $token_space=1; #need space between tokens
     $token_type=GENERIC;
     $parse_line=1;
 
     while($parse_line) {
+        #printf("index=%x eol=%x\n",$index,$eol);
         $byte=ord(substr($content,$index++,1));
         if ($index==$eol) {
             if ($byte==0) {
@@ -148,7 +153,9 @@ while(1) {
                 print OUT ("\n");
                 $parse_line=0; #break reset scanner status variables outside the loop
             } else {
-                printf(STDERR " <=\nError: [0x%04x] - NON-NULL character 0x%02x found\n", $index,$byte);
+                printf("e: [0x%04x] - NON-NULL character 0x%02x found - that should be the end of the line marker - exit...\n", $index-1,$byte);
+                print OUT "$token";
+                print OUT ("\n");
                 exit 1;
             }    
         } else {
@@ -328,7 +335,7 @@ REDO_CHARACTER:
                     
                     case 0xf5 { pr("PRINT"); }
                     
-                    else { printf(STDERR "??<=\nError: [0x%04x] - unknown character 0x%02x after '%s' found\n", $index,$byte,$token); exit 1;}
+                    else { printf("e: [0x%04x] - unknown character 0x%02x after '%s' found - ignored\n", $index,$byte,$token); }
                 }
             }
         }

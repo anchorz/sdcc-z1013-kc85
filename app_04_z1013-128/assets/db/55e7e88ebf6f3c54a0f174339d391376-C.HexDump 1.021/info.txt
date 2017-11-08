@@ -1,0 +1,5 @@
+<kurz src="Hex-Dump und Hex-Editor (ohne Prüfsummen), neuere Version"/>
+<lang>verwendet OUT PORT 0x34/0x35 </lang>
+<requires></requires>
+
+

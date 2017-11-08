@@ -1,0 +1,13 @@
+<kurz src="TORERO, in einer Arena STIER bezwingen, Stier fangen"/>
+<lang>Steuerung: ⇦ ⇨ ⇧ ⇩
+
+ Ein TORERO soll in einer Arena einen STIER bezwingen.Der
+ Torero muss sein rotes Tuch 10mal ueber den Stier werfen.
+
+ Sieger ist der,der die kuerzeste Zeit dazu braucht. Der
+ Torero wird mit ⇧=hoch;⇩=runter;⇦ =links;⇨=rechts gelenkt.
+ Der Stier kann nicht gelenkt werden.                        
+
+
+<include src="TORERO.B"/></lang>
+<requires></requires>

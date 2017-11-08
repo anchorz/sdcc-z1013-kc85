@@ -1,0 +1,4 @@
+<kurz src="Vorspann Titelbildschirm zum Programm HexDump"/>
+<lang>ruft Sprungverteiler FFF1:LORUF auf und wartet auf ein weiteres Programm.
+</lang>
+<requires>SPV</requires>

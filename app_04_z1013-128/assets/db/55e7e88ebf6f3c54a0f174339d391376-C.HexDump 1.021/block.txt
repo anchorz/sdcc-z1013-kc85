@@ -1,0 +1,2 @@
+ entry: start 0xd600 end 0xd603 type code
+

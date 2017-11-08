@@ -31,8 +31,8 @@ sub write_directory($ $)
     print INFO pack('c',$#files+2);#einer extra für den ...EXIT Eintrag am Schluss
     $offset++;
     
-    #$steps=8192;
-    $steps=32768;
+    $steps=8192;
+    #$steps=32768;
     $entrySize=16+3+2+2;
     $filepos=$offset+($#files+1)*$entrySize+16;#extra für den ...EXIT Eintrag am Schluss
     my $bankStart=0;

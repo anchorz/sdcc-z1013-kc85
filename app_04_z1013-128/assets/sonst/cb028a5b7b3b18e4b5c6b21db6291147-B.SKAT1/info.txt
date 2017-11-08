@@ -1,0 +1,5 @@
+<kurz src="ähnlich [4d60a668334e5db51ec494ee528cc628]"/>
+<lang>Diese Version hat noch die INK Befehle und andere Zeilennummern.
+Ansonsten ist es gleich.
+<include src="SKAT1.B"/></lang>
+<requires></requires>

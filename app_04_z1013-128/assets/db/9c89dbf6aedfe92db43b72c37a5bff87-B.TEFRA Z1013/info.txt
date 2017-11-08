@@ -1,0 +1,6 @@
+<kurz src="Textfraktale"/>
+<lang>Bereich:
+X1,X2 -0.4,0.4   X1,X2 -2,2 
+Y1,Y2 -1.1,1.1   Y1,Y2 -2,2
+<include src="TEFRA Z1013.B"/></lang>
+<requires></requires>

@@ -1,0 +1,192 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 A$="      Spielbox"
+   20 X$="J"
+   30 B=2
+   40 GOTO 80
+   50 C(K)=INT(RND(C(K))*10)
+   60 IF C(K)<1 OR C(K)>6 THEN C(K)=11:GOTO 50
+   70 RETURN
+   80 B(1)=0
+   90 B(2)=2
+  100 B(3)=5
+  110 CLS
+  120 PRINT A$
+  130 PRINT  
+  140 PRINT "Es koennen maximal 10 Spieler"
+  150 PRINT "mitmachen. Jeder Spieler hat"
+  160 PRINT "ein Anfangskapital von 20,-M"
+  170 PRINT "das verspielt werden kann."
+  180 PRINT "Der Einsatz betraegt 1.-M."
+  190 GOSUB 1660
+  200 PRINT "Die Anzahl der Spiele ist bei" 
+  210 PRINT "der Eingabe von -Ent- auf 50"
+  220 PRINT "begrenzt {max 200}."
+  230 PRINT "Die Anzahl der Spieler ist bei"
+  240 PRINT "der Eingabe von -Ent- auf 1"
+  250 PRINT "gesetzt."
+  260 PRINT:G=0
+  270 INPUT "ANZAHL DER SPIELE ";G
+  280 IF G=0 THEN G=50
+  290 IF G<0 OR G>200 THEN 110
+  300 PRINT:A1=1
+  310 INPUT "ANZAHL DER SPIELER";A1
+  320 IF A1<1 OR A1>10 THEN 110
+  330 PRINT:E2=20
+  340 INPUT "ERSTEINSATZ       ";E2
+  350 IF E2<1 OR E2>20 THEN 110
+  360 CLS
+  370 FOR A=1 TO A1
+  380 E1(A)=E2
+  390 GOSUB 450
+  400 FOR G1=1 TO G
+  410 G(A)=G1
+  420 PRINT AT (2,0);"                              "
+  430 PRINT AT (3,0);"                              "
+  440 GOTO 520
+  450 PRINT AT(5,3);""
+  460 PRINT AT(6,3);"               "
+  470 PRINT AT(7,3);"               "
+  480 PRINT AT(8,3);"               "
+  490 PRINT AT(9,3);"               "
+  500 PRINT AT(10,3);""
+  510 RETURN
+  520 PRINT AT (0,0);A$
+  530 PRINT AT (14,0);"Spieler "
+  540 PRINT AT (14,9);A
+  550 PRINT AT (14,11);" setzt 1.-M"
+  560 E(A)=E(A)+1
+  570 PRINT:PRINT
+  580 PRINT AT (16,0);"Damit besitzt du noch"
+  590 AB=E1(A)-E(A)
+  600 PRINT AT (16,22);AB
+  610 PRINT AT (16,26);".-M"
+  620 PRINT AT (18,0);"Du bist im "
+  630 PRINT AT (18,11);G(A)
+  640 PRINT AT (18,16);"Spiel von"
+  650 PRINT AT (20,11);G
+  660 PRINT AT (20,16);"Spielen"
+  670 GOSUB 1660
+  680 GOTO 870
+  690 PRINT CHR$(14)
+  700 PRINT CHR$(17)
+  710 RETURN
+  720 PRINT CHR$(15)
+  730 PRINT CHR$(17)
+  740 RETURN
+  750 PRINT CHR$(16)
+  760 PRINT CHR$(17)
+  770 RETURN
+  780 PRINT CHR$(18)
+  790 PRINT CHR$(19)
+  800 RETURN
+  810 PRINT CHR$(20)
+  820 PRINT CHR$(22)
+  830 RETURN
+  840 PRINT CHR$(21)
+  850 PRINT CHR$(22)
+  860 RETURN
+  870 IF C(1)=0 THEN C(1)=12
+  880 C(1)=INT(RND(C(1))*10)
+  890 IF C(1)<1 OR C(1)>6 THEN 870
+  900 IF C(2)=0 THEN C(2)=25
+  910 C(2)=INT(RND(C(2))*10)
+  920 IF C(2)<1 OR C(2)>6 THEN 900
+  930 IF C(3)=0 THEN C(3)=33
+  940 C(3)=INT(RND(C(3))*10)
+  950 IF C(3)<1 OR C(3)>6 THEN 930
+  960 D(1)=7
+  970 D(2)=7
+  980 D(3)=7
+  990 B=1
+ 1000 FOR I=7 TO 10
+ 1010 FOR J=1 TO 6
+ 1020 FOR K=1 TO 3
+ 1030 BEEP
+ 1040 L=J+B(K)
+ 1050 IF L>6 THEN L=L-6
+ 1060 ON K GOTO 1070,1090,1110
+ 1070 WINDOW 7,9,6,7
+ 1080 GOTO 1120
+ 1090 WINDOW 7,9,12,13
+ 1100 GOTO 1120
+ 1110 WINDOW 7,9,18,19
+ 1120 IF D(K)=0 THEN 1210
+ 1130 IF I<10 THEN 1150
+ 1140 IF L=C(K) THEN D(K)=0
+ 1150 CLS
+ 1160 ON L GOSUB 690,720,750,780,810,840
+ 1170 FOR M=1 TO B
+ 1180 B$=INKEY$
+ 1190 NEXT M
+ 1200 IF B$>"" THEN GOSUB 50
+ 1210 NEXT K,J
+ 1220 IF I=8 THEN B=10
+ 1230 IF I=9 THEN B=15
+ 1240 IF I=10 THEN B(1)=C(1)-1:B(2)=C(2)-1:B(3)=C(3)-1
+ 1250 NEXT I
+ 1260 WINDOW
+ 1270 IF C(1)=C(2) AND C(1)=C(3) THEN 1330
+ 1280 IF C(2)=C(3) THEN 1350
+ 1290 IF C(1)=C(2) THEN 1350
+ 1300 IF C(1)=C(3) THEN U=1:GOTO 1370
+ 1310 PRINT:PRINT:PRINT "   Nichts gewonnen"
+ 1320 GOTO 1390
+ 1330 IF C(1)>4 THEN U=10:GOTO 1370
+ 1340 U=5:GOTO 1370
+ 1350 IF C(J)>4 THEN U=3:GOTO 1370
+ 1360 U=1:GOTO 1370
+ 1370 PRINT:PRINT:PRINT " Du hast ";U;".-M gewonnen !!"
+ 1380 E1(A)=E1(A)+U
+ 1390 PRINT AT (14,0);"                         "
+ 1400 PRINT AT (16,22);E1(A)-E(A)
+ 1410 PRINT AT (4,25);" "
+ 1420 IF E1(A)-E(A)=0 THEN 1730
+ 1430 INPUT "Noch ein spiel? J/N :";X$
+ 1440 IF X$="N" THEN G1=G
+ 1450 NEXT G1
+ 1460 CLS
+ 1470 NEXT A
+ 1480 CLS
+ 1490 PRINT " Spie- Spie- Ein- Gewinn  Summe"
+ 1500 PRINT " ler   le    satz"
+ 1510 PRINT "-------------------------======"
+ 1520 FOR I=1 TO A1
+ 1530 J=I+5
+ 1540 PRINT AT (J,2);I
+ 1550 PRINT AT (J,8);G(I)
+ 1560 PRINT AT (J,14);E(I)
+ 1570 PRINT AT (J,20);E1(I)-E2 
+ 1580 PRINT AT (J,27);E1(I)-E(I)
+ 1590 NEXT I
+ 1600 C$="NICHTS GEHT MEHR !!!!"
+ 1610 J1=J+5
+ 1620 J2=20
+ 1630 GOSUB 1790
+ 1640 PRINT AT (J1,5);C$
+ 1650 END
+ 1660 PRINT AT (24,10);"Spielplan"
+ 1670 PRINT AT (26,1);"3 gleiche (KOENIG,DAME) =10.-M"
+ 1680 PRINT AT (27,1);"3 gleiche               = 5.-M"
+ 1690 PRINT AT (28,1);"2 gleiche (KOENIG,DAME) = 3.-M"
+ 1700 PRINT AT (29,1);"2 gleiche               = 1.-M"
+ 1710 PRINT AT (30,1);"2 gleiche (nicht nebeneinander) = 1.-M"
+ 1720 RETURN
+ 1730 CLS
+ 1740 C$="..Du bist PLEITE !!.."
+ 1750 J1=15
+ 1760 J2=5
+ 1770 GOSUB 1790
+ 1780 GOTO 1470
+ 1790 C1$=""
+ 1800 FOR CL=1 TO J2
+ 1810 FOR CZ=1 TO 21
+ 1820 BEEP
+ 1830 C1$=LEFT$(C$,CZ)
+ 1840 PRINT AT (J1,5);C1$
+ 1850 NEXT CZ
+ 1860 C1$=""
+ 1870 PRINT AT (J1,1);"                             "
+ 1880 NEXT CL
+ 1890 RETURN
+ 1900 STOP

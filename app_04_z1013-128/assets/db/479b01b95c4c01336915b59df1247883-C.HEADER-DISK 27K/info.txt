@@ -1,0 +1,3 @@
+<kurz src="HEADERSAVE-kompatible Verwaltung RAM-Diskette nach MP 3/88"/>
+<lang><include src="HEADER-DISK 27K.asm"/></lang>
+<requires></requires>
