@@ -1,3 +1,3 @@
-<kurz src="Ladder BASIC-Version nur für A2! (verwendet Monitoraufrufe PEEK/POKE)"/>
+<kurz src="BASIC-Version (nur A2!) (verwendet Monitoraufrufe PEEK/POKE)"/>
 <lang><include src="ladder_bas.B"/></lang>
 <required></required>

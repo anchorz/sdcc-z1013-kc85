@@ -54,7 +54,7 @@ system("dd if=\"$file\" of=\"$out_hex\" bs=1 skip=32");
 system("z80dasm -b block.hex -S sym.hex -vvv -g $aadr_txt -l \"$out_hex\" -o \"$out_asm\"");
 printf("%04x %04x %04x\n",$aadr,$eadr,$sadr);
 
-#system("sed -i -e \"s/l[0-9a-f]*h/lxxxxh/\" \"$out_asm\"");
-#system("sed -i -e \"s/sub_[0-9a-f]*h/sub_xxxxh/\" \"$out_asm\"");
+system("sed -i -e \"s/l[0-9a-f]*h/lxxxxh/\" \"$out_asm\"");
+system("sed -i -e \"s/sub_[0-9a-f]*h/sub_xxxxh/\" \"$out_asm\"");
 
 print ("out: \"$out_asm\"\n");

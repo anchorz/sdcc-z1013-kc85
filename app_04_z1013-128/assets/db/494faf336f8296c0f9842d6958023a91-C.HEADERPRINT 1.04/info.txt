@@ -1,0 +1,3 @@
+<kurz src="Inhaltsverzeichnis, formatierte Kassettenlisten erstellen"/>
+<lang>Ergibt besonders viel Sinn, wenn man die Ausgabe gleich noch auf den Drucker umleitet.</lang>
+<requires></requires>

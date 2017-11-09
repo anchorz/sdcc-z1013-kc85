@@ -18,6 +18,435 @@
 </video>
 </div>
 <div class="filelist">0100 3fff 0100 C ... <a href="microword_1_5gs1.z80">MICROWORD 1.5GS1</a></div>
-<div class="text"><include>microword_1_5gs1.txt</include></div>
+<div class="text"><pre>MicroWORD 1.5 GS1
+
+fuer Z1013 Grundversion
+
+(c) by R. Brosig  18.01.89
+
+
+Editiertasten:
+
+S4 CTRL   Bedeutung 
+______________________________
+Q   I   Cursor rechts
+P   H   Cursor links
+R   J   Cursor runter
+S   K   Cursor hoch
+I   A   Cursor eine Seite vor
+M   E   Cursor Seite zurueck
+@   P   Zeichen links loeschen
+S2G DEL Zeichen loeschen
+K   C   Bild-/Komm.-Mode
+J   B   Ank. Steuerzeichen
+B   R   Wandlung Buchstabe gr/kl.
+E   U   CAPS (SHIFT-LOCK)
+W   O   Loeschen einer Zeile
+A   Q   Ersetze/Wiederhole FIND
+T   L   FORM FEED (fuer Drucker)
+D   T   Tabulator
+V   N   NUL
+C   S   Einfuegen/Ueberschreiben
+F   V   Marke setzen
+O   G   Cursor Wort rechts
+N   F   Cursor Wort links
+L   D   Reclaim, geloeschte
+        Zeichen zurueckholen
+
+
+1. Speicheraufteilung: 
+
+ 100H-18FEH  Programm mit Header-
+             save und S 3004 
+             Druckertreiber
+18FFH-1BFEH  SAVE-Bereich
+             (Merkzettel)
+   ab 1BFFH  Textpuffer
+
+Ohne Beschreibung muss nur der 
+Bereich von 100-18FF abgesaved
+werden!
+
+
+2. Der Textspeicher:
+
+Als Textspeicher dient der
+Speicherbereich ab 1BFFH.
+Die genaue Lage des Textpuffers
+kann durch das A-Kommando im
+gesamten Textspeicherbereich
+eingestellt werden. Bei Bedarf 
+kann der Save-Bereich auch zum
+Textpuffer definiert werden.
+Die Definition kann dann im Be-
+reich von 18FFH bis Speicherober-
+grenze erfolgen (max. 3FFFH bei
+16K RAM, DFFF bei 64K RAM).
+
+
+3. Allgemeine Funktionen:
+
+Nach Start des Texteditors wird
+ein Speichertest durchgefuehrt,
+der einen evtl. groesser def.
+Textpuffer auf das Speicher-
+ende begrenzt (Anzeige 'M').
+Danach wird das Ende eines evtl.
+im Textpuffer liegenden Textes
+gesucht (Anzeige 'I').
+Nachdem wird ein Kommando-
+modus erreicht. Dieser zeigt
+
+- das Menue der moeglichen
+  Kommandos,
+- die Zeile, in der sich der 
+  Cursor befindet (nach Start
+  immer in der letzten)&lt;LINE&gt;,
+- die Cursorposition innerhalb
+  der aktuellen Zeile &lt;POS&gt;,
+- den freien Platz im Textpuffer
+  dezimal &lt;FREE&gt;,
+- die aktuelle Cursor-Textposi-
+  tion in hex &lt;TXP&gt;,
+- das Textpufferende in hex &lt;ETB&gt;
+- das definierte Zeilenende
+  (max. 255) dezimal &lt;LE&gt; ,
+- den eingeschalteten Editiermo-
+  de (Insert'I'/Overwrite'O')&lt;M&gt;
+- sowie den Hexcode des durch
+  den Cursor im Bildmode vedeck-
+  ten Zeichens &lt;CD&gt; an.
+
+
+4. Der Kommandomodus
+
+Folgende Kommandos koennen ver-
+wendet werden:
+
+
+&lt;A&gt; - assign
+
+Damit kann der Textpufferbereich
+neu definiert werden.
+Die Eingabe der Adressen kann
+dezimal oder hexadez. (nachstel-
+len eines H, ohne fuehrende 0)
+erfolgen.
+
+
+&lt;B&gt; - bye
+
+Rueckkehr zum Monitor und Reor-
+ganisation des Textes.
+
+
+&lt;S&gt; - start
+
+Cursor auf Textanfang 
+
+
+&lt;E&gt; - end
+
+Cursor auf Textende
+
+
+&lt;N&gt; - number
+
+Cursor wird nach Eingabe der
+Zeilennummer mit maximal fuenf
+Ziffern auf die entsprechende
+Zeile gesetzt.
+
+
+&lt;M&gt; - set mark
+
+Der Cursor wird im Bildschirm-
+modus vor Anwendung des Komman-
+dos auf eine bestimmte Textstel-
+le positioniert, anschliessend
+wird mit diesem Kommando diese
+Stelle markiert und wieder in
+den Bildschirmmodus zurueckge-
+schaltet. Die Markierung wird
+durch andere Kommandos ausgewer-
+tet. Diese Funktion kann alter-
+nativ auch durch eine entspre-
+chende Steuertaste (^V,S4-F) im
+Bildschirmmode ausgefuehrt werden.
+
+
+&lt;%&gt; - delete part
+
+Mit diesem Kommando kann ein 
+Textteil, dessen Anfang mit dem
+&lt;M&gt;-Komm. gekennzeichnet wurde,
+bis zur aktuellen Cursorposi-
+tion geloescht werden.
+
+
+&lt;&amp;&gt;&gt; - all clear
+
+Loeschen des gesamten Textpuf-
+fers.
+
+
+&lt;F&gt; - find/change
+
+Soll eine Textfolge im Textpuf-
+fer gesucht werden und ggf.
+durch eine andere Textfolge er-
+setzt werden, so muss nach
+Aufruf dieses Kommandos der 
+Text, der gesucht werden soll,
+eingegeben werden, durch '/'
+getrennt kann anschliessend der
+einzusetzende Text angegeben 
+werden. Die gesamte Textfolge
+ist auf 32 Zeichen begrenzt. 
+Dabei kann das Verhaeltnis der
+beiden Textteile beliebig sein.
+Die Suche erfolgt dabei grund-
+saetzlich ab aktueller Cursor-
+position.
+Bei der ersten Uebereinstim-
+mung wird der Curuor auf das
+erste Zeichen dieser Zeichen-
+kette gesetzt und in den Bild-
+schirmmodus umgeschaltet.
+Im Bildschirmmodus existiert 
+eine Funktionstaste, die diesen
+Kommandokomplex ohne erneute
+Eingabe der Zeichenkette wie-
+derholt startet (CTRL-Q / S4-A
+=Ersetzen/Wiederholen).
+Die Find-Routine startet immer
+auf der aktuellen Zeilenposition
+
+
+&lt;H&gt; - print part
+
+Ueber die Druckerschnittstelle
+kann mit diesem Kommando der
+Text zwischen einer im &lt;M&gt;-Kom-
+mando (bzw.^V) markierten Stelle
+und der aktuellen Cursorposi-
+tion formatiert ausgedruckt
+werden.
+Es besteht die Moeglichkeit der
+Einstellung des Seitenformates
+und der Auswahl der zu drucken-
+den Seiten. Eine Arbeit mit
+Seitenstop kann eingestellt
+werden. Nach Aufruf des Komman-
+dos erfolgt die Aufforderung
+zur Eingabe der Zeilenzahl/Sei-
+te (lines/page),die man mit
+einer Dezimalzahl (&gt;9) beant-
+wortet (normale Seite=72). 
+Bei Zeilenzahl=0 bzw. keine Ein-
+gabe erfolgt keine Seitenforma-
+tierung.
+Bei geforderter Seitenforma-
+tierung wird abgefragt, mit 
+welcher Numerierung die ge-
+druckten Seiten beginnen sollen.
+Bei leerer Eingabe wird ohne
+Fusszeile, in der die Seitennum-
+mer untergebracht ist, gedruckt.
+Anschliessend wird abgefragt, 
+ob ein Druckstop nach jeder
+Seite erfolgen soll. Wird diese
+Frage bejaht, stoppt der Druck
+definiert nach jeder Seite.
+
+
+&lt;P&gt; - print file
+
+wie &lt;H&gt;, nur dass der komplette
+Text gedruckt wird.
+
+
+&lt;L&gt; - line-end
+
+Mit diesem Kommando wird die
+rechte Zeilenbegrenzung einge-
+stellt (10-255).
+Bei Ueberschr. der Pos. erfolgt
+ein Wortumbruch bis zum vorher-
+gehenden Leerzeichen oder TAB. 
+Wird innerhalb der letzten 6 Zei-
+chen ein '-' eingegeben, so er-
+folgt automatisch ein Zeilen-
+abschluss. Die Eingabe einer 0
+als max. Zeilenlaenge schaltet
+die Funktion aus.
+
+
+&lt;R&gt; - read file
+
+Es wird ein Text, der mit Header-
+save aufgezeichnet wurde, in den
+Textpuffer geladen. Ein evtl.
+vorhandener Text wird ueber-
+schrieben.
+
+
+&lt;W&gt; - write file
+
+Der gesamte Text, der sich im
+Textpuffer befindet, wird mit
+Hilfe des integrierten Header-
+saves an die TB-Buchse ausgege-
+ben.
+
+
+&lt;V&gt; - write part
+
+Ein vorher im &lt;M&gt;-Kommando mar-
+kierter Textteil wird bis zur
+aktuellen Cursorposition mit 
+Headersave ausgegeben.
+ 
+ 
+&lt;D&gt; - read part
+
+Der ueber die Headersaveschnitt-
+stelle eingelesene Text wird an
+der Cursorposition eingefuegt.
+Dabei ist darauf zu achten, dass
+der eingefuegte Text kleiner als
+der freie Textbereich ist.
+Es ist wichtig, dass der Einle-
+sevorgang nicht vorzeitig abge-
+brochen wird, da es sonst zu
+einem Textverlust kommen kann.
+
+
+
+&lt;X&gt; - expand
+
+Hiermit wird der zweizeilige
+Bildmode eingeschaltet. Damit
+koennen Texte, die fuer ein brei-
+teres Format geschrieben sind,
+ohne seitliches Bildrollen gele-
+sen und bearbeitet werden.
+
+
+&lt;C&gt; - compact
+
+Der zweizeilige Bildmode wird
+wieder ausgeschaltet.
+
+
+&lt;T&gt; - write repeat
+
+Die vorangegangene Write-Funktion
+wird wiederholt (Sicherheitsko-
+pie erzeugen). Zwischen der ers-
+ten Schreiboperation und diesem
+Kommando darf die aktuelle Cur-
+sorposition nicht veraendert
+werden.
+
+
+&lt;=&gt; - NL-&gt;CRLF
+
+Wandelt ueber den gesamten Text 
+das Zeilenendezeichen NL (1EH)
+in die Steuerzeichenfolge CRLF
+(0DH,0AH). Anschliessend wird
+das Kommando &lt;W&gt; aufgerufen,
+sodass der gewandelte Text auf
+Kassette ausgelagert werden 
+kann. Nach Beendigung oder Ab-
+bruch der Save-Funktion wird der
+Text wieder zurueckgewandelt.
+Es ist zu beachten, dass der
+Text durch die Wandlung in CRLF
+um die Zeilenzahl laenger wird
+und deshalb der freie Speicher-
+platz diesem Fakt entsprechen
+muss. Mit dieser Funktion koen-
+nen CP/M-kompatible Texte er-
+zeugt werden.
+
+
+&lt;I&gt; - in save
+
+Dieses sehr leistungsfaehige
+Kommando dient im Zusammenhang
+mit dem &lt;O&gt; Kommando dem Mischen
+von Textteilen. 
+Ein Textbereich von einer
+definierten Marke bis zur Cur-
+sorposition wird in den SAVE
+geladen. Der SAVE stellt einen
+Sondertextpuffer von 1K Laenge
+dar, der direkt hinter dem Edi-
+tor plaziert ist. Ist der mar-
+kierte Bereich groesser als der
+SAVE, erfolgt eine Fehlermeldung.
+Bei Verzicht auf die SAVE-Funk-
+tion kann der SAVE-Bereich mit
+zum Textpuffer gemacht werden.
+ 
+
+&lt;O&gt; - out save
+
+Der Inhalt des im &lt;I&gt; Kommando
+gefuellten SAVE's wird an der 
+aktuellen Cursorposition einge-
+fuegt.
+
+
+5. Der Bildschirmmodus
+
+Im Bildschirmmodus wird der 
+Bildschirm entsprechend des
+eingegebenen Textes aktualisiert.
+Das Textfenster wird dabei
+so dargestellt, dass der Cursor
+im Bildfenster erscheint. Dabei
+kann an den Raendern Text abge-
+schnitten sein, der nicht mehr 
+auf den Bildschirm passt.
+
+
+6. Die Druckerschnittstelle
+
+Der Anschluss einer elektro-
+nischen Schreibmaschine S 3004
+ist im Programm realisiert. Der
+Anschluss erfolgt ueber den vor-
+handenen User-Port des Z 1013.
+Die Uebertragungsgeschwindigkeit
+betraegt 1200 baud (2 MHz Rech-
+nertakt).
+Der Datenausgang am Stecker X4
+liegt am Steckerstift A4 (TXD).
+Die Sendebereitschaft (/CTS) der
+S 3004 muss am Steckerstift B4
+bereitgestellt werden. 
+Bei der Verwendung anderer Druk-
+ker kann in Zelle 112H die Adres-
+se des externen Druckertreibers
+eingetragen werden. Das Zeichen
+wird im A-Register uebergeben.
+
+
+Viel Spass mit
+
+
+        "MicroWORD 1.5 GS1"
+
+
+               Rainer Brosig
+               Ltr. AG Z1013
+               in der IG-HC
+
+                 DRESDEN
+                 &lt;&lt;EOT&gt;&gt;</pre>
+</div>
 </body>
 </html>

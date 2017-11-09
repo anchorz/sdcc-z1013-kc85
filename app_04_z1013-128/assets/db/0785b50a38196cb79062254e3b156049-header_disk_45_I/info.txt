@@ -1,4 +1,4 @@
-<kurz>HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88.</kurz>
+<kurz src="HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88."/>
 <lang><link>header_disk_45_I.txt</link>
 
 *************************************************************

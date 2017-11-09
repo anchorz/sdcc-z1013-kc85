@@ -1,3 +1,3 @@
-<kurz>Textverarbeitung</kurz>
-<lang><include>microword_1_5gs1.txt</include></lang>
+<kurz src="Textverarbeitung, Texteditor, V18.01.1989"/>
+<lang><include src="microword_1_5gs1.txt"/></lang>
 <requires></requires>

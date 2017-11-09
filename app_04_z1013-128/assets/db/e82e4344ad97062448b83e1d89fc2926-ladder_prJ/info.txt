@@ -1,0 +1,7 @@
+<kurz src="grafisch schönste Variante+Joystick Practic 01/88"/>
+<lang>
+
+Steuerung: ⇦ ⇨  ␣ 
+
+</lang>
+<requires></requires>

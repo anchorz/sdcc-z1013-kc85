@@ -1,0 +1,4 @@
+<kurz src="DRUCKERTREIBER SM4000"/>
+<lang>Typ/Autostart ist nicht korrekt, es ist eigentlich ein 'M'odul zum Nachladen. 
+Die Initialisierung sollte dann mit CALL 0E800h aus einem Programm erfolgen.</lang>
+<requires></requires>

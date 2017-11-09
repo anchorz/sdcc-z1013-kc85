@@ -1,0 +1,71 @@
+<kurz src="Joystick, aber wozu dient es?"/>
+<lang>
+Tabelle ab 0x0d00 erwartet.
+
+0C00  3E 03            LD      A,03H
+0C02  D3 01            OUT     (01H),A
+0C04  3E CF            LD      A,0CFH
+0C06  D3 01            OUT     (01H),A
+0C08  3E 3F            LD      A,3FH
+0C0A  D3 01            OUT     (01H),A
+0C0C  3E 80            LD      A,80H
+0C0E  D3 00            OUT     (00H),A
+0C10  CD 31 0C         CALL    0C31H
+0C13  3E 40            LD      A,40H
+0C15  D3 00            OUT     (00H),A
+0C17  21 00 0D         LD      HL,0D00H
+0C1A  CD 42 0C         CALL    0C42H
+0C1D  CD 6C 0C         CALL    0C6CH
+0C20  CD 31 0C         CALL    0C31H
+0C23  3E 80            LD      A,80H
+0C25  D3 00            OUT     (00H),A
+0C27  21 01 0D         LD      HL,0D01H
+0C2A  CD 42 0C         CALL    0C42H
+0C2D  CD 6C 0C         CALL    0C6CH
+0C30  C9               RET
+0C31  DB 00            IN      A,(00H)
+0C33  E6 30            AND     30H
+0C35  FE 30            CP      30H
+0C37  20 F8            JR      NZ,0C31H
+0C39  DB 00            IN      A,(00H)
+0C3B  E6 30            AND     30H
+0C3D  FE 20            CP      20H
+0C3F  20 F8            JR      NZ,0C39H
+0C41  C9               RET
+0C42  DB 00            IN      A,(00H)
+0C44  E6 0F            AND     0FH
+0C46  18 14            JR      0C5CH
+0C48  07               RLCA
+0C49  47               LD      B,A
+0C4A  07               RLCA
+0C4B  07               RLCA
+0C4C  80               ADD     A,B
+0C4D  47               LD      B,A
+0C4E  DB 00            IN      A,(00H)
+0C50  E6 30            AND     30H
+0C52  FE 10            CP      10H
+0C54  20 F8            JR      NZ,0C4EH
+0C56  DB 00            IN      A,(00H)
+0C58  E6 0F            AND     0FH
+0C5A  80               ADD     A,B
+0C5B  C9               RET
+0C5C  FE 0A            CP      0AH
+0C5E  28 06            JR      Z,0C66H
+0C60  FE 0B            CP      0BH
+0C62  28 05            JR      Z,0C69H
+0C64  18 E2            JR      0C48H
+0C66  3E 00            LD      A,00H
+0C68  C9               RET
+0C69  3E 64            LD      A,64H
+0C6B  C9               RET
+0C6C  BE               CP      (HL)
+0C6D  28 03            JR      Z,0C72H
+0C6F  38 02            JR      C,0C73H
+0C71  77               LD      (HL),A
+0C72  C9               RET
+0C73  3C               INC     A
+0C74  BE               CP      (HL)
+0C75  30 FB            JR      NC,0C72H
+0C77  18 F8            JR      0C71H
+</lang>
+<requires></requires>

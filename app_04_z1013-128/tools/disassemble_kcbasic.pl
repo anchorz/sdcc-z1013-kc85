@@ -90,6 +90,10 @@ $basic_end=unpack("v",substr($content,55,2));
 
 
 $ofs=0x2c01-0x2bc0+32;
+#offset im programm code, nicht der im Emulatorspeicher
+#$ofs=0x2a21; #hcb
+#$ofs=0x2e21; #hbc41
+
 printf ("i: EADR(nach Z80 Header)=0x%04x     \@FILE-POS[0x%04x]\n",$eadr,$eadr-$aadr+32);
 printf ("i: PRGM(          \@2BD7)=0x%04x     \@FILE-POS[0x%04x]\n",$basic_end,$basic_end-$aadr+32);
 
@@ -103,7 +107,6 @@ if ($eadr!=$basic_end) {
     printf ("   aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
 }
 
-#$ofs=0x2a21;
 
 $index=$ofs;
 
@@ -333,9 +336,12 @@ REDO_CHARACTER:
                     case 0xe4 { pr("PSET"); }
                     case 0xe5 { pr("PRES"); }
                     
-                    case 0xf5 { pr("PRINT"); }
+                    case 0xe9 { pr("LOCATE"); } #HCB only
+                    case 0xf0 { pr("RANDOMIZE"); } #HCB only
+
+                    case 0xf5 { pr("PRINT"); } #HCB CSRLIN
                     
-                    else { printf("e: [0x%04x] - unknown character 0x%02x after '%s' found - ignored\n", $index,$byte,$token); }
+                    else { printf("e: [0x%04x] - unknown character 0x%02x after '%s' found - ignored\n", $index,$byte,$token); pq(sprintf("<<TOKEN:%02x>>",$byte)); }
                 }
             }
         }

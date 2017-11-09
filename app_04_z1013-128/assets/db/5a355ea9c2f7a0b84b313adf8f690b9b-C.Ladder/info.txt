@@ -1,0 +1,6 @@
+<kurz src="BASIC-Version (2.02, RB) mit BASIC Interpreter HCB V4.1"/>
+<lang>
+Steuerung: ⇦ ⇨ f␣ 
+
+<include src="C.Ladder.B"/></lang>
+<requires></requires>

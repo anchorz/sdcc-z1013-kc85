@@ -270,7 +270,7 @@ sub do_index_html($)
         }
         if ($timestamp_dst<$timestamp_src) {
             $ret=0; 
-            $ret=system("java -jar ".get_tools_root()."/screen2png.jar 32X32 ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$file_src\"" ); #\"$file_dst\"" );
+            $ret=system("java -Dsun.java2d.uiScale=1 -jar ".get_tools_root()."/screen2png.jar 32X32 ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$file_src\"" ); #\"$file_dst\"" );
             if ($ret) {
                 printf("error.");
                 exit($ret);

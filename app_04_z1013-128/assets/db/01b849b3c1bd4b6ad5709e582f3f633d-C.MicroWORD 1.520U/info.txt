@@ -1,0 +1,3 @@
+<kurz src="Textverarbeitung, Texteditor, V01.10.1988"/>
+<lang><include src="C.MicroWORD 1.520U.txt"/></lang>
+<requires></requires>

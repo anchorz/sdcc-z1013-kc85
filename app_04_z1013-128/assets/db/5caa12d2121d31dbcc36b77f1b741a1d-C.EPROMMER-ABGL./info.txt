@@ -1,0 +1,100 @@
+<kurz src="EPROM-Programmer-Abgleich"/>
+<lang>0100  E7               RST     20H
+0101  02               DB      02H               ;PRST7
+0102  0C 0D            DB      0CH,0DH
+0104  45 50 52 4F 4D   DB      'EPROM'
+0109  2D 50 72 6F 67   DB      '-Prog'
+010E  72 61 6D 6D 65   DB      'ramme'
+0113  72 2D 41 62 67   DB      'r-Abg'
+0118  6C 65 69 63 68   DB      'leich'
+011D  0D               DB      0DH
+011E  42 61 73 69 73   DB      'Basis'
+0123  61 64 72 65 73   DB      'adres'
+0128  73 65 20 64 65   DB      'se de'
+012D  73 20 50 72 6F   DB      's Pro'
+0132  67 72 61 6D 6D   DB      'gramm'
+0137  69 65 72 2D      DB      'ier-'
+013B  0D               DB      0DH
+013C  6D 6F 64 75 6C   DB      'modul'
+0141  73 20 65 69 6E   DB      's ein'
+0146  67 65 62 65 6E   DB      'geben'
+014B  20 28 33 30 29   DB      ' (30)'
+0150  3A               DB      ':'
+0151  A0               DB      80H+' '
+0152  E7               RST     20H
+0153  10               DB      10H               ;INSTR
+0154  ED 5B 16 00      LD      DE,(0016H)
+0158  E7               RST     20H
+0159  03               DB      03H               ;INHEX
+015A  2C               INC     L
+015B  2C               INC     L
+015C  65               LD      H,L
+015D  2C               INC     L
+015E  22 0E 02         LD      (020EH),HL
+0161  21 0B 02         LD      HL,020BH
+0164  06 03            LD      B,03H
+0166  3A 0E 02         LD      A,(020EH)
+0169  4F               LD      C,A
+016A  ED B3            OTIR
+016C  E7               RST     20H
+016D  02               DB      02H               ;PRST7
+016E  0D               DB      0DH
+016F  50 72 6F 67 72   DB      'Progr'
+0174  61 6D 6D 6C 61   DB      'ammla'
+0179  75 66 7A 65 69   DB      'ufzei'
+017E  74 20 6D 69 74   DB      't mit'
+0183  20 45 69 6E 73   DB      ' Eins'
+0188  74 65 6C 6C 2D   DB      'tell-'
+018D  0D               DB      0DH
+018E  72 65 67 6C 65   DB      'regle'
+0193  72 20 61 75 66   DB      'r auf'
+0198  20 32 30 73 20   DB      ' 20s '
+019D  65 69 6E 73 74   DB      'einst'
+01A2  65 6C 6C 65 6E   DB      'ellen'
+01A7  0D               DB      0DH
+01A8  28 53 74 61 72   DB      '(Star'
+01AD  74 20 6D 69 74   DB      't mit'
+01B2  20 45 6E 74 65   DB      ' Ente'
+01B7  72 29 21         DB      'r)!'
+01BA  8D               DB      8DH
+01BB  E7               RST     20H
+01BC  01               DB      01H               ;INCH
+01BD  FE 0D            CP      0DH
+01BF  20 FA            JR      NZ,01BBH
+01C1  E7               RST     20H
+01C2  02               DB      02H               ;PRST7
+01C3  53 74 61 72 74   DB      'Start'
+01C8  8D               DB      8DH
+01C9  21 20 4E         LD      HL,4E20H
+01CC  3A 0F 02         LD      A,(020FH)
+01CF  4F               LD      C,A
+01D0  AF               XOR     A
+01D1  ED 79            OUT     (C),A
+01D3  3E 40            LD      A,40H
+01D5  ED 79            OUT     (C),A
+01D7  2B               DEC     HL
+01D8  ED 78            IN      A,(C)
+01DA  CB 7F            BIT     7,A
+01DC  20 FA            JR      NZ,01D8H
+01DE  7C               LD      A,H
+01DF  B5               OR      L
+01E0  20 EA            JR      NZ,01CCH
+01E2  E7               RST     20H
+01E3  02               DB      02H               ;PRST7
+01E4  53 74 6F 70 21   DB      'Stop!'
+01E9  8D               DB      8DH
+01EA  E7               RST     20H
+01EB  02               DB      02H               ;PRST7
+01EC  57 69 65 64 65   DB      'Wiede'
+01F1  72 68 6F 6C 75   DB      'rholu'
+01F6  6E 67 3F 20 3E   DB      'ng? >'
+01FB  20 45 6E 74 65   DB      ' Ente'
+0200  72 21            DB      'r!'
+0202  8D               DB      8DH
+0203  E7               RST     20H
+0204  01               DB      01H               ;INCH
+0205  FE 0D            CP      0DH
+0207  CA 6C 01         JP      Z,016CH
+020A  FF               RST     38H
+</lang>
+<requires></requires>
