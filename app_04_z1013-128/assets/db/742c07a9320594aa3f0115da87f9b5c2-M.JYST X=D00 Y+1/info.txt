@@ -1,6 +1,6 @@
 <kurz src="Joystick, aber wozu dient es?"/>
 <lang>
-Tabelle ab 0x0d00 erwartet.
+Tabelle ab 0x0d00 erwartet. Ist das ein Joysticktreiber für Tiny-Basic?
 
 0C00  3E 03            LD      A,03H
 0C02  D3 01            OUT     (01H),A

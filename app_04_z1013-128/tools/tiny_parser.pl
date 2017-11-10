@@ -106,19 +106,24 @@ read_file($file);
 
 $index=0;
 $aadr=read_word();
-if ($aadr!=0x1000) {
-    printf(STDERR "error: Does not looks like a Tiny-Basic program - Z80Header.AADR==0x%04x\n",$aadr);
-    printf(STDERR "       It should start from 0x1000.\n");
 
-    exit 1;
-}
 $index=12;
-my $typ=read_char();
-if ($typ ne 'b' ) {
-    printf(STDERR "error: Does not looks like a Tiny-Basic program - Z80Header.TYP=='%s'\n",map_char($typ));
-    printf(STDERR "       The character 'b' is expected instead.\n");
+if ($aadr==0x100)
+{
+    printf(STDERR "i: start at 0x100 - tiny basic\n");
+} else {
+    if ($aadr!=0x1000) {
+        printf(STDERR "error: Does not looks like a Tiny-Basic program - Z80Header.AADR==0x%04x\n",$aadr);
+        printf(STDERR "       It should start from 0x1000.\n");
+        exit 1;
+    }
+    my $typ=read_char();
+    if ($typ ne 'b' ) {
+        printf(STDERR "error: Does not looks like a Tiny-Basic program - Z80Header.TYP=='%s'\n",map_char($typ));
+        printf(STDERR "       The character 'b' is expected instead.\n");
 
-    exit 1;
+        exit 1;
+    }
 }
 
 $index=map_adr_to_index(0x101f);

@@ -1,0 +1,8 @@
+<kurz src="einfacher Texteditor, geändert?"/>
+<lang>
+unterschied zu [8dbbb9e87de353c3f07d32bb4a588084] nicht klar.
+
+Steuerung: ^L Hauptmenu
+
+</lang>
+<requires></requires>

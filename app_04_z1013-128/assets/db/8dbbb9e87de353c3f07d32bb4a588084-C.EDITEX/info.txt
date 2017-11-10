@@ -1,0 +1,7 @@
+<kurz src="einfacher Texteditor, original?"/>
+<lang>
+
+Steuerung: ^L Hauptmenu
+
+</lang>
+<requires></requires>

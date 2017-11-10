@@ -86,27 +86,29 @@ $aadr=unpack("v",substr($content,0,2));
 #printf("%04x %04x maxindex=[%04x]%02x\n",$aadr,$eadr,$max_index,ord(substr($content,$max_index,1)));
 
 $eadr=unpack("v",substr($content,2,2));
-$basic_end=unpack("v",substr($content,55,2));
 
 
 $ofs=0x2c01-0x2bc0+32;
 #offset im programm code, nicht der im Emulatorspeicher
 #$ofs=0x2a21; #hcb
 #$ofs=0x2e21; #hbc41
+#$ofs=32;
 
 printf ("i: EADR(nach Z80 Header)=0x%04x     \@FILE-POS[0x%04x]\n",$eadr,$eadr-$aadr+32);
-printf ("i: PRGM(          \@2BD7)=0x%04x     \@FILE-POS[0x%04x]\n",$basic_end,$basic_end-$aadr+32);
 
-if ($eadr<$basic_end) {
-    printf ("r:  Hier fehlt das Ende. Im Header steht das Ende EADR=%04x,\n",$eadr);
-    printf ("    aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+if ($ofs==97) {
+    $basic_end=unpack("v",substr($content,55,2));
+    printf ("i: PRGM(          \@2BD7)=0x%04x     \@FILE-POS[0x%04x]\n",$basic_end,$basic_end-$aadr+32);
+    if ($eadr<$basic_end) {
+        printf ("r:  Hier fehlt das Ende. Im Header steht das Ende EADR=%04x,\n",$eadr);
+        printf ("    aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+    }
+
+    if ($eadr!=$basic_end) {
+        printf (":  Im Header steht das Ende EADR=%04x,\n",$eadr);
+        printf ("   aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+    }
 }
-
-if ($eadr!=$basic_end) {
-    printf (":  Im Header steht das Ende EADR=%04x,\n",$eadr);
-    printf ("   aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
-}
-
 
 $index=$ofs;
 

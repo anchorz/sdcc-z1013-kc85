@@ -1,0 +1,6 @@
+<kurz src="DISASSEMBLER PLUS"/>
+<lang>
+Steuerung: A,F,M,N,R,S,T,W
+
+</lang>
+<requires></requires>

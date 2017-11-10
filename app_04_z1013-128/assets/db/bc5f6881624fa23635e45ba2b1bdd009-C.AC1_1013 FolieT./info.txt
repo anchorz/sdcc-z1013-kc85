@@ -1,0 +1,3 @@
+<kurz src="AC1 MONITOR V3.1 (8x4)"/>
+<lang></lang>
+<requires>2.02</requires>
