@@ -1,0 +1,5 @@
+<kurz src="HEADERSAVE-kompatible Verwaltung von max. 2 RAM-Disketten nach MP 3/88"/>
+<lang>
+
+<include src="headerdisk 45.asm"/></lang>
+<requires></requires>

@@ -2,6 +2,8 @@
 <lang>
 unterschied zu [8dbbb9e87de353c3f07d32bb4a588084] nicht klar.
 
+Sprung an 0x0112 anstatt 0x100 vermeidet das Löschen des Textspeichers.
+
 Steuerung: ^L Hauptmenu
 
 </lang>

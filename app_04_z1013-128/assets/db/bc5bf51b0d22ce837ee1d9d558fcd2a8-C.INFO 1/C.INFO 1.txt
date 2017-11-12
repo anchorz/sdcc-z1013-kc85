@@ -1,0 +1,120 @@
+===============================  INFO-MATERIAL ZU:               
+ ** OLITEX **
+++ HEADERSAVE ++
+-- 10K-BASIC  --           
+===============================
+
+OLITEX-BESCHREIBUNG             
+-------------------                                             
+OLITEX ist ein MINI-Textverarbeitungs-Programm. Es verzichtet   
+auf den Luxus umfangreicherer  Programme, ist dafuer aber      
+unkompliziert in der Bedienung und soll vor allem dazu dienen, 
+Programm-Beschreibungen auf Kassette zu ueberspielen. Diese    
+koennen dann, zusammen mit den Programmen an andere Computerfreunde 
+weitergegben werden.    
+Darueber hinaus ist es moeglich,den Text auch auszudrucken.
+
+Das Programm belegt den Speicherbereich 200H-800H               
+- Kaltstart: J 200              
+- Warmstart: J 203              
+- Arbeitsspeicher 900H-91FH     
+- Textspeicher ab 920H         
+
+Die Eingabe und das Lesen (Anzeige) erfolgt seitenweise, wobei 
+jede "Seite" max. 6 Bildschirmzeilen umfassen kann. Es  sind 
+folgende Sonderfunktionen  moeglich:
+TASTE  HEXCOD FUNKTION        
+--------------------------------
+CTRL-A  01H  SEITE EINFUEGEN  
+CTRL-B  02H  SEITE LOESCHEN   
+CTRL-D  04H  DELETE           
+CTRL-Z  1AH  INSERT          
+CTRL-Y  19H  ZURUECKBLAETTERN 
+CTRL-C  03H  BREAK, ZURUECK 
+             ZUM MENUE ODER 
+             ZUM MONITOR      
+ENTER   ODH  FORTSETZUNG DES
+             PROGR.          
+Alle Texte werden erst nach     >ENTER< in den Speicher uebernommmen, 
+das gilt auch fuer die Aenderungen!
+Wird beim Lesen das Ende des Textes erreicht, springt das Programm in
+die Eingaberoutine (zu erkennen an der Seitennummer).
+
+Das Ende des beschriebenen Speicherbereiches wird links unten  als Hex-Zahl
+angezeigt. Beim Abspeichern auf Kassette (SAVE) wird das komplette Programm
+bis zu dieser Endadresse  ausgelagert. Vorher wird getestet, ob  HEADERSAVE 
+(E000H-E3FFH) geladen wurde. Das Einlesen von Kassette erfolgt ueber die
+Monitorroutine bzw. mit HEADERSAVE.           
+Die Druckerroutine ermoeglicht im vorliegendem Programm die Ausgabe im 
+Fernschreibcode ueber PIO A, BIT 2 mit 100 Baud.      
+Die Ausgaberoutine ist als Unterprogramm aufgebaut und beginnt ab ADR 700H. 
+Die Zeichen werden im A-Register uebergeben, alle  anderen Register werden 
+gerettet eine Umstellung auf 50 Baud ist moeglich:                      
+ADRESSE    100Bd    50Bd        
+--------------------------------
+7D7H       06H      0BH         
+7D8H       00H      0AH        
+OLITEX ist, was die Daten anbelangt, mit  dem  Dateiprogramm  OLIDAT kompatibel. 
+Wurde mit dem Dateiprogramm gearbeitet, kann  z.B. OLITEX nachgeladen werden, nach
+ dem Warmstart ist es dann moeglich, die Daten weiter zu bearbeiten, z.B. auszudrucken.  
+Auch umgekehrt kann OLIDAT nachgeladen werden, da die gleichen Arbeitszellen verwendet 
+werden.
+
+      VIEL ERFOLG MIT        
+       ** OLITEX **          
+                                     
+
+++++++++++++++++++++++++++++++++
++   KURZBESCHREIBUNG VON       +
++                              +
++       H E A D E R S A V E    +
++                              +
++++++++++++++++++++++++++++++++
+
+HEADERSAVE ermoeglicht die Kassettenarbeit mit einer Reihe von
+Vorteilen gegenueber den Monitorroutinen.                      
+
+Programmstandort:E000H-E3FFH    
+Initialisierung :J E3EE        
+SAVE: @S Anfadr Endadr Startadr                                 
+dann: Typ-Angabe und Filename,  Typ-z.B "C" (COM)               Name- max.16 Zeichen           
+
+LOAD: @L oder @LNAME oder             
+      @Lneue Anfadr  oder             
+      @LX (X-alle Zeichen ausserSpace),kein Autostart     
+
+Ein Memory-Pointer zeigt die aktuelle Adresse beim Lesen an.  
+Bei Lesefehlern: kurz zurueckspulen und >ENT<, wenn der 
+Memopointer weiterlaeuft, wird Lesn fortges. Abbruch bei 
+anliegendem Signal mit CTRL-C,sonst nur mit RESET moeglich.                
+
+VERIFY:Es erfolgt eine Kontrolleder Block-Pruefsummen, die gelesenen 
+Bloecke werden als ASCII- Zeichen in der obersten Bildschirmzeile dargestellt        
+Mit HEADERSAVE abgespeicherte   Programme koennen auch mit der  L-Routine geladen werden. 
+In diesem Fall ist >ENT< erst beim zweiten Vorton zu druecken.     
+
+================================
+10K-BASIC-INTERPRETER           
+(K 7659  UEBER DL257)           
+================================                                                               SONDERFUNKTIONEN:                                               FUNKTION    CTRL+   HEXCODE     
+
+--------------------------------
+CLNL        B       02          
+STOP        C       03         
+DELETE      D       04          
+EDIT ..     E       05          
+CLS         L       0C          
+RUN         R       12          
+PAUSE       S       13          
+WINDOW ..   W       17         
+|<--        Y       19          
+-->|        X       18          
+INSERT      Z       1A          
+LIST ..     ,       1C          
+CONT        ^       1E                                         
+
+====================================  
+ENDE  ============================ 
+DER  ============================  
+INFORMATIONEN 
+ ====================================              

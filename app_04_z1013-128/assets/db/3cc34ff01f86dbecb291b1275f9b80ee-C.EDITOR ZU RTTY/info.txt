@@ -1,0 +1,7 @@
+<kurz src="kopiert den eingegebenen Text in den Speicher ab 0x1500"/>
+<lang>ansonsten habe ich keine Ahnung, was das Programm tun soll.
+
+Steuerung: a b c d e f g h ⇦ x !
+
+</lang>
+<requires></requires>

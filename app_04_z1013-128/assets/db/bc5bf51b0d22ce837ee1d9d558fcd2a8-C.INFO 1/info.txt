@@ -1,0 +1,3 @@
+<kurz src="INFO-MATERIAL ZU: OLITEX, HEADERSAVE, 10K-BASIC"/>
+<lang><include src="C.INFO 1.txt"/></lang>
+<requires></requires>

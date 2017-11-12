@@ -1,0 +1,11 @@
+<kurz src="radio teletype RTTY with Z1013 (A2!)"/>
+<lang>
+radio teletype (C) by Simm 02/87
+********************************
+ R T T Y  with Z1013  45 Bd/ ON
+********************************
+> Senden  < Empfangen  * Monitor
+                                
+Steuerung: < > @ *
+</lang>
+<requires>A2</requires>

@@ -1,0 +1,79 @@
+<kurz src="OLITEX: ERWEITERUNG DES Z1013 AUF 64 kBYTE-SPEICHER"/>
+<lang>
+===============================
+    ERWEITERUNG DES Z 1013
+
+    AUF 64 kBYTE - SPEICHER
+
+===============================
+                               
+Es sind zunaechst die Bruecken E6, E10 und E12 zu entfernen.
+E11 musz vesetzt werden, von 1 nach 2 (siehe Anlage 15,Bele-
+gungsplan des Z 1013). Die Stuetzkondensatoren sind auf 100 nF 
+zu vergroeszern und so einzuloeten, dasz sie Pin8 und 16 
+ueberbruecken (Loetaugen liegen auf der Platte nebeneinander).
+Nun zu den zusaetzlichen Bruecke n und Unterbrechungen: Bei A41 
+Leiterzug zwischen Pin 16 und 14 unterbrechen und von Pin 14  
+eine Bruecke nach Pin 11 von A24 legen. Leiterzug von Pin 13 A41 
+dort unterbrechen, wo er rechts neben dem Schaltkreis auf der 
+Betueckungsseite verlauft. Bruecke vom Durchkontaktierungspunkt 
+(etwas neben Pin 9) dieses Leiterzuges nach Pin 5 von A25 legen.
+Vom anderen Ende der eben unterbrochenen Leiterbahn (etwas nebe
+Pin 9 von A40) vom Durchkontaktierungspunkt zum Dktpkt. zwischen
+ Pin 14 und 13 von A40 eine Bruecke legen. Pin 9 von A40 mit dem
+Punkt zwischen Pin 5 und 6 von A41 verbinden. Auf der Rueckseite
+Leiterzug zwischen den nun mit je einen Ende der eben beschriebe
+nen Bruecken beloeteten Punte trennen(also Pkt zwischen Pin13 un
+d 14 von A40 und 5 und 6 von A41). Jetzt wird es etwas komplizierter. 
+An Pin 10 von A24 liegt ein Durchkontaktierungspunkt sehr dicht dran. 
+Der musz von Pin10 getrennt werden und vom Punkt eine Minibruecke 
+zu dem daneben, zwischen Pin 9 und 10 von A24 verlaufenden 
+Leiterzug legen, also quasi einen Loetklecks. Nun die Leitung 
+von Pin 5 A8 nach Pin 8 A24 verfolgen. Bei R36 liegt ein Dktpkt. 
+von ihr. Dort kommt eine Bruecke nach links zu dem
+Leiterzug, der von Pin 1 A29 kommt. Hinter dem Punkt bei R36 in
+Richtung 8/24 musz der Leiterzug  noch aufgetrennt werden.
+
+Aenderungen beim 10 K-Interpreter nach Umstellung auf 64 kByte:
+Adresse:         343
+alter Inhalt:     02
+neuer Inhalt:     EB
+                          
+Viel Erfolg bei der Umstellung wuenscht  Y24XG.
+
+
+
+
+                
+
+
+          
+
+ -
+
+
+
+           
+
+
+
+
+       
+
+
+
+
+
+                
+
+
+
+                       
+
+
+
+
+   
+
+</lang>
+<requires></requires>

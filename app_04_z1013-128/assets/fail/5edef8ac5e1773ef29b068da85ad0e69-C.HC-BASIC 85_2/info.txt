@@ -1,0 +1,8 @@
+<kurz src="ähnlich [ac559be453153ac534c19059ce754b32]"/>
+<lang>
+im wesentlichen nur 1 Byte Unterschied:
+20!! 24 3a dc b7 3d 20 e9 
+24!! 24 3a dc b7 3d 20 e9 
+
+</lang>
+<requires></requires>

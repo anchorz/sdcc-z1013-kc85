@@ -1,0 +1,5 @@
+<kurz src="Schach, Grafik schwarze/weiße Felder"/>
+<lang>Außer dem Startbildschirm, habe ich es nicht zum Laufen bekommen.
+Kommandos R K L T P Q W
+</lang>
+<requires></requires>
