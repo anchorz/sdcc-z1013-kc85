@@ -1,0 +1,5 @@
+<kurz src="(Turbo-)Headersave mit angepassten Zeitkonstanten 2->4 Mhz"/>
+<lang>Installiert @L @S Monitorerweiterung
+
+<include src="turbo.asm"/></lang>
+<requires></requires>

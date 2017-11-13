@@ -1,0 +1,15 @@
+<kurz src="V24, Druckertreiber, Hardcopy"/>
+<lang>
+funktioniert das Programm überhaupt? Wenn ja, wie?
+
+Installiert sich im Sprungverteiler RST20:
+OUTCH   = 0x00
+PRST7   = 0x02
+OUTHX   = 0x06
+OUTHL   = 0x07
+OTHLS   = 0x0c
+OUTDP   = 0x0d
+
+benutzt IO-PORTs 0x34-0x35
+<include src="v24.asm"/></lang>
+<requires></requires>

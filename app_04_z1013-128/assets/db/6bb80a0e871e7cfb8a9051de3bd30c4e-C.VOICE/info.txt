@@ -1,0 +1,3 @@
+<kurz src="Sprachausgabe, Memory Dump"/>
+<lang></lang>
+<requires></requires>
