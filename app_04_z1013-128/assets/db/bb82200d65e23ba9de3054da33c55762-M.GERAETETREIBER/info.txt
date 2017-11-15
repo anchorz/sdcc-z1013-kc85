@@ -1,0 +1,3 @@
+<kurz src="Gerätesteuerung über PIO-Port-A, frühe Form eine Scripts"/>
+<lang>Buggy, stürzt bei falscher Bedienung ab.</lang>
+<requires></requires>

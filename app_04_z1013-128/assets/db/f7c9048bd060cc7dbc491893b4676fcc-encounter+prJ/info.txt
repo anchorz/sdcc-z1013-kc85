@@ -11,5 +11,5 @@ S2 oben
 
 VIEL SPASS...(SPACE)
 
-<include src="encounter.b"/></lang>
+<include src="encounter+prJ.b"/></lang>
 <required></required>

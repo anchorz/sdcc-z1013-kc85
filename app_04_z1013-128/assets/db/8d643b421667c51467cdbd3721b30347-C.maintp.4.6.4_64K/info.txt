@@ -1,0 +1,3 @@
+<kurz src="Teil einer Monitorerweiterung, Rest fehlt?"/>
+<lang>Sprünge ins nirgendwo. Wo ist der Rest?</lang>
+<requires></requires>

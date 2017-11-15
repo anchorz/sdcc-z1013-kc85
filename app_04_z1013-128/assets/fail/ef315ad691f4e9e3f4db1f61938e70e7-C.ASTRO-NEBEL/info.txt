@@ -1,0 +1,6 @@
+<kurz src="Animation/Grafik"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.
+
+Ansonsten ist es relativ unklar, was die Grafik bedeuten soll.
+</lang>
+<requires></requires>

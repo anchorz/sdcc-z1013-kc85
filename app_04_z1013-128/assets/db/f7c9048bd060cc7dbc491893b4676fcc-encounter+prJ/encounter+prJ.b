@@ -1,42 +1,8 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-  <meta name="description" content="Z1013 Software-Datenbank: Liste aller bekannten Dateien" />
-  <meta name="keywords" lang="de" content="U880, Z80, Z1013, software, download, datenbank" />
-  <meta name="keywords" lang="en" content="U880, Z80, Z1013, software, download, database" />
-  <link rel="stylesheet" type="text/css" href="../formate.css" />
-
-<title>Z1013 Software-Datenbank Eintrag</title>
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-</head>
-<body>
-<div><video height="400" controls autoplay loop>
-<source src="animation.mp4" type="video/mp4">
-</video>
-<img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
-<img src="screenshot_02.jpg" alt="Screenshot 2" height="384"  >
-</div>
-<div class="filelist">0100 2c2e 2c20 C ... <a href="encounter+prJ.z80">ENCOUNTER+Joy.  </a></div>
-<div class="text">ENCOUNTER
-
-DAS PROGRAMM IST EIN BALLSPIEL,
-WO SIE MIT GESCHICK UND GLUECK,
-VERSUCHEN MUESSEN, SICH 10 LEBEN ZU
-ERKAEMPFEN. 
-
-S1 unten 
-S2 oben
-
-VIEL SPASS...(SPACE)
-
-<pre>Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
 
     1 G.10
-    3 REMAA !+(#&gt;~2+++++++++++++++
-    9 &gt;&gt;AAAAA
+    3 REMAA !+(#>~2+++++++++++++++
+    9 >>AAAAA
    10 G.500
    15 F.F=1TO199
    16 C=C+R;PO.C-R,32
@@ -64,7 +30,7 @@ VIEL SPASS...(SPACE)
    88 N.M;G.400
    89 IFU=0I=1;RE.
    90 IFO=8N=7;O=0;H=3;GOS.222;@(1)=0;I=1;RE.
-   91 IFPE.(C+R)&gt;161GOS.140;GOS.150
+   91 IFPE.(C+R)>161GOS.140;GOS.150
    92 IFPE.(C+R)=190R=-33;RE.
    93 IFPE.(C+R)=191R=31;RE.
    94 P=RND(32000)/16000
@@ -88,10 +54,10 @@ VIEL SPASS...(SPACE)
   115 IFR=-34R=31;RE.
   120 RE.
   140 K=RND(32000)
-  142 IFK&lt;10000H=32;RE.
-  143 IFK&lt;15000H=140;RE.
-  144 IFK&lt;27000H=30;RE.
-  145 IFK&gt;25000H=203;RE.
+  142 IFK<10000H=32;RE.
+  143 IFK<15000H=140;RE.
+  144 IFK<27000H=30;RE.
+  145 IFK>25000H=203;RE.
   146 RE.
   150 IFPE.(C+R)=171PO.C+R,32;PO.C+R+1,32;PO.C+R-32,32;PO.C+R-31,H;
       O=O+1;RE.
@@ -121,17 +87,17 @@ VIEL SPASS...(SPACE)
   303 IFO=0G.2000
   304 IFY=150U=U;IFE=30G.80
   305 IFE=30@(1)=3;G.15
-  307 IFE=203E=E;IFM&gt;0G.80
+  307 IFE=203E=E;IFM>0G.80
   308 IFE=203G.20
   309 CA.H.(2EA9);F.F=1TO9000;N.F;G.309
   310 G.2000
-  400 IFU&lt;=0G.51
+  400 IFU<=0G.51
   406 GOS.200;PO.Q,32;PO.Q+32,32;PO.Q+64,32;PO.C,32;IFG=5Y=32000;
       G=0;G.410
   407 Y=150
   410 A=RND(15)*32;Q=H.(EC5B)+A;PO.Q,Z;PO.Q+32,Z;PO.Q+64,Z
-  411 C=Q+31;IFA&lt;=240R=-33
-  412 D=207;L=0;IFA&gt;240R=31
+  411 C=Q+31;IFA<=240R=-33
+  412 D=207;L=0;IFA>240R=31
   413 G.80
   444 F.F=1TO166;O.8;N.F;P."TIME:",;P.#4,@(2),;O.9
   450 G.800
@@ -204,11 +170,11 @@ VIEL SPASS...(SPACE)
  2000 U=U+1;GOS.222;T=T+1
  2001 GOS.1000;Z=161;@(2)=@(2)+1
  2002 A=RND(15)*32;Q=H.(EC5B)+A;PO.Q,Z;PO.Q+32,Z;PO.Q+64,Z
- 2003 C=Q+31;IFA&lt;=240R=-33
- 2004 D=207;L=0;IFA&gt;240R=31
+ 2003 C=Q+31;IFA<=240R=-33
+ 2004 D=207;L=0;IFA>240R=31
  2005 Y=32000;IFU=9GOS.2035;GOS.3000;PO.Q,Z;PO.Q+32,Z;PO.Q+64,Z;F.F=1TO5000⇘
       ;N.F;Y=150;G.80
- 2006 IFU&gt;=10GOS.2035;F.F=1TO329;O.8;N.F;P."HERZLICHEN GLUECKWUNSCH",;
+ 2006 IFU>=10GOS.2035;F.F=1TO329;O.8;N.F;P."HERZLICHEN GLUECKWUNSCH",;
       G.444
  2010 GOS.2022;IFN=7GOS.3000;Y=32000;G.80
  2012 G.20
@@ -228,7 +194,3 @@ VIEL SPASS...(SPACE)
       PO.A+66,191
  3010 RE.
 18788 dS.TRUETZSCHLERstr.18 99oo PLAUEN          KB
-</pre>
-</div>
-</body>
-</html>

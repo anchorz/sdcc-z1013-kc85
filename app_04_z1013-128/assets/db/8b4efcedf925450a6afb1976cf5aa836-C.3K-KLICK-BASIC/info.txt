@@ -1,0 +1,28 @@
+<kurz src="Riesa Basic 3.01 Klick-Sound-Erweiterung"/>
+<lang>
+Nr. 1: Klick-Sound.
+0C80  CD 09 01    CALL    0109H
+0C83  F5          PUSH    AF
+0C84  C5          PUSH    BC
+0C85  0E 28       LD      C,28H
+0C87  CB FF       SET     7,A
+0C89  D3 02       OUT     (02H),A
+0C8B  06 28       LD      B,28H
+0C8D  10 FE       DJNZ    0C8DH
+0C8F  CB BF       RES     7,A
+0C91  D3 02       OUT     (02H),A
+0C93  06 28       LD      B,28H
+0C95  10 FE       DJNZ    0C95H
+0C97  0D          DEC     C
+0C98  20 ED       JR      NZ,0C87H
+0C9A  3E 09       LD      A,09H
+0C9C  32 BC 00    LD      (00BCH),A
+0C9F  3E A0       LD      A,0A0H
+0CA1  32 C2 00    LD      (00C2H),A
+0CA4  32 CA 00    LD      (00CAH),A
+0CA7  C1          POP     BC
+0CA8  F1          POP     AF
+
+Nr 2: CLOAD
+</lang>
+<requires></requires>

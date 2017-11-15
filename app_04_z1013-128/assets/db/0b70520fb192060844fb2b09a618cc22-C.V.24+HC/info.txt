@@ -1,6 +1,7 @@
 <kurz src="V24, Druckertreiber, Hardcopy"/>
 <lang>
 funktioniert das Programm überhaupt? Wenn ja, wie?
+Mir scheint, als käme da der STACK etwas durcheinander.
 
 Installiert sich im Sprungverteiler RST20:
 OUTCH   = 0x00

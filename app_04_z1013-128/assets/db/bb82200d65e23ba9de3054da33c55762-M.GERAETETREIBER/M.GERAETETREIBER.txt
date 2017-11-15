@@ -1,0 +1,22 @@
+REHN-SOFT
+BESCHREIBUNG:  Geraetesteuerung ueber PIO-Port A 
+-------------------------------
+A C H T U N GDiese Beschreibung wird durch das eigentliche Steuerprogramm zerstoert.
+Das Steuerprogramm dient zum Ansteuern von externen Geraeten.  Es koennen maximal 8 Schaltfunktionen
+ueber PIO-Port A genutzt werden. Das Programm stellt fuer die Dauer einer festzulegenden Zeit ein
+programmierbares Bitmuster am Port zur Verfuegung. In der Erarbeitungsphase kann eine Liste von ca. 
+2400 einzelner Bit-Muster erstellt werden, die dann nacheinander zur Ausgabe ueber Port A gebracht 
+werden.
+Das Steuerprogramm besteht aus 2 Teilen, dem EDITOR zum Erstellen der aufeinanderfolgenden
+Steuerworte und dem RUN-TIME-Modul zum zeitabhaengigen Abarbei-ten der einzelnen Steueranweisungen.
+Es erfolgt eine durchgaengige Bedienerfuehrung durch eine Menuezeile.
+
+Der EDITOR==========
+Mit dem EDITOR ist es moeglich, die einzelnen Steuerworte zeilenweise neu einzugeben, anzuzeigen,
+zu aendern und ueber das RUM-TIME-Modul abarbeiten zu lassen. Ausserdem koennen die erarbeiteten 
+Steueranweisungen auf Kassette abgelegt bzw. fertige Anweisungslisten von Kassette geladen werden.
+Programmtechnisch wird dabei die Zeile  "9984 00000000 00 0001"  stets als letzte Zeile mitgefuehrt.
+
+Kommandos des EDITORs=====================
+LIST: Anzeige von 15 aufeinanderfolgenden Steuerzyklen ab eingegebener Zyklusnummer, bei fehlender 
+Zyklusnummer wird ab erster Zeile angezeigt Zur Kontrolle wird die HEX-Aus- legung des Bit-Wortes mit ange- zeigt.EDIT: -Neueingabe mit Zyklusnum-       mer, Bitbelegung und Zeit      -Aendern der Bit-Belegung        und der Laufzeit einer          vorhandenen Zeile,es sind       stets alle Angaben neu          einzugeben                     -Loeschen einer vorhan-          denen Zeile              Zur Kontrolle wird die HEX-Aus- legung des Bit-Wortes mit ange- zeigt.Die Zyklusnummerierung kann be- liebig erfolgen. Die Zeilen wer-den vom EDITOR nach aufsteigen- der Nummerierung geordnet.CSAVE: Ausgeben einer fertigen         Liste von Steuerworten   Es kann ein max. 16 Zeichen lan-ger Titel mitangegeben werden.  CLOAD: Einlesen einer fertigen         Steuerwortliste von Kas-        setteZur Kontrolle wird deren Titel  mit angezeigt.RUN: Uebergang zum RUN-TIME-Mo-      dul und Abarbeitung der er-     stellten Steuerwortliste ab     angegebener Zyklusnummer        bei fehlender Nummer ab         erster Zeile               Die Laufzeit "0000" fuehrt nach der Steuerwortausgabe zur Unter-brechung bis zum Druecken einer Taste. Die aktuelle Zeile und   die beiden vorhergehenden werdenangezeigt. Ausserdem erscheint  die aktuelle Zykluszeit sowie   Gesamtzeit in der Anzeige.^C : Ende Nutzung und Uebergang      zum Monitor des  Z 1013! "!"Standort des eigentlichen Pro-  gramms       : 100h - 927h            Kaltstart    : 100h             Warmstart    : 103hSystemzellen : FF0h - FFFh      Dateistandort: ab 1002h         Zeiger auf Ende der letzten     Zeile        : 1000hForm der abgelegten Zeilen:          xx xx yy zz zz 0D                 xx xx = Zyklusnummer               yy = Bit-Wort                zz zz = Laufzeit                   0D = ZeilenendeEnd of Text                   >>> ENT <<<>

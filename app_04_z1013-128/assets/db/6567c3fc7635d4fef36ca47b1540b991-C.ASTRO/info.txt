@@ -1,0 +1,4 @@
+<kurz src="Animation/Grafik"/>
+<lang>Ansonsten ist es relativ unklar, was die Grafik bedeuten soll.
+</lang>
+<requires></requires>

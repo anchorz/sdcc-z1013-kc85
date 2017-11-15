@@ -1,0 +1,3 @@
+<kurz src="KC-BASIC, 48878 BYTES FREE, belegt den kompletten Speicher bis 0xEBFF"/>
+<lang></lang>
+<requires></requires>

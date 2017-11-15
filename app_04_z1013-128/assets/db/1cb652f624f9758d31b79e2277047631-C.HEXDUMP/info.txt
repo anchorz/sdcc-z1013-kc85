@@ -1,0 +1,4 @@
+<kurz src="Hexdump 6 Bytes pro Zeile mit ASCII Zeichen"/>
+<lang>start: J 100 <AADR>
+</lang>
+<requires></requires>

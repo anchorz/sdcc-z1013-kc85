@@ -1,0 +1,3 @@
+<kurz src="Animation Geburtstagsgrüße"/>
+<lang>1 Byte kleiner, als im Header angegeben</lang>
+<requires></requires>

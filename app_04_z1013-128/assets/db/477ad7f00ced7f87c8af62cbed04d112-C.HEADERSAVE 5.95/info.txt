@@ -1,0 +1,9 @@
+<kurz src="Load/Save-Routine 5.95 0E000h"/>
+<lang>ansonsten identisch zu [6373e38242eae15913d252c40caf4ef4]
+
+es gibt noch eine 5.95o Variante mit einem Unterschied: E1DB JR Z,[E1FA oder E1F5]
+Wahrscheinlich ist letzteres ein Bugfix und dies hier noch die alte Version.
+
+<include src="header-save.asm"/>
+</lang>
+<requires></requires>

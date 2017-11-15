@@ -1,0 +1,10 @@
+<kurz src="BASIC Interpreter 3,75K V4.0, Tiny-BASIC Variante"/>
+<lang>LIST
+   5 I=0
+  10 PRINT I
+  20 FOR I=1 TO 7
+  30 PRINT I
+  40 NEXT I
+Okay!
+></lang>
+<requires></requires>
