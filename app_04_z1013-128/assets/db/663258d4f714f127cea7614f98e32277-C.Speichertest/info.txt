@@ -1,0 +1,3 @@
+<kurz src="Speichertest im Bildschirmspeicher"/>
+<lang></lang>
+<requires></requires>

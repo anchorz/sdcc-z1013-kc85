@@ -1,0 +1,5 @@
+<kurz src="wie [c3816ad765acb29b0ae1dff403b1ec71]"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.
+Zeitkonstanten für Load/Save angepasst, sollte wohl auf 4 MHz laufen.
+</lang>
+<requires></requires>

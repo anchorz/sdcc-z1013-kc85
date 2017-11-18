@@ -1,0 +1,3 @@
+<kurz src="kleine Datenbank mit Suchfunktion"/>
+<lang></lang>
+<requires></requires>

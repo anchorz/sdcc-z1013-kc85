@@ -1,0 +1,4 @@
+<kurz src="Disassembler mit Verschiebelader"/>
+<lang>
+läuft auf 0xB100-0xBFFF</lang>
+<requires></requires>

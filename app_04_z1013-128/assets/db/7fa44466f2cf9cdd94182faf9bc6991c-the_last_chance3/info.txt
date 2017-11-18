@@ -1,4 +1,4 @@
-<kurz src="Flüsse raten: Ich kaufe ein E!"/>
+<kurz src="Hangman PART 3 RIVERS, Flüsse raten"/>
 <lang></lang>
 <required></required>
 

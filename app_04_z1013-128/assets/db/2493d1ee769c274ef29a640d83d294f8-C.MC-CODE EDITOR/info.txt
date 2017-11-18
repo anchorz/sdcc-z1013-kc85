@@ -1,0 +1,4 @@
+<kurz src="Tool, Maschinenkode-Editor"/>
+<lang>Ohne Erläuterungen ist er schwer zu bedienen.
+</lang>
+<requires></requires>

@@ -1,0 +1,5 @@
+<kurz src="Minenfeld durchqueren+Cursor-Tasten, Originalversion"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.
+Steuerung: ⇦ ⇨ ⇧ ⇩ 
+</lang>
+<requires></requires>

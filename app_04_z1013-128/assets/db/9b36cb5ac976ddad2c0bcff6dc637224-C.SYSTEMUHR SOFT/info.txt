@@ -1,0 +1,3 @@
+<kurz src="Uhrzeit anzeigen"/>
+<lang>Zeitformat ohne Punkt und Komma eingeben, z.B. 060000</lang>
+<requires></requires>

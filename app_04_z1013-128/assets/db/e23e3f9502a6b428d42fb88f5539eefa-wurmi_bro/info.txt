@@ -1,0 +1,5 @@
+<kurz src="RB: Schaltet die Tastatur abfrage auf SLOW."/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩</lang>
+<requires></requires>

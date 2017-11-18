@@ -1,0 +1,3 @@
+<kurz src="DEMO Z1013 Version 2, Präsentation: Reassembler, Tastaturlayout etc."/>
+<lang></lang>
+<requires></requires>

@@ -1,22 +1,59 @@
+;--------------------------------------------------------------------------
+;  copy.s
+;
+;  Copyright (C) 2017, Andreas Ziermann
+;
+;  This library is free software; you can redistribute it and/or modify it
+;  under the terms of the GNU General Public License as published by the
+;  Free Software Foundation; either version 2, or (at your option) any
+;  later version.
+;
+;  This library is distributed in the hope that it will be useful,
+;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+;  GNU General Public License for more details.
+;
+;  You should have received a copy of the GNU General Public License
+;  along with this library; see the file COPYING. If not, write to the
+;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+;   MA 02110-1301, USA.
+;
+;  As a special exception, if you link this library with other files,
+;  some of which are compiled with SDCC, to produce an executable,
+;  this library does not by itself cause the resulting executable to
+;  be covered by the GNU General Public License. This exception does
+;  not however invalidate any other reasons why the executable file
+;   might be covered by the GNU General Public License.
+;--------------------------------------------------------------------------
+        .module copy
+        .include 'z1013.inc'
 
 BWS_SWITCH  .equ 0x10
 ROM8000     .equ 0x20
-RAM0        .equ 0x00
 RAM1        .equ 0x40
-
-
-
 
 MEMORY_CONF .equ 0x04
 ROM_BANK    .equ 0x14
 
+.macro BANK_SWITCH_A
+    ; METHOD 1 - write to EPROM
+    ;   ld (hl),a
+    ; METHOD 2 - IOSEL
+    out   (ROM_BANK),a
+.endm
+
+.macro BANK_GET_NEXT_A
+    ; either inc 
+    ;   inc a
+    ; or add 4 - because the socket does bank switching in 8KB steps
+    add a,#0x04 
+.endm
+
     .area _GSINIT
     
-
     .area _INITIALIZER
 __xinit_banked_copy:
-    ld (hl),a
-    ;out   (ROM_BANK),a
+    BANK_SWITCH_A
     ex    af,af
     ld    a,#BWS_SWITCH   ; BWS ausschalten
     out   (MEMORY_CONF),a    
@@ -37,10 +74,8 @@ copy_byte:
     jr    nz,bank_is_set
     set   7,h ; set HL=0x8000
     ex    af,af
-    add   a,#0x01
-    ld (hl),a
-    ;add   a,#0x04
-    ;out   (ROM_BANK),a
+    BANK_GET_NEXT_A
+    BANK_SWITCH_A
     ex    af,af
 bank_is_set: 
     ld    a,c
@@ -67,11 +102,8 @@ copy_byte2:
     jr    nz,bank_is_set2
     set   7,h ; set HL=0x8000
     ex    af,af
-
-    add   a,#01
-    ld (hl),a
-    ;add   a,#0x04
-    ;out   (ROM_BANK),a
+    BANK_GET_NEXT_A
+    BANK_SWITCH_A
     ex    af,af
 bank_is_set2: 
     ld    a,c

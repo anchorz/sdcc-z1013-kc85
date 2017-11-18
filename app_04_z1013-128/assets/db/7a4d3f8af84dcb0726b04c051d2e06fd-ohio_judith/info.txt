@@ -1,0 +1,12 @@
+<kurz src="Wehre dich der Ratten. Schlag zu!"/>
+<lang>Codewort ist: JUDITH
+
+Steuerung: 
+⇦ nach Links
+⇨ nach Rechts
+␣  STOP
+P Schlag
+U LASER
+
+</lang>
+<requires></requires>

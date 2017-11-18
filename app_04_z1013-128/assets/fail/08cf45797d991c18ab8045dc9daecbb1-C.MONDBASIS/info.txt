@@ -1,0 +1,6 @@
+<kurz src="wie [ef69d054e2d412f0649786b47fb71bc3]"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.
+allerding funktioniert hier die Tastatureingabe nicht reibungslos. INKEY Funktion blockt bei 2.02, 
+bei A2 ist sie zu schnell. 
+</lang>
+<requires></requires>

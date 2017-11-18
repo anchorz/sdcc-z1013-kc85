@@ -1,0 +1,8 @@
+<kurz src="HC900 BASIC mit PSET, 21486 BYTES FREE, wie [ac559be453153ac534c19059ce754b32]"/>
+<lang>INKEY Routine ist unterschiedlich.
+Hier: cd 0c f2
+REF:  cd 30 f1
+
++eine Erweiterung verglichen mit [5a46abe3d1f711b8121252e98d56f80c]
+</lang>
+<requires></requires>

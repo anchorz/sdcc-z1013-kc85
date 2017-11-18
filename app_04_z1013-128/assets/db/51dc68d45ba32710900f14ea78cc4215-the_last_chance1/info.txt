@@ -1,0 +1,3 @@
+<kurz src="Hangman PART 1 CITIES, Hauptstädte raten"/>
+<lang></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="ZX SPEKTRUM KASSETTENINTERFACE Load/Save"/>
+<lang></lang>
+<requires></requires>

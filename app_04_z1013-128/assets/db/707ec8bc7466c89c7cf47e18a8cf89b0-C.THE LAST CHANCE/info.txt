@@ -1,0 +1,3 @@
+<kurz src="Hangman PART 2 COUNTRIES, Länder raten"/>
+<lang></lang>
+<requires></requires>

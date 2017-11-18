@@ -1,0 +1,6 @@
+<kurz src="[c318e23b99cb8353a4ab5d494f64198d]"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ 
+></lang>
+<requires></requires>

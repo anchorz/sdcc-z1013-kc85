@@ -1,0 +1,3 @@
+<kurz src="TTS, Sprachausgabe, nur 1KB! [51329cb6126882f0e5b8a7fe0fb5f079]"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.</lang>
+<requires></requires>
