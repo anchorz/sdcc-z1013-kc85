@@ -1,0 +1,3 @@
+<kurz src="Grafikeditor"/>
+<lang></lang>
+<requires></requires>

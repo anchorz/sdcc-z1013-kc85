@@ -1,0 +1,3 @@
+<kurz src="Verhütungsmethode bzw. Bestimmung fruchtbarer Tage"/>
+<lang><include src="KNAUS-OGINO.B"/></lang>
+<requires></requires>

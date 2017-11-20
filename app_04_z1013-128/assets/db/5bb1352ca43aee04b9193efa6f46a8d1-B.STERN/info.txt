@@ -1,0 +1,21 @@
+<kurz src="RAUMSCHIFF DURCH DAS SONNENSYSTEM STEUREN, METEORITEN ZERSTOEREN "/>
+<lang>
+
+Steuerung: ⇦ ⇨ U ␣ 
+
+SIE HABEN DIE AUFGABE,IHR RAUMSCHIFF SICHER DURCH DAS
+SONNENSYSTEM ZU STEUREN UND VORHANDENE METEORITEN ZU ZERSTOEREN
+
+-------------------------------
+
+ METEORITEN  =  .
+
+ STATIONEN   =  ♛
+
+-------------------------------
+BEI BESCHAEDIGUNG VON WELTRAUMSTATIONEN ERFOLGT EIN PUNKTABZUG!
+Bei Kollision=0 gibt es Zusatzpunkte
+BEI ZEIT=300 WIRD DAS SPIEL BEENDET 
+
+<include src="STERN.B"/></lang>
+<requires></requires>

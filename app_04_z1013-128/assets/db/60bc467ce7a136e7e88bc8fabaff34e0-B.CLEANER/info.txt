@@ -1,0 +1,15 @@
+<kurz src="Space-Cleaner, Raumschiff der kosmischen Muellabfuhr"/>
+<lang>
+
+Steuerung: ⇦ ⇨ U ␣
+
+Sie fliegen ein Raumschiff der kosmischen Muellabfuhr und sollen 
+Planetoidentruemmer * wegraeumen. Dabei duerfen Sie nicht zu oft
+mit Planeten ● zusammenstossen und nicht in den radioaktiven 
+Abgasschweif Ihres Raumschiffes kommen. Ihr Raumschiff haelt nur
+20 solcher Zusammenstoesse aus!
+
+Steuern Sie mit Joystick oder den Kursortasten !
+
+<include src="CLEANER.B"/></lang>
+<requires></requires>

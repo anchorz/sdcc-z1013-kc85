@@ -1,0 +1,18 @@
+<kurz src="Interessantes Brettspiel, Go Variante mit mehreren Steinen pro Feld"/>
+<lang>
+Spielregel:  EXPANSION wird auf einem quadratischen Spielfeld
+mit einer Feldanzahl von 2x2 bis 6x6 gespielt. Auf jedes Feld
+kann ein  Spieler eine bestimmte Anzahl von Steinen setzen. Die
+maximale Anzahl betraegt: 
+  - auf Eckfeldern 1 Stein
+  - auf Randfeldern 2 Steine
+  - auf Mittelfeldern 3 Steine.
+
+Jeder Spieler darf nur auf Leerfelder oder seine eigenen
+Steine setzen. Wird die maximale Anzahl ueberschritten, werden
+die Steine auf die Nachbarfelder gesprengt. Dabei werden alle
+Nachbarsteine in seine umgewandelt. Sieger ist der Spieler,
+der alle Steine in seine verwandelt hat.                       
+
+<include src="EXPANSION.B"/></lang>
+<requires></requires>

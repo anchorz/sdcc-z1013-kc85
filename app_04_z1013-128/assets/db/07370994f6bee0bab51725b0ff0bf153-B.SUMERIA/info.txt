@@ -1,0 +1,3 @@
+<kurz src="Wirtschaftsimulation, Land bestellen, Korn verteilen"/>
+<lang><include src="SUMERIA.B"/></lang>
+<requires></requires>

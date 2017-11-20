@@ -1,0 +1,4 @@
+<kurz src="Transformatorberechnung V1.2"/>
+<lang>
+<include src="TRAFO.B"/></lang>
+<requires></requires>

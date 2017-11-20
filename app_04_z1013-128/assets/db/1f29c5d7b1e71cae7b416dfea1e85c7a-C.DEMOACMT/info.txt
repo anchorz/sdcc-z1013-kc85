@@ -1,0 +1,3 @@
+<kurz src="umfangreiches DEMO zum Z1013, DEMO Z1013 Version 3"/>
+<lang></lang>
+<requires></requires>

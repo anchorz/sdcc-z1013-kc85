@@ -1,0 +1,5 @@
+<kurz src="wie [624a76207d6f479dd916ac6ca2732684]"/>
+<lang>
+eine Zeile fehlt: 6550 GOTO 6350
+</lang>
+<requires></requires>

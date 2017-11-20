@@ -1,3 +1,0 @@
-<kurz src="Frequenzgang passiver R-C-L Netzwerke simulieren"/>
-<lang><include src="R-L-C FREQUENZG..B"/></lang>
-<requires></requires>

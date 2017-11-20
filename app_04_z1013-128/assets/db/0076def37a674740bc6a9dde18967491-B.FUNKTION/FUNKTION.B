@@ -1,0 +1,136 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 CLS
+   20 PRINT "graphische Darstellung von":PRINT
+   30 PRINT "Funktionen in :":PRINT:PRINT    
+   50 PRINT "Polarkoordinaten ->RUN  500":PRINT    
+   60 PRINT "Parameterdarst.  ->RUN 1000":PRINT       
+   70 PRINT "kart.Koordinaten ->RUN 2000":PRINT:PRINT
+   80 END
+  500 CLS
+  505 PRINT "graphische Darstellung von":PRINT    
+  510 PRINT "Funktionen in Polarkoordinaten":PRINT
+  515 PRINT "Funktion eingeben!":PRINT:PRINT:EDIT 545   
+  520 CLS
+  525 INPUT "W0{Grad}=";W0
+  530 PRINT:PRINT
+  535 INPUT "W1{Grad}=";W1
+  540 CLS
+  545 DEF FN R(FI)=1+COS(FI)
+  550! S4 und K druecken-Start         mit RUN 520 
+  555 W0=W0/180*PI 
+  560 W1=W1/180*PI
+  565 I=0
+  570 MIX=0:MAX=0:MIY=0:MAY=0
+  575 H=PI/60                        
+  580 N=INT(ABS(W1-W0)/H)+1
+  585 DIM U(N),V(N)
+  590 FOR FI=W0 TO W1 STEP H
+  595 U(I)=FN R(FI)*COS(FI)
+  600 V(I)=FN R(FI)*SIN(FI)
+  605 IF U(I)<MIX THEN MIX=U(I) 
+  610 IF U(I)>MAX THEN MAX=U(I)
+  615 IF V(I)<MIY THEN MIY=V(I)
+  620 IF V(I)>MAY THEN MAY=V(I)
+  625 I=I+1
+  630 NEXT FI
+  635 R=ABS(MAY-MIY)
+  640 P=ABS(MAX-MIX)
+  645 IF P<R THEN P=R
+  650 S=128/P
+  655 Z=I
+  660 FOR K=0 TO Z  
+  665 I=INT((U(K)-MIX)*S)
+  670 X=INT(I/4)
+  675 F=(V(K)-MIY)*S
+  680 Y=INT(F/4)
+  685 POKE-4128-32*Y+X,(220+I-4*X-4*INT(F)+16*Y)
+  690 IF ABS(U(K))<1E-3 AND ABS(V(K))<1E-3 THEN GOSUB 710
+  695 NEXT K 
+  700 CLEAR
+  705 GOTO 525
+  710 FOR J=0 TO 31
+  715 PRINT AT(J,X);"!"                          
+  720 PRINT AT(31-Y,J);"-"                                            
+  725 NEXT J
+  730 RETURN
+ 1000 CLS
+ 1005 PRINT "graphische Darstellung von":PRINT    
+ 1010 PRINT "Funktionen in Parameterdarst.":PRINT:PRINT             
+ 1015 PRINT "Funktion eingeben!":PRINT:PRINT:EDIT 1045 
+ 1020 CLS
+ 1025 INPUT "T0 {rad.}=";T0
+ 1030 PRINT:PRINT
+ 1035 INPUT "T1 {rad.}=";T1
+ 1040 CLS
+ 1045 DEF FN X(T)=2*COS(T)-4*COS(2*T)
+ 1050 DEF FN Y(T)=2*SIN(T)-4*SIN(2*T)
+ 1055! S4 und K druecken-Start         mit RUN 1020! 
+ 1060 I=0
+ 1065 MIX=0:MAX=0:MIY=0:MAY=0
+ 1070 H=PI/45                        
+ 1075 N=INT(ABS(T1-T0)/H)+1  
+ 1080 DIM U(N),V(N)
+ 1085 FOR T=T0 TO T1  STEP H
+ 1090 U(I)=FN X(T)         
+ 1095 V(I)=FN Y(T)          
+ 1100 IF U(I)<MIX THEN MIX=U(I) 
+ 1105 IF U(I)>MAX THEN MAX=U(I)
+ 1110 IF V(I)<MIY THEN MIY=V(I)
+ 1115 IF V(I)>MAY THEN MAY=V(I)
+ 1120 I=I+1
+ 1125 NEXT T 
+ 1130 R=ABS(MAY-MIY)
+ 1135 P=ABS(MAX-MIX)
+ 1140 IF P<R THEN P=R
+ 1145 S=128/P
+ 1150 Z=I
+ 1155 FOR K=0 TO Z  
+ 1160 I=INT((U(K)-MIX)*S)
+ 1165 X=INT(I/4)
+ 1170 F=(V(K)-MIY)*S
+ 1175 Y=INT(F/4)
+ 1180 POKE-4128-32*Y+X,(220+I-4*X-4*INT(F)+16*Y)
+ 1185 IF ABS(U(K))<1E-3 AND ABS(V(K))<1E-3 THEN GOSUB 1205
+ 1190 NEXT K 
+ 1195 CLEAR
+ 1200 GOTO 1025
+ 1205 FOR J=0 TO 31
+ 1210 PRINT AT(J,X);"!"                          
+ 1215 PRINT AT(31-Y,J);"-"
+ 1220 NEXT J
+ 1225 RETURN
+ 2000 CLS
+ 2005 PRINT "graphische Darstellung von":PRINT    
+ 2010 PRINT "Funktionen in kart.Koordinaten":PRINT
+ 2015 PRINT "Funktion eingeben!":PRINT:PRINT:EDIT 2065 
+ 2020 CLS
+ 2025 INPUT "X0=";X0
+ 2030 PRINT:PRINT
+ 2035 INPUT "X1=";X1
+ 2040 CLS
+ 2045 S=(X1-X0)/128 
+ 2050 DIM Y(128)       
+ 2055 X=X0
+ 2060 MAX=0:MIN=0
+ 2065 DEF FN A(X)=(4*COS(X)*COS(X)-1)*SIN(X)-1
+ 2070! S4 und k druecken-Start         mit RUN 2020!  
+ 2075 FOR I=0 TO 127        
+ 2080 Y(I)=FN A(X)
+ 2085 IF Y(I)>MAX THEN MAX=Y(I)
+ 2090 IF Y(I)<MIN THEN MIN=Y(I)
+ 2095 X=X+S
+ 2100 NEXT I
+ 2105 FOR I=0 TO 127 
+ 2110 X=INT(I/4)
+ 2115 F=(Y(I)-MIN)/S 
+ 2120 Y=INT(F/4)
+ 2125 POKE-4128-32*Y+X,(220+I-4*X-4*INT(F)+16*Y)
+ 2130 IF ABS(Y(I))<1E-3 THEN GOSUB 2150
+ 2135 NEXT I
+ 2140 CLEAR
+ 2145 GOTO 2025
+ 2150 FOR J=0 TO 31
+ 2155 PRINT AT(31-Y,J);"-"
+ 2160 NEXT J
+ 2165 RETURN

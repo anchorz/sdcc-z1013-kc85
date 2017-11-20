@@ -1,0 +1,7 @@
+<kurz src="Durch Höhle fliegen"/>
+<lang>
+
+Steuerung: 2 9 
+
+<include src="CAVE.B"/></lang>
+<requires></requires>

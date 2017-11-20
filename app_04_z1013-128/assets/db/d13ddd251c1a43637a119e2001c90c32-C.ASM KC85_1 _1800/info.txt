@@ -1,0 +1,4 @@
+<kurz src="unbekannt: Editor, Assembler?"/>
+<lang>Am Anfang 'N' eingeben.
+</lang>
+<requires></requires>

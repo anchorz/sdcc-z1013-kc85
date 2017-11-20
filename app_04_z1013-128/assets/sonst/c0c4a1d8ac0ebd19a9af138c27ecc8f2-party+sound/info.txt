@@ -1,0 +1,3 @@
+<kurz src="identisch [41401d07edfa51d877a4b356128570f3-B.PARTY]"/>
+<lang></lang>
+<requires></requires>

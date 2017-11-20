@@ -1,0 +1,26 @@
+<kurz src="Textadventure Zurück in die Zukunft"/>
+<lang>Du stehst in einem Gang der
+Hill Valley High Scholl.
+                  
+DU SIEHST:           
+einen Lautsprecher
+
+UNTERSUCHE LAUTSPRECHER
+Du hoerst eine Durchsage: Marty McFly, bitte in die Verwaltung. 
+Dringender Telefonanruf fuer Marty McFly. 
+
+O
+Du bist vor der grossen Eingangspforte der Schule
+DU SIEHST: nichts Sehenswertes  
+N
+Du stehst im Verwaltungsraum der High School.
+DU SIEHST: ein Telefon 
+
+BENUTZE TELEFON          
+Du hoerst folgendes: Marty, ich bin's, Doc. Ich
+muss Dich unbedingt sprechen. Komm' doch bitte 
+so schnell wie moeglich zu Twin Pines Mall, 
+dem Einkaufszentrum. 
+...
+<include src="BACK.B"/></lang>
+<requires></requires>

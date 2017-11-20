@@ -1,0 +1,7 @@
+<kurz src=""/>
+<lang>
+
+Steuerung:  U ␣ ⏎
+
+<include src="PARTNER.B"/></lang>
+<requires></requires>

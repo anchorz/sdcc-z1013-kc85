@@ -1,0 +1,7 @@
+<kurz src="Kugel über die Bande zu Treffen"/>
+<lang>
+
+Steuerung: ⇦ ⇨ L R K
+
+<include src="BILLARD.B"/></lang>
+<requires></requires>

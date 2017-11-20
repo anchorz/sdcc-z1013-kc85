@@ -1,0 +1,3 @@
+<kurz src="COMPUTERGEDICHT, Automatisierte Prosageneration"/>
+<lang><include src="GEDICHT.B"/></lang>
+<requires></requires>

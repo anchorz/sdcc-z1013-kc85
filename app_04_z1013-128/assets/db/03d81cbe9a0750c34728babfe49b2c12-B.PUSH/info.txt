@@ -1,0 +1,5 @@
+<kurz src="PUSH, EIN CLEVERES WUERFELSPIEL"/>
+<lang>
+
+<include src="PUSH.B"/></lang>
+<requires></requires>

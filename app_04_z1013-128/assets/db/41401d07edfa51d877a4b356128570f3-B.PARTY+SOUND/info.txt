@@ -1,0 +1,4 @@
+<kurz src="Partyguide mit Soundeffekten, ähnlich [9f83dd605923492700d30c77086a94d8]"/>
+<lang>
+<include src="PARTY+SOUND.B"/></lang>
+<requires></requires>

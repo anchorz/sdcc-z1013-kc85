@@ -1,0 +1,3 @@
+<kurz src="Demo Z1013 64K+Softwarebörse Weimar"/>
+<lang></lang>
+<requires></requires>

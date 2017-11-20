@@ -1,0 +1,4 @@
+<kurz src="durch Löcher in einer Wand schießen"/>
+<lang>
+<include src="SCHUSS.B"/></lang>
+<requires></requires>

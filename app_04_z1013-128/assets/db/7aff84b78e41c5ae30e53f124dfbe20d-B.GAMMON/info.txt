@@ -1,0 +1,4 @@
+<kurz src="Brettspiel Backgammon"/>
+<lang>
+<include src="GAMMON.B"/></lang>
+<requires></requires>

@@ -1,0 +1,7 @@
+<kurz src="Flugsimulator, Starten und Landen mit Seitenwind"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ X Y
+
+<include src="FLUG.B"/></lang>
+<requires></requires>

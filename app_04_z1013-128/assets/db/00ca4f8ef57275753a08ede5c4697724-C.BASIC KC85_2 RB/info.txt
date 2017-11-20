@@ -1,0 +1,8 @@
+<kurz src="KC-BASIC Interpreter KC85/2, 45038 BYTES FREE"/>
+<lang>wie [5a46abe3d1f711b8121252e98d56f80c],
+Speicherende angepasst, eventuell andere Steuercodes beim Editor
+
+hat auch den Wert 24!! 24 3a dc b7 3d 20 e9, vielleicht ist die 20 bei der anderen Variante
+ein fehlerhafter Wert.
+</lang>
+<requires></requires>

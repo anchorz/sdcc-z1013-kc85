@@ -1,0 +1,5 @@
+<kurz src="unbekannt: Editor, Assembler?"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.
+Am Anfang 'N' eingeben.
+</lang>
+<requires></requires>

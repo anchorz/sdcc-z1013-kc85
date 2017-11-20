@@ -1,0 +1,10 @@
+<kurz src="Frequenzgang passiver R-C-L Netzwerke simulieren"/>
+<lang>Am Ende hat man noch ein Programm vergessen: ""
+   20 PRINT "graphische Darstellung von":PRINT
+   30 PRINT "Funktionen in :":PRINT:PRINT    
+   50 PRINT "Polarkoordinaten ->RUN  500":PRINT    
+   60 PRINT "Parameterdarst.  ->RUN 1000":PRINT       
+   70 PRINT "kart.Koordinaten ->RUN 2000":PRINT:PRINT
+
+<include src="R-L-C FREQUENZG..B"/></lang>
+<requires></requires>

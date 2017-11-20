@@ -1,0 +1,12 @@
+<kurz src="Grafikeditor"/>
+<lang>
+
+ Taste -T- Neues Zeichen
+ Taste -S- dient zum Steuern
+ Taste -Z- dient zum Zeichnen
+ Taste -@- Ende
+ Taste -X- Load von Kassette
+ Taste -$- Save auf Kassette  
+
+<include src="ZEICHENPROGRAMM.B"/></lang>
+<requires></requires>

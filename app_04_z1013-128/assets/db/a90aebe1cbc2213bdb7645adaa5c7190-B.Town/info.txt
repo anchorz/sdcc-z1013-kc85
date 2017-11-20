@@ -1,0 +1,5 @@
+<kurz src="Geographie, Hauptstädte der Europas und der Erde zuordnen"/>
+<lang>
+
+<include src="Town.B"/></lang>
+<requires></requires>

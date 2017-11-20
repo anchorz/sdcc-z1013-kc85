@@ -1,0 +1,7 @@
+<kurz src="Wissenstest: was weisst du über den Bezirk Rostock"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ ⬄ ⇳ ⬀ ⬁ ⬂ ⬃ ␣ ⏎
+
+<include src="ROSTOCK.B"/></lang>
+<requires></requires>

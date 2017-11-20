@@ -1,0 +1,3 @@
+<kurz src="Darstellung von Funktionen in Parameterdarstellung, Polar- oder kartesischen Koordinaten"/>
+<lang><include src="FUNKTION.B"/></lang>
+<requires></requires>

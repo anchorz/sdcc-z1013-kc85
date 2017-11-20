@@ -1,0 +1,11 @@
+<kurz src="Wölfe gegen Baum rennen lassen"/>
+<lang>
+
+Steuerung: 
+
+EFG
+ N
+UVW
+
+<include src="HASE&WOLF.B"/></lang>
+<requires></requires>

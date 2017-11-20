@@ -1,0 +1,8 @@
+<kurz src="Wer passt zu wem? (Z9001)"/>
+<lang>
+ICH, DER COMPUTER, STELLE DURCH FRAGEN,
+DIE SIE BEANTWORTEN MOEGEN, GEMEINSAMKEITEN 
+ZWISCHEN DEN GAESTEN FEST UND NENNE EINE BEWERTUNGSZAHL.
+
+<include src="EHE.B"/></lang>
+<requires></requires>
