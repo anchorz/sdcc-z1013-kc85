@@ -1,0 +1,11 @@
+<kurz src="Disassembler (funktioniert?)"/>
+<lang>keine Ahnung ob und wie er funktioniert.
+Er installiert eine Kommandoerweiterung @A an der falschen Stelle, so dass sie nicht immer korrekt erkannt wird.
+Vorausgesetzt @A ist korrekt installiert, dann kann man ihn mit den Argumenten @A b c d oder ohne Argumente starten.
+
+? # @A
+&F000
+ 
+
+</lang>
+<requires></requires>

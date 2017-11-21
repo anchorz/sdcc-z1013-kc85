@@ -1,0 +1,4 @@
+<kurz src="Glückwunschkarte drucken"/>
+<lang>Serieller EPSON Drucker an PORT 0x34/0x35, K6313
+</lang>
+<requires></requires>

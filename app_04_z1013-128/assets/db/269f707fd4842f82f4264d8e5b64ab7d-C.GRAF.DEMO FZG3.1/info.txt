@@ -1,0 +1,3 @@
+<kurz src="Grafikeditor (Weiss jemand mehr?)"/>
+<lang>Was ist ein FZG?</lang>
+<requires></requires>
