@@ -1,5 +1,5 @@
 <kurz src="Brosig Monitor INCOM, gibt sich als S6009 aus"/>
-<lang>Ob das stimmt, ist fraglich. Es sieht nach einer veränderten Version
+<lang>Ob das S6009 stimmt, ist fraglich. Es sieht nach einer veränderten Version
 der INCOM-Variante [cf5deaff505422c4e74ba0a84ecc67dd] aus, nur die 
 Tastaturmatrix ist verschieden.</lang>
 <requires></requires>

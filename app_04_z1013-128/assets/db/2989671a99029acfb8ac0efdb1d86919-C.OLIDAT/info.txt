@@ -1,0 +1,4 @@
+<kurz src="kleine Datenbank mit Suchfunktion, benutzt Sprungverteiler LORUF/SARUF"/>
+<lang>
+</lang>
+<requires></requires>

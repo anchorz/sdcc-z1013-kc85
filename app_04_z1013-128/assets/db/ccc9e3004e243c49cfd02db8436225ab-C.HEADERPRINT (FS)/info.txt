@@ -1,0 +1,5 @@
+<kurz src="Inhaltsverzeichnis, formatierte Kassettenlisten erstellen+Drucken"/>
+<lang>
+Druckertreiber muss ab 0xE800 stehen
+</lang>
+<requires></requires>

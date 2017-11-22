@@ -1,0 +1,3 @@
+<kurz src="umfangreiches Hauptspeicher-Testprogramm"/>
+<lang></lang>
+<requires></requires>

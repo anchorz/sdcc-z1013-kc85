@@ -1,5 +1,5 @@
 <kurz src="Sterne auffangen"/>
-<lang>Steuerung: unbekannte Tastatur.
+<lang>Steuerung: C S4
 
 <include src="STERNTALER1.b"/></lang>
 <requires></requires>

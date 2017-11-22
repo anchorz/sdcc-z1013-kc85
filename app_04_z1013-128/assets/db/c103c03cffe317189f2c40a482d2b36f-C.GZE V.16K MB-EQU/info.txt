@@ -1,0 +1,35 @@
+<kurz src="Zeichensatzeditor, FZG+Maus"/>
+<lang>       GRAFIKZEICHENEDITOR
+--------------------------------
+  geeignet fuer 2k-Monitor
+   und 4k-Monitor u. K 7659
+     mit MAUS und TASTATUR
+--------------------------------
+  c by M.Boehme
+ ----  August-Bebel Str. 30
+ |MB|  Cunersdorf 9301
+ ----
+********************************
+*4.BIT:Maus  Funktionstaste Pset
+*Space:Pixel loeschen
+*Ent--:Pset
+*P--:Kopieren eines Feldes
+*I--:Anzeigen Inhalt der ADR.
+*S--:FZG Abspeichern auf TB
+*L__:FZG Laden in Speicher
+*@S-:Abspeichern eines Feldes
+*@L-:Einladen eines Feldes
+*C--:Eingabe eines MC-WERT ab
+ Kursorstellung auf das 8.BIT
+ der jeweiligen FZG Anfangsadr.
+ des Zeichencodes.
+Nach Eingabe des 8.Wertes geht
+es zurueck ins Hauptprogramm.
+Beispiel:Adr. E808H u. 8.Bit =
+         Grafikzeichen 81H
+*H--:Hauptmenue-Programmstart
+*V--:blaettern vorwaerts der Adr
+*R--:blaettern rueckwaerts Adr.
+*Wippe:blaetter V-R=+|-nurK7659 
+</lang>
+<requires></requires>

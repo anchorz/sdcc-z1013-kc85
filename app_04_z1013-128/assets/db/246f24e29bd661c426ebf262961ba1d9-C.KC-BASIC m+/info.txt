@@ -1,0 +1,4 @@
+<kurz src="Speicher bis 0xE7FF, wie [e31af4360f472b76674fb3ca135a5070]"/>
+<lang>Fehlermeldungen sind alle klein geschrieben.
+Unterschied zu [28107373ce86e4492ee5f0850daac981] im wesentlichen nur im Bereich <0x0300</lang>
+<requires></requires>

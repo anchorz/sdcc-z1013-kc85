@@ -1,4 +1,15 @@
-<kurz src="unbekannt: Editor, Assembler?"/>
-<lang>Am Anfang 'N' eingeben.
+<kurz src="Editor, Assembler (funktioniert?)"/>
+<lang>Am Anfang 'N' eingeben, Beschreibung <a href="z9_edas.pdf">z9_edas.pdf</a>
+
+der Assembler ab 0x1800 scheint nicht zu funkionieren:
+3411  23          INC     HL
+3412  10 FB       DJNZ    340FH
+3414  CD E8 37    CALL    37E8H
+3417  21 00 36    LD      HL,3600H
+341A  CD 38 17    CALL    1738H
+341D  CD EC 16    CALL    16ECH
+
+Der Sprung CALL 37E8H liegt außerhalb des Programmes.
+
 </lang>
 <requires></requires>

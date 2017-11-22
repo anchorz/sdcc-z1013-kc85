@@ -1,0 +1,3 @@
+<kurz src="identisch [35a0027f80a63e04065d67e47d99f190-]"/>
+<lang></lang>
+<requires></requires>

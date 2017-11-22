@@ -1,0 +1,3 @@
+<kurz src="umfangreiches Hauptspeicher-Testprogramm"/>
+<lang>Ist 1 Bytes kleiner, als im Header angegeben.</lang>
+<requires></requires>
