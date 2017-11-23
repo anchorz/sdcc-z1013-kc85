@@ -1,0 +1,3 @@
+<kurz src="EDAS/4 Editor/Assembler "Funkamateur" 1/87 bis 4/87"/>
+<lang></lang>
+<requires></requires>

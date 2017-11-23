@@ -1,0 +1,14 @@
+<kurz src="Treiber für S3004, Portadresse kann frei gewählt werden"/>
+<lang>Datum 28.02.1989
+
+Aber was genau macht der? Was bedeuten die Meldungen:
+ADDRESS CROSSING LOGIC FILE!
+LOGIC FILE CLOSED:     IGNORE..1SAVE AND GO ON.2 SAVE AND STOP.3
+ADDRESS TOO HIGH
+LOGIC FILE OPEN AT
+EMPTY FILE!
+ADDRESS CROSSING PRINT FILE!
+FILE JUST OPEN - CLOSE Y/(N)?
+F.TROJAHN
+</lang>
+<requires></requires>

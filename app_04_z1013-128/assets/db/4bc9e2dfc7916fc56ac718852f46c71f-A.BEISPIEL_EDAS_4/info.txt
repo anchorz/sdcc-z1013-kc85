@@ -1,0 +1,3 @@
+<kurz src="Beispiel für einen EDAS/4 Quelltext"/>
+<lang><include src="BEISPIEL EDAS_4.A"/></lang>
+<requires></requires>

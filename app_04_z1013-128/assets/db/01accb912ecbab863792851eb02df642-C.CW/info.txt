@@ -1,5 +1,4 @@
 <kurz src="Morse Code Trainer, Version 1"/>
-<lang>Ist 1 Bytes kleiner, als im Header angegeben.
-
+<lang>
 <include src="C.CW-TRAINER.b"/></lang>
 <requires></requires>

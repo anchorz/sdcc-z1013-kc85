@@ -1,4 +1,4 @@
-<kurz src="OLITEX: ERWEITERUNG DES Z1013 AUF 64 kBYTE-SPEICHER"/>
+<kurz src="OLITEX Dokument: ERWEITERUNG DES Z1013 AUF 64 kBYTE-SPEICHER"/>
 <lang>
 ===============================
     ERWEITERUNG DES Z 1013

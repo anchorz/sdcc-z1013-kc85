@@ -111,6 +111,8 @@ while(1) {
     $line_index=0; 
     #printf("INFO: line_index=%d\n",$line_index);
     $line_no=read_word();
+    print ":$line_no:";
+    exit 1;   
     #printf("INFO: line_index=%d\n",$line_index);
     $line_length=read_byte();
     #printf("INFO: line_index=%d\n",$line_index);
@@ -123,7 +125,8 @@ while(1) {
     #printf("INFO: line_index=%d\n",$line_index);
     
     $p1=read_str();
-    if(length($p1)>0) {
+    exit 1;   
+     if(length($p1)>0) {
         $p1.=":";
     }
 

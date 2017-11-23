@@ -1,5 +1,10 @@
 <kurz src="Autorennen-und Labyrinth-Kombi, Joystick nach Practic 01/88"/>
-<lang>Startadressen bei 0x800 und 0x900
+<lang>Startadressen bei 0x7F9 und 0x900
+
+Der Joystick wird nur bei J 7F9 korrekt initialisiert. D.h. nach RESET 
+und J 900 wird das LABY Spiel wohl nicht laufen. In dem Fall ist es notwendig
+beim Brosig-Monitor die RST38H zu drücken, um ohne RESET das Auto Programm
+zu verlassen.
 
 AUF DEM BILDSCHIRM ERSCHEINT
 EINE STRASSE MIT 11 ZEICHEN

@@ -18,6 +18,14 @@ div.even {
 	background: #ffffff;
 }
 
+div.tablehead{
+	padding: 2px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border: dashed gray 1px;
+	background: #ffffd0;
+}
+
 div.odd {
 	padding: 2px;
 	background: #f8f8f0;
@@ -36,6 +44,11 @@ div.text {
     white-space: pre;
 	padding: 10px;
 	background: #f0f0f0;
+}
+
+span.md5 {
+    font-size: 75%;
+	color: #909060;
 }
 
 span.fntz1013 {

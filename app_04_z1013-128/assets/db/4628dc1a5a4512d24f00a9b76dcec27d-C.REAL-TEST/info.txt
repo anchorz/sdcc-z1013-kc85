@@ -1,0 +1,3 @@
+<kurz src="Testprogramm Anzeigegenauigkeit von REAL-Gleitkommazahlen"/>
+<lang></lang>
+<requires></requires>

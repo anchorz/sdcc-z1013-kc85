@@ -1,6 +1,5 @@
 <kurz src="3700: Space-Autorennen 3BA0: Käfer nicht durchlassen"/>
-<lang>Ist 1 Bytes kleiner, als im Header angegeben.
-
+<lang>
 Steuerung: ⇦ ⇨ 
 
 </lang>

@@ -1,0 +1,3 @@
+<kurz src="Grafikeditor?, Joystick oder anderes Eingabegerät, Schreibmaschine?"/>
+<lang>auf was wartet das Programm an Port 0x00?</lang>
+<requires></requires>

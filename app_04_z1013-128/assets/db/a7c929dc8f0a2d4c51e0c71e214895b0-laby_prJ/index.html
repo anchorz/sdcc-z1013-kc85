@@ -13,9 +13,17 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-<div></div>
+<div><video height="400" controls autoplay loop>
+<source src="animation.mp4" type="video/mp4">
+</video>
+</div>
 <div class="filelist">0100 14b0 07f9 C ... <a href="laby_prJ.z80">AUTO/LABY(900)+J</a></div>
-<div class="text">Startadressen bei 0x800 und 0x900
+<div class="text">Startadressen bei 0x7F9 und 0x900
+
+Der Joystick wird nur bei J 7F9 korrekt initialisiert. D.h. nach RESET 
+und J 900 wird das LABY Spiel wohl nicht laufen. In dem Fall ist es notwendig
+beim Brosig-Monitor die RST38H zu drücken, um ohne RESET das Auto Programm
+zu verlassen.
 
 AUF DEM BILDSCHIRM ERSCHEINT
 EINE STRASSE MIT 11 ZEICHEN

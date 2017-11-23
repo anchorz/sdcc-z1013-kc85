@@ -1,0 +1,39 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+0010 ;**********************
+0020 ;* EDAS/4 fuer Z1013  *
+0030 ;**********************
+0040 ;
+0050 ;
+0060 ;
+0070 ;****komentar
+0080 ;
+0090 ;ctrlw = Tabulator
+0100 ;ctrl3 = ende bei I mode
+0110 ;
+0120 ;
+0130 ;
+0140 ;
+0150 ;
+0160        ORG #5000
+0170 MARKE  LD HL,#2000 ;hex
+0180        LD HL,2000  ;dez
+0190        DEFM 'STRING'
+0200        DEFB 2,2,#8D
+0210        JR NZ,MARKE
+0220        JP NZ,MONIT
+0230 ;vereinbarung
+0240 MONIT  EQU #F000
+0250 TEST   EQU MARKE
+0260 ;
+0270 ;
+0280 ;
+0290 ;
+0300 ; A assembliere
+0310 ; V anzeigen Quelltext
+0320 ; usw siehe FUNKAMATEUR
+0330 ; bei verlassen mit Q
+0340 ; werden die ARG Zellen
+0350 ; mit den akt. Quelltext
+0360 ; adressen geladen
+0370 ; evt. rueckfragen

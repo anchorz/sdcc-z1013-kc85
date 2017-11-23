@@ -1,7 +1,0 @@
-<kurz src=""/>
-<lang>
-
-Steuerung: ⇦ ⇨ ⇧ ⇩ ⬄ ⇳ ⬀ ⬁ ⬂ ⬃ ␣ ⏎
-
-<include src="a"/></lang>
-<requires></requires>

@@ -8,6 +8,9 @@ use File::stat;
 use utf8;
 
 binmode(STDERR, ":utf8");
+binmode(STDOUT, ":utf8");
+
+our $prefix_length=5;
 
 sub get_git_base() {
     return abs_path(dirname(abs_path($0))."/..");
@@ -107,6 +110,16 @@ sub resolve_links($ $)
 %fail_entry_list=();
 %sonst_entry_list=();
 
+
+use constant {
+        AADR   => 0,
+        EADR   => 1,
+        SADR   => 2,
+        TYPE   => 3,
+        NAME   => 4,
+        MD5    => 5,
+};
+
 sub resolve_entry($) {
 
     my $filename=shift;
@@ -137,7 +150,8 @@ sub resolve_entry($) {
 
     my $z80ImageLen=$eadr-$aadr+1;
     if ($z80ImageLen>($z80len-32)) {
-        printf STDERR "e: Ist %d Bytes kleiner, als im Header angegeben.\n", $z80ImageLen-($z80len-32) ;
+        my $flen=$z80ImageLen-($z80len-32);
+        printf STDERR "e: Ist %d Byte%s kleiner, als im Header angegeben.\n",$flen ,($flen>1?"s":"") ;
         printf STDERR "   %s\n", $filename ;
     }
     
@@ -148,6 +162,7 @@ sub resolve_entry($) {
       'T'=>"Text",
       'I'=>"Dokumentation",
       'E'=>"EPROM",
+      'A'=>"Assembler",
       's'=>"Assembler",
       'B'=>"KC-Basic",
       'P'=>"Pascal",
@@ -160,6 +175,7 @@ sub resolve_entry($) {
     {
         my $error=sprintf "e: unbekannter Dateityp '%s' %s\n",$typ,$filename;
         print STDERR "$error";
+        exit 1;
         return $error;
     }
     read FILE, $bytes, 3;
@@ -207,6 +223,20 @@ sub resolve_entry($) {
     $db_entry_list{$filename}=[@db_entry];
 }
 
+our %screenRes=(
+  "689e49eab13a569082412b203f7fd5fe"=>"64X16X2",
+);
+
+sub set_image_tag($ $) {
+    my $src=shift;
+    my $value=shift;
+    if ($src eq "no") {
+        return $value;
+    }
+    return $src;
+}
+
+
 sub do_index_html($)
 {
     my $filename=shift;
@@ -232,6 +262,14 @@ sub do_index_html($)
         "jkcemu_screen_04.txt"=>"screenshot_04.jpg"
     );
 
+    $resolution=$screenRes{$en[MD5]};
+    $videoResolution="512x512";
+    if (!$resolution) {
+        $resolution="32X32"
+    } else {
+        $videoResolution="1024x512";
+    }
+
     for (keys(%screen_shot)) {
         if( -f "$dir/$_") {
             my $timestamp_src=stat("$dir/$_")->mtime;
@@ -243,7 +281,7 @@ sub do_index_html($)
             }
 
             if ($timestamp_dst<$timestamp_src) {
-                $ret=system("java -jar ".get_tools_root()."/screen2png.jar 32X32 ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$dir/$_\" \"$dir/tmp.png\"" );
+                $ret=system("java -jar ".get_tools_root()."/screen2png.jar $resolution ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$dir/$_\" \"$dir/tmp.png\"" );
                 if ($ret) {
                     printf("error.");
                     exit($ret);
@@ -270,7 +308,7 @@ sub do_index_html($)
         }
         if ($timestamp_dst<$timestamp_src) {
             $ret=0; 
-            $ret=system("java -Dsun.java2d.uiScale=1 -jar ".get_tools_root()."/screen2png.jar 32X32 ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$file_src\"" ); #\"$file_dst\"" );
+            $ret=system("java -Dsun.java2d.uiScale=1 -jar ".get_tools_root()."/screen2png.jar $resolution ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$file_src\"" ); #\"$file_dst\"" );
             if ($ret) {
                 printf("error.");
                 exit($ret);
@@ -280,7 +318,7 @@ sub do_index_html($)
                 printf("error.");
                 exit($ret);
             }
-        	$ret=system("ffmpeg -r 10 -s 512x512 -i \"$dir/tmp%04d.png.jpg\"  -s 512x512 -pix_fmt yuv420p -crf 28 \"$dir/animation.mp4\" -y");
+        	$ret=system("ffmpeg -r 10 -s $videoResolution -i \"$dir/tmp%04d.png.jpg\"  -s $videoResolution -pix_fmt yuv420p -crf 28 \"$dir/animation.mp4\" -y");
             if ($ret) {
                 printf("error.");
                 exit($ret);
@@ -306,24 +344,32 @@ sub do_index_html($)
 
     if (-f "$dir/screenshot_01.jpg") {
         $item_content.="<img src=\"screenshot_01.jpg\" alt=\"Screenshot 1\" height=\"384\"  >\n"; 
+        $has_video=set_image_tag($has_video,"rendered_image");
     } elsif (-f "$dir/screenshot_01.png") {
         $item_content.="<img src=\"screenshot_01.png\" alt=\"Screenshot 1\" height=\"384\"  />\n"; 
+        $has_video=set_image_tag($has_video,"pixel_image");
     }
 
     if (-f "$dir/screenshot_02.jpg") {
         $item_content.="<img src=\"screenshot_02.jpg\" alt=\"Screenshot 2\" height=\"384\"  >\n"; 
+        $has_video=set_image_tag($has_video,"rendered_image");
     }elsif (-f "$dir/screenshot_02.png") {
         $item_content.="<img src=\"screenshot_02.png\" alt=\"Screenshot 2\" height=\"384\"  >\n"; 
+        $has_video=set_image_tag($has_video,"pixel_image");
     }
      if (-f "$dir/screenshot_03.jpg") {
         $item_content.="<img src=\"screenshot_03.jpg\" alt=\"Screenshot 3\" height=\"384\"  >\n"; 
+        $has_video=set_image_tag($has_video,"rendered_image");
     } elsif (-f "$dir/screenshot_03.png") {
         $item_content.="<img src=\"screenshot_03.png\" alt=\"Screenshot 3\" height=\"384\"  />\n"; 
+        $has_video=set_image_tag($has_video,"pixel_image");
     }
     if (-f "$dir/screenshot_04.jpg") {
         $item_content.="<img src=\"screenshot_04.jpg\" alt=\"Screenshot 4\" height=\"384\"  >\n"; 
+        $has_video=set_image_tag($has_video,"rendered_image");
     } elsif (-f "$dir/screenshot_04.png") {
         $item_content.="<img src=\"screenshot_04.png\" alt=\"Screenshot 4\" height=\"384\" />\n"; 
+        $has_video=set_image_tag($has_video,"pixel_image");
     }
     $item_content.="</div>\n";
     $item_content.=sprintf "<div class=\"filelist\">%04x %04x %04x %s ... <a href=\"%s\">%s</a></div>\n",$en[0],$en[1],$en[2],$en[3],html_encode(basename($filename)),$en[4];
@@ -384,13 +430,17 @@ sub print_entry2($ $) {
         $has_video='<a href="'.html_encode($link_base."/animation.mp4").'"><img src="../img/video_capture.png" width="12" height="12" alt="Clip anzeigen"/></a>'."\n";
     } elsif ($has_video eq "pixel_video") {
         $has_video='<a href="'.html_encode($link_base."/animation.mp4").'"><img src="../img/if_theaters_326711.png" width="12" height="12" alt="Clip anzeigen"/></a>'."\n";
+    } elsif ($has_video eq "rendered_image") {
+        $has_video='<img src="../img/screenshot_col.png" width="12" height="12" alt="Screenshot"/>'."\n";
+    } elsif ($has_video eq "pixel_image") {
+        $has_video='<img src="../img/screenshot.png" width="12" height="12" alt="Screenshot"/>'."\n";
     } else {
         $has_video='<img src="../img/1x1.png" width="12" height="12" alt="leer"/>'."\n";
     }
 
     my $remove_space=$en[4];
     $remove_space=~s/ /&nbsp;/sgi;
-    my $entry=sprintf "<div class=".$row_class.">%s %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",$en[5],$en[0],$en[1],$en[2],$en[3],html_encode($link),$remove_space,$has_video,$kurz;
+    my $entry=sprintf "<div class=".$row_class."><span class=\"md5\">%s</span> %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",substr($en[MD5],0,$prefix_length),$en[0],$en[1],$en[2],$en[3],html_encode($link),$remove_space,$has_video,$kurz;
     my $url=$filename;
     $url=~s/^.*?\/db\///sgi;
     $xml_entry.=sprintf("aadr=\"%04x\" eadr=\"%04x\" sadr=\"%04x\" typ=\"%s\" link=\"%s\" name=\"%s\" kurz=\"%s\" ",$en[0],$en[1],$en[2],$en[3],html_encode($url),$en[4],xml_encode($kurz)); 
@@ -473,10 +523,31 @@ $ret.= "<div class=\"filelist\">\n";
 for $db_entry (keys %db_entry_list) {
     resolve_entry($db_entry);
 }
-my $xml="<filelist>\n";
+my $xml="<doc><filelist>\n";
 my $row=0;
-for $db_entry (sort { lc $db_entry_list{$a}[4] cmp lc $db_entry_list{$b}[4] } keys %db_entry_list) {
-    
+
+#calculate the shortest prefix, where the md5 is different
+my %prefix=();
+for $db_entry (sort keys %db_entry_list) {
+    $md5=$db_entry_list{$db_entry}[MD5];
+    $pre=substr($md5,0,$prefix_length);
+    if (!$prefix{$pre}) {
+        $prefix{$pre}=$md5;
+    } else {
+        printf("error: double short-prefix found:\"%s\" %s<>%s\n",$pre,$md5,$prefix{$pre});
+        printf("       increase length of \$prefix_length\n");
+        exit 1;
+    }
+    #printf("%s %s\n",$pre,$md5);
+}
+
+#implictit use of prefix_length  MD5&nbsp;&nbsp;
+$ret.="<div class=\"tablehead\"><span class=\"md5\" title=\"Die ersten ".$prefix_length." Zeichen der MD5 Checksumme\">MD5..</span> ";
+$ret.="<span title=\"Anfangsadresse\">AAdr</span> <span title=\"Endadresse\">EAdr</span> <span title=\"Startadresse\">SAdr</span> ";
+$ret.="<span title=\"Basic(b,B) Programm(C,M) Dump(D,E) Dokumentation(D,T) Pascal(P) Assembler(s)\">TYP</span>&nbsp;&nbsp; ";
+$ret.="Dateiname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Animation/Beschreibung</div>";
+
+for $db_entry (sort { lc $db_entry_list{$a}[4] cmp lc $db_entry_list{$b}[4] or $db_entry_list{$a}[MD5]  cmp $db_entry_list{$b}[MD5]} keys %db_entry_list) {
     ($html_entry,$xml_entry)=print_entry2($db_entry,$row);
     $ret.=$html_entry;
     $xml.=$xml_entry;
@@ -484,7 +555,7 @@ for $db_entry (sort { lc $db_entry_list{$a}[4] cmp lc $db_entry_list{$b}[4] } ke
 }
 $xml.="</filelist>\n";
 my $size = keys %db_entry_list;
-$xml.="<status src=\"Datenbank enthalt $size Dateien.\">\n";
+$xml.="<status src=\"Datenbank enthält $size Dateien.\"/></doc>";
 
 open(UTF,">", $xml_file);
 binmode(UTF, ":utf8");

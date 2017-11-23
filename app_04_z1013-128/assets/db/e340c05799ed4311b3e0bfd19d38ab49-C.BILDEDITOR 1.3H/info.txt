@@ -1,0 +1,3 @@
+<kurz src="Grafikeditor?, wie [10af07994dc4eefacf5d91ad4f26c6fa]"/>
+<lang>auf was wartet das Programm an Port 0x00?</lang>
+<requires></requires>

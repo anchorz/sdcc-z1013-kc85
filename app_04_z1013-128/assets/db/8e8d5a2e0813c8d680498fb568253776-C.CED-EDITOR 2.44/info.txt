@@ -1,0 +1,3 @@
+<kurz src="Texteditor CED (V. 25.10.'87) "/>
+<lang><include src="C.CED-EDITOR 2.44.txt"/></lang>
+<requires></requires>

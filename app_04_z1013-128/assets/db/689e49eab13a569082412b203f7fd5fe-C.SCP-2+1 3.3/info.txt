@@ -1,0 +1,3 @@
+<kurz src="CP/M 2.2 Z1013 IG-HC 1.6 FDD+2*256K RF V.3.3"/>
+<lang>hängt im Emulator, nach der RAM-Floppy</lang>
+<requires></requires>

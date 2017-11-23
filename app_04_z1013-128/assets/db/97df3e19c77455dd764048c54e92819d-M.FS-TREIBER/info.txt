@@ -1,0 +1,3 @@
+<kurz src="Serieller Druckertreiber Port 0x00/0x01"/>
+<lang></lang>
+<requires></requires>

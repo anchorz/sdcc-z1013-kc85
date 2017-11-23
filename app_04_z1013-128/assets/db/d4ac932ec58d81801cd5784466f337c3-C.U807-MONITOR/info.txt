@@ -1,0 +1,4 @@
+<kurz src="U807 Tastaturtreiber, Z 1013 64k 0.01  C  SB"/>
+<lang>lädt das Programm von 0xD000 nach 0xF000 und startet von dort.
+Es erfolgt keine besondere ROM-Abschaltung. Der Bereich 0xF000-0xF7FF sollte beschreibbar sein.</lang>
+<requires></requires>
