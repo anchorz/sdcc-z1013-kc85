@@ -1,0 +1,52 @@
+**********************************
+BESCHREIBUNG FORTH 83 DEBUGGER
+**********************************
+
+Der Debugger erlaubt dem Nutzer die Schritte einer Hight-Level-
+Definition darzustellen.
+Er wird in der Form 'DEBUG name' eingeschaltet. Dabei ist
+'name' das Dictonary-Wort, welches verfolgt werden soll.
+Bei der Ausfuehrung des Wortes werden die einzelnen Schritte und
+der Parameterstack auf dem Bildschirm angezeigt.
+
+Sonderbefehle waehrend der Anzeige
+
+<F> ermoeglicht die zusaetzliche Eingabe von Forth-Befehlen  
+    und deren Interpretation bis mit RESUME die Bearbeitung
+    fortgesetzt wird
+
+<C> schaltet auf kontinuierlichen Lauf um
+
+<Q> bricht die Bearbeitung des Wortes ab
+
+
+GLOSSAR
+
+BUG      (--)          Forth
+macht das Vokabular BUG zum ersten durchsuchten
+
+(DEBUG)  (adr1 adr2--) Bug
+setzt die obere und die untere Grenze zu den gegebenen Wert und
+patcht NEXT (adr1 niedere und   adr2 obere Adr)
+
+DEBUG     ((name--)    Forth
+schaltet den Bearbeitungsvorgang fuer das Wort 'name' ein.
+Patcht NEXT zur debuggierten Version von NEXT und setzt die
+Grenzen.
+
+RES   (--adr)          Bug
+Variable- falls wahr, Debugarbeit wird wieder aufgenommen
+
+RESUME    (---)        Bug
+schaltet RES ein, und setzt damit die Niederschrift fort.
+
+SLOW  (--adr)          Bug
+Variable- falls wahr, kontinuierlicher Betrieb
+
+TRACE    (ip--)        Bug
+zeigt den Inhalt des Parameterstacks und den Namen des naechsten
+Wortes, welches zur Ausfuehrung vorgesehen ist.
+Es wartet auf Tastenbetaetigung, <ET> falls SLOW nicht wahr ist
+
+'UNNEST  (pfa--'pfa)   Bug
+sucht das Ende des bearbeiteten Wortes und uebergibt diese pfa

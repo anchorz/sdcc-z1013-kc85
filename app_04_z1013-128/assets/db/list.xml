@@ -55,6 +55,7 @@
 <file aadr="0100" eadr="29ff" sadr="0100" typ="C" link="00ca4f8ef57275753a08ede5c4697724-C.BASIC%20KC85_2%20RB/C.BASIC%20KC85_2%20RB.z80" name="BASIC KC85/2 RB " kurz="KC-BASIC Interpreter KC85/2, 45038 BYTES FREE" />
 <file aadr="0100" eadr="2b60" sadr="0100" typ="C" link="3305b978e27be0350aee422900e70662-basic_pset_sound/basic_pset_sound.z80" name="BASIC PSET/SOUND" kurz="BASIC Variante mit PSET-und SOUND-Funktion (HC900)" />
 <file aadr="1000" eadr="3351" sadr="0000" typ="b" link="b16167651d9e2e7c83013d6a2632d6c9-b.BASICLERN%201/b.BASICLERN%201.z80" name="BASICLERN 1     " kurz="Lernprogramm, Einführung in Tiny-BASIC" />
+<file aadr="3100" eadr="3d67" sadr="0000" typ="T" link="0790dfcc9c181dc105f3b79a493c6a56-basicode-info/basicode-info.z80" name="BASICODE-INFO   " kurz="BASICODE-3 KURZINFORMATION" />
 <file aadr="e600" eadr="e79f" sadr="e600" typ="C" link="72a580fe86da477c10f6f87bc161f4f5-basicramdisk3_5/basicramdisk3_5.z80" name="BasicRamdisk3.5." kurz="Wofür braucht BASIC eine RAM-Disk?" />
 <file aadr="1000" eadr="1cd7" sadr="ff00" typ="b" link="1a26a549fc4e9d16d637a98fe6f91071-b.BEGRIFFE%20RATEN/b.BEGRIFFE%20RATEN.z80" name="BEGRIFFE RATEN  " kurz="Buchstaben tippen und Begriffe raten. Ich kaufe ein E!" />
 <file aadr="1820" eadr="1aff" sadr="0000" typ="A" link="4bc9e2dfc7916fc56ac718852f46c71f-A.BEISPIEL_EDAS_4/A.BEISPIEL%20EDAS_4.z80" name="BEISPIEL EDAS/4 " kurz="Beispiel für einen EDAS/4 Quelltext" />
@@ -109,6 +110,7 @@
 <file aadr="e000" eadr="e99f" sadr="e3ee" typ="C" link="54a4157b16a8295d0b840d79f03ab9b1-cyrus_header_v_3/cyrus_header_v_3.z80" name="CYRUS-HEADER V.3" kurz="Headersave Erweiterung" />
 <file aadr="2700" eadr="3ee8" sadr="0000" typ="D" link="4d7c7fcb4a0b28fa1399a3a26b002563-D.DATEI_VOKABEL_1/D.DATEI_VOKABEL_1.z80" name="DATEI VOKABEL 1 " kurz="Daten zum Vokabeltrainer" />
 <file aadr="2bc0" eadr="3a38" sadr="2b50" typ="B" link="d35e76db1dbdcb10d999b3033e8ea267-B.DDR-STAEDTE/B.DDR-STAEDTE.z80" name="DDR-STAEDTE     " kurz="Hangman, DDR Städte raten" />
+<file aadr="3000" eadr="364f" sadr="0000" typ="I" link="c4039bab453057bdce24b8bdda8ebf59-I.DEBUGGER%20DOC/I.DEBUGGER%20DOC.z80" name="DEBUGGER DOC    " kurz="BESCHREIBUNG FORTH 83 DEBUGGER" />
 <file aadr="0100" eadr="22d0" sadr="0100" typ="C" link="fc18bda07d41e92ff09cefe2f56582d0-C.DEMO%20BOERSE/C.DEMO%20BOERSE.z80" name="DEMO BOERSE     " kurz="Demo Z1013 64K+Softwarebörse Weimar" />
 <file aadr="1000" eadr="1307" sadr="0000" typ="b" link="9f19c621793fd3aaccb559985079b524-b.DEMO%20JOYSTICK/b.DEMO%20JOYSTICK.z80" name="DEMO JOYSTICK   " kurz="Demo - funktioniert nur mit passendem BASIC Interpreter" />
 <file aadr="0100" eadr="3bff" sadr="0100" typ="C" link="b8c97ca003ad9c3c961e72f0990b5718-demo_z1013_v1/demo_z1013_v1.z80" name="DEMO Z1013 V1   " kurz="Präsentation der wesentlichen Eigenschaften, Tastaturlayout etc." />
@@ -143,6 +145,7 @@
 <file aadr="1000" eadr="3cfd" sadr="0000" typ="b" link="c5353d2d846e1c07fbd727a97b5dd538-b.ENTERPRISE/b.ENTERPRISE.z80" name="ENTERPRISE      " kurz="Enterprise Variante" />
 <file aadr="1000" eadr="3094" sadr="0000" typ="b" link="22cba2e4c111cee22fb1a2b5c11a2521-b.ENTERPRISE1/b.ENTERPRISE1.z80" name="ENTERPRISE1     " kurz="ENTERPRISE 87, Echtzeitsimulation" />
 <file aadr="1000" eadr="1a59" sadr="0000" typ="b" link="5e7749d0feaf06372904b5284a9ba773-b.EPROM-Handler_2/b.EPROM-Handler_2.z80" name="EPROM-Handler/2 " kurz="EPROM Programmierung U555, 2708, 2716, 2732, 2764" />
+<file aadr="3000" eadr="3db0" sadr="0000" typ="I" link="6c7dabb62daac80e2914714b4a389be8-I.EPROM-HANDLER2.9/I.EPROM-HANDLER2.9.z80" name="EPROM-HANDLER2.9" kurz="EPROM-Programmierprogramm EPROM-Handler V2.9" />
 <file aadr="0100" eadr="0210" sadr="0100" typ="C" link="5caa12d2121d31dbcc36b77f1b741a1d-C.EPROMMER-ABGL./C.EPROMMER-ABGL..z80" name="EPROMMER-ABGL.  " kurz="EPROM-Programmer-Abgleich" />
 <file aadr="1900" eadr="20f0" sadr="0000" typ="T" link="7aba6f7e42b9191addf7d15218b288aa-esc_folgen.doc/esc_folgen.doc.z80" name="ESC-Folgen      " kurz="ESC-Sequenzen für S3004" />
 <file aadr="2bc0" eadr="4410" sadr="00e0" typ="B" link="d69e20f35c79b86ff3e194606689d968-B.EXPANSION/B.EXPANSION.z80" name="EXPANSION       " kurz="Interessantes Brettspiel, Go Variante mit mehreren Steinen pro Feld" />
@@ -525,4 +528,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 525 Dateien."/></doc>
+<status src="Datenbank enthält 528 Dateien."/></doc>

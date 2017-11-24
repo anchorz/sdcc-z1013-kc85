@@ -1,0 +1,3 @@
+<kurz src="BASICODE-3 KURZINFORMATION"/>
+<lang><include src="basicode-info.txt"/></lang>
+<requires></requires>

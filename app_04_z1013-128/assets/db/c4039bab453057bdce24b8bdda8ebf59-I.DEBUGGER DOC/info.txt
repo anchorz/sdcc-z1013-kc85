@@ -1,0 +1,3 @@
+<kurz src="BESCHREIBUNG FORTH 83 DEBUGGER"/>
+<lang><include src="I.DEBUGGER DOC.txt"/></lang>
+<requires></requires>

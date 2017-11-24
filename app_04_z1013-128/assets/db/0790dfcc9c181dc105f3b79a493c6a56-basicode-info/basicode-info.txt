@@ -1,0 +1,86 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++                                                         +  
++        BASICODE-3 - INFO +++ KURZINFORMATION            +
++                                                         +
++   Bearbeitet: H.-J. Bachmann , Computer-Club robotron   +
++                                                         + 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Literaturhinweis: FF-dabei - Serie
+                  Begleitmaterial Radio DDR "REM"
+
+BASICODE ist ein Computer-Esperanto, welches von den
+unterschiedlichsten Computertypen verstanden und abgearbeitet
+werden kann. Voraussetzung dazu ist ein auf den jeweligen Typ
+zugeschnittenes Konvertierungsprogramm oder ein
+BASICODE-Interpreter. BASICODE verlangt eine nach festen Regeln
+strukturierte Programmgestaltung.
+
+Auf der Tagungskassette finden Sie fuer die Verwendung auf dem
+MRB Z1013 zwei Teilprogramme.
+    
+       -BASCODER
+       -BASCON
+
+Dieses sind noch Testversionen und werden vervollkommnet.
+Weiterhin ist vorgesehen eine einteilige 64k-Version zu schaffen.
+
+*** BASCON - ist ein Konvertierungsprogramm
+             Damit wird der vom Rundfunk abgestrahlte BASICODE in
+             ein KC-File umgesetzt.
+             Die Bedienung ist MENUE gesteuert.
+             Fuer die Weiterverarbeitung ist der umgesetzte KC-
+             File abzusaven.
+BASCON ist nur fuer den Z1013 relevant, andere Computertypen
+verarbeiten BASICODE direkt mit ihrem eigens dafuer vorhandenen
+Interpreter!!!
+
+ *** BASCODER-Dieses ist der eigentliche Interpreter, der die
+              mit BASCON konvertierten Files verarbeiten kann.  
+
+    LADEN : LOAD#1">name<"
+    SAVEN : LIST#1">name<"
+
+Mit BASCODER erstellte Programme sind vor Weitergabe
+grundsaetzlich in das BASICODE-Format zu konvertieren, damit die
+Universalitaet des Austausches auch fuer andere Computertypen
+gewaehrleistet ist.
+
+Programmierungshinweise in BASICODE entnehmen Sie bitte den
+Publikationen zu diesem Thema.
+
+Weiterhin befindet sich auf der Tagungskassette ein BASICODE-
+File, welches zur Uebung im Umgang mit BASCON noch von Ihnen
+konvertiert werden muss.
+
+HINWEISE zu BASCON und BASCODER an:
+  URANIA Computerclub, Kreispionierhaus"G.Orbschat",
+  Martin Duchrow * PF 367  1093 Berlin 
+
+und zu den Rundfunkuebertragungen an:
+  Radio DDR , Dr. J.Baumann , Redaktion Schulfunk
+              Nalepastr. 18-50 , 1160 Berlin
+
+Software zur Weiterverbreitung an:
+  Computer-Club robotron, PF 180 , 7010 Leipzig
+fuer alle nachfolgenden Typen.
+Fuer den Vertrieb von BASICODE-3 ist der Einsatz der
+Schallplatte geplant.
+
+BASICODE-3 wird verfuegbar sein fuer:
+     # MRB Z1013
+     # alle KC-Typen
+     # Sinclair Spectrum
+     # Commodore 64 (C128) und 4000'er-Serie
+     # Atari (noch in Arbeit)
+     # MSX-Computer mit mind. 64k-RAM
+     # IBM-Computer und kompatible
+     # Schneider CPC
+Weitere Entwicklungen nicht ausgeschlossen!
+
+Wir wuenschen Ihnen als USER mit BASICODE-3 viel Erfolg !
+  - H.-J.Bachmann - Computer-Club robotron
+  - Dr. J. Baumann- Radio DDR/Schulfunk
+  - M. Duchrow    - Autor der Z1013-BASICODE-Version 
+
+*******MikroWORD-Textfile*******Stand:10/89(ba)*******************

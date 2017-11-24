@@ -1,0 +1,4 @@
+<kurz src="Datenbank, Suchfunktion mit 2 Zeichenketten"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+Hier fehlt das abschließende RET</lang>
+<requires></requires>

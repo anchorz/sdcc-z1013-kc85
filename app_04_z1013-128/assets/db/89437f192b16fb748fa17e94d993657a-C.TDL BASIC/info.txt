@@ -1,6 +1,5 @@
 <kurz src="Erweitertes BASIC"/>
 <lang>
-http://www.tiffe.de/Robotron/Zapple-Basic/
 
 <include src="12kzapple.asm"/></lang>
 <requires></requires>

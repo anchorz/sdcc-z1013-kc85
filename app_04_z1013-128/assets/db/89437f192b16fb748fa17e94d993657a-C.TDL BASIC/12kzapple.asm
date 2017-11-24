@@ -14,7 +14,7 @@
 ; while commenting, several OCR errors were corrected.
 ;
 ; The hex dump was produced from the book
-; Rolf-Dieter Klein, Basic-Interpreter, Franzis Verlag München, 1982;
+; Rolf-Dieter Klein, Basic-Interpreter, Franzis Verlag Mnchen, 1982;
 ; in German language, ISBN 3-7723-6941-3
 ; The book author himself mentions in the book that he published
 ; the hex dump because "Der Interpreter wurde urspruenglich von
@@ -1151,7 +1151,7 @@ write_char:     push  bc               ; print_char
                 cp    CHAR_TAB         ; is a TAB?
                 jr    nz, loc_7A6      ; no, skip
                 ld    a, (iy+ioparams.linelength) ; get line length
-                and   0F8h ; 'ø'       ; adjust to multiple of 8
+                and   0F8h ; '?'       ; adjust to multiple of 8
                 dec   a                ; -1
                 cp    (iy+ioparams)    ; compare to current pos
                 jr    c, loc_7A1       ; would TAB skip to next line?, then do CRLF

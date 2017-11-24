@@ -279,8 +279,7 @@ sub do_index_html($)
             if( -f $file_dst) {
                 $timestamp_dst=stat($file_dst)->mtime;
             }
-
-            if ($timestamp_dst<$timestamp_src) {
+            if ($timestamp_dst<$timestamp_src) {                        
                 $ret=system("java -jar ".get_tools_root()."/screen2png.jar $resolution ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$dir/$_\" \"$dir/tmp.png\"" );
                 if ($ret) {
                     printf("error.");
@@ -308,7 +307,7 @@ sub do_index_html($)
         }
         if ($timestamp_dst<$timestamp_src) {
             $ret=0; 
-            $ret=system("java -Dsun.java2d.uiScale=1 -jar ".get_tools_root()."/screen2png.jar $resolution ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$file_src\"" ); #\"$file_dst\"" );
+            $ret=system("cd \"$dir\"; java -Dsun.java2d.uiScale=1 -jar ".get_tools_root()."/screen2png.jar $resolution ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 jkcemu_video_text.txt" ); 
             if ($ret) {
                 printf("error.");
                 exit($ret);
@@ -398,6 +397,7 @@ sub do_index_html($)
     
     open(FILE,">","$dir/index.html");
     binmode(FILE, ":utf8");
+    #print "$dir\n";
     print FILE $content;
     close(FILE);
         
