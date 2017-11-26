@@ -1,0 +1,3 @@
+<kurz src="Beschreibung KC-ROM-BASIC+ ab 0xC000"/>
+<lang><include src="I.KC-ROM-BASIC+1.0.txt"/></lang>
+<requires></requires>

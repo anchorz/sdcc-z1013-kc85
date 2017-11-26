@@ -1,0 +1,5 @@
+<kurz src="Monitorerweiterung (Stefan Günther, Uwe Hinz)"/>
+<lang>Im Text fehlt die CRC des Programms.
+
+<include src="I.MONER SU 1.31 k.txt"/></lang>
+<requires></requires>

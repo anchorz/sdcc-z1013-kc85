@@ -1,0 +1,7 @@
+<kurz src="Programme der Heimcomputer Z9001, KC85/1 bzw. KC87 laden (Version 2)"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+CRC der Programme sind unterschiedlich
+
+<include src="I.KC SAVE_LOAD 1.2.txt"/></lang>
+<requires></requires>

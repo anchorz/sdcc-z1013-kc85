@@ -1,0 +1,5 @@
+<kurz src="Monitorerweiterung (Stefan Günther, Uwe Hinz) wie [e815ff9cfc93f9b994a4da842e3e7fc0]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+<include src="I.MONER SU 1.31.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,177 @@
+
+Installationshinweise fuer die FORTH83-Version
+der Arbeitsgemeinschaft FORTH
+
+Die Installation des FORTH beschraenkt sich im wesentlichen
+auf die Anpassung  der  Ein- und Ausgaberoutinen,  die Angabe
+der oberen Speichergrenze fuer das  System und den
+Adressbereich, den die verwendete RAM-Disk belegt. Ab ORIGIN
+sind 100H fuer die Anpassung der I/O-Routinen und fuer das
+User-Area  reserviert. Es gilt folgende Aufteilung: 
+
+ ORIGIN+
+ 00H  NOP
+      JMP COLD
+ 04H  NOP
+      JMP WARM
+ 08H  JMP CI   ;warte auf Tastaturbetaetigung 
+ 0BH  JMP CO   ;Zeichenausgabe auf Console 
+ 0EH  JMP CSTS ;True (-1), wenn Taste gedrueckt, kein Warten
+ 11h  JMP LO   ;Zeichenausgabe auf Drucker
+ 14H  JMP BYE  ;Sprung zum Betriebssytem 
+ 17H  DW  TOP  ;oberste vom FORTH nutzbare Adresse
+ 19H  DW  SOD  ;erste Adresse, die die RAM-Disk belegen kann
+ 1BH  DW  EOD  ;letzte Adresse, die die RAM-Disk belegen kann
+
+ 1DH - 0BFH    ;Platz fuer I/O-Anpassungen
+
+ 0C0H - 0FFH   ;fuer USER-Area reserviert
+         
+Alle  I/O-Routinen  verhalten sich FORTH-typisch,  d.h.  sie 
+erwarten  ihre  Parameter auf dem Stack bzw.  hinterlassen sie
+dort.  Sie muessen bei  Bedarf  den  Instruction-Pointer 
+(BC-Register)  und  den  Returnstack-Pointer  (IY- Register)
+retten und mit einem Sprung nach NEXT (ORIGIN+102H) enden. Zur
+Installation muessen die Routinen in den reservierten Bereich
+eingetragen  und die gezeigten Sprungvektoren aktualisiert
+werden. Die  Aufrufe  der  I/O-Routinen  und  die Behandlung 
+der  RAM-Disk  ist  im  Vokabular I/O untergebracht.  Es
+empfiehlt sich,  die betreffenden Worte mit  Hilfe des
+Decompiler's SEE 'name' zu studieren.  Die  Groesse  der
+RAM-Disk wird vom FORTH selbststaendig aus dem  im  Boot-Area 
+enthaltenen Werten errechnet. Eine Aenderung von Konstanten im
+FORTH ist nach einer  Aenderung  der  Boot-Area  unnoetig.  Es
+sind die  Bloecke  1  bis  MAX#  (Diskgroesse / B/BUF)
+verfuegbar. Ein Zugriff auf nicht vorhandene Bloecke fuehrt 
+zu einer Fehlermeldung. Die  Routinen  zum Laden bzw.
+Abspeichern der RAM-Disk  auf  Kassette  muessen  selbst 
+entwickelt  werden.  Selbstverstaendlich  sollten  dazu  die 
+Routinen  benutzt werden, die das jeweilige
+Rechner-Betriebsprogramm dem Nutzer bietet.  
+Aus Vereinheitlichungsgruenden werden dafuer die Befehle PUT
+und GET empfohlen,  die als nicht initialisierte Vektoren
+schon im Woerterbuch enthalten sind. Die  entsprechenden
+Routinen sollten ins Vokabular I/O gelegt werden. Danach  ist  der der
+Kern mit der Sequenz:   
+
+ MARK EMPTY
+ HERE FENCE !
+
+zu versiegeln. 
+
+Zweckmaessiger  Weise sollte es zu jedem Rechner ein
+nachladbares  Zusatzpaket  geben,   das  spezifische 
+Hardware-Moeglichkeiten  des  jeweiligen  Rechners  (Grafik, 
+Sound u.ae.) erschlieszt.   Die   Flexibilitaet   des  
+FORTH-Systems  erlaubt   es,   den   spezifischen 
+Nutzerwuenschen angepasste Versionen zu erstellen. 
+Weitergegeben sollte  aber  nur die Grundversion,  eventuell
+mit  entsprechenden Zusatzquelltext,  da wir  als FG
+nur fuer diese Version die Betreuung uebernehmen koennen. Die
+Kaltstart- Meldung (.VERSION) ist durch Patch oder
+Neudefinition    
+
+ (  : HELLO .......... .VERSION ;      
+      DEFER BOOT      ' BOOT IS HELLO     
+    : COLD BOOT QUIT ;             ! )
+
+
+so  zu  veraendern, dass sowohl der Name des Entwicklers (Th.
+Beierlein),  als  auch  der  Name desjenigen, der die
+vorliegende Version  auf  den  speziellen  Rechner  angepasst
+hat, sowie die Bezeichnung "AG FORTH" enthalten  sind.  Die 
+erste Zeile der Meldung sollte dabei nicht veraendert werden.
+
+Installationshinweise fuer den Z1013
+
+
+Die vertriebene Version F83 1.3  ist ohne Aenderungen nur mit
+dem Betriebssystem A.2 von Robotron und dem installierten
+Sprungverteiler (ab FFF1) lauffaehig. Im Bereich von 200H bis
+31FH liegt die Verzoegerungsschleife fuer die INKEY-Funktion.
+Sie ist ueber RST 18 eingebunden. Eine Nutzung dieser Zelle
+fuehrt zu Systemabsturz.
+ 
+Arbeitsablauf:
+
+  1. System ueber Header laden
+  2. PUT/GET ueber Header auf 3400H laden
+  3. Systemstart (J 200)
+  4. nach Meldung " 1 4 THRU" ENT betaetigen nach OK fertig
+
+
+GET (n--)  Vok FORTH
+  liest ab Screen n ueber den Header in den RAM
+
+
+PUT (n1 n2--) Vok FORTH
+  schreibt von Screen n1 bis n2 auf Kasette
+
+
+SAVE-SYSTEM (---) Vok FORTH
+  schreibt gesamte aktuelle System auf Kasette
+
+
+MORE  (----)      Vok FORTH
+  wiederholt Headervorgang mit gleichem Kopf
+
+
+Anpassungshinweise:
+
+1.   Grundversion o. Brosigbetr.
+
+1.1. System
+
+  *  Adr 363  jetzt DF 00 26 in E7 04 26 aendern
+  *  Abspeichern von 200H bis altes Systemende
+  *  Programmstart 320
+  *  wenn Bereich 200H-31FH fuer andere Zwecke benoetigt wird,
+     ab 320H abspeichern. Diese Version aber keinesfalls
+     weitergeben, da die Anpassung fuer A.2 - Monitor dann
+     fehlt.
+  *  In die Grundversion (16K) laesst sich immer nur ein
+     Programm z.B. der Editor einladen. Laeuft der Stack ueber
+     stuerzt das System ab.
+  *  Steht mehr Speicherplatz zur Verfuegung, so ist es
+     zweckmaessig vor dem Start die Inhalte von TOP,SOD,EOD
+     zu aendern (siehe Tabelle oben). Diese Aenderung wird aber
+     nur bei einem Neustart wirksam.
+
+     Beispiel (TOP) 337H # FF 33 in FF 5F
+              (SOD) 339H # 00 34 in 00 60  
+              (EOD) 33BH # FF 7F in FF DF  
+
+     neue Systemobergrenze 5FFFH
+     RAM-Disk von 6000H bis DFFFH
+
+1.2. GET/PUT "ALPHA" bei Brosig Monitor
+
+  *  Konstante PRST aendern 320 CONSTANT PRST
+     Bsp.:  1 4 THRU
+            ALSO I/O HEX
+            320 ' PRST 2+ !
+
+  *  Bei Bedarf PRAN aendern 320 CONSTANT PRAN (nur 
+     wenn Speicher ab 200H fuer andere Zwecke gebraucht
+     wird,(nicht weitergeben)  
+     Bsp.:  320 ' PRAN 2+ !
+
+2.   fehlender Sprungverteiler
+  *  Konstanten aendern
+     E003 CONSTANT SARUF
+     E000 CONSTANT LORUF
+oder bei 16K
+  *  3C03 CONSTANT SARUF 
+     3C00 CONSTANT LORUF
+     Bsp.: 3C00 ' LORUF 2+ !
+
+  *  Abschluss aller Aenderungen mit Aufruf: COLD 
+     Danach kann das System mit SAVE-SYSTEM abgespeichert
+     werden.
+
+3.   Bei installiertem Sprungverteiler und originalem Z1013
+     oder Brosigmonitor ist das GET/PUT ORIG/BR ohne
+     Anderungen verwendbar
+
+
+

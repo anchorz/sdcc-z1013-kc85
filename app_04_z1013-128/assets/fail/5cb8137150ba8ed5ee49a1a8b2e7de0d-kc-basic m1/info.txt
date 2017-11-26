@@ -1,0 +1,4 @@
+<kurz src="identisch mit [1253b767b2df9cb3913ed8bc02dfe5fa]"/>
+<lang>Ein Block sieht etwas zerzaust aus. Ich denke das war ein Lesefehler beim Laden.
+Ansonsten soll der Text wohl identisch mit dem Original sein.</lang>
+<requires></requires>

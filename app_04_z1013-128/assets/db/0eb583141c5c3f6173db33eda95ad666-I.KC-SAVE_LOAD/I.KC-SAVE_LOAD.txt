@@ -1,0 +1,87 @@
+            ****************************************
+            *                                      *
+            * Beschreibung KC-SAVE/LOAD-INTERFACE  *
+            *                                      *   
+            ****************************************             
+
+Es ist zuweilen notwendig, Programme oder Texte der Heimcompu-
+ter Z9001, KC-85/1 bzw. KC-87 in den Z1013 zu laden oder umge-
+kehrt vom Z1013 zu saven. Dazu dienen die Programme:
+
+
+Name:              Standorte:           CRC-Summe:
+KC-SAVE            0100-0300 sadr 0100  >CRC=D687
+KC85/1-LOAD 3E00   3E00-3FFF sadr 3FD0  >CRC=AC89
+KC85/1-LOAD CE00   CE00-CFFF sadr CFD0  >CRC=EBEB
+................................................. 
+
+1. KC-SAVE
+----------
+
+Nach dem Start des Programmes meldet es sich  mit  einem  Kopf
+und verlangt einige Angaben:
+
+     Z9001    SAVE INTERFACE
+NAME:
+TYP:
+ANFANGSADRESSE:
+ENDADRESSE:
+STARTADRESSE:
+PROTECTION ((Y)/N)?
+
+Als Name max. 8 Zeichen, wie bei KC-Modus ueblich. Typ wie bei
+KC. Dabei sind immer 8 Zeichen fuer den  Namen  und  drei fuer 
+den Typ einzugeben (eventuell mit Space auffuellen).
+Mit der letzten Angabe wird entschieden,  ob  das auszuladende
+Programm geschuetzt werden soll oder nicht. Im  ersteren  Fall
+kann das Programm in den Rechner (KC) geladen,  aber nicht mehr
+ausgeladen werden.
+Nach Beantwortung dieser Frage beginnt sofort nach >ENTER< der
+SAVE-Vorgang.
+Eine Verify-Funktion folgt nicht, nach Ende des SAVE-Vorganges
+kehrt das Programm in den Monitor zurueck.
+
+
+2. LOAD Z9001 MC und LOAD KC/CE80
+---------------------------------
+
+Beide LOAD-Routinen gleichen sich, sie sind nur im Bereich ver-
+schoben, damit verschiedene File-Laengen oder in verschiedenen
+Adressbereichen stehende Programme geladen werden koennen (Die
+Routinen laden auf die im Kopf enthaltenen Originaladr.!).
+Nach Start des Programmes erwartet es eine KC-Kassettenaufnah-
+me. Die Wiedergabe des Recorders mit dem Programm, welches ge-
+laden werden soll, wird gestartet. Nach Laden des  Kopfblockes
+erscheint der Programmname. Nun werden alle Bloecke,  wie  bei
+den KC ueblich, mit den Blocknummern angezeigt:
+
+01> 02> 03> 04> ...
+
+Am Ende erscheint ein FF? und das Programm geht wieder in  den
+Monitor zurueck. 
+Bei fehlerhaftem Laden erscheint der fehlerhafte Block mit
+
+XX* bad record
+
+>kurzes Zurueckspulen und >ENTER<, womit das Laden fortgesetzt
+werden kann.
+Ist der Ladevorgang abgeschlossen, sucht  man  sich  jetzt den
+Namen, Typ aadr,eadr und sadr.
+Diese Angaben werden von beiden LOAD-Routinen in den 80H-Bytes
+vor dem LOAD-Programm eingetragen (80H-Kopfblock):
+
+3E00 (CE00): Name (8 Zeichen)
+3E08 (CE08): Typ (1 Zeichen) 
+3E11-12 (CE11-12): aadr
+3E13-14 (CE13-14): eadr
+3E16-17 (CE16-17): sadr
+
+Dabei stehen wie ueblich in der ersten Zelle der  niederwerti-
+ge, in der zweiten Zelle der hoeherwertige Teil der Adresse.
+Mit diesen Adressen kann dann das Programm z.B. mit HEADERSAVE
+aus geladen werden.
+
+                                           AG Z-1013 d. IG-HC
+                                           a.IZ d. TU-DRESDEN
+***************************************************************
+^^^^^

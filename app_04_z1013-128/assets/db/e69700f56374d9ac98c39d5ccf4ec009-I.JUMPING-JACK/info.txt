@@ -1,0 +1,3 @@
+<kurz src="Beschreibung des MC-Spiels 'JUMPING-JACK'"/>
+<lang><include src="I.JUMPING-JACK.txt"/></lang>
+<requires></requires>

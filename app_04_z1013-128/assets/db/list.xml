@@ -235,6 +235,7 @@
 <file aadr="8aac" eadr="a6cf" sadr="8aac" typ="C" link="5e02d0cbd66c6266bafefa67e767996a-C.HUNDI/C.HUNDI.z80" name="HUNDI           " kurz="Animation Hund" />
 <file aadr="1000" eadr="17ff" sadr="0000" typ="E" link="4e535e15299458a066506aefee8e9912-ibm_zg+din/ibm_zg+din.z80" name="IBM-ZG+DIN      " kurz="Zeichensatz, breite CGA Version+IBM Erweiterung" />
 <file aadr="0200" eadr="1f81" sadr="0203" typ="C" link="bc5bf51b0d22ce837ee1d9d558fcd2a8-C.INFO%201/C.INFO%201.z80" name="INFO 1          " kurz="INFO-MATERIAL ZU: OLITEX, HEADERSAVE, 10K-BASIC" />
+<file aadr="3000" eadr="47e4" sadr="31e4" typ="I" link="5b5330c1236dd35e00f673756abfc4b7-I.INSTAL%205_89/I.INSTAL%205_89.z80" name="INSTAL 5/89     " kurz="Installationshinweise FORTH83-Version der Arbeitsgemeinschaft FORTH" />
 <file aadr="1000" eadr="1eb7" sadr="0000" typ="b" link="52203a1ce0c6a1f676e28719435282e0-b.INVASION/b.INVASION.z80" name="INVASION        " kurz="mit der letzten Protonenkanone Cylonen abschießen" />
 <file aadr="2bc0" eadr="36f0" sadr="0000" typ="B" link="7cf05230adda7ce79c4248eabf795c9d-invasion_2/invasion_2.z80" name="INVASION        " kurz="Invasion Teil 2, feindliche Invasoren abschiessen" />
 <file aadr="2bc0" eadr="3bd8" sadr="0000" typ="B" link="f07e35b0489276917b59292501a455ce-invasion/invasion.z80" name="INVASION        " kurz="Ihre Stadt wird von Frogs ♘ aus dem Weltraum angegriffen" />
@@ -243,6 +244,7 @@
 <file aadr="2bc0" eadr="3973" sadr="0302" typ="B" link="1b1a6a4cca199f9119c62b86fe5649a3-jaeger/jaeger.z80" name="JAEGER          " kurz="METEORe abschießen" />
 <file aadr="0100" eadr="087b" sadr="0100" typ="C" link="bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/joystick_demo.z80" name="JOYSTICK DEMO   " kurz="Testprogramm für Joystick nach Practic 01/88" />
 <file aadr="0100" eadr="0dff" sadr="0100" typ="C" link="6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80" name="JUMPING-JACK    " kurz="Spinge durch die freien Stellen nach Oben, RST20 Variante" />
+<file aadr="3000" eadr="35ff" sadr="0000" typ="I" link="e69700f56374d9ac98c39d5ccf4ec009-I.JUMPING-JACK/I.JUMPING-JACK.z80" name="JUMPING-JACK    " kurz="Beschreibung des MC-Spiels 'JUMPING-JACK'" />
 <file aadr="0100" eadr="0dce" sadr="0dc0" typ="C" link="602a69f762181fc115b05b0145b4199b-jumping_jack+prJ/jumping_jack+prJ.z80" name="JUMPING-JACK+Joy" kurz="Spinge durch die freien Stellen nach Oben, Joystick nach Practic 01/88" />
 <file aadr="0c00" eadr="0c79" sadr="0c00" typ="M" link="742c07a9320594aa3f0115da87f9b5c2-M.JYST%20X=D00%20Y+1/M.JYST%20X=D00%20Y+1.z80" name="JYST X=D00 Y+1  " kurz="Joystick, aber wozu dient es?" />
 <file aadr="1000" eadr="1fff" sadr="0000" typ="E" link="cf5deaff505422c4e74ba0a84ecc67dd-k7669_brennfer/k7669_brennfer.z80" name="K7669 BRENNFER  " kurz="Monitor-ROM mit Tastatur nach A. Ziermann" />
@@ -253,11 +255,15 @@
 <file aadr="2bc0" eadr="2e3d" sadr="0000" typ="B" link="19a511324557a6f0ad2d378429f99534-B.KASSE/B.KASSE.z80" name="KASSE           " kurz="Berechnung Wechselgeld und Stückelung" />
 <file aadr="2bc0" eadr="38ba" sadr="0000" typ="B" link="d8a1c2932096db92560c85fe1761eee6-katze_maus/katze_maus.z80" name="KATZE-MAUS      " kurz="KAESESTUECKCHEN IM LABYRINTH FRESSEN" />
 <file aadr="d000" eadr="dfff" sadr="d000" typ="C" link="048b0926ac9d7cb9f020768544e34ef3-C.KC%2087-MONITOR/C.KC%2087-MONITOR.z80" name="KC 87-MONITOR   " kurz="ähnlich [e9720d5c1fe31d708423877936788019] (8x4)" />
+<file aadr="3000" eadr="3b7f" sadr="0000" typ="I" link="26a547b1e13804cb1c342ab57612fe72-I.KC%20SAVE_LOAD%201.2/I.KC%20SAVE_LOAD%201.2.z80" name="KC SAVE/LOAD 1.2" kurz="Programme der Heimcomputer Z9001, KC85/1 bzw. KC87 laden (Version 2)" />
 <file aadr="c000" eadr="ebff" sadr="c000" typ="C" link="c6bfae7b457f9a36fa7a52a455901b0f-kcbasic/kcbasic.z80" name="KC-BASIC        " kurz="ROM Basic aus dem JKCEMU" />
 <file aadr="0100" eadr="2aff" sadr="0300" typ="C" link="28107373ce86e4492ee5f0850daac981-kc_basic_m+/kc_basic_m+.z80" name="KC-BASIC m+     " kurz="" />
 <file aadr="0100" eadr="2aff" sadr="0300" typ="C" link="246f24e29bd661c426ebf262961ba1d9-C.KC-BASIC%20m+/C.KC-BASIC%20m+.z80" name="KC-BASIC m+ *   " kurz="Speicher bis 0xE7FF, wie [e31af4360f472b76674fb3ca135a5070]" />
+<file aadr="3000" eadr="71f1" sadr="0000" typ="I" link="1253b767b2df9cb3913ed8bc02dfe5fa-I.KC-BASIC%20m1/I.KC-BASIC%20m1.z80" name="KC-BASIC m1     " kurz="KC-BASIC+ fuer Z1013" />
 <file aadr="0100" eadr="2aff" sadr="0300" typ="C" link="e31af4360f472b76674fb3ca135a5070-C.KC-BASIC+%20m1/C.KC-BASIC+%20m1.z80" name="KC-BASIC+ m1    " kurz="KC-BASIC, 48878 BYTES FREE, belegt den kompletten Speicher bis 0xEBFF" />
 <file aadr="1800" eadr="518f" sadr="0000" typ="I" link="0367b49e890ef6d5c92fa28b7f5e5b27-kc_basic+_doc/kc_basic+_doc.z80" name="KC-BASIC+.DOC   " kurz="" />
+<file aadr="3000" eadr="38ce" sadr="0000" typ="I" link="21a2753c17dab3a9ee672aee1ed4d9b1-I.KC-ROM-BASIC+1.0/I.KC-ROM-BASIC+1.0.z80" name="KC-ROM-BASIC+1.0" kurz="Beschreibung KC-ROM-BASIC+ ab 0xC000" />
+<file aadr="3000" eadr="3c36" sadr="0000" typ="I" link="0eb583141c5c3f6173db33eda95ad666-I.KC-SAVE_LOAD/I.KC-SAVE_LOAD.z80" name="KC-SAVE/LOAD    " kurz="Programme der Heimcomputer Z9001, KC85/1 bzw. KC87 laden (Version 3)" />
 <file aadr="d000" eadr="dfff" sadr="d000" typ="C" link="e9720d5c1fe31d708423877936788019-kc87_monitor.com/kc87_monitor.com.z80" name="KC87 MONITOR    " kurz="" />
 <file aadr="2bc0" eadr="5a42" sadr="2bc0" typ="B" link="5c469a2bd39c04926c9f00e465f632a2-king_korr/king_korr.z80" name="KING KORR       " kurz="SANTA PARAVIA, Z9001 Version mit Anpassungen an 32 Zeichen" />
 <file aadr="0100" eadr="40ff" sadr="0100" typ="C" link="c5fd4cc8a1ac5bfcf154ba9a7f83fca4-kings_valley/kings_valley.z80" name="KINGS-VALLEY*BRO" kurz="" />
@@ -320,6 +326,7 @@
 <file aadr="1000" eadr="1796" sadr="0000" typ="b" link="8160fc7620a618349754219d9d857859-b.MONDLANDUNG%202/b.MONDLANDUNG%202.z80" name="MONDLANDUNG 2   " kurz="Mondlandung ohne viel Grafik" />
 <file aadr="1000" eadr="246b" sadr="0000" typ="b" link="01b7b565d522be066f73f15fbce9eb9a-b.MONDLANDUNG%203/b.MONDLANDUNG%203.z80" name="MONDLANDUNG 3   " kurz="Mondlandung animiert, in Echtzeit!" />
 <file aadr="1000" eadr="28de" sadr="0000" typ="b" link="da3afcab4bc69961f892dfc468312118-b.MONDLANDUNG1/b.MONDLANDUNG1.z80" name="MONDLANDUNG**1  " kurz="Mondlandung-Variante" />
+<file aadr="0800" eadr="247f" sadr="0000" typ="I" link="e815ff9cfc93f9b994a4da842e3e7fc0-I.MONER%20SU%201.31/I.MONER%20SU%201.31.z80" name="MONER SU 1.31   " kurz="Monitorerweiterung (Stefan Günther, Uwe Hinz)" />
 <file aadr="1000" eadr="3a01" sadr="0000" typ="b" link="cbc445422e99f5844cc8eef8554a608f-b.MONOPOLI%201/b.MONOPOLI%201.z80" name="MONOPOLI 1      " kurz="Wirtschafssimulation, zur rechten Zeit das richtige verkaufen oder kaufen" />
 <file aadr="2bc0" eadr="5d05" sadr="0000" typ="B" link="3b947bedc9b2470354ed2d7519960930-monopoly/monopoly.z80" name="MONOPOLY        " kurz="Monopoly für 2-6 Spieler, nett animiert, mit Pseudo-3D Grafik" />
 <file aadr="0100" eadr="146f" sadr="0100" typ="C" link="c6548d7dbe6cb0a47f42867dbf9eabf0-C.MONS3.2/C.MONS3.2.z80" name="MONS3.2         " kurz="SCI MONS3M, Monitor+Debugger V3.2" />
@@ -517,8 +524,8 @@
 <file aadr="0800" eadr="8c9f" sadr="0000" typ="I" link="47ac5b223eb40f12728ccbee1e806c2e-z1013_forth_doc_I/z1013_forth_doc_I.z80" name="Z1013-FORTH.DOC " kurz="Dokumentation Programmiersystem FORTH" />
 <file aadr="1800" eadr="3fff" sadr="0000" typ="I" link="10040f6ed4dd893a980a8932b7831101-z1013_surl_doc/z1013_surl_doc.z80" name="Z1013-SURL.DOC  " kurz="Z1013.SUPER-URLADER" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="47c325513f6f5decd08fde4cf6bc568a-z1013_scr/z1013_scr.z80" name="Z1013.SCR       " kurz="" />
-<file aadr="1000" eadr="1586" sadr="ff00" typ="b" link="6571f83f0b5cfe44302ec6d5e10d1305-b.ZAHLEN%20RATEN/b.ZAHLEN%20RATEN.z80" name="ZAHLEN RATEN    " kurz="Zahlenraten" />
-<file aadr="1000" eadr="1bc2" sadr="0000" typ="b" link="a65adb1215f5d044eb95997fa2906fba-b.ZAUBERWALD%201/b.ZAUBERWALD%201.z80" name="ZAUBERWALD 1    " kurz="Mathe, Zauberwald durchqueren" />
+<file aadr="1000" eadr="1586" sadr="ff00" typ="b" link="6571f83f0b5cfe44302ec6d5e10d1305-b.ZAHLEN%20RATEN/b.ZAHLEN%20RATEN.z80" name="ZAHLEN RATEN    " kurz="Zahlen zwischen 0 und 1000 raten." />
+<file aadr="1000" eadr="1bc2" sadr="0000" typ="b" link="a65adb1215f5d044eb95997fa2906fba-b.ZAUBERWALD%201/b.ZAUBERWALD%201.z80" name="ZAUBERWALD 1    " kurz="Mathe, Rechenspielerei, Zauberwald durchqueren und dabei mitrechnen" />
 <file aadr="0100" eadr="032f" sadr="0100" typ="C" link="6c01681535b7f7ce54fb903f63a282a4-zeicheneditor_32/zeicheneditor_32.z80" name="ZEICHENEDITOR/32" kurz="Editor für den 8x8 Zeichensatz-ROM" />
 <file aadr="2bc0" eadr="32f1" sadr="0300" typ="B" link="9e416ae6c34254829b38332c760fe3c9-B.ZEICHENPROGRAMM/B.ZEICHENPROGRAMM.z80" name="ZEICHENPROGRAMM " kurz="Grafikeditor" />
 <file aadr="0100" eadr="010c" sadr="0100" typ="C" link="cd5d4958779622b3e545ea0072d0a8db-zeichensatz/zeichensatz.z80" name="Zeichensatz     " kurz="" />
@@ -528,4 +535,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 528 Dateien."/></doc>
+<status src="Datenbank enthält 535 Dateien."/></doc>

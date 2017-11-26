@@ -1,0 +1,3 @@
+<kurz src="Programme der Heimcomputer Z9001, KC85/1 bzw. KC87 laden (Version 3)"/>
+<lang><include src="I.KC-SAVE_LOAD.txt"/></lang>
+<requires></requires>

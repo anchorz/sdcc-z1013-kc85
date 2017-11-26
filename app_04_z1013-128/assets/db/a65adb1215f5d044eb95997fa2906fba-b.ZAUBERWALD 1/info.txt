@@ -1,4 +1,4 @@
-<kurz src="Mathe, Zauberwald durchqueren"/>
+<kurz src="Mathe, Rechenspielerei, Zauberwald durchqueren und dabei mitrechnen"/>
 <lang>
 Steuerung: 
 M ⇦ 

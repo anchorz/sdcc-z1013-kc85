@@ -1,0 +1,231 @@
+***************************************************************
+*                                                             *
+*                   MONER SU 1.31                             *
+*                   =============                             *
+***************************************************************
+
+Das Programm MONER SU (SU=Stefan Günther & Uwe Hinz) ist eine
+Monitorerweiterung für den Z1013. Es stützt sich auf die beiden
+handelsüblichen Monitorprogramme 2.02 oder A2 und läßt diese
+unverändert! 
+
+Programmstandort: F800H ... FFFFH           >CRC=395F
+Start:            F800H oder FFEEH 
+                            (Sprungverteilerfunktion ZMINI)
+                            (ZMINI=Zusatzmonitorinitialisieung)
+
+Hieraus ist ersichtlich, daß MONER SU eine Lösung neben dem 
+Monitor von R. Brosig ist. 
+Es ist daher besonders für Z1013-Benutzer geeignet, die eine 
+originale oder externe Tastatur anwenden.
+
+Programmgliederung: F800H ... F83BH Initialisierungsroutine
+                    F83CH ... FFB7H Funktionsroutinen
+                    FFB8H ... FFFFH Sprungverteiler nach /1/
+
+Funktionsumfang:
+
+1. Kassetteninterface-Funktion
+------------------------------
+
+Standort:F83CH ...FC3BH
+Als Kassetteninterface-Software wurde auf das bewährte 
+HEADERSAVE von R. Brosig /2/ zurückgegriffen. HEADERSAVE 5.95
+wurde deshalb unverändert übernommen und auf die Anfangs-
+adresse F83CH gelegt.
+Bedient wird die Kassetteninterface-Funktion durch:
+@L, @LXX, @LN, @LNX um zu laden und
+@S Aadr. Eadr. Sadr., @S: um zu sichern.
+Der RAM-Bereich E000H bis E3FFH, auf dem HEADERSAVE ansonsten
+läuft, wird somit für andere Anwendungen frei.
+
+
+2. Transferfunktion
+-------------------
+
+Standort:FC3CH ...FE54H
+Diese Funktion bedient eine EPROM-Bank, die kurzzeitig in den
+Adreßraum eingeblendet wird, um sie nach einem aufgerufenen 
+File (analog zu HEADERSAVE) abzusuchen und ihn anschließend zu
+laden.
+Die EPROM-Bank befindet sich auf einer RAM/ROM-Speicherkarte.
+Diese ist als externe Speichererweiterung für den Z1013 ausge-
+führt und in /3/ beschrieben.
+Bedient wird die Transferfunktion in Anlehnung an HEADERSAVE
+mit: @TN oder @TNX
+
+-@TN  Laden eines mit Typ und Name aufgerufenen Files. Falls es
+      sich um einen C-Typ handelt erfolgt ein Autostart.
+
+-@TNX Wie @TN, jedoch ohne Autostart  
+
+Beispiel:
+
+ Anweisung 
+@TN(ENTER)
+
+typ:C     filename:RAMTEST RAMBUG Z (ENTER)
+
+ Ergebnis
+Suchen, Laden, Starten
+
+
+3. Dump-Funktion
+----------------
+
+Standort:FE55H ...FE97H
+Um die Nachteile des vorhandenen Z1013-DUMP zu überwinden,
+(keine Anzeige über FFFFH hinaus, keine ASCII-Zeichen), wurde
+ein HEX-ASCII-DUMP /5/ in MONER SU aufgenommen. Diese Funktion
+zeigt auf einer Bildschirmzeile acht Speicherbyte in HEX-
+Darstellung an und kommentiert diese mit ihren dazugehörigen
+ASCII-Zeichen. Die Grafiksymbole (Codes 80H ... FFH) werden 
+ebenfalls dargestellt.
+Mit der Eingabe @D Aadr.(ENTER) wird ein Speicherbereich von
+64 Byte angezeigt. Alle weiteren (ENTER) stellen die Anzeige
+weiter. Erst über ^C (S4-K) wird die Dump-Funktion verlassen.
+
+
+4. Port-Out-Funktion
+--------------------
+
+Standort:FE98H ...FEA2H   
+Beide handelsüblichen Monitorvarianten des Z1013 gestatten kei-
+nen direkten Zugriff auf die E/A-Baugruppen des Rechners. Für
+Hardwarearbeiten ist das besonders nachteilig!
+Das Kommando @O Padr. Dat.(ENTER) übermittelt "Dat." an die
+E/A- Adresse, die unter "Padr." angegeben ist.
+Beispiel:
+
+ Anweisung
+@O 04 80(ENTER)
+
+ Ergebnis
+Umschalten auf den 64-Zeichen-Bildschirm 
+
+
+5. Port-In-Funktion
+-------------------
+
+Standort:FEA3H ...FEC0H
+Mit @I Padr.(ENTER) kann man von einem Peripherie-Baustein Daten
+abfragen und auf den Bildschirm bringen.
+
+Beispiel: Anweisung       Ergebnis
+          @I 04(ENTER)    >IN= 0F
+
+
+6. Checksummen-Funktion
+-----------------------
+
+Standort:FEC1H ...FF12H
+Wenn man sich nach einem Bedienfehler oder nach einer Störung in
+der Hardware vom Datenerhalt des Speichers überzeugen will,
+fehlen in den Monitorvarianten 2.02 und A2 hierfür die Mittel.
+Die Checksummenfunktion benutzt die übliche CRC-Summe (cyclic
+retundancy check). Durch @C Aadr. Eadr.(ENTER) bestimmt man die
+Prüfsumme eines Speicherbereiches.
+
+Beispiel: CRC von MONER SU 1.31
+
+          Anweisung              Ergebnis
+          @C F800 FFFF(ENTER)    >CRC= 72B7
+
+
+7. Signalton
+------------
+
+Standort:FF13H ...FF2BH
+@B löst über den Kassettenanschluß einen kurzen Signalton aus.
+Mit der Anweisung J FFDC (Sprungverteilerfunktion BEEP) läßt
+sich das gleiche erzielen. 
+
+
+8. Druckertreiber-Initialisierung
+---------------------------------
+
+Standort:FF2CH ...FF37H
+@P initialisiert die Druckertreiber-Software einschließlic der
+E/A-Baugruppen der Druckerschnittstelle.
+(Sprungverteilerfunktion DRINI)(DRINI=Druckerinitialisierung).
+Die Monitoranweisung J FFCD bewirkt das gleiche.
+
+
+9. Drucken über POKE
+--------------------
+
+Innerhalb des BASIC-Interpreters KC-BASIC+ kann man mit dem Un-
+terprogramm 
+
+       xxxx POKE 27,ASC(A$):CALL *FFDF:RETURN
+                                     xxxx = Zeilennummer
+                                       A$ = Strinvariable                                               
+                                            (ein Zeichen lang)
+einzelne Zeichen an einen eingebundenen Druckertreiber
+übemitteln (Sprungverteilerfunktion DRZEL)(DRZEL=Druck einer
+Zelle).  
+
+
+10. Sprungverteiler
+-------------------
+
+Der Sprungverteiler nach /1/, der bereits zum Quasistandart mit
+DDR-weiter Wirkung geworden ist, bildet ein ideales Hilfsmit-
+tel zum effektiven Softwaretausch. Innerhalb von MONER SU 1.31
+ist er mit den wichtigsten Positionen besetzt:
+
+JMP SOUND unbenutzt     JMP BEEP
+JMP GETST unbenutzt     JMP DRZEL
+JMP AKP                 JMP HARDC  unbenutzt
+JMP SUCHK               JMP BSDR   unbenutzt
+JMP BSMK                JMP DRAKK
+JMP BLMK                JMP DRDEL 
+JMP ZEIDR               JMP ZMINI
+JMP DRINI               JMP LORUF
+JMP BIN   unbenutzt     JMP SARUF
+JMP AIN   unbenutzt     JMP STAT   unbenutzt
+JMP BSTA  unbenutzt     JMP POLL   unbenutzt 
+JMP ASTA  unbenutzt     JMP INKEY  unbenutzt
+
+
+11. Geplantes
+-------------
+
+- Belegung der Sprungverteilerfunktionen HARDC und BSDR (Hard-
+  copy und Bildschirmdruck)
+
+- Bedienung der Umschaltmöglichkeiten nach /4/
+  (32/64-Zeichen-Bildschirm)
+  (2/4 MHz Taktfrequenz)
+  (Alternativer Zeichensatz)
+  (ROM-Abschaltung)
+
+
+Lit.:
+
+/1/ Lühne, V.:Sprungverteiler für den Z1013 -In:FUNKAMATEUR.
+              -Berlin 37(1988)10. S. 484
+
+/2/ Brosig, R.:HEADER-SAVE V 5.9 -In:Dokumentation zur 1. Z1013-
+              Tagung, Dresden 05.12.1987. -KdT Dresden. S. 7
+
+/3/ Bokelmann, L.; Günther, S.; Hinz, U.:Eine Speichererweitrung
+              für den Z1013 -In:FUNKAMATEUR. -Berlin 38(1989) 
+              (geplant für Juni o. Juli)
+
+/4/ Peters, J.:64-Zeichen-Darstellung -Vortrag und Dokumentation
+              zur 2. Z1013-Tagung, Leipzig 19.05.1989.
+              robotron Leipzig
+
+/5/ Berg, P.: Ein Werkzeug für den Z1013 In:FUNKAMATEUR.
+              Berlin 37(1988)3. S. 121
+
+
+
+                                        Autor:Uwe Hinz
+                                              Dorotheenstr. 9
+                                              DRESDEN
+                                              8020 
+************************  korrektur hofmann  ******************
+26.08.89
+^^^^^

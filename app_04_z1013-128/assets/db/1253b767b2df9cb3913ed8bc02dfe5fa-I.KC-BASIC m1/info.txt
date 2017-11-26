@@ -1,0 +1,3 @@
+<kurz src="KC-BASIC+ fuer Z1013"/>
+<lang><include src="I.KC-BASIC m1.txt"/></lang>
+<requires></requires>

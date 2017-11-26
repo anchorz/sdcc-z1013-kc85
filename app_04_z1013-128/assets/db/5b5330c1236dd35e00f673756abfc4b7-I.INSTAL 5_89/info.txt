@@ -1,0 +1,3 @@
+<kurz src="Installationshinweise FORTH83-Version der Arbeitsgemeinschaft FORTH"/>
+<lang><include src="I.INSTAL 5_89.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,51 @@
+==============================================================
+=                    KC-ROM-BASIC+                           =
+==============================================================
+
+                                         >CRC=E898
+
+ACHTUNG: Der KC-ROM-BASIC+ 1.0 wurde als EPROM-PROGRAMM auf 
+1000H verschoben. Wer ihn im RAM nutzen will, schiebt ihn auf
+seinen Originalstandort  C000H zurueck und schreibt den Typ
+'C' ein.
+                                          
+Das ROM-BASIC+ ist zum KC-BASIC+ voll kompatibel. Die meisten
+der Hinweise fuer die RAM-Version gelten also hierfuer auch.
+Dabei ist die Verschiebung der Programmteile folgendermaßen:
+RAM-Version       >       ROM-Version
+0300H-2AFFH               C000H-E7FFH  Progr.kern
+0100H-02FFH               E800H-EA5FH  Anpassungsroutinen
+2B00H-2BFFH               0300H-03FFH  Arbeitszellen
+2C00H                     0400H        Programmanfang.
+Alle zur Anpassung benoetigten Zellen koennen durch entspre-
+chende Umrechnung gefunden werden. ROM-BASIC+ enthaelt eben-
+falls die Erweiterungen HSAVE, HLOAD, PRINT#2,3, JOYST(X), die
+ueber Sprungverteiler aufgerufen werden. Die HEADERSAVE-Routi-
+nen wandeln die BASIC-Programme bei Aufruf entsprechend um, so
+daß sie mit dem RAM-Interpreter ausgetauscht werden koennen.
+Bei Start des Interpreters erfolgt ein nichtzerstoerender Spei-
+chertest bis BFFFH.
+
+Hinweis zum Einsatz des U 2364 D BM 600
+==============================================================
+Grundsaetzlich ist es moeglich, den ROM-Schaltkreis mit dem
+universellen Interpreterkern zu nutzen. Dabei muessen jedoch
+folgende Veraenderungen am ROM-BASIC+ vorgenommen werden:
+1. Verlegen der Befehle zur Anfangsinitialisierung an eine an-
+   dere Stelle:
+   START: CALL 0E332H
+          LD   A,25H
+          LD   (006EH),A
+          JMP  0C000H
+   Der Kaltstart erfolgt dann bei 'START', der Warmstart bei
+   0C002H.
+2. Verlegen des Strings REWIND! an eine andere Stelle und Ein-
+   tragen der Anfangsadresse des Strings in 0E5DDH/0E5DEH:
+   z.B.:  ORG  0EA60H
+   STRING:DB   ' REWIND!',00H,00H
+          ORG  0E5DCH
+   0E5DCH:LD   HL,0EA60H
+==================================== V. Luehne ================
+************************************ IG-HC TU Dresden *********
+^^^^^
+

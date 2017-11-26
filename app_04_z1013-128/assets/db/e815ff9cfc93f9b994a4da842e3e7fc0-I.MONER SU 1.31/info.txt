@@ -1,0 +1,3 @@
+<kurz src="Monitorerweiterung (Stefan Günther, Uwe Hinz)"/>
+<lang><include src="I.MONER SU 1.31.txt"/></lang>
+<requires></requires>
