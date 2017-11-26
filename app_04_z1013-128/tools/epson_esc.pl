@@ -12,6 +12,7 @@ our $content;
 
 our $img = GD::Simple->new(4100, 3900);
 our $black = $img->colorAllocate(0,0,0);
+our $white = $img->colorAllocate(255,255,255);
 $img->setAntiAliased($black);
 
 our $left_margin=0;
@@ -40,6 +41,16 @@ sub paint($)
     for($i=0;$i<8;$i++) {
         if ($val&0x80) {
             $img->filledEllipse($x,$y+$i*$scale,10,10,$black);
+            for ($j=0; $j<20; $j++) {
+              my $dx = rand($scale);
+              my $dy = rand($scale);
+              $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$white);
+            }
+            for ($j=0; $j<10; $j++) {
+              my $dx = rand($scale);
+              my $dy = rand($scale);
+              $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$black);
+            }
         }
         $val*=2;
     }
@@ -91,8 +102,8 @@ while($index<$len) {
         switch($b)
         {
             case "\x0" { print "NUL\n"; }
-            case "\xa" { print "LF\n"; $y+=8*$scale;}
-            case "\xd" { print "CR\n"; $x=$scale/2; }
+            case "\xa" { $y+=8*$scale;} #LF
+            case "\xd" { $x=$scale/2; } #CR
             else {
                 printf("unknown character [%04x]%02x\n",$index-1,ord($b));
                 exit 1;
@@ -102,7 +113,10 @@ while($index<$len) {
     }
 }
 
-open my $out, '>', 'img.png' or die;
+open my $out, '>', 'tmp.png' or die;
 binmode $out;
 print $out $img->png;
-printf("output: \"%s\"\n","img.png");
+printf("output: \"%s\"\n","tmp.png");
+system("convert tmp.png -motion-blur 2x6+45 -resize 33% -normalize -rotate 180 -quality 70% tmp2.png" );
+
+

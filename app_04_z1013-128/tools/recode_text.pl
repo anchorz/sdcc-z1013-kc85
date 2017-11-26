@@ -51,7 +51,8 @@ $encoding=$ARGV[0];
 $file=$ARGV[1];
 
 $output=$file;
-$output =~ s/\.z80$/.txt/g;
+$output =~ s/\.z80$//g;
+$output .= ".txt";
 
 open(OUT,">",$output);
 open(IN,"<:raw",$file);
@@ -62,6 +63,10 @@ read(IN,$content,$len);
 
 close(IN);
 
+$eot=0;
+$char_after_eot=0;
+$char_after_eot_cnt=0;
+
 for($i=32; $i<length $content; $i++)
 {
 #0e 14 breit an
@@ -71,6 +76,14 @@ for($i=32; $i<length $content; $i++)
 
 #http://lprng.sourceforge.net/DISTRIB/RESOURCES/PPD/epson.htm?cm_mc_uid=58037215166515057054208&cm_mc_sid_50200000=1505705420
     $c=substr($content,$i,1);
+
+    if ($eot==1) {
+        $char_after_eot=$i;
+        $char_after_eot_cnt++;
+    }
+    if (ord($c)==0x03) {
+        $eot=1;
+    }
 
     if (ord($c)==0x0a || ord($c)==0x1e) {
         printf(OUT "\n");
@@ -91,3 +104,7 @@ for($i=32; $i<length $content; $i++)
 
 
 close(OUT);
+if ($char_after_eot >0 ) {
+    printf("w: es folgen noch %d Zeichen nach dem Ende-Kennzeichen [%04x]\n",$char_after_eot_cnt,$char_after_eot);
+}
+printf("output \"%s\"\n",$output);
