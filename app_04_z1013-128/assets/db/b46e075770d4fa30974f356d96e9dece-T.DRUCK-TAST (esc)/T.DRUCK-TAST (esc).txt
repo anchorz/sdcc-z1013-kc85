@@ -1,0 +1,431 @@
+MicroWORD mit der elektronischen Schreibmaschine Erika S 3004
+_____________________________________________________________
+(c) by R. Kaczor, KMStadt 5/89
+
+
+HINWEIS: Dieses Textfile wurde mit Steuerzeichen fuer den
+-------- Ausdruck mit der S3004 gestaltet. Fuer den Ausdruck mit
+         einem Matrixdrucker sind diese Steuerzeichen zu
+         aendern oder zu entfernen!!!
+****Computer-Club robotron Leipzig****10/89***ba***************
+
+Die Nutzung des Textverarbeitungssystemes MicroWORD von R. Bro-
+sig wird erst effektiv, wenn die Möglichkeit besteht, einen 
+rucker und eine ergonomisch günstige schreibmaschinenähnliche 
+Tastatur zu nutzen.
+Mit der elektronischen Schreibmaschine Erika S 3004 sind diese
+Möglichkeiten gegeben. Veröffentlichungen zur Koppelsoftware
+sind bereits erschienen (1)(4).
+Im nachfolgenden soll beschrieben werden, wie mittels eines
+kleinen Programmes MicroWORD unter Verwendung der S 3004 genutzt
+werden kann.
+
+
+1. Hardwareseitige Voraussetzungen
+__________________________________
+
+Der Z 1013 ist bereits mit einer Tastatur (Folienflachtastatur,
+8x4-Elastomer-Tastatur o.ä.) ausgestattet, die zwar für die Ar-
+beit mit einem Texteditor unzureichend ist, jedoch auch weiter-
+hin für bestimmte Steuerfunktionen (z.B. Programmstart) benötigt
+wird.
+Die Kopplung zwischen Rechner und Schreibmaschine erfolgt über
+die PIO-Port A (X4) des Z 1013 und den seitlichen 26-poligen
+Steckverbinder der S 3004 mittels einer Schaltung mit Optokopp-
+lern zur Potentialtrennung, wie in (1) beschrieben, jedoch in
+doppelter Ausführung. Das ist erforderlich, da sowohl die 
+Schnittstelle für den Druck als auch die Schnittstelle zur se-
+riellen Ausgabe des auf der Tastatur angeschlagenen Zeichens be-
+nötigt wird.
+Dementsprechend sind zu verbinden:
+
+S 3004	   	      Z 1013 PIO-Port A (X4)    Bedeutung
+Anschluß   Leitung    Anschluß      Leitung
+
+  B 13	    /TxD	A 6	      /RxD	Sendedaten
+  A 12	    /RTS	A 7 	      /DTD	Empfangsbereitschaft
+  A 11	    /RxD	A 0	      /TxD	Empfangsdaten
+  B 11	    /DTD	A 1 	      /RTS	Sendebereitschaft
+
+
+2. Softwareseitige Voraussetzungen
+__________________________________
+
+Bei der seriellen Ausgabe des auf der Tastatur angeschlagenen
+Zeichens ist die Unterbindung des Druckes dieses Zeichens er-
+wünscht. Die Schreibmaschine besitzt hierfür spezielle Steuer-
+zeichen (2), die mit einer Druckroutine (1) an die Schreibma-
+schine ausgegeben werden können. Das Steuerzeichen 91H dient zur
+Abschaltung des Druckwerkes bei Tastenbetätigung. Ein Wiederein-
+schalten des Druckwerkes ermöglicht das Steuerzeichen 92H. Die
+Ausgabe dieser Steuerzeichen erfolgt seriell mit einem Start-,
+8 Daten- und einem Stopbit. Im gleichen Format erfolgt die Aus-
+gabe der angeschlagenen Zeichen von der Tastatur.
+Die Übertragungsrate in beiden Richtungen beträgt 1200 bit/s.
+
+
+3. Steuerprogramm
+_________________
+
+Das Steuerprogramm besteht aus zwei Komplexen, dem Empfangspro-
+gramm (Tastatur) und dem Sendeprogramm (Druck).
+Für beide Komplexe wird eine Umcodierungstabelle zur Wandlung
+des ASCII-Codes des Z 1013 in den Code der S 3004 (3) genutzt.
+In dieser Tabelle sind auch die am meisten benötigten Steuer-
+zeichen der S 3004 (2)(3) zur Textgestaltung (siehe Tabelle 1)
+sowie die Codierung der Umlaute enthalten.
+Je nach Nutzung der S 3004 als Tastatur oder als Drucker ist
+eine entsprechende Initialisierung erforderlich. Diese erfolgt
+auf der Adresse 7E10 (Tastatur) bzw. 7E20 (Druck).Der Aufruf und
+die Initialisierung muß hierbei über die Z 1013 - interne Tas-
+tatur (über X2) erfolgen, da MC-Programme über den festinstal-
+lierten Monitor, der keine Kopplung mit der S 3004 - Tastatur 
+aufweist, editiert werden.
+Um jedoch den Betätigungsaufwand der Z 1013 - internen Tastatur
+so gering wie möglich zu halten, wurde in das Steuerprogramm
+eine Monitorerweiterung nach (5) aufgenommen.
+Eine Änderung des Programmes, um in anderen Adreßbereichen lauf-
+fähig zu sein, ist jederzeit möglich. Hierzu sind nur alle fett-
+gedruckten Adressen umzurechnen. Wird in ganzen Hundertern ver-
+schoben, sind nur die HIGH-Teile zu ändern.
+
+3.1. Assemblerlisting des Steuerprogrammes
+__________________________________________
+M
+Ausgabe eines Zeichens an die Schnittstelle
+
+7D00	DRAKK:	        E5       	PUSH HL
+7D01			C5		PUSH BC
+7D02			F5		PUSH AF
+7D03			F5		PUSH AF
+7D04	STATUS:		DB 00		IN 00H	        ;Lesen des Druckerstatus
+7D06 			E6 80		AND 80H		;nur Statusbit auswerten
+7D08			28 FA		JRZ STATUS      ;Drucker noch nicht bereit
+7D0A			06 0A		LD B, 0AH       ;Ausgabe von 10 Bits< 
+7D0C			F1		POP AF
+7D0D			26 FF		LD H, FFH	;Stoppbits
+7D0F			6F		LD L,A		;Zeichen nach L
+7D10			CB 25		SLA L		;Startbit einschieben
+7D12			CB 14		RL H
+7D14			F3		0I		;Sperren Interrupt
+7D15	SEND:		7D		LD A, L
+7D16			2F		CPL
+7D17			D3 00		OUT 00H
+7D19			CB 3C		SRL H		;nächstes Bit
+7D1B			CB 1D		RRL		
+7D1D			0E 60		LD C, 60H	;Zeitkonstante
+7D1F	TIME:		0D		DEC C		;Runterzählen
+7D20			20 FD		JRNZ TIME
+7D22			10 F1		DJNZ SEND 	;nächstes Zeichen senden
+7D24			FB		EI	        ;Interruptfreigabe
+7D25			F1		POP AF
+7D26			C1		POP BC
+7D27			E1		POP HL
+7D28			C9		  RET
+
+
+Umcodierungstabelle 
+
+      00  01  02  03  04  05  06  07     
+      08  09  0A  0B  0C  0D  0E  0F
+
+7D30  00  7A  03  7D  85  7B  78  7C  2EE
+7D38  72  7F  75  76  74  77  84  44  38F
+7D40  7E  73  87  46  79  45  06  00  282
+7D48  00  00  00  00  00  00  77  00  077
+7D50  71  42  43  41  48  04  02  29  1AE
+7D58  1D  1F  1B  25  64  62  63  40  1E5
+7D60  0D  11  10  0F  0E  0C  0B  0A  06C
+7D68  09  08  13  3B  88  2E  81  35  1CB
+7D70  89  30  18  20  14  34  3E  1C  193
+7D78  12  21  32  24  2C  16  2A  1E  113
+7D80  2F  1A  36  33  37  28  22  2D  160
+7D88  26  31  38  3F  3C  3A  19  01  15E
+7D90  2B  61  4E  57  53  5A  49  60  287
+7D98  55  05  4B  50  4D  4A  5C  5E  246
+7DA0  5B  52  59  58  56  5D  4F  4C  2AC
+7DA8  5F  51  54  65  66  67  47  00  27D
+
+Initialisierung PIO (Tastatur)
+
+7DB0	INIT-TAST:	F5		PUSH AF
+7DB1			3E CF	        LD A, CFH       ;Betriebsart Mode 3< 
+7DB3			D3 01		OUT 01		 
+7DB5			3E CO		LD A, COH 	;Ausgabe Bit 6 und 7
+7DB7			D3 01		OUT 01
+7DB9			3E 91		LD A, 91H	;Abschalten des
+7DBB			C3 00 7D	JMP DRAKK	;Druckwerkes
+7DBE			F1		POP AF
+7DBE			C9		  RET		;zum Hauptprogramm
+
+Empfangsprogramm Tastatur
+
+7DC0	INPUT:		E5		PUSH HL
+7DC1			D5		PUSH DE
+7DC2			C5		PUSH BC
+7DC3			AF		XOR A		;A-Null setzen
+7DC4			32 04 00	LD(0004), A	;letztes Tast.z. löschen< 
+7DC7			0E 00		LD C, 00H	;Register C vorbereiten
+7DC9			06 08		LD B, 08H	;Reg. B-Anz.d.einzul.Bit
+7DCB			F5		PUSH AF 
+7DCC			3E 02		LD A, 02H	;Ausgabe Datenwort - Bit 2
+7DCE			D3 00		OUT(PIO), A	;wird gesetzt - CTS L=aktiv
+7DD0                    F1              POP AF      
+7DD1	START:		DB 00		IN(A), PIO	;einlesen in Akku
+7DD3			E6 40		AND 00H 	;Bit 6 selektieren
+7DD5			28 FA		JRZ START	 
+7DD7			1E 60		LD E, 60H	;Zeitschleife,
+7DD9	ZEIT 1:		1D		DEC E		;um Startbit
+7DDA			20 FD		JRNZ ZEIT 1	;zu überbrücken
+7DDC			F3		DI		;Interrupt sperren
+7DDD	EINLE:		DB 00		IN A, (PIO)	;Einlesen in Akku
+7DDF			E6 40		AND 40H  	;Bit 6 selektieren
+7DE1			CB 07		RLC A		;Bit 6 nach Bit 7
+7DE3			B1		OR C		;Eingel. Bit zus.setzen
+7DE4			4F		LD C,    	;Ergebn. in Reg. C laden
+7DE5			CB 09		RRC, C	 	;1 Bitpos. nach rechts r.
+7DE7			16 65		LD D, 65H	;Zeitschleife für Einhal-
+7DE9	ZEIT 2:         15   		DEC D    	;tung der Zeitkonstante
+7DEA			20 FD		JRNZ ZEIT 2	;für 1200 bit/s
+7DEC			10 EF		DJNZ EINLE	;sind 8 Bit geladen?
+7DEE			FB		EI	 	;Interrupt freigeben
+7DEF			79		LD A, C   	;8-Bitwort von C in Akku
+7DFO			2F		CPL	 	;A bitweise negieren
+7DF1			F5		PUSH AF  	;Akku retten
+7DF2			3E 02		LD A, 02H	;Ausgabe Datenwort/Bit 2
+7DF4			D3 00		OUT(PIO), A	;wird zurückgesetzt/CTS=H
+7DF6			F1		POP AF
+7DF7			21 30 7D	LD HL, 7D30	;Anfang Code-Tabelle
+7DFA			01 80 00	LD BC, 0080H	;Länge Tabelle
+7DFD			ED B1		CPIR	 	;vergl. Speicherz.mit Ak.
+7DFF			28 04		JRZ MARK 1	;Zeichen gefunden
+7E01			3E 00		LD A, 00H	;Kein Z. gef. Ausgabe 0
+7E03			18 04		JR MARK 2 	;überspr.Umcodierungsteil
+7E05	MARK 1: 	3E 80		LD A, 80H	;Ermitteln der Position
+7E07			03		INC BC	 	;in der Tabelle
+7E08			91		SUB C	 	;entspr. ASCII-Zeichen
+7E09	MARK 2:  	32 04 00	LD(0004), A	;Zeichen in Akku u.Tast. 
+7E0C			C1		POP BC
+7E0D			D1		POP DE
+7E0E			E1		POP HL
+7E0F			C9		  RET	 	;zum Hauptprogramm
+
+Start MicroWORD-Tastatur
+
+7E10	TAST:		21 C0 7D	LD HL, 7DC0	;Einbinden S 3004-Tas-
+7E13			22 F1 02	LD (02F1), HL	;tatur in MicroWORD
+7E16			22 E5 04	LD (04E5), HL
+7E19			CD B0 7D	CALL INIT-TAST
+7E1C			C3 00 01	JMP MicroWORD
+7E1F			00		 NOP
+
+Start MicroWORD-Druck
+
+7E20	DRUCK:		21 09 01	LD HL, 0109	;Einbinden S 3004-Druck
+7E23			22 F1 02	LD (02F1), HL	;in MicroWORD
+7E26			22 E5 04	LD (04E5), HL	 
+7E29			CD 2F 7E	CALL INIT-DRUCK
+7E2C			C3 00 01	JMP MicroWORD	 
+7E2F	INIT-DRUCK:     F5              PUSH AF
+7E30			3E CF		LD A, CFH	;Betriebsart Mode 3
+7E32			D3 01		OUT 01   	 
+7E34			3E 80		LD A, 80H 	;Ausgabe Bit 7
+7E36			D3 01		OUT 01
+7E38			3E 92		LD A, 92H	;Einschalten des Druck-
+7E3A			C3 00 7D	JMP DRAKK	;werkes
+7E3D			F1		POP AF
+7E3E			C9		  RET	 	;zum Hauptprogramm
+7E3F			00		  NOP
+
+Sendeprogramm Druck
+
+7E40	CONVERT:	D5		PUSH DE  	;ASCII in S 3004 Code
+7E41			E5		PUSH HL
+7E42			FE 7F		CMP 7FH  	;Grafikzeichen?
+7E44			38 02		JRC NGRAF	 
+7E46			3E 20		LD A, 20H	;Space statt Grafikz.< 
+7E48	NGRAF:		21 30 7D	LD HL, 7D30	;Tabellenanfang
+7E4B			16 00		LD D, 00H	 
+7E4D			5F		LD E, A  	;ASCII-Code in DE
+7E4E			19		ADD HL, DE	;Tabellenplatz berechnen
+7E4F			7E		LD A,(HL)	;S 3004-Code nach A
+7E50			E1		POP HL
+7E51			D1		POP DE
+7E52			C3 00 7D	JMP DRAKK	;Ausgabe an Schnittstelle
+7E55                    C9              RET                        
+
+Monitorerweiterung
+
+7E56	MONITOR:	3E 41		LD A, 41H
+7E58			32 B0 00	LD (00B0), A
+7E5B			21 10 7E	LD HL, 7E10
+7E5E			22 B1 00	LD (00B1), HL
+7E61			3E 42		LD A, 42H
+7E63			32 B3 00	LD (00B3), A
+7E66			21 20 7E	LD HL, 7E20
+7E69			22 B4 00	LD (00B4), HL
+7E6C			3E 43		LD A, 43H
+7E6E			32 B6 00	LD (00B6), A
+7E71			21 00 01	LD HL, 0100
+7E74			22 B7 00	LD (00B7), HL
+7E77			C3 10 7E	JMP TAST
+P
+3.2. Kopplung Steuerprogramm - MicroWORD
+________________________________________
+
+Zur Kopplung des Steuerprogrammes mit MicroWORD sind in dem 
+Texteditor folgende Zellen zu ändern:
+
+Adresse		alter Inhalt		neuer Inhalt
+
+0112		C3 D4 17		 C3 40 7E
+02F0		CD 09 01		(C3 C0 7D)
+04E4		CD 09 01		(C3 C0 7D)
+ 
+Die Zellen 02F0 und 04E4 werden durch das Steuerprogramm beim
+Start des Programmes geändert (alter Inhalt bei Start DRUCK -
+7E20, neuer Inhalt bei Start TAST - 7E10).
+
+4. Betreiben des Texteditors "MicroWORD" mit der S 3004
+_______________________________________________________
+
+* Laden des Texteditors von Kassette (Speicherbereich 100H
+  bis 18FFH)
+
+* Laden des Steuerprogrammes von Kassette (Speicherbereich 7D00H
+  bis 7E80H)
+
+* Starten des Texteditors J 7E56 (Z 1013-Tastatur)
+  Falls erforderlich, mit Aufruf INIT-TAST und Start MicroWORD
+  fortsetzen
+
+* Nach Erscheinen des Menues von MicroWORD auf dem Bildschirm
+  kann Arbeit mit dem Texteditor über S 3004-Tastatur erfolgen.
+
+* Bei Druck eines im Textspeicher befindlichen Textes
+
+  - Rücksprung in Monitor aus Kommandomodus mit (B) S 3004
+
+  - Hex-Umschaltung (H) Z 1013
+
+  - INIT-DRUCK @B - Z 1013
+
+  - Start MicroWORD @C - Z 1013
+    (Textspeicher bleibt erhalten!)
+
+  - Einfügen erforderlicher Steuerzeichen (siehe Tabelle 1) in     
+    den Text über Tastatur Z 1013
+
+  - Ausführung der für den Druck erforderlichen Eingaben und
+    Befehle über Tastatur Z 1013
+  
+  - Nach Beendigung der Druckausgabe wieder Aufruf zur S 3004-
+    Tastatureingabe möglich
+
+* Bei Rückkehr zur S 3004-Tastatur
+
+  - Rücksprung in Monitor aus Kommandomodus mit (B) Z 1013
+
+  - Hex-Umschaltung (H) Z 1013
+
+  - INIT-TAST @A - Z 1013
+
+  - Start MicroWORD @C - Z 1013
+
+* Die Funktionen READ und WRITE sind sowohl über S 3004 als auch
+  Z 1013 aufrufbar.
+  Die Angaben zu Typ und Filename werden über die Z 1013-Tasta-
+  tur eingegeben und danach die Übertragung gestartet.
+  Bei Betrieb des Texteditors über S 3004-Tastatur erfolgt nach 
+  Abschluß der Übertragung der Rücksprung zur Eingabe über 
+  S 3004-Tastatur.
+
+* Der Aufruf der Druckfunktion des Texteditors kann nur erfol-
+  gen, wenn das Sendeprogramm (Druck) initialisiert ist.
+  Eine Eingabe der für den Druck erforderlichen Angaben und Be-
+  fehle ist nur über die Z 1013-Tastatur möglich!  
+
+5. Hinweise
+___________
+
+  - Die in (1) und (4) veröffentlichten Assemblerlistings weisen
+    einige Fehler auf, die wie folgt zu korrigieren sind:
+
+
+        	Adresse	  Alter Inhalt	Neuer Inhalt
+
+Druckausgabe	-	   30 02	38 02  JRC NGRAF
+
+Tastatur	30CF	   CB 17	CB 07  RLC A
+		3033	   CB 19	CB 09  RRC C
+		3040	   3E 00	3E 02  LD A,02
+
+
+- Die Programmteile TAST (7E10),Aufruf @A, und Druck (7E20),
+  Aufruf @B, beinhalten den Sprung zum Start des Texteditors.
+  Sollte dieser nicht ausgeführt werden, besteht die Möglich-
+  keit, diesen anschließend mit @C zu wiederholen.
+
+- Wenn beim Übergang zum Sendeprogramm Druck im Bildschirmmodus
+  sich der Cursor selbständig bewegt, ist die Adresse 109H des  
+  Texteditors zu überprüfen, die sich verändert haben kann.
+
+
+6. Literatur
+____________
+
+(1) Köhler, A.; Dittmann, J.
+    S 3004 als Drucker für Z 1013
+    FUNKAMATEUR 38(1989),H.5, S.224
+
+(2) Klaus, T.; Fuhrmann, D.
+    Universelle Druckerschnittstelle für S 3004
+    FUNKAMATEUR 38(1989), H.5, S. 220
+
+(3) Kadenbach, R.
+    Centronics-Interface für Erika S 3004
+    radio fernsehen elektronik,Berlin 38(1989),H.4, S. 225
+
+(4) Köhler,A.; Dittmann, J.
+    Erika S 3004 als Tastatur für Z 1013
+    Manuskript für den FUNKAMATEUR 
+
+(5) Z 1013 Mikrorechnerbausatz
+    Handbuch Teil II A, S. 9f
+    VEB Robotron-Elektronik Riesa
+
+
+Tabelle 1
+_________
+
+Editiertasten und Funktionen
+------------------------------------------------------------------
+
+Bedeutung MicroWORD	ASCII	Bedeutung S 3004	    Z 1013
+
+__________________________________________________________________
+
+Cursor rechts		09	Rand rechts setzen      7F  S4 Q
+Cursor links		08	Rücktaste		72  S4 P
+Cursor runter		0A	1/2 Zeile unten     	75  S4 R
+Cursor hoch		0B	1/2 Zeile hoch		76  S4 S
+Cursor Wort rechts	07	TAB gesamt löschen T-   7C  S4 O
+Cursor Wort links	06	zurück an Zeilenanfang  78  S4 N
+Cursor eine Seite vor   01	Tabulator T+  	 	7A  S4 I
+Cursor eine Seite zur.  05 	Tabulator T-	 	7B  S4 M
+Zeichen links löschen	10	Rand links setzen	7E  S4 @
+Bild-/Kommandomode	03	TAB-Gitter T+		7D  S4 K
+Ank. Steuerzeichen	02	..	 		03  S4 J
+Wechsel groß/klein	15	c	 	 	45  S4 E
+Löschen einer Zeile	0F	e' 	 	 	44  S4 W
+Ersetze/Wiederhole FIND 11	1/2 Zeichen rechts	73  S4 A
+Formfeed	 	0C	1/2 Zeichen links	74  S4 T
+Tabulator		14 	Tabulator nach rechts 	79  S4 D
+Einfügen/Überschreiben	13 	e` 	 	 	46  S4 C
+Marke setzen		16	L- 	 	 	06  S4 F
+			0E	Zeilenabstand 1  	84  S4 V
+			04	Zeilenabstand 1 1/2	85  S4 L
+			12	100 Zeichen/Zeile	87  S4 B
+			3C	120 Zeichen/Zeile	88  (kl)
+			40	150 Zeichen/Zeile	89  @ 
+			3E 	1/20 Zeile nach unten	81  (gr)

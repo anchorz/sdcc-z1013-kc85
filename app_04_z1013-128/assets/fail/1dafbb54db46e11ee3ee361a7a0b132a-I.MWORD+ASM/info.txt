@@ -1,0 +1,6 @@
+<kurz src="Programmiersystem Texteditor MicroWORD 1.5 und ASM 5.3 [223a5f4eef0523818ed9976ecfefff43]"/>
+<lang>Diese Datei ist kaputt. Der Letzte Block passt nicht, bzw. der Inhalt bis
+0x3A31 passt nicht, zum Rest des Textes. Vergleich mit anderen Dateien hat aber gezeigt, 
+dass nur ein paar Steuerzeichen und das Endezeichen fehlt. 
+<include src="I.MWORD+ASM.txt"/></lang>
+<requires></requires>

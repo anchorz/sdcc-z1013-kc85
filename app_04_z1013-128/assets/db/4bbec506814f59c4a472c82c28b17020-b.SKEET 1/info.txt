@@ -1,7 +1,6 @@
-<kurz src="WURFTAUBEN schießen"/>
-<lang>Steuerung unbekannt. Welche Tastatur wird verwendet?
-Methode?
-IFIN(2)#95
+<kurz src="WURFTAUBEN schießen (8x4)"/>
+<lang>
+Die Zahlen werden auf die Buchstaben I,J,K abgebildet.
 
         SPIELERKLAERUNG
         _______________

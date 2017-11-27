@@ -1,0 +1,3 @@
+<kurz src="Edas 1.1 a+d+h"/>
+<lang><include src="T.EDAS.DOK.txt"/></lang>
+<requires></requires>

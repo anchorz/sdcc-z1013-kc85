@@ -1,0 +1,3 @@
+<kurz src="BESCHREIBUNG FORTH 83 SEDIT"/>
+<lang><include src="I.SEDIT-DOC 5_89.txt"/></lang>
+<requires></requires>

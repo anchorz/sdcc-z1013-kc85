@@ -1,0 +1,61 @@
+******************************
+BESCHREIBUNG FORTH 83 SEDIT
+******************************
+
+
+Das Modul EDIT dient zum schnellen Erstellen und Aendern von
+Screens. Dieser Screeneditor beinhaltet 17 Kommandos mit
+wichtigen zeilen- oder screenorientierten Editierfunktionen.
+Zum Editieren wird der Bildwiederholspeicher genutzt.
+Die unmittelbare Positionierung des Cursors im Text vereinfacht
+die Handhabung des Editors und macht ihn zu einem bequemen
+Arbeitsinstrument.
+Durch den relativ geringen Speicherbedarf ist er sogar bei
+einem Speicher von 16K noch nutzbar. Jedoch sollte bei Probe-
+laeufen von erstellten Programmen der Editor durch EMPTY
+geloescht werden, da bei 16K nur noch wenig Speicher fuer das
+Forthsystem zur Verfuegung steht. Natuerlich beinhaltet
+solch eine Verfahrensweise sehr viel Kassettenarbeit. Eine
+Speichererweiterung auf mindestens 32K ist zum Entwickeln von
+Programmen empfehlenswert.
+Nach dem Compilieren des Programmes ( THRU oder LOAD ) kann der
+Editor durch gewuenschte Screennummer und EDIT aufgerufen
+werden.
+Bsp.:   2 EDIT ( ruft Screen 2 zum Editieren auf)
+
+Danach kann durch einfache Tastaturbetaetigung der gewuenschte
+Programmtext eingegeben werden.
+
+Kommandos
+*********
+
+Cursorkommandos
+
+Pfeil runter - Cursor in gleicher Spalte eins tiefer
+Pfeil hoch   - Cursor in gleicher Spalte eins hoch
+Pfeil rechts - Cursor eine Position nach rechts
+Pfeil links  - Cursor eine Position nach links
+CTR A        - Cursor auf die erste Position des Screens
+ENT          - Cursor auf den Anfang der naechsten Zeile
+CTR E        - fuegt ein Leerzeichen ab Cursor ein
+CTR O        - loescht ein Zeichen rechts vom Cursor
+
+Zeilenkommandos
+
+CTR D   - loescht Cursorzeile
+CTR L   - loescht Cursorzeile und verschiebt die restl. Zeilen
+CTR S   - schiebt eine Leerzeile ein, letzte Zeile geht
+          verloren
+CTR T   - legt Zeile in den PAD
+CTR Z   - holt Zeile aus dem PAD
+
+Screenkommandos
+
+CTR N   - naechster Screen zum Editieren
+CTR B   - ein Screen zurueck
+CTR W   - loescht aktuellen Screen und verlaesst Editor
+CTR C   - sichert Screen im RAM und verlaesst Editor
+
+
+                  Andreas Driesel
+

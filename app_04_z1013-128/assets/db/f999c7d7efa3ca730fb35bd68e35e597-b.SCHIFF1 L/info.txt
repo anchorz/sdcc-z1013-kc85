@@ -1,15 +1,18 @@
-<kurz src="Schiffe versenken-Variante gegen Computer"/>
-<lang>Statt der Eingabe von Zahlen für die Zeile und Spalte
+<kurz src="Schiffe versenken gegen Computer (1 Flugzeugträger, 3 Schnellboote, 6 U-Boote)"/>
+<lang>
+Es braucht eine Weile bevor es richtig losgeht, ca. eine Minute warten.
+
+Statt der Eingabe von Zahlen für die Zeile und Spalte
 werden hier Sonderzeichen angezeigt. I..Q Verwenden!
 
-Da hat sich wohl ein Fehler eingeschlichen
+Genialer Hack für die 8x4 Tastatur:
 P."ZEILE:"
 Z=INC.
 Z=Z-24
 OUTC.Z
 Z=Z-48;
 Die Eingabewerte werden um 62 verringert.
-Also geht es hier von I..Q 
+Also geht es hier von I..Q, statt 1..9.
 
 SPIELERKLAERUNG
           _______________

@@ -6,6 +6,52 @@ use utf8;
 %epson_map=("{"=>"ä"   ,"|"=>"ö"   ,"}"=>"ü"   ,"~"=>"ß"   ,"["=>"Ä"   ,"\\"=>"Ö"  ,"]"=>"Ü");
 %ibm_map=  ("\xe4"=>"ä","\xf6"=>"ö","\xfc"=>"ü","\xdf"=>"ß","\xc4"=>"Ä","\xd6"=>"Ö","\xdc"=>"Ü");
 
+%is_umlaut=( 
+".{."=>1,
+" {n"=>1,
+" [n"=>1,
+"e{n"=>1,
+"F{h"=>1,"f{h"=>1,
+"L{n"=>1,"l{u"=>1,
+"n{c"=>1,
+"n{h"=>1,
+"r{g"=>1,
+"r{n"=>1,
+"t{n"=>1,
+"t{t"=>1,
+"W{h"=>1,
+"z{h"=>1,
+
+"h|h"=>1,
+"K|h"=>1,"k|n"=>1,
+"L|s"=>1,"l|s"=>1,
+"M|g"=>1,"m|g"=>1,
+"n|t"=>1,
+"r|f"=>1,
+
+"/]b"=>1," }b"=>1," ]b"=>1,"(}b"=>1,"@}b"=>1,
+"f}g"=>1,
+"f}h"=>1,
+"F}r"=>1,"f}r"=>1,
+"g}n"=>1,
+"R}c"=>1,"r}c"=>1,
+"r}f"=>1,
+"r}n"=>1,
+"w}n"=>1,
+
+"e~b"=>1,
+"e~e"=>1,
+"o~/"=>1,
+"u~ "=>1,
+"u~e"=>1,
+
+
+);
+
+our $has_umlaut=0;
+our $prev_char="";
+our $i=0;
+
 sub print_char($) {
     my $c=shift;
     
@@ -20,8 +66,23 @@ sub print_char($) {
         utf8::encode($mapped);
     }
    
+    my $umlaut_text=substr($content,$i-1,3);
+    if ($is_umlaut{$umlaut_text}) {
+        $has_umlaut++;
+    }
+
     if ($epson_map{$c}) {
-        printf("[0x%04x]=%02x Ersetze '%s' durch '%s'\n",$i,ord($c),$c,$mapped);
+        my $umlaut_text="";
+        if ($encoding ne "UML") {
+            if ($is_umlaut{$umlaut_text}) {
+                $mymap=$epson_map{$c};
+                utf8::encode($mymap);
+                $umlaut_text=",eventuell '".$mymap."'";
+            } else {
+                $umlaut_text=" \"$umlaut_text\"=>1,";
+            }
+        } 
+        printf("[0x%04x]=%02x Ersetze '%s' durch '%s'%s\n",$i,ord($c),$c,$mapped,$umlaut_text);
     }
     if ($ibm_map{$c}) {
         printf("[0x%04x]=%02x '%s' Umlaut oder Klammer, verwende '%s'\n",$i,ord($c),$c,$c);
@@ -40,6 +101,7 @@ sub print_char($) {
         utf8::encode($txt);
         printf(OUT "$txt");
     }
+    $prev_char
 }
 
 if (!defined $ARGV[0] || !$ARGV[1]) {
@@ -105,6 +167,8 @@ for($i=32; $i<length $content; $i++)
 
 close(OUT);
 if ($char_after_eot >0 ) {
-    printf("w: es folgen noch %d Zeichen nach dem Ende-Kennzeichen [%04x]\n",$char_after_eot_cnt,$char_after_eot);
+    printf("w: %d extra Zeichen nach dem Ende-Kennzeichen [%04x]\n",$char_after_eot_cnt,$char_after_eot);
 }
+printf("Umlaute=%d\n",$has_umlaut);
 printf("output \"%s\"\n",$output);
+system("gedit \"$output\" &");

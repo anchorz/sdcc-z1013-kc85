@@ -1,0 +1,3 @@
+<kurz src="Beschreibung des MC-Spiels 'SCHLANGE'  "/>
+<lang><include src="I.SCHLANGE.txt"/></lang>
+<requires></requires>

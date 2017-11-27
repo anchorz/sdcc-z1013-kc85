@@ -9,11 +9,12 @@ file=`eval echo \"$file\"`
 
 pushd . >/dev/null
 
-dbroot_rel=`dirname "$0"`;
-dbroot_rel=`dirname "$dbroot_rel"`;
-dbroot_rel=`dirname "$dbroot_rel"`"/db";
-
-dbroot=`dirname "$0"`/../assets/db
+dbroot_rel="$0";
+dbroot_rel=`readlink -f $dbroot_rel`
+dbroot_rel=`dirname "$dbroot_rel"`
+dbroot_rel=`dirname "$dbroot_rel"`
+dbroot_rel="$dbroot_rel/assets/db";
+dbroot=$dbroot_rel
 cd $dbroot
 dbroot=`pwd`
 popd >/dev/null
@@ -28,7 +29,7 @@ echo Ziel: "$dbroot/$md5-$base"
 git mv "$file" "$dbroot/$md5-$base/"
 #kein link /db/ ist noch nicht der Zielordner
 #machen wir spaeter, nachdem es einsortiert wurde
-#ln -s "$dbroot_rel/$md5-$base/$file"
+#ln -s "$dbroot_rel_gehtnichtmehr/$md5-$base/$file"
 
 #mv ~/jkcemu.gif "$dbroot/$md5-$base/"
 if [ -e ~/jkcemu_video_text.txt ]
@@ -70,7 +71,9 @@ cp "$dbroot/info.txt" "$dbroot/$md5-$base/"
 #list.txt wird nur für 0.5 MEGArom verwendet 
 #echo list.txt:
 #echo db/$md5-$base/$file
-echo Kompatibilitätsliste.txt:
+#echo Kompatibilitätsliste.txt:
 echo $md5 "*"$file
-
+gedit "$dbroot/$md5-$base/info.txt" &
+#symbolic link in ~/bin directory
+generate_fingerprint_db.pl 
 

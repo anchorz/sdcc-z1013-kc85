@@ -1,0 +1,5 @@
+<kurz src="MicroWORD mit Schreibmaschine Erika S3004 (andere Formatierung, ggf anderer Drucker)"/>
+<lang>abgesehen von den verschiedenen Steuerzeichen identisch mit [d50366ccb6e19f23dd64ec303be8d75b]
+
+<include src="T.DRUCK-TAST (esc).txt"/></lang>
+<requires></requires>

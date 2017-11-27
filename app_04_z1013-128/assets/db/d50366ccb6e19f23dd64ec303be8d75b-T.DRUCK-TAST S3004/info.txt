@@ -1,0 +1,3 @@
+<kurz src="MicroWORD mit Schreibmaschine Erika S3004/Steuerzeichen"/>
+<lang><include src="T.DRUCK-TAST S3004.txt"/></lang>
+<requires></requires>

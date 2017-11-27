@@ -1,0 +1,3 @@
+<kurz src="Beschreibung des MC-Spiels 'SUPER-SKI'"/>
+<lang><include src="I.SUPER-SKI.txt"/></lang>
+<requires></requires>

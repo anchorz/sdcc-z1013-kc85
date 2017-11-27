@@ -1,0 +1,111 @@
+Beschreibung Programmiersystem Microword+ASM
+--------------------------------------------
+Das Programmiersystem besteht aus dem Texteditor MicroWORD 1.5
+und dem ASM 5.3 von Rainer Brosig 
+Es laedt die B0 Schleife ab 0B6H 
+also nach "L" und "S" 
+Es benoetigt den Sprungverteiler und das Headersave von Rainer
+Brosig
+ Bei Verwendung des Monitors von Rainer Brosig (MP Heft 7.88)
+ist eine Tastcodetabelle nutzbar
+Das Programmiersystem erleichtert durch die gleichzeitige
+Verfuegbarkeit von Editor und ASM die Programmerstellung und
+Testung
+
+Programmstandort:
+-----------------
+Gesamt			 100H bis 4455H 
+
+Microword		3100H bis 4455H
+ASM 5.3			 100H bis 2FFFH
+Hilfsroutine+TC 	3000H bis 3FFFH
+
+-B0Schleife laden ab B6	3000H bis 3014H 
+(B0-B5H fuer Headersave 
+ reserviert)
+
+-Tastcode laden f.Micr.	3014H bis 301CH
+
+-Tastcode f.  Microword	301DH bis 30DFH
+
+-Tastcode laden f. ASM	30E0H bis 30E8H
+
+-Tastcodetabelle f. ASM	30E9H bis 30FFH
+
+Aufrufe
+-------
+Initialisierung	 B0 Schleife und Tastcode         J 3000		
+und Sprung zu Microword
+
+Microword @E oder J 3014
+		  J 3100  ohne Tastcode 
+
+ASM 5.3	  @A oder J 30E0
+		  J  100  ohne Tastcode
+
+Die Quelle wird ab 4800H bis BFFFH abgelegt.
+Bereich ist durch Assign bis EBFFH erweiterbar
+
+Der Bereich von C000H bis EBFFH ist fuer das Testen des
+erstellten Programms verwendbar (ORG Anweisung bzw. A Kommando
+des Assemblers)
+Microword und ASM koennen unabhaengig voneinander mehrmals 
+aufgerufen werden.
+
+Tastcode Microword:(SHIFT+CTRL Taste und Taste gleichzeitig)
+-------------------
+
+A	ADD	
+B	DB	
+C	CALL	
+D	DEC	
+E	EX	DE,HL
+F	SCF
+G	JR		
+H	LD	HL,
+I	INC	
+J	JMP	
+K	CMP	
+L	LD	
+M	LD	M,
+N	LD	HL,
+O	POP	
+P	PUSH	
+Q  10*^Q ausfuehren (Find/Change)
+R	RST	20H
+S	SBC	HL,DE
+T	LDIR
+U	EQU	
+V	SCF
+W  nicht belegt
+X	SBC	HL,DE
+Y	RST	38H
+Z	JRZ	
+
+Vor und nach jedem Befehlscode wird ein Tabulator (09H) mit
+ausgegeben.
+
+Tastcode fuer ASM:
+------------------
+
+nach Druecken Shift+CRTL+N wird die Zeichenfolge
+N R 4800 2 automatisch ausgegeben sodass der 1. Durchlauf 
+selbstaetig (Quelle ab 4800H) ablauft.
+
+Das Microword 1.5 lag urspruenglich auf Adresse 100H
+Durch Reassemblierung mit R80 wurde eine Quelle erstellt und
+auf  3100H assembliert.
+Es koennen also noch versteckte Fehler, besonders in der Druck-
+routine, die nicht getestet werden konnte sein.
+
+Wird die B0-Schleife und der Tastcode nicht gewuenscht so ist MW
+mit 3100 und ASM mit 100 zu starten, als Startadresse beim Ab-
+speichern 3100 eintragen.
+Weitere Hinweise siehe Beschreibungen Microword und ASM 5.3 
+
+letzter Bearbeiter (Reassemblierung u. Zusammenstellung) 
+Michael Halupka
+Idastr. 41
+Leipzig
+7050 
+
