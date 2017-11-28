@@ -1,0 +1,299 @@
+
+      
+?       adr --       "question"
+   Druckt  den Inhalt der Adresse adr aus (in freiem Format 
+   und in Uebereinstimmung mit der aktuellen Zahlenbasis).
+
+?BRANCH  flag --   C, "question-branch"
+   Vok.: HIDDEN
+   In COMPILE ?BRANCH Compilation eines bedingten  Sprungs, der
+   ausgefuehrt wird, wenn flag falsch ist, ansonsten Fortsetzung
+   der Abarbeitung auf der Compilationsadresse,  die der Sprung-
+   adresse folgt. Vgl BRANCH
+
+?CONDITION n1 n2 --            
+   Erzeugt  eine  Fehlermeldung  falls n1  ungleich  n2  ist.
+   Die  Meldung  zeigt  an, dass  die Compilationsbedingungen
+   nicht eingehalten wurden.
+
+?CSP             --                      
+   Erzeugt  eine Fehlermeldung wenn die Stackposition (Inhalt 
+   von  SP) sich von dem in CSP geretteten Wert unterscheidet.
+
+?DNEGATE   d1 d2 -- d3
+                 -- d1
+   Negiert die vorzeichenbehaftete Doppelzahl d1, falls d2
+   negativ  ist  (d2 kann z.B.  auch das Duplikat von d1 sein)
+   und hinterlaesst sie als d2 auf dem Datenstack, andernfalls
+   wird der Wert d1 beibehalten.
+                             
+?DO        w1 w2 --
+   Testet,  ob w1=w2.  Ist dies der Fall,  wird hinter LOOP bzw. 
+   +LOOP gesprungen. Ansonsten Abarbeitung wie DO.
+
+?DUP  16b -- 16b 16b  "question-dupe"
+ oder   0 -- 0                    
+   Dupliziere 16b, falls 16b =| 0 ist.
+
+
+?ENOUGH       +n --
+   Gibt eine Fehlermeldung aus, wenn nicht genug Werte (+n ist
+   die Anzahl) auf dem Datenstack vorhanden sind.  Wird z.B. am
+   Anfang  eines Programms zur Stackkontrolle benutzt.
+
+?ERROR   adr n f --       
+   Fuehrt  bei wahrem Flag zur Ausgabe des Strings auf  adr 
+   als  Fehlermeldung und Abbruch nach QUIT.
+
+?LEAVE      flag --
+   bedingter vorzeitiger Abbruch einer DO...LOOP(bzw....+LOOP)
+   -Schleife (siehe auch LEAVE).
+   Anwendung: DO...?LEAVE...LOOP (bzw. ...+LOOP) 
+
+?LINE         +n --
+   Kontrolliert  bei Ausgabe einer Zeile mit +n  Zeichen,  ob 
+   das Zeilenende erreicht wird. Wenn dies der Fall ist,  wird
+   vorher  CR (carriage return) ausgefuehrt.
+
+?MISSING    flag --
+   Erzeugt eine Fehlermeldung,  wenn das Flag flag wahr ist,
+   d.h.  z.B. das Wort  Wortname unbekannt ist.
+
+?NEGATE    n1 n2 -- n3                            
+                 -- n1 
+   Ist die Zahl n2 negativ,  wird die Zahl n1 negiert und als n3
+   auf den Datenstack gelegt.  (n2 kann z.B.  auch das Duplikat
+   von  n1 sein),  andernfalls bleibt die Zahl n1 in ihrer  Form    
+   erhalten.                   
+
+?STACK           --                 
+   Erzeugt  eine Fehlermeldung,  wenn der Stackpointer ausser-
+   halb der  vorgegebenen Grenzen liegt.  
+
+@            adr -- 16b   "at"
+   16b ist das Bitmuster auf der Adresse adr.
+
+ABORT
+   Datenstack  saeubern,  keine Ausgabe einer Nachricht und
+   Ausfuehrung von QUIT.
+
+ABORT"   flag --   C, I, "abort-quote"
+              --     (comp.Mod.)
+   Mit  ABORT" ccc" wird ccc ausgegeben und  ABORT  ausgefuehrt,
+   falls das Flag wahr ist,  ansonsten wird die normale Abarbei-
+   tung  fortgesetzt.  Das Leerzeichen nach ABORT" gehoert
+   nicht zur Zeichenkette ccc.
+
+ABS         n -- u   "absolute"
+   u  ist der absolute Betrag von n.  ABS -32768 ergibt  -32768. 
+
+AGAIN         --    C, I
+          sys --   (comp.Mod.)
+   Ausfuehrung  eines unbedingten Ruecksprungs zum Anfang  einer
+   BEGIN...AGAIN  - Schleife.  sys wird mit BEGIN ausbalanciert. 
+   Vgl. BEGIN
+
+ALLOT       w --                    
+   Belegung  von w Byte Speicherplatz im Woerterbuch.
+
+ALLOT       n --    U
+   Vok.: USER 
+   Reserviert  n  Byte  im USER-Area. Zusammen mit  USER  CREATE
+   benutzt koennen Felder im USER-Area angelegt werden.  
+
+ALSO          --    Voc
+   Vok.: ROOT
+   Fuegt   ein  weiteres  Vocabular  in  die  z.   Z.   gueltige
+   Suchreihenfolge ein.
+   ONLY voc#1 ALSO voc#2
+   macht  das  Vokabular #1 in  der  Suchordnung  resident.  Die
+   Durchsuchung  des Woerterbuches beginnt mit Vokabular #2  und
+   wird  mit #1 und ROOT fortgesetzt.  Es koennen maximal  #VOCS
+   (  hier  8  ) Vokabulare durch mehrfache Anwendung  von  ALSO
+   nacheinander durchsucht werden.
+
+AND 16b1 16b2 -- 16b3                
+   Bitweise logische UND-Verknuepfung von 16b1 und 16b2 zu 16b3.
+
+ASCII   -- char  I, M  "as-key"
+                        --   (comp.Mod.)
+   Mit ASCII ccc wird der ASCII des ersten Zeichens von ccc 
+   auf dem Stack eingetragen (ausfuehrender Modus) oder ins
+   Woerterbuch als Literal compiliert (compilierender Modus).
+
+ASSEMBLER      --    Voc,   
+   Das  erste Woerterbuch in der Suchreihenfolge wird durch
+   ASSEMBLER ersetzt. Das ASSEMBLER-Vokabular enthaelt im Grund-
+   zustand nur das Wort END-CODE. Weiterhin ist es zur Aufnahme
+   des FORTH-Assembler-Wortschatzes vorgesehen,  der  nachgeladen 
+   werden kann.
+
+AVOC           -- adr   "a-voc"
+   Ist eine Variable.  Wird systemintern  zur  Umschaltung  auf
+   ASSEMBLER verwendet.
+
+B/BUF   -- +n  "bytes-per-buffer"
+   Ist  eine  Konstante und entspricht der Anzahl der  Bytes  je
+   Blockpuffer.
+
+BASE           -- adr  U,   
+   Adresse  einer Variablen,  die die Zahlenbasis fuer  Eingabe-
+   und Ausgabekonvertierungen enthaelt. Zahlenbasis: 2...72
+
+BEGIN     --    C, I,   
+          -- sys     (comp.Mod.)
+   Eroeffnung einer Strukturierungssequenz: BEGIN ...flag UNTIL.
+   Wird abgearbeitet,  bis flag wahr ist;
+   BEGIN...flag  WHILE...REPEAT wird abgearbeitet, bis flag
+   falsch ist. sys wird mit UNTIL bzw. WHILE ausbalanciert. 
+
+BELL           -- n   M
+   Konstante, deren Ausgabe ein akustisches Zeichen hervorruft.
+
+BETWEEN  n3 n2 n1 -- flag
+   Der  Vergleich der 16-Bit-Zahl n3 mit dem Minimum n2 und  dem
+   Maximum n1 wird ausgewertet.  Liegt n3 ausserhalb dem Bereich
+   von n1 und n2, ist Flag wahr andernfalls falsch.
+
+BL             -- 32    "b-l"
+   Uebergabe des ASCII-Code fuer ein Leerzeichen.
+
+BLANK      adr u --                    
+   u Speicherbytes ab adr werden mit Leerzeichen gefuellt, falls 
+   u > 0. 
+
+BLK          -- adr U,  "b-l-k"
+   Adresse  der  Variablen,  die die Nummer des Massenspeicher-
+   blocks enthaelt,  der  als Eingabestrom  interpretiert  wird
+   (Nummer  = 0 impliziert Eingabestrom vom Texteingabepuffer).
+
+BLK#      -- adr 
+   Vok.: HIDDEN
+   Variable, die die Nummer des Blockes im Blockpuffer enthaelt.
+   Der Blockpuffer  beinhaltet  nur einen Block,  da  dies  bei
+   Arbeit mit einer RAM-Disk ausreichend ist.
+   
+BLOCK   u -- adr   M,   
+   adr zeigt auf erstes Byte in Block u im  Blockpuffer.  Steht
+   darin zunaechst ein anderer Block, so wird Block u eingeles-
+   en. Der alte Blockinhalt wird zuvor zurueckgschrieben, falls
+   dieser als aktualisiert gekennzeichnet ist. Nur Dateninhalte,
+   die zuletzt mit BLOCK oder BUFFER angesprochen  wurden, sind 
+   gueltig.
+
+BODY>  pfa -- cfa   "from-body"
+   Ausgehend von der pfa eines Wortes wird die cfa berechnet.
+
+BOOT       --     Vec
+   erstes Wort beim Kaltstart.  Fuehrt alle  Nutzerspezifischen
+   Initialisierungen  aus. Da  es ein Vector  ist,  kann  seine
+   Funktion  jederzeit  geaendert  werden,  z.B. um  Turn-Key-
+   Applikationen zu erstellen.
+
+BRANCH     --     C,
+   Vok.: HIDDEN
+   In  COMPILE BRANCH Compilation eines unbedingten Sprungs  mit
+   nachfolgender   Sprungadresse,  die meist von <RESOLVE oder 
+   >MARK aufgeloest wird.
+
+BS         -- n
+   Konstante, die den Wert 8 fuer Backspace liefert.
+
+BUFFER   u -- adr  M,   
+   Zuweisung eines Blockpuffers zu Block u . Diese Funktion ist 
+   vollstaendig mit BLOCK spezifiziert, es sei denn, der Block 
+   befindet sich noch nicht im Puffer. Dann wird der  Block  n
+   nicht vom Massenspeicher gelesen. Der Inhalt eines mit BUFFER
+   ausgewaehlten Blockpuffers ist noch unbestimmt.
+
+BYE        --
+   Bewirkt das Verlassen des FORTH-Systems.  Rueckkehr in  den 
+   Monitor. Vorher werden alle Blockpuffer gerettet.
+
+
+C!  16b adr --     "c-store"
+   Die  niederwertigen  8  Bits von 16b werden im Byte  auf  adr 
+   abgespeichert.
+
+
+C,      16b --     "c-comma"
+   Zuweisung von  1 Byte Speicherplatz im  Woerterbuch,  danach 
+   Abspeicherung  der niederwertigen 8 Bit von 16b  auf  Adresse 
+   HERE - 1.
+
+C/L    -- n "character-per-line"
+   Entspricht der Anzahl der Zeichen pro Screen-Zeile.
+
+
+C@      adr -- 8b       "c-at"
+   8b ist der Inhalt des Bytes auf adr .
+
+CMOVE   adr1 adr2 u --  "c-move"
+   Transfer  von u Bytes ab adr1 in Bereich ab adr2.  Das  erste 
+   Byte wird zuerst transferiert (Vorwaertstransfer). Transfer
+   erfolgt nur, wenn u ungleich 0 .
+
+CMOVE> adr1 adr2 u -- "c-move-up"
+   Transfer von u Bytes ab adr1 nach adr2.  Transfer beginnt  am 
+   Ende bei adr1 + u - 1 (Rueckwaertstransfer).
+
+CODE         --      M,   
+   Definitionwort  fuer Woerterbucheintraege, deren Funktionsum-
+   fang durch Assemblertext beschrieben wird (Codedefinitionen):
+   CODE Wortname ... END-CODE.  Vor Abschluss der Definition mit
+   END-CODE kann Wortname nicht aufgefunden werden. 
+
+COLD         --             
+   Das  FORTH-System und wird schrittweise  initialisiert  und 
+   laeuft ueber BOOT nach ABORT,  wo die restliche Initialisier-
+   ung erfolgt, in den Textinterpreter.    
+
+COMPARE  adr1 adr2 +n -- flag
+   Fuehrt einen Zeichenkettenvergleich durch (Zeichenkette1  ab
+   adr1 und Zeichenkette2 ab adr2 mit der Laenge +n). 
+   Sind die beiden Zeichenketten:
+      Zeichenkette1 = Zeichenkette2 ==> flag:=0
+      Zeichenkette1 < Zeichenkette2 ==> flag:=-1
+      Zeichenkette1 > Zeichenkette2 ==> flag:=1
+   Alle Vergleiche sind relativ zur ASCII-Ordnung.
+
+COMPILE        --     C,   
+   Typisch  verwendet in:Wortname...COMPILE Wortnamex...;.
+   Bei Ausfuehrung von Wortname wird die Compilationsadresse von  
+   Wortnamex nicht ausgefuehrt, sondern compiliert. 
+
+CONSTANT   16b --     M,   
+   Definitionswort fuer Konstanten: 16b CONSTANT Wortname . Bei
+   spaeterer Ausfuehrung von Wortname wird 16b  auf  dem  Stack 
+   uebergeben.
+
+CONTEXT        -- adr    U,   
+   Adresse  des  Feldes,  das die Suchreihenfolge im  Woerterbuch 
+   festlegt. s.ORDER ALSO
+
+CONTROL        -- n
+   Ermittlung des Kodes n der "Control-Tasten"-Belegung.
+   s. auch ASCII
+
+CONVERT  +d1 adr1 -- +d2 adr2           
+   Eingabekonvertierung  einer  FORTH-Zeichenkette  (Laengenbyte 
+   auf  adr,  Zeichenkette ab adr + 1) mit Startwert +d1 in  32-
+   Bit-Zahl  +d2.  Die  Adresse des ersten  nichtkonvertierbaren 
+   Zeichens ist adr2.
+
+COPY     n1 n2 --
+   kopiert Block n1 in RAM-Disk nach n2.
+      
+COUNT     adr1 -- adr2 +n            
+   Ermittlung  von Anfangsadresse adr2 und Laenge  +n  (0...255) 
+   einer FORTH-Zeichenkette ab adr1.
+
+CR             --   M, Vec "c-r"
+   Loest einen Zeilenvorschub auf dem Ausgabegeraet aus, loescht 
+   #OUT und erhoeht #LINE um eins.
+
+CRASH          --
+   Bewirkt die Ausgabe einer  Systemmitteilung:  (no  execution 
+   vector), wenn Vektor noch nicht initialisert wurde.
+
+

@@ -1,5 +1,5 @@
 <kurz src="ähnlich Centipede"/>
-<lang>Steuerung: unklar, welche Tastatur verwendet wurde.
+<lang>Steuerung: C,K,S oder S4 - alles auf Spalte 3 is ok.
 
 <include src="KILLERCOMET.b"/></lang>
 <requires></requires>

@@ -1,7 +1,7 @@
 <doc><filelist>
 <file aadr="1000" eadr="3602" sadr="0000" typ="b" link="f999c7d7efa3ca730fb35bd68e35e597-b.SCHIFF1%20L/b.SCHIFF1%20L.z80" name="***SCHIFF***1 L " kurz="Schiffe versenken gegen Computer (1 Flugzeugträger, 3 Schnellboote, 6 U-Boote)" />
 <file aadr="1000" eadr="2ddf" sadr="0000" typ="b" link="4bbec506814f59c4a472c82c28b17020-b.SKEET%201/b.SKEET%201.z80" name="***SKEET*** 1   " kurz="WURFTAUBEN schießen (8x4)" />
-<file aadr="1000" eadr="1b74" sadr="0000" typ="b" link="1906be840b2e762fa41bad33164df99a-b.AUTOMAT1%20L/b.AUTOMAT1%20L.z80" name="**AUTOMAT**1 L  " kurz="Simulation Spielautomat" />
+<file aadr="1000" eadr="1b74" sadr="0000" typ="b" link="1906be840b2e762fa41bad33164df99a-b.AUTOMAT1%20L/b.AUTOMAT1%20L.z80" name="**AUTOMAT**1 L  " kurz="Simulation Spielautomat (8x4)" />
 <file aadr="1000" eadr="27bb" sadr="0000" typ="b" link="a3bf9b56dffb51f0a7f5ce71fcbb5264-b.KILLERCOMET/b.KILLERCOMET.z80" name="**KILLERCOMET** " kurz="ähnlich Centipede" />
 <file aadr="1000" eadr="1dfb" sadr="0000" typ="b" link="2ba4ef8cf7b46a9dd4a9d2296d1f457c-b.MASTER2%201/b.MASTER2%201.z80" name="**MASTER**2 1   " kurz="Mastermind-Variante, erweiterte Version" />
 <file aadr="1000" eadr="2327" sadr="0000" typ="b" link="399ec3a0eb795ceb5d17e873ce3f84a4-b.STERNTALER1/b.STERNTALER1.z80" name="**STERNTALER**1 " kurz="Sterne auffangen" />
@@ -152,8 +152,12 @@
 <file aadr="0100" eadr="0210" sadr="0100" typ="C" link="5caa12d2121d31dbcc36b77f1b741a1d-C.EPROMMER-ABGL./C.EPROMMER-ABGL..z80" name="EPROMMER-ABGL.  " kurz="EPROM-Programmer-Abgleich" />
 <file aadr="1900" eadr="20f0" sadr="0000" typ="T" link="7aba6f7e42b9191addf7d15218b288aa-esc_folgen.doc/esc_folgen.doc.z80" name="ESC-Folgen      " kurz="ESC-Sequenzen für S3004" />
 <file aadr="2bc0" eadr="4410" sadr="00e0" typ="B" link="d69e20f35c79b86ff3e194606689d968-B.EXPANSION/B.EXPANSION.z80" name="EXPANSION       " kurz="Interessantes Brettspiel, Go Variante mit mehreren Steinen pro Feld" />
-<file aadr="1900" eadr="3ff1" sadr="0000" typ="T" link="2699563a24bc7faf4274a90cbd903aaa-f83%201_3%20glo%201/f83%201_3%20glo%201.z80" name="F83 1.3 GLO 1   " kurz="identisch [d5908969f59670a418f7886c1a0e25dc]" />
 <file aadr="1900" eadr="3ff1" sadr="0000" typ="T" link="d5908969f59670a418f7886c1a0e25dc-T.F83%201.3%20GLO%201/T.F83%201.3%20GLO%201.z80" name="F83 1.3 GLO 1   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 1" />
+<file aadr="3ff1" eadr="6528" sadr="0000" typ="T" link="3b8636dbab1eeee457221aae7232a128-T.F83%201.3%20GLO%202/T.F83%201.3%20GLO%202.z80" name="F83 1.3 GLO 2   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 2" />
+<file aadr="1900" eadr="4329" sadr="0000" typ="T" link="5931950ef4ef889b16fda7b975ba58d2-T.F83%201.3%20GLO%203/T.F83%201.3%20GLO%203.z80" name="F83 1.3 GLO 3   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 3" />
+<file aadr="4329" eadr="6db9" sadr="0000" typ="T" link="1e440464faa4829dacf6fc3e4b66efd2-T.F83%201.3%20GLO%204/T.F83%201.3%20GLO%204.z80" name="F83 1.3 GLO 4   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 4" />
+<file aadr="1900" eadr="463e" sadr="0000" typ="T" link="b880d1d01de24934e1627c671e03da04-T.F83%201.3%20GLO%205/T.F83%201.3%20GLO%205.z80" name="F83 1.3 GLO 5   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 5" />
+<file aadr="463e" eadr="7603" sadr="0000" typ="T" link="e3c8f39ce8377001a0cea470e1a0d121-T.F83%201.3%20GLO%206/T.F83%201.3%20GLO%206.z80" name="F83 1.3 GLO 6   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 6" />
 <file aadr="1000" eadr="3fff" sadr="0000" typ="b" link="0766ccc51472b0c721d1e7808456f0aa-b.FAEHRE/b.FAEHRE.z80" name="FAEHRE          " kurz="Landebahn reparieren" />
 <file aadr="1000" eadr="1f42" sadr="0000" typ="b" link="5b72ca749efbdbc16427b54099bc3ecd-b.FAHRTR.1/b.FAHRTR.1.z80" name="FAHRTR.1        " kurz="Autorennen" />
 <file aadr="1000" eadr="1c3e" sadr="0000" typ="b" link="a832337c97ede6874cc3ba2ce95d7ec5-b.FARBMASTER%201/b.FARBMASTER%201.z80" name="FARBMASTER 1    " kurz="Mastermind, Farben raten (in SW!)" />
@@ -316,6 +320,10 @@
 <file aadr="1000" eadr="1a33" sadr="0000" typ="b" link="851823fa1380e3000d74e08a9a43a8a0-b.MEX/b.MEX.z80" name="MEX             " kurz="Würfelspiel" />
 <file aadr="0100" eadr="3700" sadr="1000" typ="C" link="a2db74db249848de9c32615f596f7954-miami/miami.z80" name="MIAMI           " kurz="Maze, Monster ausweichen" />
 <file aadr="0100" eadr="372e" sadr="3720" typ="C" link="40eaf15d723d89e7695e5a9445e2229e-miami+prJ/miami+prJ.z80" name="MIAMI+Joy.      " kurz="Maze, Monster ausweichen+Joystick nach Practic 01/88" />
+<file aadr="0100" eadr="10ff" sadr="0100" typ="C" link="66562bfcc0d764c71958dc3c0c5a5c33-C.MicroWORD%201.1/C.MicroWORD%201.1.z80" name="MicroWORD 1.1   " kurz="Texteditor MicroWORD V1.1 IG-HC Informatikzentrum" />
+<file aadr="0100" eadr="0fff" sadr="0100" typ="C" link="e9dc936cf03bc57d1b80c81bcf018fbc-C.MicroWORD%201.3/C.MicroWORD%201.3.z80" name="MicroWORD 1.3   " kurz="Texteditor MicroWORD V1.3 64KByte IG-HC Dresden, ohne begelegte Anleitung" />
+<file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="ac6bdb65dfc0e7731cc68439a434e18b-C.MicroWORD%201.3%2016/C.MicroWORD%201.3%2016.z80" name="MicroWORD 1.3 16" kurz="Texteditor MicroWORD V1.3 16KByte IG-HC Dresden" />
+<file aadr="0100" eadr="68ac" sadr="0100" typ="C" link="7e46885b1d81a752acfe7a25ba9cf0d4-C.MicroWORD%201.3%2064/C.MicroWORD%201.3%2064.z80" name="MicroWORD 1.3 64" kurz="Texteditor MicroWORD V1.3 64KByte IG-HC Dresden" />
 <file aadr="0100" eadr="6cbc" sadr="0100" typ="C" link="01b849b3c1bd4b6ad5709e582f3f633d-C.MicroWORD%201.520U/C.MicroWORD%201.520U.z80" name="MicroWORD 1.520U" kurz="Textverarbeitung, Texteditor, V01.10.1988" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="0ec6a4cb664baed278fa1941576ffe32-microword_1_5gs1/microword_1_5gs1.z80" name="MICROWORD 1.5GS1" kurz="Textverarbeitung, Texteditor, V18.01.1989" />
 <file aadr="0100" eadr="0fff" sadr="0100" typ="C" link="cc7f45f638eb57850062413fe0575ade-C.MINEFIELD/C.MINEFIELD.z80" name="MINEFIELD       " kurz="Minenfeld durchqueren+Cursor-Tasten, Originalversion" />
@@ -546,4 +554,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 546 Dateien."/></doc>
+<status src="Datenbank enthält 554 Dateien."/></doc>

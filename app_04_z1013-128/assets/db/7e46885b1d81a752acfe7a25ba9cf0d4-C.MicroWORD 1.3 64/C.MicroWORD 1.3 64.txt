@@ -1,0 +1,586 @@
+MicroWORD 1.3 
+                     (20.04.88) 
+-------------------------------
+
+(c) TU Dresden, 
+    IG-HC Informatikzentrum
+    AG Z1013
+
+Bearbeiter:  Brosig,R. (IZ)
+
+
+Kurzcharakteristik
+------------------
+
+
+Der Texteditor 1.3 arbeitet in
+dem Speicherbereich:
+
+   100H-1022H 
+
+mit der genauen Aufteilung: 
+
+    100H-0FC2H  Codebereich
+   0FC3H-0FFFH  Arbeitszellen
+   1000H-1021H  Stringpuffer
+      ab 1022H  freier Bereich
+
+Er ist dadurch gekennzeichnet,
+dass alle Manipulationen im Text
+direkt auf dem Bildschirm sicht-
+bar werden. Er erlaubt nur ein-
+fache Kommandos und Funktionen. 
+Texte koennen formatiert ueber
+eine Druckerschnittstelle 
+ausgegeben werden.
+
+
+* der Textspeicher:
+
+Als Textspeicher funktioniert 
+der Speicherbereich 3000H-DFFFH.
+So steht ein Bereich von ueber
+45000 Textzeichen zur Verfue-
+gung.
+Bei gewuenschten Anpassungen
+kann die Textanfangsadresse-1 in
+der Zelle 151H, die max. End-
+adresse in Zelle 153H eingetra-
+gen werden.
+Alle Zeichenfolgen, die auf der
+Anfangsadresse-1 mit einem Zei-
+chen 02H (STX) beginnen, an-
+schliessend nur Zeichen im Werte-
+bereich 7FH enthalten und als
+Abschluss ein Zeichen 03H (ETX)
+besitzen bzw. ueber die Obergren-
+ze des Textspeicherbereiches hin-
+ausgehen, werden als zu bearbei-
+tender Text erkannt und stehen
+zur Veraenderng bzw. Ergaenzung
+bereit.  Wird die Obergrenze
+des Textspeichesbereiches ueber-
+schritten, wird durch eine Ein-
+fuegung eines Zeichens 03H der
+ueberstehende Text abgeschnit-
+ten. Waehrend der Bearbeitung
+wird der Text ab Cursorposition
+in zwei Teile geteilt, wobei der
+hintere Teil an die Textpuffer-
+obergrenze geschoben wird.
+Durch diese Massnahme muss der
+Text beim Insert nicht geschoben
+werden und der Editor arbeitet
+extrem schnell. 
+Ein Austritt aus dem Editor mit
+Reset oder dgl. bewirkt, dass
+der Text nicht wieder zusammen-
+gefuegt wird. Mit Hilfe eines
+Warmstarts auf 103H kann in die-
+sem Fall ein Wiedereintritt in
+den Editor ohne Textverlust
+erfolgen indem versucht wird,
+den Text erst einmal wieder
+zusammenzuschieben..
+Waehrend der Bearbeitung wird
+zur Kennzeichnung des geteilten
+Textes das STX-Zeichen auf
+Pufferanfang-1 (02H) in ein NL
+(1EH) gewandelt.
+
+Achtung: 
+
+Der Editor benutzt den gesamten
+Textpufferbereich, auch wenn der
+zu bearbeitende Text klein ist.
+Es kann also nur ein Text im 
+Textpuffer bearbeitet werden.
+(ansonsten Puffer umdef.)
+
+* allgemeine Funktionen:
+
+Nach Start des Texteditors wird
+ein Kommandomodus, durch ein
+Menuebild gekennzeichnet, er-
+reicht. Dieser zeigt
+- den aktuellen Fuellstand des
+  Textpuffers,
+- die gegenwaertige Zeile der
+  Cursorposition,
+- den Textpufferanfang (Hex),
+- aktuelle Cursor-Textpositon
+  (TXP) in Hex und
+- das Textpufferende (Hex) an.
+
+In diesem Modus koennen folgende
+Funktionen aufgerufen werden:
+- Cursorpositionierung auf Text-
+  anfang, Textende oder Zeilennr.
+- Markierung von Textstellen und
+  anschliessendes Loeschen des
+  Textes bis zur Markierung bzw.
+  des gesamten Textes
+- Suchen/Ersetzen von Zeichen-
+  ketten einschl. Steuerzeichen
+- Seitenformatiertes Drucken
+- Speichern oder Laden des Text-
+  files auf Kassette mit Hilfe
+  der aufgerufenen Headersave-
+  routinen (SARUF, LORUF)
+- Wahl des Darstellungs-modes:
+  einfachzeilig/doppelzeilig 
+- Verlassen des Texteditors mit
+  Zusammenschieben des Textes+
+  zurueck zum Monitor
+   
+Nach Abschluss eines Kommandos
+bzw. nach Abbruch des Kommando-
+modus wird der Bildschirmmodus
+(in dem die Textfolge auf dem 
+Bildschirm erseheint) erreicht.
+Hier koennen:
+- Zeichenfolgen in den Text ein-
+  gefuegt, 
+- Zeichen und Zeichenfolgen  ge-
+  loescht,
+- der Cursor zeichenweise, 
+  zeilenweise, seitenweise vor-
+  waerts und rueckwaerts positio-
+  niert,
+- das Kommando Suchen/Ersetzen
+  wiederholt und
+- der Kommandomodus erreicht
+  werden.
+
+Folgende Steuerzeichen koennen 
+neben den alphanumerischen
+Zeichen (Kodes 20H bis 7FH) in
+den Text eingefuegt werden:
+
+TAB  Kodierung 09H   Tabulator-
+     stop jede 8. Spalte
+NL   Kodierung 1EH   Neue Zeile
+     als Wagenruecklauf/Zeilen-
+     schaltung
+FF   Kodierung 0CH   Neue Seite
+     (wird nur beim Druck aus-
+     gefuehrt, nur Anz. im Text)
+NUL  Kodierung 0, da von Tasta
+     tur aus nicht erzeugbar
+  
+Ausser diesen direkt eingebbaren
+Steuerzeichen kann, durch Steuer-
+zeichenankuendigung mit einer
+selbstbestimmbaren Taste, jeder
+nachfolgende Steuerkode direkt
+in den Text geschrieben werden.
+Die Steuerzeichen werden dann
+im Text oder Findstring als
+Grafikzeichen ab 0A0H darge-
+stellt.
+
+!!! ACHTUNG !!!
+
+Jede eingegebene Zeile muss mit 
+NL nach weniger als 255 Anzeige-
+positionen abgeschlossen sein,
+um eine ordnungsgemaesse Arbeit
+des Texteditors zu gewaehrlei-
+sten.
+
+
+* der Kommandomodus
+
+Im Kommandomodus sind in einem 
+Menuebild angezeigt, welche 
+Kommandos durch normale Zeichen-
+eingabe aufgerufen werden koen-
+nen, auf welcher Zeile sich der
+Cursor befindet und wieviele
+Zeichen noch in den Textpuffer
+eingetragen werden koennen, 
+bevor eine Fehlerausschrift an-
+zeigt, dass das letzte Zeichen
+nicht mehr uebernommen werden 
+konnte. Alle Zeicheneingaben, 
+die kein Kommando aufrufen, 
+fuehren zum Abschluss des Kom-
+mandomodus und damit zur Rueck-
+kehr in den Bildschirmmodus.
+Folgende Kommandos koennen ver-
+wendet werden:
+
+<B> - BYE
+Soll die Arbeit mit dem Text-
+editor beendet werden, muss
+dieses Kommando verwendet wer-
+den. Dabei wird der Text reorga-
+nisiert und zum Monitor zurueck-
+gekehrt.
+
+<S> - START
+Cursor auf Textanfang setzen und
+neuen Bildschirminhalt darstel-
+len
+
+<E> - END
+Cursor auf Textende setzen und
+neuen Bildschirminhalt darstel-
+len
+
+<N> - NUMBER
+nach der Eingabe der Zeilennum-
+mer in dezimaler Form mit maxi-
+mal fuenf Ziffern werden im Text
+vom Anfang beginnend die Zei-
+chen NL bis zu dieser Zahl ab-
+gezaehlt und der Cursor auf die
+erreichte Stelle gesetzt, an-
+schliessend wird der Bild-
+schirminhalt neu dargestellt
+
+<M> - SET MARK
+der Cursor wird im Bildschirm-
+modus vor Anwendung des Komman-
+dos auf den Anfang eines zu
+loeschenden Textbereiches posi-
+tioniert, anschliessend wird 
+mit diesem Kommando diese Stel-
+le markiert und wieder in den
+Bildschirmmodus zurueckgeschal-
+tet, ueber die Moeglichkeiten
+der Cursorpositionierung kann
+jetzt das Ende des zu loeschen-
+den Bereiches erreicht werden
+
+<%> - Teil loeschen
+anschliessend an <M> kann mit
+diesem Kommando der so einge-
+schlossene Textbereich aus dem
+Textpuffer geloescht werden,
+moegliche Fehler sind das Feh-
+len der ersten Markierung bzw.
+die falsche Markierung bzw. 
+die Ausfuehrung von Nicht-Cur-
+sorpositionier-Operationen 
+zwischen Markier- und Loesch-
+kommando
+
+<&> - alles Loeschen
+falls der komplette Textpuffer
+geloescht werden soll, kann
+das mit diesem Kommando er-
+reicht werden.
+
+<F> - FIND/CHANGE (ab Cursorp.)
+Soll eine Textfolge im Textpuf-
+fer gesucht werden und ggf.
+durch eine andere Textfolge er-
+setzt werden, so muss nach
+Aufruf dieses Kommandos der 
+Text, der gesucht werden soll,
+eingegeben werden, durch '/'
+getrennt kann anschliessend der
+einzusetzende Text angegeben 
+werden. Die gesamte Textfolge
+ist auf 31 Zeichen begrenzt. 
+Nach Abschluss der Zeichenfolge,
+wird geprueft, ob der gesuchte
+Text auf der Cursorposition
+gefunden wurde. Ist das der 
+Fall, tritt die Funktion Er-
+setzen in Aktion. Dabei kann
+ein beliebig langer Text durch
+ainen anderen beliebig langen 
+Text ersetzt werden, solange 
+Platz im Textpuffer vorhanden 
+ist. Anschliessend steht der 
+Cursor hinter dem ersetzten
+Text und der Bildschirminhalt
+wird dargestellt.
+Ist der an der Cursorposition
+vorgefundene Text unterschied-
+lich zum gesuchten Text, wirkt
+die Funktion Suchen, die den
+Textpuffer von der aktuellen
+Cursorposition beginnend in
+Richtung Textende nach einer
+Uebereinstimmung mit dem ge-
+suchten Text durchmustert.
+Bei der ersten Uebereinstim-
+mung wird der Curuor auf das
+erste Zeichen dieser Zeichen-
+kette gesetzt und in den Bild-
+schirmmodus umgeschaltet.
+Im Bildschirmmodus existiert 
+die Funktionstaste, die diesen
+Kommandokomplex ohne erneute
+Eingabe der Zeichenkette wied-
+erholt startet. Die Find-Routi-
+ne startet immer auf der aktu-
+ellen Zeilenposition (ggf.
+vorher Kommando S ausfuehren). 
+Durch die Moeglichkeit der Ein--
+gabe von Steuerzeichen kann auch
+nach Kombinationen mit Steuerzei-
+chen gesucht werden (z.B. NL 
+oder TAB) und durch andere er-
+setzt werden. Bei der Eingabe
+des Findstrings werden Tabula-
+toren nicht ausgefuehrt, sondern
+als Grafikzeichen angezeigt.
+
+<P> - PRINT
+Soll der im Textpuffer enthal-
+tene Text ausgedruckt werden,
+besteht die Moeglichkeit der
+Einstellung des Seitenformates
+und der Auswahl der zu drucken-
+den Seiten. Eine Arbeit mit
+Seitenstop kann eingestellt
+werden. Nach Aufruf des Komman-
+dos erfolgt die Aufforderung
+zur Eingabe der Zeilennummer, 
+ab der gedruckt werden soll.
+Eine Zahl zwischen 1 und 99999
+muss eingegeben werden. Jede
+Zahl, fuer die im Textpuffer
+nicht die ausreichende Zeilen-
+zahl gefunden wird, fuehrt so-
+fort zum Abbruch des Kommandos.
+Die Frage nach der Zeilenzahl
+(lines/page) wird mit einer
+dreistelligen Dezimalzahl (>9)
+beantwortet (normale Seite=72). 
+Bei Zeilenzahl=0 bzw. keine Ein-
+gabe erfolgt keine Seitenforma-
+tierung.
+Bei geforderter Seitenforma-
+tierung wird abgefragt, mit 
+welcher Numerierung die ge-
+druckten Seiten versehen wer-
+den sollen. Bei leerer Eingabe
+wird ohne Fusszeile, in der die
+Seitennummer untergebracht ist,
+gedruckt.
+Anschliessend wird abgefragt, 
+ob ein Druckstop nach jeder
+Seite erfolgen soll. Wird diese
+Frage bejaht, stoppt der Drucker
+definiert nach jeder Seite. Im
+anderen Fall wird der Text bis
+zum Ende ohne Pause gedruckt.
+
+
+Der Bildschirmmodus
+-------------------
+
+Im Bildschirmmodus wird der 
+Bildschirm entsprechend des
+eingegebenen Textes aktualisi-
+ert. Das Textfenster wird dabei
+so dargestellt, dass der Cursor
+im Bildfenster erscheint. Dabei
+kann an den Raendern Text abge-
+schnitten sein, der nicht mehr 
+auf den Bildschirm passt.
+Steuerzeichen, die von der Tast-
+tatur ohne Ankuendigung angespro-
+chen werden, aber durch das
+Programmsystem nicht bearbeitet
+werden, erzeugen eine Fehler-
+ausschrift.
+
+
+- allgemeine Funktionen
+
+Alle Funktionen werden durch 
+entsprechende Tastatureingaben
+ausgeloest. Das Programmsystem
+enthaelt eine Tastaturkonver-
+tierungsroutine, die es ermoeg-
+licht jeden beliebigen Tasta-
+turcode als Funktionscode fest-
+zulegen. Im folgenden werden
+die entsprechenden Speicherzel-
+len, in denen der gewuenschte 
+Tastaturcode eingetragen werden
+kann aufgelistet.
+
+Adr. Code     Bedeutung 
+     (z.B.)  
+______________________________
+129H 09H  Cursor rechts ein Zei.
+12AH 08H  Cursor links
+12BH 0AH  Cursor runter
+12CH 0BH  Cursor hoch
+12DH 01H  Cursor eine Seite vor
+12EH 05H  Cursor Seite zurueck
+12FH 10H  Zeichen links loeschen
+130H 7FH  Zeichen loeschen
+131H 03H  Umschaltung Bild/Komm.
+132H 1BH  ESC, Ank. Steuerz.
+133H 12H  Wandlung Buchstabe
+134H 15H  CAPS (staendig klein)           
+135H 0FH  Loeschen einer Zeile
+136H 11H  Ersetze/Wiederhole
+137H 0CH  FORM FEED
+138H 0DH  ENTER
+139H 14H  Tabulator
+13AH 06H  Tabulator
+13BH 0EH  NUL
+
+CTR-C fuehrt zur sofortiger
+Rueckkehr in den Bildschirm-
+modus ohne Ausfuehrung des Kom-
+mandos (Abbruch).
+Fuer die Cursordarstellung sind
+zwei Codes (je nach dem, ob sich
+unter dem Cursor ein Zeichen
+befindet) vorgesehen, die in Zel-
+le 124H bzw 125H eingetragen
+werden koennen. Wird in Zelle
+126H eine 80H eingetragen, so
+erfolgt die Cursordarstellung
+mit gesetztem 7.Bit.
+Soll im Text mit anderen Ende-
+zeichen als mit  03H (ETX)
+enden, kann dieses in Zelle 127H
+vermerkt werden. 
+
+
+Die Druckerschnittstelle
+------------------------
+
+Der Anschluss eines Druckers
+(oder eines anderen peripheren
+Geraetes) ist vorbereitet.
+Dazu muss eine entsprechende
+Treiberroutine (Centronixs,
+IFFS oder V24) an das Programm-
+paket angebunden werden.
+Die entsprechende Schnittstelle
+liegt auf der Adresse 112H mit
+einem Sprung auf DRAKK (FFE8H).
+Hier kann eine entsprechende
+Aenderung der Treibereinbindung
+erfolgen. 
+Beim Aufruf des Druckertreibers
+steht das zu druckende Zeichen 
+im Akku. 
+
+Beispielprogramm fuer eine
+einfache Centronix-Schnittstelle
+ueber den freien PIO-Port:
+
+ ORG 1030H
+
+ST:    LD    (SACKP),SP  ;Inhalt Stack retten
+       LD    SP,STCK     ;neuen Stack festlegen
+       LD    A,0FH       ;PIO Initialisierung
+       OUT   1
+       LD    A,0DEH
+       OUT   1
+       LD    A,87H
+       OUT   1
+       LD    A,L(INTS)   ;Interruptadresse laden
+       LD    (0DEH),A
+       LD    A,H(INTS)
+       LD    (0DFH),A
+       CALL  AUSG
+RUECK: LD    SP,(SACKP)  ;alten Stackinhalt laden 
+       RET
+;  
+AUSG:  CMP   1EH
+       JRZ   KONV-#
+AUSG1: CPL               ;da im Muster invertierende Treiber
+       OUT   0
+       EI
+M1:    JRNC  M1-#
+       RET
+;
+;Konvertierung des Zeilenendezeichens
+;"1EH" in die Folge "0DH,0AH"
+;
+KONV:  LD    A,0DH
+       CALL  AUSG1
+       XOR   A            ;C-Flag ruecksetzn
+       LD    A,0AH
+       CALL  AUSG1
+       JR    RUECK-#
+;
+;Interruptroutine
+;
+INTS:  DI
+       SCF
+       RETI
+;
+       BER   6
+STCK:  DA    0            ;Stackobergrenze
+SACKP: DA    0
+;
+       ORG 112H
+;
+ZEIGER:JMP   ST
+;
+       END 
+
+
+Anmerkung:
+
+Der erzeugte Quelltext ist kompa-
+tibel zu den meisten anderen
+Textsystemen und Assemblern wie
+z.B. Texteditor Scf, MTX oder
+Assembler Scf und ist rein ASCII-
+codiert. 
+Sollte einmal ein Text durch ei-
+ne versehentlichte Fehlbedienung
+geloescht worden sein, kann ver-
+sucht werden, das ETX-Zeichen
+am Textpufferanfang durch ein 
+anderes ASCII-Zeichen zu erset-
+zen (Modify im Monitor) und den 
+Editor neu zu starten.
+ 
+ 
+
+Anpassungsarea:
+
+100H   JMP ANF     ;PROGRAMMANF.
+103H   JMP WSTRT   ;WARMSTART
+106H   JMP OUTCH   ;AUSG ZEICHEN AKKU
+109H   JMP INCHR   ;EING ZEICHEN AKKU
+10CH   JMP INKEY   ;TASTATURABFRAGE
+10FH   JMP STAT    ;TASTATURSTATUS 
+                   (WIRD NOCH NICHT BENUTZT 
+112H   JMP DRAKK   ;DRUCKEN EIN ZEICHEN
+                    IM AKKU, ZEILENDE=1EH
+                    FF=0CH, TAB=09H
+115H   JMP DRDEL   ;RUEKSETZEN EXT.DR.TR. 
+118H   JMP SARUF   ;HEADERSAVE
+11BH   JMP LORUF   ;  -"-
+11EH   JMP AJOYS   ;EINB.ANALOG-JOYSTIK
+                   (NOCH NICHT BENUTZT) 
+121H   JMP SYS     ;SYSTEMRUECKKEHR 
+
+124H   DB 0C7H     ;ZEICHEN OFF.C.
+125H   DB 0FFH     ;ZEICH. VERD.C.
+126H   DB 0        ;GR.Z./BIT7
+127H   DB 3        ;ETX
+128H   DB 2        ;STX
+
+TASTATURCODE
+129H   DB 9           ;ANF.TAST.CODE
+       .
+       .
+       .
+TEXTPUFFER:
+151H   DB 2FFFH    ;TEXTANF.-1
+153H   DB 0DFFFH   ;TEXTPUFFERENDE
+
+BILDSCHIRM
+155H   DB 0EC00H   ;ANF.BWS
+157H   DB 32       ;BS-SPALTEN
+158H   DB 32       ;BS-ZEILEN
+

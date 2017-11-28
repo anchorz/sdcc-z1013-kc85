@@ -6,6 +6,26 @@ use utf8;
 %epson_map=("{"=>"ä"   ,"|"=>"ö"   ,"}"=>"ü"   ,"~"=>"ß"   ,"["=>"Ä"   ,"\\"=>"Ö"  ,"]"=>"Ü");
 %ibm_map=  ("\xe4"=>"ä","\xf6"=>"ö","\xfc"=>"ü","\xdf"=>"ß","\xc4"=>"Ä","\xd6"=>"Ö","\xdc"=>"Ü");
 
+%no_umlaut=(
+"=| "=>1,
+
+"\x1e[ "=>1,
+"\x1e['"=>1,
+"\x1e[C"=>1,
+" [C"=>1,
+" ['"=>1,
+
+" ]\x1e"=>1,
+"'] "=>1,
+"E] "=>1,
+"\x1e] "=>1,
+
+"\x1e\\ "=>1,
+" \\ "=>1,
+"\x1e\\S"=>1,
+
+);
+
 %is_umlaut=( 
 ".{."=>1,
 " {n"=>1,
@@ -59,6 +79,7 @@ use utf8;
 );
 
 our $has_umlaut=0;
+our $has_no_umlaut=0;
 our $total_umlaut=0;
 our $prev_char="";
 our $i=0;
@@ -84,12 +105,17 @@ sub print_char($) {
         if ($is_umlaut{$umlaut_text}) {
             $has_umlaut++;
         } 
+        if ($no_umlaut{$umlaut_text}) {
+            $has_no_umlaut++;
+        } 
 
         if ($encoding ne "UML") {
             if ($is_umlaut{$umlaut_text}) {
                 $mymap=$epson_map{$c};
                 utf8::encode($mymap);
                 $umlaut_text=",eventuell '".$mymap."'";
+            } elsif ($no_umlaut{$umlaut_text}) {
+                $umlaut_text="";
             } else {
                 $umlaut_text=" \"$umlaut_text\"=>1,";
             }
@@ -185,7 +211,9 @@ if ($char_after_eot >0 ) {
 }
 
 if ($total_umlaut>0) {
-    printf("%d/%d Ersetzungen sind wahrscheinlich Umlaute\n",$has_umlaut,$total_umlaut);
+    printf("%6.1f%% der Ersetzungen sind wahrscheinlich Umlaute (%d/%d)\n",$has_umlaut*100.0/$total_umlaut,$has_umlaut,$total_umlaut);
+    printf("%6.1f%% der Ersetzungen sind keine Umlaute          (%d/%d)\n",$has_no_umlaut*100.0/$total_umlaut,$has_no_umlaut,$total_umlaut);
+    printf("%6.1f%% der Ersetzungen sind unsicher               (%d/%d)\n",($total_umlaut-$has_no_umlaut-$has_umlaut)*100.0/$total_umlaut,($total_umlaut-$has_no_umlaut-$has_umlaut),$total_umlaut);
 } else {
     printf("i: keine Umlaute gefunden\n");
 }

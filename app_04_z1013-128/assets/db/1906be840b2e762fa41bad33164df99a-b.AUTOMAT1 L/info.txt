@@ -1,3 +1,5 @@
-<kurz src="Simulation Spielautomat"/>
-<lang><include src="AUTOMAT1 L.b"/></lang>
-<requires></requires>
+<kurz src="Simulation Spielautomat (8x4)"/>
+<lang>Steuerung: S4, S, K für die jeweiligen Positionen
+
+<include src="AUTOMAT1 L.b"/></lang>
+<requires>2.02</requires>

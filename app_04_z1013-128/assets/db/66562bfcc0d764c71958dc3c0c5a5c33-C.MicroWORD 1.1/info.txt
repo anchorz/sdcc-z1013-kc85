@@ -1,0 +1,3 @@
+<kurz src="Texteditor MicroWORD V1.1 IG-HC Informatikzentrum"/>
+<lang></lang>
+<requires></requires>

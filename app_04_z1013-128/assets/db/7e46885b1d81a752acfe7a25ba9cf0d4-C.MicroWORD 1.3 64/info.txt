@@ -1,0 +1,3 @@
+<kurz src="Texteditor MicroWORD V1.3 64KByte IG-HC Dresden"/>
+<lang><include src="C.MicroWORD 1.3 64.txt"/></lang>
+<requires></requires>

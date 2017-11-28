@@ -1,0 +1,330 @@
+
+REPEAT       --     C, I,           
+         sys --    (comp.Mod.)
+   Verwendung  in BEGIN...WHILE...REPEAT.  Zur  Ausfuehrungszeit 
+   Sprung von REPEAT zur Stelle hinter BEGIN. sys wird mit WHILE 
+   ausbalanciert. Vgl. BEGIN
+
+REVEAL       --
+   Replaziert die letzte Definition in das Hauptwoerterbuch.
+
+ROLL      +n --                    
+   Der +n - te Stackeintrag (+n nicht mitgerechnet) wird an  die 
+   oberste Stackposition rotiert, die folgenden Eintraege gelan-
+   gen  auf  die  jeweils frei werdenden Plaetze.  2  ROLL  ent-
+   spricht ROT , 0 ROLL ist eine Nulloperation.
+
+RMARGIN      -- adr
+   Ist  eine Variable.  Der Inhalt der Adresse (adr)  entspricht 
+   der Anzahl der Stellen,  die bei einer Ausgabe auf Bildschirm 
+   oder Drucker rechts maximal ausgegeben werden. Wird bisher
+   nur von WORDS genutzt. 
+
+ROOT         --      Vok
+   Das Vokabular  ROOT   enthaelt  die   zur   Steuerung   der 
+   Suchreihenfolge notwendigen   Worte  und  basiert  auf   den 
+   Experimentalvorschlaegen von ... 
+   (s. auch Der Standart FORTH 83)
+
+ROT 16b1 16b2 16b3 -- 16b2 16b3 16b1            
+   Die 3 obersten Stackeintraege werden rotiert,  der drittober-
+   ste gelangt an die Spitze.
+
+RP0         -- adr   U "r-zero"
+   Ist eine Systemvariable,  die die Ausgangsposition des
+Returnstack-Zeigers enthaelt.
+
+RP!     adr  --     "r-p-store"
+   Setzt Returnstackanfang auf die Adresse adr.
+
+RP@          -- adr   "r-p-at"
+   Hinterlaesst  den  aktuellen Returnstack-Zeiger-Wert auf  dem 
+   Datenstack.
+
+S>D        n -- d             
+   Wandelt eine  vorzeichenbehaftete Einfachintegerzahl  n  in 
+   eine Doppelintegerzahl d.
+
+SAVE-BUFFERS   --   M, "save-buffers"
+   Die Inhalte aller als aktualisiert gekennzeichneten Blockpuf-
+   fer  werden in die entsprechenden  Massenspeicherbloecke  zu-
+   rueckgeschrieben, alle Puffer werden nicht laenger als aktua-
+   lisiert gekennzeichnet, bleiben aber u.U. zugewiesen.
+
+SCAN  adr1 +n1 n2 -- adr2 +n3
+   Aus  einer Zeichenkette mit der Adresse adr1 und  der  Laenge 
+   +n1  wird nach einem Zeichen n2 gesucht.  Auf dem  Datenstack 
+   wird  nach  der Ausfuehrung des Wortes die Adresse  adr2  des 
+   gefundenen  Zeichens n2 und die Laenge der verbleibenden Zei-
+   chenkette (+n3).
+
+SCR          -- adr     "s-c-r"
+   Adresse der Variablen,  die die Nummer des zuletzt ausgegeben 
+   Screens enthaelt. Vgl. LIST
+
+SEAL         --    Vok.: ROOT
+   SEAL  <name>   macht  das  Woerterbuch  <name>  zum  alleinig 
+   durchsuchten.  Kann z.B.  fuer versiegelte Applikationen ver-
+   wendet werden. 
+
+SIGN       n --                    
+   Bei  n < 0 Einfuegen eines ASCII-Zeichens '-'  (Minuszeichen) 
+   an  die Zeichenkette der Ausgabekonvertierung.  Anwendung in-
+   nerhalb <# ... #>.
+
+SKIP   adr1 +n1 n2 -- adr2 +n3 
+   Aus  einer Zeichenkette mit der Adresse adr1 und  der  Laenge 
+   +n1 wird nach einem Zeichen +n2 gesucht. Auf dem Stack liegen 
+   nach  Ausfuehrung  des  Wortes die Adresse  adr2  des  ersten 
+   Zeichens  nach dem gefundenen Zeichen +n2 und die Laenge  der 
+   verbleibenden Zeichenkette (+n3).
+
+SOD          -- adr   Vok.: I/O
+   Uebergibt die Adresse im Boot-Bereich, auf der die erste  von 
+   der RAM-Disk benutzte Adresse steht.
+
+SOURCE       -- adr  n 
+   Liefert Quelladresse adr  und Laenge n des Eingabestromes.  
+
+SP0         -- adr   U "s-zero"
+   Variable,  die  den Initialisierungswert des  Datenstack-
+   pointers enthaelt.
+
+SP!      adr --     "s-p-store"
+   Setzt Datenstackanfang auf adr. 
+
+SP@          -- adr    "s-p-at"
+   adr  ist die Adresse des obersten Stackeintrags,  bevor  SP@
+   ausgefuehrt wurde.
+
+SPACE        --     M,   
+   Ausgabe eines ASCII-Leerzeichens.
+
+SPACES    +n --     M,   
+   Ausgabe von +n ASCII-Leerzeichen.
+
+SPAN         -- adr                
+   Adresse der Variablen,  die die Laenge der zuletzt mit EXPECT 
+   empfangenen Zeichenkette enthaelt. Vgl. EXPECT
+
+STATE        -- adr                
+   Adresse  der  Variablen,  die  die  Systemzustandsinformation 
+   enthaelt (compilierender Modus:  Inhalt ungleich 0) 
+
+STATUS       --        Vec
+   Ausfuehrungsvektor, der jeweils  nach  Abarbeitung einer 
+   Eingabezeile ausgefuehrt  wird und den  Systemstatus  meldet. 
+   (Normalerweise CR, sinnvoll ist fuer Testfaelle die Umstel-
+   lung mit ' .S IS STATUS)
+
+SWAP  16b1 16b2 -- 16b2 16b1          
+   Die 2 obersten Stackeintraege werden getauscht.
+
+THEN         --        C, I,   
+         sys --    (comp.Mod.)
+   In  IF...ELSE...THEN oder IF...THEN verwendet  markiert  THEN 
+   die Stelle,  wo die Ausfuehrung nach der Abarbeitung des IF - 
+   bzw. des ELSE - Zweigs fortgesetzt wird. 
+   sys wird mit IF bzw. ELSE ausbalanciert.
+
+THRU   u1 u2 --        M,   
+   Lade die aufeinanderfolgenden Bloecke von u1 bis u2.
+
+TIB          -- adr     "t-i-b"
+   Adresse des Texteingabepuffers, darin Speicherung der Zeichen 
+   des Eingabestroms vom aktuellen Geraet.
+
+TOS          -- adr
+   User-Variable, die bei Taskumschaltung den TOS des jeweiligen 
+   Task zwischenspeichert.
+
+TRIM    adr voc-adr --   
+   Vok.: HIDDEN
+   Stutzt die  4  Hash-Faeden eines Vocabulars  so,  dasz  sie 
+   kleiner als adr sind.
+
+TRUE         -- n   
+   Ist eine Konstante und liefert den Wert n=-1 (0FFFFH).
+
+TUCK   w1 w2 -- w2 w1 w2 
+   Verdoppelt  den letzten Stackeintrag und bringt  diesen  Wert 
+   auf die 3. Stackposition.    
+
+TYPE  adr +n --     M,   
+   +n Zeichen werden fortlaufend ab adr aus dem Speicher gelesen 
+   und ausgegeben, falls +n > 0. 
+
+U.         u --     M, "u-dot"
+   Formatfreie Ausgabe von u als vorzeichenlose Zahl.
+
+U.R     u +n --     M, "u-dot-r"
+   Konvertierung  von  u bezueglich der  aktuellen  Zahlenbasis, 
+   rechtsbuendige  Ausgabe in einem gedachten Feld der Weite +n. 
+   Fehler:  Feldweite reicht nicht zur Darstellung aller Zeichen 
+   aus. Vgl. "Zahlenkonvertierung"
+
+U2/       u1 -- u2 
+   u2 ist das Ergebnis der arithmetischen Rechtsverschiebung von 
+   u1 um 1 Bit.  In die frei werdende Bitposition wird eine Null 
+   geschoben.
+
+U<     u1 u2 -- flag   "u-less"
+   Das flag ist wahr, falls u1 < u2.
+
+UM*    u1 u2 -- ud     "u-star"
+   ud ist das vorzeichenlose Produkt  u1 * u2.   
+
+UM/MOD ud u1 -- u2 u3 "u-m-divide-mod"
+   u2  ist  der  Rest  und u3 der  Quotient  nach  der  Division 
+   u1/u2.  Fehler:  Division durch 0 oder Quotient  ausserhalb
+    0...65 535 . Vgl. "Division mit Rundung"
+
+UNTIL   flag --      C, I,   
+         sys --    (comp.Mod.)
+   Markiert  das  Ende  in  einer  Schleife  BEGIN...flag UNTIL.
+   Schleifenabbruch, falls flag wahr ist, sonst Fortsetzung der 
+   Abarbeitung  hinter BEGIN.  sys wird mit BEGIN ausbalanciert. 
+   Vgl. BEGIN
+
+UP         -- adr "user-pointer"
+   Ist eine System-Variable.  Enthaelt die Adresse des aktuellen 
+   USER-Areas.
+
+UPD        -- adr  Vok.: HIDDEN   
+   Variable, die anzeigt, ob der Block im Buffer UPDATE ist.
+
+UPDATE     --                    
+   Kennzeichnung des aktuell gueltigen Blockpuffers als aktuali-
+   siert.  Vor Aenderung des Blockinhalts (Beschreiben mit einem 
+   anderen  Blockinhalt  oder Ausfuehrung von FLUSH  oder  SAVE-
+   BUFFERS)  erfolgt  automatisches Rueckschreiben  zur RAM-Disk.
+
+USER         --       Voc, M
+   Vokabular zur Definition von USER-Variablen und -Vektoren. Die 
+   Definition dieser Worte weicht vom bisher bekannten etwas  ab. 
+   Die  Position  im USER-Area wird vom System selbst  verwaltet. 
+   Die Definition einer Variablen lautet dann:
+      USER VARIABLE name
+   Die eines USER-Vektors:
+      USER DEFER name
+
+VARIABLE     --         M,   
+   Definitionswort fuer 16-Bit-Variablen: VARIABLE Wortname. Bei 
+   Ausfuehrung von Wortname wird die Parameterfeldadresse auf dem 
+   Stack abgelegt.
+
+VARIABLE     --     
+   Voc.: USER
+   Definiert eine  USER-Variable und ist somit  aequivalent  zum    
+   Befehl USER in FIG.
+
+VOCABULARY   --         M,   
+   Definitionswort fuer Woerterbuecher: VOCABULARY Wortname. 
+   Eintragen  von  Wortname ins Woerterbuch  zur  Spezifizierung 
+   einer neuen geordneten Liste von Wortdefinitionen.  Die  Aus-
+   fuehrung  von  Wortname ersetzt das erste Woerterbuch in  der 
+   Suchreihenfolge durch Wortname.  Wenn Wortname  Compilations-
+   woerterbuch ist, so werden neue Definitionen an die Liste von 
+   Wortname angefuegt. 
+   Vgl. DEFINITIONS 
+
+VOC-LINK     -- adr  
+   Ist eine Systemvariable,  welche die Adresse eines Feldes  in       
+   der  Definition des zuletzt erzeugten Woerterbuches enthaelt.    
+   Alle Woerterbuchnamen sind ueber diese Felder  verkettet,  um 
+   eine  Steuerung  von FORGET ueber mehrere moegliche  Woerter-
+   buecher zu ermoeglichen.
+
+VOCS         --     Vok.: ROOT
+   zeigt alle definierten Vokabulare.
+
+WARM         --                
+   Die Warmstartprozedur liefert eine Systemmeldung und fuehrt 
+   ABORT aus.
+
+WARNING      -- addr
+   Systemvariable. Wenn ihr Inhalt <>0 ist, wird bei Redefini-
+   tion eines Wortes eine entsprechende Warnung ausgegeben.
+
+WHERE  off n --      Vec
+   Lokalisiert  Screen  n und Position des  Wortes,  dass  einen 
+   Fehler verursachte.
+
+WIDTH        -- adr    U
+   Ist  eine Systemvariable,  welche die Hoechstzahl von Zeichen    
+   enthaelt,  die  bei der Uebersetzung eines  Definitionsnamens 
+   abgespeichert werden.  Der Wert muss zwischen 1 und 31 liegen 
+   und wird mit 31 vorbesetzt.  
+
+WHILE   flag --      C, I,   
+     sys1 -- sys2    (comp.Mod.)
+   In  BEGIN...flag WHILE...REPEAT   wird die  Abarbeitung  fuer 
+   flag = wahr zwischen WHILE und REPEAT fortgesetzt, anschlies-
+   send Ruecksprung zur Stelle hinter BEGIN .  Bei flag = falsch 
+   Fortsetzung  der  Abarbeitung hinter REPEAT.  
+   sys1 wird mit BEGIN, sys2 mit REPEAT ausbalanciert.
+
+WORD    char -- adr      M,   
+   Erzeugen  einer  Teilzeichenkette  (Token) als  FORTH-Zeichen-
+   kette aus dem aktuellen Eingabestrom.  Abschluss  durch  char
+   oder  bei Erschoepfung des Eingabestroms. Fuehrende Trennzei-
+   chen char werden ignoriert. Die Laenge des Token wird auf
+adr, die Zeichenkette ab adr+1 als Bytefolge mit nachfolgendem 
+   Leerzeichen (zaehlt nicht zur Laenge) abgespeichert.  Laenge 
+   der  Zeichenkette: maximal 255 Byte, sonst unbestimmt. Bei 
+   erschoepftem Eingabestrom zum Zeitpunkt des Aufrufs von WORD 
+   Generierung einer Zeichenkette der Laenge 0 . Wenn char nicht 
+   gefunden wird, ist der Inhalt von >IN die Laenge des Eingabe-
+   stroms, sonst wird >IN so korrigiert, dass der Offset hinter 
+   die Teilzeichenkette zeigt.  #TIB wird nicht veraendert. Die
+   generierte FORTH-Zeichenkette wird nach HERE transportiert
+   und ihre Adresse uebergeben. 
+
+WORDS        --         M
+   Ausgabe aller Wortnamen des ersten Woerterbuchs der aktuellen 
+   Suchreihenfolge.
+
+WORDS        --   
+   Vok.: ROOT
+   Redefinition. s. Vokabular FORTH.
+
+WRITE  adr n --   Vok.: I/O
+   schreibt Block n von Adresse adr in die  RAM-Disk.  Standart-
+   Voreinstellung fuer WRITE-BLOCK. 
+
+WRITE-BLOCK   adr n --    Vec
+   schreibt  Block n,  welcher auf Adresse adr steht  zur  (RAM)
+   Disk. 
+
+XOR  16b1 16b2 -- 16b3    "x-or"
+   16b3 ist das Ergebnis der bitweisen Exklusiv-ODER-Verknuep-
+   fung von 16b1 mit 16b2. 
+
+[         --   I, "left-bracket"
+   Einschalten des ausfuehrenden Modus, nachfolgend Interpreta-
+   tion des Textes aus dem  Eingabestrom.  Typische  Anwendung:
+   Vgl. LITERAL und  ]
+[']    -- adr  C, I, M, "bracket-tick"
+   Mit ['] Wortname wird die Compilationsadresse von Wortname in
+   eine  Doppelpunktdefinition compiliert.  Bei deren  spaeterer 
+   Ausfuehrung wird adr auf dem Stack abgelegt. Fehler: Wortname 
+   kann  nicht in der aktuellen Suchreihenfolge gefunden werden. 
+   Vgl. LITERAL
+
+[COMPILE]    --    C, I, M,    "bracket-compile"
+   In [COMPILE] Wortname wird das IMMEDIATE-Wort Wortname compi-
+  liert und nicht ausgefuehrt. 
+
+\            --    "skip-line"
+   Auf \ folgender Kommentar in der Screenzeile  wird  bei  der 
+   interpretativen Abarbeitung des Screens ignoriert.
+
+\S           --    "skip-screen"
+   Beendet die Abarbeitung des Screens.
+
+]            --  "right-bracket"
+   Einschalten des compilierenden Modus mit nachfolgender Compi-
+   lation des Textes aus dem Eingabestrom. In diesem Wort steckt
+   die Hauptcompilerschleife (anders als in fig). s. RUN INTER-
+   PRET
+

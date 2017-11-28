@@ -1,0 +1,302 @@
+
+CREATE         --    M,   
+   Definitionswort.  CREATE  Wortname richtet Woerterbucheintrag 
+   ein. Die  darauf folgende freie Adresse im Speicher ist  die 
+   Parameterfeldadresse.  Bei Ausfuehrung von Wortname Uebergabe 
+   dieser Adresse auf dem Datenstack, d.h. keine Reservierung
+   von Speicherplatz im Parameterfeld.
+
+CREATE         --   Vok.: USER
+   Definiert ein Wort,  welches die Adresse des naechsten freien 
+   Eintrages im USER-Area uebergibt. s. USER
+
+CRESET            w adr -- 
+   Logische Verknuepfung des Inhaltes von adr.  mit der Maske w 
+   nach der Gleichung: <adr>:= /w AND <adr>
+
+CRLF          --  I/O  
+   Vok.: I/O
+   gibt Hex 0D und 0A aus. Incrementiert den Zeilenzaehler #LINE 
+   und loescht den Spaltenzaehler  #OUT.  Standartvoreinstellung 
+   fuer CR.
+
+CSET     w adr -- 
+   Logische  Verknuepfung des Inhaltes von adr mit der  Maske  w 
+   nach der Gleichung:   <adr>:=  w OR <adr>
+
+CSP            -- adr
+   Ist  eine System-Variable.  Sie dient zur Sicherung des  beim 
+   Aufruf  gerade  aktuellen Stackpointers.  Der Inhalt von  adr 
+   wird am Ende des Compilationsvorganges fuer einen  Fehlertest 
+   benoetigt.
+
+CTOGGLE  w adr -- 
+   Logische Verknuepfung des Inhaltes von adr mit der Maske w 
+   nach der Gleichung:
+      <adr>:=  w XOR <adr>
+
+CURRENT        -- adr   U,   
+   Adresse der Variablen, die das Compilationswoerterbuch
+   spezifiziert.
+
+D+     wd1 wd2 -- wd3  "d-plus"
+   wd3 ist die arithmetische Summe wd1 + wd2.
+
+D-     wd1 wd2 -- wd3  "d-minus"
+   wd3 ist das Ergebnis der Subtraktion wd1 - wd2 .
+
+D.           d --   M, "d-dot"
+   Formatfreie Ausgabe des Betrags von d mit vorangestelltem '-' 
+   fuer negatives d. 
+
+D.R       d +n --   M, "d-dot-r"
+   Konvertierung  von  d bezueglich der  aktuellen  Zahlenbasis, 
+   rechtsbuendige  Ausgabe in einem gedachten Feld der Weite  +n 
+   mit vorangestelltem '-' fuer negatives d.  
+
+D0=  wd -- flag "d-zero-equals"
+   flag ist wahr, falls wd = 0.
+
+D2/   d1 -- d2   "d-two-divide"
+   d2 ist das Ergebnis der arithmetischen Rechtsverschiebung von 
+   d1  um  1 Bit.  Das Vorzeichen wird mit verschoben und  nicht 
+   veraendert.
+
+D<  wd1 wd2 -- flag  "d-less"
+   flag ist wahr, falls d1 < d2. Vgl. <
+
+D=  wd1 wd2 -- flag  "d-equal"
+   Das Flag flag ist wahr, falls wd1 = wd2.
+
+D>    d1 d2 -- flag  "d-greater"
+   Das Flag ist true, falls d1 > d2 (vgl. >).
+
+DABS      d -- ud    "d-absolute"
+   ud ist der Betrag von d . Fuer d = -2 147 483 648 ist d = ud. 
+   Vgl. "Zweierkomplementarithmetik"
+
+DECIMAL     --                    
+   Zahlenbasis  fuer Eingabe-/Ausgabekonvertierungen auf 10 set-
+   zen
+
+DEFER       --
+   Definiert  einen Woerterbucheintrag fuer spaetere  Verwendung 
+   als Vektor.
+   
+DEFER       --    
+   Vok.: USER
+   Definiert  einen  Ausfuehrungsvektor,  der  fuer  jedes  Task 
+   unterschiedlich sein kann. s. USER
+
+DEFINED     -- adr flag
+   Sucht nach dem naechsten Wort im Eingabestrom:
+    flag:=-1   - es existiert und adr:=cfa und normales Wort
+    flag:= 1   - es existiert und adr:=cfa und IMMEDIATE-Wort
+    flag:= 0   - es existiert nicht  und adr:=HERE.
+
+DEFINITIONS    --                    
+   Zum  Compilationswoerterbuch wird das erste  Woerterbuch  der 
+   Suchreihenfolge.
+
+DEFINITIONS    --   
+   Vok.: ROOT
+   Redefinition s. Vokabular FORTH
+
+DEPTH          -- +n                 
+   +n  ist die Anzahl der Datenstackeintraege vor Uebergabe  von 
+   +n.
+
+DIGIT    n1 n2 -- n3 flag
+   Es  wird  ein Flag zurueckgegeben,  welches anzeigt,  ob  das 
+   Zeichen eine gueltige Dezimalstelle in gegebener  Zahlenbasis 
+   n2  ist oder nicht.  Wenn es ein gueltiges Zeichen ist,  wird 
+   ein  konvertierter Wert n3 und das Flag wahr  zurueckgegeben. 
+   Andernfalls das Zeichen n3=n1 und das Flag falsch.
+
+DLITERAL      d --         
+   Compilation  einer 32-Bit-Zahl in die naechste freie Woerter-
+   buchposition.
+
+DMAX      d1 d2 -- d  "d-max"
+   d3 ist die groessere der beiden Zahlen d1 und d2.
+
+DMIN      d1 d2 -- d3  "d-min"
+   d3 ist die kleinere der beiden Zahlen d1 und d2.
+
+DNEGATE      d1 -- d2  "d-negate"
+   d2 ist das Zweierkomplement von d1.
+
+DO   w1 w2 --    C, I,   
+           -- sys    (comp.Mod.)
+   Anwendung in DO ...  LOOP oder DO ... +LOOP. Eroeffnung einer 
+   Schleife,  die    im Laufbereich des Indexes zwischen w2  und 
+   w1 (Limit) abgearbeitet wird, und zwar wenigstens einmal. sys 
+   wird mit LOOP bzw. +LOOP ausbalanciert.
+
+DOES>      -- adr   C, I,   
+           --    (comp.Mod.)
+   Festlegeung  der Laufzeitaktivitaet  eines  Definitionswortes 
+   mit : Wortnamex ... <create> ... DOES> ... ; und anschl.
+   Wortnamex  Wortname.  <create> ist CREATE oder ein beliebiges 
+   anderes Wort,  welches CREATE ausfuehrt.  DOES> schliesst den 
+   Teil  fuer die Spezifikation der  Compilationsaktivitaet  des 
+   Definitionswortes  ab  und eroeffnet den Teil fuer  die 
+   Ausfuehrungsaktivitaet.  Zur  Laufzeit wird die   Parameterfeld
+   adresse  von Wortname auf dem Datenstack eingetragen und 
+   anschliessend die Sequenz zwischen DOES> und ; abgearbeitet. 
+
+DOUBLE?    -- f
+   f  ist TRUE,  wenn die von NUMBER konvertierte Zahl  doppelte 
+   Genauigkeit hatte; sonst FALSE
+
+DP         -- adr    U 
+   Ist  eine Systemvariable (Woerterbuchzeiger),  welche in  adr 
+   die  Adresse  des naechsten freien Speicherzelle am Ende  des 
+   Woerterbuches enthaelt. Der Wert von DP kann mit HERE gelesen 
+   und mit ALLOT geaendert werden.
+
+DPL        -- adr    U
+   Ist eine Variable,  die die Anzahl der Stellen nach dem
+   Dezimalpunkt bei Eingabekonvertierungen enthaelt.
+
+DROP   16b --                    
+   16b wird vom Stack entnommen.
+
+DU<  ud1 ud2 -- flag "d-u-less"
+   Das Flag flag ist wahr,  falls ud1 < ud2.  Beide Zahlen  sind 
+   vorzeichenlos.
+DU       adr -- adr +40H
+   Ausgabe von 40H Bytes ab Adresse adr als Hexdump.  Die
+   Folgeadresse  wird  auf dem Stck hinterlassen und kann fuer  einen 
+   weiteren Aufruf von DU verwendet werden.
+
+DUMP   adr u --    M
+   Ausgabe von u Bytes,  die im Speicher ab adr stehen. Vor jeder 
+   Zeile wird die Anfangsadresse ausgegeben. 
+
+DUP      16b -- 16b 16b  "dup"
+   Dupliziert 16b.
+
+ELSE      --    C, I,   
+     sys1 -- sys2    (comp.Mod.)
+   ELSE  wird  innerhalb IF...ELSE...THEN hinter  dem  IF- Zweig 
+   abgearbeitet,  Ausfuehrung  setzt sich bis hinter THEN  fort. 
+   sys1 wird mit IF, sys2 mit THEN ausbalanciert. 
+   Vgl. IF, THEN
+
+EMIT    16b --     M, Vec
+   Ausgabe  der  niederwertigen 8 Bit auf dem aktuellen 
+   Ausgabegeraet. #OUT wird incrementiert.
+
+EMPTY       --
+   Letztes Wort im Kernvokabular. Bei Aufruf werden alle spaeter 
+   definierten Worte geloescht.
+
+EMPTY-BUFFERS   --   M, "empty-buffers"
+   Freigabe  aller  Blockpuffer.  Aktualisierte  Bloecke  werden 
+   nicht zum Massenspeicher zurueckgeschrieben. Vgl. BLOCK
+
+END-CODE        --   
+   Vok.: ASSEMBLER
+   Schliesst  eine Primitivdefinition ab und macht das vor  CODE 
+   gueltige Vokabular wieder zum aktullen CONTEXT-Vokabular. 
+   s. ASSEMBLER
+
+ENTRY       -- adr   U
+   eine  USER-Variable mit spezieller Bedeutung  fuer  Multitask. 
+   Hier wird ein Stueck MC eingetragen, welches bestimmt, ob das 
+   Task aktiv ist oder nicht.
+
+EOD         -- adr  
+   Vok.: I/O
+   Uebergibt die Adresse im Boot-Bereich, auf der die erste von 
+   der RAM-Disk nicht mehr benutztbare Adresse steht.
+
+ERASE  adr u --                    
+   u Speicherbytes ab adr werden auf 0 gesetzt, falls u > 0 
+
+EXECUTE    adr --                    
+   Ausfuehrung der mit adr bezeichneten Wortdefinition. 
+
+EXIT         --     C,   
+   Rueckkehr  zu einer aufrufenden Doppelpunktdefinition  hinter 
+   die  Aufrufstelle aus der aufgerufenen  Doppelpunktdefinition 
+   heraus;  ( entspricht ;S in fig)  in Schleifen verboten!  
+
+EXPECT  adr +n --    M, Vec
+   Fuer +n > 0 Eingabe und byteweises Abspeichern von Zeichen ab
+   adr in  Richtung hoeherer Adressen, bis der Steuerkode der
+   ENTER-Taste ÄRETÜ erkannt wird oder +n Zeichen  eingegeben
+   sind. Ausgabe (Echo) aller Zeichen (ausser <ret>, statt
+   dessen Ausgabe eines Leerzeichens). Als Korrekturcode
+   sind 08H und 7FH installiert. Siehe (EXPECT). Vgl. SPAN
+
+FALSE          -- n   
+   Ist eine Konstante, welche den Wert n=0 liefert 
+   (false entspricht falsch).
+
+FENCE          -- adr              
+   Ist eine Systemvariable, die eine Adresse enthaelt. Unterhalb 
+   dieser  Adresse wird FORGET nicht ausgefuehrt.  Um unter  die 
+   angegebene Adresse zu gelangen,  muss der Benutzer den Inhalt    
+   von FENCE aendern.
+
+FH            n --   "from-here"
+   Dient  der relativen Adressierung des zu ladenden Screens  von 
+   dem Screen in dem FH steht aus gerechnet. 
+   1  FH  LOAD laedt den naechsten Screen,  2 FH 4  FH  THRU  die 
+   Reihenfolge vom uebernaechsten bis zum 4. folgenden.
+   
+FILL   adr u 8b --                    
+   u Speicherbytes ab adr werden mit 8b gefuellt, falls u > 0 .
+
+FIND       adr1 -- adr2 flag          
+   Suche  des  Wortes,  das  in der FORTH-Zeichenkette  ab  adr1 
+   enthalten  ist,  in der aktuellen Suchreihenfolge.  Kann  das 
+   Wort gefunden werden,  so ist adr2 dessen Compilationsadresse 
+   und n = 1 (IMMEDIATE-Wort) oder n = -1.  Wurde das Wort nicht 
+   gefunden, so ist adr2 = adr1 und n = 0 .
+
+FIRST           -- adr               
+   Bringt die Adresse des ersten Blockpuffers auf den Datenstack. 
+
+FLUSH           --   M,   
+   Ausfuehrung von SAVE-BUFFERS und EMPTY-BUFFERS
+
+FORGET          --   M,   
+   Mit  FORGET  Wortname werden Wortname und alle  nachfolgenden 
+   Eintraege  (unabhaengig von ihrer Woerterbuchzugehoerigkeit)
+   entfernt,  falls Wortname im Compilationswoerterbuch
+   gefunden werden kann. Fehler: Name wird nicht gefunden bzw.
+   Compilationswoerterbuch soll entfernt werden. s. (FORGET) 
+
+FORTH           --                    
+   Name des Basis- (Primaer-) Woerterbuchs.  Bei Ausfuehrung
+   von  FORTH  wird dieses zum ersten Woerterbuch in der 
+   Suchreihenfolge. Bei Systeminitialisierung ist FORTH das
+   erste Woerterbuch und gleichzeitig Compilationswoerterbuch. 
+   Alle Definitionen  werden  darin eingetragen,  bis ein
+   anderes Compilationswoerterbuch eingerichtet wird. 
+   Vgl. VOCABULARY 
+FORTH           --   
+   Vok.: ROOT
+   Redefinition  von  FORTH  um  vom  ROOT-Vocabular  auf  
+   FORTH  umschalten zu koennen.
+
+FORTH-83        --                    
+   Sicherung der Verfuegbarkeit eines FORTH-83-Systems,
+   anderenfalls Fehler!
+
+GET             --
+   Laedt eine Screendatei vom Magnetband in die RAM-Disk.
+   Beachte je nach Rechnertyp installationsabhaengige
+   Besonderheiten.  
+HASH  adr1 adr2 -- +n
+   Es ist eine Zeichenkettenadresse (adr1) und ein Zeiger(adr2)
+   zu  einem  Woerterbuch  gegeben.  Als Resultat  erscheint     der  aktuelle  Faden (+n).  Es wird das erste Zeichen der 
+   Zeichenkette genutzt, um den Faden zu bestimmen. 
+
+HEADER          --
+   Teilfunktion von CREATE. Baut einen Namensheader auf.
+
+

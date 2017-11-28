@@ -1,0 +1,277 @@
+
++LOOP    n --  C, I, "plus-loop"
+                    sys --    (comp.Mod.)
+   n  wird  zum Schleifenindex  addiert.  Schleifenabbruch  (mit 
+   Beseitigung der Schleifenparameter auf dem Returnstack), wenn
+   Index  die Grenze zwischen  Limit - 1 und Limit  ueberschrei-
+   tet,  sonst Fortsetzung der Schleife hinter DO.  sys wird mit
+   DO ausbalanciert. Vgl. DO
+
+,      16b --         "comma"
+   Reserviere Platz fuer 16 Bit,  dann speichere 16b in  Adresse 
+   HERE 2-.
+
+,"         --
+   Vok.: HIDDEN
+   Fuegt den folgenden Text bis " ins Woerterbuch ein.
+
+-    w1 w2 -- w3      "minus"
+   w3 ist das Subtraktionsergebnis w1 - w2.
+
+-->      --   I, M, "next-block"
+   Fortsetzung  der Interpretation auf naechst-folgendem  Block. 
+   Verwendung  in Doppelpuntdefinitionen,  die eine  Blockgrenze 
+   ueberschreiten.
+
+-ROT 16b1 16b2 16b3 -- 16b3 16b1 16b2  "minus-rote" 
+   Die  3  obersten Stackeintraege werden rotiert,  der  Oberste 
+   gelangt an die 3. Stackposition. 
+
+-TRAILING  adr +n1 -- adr +n2  "dash-trailing"
+   Der  Zeichenzaehler der ab adr stehenden Zeichenkette wird so 
+   korrigiert,  dass nachfolgende Leerzeichen unterdrueckt  wer-
+   den.  +n2  = 0,  falls +n1 = 0 oder wenn die Zeichenkette nur 
+   Leerzeichen enthaelt.
+
+.      n --   M,  "dot"
+   Formatfreie und vorzeichenbehaftete Ausgabe von n.
+
+."       --   C, I, "dot-quote"
+   Zeichenkette ccc in ."ccc" wird compiliert und bei spaeterer 
+   Ausfuehrung ausgegeben.  Abschluss durch ".  Das  Leerzeichen 
+   nach ." gehoert nicht zum Text.
+
+.(       --   I, M,  "dot-paren"
+   Zeichenkette ccc in .( ccc) wird bis ) ausgegeben.  Das Leer-
+   zeichen nach .( gehoert nicht zum Text.
+
+.2     n --
+   Druckt n zweistellig ohne Vorzeichen.
+  
+.ID  adr --      "dot-id"
+   Gibt den Definitionsnamen der Namensfeldadresse adr  aus.
+
+.R  n +n --   M, "dot-r"
+   Konvertierung  von  n bezueglich der  aktuellen  Zahlenbasis, 
+   rechtsbuendige  Ausgabe in einem gedachten Feld der Weite  +n 
+   mit vorangestelltem '-' fuer negatives n. 
+
+.S       --      "dot-s"
+   Anzeige des Inhaltes des Datenstacks (zerstoerungsfrei).
+
+.VERSION    --
+   Druckt Versionsbezeichnung des Systems aus.
+ 
+/     n1 n2 -- n3    "divide"
+   n3  ist der gerundete Wert des Quotienten (n1 / n2).  Fehler: 
+   Division durch 0 oder Quotient ausserhalb des Bereichs -32768 
+   ... 32767. 
+   Vgl "Division mit Rundung" in Anlage Definitionen
+
+/LINE       -- n      "per-line"
+   Konstante  haelt  die  Anzahl der  je  Dumpzeile  ausgegebenen 
+   Bytes.    Damit    ist   eine leichte Anpassung an das
+   Bildschirmformat moeglich. s. DUMP
+
+
+/MOD  n1 n2 -- n3 n4  "divide-mod"
+   Funktion wie bei /,  jedoch  zusaetzlich Uebergabe des  Divi-
+   sionsrestes  n4 (gleiches Vorzeichen wie n3 bzw.  gleich  0). 
+
+
+/STRING   adr1 n1 n3 -- adr2 n2   "up-string" 
+   Liefert  Adresse  adr2 und die Laenge n2 des noch  zu  durch-   
+   suchenden  Eingabestromes  (adr1  Quelladresse,  n1  maximale    
+   Laenge, n3 schon durchsuchte Zeichen).  
+
+0        -- n
+   Ist eine System-Konstante mit dem Wert n=0.
+
+0<     n -- flag  "zero-less"
+   Flag ist wahr, falls n negativ ist, d.h. n < 0.
+
+0=     w -- flag "zero-equals"
+   Flag ist wahr, falls w = 0. 
+
+0>     n -- flag "zero-greater"
+   Flag ist wahr, falls n nicht negativ ist, d.h.  n > 0.
+
+
+1         -- n
+   Ist eine System-Konstante mit dem Wert n=1.
+
+1+     w1 -- w2   "one-plus"
+   w2  ist  das Ergebnis der Addition  w1+1  entsprechend  der 
+   Operation +.
+
+
+1-     w1 -- w2   "one-minus"
+   w2  ist das Ergebnis der Subtraktion w1 - 1 entsprechend  der 
+   Operation -.
+
+2         -- n
+   Ist eine System-Konstante mit dem Wert n=2.
+
+2!  32b adr --    "two-store"
+   32b wird ab adr abgespeichert. Vgl. "Zahlen"
+
+2+     w1 -- w2   "two-plus"
+   w2  ist  das  Ergebnis der Addition w1 + 2  entsprechend  der 
+   Operation +.
+
+2-     w1 -- w2   "two-minus"
+   w2  ist das Ergebnis der Subtraktion w1 - 2 entsprechend  der 
+   Operation -.
+
+2*     w1 -- w2   "two-times"
+   w2  ist das Ergebnis der arithmetischen Linksverschiebung von 
+   w1  um  1 Bit.  In die frei werdende Bitposition wird  0 
+ge-    schrieben.
+
+2/     n1 -- n2   "two-divide"
+   n2 ist das Ergebnis der arithmetischen Rechtsverschiebung von 
+   n1  um  1 Bit.  Das Vorzeichen wird mit verschoben und  nicht 
+   veraendert.
+
+2@    adr -- 32b  "two-at"
+   32b ist das Bitmuster ab adr. 
+
+2CONSTANT 32b --   M, "two-constant"
+   Definitionswort  fuer  32b  Konstanten.  Bei  Ausfuehrung  von 
+   Wortname wird 32b auf dem Stack abgelegt.
+
+2DROP  32b --     "two-drop"
+   32b wird vom Stack entfernt.
+
+2DUP   32b -- 32b 32b  "two-dup"
+   Duplizieren von 32b
+
+2OVER  32b1 32b2 -- 32b1 32b2 32b3  "two-over"
+   32b3 ist eine Kopie von 32b1.
+
+2ROT   32b1 32b2 32b3 -- 32b2 32b3 32b1 "two-rote"
+   Die 3 obersten 32-Bit-Eintraege auf dem Stack werden rotiert, 
+   der drittoberste Eintrag gelangt an die Spitze.   
+
+2SWAP  32b1 32b2 -- 32b2 32b1      "two-swap"
+   Die  2  obersten 32-Bit-Eintraege auf dem Stack  werden  ver-
+   tauscht.
+
+2VARIABLE  --  M, "two-variable"
+   Definitionswort  fuer 32-Bit-Variablen:  2VARIABLE Wortname  . 
+   Zuweisung  von  4 Byte im Parameterfeld zur Abspeicherung  des 
+   Variableninhalts.   Bei  Ausfuehrung  von  Wortname  wird  die 
+   Parameterfeldadresse auf dem Stack abgelegt.
+
+3        -- n
+   Ist ein System-Konstante mit dem Wert n=3.
+
+
+:        --  M, "colon"
+   Definitionswort,  mit dem durch :Wortname...; ein  Eintrag 
+   (Doppelpunktdefinition)  im Compilationswoerterbuch  erfolgt; 
+   anschl.  Einschalten  des compilierenden Modus (nachfolgender 
+   Text  wird  compiliert).  Das Wort Wortname  kann  erst  nach 
+   Abschluss  der  Definition  mit ; oder ;CODE  im  Woerterbuch 
+   gefunden werden.
+
+;        --  C, I, "semi-colon"
+                        --    (comp.Mod.)
+   Beendigung der Compilation einer Doppelpunktdefinition Wortname 
+   ,  Einschalten des ausfuehrenden Modus,  Compilation von EXIT . 
+   Wortname kann nun im Woerterbuch gefunden werden. Vgl EXIT :
+
+;CODE    --  C, I, "semi-colon-code"
+                        --         (comp.Mod.)
+   Wird in folgender Form verwendet: 
+   Wortnamex...<create>...;CODE ... END-CODE
+   Beendet die Compilation,  schliesst das Definitionswort Wort-
+   namex ab und fuehrt ASSEMBLER aus.  Nachfolgende Zeichenfolge 
+   wird  in Maschinencode uebersetzt.  Bei Ausfuehrung von Wort-
+   namex Wortname wird Wortname definiert.  Dieses Wort enthaelt 
+   als Ausfuehrungsadresse die Adresse der Kodesequenz,  die auf 
+   ;CODE in Wortnamex folgt,  so dass spaeter dieser  Maschinen-
+   kode  ausgefuehrt wird.  
+
+;USES    --  I,C,Def,
+   Wird folgendermaszen verwendet:
+   : name ... <create> ... ;USES label ,
+   Beendet  die  Compilation.  Bei  Ausfuehrung des  mit  <name>
+   angelegten  Wortes  wird  die  Codesequenz  auf  der  Adresse 
+   <label> zur Ausfuehrung gebracht. s. ;CODE
+
+<  n1 n2 -- flag  "less"
+   flag  ist wahr fuer n1 < n2.  -32768 32767 < und  -32768 0  < 
+   muss jeweils wahr ergeben.
+
+<#       --       "less-sharp"
+   Initialisierung der Ausgabekonvertierung einer 32-Bit-Zahl in 
+   ASCII-Darstellung mit # #> #S <# HOLD SIGN. 
+
+<MARK	 -- adr   C, "backward-mark"
+   Verwendung  am Zielpunkt eines Rueckwaertssprungs.  adr  wird 
+   typisch  nur  von <RESOLVE fuer die Compilation  der  Sprung-
+   adresse verwendet.   
+
+<RESOLVE adr --  C, "backward-
+                                                        resolve"
+
+   Verwendung  am Ausgangspunkt eines Rueckwaertssprungs  hinter 
+   BRANCH  oder ?BRANCH.  Compilation einer Sprungadresse  unter 
+   Verwendung der Zieladresse adr.
+
+=      w1 w2 -- flag "equals"
+   Flag ist wahr fuer w1 = w2.
+
+>      w1 w2 -- flag "greater-than"
+   Flag  ist wahr fuer n1 > n2 .  -32768 32767 > und -32768 0  > 
+   muss jeweils falsch ergeben.
+
+>BODY    cfa -- pfa  "to-body"
+   die  Parameterfeldadresse des Wortes wird aus dessen 
+   Codefeldadresse ermittelt.
+
+>DOES        -- n
+   Ist   eine  System-Konstante.   Entspricht  der  Adresse   der 
+   Laufzeit-Routine von DOES>.
+
+>IN          -- adr  U,  "to-in"
+   Adresse  einer Variablen,  die den aktuellen Zeichenoffset im 
+   Eingabestrom enthaelt. Vgl WORD
+
+>IS     adr1 -- adr2   "to-is"
+   Teilt einem Kode-Feld (adr1)  ein Daten-Feld (adr2) zu.  Wenn 
+   sich  das Wort im Nutzerbereich der Worte  (words)  befindet, 
+   muss   die  Datenadresse (adr2) relativ  zum  CURRENT-Nutzer-
+   Zeiger  berechnet  werden.  Andernfalls ist adr1  sofort  das 
+   Parameterfeld.
+
+>LINK    cfa -- lfa   "to-link"
+   Ausgehend von der cfa eines Wortes wird die lfa berechnet.
+
+>MARK  -- adr  C, "forward-mark"
+   Verwendung am Ausgangspunkt eines  Vorwaertssprungs, und zwar 
+   meist  hinter BRANCH oder ?BRANCH.  Compiliert Platz im Woer-
+   terbuch  fuer eine Sprungadresse,  die spaeter  von  >RESOLVE 
+   aufgeloest wird.
+
+>NAME    cfa -- nfa  "to-name"
+   Ausgehend von der cfa eines Wortes wird die nfa berechnet.
+
+>NEXT        -- adr
+   Ist  eine Konstante.  adr entspricht der Adresse des  inneren 
+   Interpreters.
+
+>R       16b --    C, "to-r"
+   Transfer von 16b zum Returnstack. Vgl. "Returnstack"
+
+>RESOLVE adr -- C, "forward-resolve"
+   Verwendung  am Zielpunkt eines   Vorwaertssprungs.  Berechnet 
+   die  Adresse eines Sprungs zur aktuellen  Woerterbuchposition 
+   unter  Verwendung  von adr,  traegt diese Adresse in den  von 
+   >MARK freigelassenen Platz ein. . 
+
+>TYPE  adr n -- M
+   s.  TYPE,  jedoch  wird  vor dem Drucken der String nach  PAD 
+   transportiert. Ermoeglicht Multitaskarbeit mit Blockinhalten.
+

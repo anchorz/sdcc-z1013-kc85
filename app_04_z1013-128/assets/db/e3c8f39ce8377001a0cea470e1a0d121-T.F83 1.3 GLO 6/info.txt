@@ -1,0 +1,3 @@
+<kurz src="Glossarium des Z80 FORTH 83 der IG Forth, Teil 6"/>
+<lang><include src="T.F83 1.3 GLO 6.txt"/></lang>
+<requires></requires>

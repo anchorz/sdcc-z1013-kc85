@@ -1,0 +1,323 @@
+
+HELLO        --
+   Aktuell von BOOT benutzt, um die Systemmeldung auszugeben und
+   EMPTY-BUFFERS und  DECIMAL auszufuehren.
+
+HERE         --                    
+   Adresse der naechsten verfuegbaren Adresse im Woerterbuch.
+
+
+HEX          --                    
+   Setzen der Zahlenbasis fuer Ein- / Ausgabekonvertierungen auf 
+   16.
+
+HIDDEN       --      Voc
+   Das Vokabular enthaelt alle  normalerweise   "verborgenen" 
+   Laufzeitroutinen und Teilaktionen, die fuer den Nutzer 
+   meist uninteressant sind und die nur benoetigt werden,  wenn 
+   das Compile-Verhalten erweitert werden soll.
+
+HIDE         --
+   Verbirgt den letzten Worteintrag im Woerterbuch,  so dasz  er 
+   von  (FIND) erst nach Aufruf von REVEAL gefunden werden  kann. 
+   
+HLD          -- adr     U
+   Ist eine Systemvariable, die die Zieladresse  enthaelt,  auf 
+   der das naechste erzeugte ASCII-Zeichen abgespeichert wird.
+
+HOLD    char --                    
+   Einfuegen von char in die Ausgabezeichenkette bei Ausgabekon-
+   vertierungen mit <# ... #>.
+
+I            -- w       C,   
+   w  ist die Kopie des Schleifenindexes in DO...I...LOOP  (bzw. 
+   ... +LOOP).
+
+I/O          --        Voc
+   Woerterbuch welches alle Worte,  die zur  Anpassung  an  die 
+   systemspezifischen Ein- und  Ausgabefunktionen  erforderlich
+   sind, enthaelt. Dazu gehoert auch die Behandlung des  Block-
+   lesens und -schreibens  (in der Grundversion  fuer  RAM-Disk 
+   installiert). Diese  Worte sind meist Zielpunkt fuer  Vektor-
+   aufrufe aus dem Stammvokabular. Nutzerspezifische Aenderungen
+   der Ein- und Ausgabe bzw. Massenspeicherbehandlung  sollten 
+   ebenfalls dementsprechend in diesem Vokabular  untergebracht 
+   werden.
+
+IF    flag --       C, I,   
+           -- sys    (comp.Mod.)
+   Wird in Strukturen der Form:  IF...ELSE...THEN oder IF...THEN 
+   verwendet.  Wenn flag wahr ist,  Ausfuehrung der Woerter zwi-
+   schen  IF  und THEN bzw.  IF und ELSE mit Fortsetzung  hinter 
+   THEN . sys wird mit ELSE bzw. THEN ausbalanciert.
+
+IMMEDIATE    --                    
+   Kennzeichnung  des zuletzt gebildeten Woerterbucheintrags als 
+   ein  Wort,  welches auch im compilierenden Modus  ausgefuehrt 
+   und nicht compiliert wird.
+
+INDEX  u1 u2 --      M
+   Ausgabe  der jeweils ersten Zeile jedes Screens von  Screen 
+   Nr. u1 bis Screen u2 (Titelzeile).
+
+INTERPRET    --      M,   
+   Beginn der Interpretation bei dem Zeichen,  welches mit  >IN 
+   relativ  zum  Blockanfang  des Massenspeicherblocks  mit  der 
+   Nummer, die in BLK steht, indiziert wird.  Wenn die Blocknum-
+   mer 0 ist, erfolgt Interpretation vom Texteingabepuffer. 
+   s. auch (INTERPRET) und (COMPILE).
+
+
+IS           --                        
+   Abhaengig  von STATE wird entweder das  folgende  DEFER-ierte
+   Wort (Vector) sofort gesetzt oder zum spaeteren Setzen compi-
+liert. z.B. ' .S IS STATUS stellt den Vector so um, dasz nach
+   jeder Eingabezeile der Datenstack gedruckt wird; sehr geeig-
+   net fuer Tests.
+
+J            -- w      C,   
+   w  ist eine Kopie des Indexes der naechst aeusseren Schleife. 
+   Nur  in genesteten Schleifen DO...LOOP (bzw.  ...+LOOP )  an-
+   wendbar,  wenn  dazwischen  keine Werte auf  dem  Returnstack 
+   eingetragen werden, z.B. DO...DO...J...LOOP...LOOP .
+
+KEY          -- 16b    M, Vec,   
+   Die  niederwertigen  7 Bit sind die Kodierung  des  naechsten 
+   eingegebenen ASCII-Zeichens. Alle ASCII-Zeichen sind gueltig, 
+   auch CTRL-Zeichen (keine Echofunktion, keine Aufbereitung).
+
+KEY?         -- f      Vec
+   liefert  TRUE,  wenn  eine Tate  betaetigt  wurde.  Entspricht 
+   ?TERMINAL in FIG.
+
+L/SCR        -- u   "lines-per-screen"
+   Ist  eine Konstante.  Der Wert stellt die Zeilenanzahl  eines 
+   Screens dar.
+
+L>NAME   lfa -- nfa  "l-to-name"  
+   Ausgehend von der lfa eines Wortes wird die nfa berechnet.
+
+LABEL        --
+   Wird  zur  Bildung  von  Marken  im  Maschinenkode   genutzt. 
+   Vgl. ASSEMBLER 
+
+LAST         -- adr     U
+   Ist eine Variable, die die Anfangsadresse des letzten (u.U. 
+   unvollstaendigen oder ungueltigen)  Woerterbucheintrags
+   enthaelt.
+
+LEAVE        --       C, I,   
+   Sofortiges Verlassen  einer Schleife DO...LEAVE...LOOP  (bzw. 
+   ...+LOOP) mit Beseitigung  der  Schleifenparameter  auf  dem 
+   Returnstack. Auch in genesteten Strukturierungssequenzen  in 
+   Schleifen anwendbar, auch mehrere LEAVE in einer Schleife. 
+
+LINK         -- adr
+   USER-Variable  die  die  Adresse des naechsten Tasks  in  der 
+   Round-Robin-Schleife enthaelt.
+
+LINK>   lfa  -- cfa  "from-link"
+   Ausgehend von der lfa eines Wortes wird die cfa berechnet.
+
+LITERAL      -- 16b     C, I,   
+         16b --    (comp.Mod.)
+   Typische Anwendung im  compilierenden Modus: [ 16b ] LITERAL. 
+   Compilation von 16b als Literal,  bei der spaeteren  Ausfueh-
+   rung erfolgt eine Eintragung von 16b auf dem Datenstack.
+
+LIST       u --         M,   
+   SCR wird auf u gesetzt, Screen u wird ausgegeben. Vgl. BLOCK
+
+LOAD       u --         M,   
+   Sicherung der aktuellen Parameter des Eingabestroms  >IN  und 
+   BLK ; IN wird auf 0 und BLK auf Screennummer u gesetzt, damit 
+   Interpretation  von Screen u .  Beendigung der  Interpretation 
+   und Rueckkehr zu den alten Werten von >IN und BLK explizit mit 
+   \S oder bei Blockende.
+   Fehler: u = 0 Vgl. >IN BLK BLOCK
+
+LOOP         --         C, I,   
+         sys --    (comp.Mod.)
+   Inkrementieren des Schleifenindexes um  1.  Schleifenabbruch,  
+   wenn  Index  die Grenze zwischen Limit - 1 und  Limit  ueber-
+   schreitet,  sonst  Fortsetzung der Schleife hinter  DO.  
+   sys wird mit DO ausbalanciert.
+
+M/MOD   d n1 -- n2 n3
+   die  doppeltgenaue  Zahl d wird durch n1  dividiert.  n3  ist 
+   Quotient, n2 Rest. ACHTUNG: nicht identisch mit M/MOD in FIG.
+   
+MARK         --
+   MARK  <name>  erzeugt  einen  Woerterbucheintrag  <name>,  bei 
+   dessen  Aufruf  alle nach <name> definierten  Worte  geloescht 
+   werden. s. EMPTY
+  
+MAX    n1 n2 -- n3     "max"
+   n3  ist  die groessere der beiden Zahlen n1 oder n2  entspre-
+   chend der Operation >.
+
+MAX#         -- n
+   Vok.: I/O
+   Anzahl der maximal in der RAM-Disk verfuegbaren Bloecke.
+
+MIN    n1 n2 -- n3      "min"
+   n3 ist die kleinere der beiden Zahlen n1 oder n2 entsprechend 
+   der Operation <.
+
+MOD    n1 n2 -- n3                 
+   n3 ist der Rest der Division n1 / n2 mit gleichem  Vorzeichen 
+   wie  n2  oder gleich 0 .  Fehler:  Divisor = 0 oder n1  /  n2 
+   ausserhalb des Bereichs -32768 ...  +32767.  
+
+MOVE  adr1 adr2 u --               
+   Falls  u > 0,  werden u Bytes ab adr1 in den Bereich ab  adr2 
+   transferiert.
+
+MU/MOD   ud1 u1 -- u2 ud2                
+   Ist  eine mathematische Operation mit gemischten  Zahlentypen    
+   ohne Vorzeichen, die den Rest u2 und den Doppelzahlquotienten    
+   ud2 bei der Division einer Doppelzahl ud1 durch einen Divisor    
+   u1 liefert.       ud1/u1=:ud2 Rest u2 
+
+N>LINK   nfa -- lfa  "n-to-link"
+   Ausgehend von der nfa eines Wortes wird die lfa berechnet.
+
+NAME>    nfa -- cfa  "from-name"
+   Ausgehend von der nfa eines Wortes wird die cfa berechnet.
+
+NEGATE    n1 -- n2                 
+   n2 ist das Zweierkomplement von n1. 
+
+NIP    w1 w2 -- w2 
+   Loescht den zweiten Stackeintrag.
+
+NOOP         --              
+   Ist eine leere Anweisung.
+
+NOT     16b1 -- 16b2               
+   16b2 ist das Einerkomplement von 16b1.
+
+NUMBER?  adr -- d f      Vec
+   Konvertiere  die Zeichenkette,  deren erstes Zeichen auf  adr 
+   steht,  in eine 32-Bit-Zahl entsprechend dem aktuellen Inhalt 
+   von BASE . Standartmaessig auf (INUMBER?) vektorisiert.
+   Flag gibt Auskunft ueber Erfolg der Konvertierung.
+
+OFF      adr -- 
+   Setzt Inhalt von adr  auf FALSE.
+
+OFFSET       -- n      U,   
+   Ist eine Variable,  die den Blockoffset enthaelt, welcher bei 
+   Ausfuehrung  von  BLOCK oder BUFFER zur Blocknummer  auf  dem 
+   Stack addiert wird.
+
+ON       adr -- 
+   Setzt Inhalt von adr  auf TRUE.
+
+ONLY         --
+   Vok.: ROOT
+   Das erste Woerterbuch in der Suchreihenfolge wird durch  ROOT 
+   ersetzt. ROOT wird  gleichzeitig zum  einzigen  durchsuchten
+   Vocabular. Vgl. VOCABULARY und Teilwoerterbuch ROOT
+
+OR  16b1 16b2 -- 16b3               
+   16b3 ist die bitweise ODER-Verknuepfung von 16b1 mit 16b2 .
+
+ORDER        --    Vok.: ROOT
+   zeigt die z. Z. gueltige Vokabular-Suchreihenfolge.
+
+OS         n --    Vok.: I/O
+   Aufruf der Systemroutinen im Installationsbereich.  n ist der 
+   Adressoffset zum Aufruf von CI (Zeicheneingabe).
+
+OVER 16b1 16b2 -- 16b1 16b2 16b3     
+   16b3 ist die Kopie von 16b1 .
+
+P!     n adr --
+   Direkte  Portausgabe,  wobei n der auszugebende Wert und  adr 
+   die Adresse des Ports ist.
+
+P@       adr -- n
+   Direkte Porteingabe, wobei n der einzugebene Wert und adr die 
+   Adresse des Ports ist.
+
+PAD          -- adr                
+   Anfangsadresse eines mindestens 84 Byte langen Textzwischen-
+   puffers.
+
+PARSE    +n1 -- adr +n2 
+   Separiert  im  Eingabestrom eine Zeichenkette,  die  mit  +n1        
+   endet, liefert die Anfangsadresse adr  und die Laenge +n2 der    
+   Zeichenkette. Aktualisiert den >IN-Zeiger.
+
+PARSE-WORD  +n1 -- adr +n2   
+   Separiert im  Eingabestrom eine Zeichenkette,  die  mit  +n1  
+   beginnt, liefert  die Anfangsadresse adr und die Laenge  +n2 
+   der Zeichenkette. Aktualisiert den >IN-Zeiger.
+
+PAUSE        --                           
+   Ist eine leere Anweisung. Sie ist fuer Multitask reserviert,
+   wo sie eine Umschaltung auf das naechste Task bewirkt.
+   
+PICK      +n -- 16b                
+   16b  ist  die Kopie des n-ten Stackeintrags (+n nicht  mitge-
+   rechnet). 0 PICK entspricht DUP , 1 PICK entspricht OVER .
+
+PLACE  adr1 n adr2 -- 
+   Lagert  Zeichenkette  der Laenge n  von  adr1  (Quelladresse)    
+   nach adr2 (Zieladresse) um.   
+
+PREVIOUS     --    
+   Vok.: ROOT
+   entfernt  als  Gegenstueck zu ALSO  das  zuletzt  deklarierte 
+   Woerterbuch aus der Suchreihenfolge.
+
+PRINTING     -- adr    U
+   USER-Variable,  die anzeigt, ob Drucker als Echo zugeschaltet 
+   ist. PRINTING ON bzw. OFF schaltet den Drucker zu bzw. ab.
+
+PRIOR        -- adr
+   Ist eine Variable,  die zur Woerterbuchsuche verwendet  wird. 
+   Zeigt zum letzten Woerterbuch, das durchsucht wurde.
+
+PUT          --
+   Speichert den Inhalt der RAM-Disk auf Magnetband ab. Beachte 
+   rechnerspezifische Unterschiede.
+
+QUERY        --        M,   
+   Empfangen von 80 Zeichen in den TIB und zwar so  lange,  bis 
+   <ret> erkannt wird oder der Textpuffer gefuellt ist. >IN und 
+   BLK werden auf 0 gesetzt, #TIB enthaelt den Wert von SPAN  . 
+   Vgl. EXPECT 
+
+QUIT         --                    
+   Fuehrt folgende Operationen aus: Returnstack saeubern, aus-
+   fuehrenden Modus einschalten, Eingabe ueber das aktuelle Ein-
+   gabegeraet, Beginn der Wortinterpretation. KeineSystemaus-
+   schrift.
+
+R#           -- adr  U "r-sharp"
+   Ist eine Systemvariable,  die den Ort eines Editcursors  oder 
+   anderer mit Files zusammenhaengender Funktionen enthalten
+   kann.
+
+R>           -- 16b    C,   
+   Entnahme von 16b vom Returnstack und Transfer zum  Parameter-
+   stack.
+
+R@           -- 16b    C,   
+   Kopiert  den  obersten Wert des Returnstacks als 16b auf  den 
+   Datenstack.
+
+READ   adr n --      
+   Vok.: I/O
+   liest  aus  der RAM-Disk Block n und schafft ihn auf  Adresse 
+   adr. Standartvoreinstellung fuer READ-BLOCK.
+
+READ-BLOCK   adr n --   Vec
+   liest Block n von (RAM) Disk nach Adresse adr.
+
+RECURSE      --     C, I,   
+   Compiliert die Compilationsadresse der Definition, die gerade 
+   compiliert wird. Ausfuehrung erfolgt spaeter rekursiv.
+

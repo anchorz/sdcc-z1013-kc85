@@ -1,0 +1,3 @@
+<kurz src="Texteditor MicroWORD V1.3 64KByte IG-HC Dresden, ohne begelegte Anleitung"/>
+<lang></lang>
+<requires></requires>
