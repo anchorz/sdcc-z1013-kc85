@@ -1,0 +1,3 @@
+<kurz src="Beschreibung EPROM-Programmier-Modul CCL"/>
+<lang><include src="T.EPROM.DOK.CCL.txt"/></lang>
+<requires></requires>

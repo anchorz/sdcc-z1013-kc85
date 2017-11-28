@@ -148,9 +148,12 @@
 <file aadr="1000" eadr="3094" sadr="0000" typ="b" link="22cba2e4c111cee22fb1a2b5c11a2521-b.ENTERPRISE1/b.ENTERPRISE1.z80" name="ENTERPRISE1     " kurz="ENTERPRISE 87, Echtzeitsimulation" />
 <file aadr="1000" eadr="1a59" sadr="0000" typ="b" link="5e7749d0feaf06372904b5284a9ba773-b.EPROM-Handler_2/b.EPROM-Handler_2.z80" name="EPROM-Handler/2 " kurz="EPROM Programmierung U555, 2708, 2716, 2732, 2764" />
 <file aadr="3000" eadr="3db0" sadr="0000" typ="I" link="6c7dabb62daac80e2914714b4a389be8-I.EPROM-HANDLER2.9/I.EPROM-HANDLER2.9.z80" name="EPROM-HANDLER2.9" kurz="EPROM-Programmierprogramm EPROM-Handler V2.9" />
+<file aadr="3000" eadr="3a8a" sadr="1c00" typ="T" link="bc4831b9a01cd436dfced03bd5f97b2d-T.EPROM.DOK.CCL/T.EPROM.DOK.CCL.z80" name="EPROM.DOK.CCL   " kurz="Beschreibung EPROM-Programmier-Modul CCL" />
 <file aadr="0100" eadr="0210" sadr="0100" typ="C" link="5caa12d2121d31dbcc36b77f1b741a1d-C.EPROMMER-ABGL./C.EPROMMER-ABGL..z80" name="EPROMMER-ABGL.  " kurz="EPROM-Programmer-Abgleich" />
 <file aadr="1900" eadr="20f0" sadr="0000" typ="T" link="7aba6f7e42b9191addf7d15218b288aa-esc_folgen.doc/esc_folgen.doc.z80" name="ESC-Folgen      " kurz="ESC-Sequenzen für S3004" />
 <file aadr="2bc0" eadr="4410" sadr="00e0" typ="B" link="d69e20f35c79b86ff3e194606689d968-B.EXPANSION/B.EXPANSION.z80" name="EXPANSION       " kurz="Interessantes Brettspiel, Go Variante mit mehreren Steinen pro Feld" />
+<file aadr="1900" eadr="3ff1" sadr="0000" typ="T" link="2699563a24bc7faf4274a90cbd903aaa-f83%201_3%20glo%201/f83%201_3%20glo%201.z80" name="F83 1.3 GLO 1   " kurz="identisch [d5908969f59670a418f7886c1a0e25dc]" />
+<file aadr="1900" eadr="3ff1" sadr="0000" typ="T" link="d5908969f59670a418f7886c1a0e25dc-T.F83%201.3%20GLO%201/T.F83%201.3%20GLO%201.z80" name="F83 1.3 GLO 1   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 1" />
 <file aadr="1000" eadr="3fff" sadr="0000" typ="b" link="0766ccc51472b0c721d1e7808456f0aa-b.FAEHRE/b.FAEHRE.z80" name="FAEHRE          " kurz="Landebahn reparieren" />
 <file aadr="1000" eadr="1f42" sadr="0000" typ="b" link="5b72ca749efbdbc16427b54099bc3ecd-b.FAHRTR.1/b.FAHRTR.1.z80" name="FAHRTR.1        " kurz="Autorennen" />
 <file aadr="1000" eadr="1c3e" sadr="0000" typ="b" link="a832337c97ede6874cc3ba2ce95d7ec5-b.FARBMASTER%201/b.FARBMASTER%201.z80" name="FARBMASTER 1    " kurz="Mastermind, Farben raten (in SW!)" />
@@ -280,6 +283,7 @@
 <file aadr="2bc0" eadr="6323" sadr="0000" typ="B" link="0744f2b1e88dc26ec6e8a90605ead7cf-ladder_bas/ladder_bas.z80" name="LADDER          " kurz="BASIC-Version (nur A2!) (verwendet Monitoraufrufe PEEK/POKE)" />
 <file aadr="0200" eadr="671b" sadr="0302" typ="C" link="5a355ea9c2f7a0b84b313adf8f690b9b-C.Ladder/C.Ladder.z80" name="Ladder          " kurz="BASIC-Version (2.02, RB) mit BASIC Interpreter HCB V4.1" />
 <file aadr="2bc0" eadr="6316" sadr="2bc0" typ="B" link="8b7e062ff4e57f0be0553bcabb9b3010-B.LADDER/B.LADDER.z80" name="LADDER          " kurz="BASIC-Version (2.02, RB)" />
+<file aadr="3000" eadr="3a98" sadr="0000" typ="T" link="b7cfbee1a3e4773a9fcaa35546bb3f22-T.LADDER/T.LADDER.z80" name="LADDER          " kurz="Beschreibung LADDER, grafisch beste Variante" />
 <file aadr="0100" eadr="6eff" sadr="6ee0" typ="C" link="e82e4344ad97062448b83e1d89fc2926-ladder_prJ/ladder_prJ.z80" name="LADDER          " kurz="grafisch schönste Variante+Joystick Practic 01/88" />
 <file aadr="0100" eadr="6eff" sadr="0100" typ="C" link="0e5275f0123a3af7077d1d0d96389239-ladder_8_4/ladder_8_4.z80" name="LADDER 8*4      " kurz="Ladder 8x4 Folientastatur, Cheat: Wartet vor jeder Tastaturabfrage" />
 <file aadr="1000" eadr="221f" sadr="0000" typ="b" link="bd3f499316f322ba617aec761074cf95-b.LANDESVERWALTER/b.LANDESVERWALTER.z80" name="LANDESVERWALTER " kurz="Wirtschaftsimulation statt in Paravia in einer römischen Kolonie" />
@@ -528,7 +532,8 @@
 <file aadr="0100" eadr="0bff" sadr="0100" typ="C" link="a607237be522ae2b2ccc9013a53d0de5-C.Z1013%20BASIC%203K/C.Z1013%20BASIC%203K.z80" name="Z1013 BASIC 3K  " kurz="Original Robotron 3.01 Tiny-Basic Interpreter" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="9aee279d49faaabfd090f22c9100076b-C.Z1013-DEMO/C.Z1013-DEMO.z80" name="Z1013-DEMO      " kurz="DEMO Z1013 Version 2, Präsentation: Reassembler, Tastaturlayout etc." />
 <file aadr="0800" eadr="8c9f" sadr="0000" typ="I" link="47ac5b223eb40f12728ccbee1e806c2e-z1013_forth_doc_I/z1013_forth_doc_I.z80" name="Z1013-FORTH.DOC " kurz="Dokumentation Programmiersystem FORTH" />
-<file aadr="1800" eadr="3fff" sadr="0000" typ="I" link="10040f6ed4dd893a980a8932b7831101-z1013_surl_doc/z1013_surl_doc.z80" name="Z1013-SURL.DOC  " kurz="Z1013.SUPER-URLADER" />
+<file aadr="0800" eadr="30c7" sadr="0000" typ="I" link="840e9839f071ab3696bf004ccc7d5490-I.Z1013-SURL.50%20^/I.Z1013-SURL.50%20^.z80" name="Z1013-SURL.50 ^ " kurz="Z1013 SUPER URLADER PROM V5 15.10.89, überarbeitete Version" />
+<file aadr="1800" eadr="3fff" sadr="0000" typ="I" link="10040f6ed4dd893a980a8932b7831101-z1013_surl_doc/z1013_surl_doc.z80" name="Z1013-SURL.DOC  " kurz="Z1013 SUPER URLADER PROM V3 22.11.1988" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="47c325513f6f5decd08fde4cf6bc568a-z1013_scr/z1013_scr.z80" name="Z1013.SCR       " kurz="" />
 <file aadr="1000" eadr="1586" sadr="ff00" typ="b" link="6571f83f0b5cfe44302ec6d5e10d1305-b.ZAHLEN%20RATEN/b.ZAHLEN%20RATEN.z80" name="ZAHLEN RATEN    " kurz="Zahlen zwischen 0 und 1000 raten." />
 <file aadr="1000" eadr="1bc2" sadr="0000" typ="b" link="a65adb1215f5d044eb95997fa2906fba-b.ZAUBERWALD%201/b.ZAUBERWALD%201.z80" name="ZAUBERWALD 1    " kurz="Mathe, Rechenspielerei, Zauberwald durchqueren und dabei mitrechnen" />
@@ -541,4 +546,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 541 Dateien."/></doc>
+<status src="Datenbank enthält 546 Dateien."/></doc>

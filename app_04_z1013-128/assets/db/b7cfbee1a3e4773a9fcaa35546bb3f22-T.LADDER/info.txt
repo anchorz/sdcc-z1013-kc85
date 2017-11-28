@@ -1,0 +1,3 @@
+<kurz src="Beschreibung LADDER, grafisch beste Variante"/>
+<lang><include src="T.LADDER.txt"/></lang>
+<requires></requires>

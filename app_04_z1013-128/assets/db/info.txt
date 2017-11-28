@@ -1,4 +1,4 @@
-<kurz src=""/>
+<kurz src="identisch []"/>
 <lang>
 
 Steuerung: ⇦ ⇨ ⇧ ⇩ ⬄ ⇳ ⬀ ⬁ ⬂ ⬃ ␣ ⏎

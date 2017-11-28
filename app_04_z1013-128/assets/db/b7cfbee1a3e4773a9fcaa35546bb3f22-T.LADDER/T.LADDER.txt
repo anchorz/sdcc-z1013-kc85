@@ -1,0 +1,69 @@
+****************************************************************
+*                                                              *
+*             Beschreibung des MC-Spiels 'LADDER'              *
+*                                                              *
+****************************************************************
+
+Programmstandort  :  100H - 6EFFH
+
+Start             :  100H
+
+Spielinhalt :
+-------------
+Dieses Spiel verfügt über 28 verschiedene Bilder, wobei jedes
+Bild einen höheren Schwierigkeitsgrad darstellt :
+
+    1. Easy Street          15. Big Trap
+    2. Tunnel Vision        16. Point Road
+    3. Ghost Town           17. Laddies End
+    4. Long Island          18. Idle Place
+    5. Point Of No Return   29. Long Walk
+    6. Bug City             20. Secret Road
+    7. Funk Room            21. SNP
+    8. Flea City            22. Not for Beginers
+    9. Laboratory           23. No Name
+   10. Fun City             24. Crusher
+   11. Straight Final       25. Steffen Street
+   12. Stone Valley         26. Gang Land
+   13. Horror Trip          27. Gold Land
+   14. Mumbel Town          28. The Death
+
+Nach Start des Programms erfolgt erst eine Abfrage, ob mit Joy-
+stick oder Tastatur gespielt werden soll. Danach muß der Spieler
+seinen Namen eingeben. (anschließende Auswertung)
+Jeder Spieler besitzt zu Beginn des Spiels 5 Leben. Die Zeit, in
+der das Bild geschafft werden muß, läuft von 750 abwärts. (Time)
+Die aktuelle Punktzahl läuft oben auf dem BS mit. (Score)
+Weiterhin wird der augenblickliche Schwierigkeitsgrad des Bildes
+angezeigt. (Level)
+Ziel des Spiels ist es, die Spielfigur mit den angegebenen Tasten
+zu den schwarzen Steinen zu bewegen. Dabei kann mit 'SPACE' über
+die Löcher gesprungen werden. Wird man von einem weißen Stein be-
+rührt, so verliert man ein Leben bzw. das Spiel ist bei keinem
+Leben beendet.(Leben = 0)
+In den Bildern befinden sich schwarze Karos, die durch Sprünge
+erreicht werden können. Ist dies der Fall, dann erhält man einen
+Bonus von 1000 Punkten.
+Hat man die schwarzen Steine erreicht, dann erscheint ein neues
+Bild oder der Schwierigkeitsgrad ändert sich.
+In höheren Schwierigkeitsstufen sind dann in den Bildern mehr
+Hindernisse eingebaut, die nicht berührt werden dürfen. (Pik,...)
+
+Anpassung :
+-----------
+5F75H    08H    (rechts)
+6435H    09H    (links)
+6429H    0AH    (runter)
+642DH    0BH    (hoch)
+6431H    20H    (Space)
+
+Wenn eine Tastatur ohne die Cursortasten für 'runter' und 'hoch'
+genutzt wird, müssen die Werte in diesen Zellen geändert werden.
+
+Beschreibung :     RACYsoft
+--------------     Boris Prey
+                   Willy-Krause-Str.7
+                   Schwarzenberg
+                   9430
+                   Tel. 2992
+

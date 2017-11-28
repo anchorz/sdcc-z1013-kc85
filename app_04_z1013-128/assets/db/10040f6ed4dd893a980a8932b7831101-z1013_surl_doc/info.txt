@@ -1,2 +1,2 @@
-<kurz src="Z1013.SUPER-URLADER"/>
+<kurz src="Z1013 SUPER URLADER PROM V3 22.11.1988"/>
 <lang><include src="z1013_surl_doc.txt"/></lang>

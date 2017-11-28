@@ -12,43 +12,54 @@ use utf8;
 " [n"=>1,
 "e{n"=>1,
 "F{h"=>1,"f{h"=>1,
+"h{l"=>1,
 "L{n"=>1,"l{u"=>1,
 "n{c"=>1,
 "n{h"=>1,
 "r{g"=>1,
 "r{n"=>1,
+"r{t"=>1,
 "t{n"=>1,
 "t{t"=>1,
 "W{h"=>1,
+"w{r"=>1,
 "z{h"=>1,
 
 "h|h"=>1,
 "K|h"=>1,"k|n"=>1,
+"L|c"=>1,
 "L|s"=>1,"l|s"=>1,
 "M|g"=>1,"m|g"=>1,
 "n|t"=>1,
 "r|f"=>1,
 
 "/]b"=>1," }b"=>1," ]b"=>1,"(}b"=>1,"@}b"=>1,
+"d}r"=>1,
 "f}g"=>1,
 "f}h"=>1,
 "F}r"=>1,"f}r"=>1,
+"g}l"=>1,
 "g}n"=>1,
+"m}s"=>1,
 "R}c"=>1,"r}c"=>1,
 "r}f"=>1,
+"r}h"=>1,
 "r}n"=>1,
 "w}n"=>1,
 
 "e~b"=>1,
 "e~e"=>1,
 "o~/"=>1,
-"u~ "=>1,
+"u~ "=>1,"u~,"=>1,
 "u~e"=>1,
+"u~t"=>1,
+"i~e"=>1,
 
 
 );
 
 our $has_umlaut=0;
+our $total_umlaut=0;
 our $prev_char="";
 our $i=0;
 
@@ -67,12 +78,13 @@ sub print_char($) {
     }
    
     my $umlaut_text=substr($content,$i-1,3);
-    if ($is_umlaut{$umlaut_text}) {
-        $has_umlaut++;
-    }
 
     if ($epson_map{$c}) {
-        my $umlaut_text="";
+        $total_umlaut++;
+        if ($is_umlaut{$umlaut_text}) {
+            $has_umlaut++;
+        } 
+
         if ($encoding ne "UML") {
             if ($is_umlaut{$umlaut_text}) {
                 $mymap=$epson_map{$c};
@@ -81,7 +93,9 @@ sub print_char($) {
             } else {
                 $umlaut_text=" \"$umlaut_text\"=>1,";
             }
-        } 
+        } else {
+            $umlaut_text="";
+        }
         printf("[0x%04x]=%02x Ersetze '%s' durch '%s'%s\n",$i,ord($c),$c,$mapped,$umlaut_text);
     }
     if ($ibm_map{$c}) {
@@ -169,6 +183,12 @@ close(OUT);
 if ($char_after_eot >0 ) {
     printf("w: %d extra Zeichen nach dem Ende-Kennzeichen [%04x]\n",$char_after_eot_cnt,$char_after_eot);
 }
-printf("Umlaute=%d\n",$has_umlaut);
+
+if ($total_umlaut>0) {
+    printf("%d/%d Ersetzungen sind wahrscheinlich Umlaute\n",$has_umlaut,$total_umlaut);
+} else {
+    printf("i: keine Umlaute gefunden\n");
+}
+
 printf("output \"%s\"\n",$output);
 system("gedit \"$output\" &");

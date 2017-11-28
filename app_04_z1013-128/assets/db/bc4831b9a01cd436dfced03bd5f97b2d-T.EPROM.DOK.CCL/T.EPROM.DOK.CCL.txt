@@ -1,0 +1,79 @@
+***********************************************************
+*                                                         *
+*        Beschreibung zum EPROM-Programmier-Modul         *
+*                                                         *
+*           des Computer-Club robotron Leipzig            * 
+*                                                         *
+*      (C) by H.-J.Bachmann - Computer-Club robotron      *
+*                                                         *
+***********************************************************
+                                                           
+
+Auf der Tagungskassette befinden sich zwei Programme, die
+aus Platzgründen und der besseren Unterscheidung im HEADER
+umbenannt werden mußten.
+Im ORIGINAL handelt es sich um den von R. Brosig zur
+Verfügung gestellten
+
+                    EPROM-Handler V2.9 
+
+Die Umbenennung erfolgte in
+
+         - EPROMMER 2.9/IGD
+und
+         - EPROMMER 2.9/CCL
+
+Diese beiden Versionen unterscheiden sich nur in den
+Port-Adressen für die PIO.
+
+Programmstandort: 100H - 8FFH ; Start: 100H
+
+*EPROMMER 2.9/IGD
+-----------------
+Hardwarelösung Eprom-Programmiergerät der IG-HC der TU
+Dresden, nur in Verbindung mit dem E/A-Modul von Riesa und
+externer Programmierspannungserzeugung.
+Leiterplatten-Bezug: E.Gerlich,Markscheideweg 08/417,2000
+Neubrandenburg 
+Schaltung und notw. Dok. ist in den Tagungsmaterialen
+vorhanden.
+
+*EPROMMER 2.9/CCL
+-----------------
+Hardwarelösung Eprom-Programmiergerät Computer-Club
+robotron Leipzig.
+Dieses Programmiergerät hat die PIO und die
+Programmierspannungserzeugung auf der Leiterplatte
+integriert und ist direkt an den BUS oder den
+Baugruppenträger (Riesa) anschließbar. Ebenso besteht
+BUS-Kompatibilität für die Verwendung am  KC85/1 bzw. KC87.
+
+Es können die EPROM-Typen(bzw. der dazu Kompatiblen)
+ 
+   2716 / 2732(A) / 2764 / 27128 / 27256
+
+programmiert werden.
+
+Die Programmierspannungen sind 12,5V , 21V und 25V ; sie
+sind jedoch auch individuell beliebig einstellbar.
+
+Auf Typen kleiner 2k-Speicherkapazität wurde wegen der
+Bedeutungslosigkeit verzichtet, dafür wurde bisher ein
+Programmiergerät vertrieben, welches nicht mehr produziert
+wird.
+
+    I/O-Adressen: PORT A Daten - FCH
+                         St.W. - FDH
+                  PORT B Daten - FEH
+                         St.W. - FFH
+
+Das EPROM-Programmiergerät des CCL wird anl. der
+Nachfolgetagung am 17.11. vorgestellt.
+
+Weitere Textfiles zu allg. gültigen Aussagen befinden sich
+auf der Tagungskassette zur Nachfolgetagung.
+Der Textfile der IG-HC der TU Dresden zur Aufbauanleitung gilt
+nur in den allg. Punkten analog für das Prg.-gerät des CCL.
+
+***MicroWord-Textfile********V.1(9/89)*********************
+

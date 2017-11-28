@@ -1,0 +1,301 @@
+
+
+Glossarium des Z80 FORTH 83 der IG Forth
+
+
+Der Aufbau einer Wortbeschreibung im Glossarium:
+ 
+
+Wortname  --    M,  "aussprache"
+  ausfuehrliche Beschreibung des Wortes Wortname
+
+Dabei  bedeutet  Wortname  das jeweilige  FORTH-Wort  und 
+"aussprache",  gibt  die  englische Sprechweise desselben  an,  wenn 
+diese nicht aus dem Wort selbst hervorgeht. 
+
+-- entspricht  der Stackbilanz des Wortes. 
+ Links von  --
+stehen  die Stackparameter (Angaben ueber den Stack) vor und
+rechts nach Abarbeitung  des Wortes.  Dabei ist zu beachten, 
+dass  auf  der  linken und rechten Seite von -- der am weitesten
+rechts stehende  Wert die Datenstackspitze darstellt. 
+
+Die jeweiligen Wortnamen sind durch Fettdruck hervorgehoben. Die
+in den Erlaeuterungen der Worte ebenfalls durch Fettdruck her-
+vorgehobenen  Woerter  verweisen auf  andere  Definitionen,  die
+gleichfalls im Glossarium aufgefuehrt und beschrieben sind. 
+
+Die letzte Positon der Kopfzeile gibt weitere Informationen
+ueber die Worte:
+I      Immediate-Wort
+C      nur im Compilemode benutzen
+E      nur im Executemode
+M      diese Worte koennen Multitask-Applikationen beeinflussen.
+U      User-Variable
+Voc    Vokabular
+Vec    Vektor, der auf andere Worte zeigen kann.
+
+Fals das Wort nicht im Grundvokabular FORTH enthalten ist,
+erfolgt die Angabe des entsprechenden Woerterbuches. 
+
+Erlaeuterung der Stackparameter:
+
+Stackab-   Zahlentyp            Zahlenbereich         min. Feld-
+kuerzung                                             weite (Bit)
+________________________________________________________________
+                                                              
+flag    Boolsche Groesse 0=falsch, sonst wahr      16
+wahr    Boolsche Groesse -1 (als Ergebnis)         16
+falsch  Boolsche Groesse 0                         16 
+b       Bit              0 ... 1                    1
+char    Zeichen          0 ... 127                  7
+
+8b      8 beliebige Bits nicht angebbar             8  
+        (Byte)
+16b     16 beliebige Bits nicht angebbar            16
+n       Zahl (gewichtete  -32768 ... 32767          16
+        Bits)               
++n      positive Zahl     0 ... 32767               16
+u       vorzeichenlose    0 ... 65535               16   
+        Zahl
+w       nichtspezifi-     -32768 ... 65535          16 
+        zierte Zahl
+        (n oder u)
+
+adr     Adresse (gleich u) 0 ... 65535               16
+
+32b     32 beliebige Bits nicht angebbar            32
+        doppelt genaue     -2147483648 ...           32
+        Zahl              2147483647
++d      positive doppelt  0 ... 2147483647          32
+        genaue Zahl      
+ud      vorzeichenlose    0 ... 4294967295          32
+        doppelt genaue Zahl                             
+wd      nichtspezifi-     -2147483648 ...           32
+        zierte doppelt    4294967295
+        genaue Zahl (d 
+        oder u)
+
+sys     0, 1 oder mehrere nicht angebbar          nicht 
+        systemabhaengige                            angebbar
+        Stackeintragungen            
+
+
+!  16b adr --   "store"
+   16b wird in adr abgespeichert
+
+!CSP       --   "store-c-s-p"
+   Mit  diesem  Befehl wird der Inhalt des Datenstackzeigers  in 
+   CSP gerettet.  Er wird zur Erhoehung der Uebersetzungssicher-
+   heit verwendet.
+
+"          --
+   Compiliert in :-Definitionen einen String ins Worterbuch mit 
+   der Laufzeitroutine (").  Waehrend Runtime werden Adresse und 
+   Laenge des Strings auf den Stack hinterlegt.
+
+#      +d1 -- +d2  "sharp"
+   Ausgabekonvertierungsschritt  (+d1 /  Zahlenbasis),  Ergebnis 
+   +d2;  aus Divisionsrest generiertes Zeichen wird vor dem  er-
+   sten Zeichen der Ausgabekette angefuegt.
+
+#> 32b -- adr +n "sharp-greater"
+   Beendigung  der Ausgabekonvertierung,  Entfernen des 32b-Wer-
+
+   tes. adr ist Adresse, +n Laenge der Zeichenkette (Format fuer 
+   TYPE).
+
+#LINE  -- adr U       "sharp-line"
+   Ist  eine  System-Variable.  Der Inhalt der  Adresse  (adr) 
+   entspricht  der Anzahl der CR,  die seit dem letzten Rueck-
+
+   setzen ausgesandt wurden.
+
+#OUT       -- adr U
+   Ist eine Systemvariable,  die einen Wert enthaelt,  der durch    
+   EMIT inkrementiert wird.  Der Benutzer kann #OUT auslesen oder    
+   veraendern, um die Display-Formatierung zu steuern. 
+
+#S      +d -- 0 0  "sharp-s"
+   Folge  von  Konvertierungsschritten an  +d,  Generierung  der
+   Ausgabezeichenkette  so lange,  bis bei #-Teilschritt 0
+   entsteht.  Fuer  +d  = 0 Uebernahme einer einzelnen 0 in 
+   Ausgabezeichenkette. Vgl. <# #>
+
+#TIB       -- adr "number-t-i-b"
+   Adresse der Variablen,  die die aktuelle Byteanzahl im  Text-
+   eingabepuffer  enthaelt.  
+
+#THREADS   -- n  "sharp-threads"
+   Ist eine System-Konstante (Anzahl der Hash-Faeden). Vgl. HASH
+
+#USER      -- addr
+   Systemvariable,  die  den Offset zum ersten unbelegten Feld im 
+   USER-Area enthaelt. Sie wird bei Definition von USER-Variablen 
+   und -Vektoren automatisch nachgestellt.
+
+#VOCS      -- n  "sharp-vocs"
+   Ist  eine System-Konstante,  maximale Anzahl der  Woerterbue-
+   cher,  die  durch CONTEXT in der Reihenfolge  festgelegt  und 
+   durchsucht werden (siehe auch ORDER).
+
+'          -- adr M,  "tick"
+   Mit  '  Wortname   wird  die  Compilationsadresse  (CFA)   von 
+   Wortname  ermittelt.  Fehler:  Wortname kann in der  aktuellen 
+   Suchreihenfolge nicht gefunden werden.
+
+'RAM     n -- adr
+   Vok.: I/O
+   rechnet  die Blocknummer n in die Adresse des Blockes in  der 
+   RAM-Disk um. Prueft dabei, ob der Block ueberhaupt verfuegbar 
+   ist; sonst ABORT.
+
+'TIB       -- adr   "tick-t-i-b"
+   Ist  eine  Variable,  welche die Anfangsadresse des TIB  ent-
+   haelt.  Durch Aenderung des Inhalts von 'TIB kann der  Anfang 
+   des TIB beliebig veraendert werden.
+ 
+(          -- I, M, "paren"
+   Kommentarzeichen.  Mit ( ccc) wird der Kommentar ccc einge-
+   geben,  Abschluss durch ).  Keine Verarbeitung von ccc; Das 
+   Leerzeichen nach ( zaehlt nicht zum Text.  
+
+
+(.)      n -- a c
+   Ist die Kern-Routine von .,  Konvertierung von n als String 
+   in PAD.
+
+(.")       --
+   Vok.: HIDDEN
+   Die  durch ." compilierte Laufzeit-Routine,  uebertraegt  den 
+   nachfolgenden Text bis " auf die Konsole.
+
+(")        -- a c
+   Vok.: HIDDEN
+   Die  durch  "  compilierte  Laufzeit-Routine,  hinterlaeszt 
+   Adresse und Count des folgenden Textes auf dem Datenstack.
+
+(+LOOP)  n --
+   Vok.: HIDDEN
+   Ist die Laufzeit-Routine von +LOOP (siehe dort).
+     
+(;CODE)    --
+   Vok.: HIDDEN
+   Ist  die  durch ;CODE (siehe dort) compilierte  Laufzeit-Rou-
+   tine.
+
+(;USES)    --
+   Vok.: HIDDEN
+   Ist  die  durch  ;USES (siehe  dort)  complilierte  Laufzeit-
+   Routine.
+ 
+(?DO)  n1 n2 --
+   Vok.: HIDDEN
+   Ist die Laufzeit-Routine von ?DO. 
+   Sind beide Zahlen gleich, so wird die Schleife uebersprungen.
+   Im anderen Fall beinhaltet sie die gleiche Funktion wie (DO)
+
+(?LEAVE) flag --
+   Vok.: HIDDEN
+   Ist die Laufzeit-Routine von ?LEAVE.
+
+(ABORT") flag --
+   Vok.: HIDDEN
+   Ist die Laufzeit-Routine von ABORT" (siehe dort).
+
+(CONSOLE)   c --      I/O
+   Vok. I/O
+   gibt das Zeichen c nur auf dem Bildschirm aus.
+
+(D.)        d -- a c
+   Ist  die  Kern-Routine von D..Konvertierung von d in  einen 
+   String in PAD.
+
+(DO)    w1 w2 --
+   Vok.: HIDDEN
+   Ist die Laufzeit-Routine von DO (siehe dort).
+
+(EMIT)      c --      I/O
+   Vok.: I/O
+   gibt  Zeichen auf Bildschirm und bei PRINTING ON auch auf dem
+   Drucker aus. Standartvoreinstellung fuer EMIT.
+
+(FIND)   adr1 -- adr2 flag
+   Vok.: HIDDEN
+   Ist die Laufzeit-Routine von FIND (siehe dort).
+
+(FORGET)  adr --
+   Vok.: HIDDEN
+   Vergisst Teil des Woerterbuches ab spezifizierter Adresse.
+
+(IS)      adr --   (comp.Mod.)
+   Ist die Laufzeit-Routine von IS (siehe dort).
+   Schreibt  die cfa des folgenden DEFER-ierten  Wortes  (Vector) 
+   in die Adresse (adr).
+
+(LEAVE)       --
+   Vok.: HIDDEN
+   Ist die Laufzeit-Routine  von LEAVE (siehe dort).
+
+(LIT)       n --
+   Vok.: HIDDEN
+   Wird  innerhalb  einer Doppelpunktdefinition automatisch  vor
+   jede 16-Bit-Zahl n,  die im Eingabetext bereitgestellt  wird, 
+   compiliert. Bei der Ausfuehrung von (LIT) wird der Inhalt der
+   auf  (LIT)  folgenden Woerterbuchadresse auf  den  Datenstack 
+   gelegt.
+  
+(LOOP)        --
+   Vok.: HIDDEN
+   Ist die Laufzeit-Routine von LOOP (siehe dort).
+
+(KEY)         -- c     I/O
+   Vok.: I/O
+   holt  ein  Zeichen von der  Tastatur. Standartvoreinstellung
+   fuer KEY.  
+(KEY?)        -- f     I/O
+   Vok.: I/O
+   Prueft  den  Status der Tastatur.  f=TRUE,  wenn  eine  Taste
+   gedrueckt war.  Standartvoreinstellung fuer KEY?.
+
+(NUMBER?) adr -- d f
+   Vok.: HIDDEN
+   wandelt  einen  Zifferstring in adr+1 in  eine  doppeltgenaue
+   Integer-Zahl, die ein fuehrendes Minuszeichen haben darf. Der
+   String  muss  mit BL abgeschlossen  sein.  Als  Decimalpunkt,
+   dessen Position in DPL uebergeben wird, gelten: .-,/
+   Das Flag teilt mit, ob eine konvertierbare Zahl vorlag.
+
+(PRINT)     c --       I/O
+   Vok.: I/O
+   gibt das Zeichen nur auf den Drucker aus.
+
+(U.)        u -- a c
+   Ist die Kern-Routine von U..  Konvertiert u in einen String  in 
+   PAD.
+
+*       w1 w2 -- w3   "star"
+   w3 = niederwertige 16 Bit des arithmetischen Produkts w1 * w2 
+
+*/ n1 n2 n3 -- n4 "times-divide"
+   Berechnung  (n1 * n2) mit 32-Bit-Ergebnis,  anschl.  Division 
+   durch  n3 .  n4 ist der Quotient entsprechend  den  Rundungs-
+   regeln.  Fehler:  Division  durch  0 oder n4  ausserhalb  des
+   Bereichs -32768...+32767.
+
+*/MOD n1 n2 n3 -- n4 n5
+                                              "times-divide-mod"
+   Funktion  wie bei */,  jedoch zusaetzlich Uebergabe des Divi-
+   sionsrests n5 (gleiches Vorzeichen wie n4 bzw. gleich 0).
+
+*D       n1 n2 -- d   "star-d"
+   Multipliziert zwei 16-bit-Zahlen (n1 und n2) und hinterlaesst 
+   auf dem Datenstack eine 32-bit-Zahl (d).
+
++        w1 w2 -- w3
+   w3 ist die arithmetische Summe w1 + w2.
+
++!      w1 adr --  "plus-store"
+   w1  wird  zum Wert w in <adr> addiert Vgl.  +  ),  die  Summe 
+   ersetzt w in <adr>.
+
