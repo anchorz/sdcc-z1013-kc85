@@ -395,6 +395,7 @@
 <file aadr="4000" eadr="5b70" sadr="4000" typ="C" link="04247772e5e6737c52fa55d0ab4c8bbb-C.R80-REASSEMBLER/C.R80-REASSEMBLER.z80" name="R80-REASSEMBLER " kurz="R-80 REASSEMBLER VERSION 1.01" />
 <file aadr="2bc0" eadr="3263" sadr="0000" typ="B" link="26406f564a96bc07da17d073c7253a1b-rakete/rakete.z80" name="RAKETE          " kurz="ballistische Rakete mit 5 Versuchen abschiessen" />
 <file aadr="1000" eadr="1c7a" sadr="0000" typ="b" link="bf03f27debb021c57bcb1a2e23b6eabc-b.RAMM-JAGD/b.RAMM-JAGD.z80" name="RAMM-JAGD       " kurz="Billard Variante, RAMM die Kugel!(8x4)" />
+<file aadr="1900" eadr="1fff" sadr="1900" typ="C" link="de55fd3cb4ed98fb64e26a78291dd463-C.RAMTEST%20RAMBUG%20Z/C.RAMTEST%20RAMBUG%20Z.z80" name="RAMTEST RAMBUG Z" kurz="RAM Test" />
 <file aadr="2bc0" eadr="3554" sadr="0000" typ="B" link="a4cad0906333c48fe646175676102fa7-ratetier/ratetier.z80" name="RATETIER        " kurz="Denke dir Tier aus, der Computer versucht es zu erraten!" />
 <file aadr="0100" eadr="09ff" sadr="0100" typ="C" link="00c2a04a3153ef619efcc5290cfb2d6f-reaktor/reaktor.z80" name="REAKTOR         " kurz="NACH EINER HAVARIE SIND ALLE STOERELEMENTE UMZUWANDLEN." />
 <file aadr="0100" eadr="0a0e" sadr="0a00" typ="C" link="c7dd147108d05c5575f8872fd9987358-reaktor+prJ/reaktor+prJ.z80" name="REAKTOR(J)      " kurz="" />
@@ -409,6 +410,7 @@
 <file aadr="0100" eadr="055c" sadr="0100" typ="C" link="7f5cd166c4a50dc7c361c07843842b77-rf_test_5_0/rf_test_5_0.z80" name="RF-TEST 5.0     " kurz="256K-RAM-FLOPPY-TEST 5" />
 <file aadr="2bc0" eadr="3cb7" sadr="0000" typ="B" link="5cd71b355494c594c4095e3dc1cad635-B.RIESA/B.RIESA.z80" name="RIESA           " kurz="beantworte 10 Fragen über den Kreis Riesa" />
 <file aadr="0100" eadr="3f80" sadr="0100" typ="C" link="1447f1aafc89290ad5a5aae1311714ca-river_raid_ls/river_raid_ls.z80" name="RIVER RAID ls   " kurz="" />
+<file aadr="c000" eadr="ebff" sadr="c200" typ="C" link="595a47fd9eeb9f53e8990af4fd7a72a9-C.rom-basic/C.rom-basic.z80" name="rom-basic       " kurz="ROM Basic+Joystick nach Practic 01/88" />
 <file aadr="0100" eadr="0510" sadr="0100" typ="C" link="fe39387d15db0527b2210e105098c106-rom_disc_bild/rom_disc_bild.z80" name="ROM-DISC-BILD   " kurz="" />
 <file aadr="2bc0" eadr="3c37" sadr="0000" typ="B" link="5b0c6dffdba6e4210da36f4b887a469a-B.ROSTOCK/B.ROSTOCK.z80" name="ROSTOCK         " kurz="Wissenstest: was weisst du über den Bezirk Rostock" />
 <file aadr="2bc0" eadr="3f8b" sadr="0000" typ="B" link="aa2d88cbf839c341848a23a71b25ffb7-roulette_m_bild/roulette_m_bild.z80" name="ROULETTE m.BILD " kurz="Roulette, animiert" />
@@ -530,6 +532,7 @@
 <file aadr="0330" eadr="32de" sadr="32d0" typ="C" link="fff7a40888b8dc50aeb4698f8c0ad9aa-wall+j/wall+j.z80" name="WALL 1.2 (JOY)  " kurz="Mauerspiel mit Extras, unbekannter Joystick" />
 <file aadr="2bc0" eadr="390f" sadr="00e0" typ="B" link="f7180df90da5a6aede327af4b6e32b86-B.WEISHEIT/B.WEISHEIT.z80" name="WEISHEIT        " kurz="Blödelsprüche als Lebensweisheiten vermarktet" />
 <file aadr="0100" eadr="4400" sadr="0100" typ="C" link="25fa3cab3b66d9ac9b2e1b25bc00fc34-wizard_ang/wizard_ang.z80" name="WIZZARD ANGEPASS" kurz="" />
+<file aadr="a300" eadr="dfff" sadr="a300" typ="C" link="ac8a55057b2a934aac9eaa7533f61e10-C.WORD+ASM/C.WORD+ASM.z80" name="WORD+ASM        " kurz="Programmiersystem Texteditor MicroWORD 1.3 und Assembler ASM 5.3" />
 <file aadr="1000" eadr="2f0c" sadr="0000" typ="b" link="c8966b1536ab690448033cd0cba60d20-b.WORDS/b.WORDS.z80" name="WORDS           " kurz="Wörter raten, Mischung aus Kreuzworträtsel und Hangman" />
 <file aadr="2bc0" eadr="63c1" sadr="0000" typ="B" link="9e77e3766a792b3d90010dc89346eab6-wueste/wueste.z80" name="WUESTE          " kurz="" />
 <file aadr="1000" eadr="324e" sadr="0000" typ="b" link="fb439b375e194d93aa1abc12296e8a0e-b.WUNDERLAND/b.WUNDERLAND.z80" name="WUNDERLAND      " kurz="Textadventure" />
@@ -554,4 +557,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 554 Dateien."/></doc>
+<status src="Datenbank enthält 557 Dateien."/></doc>

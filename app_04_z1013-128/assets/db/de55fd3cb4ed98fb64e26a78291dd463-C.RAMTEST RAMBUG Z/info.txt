@@ -1,0 +1,3 @@
+<kurz src="RAM Test"/>
+<lang></lang>
+<requires></requires>

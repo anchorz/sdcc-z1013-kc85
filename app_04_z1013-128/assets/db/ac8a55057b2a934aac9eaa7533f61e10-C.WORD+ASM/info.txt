@@ -1,0 +1,3 @@
+<kurz src="Programmiersystem Texteditor MicroWORD 1.3 und Assembler ASM 5.3"/>
+<lang></lang>
+<requires></requires>

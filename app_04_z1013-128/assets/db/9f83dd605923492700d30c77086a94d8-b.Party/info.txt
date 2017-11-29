@@ -1,4 +1,3 @@
 <kurz src="Quiz & Ratschläge für eine gelungene Party"/>
-<lang>1 Byte kleiner als im Header angegeben
-<include src="Party.b"/></lang>
+<lang><include src="Party.b"/></lang>
 <requires></requires>
