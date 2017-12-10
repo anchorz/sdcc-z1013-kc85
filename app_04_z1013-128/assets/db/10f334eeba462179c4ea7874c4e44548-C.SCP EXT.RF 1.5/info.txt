@@ -1,0 +1,3 @@
+<kurz src="CP/M 2.2 Z1013 IG-HC mit ext. RAM-Floppy V.1.5"/>
+<lang>Das Programm wartet auf externe Hardware an PORT 0x00.</lang>
+<requires></requires>

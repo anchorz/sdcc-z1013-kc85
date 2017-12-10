@@ -1,0 +1,3 @@
+<kurz src="RIESA Tiny-Basic mit Sprungverteileraufruf, ähnlich [9da506601e7302bd3383c9ac830aa470]"/>
+<lang></lang>
+<requires></requires>

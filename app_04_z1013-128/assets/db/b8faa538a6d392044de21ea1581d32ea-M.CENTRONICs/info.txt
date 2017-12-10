@@ -1,0 +1,3 @@
+<kurz src="Druckertreiber Centronics Port 0x00 mit Interrupt"/>
+<lang></lang>
+<requires></requires>

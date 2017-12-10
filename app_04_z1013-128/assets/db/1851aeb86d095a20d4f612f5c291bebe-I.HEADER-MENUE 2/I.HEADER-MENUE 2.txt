@@ -1,0 +1,64 @@
+**************************************************************
+*                                                            *
+*                Beschreibung zum Programm                   *
+*                                                            *
+*                H E A D E R - M E N U E  2                  *
+**************************************************************
+
+* Joerg Diestel  Dessau Jan.89 *
+
+Standort: 
+HEADER-MENUE 2    E000H - E7FFH   Start: E400H >CRC=1487
+
+
+Dieses Programm erleichtert  das Sortieren  von  Software.  Es
+koennen bis zu 24 Programme in den Rechner geladen und in  be-
+liebiger Reihenfolge gesaved werden. Das Programm erklaert sich
+zum groessten Teil selbst. Im Loadmodus wird  nach  dem  Laden
+des Kopfes gefragt, ob dieses Programm geladen werden soll.
+Durch Betaetigung der Taste "N" kann der Loadmodus abgebrochen
+werden. Jede andere Taste wird als Bestaetigung verarbeitet.
+Die Koepfe werden ab Speicherplatz 0E800H gespeichert. Die Pro-
+gramme selbst werden im  Bereich  0100H-0DFFFH  hintereinander
+abgelegt. Die Standortadressen werden in den Koepfen eingetra-
+gen, um die  Programme wiederzufinden. Im Savemodus  kann  das
+zu savende Programm mit den Tasten Cursor-links  oder  Cursor-
+rechts ausgewaehlt werden. Im  unteren  Bildschirmteil  werden 
+die Anfangs-, End- und Startadressen  des  ausgewaehlten  Pro-
+gramms angezeigt. Nach Bestaetigung  durch  "Enter"  wird  das 
+entsprechende Programm  mit  Kopf gesaved. Anschliessend kehrt
+das Programm in den Savemodus zurueck. Dieser Vorgang kann be-
+liebig oft wiederholt werden. Durch Betaetigung der Taste  "@"
+wird zum Programmanfang gesprungen. Nach erneutem Einladen der
+Programme mit Headersave  stehen  sie  am  Orginalstandort  im
+Rechner.
+Mit HEADER-MENUE lassen sich die Programme durch vorherige Aus-
+wahl hintereinander (mit Pause zwischen den einzelnen Files)
+1 oder 2x, je nach Wahl, ausladen (saven).  
+(ANMERKUNG: Pause leider etwas zu kurz!)
+
+0100H-DFFFH Bereich zum Ablegen der Programme
+E000H-E3FFH Header-save
+E400H-E707H Programm H.-Menue
+E800H-EAFFH Bereich zum Ablegen der Koepfe
+
+Sprungtabelle :
+E400H    Eroeffnung
+E403H    Programmanfang
+E406H    Load / Save ?
+E409H    Load
+E40CH    Save
+E40FH    Bildschirmaufbau
+E412H    freie Plaetze errechnen
+Zellen :
+E418H 2  erster freier Speicherplatz
+E41AH 2  Anzahl der freien Speicherplaetze
+E41CH 1  Anzahl der geladenen Programme
+E40DH 1  ausgewaehltes Programm merken
+E40EH 2  Kopfinhalt der zu savenden Bloecke merken
+
+********************* korrekturen und vervollstaendigung ******
+********************* hofmann *********************************
+26.09.89
+^^^^^
+

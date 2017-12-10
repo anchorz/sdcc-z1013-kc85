@@ -1,0 +1,14 @@
+Name     : Brosig         
+Vorname  : Rainer         
+Strasse  : W.-Florin-Str. 2c         
+Ort      : COSWIG                    
+PLZ      : 8270
+Kassette : 1
+Seite    : a
+Datum    : 19.10.2017
+
+Nr.   Anf.  Ende  Start  Typ  Filename         Pos.
+---------------------------------------------------
+
+0002  2BC0  36EC  2BC0    B...FUNKTION        
+

@@ -1,0 +1,4 @@
+<kurz src="RIESA Tiny-BASIC mit Sprungverteileraufruf für Headersave"/>
+<lang>Startmeldung: AK's Tiny-BASIC "HEADER"
+</lang>
+<requires>SPV</requires>

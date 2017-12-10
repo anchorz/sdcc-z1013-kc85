@@ -1,0 +1,3 @@
+<kurz src="EXTENDED FIG-FORTH VERSION 2.4 ES by B.Bachmann, 15009 bytes free"/>
+<lang></lang>
+<requires></requires>

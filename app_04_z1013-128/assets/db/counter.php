@@ -9,16 +9,16 @@ if ($mysqli->connect_errno) {
     exit;
 }
 
+//phpinfo();
 $mysqli->set_charset("utf8");
+$res = $mysqli->query("INSERT INTO counter (date,ip) VALUES (NOW(),'".$_SERVER['REMOTE_ADDR']."')");    
 
-$res = $mysqli->query("SELECT * FROM counter");    
-$res->data_seek(0);
-if ($row = $res->fetch_assoc())
-{
-    $count=$row['count'];
-    $res = $mysqli->query("UPDATE counter SET count= ' ". ($count+1)."'");    
-    $res = $mysqli->query("UPDATE counter SET date= NOW()");    
-
+if ($res === TRUE) {
+    $count = $mysqli->insert_id;
+    
+    $res = $mysqli->query("SELECT * FROM counter");   
+    $count = $res->num_rows;
+    
     header ("Content-type: image/png");
     $font   = 4;
     $width  = ImageFontWidth($font) * strlen($count);

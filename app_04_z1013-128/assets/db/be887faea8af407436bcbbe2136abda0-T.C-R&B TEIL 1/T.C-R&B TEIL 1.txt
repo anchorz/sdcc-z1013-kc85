@@ -1,0 +1,952 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         ==============================================
+
+         Ein Kurzlehrgang fuer die Programmiersprache C
+
+         ==============================================
+
+
+
+
+                     Kapitel 4 aus dem Buch:
+                  UNIX von M.Banahan / A.Rutter
+                Hanser-Verlag Muenchen, Wien 1984 
+
+1. Einfuehrung
+--------------
+Dies  ist kein leicht zu verfassendes Kapitel.  C in einem  UNIX-
+Buch unberuecksichtigt zu lassen, ist undenkbar, aber die Sprache 
+in einem einzigen Kapitel erschoepfend zu beschreiben ist unmoeg-
+lich. Aus diesem Grunde koennen wir niemand vollkommen zufrieden-
+stellen.  Da wir das akzeptieren,  wollen wir uns auch kein allzu 
+grosses Kopfzerbrechen darueber machen.
+Dieses Kapitel versucht,  in einem minimalen Umfang Lehrstoff  zu 
+vermitteln,  den  wir  als nuetzlichen Ueberblick fuer den  nicht 
+staendig mit C konfrontierten Benutzer betrachten.  Es ist sicher 
+kein  Ersatz fuer eine ausfuehrliche Beschreibung  (entsprechende 
+Literaturverweise finden Sie am Ende des Buches),  noch erhebt es 
+den Anspruch, mehr als die wichtigsten Grundlagen zu erklaeren.
+Die  Reihenfolge der Sprachelemente wurde mit  Absicht  gewaehlt: 
+wir  wollen uns darin von anderen Buechern ueber C unterscheiden, 
+damit jemand, der gleich alles liest, nicht an Langeweile stirbt.
+
+
+2. Einleitende Bemerkungen
+--------------------------
+Fuer  eine  grosse Zahl der UNIX-Programmierer sind  C  und  UNIX 
+untrennbar.  Wenn  sie  ueber das eine sprechen,  so glauben  sie 
+erstaunlicherweise,  das andere mit einbezogen zu haben.  Das Be-
+triebssystem ist fast vollstaendig in C geschrieben,  und der zur 
+Erreichung  der Portabilitaet von UNIX notwendige  Arbeitsaufwand 
+zeigt, dass C tatsaechlich eine der portabelsten Sprachen ist, in 
+der Sie Ihre Programme schreiben koennen - insbesondere, wenn Sie 
+dabei  UNIX  als Zielsystem im Auge haben.  Ein auf  einem  UNIX-
+System  entwickeltes Programm duerfte ohne Aenderungen  auch  auf 
+einem  anderen UNIX-System laufen,  sofern Sie nicht  tatsaechlich 
+versuchen,  es nichtportabel zu machen. Selbst wenn Sie dies tun, 
+so gibt es ein Dienstprogramm (genannt lint(1)) zur Ueberpruefung 
+Iherer Unternehmungen und zum Suchen von Fehlern.
+Dies  soll nicht heissen,  dass wir zu der Ansicht neigen,  C sei 
+die beste Programmiersprache der Welt, oder zu aehnlichem Unsinn. 
+Solange es Narren gibt,  werden sie in unqualifizierte  Auseinan-
+dersetzungen ueber die 'beste' Sprache ausbrechen,  und wir haben 
+nicht  vor,  in  dieses Gerangel mit einbezogen zu  werden.  Dies 
+waere  ungefaehr so eintraeglich (und sinnvoll),  wie sich  ueber 
+Geschmack oder Schoenheit zu streiten.  Die Tatsache,  dass C von 
+zwei sehr faehigen Personen fuer die Entwicklung von UNIX verwen-
+det  wurde,  obwohl diese genuegend andere Sprachen  zur  Auswahl 
+hatten, und dass so viele qualifizierte Software-Entwickler diese 
+Sprache so sehr bevorzugen, besagt mehr ueber C, als es irgendein 
+anderes Argument jemals koennte.
+
+
+3. Starthilfen
+--------------
+Lassen  Sie uns nicht laenger herumtroedeln - wir  haben  sowieso 
+kaum  Zeit  - sondern unverzueglich beginnen.  Verwenden Sie  den 
+Editor,  erzeugen Sie eine Datei mit Namen hallo.c und tragen Sie 
+folgenden Text ein:
+
+     main()
+     {
+          printf("Hallo Kumpan\n");
+     }
+
+Dann uebersetzen Sie diese mit dem Kommando
+     cc hallo.c
+Wenn  dabei keine Fehler auftraten,  so meldet sich sofort wieder 
+die  Shell mit dem Prompt.  Um das uebersetzte Programm  (welches 
+vom Ueberstzer immer a.out genannt wird) auszufuehren,  geben Sie 
+einfach seinen Namen an:
+     a.out
+Die gesamte Ueberstzung und der Lauf wuerde folgendermassen  aus-
+sehen:
+     $ cc hallo.c
+     $ a.out
+     Hallo Kumpan
+     $
+Sofern  Sie das uebersetzte Programm aufbewahren wollen,  muessen 
+Sie  es umbenennen,  bevor Sie irgendein anderes Programm  ueber-
+setzen. Das Kommando mv dient diesem Zweck.
+Sie haben gerade ein aus einer Funktion mit einer einzigen Anwei-
+sung bestehendes Programm uebersetzt.  Alle C-Programme enthalten 
+mindestens  eine Funktion (ansonsten waeren sie keine Programme). 
+Gleichzeitig  muss eine Funktion namens main existieren,  da  bei 
+ihr das Programm gestartet wird.  Ihres macht dabei keine Ausnah-
+me.  In Ihrem Programm ruft die Funktion main eine weitere  Funk-
+tion, printf, mit dem Argument "Hallo Kumpan\n" auf.
+Im  Gegensatz zu writeln in Pascal oder write in Fortran enthaelt 
+C  keine Sprachelemente fuer die Ein- und Ausgabe.  Die  Funktion 
+printf  wird  im allgemeinen zur Erzeugung einer  Ausgabe  in  C-
+Programmen  benutzt.  Aber  sie ist lediglich eine  Routine,  die 
+irgendjemand fuer die Allgemeinheit geschrieben und in eine  Bue-
+cherei mit nuetzlichen Funktionen gesteckt hat.  Indem Sie sie in 
+Ihrem Programm erwaehnen,  bewirken Sie automatisch,  dass
+printf  aus  der Buecherei hinzugefuegt wird.  C verfuegt  grundsaetzlich 
+ueber keine zur Sprache selbst gehoerenden Funktionen.  Glueckli-
+cherweise  koennen wir davon ausgehen,  dass in einem UNIX-System 
+gewisse  Funktionen  in Buechereien zur  Verfuegung  stehen,  und 
+printf ist eine von ihnen.
+
+
+4. Zeichenketten
+----------------
+Das Argument von prkntf war"ekng Zekcjenkette. Zeichenketten sind 
+beliebig lange Folgen von Zeichen, die mit doppelten Anfuehrungs-
+zeichen "..."  umgeben sind.  In C wird eine solche  Zeichenkette 
+als ein Zeichenvektor behandelt. Diesem wird ans Ende das Zeichen 
+\0  (das Nullzeichen,  dessen Wert 0 ist) angefuegt,  um das Ende 
+erkennen zu koennen. Fuer einige schwer zugaengliche Zeichen wird 
+eine  spezielle  Schreibweise,  ein Fluchtsymbol \,  gefolgt  von 
+einem normalen Zeichen, verwendet.
+     \t        Tabulatorzeichen
+     \r        Wagenruecklauf
+     \n        Zeilentrenner
+     \b        backspace
+     \\        Fluchtsymbol
+     \"        Doppel-Anfuehrungszeichen
+     '         Apostroph
+     \f        Seitenvorschub
+     \0        Nullzeichen
+C-Programme  bestehen  ueblicherweise  aus einer  Ansammlung  von 
+Funktionen  -wie in Fortran - ohne das Konzept von lokalen  Funk-
+tionen,  wie  Sie  sie in Pascal oder Algol  finden  koennen.  Im 
+Gegensatz  zu  solchen anderen Sprachen ist die  Reihenfolge  der 
+Funktionen  unwichtig  (aber es muss eine namens  main  vorhanden 
+sein!).  Jetzt  folgt ein weiteres Programm mit derselben Aufgabe 
+wie das erste.  Die Funktion main ruft nun die Funktion speak zur 
+Erledigung der Hauptarbeit auf, und dies tut sie sogar zweimal.
+
+     main()
+     {
+          speak();
+          speak();
+     }
+     speak()
+     {
+          printf'"Hallo Kumpan\n");
+     }
+
+Die Anordnung dieser beiden Funktionen koennte vertauscht werden; 
+es wuerde nichts ausmachen. Probieren Sie es aus, und staunen Sie.
+
+
+5. Datentypen
+-------------
+Um die Ausfuehrung lohnender Aufgaben ueberhaupt zu ermoeglichen, 
+muessen Sie in der Lage sein,  Daten,  i.a.  Zahlen oder Zeichen, 
+manipulieren zu koennen.  C unterstuetzt ein ganzes Sortiment von 
+Datentypen und Mittel zum Strukturieren von Daten.  Momentan ver-
+wenden wir die Typen char,  int und double.  Sie  repraesentieren 
+Zeichen, ganzzahlige Werte und doppelt genaue Gleitkomma-Werte.
+
+
+6. Variablen und Kommentare
+---------------------------
+Variablen muessen vor ihrer Verwendung vereinbart werden.  Sofern 
+sie ausserhalb von Funktionskoerpern vereinbart werden,  sind sie 
+global und allen Funktionen zur Verarbeitung zugaenglich.  Lokale 
+Variablen werden am Anfang einer Funktion vereinbart und sind nur 
+innerhalb  dieser verfuegbar.  Dies gestattet die Verwendung des-
+selben Namens in verschiedenen Funktionen, ohne Konflikte entste-
+hen zu lassen. 
+Hier  folgt ein Programm zur Erstellung einer Tabelle der  Zahlen 
+von 1 bis 10 und der zugehoerigen Quadrate. Das Programm enthaelt 
+Kommentare: in C ist alles innerhalb von /* und */ ein Kommentar. 
+Kommentare duerfen ueberall dort eingefuegt werden,  wo  Leerzei-
+chen oder Zeilentrenner gestattet sind.
+
+     /*
+     *    Ausgabe ganzer Zahlen und ihrer Quadrate
+     */
+
+     main()
+     {    int i,isquared;          /* Variablen-Vereinbarung */
+          for (i=1; i<=10; i=i+1)
+          { isquared=i*i;
+            printf( "%d %d\n",i,isquared);
+          }                        /* Ende der Schleife */
+     }
+
+
+Dieses Beispiel verdient eine ausgiebigere Erlaeuterung.
+Direkt am Anfang der Funktion main befindet sich die Vereinbarung 
+der benoetigten Variablen: zwei ganzzahlige Werte, naemlich i und 
+isquared.  Mehrere  Variablen koennen in einer Definition verein-
+bart  werden,  indem man ihre Namen durch  Kommas  trennt.  Namen 
+bestehen aus den Buchstaben a - z,  A - Z,  den Ziffern 0 - 9 und 
+dem  Unterstrich  _;  dabei muss das erste Zeichen ein  Buchstabe 
+oder Unterstrich sein. Die Laenge der von Ihnen verwendeten Namen 
+ist vom jeweiligen System abhaengig; finden Sie es deshalb selbst 
+heraus.  Waehlt man einen Namens zu lang,  so bedeutet dies, dass 
+nur  der Anfang des Namens signifikant ist,  der Rest wird  igno-
+riert. Mindestens sechs Zeichen sind wohl immer signifikant.
+
+Der  naechste  Programmteil  ist  eine  durch  for  kontrollierte  
+Schleife. Sie hat eine dreifache Wirkung. Zuerst wird die Variab-
+le i auf 1 gesetzt;  dann wird, solange wie i kleiner oder gleich 
+10  ist,  der Anweisungsteil der Schleife  ausgefuehrt;  am  Ende 
+jedes  Durchganges  durch die Schleife wird 1 zu i  addiert.  Be-
+achten  Sie genau die Positionen der Semikolons in dieser  Anwei-
+sung.
+Um die Schleife etwas weniger gebraeuchlich zu formulieren, sagen 
+wir,  um  mit  der Schrittweite 5 von 100 herunter bis zu  10  zu 
+gehen, wuerde die Anweisung folgendermassen aussehen:
+     
+     for (i=100; i>=10; i=i-5)
+
+Das duerfte wohl kaum eine Ueberraschung sein.
+
+Sie  werden sich jetzt wohl ueber die geschweiften Klammern  wun-
+dern,  die in diesem Prozess auftauchen.  Diese werden  u.a.  be-
+noetgt,  um Anweisungen zusammenzubinden, d.h., um mehrere Anwei-
+sungen  als eine darzustellen;  sie bezwecken dasselbe wie  begin 
+und  end in anderen Sprachen.  In unserem Beispiel markieren  die 
+erste  {  und die letzte } den Anfang und das Ende  der  Funktion 
+main. Das andere Paar fasst die Anweisungen innerhalb der Schlei-
+fe zusammen. Befaende sich nur eine Anweisung in der Schleife, so 
+waere keine Klammerung erforderlich.
+In  der  Tat  sind  zwei  Anweisungen  im  Inneren  der  Schleife 
+unnoetig.   Die  Argumente  einer  Funktion  wie  printf  duerfen 
+Ausdruecke sein. Die angegebenen Argumente sind
+     eine Zeichenkette   "%d %d\n"
+     eine Variable       i
+     eine Variable       isquared
+aber  isquared kann durch den Ausdruck i*i ersetzt  werden.  Hier 
+ist das verbesserte Programm:
+
+     main()
+     {    int i;
+          for (i=1; i<=10; i=i+1)
+               printf ( "%d %d\n",i,i*i);
+     }
+
+printf  ist eine Buechereifunktion und kein Element von  C,  aber 
+ihre  Verwendung ist so weit verbreitet,  dass hier ein paar  er-
+klaerende  Worte noetig erscheinen.Eine genaue Behandlung  findet 
+man  in  dem Ueberblick der Buechereifunktioenen  im  Kapitel  9. 
+printf  wird  eingesetzt,  um die unterschiedlichsten  Datentypen 
+fuer  eine  formatierte Ausgabe aufzubereiten und  als  Standard-
+Ausgabe  Ihres Programms auszugeben (normalerweise zum  Terminal, 
+sofern Sie nicht umgelenkt haben).  Das erste Argument von
+printf  ist eine Zeichenkette (genau gesagt,  ein Zeichenvektor),  welche 
+printf Zeichen fuer Zeichen ausgibt. Das Zeichen % ist ein Signal 
+fuer printf,  dass eines der anderen Argumente zu formatieren und 
+auszugeben ist.  Im obigen Beispiel symbolisiert %d eine  Dezimal-
+zahl  und %f stuende fuer eine Gleitkommazahl.  Jedes solche For-
+matelement veranlasst printf,  das naechste Argument in der Argu-
+mentliste zu suchen und auszugeben. print ist aeusserst nuetzlich 
+- wir  verwenden hier lediglich einen kleinen Teil  dieser  Moeg-
+lichkeiten.
+
+
+7. Inkrementieren und Dekrementieren
+------------------------------------
+Nun sieht unser Beispielprogramm fast so aus, wie es ein erfahre-
+ner  C-Programmierer  formuliert  haette.  Die  letzte  Aenderung 
+bsteht darin,  die Zuweisung i=i+1 durch eine Kurzform zu  erset-
+zen.  Dabei sollten Sie beachten,  dass in C das Symbol fuer eine 
+Zuweisung  einfach = ist,  nicht etwa :=.  Man muss  so oft  eine 
+Variable  um  den Wert 1 erhoehen,  dass C dafuer eine  spezielle 
+Schreibweise besitzt: i++. Analog wird durch i-- erreicht, dass
+i  um den Wert 1 verringert wird.  Hier ist die endgueltige  Version 
+dieses Programms:
+
+     main()
+     {    int i;
+          for (i=1; i<=10; i++)
+               printf ("%d %d\n",i,i*i);
+     }
+
+Testen Sie es.
+
+Die   soeben   vorgstellten  Inkrement- und  Dekrement-Operatoren 
+koennen  auf  zwei verschiedene Arten eingesetzt werden.  In  der 
+Zuweisung
+               a = i++; 
+enthaelt  die Variable a den urspruenglichen Wert von  i,  und 
+i  wird anschliessend inkrementiert. Die Alternative dazu ist
+               a = ++i;
+wobei  i  zuerst inkrementiert und dann an a der neue Wert von 
+i  zugewiesen wird.  Die Dekrement-Operation funktioniert nach  dem-
+selben  Prinzip.  Sofern das Resultat nicht verwendet wird,  sind 
+++i und i++ gleichbedeutend, genauso wie es --i und i-- sind. Der 
+letzte  Teil  unserer for-Anweisung koennte beide  Versionen  der 
+Inkrementierung mit genau demselben Effekt enthalten.
+
+
+8. Kontrollstrukturen
+---------------------
+C bietet viele Mittel und Wege an,  um Sie den Ablauf Ihres  Pro-
+gramms  kontrollieren zu lassen.  Alle derartigen Anweisungen te-
+sten logische Werte, die entweder gleich oder ungleich Null sind. 
+C  interpretiert Null als den logischen Wert 'falsch'  und  einen 
+von Null verschiedenen Wert als 'wahr'.
+In  den folgenden Abschnitten finden Sie oft den Begriff  'Anwei-
+sung'. Die exakte Definition einer Anweisung bedarf grosser Sorg-
+falt;  Sie finden diese in der Literatur.  Das Hauptproblem,  das 
+sich  vor  allem  dem Anfaenger stellt,  ist die  Verwendung  von 
+Semikolons und geschweiften Klammern.  Wir moechten Ihnen  keinen 
+informativen  Ueberblick geben.  Ein solcher koennte  keinesfalls 
+vollstaendig  sein und wuerde nur Verwirrung bei Ihnen zur  Folge 
+haben. Stattdessen werden wir Ihnen lauffaehige Programmbeipsiele 
+vorsetzen  und  Sie Ihre eigenen Schluesse  ziehen  lassen.  Wenn 
+Ihnen  dabei  irgendein Zweifel kommt,  dann besteht  die  einzig 
+richtige Loesung darin, nachzuschauen, was die Sprachbeschreibung 
+aussagt.  Bedauerlicherweise liest sich dagegen James Joyce unge-
+faehr so leicht wie ein Kinderbuch.
+
+8.1 Die "for"-Anweisung
+-----------------------
+Sie haben sie bereits kennengelernt, aber hier ist sie nochmals:
+
+     for (Ausdruck_1; Ausdruck_2; Ausdruck_3)
+          Anweisung
+
+Als erstes wird Ausdruck_1 (einmal!) bewertet. Dann wird, solange 
+wie Ausdruck_2 ungleich Null ist, der Anweisungsteil, gefolgt von 
+Ausdruck_3,  ausgefuehrt. Ausdruck_1 dient meist zum Initialisie-
+ren  des Schleifenzaehlers,  Ausdruck_2 als Abbruchkriterium fuer 
+die  Schleife  und  Ausdruck_3 zur  Manipulation  des  Schleifen-
+zaehlers. Dies haben wir bereits in frueheren Beispielen gesehen. 
+Falls der erste oder dritte Ausdruck, oder auch beide, fehlen, so 
+bedeutet  dies,  dass an der entprechenden Stelle  nichts  ausge-
+fuehrt  werden soll.  Ein fehlender zweiter Ausdruck wird  jedoch 
+als  eine stets 'wahre' Bedingung interpretiert,  und es entsteht 
+eine Endlos-Schleife, wenn nicht irgendwelche besonderen Schritte 
+zum Ausstieg aus dieser eingeleitet werden. Testen Sie einmal die 
+folgende  Endlos-Schleife (aber seien Sie sicher,  dass Sie  sich 
+mit der 'interrupt'-Taste auskennen):
+
+     main()
+     {    int i;
+          for (i=1;  /* kein zweiter Ausdruck */; i++)
+               printf ("i = %d\n",i);
+     }
+
+Innerhalb   der  for-Anweisung  sind  die  Semikolons   besonders 
+wichtig.  Vergleichen  Sie  obiges  Beispiel  mit  diesem  endlos 
+laufenden Fragment:
+          for (;;)
+
+
+
+8.2 Die "while"-Anweisung
+-------------------------
+Die  while-Anweisung  ist vergleichbar mit  einer  for-Anweisung, 
+jedoch  ohne den ersten und letzten Ausdruck.  Ihre  Formulierung 
+lautet:
+
+          while (Ausdruck)
+                Anweisung
+
+Der  Anweisungsteil  wird ausgefuehrt,  solange der Ausdrcuk  un-
+gleich Null ist. Eine for-Anweisung kann auf eine while-Anweisung 
+zurueckgefuehrt werden.  Die folgenden zwei Programmstuecke haben 
+den gleichen (sinnlosen) Effekt:
+
+     for (i=1; i<=10; i++)
+     {    a=a+i;
+          b=a*a;
+     }
+
+
+
+
+     i=1;      /* dasselbe mit einer while-Schleife */
+     while (i<=10)
+     {    a=a+i;
+          b=a*a;
+          i++;
+     }
+
+Die while-Anweisung prueft grundsaetzlich, ob die Schleife ueber-
+haupt ausgefuehrt werden soll.  In einigen wenigen Faellen  waere 
+es guenstiger, mindestens einen Schleifendurchlauf auszufuehren - 
+die  naechste  Anweisung,  die wir betrachten,  wird  Ihnen  dies 
+ermoeglichen.
+
+
+8.3 Die "do"-Anweisung
+----------------------
+Um wenigstens eine einmalige Ausfuehrung einer Schleife zu bewir-
+ken, wird die do-Anweisung verwendet:
+
+     do
+          Anweisung
+     while (Ausdruck):
+
+Achten  Sie dabei besonders auf die Semikolons.  Hier  folgt  ein 
+weiteres Programmfragment, welches eine do-Anweisung enthaelt.
+
+     i=5;
+     do
+     {    a=a+i;
+          i=i*2;
+     } while (--i);      /* Abbruch, wenn i Null erreicht */
+
+Die  geschweiften Klammern entfallen,  wenn nur eine einfache An-
+weisung in der Schleife steht.
+
+     i=7;
+     do
+          a=a+i;
+          while (--i);        /+ Abbruch, wenn Null erreicht */
+
+
+
+8.4. Die "continue" und "break"-Anweisungen
+-------------------------------------------
+Um Ihnen besondere Aktionsmoeglichkeiten innerhalb von  Schleifen 
+zu  gestatten,  existieren  zwei  zusaetzliche  Anweisungen.  Mit        
+continue  springt  man zum Ende einer Schleife und  umgeht  somit 
+alle sonst auszufuehrenden Anweisungen. Durch break verlaesst man 
+eine Schleife unverzueglich. Bevor Sie jedoch etwas ueber die if-
+Anweisung  gelernt  haben,  sind Ihnen diesen beiden  Anweisungen 
+nicht  besonders dienlich - ein unbedingtes break  oder 
+continue  innerhalb einer Schleife bringt niemandem Vorteile. Einige Anwen-
+dungsbeispiele finden Sie noch weiter hinten im Text.
+
+
+8.5 Die "if"-Anweisung
+----------------------
+Diese  Anweisung muesste jedem,  der moderne  Programmiersprachen 
+verwendet, vertraut sein. In C sieht sie folgendermassen aus:
+
+     if (Ausdruck)
+          Anweisung
+     else
+          Anweisung
+
+Wie ueblich ist der else-Teil optional.  Verwenden Sie  else,  so 
+bezieht  es sich auf das letzte davorliegende if ohne  else-Teil, 
+ebenfalls ein gebraeuchliches Verfahren. Vermutlich sind Beispie-
+le die besten Lehrmeister.
+
+     if (a<b)            /* wenn a kleiner b dann */
+          b=0;           /* setze b auf Null */
+     if (a>b)            /* wenn a groesser b, dann */
+     {    i++;           /* zu i eins addieren */
+          b=0;           /* b auf Null setzen */
+     }
+     else
+          c++;           /* sonst 1 zu c addieren */
+     if (a+b<c)          /* drittes 'if' */
+          if (a>c)       /* viertes 'if' */
+               b++;
+          else           /* gehoert zum vierten 'if' */
+               c++;
+     else                /* gehoert zum dritten 'if' */
+     {    a=c;
+          b=0;
+     }
+      
+Und  jetzt  ein  wirkliches Programm:  es gibt  die  Zeichenfolge 
+12345789  (ohne die 6) aus und zeigt die ungeschickte  Verwendung 
+einer continue-Anweisung.  Im Normalfall wuerde man den Test  auf 
+Gleichheit ins Gegenteil umwandeln und auf die continue-Anweisung 
+verzichten.  Bedauerlicherweise ist zu diesem Zeitpunkt eine gute 
+Veranschaulichung von continue ziemlich schwierig.
+
+     main()
+     {    int i;
+          for (i=1; i<=10; i++)
+          {    if (i==6)           /* teste Gleichheit */
+                    continue;
+               printf ("%d",i);
+          }
+     }
+
+Die  continue-Anweisung  wird ausgefuehrt,  wenn i gleich  6  ist 
+(dies  drueckt == aus) und bewirkt einen Sprung zum Fortsetzungs-
+punkt der Schleife,  wodurch printf uebersprungen wird.  Da  sich 
+mehr  als eine Anweisung innerhalb der Schleife befindet,  werden 
+die  geschweiften Klammern benoetigt.  Weil jedoch die  =if-else-
+Kombination als eine einzige Anweisung betrachtet wird, loest das 
+naechste  Beispiel  dieselbe Aufgabe ohne die  zusaetzlichen  ge-
+schweiften Klammern.
+
+     main()
+     {    int i;
+          for (i=1; i<=10; i++)
+               if (i==6)
+                    continue;
+               else
+                    printf ("%d",i);
+     }
+Ein Ersatz von continue durch break haette an dieser Stelle einen 
+Abbruch  der Schleife zur Folge,  da diese mittels break  voellig 
+verlassen wuerde.
+
+
+8.6. Die "switch"-Anweisung
+---------------------------
+Was  in  den meisten Programmiersprachen  unter  der  Bezeichnung 
+case-Anweisung  laeuft,  zieht  C vor,  mit switch zu  bezeichnen 
+(dies  ist nicht unvernuenftig - es gibt Unterschiede  zur  case-
+Anweisung etwa in Pascal).  Dies Anweisung dient dazu,  abhaengig 
+vom  Wert  eines  Ausdrucks eine mehrfach verzweigte  Auswahl  zu 
+treffen. Um beispielsweise herauszufinden,  ob ein Ausdruck einen 
+ungeradzahligen Wert zwischen 1 und 10 annimmmt oder einen gerad-
+zahligen  im selben Bereich oder ganz aus diesem Bereich  heraus-
+faellt, koennen Sie so vorgehen:
+     switch (a+b) {
+     case 2:
+     case 4:
+     case 6:
+     case 8:
+     case 10:
+          printf ("gerade\n");
+          break;  
+     case 1:
+     case 3:
+     case 5:
+     case 7:
+     case 9:
+          printf ("ungerade\n");
+          break;
+     default:
+          printf ("ausserhalb\n");
+     }
+Nach switch steht ein Ausdruck in Klammern (die Klammern  muessen 
+hier angegeben werden). Mit dem Wert des Ausdrucks wird einer der 
+case-Werte  ausgewaehlt.  Der  Programmablauf wird dann  bei  der 
+Anweisung fortgesetzt, die dem ausgewaehlten case folgt. Von dort 
+verlaeuft die Ausfuehrung wie gewohnt, und wenn Sie nicht wollen, 
+dass  alle danachfolgenden Faelle ebenso zur Ausfuehrung  kommen, 
+muessen  Sie  notwendigerweise die break-Anweisung  benutzen;  im 
+Beispiel ist das verdeutlicht. Durch die break-Anweisung wird das 
+Programm gezwungen,  die switch-Anweisung ganz zu verlassen.  Da-
+nach  geht die Ausfuehrung hinter der schliessenden  geschweiften 
+Klammer weiter.
+Wenn das Beispiel keine break-Anweisungen enthielte und der  Aus-
+druck  ein  ganzzahliges Ergebnis zwischen 2 und  10  haette,  so 
+wuerden der Reihe nach die Meldungen gerade, ungerade und ausser-
+halb  ausgegeben.  Was wuerden wohl im Bereich liegende  ungerade 
+Zahlen bewirken?
+
+Die  case-Werte  innerhalb jeder switch-Anweisung   muessen  ver-
+schieden sein. Zweimal
+                    case 1:
+waere  im  vorigen Beispiel unzulaessig.  Der Wert bei case  muss 
+ausserdem konstant und ganzzahlig sein.  default  bedeutet,  dass 
+die danach folgenden Anweisungen ausgewaehlt werden sollen, falls 
+der  fuer  die  switch-Anweisung bewertete  Ausdruck  einen  Wert 
+anninmmt,  der  nicht als case definiert wurde.  Wird keiner  der 
+definierten Werte erreicht,  und ist default nicht vorhanden,  so 
+wird keine Anweisung innerhalb der switch-Anweisung ausgefuehrt. 
+
+9. Ausdruecke
+-------------
+Wenn  wir sie bisher auch praktisch ignorierten,  so koennen  wir 
+dennoch nicht mehr laenger auf sie verzichten.
+
+
+9.1. Vergleiche
+---------------
+Als Beispiel sei a < b angefuehrt.  Dieser Ausdruck hat  wirklich 
+einen  Wert  (sofern Sie ihn benoetigen):  0 wenn  der  Vergleich 
+falsch ist, 1 wenn er zutrifft. Die Vergleichsoperatoren sind
+          <         kleiner als
+          >         groesser als
+          <=        kleiner oder gleich
+          >=        goesser oder gleich
+Sie haben Vorrang (werden also frueher bewertet) vor den Operato-
+ren
+          ==        gleich
+          !=        ungleich
+Wenn  Sie Beispiele dafuer brauchen,  betrachten Sie nochmals die 
+Kontrollstrukturen im vorigen Abschnitt.
+
+
+9.2 Bitmanipulationen
+---------------------
+C gestattet Ihnen,  ganzzahlige Werte wie Bitmuster zu behandeln. 
+Sie duerfen folgende Operationen auf diese Groessen anwenden:
+
+          &         und
+          |         oder
+          ^         exklusiv oder
+          <<        nach links verschieben
+          >>        nach rechts verschieben
+          ~ (Tilde) Bit-Komplement
+
+Anwendungsbeispiele dafuer sind:
+          a = b & 7;     /* letzte 3 Bits auswaehlen */
+          a = b | 7;     /* letzte 3 Bits setzen */
+          a = b ^ 1;     /* letztes Bit komplementieren */
+          a = ~b;        /* Komplement */
+          a = b << 3:    /* um 3 Bits nach links */
+          a = b >>3;     /* bzw. nach rechts schieben */
+
+Seien Sie vorsichtig mit der Verschiebung nach rechts.  Was dabei 
+als  hoechstwertiges  Bits nachgeschoben wird,  haengt stark  von 
+Ihrem  Rechner  ab,  und Sie muessen eventuell  eine  'Und'- oder 
+'Oder'-Verknuepfung hinzufuegen,  um das gewuenschte Resultat  zu 
+erhalten. 
+
+
+9.3 Logische Verknuepfungen
+---------------------------
+Um  interessante logische Ausdruecke zu bilden,  koennen Sie  die 
+Verknuepfungen 'Und' (&&), 'Oder' (||) und 'Negation' (!) verwen-
+den.  'Und' liefert als Resultat 1, wenn beide Operatoen von Null 
+verschieden  sind,  und 0 sonst.  'Oder' verhaelt sich wie 'Und', 
+liefert  aber - wie erstaunlich - auch 1,  wenn nur  ein  Operand 
+nicht Null ist. Die Negation liefert 0 fuer einen von 0 verschie-
+denen  Operanden und 1 fuer Null als Operanden.  Rechnen Sie  mit 
+seltsamens Ergebnissen, wenn Sie den Editor zum Veraendern dieser 
+Ausdruecke  verwenden.  Das  Zeichen  & ist fuer den  Editor  ein 
+Sonderzeichen.
+Hier   geben   wir   Ihnen   einige   Beispiele   fuer   logische 
+Verknuepfungen:
+
+          if (a<b && b<c)          /* wenn a<b UND b<c */
+          if (a<b || b<c)          /* wenn a<b ODER b<c */
+          if  (!b)                 /* wenn nicht b (wahr wenn  b 
+                                    Null ist) */
+
+Die  Negation findet haeufig beim Testen von Flaggen  Verwendung; 
+denken  Sie  etwa an eine Variable namens aus,  welche  den  Wert 
+'wahr' hat,  wenn etwas aus ist,  und den Wert 'falsch', wenn das 
+nicht zutrifft. Die Anweisung
+          if (!aus)
+(in  Worten 'if nicht aus') erweist sich in praktischen Anwendun-
+gen oft als sinnvoll.
+
+
+
+10. Zuweisungen
+---------------
+Manch  Leute sollen ja Zuwendungen bekommen - fuer einen  Rechner 
+sind Zuweisungen fast so gut!
+
+
+10.1 Zuweisungen als Anweisungen
+--------------------------------
+Die einfachste Form ist eine direkte Zuweisung
+          var = Ausdruck; 
+wobei eine Variable den Wert irgendeines Ausdrucks  erhaelt.  Der 
+Ausdruck  darf  aus einer beliebigen Kombination von  zulaessigen 
+Werten und Operationen gebildet werden; Vergleiche, Bitperationen 
+und logische Verknuepfungen sind erlaubt,  da sie alle numerische 
+Resultate liefern.
+Wir  haben die arithmetischen Operatoren  bisher  stillschweigend 
+vorausgesetzt,  in  der Hoffnung,  dass Sie deren Bedeutung  ohne 
+besondere Erklaerung verstehen wuerden. Falls dies nicht der Fall 
+ist oder Sie sich vergewissern wollen,  hier sind sie kurz aufge-
+listet:
+          
+          +         Addition
+          -         Subtraktion
+          *         Multiplikation
+          /         Division
+          %         Rest nach Division
+
+%  ist vielleicht neu fuer Sie.  Der Operator wird genau wie  die 
+Division verwendet:
+               x % y
+liefert  aber  als Resultat den Rest anstelle des  Quotienten; 
+%  kann nur auf ganzzahlige Argumente angewendet werden.
+
+Einige zulaessige Zuweisungen folgen hier nun als Beispiele.
+          a = b;
+          a = b + c;
+          a = (b + c) / d;
+          a = e > f;
+          a = (e > f && c < d) + 1;
+          a = a << 3;
+
+Es ist durchaus vernuenftig,  das Ergebnis eines Vergleichs einer 
+Variablen  zuzuweisen;  dieses Ergebnis ist schliesslich auch nur 
+eine Zahl.
+Das letzte Beispiel ist besonders interessant.  Es verschiebt den 
+Wert von a um 3 Stellen (Bits) nach links und weist das  Ergebnis 
+wiederum  an a zu (numerisch entspricht dies einer Multiplikation 
+mit  8).  Die Faelle,  in denen das Ziel einer Zuweisung auch  im 
+Ausdruck auftaucht,  unterstuetzt C durch eine besondere Form der 
+Zuweisungsoperatoren. Wir koennen daher
+               a = a <<3;
+in Form von
+               a << = 3;
+umschreiben,  was  nicht unbedingt als Vorteil  erscheinen  muss. 
+Lohnend  ist  dies dann,  wenn die linke Seite selbst  aus  einem 
+komplizierten Ausdruck, etwa einem verschachtelten Vektorzugriff, 
+besteht.  Muessen Sie den Ausdruck naemlich zweimal schreiben, so 
+steigen die Chancen fuer Fehler gewaltig.  Weitere Gelegenheiten, 
+bei denen diese Schreibweise angenehm ist,  bieten sich z.B.  bei 
+Anwendungen wie:
+          a + = 2;       /* zwei zu 'a' addieren */
+Dies  liest sich bedeutend besser als die anderen Versionen,  die 
+Sie bereits bewundern konnten.  Algol-68-Anwender sind mit dieser 
+Idee  ohnehin schon vertraut.  Hier ist eine Liste  aller  Zuwei-
+sungsoperatoren, die dieses Vorgehen unterstuetzen:
+     +=   -=   *=   /=   %=   <<=   >>=   &=   ^=   |=
+Die  Verwendung dieser Zuweisungsoperatorn anstelle der laengeren 
+Form hat zwei wichtige Nebeneffekte. Erstens muss die linke Seite 
+nur einmal bewertet werden; dies ist wichtig, da ja Vektorzugrif-
+fe oder Zeiger, auf die wiederum Inkrement- oder Dekrement-Opera-
+toren  anwendbar sind,  in ihr enthalten sein koennen.  So  etwas 
+doppelt zu bewerten, wuerde nie das Gewuenschte liefern. Zweitens 
+ist es ein sehr nuetzlicher Fingerzeig fuer den Uebersetzer,  der 
+ihm auf die Spruenge hilft, effizienteren Code zu erzeugen.
+
+10.2 Werte von Zuweisungen
+--------------------------
+Zuweisungen  liefern  immer einen Wert und  koennen  wiederum  in 
+Ausdruecken verwendet werden. Iher Wert ist der zugewiesene Wert. 
+Dies  ist in manchen Faellen aeussert nuetzlich,  um dem Program-
+mierer das Erstellen von kurzen und klaren Programmen zu erleich-
+tern,  die einem beim Lesen Freude bereiten. Ebenso leicht ist es 
+jedoch,  diese  Eigenschaft ins Gegenteil zu verdrehen,  so  dass 
+hoechst unlesbare Programme entstehen.  Wenn wir sie spaeter  an-
+wenden,  werden wir versuchen, die Stellen hervorzuheben, die wir 
+dafuer als lohnend erachten.
+
+          /*
+          *    Ein Beipiel fuer Wertzuweisungen.
+          *    Diese Stueck Code hat denselben
+          *    Effekt wie das naechste
+          */
+          a = (b = c + d) / (e = f + g);
+
+          /*   naechstes Stueck */
+          b = c + d;
+          e = f + g;
+          a = b / e;
+
+          /* wir bevorzugen das zweite Beispiel */
+
+
+10.3 Konstanten
+---------------
+Konstanten haben dieselbe Gestalt wie auch in den meisten anderen 
+Programmiersprachen.  Ganzzahlige  Konstanten werden  geschrieben 
+als 1, 2, 3 usw.; Gleitkomma-Konstanten als 1.0, 2.0, 3.0 oder in 
+der  wissenschaftlichen  Notation als 1e6.  Fuer Zeichen gibt  es 
+eine  besondere Klasse von Konstanten mit der  Schreibweise  'a'. 
+Dies entspricht dem ganzzahligen Wert,  der intern den Buchstaben 
+a als Zahlenwert repraesentiert. Manchmal werden Sie ueber Oktal-
+zahlen (Basis 8) stolpern;  ausser dass sie mit einer Null begin-
+nen,  sehen sie wie ganz normale ganzzahlige Konstanten aus: 
+011  entspricht  der dezimalen 9.  Derselbe Sachverhalt gilt ebenfalls 
+fuer Zeichen:  '\011' ist eine andere Repraesentierung (im ASCII-
+Zeichensatz)  fuer das Tabulatorzeichen (schauen  Sie  nach).  Im 
+'ovp'-Programm  im Anhang F koenen Sie die Verwendung von Zeichen 
+als Konstanten sehen.     
+
+
+11. Datenstrukturen
+-------------------
+C bietet eine sehr gute Moeglichkeit zum Strukturieren von Daten, 
+und wenn Sie sich erst einmal an diese gewoehnt haben, werden sie 
+Ihnen unentbehrlich.  Wir moechten zwei von ihnen naeher betrach-
+ten, Vektoren und Strukturen.
+
+11.1 Vektoren
+-------------
+Jeder  Programmierer,  der sich einer hoeheren Programmiersprache 
+bedient, muss zwangslaeufig ueber Vektoren stolpern. In C verein-
+bart man mit der Deklaration
+               int xyz[100];
+einen  Vektor  namens xyz mit  100  ganzzahligen  Elementen,  die 
+mittels  xyz[0],  xyz[1],  bis  hin zu xyz[99] zugaenglich  sind. 
+Indexwerte  reichen also von Null bis zur um  eines  verminderten 
+Vektorgroesse  - dies ist eine der Hauptursachen fuer Fehler  bei 
+Neulingen in der C-Programmierung.  Die Gruende fuer dieses unge-
+woehnliche  Numerierungsschema werden deutlich,  wenn Sie spaeter 
+einmal versuchen, aus der Sicht von C zu durchschauen, was hinter 
+der  Bezeichnung Vektor wirklich steckt.  Vorlaeufig muessen  Sie 
+sich einfach daran gewoehnen. Aber sein Sie aeusserst vorsichtig, 
+denn  die derzeit zur Verfuegung stehenden  C-Uebersetzer  machen 
+sich nicht die Muehe, Ihre Zugriffe auf Vektoren zu ueberpruefen.
+
+Mehrdimensionale Vektoren werden als Vektoren von Vektoren behan-
+delt und folgendermassen deklariert:
+          int xyz[3][4][5];
+Dies vereinbart 3 Vektoren, bestehend aus jeweils 4 Vektoren, die 
+ihrerseits je 5 ganzzahlige Werte enthalten.  (Diese feine Unter-
+scheidung ist selten von Bedeutung,  ausser Sie versuchen sich an 
+cleveren Tricks mit Zeigern (s.uebernaechster Abschnitt),  da der 
+Zugriff  auf  Vektoren mittels Indizes dies eruebrigt.) Wenn 
+xyz  wie oben deklariert wurde, so ist der Ausdruck
+     xyz[1][2][3] += 2;     /* addiere zwei zu dem Feldelement */
+ebenfalls legal und
+     xyz[1][2][3] = xyz[1][2][3] + 2;
+vorzuziehen,  denn er ist leichter zu  schreiben,  wahrscheinlich 
+effizienter und aussagekraeftiger.
+
+
+
+
+11.2 Strukturen
+---------------
+Nicht  immer sind Vektoren die ideale Loesung fuer ein bestimmtes 
+Problem.  Oftmals  gibt  es reizvollere Wege fuer  die  Anordnung 
+Ihrer Daten,  wie etwa in einem 'record' in Pascal,  obgleich die 
+Fortran  abtruennig Gewordenen oft gar nicht  bemerken,  was  sie 
+vermissen.  C bietet sowohl 'Strukturen', welche wir hier zeigen, 
+als auch 'Varianten' ('unions'). Beide entsprechen weitgehend den 
+'records' und 'case-variant-records' in Pascal. In diesem Kapitel 
+wollen wir uns jedoch nicht mit Varianten auseinandersetzen.
+Die Deklaration
+
+          struct xyz
+          {    int    aaa;
+               char   bbb;
+               double ccc;
+          } abc;
+
+vereinbart  eine Struktur-Variable namens abc.  Die Struktur ent-
+haelt drei 'Komponenten', einen ganzzahligen Wert namens aaa, ein 
+Zeichen namens bbb und einen Gleitkomma-Wert namens ccc.  Auf die 
+Komponenten  der Struktur kann mit abc.aaa,  abc.bbb und  abc.ccc 
+einzeln zugegriffen werden.
+In  der Deklaration wird xyz als der  'Strukturname'  bezeichnet. 
+Damit  wird  der Name der Struktur fuer eine nochmalige  spaetere 
+Verwendung vereinbart.  Unter der Annahme, dass die vorige Dekla-
+ration bereits vorliegt, vereinbart
+          struct xyz  s1,s2,s3;
+drei Strukturen (s1,s2,s3) von demselben Typ wie  abc.  Ausserdem 
+duerfen Sie auch Vektoren aus Strukturen, Strukturen mit Vektoren 
+und aehnliches konstruieren.
+Wenn Sie ueberhaupt von 'records' oder Strukturen gehoert haben - 
+nennen  Sie  sie wie Sie wollen - werden Sie  zwangslaeufig  nach 
+'Zeigern' fragen.  C besitzt selbstverstaendlich Zeiger, sie sind 
+eines der wesentlichsten Sprachelemente.  Es wird ziemlich schwer 
+sein,  ein C-Programm zu finden,  welches keine Zeiger verwendet; 
+sie  sind meistens unentbehrlich.  Fuehren wir sie uns einmal  zu 
+Gemuete!
+
+
+
+12. Zeiger
+----------
+Wenn  Sie  noch niemals zuvor Zeiger verwendet  haben,  so  steht 
+Ihnen ein hartes Stueck Arbeit in Haus.  Zeiger zu erklaeren, ist 
+nicht leicht,  und ihre Anwendung zu verdeutlichen, ist ebenfalls 
+schwierig,  obwohl das Prinzip ganz einfach ist.  Bitte  bemuehen 
+Sie sich darum - Zeiger sind sehr verbreitet in C-Programmen, und 
+es spricht nicht fuer einen Programmierer, wenn er nicht imstande 
+ist, sie zu benutzen.
+
+Zeiger  werden in C vereinbart,  indem man angibt,  auf was  fuer 
+einen Objekt-Typ sie zeigen.
+          int obj, *p;
+Hier  werden  zwei Dinge vereinbart - ein ganzzahliger  Wert  mit 
+Namen obj und ein Zeiger namens p. Der Name des Zeigers ist nicht 
+*p,  sondern  der  * signalisiert,  dass es sich um einen  Zeiger 
+handelt.  Die  Bezeichnung int innerhalb der Deklaration  besagt, 
+dass p als Zeiger auf ganzzahlige Werte verwendet werden soll.
+
+
+Bevor Sie einen Zeiger ueberhaupt verwerten koennen,  muessen Sie 
+dafuer sorgen,  dass er auf etwas zeigt.  Lassen wir ihn also auf 
+den ganzzahligen Wert namens obj zeigen, indem wir den Operator & 
+davorsetzen, was soviel wie 'die Adresse von' bedeutet:
+          p = &obj;
+Diese  Zuweisung  uebergibt die Adresse von obj an den Zeiger  p; 
+von nun an zeigt p auf obj.  Um wiederum das Objekt,  auf welches 
+der Zeiger zeigt, anzusprechen, bedient man sich der Schreibweise 
+*p, wobei p ein Zeiger sein muss. Beispielsweise bewirkt
+          p  = &obj;
+          *p = 2;
+genau dasselbe wie
+          obj = 2;
+
+
+
+12.1 Die Verwendung von Zeigern
+-------------------------------
+Jemandem die Verwendung von Zeigern rein verbal beizubringen, ist 
+ebenso erfolgreich,  wie jemanden radfahren zu lehren,  indem man 
+ihm etwas darueber erzaehlt. Beispiele waeren hilfreich, aber sie 
+wuerden den Rahmen dieses Buches sprengen. Der beste Rat, den wir 
+geben koennen, ist, weitere Literatur und jedes Beispielprogramm, 
+welches Sie in die Finger bekommen, zu studieren.
+Einige  Hinweise  koennnten Ihnen zum besseren  Verstaendnis  von 
+Beispielen  hilfreich  sein.  Zeiger koennen zur Effizienz  eines 
+Programmes beitragen,  insbesondere bei aufeinanderfolgenden  Zu-
+griffen auf Vektoren oder Strukturen.  Das Kopieren eines Vektors 
+ist eine ziemlich weit verbreitete Operation:
+
+          int a[100], b[100], i;
+               for (i=0; i<100; i++)
+                    a[i] = b[i];
+
+Dies kann umgeschrieben werden zu
+
+          int a[100], b[100], *ap, *bp;
+               ap=a; bp=b;
+               while (ap < &a[100])
+                    *ap++ = *bp++;
+
+Im  zweiten  Beispiel  sind  die Zuweisungen ap = a und  bp  =  b 
+interessant. Sie werden vermutlich erwartetet haben zu sehen, wie 
+die Adresse des ersten Vektorelements zugewiesen wird.  Tatsaech-
+lich  ist dies auch der Fall.  Der Name eines Vektors  entspricht 
+naemlich der Adresse seines ersten Elements,  und folglich bedeu-
+ten  a und &a[0] dasselbe.  Anschliessend an die  Initialisierung 
+der Zeiger wird die Schleife solange ausgefuehrt,  bis einer  der 
+Zeiger den Vektor verlaesst,  auf den er zeigt. (&a[100] ist kein 
+Element von a mehr). Beide Zeiger werden automatisch erhoeht.
+
+Wieso  wird durch *ap++ nicht das Objekt,  auf welches ap  zeigt, 
+veraendert?  Weil der Inkremment-Operator einen hoeheren  Vorrang 
+als  der indirekte Zugriff besitzt.  Im Gegensatz dazu  inkremen-
+tiert  (*ap)++ das Objekt,  auf welches gezeigt wird.  In  diesem 
+Fall  wuerde jedoch die while-Schleife nicht mehr enden,  und  an 
+(*ap)++ kann man auch nicht zuweisen.
+
+Nun  sieht zugegebenermassen die Zeigerversion nicht  nach  einer 
+Verbesserung  gegenueber der Vektorversion aus.  Dennoch  besteht 
+eine gute Chance,  das sie effizienter ist,  besonders,  wenn die 
+Objekte,  auf  die  gezeigt wird,  relativ gross sind  (wie  etwa 
+double-Variablen).  Ausserdem waere sie ebenfalls besser,  wenn 
+die Objekte, auf die gezeigt wird, grosse Strukturen sind. Manche 
+C-Uebersetzer  unterstuetzen allerdings die Zuweisung  kompletter 
+Strukturen noch nicht, obgleich dies die Ubersetzer bei Standard-
+UNIX  tun.  Wenn Sie einem der aelteren Uebersetzer in die Haende 
+fallen, so muessen Sie die Zuweisung fuer jede Komponente einzeln 
+durchfuehren.
+
+

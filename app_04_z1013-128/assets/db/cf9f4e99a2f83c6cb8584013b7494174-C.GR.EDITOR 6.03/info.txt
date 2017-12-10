@@ -1,0 +1,4 @@
+<kurz src="Grafikeditor mit Analogjoystick"/>
+<lang>Gibt es das offiziell? Wurde sowas überhaupt mal veröffentlicht?
+ansonsten scheint das Programm ähnlich [7bca32b33de1e3ddcdea318ef53ef53f] zu sein.</lang>
+<requires></requires>

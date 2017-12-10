@@ -1,0 +1,19 @@
+<kurz src="Grafikeditor mit Analog- oder Digital-Joysticksteuerung"/>
+<lang> ^C  = Ruecksprung Betr.system
+ ^N  = Hilfsmenue
+
+ ^Q  = Quellenfrakment
+
+ ^S  = Save Bild  in Speicher
+            1,2,3,4 o. Kassette
+ ^L  = Load Bild von Speicher
+         1(m),2,3,4 o. Kassette
+>ENT<= Zeichen aufnehmen
+>SP< = Zeichen setzen
+
+ ^A  = ASCII-Zeichen listen
+ ^T  = Text ab Cursor bis >ENT<
+ ^V  = verschieben
+ ^F  = fuellen
+ ^Z  = loeschen</lang>
+<requires></requires>

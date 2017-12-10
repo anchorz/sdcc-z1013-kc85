@@ -1,0 +1,3 @@
+<kurz src="KURZBESCHREIBUNG ZUM PROZESSOR 6502"/>
+<lang><include src="T.6502-KURZBESCHR..txt"/></lang>
+<requires></requires>

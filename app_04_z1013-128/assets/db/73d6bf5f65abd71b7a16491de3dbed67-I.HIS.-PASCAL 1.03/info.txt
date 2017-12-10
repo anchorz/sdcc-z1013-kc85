@@ -1,0 +1,3 @@
+<kurz src="HISOFT-PASCAL 1.03 "/>
+<lang><include src="I.HIS.-PASCAL 1.03.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Kurzlehrgang fuer die Programmiersprache C Teil 1"/>
+<lang><include src="T.C-R&B TEIL 1.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,5 @@
+<kurz src="Beschreibung zum Programm STATUS I/O-Adr 04H"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+<include src="I.STATUS I_O-ADR 4.txt"/></lang>
+<requires></requires>

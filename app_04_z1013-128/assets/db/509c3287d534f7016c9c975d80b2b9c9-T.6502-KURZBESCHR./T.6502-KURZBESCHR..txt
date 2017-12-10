@@ -1,0 +1,228 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*                                                                     *
+*               KURZBESCHREIBUNG ZUM PROZESSOR 6502                   *
+*                                                                     *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+Dieser Mikroprozessor 6502 ist ein LSI Schaltkreis in NMOS-Technologie
+mit 8 Bit Datenbreite. Im Vergleich zum Z80 zeichnet er sich weniger
+durch eine Vielzahl von Registern und verfuegbaren internen Operationen
+aus, sondern eher durch effektive Adressierungsarten und eine hochent-
+wickelte BCD-Arithmetik. 1983 hatte er einen Anteil von 34% aller 8 bit
+Prozessoren. Der 6502 ist aufwaertskompatibel zum 16 bit Bus der 68000-
+Familie.
+
+REGISTERSATZ
+
+     A  Akkumulator
+     Y  Indexregister
+     X  Indexregister
+     PC Befehlszaehler
+     S  Stackpointer
+     P  Processor Status Register
+
+Aufbau des Registors P
+----------------------
+
+  Bit   7  N  Negativ-Bit
+        6  V  Ueberlauf-Bit
+        5
+        4  B  BREAK-Flag
+        3  D  Dezimalmodus
+        2  I  Interrupt Flag
+        1  Z  Zero
+        0  C  Carry
+
+ADRESSIERUNGSARTEN
+------------------
+Accumulator (Acc)              Ein-Byte Befehl, Inhalt von A betreffend
+Immediate (Imm)                Zweites Byte enthaelt Konstante als
+                               Operanden
+Absolute (Abs)                 Zweites Byte gibt niederwertiges, das
+                               dritte hoeherwertiges Byte einer
+                               Arbeitsadresse an
+Zero Page (ZP)                 Kurzform, zweites Byte enthaelt Adresse
+                               in Seite Null
+Indexed Absolute (Abs X o. Y)  Adresse wird durch Addition des X oder
+                               Y Register-Inhaltes zur angegebenen
+                               Adresse gebildet(low,high)
+Indexed Zero Page (ZP,X o. Y)  Kurzform, Adresse in Seite Null
+Implied (Ipl)                  Im Code ist Angabe des Operanden
+                               implizit enthalten
+Relative (Rel)                 2.Byte gibt Abstand zum Sprungziel an
+                               (Zweierkomplement)
+Absolute Indirect (Ind)        Angegebene Adr. weist auf Speicherzelle,
+                               in der niederw. Byte eines Sprungzieles
+                               steht, hoeherw. Byte in folg. Zelle
+Indexed Indirect (Ind,X)       Die Summe aus dem zweiten Byte des
+                               Befehls und dem Inhalt des X Registers
+                               zeigt auf erste zweier aufeinanderfol-
+                               gender Zellen in Seite Null, welche die
+                               Arbeitsadresse enthalten
+Indirect Indexed ((Ind),Y)     2. Byte zeigt auf erste von zwei Zellen
+                               in Seite 0 die eine Adresse enthalten;
+                               Addition von Y ergibt Arbeitsadresse
+
+BEFEHLSSATZ
+-----------
+
+Mnemonic                       Aktion
+
+ADC  Add with Carry            A+M+C->A
+AND  Logical AND               A^B->A
+ASL  Arithmetic Shift Left
+BCC  Branch on Carry Clear     Verzweige falls C=0
+BCS  Branch on Carry Set       Verzweige falls C=1
+BEQ  Branch on Result Zero     Verzweige falls Z=1
+BIT  Test Bits                 M7->N;M6->V;A^M und aktualisiere Z
+BMI  Branch on Result Minus    Verzweige falls N=1
+BNE  Branch on Result not 0    Verzweige falls Z=0
+BPL  Branch on Result Plus     Verzweige falls N=0
+BRK  Force Break               PC+2;P->STACK;B=1,(FFFE,FFFF)->PC
+BVS  Branch on Overflow Clear  Verzweige falls V=0
+BVS  Branch on Overflow Set    Verzweige falls V=1
+CLC  Clear Carry Flag          0->C
+CLD  Clear Decimal Mode        0->D
+CLI  Clear Interrupt Mask      0->I
+CLV  Clear Overflow Flag       0->V
+CMP  Compare with Accumulator  A-M und aktualisiere N,Z,C
+CPX  Compare with X Register   X-M und aktualisiere N,Z,C
+CPY  Compare with Y Register   Y-M und aktualisiere N,Z,C
+DEC  Decrement Memory          M-1->M
+DEX  Decrement X Register      X-1->X
+DEY  Decrement Y Register      Y-1->Y
+EOR  Logical Exclusive OR      A M->A
+INC  Increment Memory          M+1->M
+INX  Increment X Register      X+1->X
+INY  Increment Y Register      Y+1->Y
+JMP  Jump to new location      ADDRESS->PC
+JSR  Jump to Subroutine        PC+2->STACK;ADDRESS->PC
+LDA  Load Accumulator          M->A
+LDX  Load X Register           M->X
+LDY  Load Y Register           M->Y
+LSR  Logical Shift Rigth
+NOP  No Operation              keine
+ORA  Logical OR                A M->A
+PHA  Push Accumulator          A->STACK;SP-1->SP
+PHP  Push Processor Status     P->STACK;SP-1->SP
+PLA  Pull Accumulator          STACK->A;SP+1->SP
+PLP  Pull Processor Status     STACK->P;SP+1->SP
+ROL  Rotate Left
+ROR  Rotate Right
+RTI  Return from Interrupt     STACK->P;SP+1->SP;STACK->PC;SP+2->SP
+RTS  Return from Subroutine    STACK+1->PC;SP+2->SP
+SBC  Subtract with Carry       A-M-C->A
+SEC  Set Carry Flag            1->C
+SED  Set Decimal Mode          1->D
+SEI  Set Interrupt Flag        1->I
+STA  Store Accumulator         A->M
+STX  Store X Register          X->M
+STY  Store Y Register          Y->M
+TAX  Transfer Acc to X Reg     A->X
+TAY  Transfer Acc to Y Reg     A->Y
+TSX  Transfer PSR to X Reg     P->X
+TXA  Transfer X Reg to Acc     X->A
+TYA  Transfer Y Reg to Acc     Y->A
+TXS  Transfer X Reg to PSR     X->P
+
+CODE MATRIX
+-----------
+
+      0     1     2    4   5    6    8    9    A    C     D     E
+    ---------------------------------------------------------------
+    |BRK|  ORA  |   |    |ORA |ASL |PHP| ORA |ASL|     | ORA | ASL |
+ 0  |Ipl|(Ind,X)|   |    | ZP | ZP |Ipl| Imm |Acc|     | Abs | Abs |
+    |1 7|  2 6  |   |    |2 3 |2 5 |1 3 |2 2 |1 2|     | 3 4 | 3 6 |
+    ----------------------------------------------------------------
+    |BPL|  ORA  |   |    |ORA |ASL |CLC| ORA |   |     | ORA | ASL |
+ 1  |Rel|(Ind),Y|   |    |ZP,X|ZP,X|Ipl|Abs,Y|   |     |Abs,X|Abs,X|
+    |2 2|  2 5  |   |    |2 4 |2 6 |1 2| 3 4 |   |     | 3 4 | 3 7 |
+    ----------------------------------------------------------------
+    |JSR|  AND  |   |BIT |AND |ROL |PLP| AND |ROL| BIT | AND | ROL |
+ 2  |Abs|(Ind,X)|   | ZP | ZP | ZP |Ipl| Imm |Acc| Abs | Abs | Abs |
+    |3 6|  2 6  |   |2 3 |2 3 |2 5 |1 4| 2 2 |1 2| 3 4 | 3 4 | 3 6 |
+    ----------------------------------------------------------------
+    |BMI|  AND  |   |    |AND |ROL |SEC| AND |   |     | AND | ROL |
+ 3  |Rel|(Ind),Y|   |    |ZP,X|ZP,X|Ipl|Abs,Y|   |     |Abs,X|Abs,X|
+    |2 2|  2 5  |   |    |2 4 |2 6 |1 2| 3 4 |   |     | 3 4 | 3 7 |
+    ----------------------------------------------------------------
+    |RTI|  EOR  |   |    |EOR |LSR |PHA| EOR |LSR| JMP | EOR | LSR |
+ 4  |Ipl|(Ind,X)|   |    | ZP | ZP |Ipl| Imm |Acc| Abs | Abs | Abs |
+    |1 6|  2 6  |   |    |2 3 |2 5 |1 3| 2 2 |1 2| 3 3 | 3 4 | 3 6 |
+    ----------------------------------------------------------------
+    |BVC|  EOR  |   |    |EOR |LSR |CLI| EOR |   |     | EOR | LSR |
+ 5  |Rel|(Ind),Y|   |    |ZP,X|ZP,X|Ipl|Abs,Y|   |     |Abs,X|Abs,X|
+    |2 2|  2 5  |   |    |2 4 |2 6 |1 2| 3 4 |   |     | 3 4 | 3 7 |
+    ----------------------------------------------------------------
+    |RTS|  ADC  |   |    |ADC |ROR |PLA| ADC |ROR| JMR | ADC | ROR |
+ 6  |Ipl|(Ind,X)|   |    | ZP | ZP |Ipl| Imm |Acc| Ind | Abs | Abs |
+    |1 6|  2 6  |   |    |2 3 |2 5 |1 4| 2 2 |1 2| 3 5 | 3 4 | 3 6 |
+    ----------------------------------------------------------------
+    |BVS|  ADC  |   |    |ADC |ROR |SEI| ADC |   |     | ADC | ROR |
+ 7  |Rel|(Ind),Y|   |    |ZP,X|ZP,X|Ipl|Abs,Y|   |     |Abs,X|Abs,X|
+    |2 2|  2 5  |   |    |2 4 |2 6 |1 2| 3 4 |   |     | 3 4 | 3 7 |
+    ----------------------------------------------------------------
+    |   |  STA  |   |STY |STA |STX |DEY|     |TXA| STY | STA | STX |
+ 8  |   |(Ind,X)|   | ZP | ZP | ZP |Ipl|     |Ipl| Abs | Abs | Abs |
+    |   |  2 6  |   |2 3 |2 3 |2 3 |1 2|     |1 2| 3 4 | 3 4 | 3 4 |
+    ----------------------------------------------------------------
+    |BCC|  STA  |   |STY |STA |STX |TYA| STA |TXS|     | STA |     |
+ 9  |Rel|(Ind),Y|   |ZP,X|ZP,X|ZP,Y|Ipl|Abs,Y|Ipl|     |Abs,X|     |
+    |2 2|  2 6  |   |2 4 |2 4 |2 4 |1 2| 3 5 |1 2|     | 3 5 |     |
+    ----------------------------------------------------------------
+    |LDY|  LDA  |LDX|LDY |LDA |LDX |TAY| LDA |TAX| LDY | LDA | LDX |
+ A  |Imm|(Ind,X)|Imm| ZP | ZP | ZP |Ipl| Imm |Ipl| Abs | Abs | Abs |
+    |2 2|  2 6  |2 2|2 3 |2 3 |2 3 |1 2| 2 2 |1 2| 3 4 | 3 4 | 3 4 |
+    ----------------------------------------------------------------
+    |BCS|  LDA  |   |LDY |LDA |LDX |CLV| LDA |TSX| LDY | LDA | LDX |
+ B  |Rel|(Ind),Y|   |ZP,X|ZP,X|ZP,Y|Ipl|Abs,Y|Ipl|Abs,X|Abs,X|Abs,Y|
+    |2 2|  2 5  |   |2 4 |2 4 |2 4 |1 2| 3 4 |1 2| 3 4 | 3 4 | 3 4 |
+    ----------------------------------------------------------------
+    |CPY|  CMP  |   |CPY |CMP |DEC |INY| CMP |DEX| CPY | CMP | DEC |
+ C  |Imm|(Ind,X)|   | ZP | ZP | ZP |Ipl| Imm |Ipl| Abs | Abs | Abs |
+    |2 2|  2 6  |   |2 3 |2 3 |2 5 |1 2| 2 2 |1 2| 3 4 | 3 4 | 3 6 |
+    ----------------------------------------------------------------
+    |BNE|  CMP  |   |    |CMP |DEC |CLD| CMP |   |     | CMP | DEC |
+ D  |Rel|(Ind),Y|   |    |ZP,X|ZP,X|Ipl|Abs,Y|   |     |Abs,X|Abs,X|
+    |2 2|  2 5  |   |    |2 4 |2 6 |1 2| 3 4 |   |     | 3 4 | 3 7 |
+    ----------------------------------------------------------------
+    |CPX|  SBC  |   |CPX |SBC |INC |INX| SBC |NOP| CPX | SBC | INC |
+ E  |Imm|(Ind,X)|   | ZP | ZP | ZP |Ipl| Imm |Ipl| Abs | Abs | Abs |
+    |2 2|  2 6  |   |2 3 |2 3 |2 5 |1 2| 2 2 |1 2| 3 4 | 3 4 | 3 6 |
+    ----------------------------------------------------------------
+    |BEQ|  SBC  |   |    |SBC |INC |SED| SBC |   |     | SBC | INC |
+ F  |Rel|(Ind),Y|   |    |ZP,X|ZP,X|Ipl|Abs,Y|   |     |Abs,X|Abs,X|
+    |2 2|  2 5  |   |    |2 4 |2 6 |1 2| 3 4 |   |     | 3 4 | 3 7 |
+    ----------------------------------------------------------------
+
+
+
+
+
+        1       Code:                           A1
+    ---------
+    |  LDA  |   Mnemonic:                       Load Accumulator
+ A  |(Ind,X)|   Adressierung:                   Indexed Indirect
+    |  2 6  |   Azahl Bytes, Maschinenzyklen:   2,6
+    --------
+
+BEMERKUNG:
+----------
+Der Prozessor hat einen Maskenfehler. Ist das zweite Byte in einem
+indirekten Sprungbefehl gleich FF, so wird falsch adressiert.
+Beispiel: Der Code fuer JMP (07FF) ist 6C FF 07. Die Zieladresse
+muesste aus den Zellen 07FF und 0800 geholt werden. Der Prozessor
+liest indessen 07FF und 0700.
+
+
+QUELLENVERZEICHNISS
+-------------------
+Kleincomputerfibel   von J. Groh   Akademie-Verlag Berlin 1986
+
+printet by:   C O M P U T E R D R U C K 
+              Ultn. Kretschmer, Andreas
+              PSF 31212/H5  Wolfen 4440
+
+
+
+

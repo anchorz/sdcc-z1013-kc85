@@ -1,0 +1,3 @@
+<kurz src="Aufbauanleitung EPROM-Programmiergerät electronica 227/228"/>
+<lang><include src="T.EPROM-BESCH.1.25.txt"/></lang>
+<requires></requires>

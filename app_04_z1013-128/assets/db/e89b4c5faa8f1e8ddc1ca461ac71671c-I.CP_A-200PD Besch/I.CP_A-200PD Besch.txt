@@ -1,0 +1,118 @@
+***************************************************************
+*            Beschreibung der Besonderheiten des              *
+*       CP/M-kompatiblen Betriebssystems CP/A 200/PD VLE      *
+*            fuer den Z1013 mit einer oder zwei               *
+*                RAM-Floppys nach  MP 3/88                    *
+*                Volkmar Luehne 7/89                          *
+***************************************************************
+
+Programm:             0100H-2C80H  >CRC=626B
+Start:                0100H
+Standort des Systems: C800H-E400H
+Kaltstart:            DE00H
+CCP:                  C800H-CFFFH
+BDOS:                 D000H-DDFFH
+BIOS:                 DE00H-E400H
+
+Voraussetzungen:
+----------------
+- 64K Hauptspeicher (eventuell auf der RF-Karte)
+- mindestens eine RAM-Floppy nach MP 3/88
+   * IO-Grundadr. Disk A=98H
+   *              Disk B=58H
+- Tastatur nach MP 7/88 bzw. andere, die alle CTRL-Zeichen er-
+  zeugen koennen.
+  Sie muss ueber die Funktionen INKEY (RST 20H DB 4) sowie IN-
+  CHAR (RST 20H DB 1) abfragbar sein.
+- 64*16 Bildschirmumschaltung fuer Bildwiederholspeicher EC00H
+  (automatische Umschaltung bei Start)
+- Sprungverteiler (sonst Spruenge ersetzen/kurzschliessen)
+
+Bedienung:
+----------
+Nach Laden des Files und dem Start auf 100H kann das physische
+Loeschen der RAM-Floppy A ausgefuehrt werden. Es erfolgt  dann
+eine Verschiebung des Systems auf C800H und ein Kaltstart  auf
+DE00H, wo auch spaeter (z.B. nach Verlassen des  Systems)  ein
+Kaltstart moeglich ist. Dieser Kaltstart legt einmalig auf der
+RAM-Floppy A eine Systemspur (2K) an, aus welcher dann der CCP
+gebootet wird. Ein Kaltstartkommando 'SAVE 15 M.COM' wird aus-
+gefuehrt, welches das zu diesem Zeitpunkt auf  Adr. 0100H  be-
+findliche Monitorprogramm speichert. Nach der Meldung des Sys-
+tems koennen mit diesem Monitor Programme von Kassette geladen
+werden. Bei der Monitorfunktion 'Save' ist die  Benutzung  von
+Wildcards (* , ?) zulaessig. Die Funktion 'Load KC-Files'  ist
+nur bei einer Taktfrequenz von 4 MHz moeglich! Beim Laden  von
+Files ist bei Lesefehlern nur zurueckzuspulen.  Dabei  ist  zu
+beachten, dass ein versehentlich zu frueh gelesener  Endeblock
+das Laden abbricht, das File ist dann unvollstaendig und soll-
+te gleich wieder geloescht werden. 
+Alle weiteren Handlungen entsprechen denen der normalen  CP/M-
+Bedienung, wie sie vom PC her bekannt sind:
+
+DIR                    Anzeige des Diskettenverzeichnisses
+ERA filename.atr       Loeschen eines Files
+TYPE filename.atr      Anzeigen von Textdateien auf dem BS
+USER nn                Wechsel des Nutzerbereichs
+SAVE blkz filename.atr Saven eines Files von 100H auf die aktu-
+                       elle RAM-Floppy mit einer Laenge von n
+                       Bloecken; blkz= Anzahl der 100H-Bloecke
+                       dezimal z.B. SAVE 58 POWER.COM
+                       wenn vorher POWER mit Hilfe des Monitors
+                       auf 100H-3AFFH gebracht wurde.
+
+Die Druckerschnittstelle erfolgt ueber Sprungverteiler.
+Unter dem Betriebssystem CP/A 200PD laufen alle CP/M Programme,
+die sich fuer einen Bildschirm von 16*64  installieren  lassen
+und die Groesse einer Floppy nicht  ueberschreiten.  Programme
+mit einer 24*80 Zeichen-Installation laufen nur mit Einschraen-
+kungen! Programme wie TP, die u.U. direkt auf den  BWS  schrei-
+ben, muessen entsprechend uminstalliert werden.
+Mit Hilfe der Eingabe von Grafik+S  (0D3H) koennen  Programme,
+wenn sie die Tastatur abfragen, angehalten werden. Eine  Fort-
+setzung erfolgt nach Enter. In der Stop-Schleife sind folgende
+Funktionen aufrufbar (Grafik abschalten!):
+
+TABELLE DER STOP-FUNKTIONEN
+===========================
+ K     : BOOT (Kaltstart)
+03H(^C): WBOOT (Warmstart)
+ H     : SCREENCOPY (Bildschirmausdruck)
+ P     : der DRUCK erfolgt im PAGE-MODE (ueber DRAKK = forma-
+         tiert)
+ S     : DRUCK im SCREEN-MODE (ueber ZEIDR)
+ L     : "LINEFEED"(0DH wird in 0DH/0AH gewandelt)
+         Funktion nur durch Kaltstart ruecksetzbar
+ E     : EXIT ins Z 1013-System (Rueckkehr zu CP/A mit Kalt-
+         start!)
+ I     : DRUCKERINIT (ueber DRINI)
+0DH(CR): FORTSETZEN
+
+T ins Z 1013-Systemz) die Taktfrequenz des Rechners fuer eine Uebertragungs-
+rate von 9600 bit/s angepasst werden, sofern diese nicht durch
+das Ruecklesen des Bit 6 der IO-Adr. 4  erfolgen kann (dann ist
+auf DE39H eine 0 einzutragen). 
+Unter dem Betriebssystem CP/M-2RF 2.50 laufen alle CP/M Program-
+me, die sich fuer einen Bildschirm von 16*64 installieren lassen
+und die Groesse einer Floppy nicht ueberschreiten. Programme mit
+einer 24*80 Zeichen-Installation laufen nur mit Einschraenkungen
+und koennen meist nur so bedient werden, dass waehrend des Bild-
+schirmrollens mit Hilfe von ^S der Rollvorgang gestoppt wird,
+damit nicht die Haelfte aus dem Bildschirmbereich laeuft.
+Programme wie TP, die direkt auf den BWS schreiben, muessen ent-
+sprechend uminstalliert werden.
+
+Gegenueber Vorgaengerversionen wurden noch einige Veraenderungen
+im Bildschirm- und Tastaturtreiber vorgenommen.
+Der Bildschirmtreiber kann nun auch ohne Uminstallation Steuer-
+zeichen von internationl-gebraeuchlichen ADM3A-Terminals verar-
+beiten. Weiterhin wurde die Cursorabschaltung permanent ausge-
+fuehrt. Bei jedem Warm- oder Kaltstart bzw. bei einem entspre-
+chenden Befehl wird der Cursor wieder eingeschaltet.
+Der Tastaturtreiber wurde dahingehend geaendert, dass auch der
+A2-Monitor verwendet werden kann.
+Bei der Tastatur nach MP 7/88 funktionieren die Stringfunktionen
+wieder (vom Anwenderprogramm abhaengig).
+***************************************************************
+^^^^^
+

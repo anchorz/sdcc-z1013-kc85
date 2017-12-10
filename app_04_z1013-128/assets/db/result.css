@@ -1,0 +1,20 @@
+table {
+    border: 0px;
+    padding:0; 
+    margin:0;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 0;
+    vertical-align: baseline;
+    text-align: center;
+}
+
+td img {
+    vertical-align: bottom;
+}
+
+img {
+    background-color: black;
+}

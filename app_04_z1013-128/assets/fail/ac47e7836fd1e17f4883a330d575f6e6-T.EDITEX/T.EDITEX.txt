@@ -1,0 +1,106 @@
+Werter Computerfreund !                                         
+Mit EDITEX haben Sie ein leistungsfaehiges Programm zur
+Textverarbeitung erhalten. Sie sind damit in der Lage, 
+einen Text mit 400 Zeilen zu 32 Zeichen zu verarbeiten.
+                                                                         
+Editiermodus :                
+
+Durch druecken der Taste "E" im Hauptmenue gelangen Sie in den
+Editiermodus. Hier sind folgende Funktionen moeglich:
+
+*Text scrollen                  
+-STOP-Taste (S4/K) druecken, im Weiteren durch das Symbol "%"   
+gekennzeichnet! Es entsteht der neue Cursor "~".  
+Anschliessend durch Druecken derTaste "\" oder "[" blockweise
+hoch- bzw. runterscrollen, 
+-zeilenweises Scrollen durch Cursor-Bewegung an oberen oder
+unteren Bildschirmrand
+
+*Cursor Bewegung                
+In der linken oberen Ecke koennen Sie den Cursor sehen.       
+-Cursor rechts und links mit dendazu vorgesehenden Tasten       
+-Cursor hoch mit Taste "{"      
+-Cursor runter mit "|"          
+-Cursor an Textanfang mit "%3"  
+-Cursor an Textende mit "%4"
+
+*Aenderungen am Text            
+}}obout in der Zeile mit "["    
+-zeilenweise Robout mit "%9"    
+-Insert in der Zeile mit "\"    
+-zeilenweise Insert mit "%2"    
+-Text kann auch einfach ueberschrieben werden
+
+*Gross- und Kleinschreibung     
+-Durch "%1" kann festgelegt werden, dass die Buchstaben
+gross geschrieben und bei gleichzeitigem Druecken der
+Shift-Taste klein geschrieben werden.
+-Durch "%0" kann festgelegt werden, dass die Buchstaben 
+klein geschrieben und bei gleichzeitigem Druecken der 
+Shift-Taste gross geschrieben werden.            
+
+*Tabulator                      
+Wie bei einer Schreibmaschine koennen Tabulatorpositionen     
+festgelegt oder geloescht werden. Die Festlegungen gelten 
+immer, egal wann sie eingegeben werden.                         
+-Festlegen mit "%+"
+-Loeschen mit "%-"
+
+*Formatieren
+Beim Formatieren werden ueber das Zeilenende hinaus
+geschriebene Worte wieder zusammengefuegt und beim
+%-itieren entstandene Luecken beseitigt. Das Formatieren
+beginnt an der Cursor-Position und endet vor dem folgenden
+Absatz. Ein Absatz wird erkannt, wenn in der vorhergehenden 
+Zeilemindestens 20 Freizeichen aufeinander folgen oder wenn
+auf der ersten Position der Zeile ein Freizeichen ist.
+
+Absatzanfang und Absatzende muessen im Bildschirmbereich liegen.
+-Formatieren mit "%5"
+
+*Rechtsbuendig
+Der vorher formatierte Absatz kann durch die Tasten "%6"
+rechtsbuendig gemacht werden. Dabei gilt zur Festlegung und
+zur Abarbeitung des Absatzes dasbereits im Abschnitt 
+"Formatieren" Gesagte.
+
+*Arbeit mit Bloecken
+Bloecke sind durch die Zeichen "``" am Anfang und am Ende zu
+kennzeichnen. Sie muessen laenger als eine Zeile sein.
+Beispiel:                       
+``Xxxxxxx  xxx xxxxxxx  XXXX Xxx  xxxx  Xxxxxx xxxx  xxxx.        ``
+Ist ein Block festgelegt, kann  er durch "%L" geloescht, durch
+"%C" an die Cursor-Position kopiert und durch "%T" an die
+Cursor-Position transferiert werden.
+
+Die Arbeit im Editiermodus wird durch die Ausgabe eines 
+Tasten-Clicks auf dem Tonbandanschluss unterstuetzt (Tonband auf 
+Aufnahme schalten, Verstaerker anschliessen o. a.)
+%5llte durch unzweckmaessige Bedienung des Programms der
+Cursor nicht mehr auf dem Bildschirm erscheinen, dann kann
+durch Druecken der Tasten "%3"  der Cursor an den Textanfang
+gebracht und die Arbeit fortgesetzt werden.  
+
+Hauptmenue:
+Durch Betaetigung der "CLS"-Taste (S4/T) gelangen Sie vom
+Editiermodus zurueck in das Hauptmenue. Dort koennen Sie
+durch entsprechenden Tastendruckden aktuellen Text abspeichern,
+loeschen, ausdrucken und ein oder mehrere Texte laden.
+
+Beim Abspeichern kann dem Text ein Codewort zugeordnet werden,
+ist das nicht erwuenscht, nur ENTER-Taste druecken.
+Die Druck-Routine ermoeglicht die Ansteuerung eines Druckers
+ueber das Port A der PIO. Das Port A ist als V24-Schnittstelle
+mit TTL-Pegel programmiert.     
+-Datenuebergabe:BIT0, mit Start-und Stopbit, keine Synchronbits 
+-Freigabe durch Drucker mit H-Pegel an BIT1
+-Baudrate: 960 BAUD
+Die Druckroutine befindet sich am Ende des Programms und ist
+leicht durch den Nutzer zur Anpassung an bestimmte Druckertypen
+zu aendern oder zu ergaenzen.                                                                                                                      
+
+Abschliessend sei bemerkt, dass Sie fuer EDITEX auch sehr eine  
+ausfuehrliche Beschreibung mit  Beispielen erhalten koennen (10,-M). 
+Ich wuensche Ihnen vielErfolg bei der Arbeit mit dem   
+Textverarbeitungsprogramm
+EDITEX. G.F.                                                                                                       

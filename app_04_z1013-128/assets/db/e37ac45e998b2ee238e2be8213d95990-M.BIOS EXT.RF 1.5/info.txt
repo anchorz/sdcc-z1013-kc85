@@ -1,0 +1,4 @@
+<kurz src="modifizierte BIOS Version für [10f334eeba462179c4ea7874c4e44548]"/>
+<lang>die Unterschiede sind minimal, z.B. E704(INKEY) statt E701(INCH), aber
+dennoch ist mir nicht klar worin der tiefere Sinn der Änderungen liegt.</lang>
+<requires></requires>

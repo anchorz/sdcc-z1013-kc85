@@ -1,0 +1,3 @@
+<kurz src="Programme vom KC85/2 und KC85/3 einlesen"/>
+<lang></lang>
+<requires></requires>

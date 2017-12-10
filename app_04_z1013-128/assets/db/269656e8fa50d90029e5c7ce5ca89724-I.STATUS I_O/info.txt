@@ -1,0 +1,3 @@
+<kurz src="Beschreibung zum Programm STATUS I/O-Adr 04H"/>
+<lang><include src="I.STATUS I_O-ADR 4.txt"/></lang>
+<requires></requires>

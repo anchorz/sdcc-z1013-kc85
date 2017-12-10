@@ -1,0 +1,51 @@
+
+
+***********************************************************
+***                                                     ***
+***  +++ ED81 V2.1 +++            wls88       05.10.89  ***
+***                                                     ***
+***********************************************************
+
+
+Z8 - Objektcodeeditor
+
+Programmstandort: 8000H - A3FFH
+Start           : 8000H
+
+Programmbeschreibung:
+---------------------
+
+* Die Funktion des ED81 entspricht dem Objektcodeeditor OCE.
+
+* Die Funktionen K,H,- sind nicht realisiert.
+
+* Testmodus (T): Simulation des Z8
+
+   S - ausfuehren des naechsten Befehls
+   R - Registermodifizierung
+   A - Anzeige der Arbeitsregiste
+   E - Eingabe von 16 Werten zur Simulation von Porteingaben
+   H - Haltepunkt
+   N _ Schleife
+   Q - Ruecksprung in Quellmodus zur Aufrufstelle
+  ^C - Ruecksprung in Quellmodus 
+   G - Sprung zur Adr.
+
+* Druckmodus (C): Eingabe der Endadresse und Zeilen/Seite
+  Die Fehler im Druckmodus der ersten Variante wurden beseitigt.
+
+* Rammodus (R): Nach dem Aufruf des Kommandos testet der ED81,
+  ob sich der OCE (1.Tagungskassette) im Hauptspeicher befindet
+  und benutzt dessen Rammodus. 
+
+
+
+
+                    Bernd Wilske
+                    Kantstr. 4
+                    Brieselang
+
+                     1 5 5 2
+
+
+

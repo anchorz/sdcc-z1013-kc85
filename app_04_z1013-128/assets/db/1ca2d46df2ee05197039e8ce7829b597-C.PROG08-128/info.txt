@@ -1,0 +1,4 @@
+<kurz src="EPROM Programmierer 2708-27128"/>
+<lang>PORTs: 0x18-0x1D
+Codestecker-Port ist 0x1D</lang>
+<requires></requires>

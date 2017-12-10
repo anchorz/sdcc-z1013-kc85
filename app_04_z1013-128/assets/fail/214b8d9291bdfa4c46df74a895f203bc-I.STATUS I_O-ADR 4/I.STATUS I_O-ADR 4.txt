@@ -1,0 +1,62 @@
+Beschreibung zum Programm STATUS I/O-Adr 04H
+____________________________________________
+
+
+
+STATUS dient zum Testen und Bedienen der in [1] festgelegten Um-
+schaltfunktionen der I/O-Adresse 4H. Bei Programmstart wird mit-
+tels Ausgabe von 0FFH und 00H auf die Adresse 4, Ruecklesen und
+entsprechender Verknuepfung festgestellt, ob bzw. welche Bits
+definiert umgeschaltet werden koennen. Anschliessend wird der An-
+fangszustand wiederhergestellt, wobei die nicht benutzbaren Bits
+mit 0 initialisiert werden, d. h. Grundzustand, falls diese zwar
+installiert sind, aber das Ruecklesen nicht funktioniert.
+Treten dabei undefinierte Zustaende auf, z. B. ein Bit laesst
+sich einmal setzen, ein andermal aber nicht, so erscheint die
+Ausschrift:
+          !ERROR!  xx instead of yy,  IGNORE (Y)? 
+
+Das bedeutet, dass ein anderer Wert [xx] als der erwartete [yy]
+rueckgelesen wurde (nach Ausklammerung nicht schaltbarer Bits). 
+Bei Eingabe von 'Y' wird das Programm trotzdem gestartet, sonst
+Abbruch.  
+
+Damit ist die Funktionskontrolle der Flip-Flops beendet, es er-
+scheint der aktuelle Zustand aller Daten in den drei Varianten
+
+OFF      - Bit rueckgesetzt = 0
+ON       - Bit gesetzt      = 1
+disabled - Bit nicht schaltbar.
+
+Bei den Datenbits 2 und 1 (Schreibschutz) erscheint zusaetzlich
+das Attribut 'R/O' (read only) oder 'R/W' (read/write) nach Test
+der Beschreibbarkeit des Monitorbereichs (Stichprobe). In den 
+letzten acht Zeilen wird der komplette Zeichensatz zur Kontrolle
+dargestellt (Freiprogrammierbarer bzw. zusaetzlicher Zeichengene-
+rator wird sofort sichtbar). Das Darstellungsformat erscheint 
+zwar etwas ungewoehnlich, entspricht aber dem Format des Grafik-
+Zeichen-Editor Version 64K bzw. Version 16K (GZE V.xx).
+ 
+Durch Eingabe der Datenbit-Nummer kann jetzt der Wert der Bits
+veraendert werden. Das ist auch bei DB 4 (ROM-Abschaltung!)
+moeglich, indem der Monitor aus dem (E)PROM in den RAM umgeladen
+wird; dabei testet das Programm vorher die 4K Speicherbereich
+von F000H bis FFFFH. Dabei wird ein bereits im RAM stehender
+Monitor zerstoert (Schreibschutz wird vom Programm aufgehoben!).
+Ein Fehler im RAM bzw. das Fehlen des RAM wird daran erkennbar,
+dass sich das Bit 4 nicht setzen laesst (Absturz-Sicherung!).  
+
+Mit CTRL C Abbruch des Programms, alle anderen Zeichen werden
+ignoriert.
+Das Programm ist ROM-faehig und kann bei Bedarf auf andere Adres-
+sen umgeschrieben werden, z. B. mittels S-Kommando des 'Disassem-
+bler PLUS'. 
+
+
+                                  F. Trojahn
+                                  Robotron-Computerclub Leipzig
+                                  1. Oktober 1989
+
+
+[1] Sprungverteiler, Systemadressen und Belegung, I/O-Adressen;
+    File der IG HC Dresden - K. Hofmann

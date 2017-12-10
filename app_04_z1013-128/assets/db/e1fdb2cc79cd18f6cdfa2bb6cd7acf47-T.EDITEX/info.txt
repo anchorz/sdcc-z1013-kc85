@@ -1,0 +1,5 @@
+<kurz src="ein leistungsfaehiges Programm zur Textverarbeitung"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+<include src="T.EDITEX.txt"/></lang>
+<requires></requires>

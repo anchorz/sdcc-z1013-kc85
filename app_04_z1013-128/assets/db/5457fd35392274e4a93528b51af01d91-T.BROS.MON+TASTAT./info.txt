@@ -1,0 +1,3 @@
+<kurz src="Brosig-Monitor, Tastatur mit Raffinessen fuer den Z 1013"/>
+<lang><include src="T.BROS.MON+TASTAT..txt"/></lang>
+<requires></requires>

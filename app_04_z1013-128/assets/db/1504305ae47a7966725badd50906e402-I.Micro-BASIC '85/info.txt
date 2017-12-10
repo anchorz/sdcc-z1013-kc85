@@ -1,0 +1,3 @@
+<kurz src="Kurzbeschreibung zum Micro-BASIC '85 (BASIC-Compiler)"/>
+<lang><include src="I.Micro-BASIC '85.txt"/></lang>
+<requires></requires>

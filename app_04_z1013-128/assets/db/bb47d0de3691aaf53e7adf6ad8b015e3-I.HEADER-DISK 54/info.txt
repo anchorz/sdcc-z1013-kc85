@@ -1,0 +1,3 @@
+<kurz src="HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88."/>
+<lang><include src="I.HEADER-DISK 54.txt"/></lang>
+<requires></requires>

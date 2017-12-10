@@ -1,0 +1,4 @@
+<kurz src="HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88. "/>
+<lang>akutalisierte Version von [0785b50a38196cb79062254e3b156049]
+<include src="I.HEADERDISK 45.txt"/></lang>
+<requires></requires>

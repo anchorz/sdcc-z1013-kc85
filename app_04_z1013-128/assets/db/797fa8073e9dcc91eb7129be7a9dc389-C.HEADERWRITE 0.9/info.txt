@@ -1,0 +1,4 @@
+<kurz src="Kassettenlisten erstellen, ähnlich HEADERPRINT"/>
+<lang>Erstellt aus Kassettendaten eine Textdatei, wie hier im Beispiel:
+<include src="header.txt"/></lang>
+<requires></requires>

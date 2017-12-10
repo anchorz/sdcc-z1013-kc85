@@ -1,0 +1,4 @@
+<kurz src="Reassembler, fast identisch [3d0ac6c72380e1ae240897aba8571fc5]"/>
+<lang>OPCODES IM x, werden als IM0, IM1 und IM2 angezeigt.
+Das Programm startet zwar von Adresse 0xD100, aber kopiert dann das Programm ersteinmal nach 0xB100.</lang>
+<requires></requires>

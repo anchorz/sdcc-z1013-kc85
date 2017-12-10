@@ -1,0 +1,3 @@
+<kurz src="Besonderheiten des CP/M-kompatiblen Betriebssystems CP/A 200/PD VLE"/>
+<lang><include src="I.CP_A-200PD Besch.txt"/></lang>
+<requires></requires>

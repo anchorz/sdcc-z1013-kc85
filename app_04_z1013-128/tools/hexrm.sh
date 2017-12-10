@@ -3,17 +3,17 @@
 file=$1
 file=`eval echo \"$file\"` 
 
-#echo \"$file\"
-#exit
-
-
 pushd . >/dev/null
 
-dbroot_rel="$0";
-dbroot_rel=`readlink -f $dbroot_rel`
+command -v greadlink >/dev/null
+if [ $? -eq 0 ];then
+   dbroot_rel=`greadlink -f "$0"`
+else
+    dbroot_rel=`readlink -f "$0"`
+fi
 dbroot_rel=`dirname "$dbroot_rel"`
 dbroot_rel=`dirname "$dbroot_rel"`
-dbroot_rel="$dbroot_rel/assets/";
+dbroot_rel="$dbroot_rel/assets/db";
 dbroot=$dbroot_rel
 cd $dbroot
 dbroot=`pwd`

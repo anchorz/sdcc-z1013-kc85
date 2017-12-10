@@ -1,0 +1,217 @@
+         **********************************
+         *      K L U B  -  I N F O       *
+         **********************************  
+
+Wie die Praxis zeigt, sind viele der bisher bei uns eingetra-
+genen Klub's/Gemeinschaften (CC) im Anfangsstadium. Deshalb 
+hier einige Hinweise zur Arbeit im Interresse aller.
+
+1. Interne Klubarbeit:
+====================== 
+
+In erster Linie finden sich Gleichgesinnte zusammen, um gemein-
+sam und mit gegenseitiger Unterstützung ihrem Hobby nach zu ge-
+hen. In dieser Gemeinsamkeit lassen sich fehlende Kenntnisse,
+zu suchende Lösungen in HARD- und SOFT-WARE, u.a. zielstrebiger
+und effektiver finden.
+Gründliches Studium der Fachliteratur, Fachpresse, Lehrgänge 
+u.a. sind dazu die geeignetesten Methoden.
+Und das Experiment!
+Vor allem fordert und fördert das Suchen von Lösungen das lo-
+gische Denken.
+Es kommt aber der Zeitpunkt, wo man Kontakte zu gleichgesinnten
+CC sucht.
+
+2. Öffentliche Klubarbeit:
+==========================
+
+Um nun aber in der Öffentlichkeit wirksam zu werden, setzt es 
+eine gesetzlich festgelegte staatliche Genehmigung voraus. Diese
+Genehmigung holt man sich bei dem zuständigen Rat des Kreises.
+Einfacher ist es aber, sich einen Rechtsträger zu suchen, der
+den CC unter seiner staatlichen Genehmigung führt. 
+Einfacher gesagt, man wird Mitglied in einer gesellschaftlichen
+Organisation. (Es kann aber auch ein Betrieb, eine Schule o.a.
+Einrichtung der Volksbildung, die NVA o.a. sein.)
+Als bewährter Partner hat sich der KULTURBUND der DDR gezeigt.
+Wer noch Probleme mit der Suche nach einen Rechtsträger hat,
+kann sich bei untengenanntem CC auf Kassette eine Konzeption zur
+Gründung von CC holen, die als Vorlage z.B. bei dem Kulturbund
+des Kreises alle Vorbehalte ausräumt.
+(Besagte Konzeption liegt dem Bundessekretariat des Kulturbund
+und demnächst allen Bezirksvorständen vor.)
+Ohne staatliche Registrierung oder Rechtsträger darf kein CC in
+der Öffentlichkeit arbeiten und eine Kontaktadresse veröffent-
+licht werden.
+
+3. Spezifik NVA:
+================
+
+Im allgemeinen darf keine Anschrift eines NVA-CC veröffentlicht
+werden. Um einen Kontakt mit zivilen CC und privaten USER zu er-
+halten, bedarf es entweder einer zivilen Adresse, oder aber, was
+sich besser bewährt hat, man schafft einen zivilen Stützpunkt in
+Zusammenarbeit mit dem Kulturbund der DDR im Standort.
+Hier ist ebenfalls die Konzeption von Nutzen.
+
+4. Kluborganisation und öffentliche Wirksamkeit:
+================================================
+
+Zur Zeit wird zur effektiveren Wirksamkeit der CC, vor allem in
+Hinblick auf schnelleres Verbreiten von HARD- und SOFT-Lösungen,
+die Klubarbeit in der DDR organisiert. 
+Dazu wurden in jedem Bezirk und in Berlin ein Klub gesucht, der
+die Aufgabe eines Leitklub (LKB) übernimmt.
+Ende Oktober werden diese LKB zu einer Tagung in Berlin zusammen
+kommen, um sich ihre Aufgaben festzulegen und eine Tagung aller
+Klubleiter Anfang 1990 in Berlin vorzubereiten.
+
+Diese Aufgaben werden sein:
+ -Kontakte zwischen den LKB und zu den CC ihres Bezirkes zu 
+  schaffen, einschl. HARD- und SOFT-Vermittlung
+ -Kreise und, bei größeren Städten, Stadtbezirke, in denen noch
+  kein CC existiert, Organisationen sowie USER-Freunde zu fin-
+  den, die einen CC aufbauen  
+ -Unterstützung der Arbeit der CC in den Kreisen und Stadtbezir-
+  ken
+ -Streitfälle zu schlichten u.a.m.
+
+Ziel ist es, in jedem Kreis und Stadtbezirk einen arbeitsfähi-
+gen CC zum Nutzen aller zu schaffen. Diese CC sollen dann in ge-
+eigneter Form allen CC-Mitgliedern und nichtorganisierten USER-
+Freunden behilflich sein, SOFT-Tausch (in Form von Softwarebör-
+sen) zu organisieren, HARD-Lösungen ebenfalls, SOFT- und HARD-
+Angebote zu prüfen u.v.a.m..
+CC werden ihre SOFTWARE also nicht in der ganzen DDR vertei-
+len müssen, sondern nur im unmittelbaren Kreisgebiet, bei feh-
+lenden CC im Nachbarkreis eventuell noch diesen einbeziehen.
+Kassettentausch auf Post- o.a. Weg nur zwischen CC und LKB u.
+umgekehrt. Im Ausnahmefall direkt mit einem CC im Bezirk oder
+in anderen Bezirken.
+Ab Oktober können sich die CC bei ihrem LKB bereits die kom-
+plette Ausstattung der Standard-Software abfordern.
+Ausnahme 'FORTH 83' wenn diese noch nicht vorliegt.
+(Siehe KB-Adressen KB-Nr.: 003)
+HINWEIS: Bei jeder Weitergabe von SOFTWARE die Z-INFO (3 Teile)
+         und STANDARDADRESSEN mit weitergeben.
+         Klub-Nachrichten, die nicht zur Weitergabe gedacht
+         sind, erhalten als TYP-Bezeichnung eine '1'.
+
+5. Kontaktadressen der LKB:
+===========================
+
+ACHTUNG: Diese Klub's sind nicht zur Weitergabe von SOFTWARE
+         an private USER-Freunde vorgesehen, nur für CC ! 
+
+1. 
+KB-Nr.: 001 LKB  Dresden
+IG-HC KdT/Informatikzentrum der TU-Dresden
+Kontaktadresse: 
+IG-HC INFORMATIKZENTRUM d. TU-Dresden
+8027 Dresden  Mommsenstr. 13
+
+2.
+KB-Nr.: 002 LKB  Leipzig
+GST-COMPUTERCLUB VEB ROBOTRON-Anlagenbau Leipzig
+Kontaktadresse:
+GST-Computerclub Leipzig
+7010 LEIPZIG PF 130
+
+3.
+KB-Nr.: 010 LKB  Karl-Marx-Stadt
+Kulturbund der DDR - Computerklub K.-Marxstadt
+Kontaktadr.:
+Kulturbund der DDR - CC-K.M.-Stadt
+9010 Karl-Marx-Stadt, PSF 607
+
+4.
+KB-Nr.: 019 LKB  Schwerin
+AG Z1013 Schwerin
+(Soll mit J.Woll vom KB 97 neu organisiert werden)
+Kontaktadr.:
+vorläufige Anschrift:R. Boneß, 2762 Schwerin, A.-Beckerstr. 24
+
+5.
+KB-Nr.: 021 LKB  Magdeburg
+Interessengemeinschaft Z1013 des RAW Magdeburg
+Deutsche Reichsbahn 
+Kontaktadr.:
+IG Z1013  3013 Magdeburg  PSF 20
+
+6.
+KB-Nr.: 031 LKB  Halle
+AG Microcomputer der KdT BUNA 
+Fachsektion MSR u. Prozessrechentechnik
+Kontaktadr.:
+AGM-Buna  M.Gärtner  4200 Merseburg  Carl-Schorlemmerstr.
+
+7.
+KB-Nr.: 035 LKB  Frankfurt
+CC der KdT Schwedt/Oder  - Petrolchemisches Kombinat
+Kontaktadr.:
+CC-Schwedt S.Ketel  1330 Schwedt/O   Str.d.DSF 21
+
+8.
+KB-Nr.: 037 LKB  Cottbus
+Kulturbund der DDR / CC-Z1013 Cottbus
+Kontaktadr.:
+CC-Cottbus  R.David  7513 Cottbus  Dostojewskistr. 13
+
+9.
+KB-Nr.: 047 LKB  Suhl
+COMPUTERCLUB *Z1013* Kultur und Sportzentrum Suhl
+Kontaktadr.:
+Z1013-CC Suhl  Ing. F.Grassmann  6018 Suhl  Leninring 122
+
+10.
+KB-Nr.: 058 LKB  Neubrandenburg
+Station Junger Naturforscher "Ewald Dittmann"
+Kontaktadr.:
+CC d.St.Junger Naturforscher  2103 Löcknitz  Retzinerstr. 
+
+11.
+KB-Nr.: 059  LKB   Potsdam
+AG-Computer des Klubhaus "Philipp Müller" Brandenburg
+Kontaktadr.:
+CC d. KH "Philipp Müller"  1000 Brandenburg  Steinstraße
+
+12.
+KB-Nr.: 065 LKB  Gera
+NVA Z1013-Club Tautenhain
+Kontaktadr.:
+CC-Tautenhain  J.Weise  6534 Tautenhain  Waldsiedlung 27
+
+13.
+KB-Nr.: 067 LKB  Berlin
+URANIA COMPUTERCLUB Z1013 BERLIN
+Kontaktadr.:
+URANIA CC Z1013  1093 Berlin  PSF 367    
+
+14.
+KB-Nr.: 069 LKB  Erfurt
+Station Junger Techniker u. Naturforscher Eisenach
+Kontaktadr.:
+Z1013-CC Station j. Naturf.  5900 Eisenach   Friedhofstr. 22/24
+
+15.
+KB-Nr.: 088 LKB  Rostock
+Z1013 CC Sanitz 
+Kontaktadr.:
+CC-Sanitz  P.Neddermeyer  2556 Sanitz  Ernst-Schneller-Str. 9
+
+** Der letzte LKB (KB-Nr.: 088) kann von NVA-CC angesprochen 
+werden, wenn sie Probleme mit Kontaktadresse, zivilen Stütz-
+punkten, für Kontakte mit zivilen USER-Freunden u.a. im Zusam-
+menhang mit der NVA-Zugehörigkeit haben. 
+
+6. KONTAKTADRESSE für Klub-Info, CC-Konzeption und Eintrag in
+   Klubbuch der DDR:
+=============================================================
+        Kulturbund der DDR
+        CC Dresden-Land
+        Dresdnerstr. 42 Fach 53-55
+        RADEBERG
+        8 1 4 2           Tel.: 3810
+**************************************** hofmann **************
+26.08.89
+^^^^^
