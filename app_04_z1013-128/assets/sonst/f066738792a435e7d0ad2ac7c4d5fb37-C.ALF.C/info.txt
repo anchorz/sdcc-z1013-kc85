@@ -1,0 +1,6 @@
+<kurz src="wie [3f548188256c80c201be5eb2a48c7bf0]"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ␣ U 
+R.F.Wichmann Burg 12/88</lang>
+<requires></requires>

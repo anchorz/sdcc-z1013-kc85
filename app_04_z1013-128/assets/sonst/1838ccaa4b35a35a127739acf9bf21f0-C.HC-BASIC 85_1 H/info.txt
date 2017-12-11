@@ -1,0 +1,4 @@
+<kurz src="Original 10K Basic-Interpreter, mit Modifikationen (H.M.)"/>
+<lang>ähnlich [e6db3a681be77c1f83ad09d336cf6c71]
+Speichertest erkennt das Ende bei 0xEBFF nicht.</lang>
+<requires></requires>

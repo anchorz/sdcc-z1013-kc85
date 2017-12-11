@@ -1,0 +1,16 @@
+<kurz src="ALF sammelt Luky und Tomaten ein, Steuerung: ⇦ ⇨ ␣ U wie [3f548188256c80c201be5eb2a48c7bf0]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Steuerung: ⇦ ⇨ ␣ U
+
+ALF hat es wieder einmal auf 'Luky mit Tomaten' 
+abgesehen. Er hat aber ein grosses Problem , dass 
+gar nicht 'Null Problemo !' ist.
+
+Die Waende stehen unter Strom und dass gefaellt
+ALF ueberhaupt nicht. 9 elektrische Schlaege
+verkraftet er, doch dann verschwindet er ...
+
+... zuruek nach MELMAK !  </lang>                      
+<requires></requires>
+

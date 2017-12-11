@@ -1,3 +1,5 @@
-<kurz src=""/>
-<lang>Header nicht korrekt 2E statt D3</lang>
+<kurz src="wie [3f548188256c80c201be5eb2a48c7bf0]"/>
+<lang>Z80-Header-Tag ist nicht korrekt, statt "d3d3d3" steht "2e2e2e"
+
+Steuerung: ⇦ ⇨ ␣ U</lang>
 <requires></requires>
