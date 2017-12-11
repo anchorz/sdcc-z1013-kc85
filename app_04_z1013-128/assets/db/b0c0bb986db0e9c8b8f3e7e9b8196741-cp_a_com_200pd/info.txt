@@ -1,0 +1,3 @@
+<kurz src="CP/M-kompatibles Betriebssystems CP/A 200/PD VLE"/>
+<lang></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="EPROM-Handler V2.9 IGD"/>
+<lang>verwendet andere Portadressen als CCL-Version</lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="RST20 Monitoraufrufe 2.02 von und nach A2 umwandeln"/>
+<lang></lang>
+<requires></requires>

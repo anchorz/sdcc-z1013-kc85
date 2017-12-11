@@ -1,0 +1,3 @@
+<kurz src="BASICODE-3 Testversion 2"/>
+<lang>(c) Martin Duchrow/Berlin-Testversion 2.0 vom 22.August1989</lang>
+<requires></requires>

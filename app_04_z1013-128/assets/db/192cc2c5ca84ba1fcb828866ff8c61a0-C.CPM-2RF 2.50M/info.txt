@@ -1,0 +1,3 @@
+<kurz src="CP/M 2.2 Z1013 IG-HC mit 2*256K RAM-Floppy V2.5"/>
+<lang></lang>
+<requires></requires>

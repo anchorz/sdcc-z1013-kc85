@@ -1,0 +1,3 @@
+<kurz src="PROGRAMM ZUM SOFTWARETAUSCH"/>
+<lang></lang>
+<requires></requires>

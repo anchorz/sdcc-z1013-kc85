@@ -1,0 +1,3 @@
+<kurz src="HEADERSAVE-kompatible Verwaltung von max. 2 RAM-Disketten nach MP 3/88"/>
+<lang></lang>
+<requires></requires>

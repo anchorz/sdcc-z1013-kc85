@@ -1,4 +1,4 @@
-<kurz src="AC 1 Kassettenroutine"/>
+<kurz src="AC 1 Kassettenroutine V7"/>
 <lang>
 * * AC 1 Kassettenroutine * *
 

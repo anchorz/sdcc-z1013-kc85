@@ -1,0 +1,5 @@
+<kurz src="Pascal-Compiler"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+fast identisch mit [2d7a9a200ed1e1f344e61da19c933543]
+</lang>
+<requires></requires>
