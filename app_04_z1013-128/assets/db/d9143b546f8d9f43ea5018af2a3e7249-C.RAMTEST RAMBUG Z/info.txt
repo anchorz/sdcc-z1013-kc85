@@ -1,0 +1,5 @@
+<kurz src="RAM Test SPEICHERTEST RAMBUG, FUNKAMAEUR 12/86"/>
+<lang>fast identisch mit [de55fd3cb4ed98fb64e26a78291dd463]
+ein paar Bytes sind unterschiedlich
+keine Ahnung, ob das ein Bugfix oder ein Problem ist</lang>
+<requires></requires>

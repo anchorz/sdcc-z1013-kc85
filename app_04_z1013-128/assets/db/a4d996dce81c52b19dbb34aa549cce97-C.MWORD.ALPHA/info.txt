@@ -1,0 +1,3 @@
+<kurz src="MIRCOWORD ALPHA V1.518U 11.09.88"/>
+<lang></lang>
+<requires></requires>

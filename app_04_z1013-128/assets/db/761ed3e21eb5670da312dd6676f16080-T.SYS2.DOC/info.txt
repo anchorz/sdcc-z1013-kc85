@@ -1,0 +1,3 @@
+<kurz src="SYS EDITOR"/>
+<lang><include src="T.SYS2.DOC"/></lang>
+<requires></requires>

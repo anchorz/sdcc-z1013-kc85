@@ -1,0 +1,3 @@
+<kurz src="Beschreibung zum Texteditor MicroWORD 1.5 13.09.88"/>
+<lang><include src="I.MicroWORD 1.518U.txt"/></lang>
+<requires></requires>

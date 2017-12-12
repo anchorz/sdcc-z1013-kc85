@@ -1,0 +1,3 @@
+<kurz src="ED81 V2.1 Z8 - Objektcodeeditor"/>
+<lang><include src="../a740ce1b77dfb711273a90026c91894a-I.ED81_V2.1/I.ED81_V2.1.txt"/></lang>
+<requires></requires>

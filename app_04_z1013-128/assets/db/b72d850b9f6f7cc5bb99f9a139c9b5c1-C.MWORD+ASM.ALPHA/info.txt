@@ -1,0 +1,4 @@
+<kurz src="MICROWORD 1.5+ASSEMBLER ALF ohne Sprungverteiler"/>
+<lang>ähnlich [60d44da85fee98586a167f8791b88113]
+Benutzt Systemaufrufe auf 0xE000</lang>
+<requires></requires>

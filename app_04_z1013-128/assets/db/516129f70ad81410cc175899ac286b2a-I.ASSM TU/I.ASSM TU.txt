@@ -1,0 +1,793 @@
+U880-Assembler ASM (V. 25.10.87)
+---------------------------------
+
+(c) TU Dresden
+    Sektion Informationstechnik
+    WB Computer- und Kommunika-
+    tionstechnik
+
+Bearbeiter:
+    Goetze, Bernd
+    Piepiorra, Frank
+    Wahl, Heinz
+
+* Kurzcharakteristik
+  ------------------
+
+Der U880-Assembler ASM kann von
+der Kassette in den Speicher ge-
+laden werden und belegt dort den
+Speicherraum von 2000H bis 3FFFH.
+Der Start erfolgt durch das Moni-
+torkommando "J 2000".
+Die genaue Speicherbelegung
+lautet:
+ 2000H-3D2DH Objektcode
+ 4000H-4238H Datenbereich
+Damit koennen ab der Adresse
+3D2EH bis zur Adresse 3FFFH 
+selbst Programmerweiterungen
+eingebunden werden. (z.B. Druk-
+kertreiber)
+Folgende Speicherbereiche werden
+weiterhin durch den U880-
+Assembler genutzt:
+
+   4239H-4FFFH  Arbeitsspeicher
+                fuer temporaere
+                Daten
+   5000H-5FFFH  Zwischenspeicher
+                fuer Objektcode
+   6000H-7FFFH  Ausgabebereich
+                fuer abarbeit-
+                baren Objektcode
+   8000H-CFFFH  Eingabebereich
+                fuer Texte
+!!!Achtung!!!
+Durch die Nutzung des Bereichs
+von 4000H-5FFFH als Arbeits-
+speicher werden die dort vor
+Start des ASM vorhandenen Prog-
+ramme geloescht.
+
+Der U880-Assembler arbeitet in
+unterschiedlichen Betriebsarten,
+die durch den Nutzer ausgewaehlt
+werden koennen:
+ - Markendefinition durch ":"
+   als Abschlusszeichen
+   In dieser Betriebsart wird
+   nur dann eine Marke defi-
+   niert, wenn die erste Zei-
+   chenfolge der Zeile durch
+   ":" abgeschlossen wurde,
+   andere Zeichenfolgen werden
+   sofort den Mnemoniks bzw. bei
+   fuehrendem ";" den Kommen-
+   taren zugeordnet.
+ - Markendefinition ohne ":"
+   In dieser Betriebsart werden
+   alle Zeichenketten ab der
+   ersten Spalte als Marke ge-
+   wertet. Durch Trennzeichen
+   (SP oder TAB) wird die Mar-
+   kenspalte abgeschlossen.
+   Befindet sich ein Trennzei-
+   chen in der ersten Spalte
+   einer Zeile, fehlt die Marke.
+ - Definition externer Symbole
+   Referenzen, die im Programm
+   verwendet werden, aber nie 
+   als Marke definiert werden,
+   koennen direkt vom Bediener
+   eigegeben werden. Damit ist
+   eine bedingte Linkfaehigkeit
+   von separat zu uebersetzenden
+   Progammen gegeben.
+ - Binden mehrerer Programme,
+   die durch END-Anweisungen
+   getrennt im Textpuffer ste-
+   hen, durch aufeinanderfolgen-
+   des Uebersetzen in den ein-
+   zelnen Assemblerlaeufen.
+
+Durch diese Varianten und durch
+die Moeglichkeit der Ueber-
+setzung der Befehle und Anwei-
+sungen, die sowohl in K1520-
+Mnemonik als auch in ZILOG-Z80-
+Mnemonik in voellig formatfreier
+Zeilengestaltung notiert sind,
+ist es moeglich Programme unter-
+schiedlichster Herkunft und mit
+unterschiedlichsten Anforderun-
+gen mit nur geringfuegigen An-
+passungen zu bearbeiten.
+
+
+* Bedienerkommunikation
+  ---------------------
+
+Alle Eingaben des Bedieners zur
+Steuerung der Arbeit des Assemb-
+lers erfolgen zeilenorientiert
+mit Editiermoeglichkeiten waeh-
+rend der Zeilenerstellung. Dabei
+bestehen folgende Korrekturmoeg-
+lichkeiten:
+ - Loeschen des letzten Zeichens
+   aus Eingabepuffer (BS)
+   Das geloeschte Zeichen wird
+   nochmals angezeigt.
+ - Rueckanzeige der Eingabezeile
+   (BACK)
+   Der aktuell editierte Zeilen-
+   inhalt wird nochmals darge-
+   stellt.
+ - Abbruch der Eingabe (BRK)
+   Die Eingabe wird abgebrochen
+   und nach einer Fehleraus-
+   schrift wird zur Passeingabe
+   zum Neustart der Assemblie-
+   rung gesprungen.
+Durch ENTER wird die Zeile abge-
+schlossen und entsprechend der
+geforderten Eingabe ausgewertet.
+Werden 1-Zeichen-Eingaben gefor-
+dert, wird nur das erste Zeichen
+im Eingabepuffer ausgewertet.
+Alle anderen Zeichen werden
+ignoriert. Maximal 15 Zeichen
+koennen in den Eingabepuffer
+eingetragen werden.
+
+Zur Anpassung an unterschied-
+liche Tastaturcodes enthaelt der
+ASM eine Tastaturkonvertierungs-
+routine, die es ermoeglicht, 
+jeden beliebigen Tastaturcode
+als Funkrionscode festzulegen.
+Im folgenden werden die entspre-
+chenden Speicherzellen, in denen
+der gewuenschte Tastaturcode
+eingetragen werden kann, aufge-
+listet:
+
+Adr. Code     Bedeutung
+     (z.B.)
+--------------------------------
+301E  03      BRK
+301F  07      BACK
+3020  08      BS
+
+
+Beim Start des ASM erfolgt die
+Anfrage
+     MINIVARIANTE?:
+Mit der Eingabe "N" kann diese
+Frage verneint werden, womit dem
+Bediener die komplette Vielfalt
+der Betriebsmoeglichkeiten ange-
+boten wird. Jede andere Eingabe,
+die durch ENTER abgeschlossen
+wird, fuehrt zur Minivariante,
+bei der Markenabschluss mit ":",
+keine externen Symbole und keine
+aufeinanderfolgende Uebersetzung
+mehrerer Programmteile erlaubt
+ist.
+Hieran schliesst sich sofort der
+Pass 1 (Erstellung der Symbol-
+tabelle) an, der Voraussetzung
+fuer alle anderen Paesse ist.
+Nach Abschluss eines Ueberset-
+zungslaufes wird zur Eingabe
+einer weiteren Passkennzeichnung
+aufgefordert. An das Passkenn-
+zeichen koennen sich noch Para-
+meter zur E/A-Spezifizierung an-
+schliessen. Dazu wird durch die
+Anzeige:
+     PASS:
+aufgefordert.
+Folgende Eingaben sind moeglich:
+     1  Neubeginn bei Pass 1, 
+        alle erstellten Tabellen
+        loeschen
+     L  Erstellung eines Druck-
+        protokolls und des
+        Objektcodes
+     F  Erstellung eines Fehler-
+        protokolls und des
+        Objektcodes
+     O  Ausgabe des Objektcodes
+        an das Zielgebiet
+     S  Symboltabellenausgabe
+     E  Ende der Assemblierung,
+        zurueck zum Monitor
+
+
+* Pass 1
+  ------
+
+Der Aufruf dieses Passes ist mit
+dem Loeschen der ggf. zuvor er-
+stellten Markentabelle verbunden.
+Wurde nicht die Minivariante ge-
+waehlt, folgt die Eingabe der
+externen Referenzen (d.h. der
+nicht waehrend dieser Ueberset-
+zung definierten, aber im Prog-
+ramm genutzten Marken und deren
+zuzuordnende Adressinformation).
+Nach der Ausschrift
+     EXTERNALS?:
+werden solange Markeneingaben
+erwartet, wie der uebergebene
+Eingabepuffer nicht leer ist.
+Zunaechst wird der Markenname 
+ausgewertet, der aus maximal 6
+Zeichen besteht und mit einem
+Buchstaben beginnen muss. Als
+Trennzeichen ist das Leerzei-
+chen erforderlich. Danach wird
+die Adresseingabe erwartet,
+die aus maximal 4 Hexzahlen
+bestehen muss (ohne "H" zur
+Kennzeichnung, da nur Hexzah-
+len erlaubt sind). Jede Einga-
+bezeile, die nicht diese Forde-
+rungen erfuellt, wird nicht
+uebernommen und durch "+" als
+fehlerhaft quittiert.
+Anschliessend wird wieder zur
+Externaleingabe aufgefordert.
+
+Der daran anschliessende Ueber-
+setzungslauf durchmustert den
+gesamten Eingangstext nach Be-
+fehlslaengen und Adresszuord-
+nungen bei Markendefinitioen und
+erstellt so die fuer die weite-
+ren Uebersetzungslaeufe erfor-
+derliche Markentabelle.
+
+
+* Pass L und Pass F
+  -----------------
+
+Um den Objektkode zu erstellen
+und die dabei auftretenden Feh-
+ler zu finden, muss sich ein
+Pass L oder F an den Pass 1 an-
+schliessen. Diese Paesse koennen
+beliebig oft wiederholt werden,
+wobei auch die E/A-Auswahl ge-
+wechselt werden kann.
+Durch Anfuegen eines "D" an die
+Passauswahl "L" oder "F" kann
+die normal auf den Bildschirm
+auszugebende Information an den
+installierten Drucker umgelenkt
+werden. Damit lassen sich sei-
+tenformatierte Assemblerproto-
+kolle erstellen (Pass L) bzw.
+koennen die fehlerhaften Zeilen
+der Uebersetzung gedruckt wer-
+den (Pass F).
+Der Pass L erzeugt eine komplet-
+te Liste des uebersetzten Prog-
+ramms, wobei die formatfreie
+Eingangsinformation zeilenweise
+formatiert in Spalten des
+Assemblerprotokolls, ergaenzt
+durch Adresse, generierten Obj.-
+kode und Zeilennummer, ausgege-
+ben wird. Fehler, die waehrend
+der Uebersetzung einer Zeile er-
+kannt werden, werden als sepa-
+rate Zeile vor der zugehoerigen
+Protokollzeile ausgegeben.
+Die Ausgabe auf den Bildschirm
+kann durch Betaetigen einer be-
+liebigen Taste angehalten werden
+bis eine weitere Taste betaetigt
+wird.
+Wird waehrend der Bildschirm-
+oder Druckerausgabe die Taste
+"BRK" (CTRL-C) betaetigt, wird
+der Pass abgebrochen und die
+Objektkodegenerierung wird un-
+gueltig. Damit kann keine Aus-
+gabe erfolgen.
+
+
+* Pass O
+  ------
+
+Nachdem der Pass L oder F zur 
+Objektkodegenerierung ausge-
+fuehrt wurde, kann das danach im
+Objektkodezwischenspeicher vor-
+liegende Programm ausgegeben
+werden. Gegenwaertig ist nur die
+Ausgabe in einen Testbereich
+implementiert, sodass abarbei-
+tungsfaehige Programme in diesen
+Adressraum lokalisiert werden 
+muessen. Diese Ausgabe wird
+durch ein auf das "O" folgendes
+"S" ausgewaehlt.
+Es werden die durch das Programm
+belegten Speicherbereiche ange
+zeigt.
+Der Testbereich befindet sich im
+Adressbereich 6000H-7FFFH.
+
+Hinweis: Ist ein Programm aus-
+serhalb des Testbereiches loka-
+lisiert, so wird es nicht ausge-
+geben und als Bereichsfehler an-
+gezeigt. Das Programm steht
+jetzt ab der Adresse 5000H und
+kann nach Verlassen des Assemb-
+lers durch das Monitorkommando
+"T" (Transfer) auf den vorgese-
+henen Speicherbereich gebracht
+werden.
+
+
+* Pass S
+  ------
+
+Bei geringfuegigen Aenderungen
+eines Programmes ist es meist
+nicht erforderlich, ein komplet-
+tes neues Protokoll fuer Test-
+zwecke zu drucken. Dafuer bietet
+es sich an, die aktualisierte
+Symboltabelle zu nutzen.
+Mit dem nach "S" folgenden "D"
+kann auch hier die Ausgabe vom
+Bildschirm auf den installierten
+Drucker umgelenkt werden.
+
+
+* Zeilensyntax
+  ------------
+
+Der U880-Assembler erlaubt die
+Verarbeitung voellig format-
+freier Texte, die durch eine
+Syntaxanalyse in die einzelnen
+Teile einer Assemblerquelltext-
+zeile zerlegt werden. Dabei wer-
+den folgende Trennzeichen ver-
+arbeitet:
+SP  Leerzeichen zur Spaltentren-
+    nung, falls keine anderen
+    Trennzeichen wirken
+TAB Tabulator zur Spaltentren-
+    nung, falls keine anderen
+    Trennzeichen wirken
+Texte in freiem Format werden so
+verarbeitet, dass die Quelltext-
+spalten durch Feststellen von
+festgelegten Trennzeichen er-
+kannt werden. Beliebige weitere
+oben angefuehrte Trennzeichen
+koennen zur besseren Lesbarkeit
+des Eingangstextes eingefuegt
+sein. Folgende Trennzeichen die-
+nen der Identifikation der Spal-
+ten:
+ - Die Zeichenfolge, die mit
+   einem Buchstaben beginnt, 
+   weiterhin Ziffern und Buch-
+   staben enthalten kann, max.
+   6 Zeichen lang ist und durch
+   ":" abgeschlossen ist, oder 
+   die bei Markenabschluss ohne
+   ":" in der ersten Spalte der
+   Zeile beginnt, kennzeichnet
+   eine Markendefinition im Mar-
+   kenfeld.
+ - Eine Zeichenkette, die nicht
+   mit ";" beginnt und die nicht
+   durch ":" abgeschlossen ist
+   bzw. auf eine Marke folgt,
+   wird als Mnemonik eines Be-
+   fehls bzw. einer Assembleran-
+   weisung interpretiert.
+ - Zeichenketten, die nicht mit
+   ";" beginnen und durch Leer-
+   zeichen bzw. Tabulatoren von
+   der Mnemonik getrennt sind,
+   werden als Operanden bewertet
+   Dabei gilt "," als Trennzeic-
+   hen zwischen ersten und zwei-
+   ten Operanden, sofern dieser
+   vorhanden ist.
+ - Alle Zeichen nach ";" gelten
+   als Kommentar.
+
+Beim Pass L werden die einzelnen
+Teile der Eingangszeile auch so
+in die eingeteilten Protokoll-
+spalten einsortiert. Beim Pass F
+werden alle zusaetzlichen Fuell-
+zeichen aus der Eingangszeile
+geloescht.
+
+
+* Druckerschnittstelle
+  --------------------
+
+Der Anschluss eines Druckers 
+oder eines anderen peripheren
+Geraetes ist vorbereitet.
+Dazu muss eine entsprechende
+Treiberroutine an das Programm-
+paket gebunden werden. Die ent-
+sprechende Schnittstelle liegt
+auf der Adresse
+
+2017H mit den Daten C9 00 00
+
+Hier muss ein entsprechender
+Sprung auf die Treiberadresse
+eingefuegt werden. (z.B. JMP
+3D2EH) Beim Aufruf des Druckers
+steht das zu druckende Zeichen
+im C Register. Der Drucker
+quittiert eime ordnngsgemasse
+Uebernahme des Zeichens durch
+setzen ds C - Flags. Ein nicht
+gesetztes C - Flag fuehrt zu 
+einer Fehlerausschrift. Ein
+Beispiel fuer ein Drucker-
+treiberprogramm ist in der
+Beschreibung zum Texteditor
+CED enthalten.
+
+* Assembleranweisungen
+  --------------------
+
+ORG   adr   ;Setzen des Speich.-
+            ;zuweisungszaehlers
+            ;auf adr
+END         ;Beendigung der
+            ;Assemblierung des
+            ;Moduls
+EQU   adr   ;Wertzuweisung von
+            ;adr zur Marke
+
+DS    adr   ;Reservierung von
+            ;adr Bytes in der
+            ;Bytefolge
+BER   adr   ;      -"-
+DEFS  adr   ;      -"-
+
+DB    byt   ;Ablegen von byt in
+            ;der Bytefolge
+DEFB  byt   ;      -"-
+DEFM  byt   ;      -"-
+DEFT  text  ;Ablegen der Zei-
+            ;chenzahl und der
+            ;Zeichenfolge text
+            ;in der Bytefolge
+
+DW    adr   ;Ablegen von adr als
+            ;2 Byte in der
+            ;Bytefolge
+DA    adr   ;      -"-
+DEFW  adr   ;      -"-
+
+DEF         ;ohne Wirkung, nicht
+            ;implementiert
+EJEC        ;      -"-
+PN          ;      -"-
+TITL        ;      -"-
+
+
+
+* Befehlssyntax
+  -------------
+
+Hier sind die moeglichen Nota-
+tionsformen der Befehle des
+U880, die der Assembler verar-
+beitet, aufgelistet. Fuer Byte-
+und Adressoperanden gilt, dass
+sie aus einer logischen oder
+arithmetischen Verknuepfung von
+zwei Marken und Direktwerten be-
+stehen koennen. Der Speicherre
+ferenzzaehler ("#") wird bei
+diesen Operationen ignoriert.
+Bei Relativspruengen auf Marken
+wird automatisch die Distanz be-
+rechnet.
+
+rgm = M,(HL),(IX+rel),(IY+rel)
+byt = n,L(adr),H(adr)
+
+
+- Transferbefehle
+
+LD   <rg1>,<rg2>
+   ;rg1=A,B,C,D,E,H,L,<rgm>
+   ;rg2=A,B,C,D,E,H,L,<rgm>,byt
+
+LD   A,<rg>
+   ;rg=I,R
+
+LD   <rg>,A
+   ;rg=I,R
+
+LD   <rp>,adr
+   ;rp=BC,DE,HL,IX,IY,SP
+
+LD   (adr),<rp>
+   ;rp=  -"-
+
+LD   <rp>,(adr)
+   ;rp=  -"-
+
+
+LD<rc>
+   ;rc=I,IR,D,DR
+
+
+POP  <rp>
+   ;rp=AF,BC,DE,HL,IX,IY
+
+PUSH <rp>
+   ;rp=  -"-
+
+EXAF
+
+EX   AF,AF'
+
+EX   DE,HL
+
+EX   (SP),<rp>
+   ;rp=HL,IX,IY
+
+- arithmetische Befehle
+
+DAA
+
+NEG
+
+ADD  <rg>
+   ;rg=A,B,C,D,E,H,L,<rgm>,byt
+
+ADD  A,<rg>
+   ;rg=  -"-
+
+ADC  <rg>
+   ;rg=  -"-
+
+ADC  A,<rg>
+   ;rg=  -"-
+
+SUB  <rg>
+   ;rg=  -"-
+
+SUB  A,<rg>
+   ;rg=  -"-
+
+SBC  <rg>
+   ;rg=  -"-
+
+SBC  A,<rg>
+   ;rg=  -"-
+
+DEC  <rg>
+   ;rg=A,B,C,D,E,H,L,<rgm>
+
+INC  <rg>
+   ;rg=  -"-
+
+
+ADD  <rp1>,<rp2>
+   ;rp1=HL,IX,IY
+   ;rp2=BC,DE,<rp1>,SP
+
+ADC  HL,<rp>
+   ;rp=BC,DE,HL,SP
+
+SBC  HL,<rp>
+   ;rp=  -"-
+
+INC  <rp>
+   ;rp=BC,DE,HL,IX,IY,SP
+
+DEC  <rp>
+   ;rp=  -"-
+
+
+- logische Befehle
+
+CPL
+
+AND  <rg>
+   ;rg=A,B,C,D,E,H,L,<rgm>,byt
+
+OR   <rg>
+   ;rg=  -"-
+
+XOR  <rg>
+   ;rg=  -"-
+
+CMP  <rg>
+   ;rg=  -"-
+
+CP   A,<rg>
+   ;rg=  -"-
+
+CP<rc>
+   ;rc=I,IR,D,DR
+
+
+- Rotationsbefehle
+
+RLA
+
+RLCA
+
+RRA
+
+RRCA
+
+RL   <rg>
+   ;rg=A,B,C,D,E,H,L,<rgm>
+
+RLC  <rg>
+   ;rg=  -"-
+
+RR   <rg>
+   ;rg=  -"-
+
+RRC  <rg>
+   ;rg=  -"-
+
+SLA  <rg>
+   ;rg=  -"-
+
+SRA  <rg>
+   ;rg=  -"-
+
+SRL  <rg>
+   ;rg=  -"-
+
+
+- Bitbefehle
+
+BIT  <bnr>,<rg>
+   ;bnr=0,1,...,7
+   ;rg=A,B,C,D,E,H,L,<rgm>
+
+RES  <bnr>,<rg>
+   ;bnr=  -"-
+   ;rg=   -"-
+
+SET  <bnr>,<rg>
+   ;bnr=  -"-
+   ;rg=   -"-
+
+
+- Sprungbefehle
+
+JMP       <rg>
+   ;rg=M,(HL),(IX),(IY)
+
+JP        <rg>
+   ;rg=  -"-
+
+JMP       adr
+
+JP        adr
+
+JP<bed>   adr
+   ;bed=C,NC,Z,NZ,M,P,PE,PO
+
+JP        <bed>,adr
+   ;bed=  -"-
+
+
+JR        adr
+
+JR<bed>   adr
+   ;bed=C,NC,Z,NZ
+
+JR        <bed>,adr
+   ;bed=  -"-
+
+DJNZ      adr
+
+
+- Unterprogrammbefehle
+
+CALL      adr
+
+CA<bed>   adr
+   ;bed=C,NC,Z,NZ,M,P,PE,PO
+
+CALL      <bed>,adr
+   ;bed=  -"-
+
+RST       <n*8>
+   ;n=0,1,...7
+
+
+RET
+
+R<bed>
+   ;bed=C,NC,Z,NZ,M,P,PE,PO
+
+RET       <bed>
+   ;bed=  -"-
+
+RETI
+
+RETN
+
+
+- E/A-Befehle
+
+IN   <ea>
+   ;ea=byt,A,B,C,D,E,H,L
+
+IN   A,(byt)
+
+IN   <rg>,(C)
+   ;rg=A,F,B,C,D,E,H,L
+
+INF
+
+IN<rc>
+   ;rc=I,IR,D,DR
+
+
+OUT   <ea>
+   ;ea=byt,A,B,C,D,E,H,L
+
+OUT   (byt),A
+
+OUT   (C),<rg>
+   ;rg=A,B,C,D,E,H,L
+
+OUT<rc>
+   ;rc=I,D
+
+OT<rc>
+   ;rc=IR,DR
+
+
+- Sonderbefehle
+
+CCF
+
+SCF
+
+DI
+
+EI
+
+IM<mode>
+   ;mode=0,1,2
+
+IM   <mode>
+   ;mode=0,1,2
+
+HALT
+
+NOP
+
+
+Achtung: Bei dieser Version ist
+         der Druck noch nicht
+         mit CTRL C abzubrechen!
+

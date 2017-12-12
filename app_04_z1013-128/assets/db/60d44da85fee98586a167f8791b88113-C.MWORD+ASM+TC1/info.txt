@@ -1,0 +1,4 @@
+<kurz src="MICROWORD 1.5+ASSEMBLER+TC1"/>
+<lang>Für was steht TC1?
+Benutzt Sprungverteiler</lang>
+<requires>SPV</requires>

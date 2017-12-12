@@ -1,0 +1,3 @@
+<kurz src="U880-Assembler ASM (V. 25.10.87)"/>
+<lang><include src="I.ASSM TU.txt"/></lang>
+<requires></requires>

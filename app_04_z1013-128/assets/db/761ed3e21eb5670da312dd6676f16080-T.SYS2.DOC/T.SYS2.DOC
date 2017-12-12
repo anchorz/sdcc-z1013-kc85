@@ -1,0 +1,281 @@
+.PL72
+.po10
+.HECP/B                       Seite 2.   #          
+                                  S Y S
+.fo                            E D I T O R
+
+2.   EDITOR
+===========
+
+2.1. Aufruf
+-----------
+
+Vom Monitor oder von jedem Assembler aus kann der Editor mit  dem 
+Kommando 
+     Edit
+aufgerufen werden. Der erste Buchstabe ist signifikant.   
+Der  Editor  meldet sich und durchsucht zuerst den Speicher  nach 
+einem Quellfile. Ist ein solches vorhanden, wird gefragt:
+     dateiname found in Buffer, accept? (Y/N):
+
+dateiname ist der Name der gefundenen Quelldatei.
+Bei der Antwort mit Y wird dieses File fuer gueltig erklaert, bei 
+N als Eingabe wird dieses File im Speicher geloescht und nach dem 
+Namen des Quellfiles gefragt:
+
+     Filename:
+Hier ist ein Filename der Form
+
+     dev:name.erw
+einzugeben.  Die  Angabe von CON:  gestattet die direkte  Eingabe 
+einer Quelle von der Tastatur aus. Sonst wird auf dem angegebenen 
+Laufwerk  nach  diesem Namen gesucht und eine Quelldatei  in  den 
+Arbeitsspeicher geladen.  Existiert eine solche Datei nicht, wird 
+der  Inputmodus eingestellt und eine neue Quelldatei unter diesem 
+Namen  kann  eingegeben  werden.
+Ist eine einzugebende Quelldatei groesser,  als der Speicherplatz 
+dies zulaesst, wird die Fehlermitteilung
+
+     *** MAX ***
+ausgegeben  und die Eingabe abgebrochen.  Die Datei kann trotzdem 
+in gekuerzter Form bearbeitet werden.  Quellen sollen nie so lang 
+werden, denn die Bearbeitungszeit steigt dann wesentlich an.
+
+
+2.2. Bedienung des Editors
+--------------------------
+
+Der Editor meldet sich mit seinem Systemzeichen
+
+          >
+
+Danach  befindet er sich im Kommandoeingabe-Modus.  Ein  Kommando 
+kann  eingegeben und durch Parameter naeher spezifiziert  werden. 
+Fehlen  Parameter,  wird  fuer die Anzahl 1 und fuer  Ketten  die 
+Nullkette gesetzt.  Ist der letzte Parameter ein Dezimalwert,  so 
+bezieht er sich auf die Anzahl,  die Nummer der Zeile  o.ae.  Bei 
+Angabe  eines * (Sternchen) ist fuer diesen der Dezimalwert 65535 
+gesetzt.  Fehlt ein Kommando vollstaendig (nur ET1 druecken),  so 
+wird  das  letzte  Kommando  vollstaendig  mit  allen  Parametern 
+wiederholt. Dies gilt nicht fuer Macro-Kommandos.
+Alle  Antworten  auf  eine  Kommandoeingabe  erfolgen  ueber  den 
+Bildschirm.  Die  Ausgabe  einer  Quellzeile  erfolgt  mit  einer 
+vorangestellten 5 stelligen Zeilennummer, die dynamisch verwaltet 
+wird.
+
+
+2.3. EDIT-Kommandos
+-------------------
+
+Ein  Kommando ist durch seinen ersten Buchstaben  gekennzeichnet. 
+Weitere Buchstaben sind unwirksam.  Das erste Leerzeichen,  Stern 
+oder  die  erste Ziffer oder ein Escape zeigen den  Beginn  eines 
+Parameters  an.  In der folgenden Beschreibung ist das Escape aus 
+drucktechnischen Gruenden durch ^[ dargestellt,  n ist eine Dezi
+malzahl.
+
+
+A n                                                     ASSEMBLER
+Der Editor wird verlassen und der Assembler aufgerufen.  n ist in 
+diesem  Fall die genauere Auswahl des Assemblers.  Fehlt n,  wird 
+der Z80-Assembler aufgerufen.  Die Quelldatei bleibt im  Speicher 
+erhalten.
+
+     n = 8          Z8-   Assembler
+     n = 80         Z80-  Assembler
+     n = 8000       Z8000-Assembler
+     n = 86         8086- Assembler
+
+
+
+B                                                          BOTTOM
+Der Zeilenzeiger wird auf die letzte Zeile der Quelldatei gesetzt 
+und diese Zeile auf der Konsole ausgegeben.
+
+
+C^[kette1^[kette2^[n                                       CHANGE
+Ab  der aktuellen Zeile wird auf n Zeilen,  die die Kette  kette1 
+enthalten, diese durch die Kette kette2 ersetzt. Entfaellt n, ist 
+das  Kommando  nur fuer die erste Zeile wirksam,  die  die  Kette 
+kette1  enthaelt.  Fehlt kette2,  so wird kette1  geloescht.  Ist 
+kette1  in  einer Zeile nicht enthalten,  wird diese Zeile  nicht 
+veraendert. Steht * fuer n, wird das Auswechseln fuer die gesamte 
+restliche Datei vorgenommen.
+
+
+
+Dn                                                         DELETE
+D^[kette
+Ab  der  aktuellen Zeile werden n Zeilen geloescht  bzw.  ab  der 
+Zeile bis zu der Zeile,  die die angegebene Kette kette enthaelt, 
+werden  alle  Zeilen geloescht.  Diese letzte Zeile mit  der  ge
+suchten Kette wird nicht geloescht.
+Wird  dieses Kommando vor der ersten Zeile (vor dem  Dateianfang) 
+gegeben, ist es wirkungslos.
+
+
+
+E dev:name.erw                                               EXIT
+Die  generierte  Quelldatei wird unter dem angegebenen Namen  auf 
+das   angegebene  Laufwerk  ausgegeben.   Fehlt  .erw,   ist  die 
+Erweiterung  standardmaessig .ASM.  Eine evtl.  vorhandene  Datei 
+dev:name.$$$ wird vorher geloescht,  falls dies gewuenscht  wird. 
+Die  neue  Quelldatei wird mit der Erweiterung .$$$  erzeugt.  Es 
+folgt  eine  Kontrolle  auf richtige Uebertragung  und  dann  die 
+Umbenennung  von  .ASM in .BAK fuer die alte Quelldatei  und  von 
+.$$$ in .ASM fuer die neue Quelldatei.
+Wird kein Dateiname angegeben, so ist der beim Aufruf des Editors 
+angegebene Name gueltig. 
+Nach  diesem  Kommando wird der Editor verlassen und der  Monitor 
+aktiv. 
+
+
+
+F^[kette                                                     FIND
+In der Datei wird ab der naechsten Zeile nach der aktuellen Zeile 
+nach  einer Zeile gesucht,  die die angegebene Kette enthaelt und 
+diese  Zeile angezeigt.  Die Datei wird bis zum Ende  durchsucht, 
+falls die Kette nicht gefunden wird.
+
+
+
+Gn                                                             GO
+G^[kette
+Es wird der Zeilenzeiger auf die n.  Zeile bzw. auf die Zeile mit 
+der  angegebenen  Kette gesetzt und diese  Zeile  angezeigt.  Die 
+Suche erfolgt vom Dateianfang an.
+
+
+
+I                                                           INPUT
+Input-Modus.  Hier  kann eine Datei aufgebaut  werden.  Nach  der J@usgabe  der  aktuellen Zeilennummer kann eine satzweise  Eingabe 
+von   Quellzeilen   erfolgen.   Es  werden   alle   ASCII-Zeichen 
+akzeptiert.  Zweimalige  Eingabe  von ET1  (RETURN)  beendet  den 
+Inputmodus.  Alle  eingegebenen Zeichen werden nach der aktuellen 
+Zeile  eingefuegt,  die gerade einzugebende Zeile wird  dann  die 
+aktuelle Zeile. Zeilen nach dieser Einfuegung bleiben erhalten.
+
+
+
+I kette                                                    INSERT
+Der Abschluss des I-Kommandos mit einem Leerschritt gestattet die 
+Einfuegung  einer  Zeile nach der aktuellen Zeile.  Alle  Zeichen 
+nach  diesem 1.  Leerschritt werden bis zum  abschliessenden  ET1 
+eingefuegt.
+
+
+
+K                                                          KURSOR
+Die  aktuelle Zeile wird angezeigt und der Kursor auf  das  erste 
+Zeichen dieser Zeile gesetzt. Nun kann mit den Kursorsteuertasten 
+der  Kursor beliebig bewegt werden.  An beliebiger Stelle koennen 
+dann  Zeichen  eingefuegt  (einfach  eintippen)  oder   geloescht 
+werden.  Mit  der Angabe von ^D wird das Zeichen,  unter dem  der 
+Kursor steht, geloescht.
+
+
+
+^Q beendet dieses Kommando, ohne die angezeigte Zeile im Speicher 
+zu veraendern.
+Ein  RETURN  speichert die veraenderte Zeile.  Ebenso wirken  die 
+Kursortasten -Kursor hoch, -Kursor runter.
+Ein TAB in der Zeile wird als Leerzeichen dargestellt.
+
+
+
+Ln                                                           LADE
+Ab  der aktuellen Zeile werden aus einer externen Datei n  Zeilen 
+in die Quelldatei eingefuegt. Alle L-Kommandos laden stets ab der 
+ersten  Zeile  der  externen  Datei.  Nach  dem  Dateinamen  wird 
+gefragt.  Er  muss eingegeben werden.  Die Namenserweiterung  ist 
+standardmaessig .$$$.  Alle logische Eingabegeraete sind als dev: 
+zulaessig.
+
+
+
+M&kom1&kom2&...&komi                                        MACRO
+Die  Kommandos kom1 bis komi werden gekettet und spaeter mit  dem 
+Kommando Xecute nacheinander ausgefuehrt.  Es sind alle Kommandos 
+ausser dem MACRO-Kommando selbst zulaessig.
+
+
+
+N^[kette                                                     NEXT
+Nn
+Der  Zeilenzeiger  wird um n Zeilen weiter in Richtung  Dateiende 
+bzw. bis zur Kette verschoben und diese Zeile angezeigt.
+
+
+
+O^[kette                                                   OUTPUT
+On
+Ausgabe  von n Zeilen bzw.  bis zu der Zeile mit der  angegebenen 
+Kette  ab  der aktuellen Zeile auf eine externe Datei.  Nach  dem 
+Namen  dieser  Datei  wird  gefragt.  Die  Namenserweiterung  ist 
+standardmaessig .$$$.  Es ist jedes logische Geraet angebbar.
+L- und O-Kommandos dienen der kurzfristigen Auslagerung einzelner 
+Quellzeilen. Sie eroeffnen eine Zwischendatei und nach dem Daten
+transport wird diese Datei wieder geschlossen.  Bei Anwendung des 
+O-Kommandos wird eine Datei unter diesem Namen vorher geloescht.
+
+
+
+Pn                                                          PRINT
+P^[kette
+Ab  der aktuellen Zeile werden n Zeilen auf der Konsole  ausgege
+ben.  Bei  der  Angabe einer Kette sind alle Zeilen  bis  zu  der 
+Zeile,  die diese Kette enthaelt,  auf der Konsole sichtbar.  Das 
+Bild wird zeilenweise gerollt.  Unterbrechungen der Ausgabe koen
+nen  durch  Druecken von ^S unterbrochen werden (Halt)  und  nach 
+erneutem Betaetigen von ^S weiter ausgegeben werden.  Ein ^C nach 
+einem Halt bricht das gesamte Programm SYS ab, das Betriebssystem 
+ist aktiv!
+gn
+
+Q                                                            QUIT
+Die  Datei im Speicher wird nicht mehr veraendert und auch  keine 
+Datei  ausgegeben.  Das  Editieren  ist beendet und  der  Monitor 
+wieder  aktiv.  Fuer eine Speicheruebersicht wird die Anzahl  der 
+editierten Bytes angegeben.
+
+
+
+R kette                                                   REPLACE
+Die  aktuelle Zeile wird durch die angegebene Kette ersetzt.  Die 
+Kette  muss  vom Kommando durch genau  ein  Leerzeichen  getrennt 
+sein. Alle ASCII-Zeichen wie bei Input sind bis zum abschliessen
+den RETURN gueltig.
+
+
+T                                                             TOP
+Der Zeilenzeiger wird vor den Dateianfang gesetzt
+
+
+
+Un                                                             UP
+Der  Zeilenzeiger wird um n Zeilen nach oben in Richtung Dateian
+fang verschoben und diese Zeile angezeigt.
+
+
+
+X                                                          XECUTE
+Ausfuehrung der mit dem MACRO-Kommando eingegebenen Kommandos  in 
+der Reihenfolge, wie dort angegeben.
+
+
+
+2.4. Fehler
+-----------
+
+Alle Fehler,  die waehrend der Editierung auftreten, sind auf der 
+Konsole im Klartext dargestellt. Dabei bedeuten:
+
+     *** ???***
+     es wurde ein falsches  Kommando oder eine falscher Parameter 
+     gegeben
+     
+     ***MAX***
+     Das   Speicherende  ist  erreicht,   weitere  Eingaben  sind 
+     fehlerhaft.
+
+

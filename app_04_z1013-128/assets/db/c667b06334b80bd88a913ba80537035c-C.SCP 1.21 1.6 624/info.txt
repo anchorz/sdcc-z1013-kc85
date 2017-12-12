@@ -1,0 +1,4 @@
+<kurz src=" CP/M 2.2 Z1013 mit 1.6 Disk.-Laufwerk"/>
+<lang>Wartet auf ein Gerät an Port 0x7C/0x7D
+</lang>
+<requires></requires>
