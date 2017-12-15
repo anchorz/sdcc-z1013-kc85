@@ -66,5 +66,5 @@ wieder auf Kassette ausge-
 geben werden.       
 
                              
-<include src="B.FRAKTALE.B"/></lang>
+<include src="FRAKTALE.B"/></lang>
 <requires></requires>

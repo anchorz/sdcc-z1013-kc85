@@ -1,0 +1,3 @@
+<kurz src="Hindernissen ausweichen, Schlange wird immer länger (RST20)"/>
+<lang>Steuerung: ⇦ ⇨ ⇧ ⇩</lang>
+<requires></requires>

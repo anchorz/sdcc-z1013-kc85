@@ -1,0 +1,12 @@
+<kurz src="fast identisch [fa4747497ee586360c5fda05e2f22962]"/>
+<lang>Quelltext verschieden, aber Funktion wie [74c964eac1358f9ec43f623473054b6c]
+
+Tastatureingabe ist verschieden:
+7FF0  E7               RST     20H
+7FF1  04               DB      04H               ;INKEY
+7FF2  32 FF 7F         LD      (7FFFH),A
+7FF5  C9               RET
+Hier wird die Speichezelle 0x0004 vor INKEY nicht auf 0x00 gesetzt. 
+
+<include src="CLIMBER.B"/></lang>
+<requires></requires>

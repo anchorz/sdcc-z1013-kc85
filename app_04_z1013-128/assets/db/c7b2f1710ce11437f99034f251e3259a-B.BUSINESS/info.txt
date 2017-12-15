@@ -1,0 +1,3 @@
+<kurz src="Big Business, Wirtschaftssimulation"/>
+<lang><include src="BUSINESS.B"/></lang>
+<requires></requires>

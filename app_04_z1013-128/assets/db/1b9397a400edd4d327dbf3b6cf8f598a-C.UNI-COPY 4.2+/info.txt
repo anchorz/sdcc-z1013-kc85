@@ -1,0 +1,3 @@
+<kurz src="Kopierprogramm für Daten-Kassetten"/>
+<lang></lang>
+<requires></requires>

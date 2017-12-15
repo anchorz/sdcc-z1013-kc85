@@ -1,0 +1,5 @@
+<kurz src="identisch [a249470ac4b1987e73e81d9c8e9b5d1d]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Anfangsadresse is 0xF000</lang>
+<requires>A2</requires>

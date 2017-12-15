@@ -13,5 +13,5 @@ in ihrer Reihenfolge umgedreht.
 
 EDBAGHCIJF ▐ Fester Buchstabe:█
                    
-<include src="B.DOPROT.B"/></lang>
+<include src="DOPROT.B"/></lang>
 <required></required>

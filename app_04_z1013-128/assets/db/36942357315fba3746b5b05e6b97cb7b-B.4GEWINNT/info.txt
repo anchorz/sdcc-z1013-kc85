@@ -1,0 +1,3 @@
+<kurz src="Wer als erster 4 Steine nebeneinander hat, gewinnt."/>
+<lang><include src="4GEWINNT.B"/></lang>
+<requires></requires>

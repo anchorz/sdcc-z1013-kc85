@@ -1,0 +1,3 @@
+<kurz src="Wissenstest DDR"/>
+<lang><include src="GEO-TEST.B"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Sortierprogramm"/>
+<lang><include src="SORT.B"/></lang>
+<requires></requires>

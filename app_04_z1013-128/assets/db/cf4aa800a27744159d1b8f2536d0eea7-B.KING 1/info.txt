@@ -1,0 +1,5 @@
+<kurz src="SANTA PARAVIA, Z9001 Version mit Anpassungen an 32 Zeichen"/>
+<lang>wie [5c469a2bd39c04926c9f00e465f632a2]
+Textausgabe verkürzt, so dass es besser auf die
+32 Zeichen des Z1013 passt</lang>
+<requires></requires>

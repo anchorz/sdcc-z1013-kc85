@@ -1,0 +1,8 @@
+<kurz src="verbessert [cf4aa800a27744159d1b8f2536d0eea7]"/>
+<lang>schreibt hin und wieder über den Bildschirmrand. Es sieht so nach einer 
+Zwischenversion verglichen mit [75b9fcd76fa39557454f08460b34e45b] aus. Manche 
+Stellen wurden angepasst, andere noch nicht.
+Diese Version unterscheidet sich nur durch Änderungen im Text.
+
+<include src="king_korr.B"/></lang>
+<required></required>

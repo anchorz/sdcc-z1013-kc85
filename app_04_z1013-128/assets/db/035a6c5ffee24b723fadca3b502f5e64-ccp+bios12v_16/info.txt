@@ -1,0 +1,3 @@
+<kurz src="CP/M 2.2 Z1013-ZI./DC 1.2 Disk"/>
+<lang></lang>
+<requires></requires>

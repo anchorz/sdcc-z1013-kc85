@@ -1,0 +1,3 @@
+<kurz src="Schiebespiel, Bewege den Dicken zum Ausgang"/>
+<lang><include src="DICKER.B"/></lang>
+<requires></requires>

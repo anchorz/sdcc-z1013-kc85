@@ -1,0 +1,10 @@
+<kurz src="DATA Zeilen-GENERATOR (C) ROLAND KNECHT y56ya"/>
+<lang>Das Programm erwartet die Eingaben von Mc-Anfang, Mc-Ende
+sowie Standort fuer die DATA-Zeilen und deren Zeilennummer. 
+Nach dem Start wird das Mc-Programm dezimal in DATA 
+gewandelt und mit LIST#1 auf Kassette gerettet. Es erfolgt
+eine Vorankuendigung. Recorder auf Aufnahme stellen und Geduld
+haben. Gelesen wird das Programm mit LOAD#1'data'. Beim
+Uebergang von Adr. 7FFFH auf 8000H gibt es einen Fehler !!!
+<include src="DATAGEN..B"/></lang>
+<requires></requires>

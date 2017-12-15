@@ -1,3 +1,3 @@
 <kurz src="Berechnung von geometrischen Figuren und einfachen Körpern"/>
-<lang><include src="B.FL.U.KOE.B"/></lang>
+<lang><include src="FL.U.KOE.B"/></lang>
 <requires></requires>

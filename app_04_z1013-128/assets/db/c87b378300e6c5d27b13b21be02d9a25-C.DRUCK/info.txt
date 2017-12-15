@@ -1,14 +1,6 @@
-<kurz src="Tastaturtreiber S3004"/>
-<lang>seltsame Modifikationen werden ausserhalb des Programmes vorgenommen:
+<kurz src="Drucker- & Tastaturtreiber S3004 für MicroWord"/>
+<lang>Installation modifiziert einige Speicherstellen, also 
+bitte nur zusammen mit MicroWord laden.
 
-...
-7E10  21 C0 7D         LD      HL,7DC0H
-7E13  22 F1 02         LD      (02F1H),HL
-7E16  22 E5 04         LD      (04E5H),HL
-7E19  CD B0 7D         CALL    7DB0H
-7E1C  C3 00 01         JP      0100H
-...
-Ist das eine Erweiterung für ein bestimmtes Programm oder BASIC-Interpreter?
-
-</lang>
+<include src="../b46e075770d4fa30974f356d96e9dece-T.DRUCK-TAST (esc)/T.DRUCK-TAST (esc).txt"/></lang>
 <requires></requires>

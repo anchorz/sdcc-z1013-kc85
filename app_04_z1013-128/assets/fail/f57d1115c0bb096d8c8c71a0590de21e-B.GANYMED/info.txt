@@ -1,0 +1,3 @@
+<kurz src="Original fuer Z9001"/>
+<lang><include src="GANYMED.B"/></lang>
+<requires></requires>

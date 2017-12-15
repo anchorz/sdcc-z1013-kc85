@@ -1,0 +1,175 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    5 WINDOW
+   10 CLEAR:CLS
+   15 GOSUB 3000
+   20 DIM B$(4,4),A$(3)     
+   30 A$(1)="":A$(2)="":A$(3)=""
+   40 FOR B=1 TO 3
+   50 A(B)=INT(RND(1)*8)
+   60 GOSUB 300
+   70 NEXT B
+   80 FOR I=1 TO 3:FOR J=1 TO 3
+   90 B$(I,J)=MID$(A$(I),J,1)
+  100 NEXT J,I
+  110 FOR I=0 TO 4:B$(0,I)="":B$(4,I)="":B$(I,0)="":B$(I,4)="":NEXT I:Z=1
+  120 GOSUB 710
+  125 GOSUB 3000
+  130 GOTO 1020
+  150 PRINT AT(12,17);Z:PRINT AT(12,20);". VERSUCH"  
+  155 PRINT AT(14,28);" " 
+  160 PRINT AT(14,17);WE:PRINT AT(14,19);" RICHTIGE"  
+  161 IF WE=1 THEN PRINT AT(14,28);"N"  
+  175 PRINT
+  176 GOSUB 2000
+  177 WINDOW 8,15,8,15 
+  179 CLS
+  180 FOR I=1 TO 3:PRINT B$(1,I);"  ";:NEXT                   
+  185 PRINT
+  186 PRINT
+  190 FOR I=1 TO 3:PRINT B$(2,I);"  ";:NEXT                   
+  195 PRINT
+  196 PRINT
+  200 FOR I=1 TO 3:PRINT B$(3,I);"  ";:NEXT:WINDOW 31,31,0,0    
+  201 GOSUB 4000
+  202 GOSUB 5000
+  210 WINDOW 31,31,0,0 
+  215 IF U<>13 THEN 202
+  220 D=10*C+A
+  221 DATA 77,107,137,80,110,140,83,113,143
+  222 RESTORE 221
+  224 FOR FE=1 TO 9
+  225 READ V
+  227 IF V=D THEN 230
+  228 NEXT
+  230 IF FE=0 THEN 620
+  240 IF FE<0 OR FE>9 THEN 150
+  250 GOSUB 370:Z=Z+1
+  260 REMMMMMMMMMM
+  270 GOTO 1020
+  300 DATA OOX,OXO,OXX,XOO,XOX,XXO,XXX,OOO
+  310 RESTORE 300
+  320 FOR I=0 TO A(B)
+  330 READ X$
+  340 NEXT
+  350 A$(B)=X$
+  360 RETURN
+  370 ON FE GOTO 380,420,450,460,500,530,540,580,590
+  380 K=1:L=2:GOSUB 600
+  390 L=1:GOSUB 600
+  400 K=2:GOSUB 600
+  410 L=2:GOTO 600
+  420 K=1
+  430 L=1:GOSUB 600
+  440 L=3:GOSUB 600:GOTO 410
+  450 K=1:L=3:GOSUB 600:GOSUB 410:K=2:GOTO 440
+  460 L=1
+  470 K=1:GOSUB 600
+  480 K=2:GOSUB 600
+  490 K=3:GOTO 600
+  500 L=2:GOSUB 470
+  510 K=2:L=1:GOSUB 600
+  520 L=3:GOTO 600
+  530 L=3:GOTO 470
+  540 K=2:L=1:GOSUB 600
+  550 K=3:GOSUB 600
+  560 K=2:L=2:GOSUB 600
+  570 GOTO 490
+  580 K=3:GOTO 430
+  590 K=2:GOSUB 520:GOTO 550
+  600 IF B$(K,L)="O"THEN B$(K,L)="X":RETURN
+  610 B$(K,L)="O":RETURN
+  620 CLS:PRINT:PRINT:PRINT "SIE HABEN AUFGEGEBEN !"
+  625 IF Z<15 THEN 690
+  630 PRINT "NACH";Z;"FEHLVERSUCHEN WAR"
+  640 PRINT "DAS NICHT ANDERS ZU ERWARTEN !"
+  650 PRINT
+  660 INPUT "NOCH EIN VERSUCH";Y$
+  670 IF Y$<>"N"THEN RUN           
+  680 CLS:PRINT "AUF WIEDERSEHEN !":END
+  690 PRINT "NOCH EIN PAAR VERSUCHE UND"
+  700 PRINT "SIE HAETEN ES AUCH GESCHAFFT !":PRINT "SIE SCHWAECHLING !":GOTO 650
+  710 K=K
+  720 PRINT
+  730 PRINT AT(7,5);"KENNEN SIE DIE REGELN ?"     
+  735 Y$=INKEY$
+  736 IF Y$=""THEN 735
+  740 IF Y$<>"N"THEN PRINT AT(7,5);"                          ":RETURN  
+  750 CLS
+  755 OUT 136,4
+  760 PRINT " HIRNVERWINDER" 
+  770 PRINT
+  775 PRINT
+  780 PRINT "Sie haben ein Feld mit 9 Steinen" 
+  800 PRINT " die Sie so wenden sollen, dass"  
+  820 PRINT "alle bis auf den in der Mitte "  
+  840 PRINT "eine 'O' zeigen."    
+  850 PRINT
+  860 PRINT "Mit Hilfe der Kursortasten oder"  
+  880 PRINT "des Spielhebels waehlen Sie den"
+  890 PRINT "zu wendenden Stein an . "   
+  900 PRINT "Nach druecken der Ausloesetaste"                      
+  920 PRINT "wendet sich der angebene Stein,"                        
+  940 PRINT "aber auch ein Teil der Nachbar-"                        
+  950 PRINT "steine.Hier liegt das Problem "
+  960 PRINT "         und die Schwierigkeit."
+  970 PRINT:PRINT:PRINT:PRINT       
+  980 PRINT "     Und nun viel Spass !!"
+  990 PRINT:PRINT:PRINT
+ 1000 INPUT II
+ 1005 OUT 136,0
+ 1010 CLS:RETURN
+ 1020 WE=0
+ 1030 FOR I=1 TO 3
+ 1040 IF B$(1,I)="O"THEN WE=WE+1
+ 1050 IF B$(3,I)="O"THEN WE=WE+1
+ 1060 NEXT
+ 1070 IF B$(2,1)="O"THEN WE=WE+1
+ 1080 IF B$(2,2)="X"THEN WE=WE+1
+ 1090 IF B$(2,3)="O"THEN WE=WE+1
+ 1091 IF Z=20 THEN PRINT AT(29,0);"Sie muessen schon Ihr Gehirn     anstrengen"   
+ 1092 IF Z=25 THEN PRINT AT(31,0);"   ... oder haben Sie keines ???" 
+ 1093 IF Z=33 THEN PRINT AT(31,0);STRING$(40," "):GOSUB 6000  
+ 1094 IF Z=46 THEN PRINT AT(29,0);"Werden Sie heute noch fertig    werden ?? "
+ 1100 IF WE<>9 THEN GOTO 150
+ 1110 WINDOW 22,31,0,31:PRINT "Sie haben es nach"Z-1 "Versuchen "        
+ 1120 PRINT "geschafft !!       Das ist"
+ 1130 IF Z>20 THEN PRINT "schon ganz gut !":GOTO 650
+ 1140 IF Z>10 THEN PRINT "sehr gut !":GOTO 650
+ 1150 IF Z>5 THEN PRINT "brilliant - weiter so !":GOTO 650
+ 1160 PRINT "unwahrscheinlich ! - Ich werde"
+ 1170 PRINT "den Zufallsgenerator ueberarbeiten !"                 
+ 1180 GOTO 650
+ 2000 PRINT AT(6,5);""
+ 2010 FOR L=2 TO 10
+ 2015 PRINT AT(L+5,5);"           "
+ 2020 NEXT
+ 2025 PRINT AT(16,5);""
+ 2030 RETURN
+ 3000 PRINT AT(0,1);"" 
+ 3005 PRINT AT(1,1);"  H I R N V E R W I N D E R  "   
+ 3010 PRINT AT(2,1);""                         
+ 3015 RETURN
+ 4000 A=10:C=10
+ 4010 PRINT AT(A,C);""
+ 4020 PRINT AT(A+1,C);"":PRINT AT(A+1,C+2);""
+ 4030 PRINT AT(A+2,C);"" 
+ 4040 RETURN
+ 4110 PRINT AT(A,C);"   "
+ 4120 PRINT AT(A+1,C);" ":PRINT AT(A+1,C+2);" "
+ 4130 PRINT AT(A+2,C);"   "
+ 4140 RETURN
+ 5000 T$=INKEY$:IF T$=""THEN 5000  
+ 5005 U=ASC(T$)
+ 5010 IF U=9 THEN GOSUB 4110:C=C+3
+ 5020 IF U=8 THEN GOSUB 4110:C=C-3
+ 5030 IF U=85 THEN GOSUB 4110:A=A-3
+ 5040 IF U=32 THEN GOSUB 4110:A=A+3
+ 5042 IF C>13 THEN C=13
+ 5043 IF C<7 THEN C=7
+ 5045 IF A>13 THEN A=13
+ 5047 IF A<7 THEN A=7
+ 5050 GOSUB 4010
+ 5060 RETURN
+ 6000 PRINT AT(29,0);"Langsam verliere ich die Geduld
+ 6001 RETURN

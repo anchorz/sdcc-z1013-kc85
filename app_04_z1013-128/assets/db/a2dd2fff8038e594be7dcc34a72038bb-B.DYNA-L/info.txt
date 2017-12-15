@@ -1,0 +1,3 @@
+<kurz src="Knotenpotentialverfahren, Netzwerkanalyse, REIC"/>
+<lang><include src="DYNA-L.B"/></lang>
+<requires></requires>

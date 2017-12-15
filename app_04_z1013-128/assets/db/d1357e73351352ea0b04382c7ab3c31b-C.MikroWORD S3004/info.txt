@@ -1,0 +1,3 @@
+<kurz src="MicroWORD 1.5GV1 / S3004, Textverarbeitung"/>
+<lang></lang>
+<requires></requires>

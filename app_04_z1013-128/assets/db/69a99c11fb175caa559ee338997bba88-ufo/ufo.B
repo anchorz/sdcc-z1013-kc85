@@ -1,0 +1,211 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    1 REM GEAENDERT FUER Z 1013  D.SCHROETER;E.-REICHARDT-STR.3
+    2 REM NORDHAUSEN;5500
+    3 WINDOW:CLS
+    4 PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT
+    5 PRINT "               "
+    6 PRINT "                  "
+    7 PRINT "                 "
+    8 PRINT "                ":PRINT AT(13,0);" "
+    9 PAUSE 50
+   10 WINDOW:CLS
+   11 WINDOW 10,23,0,31:CLS
+   12 PRINT "5 UFO'S SIND ABZUSCHIESSEN.":PRINT
+   13 PRINT "SCHUSSTASTEN:B,C,D,E,F,G,H":PRINT
+   14 PRINT "TASTE A: HYPERSPRUNG + AUFTANKEN":PRINT
+   15 PRINT "JEDER SCHUSS,SPRUNG UND TREFFER VERBRAUCHT ENERGIE."
+   16 PRINT ""
+   17 PRINT ""
+   18 PRINT "               ACTION!"
+   19 PAUSE 100
+   20 GOTO 32
+   21 Z=1500
+   22 PRINT AT(28,19);"ENERGIE:":PRINT AT(28,27);Z:GOTO 57
+   23 WINDOW 27,27,14,24:CLS
+   24 PRINT AT(27,14);"HYPERSPRUNG":BEEP
+   25 FOR I=1 TO 60
+   26 A$=INKEY$:IF A$=""THEN GOTO 27
+   27 IF A$="A"THEN GOTO 31
+   28 NEXT I
+   29 WINDOW 27,27,14,24:CLS:BEEP 1
+   30 RETURN
+   31 GOTO 180
+   32 WINDOW:CLS:CLS
+   33 CLEAR
+   34 H=0:D=0:BEEP 2
+   35 WINDOW 0,9,0,31:CLS
+   36 WINDOW 22,31,0,31:CLS
+   37 PRINT AT(1,0);"  "
+   38 PRINT AT(2,0);"    "
+   39 PRINT AT(3,0);"              " 
+   40 PRINT AT(4,0);""
+   41 PRINT AT(5,0);""
+   42 PRINT AT(6,0);""
+   43 PRINT AT(7,0);"  "
+   44 PRINT AT(8,0);"                       "
+   45 PRINT AT(9,0);"                           "
+   46 PRINT AT(19,0);"  "
+   47 PRINT AT(20,0);""
+   48 PRINT AT(21,0);""
+   49 PRINT AT(22,0);""
+   50 PRINT AT(23,0);""
+   51 PRINT AT(24,0);"  "
+   52 PRINT AT(25,0);""
+   53 PRINT AT(26,0);"                               "
+   54 PRINT AT(27,0);"                                       "
+   55 PRINT AT(29,5);"                              "
+   56 GOTO 21
+   57 WINDOW 10,18,0,31:CLS
+   58 X=0:Y=0
+   59 FOR I=1 TO 25
+   60 X=(INT(9*RND(1)))    
+   61 Y=(INT(28*RND(1)))    
+   62 PRINT AT(X+10,Y);"." 
+   63 NEXT I
+   64 PRINT AT(4,10);"ALARM ROT":BEEP                 
+   65 PAUSE 25
+   66 A=(INT(6*RND(1)))+10
+   67 B=(INT(28*RND(1)))+1
+   68 C=A+1
+   69 I=(INT(8*RND(1)))+1
+   70 IF I=1 THEN 78
+   71 IF I=2 THEN 80
+   72 IF I=3 THEN 82
+   73 IF I=4 THEN 84
+   74 IF I=5 THEN 86
+   75 IF I=6 THEN 88
+   76 IF I=7 THEN 90
+   77 IF I=8 THEN 92
+   78 PRINT AT(A,B);""
+   79 PRINT AT(C,B);" ":GOTO 94
+   80 PRINT AT(A,B);"" 
+   81 PRINT AT(C,B);" ":GOTO 94
+   82 PRINT AT(A,B);""
+   83 PRINT AT(C,B);"":GOTO 94
+   84 PRINT AT(A,B);"  "
+   85 PRINT AT(C,B);"":GOTO 94
+   86 PRINT AT(A,B);""
+   87 PRINT AT(C,B);"":GOTO 94
+   88 PRINT AT(A,B);"  "
+   89 PRINT AT(C,B);"":GOTO 94
+   90 PRINT AT(A,B);""
+   91 PRINT AT(C,B);"":GOTO 94
+   92 PRINT AT(A,B);""
+   93 PRINT AT(C,B);"":GOTO 94
+   94 WINDOW 4,4,10,19:CLS
+   95 BEEP
+   96 PRINT AT(26,14);"PHASER KLAR"
+   97 G=(INT(2*RND(1)))+1
+   98 GOSUB 23
+   99 IF G=1 THEN PRINT AT(4,13);"UFO"
+  100 IF G=2 THEN PRINT AT(4,12);"UNION"
+  101 FOR I=1 TO 50:PRINT AT(26,0);"ZEIT:"
+  102 PRINT AT(26,6);50-I
+  103 A$=INKEY$:IF A$=""THEN GOTO 104
+  104 IF A$="B"THEN 139
+  105 IF A$="C"THEN 140
+  106 IF A$="D"THEN 141
+  107 IF A$="E"THEN 142
+  108 IF A$="F"THEN 143
+  109 IF A$="G"THEN 144
+  110 IF A$="H"THEN 145
+  111 NEXT
+  112 WINDOW 26,26,14,24:CLS
+  113 WINDOW 26,26,26,31:CLS
+  114 WINDOW 26,26,8,11:CLS
+  115 IF G=2 THEN 57
+  116 D=D
+  117 BEEP
+  118 FOR K=1 TO 8
+  119 E=C+K
+  120 F=B-1
+  121 PRINT AT(E,F);"_____"
+  122 NEXT K
+  123 PRINT AT(27,0);"TREFFER:":Z=Z-300:GOSUB 204
+  124 FOR K=1 TO 8
+  125 E=C+K
+  126 F=B-1
+  127 PRINT AT(E,F);"      "
+  128 NEXT K
+  129 D=D+1
+  130 WINDOW 26,26,14,24:CLS
+  131 WINDOW 26,26,27,31:CLS
+  132 PRINT AT(27,8);D
+  133 IF D=5 THEN 135
+  134 GOTO 57
+  135 PRINT AT(30,1);"SCHUTZSCHIRME AUSGEFALLEN,     REPARATUR !" 
+  136 PAUSE 30
+  137 PRINT AT(30,1);"HYPERSPRUCH:SOFORT RUECKSTURZ  ZUR ERDE"
+  138 PAUSE 30:D=0:GOTO 32
+  139 P=3:GOTO 146
+  140 P=4:GOTO 146
+  141 P=5:GOTO 146
+  142 P=6:GOTO 146
+  143 P=7:GOTO 146
+  144 P=8:GOTO 146
+  145 P=9:GOTO 146
+  146 FOR I=1 TO P
+  147 L=19-I
+  148 M=3
+  149 PRINT AT(L,M-3);"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+  150 BEEP
+  151 NEXT
+  152 Z=Z-200:GOSUB 204
+  153 IF L=C THEN 155
+  154 GOTO 116
+  155 H=H
+  156 FOR I=1 TO P
+  157 L=19-I
+  158 M=3
+  159 PRINT AT(L,M);"                                 "
+  160 NEXT
+  161 H=H+1
+  162 IF G=2 THEN 177
+  163 PRINT AT(28,9);H
+  164 PRINT AT(28,0);"ABSCHUSS: "
+  165 BEEP
+  166 PAUSE 10:WINDOW 26,26,14,24:CLS
+  167 WINDOW 26,26,27,31:CLS
+  168 IF H=5 THEN 170
+  169 GOTO 57
+  170 PRINT AT(30,1);"AUFTRAG ERFUELLT,RUECKSTURZ"
+  171 FOR I=1 TO 15
+  172 X=216-5*I
+  173 BEEP
+  174 NEXT I
+  175 X=0:PAUSE 50
+  176 GOTO 32
+  177 PRINT AT(30,1);"SIE HABEN EIN SCHIFF DER UNION ":PAUSE 30
+  178 PRINT AT(30,0);"VORSAETZLICH ZESTOERT!ABLOESUNG!":PAUSE 30
+  179 GOTO 32
+  180 WINDOW 10,18,0,31:CLS
+  181 IF G=1 THEN Z=Z-400:GOSUB 204
+  182 IF G=2 THEN Z=Z+500:GOSUB 204
+  183 V=V:FOR I=1 TO 5
+  184 N=14-I
+  185 O=12
+  186 P=12+I
+  187 Q=12
+  188 R=13
+  189 S=18-3*I
+  190 U=13
+  191 T=13+3*I
+  192 PRINT AT(N,O);"*******"
+  193 PRINT AT(P,Q);"*******"
+  194 PRINT AT(R,S);"o"
+  195 PRINT AT(U,T);"o"
+  196 PRINT AT(N,O);"       "
+  197 PRINT AT(P,Q);"       "
+  198 PRINT AT(R,S);" "
+  199 PRINT AT(U,T);" "
+  200 NEXT I
+  201 V=V+1 
+  202 IF V=4 THEN PAUSE 1:V=0:Z=Z-50:GOSUB 204:GOTO 57
+  203 GOTO 183
+  204 PRINT AT(28,27);Z:BEEP 1
+  205 WINDOW 27,27,14,24:CLS
+  206 IF Z>=50 AND Z<=200 THEN PRINT AT(30,1);"ENERGIE NOCH 10%"
+  207 PAUSE 30:WINDOW 30,30,1,31:CLS
+  208 IF Z<=0 THEN BEEP:BEEP:GOTO 32
+  209 RETURN

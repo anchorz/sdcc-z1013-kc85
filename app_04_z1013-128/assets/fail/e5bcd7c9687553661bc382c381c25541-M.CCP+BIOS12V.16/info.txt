@@ -1,0 +1,3 @@
+<kurz src="identisch [035a6c5ffee24b723fadca3b502f5e64]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.</lang>
+<requires></requires>

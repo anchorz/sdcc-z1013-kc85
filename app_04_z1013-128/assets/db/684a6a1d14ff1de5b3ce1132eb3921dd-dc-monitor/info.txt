@@ -1,0 +1,5 @@
+<kurz src="alternativer Monitor"/>
+<lang>[035a6c5ffee24b723fadca3b502f5e64]
+
+Anfangsadresse is 0xF000</lang>
+<requires>A2</requires>

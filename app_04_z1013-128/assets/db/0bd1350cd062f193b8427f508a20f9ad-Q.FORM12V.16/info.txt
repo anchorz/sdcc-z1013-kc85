@@ -1,0 +1,3 @@
+<kurz src="FORMAT: Formatieren und System auf Diskette schreiben, Quellcode"/>
+<lang><include src="Q.FORM12V.16.txt"/></lang>
+<requires></requires>

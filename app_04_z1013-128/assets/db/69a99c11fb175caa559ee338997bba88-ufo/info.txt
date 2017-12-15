@@ -1,4 +1,4 @@
-<kurz>UFO's ziellos im Weltall, Rücksturz!</kurz>
+<kurz src="UFO's ziellos im Weltall, Rücksturz!"/>
 <lang>5 UFO'S SIND ABZUSCHIESSEN.
 
 SCHUSSTASTEN:B,C,D,E,F,G,H
@@ -10,5 +10,7 @@ JEDER SCHUSS,SPRUNG UND TREFFER
 VERBRAUCHT ENERGIE.
 
 
-ACTION!</lang>                      
+ACTION!
+
+<include src="ufo.B"/></lang>                      
 <requires></requires>

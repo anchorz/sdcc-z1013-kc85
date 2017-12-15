@@ -1,4 +1,4 @@
-<kurz src="(Turbo-)Headersave, Aufzeichnungsformat etwas modifiziert, ähnlich [bf200f54c5c990af88f658e841790b59]"/>
+<kurz src="(Turbo-)Headersave, Aufzeichnungsformat modifiziert, ähnlich [bf200f54c5c990af88f658e841790b59]"/>
 <lang>Installiert @R @W Monitorerweiterung
 
 <include src="turbo.asm"/></lang>

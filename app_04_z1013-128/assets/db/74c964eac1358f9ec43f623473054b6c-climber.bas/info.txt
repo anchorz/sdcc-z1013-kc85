@@ -1,4 +1,4 @@
-<kurz src="Leitern klettern, Spielfigur zum Ausgang bringen"/>
+bas<kurz src="Leitern klettern, Spielfigur zum Ausgang bringen"/>
 <lang>* SPIELPROGRAMM C L I M B E R *
 
 Sie muessen ihre Spielfigur im
@@ -35,5 +35,5 @@ Figur wird Sie wieder sichtbar.
 
 
 
-<include src="climber.B"/></lang>
+<include src="climber.bas.B"/></lang>
 <required></required>

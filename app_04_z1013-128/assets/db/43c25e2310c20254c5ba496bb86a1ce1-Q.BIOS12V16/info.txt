@@ -1,0 +1,5 @@
+<kurz src="CPM-BIOS fuer Z1013 nach Kramer+Brosig, CBIOS FUER DC-MONITOR-Zimmermann"/>
+<lang>[035a6c5ffee24b723fadca3b502f5e64]
+
+<include src="Q.BIOS12V16.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,5 @@
+<kurz src="wie [560df5dc4a5c588ad52f83d1a48f1583]"/>
+<lang>Sourcecode ist etwas ander formatiert.
+
+DATA Zeilen für die Grafik ist ein klein wenig anders</lang>
+<requires></requires>

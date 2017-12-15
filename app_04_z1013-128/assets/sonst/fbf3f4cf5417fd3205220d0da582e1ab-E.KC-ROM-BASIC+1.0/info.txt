@@ -1,0 +1,3 @@
+<kurz src="identisch [a0785e98128be885a7d31b65fd690e6d]"/>
+<lang>Hier im ROM ist noch der KC85/3 Header 0x7f7f 'REBASIC' vorhanden.</lang>
+<requires></requires>

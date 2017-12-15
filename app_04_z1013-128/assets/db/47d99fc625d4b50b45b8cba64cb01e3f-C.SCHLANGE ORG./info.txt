@@ -1,3 +1,3 @@
-<kurz src="(8x4) Hindernissen ausweichen, Schlange wird immer länger, Anaconda Variante"/>
+<kurz src="Hindernissen ausweichen, Schlange wird immer länger (8x4) Anaconda Variante"/>
 <lang>[SPALT]</lang>
-<requires></requires>
+<requires>2.02</requires>

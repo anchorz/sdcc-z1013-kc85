@@ -1,0 +1,7 @@
+<kurz src="Spielautomat"/>
+<lang>
+
+Steuerung: S
+
+<include src="AUTOMAT.B"/></lang>
+<requires></requires>

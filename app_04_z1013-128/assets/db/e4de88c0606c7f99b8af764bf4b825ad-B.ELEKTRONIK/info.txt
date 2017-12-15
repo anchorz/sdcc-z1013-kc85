@@ -1,0 +1,14 @@
+<kurz src="Berechnungen der Elektrotechnik"/>
+<lang>
+  1..Filter
+  2..Belasteter Spannungsteiler
+  3..Schwingkreis
+  4..Transistor
+  5..Vierpol
+  6..Ungeregelte Netzteile
+  7..Operationsverstaerker
+  8..Passive Filter
+  9..Aktive  Filter   
+  
+<include src="ELEKTRONIK.B"/></lang>
+<requires></requires>

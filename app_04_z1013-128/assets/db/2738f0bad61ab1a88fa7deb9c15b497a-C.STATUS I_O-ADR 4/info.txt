@@ -1,0 +1,3 @@
+<kurz src="Testen und Bedienen Umschaltfunktionen I/O-Adresse 04H"/>
+<lang></lang>
+<requires></requires>

@@ -1,0 +1,17 @@
+<kurz src="Leitern klettern, Spielfigur zum Ausgang bringen, neu"/>
+<lang>
+Leider verwendet dieses Programm direkte Monitor-Aufrufe CALL, anstatt
+(fast identisch) [fa4747497ee586360c5fda05e2f22962] RST20. 
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ 
+
+Tastatureingabe:
+7FEA  F5               PUSH    AF
+7FEB  AF               XOR     A
+7FEC  32 04 00         LD      (0004H),A
+7FEF  CD 30 F1         CALL    0F130H
+7FF2  32 FF 7F         LD      (7FFFH),A
+7FF5  F1               POP     AF
+7FF6  C9               RET
+</lang>
+<requires>2.02,RB</requires>

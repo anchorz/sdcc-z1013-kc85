@@ -1,0 +1,4 @@
+<kurz src="1 Kanal Digitalvoltmeter, RFE 4/88"/>
+<lang>
+<include src="AD-1KANAL.B"/></lang>
+<requires></requires>

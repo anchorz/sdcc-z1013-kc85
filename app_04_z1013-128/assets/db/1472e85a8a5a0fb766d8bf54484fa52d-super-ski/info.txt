@@ -1,0 +1,3 @@
+<kurz src="Slalom, fahre zwischen den Flaggen durch (RST20)"/>
+<lang>Steuerung: ⇦ ⇨ </lang>
+<requires></requires>

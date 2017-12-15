@@ -1,0 +1,3 @@
+<kurz src="fast identisch [aa2d88cbf839c341848a23a71b25ffb7]"/>
+<lang>hier steht noch Z9001, anstatt Z1013</lang>
+<requires></requires>

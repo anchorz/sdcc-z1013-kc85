@@ -1,0 +1,4 @@
+<kurz src="Skat gegen den Computer mit HEX/ALPHA Umschaltung"/>
+<lang>wie [4d60a668334e5db51ec494ee528cc628]
+<include src="SKAT.B"/></lang>
+<requires>2.02</requires>

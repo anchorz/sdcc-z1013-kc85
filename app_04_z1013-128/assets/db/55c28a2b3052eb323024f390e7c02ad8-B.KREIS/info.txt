@@ -1,0 +1,5 @@
+<kurz src="Kreisberechnung und grafische Ausgabe"/>
+<lang>sehr langsam....
+
+<include src="KREIS.B"/></lang>
+<requires></requires>

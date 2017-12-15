@@ -1,0 +1,3 @@
+<kurz src="Messe-Schauprogramm Z1013, Grafikdemo, Werbung"/>
+<lang><include src="MESSE.B"/></lang>
+<requires></requires>

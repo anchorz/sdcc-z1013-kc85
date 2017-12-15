@@ -1,5 +1,3 @@
 <kurz src="Trucker, Wirtschaftsimulation"/>
-<lang>
-
-<include src="supertrucker.B"/></lang>
+<lang><include src="supertrucker_g&a.B"/></lang>
 <required></required>

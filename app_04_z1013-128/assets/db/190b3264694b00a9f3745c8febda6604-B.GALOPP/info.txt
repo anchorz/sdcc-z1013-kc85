@@ -1,0 +1,3 @@
+<kurz src="Pferderennen und -wetten"/>
+<lang><include src="GALOPP.B"/></lang>
+<requires></requires>

@@ -1,5 +1,3 @@
 <kurz src="ELIZA,  Psychotherapeut (deutsch)"/>
-<lang>
-
-<include src="B.ELIZA D.B"/></lang>
+<lang><include src="ELIZA D.B"/></lang>
 <requires></requires>

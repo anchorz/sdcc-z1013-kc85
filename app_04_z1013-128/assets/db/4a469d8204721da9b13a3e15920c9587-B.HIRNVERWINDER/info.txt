@@ -1,0 +1,13 @@
+<kurz src="9 Steine wenden, dass alle bis auf Einen 'O' zeigen"/>
+<lang>Sie haben ein Feld mit 9 Steinen die Sie so wenden sollen, 
+dass alle bis auf den in der Mitte eine 'O' zeigen.
+
+Mit Hilfe der Kursortasten oder des Spielhebels waehlen Sie den
+zu wendenden Stein an .
+
+Nach druecken der Ausloesetaste wendet sich der angebene Stein,
+aber auch ein Teil der Nachbarsteine. Hier liegt das Problem
+und die Schwierigkeit.
+                               
+<include src="HIRNVERWINDER.B"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="identisch [fa4747497ee586360c5fda05e2f22962]"/>
+<lang>Steuerung: ⇦ ⇨ ⇧ ⇩ </lang>
+<requires></requires>

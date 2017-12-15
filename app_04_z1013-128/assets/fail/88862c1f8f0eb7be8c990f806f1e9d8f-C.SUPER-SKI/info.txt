@@ -1,0 +1,5 @@
+<kurz src="identisch [1472e85a8a5a0fb766d8bf54484fa52d], Slalom, fahre zwischen den Flaggen durch (RST20)"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Steuerung: ⇦ ⇨ </lang>
+<requires></requires>
