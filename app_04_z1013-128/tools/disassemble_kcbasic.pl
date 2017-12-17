@@ -3,6 +3,7 @@
 use Data::Dumper;
 use Digest::MD5 qw(md5_hex);
 use File::Basename;
+use File::Glob ':glob';
 use Cwd 'abs_path';
 use Switch;
 use utf8;
@@ -52,11 +53,20 @@ sub map_char($) {
     return $c;
 }
 
-if (!defined $ARGV[0] ) {
-    print "convert KC-BASIC to text:\n";
-    print "Z1013 maps special Z1013 characters to UTF-Font starting from U+f100\n";
-    print basename($0)." [Z1013|DEFAULT] basic.z80 >basic.B\n";
-    exit 1;
+if (!defined $ARGV[0]) {
+    my @list = bsd_glob ("*.z80");
+    $file=$list[0];
+} else {
+
+
+    if ($ARGV[0] eq "-h") {
+        print "konvertiert KC-BASIC Progamm wieder in Quelltext:\n";
+        print "Sonderzeichen werden in UTF-Zeichen ab U+f100 umgewandet\n";
+        print "-CTRL verwendet anstatt ^A..^Z die eingebauten Schachfiguren\n";
+        print basename($0)." basic.z80 [-CTRL]\n";
+        exit 1;
+    }
+    $file=$ARGV[0];
 }
 
 if (defined $ARGV[1] ) {
@@ -66,7 +76,6 @@ if (defined $ARGV[1] ) {
     }
 }
 
-$file=$ARGV[0];
 $out=$file;
 
 $out=~s/^B\.//i;

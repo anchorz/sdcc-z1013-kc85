@@ -120,5 +120,5 @@ store \%db, $database;
 #}
 #close(INFO);
 
-
+system("say -v Milena Конец");
 

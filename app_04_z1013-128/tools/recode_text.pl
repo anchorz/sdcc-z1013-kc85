@@ -1,18 +1,27 @@
 #!/usr/bin/perl -w
 
 use Data::Dumper;
+use Switch;
 use utf8;
 
 %epson_map=("{"=>"ä"   ,"|"=>"ö"   ,"}"=>"ü"   ,"~"=>"ß"   ,"["=>"Ä"   ,"\\"=>"Ö"  ,"]"=>"Ü");
 %ibm_map=  ("\xe4"=>"ä","\xf6"=>"ö","\xfc"=>"ü","\xdf"=>"ß","\xc4"=>"Ä","\xd6"=>"Ö","\xdc"=>"Ü");
 
 %no_umlaut=(
+"O|S"=>1,
+"1\\S"=>1,
+" { "=>1,
+"{  "=>1,
+"  }"=>1,
+" }\x1e" =>1,
+" } "=>1,
 " {a"=>1,
 
 "=| "=>1,
 
 "k}{"=>1,
-
+"s[]"=>1,
+"[] "=>1,
 "([{"=>1,
 " [1"=>1,
  "[{ "=>1,
@@ -114,14 +123,39 @@ use utf8;
 our $has_umlaut=0;
 our $has_no_umlaut=0;
 our $total_umlaut=0;
-our $prev_char="";
+#our $prev_char="";
 our $i=0;
+our $cursor_x=0;
 
 sub print_char($) {
     my $c=shift;
     
     my $mapped=$c;
    
+    if ($encoding eq "S3004") {
+        if($c eq "\\") {
+            $c="ß";
+            utf8::encode($c);
+            printf(OUT "$c");
+            return;
+        } elsif(ord($c)==0x06) {
+            $c="[ON_OFF]";
+        } elsif(ord($c)==0x0e) {
+            $c=substr($content,$i+1,1);
+            $i++;
+            if($c eq "u") { $c="ü"; }
+            elsif ($c eq "a") { $c="ä"; }
+            elsif ($c eq "o") { $c="ö"; }
+            elsif ($c eq "A") { $c="Ä"; }
+            elsif ($c eq "O") { $c="Ö"; }
+            elsif ($c eq "U") { $c="Ü"; }
+            else { printf("nicht konvertiert '%s'\n",$c); $c="SPC"; }
+            utf8::encode($c);
+            printf(OUT "$c");
+            return;
+        }
+    }
+
     if ($encoding eq "UML" && $epson_map{$c}) {
         $mapped=$epson_map{$c};
         utf8::encode($mapped);
@@ -174,11 +208,18 @@ sub print_char($) {
         utf8::encode($txt);
         printf(OUT "$txt");
     }
-    $prev_char
+    
+    $cursor_x++;
+    if ($cursor_x==32) {
+        $cursor_x=0;
+        if ($encoding eq "32") {
+            printf(OUT "\n");
+        }
+    }
 }
 
 if (!defined $ARGV[0] || !$ARGV[1]) {
-    print(STDERR "recode_from_z1013.pl (IBM|UML|Z) <file.z80>\n");
+    print(STDERR "recode_from_z1013.pl (IBM|UML|Z|S3004|32) <file.z80>\n");
     exit 1;
 }
 
@@ -228,6 +269,7 @@ for($i=32; $i<length $content; $i++)
         if (ord($c)==0x0a) {
             printf(OUT "\n");
         } else {
+            printf(OUT "\n");
             print_char($c);
         }
     } elsif (ord($c)==0x09) {

@@ -4,6 +4,7 @@ use Data::Dumper;
 #say Dumper \@words
 use Digest::MD5 qw(md5_hex);
 use File::Basename;
+use File::Glob ':glob';
 use Cwd 'abs_path';
 use Storable;
 
@@ -44,7 +45,13 @@ print("*\n");
 
 $hashref=retrieve($database);
 
-$file1=$ARGV[0];
+if (!defined $ARGV[0]) {
+    my @list = bsd_glob ("*.z80");
+    $file1=$list[0];
+} else {
+    $file1=$ARGV[0];
+}
+
 @h1=hist($file1);
 
 %distance=();

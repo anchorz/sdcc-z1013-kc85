@@ -10,6 +10,19 @@ use utf8;
 binmode(STDERR, ":utf8");
 binmode(STDOUT, ":utf8");
 
+our $flags="";
+
+if( defined $ARGV[0]) {
+    $flags=$ARGV[0];
+}
+
+if($flags=~m/-v/) {
+    printf("%s [-v|-s]\n",basename($0));
+    printf("-v Hilfe\n");
+    printf("-s Keine automatische Erstellung von Quelltexten\n");
+    exit 1;
+}
+
 our $prefix_length=5;
 
 sub get_git_base() {
@@ -156,18 +169,21 @@ sub resolve_entry($) {
     }
     
     my %knownFileTypes=(
+      'A'=>"Assembler",
+      'b'=>"TinyBasic",
+      'B'=>"KC-Basic",
       'C'=>"Executable",
       'D'=>"Dump",
-      'M'=>"Executable ohne Autostart",
-      'T'=>"Text",
-      'I'=>"Dokumentation",
       'E'=>"EPROM",
-      'A'=>"Assembler",
-      's'=>"Assembler",
-      'B'=>"KC-Basic",
+      'G'=>"Grafik",
+      'I'=>"Dokumentation",
+#      'K'=>"BASIC KC82/2",      
+#      'L'=>"BASIC TDL",      
+      'M'=>"Executable ohne Autostart",
       'P'=>"Pascal",
-      'G'=>"Grafikeditor",
-      'b'=>"TinyBasic",
+      'Q'=>"NSWEEP gequetschte Files",
+      's'=>"Assembler EDAS",
+      'T'=>"Text",
       ' '=>"CPM",
     );
 
@@ -259,7 +275,15 @@ sub do_index_html($)
         "jkcemu_screen_01.txt"=>"screenshot_01.jpg",
         "jkcemu_screen_02.txt"=>"screenshot_02.jpg",
         "jkcemu_screen_03.txt"=>"screenshot_03.jpg",
-        "jkcemu_screen_04.txt"=>"screenshot_04.jpg"
+        "jkcemu_screen_04.txt"=>"screenshot_04.jpg",
+        "jkcemu_screen_01.zg2.txt"=>"screenshot_01.jpg",
+        "jkcemu_screen_02.zg2.txt"=>"screenshot_02.jpg",
+        "jkcemu_screen_03.zg2.txt"=>"screenshot_03.jpg",
+        "jkcemu_screen_04.zg2.txt"=>"screenshot_04.jpg",
+        "jkcemu_screen_01.zg2.64.txt"=>"screenshot_01.jpg",
+        "jkcemu_screen_02.zg2.64.txt"=>"screenshot_02.jpg",
+        "jkcemu_screen_03.zg2.64.txt"=>"screenshot_03.jpg",
+        "jkcemu_screen_04.zg2.64.txt"=>"screenshot_04.jpg"
     );
 
     $resolution=$screenRes{$en[MD5]};
@@ -270,8 +294,15 @@ sub do_index_html($)
         $videoResolution="1024x512";
     }
 
+    my $zgfile=get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80";
     for (keys(%screen_shot)) {
         if( -f "$dir/$_") {
+            if (m/\.zg2\./) {
+                $zgfile=get_database_folder()."/db/128947d8f9a3fa363eb602b79615e858-zg_m_uml_+inv/zg_m_uml_+inv.z80";
+            }
+            if (m/\.64\./) {
+                $resolution="64X16X2";
+            }            
             my $timestamp_src=stat("$dir/$_")->mtime;
             my $timestamp_dst=0;
             my $file_dst="$dir/$screen_shot{$_}";
@@ -280,7 +311,7 @@ sub do_index_html($)
                 $timestamp_dst=stat($file_dst)->mtime;
             }
             if ($timestamp_dst<$timestamp_src) {                        
-                $ret=system("java -jar ".get_tools_root()."/screen2png.jar $resolution ".get_database_folder()."/db/ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80 \"$dir/$_\" \"$dir/tmp.png\"" );
+                $ret=system("java -jar ".get_tools_root()."/screen2png.jar $resolution $zgfile \"$dir/$_\" \"$dir/tmp.png\"" );
                 if ($ret) {
                     printf("error.");
                     exit($ret);
@@ -440,12 +471,45 @@ sub print_entry2($ $) {
 
     my $remove_space=$en[4];
     $remove_space=~s/ /&nbsp;/sgi;
-    my $entry=sprintf "<div class=".$row_class."><span class=\"md5\">%s</span> %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",substr($en[MD5],0,$prefix_length),$en[0],$en[1],$en[2],$en[3],html_encode($link),$remove_space,$has_video,$kurz;
+    my $entry=sprintf "<div class=".$row_class."><span class=\"md5\">%s</span> %04x %04x %04x&nbsp;%s&nbsp;... <a href=\"%s\">%s</a> %s %s</div>\n",substr($en[MD5],0,$prefix_length),$en[0],$en[1],$en[2],$en[TYPE],html_encode($link),$remove_space,$has_video,$kurz;
     my $url=$filename;
     $url=~s/^.*?\/db\///sgi;
-    $xml_entry.=sprintf("aadr=\"%04x\" eadr=\"%04x\" sadr=\"%04x\" typ=\"%s\" link=\"%s\" name=\"%s\" kurz=\"%s\" ",$en[0],$en[1],$en[2],$en[3],html_encode($url),$en[4],xml_encode($kurz)); 
+    $xml_entry.=sprintf("aadr=\"%04x\" eadr=\"%04x\" sadr=\"%04x\" typ=\"%s\" link=\"%s\" name=\"%s\" kurz=\"%s\" ",$en[0],$en[1],$en[2],$en[TYPE],html_encode($url),$en[4],xml_encode($kurz)); 
 
     $xml_entry.="/>\n"; 
+    
+    if ($en[TYPE] eq "B" ) {
+        my $file_src=$filename;
+        my $timestamp_src=stat($file_src)->mtime;
+        my $file_dst=$filename;
+        $file_dst=~s/^(.*)\/B\./$1\//i;
+        $file_dst=~s/\.z80$//i;
+        $file_dst.=".B";
+        my $timestamp_dst=0;
+        if( -f $file_dst) {
+            $timestamp_dst=stat($file_dst)->mtime;
+        } 
+        my $dir=dirname($file_dst);
+        if ($timestamp_dst<$timestamp_src) {
+            printf("*****\n* generate: %s\n*\n",$file_dst);
+            system("cd \"$dir\"; disassemble_kcbasic.pl");            
+        }
+    }
+    
+    if (!($flags=~m/-s/) && ($en[TYPE] eq "T" || $en[TYPE] eq "I") ) {
+        my $file_src=$filename;
+        my $timestamp_src=stat($file_src)->mtime;
+        my $file_dst=$filename;
+        $file_dst=~s/\.z80$//i;
+        $file_dst.=".txt";
+        if(! -f $file_dst) {
+            #sicherer wir überschreiben niemals eine bestehende Textdatei
+            my $file_short=basename($filename);
+            my $dir=dirname($file_dst);
+            printf("*****\n* generate: %s\n*\n",$file_dst);
+            system("cd \"$dir\"; recode_text.pl UML \"$file_short\"");            
+        }
+    }    
     return ($entry,$xml_entry);  
 }
 
@@ -513,7 +577,7 @@ my $len_checked=$len_fail+$len_sonst+$len_db;
 
 $ret.="<p>Es wurden $len_total verschiedene Dateien mit der Endung .z80 oder .bin in den verschiedenen Z1013 Softwarearchiven gefunden, davon sind:</p>";
 $ret.="<ul>";
-$ret.="<li>$len_checked insgesamt getestet worden (".sprintf("%.1f",$len_checked*100.0/$len_total)."%).</li>\n";
+$ret.="<li>$len_checked insgesamt getestet worden (".sprintf("%.2f",$len_checked*100.0/$len_total)."%).</li>\n";
 $ret.="<li>$len_db hier aufgelistet.</li>\n";
 $ret.="<li>und ".($len_fail+$len_sonst)." wurden als fehlerhaft oder mit gleichem Inhalt aussortiert.</li>\n";
 $ret.="</ul>";
@@ -574,5 +638,4 @@ open(FILE,">",$index_html);
 binmode(FILE, ":utf8");
 print FILE $content;
 close(FILE);
-
 

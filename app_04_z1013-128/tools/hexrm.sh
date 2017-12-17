@@ -13,7 +13,7 @@ else
 fi
 dbroot_rel=`dirname "$dbroot_rel"`
 dbroot_rel=`dirname "$dbroot_rel"`
-dbroot_rel="$dbroot_rel/assets/db";
+dbroot_rel="$dbroot_rel/assets/";
 dbroot=$dbroot_rel
 cd $dbroot
 dbroot=`pwd`

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+generate_html.pl && generate_fingerprint_db.pl && find_similar.pl *.z80

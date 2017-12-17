@@ -1,0 +1,1 @@
+rsync -avz -e ssh --progress * ftp10768-2539883@z1013.mrboot.de://hp/aa/ah/hd/www/z1013/software-database/db

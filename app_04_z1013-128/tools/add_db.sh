@@ -1,78 +1,80 @@
-#!/bin/bash
+#!/usr/bin/perl -w 
 
-file=$1
-file=`eval echo \"$file\"` 
-pushd . >/dev/null
+use Data::Dumper;
+use Digest::MD5 qw(md5_hex);
+use File::Basename;
+use File::Copy;
+use File::Glob ':glob';
+use Cwd 'abs_path';
+use File::stat;
+use utf8;
 
-command -v greadlink >/dev/null
-if [ $? -eq 0 ];then
-   dbroot_rel=`greadlink -f "$0"`
-else
-    dbroot_rel=`readlink -f "$0"`
-fi
-dbroot_rel=`dirname "$dbroot_rel"`
-dbroot_rel=`dirname "$dbroot_rel"`
-dbroot_rel="$dbroot_rel/assets/db";
-dbroot=$dbroot_rel
-cd $dbroot
-dbroot=`pwd`
-popd >/dev/null
+binmode(STDERR, ":utf8");
+binmode(STDOUT, ":utf8");
 
-echo bewege \"$file\" in die Datenbank
+our $prefix_length=5;
 
-md5=`md5sum -b "$file" | awk '{ print $1; }'`
-base=`basename "$file" .z80`
-mkdir "$dbroot/$md5-$base"
+sub get_git_base() {
+    return abs_path(dirname(abs_path($0))."/..");
+}
 
-echo Ziel: "$dbroot/$md5-$base"
-git mv "$file" "$dbroot/$md5-$base/"
-#kein link /db/ ist noch nicht der Zielordner
-#machen wir spaeter, nachdem es einsortiert wurde
-#ln -s "$dbroot_rel_gehtnichtmehr/$md5-$base/$file"
+sub get_database_folder() {
+    return get_git_base()."/assets";
+}
 
-#mv ~/jkcemu.gif "$dbroot/$md5-$base/"
-if [ -e ~/jkcemu_video_text.txt ]
-then
-    mv ~/jkcemu_video_text.txt "$dbroot/$md5-$base/"
-fi
+sub get_tools_root() {
+    return abs_path(dirname(abs_path($0)));
+}
 
-if [ -e ~/jkcemu_screen_01.txt ]
-then
-    mv ~/jkcemu_screen_01.txt "$dbroot/$md5-$base/"
-fi
+if (!defined $ARGV[0]) {
+    printf("e: Parameter (.z80) fehlt\n");
+    printf("Beispiel:\n  %s ./datei.z80\n",basename($0));
+    exit 1;
+}
 
-if [ -e ~/jkcemu_screen_02.txt ]
-then
-    mv ~/jkcemu_screen_02.txt "$dbroot/$md5-$base/"
-fi
+my $file=$ARGV[0];
 
-if [ -e ~/jkcemu_screen_03.txt ]
-then
-    mv ~/jkcemu_screen_03.txt "$dbroot/$md5-$base/"
-fi
+if (! -f $file) {
+    printf("e: Datei (%s) existiert nicht.\n",$file);
+    exit 1;
+}
 
-if [ -e ~/jkcemu_screen_04.txt ]
-then
-    mv ~/jkcemu_screen_04.txt "$dbroot/$md5-$base/"
-fi
+my $dbroot=get_database_folder()."/db";
+print "bewege \"$file\" in die Datenbank\n";
 
-rm -f ~/jkcemu_screen_*
-rm -f ~/jkcemu.gif
+my $len=-s $file;
+open(Z80,"<:raw",$file);
+read(Z80, my $bytes, $len);
+$md5 = md5_hex($bytes);
+close(Z80);
 
-#if [ -e ~/jkcemu.gif ]
-#then 
-#    ffmpeg -i ~/jkcemu.gif -r 5 -y -pix_fmt yuv420p "$dbroot/$md5-$base/animation.mp4"
-#    mv ~/jkcemu.gif ~/jkcemu.gif.old
-#fi
+my $base=basename($file,".z80");
+$base=~s/ /_/g; #I don't like spaces in filenames
 
-cp "$dbroot/info.txt" "$dbroot/$md5-$base/"
+my $dir_dest="$dbroot/$md5-$base";
+if (-e $dir_dest) {
+    printf("e: %s existiert bereits.\n",$dir_dest);
+    exit 1;
+}
 
-#list.txt wird nur für 0.5 MEGArom verwendet 
-#echo list.txt:
-#echo db/$md5-$base/$file
-#echo Kompatibilitätsliste.txt:
-echo $md5 "*"$file
-gedit --new-document "$dbroot/$md5-$base/info.txt" &
-#symbolic link in ~/bin directory
-generate_fingerprint_db.pl 
+mkdir("$dir_dest") || die("e: Fehler mkdir($dir_dest)");
+print ("Ziel: $dir_dest\n");
+
+system("mv \"$file\" \"$dir_dest/\"");
+
+my $video=$ENV{"HOME"}."/jkcemu_video_text.txt";
+if (-f $video) {
+    move($video,"$dir_dest/");
+}
+
+@list = bsd_glob ("~/jkcemu_screen_*.txt");
+for (@list) {
+    move($_,"$dir_dest/");
+}
+
+copy("$dbroot/info.txt","$dbroot/$md5-$base/");
+print "$md5-$base\n";
+
+system("gedit \"$dbroot/$md5-$base/info.txt\" &");
+system("generate_fingerprint_db.pl");
 
