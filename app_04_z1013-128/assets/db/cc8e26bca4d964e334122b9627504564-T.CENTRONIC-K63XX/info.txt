@@ -1,0 +1,3 @@
+<kurz src="Anschluss eines Druckers K63xx über CENTRONICS "/>
+<lang><include src="T.CENTRONIC-K63XX.txt"/></lang>
+<requires></requires>

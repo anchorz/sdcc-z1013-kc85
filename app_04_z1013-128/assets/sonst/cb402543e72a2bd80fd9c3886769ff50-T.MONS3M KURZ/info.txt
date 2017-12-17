@@ -1,0 +1,3 @@
+<kurz src="wie [94ac8243741088a305985f7f00d7dde2]"/>
+<lang><include src="T.MONS3M KURZ.txt"/></lang>
+<requires></requires>

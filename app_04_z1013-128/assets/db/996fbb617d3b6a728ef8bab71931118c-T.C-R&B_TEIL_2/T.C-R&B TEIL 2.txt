@@ -1,0 +1,738 @@
+Kommen  wir zu einem weiteren Gesichtspunkt.  Zeiger sind ausge-
+sprochen hilfreich bei der Verarbeitung von Strukturen.  Sie ma-
+chen  es einem leicht,  diese zu verketteten Listen oder  Baeumen 
+zusammenzubauen.  Erinnern  wir uns der Struktur namens xyz,  und 
+vereinbaren  wir eine weitere von diesem Typ sowie  einen  Zeiger 
+darauf:
+
+          struct xyz anothr, *sp;
+          sp = &anothr; /* den Zeiger initialisieren */
+
+Nun  koennen wir jede einzelne Komponente der Struktur,  auf  die 
+der Zeiger verweist,  ansprechen.  Auf jede Komponente kann unter 
+Verwendung des Operators -> zugegriffen werden.  Ein Beipiel dazu 
+ist
+          sp->aaa
+wobei  sp  der Zeiger und aaa der Name der  Komponente  ist.  Das 
+daraus resultierende Objekt hat denselben Typ wie die vereinbarte 
+Komponente: sp->aaa bezieht sich auf die int-Komponente von
+anothr,  sp->bbb  auf die char- und sp->ccc auf die double-Kompo-
+nente. Der Operator -> hat ausserdem einen sehr hohen Vorrang.
+
+Analog  zur Verarbeitung eines ganzzahligen Vektors koennte  auch 
+ein  aus Strukturen bestehender Vektor verarbeitet werden,  indem 
+man  den Inkrement-Operator verwendet.  In C ist  sichergestellt, 
+dass  beim Addieren einer 1 zu einem Zeiger dieser  anschliessend 
+auf das naechste Element eines Vektors zeigt, vorausgesetzt, dass 
+der  Zeiger als Zeiger auf den ensprechenden Element-Typ  verein-
+bart wurde.  C ueberprueft nicht,  ob ein Zeiger auf  irgendetwas 
+Sinnvolles zeigt: es liegt bei Ihnen, dies sicherzustellen. Unab-
+haengig davon,  wie Sie einen Vektor vereinbaren, duerfen Sie ihn 
+in C beliebig indizieren; Zeiger sind ebensowenig eingeschraenkt.
+
+Eine  Verwendung  von Zeigern koennen wir  anhand  einer  einfach 
+verketteten  Liste  demonstrieren.  Es  wird ein Vektor  mit  100 
+Strukturen  vereinbart,  wobei jede Struktur eine doppelt  genaue 
+Gleitkomma-Variable enthaelt und einen Zeiger auf eine  derartige 
+Struktur.  Eine  Schleife wird benutzt,  um a) den Zahlenteil auf 
+1.0,  2.0 usw.  zu setzen und b) den Zeigerteil auf die  naechste 
+Struktur der Liste zeigen zu lassen. Daran anschliessend wird die 
+Liste  durchlaufen,  indem man den Zeigern folgt und die in jeder 
+einzelnen Struktur enthaltene Zahl ausgibt.
+
+          struct list_ele
+          {    double num_part;
+               struct list_ele *point_part;
+          } list[100];
+
+          main()
+          {    int i;
+               struct list_ele *lp;
+
+               for (i=0;  i < 100;  i++)    /* Initialisierung */
+               {    list[i].num_part = i + 1;
+                    list[i].point_part = &list[i+1];
+               }	
+               list[99].point_part = 0;     /* Ende markieren */
+
+               for (lp=list; lp!=0; lp = lp->point_part) 
+                                        /* Liste durchlaufen */
+                    printf ("!f\n",hp)>num_part);	
+          y
+
+Lassen Sie uns die schwierigen Teile erklaeren.  Die Initialisie-	
+rung ist verhaeltnismaessig einfach,  vorausgesetzt,  Sie erinnern 
+sich, dass Vektorelemente von Null aufwaerts gezaehlt werden. Der 
+Zeiger  am Ende der Liste wird auf 0 gesetzt;  dies ist  durchaus 
+legal und sehr nuetzlich.  C garantiert,  dass ein Zeiger, dessen 
+Wert 0 ist,  auf nichts zeigt. Damit ist dieser Wert dazu praede-
+stiniert, einen 'Nullzeiger' darzustellen.
+Das  Durchlaufen der Liste beginnt,  indem man den Zeiger lp  auf 
+das  erste Element zeigen laesst.  Solange lp dann von Null  ver-
+schieden ist,  wird der Informationsteil der Struktur (der Gleit-
+komma-Wert)  ausgeggeben und lp der Wert des Zeigerteils zugewie-
+sen;  dies bewirkt den Uebergang zum naechsten Element der Liste. 
+Abgesehen vom ersten Element wird die Liste also positionsabhaen-
+gig entlang der Zeiger durchlaufen.
+Vergewissern  Sie sich ganz genau,  dass Sie dieses Beispiel ver-
+stehen.  Die Zeit,  die Sie hier zum Verstehen investieren, zahlt 
+sich aus,  wenn Sie C zum Erstellen wichtiger Programme verwenden 
+muessen. Was hat es zur Folge, wenn die Zeile
+          
+          list[99].point_part = 0;
+durch
+          list[99].point_part = list;
+ersetzt wird, und warum?
+
+          
+
+
+
+13. Funktionen
+--------------
+Es wird auch Zeit dazu.
+
+13.1 Funktionen vereinbaren
+---------------------------
+Eine Funktion vereinbaren Sie,  indem Sie ihren Typ,  ihren Namen 
+und ihre Parameter angeben;  daran anschliessend folgen die loka-
+len Variablen.  Als naechstes kommt der Anweisungsteil der  Funk-
+tion und am Schlusss der Ruecksprung,  der entweder implizit beim 
+Erreichen  der  letzten schliessenden geschweiften Klammer  einer 
+Funktion  oder durch eine explizite Angabe von  return  entsteht. 
+Hier  ist  ein Beispiel einer Funktion,  welche die  Summe  ihrer 
+Argumente zurueckgibt.
+
+          int summe (arg1,arg2)
+               int arg1, arg2;
+          {    int total;
+
+               total = arg1 + arg2;
+               return (total);
+          }
+
+
+Die Funktion ist als int summe vereinbart, also als Funktion, die 
+einen  ganzzahligen Wert liefert.  Die Typenbezeichnung int  wird 
+nicht wirklich benoetigt, da C dies voraussetzt, sofern Sie keine 
+Angabe dazu machen.  Die beiden Parameter,  arg1 und arg2, werden 
+ebenfalls als ganzzahlige Werte vereinbart.  Auch Parameter brau-
+chen nur deklariert zu werden, wenn es sich nicht um int handelt. 
+In  unserem  Beispiel existiert auch eine lokale Variable  total; 
+als Variable muss sie aber definiert werden - ob int oder nicht.
+Die  Funktion berechnet die Summe ihrer Parameter.  Hier ist  sie 
+nochmals,  aber in einem vollstaendigen Programm.  Die unnoetigen 
+Deklarationen wurden entfernt:
+
+          main()
+          {    int i, j;
+               for (i=1; i < 100; i++)
+                    for (j = 1; j < 100; j++)
+                         printf   ("%d+%d =%d\n",i,j,summe(i,j));
+          }
+
+          summe(a,b)
+          {    int total;
+               total = a + b;
+               return (total);
+          }
+
+Die  Variable  total  waere  ebenfalls  ueberfluessig,   und  der 
+Anweisungsteil koennte zu
+          return (a + b);
+reduziert werden, wenn Sie sich ueberhaupt die Muehe machen.
+
+Die return-Anweisung braucht nicht unbedingt ein Argument. Durch
+          return
+allein wird ein Ruecksprung aus einer Funktion erreicht, aber mit 
+einem  undefinierten Wert.  Dies hat durchaus seine Berechtigung, 
+wenn Sie keinen Wert benoetigen,  z.B., weil Sie eine 'procedure' 
+in Pascal formulieren wollen.  In C sind die beiden Funktionsauf-
+rufe
+          summe (x,y);
+und
+          a = summe (x,y);
+zulaessig  - der erste Aufruf von summe liefert einen  Wert,  der 
+ignoriert wird.
+
+Es gibt keinerlei Garantie,  dass bei Funktionsbeginn die lokalen 
+Variablen bestimmte Werte enthalten,  und genauso sicher behalten 
+sie  ihre Werte nicht ueber wiederholte Funktionsaufrufe  hinweg. 
+Sie  muessen einer lokalen Variablen immer einen  Wert  zuweisen, 
+bevor  Sie sie verwenden.  'Globale Variablen' unterscheiden sich 
+darin:  sie stehen waehrend des gesamten Porgrammablaufs zur Ver-
+fuegung und sind bei Programmstart auf Null initialisiert, sofern 
+sie nicht extra auf andere Werte gesetzt wurden. Im Anhang F wird 
+ersichtlich, wie man globale Variablen initialisiert.
+
+Wenn Sie nichts vereinbaren,  setzt C voraus,  dass eine Funktion 
+einen  ganzzahligen Wert liefert.  Wird irgendetwas  Anderes  zu-
+rueckgeliefert,  geraet  die aufrufende Funktion etwas in Verwir-
+rung,  sofern Sie es ihr nicht mitteilen.  Man vermeidet Probleme 
+am  einfachsten,  indem  man alle ungewoehnlichen  Funktionen  im 
+Programmkopf deklariert.  Wir machen dies hier beim Berechnen der 
+Quadratwurzel  von  sin(x)  + sin(x) * cos(x)  fuer  verschiedene 
+Werte zwischen 0 und 2*pi:
+
+     #define ZWEIPI (3.141592 * 2)
+
+     extern double sin(), cos(), sqrt();
+     double func();
+
+     main()
+     {    double i;
+          for (i=0; i < ZWEIPI; i += 0.1)
+               printf ("i = %f, f = %f\n", i, func(i));
+     }
+
+     double func(x)
+          double x;
+     {    
+          return (sqrt(sin(x) + sin(x)*cos(x)));
+     }
+     
+Die erste Zeile gehoert nicht wirklich zu C.  Sie wird vom  'Pre-
+prozeesor' ausgewertet,  den das cc-Kommando vor der Uebersetzung 
+eines  Programms  aufruft.  Der Preprozessor erkennt  das  Symbol 
+#define  und notiert sich,  was definiert wurde,  in diesem  Fall 
+ZWEIPI. Wo immer dieser Nmae dann im Programmtext auftaucht, wird 
+er  durch  den Rest der Zeile ersetzt,  in der  ZWEIPI  definiert 
+wurde.  Diese  Eigenschaft  wird haeufig ausgenutzt und  verhilft 
+Programmen zu einer besseren Lesbarkeit und leichteren Handhabung 
+- falls jede Konstante nach diesem Verfahren definiert wird,  ist 
+nur eine Aenderung einer Zeile notwendig,  um sie ueberall  anzu-
+passen.
+
+Die Zeile
+          extern double sin(), cos(), sqrt();
+drueckt  aus,  dass  das Programm die drei  Funktionen  sin,  cos 
+undsqrt verwenden will,  die alle double-Resultate  liefern.  Das 
+Symbol  extern bedeutet,  dass sie nicht Teil der aktuellen Datei 
+sind,  sondern von aussen bezogen werden.  In Wirklichkeit stehen 
+sie in einer Buecherei. Vergleichen Sie dies mit der Vereinbarung 
+vin func,  die in dieser Datei zu finden ist. Die Deklaration von 
+Funktionen am Anfang der Datei vermeidet, dass bei der Verwendung 
+der  Funktionen ganzzahlige Resultate erwartet werden.  Der  Rest 
+des Programms sollte nun klar sein! 
+
+
+13.2 Argumente von C-Programmen
+-------------------------------
+Einem Programm,  das mit Hlfe der 'Shell' gestartet wird, koennen 
+Argumente uebergeben werden. Sie haben dies bereits bei Kommandos 
+wie  'ls' und vielleicht auch 'cc'  angewendet.  Diese  Argumente 
+erscheinen  als  Parameter  von main und  sind  innerhalb  dieser 
+Routine verfuegbar. Die exakte Deklaration fuer sie ist:
+
+          main (argc,argv)
+               int argc;
+               char ** argv;
+          {
+
+Dies  drueckt aus,  dass argc ein ganzzahliger Wert und argv  ein 
+Zeiger  auf eine Reihe von Zeichenketten ist.  Wenn ein  Programm 
+zur Ausfuehrung kommt, so enthaelt argc die Anzahl der uebergebe-
+nen  Argumente,  und  argv zeigt auf den Anfang einer  Liste  von 
+Adressen,  ueber die die eigentlichen Argumente erreichbar  sind. 
+Als  letzte Adresse,  also als argv[argc],  steht Null in  dieser 
+Liste. Hier folgt ein Programm, das seine Argumente wieder ausgibt:
+
+          main (argc,argv)
+               int argc;
+               char ** argv;
+          {
+               while  (*argv)        /* wenn noch ein Argument */
+                   printf ("%s\n",*argv++);   /* dann ausgeben */
+          }
+
+Mit %s wird printf signalisiert, dass es eine Zeichenkette erwar-
+ten  soll.  Ueberlegen Sie genau,  warum diese Programm  funktio-
+niert,  und  probieren  Sie  es dann aus.  Sie haben  soeben  das       
+Dienstprogramm echo des Syestem nachgebaut.
+
+Gut,  es ist beinahe echo, mit dem kleinen Unterschied, dass Sie, 
+wenn Sie es testen, ein wenig ueberrascht werden. Als erstes gibt 
+es  seinen Namen aus (a.out,  sofern Sie ihn nicht geaendert  ha-
+ben),  weil  gemaess einer Vereinbarung das erste an ein Programm 
+uebergebene Argument immer sein Name ist. Einige Programme nehmen 
+auf diese Tatsache Bezug und steuern in Abhaengigkeit davon  ihre 
+Aktionen - dies sind eine Art verborgener Flaggen.
+
+
+13.3 Was steckt hinter einem Argument?
+--------------------------------------
+Wenn eine Funktion aufgerufen wird,  so stehen ihre Parameter wie 
+initialisierte  lokale Variablen zur Verfuegung.  Veraendert  die 
+Funktion  die  Werte  von Parametern,  so ist  die  entsprechende 
+Veraenderung  in  dem Programmteil,  der die  Argumente  uebergab 
+(beim Aufrufer),  nicht sichtbar. Dies ruehrt davon her, dass der 
+Uebersetzer  von allen Funktionsargumenten eine Kopie  macht  und 
+diese  anstelle der Originale uebergibt.  Wie baut man dann  aber 
+Funktionen, die Dinge beim Aufrufer veraendern? Machbar ist dies, 
+indem man Zeiger anstelle der Ojekte selbst uebergibt. Testen Sie 
+folgendes und erkennen Sie, warum es klappt:
+
+     main()
+     {    int i;
+          i=10;
+          zero(&i);      /* uebergib die Adresse von i,  */
+                         /* d.h. einen Zeiger auf i, und */
+          printf ("i=%d\n",i);     /* gib Ergebnis aus   */
+     }
+
+     zero(arg)
+          int *arg;      /* dorthin, worauf arg zeigt    */
+     {
+          *arg=0;                 /* eine Null schreiben */
+     }
+
+Der  Funktion  zero wird ein Zeiger auf einen  ganzzahligen  Wert 
+uebergeben, und sie setzt das Objekt auf Null, auf das der Zeiger 
+verweist.
+
+
+14. Die Standard-Buecherei
+--------------------------
+Es  wurden ziemlich grosse Anstrengungen unternommen,  um  C-Pro-
+gramme portabel zu machen.  Man hat sich vor allem darum bemueht, 
+eine  einheitliche und portable Ein- und Ausgabe-Schnittstelle  - 
+die  'Standard-E/A-Buecherei'  - zur Verfuegung  zu  stellen.  Um 
+unsere Finger zu schonen (wir tippen selber),  wollen wir sie von 
+nun an mit 'SIO' abkuerzen. Um SIO zu verwenden, muss ziemlich am 
+Anfang  Ihres Programmes folgende Kontrollzeile fuer den  Prepro-
+zessor stehen:
+
+               #include <stdio.h>
+
+wobei # in der ersten Spalte steht.  Die Kontrollzeile veranlasst 
+den Preprozessor,  eine Datei, die alle notwendigen Deklarationen 
+und Definitionen fuer SIO enthaelt,  zu lesen;  vom  Preprozessor 
+gehen  die  Definitionen an den Uebersetzer weiter.  Sie  muessen 
+sich also nicht darum kuemmern, was darin steht.
+Die  ganze Buecherei ist viel zu umfangreich,  um sie  in  diesem 
+Kapitel  zu  beschreiben.  Kernighan und Ritchie [6]  haben  dies 
+schon  ausgezeichnet getan,  und ein Ueberblick wird im Kapitel 9 
+gegeben;  hier koennen wir hoechstens einige kurze Beipiele  zei-
+gen.
+
+
+14.1 Lese- und Schreiboperationen
+---------------------------------
+Im  Normalfall verfuegt Ihr Programm ueber drei offene  Dateiver-
+bindungen;  sie  werden  von der Shell uebergeben  und  sind  als 
+Standard-Eingabe  (standard  input),  Standard-Ausgabe  (standard 
+output) und Diagnose-Ausgabe (standard error) bekannt.  Um diese, 
+wie genau jede andere Datei, per SIO anzusprechen, benoetigen Sie 
+sogenannte 'Filepointer'.  Es handelt sich dabei wirklich um Zei-
+ger,  die  von SIO-Routinen zur Verwaltung von Strukturen benutzt 
+werden, deren Form uns gleichgueltig sein kann.
+SIO vereinbart drei dieser Zeiger fuer uns; sie werden als stdin, 
+stdout und stderr bezeichnet,  was bei Ihnen keine Zweifel  ueber 
+ihre Verwendung hinterlassen sollte.  Wir betrachten die Ein- und 
+Ausgabe  zuerst  anhand dieser vordefinierten  Dateiverbindungen, 
+bevor wir untersuchen, wie man einen Filepointer fuer eine belie-
+bige Datei vereinbart. Zum Lesen eines Zeichens verwenden Sie die 
+Funktion getc:
+
+          c = getc(stdin)
+
+liest  ein Zeichen von der Standard-Eingabe und weist es  an  die 
+Variable c zu.  Dieselbe Funktion darf mit jedem beliebigen File-
+pointer verwendet werden,  den Sie erhalten haben.  Beim Versuch, 
+ueber das Dateiende hinaus zu lesen,  wird der spezielle Wert EOF 
+geliefert;  EOF  ist als Teil von SIO vordefiniert.  Die von getc 
+gelieferten Werte sind int und nicht char, da neben allen zulaes-
+sigen  Werten  fuer Zeichen auch der Wert  EOF  geliefert  werden 
+kann. In eine Datei zu schreiben, ist genauso einfach:
+
+          putc (c,stdout)
+
+schreibt ein Zeichen c in die Standard-Ausgabe.  Wiederum duerfen 
+Sie  jeden  beliebigen  Filepointer verwenden  - wie  waer's  mit 
+stderr?  Seien  Sie vorsichtig bei der Verwendung von Zeigern auf 
+Zeichen im Zusammenhang mit putc.  Mit grosser Wahrscheinlichkeit 
+handelt  es  sich bei putc um etwas mit der  Bezeichnung  'Makro' 
+(Makros  sind eine weitere Eigenschaft des  Preprozessors).  Wenn 
+ein Makro durch den Preprozessor verarbeitet wird,  koennen  meh-
+rere Zugriffe auf c entstehen. Dies stellt kein Problem dar, wenn 
+c  eine  einfache Variable ist.  Handelt es sich dabei jedoch  um 
+einen Zeiger mit einem hinzugefuegten Inkrement-Operator, koennte 
+der Zeiger mehrmals inkrementiert werden.  Wir muessen daher emp-
+fehlen,  die  Verwendung von Inkrement- und  Dekrement-Operatoren 
+innerhalb von Aufrufen von SIO-Funktionen zu vermeiden.
+
+Ein- und  Ausgabe  von  Zeichen wird in dem  folgenden  einfachen 
+Beispiel demonstriert; hier wird die Standard-Eingabe zeichenwei-
+se in die Standard-Ausgabe kopiert.  Gleichzeitig wird dabei  die 
+Anzahl  der  kopierten Zeichen bestimmt und als  Diagnose-Ausgabe 
+angezeigt.
+
+     #include <stdio.h>
+
+     main()
+     {    int c;
+          int count=0;
+                         /* Zeichen bis zum Dateiende lesen */
+          while ((c=getc(stdin)) != EOF)     /* solange das */
+          {    count++;        /* Dateiende nicht  erreicht */
+               putc(c,stdout);      /* zaehlen und ausgeben */
+          }
+                   /* Anzahl der gelesenen Zeichen ausgeben */
+          fprintf(stderr, "%d Zeichen gelesen\n",count);
+     }
+
+Beachten Sie, wie while das Ergebnis einer Zuweisung ueberprueft. 
+Dies  ist ein weit verbreiteter Einsatz einer Zuweisung  - einge-
+baut  in  eine  bedingte Anweisung mit  gleichzeitigem  Test  des 
+Ergebnisses - Sie tun gut daran,  sich dies einzupraegen. Ausser-
+dem finden Sie hier einen Aufruf von fprintf,  welcher fast iden-
+tisch zu dem von printf ist, den wir bereits kennengelernt haben. 
+Der einzige Unterschied besteht darin,  dass fprintf einen  File-
+pointer  als  erstes  Argument erwartet und auf  die  zugehoerige 
+Datei ausgibt. printf gibt nur auf die Standard-Ausgabe aus.
+
+Uebersetzen Sie das Programm und starten Sie es,  wobei als  Ein-
+gabe sein eigener Quelltext verwendet wird.  Hier sehen Sie,  wie 
+wir es machten - die Datei mit dem Quelltext heisst copy.c.
+
+     $ cc copy.c
+     $ a.out <copy.c
+               ( es gibt seinen eigenen Quelltext aus)
+     339 Zeichen gelesen
+     $
+
+
+14.2 Dateiverbindungen
+----------------------
+Es  ist  ganz nett,  mit den Standard-Ein- und Ausgabedateien  zu 
+spielen,  aber was wir damit anfangen koennen, ist limitiert. Die 
+groesseren  Maedchen und Jungen moechten unbedingt  ihre  eigenen 
+Dateiverbindungen  einrichten.  Zuerst benoetigen wir dazu einige 
+Filepointer.
+SIO stellt dazu einen Typ namens FILE zur Verfuegung, so dass Sie 
+Ihre  eigenen  Filepointer vereinbaren koennen und  sicher  sind, 
+dass  diese  den richtigen Typ besitzen.  Haben Sie  erst  einmal 
+einen  Filepointer vereinbart,  muessen Sie ihn mit  einer  Datei 
+verbinden.  Gluecklicherweise  gibt es eine Funktion,  die  diese 
+Aufgabe uebernimmt.  Um eine Dateiverbindung zu eroeffnen,  rufen 
+Sie  die  Funktion  fopen auf und uebergeben ihr  den  Namen  der 
+gewuenschten  Datei  und die Zugriffsart,  entweder "r","w"  oder 
+"a";  dies  bedeutet lesen,  schreiben oder anfuegen.  Als  Namen 
+geben  Sie  den UNIX-Pfadnamen der  gewuenschten  Datei  an.  Als 
+Ergebnis  liefert  fopen entweder einen  zulaessigen  Filepointer 
+oder  den vordefinierten Wert NULL;  Sie sollten immer durch eine 
+Ueberpruefung sicherstellen, dass die Dateiverbindung erfolgreich 
+eroeffnet  wurde.  Hier  folgt ein Programm,  welches  die  Datei 
+namens fred in eine Datei namens bill kopiert:
+
+     #include <stdio.h>
+
+     main()
+     {    FILE *fp, *bp;                /* zwei Filepointer */
+          int c;
+                               /* Datei zum Lesen eroeffnen */
+          if ((fp=fopen("fred","r")) == NULL)
+          {    fprintf(stderr,"Kann fred nicht eroeffnen\n");
+               exit(1);
+          }
+                              /* Datei zum Schreiben eroeffnen */
+          if ((bp=fopen("bill","w")) == NULL)
+          {    fprintf(stderr,"Kann bill nicht eroeffnen\n");
+               exit(1);
+          }
+
+          while ((c=getc(fp)) != EOF)
+               putc(c,bp);
+     }
+
+Die Funktion exit bricht ein Programm immer unverzueglich ab; wir 
+garantieren, dass das Programm von diesem Funktionsaufruf niemals 
+zurueckkehrt.  Das an exit uebergebene Argument wird manchmal von 
+dem Programm ausgewertet, von dem das aktuelle Programm gestartet 
+wurde. Sie sollten immer einen Wert zurueckgeben, der anzeigt, ob 
+das  Programm korrekt abgelaufen ist oder  nicht.  Im  Normalfall 
+bedeutet  Null Erfolg,  und jeder andere Wert signalisiert,  dass 
+ein Problem aufgetaucht ist; deshalb haben wir eine 1 gewaehlt.
+
+Die Argumente bei fopen,  die Lesen,  Schreiben und Anfuegen ver-
+langen,  verstehen  sich weitgehend von selbst.  Lesen ist offen-
+sichtlich - das Programm wird mit einer existenten Datei  verbun-
+den  und  liest daraus.  Beim Schreiben wird die  Datei  erzeugt, 
+falls sie nicht bereits existierte;  falls sie bereits existiert, 
+so  wird der gesamte vorige Inhalt vernichtet.  Anfuegen funktio-
+niert wie schreiben,  aber der vorherige Inhalt der Datei  bleibt 
+erhalten.
+
+
+15. Das Ende!
+-------------
+Gut,  bringen  wir die Sache zu Ende.  Wir haben kaum ein Drittel 
+dessen  erreicht,  was wir beabsichtigten,  aber wir  haben  eben 
+nicht  genuegend  Platz dafuer.  Viele Leser werden  von  unserer 
+Auswahl enttaeuscht sein,  d.h.  von dem, was wir gezeigt und was 
+wir ausgelassen haben.  Diese fordern wir auf, 'Schreiben Sie Ihr 
+eigenes Buch', und wir wuenschen ihnen dazu alles Gute.
+
+Sie haben nun einen grossen Teil der Sprache kennengelernt,  aber 
+Sie  brauchen  noch viel Uebung,  um sie  gruendlich  zu  lernen. 
+Experimentieren  Sie,  verschlingen Sie die Protokolle von  moeg-
+lichst  vielen realen Programmen,  lesen Sie andere Buecher,  und 
+geniessen Sie das. Als abschliessendes Beispiel praesentieren wir 
+ein kur
+zes und etwas haessliches Dienstprogramm, welches an einem 
+lang
+weiligen  zweiten Weihnachtsfeiertag von Banahan  geschrieben 
+wur
+de.  Es heisst 'ovp';  es liest entweder die  Standard-Eingabe 
+oder  von  angegebenen  Dateien und schreibt  auf  die  Standard-
+Ausgabe.  Es schreibt, was es liest und verwandelt dabei Zeichen, 
+die  unter
+strichen sind,  in Zeichen,  die mehrfach uebereinander 
+geschrieben sind.  In Bradford war es einige Zeit im Einsatz, und 
+es  enthaelt  keine uns bekannten Fehler.  Den  Programmtext  von 
+'ovp' finden Sie im Anhang F. 
+
+'ovp' enthaelt Register-Variablen;  wir haben diese frueher nicht 
+erwaehnt.  Prinzipiell  unterscheiden sie sich nicht von  anderen 
+Variablen,  aber  sie besitzen keine Adresse;  Sie koennen  daher 
+keinen  Zeiger  auf sie zeigen  lassen.  Die  Vereinbarung  einer 
+Register-Variablen  ist  ein  Hinweis (nur ein Hinweis!)  an  den 
+Uebersetzer,  dass sie haeufig benutzt werden soll,  und dass  es 
+eine  gute Idee waere,  ein Hardware-Register an ihrer Stelle  zu 
+verwenden.  Register-Variablen dort zu vereinbaren,  wo sie nicht 
+notwendig sind,  kann das Gegenteil Iherer Absicht bewirken:  Sie 
+koennten den Uebersetzer in die Irre fuehren, so dass er speziel-
+le  Variablen  in Registern haelt,  obwohl die Register  anderswo 
+effizienter genutzt werden koennten.
+
+
+
+Anhang F: "ovp" - ein Dienstprogramm in C
+-----------------------------------------
+'ovp'  soll Text ausgeben und dabei unterstrichene Zeichen fett, 
+d.h.  mehrfach, drucken. Ein solches Programm ist z.B. nuetzlich, 
+wenn  man  eine  kursive Ausgabe von  'nroff'  (die  traditionell 
+unterstrichen dargestellt wird) durch eile Art vmn Fettdruck  auf 
+einem  konventionellen Drucker darstellen will.  Ein Zeichen gilt 
+als  unterstrichen,  wenn mit Hilfe von 'backspace'  schliesslich 
+ein  Unterstrich _ in die gleiche Spalte am  Drucker  praktiziert 
+wird.
+
+Im allgemeinen sind C-Programme nicht gerade ausfuehrlich kommen-
+tiert.  Ein  kleines Programm wie 'ovp' kann man auch  ohne  viel 
+Kommentar  verstehen.  Ein C-Programm besteht ueblicherweise  aus 
+relativ  kleinen  Funktionen,  die jeweils eine  einzige  Aufgabe 
+erfuellen. Wenn Sie die Aufgabe jeder Funktion verstehen, koennen 
+Sie  normalerweise das Programm im Grossen verstehen,  bevor  Sie 
+sich klar machen, was in jeder Funktion im Detail geschieht.
+
+Wir haben absichtlich vermieden, den Text von 'ovp' mit Kommenta-
+ren  zu  ueberladen.  Das Programm gleicht daher den  meisten  C-
+Programmen,  denen  wir begegnet sind.  Es schien uns nicht sinn-
+voll,  ein atypisches Beispiel vorzustellen,  und wir haben daher 
+die  Erklaerungen in diesen Anhang,  aber nicht in  das  Programm 
+aufgenommen. 
+
+Die Strategie des Programms ist recht einfach, in main werten wir 
+zunaechst  die  Optionen aus.  Anschliessend bearbeiten  wir  der 
+Reihe  nach  die  Dateien,  deren Namen als  Argumente  angegeben 
+wurden.  Wurden keine Dateinamen uebergeben,  so bearbeitet 'ovp' 
+seine  Standard-Eingabe,  verhaelt  sich also wie  ein  typischer 
+Filter.
+
+handle  bearbeitet  jeweils eine Datei,  die in  main  mit  stdin 
+verbunden  wurde.  Zeichen werden einzeln gelesen und untersucht. 
+Tabulatorzeichen  verwandeln wir hier in eine Folge von  Leerzei-
+chen,  Zeilentrenner  \n oder Seitenvorschub \f  beenden  jeweils 
+eine  Textzeile,  und EOF bedeutet genau dieses,  naemlich Datei-
+ende.  Die meisten Zeichen gehen direkt weiter an save und werden 
+dort in chars notiert. save verfolgt ausserdem, in welcher Einga-
+bespalte posn wir uns befinden.
+
+Ist  in  den Speicherflaechen noch Platz vorhanden,  so wird  ein 
+normales  Zeichen in chars abgelegt.  Fuer ein _Zeichen  notieren 
+wir im hoechsten Bit von chars (das ja fuer den ASCII-Zeichensatz 
+nicht  benoetigt wird),  dass das entsprechende Zeichen in  chars 
+ueberdruckt werden muss.  Bei \b gehen wir eine Spalte nach links 
+zurueck.
+
+Ist kein Platz vorhanden, speichern wir die Zeichen nicht weiter, 
+zaehlen aber die Spaltenposition trotzdem hoch, damit beim Expan-
+dieren  von  Tabulatorzeichen keine  endlose  Schleife  entstehen 
+kann.
+
+Erreichen  wir  in handle schliesslich das Ende einer  Zeile,  so 
+uebergeben wir die einzelnen Zeichen aus dem Zwischenspeicher  an 
+out  zur Ausgabe.  Gleichzeitig loeschen wir den Zwischenspeicher 
+wieder.  Den Zeilentrenner uebergeben wir direkt;  damit  koennen 
+auf keinen Fall Lawinen von Leerzeilen durch Ueberdrucken entste-
+hen.
+
+out  merkt  sich intern ueber alle  Aufrufe  hinweg,  in  welcher 
+Ausgabespalte  wir  uns befinden;  die dazu  verwendete  Variable 
+outcol ist in der Speicherklasse static definiert, damit ihr Wert 
+ueber Aufrufe hinweg erhalten bleibt. Ein Leerzeichen wird norma-
+lerweise  nicht  sofort ausgegeben,  sondern ebefalls intern  no-
+tiert;  damit koennen Folgen von Leerzeichen durch wenige Tabula-
+torzeichen dargestellt werden. 
+
+Ein isoliertes Zeichen wird erkannt und umcodiert,  anschliessend 
+werden  vor jedem Zeichen eventuell noch gespeicherte Leerzeichen 
+ausgegeben. Soll das Zeichen ueberdruckt werden, so geschieht das 
+ganz am Schluss.
+
+Am  schwierigsten  fuer den Anfaenger sind natuerlich die  ebenso 
+trickreichen wie allgemein verwendeten Anweisungen in main ,  mit 
+denen die Optionen ausgewertet werden. Sie sollen diese Formulie-
+rungen,  vermutlich anhand einer Skizze der verschiedenen Zeiger, 
+genau ansehen,  und sie dann in Ihren eigenen Programmen entspre-
+chend verwenden.
+
+
+/*
+ *   ovp - statt unterstreichen mehrfach drucken
+ *
+ *  TAB-Positionen sind in Spalte 1, 9, 17
+ *  NUNDER gibt an,  wie oft ein unterstrichnenes Zeichen  hoech-
+ *  stens  gedruckt werden soll - je nach Drucker gibt's ab 4
+ *  Aerger.
+ *  -on  es soll n-mal (statt NUNDER) ueberdruckt werden
+ *  -t   TAB durch Leerzeichen ersetzen
+ */
+
+#include <stdio.h>       /* Standard-Buecherei */
+
+#define   LINESIZ   512  /* max. Anzahl Zeichen pro Zeile */
+
+#define   NUNDER    4    /* max. Anzahl fuer Ueberdruck */
+
+char chars[LINESIZ];
+int posn;                /* Spalte in der Eingabe */
+int nover = NUNDER;      /* kontrolliert ueberdrucken */
+int tflag = 0;           /* !=0: TAB ersetzen */
+
+main (argc,argv)
+     int argc;                     /* Anzahl Argumente */
+     char ** argv;                 /* Texte der Argumente */
+{
+     while (--argc && **++argv == '-')  
+          switch (*++*argv) {
+          case 'o':
+               nover = atoi(++*argv);
+               if (nover < 0 || nover > NUNDER)
+               {    fprintf(stderr,"ovp: zu oft -o%s\n", *argv);
+                    nover = NUNDER;
+               }
+               break;
+          case 't':
+               ++tflag
+               break;
+          default:
+               fprintf(stderr,"ovp: unbekanntes Argument -%s\n",
+                       *argv);
+          }
+          
+          if(argc == 0)       /* kein Dateiname als Argument */
+               handle();
+          else          /* Dateien der Reihe nach bearbeiten */
+               do   
+                    if (freopen (*argv,"r",stdin))
+                         handle();
+                    else
+                         perror (*argv);
+               while (*++argv);
+}
+
+handle()                                /* stdin bearbeiten */
+{    register int i, c;
+
+     for(;;)                            /* jede Zeile */
+     {    for(;;)                       /* eine Zeile */
+          {    switch (c = getchar()) {
+               case EOF:
+                    return;
+               case '\t':
+                    do
+                         save(' ');
+                    while (posn & 07);
+                    continue;
+               default:
+                    save(c);
+                    continue;
+               case '\f':
+               case '\n':
+                    ;
+               }
+               for (i=0; i < posn && i < LINESIZ; ++i)
+               {    out (chars[i]);
+                    chars[i] = 0;
+               }
+               out ('\n',0), posn = 0;
+               break;                   /* naechste Zeile */
+          }
+     }
+}
+
+save(c)                       /* Zeichen zwischenspeichern */
+     char c;
+{
+     switch (c) {
+     case '\b':               /* wird nicht gespeichert */
+          if (posn)
+               --posn;
+          return;
+     case '_':                /* im hoechsten Bit notiert */
+          if (posn < LINESIZ)
+               chars[posn] |= 0200;
+          break;
+     default:       /* in den niedrigen Bits gespeichert */
+          if (posn < LINESIZ)
+               chars[posn] = c & ~0200;
+     }
+     ++posn;
+}
+
+out(c)                             /* Zeichen ausgeben */
+     char c;
+{    static int spaces = 0;        /* TAB einfuegen */
+     static int outcol = 0;        /* Spalte in der Ausgabe */
+     register int target;
+     register int ov;
+
+     ov = (c & ~0200) ? nover: 0;
+     switch (c &= ~0200) {
+     case '\n':                    /* Zeilentrenner */
+          putchar(c), outcol = spaces = 0;
+          return;
+     case 0:                       /* isolierter _ */
+          c = '_', ov=0;
+          break;
+     case ' ':                     /* optimieren ? */
+          if (tflag == 0)
+          {    ++spaces;
+               return;
+          }
+     }
+               /* vor anderen Zeichen: Leerzeichen ausgeben */
+     target = outcol + spaces;
+     switch (spaces) {
+     default:            /* TAB nur fuer viele Leerzeichen */
+          while ((outcol+8 & ~07) <= target)
+               putchar ('\t'), outcol = outcol+8 & ~07;
+     case 1:             /* wenige Leerzeichen bleiben */
+          while (outcol < target)
+               putchar(' '), ++outcol;
+          spaces = 0;
+     case 0:
+          ;
+     }
+
+                         /* Zeichen ausgeben und ueberdrucken */
+     putchar(c), ++outcol;
+     while (ov--)
+     {    putchar ('\b');
+          putchar (c);
+     }
+}
+       
+

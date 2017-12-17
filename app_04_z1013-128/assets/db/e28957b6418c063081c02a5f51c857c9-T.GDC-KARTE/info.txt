@@ -1,0 +1,3 @@
+<kurz src="Beschreibung der 80-Zeichen-Karte GDC NEC 7220AD"/>
+<lang><include src="T.GDC-KARTE.txt"/></lang>
+<requires></requires>

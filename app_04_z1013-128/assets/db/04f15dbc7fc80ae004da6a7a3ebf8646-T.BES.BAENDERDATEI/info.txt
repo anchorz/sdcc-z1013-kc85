@@ -1,0 +1,3 @@
+<kurz src="TONBAND-(KASSETTEN-)VERZEICHNIS "/>
+<lang><include src="T.BES.BAENDERDATEI.txt"/></lang>
+<requires></requires>

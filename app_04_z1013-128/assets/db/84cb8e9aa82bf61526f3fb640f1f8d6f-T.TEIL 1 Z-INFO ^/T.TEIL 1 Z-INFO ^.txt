@@ -1,0 +1,324 @@
+1234567890
+#############################################################
+######                                                 ######
+####      Z-1013-INFORMATIONEN  -  HARD u. SOFT          ####
+##########                                         ##########
+##  STANDARDS  -  KLUBARBEIT  -  ADRESSEN  -  ALLGEMEINES  ##
+######                                                 ######
+############################### STAND: 18.08.89 #############
+
+
+1. HARDWARE:
+************
+
+
+1.1  Letzte Rechnerversion von ROBOTRON-ELECTRONIC-RIESA:
+=========================================================
+
+1.1.1
+        *********  Z-1013.64  **********
+
+Ausstattung:   64-K-Hauptspeicher
+               A.2-Monitor
+               Ausbaufähig mit Multiplexer-Tastatur
+Kosten:        ca. 540.-M
+...............................................................
+
+1.1.2    Zusatzmodule aus Riesa:
+
+               Baugruppenträger
+               Externes Netzteil
+               E/A-Modul mit 2 PIO (V.24-Interface) 
+               EPROM-Modul mit 4 Steckplätze
+..............................................................
+
+1.2  Ausbaufähig:
+=================
+
+mit            RAM-Floppy (nach MP 3/88)/ 2 Stück - A u. B - 
+    Daten:     256-K-RAM-Floppy m. I/O-Ansteuerung
+               zusätzlich 64-K-Hauptspeicher
+               (für Z-1013 nutzbar)
+               MEMDI-Logik (wird weinig  genutzt)
+               Leiterplatte industriell gefertigt und gebohrt.
+               Ausführliche Beschreibung dazu.
+(Bezugsquelle, Lieferumfang, Zusatzlieferungen, Preis usw. wei-
+ter unten unter Adressen.)
+
+mit            Zusatzschaltung 64-Zchn-Umschaltung.
+    Daten:     Schaltet über I/O-Adresse 4 mit Datenbits
+               a. 32-64 Zchn/Zeile des Bildschirm, ohne zusätz-
+                  lichen Speicherbedarf,
+               b. 2/4-MHz-Takt, mit Zusatz  zum Schnellermachen
+                  des /WE der RAM's,
+               c. Alternativer Zeichengenerator (z.B. mit DIN-
+                  und Invers-Zeichen)
+               d. ROM-Abschaltung (z.B.für Urlader).
+               Gleichzeitig werden die I/O-Adressen vollstän-
+               dig ausdecodiert.
+(Wurde in Leipzig zur 2.Tagung vorgestellt, soll veröffentlicht
+werden. Bezugsmöglichkeit der Leiterplatte: Gerlich-Neubranden-
+burg/s.u.) 
+
+mit             DISK-Floppy. Es gibt schon Lösungen zum An-
+                schluss von 1.2 und 1.6 - Laufwerke.
+                Ansteueradressen sind 2 Versionen bekannt: 
+                a. Adr. D0 D1 D2 (nach Kramer)
+                b. Adr. F0 F1 F2 (nach Brosig) 
+
+mit             Drucker. Hierbei ist  die Auswahl je nach An-
+                gebot: vom K 1156 bis K 6313, EPSON, Thermo-
+                drucker und Schreibmaschinen aller Art.
+                Genutzt werden Standard-Schnittstellen über
+                V.24-Riesa, I/O-Port ab 30H (Centronics),
+                USER-PORT z.B. für 'S3004' oder auch K 1156
+                (SIF-1000).   
+
+mit             80-Zchn-BS unter Nutzung des GDC-IC. 
+                (Brosig)
+
+mit             EPROM-Programmiergerät, hier gibt es zwei Lö-
+                sungen, aus Leipzig und Dresden. (Letztere wur-
+                de in Leipzig zur 2.Tagung vorgestellt und wird
+                noch veröffentlicht.)
+
+mit             ROM-Bank, ROM-Floppy u.a.
+
+Lösungen für Vollgrafik gibt es schon verschiedene, aber zur 
+Festlegung eines Standard's und entsprechender I/O-Adressen
+ist es noch zu verfrüht.
+Weitere Lösungen mit Systemuhr, I/O-Karte, u.a.m sind hier und
+dort schon gefunden, aber noch nichts durchgreifendes.  
+
+1.3  Hinweise und Tips:
+=======================
+
+1.3.1  TAPE-Anschluß *)
+......................
+
+Die Riesaer Lösung ist ein Kompromiß zwischen TGL-Standard und
+Bauelementebedarf. Man kann sie nur als Minimallösung  ansehen.
+(auf den damals üblichen "GERACORD GC 6020" zugeschnitten). Da
+aber auch GC wie LCR (Nachfolgetyp ) nicht immer dem TGL-Stan-
+dard (daher nicht immer kompatibel) entspricht, gibt es viele
+Einleseprobleme.
+a. TIP 1
+Brücke E8 entfernen, Schmitt-Trigger (z.B. A 302) einfügen. Bei
+genannten  A 302 ist Pin 2 an OPV-Seite, Pin 4 mit einem
+pull-up-Widerstand, etwa 10k-Ohm, gegen 5P an der PIO-Seite ein-
+setzen.
+b. TIP 2
+Der Eingangsteil des JU-TE-Computer (Jugend und Technik) oder
+des KC 85/2 ist gegen den Riesaer-Original-Eingang (OPV-Teil)
+auszutauschen.
+Beim Software-Tausch mit fremden Kassettengeräten ist zuerst der
+Kopf auf optimalen Stand zu stellen. 
+a. nach Gehör, Beststellung, wo deutlich die meisten Höhen zu
+   hören sind.
+b. optisch mit folgender Methode: ein längeres File auf TAPE an-
+   legen, in Rechner (z.B.:) mit L 1000  2000 eingeben, Start
+   TAPE, >ENTER<, und nun den Kopf solange verstellen, bis so 
+   wenig wie möglich (bzw. keine) CS-Fehler mehr angezeigt wer-
+   den.
+Nach letzter Methode kann  der Kopf auch jederzeit wieder auf 
+die vorherige eigene Einstellhöhe eingestellt werden.
+
+1.3.2 ROM-(EPROM) des MONITOR (A 14)
+....................................
+
+PIN 18 und 20 trennen, auf PIN 20 das Original-CS-Signal des
+A 23 (StB  19) legen (Out-enable), und PIN 18 auf  Masse (Chip-
+enable). Damit wird der Monitor-ROM schneller, was vor allem bei
+4 MHz wichtig ist. Bei 4-K-Monitor kommt auf PIN 21 (vorher von
+5P trennen) die Adresse 11 (AB 12).
+
+1.3.3 Speicher für HEADERSAVE ab E000H bis E3FFH bei 16-K-Ver-
+      sion.
+...............................................................
+
+RAM A 15, A 16 (U 214), wie Schaltplan anzeigt, einsetzen. Der
+Platz ist oberhalb des  A 14 auf Platine vorhanden. Brücke E 3
+ist so zu setzen, wie auf Schaltplan angegeben. (StB 15 mit PIN
+8 -A 16- und StB 42 (zu PIN 8 -A 15-) verbinden.)
+
+1.3.4 Speicherinhalt erhaltendes RESET
+......................................
+
+Dazu ist das RESET-Signal mit M1 zu  s y n c h r o n i s i e -
+r e n. Leitung zwischen R 17/C 1.11 und A 25/PIN 10 auftrennen,
+auf einen Eingang eines Gatter des DL 032 (OR-Gatter) legen,
+zweiten Eingang mit M1 (PM1) verbinden, Ausgang auf A 25/PIN 10
+legen. Wichtig ist hier aber ein AUTO-RESET. Nach R.Brosig ist 
+mit einem A 302 am Ausgang des A 24/PIN 2 (zu StB 4) ein etwa 
+1 sec langes Low-Signal zu legen. A 302/PIN 4 an A 24/PIN 2,
+A 302/PIN 2 mit R (100k-Ohm) an 5P und C (Elko ca. 10myF/16V) an
+Masse.
+
+1.3.5  RESET und NMI mit externer Taste
+.......................................
+
+RESET und NMI mit Taste über Steuerbus (X1 A20 und A23/ X2 A02 
+und A12) über eine R/C-Kombination auf Masse legen. 
+R etwa 1 bis 10 M-Ohm, C ca. 560 pF, beideparallel schalten.         
+(setzt keine externen Interface-IC zurück!)
+
+1.3.6 Hauptspeicher-Abschaltung
+................................
+
+Es macht sich gut, den Hauptspeicher auch mal wegschalten zu 
+können, z.B. um einen externen Speicher zu testen. Dazu wird
+die CAS-Leitung unterbrochen, die RAM-Seite mit einen Wider-
+stand von etwa 10K an 5P gelegt und die Trennstelle mit einer 
+Brücke (o. DIL-Schalter) verbunden. Bei Trennung ist der Haupt-
+speicher abgeschaltet, REFRESH ist aber gewährleistet.
+(Bei Zuschaltung externen Speicher nicht das RDY-Signal verges-
+sen. s.Beschr."RF am Z1013")
+
+*) Erklärung einiger Fachbegriffe am Ende des INFO
+************************************************************
+2. SOFTWARE
+***********
+
+Alle hier genannten Programme wurden von vielen Computerclubs
+als Standard-Software empfohlen, vorherige Versionen 
+(z.B. MicroWORD 1.3), veraltete Programme (z.B. TEXTED 6.1 Scf)
+oder wenig bzw. garnicht kompatible Programme (z.B. EDITEX)
+sollten nicht mehr weitergegeben werden, man kann sie zum inde-
+viduellen Gebrauch nutzen, wenn man noch Spaß daran findet. 
+Noch ein Hinweis für Software-Angebote:
+ 1. Viele LISTINGS  erwecken den Eindruck, hier will einer zei-
+    gen, was er da alles gesammelt hat. Es hat aber wenig Sinn
+    und bringt den nichteingeweihten Anfänger nur in Verlegen-
+    heit, wenn jedes auch noch so misserable oder gar nutzlose
+    Programm gelistet wird. 
+ 2. Es sollten nur gültige Versionen mit Versionsnummer, die
+    der Programmierer vergeben hat, weiter gegeben werden. Auch
+    Namensänderungen sollten unterbleiben, da es nur zu Irrtümer
+    führt. (z.B. gibt es LABYRINTH 2, LABYRINTH (TEUFEL), aber
+    beide das gleiche und sind vom Bearbeiter  Pursuit, unter
+    welchem es ja auch noch gibt, genannt wurden. Das Dresdner
+    Eprom-Programmier-Programm heist auch nicht EPROMMER 2.9,
+    wie von Leipzig umgetauft, sondern EPROM-HANDLER 2.9) 
+ 3. Jedes Programm sollte auf Lauffähigkeit,  sauberen Ein- und
+    Ausstieg, ohne Direkteinsprünge in Monitor oder auf Tas-
+    tatur, nicht unter 100H beginnend, geprüft sein. 
+ 4. Es sollte Grundsatz sein, Programm und Beschreibung  als
+    eine Einheit zu betrachten, niemals das eine ohne das an-
+    dere weitergeben,
+ 5. keine geänderten Versionen, die vom Programmierer , Bearbe-
+    ter oder dessen Klub  n i c h t  bestätigt wurden, weiterge-
+    ben. Ebenso bei Namensänderungen. (-Originalversion-) 
+ 6. Auf LISTINGS grundsätzlich den Autor bzw. den letzten Be-
+    arbeiter mit angeben. (-Urheberrecht-)
+ 7. Zu jedem Programm auf dem Listing eine kurze Bemerkung zum
+    Inhalt des Programmes und zum Speicherbedarf mit angeben.
+
+Denken Sie immer daran, an Ihrem Angebot erkennt man Ihre Kennt-
+nis der Programme und Ihre Einstellung dazu.
+
+2.1 STANDARD-VORSCHLÄGE für Z-1013-Programme:
+=============================================
+Programme, die unter SCP/CPM laufen, werden hier nur erwähnt,
+wo es notwendig. Sie laufen im Prinzip alle. Sie erhalten keine
+Typ-Bezeichnung im HEADER. Die Zahl in der Startadresse soll die
+Anzahl der Records sein. 
+
+2.1.1  EDITOREN u. TEXTSYSTEME:
+===============================
+ 
+Name                         Bemerkungen               Speicher-
+Autor/Bearbeiter                                       bedarf
+bzw. zust. Klub
+(in * ...*)
+-----------------------------+-------------------------+----------
+MicroWORD 1.520 U(nten)       hat seine Beschreibung   einstell
+*Brosig/IG-HC TU Dresden*     immer im Textpuffer bei  bar ab
+(mit Druckertreiber           Auslieferung oder Wei-    1456H
+ V.24 /Centonics als          tergabe.                 normal: 
+Quelle im Text)                                         1800H   
+  
+Microword  1.519 O(ben)       wie U(nten) aber ab 
+*wie oben*                           CC00H
+Beide über SV (Sprungverteiler)
+
+MicroWORD 1.5 GV1   und       mit internem HEADERSAVE u.  gut
+MicroWORD 1.5 GS1             Druckertreiber (GV1=V.24)   für
+*wie oben*                    (GS1=S3004)                 16-K
+
+BILD-MicroWORD 6              Ladebild.
+*wie oben*
+...............................................................
+
+bitex XXII                    Textsystem gut für Quelltexte
+bitex XXII ROM                32 und 64 Zchn-BS, aber wird
+BITEX64.COM (noch Arbeits-    vor allem als CPM-Version ge-
+             version)         nutzt.
+*Hildebrandt/Lühne-
+ IG-HC TU Dresden*
+...............................................................
+UNI-TEXTLESER                 nur zum Textlesen, mit    gut für
+*CC ROBOTRON Leipzig*         eig. HEADERSAVE             16-K
+...............................................................
+Weitere Editoren gibt es im Zusammenhang mit Assembler.
+Ergänzen kann man diese Palette noch mit  dem
+MTX 0.5 Scf (modulares Textsystenm) *IG-HC TU Drsden*
+MONS (ZX-Spectrum-System)
+...............................................................
+Als Grafik-Editor für den Z-1013 eignet sich gut der   >16-K
+GEDIT 1.02                   mit Tastatur, anal. u.     
+*Rehn/Schwarzenberg*         n. Joystick. Mit HEADER-
+                             SAVE. Bild kann in Quell-
+                             text gewandelt werden.
+...............................................................
+Andere Programme (EDITEX, OLITEX u.a.) können natürl. auf Wunsch
+weiter gegeben werden, sollte man aber nur für den Eigenbedarf
+nutzten. (Ein Vermerk im LISTING nützlich). Gleiches gilt auch
+für andere Dienst-Programme, die nicht als Standard gelten.
+(Neue Standard-Vorschläge sind nicht ausgeschlossen).
+...............................................................
+
+2.1.2  ASSEMBLER, REASSEMBLER, Objektcode- und HEX-DUMP-Editor:
+===============================================================
+
+ASSEMBLER 5.3 Scf            Erkennt alle Mnemonik     > 16-K 
+*Dr.Schönfelder/Brosig-      des SYPS 1520
+ IG-HC TU Dresden* 
+...............................................................
+Edas 1.1 A+D+H+ae            EDAS vom KC, verbessert   gut für
+*Ulf  Beckmann, Görlitz*     für Z1013, gut als klei-   16-K
+                             ner Assembler mit Editor.
+                             Man kann auch im DUMP-Mode
+                             lesen und schreiben. Mit
+                             HEADERSAVE
+...............................................................
+HEX-D.Editor 1.02 U(nten)    Hervorragender HEX-ASCII-  U auch
+HEX-D.Editor 1.02 O(ben)     DUMP mit Editiermöglich      f.
+*Bernhardt/Berlin*           m.Druckertreiber           16-K
+...............................................................
+OC-EDITOR 4.1  (OCE)         Objektcode-Editor,         steht ab
+*Gast/IG-HC TU Dresden*      ist der für den Z1013      4000H
+                             bearbeitete und ver-
+                             besserte MC 80 von Gera.
+(In Lpz. wurden uns verb.Versionen Überspielt, aber ohne Instr.,
+müssen erst getestet werd.)
+...............................................................
+Als gute Ergänzung kann der GENS3M vom Spectrum (für Z1013 be-
+arbeitet) angesehen werden.
+Es existieren noch:
+ 'asm-disc'
+ 'U-880-Assembler' (Teil von ED-AS TU Dresden)
+ 'Z-80' 
+Der U-880-Ass. ist in Bearbeitung. 
+...............................................................
+R-80 RB  und                 Ein hervorragender Reas-  steht ab
+R-80 DISC 1.66               sembler, der in Z 80 und  4000H
+*Brosig/Scheffler IG-HC      SYPS 1520 Code übersetzt.
+ TU Dresden*                 Schreibt Markentabellen u.a.m.
+               Version DISC 1.66 fragt bei vorhandener RAM-
+               Floppy und HEADERDISC auf E000H ab, ob der Nut-
+               zer den Quelltext auf RF oder TAPE haben möchte.
+...............................................................
+Der DISASSEMBLER aus dem Bedienhandbuch von Riesa steht jedem
+USER zur Verfügung, er soll als Standard genügen.
+ENDE TEIL 1
+

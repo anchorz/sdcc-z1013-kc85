@@ -1,0 +1,3 @@
+<kurz src="HEADERSAVE, RAM-Disketten, Frank Scheffler IG-HC 01/90"/>
+<lang><include src="I.HeaderDisk56.txt"/></lang>
+<requires></requires>

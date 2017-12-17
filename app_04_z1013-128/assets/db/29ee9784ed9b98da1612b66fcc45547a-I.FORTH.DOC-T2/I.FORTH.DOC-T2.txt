@@ -1,0 +1,316 @@
+  .
+     .
+     . Wert x auf TOS
+CASE
+n ON ...Anweisungen... OFF
+o ON ...Anweisungen... OFF
+p ON ...Anweisungen... OFF
+q ON ...Anweisungen... OFF
+     .
+     .
+     .
+ENDCASE
+     .
+     .
+Der Wert x bleibt auf dem TOS erhalten wenn keine der Bedingungen 
+n...q zutrifft.
+
+
+3.4. Dump
+
+Der Dump ist eine Funktion zur Anzeige des Speichers.  Es erfolgt 
+eine  Anzeige  in 2 Zeilen,  erst die Hexadezimaldarstellung  des 
+Speicherinhaltes,  dann  die zugehoerige Darstellung  als  ASCII-
+Zeichen,  soweit moeglich. Steuerzeichen und Grafikzeichen werden 
+als Punkt dargestellt. Der Aufruf erfolgt:
+
+anfang laenge DUMP
+
+Jede  Tastenbetaetigung  laesst  den Dump um 8  Adressen 
+weiter- laufen, wobei die Enter-Taste einen Abbruch erzwingt.
+
+
+3.5. Disco
+
+Die  Funktion  Disco stellt einen Dis-Compiler fuer minimale 
+An- sprueche dar.  Disco ermoeglicht das Betrachten des inneren  Auf-
+baus  von Forth-Woertern. Der Aufruf erfolgt:
+DISCO 'WORT'
+Es erscheint auf dem Bildschirm die Namenfeldadresse des  Wortes, 
+das  Wort  selbst und die Codefeld-Adresse.  Wird das Wort  nicht 
+gefunden, erscheint eine Fehlermeldung. Unter den Kopfangaben des 
+Wortes wird die Parameterfeld-Adresse mit anschliessendem
+Doppel- punkt ausgegeben.  Hier muss der Bediener entscheiden wie  weiter 
+analysiert werden soll.  Durch Druecken der Taste 'N' fuer 'next' 
+wird  zeichenweise der Speicherinhalt mit moeglicher
+ASCII-Inter- pretation  angezeigt.  Das Gleiche gilt fuer die  Eingabe  von'B' 
+fuer 'back'.  Das Betaetigen der Leertaste bewirkt ein wortweises 
+Interpretieren  des Parameterfeldinhaltes mit Anzeige des jeweils 
+hineincompilierten Wortes bzw. Textes.
+Ist die PFA identisch mit dem Inhalt der CFA,  so handelt es sich 
+um  ein  Primitivwort und 'DISCO' bricht ab.  Durch druecken  der 
+ENTER-Taste   kann der DISCO jederzeit verlassen werden.  Ist  es 
+von Bedeutung welche CFA in einem Wort enthalten sind  bzw. 
+wel- chen Wert eine Konstante oder eine Variable besitzt,  so kann der 
+Inhalt  des Parameterfeldes durch Druck einer beliebigen  anderen 
+Taste wortweise (adressweise) angezeigt werden.
+Da  'DISCO'  aus Aufwandsgruenden die Worte nicht nach ihrer  Art 
+unterscheidet, liegt es in der Hand des Bedieners, zu entscheiden 
+wie ein Wort analysiert werden soll.  Anhand der angezeigten  CFA 
+kann  der  Bediener erkennen um welche Art Wort es sich  handelt. 
+Bei  normalen Secondary-Worten bricht 'DISCO' bei  Erreichen  des 
+Semis (;S) am Wortende ab.  Bei Worten ohne Abschluss
+(zB.Endlos- schleifen  im System wie 'INTERPRET') ist es ratsam,  die  Laenge 
+des  Wortes vorher im Dump anzusehen oder die Interpretation  des 
+Parameterfeldes zu vermeiden.  Das gilt auch fuer die Analyse von 
+Worten  wie Konstanten,  Variablen,  Uservariablen und Worten mit 
+Headerless-Code.  In solchen Faellen versucht 'DISCO' den  Inhalt 
+des  Parameterfeldes vergeblich zu interpretieren,  findet jedoch 
+kein zugehoeriges Namenfeld.  Die Folge ist oftmals ein
+Programm- absturz. Ist der Wortaufbau (durch adressweise Anzeige oder Dump) 
+bekannt,  so  kann bis zur kritischen Stelle analysiert und  dann 
+mit ENTER abgebrochen werden.
+
+
+Zusammenfassung der Bedienung:
+N    next Charakter
+B    back Charakter
+Space     Interpretation
+ENTER     Abbruch
+andere    adressweise Inhaltsanzeige
+
+
+4.   Systemdatenbereiche
+________________________
+
+4.1. Cold-Start-Area
+
+Die Cold-Start-Area beginnt bei dieser Forth-Version gemaess FIG-
+Standard am Programmbeginn auf der Adresse 0C +ORIGIN. Das ist in 
+diesem  Fall 30CH.  Sie beginnt mit dem Eintrag von 'LATEST'  und 
+reicht  bis  328H  wo der aktuelle Zeiger  fuer  den  Returnstack 
+steht.  Von  diesem  Bereich werden beim Kaltstart die Daten  von 
+312H  bis 322H in den Userdatenbereich  kopiert.  Dieser  beginnt 
+dann wie ueblich mit den Eintragungen fuer:
+- Stack
+- Returnstack
+- Textinputbuffer (TIB)
+- WIDTH
+- WARNING
+usw.
+Die  Speicherplaetze 32AH und 32CH innerhalb  des 
+Systemdatenbe- reiches  werden  nach dem Vorbild 'FORTHLE' fuer den Eintrag  von 
+Kaltstartroutinen genutzt. Ebenso wird die Adresse 32EH abgefragt 
+welcher  Rechnertyp vorliegt und danach die Systemausschrift  und 
+die Saveroutine modifiziert. Der Inhalt dieser Zelle sollte nicht 
+veraendert werden, das ist einer Anpassung fuer den KC85/x
+vorbe- halten.
+
+
+4.2. Anpassungs-Area
+____________________
+
+Die   Anpassungs-Area  ist  ein  neu  ins  System   aufgenommener 
+Programmbereich  der  es dem Systemprogrammierer ermoeglicht, mit 
+relativ  geringem Aufwand eine Anpassung an  andere  Rechnertypen 
+unter Beibehaltung aller Worte und Systemroutinen vorzunehmen. In 
+diesem  Speicherbereich sind die direkten Einspruenge in das 
+je- weilige Betriebssystem des Rechners implementiert und mit Header-
+lessbezuegen  oder  Spruengen  aus Primitivworten an  das  Forth-
+System angebunden.  Die Adressbezuege zu den ausfuehrenden
+Routi- nen  sind geschlossen ab der Adresse 200H abgelegt.  Sie bedeuten 
+im Einzelnen:
+
+Add.    Bezug  Routine (Assembler)
+___________________________________
+200H      DA   EMIT
+202H      JR   KEY (mit Warten)
+204H      JR   ?TERMINAL (Status)
+206H      JR   CR (Carridge-return)
+208H      DA   OPEN for READ
+20AH      DA   READ (Kassette)
+20CH      DA   OPEN for WRITE
+20EH      DA   WRITE (Kassette)
+
+Ab  Adresse  210H  beginnen dann die  Anpassungsroutinen  an  das 
+Betriebssystem. Bei Aenderungen und Ergaenzungen ist zu beachten, 
+dass  der Bereich bis 300H noch vom Forth-System durch den 
+User- datenbereich  2C0H bis 2FFH aufwaerts und den Returnstack ab 2C0H 
+abwaerts  genutzt wird.  Die derzeitig  implementierten  Routinen 
+belegen  einen Raum bis 250H,  ein Stackkonflikt wuerde erst  bei 
+einer  Verschachtelung von mehr als 50 Funktionen ineinander
+auf- treten.  Diese Stacktiefe reicht fuer allgemeine Anwendungsfaelle 
+aus.  Aenderung der Stackadresse bzw. des Userdatenbereiches kann 
+gegebenenfalls  durch  Aenderung der Systemdaten (30CH bis  322H) 
+von erfahrenen Systemprogrammierern vorgenommen werden.
+
+
+5.   Literaturhinweise
+______________________
+
+Ekkehard Floegel
+Forth on the Atari
+Hofacker-Verlag Holzkirchen 1983
+
+
+Ronald Zech
+Die Programmiersprache FORTH
+Franzis-Verlag  Muenchen  1983
+
+
+Gyoergy Varga, Michael Krapp
+FORTH - eine interessante Programmiersprache
+Wissenschaftliche Zeitschrift der TH Ilmenau
+30 (1984) H.3
+
+
+Verschiedene Beitraege
+Zeitschrift Mikroprozessortechnik
+VEB Verlag Technik Berlin
+1 (1987) H.7          
+
+
+Zur Einarbeitung in die Problematik der Programmiersprache  sowie  
+zur  Erarbeitung des Systems fuer Z1013 wurde weiterhin folgendes 
+Lehrmaterial verwendet:
+
+
+M.Balig
+Forth kurz und knapp, Unterrichtsmaterial, Literaturrecherche
+TH Leipzig 1987
+
+
+Dokumentation zum System Pop-Forth
+WPU Rostock 1987
+
+
+5.   Glossar
+____________
+ 
+Die hauefigsten FORTH - Befehle
+
+Operanden:  n, n1       16-Bit-Zweierkomplementzahlen
+            d, d1       32-Bit-Zweierkomplementzahlen
+            u, u1       vorzeichenlose 16-Bit-Zahlen
+            ud          vorzeichenlose 32-Bit-Zahlen
+            addr        Adresse
+            b           8-Bit-Byte
+            c           7-Bit-ASCII
+            f           Boolsches Flag (16 Bit, # 0 = wahr)
+
+Stackbewegungen:                 (  a   b   c   -->   d   e  )
+                                    ^   ^   ^         ^   ^
+                                Third   |   |    Second   |
+                                   Second   |           TOS
+                Beispiel:                 TOS
+                                  |-----------|      |------|
+                                   vor          und     nach
+                                   Abarbeitung des FORTH-Wortes
+
+- Ein- und Ausgaben immer von links nach rechts
+- der Top-Of-Stack (TOS) ist stets rechts aussen dargestellt
+- Second = Zahl unter dem TOS
+- Third  = Zahl unter dem Second
+
+
+ Terminal Eingabe / Ausgabe
+ __________________________
+
+.       ( n --> )        druckt  die Zahl auf dem TOS aus (zerstoe-
+                         rend)
+.R      ( n Feldweite --> )               druckt die Zahl  (rechts 
+                                          adjustiert in Feld)
+D.      ( d --> )        druckt doppelt genaue Zahl
+
+D.R     ( d Feldweite --> )               druckt       32-Bit-Zahl 
+                                          rechts   adjustiert   in 
+                                          Feld
+CR      ( )              Ausgabe eines Carridge-Return / Line-Feed
+
+SPACE   ( )              Ausgabe eines Space-Character
+
+SPACES  ( n --> )        Ausgabe von n Space-Characters
+
+."      (  )             druckt   einen  nachfolgenden  Text  aus, 
+                         welcher mit " beendet wird
+TYPE    (  addr u --> )  druckt  u Zeichen,  startend  ab  Adresse 
+                         addr
+COUNT   ( addr --> addr+1 u  )  wandelt length-Byte-String in  die 
+                         TYPE-Form
+?       ( addr --> )     druckt den Inhalt der Adresse
+
+?TERMINAL ( --> f )      uebergibt  den Tastatur-Status  ("bestae-
+                         tigt"<>0)
+KEY     (  --> c )       wartet auf Tastatur-Eingabe und legt  den 
+                         Char. auf den Stack (ASCII)
+EXPECT  ( addr  n  --> ) erwartet  n Character (oder bis  CR)  und 
+                         bringt sie nach addr
+EMIT    ( c --> )        gibt Character c aus
+
+WORD    ( c --> )        liest  ein Wort (bis zum Delimeter c)  im 
+                         gueltigen Eingabe-Buffer
+ Zahlensysteme
+ _____________
+
+DECIMAL   ( --> )        deklariert Dezimal-System
+
+HEX       ( --> )        deklariert hexadezimales Zahlensystem
+
+BASE      ( --> addr )   System-Variable, welche die Zahlenbasis
+                             enthaelt
+
+ Eingabe - Ausgabe - Formatierung
+ ________________________________
+
+NUMBER  ( addr --> d )   wandelt  einen String in addr um  in  32-
+                         Bit-Zahl
+<#      ( )              eroeffnet   Zahlenwandlung   fuer   Ausgabe 
+                         (String)
+#       ( d --> d )      wandelt naechste Stelle der Zahl und  fuegt 
+                         dem Ausgabe-String eine Ziffer hinzu (32-
+                         Bit-Zahlen !)
+#S      ( d --> 00 )     wandelt alle signifikanten Stellen um  in 
+                         String
+SIGN    ( n d --> d )    fuegt das Vorzeichen von n in den Ziffern-
+                         string ein
+#>      ( d --> addr u ) beendet   Umwandlung  in   Ziffern-String 
+                         (String hat passende Form fuer TYPE)
+HOLD    ( c --> )        Einfuegung  eines ASCII Characters in  den 
+                         String
+
+
+ Massenspeicher ( Diskette/Kassette )
+ ____________________________________
+
+LIST    ( screen --> )   Ausdrucken eines Screen von Disk
+
+LOAD    ( screen --> )   Laden  eines  Screen  (Compilation   oder 
+                         Interpret.)
+BLOCK ( block --> addr ) liest Disk-Block nach Adresse addr
+
+B/BUF   ( --> n )        Systemkonstante (Blockgroesse in Bytes)
+
+BLK     ( --> addr )     Systemvariable (aktuelle Block-Nummer)
+
+SCR     ( --> addr )     Systemvariable   (haelt  aktuelle  Screen-
+                         Nummer)
+
+UPDATE  (  )             markiert  zuletzt  benutzten  Buffer  als 
+                         'updated'
+
+FLUSH   (  )             schreibt  alle 'updated' Buffer  auf  die 
+                         Disk
+
+EMPTY-BUFFERS (  )       markiert alle Buffer als 'leer'
+
+ Stack - Manipulationen
+ ______________________
+
+DUP  ( n --> n n )       kopiert (dupliziert) den TOS
+
+-DUP ( n --> n ? )       dupliziert nur dann, wenn ungleich Null
+
+DROP ( n --> )           beseitigt den (aktuellen) TOS
+
+SWAP ( n1 n2 --> n2 n1 ) vertauscht die beiden oberen Zahlen des
+Stacks  

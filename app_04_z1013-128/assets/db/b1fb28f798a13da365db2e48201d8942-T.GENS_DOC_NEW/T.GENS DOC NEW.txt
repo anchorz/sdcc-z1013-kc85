@@ -1,0 +1,276 @@
+
+************************************************************
+    ASSEMBLER GENS 3.2 fuer Z 1013
+************************************************************
+ 
+GENS 3.2 (GENS) ist ein leistungsfaehiger 2 Pass Assembler von
+Hisoft. In der Version fuer den Z 1013 ist das Programm leicht
+abgeruestet. Es haben die Definitionen der Standard ZILOG-
+Mnemonic Gueltigkeit. Im Gegensatz zum Original ist die Z 1013
+Version nicht verschieblich. Es belegt den Speicher von
+ 100H ...1FFFH
+Startadresse       100H
+Restartadresse     2F8H
+        oder       11AH
+Das Programm veraendert sich waehrend des Laufs. Es wird eine
+Druckerschnittstelle (CALL auf 162H) und ein Tastaturbeep 
+(CALL auf 1F4H) realisiert.
+Die Routinen SARUF (CALL auf 8CA) und LORUF (CALL auf A17H)
+sind je nach Version über Sprungverteiler zu nutzen, oder werden
+als Bestandteil des Programms beim Start auf F800H verschoben.
+Letzteres kann zu Problemen bei Monitoren mit 4kByte führen.
+Der Assembliervorgang ( Kommando A ) benoetigt eine Symbol-
+tabelle die festgelegt werden kann. Zum Assemblieren koennen
+Optionen festgelegt werden.
+Option 1   Erzeugt ein Symboltabellen- Listing nach Lauf 2.
+Option 4   Unterdrueckt Ausgabe Assembler Listing.
+Option 8   Druckt Assemblerlisting.
+Die Druckerschnittstelle übergibt im A- Register ein ASCII-
+Zeichen. Zu beachten ist das Steuerzeichen 09H, daß einen
+Tabulator von 8 Zeichenpositionen repräsentiert. Als Zeilenab-
+schluß wird nur ein 0DH ausgegeben.
+Es existieren Versionen mit der S 3004 über Optokoppler (durch
+Ersatz des CPL- Befehls durch ein NOP auch ohne Optokoppler
+nutzbar) und für einen CENTRONIC- Drucker.
+Der erste Durchlauf liefert nur Fehlermeldungen. Es kommt die 
+Meldung "Pass 1 errors : nn" und Lauf 2 wird nicht gestartet.
+Labels die nicht im Operandenfeld auftauchen werden mit
+"WARNING* Label absent" gemeldet.
+Das Assemblerlisting hat folgende Form:
+C000 210100   25  Label:  LD   HL,0001     ;Kommentar
+1    6        15  21      26   (Positionen auf dem Bildschirm)
+Die Zeilennummer ist im Bereich 1 bis 32767 zulaessig.
+Der Assembler nutzt die Original ZILOG- Mnemonic.
+Als Fehler werden im zweiten Lauf nur Error 10 und "BAD ORG"
+angezeigt. Am Ende folgt die Meldung "Pass 2 errors nn", gefolgt
+von einer Warnung bei fehlenden Labels. Die Belegung der Symbol-
+tabelle wird durch "Table used xxxx from yyyy" angezeigt.
+ 
+          ZEILENBEARBEITUNG
+********************************************************
+Eine Zeile des Quelltextes hat folgenden Aufbau:
+Zeilennummer Label  Mnemonic Operanden  ;Kommentar
+z.B. 10 ANFANG: LD  HL,WERT   ;Beispiel
+ ";"    Die diesem Zeichen folgende Zeile wird als Kommentar
+        bewertet und hat keine Wirkkung.
+ "*"    Das nacchfolgende Zeichen wird als Assemblerkommando
+        behandelt. Weitere Zeichen sind Kommentar.
+ LABEL  Ist ein Symbol das einen 16 bit Wert repraesentiert.
+        Ein Label kann ueber die EQU- Anweisung als Konstante
+        definert werden. Nur die ersten sechs Zeichen eines 
+        Labels sind signifikant. Ein Label beginnt stets mit 
+        einem Buchstaben.
+ ADR    Der Assembler verwaltet einen Adresszaehler. Mit der
+        ORG- Anweisung kann dieser gesetzt werden. Mit dem 
+        Symbol "&" kann auf den Adresszaehler zugegriffen werden.
+        z.B. LD HL,&+5 laedt HL mit dem Wert Adresszaehler+5.
+ SYMTAB Jedes Label wird in die Symboltabelle eingetragen.
+        Die Symbolltabelle ist vom Typ Binary Tree Symbol Table
+        wodurch ein effizientes Arbeiten moeglich ist.
+             AUSDRUECKE
+**********************************************************
+TERM        dezimale Konstante             z.B. 1234
+            hexadezimale Konstante         z.B. #123
+            binaere Konstante              z.B. %10010011
+            Zeichenkonstante               z.B. "abc"
+            Label                          z.B. L1234
+            $ kann benutzt werden um den Wert des Adresszaelers
+            zu beschreiben
+OPERATOR    + Addition
+            - Subtraktion
+            & logisches AND
+            . logisches OR
+            ! logisches XOR
+            * Integermultiplikation
+            / Integerdivision
+            ? MOD- Funktion (a?b = a-(a/b)*a)
+Arithmetische Operationen verwenden das Zweierkomplement, dass
+heisst Zahlen groesser 32767 werden negativ dargestellt.
+           ASSEMBLERANWEISUNGEN
+**********************************************************
+ORG ausdruck   setzt den Adresszaehler auf den Wert Ausdruck.
+               Wird durch ORG ein Ueberschreiben des Programms
+               veranlasst folgt die Ausschrift "BAD ORG" und
+               ein Abbruch der Assemblierung.
+EQU ausdruck   weist dem vorangestellten Label den Wert Ausdruck 
+               zu. Der Ausdruck darf kein Symbol enthalten 
+               das noch nicht vereinbart wurde.
+DEFB ausdruck, ausdruck, ...
+               Der durch den Adresszaehler bestimmten Speicher-
+               zelle wird ein 8 bit Wert entsprechend Ausdruck
+               zugewiesen.
+DEFW ausdruck, ausdruck, ...
+               Auf das durch den Adresszaehler bestimmten 
+               Speicherplatzpaar wird ein Wort entsprechend
+               Ausdruck gesetzt.
+DEFS ausdruck  Erhoeht den Adresszaehler um den Wert Ausdruck.
+               Damit wird ein Speicherbereich reserviert.
+DEFM "s"       Den Speicherplaetzen wird ein ASCII- String zu-
+               gewiesen. Die Laenge betraegt maximal 255 Zeichen.
+               Am Anfang und Ende muessen """ stehen.
+ENT ausdruck   setzt die Startadresse des Objektcodes auf den
+               Wert Ausdruck. Wichtig fuer das Assemblerkommando
+               "R" und zum Ermitteln der Startadresse.
+IF ausdruck    Wertet Ausdruck aus. Nur wenn dieser ungleich
+               Null ist wird die Assemblierung fortgesetzt.
+               Ansonsten wird die Assemblierung bis ELSE oder 
+               END ausgesetzt.
+ELSE           Schaltet die Assemblierung ein oder aus je nach
+               vorhergehendem Modus.
+END            beendet die Assemblierung.
+             ASSEMBLERKOMMANDOS
+*********************************************************
+*E      erzeugt drei Zeilen auf dem Bildschirm bzw. Drucker.
+*Hs     Der String "s" wird nach jedem *E als Ueberschrift
+        eingesetzt. Automatisch wird ein *E erzeugt.
+*S      bewirkt ein Stopp des Listings. Durch Druecken einer
+        beliebigen Taste wird das Listen fortgesetzt. Dieses
+        Kommando hat keinen Einfluss auf den Drucker!
+*L-     Stopt das Listing auf Drucker und Bildschirm.
+*L+     Setzt Listing auf Drucker und Bildschirm fort.
+*D-     Der Adresszaehler wird dezimal anstatt normalerweise
+        hexadezimal angegeben.
+*D+     Die Wirkung von *D- wird wieder aufgehoben.
+*C-     Das Assemblerlisting wird um den Objektcode verkuerzt.
+*C+     Wirkung von *C- wird wieder aufgehoben.
+*F filename
+        Dieses Kommando erlaubt die Assemblierung von der 
+        Kassette. Das File muss vorher mit "T" abgespeichert
+        werden.
+*M+     Durch dieses Kommando wird veranlasst, dass ein Macro
+        vollstaendig aufgelistet wird. 
+*M-     Im Listing erscheint nur der Macroname.
+Ein Macro hat folgende Form:
+Name     MAC
+         Macrodefinition
+         ENDM
+ 
+EDITORFUNKTIONEN
+----------------
+GENS enthaelt einen Editor, der zeilenorientiert arbeitet. Der
+Editor erzeugt ein komprimiertes File. Folgende Zeichen sind
+fuer den Editor von Bedeutung:
+"ENTER"      0DH Zeilenabschluss
+"BACKSPACE"  08H Loeschen eines Zeichen
+"TAB"        09H Vorwaerts zur naechsten Tabulatorposition.
+Eine Kommandozeile des Editors hat folgenden Aufbau:
+K n1,n2,s1,s2
+K         Kommandobuchstabe
+n1,n2     Zeilennummer im Bereich 1 ... 32767
+s1,s2     Zeichenkette der maximalen Laenge 20
+I n,m     Automatische Zeilennnummerierung ab n mit der
+          Schrittweite m.
+L n,m     Listen des Quelltextes von Zeile n bis Zeile m.
+K n       Einstellung der Anzahl der Zeilen fuer List. n
+          ist eine MOD 255 Zahl die bis zum naechsten K-                                 
+          Kommando gespeichert wird.
+D n,m     Loeschen eines Zeilenbereichs von n bis m. Soll nur
+          eine Zeile geloescht werden ist n gleich m. 
+M n,m     Die Zeile n wird nach Zeilennummer m transportiert.
+          Falls eine Zeile m vorhanden ist, wird diese geloescht.
+N n,m     Neunummerierung von Zeile n in Abstaenden von m.
+F n,m,f,s Suchen nach einem String im Zeilenbereich von n
+          bis m. Wird die Zeichenkette f gefunden, so wird in
+          in den EDIT- Modus gesprungen und die Zeichenkette
+          f gegen die Zeichenkette s ausgetauscht. 
+P n,m     Der Zeilenbereich n bis m wird mittels HEADER abge-
+          gespeichert. Filetyp ist "G" .
+G         Von der Kassette wird ein File im HEADER Format einge- 
+          lesen. Ein Anhängen von Programmen ist problemlos 
+          möglich. Reassemblerprogramme die mit MONS 3M erstellt 
+          wurden, und mit HSAVE abgespeichert wurden 
+          lassen sich einladen und weiter bearbeiten.
+T n,m,s   Abspeichern der Zeilen n bis m unter dem Filenamen
+          s. So abgespeicherte Files koennen vom Band                                 
+          assembliert werden.
+A         Assemblierung des gesamten Textfiles.
+R         Probelauf des Programms. Vorraussetzung ist der
+          Gebrauch der Assembleranweisung ENT.
+B         Austritt aus GENS in das Betriebssystem des Z 1013.
+V         Bringt die aktuellen Werte von n1 und n2 zur Anzeige.
+X         Die Start- und Endadresse des Textfiles werden                                 
+          dezimal angezeigt.
+W n,m     Der Zeilenbereich n bis m wird ausgedruckt.
+          Aller 54 Zeilen wird ein STOP eingefügt.
+R         Ermöglicht das Laden eines GENS- Programms, daß
+          mit der herkömmlichen GENS- Routine abgespeichert
+          wurde.
+S n,m,s   Hiermit wird ein Zeilenbereich des Quelltextes
+          mit einer TINY- BASIC ähnlichen Routine unter
+          dem Namen "s" abgespeichert.
+E n       Editierung der Zeile n. Folgende Subkommandos
+          sind verfuegbar:
+" "    Incrementiert den Textzeiger um eins.
+"TAB"  (09H) Textzeiger wird auf die naechste Tabulatorposition
+       gestellt.
+"ENT"  Beendigung des Editiermodus.
+"Q"    Beendet die Editierung dieser Zeile ohne die Aenderungen
+       zu uebernehmen.
+"R"    Laedt nochmals die Originalzeile aus dem Puffer und 
+       Ueberschreibt damit die geaenderte Zeile.
+"L"    Listet den Rest der Zeile hinter dem Textzeiger.
+"K"    Loescht ein Zeichen auf der aktuellen Kursorposition.
+"Z"    Loescht Zeichen von der Kursorposition einschliesslich
+       bis zum Zeilenende.
+"F"    Sucht weiter nach dem im F- Kommando definierten 
+       Zeichenkette f. Wird der String f gefunden so befindet
+       man sich im EDIT- Modus am Anfang der betreffenden
+       Zeile.
+"S"    Ersetzt den aktuellen f- String durch den s- String.
+"I"    Einfuegen von Zeichen ab der aktuellen Position.
+"x"    Bewegt den Textzeiger an das Zeilenende und beendet
+       den aktuellen Sub- Modus.
+"C"    Ermoeglicht den Austausch der Zeichen ab der aktuellen
+       Position. Mit ENT wird dieser Submodus beendet.
+ 
+ *** FEHLERMELDUNGEN ***
+ERROR 01   Fehler im Aufbau dieser Zeile
+ERROR 02   Mnemonic wurde nicht erkannt 
+ERROR 03   Statement schlecht geformt
+ERROR 04   Symbol mehr als einmal definiert
+ERROR 05   Zeile enthaelt unerlaubtes Zeichen
+ERROR 06   Ein Operand dieser Zeile ist unerlaubt
+ERROR 07   Ein reserviertes Wort wurde als Symbol verwendet
+ERROR 08   Falsche Registerbenutzung
+ERROR 09   Zu viele Register in dieser Zeile
+ERROR 10   Der Wert des Ausdrucks ist unzulaessig
+ERROR 11   Befehl JP (IX+n) und JP (IY+n) sind unerlaubt
+ERROR 12   Fehler bei der Anwendung einer Assembleranweisung
+ERROR 13   Illegale Vorwaertsreferenz ; Zugriff auf ein noch
+           nicht definiertes Symbol
+ERROR 14   Division durch Null
+ERROR 15   Ueberlauf in einer Multiplikationsoperation
+ERROR 16   Verschachtelte Macrodefinition
+ERROR 17   Marke ist nicht als Macro definiert
+ERROR 18   Verschachtelter Macroaufruf
+ERROR 19   Verschachteltes bedingtes Statement
+BAD ORG!   Die Anwendung der ORG Anweisung haette die Zer-
+           stoerung des GENS oder der Symboltabelle zur Folge
+Out of Table Space
+           Der vereinbarte Platz fuer die Symboltabelle ist
+           nicht ausreichend.
+Bad Memory Der Speicherplatz fuer den Quelltext ist nicht
+           ausreichend.
+*** RESERVIERTE WORTE
+A B C D E H L I R $
+AF BC DE HL IX IY SP NC Z NZ M P PE PO
+ 
+*** MNEMONICS DES ASSEMBLERS ***
+ADC   ADD   AND   BIT   CALL  CCF   CP    CPD   CPDR
+CPI   CPIR  CPL   DAA   DEC   DI    DJNZ  EI    EX
+EXX   HALT  IM    IN    INC   IND   INDR  INI   INIR
+JP    JR    LD    LDD   LDDR  LDI   LDIR  NEG   NOP
+OR    OTDR  OTIR  OUT   OUTD  OUTI  POP   PUSH  RES
+RET   RETI  RETN  RL    RLA   RLC   RLCA  RLD   RR
+RRA   RRC   RRCA  RRD   RST   SBC   SCF   SET   SLA
+SRA   SRL   SUB   XOR
+DEFB  DEFM  DEFS  DEFW  ELSE  END   ENT   EQU   IF    ORG
+*D  *E  *H  *L  *S  *C  *F
+Diese Beschreibung wurde unter Verwendung der HISOFT Dokummentation
+durch Test der vorliegenden Version erarbeitet.
+Hinweise, Fehler und Rueckfragen bitte an:
+Andreas Koehler
+Tiroler Str. 9
+Dessau 
+4500
+

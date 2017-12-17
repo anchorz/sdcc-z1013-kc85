@@ -1,0 +1,3 @@
+<kurz src="Koepfe von mit HEADERSAVE lesen"/>
+<lang><include src="I.HEADERWRITE 1.0^.txt"/></lang>
+<requires></requires>

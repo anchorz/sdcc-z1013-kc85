@@ -1,0 +1,21 @@
+das Programm "VOICE".  
+
+Es ist als UP geschrieben. Du musst in (7600h) ein Argument ablegen und 
+dann mit CALL 7601h die Wortausgabe aufrufen.  
+
+Folgende Argumenteund zugehoerige Worte sind festgelegt: 
+1...9-->EINS...NEUN
+10-->UND , 11-->ZEHN
+12-->ZIG , 13-->ELF
+14-->ZWOELF,15-->NULL
+16->>ZWAN, 17-->HUNDERT
+18-->KOMMA
+
+Mit groesseren Argumenten kommst Du in die Steuerschleife der Sprachausgabe.  
+Ich habe Dir danach ein BASIC-Programm ueberspielt, das auf VIOCE zugreift.  
+Ansonsten geht hier alles seinen Gang.  
+Bestimmt wird's jetzt etwas ruhiger.  
+Irgendwann mache ich auch den Z1013 fertig zum Ausloeten.  
+
+Vielleicht kannst Du ihndann am 24. Jan mit nach Berlin bringen.    
+Tschuess!    U W E                                                                   

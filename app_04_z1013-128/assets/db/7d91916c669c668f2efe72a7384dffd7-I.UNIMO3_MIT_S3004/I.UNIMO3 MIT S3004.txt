@@ -1,0 +1,383 @@
+********************************
+********************************
+**                            **
+**                            **
+**     UNIMO 3 MIT S 3004     **
+**                            **
+**                            **
+** (c) by Günter Prechel      **
+**                            **
+** 1990   KB Dessau IG Z 1013 **
+**                            **
+********************************
+********************************
+
+
+UNIMO ist ein Universalzusatzmonitor für den MRB Z1013. Das Pro-
+gramm erkennt,ob der Monitor A.2 oder 1.02 angeschlossen ist.Die
+Schreibmaschine S 3004 kann mit beiden Monitoren als Drucker und
+als Tastatur  verwendet  werden. Bei Nachrüstung eines Schalters
+in den  Z 1013 ist eine Umschaltung  der Monitore A.2/1.02  mög-
+lich.
+Beim UNIMO 2 wurde eine Interrupt- Druckroutine  realisiert. Die
+Routine STAT wurde neu aufgenommen. Beim UNIMO 3 wurden  das Er-
+kennen und die Umschaltung der Monitore verändert  und die Steu-
+erzeichen für den Druck mit der S 3004 erweitert.
+Das Laden  des UNIMO erfolgt mit L E000 EBFF. Start: J E800
+Es erfolgt ein Transport des Zusatzmonitors  von E000H bis E7FFH
+nach F800H bis FFFFH. In E900H- EBFFH verbleiben folgende Hilfs-
+programme: 
+
+E820H IR-DRUCK
+E900H HILFSMENUE 
+EA80H ASCII+GRAFIK
+EB00H FIND @F
+EB80H ASCII-DUMP
+
+Mit dem Start werden  die Sprungadressen ab B0H und für NMI  mit
+RST 7 initialisiert. Es erscheint
+
+HILFSMENUE               Start
+**********
+@A ASCII-DUMP            EB80H
+@B BASIC-Restart*        0302H
+@D DEBUGGER*             CD00H
+@F Aadr Az DB...FIND     EB00H
+@G ASCII+GRAFIK          EA80H
+@I INKEY+ZEIT E/A        FF14H
+@K TASTEN-BEEP E/A       FD42H
+@L HEADERLOAD            F806H
+@O OC-EDITOR*            4000H
+@P Aadr Eadr DRUCK       FCA0H
+@S HEADERSAVE            F809H
+@T TASTATUR Z1013/S3004  FE95H
+@1 J 100                 0100H
+@2 J 200                 0200H
+@@ UNIMO                 FF80H
+^T+MONITOR A.2/1.02      FE67H
+
+BEEP und JOYSTICK -> Sprungvert.
+
+* Erst laden!        <ET>
+
+Im Zusatzmonitor  sind  folgende Funktionen enthalten:
+
+                         SPV
+
+F800H HEADERSAVE  @L LORUF FFF1H
+                  @S SARUF FFF4H
+FC00H S3004-CODE
+FCA0H DRUCK ASCII @P
+FCECH TASTENBETÄT.   STAT  FFF7H
+FCFBH DRUCK AKK.     DRAKK FFE8H
+FD15H DRUCKER INIT.  DRINI FFCDH
+FD20H DRUCKER RÜCK.  DRDEL FFEBH
+FD27H ZEICHENDRUCK   ZEIDR FFCAH
+FD6DH BILDSCH.DRUCK  BSDR  FFE5H
+FD7BH DRUCK ARG 1    DRZEL FFDFH
+FD8DH BEEP           BEEP  FFDCH
+FDA2H TASTENBEEP  @K
+FDB4H ZEICH.S3004
+FE51H TRENNM.S3004
+FE67H MO.A.2/1.02 ^T+
+FE95H Z1013/S3004 @T
+FEBBH RST4 DB01      INKEY FFFDH
+      RST4 DB04      POLL  FFFAH
+FF14H A.2:RST4/04 @I
+FF23H JOYSTICK       JOYST FFBBH
+FF50H B0H-SPRUNGL.
+FF80H ZUS.MON.INI.@@ ZMINI FFEEH
+FFB8H SPRUNGVERT.
+
+Ein anderes Programm kann in die RST 4- DB01- Schleife des UNIMO
+eingebunden werden, indem FED1H mit  JMP PROGRAM  geladen  wird.
+Dieses Programm ist mit JMP FD82H zu verlassen. Nach RESET  kann
+der Neustart des UNIMO mit @@ erfolgen.
+
+
+Bedienung des UNIMO___________________
+
+Nach Erscheinen  des  Hilfsmenüs und Drücken der Enter-Taste ist
+UNIMO betriebsbereit. Mit @@ kann jederzeit das Hilfsmenü sicht-
+bar gemacht werden.
+Nach  NMI oder Sprung auf F000H  bleibt der Status des UNIMO er-
+halten. Es ist  aber bei letzterem mit @@ neu zu starten, da die
+RST 4-Sprungadresse  wieder  ab 0021H eingetragen werden muß.
+UNIMO kann  mit  der Folienflachtastatur  und  dem  Monitor 1.02
+oder mit einer 58teiligen Tastatur  und  dem Monitor A.2 genutzt
+werden. UNIMO  erkennt, welcher Monitor  angeschlossen  ist  und
+ladet die entsprechenden Sprungadressen.
+Die Tastaturabfragen RST 4 DB 01 und DB 04 werden über UNIMO ge-
+führt.Alle  anderen  Funktionen des Originalmonitors sind direkt
+nutzbar.Zusätzlich  sind über @ noch  die im Hilfsmenü gezeigten
+Funktionen  und  Hilfsprogramme erreichbar. Diese  können  auch,
+soweit vorgesehen, über  den im UNIMO  enthaltenen Sprungvertei-
+ler angesprungen werden.
+Beim  Monitor A.2 ist es  oft erforderlich, bei  Programmen  mit
+RST 4 DB 04  mit @I eine Zeitverzögerung einzuschalten.
+Der Tastenbeep  kann mit @K eingeschaltet werden. 
+
+
+S 3004 als Tastatur___________________
+
+Beim  Start  von UNIMO wird der PIO-Port A für die elektronische
+Schreibmaschine  S 3004 initialisiert. Die Umschaltung  auf  die
+Tastatur der S 3004 erfolgt mit @T. Dabei werden  Druckwerk  und
+Tastatur getrennt.  Mit der Halbschrittrücktaste  kann  man  den
+Trennmodus aufheben.
+Die Tabellen von FC00H bis FC7FH und FC80H  bis  FC9FH enthalten
+die Zuordnung von ASCII-/ S3004-Code.Ab FC00H sind einige ASCII-
+Steuerzeichen umgesetzt.Ab FC20H sind allen ASCII-Schriftzeichen
+Tasten der S3004 zugeordnet.Sie entsprechen bis auf nachstehende
+Ausnahmen dem Schriftbild des Z1013 - Zeichengenerators:
+
+S3004  ASCII      S3004  ASCII
+------------      ------------
+<       3CH       ^       5EH
+>       3EH       ` (my)  60H
+@       40H       ä (ae)  7BH
+Ä (Ae)  5BH       ö (oe)  7CH
+Ö (Oe)  5CH       ü (ue)  7DH
+Ü (Ue)  5DH       ß (ss)  7EH
+Korrek. 00H       REL     7FH
+
+Ab FC80H sind  den Tasten CODE a bis CODE ü  die ASCII-Werte 01H
+bis 1DH zugeordnet.
+1EH  Mikrozeilenschaltung  vorw.
+1FH  Mikrozeilenschaltung rückw.
+Damit kann jeder ASCII-Wert von 01H bis 7FH durch eine Taste der
+S 3004 erzeugt werden.
+Mit der Taste CODE REL wird auf Grafik umgeschaltet (+80H).
+Mit den folgenden Tasten werden Steuerfunktionen ausgelöst:
+
+S 3004                   ASCII
+________________________________
+Rücktaste                08H
+Tabulatortaste           09H
+Halbzeilentaste vorwärts 0AH
+Halbzeilentaste rückw.   0BH
+Wagenrücklauftaste       0DH Ent
+Expreßrücktaste          0DH Ent
+CODE REL  Grafik E/A    +80H
+CODE Rückt.  Trennm.E/A   -
+CODE T+ Umschaltg.Monitor -
+
+Mit der letztgenannten Taste wird eine Umschaltung der  Monitore
+A.2/1.02 unterstützt. Eine Warteschleife  wird erst  wieder ver-
+lassen, wenn von Hand auf den anderen Monitor  umgeschaltet wur-
+de. Dann wird F000H angesprungen. Nach @@ Enter ( 58teilige Tas-
+tatur: 22 Shift lock ) ist die S 3004- Tastatur auf  den anderen
+Monitor geschaltet.
+Nach RST 4 DB 01 steht im Register A der ASCII- Code. Alle ande-
+ren Register werden gerettet.
+Nach RST 4 DB 04 steht in A der ASCII-Code oder 00H und in C der
+S 3004-Code. Die Register B, DE und HL werden zerstört.
+
+
+S 3004 als Drucker__________________
+
+Nach Aufruf  von DRAKK (Srungverteiler)  wird der  im Register A
+übergebene  ASCII-Code über die Tabelle  FC00H bis FC7FH  in den
+S 3004-Code umgewandelt. Für die Zeichen 20H bis 7EH erfolgt der
+Druck  mit den unter "Tastatur" aufgeführten Besonderheiten. Bei
+7FH wird nicht gedruckt. Bei Grafikzeichen  wird ein Leerzeichen
+ausgegeben.
+Auf die  folgenden  ASCII-Steuerzeichen  reagiert die Schreibma-
+schine:
+
+07H  kurzer Ton (! nächstes Zeichen Länge)
+08H  1 Zeichen nach links
+09H  zum nächsten Tabulator
+0AH  1 Zeile nach unten
+0DH  zurück an Zeilenanfang
+11H  Neuinitialisierung S 3004
+12H  Trennmode
+13H  Aufhebung Trennmode
+14H  nächstes Zeichen ohne Vorschub
+15H  1/20tel Zeile weiter
+16H  Standardtabulator setzen
+17H  alle Tabulatoren löschen
+18H  Tabulator setzen
+19H  Tabulator löschen
+1EH  zurück und nächste Zeile
+
+Der S3004- Code wird im Akkumulator über  den Sprungverteiler an
+ZEIDR übergeben.Hier wird zuerst über den SPV mit DRINI die Ini-
+tialisierung des  PIO - Ports A vorgenommen.  Danach   wird  der
+Buchstabe  seriell zur Schreibmaschine  ausgegeben.  Die Zeichen
+< , > und ^ werden von der S3004 normal ohne  Vorschub gedruckt.
+Deshalb wird  hier ein Vorschub eingefügt. Nach ZEIDR steht in A
+der S3004-Code des Zeichens.Nach Rücksprung in und Verlassen von
+DRAKK  sind alle Register gerettet.
+Mit DRZEL wird das im ARG1 (1BH) übergebene Zeichen gedruckt.
+Über DRDEL kann ein zusätzliches Rücksetzen des  Druckertreibers
+erfolgen.
+
+
+ASCII-RAM-DRUCK_______________
+
+FCA0 FCE6 (FCA0)    E820 E8FF (FCA0)
+Aufruf mit @P Aadr Eadr
+
+Mit dem Programm können ASCII-Texte aus dem RAM gedruckt werden.
+Nach Eingabe der Anfangs- und Endadresse wird  bei Adressen aus-
+serhalb des Bildwiederholspeichers auf E820H gesprungen  und die
+Anfangsadresse und die Textlänge übergeben. Danach  ist  die An-
+zahl der Zeilen pro Seite als Hexzahl (3E=62 Zeilen) einzugeben.
+Ist als Zeilenende im ASCII-Text 0DH enthalten, so ist die Frage
+"ZE 0DH(Y)?" mit "Y" oder "y"  zu beantworten.  Sonst werden 1EH
+oder 0DH 0AH als Zeilenende verarbeitet.
+Die Richtigkeit der Eingaben ist mit "Y" oder "y" zu bestätigen.
+Danach werden die Interruptparameter initialisiert, wird die ISR
+ab E891H mit DRDEL aufgerufen und zur Monitoreingabeschleife zu-
+rückgesprungen.
+Der Druck beginnt.  Zwischen dem Druck der einzelnen Zeichen mit
+DRAKK bleibt genügend Zeit, um andere Programme abzuarbeiten.
+Bei Seitenende  wird  der Druck  gestoppt  und die nächste RAM -
+Adresse angezeigt. Nach Papierwechsel ist der Druck der nächsten
+Seite  mit  "^W"  zu starten oder das Programm mit "^C" abzubre-
+chen.
+Zum Druck aus dem Bildwiederholspeicher wird eine direkte Druck-
+routine  ab FCB8H  benutzt.  Vor dem Druck  jeder Zeile wird ein
+Leerzeichenvergleich durchgeführt. Nach dem letzten von 20H ver-
+schiedenem Zeichen  oder  dem Bildschirmzeilenende  wird auf die
+nächste Zeile geschaltet.
+Bei Aufruf von BSDR über den SPV erfolgt der Druck  des grsamten
+Bildschirmes.
+
+
+HEADERSAVE__________
+
+F800 FBFF FBEE
+
+Es  ist  der HEADERSAVE V 5.9 RB impliziert.
+
+
+BEEP____
+
+FD8D FDA1 FD8D
+
+Über  den SPV BEEP  wird ein kurzer Ton über die MGB-Buchse aus-
+gegeben.
+
+
+JOYSTICK - Abfrage__________________
+
+FF23 FF4F FF23
+
+Anschluß bei der 58teiligen Tastatur parallel zu den Tasten 08H,
+09H, 1AH, 1BH und 20H.
+Die Abfrage erfolgt über JOYST-SPV. Das Ergebnis steht gleicher-
+maßen im Register A, B und C.
+
+Bit 0 = 1  links         01H  01
+Bit 1 = 1  rechts        02H  02
+Bit 2 = 1  runter        04H  04
+Bit 3 = 1  hoch          08H  08
+Bit 4 = 1  Aktionstaste  10H  16
+
+Bei Mehrfachbetätigung ist das Ergebnis die Summe der Werte.
+Keine Betätigung: alle Bit=0; Z=1
+Außer AF und BC werden keine Register verändert.
+Bei BASIC ist  Befehl JOYST(1) oder JOYST(2) möglich.
+
+
+SPRUNGVERTEILER_______________
+
+FFB8 FFFF
+
+FFB8H  C9 00 00  RET
+FFBBH  C3 23 FF  JMP JOYST
+FFBEH  C3 15 F8  JMP AKP
+FFC1H  C3 12 F8  JMP SUCHK
+FFC4H  C3 0F F8  JMP BSMK
+FFC7H  C3 0C F8  JMP BLMK
+FFCAH  C3 27 FD  JMP ZEIDR
+FFCDH  C3 15 FD  JMP DRINI
+FFD0H  C9 00 00  RET
+FFD3H  C9 00 00  RET
+FFD6H  C9 00 00  RET
+FFD9H  C9 00 00  RET
+FFDCH  C3 8D FD  JMP BEEP
+FFDFH  C3 7B FD  JMP DRZEL
+FFE2H  C9 00 00  RET
+FFE5H  C3 6D FD  JMP BSDR
+FFE8H  C3 FB FC  JMP DRAKK
+FFEBH  C3 20 FD  JMP DRDEL
+FFEEH  C3 80 FF  JMP ZMINI
+FFF1H  C3 00 F8  JMP LORUF
+FFF4H  C3 03 F8  JMP SARUF
+FFF7H  C3 EC FC  JMP STAT
+FFFAH  E7 04 C9  JMP POLL
+FFFDH  E7 01 C9  JMP INKEY
+
+
+ASCII - DUMP____________
+
+EB80 EBFF EB80
+
+Das  bekannte Programm wurde etwas  abgewandelt. Nach N kann man
+eine neue Adresse eingeben.
+Mit ^C erfolgt der Abbruch.Jede andere Taste  führt  zur Anzeige
+der nächsten 40H des RAM.
+
+
+ASCII+GRAFIK-RAM________________
+
+EA80 EAFF EA80
+
+Nach Eingabe der Anfangsadresse werden  alle  ASCII-Zeichen ein-
+schließlich Grafik (20H bis FFH) auf dem Bildschirm  dargestellt
+(30 Zeilen).  0DH oder 1EH bewirken  eine neue Zeile. Links oben
+erscheint  die aktuelle  Anzeigeadresse. In  der  unteren  Zeile
+werden  die Tastenfunktionen  erläutert. Die Rücktaste (08H) be-
+wirkt  das  Zurückrufen  der vorhergehenden  Bilder. Mit N  wird
+zur Eingabe einer neuen Anfangsadresse aufgefordert, Abbruch mit
+^C.  Jede  andere Taste bewirkt ein Weiterblättern  zum nächsten
+Bild. Da die Anfangsadressen in den  Anwenderstack  gepusht wer-
+den, ist ein 18maliges Vorwärtsblättern erlaubt.
+
+
+FIND @F_______
+
+EB00 EB7F (EB00)
+Start: @F Aadr Az DB DB ...
+
+Die Eingabe erfolgt wie bei der Funktion F des Monitors 1.02. Es
+kann eine Folge von  bis zu 7 Datenbytes  im RAM gesucht werden.
+Angezeigt wird  die Adresse und der 1. DB  oder "NOT FOUND". Mit
+R wird die vorherige Adresse mit Inhalt angezeigt,mit z.B. Enter
+die nächste Adresse.Nach dieser kann mit G weitergesucht werden.
+Der Abbruch erfolgt mit ^C.
+
+
+HARDWARE________
+
+Der PIO-Port A des Z1013 und die Interfacebuchse der S 3004 sind
+masseseitig direkt und ein- und ausgangseitig über 1kOhm-Schutz-
+widerstände wie folgt verbunden:
+
+  Z 1013        S 3004
+  ----------    --------
+   00  X4:A5    A13  00
+  PA0  X4:A4    A11  RxD
+  PA1  X4:B4    B11  DTD
+  PA6  X4:A2    B13  TxD
+  PA7  X4:B2    A12  RTS
+
+Es erfolgt  also  keine Signalumkehr, wie z.B. bei Optokopplern.
+Bei Einsatz letzterer  muss fol-
+gende Programmänderung vorgenommen werden:
+
+  Adresse  direkt  Optokoppler
+  ----------------------------
+  FD32H    20H     28H
+  FD40H    00H     2FH
+  FD5FH    C3H     00H
+  FDC1H    FDH     02H
+  FDD7H    C3H     00H
+  FDFAH    00H     2FH
+
+Zur Umschaltung  der Monitore A.2 und 1.02 ist statt der Wickel-
+verbindungen ein Umschalter einzubauen.
+

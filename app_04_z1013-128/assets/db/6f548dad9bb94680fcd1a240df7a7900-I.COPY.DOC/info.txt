@@ -1,0 +1,3 @@
+<kurz src="COPY.COM, Kopieren von CP/M-Dateien von und zum Magnetband"/>
+<lang><include src="I.COPY.DOC.txt"/></lang>
+<requires></requires>

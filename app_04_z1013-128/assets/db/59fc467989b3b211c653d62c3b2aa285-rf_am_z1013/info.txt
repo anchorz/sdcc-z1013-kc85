@@ -1,3 +1,3 @@
-<kurz src="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013"/>
+<kurz src="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013+HEADERDISK 45"/>
 <lang><include src="rf_am_z1013.txt"/></lang>
 <requires></requires>

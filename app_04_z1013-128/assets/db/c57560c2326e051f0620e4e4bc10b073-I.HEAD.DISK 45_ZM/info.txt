@@ -1,0 +1,3 @@
+<kurz src="HEADERSAVE-kompatible Verwaltung, leicht verändert"/>
+<lang><include src="I.HEAD.DISK 45_ZM.txt"/></lang>
+<requires></requires>

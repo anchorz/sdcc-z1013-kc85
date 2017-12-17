@@ -1,0 +1,3 @@
+<kurz src="universelles Textverarbeitungssystem CP/M"/>
+<lang><include src="_.BITEX.DOK.txt"/></lang>
+<requires></requires>

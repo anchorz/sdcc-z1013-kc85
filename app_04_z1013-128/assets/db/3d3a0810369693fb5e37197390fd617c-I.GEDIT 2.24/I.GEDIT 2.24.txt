@@ -1,0 +1,127 @@
+           *******************************
+           * Beschreibung des grafischen *
+           *    Editors  GEDIT 2.24      *
+           * (c) by rehn-soft,      0389 *
+           *******************************
+
+GEDIT stellt einen grafischen Editor dar, der es ermoeglicht,
+mit Hilfe des (originalen) Zeichensatzes des Z 1013 Zeichnungen
+am Bildschirm zu entwerfen. Das Programm nutzt Betriebssystem-
+Funktionen des Monitorentwurfes von R.Brosig (MP 7/88).
+Die Entwurfsarbeit wird von GEDIT durch Zusatzfunktionen
+unterstuetzt. Als Zeichenflaeche werden die oberen 30 Bild-
+schirmzeilen genutzt. Ueber den angehaengten grafischen
+Druckertreiber ist es moeglich, die erarbeiteten Bilder von
+einem EPSON-kompatiblen Nadeldrucker (K63xx, LXxx) ausdrucken zu
+lassen.  
+
+Standort:       100H - 14EFH  (Programm, ROM-faehig) >CRC=5BC8
+                14F0H - 2D7FH  (vom Programm benoetigter RAM)
+Start:          100H
+Restart:        103H
+
+Bildzwischenspeicher:    2600H - 29BFH (Laenge = 3C0H)
+
+
+Funktionen
+----------
+Bis auf ENT und SP (s.u.) sind alle Funtionen ueber
+CTRL..Aufrufe realisiert und koennen mit CTRL-C (^C) = BREAK
+abgebrochen werden. Jeder Funktionsaufruf legt eine Kopie des
+aktuellen Bildes im Bildzwischenspeicher ab.
+Die Arbeit mit den Funktionen wird staendig durch eine Menue-
+zeile unter dem Bild unterstuetzt.
+^R :    Rueckkehr ins Betriebssystem des Z 1013.  Vorher wird
+        eine Kopie des aktuellen Bildes im Bildzwischenspeicher
+        abgelegt.
+^N :    Aufblenden des Menues.
+^Z :    Loeschen des aktuellen Bildes. Zwischengespeicherte
+        Bilder (s.u.) bleiben erhalten.
+^A :    Anzeige von jeweils 31 darstellbaren Zeichen in der 
+        Menuezeile, die dann zum Gestalten des Bildes zur
+        Verfuegung stehen. Wiederholter Aufruf zeigt die
+        naechsten Zeichen.
+ENT:    Aufnehmen des Zeichens unter dem Cursor. Dabei ist es
+        gleichgueltig, ob das Zeichen aus der Menuezeile oder
+        aus dem bereits existierenden Bild geholt wird. Das
+        Zeichen wird als Cursorzeichen uebernommen und ausserdem
+        in der Menuezeile hexadezimal angezeigt (ein aufgenom-
+        menes Leerzeichen wird als Kreuz dargestellt). Das
+        Zeichen kann jetzt mit Hilfe der Cursor-Tasten
+        (Cur-left=08H, Cur-right=09H, Cur-down=0AH,Cur-up=0BH)
+        an die gewuenschte Bildschirmposition gebracht und dort
+        mit SP (s.u.) gesetzt werden.
+SP :    Setzen des Cursorzeichens auf die Cursorposition.
+^T :    Einfuegen von Text ab der Cursorposition bis ENT.
+^F :    Fuellen aller Cursorpositionen mit dem Cursorzeichen. Mit
+        dieser Funtion koennen z.b. schnell Linien gezogen werden.
+^V :    Verschieben von Bildbereichen. Durch Positionieren des
+        Cursors wird der zu verschiebende Bereich oben links und
+        unten rechts eingegrenzt und kann dann beliebig über den
+        Bildschirm verschoben werden. Unter Zuhilfenahme der
+        ^S- und ^L-Funktionen (s.u.) koennen so auch Bildteile
+        an andere Stellen kopiert werden.
+^S :    Save Bild. Diese Funktion gestattet es, das aktuelle
+        Bild in vier verschiedenen Bildspeichern abzulegen oder
+        auf Kassette auszugeben. Dadurch ist es moeglich,
+        mehrere Bilder gleichzeitig im Speicher zu verwalten.
+^L :    Load Bild. Es koennen Bilder aus den Bildspeichern eins
+        bis vier oder von Kassette in den Bildschirm zur Bear-
+        beitung geladen werden. Das Laden aus den Bildspeichern
+        2,3,4 und von Kassette geschieht durch Kopieren. Beim
+        Laden aus dem Bildspeicher 1 werden nur Leerzeichen im
+        aktuellen Bild ueberschrieben (mix). Damit ist es
+        moeglich, Bilder zu mischen und schrittweise aufzubauen.
+        Hinweis:        ^S und ^L nutzen die HEADERSAVE-Routi-
+                        nen SARUF und LORUF, Typvorgabe "G".
+^P :    Ausgabe des aktuellen Bildes an den Drucker. Dazu wird
+        jedes Zeichen des Bildes im angehaengten Druckertreiber in
+        einen EPSON-kompatiblen Code gewandelt und mit ent-
+        sprechenden Steuerzeichen an einen externen Drucker-
+        treiber uebergeben (der externe Druckertreiber darf
+        das Zeichen 1EH nicht in 0DH/0AH aufloesen!). Die Dar-
+        stellung kann wahlweise invers erfolgen.
+ 
+
+Hinweise zur Anpassung
+----------------------
+Alle Systenrufe erfolgen ueber eine Anpassungsarea. Ist kein
+externer Druckertreiber vorhanden, so ist der Ruf ZEIDR in jedem
+Falle durch Eintragen von  C9H  kurzzuschliessen.
+0106H:          E7 00 C9        ;RST 20H, DB  0 : OUTAK
+0109H:          E7 01 C9        ;RST 20H, DB  1 : INCH
+010CH:          E7 04 C9        ;RST 20H, DB  4 : INKEY
+010FH:          E7 06 C9        ;RST 20H, DB  6 : OUTHX
+0112H:          E7 0B C9        ;RST 20H, DB 11 : WIND
+0115H:          C3 DC FF        ;JMP 0FFDCH     : BEEP
+0118H:          C3 F1 FF        ;JMP 0FFF1H     : LORUF
+011BH:          C3 F4 FF        ;JMP 0FFF4H     : SARUF
+011EH:          C3 CA FF        ;JMP 0FFCAH     : ZEIDR
+0121H:          C3 00 F0        ;JMP 0F000H     : MON
+
+Fuer die EPSON-kompatible Druckerausgabe muessen ab 0CD2H die
+Steuerzeichen fuer folgende Befehlsfolge eingetragen werden:
+     Steuerzeichen                 in der vorliegenden Version
+---------------------------------  ---------------------------
+Carrige Return                          0DH
+Line Feed                               0AH
+Zeilenabstand 8/72                      1BH,41H,08H
+Einzelpunktmodus 480 Spros-             1BH,4BH,00H,01H
+sen/8 Zoll , 256 Einzelsprossen
+
+In Zelle 0CD1H ist die konkrete Anzahl dieser Steuerzeichenfol-
+ge abzulegen (in der vorliegenden Version also 09H).
+Ab Adresse 0CDDH befindet sich die Tabelle der Druckcodes aller
+darstellbaren Zeichen (je Zeichen 8 Byte).
+
+Korrekturhinweise und Verbesserungsvorschlaege bitte an:
+	
+                                 Uwe Rehn, Fr.-Heckert-Str. 35
+                                 SCHWARZENBERG , 9430
+
+	
+         Beispiel (Titelbild) eines gedruckten Bildes:
+****************************  korrektur hofmann  **************
+26.08.89
+^^^^^
+	n

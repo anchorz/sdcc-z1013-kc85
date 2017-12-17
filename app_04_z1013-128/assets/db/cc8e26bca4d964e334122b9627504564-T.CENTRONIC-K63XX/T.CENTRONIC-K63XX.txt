@@ -1,0 +1,86 @@
+**************************************************************
+*                                                            *
+*  Anschlusz eines Druckers K63xx an Z1013 ueber CENTRONICS  *
+*                                                            *
+**************************************************************
+
+Die Daten  werden bei  einer Schnittstelle nach CENTRONIC-Stan-
+dard ueber acht Datenleitungen (DATA 1 bis DATA 8) gleichzeitig
+uebergeben. Deshalb ist  die erreichbare  Datenuebertragungsge-
+schwindigkeit ein Mehrfaches hoeher  als  bei  einer  seriellen
+Schnittstelle (z.B. V.24). 
+Die Gueltigkeit der vom Computer aus an  den DATA-Leitungen des
+Druckers anliegende Signalen wird vom  Drucker  mit  einem Low-
+Signal auf der Strobe-Leitung mitgeteilt. 
+Die Empfangsbereitschaft des Druckers  wird  dem  Computer  mit
+einem kurzzeitigen Low-Signal auf der  BUSY - Leitung erklaert.
+Waehrend der Datenverarbeitung - wenn  der  Druckerpuffer  voll
+ist oder der Drucker OFFLINE geschalten  ist - setzt  der Druk-
+ker das BUSY-CONDITION-Signal auf High.
+
+Steckeranschluszschema:
+-----------------------
+
+Bedeutung I Z1013-Stecker(X4) I PIO I CENTRONICs-Stecker-Pin
+------------------------------------------------------------
+  DB0     I        A4         I PA0 I             2
+  DB1     I        B4         I PA1 I             3
+  DB2     I        C4         I PA2 I             4
+  DB3     I        A3         I PA3 I             5
+  DB4     I        B3         I PA4 I             6
+  DB5     I        C3         I PA5 I             7
+  DB6     I        A2         I PA6 I             8
+  DB7     I        B2         I PA7 I             9
+ BUSY     I       (C5)        I PB4 I            11
+ STROBE   I       (B5)        I PB7 I             1
+  GND     I        A5         I  -  I            16
+------------------------------------------------------------
+
+Achtung: Die in Klammern geschriebenen Pins des Steckverbinders
+X4 des Z1013 sind original nicht  so  geschaltet. Sie  sind zum
+Trennen der Leiterzuege freizukratzen  und  mit  kurzen  Draht-
+stueckchen direkt mit den Pins 31 (PB4)  bzw. 34 (PB7) der  PIO
+(Schaltkreis A 45) zu verbinden. 
+Durch diesen Eingriff erlischt der Garantieanspruch !
+
+Assemblerquelle fuer einen CENTRONICs-Treiber:
+----------------------------------------------
+
+ORG 0E808H
+
+DRAKK:  CMP 1EH     ;Ist das Zeichen 1EH ?
+       JRNZ ZEIDR-# ;Wenn nein, Sprung zum Zeichendrucken,
+         LD A,0DH   ;anderenfalls
+       CALL ZEIDR   ;Ausgabe von 0DH,
+         LD A,0AH   ;und 0AH
+ZEIDR: PUSH AF      ;Zeichen retten
+         LD A,0FH   ;PIO initialisieren, Byte-Ausgabe
+        OUT 1       ;Port A
+        CPL         ;A,0F0H
+        OUT 2       ;Port B
+        POP AF      ;Zeichen zurueckholen
+ZEID1:  OUT 0       ;Ausgeben an Drucker
+        XOR A       ;A:=0
+        OUT 2       ;Ausgeben an Port B (STROBE:=Low)
+        CPL         ;A:=0FFH
+        OUT 2       ;Ausgeben an Port B (STROBE:=High)
+ZEID2:  IN  2       ;Port B, Daten lesen
+        BIT 4,A     ;Ist BUSY Low ?
+       JRNZ ZEID2-# ;Wenn nicht, dann erneute Frage,
+        RET         ;anderenfalls zurueck und evtl. neues 
+                     Zeichen.
+        END
+
+
+Diese Beschreibung entstand nach  einer  Veroeffentlichung  von
+Uwe Rehn und Peter Berg in der practic 1/90, Seite 40  und soll
+die Arbeit derjenigen unterstuetzen, die diese Zeitschrift
+nicht erwerben konnten.
+
+letzter Bearbeiter: Jens  Moeckel
+Kontaktadresse Softwaretausch: Jens Moeckel, Magdeburger Str.1b
+                               8400 RIESA
+
+
+erstellt mit MicroWORD-----------------------------MOESOFT-----
+

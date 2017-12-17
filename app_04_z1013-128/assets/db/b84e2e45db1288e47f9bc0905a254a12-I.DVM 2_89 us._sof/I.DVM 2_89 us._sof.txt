@@ -1,0 +1,93 @@
+
+us./soft // us./hard				erfurt, 28.02.89
+
+
+Beschreibung für ein Digitalvoltmeter mit 8 Meßeingängen
+KK________________________________________________________
+
+alle weiteren Informationen von:
+Ulli Schott
+Heinrich-Rau-Str. 14
+Erfurt
+
+Es wurde ein Digitalvoltmeter mit 8 Meßeingängen angefertigt.
+Die Meßbereiche wurden nach Notwendigkeit vorgegeben.
+Das Meßprogramm realisiert die Messung, Anzeige und Auswertung
+der Meßwerte. Zur Veranschaulichung des Meßergebnisses können
+Sollwerte (Min/Max) vorgegeben werden. Diese haben aber für das
+laufende Meßprogramm keine Bedeutung. Vom Programm werden bei
+laufender Messung die jeweils erreichten Min/Max-Werte ermittelt
+und angezeigt.
+
+Das Meßprogramm kann als Unterprogramm für ein übergeordnetes
+Fehlersuchprogramm (z.B. in BASIC) benutzt werden. Die Sollwerte
+können vorgegeben und mit den ermittelten Werten verglichen
+werden. Dadurch ist es möglich, das vorgestellte Gerät für fast
+jede beliebige Aufgabenstellung zu modifizieren.
+
+Vorteile/Nachteile
+
+Die Eingrenzung des Fehlers geht sehr schnell, da mehrere Meß-
+punkte gleichzeitig erreichbar sind.
+Sehr geeignet ist das Gerät zum Auffinden von Arbeitspunktver-
+änderungen und Aussetzfehlern bzw. Messungen, die über einen
+längeren Zeitraum notwendig sind.
+Unzweckmäßig ist der Einsatz als einfaches Digitalvoltmeter, da
+die Anzeige relativ unübersichtlich ist aufgrund der Menge der
+angezeigten Werte.
+Um richtige Meßwerte zu erhalten, ist ein dauerhafter und
+sicherer Kontakt der Meßleitungen zu sichern (keine Klemmen!).
+
+
+Nachnutzung
+
+An Hardware sind nötig:
+C520, DL093, V4051,
+Grundbeschaltung des C520 mit hochohmigem Eingang, Meßbereichs-
+erweiterung für jeden Kanal.
+Der C520 wird im Polling ausgelesen. Dem 093 wird ein Takt zuge-
+führt, der die Kanäle des 4051 steuert. Nach jeder Messung wird
+über den I/O-Selector A27 ein Resetimpuls (neg.) erzeugt.
+Für den Anschluß des DVM wird die komplette PIO/A benötigt. Um
+den Stecker nutzen zu können, werden die RDY/STRB-Leitungen
+getrennt und dafür die anderen Signale aufgeschaltet.
+
+Der Stecker ist wie folgt belegt:
+
+X4-Pin	Belegung
+  A4	C520	OA
+  B4		OB
+  C4		OC
+  A3		OD
+  B3		LSD
+  C3		NSD
+  A2		MSD
+  B2	093	/B
+  B1		Rd1 & Rd2
+  B5	-5V
+  C1	+12V
+  C5	-12V
+
+Es existiert eine erprobte Schaltung mit einer entworfenen
+Leiterplatte 90x120, auf der einschließlich der Meßbereichser-
+weiterungen alles enthalten ist.Die Schaltung des DVM wurde nach
+ELECTRONIKA 221, Seite 76 gebaut. Die Anschlüsse des C520 wurden
+direkt an die PIO mit Ziehwiderständen 10K gegen 5P gelegt.
+Das MC-Programm ist ROM-fähig, der Standort der Tabellen muß
+beim Programmieren vereinbart werden.
+
+Systemadressen:
+E400 - E900	Programmstandort
+E400		Start MC-Programm
+E403		Unterprogrammaufruf (aus Basic)
+2C00 - 2C8F	Tabellen:
+ 2C00		SollMin
+ 2C18		Min
+ 2C30		Momentanwert
+ 2C48		Max
+ 2C60		SollMax
+OUT 4		Reset
+
+Der Assemblerquelltext (GENS3M) kann bei mir eingesehen werden
+und für beliebige Adressen übersetzt werden.
+

@@ -1,0 +1,4 @@
+<kurz src="SCHACHPROGRAMM-UEBERSICHT"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+<include src="T.BES.CHESSY-UNBE.txt"/></lang>
+<requires></requires>

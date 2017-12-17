@@ -1,0 +1,4 @@
+<kurz src="Leerdatei, Platz für Inhaltsverzeichnis"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+<include src="T.PLATZ f.DIR.txt"/></lang>
+<requires></requires>

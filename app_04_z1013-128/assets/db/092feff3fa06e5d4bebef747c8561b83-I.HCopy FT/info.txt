@@ -1,0 +1,3 @@
+<kurz src="Schnellueberspielhilfe zum Laden Kassette-Kassette/RAM-Disk"/>
+<lang><include src="I.HCopy FT.txt"/></lang>
+<requires></requires>

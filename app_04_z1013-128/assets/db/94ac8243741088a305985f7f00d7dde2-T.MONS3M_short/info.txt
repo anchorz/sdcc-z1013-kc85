@@ -1,0 +1,3 @@
+<kurz src="Kurzbeschreibung des Objektcodeeditors MONS3M"/>
+<lang><include src="T.MONS3M short.txt"/></lang>
+<requires></requires>

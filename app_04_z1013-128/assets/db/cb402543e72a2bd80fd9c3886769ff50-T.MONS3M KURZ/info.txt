@@ -1,5 +1,0 @@
-<kurz src="Beschreibung Monitor+Debugger"/>
-<lang>Ist 1 Byte kleiner, als im Header angegeben.
-
-<include src="T.MONS3M KURZ.txt"/></lang>
-<requires></requires>

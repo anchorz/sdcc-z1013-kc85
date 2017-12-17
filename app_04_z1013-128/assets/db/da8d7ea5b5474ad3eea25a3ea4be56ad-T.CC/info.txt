@@ -1,0 +1,3 @@
+<kurz src="Fragebogen, Konzeption zur Gründung von Computerclub's"/>
+<lang><include src="T.CC-Fragebogen.txt"/></lang>
+<requires></requires>

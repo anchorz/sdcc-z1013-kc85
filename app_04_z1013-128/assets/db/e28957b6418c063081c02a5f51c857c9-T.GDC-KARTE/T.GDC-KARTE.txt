@@ -1,0 +1,86 @@
+****************************************************************
+* Beshreibung der 80-Zeichen-Karte und Tips                    *
+****************************************************************
+
+1. Aufbau
+Der Aufbau dürfte mit Hilfe des Bestückungsplanes (Leiterbild
+der Bestückungsseite) und des Schaltplanes keine Schwierigkeiten
+ergeben. Anzuraten ist, den GDC und den Zeichengenerator auf
+Fassung zu bringen um ein Auswechseln zu erleichtern. Die DKL
+erleichert das Löten enorm. Vorm ersten Testen die Leiterplatte
+ordentlich auf Schlüsse und Stromverbrauch zu testen
+(Kurzschluß). Dabei den GDC erst mal draußen lassen. Der
+Kondensator 1000/10 yF ist zum Abblocken da. Um eventuelle
+Störimpulse wirksam abzublocken ist das Steckfeld oberhalb des
+Eproms erstellt worden. Hier können bei Bedarf und Variation
+verschiedene Kondensatoren (100nF,...,47yF/6.3V) angelötet wer-
+den. 
+Da ist von Fall zu Fall Erprobung angesagt. Eine weitere
+wirksame Hilfe bei Störimpulsen ist die Abblockung des DL 299
+(Lötaugen sind oberhalb des Schaltkreises schon vorhanden!!), 
+DL004 und DL 193 mit jeweils 100 nF (Masse und 5P direkt am
+Schaltkreis).    Die OUT-Adresse lt. BIOS ist 18H. Mit Hilfe
+eines 8-poligen DIL- Schalters (zw. den beiden DS 8205) kann sie
+variabel eingestellt werden. Folgende Stellungen bedeuten
+folgende OUT-Adressen: 
+Dil-1 = OUT 0,1
+    2 =     8,9
+    3 =    10,11
+    4 =    18,19 ---> Stellung für BIOS und Urlader
+    5 =    20,21
+    6 =    28,29
+    7 =    30,31
+Alle Angaben in HEX!
+
+Die Karte erzeugt einen eigenen Videoausgang. Dazu stellt sie 3
+Signale zur Verfügung. Für das BAS-Signal ist Anschluß A/B 1
+vonnöten. Weiterhin ist die Verbindung zwischen DL 299 Pin 17
+und A/B 5 (Video) zwischen den beiden Lötaugen aufzutrennen und
+dort der Widerstand von 100 Ohm einzulöten (siehe Schaltplan).
+Beim Junost z.B. wurde der Widerstand weggelassen und die Brücke
+blieb. Resultat sehr gut.
+Weiterhin wird (mancher braucht es für seinen Monitor) BSYN und
+Video bereitgestellt. Sollten nur diese genutzt werden sind die
+beiden Dioden, die beiden Widerstände (220 Ohm) und 100 Ohm
+(sieh oben) wegzulassen und die oben beschriebene Verbindung
+nicht aufzutrennen. Noch mal zum Verständnis. Der Z1013-HF-
+Modulator läuft leer, das Atennenkabel ist direkt an die Karte
+anzuschließen (entweder BAS o d e r Video und BSYN). 
+Als  GDC wird eine schneller Typ gebraucht (DC => 4 MHz), so z.
+B. der yA 7220 AD von NEC. Die GDC's besitzen keinen Reset-
+Eingang mehr. Sie werden normalerweise durch den Einschaltimpuls
+beim Anschalten des Rechners zurückgesetzt. Neuere Typen
+verlangen dabei die volle 5P-Spannung. Das wird meist durch das
+Schaltnetzteil bei den "besseren" Rechnern erreicht. Beim Z 1013
+kann es vorkommen, daß die 5P zu langsam "hochläuft" und der GDC
+dadurch nicht ordentlich zurückgesetzt wird. Hier hilft ein
+Zwischenschalten eines Schalttransistors (SS 219) oder eines R/C-
+Gliedes in die Versorgungsspannung zwischen Rechner und Platte.
+Damit wird das Anlegen der 5P etwas verzögert und es kann sich
+die 5P erst voll stabilisieren.     
+Wir hoffen, daß diese Hinweise zum Aufbau und Betreiben voll
+ausreichen und wünschen gute Arbeit mit der Karte.
+
+Achtung! Bei der Digitalisierung der GDC-Karte durch den Herstel-
+ler ist eine wichtige Masseleitung vergessen wurden, die im
+Bestückungsplan nachträglich rot gezeichnet ist. Bitte Drahtbrük-
+ke einsetzen! Bitte vor Inbetriebnahme Leitung legen, sonst kön-
+nen Schaltkreise den "Geist" aufgeben!
+Am Busstecker ist eine Brücke zwischen IEO und IORQ1 vorhanden.
+Da diese Karte für alle K 1520- Systeme entwickelt wurde, ist
+dies kein primärer Fehler. Sollten keine weiteren peripheren Bau-
+gruppen angeschlossen werden, kann die Verbindung erhalten
+bleiben. Ansonsten wie auf dem Bestückungsplan rot gekennzeich-
+net t r e n n e n.
+Weiter ist zu beachten, daß die Brücke am DL086 auf der Leiter-
+seite schon auf Masse liegt. 
+Noch ein paar kurze Sätze zu den mitgelieferten Testprogrammen.
+Mit Init GDC wird die GDC-Karte initialisiert. Mit GDC2 kann
+dann der Bildschirm vollgeschrieben werden. Es werden nur die
+Buchstaben ausgegeben, bis Bildschirm voll ist. Beim ZG deutsch
+wird durch Drücken der Graphik-Taste der deutsche Zeichensatz
+eingestellt. Soviel zu den Programmen.
+
+
+  A. Müller CC Jena 
+

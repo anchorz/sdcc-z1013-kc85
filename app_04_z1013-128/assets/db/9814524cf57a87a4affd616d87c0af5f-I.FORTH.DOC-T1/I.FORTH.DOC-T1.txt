@@ -1,0 +1,282 @@
+
+ Das Programmiersystem
+
+
+
+
+        ___________
+       |           |
+       | F O R T H |
+       |___________|
+
+fuer den Kleinrechner-Bausatz Z1013
+
+bearbeitet: B.Schubert                       Leipzig, 11/1987
+
+0.   Einleitung
+
+1.   Speicherkonzept
+
+2.   Abweichungen vom FIG-Standard
+2.1. Reihung, Sprachumfang
+2.2. Kassettenarbeit mit FCB
+2.3. Abweichungen im wortinternen Aufbau
+
+3.   Erweiterungen des Wortschatzes
+3.1. Worte aus dem F79-Standard und Hilfsworte
+3.2. Editor
+3.3. Case-Struktur
+3.4. Dump
+3.5. Disco
+
+4.   Systemdatenbereiche
+4.1. Cold-Start-Area
+4.2. Anpassungs-Area
+
+5.   Literaturhinweise
+6.   Glossar
+
+
+0.   Einleitung
+_______________
+
+Forth  ist  ein 1971 von Charles Moore  entwickeltes  Sprach-
+und  Systemkonzept,   das  mit  wenigen Betriebssystemschnitt-
+stellen  arbeitsfaehig  ist  und sich daher besonders  fuer 
+Kleinrechner,  Heimcomputer,  industrielle Steuerungen und aehnliche
+Anwendungsfaelle eignet.
+In  der  DDR ist Forth im Vergleich zu anderen Hochsprachen  noch 
+relativ wenig verbreitet.
+Die  vorliegende Forth-Version entstand aus einer  Arbeitsversion 
+eines Forth-Systems fuer den KC 85/1 (Z9001), die an der Wilhelm
+Pieck-Universitaet entwickelt wurde und dem Robotron-Computer-
+club zur Verfuegung stand. Nach der Konvertierung auf einen Z1013
+wurde  das  System  nahezu ausschliesslich mit  sich  selbst  neu 
+erstellt. Dabei wurden zunaechst die Schnittstellen angepasst und 
+vorhandene Adressfehler in einigen Worten beseitigt.
+Als Vorbild fuer die Erweiterungen zu einem komfortablen
+Entwicklungssystem  diente  vorwiegend eine  Version  von  "Microsystems 
+Laboratory  Los Angeles",  in der DDR bekannt als  "FORTHLE.COM". 
+Von  diesem System wurden einige Funktionen dem Sinn nach 
+uebernommen und fuer das vorliegende System zugeschnitten.
+
+
+1.   Speicherkonzept
+____________________
+
+Das  vorliegende  System benutzt einen RAM-Bereich ab  100H.  Der 
+Kaltstart beginnt auf der Adresse 334H.  Entsprechend der
+Konvention  fuer CP/M ist fuer eine uebersichtliche  Programmgestaltung 
+der  Kaltstart  auf  die Adresse 100H  mit  einem  Zwischensprung 
+vorverlegt.  Der Bereich von 100H bis 200H ist frei und kann fuer 
+Anpassungen   (z.B.:fuer  Save/Load-Routinen   anderer   Formate) 
+genutzt werden.  Im KC 85/1 ist dieser Bereich vom Betriebssystem 
+belegt.
+Ab 200H beginnen die Routinen fuer die Anpassung an das
+Betriebssystem (Anpassungsarea),  der Bereich der User-Variablen und  der 
+Returnstack.Die Primitivworte fuer die Schnittstellenanpassung an 
+das  Betriebssystem wurden voellig neu gestaltet bzw.  beseitigt. 
+Das System wurde so umgearbeitet,  dass alle hardwarespezifischen 
+Routinen  fuer  Ein/Ausgaben auf  diesen  speziellen 
+Anpassungsbereich zugreifen.
+Auf  Adresse  300H  steht ein Sprung zum  Warmstart  des  Systems 
+(339H)  und dahinter das zugehoerige Aufrufwort entsprechend  dem 
+Format fuer den KC 85/1 (WFORTH).
+Gegenueber  anderen Sprachkonzepten (z.B.CAOS-FORTH fuer KC 85/2) 
+ist dieses Forth so aufgebaut,  dass es Hilfsmittel besitzt, sich 
+selbst  zu  vervielfaeltigen (SAVE).  Dadurch kann  die  aktuelle 
+Laenge des Forth beim Abspeichern jeweils verschieden  sein.  Die 
+Endadresse  des  abzuspeichernden  Systems wird immer  auf  XXFFH 
+aufgerundet.
+Der vom Forth-System waerend der Arbeit genutzte
+Speicherbereich  ist in seiner Grundform auf 4000H d.h. 16kByte eingestellt. Damit 
+wird  vielen  Anwendern die Moeglichkeit gegeben, ohne 
+Speichererweiterung arbeiten zu koennen. Einschraenkungen des vorhandenen 
+Wortschatzes treten dadurch nicht auf.  Bei Speichererweiterungen 
+kann  durch  Aendern der Konstanten 'LIMIT' auf die  erste  nicht 
+mehr  verfuegbare  Speicheradresse der Bereich fuer  die  Screen-
+Puffer  beliebig  geaendert werden.  Ueber einen  anschliessenden 
+COLD- oder WARM-Aufruf wird die Anzahl der SCR-Puffer neu
+berechnet  (#BUFF).  Beim  Abspeichern  eines  so  geaenderten  Systems 
+enthaelt das System die neuen Parameter!
+Eine  Verschiebung des Datenstacks und der  Woerterbuchobergrenze 
+fuer groessere Erweiterungen obliegt den jeweiligen Anforderungen 
+und den Systemkenntnissen des Anweders.
+
+
+2.   Abweichungen vom FIG-Standard
+__________________________________
+
+2.1. Reihung, Sprachumfang
+
+Forth  stellt  eine sogenannte "offene"  Sprache  dar,  d.h.  ihr 
+Sprachumfang  ist  theoretisch unbegrenzt und wird  vom  Anwender 
+staendig  erweitert.  Daher  muss  bei  der  Implementierung  des 
+Systems eine fuer den Anwender sichtbare Grenze geschaffen werden 
+die kennzeichnet, wo der systembedingte Grundwortschatz endet und 
+die  Anwenderworte beginnen.  Diese Grenze stellt im  allgemeinen 
+das Wort 'TASK' dar, welches aus einer Leerdefinition besteht.
+Unterhalb  dieses  Wortes wird das Forth ueblicherweise mit Hilfe 
+eines Assemblers uebersetzt.  Dabei werden Assemblerworte
+(Primi- tive) direkt uebersetzt und Forth-Worte (Secondarys) mit DA  (De-
+finiere  Adresse)  aufgebaut.  Bei dieser Vorgehensweise  ist  es 
+nicht  zwingend  notwendig  in allen Faellen  die  Forth-typische 
+Arbeitsweise ein Wort nur aus vorangegangenen zu erstellen
+einzu- halten.  Im vorliegenden System wurde darauf geachtet, die Forth-
+Reihung weitgehend einzuhalten und die Anzahl an
+Vorwaertsverwei- sen zu hoeheren Worten zu minimieren.Aus diesem Grund wurden alle 
+Worte oberhalb '(' neu geschrieben.  Das hoechste mit 
+Vorwaerts- verweis  addressierte Wort ist 'MESSAGE'.  Fuer den Programmierer 
+gilt die Woerterbuchgrenze 'TASK',  der erfahrene
+Systemprogram- mierer  hat  die  Moeglichkeit alle Worte oberhalb  'MESSAGE'  zu 
+vergessen ohne einen Absturz befuerchten zu muessen.
+
+
+2.2. Kassettenarbeit mit FCB
+
+Forth  ist  ein Sprachsystem  das  normalerweise  Diskettenarbeit 
+beinhaltet.  Die  Diskette kann vom Forth als virtueller Speicher 
+ueber ein Fenster (Screen-Puffer) verwaltet werden.  Meisst  wird 
+dabei die gesamte Diskette fuer Screens verwendet. Bei der Arbeit 
+mit  CP/M  ist das mitunter ein Nachteil,  der bei  "FORTHLE.COM" 
+durch die Vergabe von Screen-File-Namen behoben wird.  So ist
+ein  uebersichtliches  Sortieren von Screens fuer verschiedene  Anwen-
+dungsfaelle und deren Verwaltung vom Betriebssytem aus moeglich.
+In Anlehnung daran wurde das Kassetten-Screen-Konzept entwickelt. 
+Ein Screen beinhaltet 1/2kByte,  die mit einem Kopfblock zusammen 
+auf der Kassette abgelegt werden.  Der im Screen-Kopf  verwendete 
+Name  wird beim Kalt- und beim Warmstart in der  Systemausschrift 
+angegeben und kann mit dem Wort "USING" dem System neu zugewiesen 
+werden.  Der  Aufbau des Kopfblockes entspricht vollstaendig  dem 
+des  Header-Save/Load  fuer den Z1013.  Als  Anfangsadresse  wird 
+standardmaessig  die  Bildschirmadresse 'EC00H'  eingetragen,  so 
+dass ein Screen auch mit Hilfe des HS/L-Programmes ohne Laden des 
+Forth schnell gesichtet bzw. kopiert werden kann.
+
+
+2.3. Abweichungen im wortinternen Aufbau
+
+Bei einigen implementierten Worten weicht der wortinterne  Aufbau 
+etwas  von der Empfehlung der FIG ab.  So wurden unter anderem in 
+einzelnen  Worten eigene Worte und F79-Worte  verwendet,  um  die 
+Implementierung effektiver zu gestalten.  In anderen Worten wurde 
+die  innere Stuktur  so geaendert,  dass sich eine  effektvollere 
+Bedienung ergibt. Das betrifft  insbesondere die folgenden Worte:
+
+- EMPTY-BUFFERS    dieses  Wort berechnet zusaetzlich die  Anzahl 
+                   der  moeglichen Screen-Puffer  zwischen  FIRST 
+                   und LIMIT auch wenn LIMIT willkuerlich
+veraen-                    dert  wurde  und traegt diese Anzahl in  #BUFF 
+                   ein
+- FLUSH            dieses  Wort  ist  so  veraendert,  dass  auch 
+                   Screens oberhalb 8000H erreicht werden
+- +BUF             dieses  Wort weist in Abhaengigkeit von  LIMIT 
+                   auch  Puffer  oberhalb 8000H  zu,  LIMIT  muss 
+                   nicht mehr direkt auf Pufferobergrenze
+berech-                    net  werden.  Das wird von  EMPTY-BUFFERS  und 
+                   +BUF uebernommen.
+- VLIST            damit  der  Bildschirm  uebersichtlich  bleibt 
+                   wurde VLIST in 3 Funktionen veraendert
+                   - Auflisten in 2 Kolonnen mit Angabe der NFA
+                   - Anhalten und Fortsetzen des Listens mit der
+                     Leertaste, andere Tasten brechen ab
+                   - Analog FORTH83 wird nur das jeweils aktuelle
+                     Vokabular ausgelistet
+- LIST             dieses  Wort  erkennt die eingegebene  SCR-nr. 
+                   stets als Dezimalwert an,  solange sie 2
+Stel-                    len nicht ueberschreitet,  auch wenn eine  an-
+                   dere  Zahlenbasis  eingestellt  wurde.  Werden 
+                   Hexazahlen (Buchstaben) eingegeben,  so werden 
+                   sie in Dezimalzahlen umgerechnet. Alles
+darue-                    ber Hinausgehende wird mit Fehler quittiert
+- .S               die Darstellung erfolgt so,  dass der TOS oben 
+                   ist
+- BYE              ist unteteilt in eine innere Routine (BYE) die 
+                   den  Sprung zum Betriebssystem  enthaelt(F000) 
+                   und eine Verkleidung
+- QUIT/COLD/ABORT  wurden  weitgehend den Routinen des  "FORTHLE" 
+                   nachgebildet.  So kann auf Adresse 2AH +ORIGIN 
+                   die   CFA  einer  Anwenderwortes   eingetragen 
+                   werden,  welches  beim Eintritt in das  System 
+                   durch ABORT aktiviert wird. Eine zweite
+Start-                    routine kann auf der Adresse 2CH +ORIGIN  ein-
+                   getragen  werden,  die  stets durch  das  Wort 
+                   'QUIT' aktiviert wird (z.B.Einstellen HEX)
+- FORGET           dieses  Wort weist oft erhebliche 
+Einschraen-                    kungen oder Fehler auf.  Es wurde so erstellt, 
+                   dass  ein Vergessen ueber  mehrere  Vokabulare 
+                   moeglich ist. Die Vokabularzeiger werden dabei 
+                   so  korrigiert,  dass  es nicht zu  Abstuerzen 
+                   kommt
+- BLOCK,BUFFER,R/W,BLK-READ,BLK-WRITE,SET-IO wurden den
+Erfordernissen an die Kassettenarbeit mit dem Wort 'SAVE'
+angepasst. Alle  Worte wurden nur soweit veraendert,  dass die Uebergabe der 
+Parameter  beim  Aufruf und beim Verlassen den  Konventionen  des 
+FIG-Standards entsprechen.
+Der Wiedereintritt in das FORTH-System ueber Adresse 300H erfolgt 
+so, dass die Screen-Puffer erhalten bleiben.
+
+
+3.   Erweiterung des Wortschatzes
+_________________________________
+
+3.1. Worte aus dem F79-Standard und Hilfsworte
+
+Aus  dem  Standard  des  FORTH-79 wurden  zur  Erleichterung  der 
+Implementierung folgende Worte uebernommen:
+2-   2*   2/   Arithmetik mit 2
+PICK           n-tes Element vom Stack auf TOS (2 PICK=OVER)
+ROLL           n-tief Stack rotieren (2 ROLL=SWAP, 3 ROLL=ROT)
+DEPTH          uebergibt Tiefe der Stacknutzung
+EXIT           Vorzeitiges Verlassen eines Wortes vor ;S
+ASCII          legt Wert des folgenden Zeichens auf Stack
+FREEZE         Einfrieren der Systemdaten auf derzeitigen Stand
+
+
+Weiterhin wurden zusaetzlich folgende Worte implementiert:
+
+USING     - Aenderung der Zuweisung des Filenamens fuer Screens
+QX        - Quick-Index,  es  werden die  1.Zeilen  (Indexzeilen) 
+            aller  im Speicher befindlichen Screens  aufgelistet. 
+            Bearbeitete  Screens  (Update) werden mit  einem  '*' 
+            gekennzeichnet
+BSPACES   - loescht  die letzten Ausgaben durch Backspace in  der 
+            Laenge entsprechend 'OUT'
+SAVE      - ohne  Parameter  legt das FORTH-System von  100H  bis 
+            'HERE' auf Kassette ab.  Zur Erleichterung beim Laden 
+            wird zuvor Anfangs- und Endadresse auf dem Bildschirm 
+            angezeigt  und  auf Bestaetigung mit ENTER  gewartet, 
+            andere Tasten brechen die Funktion ab.  Die  hoechste 
+            abzuspeichernde Adresse wird auf XXFFH aufgerundet.
+          - mit   Namenangabe  wird  zusaetzlich  ein   Kopfblock 
+            erzeugt,   der   dem  Aufbau  fuer   Header-Save/Load 
+            entspricht.
+
+3.2. Editor
+
+Der  Editor  ist als ein zusaetzliches Vokabular  vereinbart.  Er 
+gehoert  also nicht zum Grundwortschatz des Systems.  Er ist  mit 
+minimalem Aufwand fuer eine zeilenorientierte Eingabe von Screens 
+ausgelegt. Fuer den Nutzer sind nur folgende Worte von Bedeutung:
+n P  Eingabe des folgenden Textes in Zeile n
+n D  loeschen der Zeile n , alle anderen Zeilen ruecken nach oben
+n I  Einfuegen  des  Folgenden Textes in Zeile n ,  alle  anderen 
+     Zeilen ruecken nach unten
+
+  L       listen des aktuellen Screens
+n CLR     loeschen des Screens n mit Leerzeichen und listen, es
+          erfolgt kein laden des Screens
+alt neu
+RENUMBER  umnummerieren des betreffenden Screen-Puffers im  Spei-
+          cher, gegebenenfalls wird der Screen geladen
+
+
+3.3. Case-Struktur
+
+Die  Case-Struktur  stellt eine Erweiterung der  strukturierenden 
+Worte   dar  und  erleichtert  das  Testen  eines    Wertes   auf 
+verschiedene Bedingungen.  Die vorliegende Version testet nur auf 
+Gleichheit  des  TOS mit den Testwerten,  was fuer  viele  Zwecke 
+schon  eine  grosse Erleichterung ist.  Die Anwendung  sieht  wie 
+folgt aus:
+   

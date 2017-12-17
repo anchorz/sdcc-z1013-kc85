@@ -1,0 +1,63 @@
+Kurzbeschreibung des Objektcodeeditors MONS3M
+---------------------------------------------
+
+Memorypointer=MP
+
+
+(BREAK)     Ruecksprung ins Betriebssystem
+( <- )      decrementiere MP um 8 Bytes
+( -> )      incrementiere MP um 8 Bytes
+(ENTER)     incrementiere MP um 1 Byte
+(CLS)       decrementiere MP um 1 Byte
+
+M:11A2      setzt MP auf Adresse 11A2H
+11A2.       setzt PC auf Adresse 11A2H
+,           setzt den MP auf die Adresse,die Stackpointer angibt
+$           zeigt eine Seite disassembliert von MP an,zurueck
+            zum HM mit $,jede andere Taste/weitere Seite 
+Q           Umschaltung 2.Registersatz
+L           listen eines Speicherblockes(80Bytes) ab MP mit (<-)
+            zurueck zum HM,sonst weiter listen
+H           konvertieren einer Dez.zahl in eine Hex.zahl
+P           fuellen eines Speicherbereiches von FIRST:... bis
+            LAST:.. mit WITH:...
+G           sucht im Speicher nach Zeichenkette,nach Eingabe
+            2xENTER sucht ueber FFFFH hinaus,MP geht auf gefun-
+            dene Zeichenkette,weitersuchen mit N                
+N           weitersuchen nach gewuenschtem String
+I           intelligente Copie eines Speicherblocks zu einer
+            neuen Adresse (FIRST:,LAST:,TO:)
+J           Ansprung eines Programms ab Adresse (Register und
+            Zeiger werden vorher zurueckgesetzt)
+W           setzt Breakpoint auf Adresse,auf die MP zeigt 
++           Programmausfuehrung ab Adresse in PC
+            (Register,Stack,Zeiger werden nicht zurueckgesetzt) 
+>           setzt Breakpoint nach der jetzigen Instruktion und  
+            faehrt fort mit Programmausfuehrung
+:           Single Step im RAM oder ROM,PC und MP muessen auf
+            gleichen Wert gesetzt sein!
+"           Ausgabe eines Speicherblocks auf Drucker (sonst wie
+            "L")
+T           Disassenblierung von First:.. bis Last:...          
+            Quelltext ab Text:..  abspeichern         
+            Workspace:..Startadresse fuer erzeugte Symboltabelle
+            (2 byte je Label) naechstes First:.. und Last...
+            gibt Datenfeld an, das nicht mit disassembliert wer-
+            den soll,kann auch mit Enter uebergangen werden
+            _zerstoert alle Breakpoints
+            NOP*  es wurde ungueltiger Opcode gefunden
+            (ENTER) disassenblieren Pause
+            (<) zurueck  zur HM
+#           alle Adressen werden dezimal ausgegeben oder
+            umgekehrt
+
+
+****************************************************************
+
+letzter Bearbeiter: Jens Moeckel, 23.12.89
+
+Kontaktadresse Softwaretausch: Jens Moeckel, Magdeburger Str.1b
+                               8400 Riesa
+
+*************************************************MOESOFT********
+

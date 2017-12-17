@@ -1,0 +1,3 @@
+<kurz src="Auffinden und Wandlung der untugendhaften CALLs zu Monitorroutinen"/>
+<lang><include src="I.RST20 WANDLUNG.txt"/></lang>
+<requires></requires>

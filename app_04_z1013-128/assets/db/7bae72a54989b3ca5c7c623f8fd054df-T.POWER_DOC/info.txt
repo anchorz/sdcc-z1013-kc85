@@ -1,0 +1,3 @@
+<kurz src="Universelles Manipulationsprogramm für Diskettenarbeit"/>
+<lang><include src="T.POWER DOC.txt"/></lang>
+<requires></requires>

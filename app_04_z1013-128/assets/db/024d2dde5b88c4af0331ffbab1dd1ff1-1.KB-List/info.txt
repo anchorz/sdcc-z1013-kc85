@@ -1,0 +1,3 @@
+<kurz src="Fortsetzung, KLUB-Info CC"/>
+<lang><include src="1.KB-LIST 01.10.89.txt"/></lang>
+<requires></requires>

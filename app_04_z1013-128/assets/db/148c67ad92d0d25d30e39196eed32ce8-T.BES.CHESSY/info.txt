@@ -1,0 +1,3 @@
+<kurz src="SCHACHPROGRAMM-UEBERSICHT"/>
+<lang><include src="T.BES.CHESSY-UNBE.txt"/></lang>
+<requires></requires>

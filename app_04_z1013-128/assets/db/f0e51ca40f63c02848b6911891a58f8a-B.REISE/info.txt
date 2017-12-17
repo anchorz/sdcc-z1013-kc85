@@ -1,0 +1,25 @@
+<kurz src="Weltreise zur Testamentseröffnung"/>
+<lang>         ***WELTREISE***
+
+Sie muessen in einer Erbschaftsangelegenheit
+zu einer vom Computer festgelegten Stadt reisen. 
+Dabei muessen  Sie  alle Staedte in der 
+vorgegebenen Reihenfolge besuchen. Ihnen steht
+ein bestimmter Betrag zur Verfuegung und Sie
+duerfen Ihr Zeitlimit nicht ueberschreiten.
+Dies ist nicht immer einfach, denn es kann  zu 
+Schwierigkeiten kommen. Durch Eingabe einer
+bestimmten Zahl bzw. Buchstaben ist die Wahl der
+Verkehrsmittel moeglich. Um Ihr Konto etwas
+aufzufrischen koennen Sie in zwei Staedten Geld
+verdienen. Am Tage 0 wird das Testament eroeffnet,
+sind Sie nicht am Bestimmungsort, koennen Sie nicht
+erben. Achten Sie  darauf, dass Sie nicht mehr als
+fuenf Tage frueher am Ziel sind, Sie koennen
+in keinem Hotel uebernachten.
+
+    Sie haben keine Chance
+       also nutzen Sie Sie !
+
+<include src="REISE.B"/></lang>
+<requires></requires>

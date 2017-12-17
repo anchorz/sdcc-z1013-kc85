@@ -1,0 +1,5 @@
+<kurz src="Sprachausgabe VOICE"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+<include src="T.BEMERKUNGEN.txt"/></lang>
+<requires></requires>
+

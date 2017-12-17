@@ -1,0 +1,6 @@
+<kurz src="CYRUS V.2/dt."/>
+<lang>Dateigröße muss es Vielfaches von 32 sein. 2 Bytes fehlen.
+Z80-Header-Tag ist nicht korrekt, statt "d3d3d3" steht "2e2e2e"
+
+<include src="cyrus_ch_i.doc.txt"/></lang>
+<requires></requires>

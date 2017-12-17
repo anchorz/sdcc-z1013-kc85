@@ -1,0 +1,3 @@
+<kurz src="identisch [47ac5b223eb40f12728ccbee1e806c2e]"/>
+<lang><include src="I.Z1013-FORTH.DOC.txt"/></lang>
+<requires></requires>

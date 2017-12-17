@@ -1,0 +1,3 @@
+<kurz src="Programmiersystem FORTH für den Kleinrechner-Bausatz Z1013"/>
+<lang><include src="I.FORTH.DOC-T1.txt"/></lang>
+<requires></requires>

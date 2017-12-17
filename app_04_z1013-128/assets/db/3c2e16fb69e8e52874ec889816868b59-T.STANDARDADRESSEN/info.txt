@@ -1,0 +1,3 @@
+<kurz src="STANDARD-ADRESSEN, SPRUNGVERTEILER, SYSTEMADRESSEN, I/O-ADRESSEN"/>
+<lang><include src="T.STANDARDADRESSEN.txt"/></lang>
+<requires></requires>

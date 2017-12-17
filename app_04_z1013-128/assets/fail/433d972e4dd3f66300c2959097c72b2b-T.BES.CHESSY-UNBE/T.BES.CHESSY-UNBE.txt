@@ -1,0 +1,155 @@
+   SCHACHPROGRAMM-UEBERSICHT    
+   (*=Aufruf nach Spielende)    
+                                
+SPIEL......... :*M=Monitorrest. 
+                *N=Neues Spiel  
+                 S=Spielstaerke 
+                 U=Umkehr Farbe 
+                 W=Automatic    
+                 V=Variante     
+                *Z=Var. zurueck 
+                 P=Problemeing. 
+                                
+PROBLEMEINGABE : P=Ende Probl.  
+                 N=Grundstellung
+                 C=Clear        
+                 +=Weisse Figur 
+                 -=Schwarze Fig.
+             Space=Fig. entfern.
+                                
+WIEDERHOLUNG.. : M=Monitorrest. 
+                 N=Neues Spiel  
+                *W=Wiederholung 
+                 S=Spielfortfue.
+             Enter=Naechster Zug
+1.  Grundzustand - Spiel        
+------------------------        
+1.1 Monitorrestart :            
+    -Fenster maximal            
+    -Letztes Bild bleibt erhalt.
+    -Kommandoschleife Monitor.  
+                                
+1.2 Neues Spiel :               
+    -Ende des Spiels            
+    -weitere Kommandoeingabe wie
+     nach Schach Matt /Spielende
+                                
+1.3 Spielstaerke                
+    -Eingabe der Zahlen 1...6   
+    -Anzeige rechts oben im Bild
+                                
+1.4 Umkehr der Spielfarbe       
+    -Wechsel der Spielfarben    
+    -Der Computer spielt weiter 
+                                
+1.5 Variante                    
+    -Es werden bis zu 10 Stel-  
+     lungen in aufsteigender    
+     Reihenfolge gespeichert    
+    -Aenderung der Reihenfolge  
+     durch Eingabe einer Ziffer 
+     von 0-9 hinter dem 'V'.    
+    -Anzeige der Variante       
+     rechts oben im Bild.       
+                                
+1.7 Variante zurueck            
+    -Abrufen der gespeicherten  
+     Varianten, mit der letzten 
+     beginnend.                 
+    -Aenderung der Reihenfolge  
+     durch Eingabe einer Ziffer 
+     von 0-9 hinter dem 'Z'.    
+                                
+1.8 Problemeingabe - Beginn     
+    -Umschalten auf Problemein- 
+     gabe                       
+                                
+2.  Problemeingabe              
+------------------              
+2.1 Problemeingabe - Ende       
+    -Umschaltung auf Spiel      
+                                
+                                
+2.2 Neues Spiel                 
+    -Alle Figuren werden in die 
+     Grundstellung gebracht     
+                                
+2.3 Clear                       
+    -Alle Figuren werden vom    
+     Spielfeld entfernt         
+                                
+2.4 Aenderung der Stellung      
+    -Entfernen einzelner Figuren
+     durch Eingabe der Position 
+     mit vorangestelltem Space. 
+    -Setzen von Figuren durch   
+     Eingabe der Position mit   
+     vorangestelltem Buchstaben 
+     fuer die Figur (zB. T=Turm)
+     Weisse Figuren koennen mit 
+     '+', und schwarze Figuren  
+     muessen mit '-' beginnen.  
+                                
+Alle Angaben bei Problemeingabe 
+werden mit Enter abgeschlossen. 
+                                
+                                
+Die Stellung nach Verlassen der 
+Problemeingabe ist am Ende des  
+Spieles die Ausgangsstellung    
+fuer die Wiederholung.          
+                                
+3.  Wiederholung des Spieles    
+----------------------------    
+3.1 Monitorrestart              
+    -Siehe Punkt 1.1            
+                                
+3.2 Neues Spiel                 
+    -Abfrage nach Spielfarbe    
+     und -staerke               
+    -Spielbeginn                
+                                
+3.3 Variante zurueck            
+    -siehe Punkt 1.7            
+                                
+3.4 Wiederholung des Spieles    
+    -siehe Punkt 4.3            
+                                
+                                
+                                
+                                
+4.  Wiederholung des Spieles    
+----------------------------    
+4.1 Monitorrestart              
+    -siehe Punkt 1.1            
+                                
+4.2 Neues Spiel                 
+    -siehe Punkt 3.2            
+                                
+4.3 Wiederholung des Spieles    
+    -Spielbeginn von der Grund- 
+     stellung, bzw. von der     
+     letzten Problemstellung aus
+                                
+4.4 Spiel                       
+    -Spieler spielt von der ak- 
+     tuellen Stellung aus weiter
+                                
+4.5 ENTER                       
+    -Ausgabe des naechsten Zuges
+                                
+                                
+                                
+                                
+                                
+Spieldauer :                    
+------------                    
+                                
+SP 1 ~ 1 min.                   
+   2 ~ 3 min.                   
+   3                            
+   4 ~ 100 min.                 
+   5 ~ 7  h                     
+   6 ~ 10 h                     
+
+                   

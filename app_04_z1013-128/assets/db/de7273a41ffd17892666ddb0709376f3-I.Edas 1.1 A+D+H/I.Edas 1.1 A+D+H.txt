@@ -1,0 +1,167 @@
+             ****************************
+             *                          *
+             *  Edas 1.1 A+D+H+ae       *
+             *                          *
+             ****************************
+
+1. Standort und Start
+=====================
+
+Standort:     2000H ... 3FFFH      >CRC=EC50
+Start:        2000H
+
+Auf die Frage "NEUSTART J/(N):" als Erstes ein 'J' eingeben.
+Damit wird der notwendige Bereich definiert. Anschliessend
+geht der Edas in eine Komandoschleife.
+
+
+2. Herkömmliche  Komandos:
+--------------------------
+
+ASGN  (ohne Parameter) 
+                   Anzeige und Änderung der Text- und MC-Code-
+                   bereiche
+
+ADDR marke / zahl / ausdruck
+                   Anzeige der gewünschten Adresse HEX oder
+                   dezimal. Umrechnung einer Dezimalzahl in 
+                   eine HEX-Zahl. Als Operationszeichen sind +
+                   und - zugelassen. Es erfolgt eine Markenprü-
+                   fung !
+
+EDIT ohne / marke / zn / zn,zn
+                   Editieren von Quelltextzeilen. Dabei kann 
+                   alles in der entsprechenden Zeile geändert
+                   werden. Auch die Zeilennummer (copy).
+                   bei Mnemonikfehler wird abgebrochen und die
+                   Zeile nicht übernommen.
+   
+KILL ohne / zn / zn,zn / marke
+                   Löschen von Zeilen, ohne Parameter löschen
+                   des Textpuffer. Dabei kann von Zeile bis Zei-
+                   le (zn,zn), Zeile bis Ende, (zn) oder Zeile
+                   bis Marke / (Marke bis Zeile) gelöscht wer-
+                   den.  
+
+LIST ohne / marke / zn / zn,zn  
+                   Listet den Text, Dabei werden die Parameter
+                   wie EDIT oder KILL gesetzt.
+
+STEP ohne / ziffer
+                   Neunummerrierung der Zeilen, ohne Parameter
+                   Beginn mit 1.
+
+DR                 Registeranzeige
+
+
+RUN ohne /zn /zn,zn /marke
+                   Übersetzen und Starten. 
+
+LON
+                   Einschalten des Drucker.
+
+LOFF
+                   Ausschalten des Drucker.
+
+RON
+                   Einschalten des Tastaturrepeat.
+
+
+
+
+2. Geänderte und zusätzliche Befehle:
+-------------------------------------
+
+SAVE
+                   Es wird der HEADERSAVE  angesprungen und 
+                   dabei der Typ  'S' übergeben. Weiterhin wird
+                   die  Frage  'REPEAT'  gestellt,  um   zur
+                   Sicherheit eine Zweitkopie zu fertigen. Als
+                   drittes Argument wird die aktuelle txp-End-
+                   adresse eingetragen.
+
+LOAD
+                   Es wird wieder der HEADERSAVE angesprungen
+                   und auf Kopfkontrolle eingestellt. Die
+                   Eingabe des FILE-namen kann jedoch entfallen.
+                   Als Ladeadresse des Quell-Textes wird die bei
+                   'ASGN' eingetragene txp-Anfangsadresse genom-
+                   men. Bei nicht zu beseitigenden Lesefehlern
+                   erfolgt ein Sprung zum Anfang des Edas. Die
+                   neuen txp-Adressen werden in den Edas über-
+                   nommen und die Arbeit kann weitergehen.
+
+ANLD 
+                   Ein weiterer Text wird vom TAPE an den be-
+                   reits geschriebenen Quell-Text komulativ ge-
+                   laden. Es ist damit möglich, mehrere Quell-
+                   Texte zu verbinden. Der Text kann jedoch nur
+                   an, aber nicht vor geladen werden.
+
+READ
+                   Entspricht der alten LOAD-Routine bei der das
+                   Betriebssystem genutzt wird.
+
+WRIT
+                   Entspricht der alten SAVE-Routine.
+
+
+*********** ! bei der naechsten Edas-
+              Version gestrichen. ****************
+
+DS
+                   Aufruf eines DUMP's. Nach der Eingabe und
+                   >ENTER< kann die gewünschte Adresse eingege-
+                   ben werden. (>ENTER<)
+                   Auf dem Bildschirm erscheint ein Speicheraus-
+                   zug in HEX. 
+                   Mit der Taste '@' kann zwischen ASCII-Code
+                   und HEX umgeschalten werden. Mit den CURSOR-
+                   Tasten kann seitenweise vor und zurück ge-
+                   blättert werden.
+                   Nach >SPACE< kann eine neue Adresse eingege-
+                   ben werden. 
+                   Mit der 'M'-Taste wird in ein MODIFY MODE 
+                   gegangen. Dabei hat das erste Zeichen eine
+                   Steuerfunktion:
+                     .       = naechstes Zeichen als ASCII in
+                               den RAM schreiben.
+                               z.b. .A := 41H in den RAM
+                     R       = Adresse decrementieren.
+                   >SPACE<   = Adresse incrementieren   
+                     zz      = Zwei HEX-Ziffern (oder
+                               eine) als HEX übernehmen.
+                  
+                   Aus dem jeweiligem MODE wird mit ^C (S4/K)
+                   heraus gegangen.
+                 
+AUTO zn
+                   Es wird eine automatische Zeilennummerierung
+                   bei der Eingabe von Quelltextzeilen reali-
+                   siert. Dabei muß die Zeilennummer eingegeben
+                   werden, nach der ein- oder angefügt werden
+                   soll.
+                   Die ausgegebene Zeilennummer entspricht nicht
+                   unbedingt derselben, wie beim LIST, sondern
+                   stellt eine forlaufende Nummer dar.
+
+BYE
+                   (ehemals CM)  Verlassen des Edas.
+                   Dabei wird auf 66H eine kurze NMI-Routine
+                   untergebracht.  Ansonsten erfolgt bei der
+                   Betätigung von NMI ein Sprung zum Edas.
+
+Bei dieser Version ist der Unterstrich '_' (S1/G) in Marken und
+PN zugelassen.
+
+ANMERKUNG: Ab März soll versucht werden, eine weiter-verbesserte
+           Version dieses Edas bereitzustellen.
+
+                                               Ulf Beckmann
+
+************** ende ***************
+Textbearbeitung und Korrektur: HOFMANN  IG-HC TU Dresden
+19.08.89
+***************************************************************
+^^^^^
+

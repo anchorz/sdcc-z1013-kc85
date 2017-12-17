@@ -1,0 +1,3 @@
+<kurz src="R-80 REASSEMBLER"/>
+<lang><include src="I.R-80 DISK 2.66.txt"/></lang>
+<requires></requires>

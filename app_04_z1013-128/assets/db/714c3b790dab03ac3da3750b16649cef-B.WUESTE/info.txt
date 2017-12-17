@@ -1,0 +1,3 @@
+<kurz src="Spielebox: ALZAN, WUESTE, CHAMPION DERBY"/>
+<lang><include src="WUESTE.B"/></lang>
+<requires></requires>

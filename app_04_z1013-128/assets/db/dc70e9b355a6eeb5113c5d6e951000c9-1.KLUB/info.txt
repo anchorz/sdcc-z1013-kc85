@@ -1,3 +1,6 @@
 <kurz src="KLUB-Info Richtlininen Leitklub(LKB) und CC"/>
-<lang><include src="1.KLUB-INFO.txt"/></lang>
+<lang><include src="1.KLUB-INFO.txt"/>
+
+<include src="../024d2dde5b88c4af0331ffbab1dd1ff1-1.KB-List/1.KB-LIST 01.10.89.txt"/>
+</lang>
 <requires></requires>

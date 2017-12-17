@@ -1,0 +1,3 @@
+<kurz src="CYRUS V.2/dt."/>
+<lang><include src="I.CYRUS-CHESS V.2.txt"/></lang>
+<requires></requires>

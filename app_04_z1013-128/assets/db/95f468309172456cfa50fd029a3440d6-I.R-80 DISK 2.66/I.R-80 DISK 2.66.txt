@@ -1,0 +1,124 @@
+************************************************************
+*                                                          *
+*     ####   R - 8 0     R E A S S E M B L E R   ####      *  
+*                                                          *
+*                                          ver. RB + FSc   *
+*                                                          *
+************************************************************
+                                               (c) by N.H.
+
+Der  R-80  Reassembler  ist  ein  Programm , das selbständig
+Zeichenketten   und   Datenbytes   erkennt   und  Z-80  oder
+SYPS K-1520  lesbare  Quelltexte   erstellt.  Dabei   werden
+Absolutadressen in Marken  umgewandelt. Somit ist es für den
+Anwender leicht möglich Maschinenprogramme zu reassemblieren,
+daraus eine Assemblerquelle zu erstellen, zu ändern und evt.
+auf einer anderen Adresse zu stationieren. Das Programm nutzt
+den HEADER über Standardrufe BLMK/BSMK sowie LORUF/SARUF (SV),
+Außerdem  besitzt  das  Programm  einen  Druckertreiber, der
+ASCII-Zeichen im A-Register übergibt. Ebenfalls wird vor dem
+Druck ein Druckerinit durchgefuehrt (Ankopplung ueber SV). 
+Das zu reassemblierende Programm muss auf eine Adresse >5FFFH
+geladen werden, da der untere Bereich fuer Arbeitstabellen
+reserviert ist. Im Offset wird die Verschiebung zum Original-
+standort angegeben. Die Argumente in den Kommandos beziehen
+sich dann auf die Originaladressen.
+  
+Programmstandort:   z.Z 4000H-5BCCH    >CRC=078B
+
+Programmstart:      NEU: 4000H
+                    ALT: 4003H
+
+Systembereich:      0100-01FFH Arbeitszellen
+                    0200-0FFFH CTL-Tabelle
+                    1000-3FFFH Symboltabelle
+
+Zusätzlich  kann noch  eine  Kommentartabelle auf beliebiger
+Adresse vereinbart  werden.  Für die Ein- bzw. Ausgabe muß
+vor dem Laden und Saven die entsprechende Quelle bzw. Senke
+eingeschaltet werden (meißt ST bzw. RC). Danach erfolgt die
+Ausgabe durch Laadr,eadr . Zur Ausgabe werden die Headersave-
+bzw. Headerdiskblockroutinen verwendet. In dieser Version kann
+neben der SAVE/LOAD-Routine auf Abfrage bei vorhandenem HEADER-
+DISK 45 auf E000H (wird vom Programm vorher getestet!) der
+Quelltext u.a.  Tabellen auf RAM-Floppy geschrieben, bzw. von
+dieser  in den  RAM-Speicher  geholt werden. Der entstehende
+Quelltext kann durch Editoren mit 1EH (NL) als Zeilenabschluss
+bearbeitet werden (z.B. MicroWORD). Alle außerhalb von aadr-eadr
+liegenden Marken werden als EQU-Anweisungen vor das Programm ge-
+setzt. 
+
+A-LAUF: Beeinflußt CTL-TABELLE, nutzt wenn vorh. SYM,DOC
+B-LAUF: Beeinflußt SYM-TABELLE, nutzt CTL,DOC-TABELLE
+L-LAUF: Beeinflußt keine Tabellen,nutzt wenn vorh SYM,CTL,DOC
+        wird auch zur kassetten-Ausgabe benutzt 
+C-LAUF: für Handkorrekturen bei Tabellen u.dgl.
+
+Zu empfehlen ist Reihenfolge A=>B=>(C=)>L-LAUF  (nicht unbedingt)
+Mehrfache Wiederholung der Läufe möglich!
+
+In dieser Version werden auch Befehle mit LX,HX,LY,HY erkannt!
+
+
+           ****KOMMANDOS****
+
+A >ENT<             A-LAUF (Suche nach Strings, Vorwärtsrefe-
+                    renz)
+A adr.>ENT<         A-LAUF ab Adresse (Originalstandort!!)
+A adr.,adr.>ENT<    A-LAUF von Adr. bis Adr.
+A=nr.               Zeilenzahl (LINES)
+B                   B-LAUF (Optionen wie A, legt MTB an)
+C >ENT<             Anzeige CTL-Tabelle
+C adr.>ENT<         Anzeige CTL ab Adr.
+C adr.,I            ab ADR. als Bef. interpr.
+      ,B            DB
+      ,W            DW/DA
+      ,S            DS/BER
+      ,E            END einf.
+      ,K            Vereinb. für Adr. löschen
+D                   HEXDUMP (Optionen wie A)
+DS >ENT<            Ausgabe MTB
+DS marke.>ENT<      Ausgabe ab Marke
+E adr. >ENT<        Adresse durch Marke ersetzen
+F >ENT<             Zeigt Inhalt der RAM-Disk an
+                    (nur wenn DISK X enabled !)
+K.marke >ENT<       Marke löschen, Absolutadresse einsetzen
+L                   Listlauf (Optionen wie A)
+M >ENT<             Z-80 Code
+M=1520 >ENT<        SYPS K-1520 Code
+O >ENT<             OFSET anzeigen
+O abstand >ENT<     OFSET setzen
+R(x) >ENT<          READ (x=C:COM;L:CTL;S:SYM;D:DOC)
+S(x) >ENT<          SAVE (x=T:TXT;L:CTL;S:SYM;D:DOC)
+T >ENT<             Schaltet TAPE-E/A ein
+U adr. >ENT<        Eröffnen DOC-Datei
+X >ENT<             KILL Dateien
+YA >ENT<            Schaltet DISK-E/A auf DISK A ein
+                    (nur wenn HEADERDISK geladen ist)
+YB >ENT<            Wie YA, aber Umschaltung auf DISK B
+Z >ENT<             Anzeigen MTB-Puffer
+Z adr. adr.>ENT<    Setzen MTB-Puffer
+ZP >ENT<            Setzen Druckerprotokoll
+ZQ >ENT<            RESET Drucker
+? >ENT<             STATUS
+; >ENT<             Anzeige Kommentare
+; adr >ENT<         Ab Adresse
+; adr.,kommentar    Einfügen Komm. für Adresse
+; adr.,>ENT<        Löschen Komm. auf Adresse
+CTRL-C              EXIT
+
+
+                              RUF-ADR.              RUF-ADR.
+
+ANPASSUNG :         :SARUF 0FFF4H (0E003H):LORUF 0FFF1H (0E000H)
+                    :DRINI 0FFCDH         :DRAKK 0FFE8H                     :BSMK  0FFC4H (E00FH)  :BLMK  0FFC7H (E00CH)
+                    :AKP   0FFBEH (0E015H):SUCHK 0FFC1H (0E012H)
+
+*)  Es wird nur NL, nicht CRLF ausgegeben!
+**) 09H (TAB) wird in entsprechende Anzahl SPACE  gewandelt
+
+********************** durchgesehen u. korrigiert *************
+************************************** hofmann ****************
+24.08.89                                       IG-HC TU Dresden     
+^^^^^
+

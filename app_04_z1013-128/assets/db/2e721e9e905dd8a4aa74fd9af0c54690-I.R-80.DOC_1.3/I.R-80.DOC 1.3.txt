@@ -1,0 +1,242 @@
+************************************************************
+*                                                          *
+*    R - 8 0     R E A S S E M B L E R     ver. RB         *
+*                                                          *
+************************************************************
+                                               (c) by N.H.
+
+Der  R-80  Reassembler  ist  ein  Programm , das  selbstaendig
+Zeichenketten und Datenbytes erkennt und Z-80 oder SYPS K-1520
+lesbare Quelltexte erstellt. Dabei werden  Absolutadressen  in
+Marken umgewandelt. Somit ist  es  fuer  den  Anwender  leicht
+moeglich, Maschinenprogramme zu  reassemblieren,  daraus  eine
+Assemblerquelle zu erstellen, diese zu  aendern  und  evt. auf
+einer anderen Adresse zu stationieren.
+Das Programm nutzt den  HEADER  ueber  Standardrufe  BLMK/BSMK
+sowie LORUF/SARUF (Sprungverteiler).
+Ausserdem besitzt das Programm einen Druckertreiber, der ASCII-
+Zeichen im A-Register uebergibt. Es wird  vor  dem  Druck  ein
+Druckerinit durchgefuehrt (Ankopplung ueber SV). 
+Das zu reassemblierende Programm muss auf eine Adresse ab 6000H
+geladen werden, da der untere Bereich fuer Arbeitstabellen re-
+serviert ist. Im Offset wird die  Verschiebung  zum  Original-
+standort angegeben. Die  Argumente  in  den Kommandos beziehen
+sich dann auf die Originaladressen.
+
+Programmstandort:   z.Z 4000H-5999H
+
+Programmstart:      NEU: 4000H
+                   (ALT: 4003H)
+
+Systembereich:      0300-0400H Arbeitszellen
+                    0500-0FFFH CTL-Tabelle
+                    1000-3FFFH Symboltabelle
+
+Zusaetzlich  kann noch  eine  Kommentartabelle auf  beliebiger
+Adresse vereinbart  werden. Die  Angabe, ob geladen / ausgege-
+ben werden soll, erfolgt durch RC bzw. ST.  Der Quelltext wird
+dann  durch Laadr,eadr (z.B.: LA100,A2FF) ausgegeben   (L-Lauf
+auf Kass.).
+Zur Kassettenausgabe werden die  Headersaveblockroutinen  ver-
+wendet. Der entstandene Quelltext kann mit Editoren bearbeitet
+werden, welche 1EH (NL) als  Zeilenabschluss  verstehen  (z.B.
+MicroWORD). Alle ausserhalb von aadr-eadr liegenden Marken wer-
+den als EQU-Anweisungen vor das Programm gesetzt. 
+
+A-LAUF: Beeinflusst CTL-TABELLE, nutzt, wenn vorh., SYM,DOC
+
+B-LAUF: Beeinflusst SYM-TABELLE, nutzt CTL,DOC-TABELLE
+
+L-LAUF: Beeinflusst keine Tabellen, nutzt SYM,CTL,DOC
+        wird auch zur Kassetten-Ausgabe benutzt 
+
+C-LAUF: fuer Handkorrekturen bei Tabellen u.dgl.
+        (Es ist auch der Eintrag von Kommentaren moeglich.) 
+
+Zu empfehlen ist die Reihenfolge A=>B=>(C=)>L-LAUF (nicht un-
+bedingt notwendig). Mehrfache Wiederholung der Laeufe moegl.!
+
+Nach dem Laden und Start des R-80 erscheint auf dem Bildschirm
+ein Kopfteil, mit dem sich der R-80 meldet, sowie eine Status-
+Anzeige:
+
+        MEMORY OPEN TO EBFF 
+        SYPS K1520  
+        SYMTBL = 1000  1000 
+        PC     = 0100  
+        OFFSET = 0000  
+        CTLTBL = 0200  0200 
+
+ERLEUTERUNG: MEMORY...; Speicher bis EBFFH kann genutzt werden
+             SYPS K1520  (oder: ZILOG Z80);  der  R-80 ist auf
+                         die angezeigte Mnemonik eingestellt. 
+             SYMTBL = 1000  1000 ; Standort und Fuellstand der
+                         Symboltabelle (Markentabelle).
+             PC   =  0100 ; Programmzaehler, ab dieser Adresse
+             wird der Quelltext erstellt.
+             OFFSET = 0000 ; Offset-Anzeige
+             CTLTBL = 0200  0200 ; Bereich und Fuellstand  der
+                         CTL-Tabelle. Deren Inhalt legt  fest,
+                         ob ab der entspr.  Adresse  der Spei-
+                         cherinhalt als Befehl oder  Datenbyte
+                         interpretiert wird.
+                         Kann mit C-Kmdo. geaendert werden.
+
+Durch verschiedene Kommandos koennen diese Vorgaben veraendert
+werden. Nun folgt das Promtzeichen: 
+        
+   *    (Nach diesem Promtzeichen erwartet der der R-80 die
+         Eingabe eines Kommandos )
+
+Zur Erlaeuterung des R-80 hier ein kleines  Programm,  welches
+in verschiedenen Adressbereichen lauffaehig ist (z.B: Bereiche
+ab 6000H und 1000H). Die von der  jeweiligen   Anfangsadr. ab-
+haengigen Bytes sind in Klammern fuer die Adr.1000H angegeben.
+ 
+ 6000   06 06 DD 21 08 EE 11 1C
+(1000)  60(10) 1A DD 77 00 13 1A DD 
+        77 20 13 DD 23 DD 23 DD 
+        23 10 EE FF 0E 11 0F 11 
+        10 11 12 13 14 16 15 16
+
+Es ist das "Schachfiguren"-Programm aus der Z-1013-Bedienungs-
+anleitung. Es wird auch in  der  ASSEMLER Scf 5.3-Beschreibung
+als Beispiel verwendet. Bei Standort 1000H ist mit  Offset  zu
+arbeiten.
+
+****KOMMANDOS****
+-----------------
+
+ACHTUNG !!: Nach dem Kommando-Buchstaben Adresse oder  zweites
+            Symbol (z.B.bei Laden oder Saven) ohne Leerzeichen
+            direkt an den Buchstaben ansetzen!
+            Wo ein Komma vorgesehen ist, muss es unbedingt ge-
+            setzt werden.
+
+Verschiedene Kommandos haben die gleichen Optionen (A,B,L,H).
+
+A (CR)              A-LAUF (Suche nach Strings, Vorwaertsref.)
+A adr.(CR)          A-LAUF ab Adresse (Originalstandort!!)
+A aadr.,eadr.(CR)   A-LAUF von Anf.-Adr. bis End-Adr.
+A=nr.               Zeilenzahl (LINES)
+
+BEISPIEL: Programm steht auf 6000H. Es ist  auf dieser Adresse
+lauffaehig. Zuerst A-Lauf. Nach dem Promtzeichen dazu eingeben:
+* A6000 (>ENTER<) ;Der R-80 listet nun die ersten Zeilen auf.
+                   Mit der weiteren Eingabe des 
+* A (>ENTER<)     ;wird der Lauf fortgesetzt.
+Die A-Eingabe wird nun fortgesetzt, bis  der  gesamte  MC-File
+als Text umgesetzt wurde. Dabei sollte man schon auf eventuel-
+le Fehler (z.B. unverstandene Relativ-Spruenge o.ae.) durchse-
+hen. Es kann auch aadr.,eadr. angegeben werden.
+
+B                   B-LAUF (Optionen wie A, legt MTB an)
+
+C (CR)              Anzeige CTL-Tabelle
+C adr.(CR)          Anzeige CTL ab Adr.
+C adr.,I            ab ADR. als Bef. interpr.
+      ,B                "       DB     "
+      ,W                "       DW/DA  "
+      ,S                "       DS     "
+      ,E            END einf.
+      ,K            Vereinb. fuer Adr. loeschen
+
+Im C-Lauf sind Handkorrekturen moeglich. Man kann sich die CTL-
+Tabelle anzeigen lassen, als Befehl erkannte Bytes  in  Daten-
+Bytes und  Datenworte (16-Bit Worte) wandeln u. umgekehrt, ein
+End  kann eingefuegt werden (kuerzt die  Tabelle  dort ab) und
+Adress-Vereinbarungen koennen geloescht werden.
+
+D                   HEXDUMP (Optionen wie A)
+
+DS (CR)             Ausgabe MTB
+DS marke.(CR)       Ausgabe ab Marke
+
+E adr. (CR)         Adresse durch Marke ersetzen
+
+K.marke (CR)        Marke loeschen, Absolutadresse einsetzen
+
+L                   Listlauf (Optionen wie A)
+
+M (CR)              Z-80 Code
+M=1520 (CR)         SYPS K-1520 Code
+
+O (CR)              OFFSET anzeigen
+O abstand (CR)      OFFSET setzen
+
+BERECHNUNG des Offsetabstandes: Obiges Beispiel, MC-File lauf-
+faehig auf der Adresse 1000H. Es wird jetzt  auf  die  Adresse
+6000H geladen. Nun muss der Abstand von der  Adresse,  auf  der
+das MC-Programm zur Zeit steht, zur Original-Adresse als  Off-
+set eingegeben werden.
+* O5000  (>ENTER<)  ; Nun wird das auf 6000H abgelegte  Progr.
+zurueckuebersetzt, wenn A mit der Programmanfangsadresse A1000
+eingegeben wird.
+! Man gibt nach Offset also nicht die Standort-Adresse des MC-
+Files ein, sondern die, auf der es lauffaehig ist!
+Steht das  MC-File aber im Speicherbereich unter dem Original-
+Standort, so wird vorwaerts weitergezaehlt (ZWEIERKOMPL.).
+Beispiel: Der Original-Standort ist  ab  F800H.  Das  Programm
+wird aber zum reassemblieren auf 6800H geladen. So rechnet man
+7FF bis FFFFH, + 6800H = 7000H als Offset.
+
+R(x) (CR)           READ (x=C:COM;L:CTL;S:SYM;D:DOC)
+ 
+S(x) (CR)           SAVE (x=T:TXT;L:CTL;S:SYM;D:DOC)
+
+Mit RC (RL,RS,RD) oder mit ST (SL,SS,SD) wird die Quelle  oder
+das Ziel fuer das Laden oder Saven festgelegt.
+Fuer verschiedene Handlungen des R-80 sind Pausen beim  Laden/
+Saven erforderlich, weshalb die Blockroutinen  des  Headersave
+benutzt werden.
+Man ist gut beraten, nach dem Reassemblieren den Text entweder
+im EDITOR oder ueber Einladen in den Speicher fuer das TB-Ger.
+zu komprimieren.
+
+U adr. (CR)         Eroeffnen DOC-Datei
+
+Will man mit dem weiter unten stehenden Kommando ";" einen Kom-
+mentar in den Text einfuegen,  muss  vorher  mit  "Uaadr."  und
+>ENTER< eine DOC-Datei eroeffnet werden.
+
+X (CR)              KILL Dateien
+
+Zum Loeschen vorhandener Dateien wird das Kommando "X" verwen-
+det.
+
+Z (CR)              Anzeigen MTB-Puffer
+Z adr. adr.(CR)     Setzen MTB-Puffer
+ZP (CR)             Setzen Druckerprotokoll
+ZQ (CR)             RESET Drucker
+
+Fuer den Ausdruck des Textes bzw. der Tabellen.
+
+? (CR)              STATUS
+
+Dient der Anzeige des STATUS zur Kontrolle
+
+; (CR)              Anzeige Kommentare
+; adr (CR)          Ab Adresse
+; adr.,kommentar    Einfuegen Komm. fuer Adresse
+; adr.,(CR)         Loeschen Komm. auf Adresse
+
+Mit diesen Kommando koennen bereits im R-80 Kommentare gesetzt
+und auch geloescht werden.
+
+CTRL-C (BREAK)      EXIT (Rueckkehr in das Betriebssystem)
+
+Mit diesem Kommando kann man zu jeder Zeit  in  das  Betriebs-
+system zurueckkehren.
+
+                           RUF-ADR.         RUF-ADR.
+
+ANPASSUNG :          SARUF 0FFF4H     LORUF 0FFF1H
+                     DRINI 0FFCDH     DRAKK 0FFE8H
+                     BSMK  0FFC4H     BLMK  0FFC7H
+
+Es wird nur NL(1EH), nicht CRLF ausgegeben!
+09H (TAB) wird in entsprechende Anzahl SPACE gewandelt.
+
+                                           AG Z-1013 d. IG-HC
+                                           a.IZ d. TU-DRESDEN
+

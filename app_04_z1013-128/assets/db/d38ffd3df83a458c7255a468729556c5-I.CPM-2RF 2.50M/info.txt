@@ -1,0 +1,3 @@
+<kurz src="Beschreibung Besonderheiten CP/M-Betriebssystem CPM-2RF 2.50M"/>
+<lang><include src="I.CPM-2RF 2.50M.txt"/></lang>
+<requires></requires>

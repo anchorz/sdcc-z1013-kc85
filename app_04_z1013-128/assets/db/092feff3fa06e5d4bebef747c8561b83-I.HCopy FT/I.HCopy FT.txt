@@ -1,0 +1,112 @@
+Falko Trojahn                     Leipzig, 24. April 1989
+
+
+***************************************************************
+*                                                             *
+*                H e a d e r - C o p y                        *
+*                                                             *
+***************************************************************
+
+
+Zweck:            Schnellueberspielhilfe zum Laden Kassette -
+                  Kassette, Kassette - RamDisk und umgekehrt,
+                  CRC-Berechnung, Erstellen Inhaltsliste, Auto-
+                  matisches Ueberspielen.  
+
+Nach dem Start des Programms erscheint ein Menue von sechs Funk-
+tionen (aktuelle Fkt. blinkt), die durch Positionieren ( <- -> )
+und ENTER oder durch Aufruf mit Anfangsbuchstabe zu erreichen
+sind. Jede Funktion hat drei Parameter, sichtbar in der Zeile
+darunter, die mittels Leertaste geaendert werden koennen. Im
+folgenden werden die Hauptfunktionen (gross) mit ihren Parame-
+tern (klein) und die Zusatzfunktionen erlaeutert: 
+ 
+LOAD   Laden durch Aufruf des Headersave
+
+alle   jedes folgende Programm wird geladen
+typ..  mit Typvorgabe (-> T) und Namensabfrage
+name   mit Typ- und Namensabfrage
+
+       Anschliessend an jedes Laden wird HEAD und CRC entspr.
+       eingestellter Parameter aufgerufen.
+
+GETD wie LOAD, Aufruf HeaderDisk 45 auf 0D800H
+
+
+SAVE   Retten durch Aufruf des Headersave
+
+rpt    letztes gelesenes Programm
+typ..  mit Typvorgabe, weiter wie name
+name   Abfrage Adressen (Aadr Eadr Sadr), Typ und Name
+ 
+       Vor und nach SAVE wird eine kurze Bandpause erzeugt.
+       Drueckt man unmittelbar am Ende der Tonausgabe eine bel.
+       Taste, wird Verify abgefragt, sonst nicht!
+
+PUTD wie SAVE, Aufruf HeaderDisk 45 auf 0D803H
+
+
+HEAD   Kassettenlisten bzw. Anzeigen waehrend des Ueberspielens
+
+look   Kopfsuche + Anzeige im Direktmodus, Abbruch mit ^C
+list   Nach LOAD Eintragen der Programmdaten in Inhaltsverzeich-
+       nis (Anfadr. in 0E803H, 0E805H; Endadr. in 0E807H; 
+       0E809H := 0). Bei voller Liste Ausgabe vor naechstem 
+       Kopf- oder Programm-Laden.
+cass   Wie look, aber mit Eintragung in Liste
+
+       Der Kopf des letzten physisch geladenen Programmes wird
+       in die erste Bildschirmzeile gerettet. 
+
+
+CRC    Berechnung 8-Bit-CRC nach: H. Voelz, Radio DDR - REM
+       (wird immer nach LOAD aufgerufen)
+
+show   Anzeige 
+into   Anzeige + Eintragen in FCB, Adr. 0EBH
+ctrl   Anzeige + Vergleich mit FCB, Abbruch bei Fehler
+
+
+VERsion 0,1,2  
+In 0E7FCH bzw. 0EBFCH kann ein Unterprogramm z. B. zur Recor-
+dersteuerung eingetragen werden, das vor/nach LOAD und vor/nach 
+SAVE aufgerufen wird und die entsprechend der eingestellten 
+Version im Akku uebergebenen Zahlen auswertet:  
+
+Zahl in A  Zeitpunkt  Beispiel fuer Reaktion des UP bei Vers. 1
+0 1 2      Vor LOAD   Wenn Akku = 1 dann Einschalten Recorder 1
+3 4 5      Nach LOAD  Wenn Akku = 4 dann Ausschalten Recorder 1
+6 7 8      Vor SAVE   Wenn Akku = 7 dann Einschalten Recorder 2
+9 A B      Nach SAVE  Wenn Akku = A dann Ausschalten Recorder 2
+
+
+AUTO Automatische Folge von LOAD (GETD) und SAVE (PUTD) zum selb-
+staendigen Ueberspielen, z. B. bei Steuerung Motor-Ein/Aus von
+zwei Recordern ueber VER. 
+Rueckkehr ins Menue erfolgt durch Eingabe von Q, aber auch
+selbsttaetig nach unvollstaendigem Laden (Abbruch mit ^C).
+
+l_s_   Laden, einmal Retten und wieder Laden 
+l_ss   Laden, zweimal Retten und wieder Laden 
+ls[]   Laden, wiederholtes Retten bis Taste gedrueckt wird, 
+       wieder Laden
+
+Zusatzfunktionen:
+
+T  Eingabe des Typs fuer LOAD und SAVE
+
+J  Start des letzten geladenen Programms wenn Typ = C
+
+R  Ausgabe der Inhaltsliste und Loeschen (auch wenn die Liste
+nicht voll ist)
+
+Es existieren Implementierungen fuer Headersave 5.95 auf 0E000H,
+0F800H und  fuer 4K-Brosig-Monitor fuer die Programmadressen
+0E800H bis 0EBFFH, Start 0E800H bzw. 0E400H, 0E7FFH, 0E400H. Ich
+bitte darum, stets alle Varianten und die Beschreibung zusammen 
+weiterzugeben.
+
+Ich hoffe, dass durch dieses Programm die (oft endlosen...)
+Ueberspielvorgaenge etwas beschleunigt werden. Fuer Anregungen,
+Hinweise auf Fehler u. ae. bin ich jederzeit dankbar.
+

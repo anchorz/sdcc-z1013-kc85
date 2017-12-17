@@ -1,0 +1,504 @@
+TONBAND-(KASSETTEN-)VERZEICHNIS 
+********************************
+                                
+Start:                          
+                                
+@N - Neustart  (J 102)          
+@R - Restart   (J 100)          
+                                
+Neustart:                       
+                                
+Dateiende wird auf den festgeleg
+ten Dateianfang gelegt, und kann
+rueckgaengig gemacht werden, in-
+dem dort zB.                    
+FF 01 00                        
+eingetragen wird.               
+                                
+Restart:                        
+                                
+Die vorher in der Datei abgespei
+cherten  Daten  sind  uneinge-  
+schraenkt gueltig.              
+                                
+                                
+Arbeitszellen:                  
+                                
+00B7   DA Dateianfang           
+00B9   DA Dateiende             
+00BB   DA Memory-Size           
+                                
+Der Dateianfang kann innerhalb  
+des freien RAM-Bereichs beliebig
+festgelegt werden. Es muss an-  
+schliessend ein Neustart erfol- 
+gen, sofern nicht eine gueltige 
+Datei auf den neuen Dateianfang 
+geladen oder transportiert wird.
+                                
+Bei  jedem  Start  wird vom Pro-
+gramm automatisch das Dateiende 
+und die hoechste verfuegbare RAM
+-Adresse ermittelt.             
+                                
+Das Dateiende ist durch         
+                                
+FF 00 00   gekennzeichnet.      
+                        
+                                
+Allgemeine Bedeutung der anzuge-
+benden Argumente bei Kommandos: 
+                                
+kommando X Y Z1 Z2     oder     
+kommando X,Y,Z1,Z2              
+                                
+X  - Band-(Kassetten-)Nummer    
+Y  - Bandfarbe (Kassettenseite) 
+Z1 - Zaehlwerk-Nummer (Anfang)  
+Z2 - Zaehlwerk-Nummer (Ende)    
+                                
+Wird Z2 nicht gefunden, so wird 
+die naechst hoehere Zaehlwerk-  
+Nummer gewertet.                
+                                
+Die Anzahl der max. benoetigten 
+Argumente richtet sich nach dem 
+konkreten Kommando. Mit jedem   
+Argument wird der gewuenschte   
+Bereich weiter eingeschraenkt.  
+Ausserdem gelten,wenn vier Argu-
+mente angegeben werden koennen, 
+folgende Bereiche:              
+                                
+kommando X,Y,,Z2                
+                                
+             Band (Kassette) X,Y
+             Zaehlwerk 0...Z2   
+                                
+                                
+kommando X,Y,Z1,                
+                                
+             Band (Kassette) X,Y
+             Zaehlwerk Z1...Ende
+                                
+                                
+Wird als Argument nur X angege- 
+ben, so gilt als Bandseite GRUEN
+bzw. Kassettenseite A.          
+Eine Ausnahme hiervon bildet das
+Kommando KILL, wobei bei nur    
+einem Argument, welches dann als
+Band- oder Kassetten- Nummer    
+gewertet  wird,  das  komplette 
+Band  (bzw. Kassette)  aus  der 
+Datei entfernt wird.            
+                                
+                                
+1. Bandverzeichnis              
+********************************
+                                
+-Eingabe von bis zu 4 Argumenten
+-Bildschirmrollen nur bei ENTER,
+ es erscheint ein blinkendes '?'
+-STOP fuehrt in die Eingabe-    
+ schleife zurueck               
+-Eingabeschleife ist gekennzeich
+ net durch Erscheinen des Cursor
+-ENTER ohne weiteren Text in der
+ Eingabeschleife fuehrt zurueck 
+ ins Menue                      
+-ENTER am Ende eines Bandes be- 
+ wirkt Ausgabe des Naechsten    
+ Bandes (bzw. Kassette)         
+-jede andere Taste fuehrt in die
+ Eingabeschleife                
+-NMI fuehrt in jedem Fall ins   
+ Menue zurueck                  
+                                
+                                
+                                
+                                
+2. Suchen in der Datei          
+********************************
+                                
+Gesucht werden koennen einzelne 
+Musiktitel, Musikgruppen und    
+als  solche  gekennzeichnete    
+Schallplatten. Dabei braucht das
+Gesuchte nicht vollstaendig ange
+geben werden, es kann mit einem 
+Punkt abgekuerzt werden. Gross- 
+oder Kleinschreibung von Buch-  
+staben sind weder in der Datei, 
+noch in der Eingabe von Bedeu_  
+tung. Fuer die Tastaturbelegung 
+gilt das unter 1. gesagte, nur  
+dass in der Eingabeschleife     
+statt der Argumente die zu      
+suchende Zeichenkette eingegeben
+wird. Im naechsten Bild sind die
+Varianten naeher erlaeutert.    
+                                
+                                
+                                
+                                
+gruppe                          
+sucht alle Platten dieser Gruppe
+                                
+gruppe (platte)                 
+Ausgabe aller Titel der Platte  
+                                
+gruppe * titel                  
+sucht den Titel der Gruppe      
+                                
+Die entsprechende Variante wird 
+anhand der zu suchenden Zeichen-
+kette festgelegt, dh. wenn diese
+eines der Zeichen '(' oder '*'  
+enthaelt wird die zweite oder   
+dritte Variante gewaehlt, wobei 
+'*' hoehere Prioritaet gegen-   
+ueber '(' hat. Bei Abkuerzung   
+mit '.' werden alle Zeilen in   
+der Datei, die bis zum Punkt    
+uebereinstimmen mit beruecksich-
+tigt. Zur Erklaerung dazu einige
+Beispiele:                      
+                                
+                                
+ACC.                            
+(sucht alle Platten aller Grup- 
+ pen, die mit 'ACC' beginnen)   
+                                
+Accept (.)                      
+(gibt alle Titel aller Platten  
+ der Gruppe 'Accept' aus)       
+                                
+. (.)                           
+(Ausgabe aller Platten und deren
+ Musiktitel)                    
+                                
+ACCEPT * .                      
+(gibt alle Titel der Gruppe     
+ 'Accept' aus)                  
+                                
+. * Hot Summernight             
+(sucht alle Aufnahmen mit dem   
+ Titel 'Hot Summernight')       
+                                
+M. * .                          
+(gibt alle Titel aller mit 'M'  
+ beginnenden Gruppen aus)       
+                                
+3. Datei bearbeiten             
+********************************
+                                
+Kommandos: - NEW                
+           - FRE                
+           - CLS                
+           - LIST               
+           - EDIT               
+           - KILL               
+           - BYE                
+                                
+Es kann in einer Eingabe immer  
+nur ein einziges Kommando ver-  
+arbeitet werden, dh. mehrere    
+Kommandos, durch Doppelpunkt    
+getrennt, sind nicht zulaessig! 
+                                
+3.1. Eingabe in die Datei       
+********************************
+                                
+Die Eingabe von einem oder zwei 
+Argumenten ohne Kommando bewirkt
+ein Umschalten in den Eingabe-  
+mode.                           
+Dieser Zustand ist gekennzeich- 
+net durch einen blinkenden Cur- 
+sor. Nun kann im ganzen zugaeng-
+lichen Bildschirmbereich ge-    
+schrieben werden. Eine Uebernah-
+me des Textes erfolgt erst mit  
+der STOP-Taste (siehe Tastatur- 
+belegung). Einige einfache      
+Regeln sind bei der Eingabe zu  
+beachten:                       
+                                
+-Jeder Titel ist mit einer Zaehl
+ werknummer zu versehen, um ein 
+ Einsortieren in die Datei zu   
+ ermoeglichen.                  
+                                
+-Nur Zahlen, die am linken Bild-
+ schirmrand beginnen, werden als
+ Zaehlwerknummer gewertet.      
+                                
+-Plattentitel  sind  nach  der  
+ Zaehlwerknummer mit '@' zu kenn
+ zeichnen.                      
+                                
+-Platten sind mit der Zaehlwerk-
+ nummer ihres ersten Musiktitels
+ zu versehen, und nach diesem   
+ einzugeben. Wird dieser Titel  
+ spaeter aus der Datei entfernt,
+ erhaelt der Plattentitel die   
+ naechst hoehere Zaehlwerknummer
+                                
+-Bei den Titeln der Platte ent- 
+ faellt die Angabe der Musik-   
+ gruppen.                       
+                                
+-Die Zeichenzahl zwischen den   
+ Zaehlwerknummern darf 255 nicht
+ ueberschreiten, wobei mehrere  
+ Leerzeichen als ein Zeichen    
+ Zaehlen.                       
+                                
+-Die Eingaben koennen formatlos,
+ dh. fortlaufend, erfolgen.     
+                                
+Im nachsten Bildschirmtext ist  
+das an einigen Beispielen ver-  
+deutlicht.                      
+5 R <ENTER> [Band 5 rot]        
+                                
+0 Ozzy Osbourne*Steal Away (The 
+Night)                          
+100 Rainbow*Starstruck          
+200 Grave Digger*Heavy Metal Bre
+akdown                          
+300 *Hit The Light              
+400 *Motorbreath                
+500 *Jump In The Fire           
+200 @ Metallica (Kill'em All)   
+150                             
+          * * * * *             
+                                
+Die ersten drei Eingabezeilen   
+(0-200) sind Eingaben der Form  
+ZWNr. Gruppe * Titel            
+dann folgen die Titel einer Plat
+te, wobei der Gruppenname ent-  
+faellt. Dieser steht nach 300 @ 
+fuer alle folgenden Titel, zusam
+men mit dem Plattenname. Die An-
+gabe einer ZW-Nummer ohne weite-
+re Angaben loescht die Zeile.   
+Die Kennzeichnung von Platten   
+erfolgt mit '@'.                
+                                
+Plattentitel sind in ( ) einzu- 
+schliessen.                     
+                                
+In den einzelnen Musikstuecken  
+sind Gruppe und Titel durch '*' 
+zu trennen, dabei koennen diese 
+bei Unkenntnis auch entfallen.  
+                                
+3.2. Beschreibung der Kommandos 
+********************************
+                                
+3.2.1. NEW                      
+                                
+Das Dateiende wird auf den Datei
+anfang gesetzt, wobei die Datei 
+aber nicht zerstoert wird.      
+Dieser Vorgang kann rueckgaengig
+gemacht werden, indem dort zB.  
+FF 01 00                        
+eingetragen wird.               
+                                
+3.2.2 FRE                       
+                                
+Ermittelt den dezimalen Wert    
+des noch Verfuegbaren Dateispei-
+cherbereichs.                   
+                                
+3.2.3. CLS                      
+                                
+Bildschirm loeschen             
+                                
+3.2.4. LIST                     
+                                
+Bewirkt die Ausgabe von maximal 
+einer  Band-  bzw.  Kassetten   
+haelfte. Es koennen bist zu vier
+Argumente angegeben werden,     
+wobei der auszugebende Bereich  
+immer weiter eingeschraenkt wird
+Die Ausgabe erfolgt wie bei 1.  
+STOP fuehrt in die Kommando-    
+ebene zurueck.                  
+                                
+                                
+                                
+3.2.5. EDIT                     
+                                
+Auch hier koennen bis zu vier   
+Argumente angegeben werden.     
+Der gewuenschte Bereich wird    
+Zeile fuer Zeile (jeweils nach  
+Betaetigen der STOP-Taste) auf  
+den Bildschirm uebertragen. Alle
+rechts und unterhalb des Cursors
+stehenden Zeichen (auch ZW-Num- 
+mern) koennen geaendert werden  
+nach den unter 3.1. genannten   
+Regeln. Nach Betaetigung der    
+STOP-Taste wird die entsprechen-
+de Zeile geloescht, eingefuegt  
+oder ueberschrieben, und die    
+naechst hoehere Zeile aufgerufen
+bis zum Ende.                   
+                                
+3.2.6. KILL                     
+                                
+Entsprechend den angegebenen bis
+zu vier Argumenten werden ein-  
+                                
+zelne Zeilen, Bereiche, Band-   
+haelften oder komplette Baender 
+aus der Datei entfernt. Bei An- 
+gabe der Argumente X,Y,Z1 mit   
+nachfolgendem '@' wird der an   
+dieser Stelle stehende Platten- 
+name geloescht, also zB.        
+5,G,100@ fuer Baender oder      
+5,A,100@ fuer Kassetten.        
+                                
+3.2.7. BYE                      
+                                
+Bewirkt ein Ruecksprung ins     
+Menuebild.                      
+                                
+                                
+4. Datei abspeichern            
+********************************
+                                
+Abgespeichert wird das Programm 
+zusammen mit der Datei. Die     
+Anfangs- und Endadresse wird    
+ausgegeben, und sind zu notieren
+                                
+Alles muss spaeter im selben    
+Speicherbereich geladen werden. 
+                                
+5. Ende                         
+********************************
+                                
+Ruecksprung ins Z1013 - Betriebs
+system mit max. Fenstenbereich. 
+                                
+          * * * * *             
+                                
+                                
+                                
+Gueltigkeit der Argumente       
+********************************
+                                
+X - 0...99                      
+Y - G,R (Band) / A,B (Kassetten)
+Z - 0...9999                    
+                                
+                                
+                                
+                                
+                                
+Fehlermeldungen                 
+********************************
+                                
+SN ERROR                        
+Ein Kommando ist syntaktisch    
+fehlerhaft.                     
+                                
+FC ERROR                        
+Ein Argument ueberschreitet den 
+Gueltigkeitsbereich, oder es    
+wurden zu viele Argumente angeg.
+                                
+LN ERROR                        
+Zeichenkette ueberschreitet die 
+max. Zeichenzahl von 255        
+zwischen zwei  ZW.-Nummern.     
+                                
+OM ERROR                        
+Freier Dateispeicherbereich zu  
+klein.                          
+                                
+UL ERROR                        
+Nicht vorhandene ZW.-Nummer oder
+Bandseite (letzteres bei KILL). 
+Tastaturbelegung (Sonderfunkt.) 
+********************************
+                                
+S4+K STOP                       
+S4+R Cursor runter (LF) *)      
+S4+S Cursor hoch (VTAB) *)      
+S4+T Bildschirm loeschen        
+S4+V Cursor an den Bereichs_    
+     anfang *)                  
+S4+W Cursor hinter das letzte   
+     Zeichen *)                 
+S4+@ Delete *)                  
+S4+B Insert *)                  
+                                
+*)Diese Belegung gilt nur fuer  
+  den Eingabemodus, erkenntlich 
+  am blinkenden Cursor.         
+  Dabei ist noch eine weitere   
+  Besonderheit zu beachten:     
+  Die ENTER-Taste bewirkt nicht 
+  das Loeschen der Zeichen nach 
+  dem Cursor, es erfolgt kein   
+  Rollen des Bildschirms und die
+  STOP-Taste beendet die Eingabe
+Aufbau der Datei                
+********************************
+                                
+Die Datei ist unter dem Gesichts
+punkt der maximalen Auslastung  
+des Speichers angelegt. Leerzei-
+chen werden bis auf eins unter- 
+drueckt. Bei der Auflistung     
+erfolgt eine streng formatisier-
+te Ausgabe auf dem Bildschirm.  
+                                
+Die Anordnung der Elemente in   
+der Datei ist wie folgt:        
+                                
+1. Baender (Kassetten):         
+-----------------------         
+FF pointer nummer seite         
+                                
+Der Pointer ist eine 2-Byte-    
+Adresse, die auf den naechsten  
+Pointer zeigt                   
+Nummer und Seite kennzeichnen   
+das Band.                       
+                                
+2. Platten                      
+----------                      
+FE gruppe (platte)              
+                                
+3. Titel                        
+--------                        
+FD zaehlwerk gruppe * titel     
+                                
+Die Zaehlwerknummer ist eine    
+2 Byte lange Dezimalzahl.       
+                                
+4. Dateiende                    
+------------                    
+FF 00 00                        
+                                
+                                
+Alle Elemente beginnen mit einem
+Steuerbyte, welches als Grafik- 
+zeichen bei der Eingabe nicht   
+zulaessig ist. Es sind folgende:
+                                
+    (FD,FE und FF)           
+                                
+                                

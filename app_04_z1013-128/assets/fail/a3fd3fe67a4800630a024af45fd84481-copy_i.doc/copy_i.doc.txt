@@ -1,0 +1,33 @@
+*********************************************************
+*                                                       *
+*             C O P Y . C O M                wlsoft90   *
+*                                                       *
+*********************************************************
+
+Dieses Programm dient zum Kopieren von CP/M-Dateien von und zum
+Magnetband. Dabei duerfen diese Programme nicht laenger als der
+verfuegbare TPA sein. Die Dateien werden dabei einzeln im Haeder-
+save-Format aufgezeichnet und sind anschliessend normal
+kopierbar.
+
+Das Programm existiert in 2 Varianten:
+  + COPY32.COM      - fuer die 32*32 Zeichen CP/M
+  + COPY64.COM      - fuer die 64*16 Zeichen CP/M.
+
+Nach dem Start des Programms meldet es sich mit dem Hauptmenue.
+Dadurch erklaert sich das Programm selbst.
+
+Es gibt 2 Save/Load-Routinen:
+  + Z1013-Modus     - Haedersave nach R.Brosig
+  + Uni-Modus       - nach MP 5(1988) S.136
+                      Dieser Modus dient zum Dateiaustausch mit
+                      dem Buerocomputer K9815.
+
+Dieses Programm ist nur auf dem Z1013 lauffaehig, da es RST 20H-
+Rufe und den Sprungverteiler nutzt.
+
+                                       Bernd Wilske
+                                       Kantstr. 4
+                                       Brieselang
+                                       1 5 5 2
+

@@ -1,0 +1,4 @@
+<kurz src="Sprachausgabe VOICE"/>
+<lang><include src="T.BEMERKUNGEN.txt"/></lang>
+<requires></requires>
+

@@ -1,0 +1,3 @@
+<kurz src="Murphys Gesetze, deutsch"/>
+<lang><include src="T.MURPHY-DOC_VP.txt"/></lang>
+<requires></requires>

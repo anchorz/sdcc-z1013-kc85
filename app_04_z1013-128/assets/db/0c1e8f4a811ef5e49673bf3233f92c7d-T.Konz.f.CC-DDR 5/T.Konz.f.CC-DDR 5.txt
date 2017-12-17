@@ -1,0 +1,297 @@
+***************************************************************
+*  Konzeption zur Gründung eines Computerclub       *
+  *  nur Z1013 oder auch mit anderen Typen gemeinsam  *
+    *  als Rechtsträger der KULTURBUND der DDR  (o.a.)  *
+***************************************************************
+
+1. Einleitung
+=============
+
+Da der Computer im Ausmaß der Herstellung, Preis und andere Pa-
+rameter günstige Dimensionen angenommen hat, ist er für breite
+Kreise der Bevölkerung unseres Landes, selbst im Heimbereich, 
+zugänglich geworden. Als große Herausforderung an das logische
+Denken, als Mittel und Werkzeug für die Freizeitbeschäftigung,
+bzw. auch für andere Freizeitbeschäftigungen, nicht zuletzt 
+auch für die künstlerische Beschäftigung, wird er im zunehmenden
+Maße auch zur Befriedigung von kulturellen Bedürfnissen genutzt.
+
+So wird auch der Umgang mit dem Computer das Bedürfnis nach ge-
+meinsamer Zusammenarbeit in Computer-Gemeinschaften wecken. Die-
+sem Bedürfnis gilt es in geordneter Form Rechnung zu tragen.
+
+2. Umfang eines Computerclub
+============================
+
+2.1 Organisationsform
+---------------------
+
+Zugeschnitten auf das jeweilige Territorium sind verschiedene
+Organisationsformen möglich:
+
+2.1.1 Kreis, Stadt o. Stadtbezirke
+
+Im Normalfall reicht es aus, in jedem Land- oder Stadtkreis, in
+großen Städten entsprechend in Stadtbezirken, einen Computerclub
+zu gründen, wenn noch keiner vorhanden ist. Dabei ist nicht in
+jedem Fall von einer Gründung Abstand zu nehmen, weil schon ein
+Computerclub unter einem anderen Rechtsträger existiert. Oft 
+haben diese Clubs nur einen bestimmten Computertyp auf ihre
+Fahnen geschrieben und lehnen einen anderen (oft grundlos) ab.
+(Weiter unten dazu eine statistische Ermittlung der in etwa vor-
+handenen Typen in der DDR)
+
+2.1.2 Abweichende Größen
+
+Aus den unterschiedlichsten Gründen kann sich auch eine andere
+Größenordnung anbieten. Da wäre der Fall Dresden-Land. Dieser
+Kreis liegt so um die Bezirksstadt Dresden herum, daß es ver-
+kehrstechnisch für Mitglieder problematisch ist, in eine der bei-
+den Städte Radebeul oder Radeberg zu Veranstaltungen zu kommen.
+Hier bot es sich an, den Club mit zwei entsprechenden Arbeits-
+gemeinschaften zu gründen.
+So kann es genauso notwendig werden, verschiedene AG's innerhalb
+eines Club wegen verschiedener Typen zu gründen. (Dazu noch wei-
+ter unten).
+Andererseits ist auch ein Club für einen größeren Bereich denk-
+bar. Auch korrespondierende Mitglieder sind möglich, wenn es die
+Situation erfordert (territoriale Verteilung der Computer).
+
+2.1.3 Gestzliche Grundlagen
+
+Jede Gemeinschaft, Club o.a., die in der Öffentlichkeit wirksam
+werden wollen, müssen sich bei den dazu vorgesehenen staatlichen
+Organen registrieren lassen. Diese Registrierung kann dort ent-
+fallen, wo diese Gemeinschaft ein Teil einer bestehenden öffent-
+lichen Einrichtung wird, also einen Rechtsträger hat. Sogenannte
+private Computerclubs oder USER-Gemeinschaften können nicht öf-
+fentlich auftreten, ihre Anschrift als Kontaktadresse veröffent-
+lichen u.a.m. 
+ 
+2.2 Verteilung der Computer
+---------------------------
+
+Angaben der GST zufolge, sowie etwaige Verkaufsziffern von 
+ROBOTRON kann man eine Verteilung nach Typen in der DDR in Pri-
+vathand etwa folgend feststellen:
+     etwa    20.000 Stück MRB Z1013 d.VEB ROBOTRON Riesa
+     etwa     7.500   "   ATARI und
+              7.500   "   COMODORE
+              7.000   "   SPECTRUM ZX und CLOON's 
+              5.000   "   versch. and. Nicht-DDR-Typen
+              5.000   "   Amateur-Computer "AC-1"
+              2.500   "   KC-Typen von ROBOTRON-Dresden und
+                          Mikroelektronik Mühlhausen.
+              (Zahlenangaben ohne Gewähr)
+Aus dieser Sicht gesehen sollte daher zuerst der Z1013 Beach-
+tung finden.
+
+3. Organisationsform eines Computerclub (CC)
+============================================
+
+3.1 Werbung
+-----------
+
+Um dem CC Mitglieder zuzuführen, etwaige Interessenten von der
+Gründung in Kenntnis zu setzen usw. ist eine Werbung notwendig.
+Geeignet ist hierbei, neben der Fachpresse, ein Werbeartikel
+in der Tagespresse, in den Betriebszeitungen, Betriebsfunk, der
+größeren Betriebe im Territorium; auch über die Gewerkschaft,
+sowie die Kulturhäuser. Mit letzteren ist eine Zusammenarbeit
+überhaupt vorteilhaft.
+Anmerkung: Bei angebotener Meldung ist gleich die Angabe der 
+           vorhandenen Technik mit abzufragen.
+
+3.2 Organisation
+----------------
+
+Entsprechend der eingegangenen Meldungen der Interessenten, der
+gemeldeten Technik, der angegebenen speziellen Interessen, usw.
+ist die Form der Organisation, die Arbeitsweise usw. festzule-
+gen. Es können auch innerhalb des Clubs verschiedene Sektionen
+(AG's, IG's) gebildet werden. Zum Beispiel:
+     nach   Computertyp
+            Computersprache
+            spezielle Arbeitsrichtungen (z.B. Grafik)
+            spezielle Interessen (z.B. Elektronik, Amateurfunk)
+            u.a.
+Dies sollte jeder Club operativ entscheiden.
+Aufbau der Leitung,-Leiter, stellv. Leiter, AG bzw. IG-Leiter,
+Leiter bzw. Verantwortliche für bestimmte Ressorts oder Aufga-
+ben, Schriftführer u.a.m. muß je nach Stärke, Organisationsform,
+Interessengebiete u.a. jeder Club für sich selbst festlegen.
+Es sind die dafür üblicjen Strukturen anzuwenden.
+
+4. Aufgaben
+===========
+
+4.1 Aufgaben innerhalb des CC
+-----------------------------
+
+Aufbau des Club; Heranführen aller Mitglieder an ein gemeinsames
+Wissensniveau in Hard- wie auch Software; Gemeinsames Erarbeiten
+eines höheren Wissensniveau; Erlernen von höheren Programmier-
+sprachen entsprechend der allgemeinen Interessen der Mitglieder;
+Durchführung von interessierenden Vorträgen von Fachleuten;
+Schaffung einer eigenen Clubtechnik; Anlegen eines Softwarefun-
+dus und Katalog davon; Anlegen einer Fachbibliothek; 
+
+4.2 Aufgaben im Territorium
+---------------------------
+
+Kontakte schaffen zu bestehende Computerkabinette an Bildungs-
+einrichtungen, -zur Lösung gemeinsamer Aufgaben, -zur Übernahme
+interessierter Schüler o. Lehrlinge nach Abschluß ihrer Ausbil-
+dung, u.a.; Kontakte schaffen zu bestehenden Kultureinrichtungen
+und zu anderen Computergemeinschaften zum Erfahrungsaustausch 
+und zur Lösung gemeinsamer Aufgaben. Wo möglich und angebracht
+sollte auch bei Veranstaltungen, Festen u.a. Gelegenheiten, der
+CC an die Öffentlichkeit treten und einige seiner Arbeiten vor-
+stellen.
+Eine der wichtigsten Aufgaben im Territorium, in manchen Fällen
+auch darüber hinaus, ist der Kontakt, die Hilfestellung, der 
+Softwaretausch oder -weitergabe, die Vermittlung von Kenntnis-
+sen, von bekannten Hardwarelösungen u.a. an nichtorganisierte 
+Computerfreunde, mit korrespondierenden Mitgliedern, auch die
+Heranführung von Kindern an die Computertechnik. Geeignet dazu
+sind z.B. Softwarebörsen, Treffs in Kindereinrichtungen und
+Schulen, u.a.
+
+4.3 Aufgaben für den Rechtsträger
+---------------------------------
+
+Aufgabenstellungen des Rechtsträger lösen, Kontakte zu anderen
+Sektionen des Rechtstraeger zur Lösung gemeinsamer Aufgaben;
+(Zum Beispiel bekam der CC-Dr.-Land die Aufgabe, für die Hei-
+matforscher ein Programm zur Erfassung, Einordnung und Katalo-
+gisierung von Bodenfunden für den Computer zu schaffen.)
+Auch Aufgaben der örtlichen staatlichen Organe, des Kulturbundes
+der DDR, in Zusammenhang mit den Aufgaben -Wissenschaft und 
+Kultur-, den Grundfragen der -wiss.-technischen Revolution-,
+in der Auseinandersetzung zu geistigen und ethischen Fragen
+im Zusammenhang der Fragen Computer und Mensch, und der Kunst,
+u.a., sind für einen CC von großem Wert.
+
+4.4 Aufgaben des Rechtsträger
+-----------------------------
+
+Der Kulturbund, oder andere Rechtsträger in ihren üblichen Or-
+ganisationsformen, haben hierbei keineswegs Mittel zur Beschaf-
+fung von CC-eigner Technik bereit zu stellen, diese Mittel soll-
+ten vielmehr vom CC selber erwirtschaftet werden. Möglichkeiten
+dazu sind individuell zu suchen. Allerdings sollte keine eigen-
+verwaltete Clubkasse angelegt werden, sondern in der allgemeinen
+Finanzstruktur des Rechtsträger ist ein entsprechender Fond für
+den CC zu schaffen. Diese Mittel sind dann zweckgebunden für den
+CC zu führen.
+Rückführungen aus den Mitgliedsbeiträgen u.a. werden dem CC in
+der bei dem Rechtsträger üblichen Art und Weise und Form zu-
+gängig gemacht. 
+Der Rechtsträger übernimmt aber die Kosten für Werbung, für 
+entstehende Ausgaben aus organisatorischen Aufgaben, für Unkos-
+ten durch Korrespondenz, Vervielfältigung, Abonement von Fach-
+periodika (Funkamateur, rfe, Mikroprozessortechnik, practic 
+(für Z1013)). 
+Auch für benötigte Fachliteratur kann eine finanz. Hilfestellung
+vereinbart werden. 
+Der Rechtsträger bemüht sich um eine ordentliche und geeignete
+Räumlichkeit für Zusammenkünfte, (die Zahl der Zusammenkünfte
+kann eigenständig festgelegt werden, sollte aber mind. monat-
+lich einmal erfolgen), mit verschließbaren Aufbewahrungsmög-
+lichkeiten (z.B. für Technik, Programmbibliothek u.a.) und heiz-
+bar für die entsprechende Jahreszeit.
+
+4.5 Aufgaben in der Gesammtsicht der CC der DDR
+-----------------------------------------------
+
+Aus ökonomischer Sicht ist es nicht unbedingt möglich (und er-
+forderlich), Software für die große Zahl der verschiedenen Com-
+putertypen kommerziell für die Amateure herzustellen und ver-
+treiben. Hier hilft nur ein dichtes Netz von CC's u.a. Gemein-
+schaften, die den Softwaretausch und Weitergabe organisieren.
+Ein solches Netz mit Bezirksleitklubs, Clubs u.a. Gemeinsch.
+in den Kreisen, wird zur Zeit in der DDR aufgebaut. (Diese Kon-
+zeption ist auch dafür gedacht, diesen Aufbau zu unterstützen.) 
+Hierfür entstehen auch für jeden CC Aufgaben. Da wäre das Er-
+stellen von Listings vorhandener Software, Prüfen, Korrektur
+und Verbesserung dieser Software, Weitergabe nur solcher Soft-
+ware, die 
+  a. -festgelegte Standard's einhält und kompatibel zu diesen
+      Standard's ist
+  b. -geprüft und lauffähig ist, ordentliche Dokumentation hat
+      oder sich selbst erläutert, einen sauberen Einstieg und
+      Ausstieg aus dem Programm hat, auch saubere Abbruchmög-
+      lichkeiten innerhalb des Programmes, speichersparend, kei-
+      ne willkürlich veränderte Standardprogramme, keine veral-
+      teten Versionen, keine unmoralische oder kriegsverherr-
+      lichende, Rassen und Völker diskriminierende Spiel- oder
+      andere Programme, keine Software, die Systemzellen zer-
+      stört, ohne sie beim Verlassen wieder herzustellen (auch
+      wilde Sprünge in die Tastatur, in den Monitor o. Betriebs-
+      system (wo nicht erforderlich), RESET oder Stecker ziehen
+      als einzige Ausstiegmöglichkeit, Viren u.a. zerstörende
+      Programmteile, Code für Einstieg, wo nicht erforderlich,
+      ist verpönt). 
+  c. -Angaben über Anfang-, End- und Startadresse, Name (und wo
+      vorhanden Typ), Hersteller, letzter Bearbeiter oder wenig-
+      stens Herkunft enthält. 
+In den Listings zur Weitergabe erscheint auch nicht, was nicht
+weitergegeben werden soll und nur clubintern bewahrt wird.
+
+5. Abschlußbemerkungen
+======================
+
+5.1 Meldung für Klubbuch (KB) und Erhalt einer KB-Nr.
+-----------------------------------------------------
+
+Alle Z1013-Gemeinschaften (auch andere sind schon dabei, werden
+auch mit aufgenommen, genauso gemischte CC) werden in einem 
+Klubbuch erfasst und erhalten eine KB-Nr., die bei allen Zu-
+schriften zu verwenden sind. Dazu melden sich alle neugegrün-
+deten und noch nicht erfassten CC bei dem
+           CC-Dresden-Land
+           Dresdnerstr. 42
+           PF 53-55
+           Radeberg
+           8142
+Dieser CC führt das KB der DDR.
+Der Leiter dieses CC (auch Autor dieser Konzeption) ist tele-
+fonisch unter Amt Radeberg 3810 (priv.) zu erreichen. Jeder
+CC, der sich neu meldet, erhält einen Fragebogen. Später wird
+dieser Fragebogen von den Bezirksleitklubs überreicht werden.
+(Dieser Konzeption wird der Fragebogen mit angefügt werden).
+Z1013-Clubs erhalten noch einige INFO's und können sich bei Zu-
+sendung einer 60er-Kassette (möglichst keine ausländischen und
+Digital-Kassetten -anderer Vormagnetisierungswert) und einer
+Bearbeitungsgebühr von 5.- M + 1.50 M Rückporto über 30 der
+wichtigsten Dienstprogramme incl. der Beschreibungen, INFO's,
+Standards u.a., immer auf neuesten Stand gehalten, erwerben.
+
+5.2 Allgemeine Aufgaben aller CC der DDR im Interesse aller
+    Hobby-Computerfreunde
+-----------------------------------------------------------
+
+Alle CC's erklären sich bereit, Software an Amateure grund-
+sätzlich im Tausch und kostenlos abzugeben. Es wird nur eine
+kleine Bearbeitungsgebühr zur Deckung von Unkosten, die max.
+5.- M incl. der dazugehörigen Dokumentation je Programm nicht
+überschreiten sollte, plus der Porto-Kosten, erhoben. Damit
+sollen u.a. die Programmhamsterer in die Schranken gewiesen 
+werden. Der Modus unter den Club's wird noch in dieses Jahr
+festgelegt.
+Wir treten grundsätzlich gegen jeden Preiswucher auf. Dabei ist
+es gleich, ob für Hard- oder Software, Bauelemente o.a. Dinge.
+Kassetten sollten grundsätzlich in ihrer Originalverpackung
+(Kassettencontainer) und möglichst nicht als Briefsendung, son-
+dern als Päckchen der Post anvertraut werden. Einerseits ist 
+die schädliche Wirkung von Staub auf Magnetfolienspeicher aller
+Art und auf die dazugehörige Technik nicht zu unterschätzen,
+andererseits kommen vielfach Briefsendungen mit Kassetten, ob
+mit oder ohne Container, stark beschädigt an. Hier wird am fal-
+schen Platz gespart.
+
+                                    Viel Erfolg mit einem CC!
+                                    Klaus J. Hofmann
+Bearbeitet: 14.07.1989
+================================================================
+^^^^^

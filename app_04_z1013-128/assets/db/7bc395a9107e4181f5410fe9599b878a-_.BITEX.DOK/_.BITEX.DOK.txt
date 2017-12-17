@@ -1,0 +1,125 @@
+**************************************************************
+*							     *
+*	B I T E X   80/64 CP/M	V 1.2			     *
+* VLE						18.02.90     *
+**************************************************************
+
+
+Bitex  ist ein universelles Textverarbeitungssystem,  das  sich
+durch  Bedienfreundlichkeit  und   Verarbeitungsgeschwindigkeit
+sowie  Leistungsfaehigkeit auszeichnet, vor  allem  aber  durch
+den geringen Speicherplatzbedarf. Der zu bearbeitende Text muss
+in den Textpuffer passen, dieser befindet  sich  zwischen  Pro-
+gramm und BDOS (1B00H-BDOS). Laengere Quellen etc. muessen also
+geteilt werden. 
+Von BITEX  existieren  verschiedene Versionen, die fuer die je-
+weilige CP/M-Version zugeschnitten sind und auf den Bildschirm-
+Formaten 80*24 und 64*16 (Adressen 0F800H bzw. 0EC00H) laufen.
+Es ist jedoch erforderlich, dass der  BWS  rueckgelesen  werden
+kann, BITEX schreibt direkt in den BWS. 
+
+Programmstandort: 0100H-1AFFH
+Start:		  0100H
+Steuerzeichen:
+
+CTRL-{ (1BH) Umschaltung zwischen Textmodus/Kommandomodus
+CTRL-A (01H) Wort links
+CTRL-B (02H) Einfuegen 07FH
+CTRL-C (03H) Vorwaertsblaettern
+CTRL-D (04H) Textcursor rechts
+CTRL-E (05H) Textcursor hoch
+CTRL-F (06H) Wort rechts
+CTRL-H (08H) Textcursor links
+CTRL-I (09H) TAB einfuegen
+CTRL-P (10H) ESC (1BH) einfuegen
+CTRL-Q (11H) Cursor Zeilenanfang
+CTRL-R (12H) Rueckwaertsblaettern
+CTRL-V (16H) INSERT ON/OFF
+CTRL-X (18H) Textcursor runter
+CTRL-Y (19H) CLLN (Zeile loeschen)
+-----> (7FH) Delete Zeichen
+ENTER  (0DH) CRLF neue Zeile
+Kommandomodus:
+(Grossbuchstaben loesen Kommando aus)
+
+'A'ssign	'C'ontrol:	;Anzeige Steuerz. im Text e/a
+		'D'atei:	;Eingabe 'S' fuer Source
+				;  "     'T' fuer Textdatei
+				;Unterschiede: Druck, Wortumbr.
+		'T'extbuffer:	;(Anfang/Fuellstand,Ende)
+				;bei Eingabe von 2 Parametern
+				;ist Anfang-Ende Zuweisung,
+				;bei 1 Parameter der Fuell-
+				;stand gemeint
+		'L'ine:		;max.Zeilenlaenge
+		'P'age: 	;Druckerinit (kurzgeschl.)
+		'U'pper-lower   ;CAPS on/off (gross/klein)
+		'S'piegeln	;des Textes fuer andere Anwend.
+
+'C'ursor	'X'	;Direktpositionierung X ist ein Param.
+			;siehe Tabelle
+'D'elete	'X'	;Bereich loeschen
+'E'nde			;Systemaustritt
+'F'lash		'X'	;Bereich markieren (Bit 7 wird gesetzt)
+'L'ist		'X' ENT	;Druck, bei 'Source' Tab als 09H
+			;Datei 'Text': 'N' - ohne Randausgl.
+			;	       'F' - formatiert
+			;Tab nach Tableiste
+		'F'eed:	;Formfeed (0CH)
+'M'ark		ENTER	;Hilfsmarke setzen
+'M'ark		'T1...T9' 'X'	;Bereichsmarken 1..9 vergeben
+'P'unch		'X'	;Sichern auf Disk
+'S'ubstitute	ENTER s'STR1' ENTER by 'STR2' ENTER
+			;Ab Cursor bis Ende wird String1
+			;gesucht/ersetzt:
+		'A'	;alle
+		'Y'	;tauschen und weitersuchen
+		'N'	;nicht tauschen, weitersuchen
+		'E'	;beenden
+'T'abs			;Tableiste anz./aendern (mit '-'; '!')
+'W'rite		'T1'	;Bereich in Text einfuegen/ueberschr.
+			;je nach INSERT on/off!!
+'R'ead		'ENTER'	;File ab Cursor einlesen
+		'S'	;File bis Abbruchstring einlesen
+		'N'	;Lesedatei neu eroeffnen
+		'B'	;File lesen ab STRING1
+			;bis ABBRUCHSTRING
+			;Bei Abbruch nach Str. kann Lesen fort-
+			;gesetzt werden durch erneuten READ-Ruf
+			;auf das zuletzt gelesene Zeichen wird
+			;automatisch die Hilfsmarke gesetzt
+
+Parametertabelle: (X)
+
+'B'	;Anfang bis Cursor
+'L'	;Cursor bis Zeilenende
+'A'	;gesammter Text
+'E'	;Cursor bis Ende
+'S'	;Cursor bis String
+'M'	;Cursor bis Hilfsmarke
+'T1..T9';Bereich T1..
+'Z' xxx';Cursor auf Zeile 'xxx'
+
+Bei Kommandos, die nur einen Parameter benoetigen, gelten  die
+Parameter sinngemaess; z.B. 'C'ursor T1 setzt Cursor an Anfang
+des Bereiches T1 usw.
+Standard fuer den Dateityp bei Punch/Read ist 'MAC', in diesem
+Fall muss nur der Dateiname angegeben werden.
+Die Version 1.2 von BITEX hat noch folgende Fehler/Eigenarten,
+die beachtet werden sollten:
+1. Einige der ASSIGN-Kommandos schalten den INS-Mode aus!
+2. Der im Datei:Text-Mode realisierte Wortumbruch hat noch
+   Maengel.
+3. Das Setzen von Bereichsmarken bis zum Textende funktioniert
+   mitunter nicht, in diesem Fall CR/LF an das Ende setzen und
+   Hilfsmarke davor!
+4. Am Textende erscheint manchmal ein Buchstabe, der nicht zum
+   Text gehoert (nur bei Bildschirmausgabe).
+
+Werden diese Hinweise beachtet, dann ist BITEX ein hervorragen-
+des Textsystem, vor allem zur Bearbeitung von Assemblerquellen.
+
+
+diese Hinweise beachtet, dann ist BITEX ein hervorragen-
+des Textsystem, vor allem zur Bearbeitung von Assemblerquellen.
+

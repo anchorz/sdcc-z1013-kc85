@@ -1,3 +1,3 @@
-<kurz src="ALLcopy 2.1 64 Zeichen für CP/M"/>
+<kurz src="ALLcopy 2.1 64x16 für CP/M, Kopieren von und zum Magnetband."/>
 <lang></lang>
 <required></required>

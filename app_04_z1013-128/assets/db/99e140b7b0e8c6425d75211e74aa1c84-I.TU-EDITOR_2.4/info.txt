@@ -1,0 +1,3 @@
+<kurz src="Texteditor CED (25.10.1987)"/>
+<lang><include src="I.TU-EDITOR 2.4.txt"/></lang>
+<requires></requires>

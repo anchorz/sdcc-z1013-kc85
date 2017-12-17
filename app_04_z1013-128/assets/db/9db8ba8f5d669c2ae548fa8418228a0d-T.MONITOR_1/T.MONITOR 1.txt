@@ -1,0 +1,41 @@
+l
+****************************************************************
+***                                                          ***
+*           Monitorfunktionen des Z 1013 - Monitor             *
+***                                                          ***
+*******************************************MOESOFT**************
+
+
+Name  Adresse  Anz.      Bedeutung
+-------------------------------------------------------------
+SOIl   0016H    2    Anfangsadresse der Eingabezeile (Puffer)  
+Arg1   001BH    2    1. Parameter eines Kommandos
+Arg2   001DH    2    2. Parameter eines Kommandos
+Arg3   0023H    2    3. Parameter eines Kommandos
+------------------------------------------------------------- 
+
+ 
+RST20H  Funktion         Zellen/Bemerkung            8*4   8*8    
+----------------------------------------------------------------
+DB 00H  OUTCHAR             A                       F21BH F258H 
+DB 01H  INCHAR              A   Ret bei A#0         F20CH F219H
+DB 02H  PRINT STRING            Ende Bit7=1         F2A5H F2E2H
+DB 03H  INHEX            Aadr=DE    Zahl=HL         F2F4H F331H
+DB 04H  INKEY               A + 0004H               F130H F119H
+DB 05H  INLINE           Aadr=SOIL ENDE=0DH         F2B3H F2F0H
+DB 06H  OUTHEX A            A                       F301H F33EH
+DB 07H  OUT HL             HL                       F31AH F357H
+DB 08H  CSAVE            Aadr=Arg1 Eadr=Arg2        F369H F3A6H
+DB 09H  CLOAD            Aadr=Arg1 Eadr=Arg2        F3F8H F435H
+DB 0AH  MEM              Aadr=Arg1                  F325H F362H
+DB 0BH  WINDOW           Aadr=Arg1 Eadr+1=Arg2      F6D1H F6F5H
+DB 0CH  OTHLS              HL                       F5C7H F604H
+DB 0DH  OUTDP              HL                       F5C4H F601H
+DB 0EH  OUTSPACE           --                       F5CFH F60CH
+DB 0FH  TRANSFER         Von=Arg1 Nach=Arg2 An=Arg3 F51DH F55AH
+DB 10H  INSTRING         Aadr=SOIL ohne'#'          F2B9H F2F6H
+DB 11H  KILL             Aadr=Arg1 Eadr=Arg2 B=Arg3 F50BH F548H
+DB 12H  HEXUM                                       F6B8H -----
+DB 13H  ALPHA                                       F6C5H -----
+----------------------------------------------------------------
+

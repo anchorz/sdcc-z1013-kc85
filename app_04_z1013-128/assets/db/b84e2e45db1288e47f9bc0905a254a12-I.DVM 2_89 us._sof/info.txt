@@ -1,0 +1,3 @@
+<kurz src="Digitalvoltmeter mit 8 Meßeingängen"/>
+<lang><include src="I.DVM 2_89 us._sof.txt"/></lang>
+<requires></requires>

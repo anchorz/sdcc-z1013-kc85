@@ -1,0 +1,105 @@
+
+****************************************************************
+*							       *
+* Beschreibung zum 'HEADERWRITE' (c) by AK   12.09.1988        *
+*							       *
+****************************************************************
+
+Ziel des Programmes HEADERWRITE ist es, die Koepfe von mit
+HEADERSAVE aufgezeichneten Programmen zu lesen und in einem
+Textfile abzuspeichern.
+Das so entstandene Textfile kann gesaved und/oder auf einem
+Drucker ausgedruckt werden. Das Textfile ist voll ASCII-
+kompatibel und kann somit auch mit anderen Textsystemen wie z.b.
+MicroWORD weiterbearbeitet werden.
+Das Hauptziel war fuer mich, auf rationelle Art und Weise einen
+Ueberblick ueber vorhandene Software zu erhalten und Angebots-
+listen fuer den Programmtausch zu erstellen.
+Damit eine Archivierung der Programme erleichtert wird, werden
+die erfassten Files gezaehlt. Dabei kann auf die Frage 'ab Nr.'
+eine 4-stellige dezimale Zahl als Anfangswert eingegeben werden.
+Soll mit 0001 begonnen werden, ist nur ENTER zu betaetigen.
+Besitzer eines Kassettengeraetes mit Zaehlwerk koennen bei
+Beantwortung der Frage 'mit Pos.' mit 'Y' zusaetzlich den
+Zaehlerstand jeweils nach einem gefundenen Kopf eingeben. Dazu
+wird ein BEEP-Signal ausgegeben. Diese Zahl muss 3-stellig sein.
+Aus dieser Kopfsuch-Schleife sollte man nur mit ^C bei
+anliegendem TB- Signal gehen.
+Wird diese Schleife verlassen, wird abgefragt, ob eine neue
+Kassette (bzw. die andere Seite) erfasst werden soll. In diesem
+Fall ist mit 'Y' zu antworten.
+Falls nicht, wird gefragt, ob das entstandene File gesaved
+werden soll. Auch diese Frage ist bei Bedarf mit 'Y' zu
+beantworten.
+Falls nicht, wird gefragt, ob das entstandene File ausgedruckt
+werden soll. Wenn ja, dann wieder 'Y'.
+In diesem Fall wird noch abgefragt, ob der Drucker initialisiert
+werden soll.
+Wurde die Frage nach dem Ausdrucken nicht mit 'Y' beantwortet,
+wird das Programm verlassen.
+
+Hinweise zur individuellen Programmanpassung
+--------------------------------------------
+
+Es koennen mehrere Parameter den individuellen Erfordernissen
+angepasst werden.
+
+1.	Der Anfang des erzeugten Textfiles ist 1800H, ent-
+	sprechend MicroWORD 1.5 . Soll der Text an einer anderen
+	Stelle beginnen, so ist die neue Adresse auf 117/118H
+	einzutragen.
+
+2.	In dem erzeugtem File wird automatisch bei Programm-
+	start Name und Anschrift des Programmnutzers einge-
+	tragen. Diese Konstanten kann der Nutzer selbst defi-
+	nieren. Dazu sind ab den angegebenen Adressen die
+	Angaben einzutragen.
+	Achtung! Die original stehenden Codes 0FFH duerfen
+	nicht ueberschrieben werden !
+	Name	: 11DH
+	Vorname	: 12DH
+	Strasse	: 13DH
+	Ort	: 164H
+	PLZ	: 174H
+
+3.	Alle Rufe fuer die Arbeit mit dem TB-Geraet, dem Drucker
+	sowie die Ausgabe des BEEP's erfolgen ueber den
+	Sprungverteiler. Fuer diejenigen Z1013-Nutzer, dessen
+	Rechner diesen Sprungverteiler noch nicht besitzt, habe
+	ich diese Spruenge ueber Untersprungverteiler ab 100H
+	zur Anpassung zugaenglich gemacht:
+
+ENTRY:	JMP ANF		;Sprung zum eigentlichen Start
+SARUF:	JMP 0FFF4H	;SARUF des HEADERSAVE
+LORUF:	JMP 0FFF1H	;LORUF (z.Z. nicht genutzt)
+SUCHK:	JMP 0FFC1H	;SUCHK des HEADERSAVE
+DRDEL:	JMP 0FFEBH	;Drucker Ruecksetzen
+DRAKK:	JMP 0FFE8H	;Drucke Zeichen im Akku
+DRINI:	JMP 0FFCDH	;Druckerinitialisierung
+BEEP:	JMP 0FFDCH	;Ausgabe des BEEP's
+
+	Falls an diesen Stellen Aenderungen vorgenommen werden,
+	dann bitte diese angepassten Versionen NICHT in Umlauf
+	bringen, da es sonst nicht mehr kompatibel ist!
+
+4.	Wenn nacheinander mehrere Kassetten bearbeitet werden,
+	wird automatisch zwischen den Inhaltsuebersichten der
+	einzelnen Kassetten ein Steuercode fuer den
+	Seitenwechsel beim Drucken ausgegeben.
+
+
+Ich hoffe, das dieses Programm den Programmaustausch zwischen
+den Z1013-Nutzern foerdert. Eine KOSTENLOSE (!) Weitergabe des
+Programmes ist erwuenscht.
+
+Anfragen, Hinweise und Programmtausch an:
+
+a)	bis August '89
+	Ultn. Kretschmer, Andreas
+	PSF 31212/H5  Wolfen 4440
+
+b)	immer
+	Andreas Kretschmer
+	Schanzenstr. 6c Fach 233/18
+	Meissen  8250
+ O

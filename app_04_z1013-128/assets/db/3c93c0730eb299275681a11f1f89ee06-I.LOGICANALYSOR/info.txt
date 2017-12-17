@@ -1,0 +1,3 @@
+<kurz src="Logik-Zustands- und Logik-Zeitanalyse "/>
+<lang><include src="I.LOGICANALYSOR.txt"/></lang>
+<requires></requires>

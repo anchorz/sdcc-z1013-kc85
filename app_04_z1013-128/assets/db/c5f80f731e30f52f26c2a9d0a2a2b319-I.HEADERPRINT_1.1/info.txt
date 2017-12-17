@@ -1,0 +1,3 @@
+<kurz src="automatische Erfassung von Kassetteninhalten"/>
+<lang><include src="I.HEADERPRINT 1.1.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="GENS - Arbeitshinweise zum Assembler"/>
+<lang><include src="T.GENS DOK.txt"/></lang>
+<requires></requires>

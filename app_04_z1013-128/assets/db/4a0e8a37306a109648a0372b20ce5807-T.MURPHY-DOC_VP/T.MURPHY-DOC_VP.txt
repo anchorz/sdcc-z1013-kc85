@@ -1,0 +1,358 @@
+
+**       ** ***  *** *******  *******  ***  *** ***  *** ***  ******
+***     *** ***  *** ******** ******** ***  *** ***  *** *** ********
+****   **** ***  *** ***  *** ***  *** ***  *** ***  *** *** ***  ***
+***** ***** ***  *** ***  *** ***  *** ***  *** ***  *** **  ***
+*** *** *** ***  *** ******** ******** ********  ******  **   ******
+***  *  *** ***  *** *******  *******  ********   ****         ******
+***     *** ***  *** *****    ***      ***  ***    **             ***
+***     *** ***  *** *** ***  ***      ***  ***    **        ***  ***
+***     *** ******** ***  *** ***      ***  ***    **        ********
+***     ***  ******  ***  *** ***      ***  ***    **         ******
+
+
+               ***       ******  ***         ***   ******
+               ***      ******** ***         ***  ********
+               ***      ***  *** ***         ***  ***  ***
+               ***      ***  *** ***         ***  ***
+               ***      ******** ***    *    ***   ******
+               ***      ******** ****  ***  ****    ******
+               ***      ***  ***  *** ***** ***        ***
+               ***  *** ***  ***   ***** *****    ***  ***
+               ******** ***  ***    ***   ***     ********
+               ******** ***  ***    ***   ***      ******
+
+***********************************************************************
+
+
+
+
+( 1) Wenn irgend etwas schiefgehen kann, dann geht es schief.
+     Folgerungen:  * Nichts ist so leicht, wie es aussieht.
+                   * Alles dauert laenger, als man glaubt.
+                   * Wenn bei mehreren Dingen die Gefahr besteht, dasz
+                     sie schiefgehen, wird genau das schiefgehen, was
+                     den groesztmoeglichen Schaden anrichtet.
+
+( 2) * Wenn man annimmt, dasz ein Projekt auf 4 unterschiedliche Arten
+       schiefgehen kann und alle diese verhindert, taucht urploetzlich
+       eine fuenfte auf.
+     * Wenn man Dinge sich selbst ueberlaeszt, tendieren sie dazu, sich
+       vom schlechten Zustand in einen noch schlechteren zu entwickeln.
+     * Immer, wenn man sich anschickt, etwas zu tun, musz irgend etwas 
+       anderes noch vorher getan werden.
+
+( 3) * Jede Problemloesung verursacht neue Probleme.
+     * Es ist unmoeglich, etwas idiotensicher zu machen, weil Idioten
+       so genial sind.
+     * Mutter Natur ist immer auf der Seite des Fehlers.
+
+( 4) = Murphy's Philosophie =
+     Laechle. ...morgen wird alles noch schlimmer.
+
+( 5) = Murphy's Proportionalitaetskonstante =
+     Alle Dinge werden direkt proportional zu ihrem Wert geschaedigt.
+
+( 6) = Quantisierte Formulierung von Murphy's Gesetz =
+     Alles geht auf einmal schief.
+
+( 7) = O'Tvole's Kommentierung von Murphy's Gesetz =
+     Murphy war ein Optimist.
+
+( 8) = Zymugy's 7.Ausnahme von Murphy's Gesetz =
+     Wenn es regnet, gieszt es in Stroemen.
+
+( 9) = Boling's Postulat =
+     Wenn sie sich wohlfuehlen, machen sie sich keine Sorgen  - es geht
+     wieder vorbei.
+
+(10) = Scott's Gesetze =
+     (1) Egal, was schiefgeht, man sieht es ihm zuerst nicht an.
+     (2) Wenn man einen Fehler gefunden und endlich korrigiert hat,
+         stellt sich heraus, dasz die erste Version richtig war.
+     (3) Nachdem sich die Korrektur ploetzlich als falsch herausstellte,
+         ist es unmoeglich, den Originalzustand wiederherzustellen.
+
+(11) = Finagle's Gesetze =
+     (1) Wenn ein Experiment funktioniert, ist irgendetwas nicht in
+         Ordnung.
+     (2) Unabhaengig vom Resultat eines Experimentes wird es immer
+         jemanden geben, der es (a) falsch interpretiert, (b) trickreich
+         frisiert oder (c) glaubt, dasz es seiner Lieblingstheorie
+         entspricht.
+     (3) In einer beliebigen Datensammlung ist der Fehler dort, wo die
+         Daten ganz offensichtlich richtig sind und deshalb nicht
+         ueberprueft werden muessen.
+     (4) Jemand, den man um Hilfe bittet, wird den Fehler auch nicht
+         sehen.
+     (5) Jemand, der zufaellig einen Blick darauf wirft, der aber gar
+         nicht nach seinem Rat gefragt wurde, sieht den Fehler sofort.
+
+(12) = Klipsteins Gesetze =
+     (1) Eine patentreife Erfindung wurde stets eine Woche vorher schon
+         von einem firmenunabhaengigen Techniker in aehnlicher Form
+         angemeldet.
+     (2) Die Einhaltung von Lieferterminen ist umgekehrt proportional
+         den Beteuerungen ueber ihre Einhaltung.
+     (3) Einheiten werden immer in der unueblichsten Form angegeben,
+         Geschwindigkeiten z.B. in Angstroem pro Woche.
+     (4) Zugescnittene Draehte sind immer zu kurz.
+
+(13) = Entwicklung und Fertigung =
+     (1) Toleranzen summieren sich einseitig stets in die Richtung, die
+         maximale Schwierigkeiten bei der Fertigung verursacht.
+     (2) Wenn ein Projekt n Bauelemente benoetigt, werden davon n-1
+         Bauelemente am Lager sein.
+     (3) Motoren drehen sich immer in die falsche Richtung.
+     (4) Eine vor Zerstoerung geschuetzte Schaltung wird andere
+         Schaltungsteile zerstoeren.
+     (5) Ein mit einer Sicherung geschuetzter Transistor wird stets
+         zuerst hochgehen, um die Sicherung zu schuetzen.
+     (6) Fehler treten immer erst nach der Endpruefung auf.
+     (7) Ein Bauelement oder Meszgeraet wird lange genug, aber nicht
+         laenger funktionieren, bis es die Eingangskontrolle erfolgreich
+         passiert hat.
+     (8) Nach dem Loesen der letzten von 16 Befestigungsschrauben stellt
+         sich heraus, dasz die falsche Abdeckung geoeffnet wurde.
+     (9) Wenn alle 16 Schrauben wieder angezogen sind, stellt sich
+         heraus, dasz die Gummidichtung vergessen wurde.
+    (10) Sobald ein Geraet vollstaendig zusammengebaut ist, finden sich
+         uebriggebliebene Bauelemente auf dem Tisch.
+
+(14) = Universell anwendbare Regeln fuer gutglaeubige Ingenieure =
+     (1) In jede Berechnung wird sich auch jeder moegliche Fehler
+         einschleichen.
+     (2) In jeder Formel sind Konstanten  -  besonders solche, die aus
+         Ingenieur-Handbuechern stammen  -  als Variable zu behandeln.
+     (3) Hauptaenderungen einer Entwicklung werden immer dann notwendig,
+         wenn bereits die Fertigung laeuft.
+     (4) Aufbau- und Betriebsanleitungen, die zusammen mit den Geraeten
+         versandt werden, werden bei der Wareneingangskontrolle sofort
+         weggeworfen.
+     (5) Wenn mehr als eine Person fuer eine Fehlkalkulation verant-
+         wortlich ist, ist keiner der Schuldige.
+
+(15) = Johnson's dritte Anwendungsregel =
+     Falls eine Ausgabe einer Fachzeitschrift vermiszt wird, ist es
+     genau die Ausgabe, die in diesem Moment am dringendsten benoetigt
+     wird.
+     Erweiterung: Alle Bekannten haben entweder diese Ausgabe verloren,
+                  sie weggeworfen oder finden sie selbst nicht.
+
+(16) = Richard's Regeln zum Eigentum =
+     (1) Wenn man Dinge nur lange genug aufbewahrt, kann man sie danach
+         sicher auch wegwerfen.
+     (2) Wirft man hingegen etwas weg, so benoetigt man es genau in dem
+         Augenblick, in dem es nicht mehr greifbar ist.
+
+(17) = Lewis'sche Regel zur Preisermittlung =
+     Unabhaengig vom Aufwand an Zeit und Muehe zur Ermittlung einer
+     guenstigen Einkaufsquelle wird ein Gegenstand, nachdem man ihn
+     gekauft hat, im Nachbarladen billiger angeboten.
+
+(18) = Klipstein's Regel fuer Spezifikationen =
+     In Spezifikationen ersetzt Murphy's Gesetz das von Ohm.
+
+(19) = Osborn's mathematische Regel =
+     Variablen sind unerwuenscht, Konstanten gibt es nicht.
+
+(20) = Regel vom verlorenen Meter =
+     Bei dem Entwurf eines Geraetes koennen keine Ueberalles-Abmessungen
+     am Freitag nach 16.40 Uhr ermittelt werden. Die korrekten Ueberal-
+     les-Abmessungen finden sich am Montag um  9.01  Uhr  wie  von 
+     selbst.                                                             
+
+(21) = Etorre's Beobachtungen vom Verkehr =
+     Auf der anderen Fahrspur kommt man immer schneller voran.           
+
+(22) = Gesetz der angewandten Planung =
+     Auf dem Teil, das bei der Planung einer Einrichtung vergessen wur-
+     de, basieren 75% der Funktion.
+
+(23) = Zweites Gesetz der Aenderung =
+     Je unnuetzer eine Modifikation erscheint, desto groeszer ist die
+     Chance, dasz sie richtig ist.
+
+(24) = Gesetz der ungesetzmaeszigen Loesung =
+     (1) Sind n Loesungen angegeben, so gibt es n+1 Unbekannte.
+     (2) Der Teil einer Information, der am meisten benoetigt wird, ist
+         als letzterverfuegbar.
+     (3) Erst wenn alle Moeglichkeiten zur Loesung eines Problems durch-
+         gespielt sind und versagen, wird es eine Loesung geben, die
+         einfach und augenfaellig, klar verstaendlich fuer jedermann ist.
+
+(25) = Gesetze zur Computer-Programmierung =
+     (1) Jedes Programm, das laeuft, ist veraltet.
+     (2) Jedes andere Programm kostet mehr und ist langsamer.
+     (3) Ist ein Programm brauchbar, dann wird es sofort durch ein 
+         anderes ersetzt.
+     (4) Ist ein Programm unbrauchbar, dann wird es veroeffentlicht.
+     (5) Jedes Programm wird so erweitert, dasz es saemtlichen zur
+         Verfuegung stehenden Speicherplatz belegt.
+     (6) Der Wert eines Programms ist proportional zum Gewicht seines
+         ausgedruckten Papiers.
+     (7) Die Programm-Komplexitaet waechst solange, bis sie das
+         Leistungsvermoegen des Programmierers uebersteigt.
+
+(26) = Troutman's Programmier-Postulate =
+     (1) Wenn eine Probeinstallation ohne jede Beanstandung funktio-
+         niert, werden alle Nachfolgesysteme nicht laufen.
+     (2) Erst wenn ein Programm schon mindestens 6 Monate verkauft ist,
+         wird der schwerwiegendste Fehler entdeckt.
+     (3) Job-Control-Lochkarten, die eigentlich nicht in falscher
+         Reihenfolge sein koennen, sind mit Sicherheit falsch sortiert.
+     (4) Austauschbare Baender sind nicht austauschbar.
+     (5) Wenn der Eingabeteil eines Programms alle unzulaessigen Ein-
+         gaben zurueckweisen soll, wird ein genialer Idiot eine Metho-
+         de entdecken, unsinnige Daten in den Rechner zu fuettern.
+     (6) Das Fluchen ist die Sprache, die alle Programmierer am besten
+         beherrschen.
+
+(27) = Regel ueber die Perversion der Natur =
+     Man kann nicht erfolgreich vorausbestimmen, auf welche Seite
+     des Brotes die Butter kommt.
+
+(28) = Gesetz der selektiven Schwerkraft =
+     Ein Ding faellt so zu Boden, dasz es den groesztmoeglichen
+     Schaden anrichtet.
+
+(29) = Jenning's Folgerung =
+     Die Moeglichkeit, dasz ein Marmeladenbrot mit der Marmela-
+     denseite nach unten auf den Boden faellt, ist direkt pro-
+     portional zu den Kosten des Teppichs.
+
+(30) = Klipsteins Folgerung =
+     Die empfindlichsten Bauelemente werden zuerst herunterfallen.
+
+(31) = Anthony's Werkstattgesetz =
+     Jedes heruntergefallene Werkzeug rollt mit Sicherheit in die
+     hinterste, dunkelste Ecke der Werkstatt.
+     Zusatz: Auf dem Weg in diese Ecke trifft es auf jeden Fall erst
+             einmal den groszen Zeh.
+
+(32) = Paul's Gesetz =
+     Man kann nicht vom Boden fallen.
+
+(33) = Johnson's erstes Gesetz =
+     Wenn eine mechanische Vorrichtung ausfaellt, dann passiert das
+     gerade im unangenehmsten Augenblick.
+
+(34) = Schmidt's Gesetz =
+      Wenn man mit einem Maszstab lange genug miszt, zerbricht er.
+
+(35) = Fudd's Gesetz der Opposition =
+     Wenn man etwas nur hart genug anschlaegt, wird es umfallen.
+
+(36) = Cahn's Axiom =
+     Wenn nichts mehr geht, sollte man einfach in der Bedienung-
+     anleitung nachlesen.
+
+(37) = Murphy's Gesetz zur Forschung =
+     Genuegend Forschung wird ganz bestimmt die eigenen Theorien
+     unterstuetzen.
+
+(38) = Maier's Gesetz =
+     Wenn die Fakten nicht mit der Theorie uebereinstimmen, muessen
+     die Fakten vernichtet werden.
+
+     Folgerungen: * Je umfassender eine Theorie ist, desto besser
+                    ist sie.
+                  * Ein Experiment musz nochmals ueberdacht werden,
+                    wenn nicht mehr als 50% der erzielten Messungen
+                    die aufgestellte Theorie unterstuetzen.
+
+(39) = William's und Holland's Gesetz =
+     Wenn man genug Daten gesammelt hat, laeszt sich mit stati-
+     stischen Methoden alles beweisen.
+
+(40) = Edington's Theorie =
+     Die Zahl der verschiedenen Hypothesen zur Erklaerung eines
+     bestimmten biologischen Problems ist umgekehrt proportional
+     zum darueber vorhandenen Wissen.
+
+(41) = Peer's Gesetz =
+     Die Loesung fuer ein Problem veraendert die Art des Problems.
+
+(42) = Wyszowski's erstes Gesetz =
+     Kein Experiment ist reproduzierbar.
+
+(43) = Der Sinnlosigkeitsfaktor =
+     Kein Experiment ist vollkommen unbrauchbar; es kann immer noch
+     als schlechtes Beispiel verwendet werden.
+
+(44) = Parkinson's sechstes Gesetz =
+     Der Fortschritt der Wissenschaften verhaelt sich umgekehrt
+     proportional zur Anzahl der entsprechenden Veroeffentlichungen
+     in Fachzeitschriften.
+
+(45) = Meskimen's Gesetz =
+     Man hat nie genug Zeit, um etwas richtig zu machen, jedoch man
+     hat immer Zeit, etwas nochmal zu machen.
+
+(46) = Heller's Gesetz der Hierarchologie =
+     Der erste Mythos des Managements ist, dasz es ueberhaupt
+     existiert.
+     Folgerung: In Wirklichkeit weisz niemand, was gerade wo in
+                einer Organisation ablaeuft.
+
+(47) = Das Peter - Prinzip =
+     In einer Hierarchie strebt jeder Angestellte danach, bis in den
+     Bereich seiner Inkompetenz aufzusteigen.
+     Folgerung: * Irgenwann wird jeder Posten mit einem Angestellten
+                  besetzt, der unfaehig zur Ausfuehrung seiner Auf-
+                  gaben ist.
+                * Die Arbeit wird durch solche Arbeitskraefte erle-
+                  digt, die in der Hierarchie noch nicht an der
+                  letzten Stufe angelangt sind.
+
+(48) = Peter's Gesetze und Beobachtungen =
+     (1) Superkompetenz ist anruechiger als Inkompetenz.
+     (2) Kompetenz enthaelt immer einen Keim Inkompetenz.
+     (3) Inkompetenz plus Inkompetenz ergibt Inkompetenz.
+     (4) Achte auf deine Maulwurfshuegel; die Berge passen auf sich
+         alleine auf.
+     (5) Verwende nur genuegend Zeit, um deine Vorstellungen zu
+         festigen, dann werden deine Vorstellungen unwichtig.
+     (6) Ein Gramm Ansehen ist mehr wert als ein Pfund Leistung.
+
+(49) = Imhoff's Gesetz =
+     Die Organisation einer Buerokratie aehnelt sehr stark einem
+     Faulturm - die dicksten Brocken steigen immer nach oben.
+
+(50) = Porkinsons fuenftes Gesetz =
+     Wenn es irgendeinen Weg gibt,eine Entscheidung hinauszuzoegern,
+     so wird eine gute Buerokratie, egal ob oeffentlich oder privat,
+     diesen Weg finden.
+
+(51) = Papierstoszgesetz =
+     Sucht man in einem Stapel Papier ein bestimmtes Blatt, so ist
+     es garantiert das letzte.
+
+(52) = Ehernes soziologisches Gesetz der Oligarchie =
+     Bei jeder organisierten Aktivitaet, unabhaengig von der Um-
+     gebung, werden sich wenige als oligarchische Fuehrer heraus-
+     bilden und die anderen werden ihnen folgen.
+
+(53) = Oeser's Gesetz =
+     Es herrscht unter Personen in gehobenen Positionen die Tendenz
+     vor, die ganze Zeit damit zuzubringen, Tagungen zu besuchen
+     und Briefe zu unterzeichnen.
+
+(54) = Cornell's Gesetz =
+     Autoritaeten neigen dazu, Arbeiten solchen Personen zuzuweisen,
+     die am wenigsten davon verstehen.
+
+(55) = Zymergy's Gesetz der freiwilligen Arbeit =
+     Fuer Arbeiten, die bereits erledigt sind, findet man immer
+     genug Freiwillige.
+
+(56) = Dow's Gesetz =
+     Je hoeher man in eine Hierarchie vordringt, desto groeszer ist
+     die Konfusion, die man dort vorfindet.
+
+(57) = Eherner Heeresgrundsatz =
+     Jeder Befehl, der miszverstanden werden koennte, wird es.
+
+
+       Copyright by M.Golle 1987
+

@@ -1,0 +1,4 @@
+<kurz src="Fragebogen, Konzeption zur Gründung von Computerclub's"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+<include src="T.CC-Fragebogen.txt"/></lang>
+<requires></requires>

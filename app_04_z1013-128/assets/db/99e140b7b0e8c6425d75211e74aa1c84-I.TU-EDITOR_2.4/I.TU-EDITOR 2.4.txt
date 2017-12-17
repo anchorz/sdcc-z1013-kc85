@@ -1,0 +1,469 @@
+Texteditor CED (V. 25.10.'87) 
+-----------------------------
+
+(c) TU Dresden, 
+    Sektion Informationstechnik
+    WB Computer- und Kommunika-
+    tionstechnik 
+
+Bearbeiter: Goetze,B.
+            Piepiorra, F.
+Weiterentw. Brosig,R. (IZ)
+
+Kurzcharakteristik
+
+Der Texteditor arbeitet in dem
+Speicherbereich: (2.4)
+   100H-FFFH 
+mit der genauen Aufteilung: 
+   100H-0EDFH  Codebereich
+   0EE0H-0F3AH  Datenbereich
+   ab 0F40H freier Bereich
+
+Er ist dadurch gekennzeichnet,
+dass alle Manipulationen im Text
+direkt auf dem Bildschirm sicht-
+bar werden. Er erlaubt nur ein-
+fache Kommandos und Funktionen. 
+Texte koennen formatiert ueber
+eine Druckerschnittstelle 
+ausgegeben werden.
+
+
+* der Textspeicher:
+
+Als Textspeicher funktioniert 
+der Speicherbereich 3000H-DFFFH.
+So steht ein Bereich von ueber
+45000 Textzeichen zur Verfue-
+gung.
+Bei gewuenschten Anpassungen
+kann die Textanfangsadresse in
+der Zelle 133H, die max. End-
+adresse in Zelle 135H eingetra-
+gen werden.
+Alle Zeichenfolgen, die auf der
+Anfangsadresse mit einem Zeichen 
+02H (STX) beginnen, anschlies-
+send nur Zeichen im Wertebereich
+7FH enthalten und als Abschluss
+wieder ein Zeichen 03H (ETX) be-
+sitzen bzw. ueber die Obergrenze
+des Textspeicherbereiches hinaus
+gehen, werden als zu bearbeiten-
+der Text erkannt und stehen zur
+Veraenderng bzw. Ergaenzung zur 
+Verfuegung. Wird die Obergrenze
+des Textspeichesbereiches ueber-
+schritten, wird durch eine Ein-
+fuegung eines Zeichens 03H der
+ueberstehende Text abgeschnit-
+ten.
+
+
+* allgemeine Funktionen:
+
+Nach Start des Texteditors wird
+ein Kommandomodus, durch ein
+Menuebild gekennzeichnet, er-
+reicht. Dieser zeigt
+- den aktuellen Fuellstand des
+  Textpuffers und
+- die gegenwaertige Zeile der
+  Cursorposition an.
+
+In diesem Modus koennen folgende
+Funktionen aufgerufen werden:
+- Cursorpositionierung auf Text-
+  ende, Textanfang oder auf
+  Zeilennummer
+- Markierung von Textstellen und
+  anschliessendes loeschen des
+  Textes bis zur Markierung bzw.
+  des gesamten Textes
+- Suchen/Ersetzen von Zeichen-
+  ketten ohne Steuerzeichen
+- Seitenformatiertes Drucken
+- Verlassen des Texteditors
+  zurueck zum Monitor
+   
+Nach Abschluss eines Kommandos
+bzw. nach Abbruch des Kommando-
+modus wird der Bildschirmmodus
+(in dem die Textfolge auf dem 
+Bildschirm erseheint) erreicht.
+Hier koennen:
+- Zeichenfolgen in den Text ein-
+  gefuegt, 
+- Zeichen und Zeichenfolgen vor-
+  waerts und rueckwaerts ge-
+  loescht,
+- der Cursor zeichenweise, 
+  zeilenweise, seitenweise vor-
+  waerts und rueckwaerts positio-
+  niert,
+- das Kommando Suchen/Ersetzen
+  wiederholt und
+- der Kommandomodus erreicht
+  werden.
+
+Folgende Steuerzeichen koennen 
+neben den alphanumerischen
+Zeichen (Kodes 20H bis 7FH) in
+den Text eingefuegt werden:
+
+TAB  Kodierung 09H   Tabulator-
+     stop jede 8. Spalte
+NL   Kodierung 1EH   Neue Zeile
+     als Wagenruecklauf/Zeilen-
+     schaltung
+FF   Kodierung 0CH   Neue Seite
+     (wird nur beim Druck aus-
+     gefuehrt, Anz. im Text "^")
+  
+!!! ACHTUNG !!!
+Jede eingegebene Zeile muss mit 
+NL nach weniger als 250 Anzeige-
+positionen abgeschlossen sein,
+um eine ordnungsgemaesse Arbeit
+des Texteditors zu gewaehrlei-
+sten.
+
+
+* der Kommandomodus
+
+Im Kommandomodus sind in einem 
+Menuebild angezeigt, welche 
+Kommandos durch normale Zeichen-
+eingabe aufgerufen werden koen-
+nen, auf welcher Zeile sich der
+Cursor befindet und wieviele
+Zeichen noch in den Textpuffer
+eingetragen werden koennen, 
+bevor eine Fehlerausschrift an-
+zeigt, dass das letzte Zeichen
+nicht mehr uebernommen werden 
+konnte. Alle Zeicheneingaben, 
+die kein Kommando aufrufen, 
+fuehren zum Abschluss des Kom-
+mandomodus und damit zur Rueck-
+kehr in den Bildschirmmodus.
+Folgende Kommandos koennen ver-
+wendet werden:
+
+<E> - Ende
+Soll die Arbeit mit dem Text-
+editor beendet werden, muss
+dieses Kommando verwendet wer-
+den, nach der Anzeige von An-
+fangs und Endadresse des ge-
+fuellten Textbereiches wird der
+Monitor erreicht
+
+<A> - Anfang
+Cursor auf Textanfang setzen und
+neuen Bildschirminhalt darstel-
+len
+
+<Z> - Ende
+Cursor auf Textende setzen und
+neuen Bildschirminhalt darstel-
+len
+
+<S> - Sprung auf Zeile
+nach der Eingabe der Zeilennum-
+mer in dezimaler Form mit maxi-
+mal fuenf Ziffern werden im Text
+vom Anfang beginoend die Zei-
+chen NL bis zu dieser Zahl ab-
+gezaehlt und der Cursor auf die
+erreichte Stelle gesetzt, an-
+schliessend wird der Bild-
+schirminhalt neu dargestellt
+
+<M> - Markierung setzen
+der Cursor wird im Bildschirm-
+modus auf den Anfang eines zu
+loeschenden Textbereiches posi-
+tioniert, anschliessend wird 
+mit diesem Kommando diese Stel-
+le markiert und wieder in den
+Bildschirmmodus zurueckgeschal-
+tet, ueber die Moeglichkeiten
+der Cursorpositionierung kann
+jetzt das Ende des zu loeschen-
+den Bereiches erreicht werden
+
+<#> - Teil loeschen
+anschliessend an <M> kann mit
+diesem Kommando der so einge-
+schlossene Textbereich aus dem
+Textpuffer geloescht werden,
+moegliche Fehler sind das Feh-
+len der ersten Markierung bzw.
+die falsche Markierung bzw. 
+die Ausfuehrunc von Nicht-Cur-
+sorpositionier-Operationen 
+zwischen Markier- und Loesch-
+kommando
+
+<$> - alles Loeschen
+falls der kompletqe Textpuffer
+geloescht werden soll, kann
+das mit diesem Kommando er-
+reicht werden.
+
+<F> - Finden/Ersetzen
+Soll eine Textfolge im Textpuf-
+fer gesucht werden und ggf.
+durch eine andere Textfolge er-
+setzt werden, so muss nach
+Aufruf dieses Kommandos der 
+Text, der gesucht werden soll,
+eingegeben werden, durch '/'
+getrennt kann anschliessend der
+einzusetzende Text angegeben 
+werden. Die gesamte Textfolge
+ist auf 31 Zeichen begrenzt. 
+Nach Abschluss der Zeichenfolge,
+wird geprueft, ob der gesuchte
+Text auf der Cursorposition
+gefunden wurde. Ist das der 
+Fall, tritt die Funktion Er-
+setzen in Aktion. Dabei kann
+ein beliebig langer Text durch
+ainen anderen beliebig langen 
+Text ersetzt werden, solange 
+Platz im Textpuffer vorhanden 
+ist. Anschliessend steht der 
+Cursor hinter dem ersetzten
+Text und der Bildschirminhalt
+wird dargestellt.
+Ist der an der Cursorposition
+vorgefundene Text unterschied-
+lich zum gesuchten Text, wirkt
+die Funktion Suchen, die den
+Textpuffer von der aktuellen
+Cursorposition beginnend in
+Richtung Textende nach einer
+Uebereinstimmung mit dem ge-
+suchten Text durchmustert.
+Bei der ersten Uebereinstim-
+mung wird der Curuor auf das
+erste Zeichen dieser Zeichen-
+kette gesetzt und in den Bild-
+schirmmodus umgeschaltet.
+Im Bildschirmmodus existiert 
+die Funktionstaste, die diesen
+Kommandokomplex ohne erneute
+Eingabe der Zeichenkette wied-
+erholt startet. Die Find-Routi-
+ne startet immer auf der aktu-
+ellen Zeilenposition (ggf.
+vorher Kommando A ausfuehren. 
+
+<D> - Drucken
+Soll der im Textpuffer enthal-
+tene Text ausgedruckt werden,
+besteht die Moeglichkeit der
+Einstellung des Seitenformates
+und der Auswahl der zu drucken-
+den Seiten. Eine Arbeit mit
+Seitenstop kann eingestellt
+werden. Nach Aufruf des Komman-
+dos erfolgt die Aufforderung
+zur Eingabe der Zeilennummer, 
+ab der gedruckt werden soll.
+Eine Zahl zwischen 1 und 99999
+muss eingegeben werden. Jede
+Zahl, fuer die im Textpuffer
+nicht die ausreichende Zeilen-
+zahl gefunden wird, fuehrt so-
+fort zum Abbruch des Kommandos.
+Die Frage nach der Zeilenzahl
+wird mit einer dreistelligen 
+Dezimalzahl (>9) beantwortet. 
+Bei Zeilenzahl=0 bzw. keine Ein-
+gabe erfolgt keine Seitenforma-
+tierung.
+Bei geforderter Seitenforma-
+tierung wird abgefragt, mit 
+welcher Numerierung die ge-
+druckten Seiten versehen wer-
+den sollen. Bei leerer Eingabe
+wird ohne Fusszeile, in der die
+Seitennummer untergebracht ist,
+gedruckt.
+Anschliessend wird abgefragt, 
+ob ein Druckstop nach jeder
+Seite erfolgen soll. Wird diese
+Frage bejaht, stoppt der Druck
+definiert nach jedet Seite. Im
+anderen Fall wird der Text bis
+zum Ende ohne Pause gedruckt.
+Der Bediener kann jederzeit
+durch CTR-C den Druck abbrech-
+en. Fehler wahrend des Druckes
+werden angezeigt.
+
+
+* der Bildschirmmodus
+
+Im Bildschirmmodus wird der 
+Bildschirm entsprechend des
+eingegebenen Textes aktualisi-
+ert. Das Textfenster wird dabei
+so dargestellt, dass der Cursor
+im Bildfenster erscheint. Dabei
+kann an den Raendern Text abge-
+schnitten sein, der nicht mehr 
+auf den Bildschirm passt.
+Steuerzeichen, die von der Tast-
+tatur angesprochen werden, aber
+durch das Programmsystem nicht
+bearbeitet werden, quittiert
+eine Fehlerausschrift.
+
+
+- allgemeine Funktionen
+
+Alle Funktionen werden durch 
+entsprechende Tastatureingaben
+ausgeloest. Das Programmsystem
+enthaelt eine Tastaturkonver-
+tierungsroutine, die es ermoeg-
+licht jeden beliebigen Tasta-
+turcode als Funktionscode fest-
+zulegen. Im folgenden werden
+die entsprechenden Speicherzel-
+len, in denen der gewuenschte 
+Tastaturcode eingetragen werden
+kann aufgelistet.
+
+Adr. Code     Bedeutung 
+     (z.B.)  
+______________________________
+105H 09H  Cursor rechts ein Zei.
+106H 08H  Cursor links
+107H 0AH  Cursor hoch
+108H 0BH  Cursor runter
+109H 04H  Cursor eine Seite vor
+10AH 02H  Cursor Seite zuruck
+10BH 10H  Zeichen links loeschen
+10CH 7FH  Zeichen rechts loeschen
+10DH 03H  ESC
+10EH 1BH  ESC
+10FH 01H  Wandlung Buchstabe
+110H 15H  Umschaltung Buchstabe           
+111H 0FH  Loeschen einer Zeile
+112H 11H  Ersetze/Wiederhole
+113H 0CH  FORM FEED
+114H 0DH  ENTER
+115H 14H  Tabulator
+116H 06H  Tabulator
+
+CTR-C fuehrt zur sofortiger
+Rueckkehr in den Bildschirm-
+modus ohne Ausfuehrung des Kom-
+mandos (Abbruch)
+
+
+* die Druckerschnittstelle
+
+Der Anschluss eines Druckers
+(oder eines anderen peripheren
+Geraetes) ist vorbereitet.
+Dazu muss eine entsprechende
+Treiberroutine (Centronixs,
+IFFS oder V24) an das Programm-
+paket angebunden werden.
+Die entsprechende Schnittstelle
+liegt auf der Adresse
+
+ 12DH mit den Daten:
+
+12DH: LD A,C      ;Zeichen in C
+      CALL 0FFE8H ;(DRAKK)
+      SCF         ;Fehler,w.n.ges.
+      RET
+
+Hier kann eine entsprechende
+Aenderung der Treibereinbindung
+erfolgen. 
+Beim Aufruf des Druckertreibers
+steht das zu druckende Zeichen 
+im C Register. Der Drucker
+quittiert die ordnungsgemaesse
+Uebernahme des Zeichens durch
+setzen des C - Flags. Ein nicht
+gesetztes C - Flag fuehrt zu
+einer Fehlerausschrift.
+
+Beispielprogramm fuer eine
+einfache Centronix-Schnittstelle
+ueber den freien PIO-Port:
+
+ ORG 0F40H
+
+ST:    LD    (SACKP),SP  ;Inhalt Stack retten
+       LD    SP,STCK     ;neuen Stack festlegen
+       LD    A,0FH       ;PIO Initialisierung
+       OUT   1
+       LD    A,0F0H
+       OUT   1
+       LD    A,87H
+       OUT   1
+       LD    A,L(INTS)   ;Interruptadresse laden
+       LD    (0F0H),A
+       LD    A,H(INTS)
+       LD    (0F1H),A
+       CALL  AUSG
+RUECK: LD    SP,(SACKP)  ;alten Stackinhalt laden 
+       RET
+;  
+AUSG:  LD    A,C
+       CMP   1EH
+       JRZ   KONV-#
+AUSG1: CPL               ;da im Muster invertierende Treiber
+       OUT   0
+       EI
+M1:    JRNC  M1-#
+       RET
+;
+;Konvertierung des Zeilenendezeichens
+;"1EH" in die Folge "0DH,0AH"
+;
+KONV:  LD    A,0DH
+       CALL  AUSG1
+       XOR   A            ;C-Flag ruecksetzn
+       LD    A,0AH
+       CALL  AUSG1
+       JR    RUECK-#
+;
+;Interruptroutine
+;
+INTS:  DI
+       SCF
+       RETI
+;
+       BER   6
+STCK:  DA    0            ;Stackobergrenze
+SACKP: DA    0
+;
+       ORG 12DH
+;
+ZEIGER:JMP   ST
+;
+       END 
+
+Anmerkung:Der erzeugte Quelltext
+ist kompatibel zu den meisten
+anderen Textsystemen und Assem-
+blern wie z.B. Texteditor Scf
+oder Assembler Scf. 
+ 
+
+Achtung: Bei dieser Version ist
+         der Druck noch nicht mit
+         CTRL C abbrechbar !!!
+

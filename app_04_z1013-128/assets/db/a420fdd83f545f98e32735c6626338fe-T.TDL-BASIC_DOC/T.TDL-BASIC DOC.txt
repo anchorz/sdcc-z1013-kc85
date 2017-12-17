@@ -1,0 +1,569 @@
+***************************************************************
+*                                                             * 
+*  Tdl-BASIC         High precision extended version          *
+*                                                             * 
+***************************************************************
+
+Diese Beschreibung stellt eine Kurzbeschreibung aller Befehle,
+Anweisungen und Besonderheiten dar, die bei z.B dem Tiny-BASIC
+nicht auftreten. Die Kenntnis der wichtigsten BASIC-Grundbefehle
+wird voraussgesetzt.
+
+Lage im Speicher: 300H - 3380H
+           Start: 300H
+         Restart: 303H
+
+
+  
+>ASAVE<
+-------
+Bei Ausfuerung des Befehls wird das im Speicher vorhandene
+BASIC-Programm in ASCII-lesbarer Form ueber den Tonbandausgang
+ausgegeben.
+
+>ALOAD,ALOADC,AMERGE,AMERGEC<
+-----------------------------
+Zum Laden von Programmen, die in ASCII geschrieben sind, also
+nicht in maschineninterner Form. Jede Zeile muss mit einer
+Zeilennummer beginnen und mit einem CR beendet sein.Das Einlesen
+wird entweder durch ein CTRL-Z im Eingabetext oder durch ein EOF
+des lese-Unterprogramms beendet.
+ALOAD loescht ein zuvor vorhandenes Programm ,
+MERGE mischt die ankommenden Zeilen mit dem vorhandenen Pro-
+gramm. Der Unterschied zwischen "A..." und "A...C" Befehlen
+liegt in der Art der Leserbehandlung. "A...C" setzen einen
+steuerbaren Leser voraus, und nach der Eingabe einer jeden Zeile
+wird diese in das Internformat uebersetzt. "A..." Befehle lesen
+bis zum Ende und konvertieren erst, nachdem das ganze Programm
+eingelesen wurde. Dadurch wird fuer Programme kurzzeitig mehr
+Speicherplatz benoetigt.
+
+Steuerzeichen:
+--------------
+Komma ,     zur naechsten TAB-Position oder Trennzeichen
+Semicolon ; nicht fortschreiten
+Colon :     fuer mehrere Anweisungen in einer Zeile
+Rubout 7FH  Loeschen des eingegebenen Zeichens in "\\"
+            
+*CTRL-S* Anhalten der Ausgabe von Daten
+*CTRL-Q* Fortfahren bei der Ausgabe
+*CTRL-C* Beenden der Ausfuerung des BASIC-Programms
+*CTRL-U* Loeschen der gerade eingegebenen Zeile
+*CTRL-X* zum Monitorprogramm zurueck
+*CTRL-O* Unterdruecken der Konsolausgabe
+*CTRL-R* Ausgabe der aktuellen Zeile ohne Loeschzeichen
+*CTRL-T* waerend des Programmablaufs kann dadurch die gerade
+         abgearbeitete Zeilennummer ausgegeben werden.          
+
+OPERATOREN
+----------
+Sie sind in der Reihenfolge ihrer Bearbeitung (hierarchisch) ge-
+ordnet
+
+()  Klammer
+ ^  Exponentialoperator
+ -  Negation und Subtraktion
+ *  Multiplikation
+ /  Division
+ +  Addition
+ =  Gleichheit
+<>  Ungleichheit
+ <  kleiner als
+ >  groesser als
+<=  kleiner/gleich
+>=  groesser/gleich 
+NOT logisches nicht
+AND und
+OR  oder
+
+>AUTO<
+------
+Mit dem Befehl >AUTO< wird die automatische Erzeugung von
+Zeilennummern veranlasst.Dabei kann noch eine Startzeile und
+die Schrittweite eingegeben werden. z.B. AUTO100 oder AUTO200,1
+
+>CLEAR<
+-------
+Alle Variablen werden geloescht.Wird zusaetzlich eine Zahl ange-
+geben, wird der Stringplatz auf diesen Wert gesetzt. 
+CLEAR200 loescht alle Variablen und setzt den Verfuegbaren Platz
+fuer Strings auf 200.
+
+>CONTINUE<
+----------
+Wurde der Programmablauf mit CTRL-C gestoppt,so kann mit diesem
+Befehl die Ausfuehrung fortgesetzt werden,wenn keine Veraen-
+derungen am Programm vorgenommen wurden.
+
+>DELETE<
+--------
+Ein Bereich von Zeilen kann geloescht werden.
+DELETE100-135 loescht alle Zeilen
+von 100 bis einschliesslich 135.
+
+>KILL<
+------
+Damit kann nicht verwendeter Speicherplatz von Matrizen zurueck-
+gewonnen werden.
+KILL A,B entfernt den Speicherplatz,den die Matrizen A und B ver-
+braucht haben.
+
+>LOAD<
+------
+Laedt ein Programm vom Leser.Es wird dabei zuvor "NEW" durchge-
+fuehrt.
+LOAD P laedt ein Programm,das mit "SAVE P" abgespeichert wurde.
+Dabei ist nur ein Buchstabe als Name zulaessig.
+LOAD?P fuehrt ein Prueflesen durch.
+
+>LOADGO<
+--------
+Wie LOAD,aber mit Starten des Programms.
+LOADGO P,1 laedt das Programm und startet es auf 1 .
+
+>NEW<
+-----
+loescht den gesamten Arbeitsspeicher,d.h.das BASIC-Programm und 
+alle Variablen.
+
+>PRECISION< 
+-----------
+Voreingestellt sind 11 Digits Rechengenauigkeit.
+PRECISION 4 z.B.veranlasst,dass Zahlen vor der Ausgabe auf 4
+Stellen gerundet werden.Intern wird dabei weiterhin mit 11
+Digits gerechnet.
+
+>RENUMBER<
+----------
+Neunumerierung: Es werden alle Referenzen,Spruenge usw. automa-
+tisch umgestellt.
+RENUMBER numeriert von 10 beginnend in  10-erschritten alle
+Zeilen.
+RENUMBER 110 beginnt bei 110 
+RENUMBER 30,2 numeriert beginnend mit 30 in 2er Schritten.    
+RENUMBER 500,5,300 beginnt erst bei  der Zeile 300 mit einer Neu-
+numerierung,die dann ab 500 in 5erschritten laeuft.Damit
+koennen Luecken eingebaut werden.
+
+>RUN<
+-----
+Loescht alle Variablen und startet die Programmausfuehrung.Eine
+angegebene Zeilennummer bewirkt, den Start von da ab.
+
+>SAVE<
+------
+Abspeichern eines BASIC-Programmes ueber den Tonbandausgang.
+SAVE C speichert ein vorhandenes BASIC-Programm unter dem Namen 
+"C". Nur ein Buchstabe ist als Programmname zulaessig.
+
+Der >EDIT<-Befehl
+-----------------
+EDIT dient zur Korrektur von Programmzeilen. Mit "EDIT 10" kann 
+Zeile 10 korrigiert werden.Nach Eingabe von EDIT(ZNR) erscheint
+auf dem Bildschirm die Zeilennummer. Folgende Eingaben sind moeg-
+lich:
+     >A< laedt den EDIT-Buffer vom Programmspeicher neu.
+    >nD< n Zeichen werden geloescht
+     >E< beende EDIT und ersetze
+   >nFx< finde das n-te Zeichen x im Buffer und halte den Poin-
+         ter direkt davor an
+     >H< loesche alles rechts des Pointers und gehe in den
+         Insert-Modus.
+     >I< fuege alle folgenden Zeichen ein, bis CR oder ESC ein-
+         gegeben wird.
+   >nKx< loesche Zeichen vom Pointer zum (n-1)ten Zeichen x
+     >L< Ausgabe der Zeile (LIST)
+     >Q< verlasse EDIT ohne Ersetzung
+    >nR< ersetze die folgenden n Zeichen durch n vorhandene
+         (replace)
+     >X< Pointer ans Zeilenende und Insert
+ >SPACE< Pointer nach rechts
+>RUBOUT< -"-    -"-   links
+    >cr< (RETURN) Ende EDIT mit Ersetzung
+>ESCAPE< Ende Insert
+---------------------------------------------------------------
+ 
+>LIST<
+------
+Ausgabe eines Programmes
+LIST 10-100 gibt alle Zeilen von 10-100 ,
+LIST 20 gibt nur Zeile 20 aus.
+
+>NEW<
+-----
+Das aktuelle BASIC-Programm wird geloescht.
+
+>LVAR<
+------
+Ausgabe aller aktuellen Variablen und deren Belegung.
+
+>NULL<
+------
+Fuer Langsame Konsolen : 
+NULL 3,255 sorgt dafuer,dass nach jedem CR LF drei ASCII-Zeichen
+FFH (RUBOUT) gesendet werden 
+
+>POS<
+-----
+Die aktuelle Position der Konsoldruckstelle wird uebergeben,z.B.
+A=POS(B) B ist ein"Dummy"-Wert.
+
+>PRINT<
+-------
+Ausgabebefehl.
+Beispiel: PRINT123,A,"TEST";B;C  Bei Angabe eines Kommas wird
+alle 14 Spalten positioniert,bei Strichpunkten werden zwei Leer-
+zeichen gelassen.Steht am Schluss ein Komma oder ein Strichpunkt
+,so wird kein CR/LF ausgegeben
+
+>PRINT USING<
+-------------
+formatierte Ausgabe
+
+>SPC<
+-----
+Damit kann eine Zahl von Leerzeichen ausgegeben werden.Durch
+PRINTA,SPC(5),B werden 5 Leerzeichen zwischen A und B gedruckt
+
+>SWITCH<
+--------
+Damit kann die Konsolzuweisung geeandert werden.Dazu erhaelt
+SWITCH ein Argument zwischen 0 und 3 .
+ 0=TTY 1=CPT 2=BATCH USE 3=USER DEFINED 
+
+>TAB<
+-----
+Damit kann direkt eine bestimmte Druckposition erreicht werden.
+PRINT A;TAB(30);B  B wird beginnend bei der Position 30 ausgege-
+ben.
+
+>TRACE<
+-------
+TRACE1 schaltet den Trace-Modus ein, TRACE0 schaltet ihn aus. 
+Anstelle der Zahl kann auch ein arithmetischer Ausdruck stehen.
+Ist dieser ungleich 0, so wird eingeschaltet. Es werden dann
+alle ausgefuehrten Zeilennummern in "<>" ausgegeben.
+
+>WIDTH<
+-------
+Damit kann die Ausgabelaenge angegeben werden,bei der automa-
+tisch ein CRLF eingefuegt wird. 
+WIDTH 80 stellt die Laenge auf 80 Zeichen pro Zeile ein; 
+Minimum ist 15,Maximum 255
+
+>LET<
+-----
+- wie 3K-BASIC
+
+>DATA<
+------
+Konstantenablage,die durch READ  geholt werden kann.
+z.B. 10 DATA 5,8,123,-64,33
+
+>READ<
+------ 
+Holen der Konstanten,die in  DATA  angegeben sind.
+z.B. 20 READ A beim ersten mal erhaelt A den Wert 5 dann 8 usw.
+bis 33 ,danach fuehrt ein erneuter Aufruf zum Fehler (gilt fuehr
+obiges Beispiel)
+
+>RESTORE<
+---------
+Damit kann der Lesezeiger von READ auf den Anfang gesetzt
+werden.Zusaetzlich kann durch Angabe einer Zeilennummer der
+Zeiger auf eine bestimmte Zeile gesetzt werden 
+z.B. 200 RESTORE 30
+
+>LINE INPUT<
+------------
+Damit kann eine ganze Zeile in eine Stringvariable eingelesen 
+werden. 
+allg Form: LINE INPUT "PROMT STRING";eingabeliste
+           PROMT STRING ist optional.
+
+>INPUT<
+-------
+- wie 3k-BASIC
+
+>INP<
+-----
+Lesen eines Z80-Ports
+z.B.A=INP(0)  A erhaelt den Wert des Kanals 0 (A-Kanal des PIO)
+
+>OUT<
+-----
+OUT1,7 gibt den Wert 7  an den  Kanal 1
+
+>DIM<
+-----
+Reservieren von Speicherplatz fuer Matrizen (1 bis 255 Dimen-
+sionen) 
+z.B. 10 DIM O(100)
+     20 DIM B$(221),DIM C(I)
+
+>POKE<
+------
+- wie 3K-BASIC
+
+>PEEK<
+------
+- wie 3K-BASIC
+
+>WAIT<
+------
+automatische Warteschleife fuer Ports. 
+WAIT A,B,C  der Wert am Port A wird mit C Exklusiv-ODER ver-
+knuepft sowie mit B UND-verknuepft.Erst wenn das Ergebnis nicht
+mehr Null ist wird das BASIC-Programm fortgesetzt.
+
+>COPY<
+------
+Damit koennen Teile des BASIC-Programms verschoben und dupli-
+ziert werden.
+COPY neue zeile,increment=Zeilenbereich /die im Zeilenbereich
+angegebenen Zeilen werden auf den neuen Bereich kopiert und
+dabei umnumeriert.
+
+>EXCHANGE<
+----------
+Schneller Austausch von Variablen-Werten. 
+z.B.EXCHANGE A$,B$
+    EXCHANGE C,D(A,J) 
+Im Falle von Strings Pointertausch. 
+
+>GOTO/GOSUB/RETURN/FOR|TO|STEP|NEXT< 
+------------------------------------
+-wie 3K-BASIC
+
+>ON x GOTO / ON x GOSUB<
+------------------------
+Es wird auf die x-te Zeilennummer gesprungen 
+10 ON A GOTO 100,130,50  Ist A=1,so wird auf 100 gesprungen.
+Falls A=0 oder A ist groesser als die Anzahl der angegebenen 
+Zeilennummern,so wird die naechste Zeile ausgefuehrt.
+
+>IF,THEN,ELSE<
+--------------
+Bedingte Anweisung 
+10 IF B=4 THEN 50 ELSE 30  bedeutet, ist B=4 Sprung zu 50,ist B
+                           ungleich 4 Sprung zu 30.
+ebenfalls:20 IF B$="JA" GOTO100 40
+             IF(A=0) OR NOT(B=4) THEN C=5 
+
+>ATN<
+-----
+Ermitteln des Arcustangens
+z.B.A=ATN(0.45)/ Ergebnis wird im Bogenmass angegeben.
+
+>COS<
+-----
+Berechnung des Cosinus
+
+>SIN<
+-----
+Sinus-Ermittlung C=SIN(3)
+
+>TAN<
+-----
+Tangens eines Winkels
+
+>ABS<
+-----
+Absolutbetrag : ABS(-4.5) ergibt 4.5
+
+>DEF FN<
+--------
+Damit kann der Benutzer eigene Funktionen definieren.Eine Funk-
+tion muss dabei mit FN beginnen,gefolgt von einem Variablenna-
+men z.B.FNA,FNB6  und einem in Klammern stehenden Parameter
+Beispiel:40 FNQ(X)=X*B/3  B ist dabei eine Variable,die im
+BASIC-Programm global verwendet wird. X ist lokal auf die De-
+finition beschraenkt und stellt nur den Parameter dar. 
+Beispiel: 10 DEF FNA(X)=X*X 
+         100 A=FNA(3):PRINT A  es wird der Wert 9 ausgegeben. 
+Es ist moeglich, die DEF-Anweisung ueber mehrere Zeilen er-
+strecken zu lassen; ausserdem koennen rekursive Funktionen defi-
+niert werden.Die allgemeine Form :   
+DEF FN name (parameter,...,parameter) 
+             Funktionskoerper 
+FNEND funktionswert 
+es wird im Gegensatz zur Standartdefinition das Gleichheitszei-
+chen weggelassen. Die Definition wird durch FNEND abgeschlossen,
+wobei dort der Funktionswert angegeben wird. Die Funktion kann
+auch vorzeitig abgebrochen werden,indem mit FNRETURN funktions-
+wert  eine Rueckkehr veranlasst wird.  
+ 100 DEF FNF AC(I)
+ 200 IF I=0 THEN FNRETURNI  
+ 300 FNEND FNFAC(I-1)*I 
+      
+>EXP<
+-----
+Exponentialfunktion EXP(1) ergibt 2.7182             
+
+>FRE<
+-----
+Damit laesst sich der Restspeicher fuer Variable und Programm,
+falls als Dummypartner eine Variable angegeben wird und der Rest-
+speicher fuer Strings ermitteln,falls eine Stringvariable als
+Parameter verwendet wird.
+FRE(X) gibt den Variablen- und Programmrestspeicher aus,
+FRE(X$)den Restspeicher fuer $.
+
+>INT<
+----- 
+Ermitteln des ganzzahligen Anteils von Zahlen.
+A=INT(4.56)  A erhaelt den Wert 4 .
+
+>LOG<
+-----
+Ermitteln des natuerlichen Logarithmus (d.h.zur Basis e=2.71...)
+einer Zahl. 
+LOG(EXP(1)) ergibt deshalb den Wert 1 .
+
+>SGN< 
+-----
+Ergibt +1,falls das Argument groesser als 0 ist; Null,falls es
+gleich 0 ist und -1,falls das Argument kleiner als 0 ist.
+SGN(56.6) ergibt +1\SGN(-4)=-1 
+
+>SQR<
+-----
+Berechnen der Quadratwurzel.Argument muss >=Null sein !!! 
+SQR(2) ergibt 1.4142
+
+>RND<
+-----
+Erzeugen einer Pseudozufallszahl zwischen 0 und 1.Dazu benoetigt
+RND einen Dummy-Parameter. Ist der Wert kleiner 0, wird die
+RND-Sequenz initialisiert. Ist das Argument 0,so wird der vor-
+hergehende Wert uebermittelt. Ein  Argument groesser als 0 lie-
+fert den naechsten RND-Wert in der Sequenz. 
+10 S=RND(1)  in S steht eine Zahl zwischen Null und 1
+
+>RANDOMIZE<
+-----------
+Dies ist keine Funktion, vielmehr kann damit ein zufaelliger
+Startpunkt einer Pseudo-Zufallszahlenfolge eingestellt werden.
+100 RANDOMIZE
+
+>> S T R I N G ($)-Verarbeitung <<
+----------------------------------
+
+>ASC<
+-----
+Der Dezimalwert eines ersten Zeichens in einem String wird ueber-
+geben. 
+20 A=ASC(D$)  
+Mit D$="B" erhaelt A den Wert 66
+
+>CHR$<
+------
+Hier wird gerade umgekehrt das Zeichen uebergeben,dass durch den
+dezimalen Wert des Arguments dargestellt wird. Die Codierung er-
+folgt hierbei in ASCII.
+210 A$=CHR$(67)  A$ beinhaltet das Zeichen B .
+PRINT CHR$(12) loescht den gesamten Bildschirm.
+
+>LEFT$<
+-------
+erhaelt zwei Parameter. Der erste ist ein String. Der zweite
+Parameter gibt die Anzahl der Zeichen an, die vom linken Rand
+des Strings an gezaelt, uebergeben werden sollen. 
+z.B. 10 B$=LEFT$("STRING",2)  B$ erhaelt die Zeichenfolge "ST".
+
+>LEN<
+-----
+Damit kann die Laenge eines Strings ermittelt werden. 
+z.B.40 X=LEN(S$)  In X steht die Anzahl Bytes, die S$ enthaelt.
+
+>MID$<
+------
+benoetigt drei Parameter.Der erste gibt den String an, der zwei-
+te bestimmt die Startposition, der dritte die Anzahl Zeichen,
+die von da an verwendet werden.
+z.B. 50 A$=MID$(B$,5,6)  A$ erhaelt  Zeichen, beginnend beim
+5-ten Zeichen des String B$. MID$ darf auch auf der linken Seite
+verwendet werden.
+
+>RIGHT$<
+--------
+funktioniert wie LEFT$, nur werden die Zeichen vom rechten Rand
+verwendet.
+
+>STR$<
+------
+Es wird der String uebergeben, dessen numerischer Wert in Klam-
+mern steht. 
+10 C$=STR$(7.8)  C$ erhaelt den String "7.8" .
+
+>VAL<
+-----
+Gegenteil von STR$. Es wird der numerische Wert eines Strings
+uebergeben. 
+20 A=VAL("3.4")  A erhaelt den Wert 3.4. In BASIC-Programmen
+koennen auch sedezimale Konstanten (Hex-Zahlen) verwendet wer-
+den. Sie werden angegeben, indem das Zeichen vorangestellt wird.
+20 B=&400  B erhaelt den Wert 1024.
+
+>INSTR<
+-------
+Dient zum Suchen von Strings. Dazu wird als erster Parameter der
+String angegeben, als zweites der String, der gesucht werden
+soll. Zusaetzlich koennen noch eine Startposition und eine
+Laenge angegeben werden.
+Beisp.: INSTR("123456789","456")  ergibt 4
+        INSTR("123456789","654")  ergibt 0
+        INSTR("1234512345","34")  ergibt 3
+        INSTR("1234512345","34",6) ergibt 8
+        INSTR("1234512345","34",6,2) ergibt 0
+
+>END<
+-----
+beendet den Programmablauf und kann irgendwo innerhalb eines
+BASIC-Programms stehen.
+
+>REM<
+-----
+kennzeichnet, dass die Zeile eine Kommentarzeile ist. Fuer REM
+kann auch das Zeichen "'" verwendet werden. 
+10 REM KOMMENTAR
+20 A=B:'A WIRD GLEICH B
+
+>STOP<
+------
+Wie END, nur das hierbei "BREAK @ LINE ..." ausgegeben wird.
+(dient damit der Fehlersuche)
+
+>USR<
+-----
+Erlaubt ein Maschinenunterprogramm aufzurufen. Es wird das Pro-
+gramm ueber die Sprungadresse bei "USR:" aufgerufen. Um den Para-
+meter zu erhalten, muss das Unterprogramm auf Adresse 300H+27H
+gerufen werden. Die Adresse des Parameters steht dann im
+Registerpaar DE. Um die Information zurueck zu uebertragen wird
+das Unterprogramm auf Adresse 300H+2AH aufgerufen. Das nieder-
+wertige Byte des Ergebnisses wird dazu im  Register B uebergeben
+und das hoeherwertige im Register A. Zur Rueckkehr ins BASIC-
+System wird ein RET-Befehl ausgefuehrt.
+10 A=USR(B) 
+20 PRINT A
+
+>CALL<
+------
+Aufruf von Maschinenprogrammen ohne Parameter.
+10 CALL&5000
+
+------------------------------------------------------------
+
+letzter Bearbeiter: Jens Moeckel
+Kontaktadresse Softwaretausch: J. Moeckel, 8400 Riesa, Magde-
+                               burger Str. 1b   
+
+Hinweis:Diese Beschreibung entstand unter Verwendung der Origi-
+        nalbeschreibung des Interpreters, die nur als Thermo-
+        kopie vorlag. Die Quelle ist daher unbekannt.
+        Der BASIC-Interpreter ist dem in Kramer:"Praktische
+        Mikrocomputertechnik" (Militaerverlag der DDR, 1.Aufla-
+        ge 1987, Seiten 41-51) verwendeten Interpreter sehr
+        aehnlich.
+

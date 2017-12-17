@@ -1,0 +1,3 @@
+<kurz src="Erweitertes BASIC"/>
+<lang><include src="T.TDL-BASIC DOC.txt"/></lang>
+<requires></requires>

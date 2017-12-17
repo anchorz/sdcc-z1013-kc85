@@ -1,0 +1,205 @@
+==============================================================
+
+
+Juergen Peters			IG Heimcomputer am IZ
+Jean-Bertrand-Str. 11		der TU Dresden
+Radebeul
+8122
+
+Tel. 73243    (privat)
+Tel. 5966 271 (dienstl.)
+
+
+
+    Zusatzleiterplatte 64-Zeichen-Bildschirm Z 1013 
+ 
+Die im folgenden beschriebene Zusatzleiterplatte fuer den
+Mikrorechnerbausatz Z 1013 realisiert umschaltbar die
+Funktionen: 
+
+	- Bildschirmformat 32*32 oder 64*16 (Zeichen*Zeile)
+	- Taktfrequenz 2 oder 4 MHz
+	- Steuersignal fuer Umschaltung des Zeichengenerators
+	- Steuersignal fuer ROM-Abschaltung
+	- vollstaendige Dekodierung des I/O-Dekoders A 27
+	- Beschleunigung der Signale /CAS und /WR.
+
+
+  1. Software-Schnittstellen
+Fuer die softwaremaessige Umschaltung der einzelnen Zusatzfunk-
+tionen wurden D-FF (DL 074) eingesetzt, da es damit moeglich
+ist, ueber die R/S-Eingaenge das FF auch mit Tastern gegen
+Masse definiert zu setzen. Die D-Eingaenge der vier FF liegen
+am Datenbus an D7, D6, D5 und D4. Diese Zuordnung wurde
+gewaehlt, weil durch A 47 (D 175) die anderen Datenleitungen
+bereits mit einer TTL- Last belegt sind. Fuer die Zuordnung der
+Datenbits wurden innerhalb der IG Heimcomputer Dresden
+folgende Festlegung, die als Normvorschlag gelten, getroffen: 
+
+  	 D7 - Umschaltung des Bildformates 32*32 oder 64*16
+	 D6 - Umschaltung der Taktfrequenz 2 MHz oder 4 MHz
+	 D5 - Umschaltung des Zeichengenerators ( 2. Zeichensatz )
+	 D4 - ROM-Abschaltung
+
+Als I/O-Adresse wurde die 4 festgelegt. Weiterhin soll mit der
+Ausgabe des Datenbytes 00H auf die I/O-Adresse 4 der Grundzu-
+stand des Rechners (32*32 Zeichen, 2 MHz, Originalzeichensatz
+und aktives Monitor-ROM) erreicht werden. Auf der gleichen I/O-
+Adresse ist das Ruecklesen des aktuellen Zustandes (d. h. die
+Stellung der FF) moeglich. Damit ist ueber AND- oder OR-Befehle
+ ein definiertes Setzen oder mit XOR-Befehlen ein Umschalten
+der Funktionen einfach moeglich. Fuer das Ruecklesen wird ein
+DL 257  (VI 2) eingesetzt. Die Leitung /IOSEL 1 (Pin 2 von A
+27) wird mit /RD oder /WR verknuepft und ergibt dann die
+Steuersignale  zum Einspeichern des Datenwortes bzw. zur
+Durchschaltung der  Q-Ausgaenge der FF auf den Datenbus.
+
+
+2. Funktion der Bildschirmumschaltung
+Die Umschaltung des Bildschirmformates von 32 Zeilen mit 32 
+Zeichen in ein Format mit 64 Zeichen in 16 Zeilen ist vor allem
+fuer eine effektive Textverarbeitung erforderlich. Dabei sollte
+diese Umschaltung software- und hardwaremaessig moeglich sein. 
+Das Prinzip beruht darauf, die Bildpunktfrequenz von 8 MHz auf
+12 MHz zu erhoehen und einen Teiler fuer die Adressen des
+Bildwiederholspeichers von 1:2 in 1:3 umzuschalten. Damit wer-
+den in einer Fernsehzeile 64 Zeichen mit je 8 Punkten darge-
+stellt. Die ausgenutzte Bildschirmbreite steigt damit auf
+ 4:3 im Vergleich zum bisherigen quadratischen Bild und
+entspricht damit auch dem normalen Bildschirmformat. Mit dieser
+Schaltung waere eigentlich eine Darstellung von 32 Zeilen mit
+jeweils 64 Zeichen einfach realisierbar. Es wurde aber darauf
+verzichtet, da dann ein doppelt so grosser
+Bildwiederholspeicher erforderlich waere und  die Lesbarkeit
+von Texten, fuer die diese Funktion ja in erster  Linie gedacht
+ist, schlechter ist. Ausserdem waeren wesentlich mehr
+Trennstellen auf der Leiterplatte erforderlich. Die graphischen
+Darstellungen erscheinen auch nicht sinnvoll, da die Zeichen
+verzerrt sind. Es werden hier die Zwischenzeilen dunkel
+getastet. Mit dieser Loesung sind auch kaum softwaremaessige
+Anpassungen erforderlich, da der Bildwiederholspeicher mit
+seiner Adressierung nicht veraendert wird.
+Die Bildpunktfrequenz von 12 MHz wird mit einem LC-Oszillator
+erzeugt. Die Stabilitaet ist fuer diesen Anwendungsfall voellig
+ausreichend. Natuerlich ist auch ein Quarz einsetzbar. Je nach
+Bildformat wird ueber die Gatterschaltung VI 10 entweder die 
+8 MHz- oder die 12 MHz-Bildpunktfrequenz gewaehlt. VI 3 bildet 
+zusammen mit A 20 einen Teiler durch 3 (bei 64 Zeichen). VI 4
+(DL 257) schaltet je nach gewaehltem Format die entsprechenden
+Leitungen um. Der Ausgang 3 des freien Gatters von A 32 wird 
+zum Ausgang 11 dieses Schaltkreises parallel geschaltet. An den
+Eingaengen 1,2 wird das Dunkelsteuersignal vom Multiplexer aus
+fuer die Zwischenzeilen gelegt. Durch die Negation des Bildsig-
+nals (einschliesslich der Austastsignale) mit dem verbleibenden
+Gatter ist mit einem Umschalter auch schwarze Schrift auf
+weissem Grund moeglich. Gegebenfalls ist fuer die negierte
+Darstellung R 26 zu vergroessern, um eine sichere
+Synchronisation des Fernseh- geraetes zu erreichen, da durch
+die fehlenden Schwarzschultern das BAS-Signal nicht mehr
+normgerecht ist. 
+
+3. Taktumschaltung
+Mit der wahlweisen Aenderung der Bildpunktfrequenz muss die
+Rechnertaktfrequenz davon unabhaengig erzeugt werden, da
+sonst die  seriellen Schnittstellen (Tonband oder Drucker)
+nicht mehr  funktionsfaehig waeren. Der 8 MHz-Quarztakt wird
+durch VI 9 durch 4 geteilt. Ueber eine Torschaltung (VI 8) wird
+jeweils ein Aus- gang des FF auf die Taktleitung geschaltet.
+Mit dieser Konfigu- ration ist die softwaremaessige Umschaltung
+mit OUT-Befehlen si- cher moeglich. Eine manuelle Umschaltung
+der Taktfrequenz ueber die RS-Eingaenge von VI 7 ist zwar
+moeglich und im Muster auch vorgesehen, aber dabei tritt
+manchmal eine Verfaelschung des RAM-Inhaltes ein.
+
+
+4. Weitere Steuersignale
+Fuer die Umschaltung des Zeichengenerators (z. B. mit negierter
+Darstellung bei gesetztem 7. Bit fuer die Kursordarstellung in 
+ Textsystemen) und des MEMDI-Signals fuer eine Abschaltung des
+ROM sind je ein FF der beiden Schaltkreise VI 3 und VI 1
+vorgesehen. Durch Einbeziehung der Adressen A5, A6 und A7 sowie
+des negierten /M1-Signals fuer die Auswahl des I/O-Dekoders 
+A 27 wird mit /IORQ eine vollstaendige Adressdekodierung mit VI 5
+erreicht. Die letzte Funktion, die fuer den Betrieb des
+Rechners mit einer  Taktfrequenz von 4 MHz erforderlich ist,
+geht auf eine Schaltung von Stoelzer zurueck. Auf der Leiter-
+platte ist dafuer der VI 1 (1/2 DL 074) und die Verbindung  mit
+ /RD vorgesehen. 
+
+5. Hinweise zum Aufbau
+Die Leiterplatte ist so konzipiert, dass sie ueber der Grund-
+leiterplatte mit 4 M2-Schrauben befestigt werden kann.
+Die Spule *) des 12 MHz-Oszillators liegt dabei ueber dem 
+Quarz. Fuer die erforderlichen Befestigungsloecher in der
+Grundplatte sind die  Koordinaten (10;17,5) (10;52,5)
+(107,5;10) und (107,5;40) bezogen auf die Kontur der Leiter-
+platte mit dem (0;0)-Punkt an der Ecke mit dem Quarz vorge-
+sehen. Es wurde versucht, mit einem Minimum an Leiterzugun-
+terbrechungen auszukommen, obwohl die Zahl der erforderlichen
+Anschluesse sehr hoch ist.
+*)HINWEIS zur Spule: Minifilter 21 Wdg. Kern MF 330 orange.
+
+Neben der Entfernung der Bruecke E2 fuer die Realisierung
+der vollstaendigen I/O- Dekodierung sind nur noch 4 Leiter-
+zuege fuer die Umschaltung des Bildformates durchzutrennen.
+Der Einsatz eines 2732 fuer den Zeichengenerator erfordert
+weitere 2 Trennstellen, da die /CS-Leitung doppelt an 5V ge-
+fuehrt ist.
+Die Beschleunigung der Signale /CAS und /WR nach Stoelzer
+erfordert eine weitere Trennstelle. Fuer den Aufbau ist es
+zweckmaessig, zunaechst die Leiterplatte vollstaendig zu
+bestuecken und mit einer separaten Stromversorgung den Os-
+zillator auf 12 MHz voreinzustellen. Die typische Stromaufnah-
+me der Schaltung liegt bei 50 mA. Danach ist ein stufenweiser
+Einbau guenstig. Zuerst werden die vier Trennstellen fuer die
+Bildformatumschaltung angebracht. Die Bruecke E1 fuer den Takt
+wird auch entfernt. Nach den Anschluessen fuer die Umschaltung
+des Bildformates und des Taktes wird diese Funktion geprueft,
+indem das zugehoerige FF (VI 7) manuell umgeschaltet  wird.
+Wenn die Aenderungen an A 32 noch nicht erfolgt sind, wer-
+ den die Zeilen bei 64 Zeichen doppelt geschrieben. Wenn die-
+ser  Teil richtig funktioniert, werden die Datenleitungen
+ D4 ... D7 sowie /RD , /WR und /IOSEL 1
+angeschlossen. Nach einer Funktionsueberpruefung dieses Arbeits-
+standes wird die Beschleunigung der Signale /CAS und /WR
+realisiert. Mit den einfachen Testprogrammen
+
+INIT:	LD A,00H	3E 00
+ 	OUT 4		D3 04
+	RST 38		FF
+NEGAT:	LD A,0FFH	3E FF
+	OUT 4		D3 04
+	RST 38H		FF
+UMSCH:	IN 4		DB 04
+
+	CPL 		2F
+	OUT 4		D3 04
+	RST 38H		FF
+	
+kann die Funktion der softwaremaessigen Umschaltung ueber-
+prueft werden.
+Als letztes wird die vollstaendige I/O-Dekodierung realisiert.
+
+Der Aufbau dieser Schaltung und die Belebung erfordern eine 
+ausreichende Schaltungskenntnis des Mikrorechnerbausatzes und
+der Funktion der Bilderzeugung, so dass der Nachbau nur dem
+versierten Amateur empfohlen wird. Die relativ geringe Zahl
+von  auf der Leiterplatte zu trennenden Leiterzuege ermoeglicht
+die  industrielle Reparatur, indem die Trennstellen
+ueberbrueckt werden und alle zusaetzlichen Anschluesse wieder
+entfernt werden. 
+Bauelemente bzw. Gatter, die auf der Grundleiterplatte bereits
+vorhanden sind, sind im Schaltbild gestrichelt dargestellt und
+entsprechend der Stromlaufplaene gekennzeichnet. Beim Entwurf
+des Layoutes wurden die nicht benoetigten Eingaenge (A0 ... A3)
+des Multiplexers DL 257 (A2) mit fuer Verbindungen genutzt, um
+eine einfachere Leiterzugfuehrung zu erreichen. Der Ersatz von
+L1 und C1 durch einen Quarz ist im Leiterzugbild
+beruecksichtigt. 
+
+==============================================================
+
+durchgesehen und korrigiert	
+Spulendaten eingetragen:	HOFMANN
+				AG Z1013
+

@@ -1,0 +1,3 @@
+<kurz src="Sprungverteiler fuer Z 1013-Erweiterungen 5.90"/>
+<lang><include src="T.SPRUNGVERT. 5_90.txt"/></lang>
+<requires></requires>

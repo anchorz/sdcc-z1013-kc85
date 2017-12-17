@@ -1,0 +1,3 @@
+<kurz src="ASSEMBLER GENS 3.2 fuer Z 1013"/>
+<lang><include src="T.GENS DOC NEW.txt"/></lang>
+<requires></requires>

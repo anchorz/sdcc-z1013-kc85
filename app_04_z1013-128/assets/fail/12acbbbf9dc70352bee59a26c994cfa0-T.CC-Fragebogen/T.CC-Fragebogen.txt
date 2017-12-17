@@ -1,0 +1,63 @@
+***************************************************************
+*  Zusatz zur Konzeption zur Gründung von Computerclub's      *
+*  Fragebogen für das Klubbuch (KB)                           *
+***************************************************************
+Bitte die Fragen so gut als möglich beantworten, wo noch keine
+Antwort möglich ist, offen lassen.
+
+Zur Einrichtung:
+1. Name des CC:                    2. Rechtsträger:
+3. wo gesetzlich registriert,
+   falls kein Rechtsträger:
+4. Vollständige Anschrift          5. Name, Vname, Anschrift
+   des CC:                            des Leiters des CC:
+   (Bei Telefon, Nummer und wo notwendig Amt mit angeben!)
+
+Wenn Z1013 Teileinrichtung eines CC:
+6. Name dieses Z1013-Teil des CC:
+7. Name, Vname des Leiter für Z1013:
+8. Vollständige Anschrift:         9. Telefon:
+10. Stellvertreter:
+
+Zur Veröffentlichung in Rundfunk und Presse:
+11. Kontaktadresse: 
+    (Diese so kurz wie möglich wählen, es muß aber ersichtlich
+    sein, daß es eine Computergemeinschaft ist.) 
+
+Spezielle Fragen, um eine Übersicht zu erlangen:
+12. Mitgliederzahl, Alter, Beruf:
+    (incl. korrespondierende Mitglieder, ungefähre Angaben genü-
+    gen.)
+13. Vorhandene Technik:
+    (Davon Z1013, Ausstattungsgrad, (RAM-, RAM-Floppy, Diskette,
+    Drucker usw.)
+
+Zur Klubarbeit:
+14. Können Mitglieder aufgenommen werden?
+15. Wenn ja, gibt es Einschränkungen?
+16. Bestehen Einschränkungen bei der Weitergabe von Software,
+    Hardware-Hilfeleistungen, persönlichen Kontakt von Nicht-
+    mitgliedern aus der Umgebung?
+17. Werden im CC bestimmte Spezialgebiete gepflegt und welche?
+18. Gibt es bestimmte Interessen o. Spezifik aus der Mitglie-
+    der-Zusammensetzung heraus?
+    (z.B. Kinderheime, Schulen, NVA u.a.)
+19. Kann der CC bestimmte Aufgaben Übernehmen, welche, in wel-
+    chem Umfang?
+20. Gibt es Vorschläge zur weiteren Zusammenarbeit, zu Software-
+    lösungen, zu Hardwarelösungen?
+21. Welche Zielstellungen konkret hat sich der CC für die 
+    nächste Zukunft gestellt?
+22. Gibt es Vorschläge zum INFO-Tausch, zur Software-Erfassung
+    und Austausch, zur Unkostendeckung?
+
+Zur Beanwortung genügt die Angabe der Nummer der Frage. Der
+Fragebogen ist ausgefüllt an den
+                   CC-Dresden-Land
+                   Dresdnerstr.42
+                   PF 53-55
+                   Radeberg
+                   8 1 4 2
+zu senden.
+****************************************************************
+^^^^^

@@ -1,0 +1,3 @@
+<kurz src="Beschreibung Kassetteninhalt"/>
+<lang><include src="T.BS-TEXT.txt"/></lang>
+<requires></requires>

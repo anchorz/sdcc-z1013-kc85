@@ -1,0 +1,3 @@
+<kurz src="MONLIST saemtliche Monitoraufrufe listen bzw. editieren"/>
+<lang><include src="T.MONLIST-DOC.txt"/></lang>
+<requires></requires>

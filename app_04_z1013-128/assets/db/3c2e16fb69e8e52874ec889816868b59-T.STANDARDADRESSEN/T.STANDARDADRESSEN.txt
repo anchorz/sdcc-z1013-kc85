@@ -1,0 +1,325 @@
+===============================================================
+=                                                             =
+=                    STANDARD-ADRESSEN                        =
+=                                                             =
+==================================== Stand: 20.08.89  =========
+                                     ausgearbeitet:
+                                     IG-HC TU Dresden
+Inhalt:	SPRUNGVERTEILER
+        SYSTEMADRESSEN UND BELEGUNG
+        I/O-ADRESSEN 
+***************************************************************
+SPRUNGVERTEILER:
+
+Von der Interessengemeinschaft Heimcomputr der KdT des IZ
+der TU-Dresden wurde ein Sprungverteiler vereinbart, der zur
+Einbindung von Erweiterungen des "Z 1013"-Monitorprogramms
+in Anwenderprogrammen dient. Das Ziel der Vereinbarung bestand
+in einer weitestgehenden Portabilitaet von Programmen fuer
+den "Z 1013", auch wenn diese z.B. einen Sprung zu einem Druk-
+kertreiber enthalten sollen. Der Verteiler beginnt auf der A-
+dresse FFFFH abwaertsfuehrend und enthaelt Sprungbefehle zu
+den entsprechenden Unterprogrammen der Systemerweiterung, wel-
+che mit einem RET-Befehl enden muessen, um die Rueckkehr in 
+das Anwenderprogramm zu erreichen. Nicht vorhandene Unterpro-
+gramme sind durch RET (C9H) kurzzuschliessen.  
+
+                                     (TEXT:V.LUEHNE FA 10/88)
+
+Sprungverteiler fuer Z 1013-Erweiterungen:
+__________________________________________
+
+ FFFDH - JMP INKEY  holt ein Zeichen von Tastatur in den
+                    Akku; kommt beim 2. Aufruf nur zurueck,
+                    wenn Taste zwischendurch losgelassen 
+                    wurde 
+
+ FFFAH - JMP POLL   bringt immer ein Zeichen im Akku zu-
+                    rueck, egal ob Taste losgelassen wurde
+                    oder nicht
+
+ FFF7H - JMP STAT   uebergibt Tastaturstatus im Akku
+                    A=0   - keine Taste gedrueckt
+                    A=FFH - Taste gedrueckt
+                    die Abfrage erfolgt ohne Ruecksicht,
+                    ob die Taste schon vor dem Aufruf ge-
+                    drueckt war und hinterlaesst trotz ge-
+                    drueckter Taste den Status
+                    'letztes Zeichen war 0' ((Zelle 4)=0)
+                    um eine evtl. nachfolgenden INKEY-Rou-
+                    tine nicht zu sperren
+
+ FFF4 - JMP SARUF   ruft die SAVE-Routine des Headersave
+                    ! zerstoert 1. Registersatz + AF'
+                    Parameteruebergabe:
+                    Zellen 1BH - anfadr.
+                           1DH - endadr.
+                           23H - strtadr.
+                    Akku   3AH - Wiederholen der SAVE-Funk-
+                                 tion mit gleichem Kopf
+                    H(IY)  Typvorgabe (in ASCII), sonst 0
+
+ FFF1H - JMP LORUF  ruft LOAD-Routine des Headersave
+                    ! zerstoert 1. Registersatz + AF'
+                    Parameteruebergabe:
+                    Zellen 1BH - neue Anfangsadresse des
+                    Files sonst 0
+                    Akku   0   - ohne signifikante Kontrol-
+                    le
+                    4EH - mit signifikanter Kopfkontrolle
+                          (Typ) + Namenabfrage
+             H(IY)  0   - Typ wird abgefragt 
+                          Typkennzeichen (in ASCII),
+                          keine Typabfr. 
+             L(IY)  20H - Freigabe Autostart bei
+                          COM-Files 
+
+ FFEEH - JMP ZMINI Initialisierung der Z-Monitorrufe
+                   auf B0H
+
+ FFEBH - JMP DRDEL setzt den logischen Druckertreiber
+                   zurueck
+
+ FFE8H - JMP DRAKK  uebergibt den Akkuinhalt an den lo-
+                    gischen Druckertreiber
+
+ FFE5H - JMP BSDR   druckt den Inhalt des BWS und kehrt
+                    in das rufende Programm zurueck
+
+ FFE2H - JMP HARDC  uebergibt den Akkuinhalt an logischen
+                    Druckertreiber wenn ein Flag im Rechner
+                    gesetzt ist;
+                    wandelt CR (0DH) in NL (1EH/0DH-0AH)
+                    ! nur verwenden, wenn Programm eine
+                    eigene Bildschirmverwaltung hat
+
+ FFDFH - JMP DRZEL  wie DRAKK, nur das der Inhalt von
+                    1BH uebergeben 
+                    wird (vorgesehen, um im BASIC mit POKE
+                    zu drucken)
+
+ FFDCH - JMP BEEP   erzeugen eines kurzen Signals
+
+ FFD9H - JMP ASTA   Ausgabe Akkuinhalt als ASCII-Zeichen
+                    an PUNCH
+
+ FFD6H - JMP BSTA   Ausgabe Akkuinhalt als Byte an PUNCH
+
+
+ FFD3H - JMP AIN    Eingabe eines ASCII-Zeichens vom LBL
+                    in den Akku
+
+ FFD0H - JMP BIN    Eingabe eines Bytes vom LBL in den 
+                    Akku
+
+ FFCDH - JMP DRINI  Initialisierung des logischen Drucker-
+                    treibers
+
+ FFCAH - JMP ZEIDR  uebergibt ein Zeichen im Akku an phy-
+                    sischen Druckertreiber
+
+ FFC7H - JMP BLMK   Lesen eines Blocks vom Headersave
+                    Parameteruebergabe:
+                    Zellen 25H/26H * Kopfinhalt des zu le-
+                    senden Bl.
+                    HL             * Ladeadresse des Blocks
+                  Return:
+                    Zellen 25H/26H * Kopfinhalt + 20H
+                    HL             * HL:=HL+20H
+                  Abbruch des Lesens bei Kopfinhalt=0FFFFH 
+                    oder DMA > Endadr in ARG2 (1DH)
+
+ FFC4H - JMP BSMK   Schreiben eines Blocks im Headersave
+                    Parameteruebergabe:
+                    HL  * Quelladresse Block
+                    IX  * Kopfinhalt
+                    DE  * Anzahl der Sync.-Bits
+                  Return:
+                    HL  * HL:=HL+20H
+
+ FFC1H - JMP SUCHK  Suchen eines Kopfblocks und Uebergabe
+                    des Inhalts im Kopfpuffer (E0-FF), keine 
+                    Auswertung
+
+ FFBEH - JMP AKP    Aufbereitung Kopfpuffer mit Namenab-
+                    frage
+                    Parameteruebergabe wie bei SARUF
+
+ FFBBH - JMP GETST  Abfrage der Joysticks und Uebergabe 
+                    des Ergebnisses in BC (B-links,C-rechts)
+                    mit folgenden Bit-Bedeutungen
+                    (Belegung mit 1):
+                    Bit 0 - links
+                        1 - rechts
+                        2 - runter
+                        3 - hoch
+                        4 - Aktionstaste
+                       Z-Flag=1, wenn keine Betaetigung vor-
+                    liegt
+                    CY-Flag=1, wenn Spielhebel nicht ange-
+                    schlossen  
+
+ FFB8H - JMP SOUND  Ausgabe einer vollen Periode auf die
+                    Tonbandbuchse, sowie auf Bit 7 vom Sys-
+                    temport (User-P)
+                    Uebergabe der Periodendauer in C mit 
+                    T=n*33us+20us (2MHz)
+
+**************************************************************
+
+BELEGTE SYSTEMZELLEN DES Z1013:
+-------------------------------
+
+ADR  BYTE FUNKTION		ZUSATZFKT.
+
+0000 3				Sprung zum Warmstart
+0003 1	Befehlscode bei RST 20H	Geraetezuweisg.
+				 (I/O-Byte)
+0004 1	letztes Zeichen Tastatur
+0005 3		CALL 0005H
+0008 3	RST 8H
+000B 2	Breakpointadr.
+000D 3	Operandenfolge bei Breakpoint
+0010 3	RST 10H
+0013 2	Adr. bei INHEX 
+0015 1				Merkzelle HSave; (SHILO)
+0016 2	SOIL
+0018 3	RST 18H			Sprung zu Monitor
+				  2/3
+001B 2	ARG 1
+001D 2	ARG 2
+001F 1	vom Cursor verdecktes Zeichen
+0020 3	RST 20H
+0023 2	ARG 3
+0025 2	Cursorpos. nach Kommandokonv.
+0027 1	ASCII/Graphikschalter
+0028 3	RST 28H
+002B 2	akt. Cursorposition
+002D 3	BER 3 frei		2D:Zeilenzaehler
+    				2E:max. Zeilenzahl
+    				2F:Seitenlaenge
+0030 3	RST 30H
+0033 2	Kenntonlaenge
+0035 3	Tastaturcodetab.
+0038 3	RST 38H
+003B 12	Tastaturcodetab.
+0047 2	WINDOW-Laenge
+0049 2	 -"-  -Anfang
+004B 2	 -"-  -Ende
+004D 2	Reg.retteber.:HL'
+004F 2	              DE'
+0051 2	              BC'
+0053 2	              AF'
+0055 2	              HL
+0057 2	              DE
+0059 2	              BC
+005B 2	              AF
+005D 2	              IY
+005F 2	              IX
+0061 2	              PC
+0063 2	  Stackpointer(90H nach RESET)
+0065 1	BER 1 frei		Spaltenzaehler
+0066 3	NMI
+0069 1	Merkz. fuer NEXT (gegen EI getauschtes Byte)
+006A 2	SP-Zwischenspeicher
+006C 2	Zwischenspeicher bei FIND
+006E-008FH Anwenderstack
+0090-00AFH Systemstack
+00B0-00DFH frei fuer Kommandoschleife
+00E0-00FFH Puffer fuer Header S/L
+
+**************************************************************
+
+I/O-ADRESSEN fuer den "Z-1013":
+_______________________________
+
+Auch bei den I/O-Adressen wurde neben den vom Hersteller fest-
+gelegten Adressen einige mit Funktionen belegt und als Stan-
+dard fuer die Anwender vorgeschlagen (1.Tagung in Dresden)
+
+
+ADR.	D-Bit	I/O-PORT		BEMERKUNGEN
+		bzw.FUNKTION
+
+00H,01H		PIO Z-1013 PORT A	USER fuer Spiel-
+					hebel, Drucker usw.
+
+02H,03H		PIO Z-1013 PORT B
+
+
+
+04H	DB7	UMSCHALTUNG 32/64 BS 	Bilidschirm von 32
+					auf 64 Zchn. umschal-
+				        ten, und umgekehrt.
+
+	DB6	UMSCHALTUNG TAKTFREQUENZ Taktfrequenz kann
+					mit diesem I/O-Signal
+					von 2 auf 4 MHz und
+                                        umgekehrt umgeschal-
+                                        tet werden.
+
+	DB5	UMSCHALTUNG ZEICHEN-    Wenn verschiedene Zei-
+                GENERATOR               chen-Generatoren (z.B.
+    					ASCII-Code m.Grafik-
+ 					Zeichen und DIN-Zei-
+					chensatz-m.Umlaute 
+				 	und SZ, sowie gesetz-
+					ten 7.Bit /invers)							
+
+	DB4	ROM-ABSCHALTUNG		Wenn z.B.exter-
+					ner ROM verwendet 
+					werden soll, oder 
+					ein Urlader. 
+
+        DB3     freiprogrammierbarer
+                Zeichengenerator
+	
+        DB2     Schreibschutz fuer     F000H-F7FFH 
+        u.      4K-RAM-Bereich         und
+        DB1     (z.B. Urlader)         F800H-FFFFH
+
+        DB0     frei                   (freihalten fuer
+                                       wichtige Verwendung.
+        rueckgesetztes Datenbit ist normaler Zustand
+        (Z1013-Original), dabei ist der Schreibschutz
+        eingeschaltet. Bitte bei Anwendung in Programmen
+        nur die jeweils benoetigten Bits setzen oder 
+        ruecksetzen. 
+     !! NICHT GENERELL '0' BEIM RUECKSETZEN VERWENDEN !!
+
+05H	DB0-7	frei fuer Anwender
+
+08H		TASTATUR-SPALTEN-TREIBER
+
+
+FUER ERWEITERUNGEN:
+
+30H,31H		PIO 1 PORT A		Fuer EPROM-
+					Programmierung u.a.
+32H,33H		PIO 1 PORT B            
+
+34H,35H		PIO 2 PORT A		V.24-Inter-
+					face (Riesa)
+
+36H,37H		PIO 2 PORT B		frei
+
+38H,39H,3AH,3BH CTC 1, 4 KANAELE       (Bei eigner CTC In-
+3CH,3DH,3EH,3FH CTC 2  4  ="=          stalierung, 1. CTC als
+                                       Systemuhr vorgeschlagen)
+
+98H		RAM-FLOPPY A           (Adressen fuer 2 RAM-
+58H             RAM-FLOPPY B           Floppy)
+
+FUER ROM-FLOPPY STEHT DIE ADRESSE NOCH NICHT FEST, WIRD ABER
+WIE RAM-FLOPPY ANGESTEUERT, LIEGT ALSO ETWA IM GLEICHEN BE-
+REICH.
+
+D0H,D1H,D2H (nach Kramer) 
+F0H,F1H,F2H (nach Brosig)             fuer DISK-FLOPPY genutzt.
+
+Standard-Adressen fuer Vollgrafik festzulegen, hält die IG-HC
+noch fuer verfrüht, da noch kein für alle akzeptables System
+vorliegt.
+*************************************************************
+^^^^^                             letzter Bearbeiter: Hofmann
+

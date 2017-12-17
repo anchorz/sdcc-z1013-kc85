@@ -1,0 +1,3 @@
+<kurz src="HEADERDISK45 auf 0xE000 verschoben+ ME"/>
+<lang>wie [c57560c2326e051f0620e4e4bc10b073]</lang>
+<requires></requires>

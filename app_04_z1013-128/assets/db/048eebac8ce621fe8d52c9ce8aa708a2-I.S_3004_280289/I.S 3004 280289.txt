@@ -1,0 +1,227 @@
+*************************************************************
+*                                                           *
+*            Druckertreiber für S 3004 am Z 1013            *
+*                                                           *
+*************************************************************
+
+1. Ziel
+
+Ausgehend vom Druckertreiber für die S 3004 von Herrn Bernd
+Michael, Tannenberg, wurden alle Zeichen des ASCII-Zeichensat-
+zes außer Linksschrägstrich (jetzt ß) implementiert, darunter
+neu: []{}~  , wobei diese Zeichen wie ursprünglich als Umlaute
+verwendet werden können. Zusätzlich sind Unterstreichung,
+Halbfett- und Fettdruck möglich;  NUL und ETX werden als
+Stopsignal interpretiert. 
+Darauf aufbauend arbeiten die Testprogramme DIRekt, EINgabe und 
+A-Zdruck, die Programme zum direkten Ausdruck eines RAM-Berei-
+ches, zum Druck eines RAM-Bereiches während laufender Terminal-
+arbeit und zum Umlenken der Druckdaten von ZEIDR (s. Sprungver-
+teiler) in ein logisches File.
+
+2. Anschlußbedingungen
+
+Die S 3004 wird ohne Interfacebox mit minimal 3 Leitungen (Masse
+- a13, Empfangsdaten - a11, Acknowledge - a12) des Interface-
+steckverbinders an den Rechner angeschlossen. An einem wählba-
+ren PIO-Port des Z 1013 werden damit Masse,  Portleitung 0 und 
+eine wählbare Portleitung (in dieser Reihenfolge) verbunden.
+In Adr. 0E419H wird das Bit für die Acknowledge-Ltg. gesetzt
+(nicht Bit 0!), in Adr. 0E418H die Portadresse eingetragen 
+(jetzt PIO-Port A der Grundplatine = 00). Es ist günstig,
+eine galvanische Trennung zwischen Rechner und S 3004 durchzu-
+führen, zumindest beim Ein- und Ausschalten, da trotz TTL-
+Pegel Spitzenspannungen auftreten können (geschirmte Ltg.!).
+
+3. Funktionen der Ausgaberoutine
+
+Folgende Zeichen werden gesondert interpretiert:
+
+00 Führt zu Druckstop und Piepton der Maschine, bis ^B (STX - 
+   02H - weiterdrucken) eingegeben wird. Jede andere Taste
+   führt zu Zeilenvorschub. Es werden alle Sonderfunktionen
+   außer 06H zurückgesetzt.
+01 Schaltet Unterstreichung ein oder aus; keine Druckausgabe
+03 Außer Abbruch für MUL keine Reaktion.
+04 Schaltet Halbfettdruck ein oder aus;   "     "
+05 Schaltet Fettdruck ein oder aus;       "     "
+06 Schaltet alle Sonderfunktionen außer sich selbst aus, d. h.
+   dann wirken [|] als ÄÖÜ, {ß} als äöü, ~  als ß, < und >
+   fehlen, können aber durch ),08,- und (,08,- nachgebildet wer-
+   den, ^ wird auf der Stelle gedruckt (Leerzeichen einfügen).
+07 Beep über Maschine
+0E ^ auf der Stelle
+0F SPC auf der Stelle (vor aou wird zu äöü)
+3C kleiner als
+3E größer als
+5B [ oder Ä
+5C ß oder Ö
+5D ] oder Ü
+7B { oder ä
+7C | oder ö
+7D } oder ü
+7E ~ oder ß
+4. Sprungverteiler und RAM-Zellen
+
+Ab E400 befindet sich ein Sprungverteiler in folgender Form:
+
+00 JMP MUL Aadr Eadr Zuweisung eines Druckfiles
+03 JMP LOG Aadr Eadr Zuweisung eines logischen Files für ZEI
+06 JMP PRT Aadr Eadr Druck eines RAM-Bereiches 
+                     (Vorsicht Ignoriert MUL-Aktivität !)
+09 JMP END           Abbruch für MUL 
+0C JMP ZEI Druck eines Zeichens im Akku
+0F JMP AZZ Druck aller ASCII-Zeichen von 20H bis 7FH
+12 JMP EIN Eingabe HEX-Zahl (ASCII-Code); Ende mit Zahl > 0FFH, 
+           das letzte Zeichen wird noch ausgegeben.
+15 JMP DIR Direkte Ausgabe aller Zeichen von 00H bis 68H
+
+18 PIO     Datenadresse für PIO-Port, danach E/A-Maske für
+           Portleitung
+
+An das Ende des Programm schließen sich folgende RAM-Zellen an:
+ 
+REM     Zustandszeiger: Bit 0 Unterstreichung
+                            1 Halbfettdruck
+                            2 Fettdruck
+                            3 Rückdruck
+                            4 Druckstop  bei MUL
+                            5 Logicfile kann beschrieben
+                                werden
+                            6 nächstes Zeichen ESCAPE
+                             7 Sonderfunktionen ignorieren
+
+LAA     Anfangsadresse  Logicfile
+LZA     Zwischenadresse Logicfile
+LEA     Endadresse      Logicfile
+BSS     Adresse für das Einklinken in das Betriebssystem
+JMP RUE Sprung zu dem durch BSS adressierten UP des Betriebs-
+AAD     Anfangsadresse Druckfile für MUL und PRT
+EAD     Endadresse     Druckfile für MUL und PRT
+
+Bemerkung: Der Sprungverteiler sollte in Lage und Form nicht
+           verändert werden,da MUL und LOG darin Änderungen
+           vornehmen.
+
+5. Tabellen
+
+Adr  Inhalt     
+
+E44B Umcodiertabelle in Reihenfolge der ASCII-Zeichen; manche
+     Programme erfordern es, in Adr. E458H statt 77H (CRLF)
+     78H (CR) einzusetzen.
+E4CB Umcodiertabelle für ESC-Funktion
+E500 Vergleichstabelle für Sonderfunktionen
+E510 Adreßtabelle
+
+6. Programme
+
+Das System ist down up aufgebaut, d.h. "höhere" Programme 
+rufen nur unterhalb stehende Unterprogramme auf. Es besteht in
+dieser Reihenfolge aus:
+
+    - Sprungverteiler
+AUS - UP Ausgabe (direkte Ausgabe auf Drucker)
+    - Tabellen
+ZEI - UP Zeichenausgabe (Übergabe in Akku)
+DIR - Direktausgabe aller Zeichen auf Drucker
+EIN - Eingabe HEX-Zahl (ASCII) und Druck
+RAM - UP Ausgabe eines Zeichens entspr. AAD und incrementieren;
+      wenn AAD > EAD --) Rückkehr mit CY = 0
+PRT - Ubergabe des zu druckenden RAM-Bereichs in ARG2 und ARG3,
+      keine Adreßkontrolle bezüglich MUL und LOG; 
+MUP - UP druckt Zeichen entsprechen AAD, wenn AAD < EAD (s. RAM)
+      und ACKN = L; wenn AAD > EAD wird die Adresse RUE nach
+      (BSS) zurückgeschrieben und kann damit nicht mehr aufge-
+      rufen werden.
+MUL - Wenn LOG aktiviert ist, wird vor Start dieses Programmes
+      eine Kontrolle durchgeführt, daß sich die angegebenen
+      Adressen nicht mit denen des Logicfile überschneiden.
+      Zweck von MUL ist es, während des Druckens eines Files in
+      einem beliebigen System, z.B. Microword, OCE etc., weiter-
+       arbeiten zu können, also quasi Multitaskbetrieb.
+      Dazu versucht MUL, in der Eingaberoutine des Monitors ab
+      F130H einen UP-Aufruf zu finden; ist das erfolgreich, wird
+      getestet, ob sich dort die Adresse von MUP einschreiben
+      läßt, was natürlich nur geht, wenn der Monitor in den
+      RAM umgeladen wurde (am Ende der Beschreibung ist ein
+      kleines Programm dafür aufgeführt).
+      Steht der Monitor im ROM bzw. ist kein Einschreiben
+      möglich, wird dafür der RST 20 genutzt.
+      Das funktioniert aber nur bei Programmen gut, die mit INKEY
+      (RST 20, DB 4) direkt arbeiten, wie z.B. OCE, während bei
+      Programmen, die mit INCH (RST 20, DB 1) arbeiten, nur pro
+      Tastendruck ein Zeichen gedruckt wird, wie z.B. bei
+      MicroWORD. In diesem Fall kann in dessen Sprungverteiler
+      ein UP eingetragen werden, welches INCH nachbildet
+      (Beispielprogramm am Ende).
+LUP - Beschreibt, anstelle ein Zeichen über ZEI zu drucken,
+      ein logisches File entsprechend LZA und LEA; wenn LZA >
+      LEA oder wenn bei 0DH oder 1EH weniger als 50H Speicherzellen
+      zur Verfügung stehen erfolgt eine Ausschrift auf den
+      Bildschirm (diese Ausschriften gelangen nicht in das log.
+      File) mit den Optionen:
+       
+      1  Ignorieren - File wird von vorn beschrieben,
+         ohne es zu retten 
+      2  File wird gerettet und anschliessend von vorn
+         beschrieben
+      3  File wird gerettet, anschliessend wird der Direktaus-
+         gabezustand für ZEI wiederhergestellt. 
+
+LOG - Zweck dieses Programmes ist es, Druckdaten erstmal in ein
+      File zu speichern (um es evtl. noch zu bearbeiten),
+      während möglicherweise etwas anderes, wichtigeres
+      mit MUL gedruckt wird. Anstelle von ZEI wird im Sprungver-
+      teiler LUP eingetragen,was für das aufrufende Programm 
+      keinerlei Änderung bringt. Die angegebenen Adressen für
+      das logische File werden hinsichtlich ihrer Überschneidung
+      mit MUL getestet und dürfen nicht über E000H hinausgehen.
+       Wenn beim Start von LOG bereits ein log. File existiert,
+      wird abgefragt, ob es allgemein geschlossen und ob es
+      gelöscht oder der bisherige Inhalt gerettet werden soll.
+
+Adressenangabe für MUL und LOG:
+
+Entweder mit J .... Aadr Eadr oder bei Aufruf als UP (nur bei
+LOG: dazu kann das UP verwendet werden, was eigentlich bei LOG-
+Start aufgerufen wird) Übergabe in ARG2 und ARG3. Ist eine
+dieser Adressen kleiner als 100H, werden die bisher aktuellen
+Adressen beibehalten. Wenn die Anfangsadresse kleiner als die
+Endadresse ist, dann Ende.
+Bei MUL führt z.B. die Eingabe J E400 0200 0100 zum Stop des
+laufenden Druckes. Mit J END kann MUL abgebrochen werden, die
+aktuellen Addressen für MUL bzw. PRT bleiben erhalten (Weiter-
+drucken ohne Adreßangabe).
+
+Monitorumladeprogramm:
+
+UML: LD HL,F000H
+     LD BC,1000H
+UM1: OUT ROM     ; I/O Adresse für Umschalten auf ROM ab F000H
+     LD  A,(HL)
+     OUT RAM     ; I/O Adresse für Umschalten auf 64k RAM
+     LD (HL),A
+     INC HL
+     DEC BC
+     LD A,B
+     OR C
+     JRNZ UM1
+     JMP  F000H
+
+Nachbildung INCH
+
+INCH: RST 20H
+      DB  04H     ; INKEY
+      LD  A,(04H) ; Letztes Zeichen
+      OR  A
+      JRZ INCH
+      RET
+
+Bei Verbesserungswünschen, Auftreten von Fehlern,
+Implementierungswünschen auf andere Adressen o. ä. bitte ich,
+direkt an mich zu schreiben.       
+
+Leipzig, 28. Febr. 1989           Falko Trojahn
+
+

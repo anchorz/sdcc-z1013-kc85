@@ -1,0 +1,33 @@
+Werte USER-Freunde!            
+Alle Programme  sind   2X   mit
+HEADERSAVE 5.95   gesaved. Nach
+diesem  Text folgen  zuerst ein
+16K-HEADERSAVE 5.95 der auf fol
+genden Adressen steht.         
+** 3C00H - 3FFFH/Start 3FEEH **
+Dieser laesst  sich  folgender-
+massen  mit dem  MONITOR laden:
+                               
+     L 3C00 3FFF  >ENTER<      
+                               
+ACHTUNG:  >ENTER<   erst   beim
+Ertoenen des  zweiten  Vortones
+druecken.                      
+      Start mit  J 3FEE        
+Nach dem 16K-HEADER  folgt  der
+64K-HEADERSAVE 5.95,  der   auf
+8000H - 83FFH verschoben steht.
+Laden: L E000 E3FF  >ENTER< wie
+oben.  Start: J E3FF           
+Alle weiteren Programme koennen
+mit  @L >ENTER< geladen werden.
+Es  wird  folgendes  angezeigt:
+  AADR EADR SADR               
+   X filename               
+  X steht fuer Typ. C-Typ wird 
+sofort gestartet.              
+Es folgen UNI-TEXTLESER  und   
+Beschr. HEADERSAVE.            
+Diese gruendlich durchlesen.   
+            Viel Spass!        
+                               

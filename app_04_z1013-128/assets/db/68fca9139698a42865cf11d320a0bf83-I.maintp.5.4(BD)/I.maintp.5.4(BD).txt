@@ -1,0 +1,176 @@
+Beschreibung *maintape* 5.4 (BD)
+--------------------------------
+
+
+
+
+In dieser kurzen Beschreibung wurden nur die Dinge aufgenommen, die die
+vorliegende Version von vorherigen unterscheidet:
+
+
+1. Kommandos:
+-------------
+
+@S begin end start name
+
+
+Saven eines Files. Im Gegensatz zu HEADERSAVE erfolgt die Namenseingabe bereits
+in der Kommandozeile. Abgefragt wird der Filetyp und die Filenummer. Die
+Filenummer ist ein beliebiges Zeichen, welches bei den Load-Kommandos im
+Memorypointer angezeigt wird (z.B. 0-9,A-Z,a-z). Im Kopfblock wird an den
+Positionen #EA die Filekopf-CRC (Z-Summe) und an #EB die File-CRC eingetragen.
+Nach dem Saven wird abgefragt "Verify/Retry", welches mit dem Anfangsbuchstaben
+beantwortet werden kann.
+
+
+@S:
+
+
+Saven mit gleichem Kopf. Hat sich die File-CRC inzwischen veraendert, dann
+erfolgt eine Fehlermeldung. Control-C unterbricht die Kommandoausfuehrung.
+
+
+@LN name
+
+
+Laden eines Files mit Namen. Wird kein Name angegeben, dann erfolgt keine
+Pruefung. Typabfrage erfolgt in jedem Fall. Stimmt die File-CRC nicht ueberein,
+dann erfolgt eine Fehlermeldung mit Tastaturabfrage. Control-C unterdrückt den
+Autostart. Stimmt die Kopf-CRC nicht ueberein, geht *maintape* davon aus, dasz
+keine File-CRC vorhanden ist und unterdrückt die Fehlermeldung. Auch in diesem
+Fall kann mit @S: abgespeichert werden, da die CRC aktualisiert wird. Autostart
+wird angefordert, indem als Filetyp ein "C" eingetragen wird.
+
+
+@L
+
+
+Laden eines Files mit Kopfblock ohne Kontrolle der Filenummern.
+
+
+@L addr
+
+
+Laden eines Files ab Adresse
+
+
+@L begin end
+
+
+Entspricht originalem Monitorkommando "L".
+
+
+@L begin end blocknr
+
+
+Laden eines Files ab einer Blocknummer in den angegebenen Bereich.
+
+
+@LC
+
+
+Anzeige der Kopfbloecke auf Kassette. Eingelesen wird in die oberste
+Bildschirmzeile entsprechend eingestelltem Bildschirmfenster (nicht bei A.2-
+Monitor!).
+
+
+@C
+
+
+Kontrolle der CRC-Summe des zuletzt eingelesenen Files entsprechend der
+Eintragungen im Kopfpuffer.
+
+
+@C begin end
+
+
+Berechnung der CRC-Summe ueber den angegebenen Bereich.
+
+
+
+@1
+
+
+Einstellen der Zeitkonstanten analog 1MHz. (z.B. 2MHz-Files bei 4MHz lesen)
+Die Adresse der jeweilig aktuellen Tabelle ist auf #2E/#2F eingetragen.
+
+
+@2
+
+
+Einstellen der Zeitkonstanten analog 2MHz.
+
+
+@4
+
+
+Einstellen der Zeitkonstanten analog 4MHz. (z.B. 4MHz-Files bei 2MHz lesen,
+nur bei guten Aufzeichnungen sinnvoll).
+
+
+
+2. Memorypointer
+----------------
+
+
+addr 4 S     - Saven des Files 4
+
+addr A V     - Verify des Files A
+
+addr w *     - Suche eines Filekopfes
+
+addr 0 L     - Laden des Files 0
+
+addr 3 <     - Blocknummer beim Laden gröszer als erwartet.(entspricht
+               "record not found").Abbruch mit Control-C moeglich.
+
+addr 6 >     - Blocknummer beim Laden kleiner als erwartet.(eventuell
+               Vorspulen). Kein Abbruch mit Control-C moeglich.
+
+
+3. Lesefehler
+-------------
+
+
+Bei Lesefehlern wird der Memorypointer unterdrueckt. Erst der naechste
+fehlerfreie Block wird mit entsprechendem Memorypointer wieder angezeigt.
+Zusaetzliche Fehlermeldungen werden nicht ausgegeben. Dadurch entfaellt die
+Tastaturbetaetigung analog HEADERSAVE bei Wiederholung des Leseversuches.
+Waehrend fehlerhafter Bloecke wird die Tastatur abgefragt (Abbruch moeglich).
+
+
+
+4. Kompatibilitaet
+------------------
+
+
+*maintape* ist kompatibel zu HEADERSAVE. Ab #E000 sind die ueblichen Spruenge
+in das Kassettenprogramm eingetragen. Wird dieser Sprungverteiler genutzt, dann
+wird der Filename gesondert abgefragt. Fuer die Blocksaveroutine ist die
+Filenummer im Alternativregister A zu uebergeben. Dort kann sie auch bei
+Verwendung der Blockladeroutine ausgewertet werden.
+
+
+
+5. Tonausgabe ueber Piezzosummer
+--------------------------------
+
+
+Bei fehlerhaften CRC-Summen und zu groszen Blocknummern (Lesefehler) wird
+die Tonausgabe ueber den Sprungverteiler angesprungen. Dadurch sind diese auch
+aus Entfernung bemerkbar. Dieser Aufruf erfolgt nur in der Variante fuer den
+4k-Monitor.
+
+
+
+6. Einbau des *maintape* in den 4k-Monitor
+------------------------------------------
+
+
+Beim Autor existiert ein zum Brosig-Monitor kompatibler main-Monitor fuer
+unterschiedliche Tastaturen und mit erweiterten Kommandos (z.B. Wildcards bei
+FIND, ASCII-Eingabemoeglichkeit bei MEMORY, Mehrfachspruenge bei NEXT, VIEW-
+Kommando, erweiterte Registeranzeige ...). In diesem Monitor ist auch
+*maintape* enthalten. Der Aufruf der Load- und Saveroutinen erfolgt ohne
+@-Praefix mit "L" und "S". Das Savekommando ist abbrechbar. 
+

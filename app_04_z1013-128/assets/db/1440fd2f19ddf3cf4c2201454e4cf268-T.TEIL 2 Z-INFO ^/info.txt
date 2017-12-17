@@ -1,0 +1,3 @@
+<kurz src="Z-1013-INFORMATIONEN, STANDARDS, KLUBARBEIT, ADRESSEN, ALLGEMEINES"/>
+<lang><include src="T.TEIL 2 Z-INFO ^.txt"/></lang>
+<requires></requires>

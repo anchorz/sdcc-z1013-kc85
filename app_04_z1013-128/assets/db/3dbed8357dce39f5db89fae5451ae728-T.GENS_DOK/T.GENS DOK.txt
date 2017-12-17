@@ -1,0 +1,141 @@
+**************************************************************
+*                                                            *
+*      GENS    -    Arbeitshinweise  zum  Assembler          *
+*                                                            *
+**************************************************************
+
+
+Die folgenden Hinweise zur Arbeit mit dem GENS-Assembler sind
+eine Minimalvariante und koennen der Einarbeitung dienen.
+
+Programmstandort: E0H - 1ED2H
+
+       Kaltstart: 100H
+       Warmstart: 11AH
+
+Wichtige  Zellen: 1C85H Textanfang
+                  0112H Textende
+
+Editorkommandos:
+----------------
+
+
+I n,m  Insert ab Zeile n mit Increment m (analog 'AUTO')
+L n,m  List von Zeile n bis m
+K n    Anzahl der Zeilen bei List (analog 'LINES')
+D n,m  Delete, loescht Zeilen n bis m
+M n,m  Move, Zeile n wird zur Zeile m
+N n,m  Renumber, Zeilenneunumerierung, Anfangszeile n, Zeilen-
+       abstand m
+E n    Editiermodus Zeile n
+     Q (Quit) beendet Editierung, Originalzeile bleibt erhalten
+     R (Reload) bringt nochmals die Originalzeile in den Puffer
+     L (List) listet den Rest der Zeile hinter den Cursor
+     K (Kill) loescht aktuelles Zeichen
+     Z Kill bis Zeilenende
+     F (Find) sucht naechste Zeile mit dem Find-String
+     I (Insert) fuegt eingegebenes Zeichen an Cursorposition ein
+     C (Change) ueberschreibt Zeichen an Cursorposition
+P n,m,s Abspeichern eines Textes von n bis m mit Filename s
+G, ,s   Laden eines mit P abgespeicherten Textes
+T n,m,s Abspeichern eines Textes von n bis m in Bloecken, um
+        ihn mit F bei der Assemblierung laden zu koennen
+
+Steuerkommandos:
+----------------
+
+A  Assemblierung
+R  Run - Start eines Programmes, Startadresse mit ENT festgelegt
+B  Bye - Ruecksprung in das Betriebssystem
+X  Anzeige der Start- und Endadresse des Textfiles
+
+Assembleranweisungen:
+---------------------
+
+a...Ausdruck
+
+ORG a     setzt Adresszaehler
+EQU a     weist vorangestelltem Label den Wert von a zu
+DEFB a,a  weist der Speicherzelle den Wert von a zu
+DEFW a,a  wie DEFB, a ist jedoch Doppelbyte-Zahl
+DEFM "s"  definiert den Inhalt von n Byte im Speicher, ent-
+          sprechend dem ASCII-String s
+ENT a     setzt Startadresse des Objektcodes auf den Wert a
+DEFS a    reserviert a Speicherplaetze
+
+Operanden:
+----------
+
+Operanden koennen aus Termen und Operatoren bestehen:
+
+dezimale Konstanten:         134
+hexadezimale Konstanten:     #4C
+binaer:                  %01101100
+Zeichenkettenkonstanten     "TEXT"
+
+Operatoren: + Addition
+            - Subtraktion
+            & logisches AND
+            . logisches OR
+            * Integermultiplikation
+            / Integerdivision
+            ? Modulo-Funktion
+            ! logisches XOR
+
+Assemblerkommandos:
+-------------------
+-werden zu Beginn einer Zeile eingegeben
+
+L-          stoppt Listing an dieser Stelle
+L+          setzt Listing an dieser Stelle fort
+D+          Adresszaehler wird dezimal ausgegeben
+C-          Objektcode im Assemblerlisting wird unterdrueckt
+C+          hebt C- wieder auf
+F Filename  Textfile wird bei der Assemblierung blockweise vom
+            Band geladen
+
+Option des Assemblers:
+----------------------
+-koennen auch kombiniert werden
+
+ 1 Symboltabellenlisting
+ 2 keine Generierung von Objektcode
+ 4 kein Assemblerlisting
+ 8 statt auf den Bildschirm wird auf den Drucker ausgegeben
+16 Objektcode wird im Objektcodepuffer abgelegt
+32 schnelle Assemblierung ohne Test, wohin der Objektcode abge-
+   legt wird
+
+Fehlermeldungen:
+----------------
+
+ 1 Fehler im Aufbau der Zeile
+ 2 Mnemonic nicht erkannt
+ 3 Statement schlecht geformt
+ 4 Symbol mehr als einmal definiert
+ 5 Zeile enthaelt unerlaubtes Zeichen
+ 6 Operand unerlaubt
+ 7 Symbol ist reserviertes Wort
+ 8 falsche Registerbenutzung
+ 9 zu viele Register in dieser Zeile
+10 Wert dieses Ausdrucks ist zu gross
+11 Befehle JP(IX+n) und JP(IY+n) sind unzulaessig
+12 Fehler bei Assembleranweisung
+13 illegale Vorwaertsreferenz
+14 Division durch Null
+15 Ueberlauf bei einer Multiplikation
+
+BAD ORG  dieses Org wuerde Assembler oder Textfile zerstoeren
+NO TABLE SPACE  der Speicherplatz der Symboltabelle ist zu klein
+
+
+Diese Beschreibung entstammt einem Fernschreiberausdruck und
+wurde teilweise verbessert und korrigiert. Fehler sind nicht
+ausgeschlossen. Die Quelle ist unbekannt.
+
+letzter Bearbeiter: Jens Moeckel
+Kontaktadresse Softwaretausch: Jens Moeckel, Magdeburger Str.1b
+                               8400 Riesa
+
+erstellt mit MicroWORD---------------------MOESOFT-------------
+

@@ -1,0 +1,346 @@
+TEIL 3 Z1013-INFO
+
+2.2.3 SOFTWARE-Tips:
+--------------------
+SPRUNGVERTEILER SV: Hier handelt es sich nicht um ein Programm,
+wie Newcomer oft annehmen, es sind nur Standard-Adressen, in de-
+nen die Sprünge zu Adressen umgeleitet werden, die zu den aufge-
+rufenen Standard-Routinen gehören. Ein Beispiel: Im KC-BASIC+
+wird der Sprung zum HEADERSAVE auf den Adressen 149H (LORUF)
+und 157H (SARUF) eingetragen. Mein HEADERSAVE steht im Monitor,
+der eines anderen Rechner ab E000H. Steht nun im KC-BASIC+ im
+LORUF die Adresse FFF1H, und auf dieser die Adresse des jeweili-
+gen LORUF vom HEADERSAVE, findet der KC-BASIC+ diese Routine
+ohne jede Änderung.
+Der Sprungverteiler kann auch mit 'M' (modify) direkt einge-
+tragen werden (RAM-Speicher muß aber dort vorhanden sein), wo-
+bei immer zuerst ein C3H (JMP), dann der niederwertige Teil der
+Adresse (letzten zwei Zchn.) und danach der höherwertige Teil 
+(ersten zwei Zchn.) eingetragen wird. Wenn auf FFB7H ein C9H 
+eingetragen wird, kann man die Sprünge zu Routinen, die nicht
+vorhanden sind, durch  Eintrag dieser Adresse kurzschließen.
+(es geht dazu jedes C9H, was irgendwo im Monitor steht.)
+Diesen eingetragenen SV kann man ausladen und nach jedem Kalt-
+start wieder einladen.
+.............................................................
+DIREKTANSPRÜNGE: Wer keine Möglichkeit hat, sich diesen SV ein-
+zutragen (z.B. 16-K), kann sich auch die Aufruf-Adressen der
+Standard-Routinen (z.B. LORUF/SARUF des HEADERSAVE) direkt ein-
+tragen. In allen Beschreibungen stehen die jeweiligen Adressen,
+wo diese Sprünge eingetragen werden. Hierbei bleiben ein ein-
+getragenes CDH (CALL) oder C3H (JMP) stehen, es kommt der nie-
+derwertige, dann der höherwertige Teil der Rufadressen. Die
+Rufadressen stehen ebenfalls immer in den Beschreibungen zu die-
+sen Standard-Programmen. Es  ist deshalb immer sinnvoll, sich
+alle Beschreibungen gründlich durch zu lesen.     
+...............................................................
+TEXTFILES: Diese können mit der MONITOR-Funktion L (LOAD) noch
+in den Speicher gebracht werden, wenn es mit HEADERSAVE nicht
+mehr möglich ist. Danach sucht man mit einem DUMP das Ende und
+kann nun erneut ausladen. Der Fehler läßt sich für gewöhnlich
+ausbessern. Bei anderen Programmen ist es grundsätzlich auch
+möglich, aber das  Ausbessern schon schwieriger. Auch unbe-
+kannte Programme sind oft damit erkennbar. 
+Übrigens sind TEXTFILES im Speicher frei verschieblich, daher
+unabhängig vom Standort von den meisten Textsystemen lesbar.
+Nur die verwendeten Steuerzeichen können anders sein.
+...............................................................
+TEXT TEILEN: Was tun, wenn ein Text für den verwendeten RAM
+eines Rechners zu lang ist? Beispiel 16-K-Rechner. Hier hilft
+wieder ein Trick:
+1. Teil 1 normal in UNI-TEXTLESER laden. Wenn 3FFFH erreicht 
+   ist, TAPE abstoppen. Diesen Teil nun auf eine andere Kasset-
+   te ausladen. dabei nach Einladen erst UNI-TEXTLESR mit ^C 
+   verlassen, und mit 'M 3FFF' prüfen, ob dort eine 03 eingetra-
+   gen ist. Wenn nicht, diese eintragen und den Text mit @S von
+   800 bis 3FFFH ausladen. 
+  2. Jetzt das Tape ein kleines Stück zurück spulen (Überschnei-
+   dung!), mit K den Speicher von 800H bis 3FFFH auf 00 setzen
+   (kann auch entfallen, aber so sicherer), und nun den nächs-
+   ten Teil mit L 800 3FFFH einladen. Nun gibt es zwei Möglich-
+   keiten:
+   a. Der Text ist kürzer als 3FFFH. Text zurückspulen und wei-
+      terladen bis Rechner Ende des Ladevorgang anzeigt. Nun 
+      wird mit F 800 1 03 das Ende des Textfiles (03H=ETX, Ende
+      Text) gesucht. Der Text kann nun mit '@S 800 eadr... aus
+      geladen werden. Nun kann der Text in den UNI-TEXTLESER
+      geladen und gelesen werden.
+   b. Wenn der Text länger ist, wiederholt sich die vorherige
+      Prozedur: Auf 3FFFH mit 'M' eine 03H setzen, Text ausla-
+      den, TAPE mit altem Text etwas zurück und wiederum mit
+      'L' ausladen.
+Dieser Trick ist hier für Texte mit ETX (03H) als Endezeichen
+beschrieben. Grundsätzlich funktioniert es auch mit anderen Tex-
+ten, Textendezeichen, und natürlich auch mit anderen Adressen
+sowie auch dem MicroWORD anstelle des UNI-TEXTLESER.
+Will man z.B. den I-Text (Beschr.) des MicroWORD 1.520U, der bis
+über 6000H geht, so ausladen, ist es etwas komplizierter, aber
+nicht unmöglich. Der 1. Teil läßt sich mit dem MicroWORD selbst
+teilen, da er das Ende des Speicher erkennt und hier automa-
+tisch sein ETX (03H) setzt. Da er danach sofort in sein Koman-
+domenue  zurückspringt, kann man hier das TAPE  abstoppen und 
+kurz zurückspulen. Den Rest wie oben beschrieben.
+ ...............................................................
+AUF RAM-FLOPPY LADEN: Wer eine RAM-Floppy nutzt, kann Programme
+auch dahin ändern, daß sie sich Teile direkt von der RF holt, 
+beziehungsweise auf diese schreibt. (z.B. MicroWORD, KC-BASIC+,
+(auch m-Version),R-80 RB (hier kann auch R-80 DISK genutzt wer-
+den) u.a.). In den Adressen des LORUF und SARUF werden die 
+Adressen des LORUF/SARUF des HEADERSAVE 5.95 auf E000H einge-
+tragen, wenn der HEADERDISK 45 auf E000H genutzt wird. Nutzt man
+aber HEADERDISK 45 auf D000H oder C000H, ist die Adresse nur 
+entsprechend dem ersten Zeichen (E,D,C) zu ändern. Für einen
+Aufruf des  HEADERDISK 45  R(EAD) nach Nummer wird anstelle der
+LORUF-Adresse E000H die Adresse E009H einzutragen. Die BASIC-
+Programme oder Textfiles lassen sich dann von der RF oder auf 
+die RF normal aus- und einladen.    
+...............................................................
+RAM-FLOPPY AUSLADEN: Wer seine RF mit Z1013-Programmen direkt 
+und komplett ausladen will, kann folgenden Trick anwenden. 
+1. RF volladen
+2. HEADERDISK 45 verlassen, dafür CPM-2RF 2.50 laden und star-
+   ten
+3. ohne RF initialisieren mit >ENTER< in den A>-Modus springen
+4. Will man RF B ausladen, mit B: auf diese umschalten
+5. mit ^C CPM verlassen (auf Abfrage 'N' drücken)
+6. auf Abfrage RAM-Floppy ausladen ein 'Y' drücken. 
+Nun kann die RF insgesamt ausgeladen werden. Beim Einladen den
+Weg umgekehrt. Mit CPM laden, CPM verlassen und HEADERDISK 45 
+starten. Es ist nur möglich, da der CPM  keine Systemspur
+schreibt. 
+***************************************************************
+
+3.0  Klubarbeit:
+****************
+
+Um die SOFTWARE sowie HARDWARE-Lösungen besser und schneller je-
+dem Z1013-Nutzer zugänglich zu machen, Tagungen in vertretbarem
+Rahmen durch zu führen, Aufgaben wie Standards, Ordnen der SOFT-
+WARE, prüfen von HARDWARE, Aussortieren von unsauberen, unmo-
+ralischen, nicht funktionieren Programmen u.a. besser durchfüh-
+ren zu können, bauen wir z.Zt. ein Netz von Computerclubs und
+Gemeinschaften, kurz CC genannt, auf.  Ziel ist es, in jedem 
+Kreis wenigstens einen CC zu haben. Zur Zeit haben wir in jedem
+Bezirk einen Bezirks-Leitklub und etwa 106 CC erfaßt. 
+..............................................................
+
+3.1  Klubgründung:
+==================
+Gemeinschaften, die öffentlich als solche aufteten wollen,-und
+nur so sind sie von Nutzen-, müssen gesetzlich registriert wer-
+den. Diese Registrierung kann man umgehen, wenn man eine be-
+reits registrierte staatliche oder gesellschaftliche Einrich-
+tung als Rechtsträger wählt.  Für Interessenten gibt es eine
+Konzeption zur Gründung von Computerclubs (für Kulturbund als
+Rechtsträger, aber auch für andere Rechtsträger verwendbar).
+BEZUG: Von allen Leitklubs (ab Oktober 1989) oder ab sofort
+ von
+
+********** CC Dresden-Land  Dresdnerstr. 42/53-55  ************
+**********    RADEBERG  8142   (Tel: 3810)         ************
+ 
+................................................................
+3.2 Klubbuch der DDR: 
+=====================
+Bei oben genannten CC wird auch das  Klubbuch der DDR geführt,
+in dem jeder CC eine Registriernummer erhält (hat nichts mit 
+staatlicher Registrierung zu tun!). Dazu bekommt jeder CC einen
+Fragebogen (ist als Anhang bei CC-Konzeption dabei). Veröffent-
+licht werden nur Kontaktadressen, wenn diese angegeben sind 
+(Frage 11 d. Fragebogen) und der CC einen Rechtsträger hat bzw.
+staatlich registriert ist. Alle CC können vom obengenannten CC,
+bzw. ab November nach Tagung der LKB der Bezirke, von diesen,
+eine Grundausstattung mit den u. 2.0 SOFTWARE genannten Stan-
+dard-Programmen erhalten.
+ANMERKUNG: Die erteilte KB-Nr. (Klubbuchnummer) ist bei jeder
+Zuschrift, gleich wohin, bei jeder Kassettenzusendung, und bei
+Telefonaten immer mit anzugeben.
+***************************************************************
+
+4.0 Adressen und Hinweise:
+*************************
+
+4.1. Kontaktadressen der LEITKLUB's der BEZIRKE und BERLIN:
+===========================================================
+ACHTUNG: Diese Klub's sind nicht zur Weitergabe von SOFTWARE
+         an private USER-Freunde vorgesehen, nur für CC ! 
+
+1. 
+KB-Nr.: 001 LKB  Dresden
+IG-HC KdT/Informatikzentrum der TU-Dresden
+Kontaktadresse: 
+IG-HC INFORMATIKZENTRUM d. TU-Dresden
+8027 Dresden  Mommsenstr. 13
+
+2.
+KB-Nr.: 002 LKB  Leipzig
+GST-COMPUTERCLUB VEB ROBOTRON-Anlagenbau Leipzig
+Kontaktadresse:
+GST-Computerclub Leipzig
+7010 LEIPZIG PF 130
+
+3.
+KB-Nr.: 010 LKB  Karl-Marx-Stadt
+Kulturbund der DDR - Computerklub K.-Marxstadt
+Kontaktadr.:
+Kulturbund der DDR - CC-K.M.-Stadt
+9010 Karl-Marx-Stadt, PSF 607
+
+4.
+KB-Nr.: 019 LKB  Schwerin
+AG Z1013 Schwerin
+(Soll mit J.Woll vom KB 97 neu organisiert werden)
+Kontaktadr.:
+vorläufige Anschrift:R. Boneß, 2762 Schwerin, A.-Beckerstr. 24
+
+5.
+KB-Nr.: 021 LKB  Magdeburg
+Interessengemeinschaft Z1013 des RAW Magdeburg
+Deutsche Reichsbahn 
+Kontaktadr.:
+IG Z1013  3013 Magdeburg  PSF 20
+
+6.
+KB-Nr.: 031 LKB  Halle
+AG Microcomputer der KdT BUNA 
+Fachsektion MSR u. Prozessrechentechnik
+Kontaktadr.:
+AGM-Buna  M.Gärtner  4200 Merseburg  Carl-Schorlemmerstr.
+
+7.
+KB-Nr.: 035 LKB  Frankfurt
+CC der KdT Schwedt/Oder  - Petrolchemisches Kombinat
+Kontaktadr.:
+CC-Schwedt S.Ketel  1330 Schwedt/O   Str.d.DSF 21
+
+8.
+KB-Nr.: 037 LKB  Cottbus
+Kulturbund der DDR / CC-Z1013 Cottbus
+Kontaktadr.:
+CC-Cottbus  R.David  7513 Cottbus  Dostojewskistr. 13
+
+9.
+KB-Nr.: 047 LKB  Suhl
+COMPUTERCLUB *Z1013* Kultur und Sportzentrum Suhl
+Kontaktadr.:
+Z1013-CC Suhl  Ing. F.Grassmann  6018 Suhl  Leninring 122
+
+10.
+KB-Nr.: 058 LKB  Neubrandenburg
+Station Junger Naturforscher "Ewald Dittmann"
+Kontaktadr.:
+CC d.St.Junger Naturforscher  2103 Löcknitz  Retzinerstr. 
+
+11.
+KB-Nr.: 059  LKB   Potsdam
+AG-Computer des Klubhaus "Philipp Müller" Brandenburg
+Kontaktadr.:
+CC d. KH "Philipp Müller"  1000 Brandenburg  Steinstraße
+
+12.
+KB-Nr.: 065 LKB  Gera
+NVA Z1013-Club Tautenhain
+Kontaktadr.:
+CC-Tautenhain  J.Weise  6534 Tautenhain  Waldsiedlung 27
+
+13.
+KB-Nr.: 067 LKB  Berlin
+URANIA COMPUTERCLUB Z1013 BERLIN
+Kontaktadr.:
+URANIA CC Z1013  1093 Berlin  PSF 367    
+
+14.
+KB-Nr.: 069 LKB  Erfurt
+Station Junger Techniker u. Naturforscher Eisenach
+Kontaktadr.:
+Z1013-CC Station j. Naturf.  5900 Eisenach   Friedhofstr. 22/24
+
+15.
+KB-Nr.: 088 LKB  Rostock
+Z1013 CC Sanitz 
+Kontaktadr.:
+CC-Sanitz  P.Neddermeyer  2556 Sanitz  Ernst-Schneller-Str. 9
+
+** Der letzte LKB (KB-Nr.: 088) kann von NVA-CC angesprochen 
+werden, wenn sie Probleme mit Kontaktadresse, zivilen Stütz-
+punkten, für Kontakte mit zivilen USER-Freunden u.a. im Zusam-
+menhang mit der NVA-Zugehörigkeit haben. ********************
+
+Kontaktadressen aller CC gibt es als Extra-File.
+
+4.2  Adressen für spezielle Dienste:
+====================================
+Anmerkung: CC, die sich bei genannten Adressen mit ihrer KB-Nr.
+           melden, werden bevorzugt abgefertigt.
+..............................................................
+Z-1013 Leiterplatten:
+---------------------
+Fa. GERLICH  2000 Neubrandenburg  Markscheidenweg 08/417
+(Listing kann angefordert werden)
+..............................................................
+RAM-Floppy und zugehörige Bauelemente:
+--------------------------------------
+Fa. "hobby-electronic-dresden"
+8010 Dresden  Schwerinerstr. 36
+Inh. Reinhard Sullus   Tel.: 4951097
+VERSAND: Wenn Anreise nicht zumutbar erfolgt Versand.
+         Bei Bestellung angeben, ob mit Bauelementen und in wel-
+         chem Umfang. RF = 64.- M, U2164 S1 = 5.65 M, RF-Bausatz
+         komplett: etwa 450.- M (je mögl. Lieferumfang)
+EXTRA-BESTELLUNG: "RF am Z1013", Beschreibung 4.50 M
+         in Vorbereitung "CPM auf Z1013 m. RF", Beschreibung.
+ANMERKUNG: CC können bei Sammelbestellungen auch andere Bauele-
+         mente in Nachnahme erhalten (je nach vorh. Angebot)
+         KB-Nr. angeben.
+............................................................... 
+FORTH - Programme und Auskünfte:
+--------------------------------
+KB-Nr.: 003 
+Kontaktadr.:
+CC-Dresden-Süd  
+F.Boden  8036 Dresden  Wieckestr. 20/69-22
+..............................................................
+SCP/CPM - Programme:
+--------------------
+KB-Nr.: 045 
+Kontaktadr.:
+CC-FSU Jena  A.Müller  6900 Jena  Humboldtstr. 10
+..............................................................
+Umrüstung 16-K auf 64-K, ROM auslöten und Fassung setzen,
+EPROM-Programmieren mit Standard-Progr. oder zugesendeten EPROM-
+Files.
+Bei Standard's mit Beschreibung auf zugesendeter Kassette:
+
+KB-Nr.: 075 
+Kontaktadr.:
+AG-Z1013  K.Schrenk  8701 Großhennersdorf
+Am Sportplatz 6/03-28 
+
+(Zur Zeit große Wartezeiten, wegen zu starkem Ansturm)
+Hier umgerüstete Rechner werden von ROBOTRON Riesa weiterhin
+repariert.
+***************************************************************
+ANHANG: Erläuterung einiger  Fremdwörter:
+CRC           = (cyclic redundancy check) eine spezielle Prüf
+                summenbildung, die ein verändertes File sofort
+                erkennen läßt.
+DUMP          = Speicherauszug
+DATA,DATEI,   = Daten, Datenmenge, glv.wie File
+DATUM         = Bezugsgröße
+FILE          = gleich Datei, Datenmenge
+HEX           = Abk. v. Hexadezimal, eines Zahlensystems mit
+                der 16 als Basis, wobei die Ziffern von 10-15
+                durch die Buchstaben A-F ersetzt werden.
+LOAD          = laden
+MEMORY        = Gedächtnis, Speicher
+READ          = lesen
+RECORD        = Datensatz, Datenblock (bad record = schlechter
+                Datenblock)
+SAVE          = retten 
+TAPE          = Kassettenrecorder
+USER          = Nutzer, Anwender
+VERIFY        = auf Übereinstimmung prüfen
+WRITE         = schreiben.
+**************************************** hofmann *************
+^^^^^
+

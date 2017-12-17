@@ -1,0 +1,3 @@
+<kurz src="Druckertreiber für S3004 am Z1013"/>
+<lang><include src="I.S 3004 280289.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Tastatur mit Raffinessen mit der K 7669 fuer den Z 1013"/>
+<lang><include src="_.MON7669B.MIW.txt"/></lang>
+<requires></requires>

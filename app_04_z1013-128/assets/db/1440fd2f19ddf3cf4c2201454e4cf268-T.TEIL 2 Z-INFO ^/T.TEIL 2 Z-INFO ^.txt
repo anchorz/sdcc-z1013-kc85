@@ -1,0 +1,277 @@
+TEIL 2 der Z-1013-Information.
+Fortsetzung: Standard-SOFTWARE
+................................................................
+Als DEBUGGER wurden einige angeboten, sind noch im Test. Hier 
+bietet sich aber für den Z1013 der, von *Dr. Schönfelder/IG-HC
+TU Dresden*, bearbeitete SYD (Symbolischer Debugger) an.  
+................................................................
+
+2.1.3  SAVE/LOAD, HEADER, MONITORE und ZUSATZ-MONITORE,
+       RF-Programme u.a. : 
+======================================================= 
+
+HEADERSAVE 5.95              Ein SAVE/LOAD-Programm     für 16-
+*Brosig/IG-HC TU Dresden*    in 2  RAM-Bereichen,       und 64-K
+                             im BROSIG-MONITOR, MONER
+                             und in div. Programmen ein-
+                             gebunden. (s.u.)
+Dieses Programm schreibt beim SAVEN einen Kopf (HEAD) vor das
+eigentliche Programm, der die Angaben: aadr eadr sadr  typ und
+filename enthält. Diese Angaben werden beim LADEN mit aufge-
+listet, dienen dem richtigen Zuordnen des Speicherbereich und
+dem Verwalten/Registrieren der Programme durch verschiedene an-
+dere Programme. Ein mitgeliefertes LISTING entfällt bei SOFT-
+WARE-Vergabe. 
+..............................................................
+Zur Zeit werden  LOAD/SAVE-Routinen (*Duchow/Berlin*)  ange-
+boten, die zum HEADERSAVE kompatibel sein sollen. Eine indivi-
+duelle Nutzung kann daher möglich sein. Für einen Ersatz des
+HEADERSAVE besteht aber kein zwingender Grund. Zumal dieser 
+schon weit verbreitet ist, auch wegen seiner Einfachheit und
+Kürze. 
+...............................................................
+versch. HEADER-Programme:
+HEADERWRITE 1.0  *Kretschmar/Meißen* Kassettenlist      ab 16-K
+die folgenden HEADER-Prgr. sind für 64-K
+HEADERTRANSFER   *Dr.Hinz/IG-HC*     Transfer EPROM -> RAM
+HEADERDISK 45    *Brosig/IG-HC*      RF-Verwaltung im Z1013-MODE
+HEADER-MENUE 2   *Diestel/Dessau*    zum SOFT-Tausch geeignet,
+                                     Schafft mehrere Programme
+                 in den RAM und lädt sie entsprechend Auswahl
+                 auf Kassette. 
+HEADER-SPIEL     *Diestel/Dessau*    Wie  HEADER-MENUE 2, nur 
+                                     daß hier mehrere Spiele
+                 zum Gebrauch im RAM bis 4000H gespeichert und
+                 aufgrufen werden können.
+...............................................................
+
+versch. MONITORE und Zusatz-MONITORE:
+BROSIG-Monitor:
+4K-MON K7652 und             ROM F000H-FFFFH (s.MP 7/88)  
+4K-MON K7659                 verwendbar nur für die beiden an-
+*Brosig/IG-HC*         gegebenen Tastaturen oder deren Nachbau.
+
+MONER SU 1.31 (ZUSATZ-MONITOR)  F800H-FFFFH  
+*Dr.HINZ/IG-HC*              Kann zum Riesaer Monitor unabhän-
+                einer gegebenen Tastatur (also auch Multi-
+                plexer-, Folie- oder externe Tastatur) im RAM
+                oder als 4K-MONITOR mit dem Riesaer (o.ein.and.)
+                in einem ROM gebrannt werden.
+Dieser Zusatzmonitor enthält den HEADERSAVE, Sprungverteiler SV,
+HEADERTRANSFER (s.FA 38 H.7(1989) S.323),eine I/O-, CRC-, und
+eine HEX-DUMP-Routine. Version 1.32 hat noch eine SCREEN-PRINT-
+Routine.
+...............................................................
+Weiterhin gibt es KC-SAVE und LOAD-Routinen, um MC-Files des
+Z9001,KC 85/1, KC 87 in den Z1013zu bringen, KC-MONITOR, AC1-
+MONITOR, Spectrum-Interface, um Programme dieser Rechner im
+Z1013 zum laufen zu bringen. (Nur bedingt möglich.)
+...............................................................
+Z1013-SURL 50                Urlader für Z1013 mit HEADERSAVE
+*Gärtner/CC-KdT-Halle-N.*    und Nutzung der I/O-Empfehlung
+                             der IG-HC TU Dresden.
+..............................................................
+SCP/CPM Programme:
+CPM-2RF 2.50M                letzte CPM-Version, kann ohne
+*Brosig/IG-HC TU Dresden*    SV (BEEP ist bei ...M nicht ein-
+                             getragen) betrieben werden.
+Mindestanforderung: 1 RF (RAM-Floppy), TASTATUR, welche alle
+128 ASCII-Codes erzeugen kann. 
+Integriert: HEADERSAVE, Druckertreiber V.24 über E/A-Modul
+Riesa, schaltet bei vorhandenem 64-Zchn.-Zusatz BS auf 64 Zchn,
+Takt auf 4 MHz (nicht bei SAVE/LOAD), und konfertiert Tastatur
+in CPM-Modus (z.B. Pfeil-Tasten).
+Die üblichen SCP-Programme von ROBOTRON sind lauffähig.
+RAM-Floppy wird komplett ausgeladen.
+CP/A-200PD                   CPM-Version, ähnlich der obenge-
+*Lühne/IG-HC TU Dresden*     nannten. Hat einen Zusatz-Moni-
+                             tor, mit dem Programme direkt auf
+die  RF geladen, oder von dieser direkt  auf TAPE gesaved wer-
+den. Voraussetzungen und Leistung wie oben. Schreibt auf RF A
+eine Systemspur. Der Zusatzmonitor (M.COM) kann auch ausge-
+laden und in den CPM-2RF 2.50 geladen werden. Dann ist hier auch
+ein Einzel-ausladen der Files von RF möglich.
+Den CP/A gibt es auch für 80-Zchn-BS (BAB2).
+Beide gibt es auch für 2 RF und Disk-Floppy. Die Brosig-Version
+dabei mit Urlader, den Z-1013-Monitor mit auf Systemspur der
+Diskette (oder auf EPROM / gesteckt auf EPROM-Progr.-Gerät Dres-
+den (PIO-A30)).
+................................................................          
+
+2.1.4  Höhere Programmiersprachen:
+==================================
+
+BASIC-Interpreter und  Compiler:
+3-K-BASIC                    Hier gibt es eine Vielzahl  16-K
+                             von Versionen. Eine bieten 
+                             wir als Standard:
+TINY-BASIC 3.20H             Mit HEADERSAVE und einem 
+*Kraft/IG-HC TU Dresden*     MENUE (Auflistung aller BASIC-
+                             Befehle, die implementiert sind).
+...............................................................
+KC-BASIC+                    10-K-BASIC, der gegenüber  bedingt
+*Lühne/IG-HC TU Dresden*     dem HC-BASIC von Riesa      16-K
+                             alle Direktsprünge in den
+                             MONITOR vermeidet. Die letzte
+Version mit Bearbeitungen ist mit implementiertem 'main-tape' 
+(m) (*Duchow/Berlin*) und verbesserter Funktion des 'LIST#', wo
+jetzt ein anschließendes 'verify' möglich ist (*Dr.Trog-CC
+URANIA Berlin*). Beide Versionen werden zur Zeit von V.Lühne
+und unserer IG-HC getestet. Erste Ergebnisse sind eine verbes-
+sertes Einladen von BASIC-Programmen im KC-Modus und bei Rund-
+funk-Mitschnitten.
+KC-BASIC+m          *Duchow/Berlin* und
+KC-BASIC+m1         *Dr.Trog-CC URANIA Berlin*
+...............................................................	  
+KC-ROM-BASIC+                Dieser 10-K-Basic kann ab C000H in
+*Lühne/IG-HC TU Dresden*     einem ROM (auch RAM-lauffähig) ste-
+                             hen. Er ist zum KC-BASIC+ voll kom-
+patibel. Seine Programme stehen zwar in einem anderen Speicher-
+bereich, nutzen aber intern die gleichen Adressen. Der KC-ROM-
+BASIC+ rechnet sich diese dann jeweils um. Der KC-BASIC+ ab
+100H ladet sich diese Programme richtig in den Speicher, umge-
+kehrt ebenfalls.
+...............................................................
+Die bisher genannten BASIC-Interpreter haben den enormen Vor-
+teil, beide Kassetten-Interfaces zu besitzen, den HEADERSAVE für
+Z1013 und die CSAVE/CLOAD-Routinen des KC-Rechners. Damit ist
+ein unmittelbarer Programmaustausch möglich.
+Diesen Vorteil haben alle bisherigen HC 900- und TDL-BASIC-Ver-
+sionen, die bekannt sind, nicht. 
+...............................................................                              
+BASIC-COMPILER:              Der einzige, bekannte, unter
+                             Z1013 lauffähige Compiler ist neben
+dem BASC des SCP ein unter genanntem Namen, auch B.-Compiler 
+oder auch als MINI-BASIC, bekanntes Programm. Er ist aber zu 
+keinem Interpreter kompatibel.
+...............................................................
+Hisoft-Pascal: Als letzte Version dieses leider von ROBOTRON 
+stark abgerüsteten PASCAL-COMPILER kann jetzt ein überarbeite-
+ter COMPILER angeboten werden, dem einige Fehler entfernt wur-
+den und der eine bei Verwendung des BROSIG-MONITOR nutzbare
+String-Tabelle enthält.
+HIS-PASCAL 1.03              Speicherbedarf mindestens 32-KByte
+*Dr.Trog-CC URANIA Berlin*
+...............................................................
+FORTH: Vom FIG-FOTH existieren 2 Versionen, die bekannte Leip-
+ziger und eine Jenaer Version.
+FORTH-83                     Dieser FORTH wurde in Leipzig vor-
+*Dr.Pfüller/WPU Rostock*     gestellt und stellt beide FIG-FORTH
+                             Versionen in den Schatten.
+Ab MP 3/98 S.79 läuft z.Zt. ein MP-KURS "Einführung in FORTH-83"
+(Über Bezugsmöglichkeiten unter "Adressen" (s.u.)).
+...............................................................
+
+2.1.5   Weitere MC-Programme - Speichertest - Spiele:
+=====================================================
+
+Es gibt eine Vielzahl von Programmen für den Z-1013, für die
+unterschiedlichsten Aufgaben.
+Einige davon dienen dem Testen des Z1013, von IC oder Schaltun-
+gen, Meßaufgaben physikalischer u.a. Werte, Schul-, wissen-
+schaftlicher, mathematischer u.a. Aufgaben.
+..............................................................
+LOGICANALYSER Scf            Damit können logische      16-K
+*Dr.Schönfelder/             Zustands- und logische
+IG-HC TU Dresden*            Zeitanalysen über USER-
+                             Port des Z1013 durchgeführt werden.
+...............................................................
+Speichertest-Programme sind leider niemals 100%-ig. Deshalb ist
+es nicht verkehrt, verschiedene Programme zu nutzen. Hier nur
+einige davon:
+RAMTEST RAMBUG Z             führt verschiedene Tests durch,
+*Brosig/IG-HC*               die abgefragt werden. Bei Block-
+                             bildung genau rechnen, Speicherbe-
+reich-Angaben immer XX00 - XXFF angeben. (z.B.: 2000 - CFFF)
+weitere Testprogramme (sich selbst erklärend):
+Testroutine Z1013   *Kraft/IG-HC TU Dresden*
+MEMORYTEST 1 und 2  sowie RAM-& PIO-Test  (Tagungskassette Lpz)
+RF-TEST 5.0                 Testprogramm für RAM-Floppy A und B 
+*Brosig/IG-HC TU Dresden*   (auf I/O-Adr. 98H und 58H)
+RAM-CHECK 1.01              EPROM-PROGRAMM/ m.Beschreibung
+*Rehn/Schwarzenberg*
+...............................................................
+SPIELE:
+Von der Vielzahl der Spiele sind nur 2 Schach-Programme zum
+Standard vorgeschlagen.
+
+CHESS-MASTER                                             16-K
+*ROBOTRON*
+
+CYRUS-CHESS V2/dt            In den Spielstufen schnel-  >16-K
+*Dr.Trog/CC-Urania           ler als der CHESS-MASTER,
+ Berlin*                     kann vertagte Partien ausladen;
+                             Name und Datums-Eintrag incl.,
+Züge können zurück verfolgt werden u.v.a.m..
+Diesen CYRUS-CHESS gibt es noch in einer abgerüsteten Version
+für 16-K-Rechner.
+...............................................................
+
+2.2  Abschlussbemerkungen zur SOFTWARE:
+=======================================
+
+2.2.1 SOFTWARE-Bearbeitungen:
+-----------------------------
+Standard-Software sollte grundsätzlich nur vom Programmierer
+oder ersten Bearbeiter (bei Programmen, die von anderen Rech-
+ner übernommen wurden), oder von Personen/Gemeinschaften, die
+von diesen bevollmächtigt wurden, weiter bearbeitet, verändert,
+oder allgemein gepflegt werden.
+Bearbeitungen, Änderungen oder Erweiterungen sind vor Veröffent-
+lichung erst dem erstgenannten Personenkreis vorzulegen. Wir
+wollen damit der unübersehbaren Flut von unnötigen Änderungen,
+Verstümmelung u.a. vorbeugen. Individuell kann jeder für den
+eigenen Gebrauch Programme verändern, wie er will. Eine Verbrei-
+tung hat aber  zu unterbleiben.
+Gleiches gilt für Programm-Namen, die der  Programmierer ver-
+geben hat.
+Programm und Beschreibung ist immer eine Einheit. Jedes Pro-
+gramm, welches veröffentlicht werden soll, muß sich klar sel-
+ber erklären oder eine ordentliche Beschreibung (als Text-File)
+haben.
+Programme sollen klar aufgebaut, Speicher sparend, mit sauberen
+Ein- und Ausstieg versehen sein, aber keine Direktsprünge auf
+Tastatur- oder Monitor-Routine besitzen.
+(Leipziger Tagung)    
+
+2.2.2  Weitergabe von SOFTWARE:
+-------------------------------
+Amateur-SOFTWARE ist kostenlos weiter zu geben. Dabei ist der
+SOFTWARE-Tausch die normale Art. Eine kommerzielle Nutzung der
+kostenlos weitergegebenen SOFTWARE, einschließlich der kommer-
+ziellen Vervielfältigung, ist nicht, bzw. nur über einen Hono-
+rar-Vertrag mit dem Programmierer (lt. Honorargesetz zur Erar-
+beitung von Software) gestattet.
+Bei Weitergabe von Programmen, wo kein Tausch vorliegt,-außer-
+halb von SOFTWARE-Börsen-, wurde die Erhebung einer Bearbei-
+tungsgebür, die dem Vervielfältiger als Aufwand-Entschädigung
+zusteht, als notwendig erachtet. Es hat sich allgemein der Be-
+trag von 3.- M für Programm incl. Beschreibung  als ausreichend
+erwiesen.
+(Leipziger Tagung)
+..............................................................
+Hier ein TIP zur Konvertierung der INKEY-Routine vom Brosig-
+Monitor (u.a.) zum Riesaer Monitor A.2:
+.......................................
+Im Programm Inkey-rufe über RST 20 DB 4 suchen (E7 04 C9), hier
+einen JMP zu einer Routine eintragen, die folgend lautet:
+
+; Inkey-Routine nach R.Brosig 
+; Obj.Code    Quellcode
+  E7          RST 20H
+  04          DB  4
+  B7          OR  A
+  C8          RZ
+  E7          RST 20H
+  01          DB  1
+  C9          RET
+              END
+Im MicroWORD 1.520U steht dieser Ruf ab 10CH. Wenn hier als
+Beispiel ein 'C3 56 14' eingetragen und der kleine Programmteil
+v.oben ab 1456H angehängt wird, funktioniert die Sache schon.
+Aber nicht vergessen: Die absolute untere Speichergrenze muß
+auch geändert werden. (ab Zelle 167H eine '5D 14' eintragen)
+..............................................................
+ENDE TEIL 2
+^^^^^
+

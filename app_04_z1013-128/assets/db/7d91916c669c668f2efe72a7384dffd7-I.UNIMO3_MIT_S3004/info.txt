@@ -1,0 +1,3 @@
+<kurz src="UNIMO3, Universalzusatzmonitor, MIT S3004 und SPV"/>
+<lang><include src="I.UNIMO3 MIT S3004.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,237 @@
+                               
+
+OVER ( n1 n2 --> n1 n2 n1 )  kopiert den Second zum (neuen !) TOS
+
+ROT  ( n1 n2 n3 --> n2 n3 n1 )  rotiert den Third zum TOS
+
+>R   ( n --> )           bringt    den   TOS   zum  Return-Stack
+                         (Zwischenspeicherung,  
+                         Gebrauch  mit Vorsicht !)
+
+R>   ( --> n )           holt den Wert vom Return-Stack zum TOS 
+                         zurueck
+
+R    ( --> n )           kopiert den Return-Stack-Top zum TOS
+
+
+ Speicherbezogene Befehle
+ ________________________
+
+@    ( addr --> n )      ersetzt Zellen-Adresse durch ihren Inhalt
+
+C@   ( addr --> b )      wie  @, jedoch wird auf  ein Byte
+zuge-                          griffen
+
+!    ( n addr --> )      speichere Second in die Adresse auf dem
+                         TOS
+
+C!   ( b addr --> )      wie !, jedoch wird ein Byte abgespeichert
+
++!   ( n addr --> )      addiere Second zum  Inhalt der  Adresse 
+                         auf dem TOS
+
+CMOVE ( from to u --> )  verschiebe u Bytes im Adressraum
+
+FILL ( addr u b --> )    fuelle u Bytes im Speicher ab addr mit b
+
+ERASE ( addr u --> )     fuelle  u  Bytes im Speicher ab addr mit
+                         Null
+
+BLANKS ( addr u --> )    fuelle  u  Bytes im Speicher ab addr mit
+                         Blanks (20H)
+
+TOGGLE (addr b --> )     EXOR das Byte in Adresse addr mit 
+                         Maske b
+
+SP@  (--> addr )         uebergibt aktuelle Pos. des Stack-Pointers
+
+ Arithmetik
+ __________
+
++    ( n1 n2 --> Summe )      Addition von 16-Bit-Zahlen 
+                              (16-Bit-Summe)
+
+D+   ( d1 d2 --> Summe )      Addition von 32-Bit-Zahlen 
+                              (32-Bit-Summe)
+
+-    ( n1 n2 --> Diff. )      Differenz n1-n2
+
+*    ( n1 n2 --> Produkt )    16-Bit-Produkt zweier 
+                              16-Bit-Zahlen
+
+/    ( n1 n2 --> Quotient)    16-Bit-Division mit 
+                              16-Bit-Ergebnis
+
+MOD  ( n1 n2 --> Rest )       Modulo-Division 
+                              (uebergibt Teiler-Rest)
+
+/MOD ( n1 n2 --> Rest Quot.)  Division mit Rest und Quotient  
+                              als Resultat
+
+*/MOD ( n1 n2 n3 --> Rest Quot.) 
+                              Multiplikation und anschliessende 
+                              Division   mit  32-Bit-genauem  
+                              Zwischenergebnis ( n1*n2 / n )
+
+*/   ( n1 n2 n3 --> Quot. )   wie  */MOD,   jedoch   lediglich
+                                  Quotient
+
+M/MOD ( ud1 u2 --> u3 ud4)    Division einer vorzeichenlosen
+                              32-Bit-Zahl mit Uebergabe des 
+                              16-Bit-Restes  und des 
+                              32-Bit-Quot.
+
+MIN  ( n1 n2 --> Minimum )  
+                         uebergibt die kleinere von zwei Zahlen
+
+MAX  ( n1 n2 --> Maximum )  
+                         uebergibt die groessere von zwei Zahlen
+
+ABS  ( n --> u )         bildet Absolutwert einer 16-Bit-Zahl
+
+DABS ( d --> ud )        bildet Absolutwert einer 32-Bit-Zahl
+
+MINUS ( n --> -n )       wechselt das Vorzeichen einer 16-Bit-Zahl
+
+DMINUS ( d --> -d )      wechselt das Vorzeichen einer 32-Bit-Zahl
+
+1+   ( n --> n+1 )       incrementiert den TOS mit 1
+
+2+   ( n --> n+2 )       incrementiert den TOS mit 2
+
+ Vergleichsoperatoren
+ ____________________
+
+<    ( n1 n2 --> f )     Flag = 1, falls n1 kleiner n2
+
+>    ( n1 n2 --> f )     Flag = 1, falls n1 groesser n2
+
+=    ( n1 n2 --> f )     Flag = 1, falls n1 gleich n2
+
+0<   ( n -->     f )     Flag = 1, falls TOS negativ ist
+
+0=   ( n -->     f )     Flag  = 1,  falls der TOS gleich Null ist 
+                         (negiert auch Wahrheitswert von Flags)
+
+
+ Logische Befehle
+ ________________
+
+AND  ( n1 n2 --> UND )   bitweise logische UND-Verknuepfung
+
+OR   ( n1 n2 --> ODER )  bitweise logische ODER-Verknuepfung 
+
+XOR  ( n1 n2 --> EXOR )  bitweise Exclusiv-ODER-Verknuepfung
+
+
+ Strukturierende Worte
+ _____________________
+
+DO ... LOOP              ( n1 n2 --> )    Schleife, Index laeuft
+                                          von   n2  bis  n1-1  mit 
+                                          Increment=1
+DO ... +LOOP             ( n1 n2 --> )    wie DO ...  LOOP, jedoch
+                                          ist  das Index-Increment 
+                                          hier  (statt 1) nun 
+be-                                           liebig (wird als zusaetz-
+                                          licher   Parameter    an 
+                                          +LOOP uebergeben)
+
+I                        ( --> Index )    Loop-Index --> TOS
+
+LEAVE                    (   )            erzwingt   Abbruch   der 
+                                          Schleife   bei  naechster 
+                                          Gelegenheit
+IF ...(wahr)... ENDIF    ( f --> )        (Erreichen von LOOP oder 
+                                          +LOOP)
+IF ...(wahr)... ELSE  ( f -> )            fuehrt Befehle aus, falls 
+                                          das Flag = 1 ist
+ ...(falsch)... ENDIF                      dto.,  jedoch wird  bei 
+                                          f=0  der FALSE-Teil
+aus-                                           gefuehrt
+BEGIN ... UNTIL          ( --> f --> )    Schleife   mit  Abbruch, 
+                                          falls Flag fuer UNTIL = 1
+BEGIN ... WHILE ... REPEAT ( --> f --> )  wie  BEGIN  ...   UNTIL, 
+                                          jedoch  Abbruch-Test  am 
+                                          Anfang  des   Schleifen-
+                                          Kernes; REPEAT schliesst 
+                                          die Schleife
+bedingungs-                                           los nach BEGIN
+BEGIN ... AGAIN                           Endlos-Schleife
+
+ Definitionsworte
+ ________________
+
+: xyz   (  )             Begin  einer Colon-Definition  mit  Namen 
+                         xyz
+;       (  )             Abschluss der Colon-Definition
+                         (SEMI-COLON)
+VARIABLE xxx ( n --> )   erzeugt  eine  Variable xxx,  die  mit  n 
+                         initialisiert ist
+                         (xxx uebergibt die Adresse bei Aufruf)
+CONSTANT yyy ( n --> )   erzeugt  eine  Konstante yyy mit  Wert  n 
+                         (bei Aufruf von yyy wird Wert uebergeben)
+CREATE zzz (  )          eroeffnet  die Definition eines  Primitive 
+                         mit   dem   Namen  zzz   (Assembler- bzw. 
+                         Maschinencode)
+;CODE    (  )            Abschluss einer Colon-Definition, wenn es 
+                         sich um die Definition eines
+Definitions-                          wortes handelte, wobei die runtime-Execu-
+                         tive  in Assembler definiert werden  soll 
+                         (Code hinter ;CODE)
+<BUILDS ... DOES>        does :  ( --> addr ) wird zur  Definition 
+                         neuer  Definitionsworte  benutzt,   wobei 
+                         jedoch  im  Gegensatz zu ;CODE  die  run-
+                         time-Executive  in  high-level  definiert 
+                         wird
+
+ Vokabulare
+ __________
+
+
+CONTEXT ( --> addr )     uebergibt  die Adresse eines Pointers  zum 
+                         Context-Vokabular  (das zuerst  abgesucht 
+                         wird)
+CURRENT ( --> addr )     uebergibt  die Adresse eines Pointers  zum 
+                         Current-Vokabular  (das  z.Z.   erweitert 
+                         wird)
+FORTH   (  )             Name des Haupt-Vokabulars (setzt CONTEXT)
+
+EDITOR, ASSEMBLER etc. ( )    weitere   Vokabular-Namen    (setzen 
+                         CONTEXT)
+DEFINITIONS  (  )        macht  das Current-Vokabular zum Context-
+                         Vokabular
+VOCABULARY xyz  (  )     deklariert  ein neues Vokabular  mit  dem 
+                         Namen xyz
+VLIST    (  )            druckt  die Namen aller Worte im Context-
+                         Vokabular
+
+ Systemworte und Diverses
+ ________________________
+
+
+(       (  )             eroeffnet Kommentar,  der mit " ) "  abge-
+                         schlos
+sen wird; nach " ( " muss ein Space 
+                         kommen
+FORGET abc  (  )         vergisst   alle  neuen  Definitionen   ab 
+                         (inclusive) abc
+ABORT   (  )             erzwingt Fehler-Abbruch einer Operation
+
+' xxx ( --> addr )       findet  die Adresse (PFA) des Wortes  xxx 
+                         im  Dictionary (in  Definitionen: 
+compi-                          liert die Adresse)
+HERE   ( --> addr )      uebergibt die Adresse des naechsten  freien 
+                         Platzes im Dictionary
+PAD    ( --> addr )      uebergibt die Startadresse eines Zwischen-
+                         spei
+chers,  meist  68 Bytes oberhalb  von 
+                         HERE
+IN     ( --> addr )      System-Variable, haelt Input-Buffer-Offset 
+                         fuer WORD
+ALLOT  ( n --> )         hinterlaesst  eine  ungenutzte  Luecke   (n 
+                         Bytes) im Dictionary
+
+'      ( n --> )         compiliert  eine  Zahl in das  Dictionary 
+                         (HERE)
+

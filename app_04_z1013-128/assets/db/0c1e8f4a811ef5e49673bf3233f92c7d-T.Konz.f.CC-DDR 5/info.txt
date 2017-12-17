@@ -1,0 +1,3 @@
+<kurz src="KLUB-Info, Konzeption zur Gründung eines Computerclub"/>
+<lang><include src="T.Konz.f.CC-DDR 5.txt"/></lang>
+<requires></requires>
