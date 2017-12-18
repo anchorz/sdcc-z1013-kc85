@@ -1,0 +1,16 @@
+<kurz src="Zählermodul, Frequenzzähler, Adresse=0x2C00"/>
+<lang>Leider ist wird die Bedienungsanleitung nicht 
+ganz korrekt angezeigt.
+
+Bedienungsanleitung mit ENTER:
+Frequenzmessung am TB-Eing.
+    Ue   minimal    100 mV    
+    Ue   maximal      5  V    
+    fe   maximal     12 kHz   
+                   
+   CPU-Takt   ZK=(3C35H/36H)  
+     1 MHz        190CH       
+     2 MHz        3218H       
+   Vorzaehler VZ=(3C3DH/3EH)  
+ bei TAKT=1 MHz: fe max 6 kHz</lang>
+<requires></requires>

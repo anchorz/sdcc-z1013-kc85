@@ -1,0 +1,3 @@
+<kurz src="TEAC FD55GFV"/>
+<lang><include src="T.TEAC-BESCHREIB..txt"/></lang>
+<requires></requires>

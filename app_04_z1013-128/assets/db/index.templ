@@ -24,12 +24,21 @@
 <li>SCI Archiv -  Z1013 Software aus Ilmenau</li>
 <li>und <a href="https://web.archive.org/web/20060113200558/http://nirvana.informatik.uni-halle.de/~ziermann/DE/z1013.html">meiner eigenen Software</a> (die sich zum größten Teil in einer der oben genannten Archive wieder finden lassen)</li>
 </ul>
-
+<h2>Bemerkungen zum Dateiformat .z80 für den Z1013</h2>
+<p>Alle Dateien haben die Endung .z80 oder .Z80 oder .bin</p>
+<p>Berechnung der Endadresse (beim Abspeichern!) ist nicht konsistent. Während das eigentliche Format die Bytes von AADR bis (inklusive) EADR abspeichert, nehmen einige Programme die Adresse EADR+1 an. Das ist nicht grundsätzlich falsch, führt aber dazu, dass 32 Bytes zu viel abgespeichert wurden.</p>
+<p>Eine Datei von 0x0100-0x011f ist genau 32 Bytes lang. Manche Programme haben aber (sicherheitshalber?) 0x0120 als Endadresse angegeben. Das führt dann zu einer Gesamtlänge von 64 Bytes.</p>
+<p>Dies hat dann auch leider zu Fehlern bei Digitalisierung geführt. Der Bereich des BASIC-Interpreters war mit 0x100-0x2aff angegeben. Bei einer Datei fehlte dadurch das letzte Byte. In den meisten Fällen verursacht diese unterschiedliche Auslegung aber kein Problem, zumindest wenn die Dateilänge kein Vielfaches von 32 ist. Da in diesem Fall noch ein paar Bytes mehr mit abgespeichert wurden.</p>
+<p>Im Endeffekt führt das aber dazu, dass man nicht immer sicher sein kann, ob die Adresse EADR im Headersave-Block noch Teil der Datei ist oder nicht.</p>
+<p>Headersave besteht aus Blöcken zu je 32 Bytes. Dateigröße demnach Vielfaches von 32. 
+Es wurden nur Dateien in die Datenbank aufgenommen, die der Konvention folgen. Die meisten Dateien entsprechen dieser Annahme. Falls nicht, ist das bisher kein Problem gewesen, da zu jeder Datei eine weitere mit gleichem Inhalt gefunden werden konnte, deren Länge der Blockgröße von 32 entspricht.</p>
+<h2>Zeichensatz des Z1013, Schachfiguren</h2>
 <p>Diese Webseite, die <a href="f4e80cb63a5825206a098a61021243a5-edas_text/index.html">eingebundenen Dokumente</a> und insbesondere die <a href="1457c26024fa21e057459fb5019e6bc5-fighter_ls/index.html">Quelltexte</a> benutzen Zeichen aus dem Z1013-Zeichensatz von <code>0x00-0x1f <span class="fntz1013"></span></code> und <code>0x7f-0xff <span class="fntz1013"></span></code>. 
 Manchmal enthalten Sie auch ESC-Sequenzen (^[... Form-Feed, Fettdruck etc.), die eigentlich <a href="7aba6f7e42b9191addf7d15218b288aa-esc_folgen.doc/index.html">für Drucker</a>, im Allgemeinen S3004 oder K6313, bestimmt sind. 
 Diese Steuercodes wurden mit übernommen und werden als UTF-8 Zeichen (<span class="fntz1013"></span>) dargestellt.<br/>
 Diese Sonderzeichen wurden in einen UTF-8 Zeichensatz aufgenommen. Zur besseren Darstellung sollte man daher diesen Font <a href="../Z1013.TTF">Z1013.TTF</a> installieren, 
 um z.B. den <a href="ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/index.html">Original-Zeichensatz</a> komplett sehen zu können.</p>
+<h2>Statistik</h2>
 __BODY__
 <div><img src="counter.php"/></div>
 </body>

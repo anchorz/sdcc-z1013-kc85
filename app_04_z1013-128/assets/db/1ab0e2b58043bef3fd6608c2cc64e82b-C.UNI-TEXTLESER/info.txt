@@ -1,0 +1,3 @@
+<kurz src="Universal-Textleser V.13.10.1988"/>
+<lang></lang>
+<requires></requires>

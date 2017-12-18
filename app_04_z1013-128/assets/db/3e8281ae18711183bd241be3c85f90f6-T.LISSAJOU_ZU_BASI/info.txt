@@ -1,0 +1,3 @@
+<kurz src="Lissajous-Figuren"/>
+<lang><include src="T.LISSAJOU ZU BASI.txt"/></lang>
+<requires></requires>

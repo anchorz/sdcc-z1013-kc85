@@ -1,0 +1,6 @@
+<kurz src="IC DIGITAL-TESTER"/>
+<lang>Robotron Z1013 c.Thomas Staeder
+
+DIGITAL-TESTER - IC-aufstecken! Dann ENTER!
+ueber PIO-PORT Adr.0x04-0x07)</lang>
+<requires></requires>

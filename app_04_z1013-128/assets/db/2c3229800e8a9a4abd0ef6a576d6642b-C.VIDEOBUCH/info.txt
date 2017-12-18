@@ -1,0 +1,3 @@
+<kurz src="Videobuch1"/>
+<lang>keine Ahnung, was hier passiert.</lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="fast identisch [1ab0e2b58043bef3fd6608c2cc64e82b]"/>
+<lang>Text LOAD/SAVE verschieden</lang>
+<requires></requires>

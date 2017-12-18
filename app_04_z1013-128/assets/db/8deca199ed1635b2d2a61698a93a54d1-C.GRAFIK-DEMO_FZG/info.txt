@@ -1,0 +1,5 @@
+<kurz src="andere Version, FZG Freiprogrammierbarer-ZeichenGenerator"/>
+<lang>benutzt PORT 0x04 
+BIT5 Invers/2.Zeichensatz
+BIT3 FZG</lang>
+<requires></requires>

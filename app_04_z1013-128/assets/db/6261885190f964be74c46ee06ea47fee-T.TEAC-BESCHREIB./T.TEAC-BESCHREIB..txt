@@ -1,0 +1,763 @@
+
+TTTTTTTTT     EEEEEEEEE        A          CCCCCC
+    T         E               A A        C      C
+    T         E              A   A      C
+    T         E             A     A     C
+    T         EEEEEE       AAAAAAAAA    C
+    T         E            A       A    C
+    T         E            A       A    C
+    T         E            A       A     C      C
+    T         EEEEEEEEE    A       A      CCCCCC
+
+
+T E A C   (R)
+FD - 55 GFV - 17
+Mini - Floppy - Disk - Laufwerk
+Beschreibung
+
+nbn elektronik GmbH
+
+Aus dem Englischen von Tom Pfeifer
+
+Inhaltsverzeichnis
+         Seite
+1-1        2    Allgemeines
+1-2        2    Disketten
+1-3        3    Physische Beschreibung
+1-4        4    Stromversorgung
+1-5        5    Umgebungsbedingungen
+1-6        6    Betriebsdaten
+1-7        9    Zuverlaessigkeit
+1-8        9    Signal-Interface
+1-8-1      9    Elektrische Kenndaten
+1-8-2     10    Signal-Steckverbinder und Kabel
+1-8-3     11    Ein- und Ausgangssignale
+1-9       18    Versorgungs-Interface
+1-10      19    Chassis-Masseverbindung
+1-11      19    Steckbruecken
+1-12      21    Betriebsbedingungen
+1-12-1    21    Kopflademagnet und Frontplattenindikator
+1-12-2    24    Spindelmotor
+1-12-3    24    Betriebsart   
+
+1-1. ALLGEMEINES
+
+Diese Beschreibung informiert ueber das doppelseitige  Mini-
+Floppy-Disk-Laufwerk  TEAC  FD-55GFV-17  mit  hoher/normaler
+Schreibdichte,  96  tpi  und  Kopflademagnet  (im  Folgenden
+bezeichnet als FDD = Floppy Disk Drive)
+
+Das  FDD  ist mit einem Eingangssignal zur  Umschaltung  der
+hohen/normalen   Schreibdichte   ausgestattet  (Pin   2   am
+Signalinterface-Stecker).
+Im Modus "hohe Schreibdichte" arbeitet  das  FDD 
+hinsichtlich  Datenkapazitaet und -uebertragungsrate wie ein
+herkoemmliches   8-Zoll-Laufwerk   (doppelseitig,   doppelte
+Dichte). Verwendet werden "High density" Disketten.
+Im Modus "normale Schreibdichte" arbeitet das  FDD 
+wie ein herkoemmliches doppelseitiges 5,25-Zoll-Laufwerk, 96
+tpi. Es kann Daten auf 5,25-Zoll-Disketten, sowohl einseitig
+als  auch zweiseitig,  sowohl 48 tpi als auch 96 tpi,  lesen
+und schreiben.
+Fuer  die Betriebsart "normale Schreibdichte"  stehen  zwei
+Drehgeschwindigkeiten  der Diskette durch  Steckbruecke  zur
+Auswahl:  Erstens  300  U/min,  gewoehnlich  fuer  5,25"-FDD
+benutzt;   zweitens   360   U/min,   das  ist  die   gleiche
+Geschwindigkeit wie in der Betriebsart "hohe  Schreibdichte"
+und bei 8"-Laufwerken.
+Tafel 1 gibt einen Ueberblick der Leistungen des FDD.
+
+
+Geschwind.-! Schreibdichte ! Unformat. ! U/min ! Uebertrag.-
+modus______!_-modus________!_Kapazitaet!_______!_rate_bit/s
+           ! hoch          ! 1,6 Mbyte ! 360   ! 500 K
+   I       +---------------+-----------+-------+------------
+           ! normal        ! 1,0 Mbyte ! 300   ! 250 K
+-----------+---------------+-----------+-------+------------
+           ! hoch          ! 1,6 Mbyte ! 360   ! 500 K
+   II      +---------------+-----------+-------+------------
+           ! normal        ! 1,0 Mbyte ! 360   ! 300 K
+-----------+---------------+-----------+-------+------------
+Tafel 1 Leistungsuebersicht
+
+
+1-2. DISKETTEN
+
+Fuer Modus "hohe Schreibdichte":
+ 130 mm (5,25") soft sektorierte "High Density"-Disketten,
+fuer  Modus "normale Schreibdichte" (entsprechend der gegen-
+seitigen Vereinbarung zwischen Kunden und TEAC):
+ 130 mm (5,25") soft sektorierte "Normal Density"-Disketten.
+Da  es  fuer das FDD  nicht moeglich  ist,  den  eingelegten
+Diskettentyp  zu  erkennen,  ist es die Aufgabe  des  Wirts-
+Controllers,  entsprechende  Steuersignale zu  liefern,  wie
+z.B.  die  Erkennung des Sector-Identifier oder die  Vorein-
+stellung der Schreibdichte.
+
+
+1-3. PHYSISCHE BESCHREIBUNG
+
+(1) Breite: 146 mm (5,75") Nennwert
+(2) Hoehe: 41,3 mm (1,63") Nennwert
+(3) Tiefe: 203 mm (7,99") Nennwert
+                 (ohne ueberragenden Interface-Stecker)
+(4) Masse: 1,25 kg Nennwert, 1,35 kg maximal
+(5) Aussenansicht: siehe Bild 101
+(6) Kuehlung: natuerliche Luftkuehlung
+(7) Montage: Folgende Einbaulagen sind zulaessig:
+    (a) Frontlader, vertikal, Bedienhebel oben,
+    (b) Frontlader,  horizontal. Nicht mit Spindelmotor oben
+                                 einbauen!
+    (c) Der Einbauwinkel bei den Punkten (a) und (b) sollte
+       15 Grad (Frontplatte nach oben) nicht ueberschreiten.
+    Anmerkung: Was die anderen Einbaulagen betrifft, so wird
+    das Obige gesondert beruecksichtigt.
+(8) Befestigung:  Mit Befestigungsbohrungen seitlich oder an
+    der Unterseite des Chassis des FDD (siehe Bild 101).
+(9) Chassismaterial: Aluminium-Spritzguss
+(10) Frontplattenmaterial: PPHOX (Xyron) oder ABS
+          Standardfarbe: schwarz
+
+* Das Bild zeigt die Lage folgender Teile:
+* - Versorgungs-Steckverbinder
+* - Signalsteckverbinder (direkt, Leiterplattenkante)
+* - Massestecker am Chassis (Flachstecker)
+* - Frontplatte, schwarz
+* - Spindelmotor
+* - Indikator-LED, rot
+* - Diskettenschlitz
+* - Bedienhebel, schwarz
+* - Drehrichtungspfeil, weiss
+* - Gewindebohrungen:
+*   - 8 Stueck M3, 5 tief:
+*     - davon 4 am Chassisboden:
+*        (a) Abstand von Hinterkante Frontplatte: 47,4 +- 0,5
+*        (b) Abstand 1./2. Lochreihe: 79,2 +- 0,5
+*        (c) Abstand linke/rechte Reihe: 139,7 +- 0,5
+*     - davon 2 auf jeder Seite:
+*        (a),(b) wie oben
+*        (c) Abstand vom Chassisboden: 21,5 +- 0,5
+*   - 4 Stueck No. 6, 32UNC, 5 tief, 2 an jeder Seite:
+*        (a),(b) wie oben
+*        (c) Abstand vom Chassisboden: 10 +- 0,5
+* - weitere Masze:
+*  - Frontplatte: 149 x 42,8 x 5   (+- 0,5)
+*  - Chassis ohne Frontplatte: 203 (+-1) x 146 x 41,3 (+-0,5)
+*
+* Bild 101 Aussenansicht
+
+
+1-4. STROMVERSORGUNG
+
+Die  folgende Beschreibung gilt fuer den  Versorgungssteck-
+verbinder des FDD.
+(1) + 12 Volt Gleichspannung
+   (a) Spannungstoleranz:
+           Lese/Schreib-Operation: unter +- 5 %
+           sonst:                  unter +- 10 %
+   (b) zulaessige Brummspannung, einschl. Rauschen:
+                                   unter 200 mV s-s
+   (c) Betriebsstromverbrauch:
+        typischer Mittelwert: 0,24 A (Benutzung einer
+                Diskette mit typischem Laufwiderstand)
+        maximaler Mittelwert: unter 0,58 A (Benutzung einer
+                     Diskette mit maximalem Laufwiderstand)
+        Spitzenwert: unter 1 A (400 ms, Max. beim Anlauf
+                                des  Spindelmotors)
+   (d) Ruhestromverbrauch (Spindelmotor aus)
+        Typisch: 0,03 A
+        Maximum: 0,04 A
+
+(2) + 5 Volt Gleichspannung
+   (a) Spannungstoleranz: +- 5 %
+   (b) Zulaessige Brummspannung, einschl. Rauschen:
+                                   unter 100 mV s-s
+   (c) Betriebsstromverbrauch:
+        Typischer Mittelwert: 0,46 A
+        Maximaler Mittelwert: unter 0,55 A
+        Spitzenwert: unter 0,63 A
+   (d) Ruhestromverbrauch:
+        Typisch: 0,28 A
+        Maximum: unter 0,33 A
+(3) Leistungsaufnahme
+   (a) typisch im Betrieb: 5,2 W
+   (b) typisch in Ruhe: 1,8 W
+(4) Einschaltreihenfolge -- nicht vorgeschrieben.
+Da  das  FDD  mit einer  Power-Reset-Schaltung  ausgeruestet
+ist,  werden  Diskette und Daten auf der Diskette beim  Ein-
+und Ausschalten der Spannungen nicht beschaedigt.
+(Ob das auch auf ein Laufwerk ohne Kopflademagnet  zutrifft,
+ist zweifelhaft. T.P.)
+
+
+1-5. UMGEBUNGSBEDINGUNGEN
+
+(1) Umgebungstemperatur
+  (a) Betrieb: 4...46 Grad Celsius (40...115 F)
+  (b) Lagerung: -22...60 Grad Celsius (-8...140 F)
+  (c) Transport: -40...65 Grad Celsius (-40...149 F)
+(2) Temperaturaenderung
+   (a) Betrieb: unter 15 K (27 F) stuendlich
+   (b) Transport und Lagerung: unter 30 K (54 F) stuendlich
+(3) Relative Luftfeuchte
+   (a) Betrieb: 20 % ... 80 % (keine Kondensation)
+      maximale Feuchtkugeltemperatur: 29 Grad Celsius (84 F)
+   (b) Lagerung: 10 % ... 90 % (keine Kondensation)
+       max. Feuchtkugeltemperatur: 40 Grad Celsius (104 F)
+   (c) Transport: 5 % ... 95 % (keine Kondensation)
+       max. Feuchtkugeltemperatur: 45 Grad Celsius (113 F)
+(4) Vibrationen
+   (a) Betrieb: unter 0,5 g (unter 55 Hz)
+                unter 0,25 g (55...500 Hz)
+   (b) Transport: unter 2 g (unter 100 Hz)
+(5) Stossbelastung
+   (a) Betrieb: unter 10 g (unter 10 ms)
+   (b) Transport: unter 40 g (unter 10 ms)
+(6) Hoehe
+   (a) Betrieb: unter 5000 m (16500 Fuss)
+   (b) Transport: unter 12000 m (40000 Fuss)
+
+Anmerkung:  Die obigen Forderungen gelten fuer ein FDD  ohne
+Versandkiste.  Waehrend einer langen Transportperiode,  z.B.
+auf  einem Schiff,  muessen die Lagerbedingungen  angewendet
+werden.
+
+
+1-6. BETRIEBSDATEN
+
+(1) Datenkapazitaet
++-----------------------------+-------------+-------------+
+! Aufzeichnungsverfahren      !      FM     !    MFM      !
++-----------------------------+-------------+-------------+
+! Datenuebertragungsrate      ! 250 Kbit/s  ! 500 Kbit/s  !
++-----------------------------+-------------+-------------+
+! Spuren pro Diskette         !   154 (160) !  154 (160)  !
++-----------------------------+-------------+-------------+
+! Bitdichte,innerste Spur,bpi ! 4823 (4935) ! 9646 (9870) !
++-----------------------------+-------------+-------------+
+! Flusswechseldichte,-"-,fxpi ! 9646 (9870) ! 9646 (9870) !
++-----------------------------+-------------+-------------+
+!      !            !Kbyte/trk!   5,208     !   10,416    !
+!      !Unformatiert+---------+-------------+-------------+
+!      !            !Kbyte/dsk!    802      !   1604      !
+!      +-+----------+---------+-------------+-------------+
+!      ! !          !Kbyte/sec!   0,128     !    0,256    !
+!Daten-!F! 26 sec/  +---------+-------------+-------------+
+!kapaz.!o! track    !Kbyte/trk!   3,328     !    6,656    !
+!      !r!          +---------+-------------+-------------+
+!      !m!          !Kbyte/dsk!512,5 (532,5)! 1025 (1065) !
+!      !a+----------+---------+-------------+-------------+
+!      !t!          !Kbyte/sec!   0,256     !    0,512    !
+!      !i! 15 sec/  +---------+-------------+-------------+
+!      !e! track    !Kbyte/trk!   3,840     !    7,680    !
+!      !r!          +---------+-------------+-------------+
+!      !t!          !Kbyte/dsk!591,4 (614,4)!1182,7(1228,8!
+!      ! +----------+---------+-------------+-------------+
+!      ! !          !Kbyte/sec!   0,512     !    1,024    !
+!      ! ! 8 sec/   +---------+-------------+-------------+
+!      ! ! track    !Kbyte/trk!   4,096     !    8,192    !
+!      ! !          +---------+-------------+-------------+
+!      ! !          !Kbyte/dsk!630,8 (655,4)!1261,6(1310,7!
++------+-+----------+---------+-------------+-------------+
+Anmerkung: Bis zu 80 Zylinder sind beim FDD verfuegbar. Die
+Angaben in Klammern gelten fuer Betrieb mit 80 cyl=160 trk.
+Tafel 102 Datenkapazitaet im Modus "hohe Schreibdichte"
+
+
++-----------------------------+-------------+-------------+
+! Aufzeichnungsverfahren      !      FM     !    MFM      !
++--------------+--------------+-------------+-------------+
+! Datenueber-  ! Modus I      ! 125 Kbit/s  ! 250 Kbit/s  !
+! tragungsrate ! 300 U/min    !             !             !
+!              +--------------+-------------+-------------+
+!              ! Modus II     ! 150 Kbit/s  ! 300 Kbit/s  !
+!              ! 360 U/min    !             !             !
++--------------+--------------+-------------+-------------+
+! Spuren pro Diskette         !    160      !   160       !
++-----------------------------+-------------+-------------+
+! Bitdichte,innerste Spur,bpi !    2 961    !   5 922     !
++-----------------------------+-------------+-------------+
+! Flusswechseldichte,-"-,fxpi +    5 922    !   5 922     !
++-----------------------------+-------------+-------------+
+!      !            !Kbyte/trk!   3,125     !   6,25      !
+!      !Unformatiert+---------+-------------+-------------+
+!      !            !Kbyte/dsk!    500      !   1000      !
+!      +------------+---------+-------------+-------------+
+!      ! Formatiert !Kbyte/sec!   0,128     !    0,256    !
+!Daten-!   16 sec/  +---------+-------------+-------------+
+!kapaz.!   track    !Kbyte/trk!   2,048     !    4,096    !
+!      !            +---------+-------------+-------------+
+!      !            !Kbyte/dsk!  327,68     !   655,36    !
++------+------------+---------+-------------+-------------+
+Tafel 103 Datenkapazitaet im Modus "normale Schreibdichte"
+
+
+(2) Disketten-Drehmechanismus
+  (a) Spindelmotor: Direkter buerstenloser Gleichstrommotor
+  (b) Spindelmotor-Geschwindigkeit
+      Modus I:  360 U/min "hohe Schreibdichte"
+                300 U/min "normale Schreibdichte"
+      Modus II: 360 U/min "hohe und normale Schreibdichte"
+  (c) Motorservo-Methode: PLL-Servo oder Frequenz-Servo mit
+                          AC-Tachometer
+  (d) Motor/Spindel-Verbindung: Direktangetriebene Welle
+  (e) Diskettengeschwindigkeit: identisch der Motorgeschw.
+      Langzeitabweichung: unter +- 1,5 %
+      Kurzzeitabweichung: unter +- 1,5 %
+  (f) Anlaufzeit, 360 U/min: unter 500 ms
+                  300 U/min: unter 400 ms
+  (g) Mittlere Latenz, 360 U/min: 83,3 ms
+                       300 U/min: 100 ms
+  (h) Umstellzeit der Geschwindigkeit: unter 400 ms
+       (300 U/min <--> 360 U/min), nur im Modus I
+
+(3) Index
+  (a) Indexanzahl: 1 je Diskettenumdrehung
+  (b) Erkennungsmethode: LED und Fototransistor
+  (c) Erkennungszyklus, 360 U/min: 166,7 ms +- 1,5 %
+                        300 U/min: 200 ms +- 1,5 %
+  (d) Erkennungszeittoleranz Indeximpuls (mit spezieller
+        Testdisk):  360 U/min: +- 165 us max.
+                    300 U/min: +- 200 us max.
+
+(4) Spurdaten
+  (a) Spurdichte: 96 tpi (tracks per inch = Spuren je Zoll)
+  (b) Zylinderanzahl, "hohe Schreibdichte" 77 (80) Zylinder
+                      "normale Schreibdichte"  80  Zylinder
+  (c) Spuranzahl, "hohe Schreibdichte" 154 (160) Spuren
+                  "normale Schreibdichte"   160  Spuren
+  (d) Aeusserster Spurradius (Spur 00):
+                  Seite 0   57,150 mm (2,2500 Zoll)
+                  Seite 1   55,033 mm (2,1667 Zoll)
+  (e) Innerster Spurradius
+          Fuer 77 Zylinder (Spur 76):
+                  Seite 0   37,042 mm (1,4583 Zoll)
+                  Seite 1   34,925 mm (1,3750 Zoll)
+          Fuer 80 Zylinder (Spur 79):
+                  Seite 0   36,248 mm (1,4271 Zoll)
+                  Seite 1   34,131 mm (1,3438 Zoll)
+  (f) Positioniergenauigkeit: unter +- 20 um (mit spezieller
+       Testdiskette, Spur 32, 23+-2 Grad C, 40...60% rel.LF)
+
+(5) Magnetkopf
+  (a) Magnetkopf: Biegungsgelagerter Lese/Schreibkopf
+                  mit Tunnelloeschung, 2 Saetze
+  (b) Effektive Spurweite: 0,155 +- 0,015 mm
+                          (0,0061 +- 0,0006 Zoll)
+  (c) Lese/Schreib-Loesch - Spaltgroesse:
+                 0,585 mm (0,0230 Zoll) Nennwert
+  (d) Lese/Schreibspalt Azimut: 0 Grad +-18', mit
+                                spezieller Testdiskette.
+
+(6) Spursuch-Mechanismus
+
+  (a) Kopfantriebs-Mechanismus: Schrittmotor und Stahlband
+  (b) Schrittmotor: 4-phasig, 200 Schritte je Umdrehung
+  (c) Schrittmotorantrieb: 1 Schritt je Spur
+  (d) Spur-00- und innerster Stopper:
+           Mechanisch beweglicher Stopper der Kopfbewegung
+  (e) Spur 00 - Erkennung: LED und Fototransistor
+  (f) Spur-zu-Spur-Zeit: Verwenden Sie min. 3 ms.
+  (g) Beruhigungszeit: unter 15 ms (ohne Spur-zu-Spur-Zeit)
+  (h) Mittlere Spur-Zugriffszeit (mit Beruhigungszeit):
+           Fuer 77 Zylinder: 91 ms
+           Fuer 80 Zylinder: 94 ms
+
+(7) Kopflade-Mechanismus
+  (a) Kopflade-Mechanismus: Tauchmagnet
+  (b) Kopfladezeit: unter 50 ms
+
+(8) Datenschutz-Mechanismus: Erkennung der Schreibschutz-
+      Kerbe mit LED und Fototransistor
+(9) Fenstergrenze mit spezieller Testdiskette,
+      MFM-Verfahren, PLO-Separator,
+      Schreib-Prekompensation null:
+      "hohe Schreibdichte": ueber 300 ns
+      "normale Schreibdichte", 360 U/min: ueber 500 ns
+                               300 U/min: ueber 600 ns
+(10) "Diskette eingelegt" - Erkennung: LED und Fototrans.
+
+1-7. ZUVERLAESSIGKEIT
+
+(1) MTBF: 10 000 Betriebsstunden und mehr
+                 (bei typischem Gebrauch)
+(2) MTTR: 30 Minuten
+(3) Lebensdauer der Konstruktionskomponenten: 5 Jahre
+(4) Vorbeugende Wartung: nicht erforderlich
+                         (bei typischem Gebrauch)
+(5) Fehlerraten
+  (a) Soft-Lesefehler: 1 je 10E 9 bits (bis zu 2 Versuche)
+  (b) Hard-Lesefehler: 1 je 10E 12 bits
+  (c) Such-Fehler: 1 je 10E 6 Suchvorgaenge
+(6) Sicherheitsstandard: entsprechend UL, CSA
+
+1-8. SIGNAL-INTERFACE
+
+Maximal  vier  FDDs koennen als Daisy Chain an  einen  FDD-
+Controller angeschlossen werden.
+
+1-8-1. Elektrische Kenndaten
+(1) Interface-Treiber/Empfaenger: siehe Bild 102
+
+**********************************************************
+- Widerstandsnetzwerk  8x 330  Ohm,  5%,  im  DIL-Gehaeuse,  
+  steckbar  als  Terminator gegen +5 V fuer  die  Eingangs
+  signale.
+- Ausgangssignale  werden von einer  TTL-7438-aequivalenten
+  Schaltung getrieben und sind mit DRIVE SELECT verknuepft.
+- Die  Steckbruecke  fuer DISK SELECT verbindet  einen  der
+  Anschluesse am Interface mit dem Signaleingang.
+- Durch eine Steckbruecke wird einer der Eingaenge "IN USE"
+  oder "HEAD LOAD" an den Anschluss des Interface gelegt.
+**********************************************************
+Bild 102 Signal-Interface-Schaltung
+
+(2) Elektrische Kenndaten
+Die  folgende  Beschreibung gilt fuer den  Signal-Steckver
+binder des FDD.
+  (a) Eingangssignal
+      LOW-Pegel (true): 0...0,5 V
+          Terminator-Strom: max. 18 mA
+          Empfaenger-Strom: max. 3,2 mA
+      HIGH-Pegel (false): 2,5...5,25 V
+  (b) Ausgangssignal
+      LOW-Pegel (true): 0...0,4 V
+          Treiber-Stromsenken: max. 48 mA
+      HIGH-Pegel (false): max. 5,25 V
+                     (abhaengig vom Controller-Terminator)
+
+(3) Terminator
+  (a) Widerstandswert: 330 Ohm +- 5 %
+  (b) Terminator fuer DRIVE SELECT 0...3 - Eingang:
+        Ein Abschlusswiderstand ist auf der LP eingeloetet.
+  (c) Terminator fuer andere Eingangssignale:
+        Ein Widerstandsnetzwerk ist im IC-Sockel auf der
+        LP montiert.
+  (d) Versandbedingung
+        Saemtliche Abschlusswiderstaende sind montiert.
+  (e) Mehrfachanschluss    ** ! ** ** ! ** ** ! ** ** ! **
+        Bei Mehrfachanschluss von FDDs als Daisy Chain wird
+        das  in  (c) beschriebene  Widerstandsnetzwerk  aus
+        allen FDDs entfernt,  ausgenommen das letzte FDD am
+        Interfacekabel.
+
+1-8-2. Signal-Steckverbinder und Kabel
+
+(1) Signal-Steckverbinder
+  (a) FDD-seitiger Stecker: direkte Leiterplatte, vergoldet
+  (b) Pin-Nummern und Raster: 34 Pins, 2,54mm (0,1") Raster
+             (17  Pins auf jeder Seite,  gerade Nummern  an
+              der Unterseite des FDD.)
+  (c) Kodierschlitz: zwischen Pin 4 und 6
+  (d) Abmessungen: siehe Bild 103
+  (e) Interface-Anschluesse: siehe Tafel 104
+  (f) Kabelseitig passender Stecker:
+       "3M, Scotchflex ribbon connector P/N 3463-0001" oder
+       "AMP, thin leaf connector, P/N 583717-5" mit
+         "contactor P/N 1-583616-1" oder ein Aequivalent.
+
+(2) Maximale Laenge des Interface-Kabels: max. 3 Meter
+     Fuer  Mehrfachverbindung  als Daisy Chain muss  die
+     totale Kabellaenge weniger als 3 m betragen.
+
+
+**********************************************************
+- Breite des direkten Steckverbinders:  45,44 +- 0,2
+- Tiefe: 10
+- Abstand des ersten Pins (Mitte) vom Rand: 2,4
+- Pinraster: 2,54
+- Breite der Leiterstreifen: 1,4
+- Dicke der Leiterplatte: 1,6 Nennwert
+- Kodierschlitz zwischen Pin 4 und 6: 0,91 breit, 11,5 tief
+**********************************************************
+Bild 103 Abmessungen des Signal-Steckverbinders
+
++-------------------------------------+---------+---------+
+!                                     !         ! Pin-Nr. !
+!  Signal-Bezeichnung                 ! Richtung+----+----+
+!                                     !         !Sig.! 00 !
++-------------------------------------+---------+----+----+
+! HIGH/NORMAL DENSITY (Schreibdichte) ! INPUT   !  2 !  1 !
++-------------------------------------+---------+----+----+
+! IN USE / HEAD LOAD / OPEN           ! INPUT   !  4 !  3 !
++-------------------------------------+---------+----+----+
+! DRIVE SELECT 3                      ! INPUT   !  6 !  5 !
++-------------------------------------+---------+----+----+
+! INDEX                               ! OUTPUT  !  8 !  7 !
++-------------------------------------+---------+----+----+
+! DRIVE SELECT 0                      ! INPUT   ! 10 !  9 !
++-------------------------------------+---------+----+----+
+! DRIVE SELECT 1                      ! INPUT   ! 12 ! 11 !
++-------------------------------------+---------+----+----+
+! DRIVE SELECT 2                      ! INPUT   ! 14 ! 13 !
++-------------------------------------+---------+----+----+
+! MOTOR ON                            ! INPUT   ! 16 ! 15 !
++-------------------------------------+---------+----+----+
+! DIRECTION SELECT (Schrittrichtung)  ! INPUT   ! 18 ! 17 !
++-------------------------------------+---------+----+----+
+! STEP (Schritt zur naechsten Spur)   ! INPUT   ! 20 ! 19 !
++-------------------------------------+---------+----+----+
+! WRITE DATA                          ! INPUT   ! 22 ! 21 !
++-------------------------------------+---------+----+----+
+! WRITE GATE (Schreiberlaubnis)       ! INPUT   ! 24 ! 23 !
++-------------------------------------+---------+----+----+
+! TRACK 00 (Spur 00 erkannt)          ! OUTPUT  ! 26 ! 25 !
++-------------------------------------+---------+----+----+
+! WRITE PROTECT (Schreibschutz)       ! OUTPUT  ! 28 ! 27 !
++-------------------------------------+---------+----+----+
+! READ DATA                           ! OUTPUT  ! 30 ! 29 !
++-------------------------------------+---------+----+----+
+! SIDE ONE SELECT (Seitenauswahl)     ! INPUT   ! 32 ! 31 !
++-------------------------------------+---------+----+----+
+! READY / DISK CHANGE                 ! OUTPUT  ! 34 ! 33 !
++-------------------------------------+---------+----+----+
+Tafel 104 Signalinterface-Anschluesse
+
+1-8-3. Ein-und Ausgangssignale
+
+Im Folgenden heissen Signale,  die zum FDD gesendet werden,
+INPUT; waehrend vom FDD gesendete Signale OUTPUT heissen.
+Beachten  Sie  die Punkte (1)...(12) fuer  die  Beziehungen
+zwischen  INPUT-Signalen und der Arbeit  von  Frontplatten
+indikator, Kopflademagnet und Spindelmotor.
+LOW-Signal bedeutet TRUE, d.h. aktiv.
+
+(1) DRIVE SELECT 0...3   INPUT
+ (a) Signale auf 4 Leitungen zur Auswahl des speziellen FDD
+     bei Multiplexsteuerung in einer Daisy Chain.
+ (b) Nur das DRIVE SELECT - Signal mit der gleichen Nummer
+     wie die auf der LP gewaehlte Steckbruecke DS 0...3 ist
+     wirksam.
+ (c) Alle INPUT/OUTPUT-Signale (ausser MOTOR ON, IN USE und
+     HIGH/NORMAL DENSITY) sind wirksam, wenn dieses Signal
+     effektiv empfangen wird.
+ (d) Die benoetigte Zeit, um jedes INPUT/OUTPUT-Signal nach
+     der  Aussendung  von DRIVE SELECT wirksam  zu  machen,
+     betraegt  max.  0,5us,  einschliesslich der Verzoege
+     rungszeit durch das Interfacekabel.
+
+(2) MOTOR ON    INPUT
+ (a) Statisches Signal zum Einschalten des Spindelmotors.
+ (b) Der Spindelmotor erreicht seine  Soll-Drehgeschwindig
+     keit  in  500 ms (360 U/min) oder 400 ms (300  U/min),
+     nachdem dieses Signal aktiv geworden ist.
+ (c) Entsprechend  dem HIGH/NORMAL DENSITY - Signal  (siehe
+     (14))  wird die Drehgeschwindigkeit (300/360) nur dann
+     umgeschal
+tet,  wenn mit der I/II-Steckbruecke Modus  I
+     gewaehlt wurde (siehe 1-11 und 1-12-3).
+
+(3) DIRECTION SELECT     INPUT
+ (a) Statisches Signal zum Definieren der Bewegungsrichtung
+     des Kopfes bei Impulsen auf der STEP-Leitung.
+ (b) Step-out  (Bewegung weg vom Zentrum der Diskette) wird
+     mit  HIGH-Pegel dieses Signals  definiert.  Umgekehrt,
+     Step-in  (Bewegung zum Zentrum der Diskette) wird  mit
+     LOW-Pegel dieses Signals definiert.
+
+(4) STEP      INPUT
+ (a) Impulssignal zum Bewegen des Kopfes.  Die  Pulsbreite
+     soll  mehr als 0,8 us betragen.  Der Kopf bewegt sich
+     bei einem Impuls um eine Spurbreite.
+ (b) Die Zugriffsbewegung (Kopfpositionieren) wird mit  der
+     Rueckflanke des Impulses eingeleitet und ist innerhalb
+     von  18ms (einschl.  Beruhigungszeit)  been
+     det.  Fuer  
+     schrittweise  Zugriffsbewegung in  derselben  Richtung 
+     sind die Impulse im Abstand von mehr als 3ms zu  sen
+     den,  bei verschiedener Richtung muss der Abstand mehr
+     als 18ms betragen.
+ (c) Dieses Signal wird unwirksam, falls das WRITE PROTECT-
+     Signal  passiv  und  das WRITE GATE-Signal  aktiv  ist
+     (d.h. bei aktivem Schreiben. T.P.).
+     Dieses Signal wird auch unwirksam,  wenn das TRACK 00-
+     Signal  aktiv ist und DIRECTION SELECT auf  HIGH-Pegel
+     liegt (Step-out).
+ (d) Das  Signal ist entsprechend dem Zeitplan in Bild  104
+     zu senden.
+
+(5) WRITE GATE     INPUT
+ (a) Statisches Signal zum Loeschen der geschriebenen Daten
+     und zur Freigabe des Schreibens von neuen Daten.
+ (b) Dieses Signal wird unwirksam, wenn WRITE PROTECT aktiv
+     ist.
+ (c) Dieses  Signal  sollte  erst  nach  Erfuellung   aller
+     folgenden 4 oder 5 Bedingungen aktiv gemacht werden.
+     i) Das FDD ist im Ready-Zustand (siehe (13)).
+     ii) Mehr als 50 ms nach dem Beginn des Kopfladens.
+
+     iii) Mehr als 18 ms nach wirksamem Empfang des letzten
+          STEP-Impulses.
+
+     iv)  Mehr als 100 us nach einem Pegelwechsel des  SIDE
+          ONE SELECT - Signals.
+     v)  (Nur  bei  Modus  I) Mehr als 400  ms  nach  einem
+         Pegelwechsel des HIGH/NORMAL DENSITY-Signals.
+ (d) Die  folgenden  Bedingungen sind die  praktischen  Be
+     triebsbedingungen fuer dieses Signal der internen FDD-
+     Schaltung.  Solange diese Bedingungen eingehalten wer
+     den,  ist  eine normale  Schreiboperation  garantiert,
+     unabhaengig  von den Bedingungen im vorigen Punkt (c),
+     ausser (c)-ii).
+     i) Bei Disketteninitialisierung (Formatierung):
+        Wenn der INDEX-Impuls gesendet wurde. (siehe (10))
+     ii) Bei Daten-Schreiboperationen:
+         Wenn  READ  DATA-Impulse  gesendet  wurden  (siehe
+         (11))  und ein Sektor-Identifier vom Wirt  gelesen
+         wurde.
+Anmerkung: Wenn die Bruecke im FDD so gesetzt ist, dass das
+Kopfladen  in Uebereinstimmung mit dem MOTOR ON-Signal  des
+Wirts gesetzt wird (siehe 1-12-1,  Auswahl Nr. 2-X, U1 off,
+U2 on),  hat die Forderung in (c)-ii) keine Bedeutung  fuer
+eine praktische Schreiboperation.
+(e)  Keine  der  folgenden Operationen soll  innerhalb  von
+     590us  (360 U/min) bzw.  1 ms (300 U/min) ausgefuehrt
+     werden,  nachdem  dieses Signal auf passiv  geschaltet
+     wurde.
+     i) MOTOR ON-Kommando passiv schalten.
+     ii) DRIVE SELECT-Signal passiv schalten.
+     iii) Start einer Kopfbewegung mittels STEP-Impuls.
+     iv) Wechseln des Pegels des SIDE ONE SELECT-Signals.
+     v) Wechseln des Pegels des HIGH/NORMAL DENSITY-Signals
+     (gilt nur in Modus I).
+
+(6) WRITE DATA     INPUT
+ (a) Impulssignal,  welches die auf die Diskette zu schrei
+     benden    Daten   enthaelt.    Die   Pulsbreite   soll
+     0,10...1,1us    bei    hoher    Schreibdichte    oder
+     0,01...2,1us bei normaler Schreibdichte betragen. Die
+     fuehrende Flanke des Impulses wird verwendet.
+ (b) Das  Signal wird unwirksam,  wenn eine  der  folgenden
+     Bedingungen erfuellt ist.
+     i) WRITE GATE ist passiv.
+     ii) WRITE PROTECT ist aktiv.
+ (c) Das Signal soll entsprechend dem Zeitplan in Bild 105
+     gesendet werden.
+
+(7) SIDE ONE SELECT     INPUT
+ (a) Statisches Signal,  welches die Seite einer doppelsei
+     tigen  Diskette definiert,  auf der gelesen  oder  ge
+     schrieben werden soll.
+ (b) Wenn das Signal HIGH-Pegel fuehrt,  ist der Magnetkopf
+     auf  Seite 0 (untere Seite) selektiert;  waehrend  der
+     Kopf  auf Seite 1 (obere Seite) bei  LOW-Pegel  ausge
+     waehlt ist.
+ (c) Das READ DATA-Signal auf einer ausgewaehlten Oberflae
+     che  wird  nach  mehr als 100 us nach  Wechsel  dieses
+     Signalpegels gueltig.
+ (d) Schreiboperationen   (WRITE  GATE  aktiv)  auf   einer
+     ausgewaehlten Oberflaeche duerfen nach mehr als 100us
+     nach Wechsel dieses Signalpegels starten.
+ (e) Wird  nach Beenden einer Schreiboperation  die  andere
+     Diskettenseite  selektiert,  soll der Signalpegel erst
+     nach  Ablauf  von 590 us (360 U/min) oder  1  ms  (300
+     U/min) nach dem Abschalten von WRITE GATE wechseln.
+
+(8) IN USE / HEAD LOAD / OPEN        INPUT
+Dieses  Signal  realisiert entweder die IN USE  - oder  die
+HEAD  LOAD - Funktion entsprechend der gewaehlten  IU- oder
+HL-Steckbruecke (siehe 1-11).
+ (a) Wenn IN USE - Funktion gewaehlt (IU-Bruecke gesteckt):
+     Statisches Signal, um anzuzeigen, dass alle geketteten
+     FDDs  in  Arbeitsbedingung unter Steuerung des  Wirts
+     systems stehen. Siehe 1-12-1 und 1-12-2.
+ (b) Wenn HEAD LOAD - Funktion gewaehlt (HL-Bruecke gest.):
+     Statisches Signal zum Laden des Kopfes.
+     Kopfladen kann nur ausgefuehrt werden, wenn das FDD im
+     Ready- oder Vor-Ready-Zustand ist. (Siehe (13)).
+     Das Kopfladen ist in 50 ms nach dem Beginn der  Opera
+     tion beruhigt.
+ (c) Wenn OPEN- Bedingung gewaehlt (IU und HL offen):
+     Nur  der Terminator ist an Pin 4  des  Signalinterface
+     angeschlossen.  Die  Eingangsschaltung des FDD hat of
+     fene Bedingungen. (Siehe Bild 102).
+
+(9) TRACK 00      OUTPUT
+ (a) Statisches Signal zeigt an,  dass sich der Kopf in der
+     aeussersten Spur 00 befindet.
+ (b) Das Signal wird nach mehr als 2,8 ms nach Empfang  des
+     wirksamen STEP-Impulses gueltig.
+
+(10) INDEX      OUTPUT
+ (a) Impulssignal zur Erkennung des Indexloches einer  Dis
+     kette.
+ (b) Der INDEX-Impuls kann gesendet werden, wenn das FDD im
+     Ready-Status  ist (siehe (13)) und wenn das FDD  keine
+     Kopfbewegung (einschl.  Beruhigung) ausfuehrt.  Bedin
+     gung zum Aussenden von INDEX:
+      (Index erkannt) * DRIVE SELECT * READY * (KOPF STEHT)
+     Bemerkung:  KOPF STEHT ist der Zustand nach 14...16ms
+     nach der letzten Rueckflanke des STEP-Impulses.
+ (c) Bild 106 zeigt das Timing dieses Signals.  Die Vorder
+     flanke des Impulses soll als Bezug genutzt werden.
+
+(11) READ DATA      OUTPUT
+ (a) Impulssignal  zum  Lesen der Daten von  der  Diskette,
+     enthaelt Takt- und Datenbits.
+ (b) Bild 107 zeigt das Timing dieses Signals.  Die Vorder
+     flanke des Impulses ist als Bezug zu nutzen.
+ (c) Das Signal wird gueltig,  wenn die folgenden 5 oder  6
+     Bedingungen erfuellt sind:
+     i) Das FDD ist im Ready-Zustand (siehe (13)).
+     ii) Mehr als 50 ms nach Beginn des Kopfladens.
+
+     iii)  Mehr  als 18 ms nach dem wirksamen  Empfang  des
+           letzten STEP-Impulses.
+
+     iv)  Mehr als 590 us (360 U/min) oder 1 ms (300 U/min)
+          nach Abschalten des WRITE GATE-Signals.
+     v) Mehr als 100 us nach Pegelwechsel von SIDE ONE SEL.
+     vi) (Nur im Modus I) Mehr als 400 ms nach Pegelwechsel
+         des HIGH/NORMAL DENSITY-Signals.
+ (d) READ  DATA-Impulse koennen gesendet werden,  wenn  das
+     FDD im Ready-Status (siehe (13)) ist und das FDD keine
+     Kopfbewegung ausfuehrt (einschl.  Beruhigung). Im Fol
+     genden  ist die Sendebedingung von READ  DATA-Impulsen
+     dargestellt.  Solange  READ DATA-Impulse gesendet wer
+     den,  ist eine normale Leseoperation garantiert, unab-
+     haengig von den Bedingungen in (c), ausser (c)-ii).
+   READ DATA-Erkennung * DRIVE SELECT * READY * KOPF  STEHT
+   * KEINE SCHREIBOPERATION
+   Anmerkung: 1. KOPF STEHT siehe (10)-(b).
+              2. KEINE  SCHREIBOPERATION   ist der  Status,
+                 wenn  WRITE GATE laenger passiv ist als in
+                 (c)-iv) angegeben.  D.h.,  es liegt  weder
+                 Schreib- noch Tunnel-Loesch-Betrieb vor.
+              3. analog Anmerkung zu (5)-(d).
+
+(12) WRITE PROTECT      OUTPUT
+ (a) Statisches Signal,  zeigt an,  dass die Schreibscutz-
+     Kerbe der Diskette verdeckt ist.
+ (b) Wenn   das  Signal aktiv ist  sind die Daten  auf  der
+     Diskette  loeschgeschuetzt  und  das  Schreiben  neuer
+     Daten wird verhindert.
+
+(13) READY / DISK CHANGE      OUTPUT
+Dieses Signal hat eine der beiden Funktionen READY oder DISK
+CHANGE  entsprechend der RY/DC-Steckbruecke (siehe 1-11  und
+1-12-3).
+ (a) Wenn die READY-Funktion gewaehlt wurde:
+     i) Statisches Signal,  zeigt an, dass das FDD im Ready-
+        Zustand ist.
+     ii)  Das FDD wird Ready, wenn alle der folgenden Bedin-
+          gungen erfuellt sind.
+          1. Die Versorgungsspannungen liegen am FDD an.
+          2. Eine Diskette ist eingelegt und ein  Motor-On-
+             Kommando des Wirtes ist aktiv.
+          3. Die  Diskette  rotiert mit mehr als 50 %  ihrer
+             Sollgeschwindigkeit   und  danach  wurden  zwei
+             INDEX-Impulse gezaehlt.
+          4.  Das  INDEX-Impuls-Intervall ist im Bereich von
+              +- 6 % des Sollwertes.
+     Anmerkung:  Pre-Ready ist der Status,  nachdem erst ein
+     INDEX-Impuls nach Erreichen der 50 % - Drehzahl erkannt
+     wurde.  Das  FDD erreicht den Ready-Status eine Disket-
+     tenumdrehung nach Erreichen des Pre-Ready-Status.
+     Das Kopfladen wird in keinem anderen Zustand als  Ready
+     oder Pre-Ready ausgefuehrt.
+     iii)  Das  FDD benoetigt nach Aktivieren des  Motor-On-
+           Signals zum Erreichen des Ready-Status:
+           - unter 730 ms (360 U/min),
+           - unter 800 ms (300 U/min),
+           - ca. 550 ms Mittelwert.
+

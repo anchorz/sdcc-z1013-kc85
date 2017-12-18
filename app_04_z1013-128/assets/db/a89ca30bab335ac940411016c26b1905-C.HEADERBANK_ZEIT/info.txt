@@ -1,0 +1,3 @@
+<kurz src="HEADER-BANK-Copy, Kopierhilfe für Kassetten"/>
+<lang></lang>
+<requires></requires>

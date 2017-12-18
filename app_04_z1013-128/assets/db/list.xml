@@ -64,6 +64,7 @@
 <file aadr="0100" eadr="0fff" sadr="0100" typ="C" link="77018f4da9cbc0d0f51a36538c9c8b38-C.BASIC%203,75K%20V4.0/C.BASIC%203,75K%20V4.0.z80" name="BASIC 3,75K V4.0" kurz="BASIC Interpreter 3,75K V4.0, Tiny-BASIC Variante" />
 <file aadr="0100" eadr="29ff" sadr="0100" typ="C" link="00ca4f8ef57275753a08ede5c4697724-C.BASIC%20KC85_2%20RB/C.BASIC%20KC85_2%20RB.z80" name="BASIC KC85/2 RB " kurz="KC-BASIC Interpreter KC85/2, 45038 BYTES FREE" />
 <file aadr="0100" eadr="2b60" sadr="0100" typ="C" link="3305b978e27be0350aee422900e70662-basic_pset_sound/basic_pset_sound.z80" name="BASIC PSET/SOUND" kurz="BASIC Variante mit PSET-und SOUND-Funktion (HC900)" />
+<file aadr="3000" eadr="3c49" sadr="0000" typ="I" link="cccdcbd3bfaac8968c91cf1b58516f4a-I.BASIC-PACKER/I.BASIC-PACKER.z80" name="BASIC-PACKER    " kurz="BASIC-Packer:REMKILL und KOMPRI, Kommentare und Leerzeichen entfernen" />
 <file aadr="1000" eadr="3351" sadr="0000" typ="b" link="b16167651d9e2e7c83013d6a2632d6c9-b.BASICLERN%201/b.BASICLERN%201.z80" name="BASICLERN 1     " kurz="Lernprogramm, Einführung in Tiny-BASIC" />
 <file aadr="3100" eadr="3d67" sadr="0000" typ="T" link="0790dfcc9c181dc105f3b79a493c6a56-basicode-info/basicode-info.z80" name="BASICODE-INFO   " kurz="BASICODE-3 KURZINFORMATION" />
 <file aadr="e600" eadr="e79f" sadr="e600" typ="C" link="72a580fe86da477c10f6f87bc161f4f5-basicramdisk3_5/basicramdisk3_5.z80" name="BasicRamdisk3.5." kurz="Wofür braucht BASIC eine RAM-Disk?" />
@@ -154,8 +155,10 @@
 <file aadr="2bc0" eadr="2db3" sadr="2bc0" typ="B" link="321948738edee2b77e7e71c41de73ea7-B.DEZ-_ROEM/B.DEZ-_ROEM.z80" name="DEZ-&gt;ROEM       " kurz="Zahlenkonvertierung von Dezimal nach Römisch" />
 <file aadr="2bc0" eadr="42c3" sadr="0300" typ="B" link="50a0e33a173740c52c08d6761c6cadd6-B.DICKER/B.DICKER.z80" name="DICKER          " kurz="Schiebespiel, Bewege den Dicken zum Ausgang" />
 <file aadr="0100" eadr="5b54" sadr="0100" typ="C" link="522d05b0294bf46ba18ddb5304f1c76a-digger/digger.z80" name="DIGGER          " kurz="Knobelspiel, dabei Sand wegschaufeln, Diamanten einsammeln." />
+<file aadr="0100" eadr="0770" sadr="0100" typ="C" link="b74cfdf5b7a4f8bf9a82f1f5ada78a52-C.DIGITALTESTER/C.DIGITALTESTER.z80" name="DIGITALTESTER   " kurz="IC DIGITAL-TESTER" />
 <file aadr="3490" eadr="3fff" sadr="3500" typ="C" link="6153eee91e757e3eb0663040fd59ed36-C.DISASS.V.5+DRUCK/C.DISASS.V.5+DRUCK.z80" name="DISASS.V.5+DRUCK" kurz="Disassembler (funktioniert?)" />
 <file aadr="3200" eadr="3fff" sadr="3200" typ="C" link="95cb274249819d3c83fcfd914b87c878-C.DISASSEMBLER%20PLU/C.DISASSEMBLER%20PLU.z80" name="DISASSEMBLER PLU" kurz="DISASSEMBLER PLUS" />
+<file aadr="0100" eadr="01b4" sadr="0100" typ="C" link="c576730a7aa059c579da34d437d21bde-C.Display/C.Display.z80" name="Display         " kurz="Speicherdump mit ASCII Zeichen" />
 <file aadr="2000" eadr="2938" sadr="0000" typ="T" link="7cfd96cca9a8ca3b9dfb5bf35615ab39-documentation.doc/documentation.doc.z80" name="DOCUMENTATION   " kurz="Beschreibung Texteditor" />
 <file aadr="2bc0" eadr="2f83" sadr="0000" typ="B" link="8b120658872968091a814bc23208c92c-B.DOPROT/B.DOPROT.z80" name="DOPROT          " kurz="DOPPELTE ROTATION, Ordne die Buchstaben." />
 <file aadr="1800" eadr="523b" sadr="0000" typ="T" link="b46e075770d4fa30974f356d96e9dece-T.DRUCK-TAST%20(esc)/T.DRUCK-TAST%20(esc).z80" name="DRUCK-TAST (esc)" kurz="MicroWORD mit Schreibmaschine Erika S3004 (andere Formatierung, ggf anderer Drucker)" />
@@ -175,6 +178,7 @@
 <file aadr="0100" eadr="0dff" sadr="0112" typ="C" link="2624d0947a6fb9cf5353766e3d92689f-C.EDITEX%20(EDITEX)/C.EDITEX%20(EDITEX).z80" name="EDITEX          " kurz="einfacher Texteditor, geändert?" />
 <file aadr="0100" eadr="0cbf" sadr="0100" typ="C" link="8dbbb9e87de353c3f07d32bb4a588084-C.EDITEX/C.EDITEX.z80" name="EDITEX          " kurz="einfacher Texteditor, original?" />
 <file aadr="0e00" eadr="243f" sadr="0000" typ="T" link="e1fdb2cc79cd18f6cdfa2bb6cd7acf47-T.EDITEX/T.EDITEX.z80" name="EDITEX          " kurz="ein leistungsfaehiges Programm zur Textverarbeitung" />
+<file aadr="00b6" eadr="12ff" sadr="00b6" typ="C" link="32a5991f2e154b03c0d6ee85a9981058-C.EDITEX+HEADER/C.EDITEX+HEADER.z80" name="EDITEX+HEADER   " kurz="Editex mit Headersave-Aufrufen 11/88" />
 <file aadr="0100" eadr="02f0" sadr="0100" typ="C" link="3cc34ff01f86dbecb291b1275f9b80ee-C.EDITOR%20ZU%20RTTY/C.EDITOR%20ZU%20RTTY.z80" name="EDITOR ZU RTTY  " kurz="kopiert den eingegebenen Text in den Speicher ab 0x1500" />
 <file aadr="2bc0" eadr="3e36" sadr="0000" typ="B" link="b90f450acc0cda7d4afcb552db98d62a-egw/egw.z80" name="EGW             " kurz="Einer gegen Willi" />
 <file aadr="2bc0" eadr="3716" sadr="0000" typ="B" link="624a76207d6f479dd916ac6ca2732684-B.EHE/B.EHE.z80" name="EHE             " kurz="Wer passt zu wem? (Z9001)" />
@@ -199,6 +203,7 @@
 <file aadr="0100" eadr="0210" sadr="0100" typ="C" link="5caa12d2121d31dbcc36b77f1b741a1d-C.EPROMMER-ABGL./C.EPROMMER-ABGL..z80" name="EPROMMER-ABGL.  " kurz="EPROM-Programmer-Abgleich" />
 <file aadr="1900" eadr="20f0" sadr="0000" typ="T" link="7aba6f7e42b9191addf7d15218b288aa-esc_folgen.doc/esc_folgen.doc.z80" name="ESC-Folgen      " kurz="ESC-Sequenzen für S3004" />
 <file aadr="2bc0" eadr="4410" sadr="00e0" typ="B" link="d69e20f35c79b86ff3e194606689d968-B.EXPANSION/B.EXPANSION.z80" name="EXPANSION       " kurz="Interessantes Brettspiel, Go Variante mit mehreren Steinen pro Feld" />
+<file aadr="2c00" eadr="2e90" sadr="2c00" typ="C" link="50dcf043af673cb4f5e6c3cf7c4cc7e0-C.f-Zaehler_-12kHz/C.f-Zaehler%20-12kHz.z80" name="f-Zaehler -12kHz" kurz="Zählermodul, Frequenzzähler, Adresse=0x2C00" />
 <file aadr="0200" eadr="2a04" sadr="0200" typ="C" link="f9f8f1c4f288b0840d31e8a7fb4f2802-C.F83%201.3%20BCB2/C.F83%201.3%20BCB2.z80" name="F83 1.3 BCB2    " kurz="Z80 FORTH 1.3 (Z1013) AG FORTH Th. Beierlein / A. Driesel BCB2" />
 <file aadr="1900" eadr="3ff1" sadr="0000" typ="T" link="d5908969f59670a418f7886c1a0e25dc-T.F83%201.3%20GLO%201/T.F83%201.3%20GLO%201.z80" name="F83 1.3 GLO 1   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 1" />
 <file aadr="3ff1" eadr="6528" sadr="0000" typ="T" link="3b8636dbab1eeee457221aae7232a128-T.F83%201.3%20GLO%202/T.F83%201.3%20GLO%202.z80" name="F83 1.3 GLO 2   " kurz="Glossarium des Z80 FORTH 83 der IG Forth, Teil 2" />
@@ -263,6 +268,7 @@
 <file aadr="0100" eadr="0a8f" sadr="0200" typ="C" link="8da51a0f9e96a2f3faabc9b1a872909e-gost_hut/gost_hut.z80" name="GOST HUT        " kurz="GHOST Original, Geist ausweichen und $ aufsammeln (2.02-Tastatur)" />
 <file aadr="0100" eadr="0c1f" sadr="0100" typ="C" link="cf9f4e99a2f83c6cb8584013b7494174-C.GR.EDITOR%206.03/C.GR.EDITOR%206.03.z80" name="GR.EDITOR 6.03  " kurz="Grafikeditor mit Analogjoystick" />
 <file aadr="0100" eadr="0a50" sadr="0100" typ="C" link="269f707fd4842f82f4264d8e5b64ab7d-C.GRAF.DEMO%20FZG3.1/C.GRAF.DEMO%20FZG3.1.z80" name="GRAF.DEMO FZG3.1" kurz="Grafikeditor (Weiss jemand mehr?)" />
+<file aadr="d000" eadr="d950" sadr="d000" typ="C" link="8deca199ed1635b2d2a61698a93a54d1-C.GRAFIK-DEMO_FZG/C.GRAFIK-DEMO%20FZG.z80" name="GRAFIK-DEMO FZG " kurz="andere Version, FZG Freiprogrammierbarer-ZeichenGenerator" />
 <file aadr="0100" eadr="2820" sadr="2810" typ="C" link="c9490afb5f6a0b7b428456e5eda153b1-graverobber/graverobber.z80" name="GRAVEROBBER     " kurz="Grabraeuber, Schaetze sammeln (Brosig)" />
 <file aadr="0100" eadr="284e" sadr="2840" typ="C" link="58d5584eacb0f5bb95208dc74bc042ae-graverobber+prJ/graverobber+prJ.z80" name="GRAVEROBBER(J)  " kurz="Grabraeuber, Schaetze sammeln" />
 <file aadr="2f00" eadr="3fff" sadr="2f00" typ="C" link="c103c03cffe317189f2c40a482d2b36f-C.GZE%20V.16K%20MB-EQU/C.GZE%20V.16K%20MB-EQU.z80" name="GZE V.16K MB-EQU" kurz="Zeichensatzeditor, FZG+Maus" />
@@ -280,13 +286,15 @@
 <file aadr="e000" eadr="e8ff" sadr="e800" typ="C" link="98e9de50c4e5bb8df579b6ffc7367676-C.HEAD.DISK%2045_ME/C.HEAD.DISK%2045_ME.z80" name="HEAD.DISK 45/ME " kurz="HEADERDISK45 auf 0xE000 verschoben+ ME Modifikation" />
 <file aadr="0800" eadr="1826" sadr="0000" typ="I" link="d83c275b948b2cced485646bd3270c37-head_disk%2045_me(i)/head_disk%2045_me(i).z80" name="HEAD.DISK 45/ME " kurz="HEADERDISK45 auf 0xE000 verschoben+ ME" />
 <file aadr="0800" eadr="1781" sadr="0000" typ="I" link="c57560c2326e051f0620e4e4bc10b073-I.HEAD.DISK%2045_ZM/I.HEAD.DISK%2045_ZM.z80" name="HEAD.DISK 45/ZM " kurz="HEADERSAVE-kompatible Verwaltung, leicht verändert" />
+<file aadr="e000" eadr="e707" sadr="e400" typ="C" link="dbfc4d4c8e6daa37a50a2eefafb6f939-C.HEADER_MENUE/C.HEADER%20MENUE.z80" name="HEADER MENUE    " kurz="PROGRAMM ZUM SOFTWARETAUSCH V1" />
 <file aadr="e000" eadr="e4bc" sadr="e000" typ="C" link="479b01b95c4c01336915b59df1247883-C.HEADER-DISK%2027K/C.HEADER-DISK%2027K.z80" name="HEADER-DISK 27K " kurz="HEADERSAVE-kompatible Verwaltung RAM-Diskette nach MP 3/88" />
 <file aadr="3000" eadr="3be4" sadr="0000" typ="I" link="bb47d0de3691aaf53e7adf6ad8b015e3-I.HEADER-DISK%2054/I.HEADER-DISK%2054.z80" name="HEADER-DISK 54  " kurz="HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88." />
 <file aadr="0800" eadr="1250" sadr="0000" typ="I" link="1851aeb86d095a20d4f612f5c291bebe-I.HEADER-MENUE%202/I.HEADER-MENUE%202.z80" name="HEADER-MENUE 2  " kurz="24 Programme laden und in beliebiger Reihenfolge abspeichern" />
-<file aadr="e000" eadr="e7ff" sadr="e400" typ="C" link="92207154c8adf8e50e32172e91efa519-C.HEADER-MENUE%202/C.HEADER-MENUE%202.z80" name="HEADER-MENUE 2  " kurz="PROGRAMM ZUM SOFTWARETAUSCH" />
+<file aadr="e000" eadr="e7ff" sadr="e400" typ="C" link="92207154c8adf8e50e32172e91efa519-C.HEADER-MENUE%202/C.HEADER-MENUE%202.z80" name="HEADER-MENUE 2  " kurz="PROGRAMM ZUM SOFTWARETAUSCH V2" />
 <file aadr="e800" eadr="ebff" sadr="ebee" typ="C" link="6373e38242eae15913d252c40caf4ef4-C.HEADER-SAVE/C.HEADER-SAVE.z80" name="HEADER-SAVE     " kurz="Load/Save-Routine 5.95 0E800h" />
 <file aadr="0100" eadr="0baf" sadr="0100" typ="C" link="9da506601e7302bd3383c9ac830aa470-C.HEADER-Tiny%201.0/C.HEADER-Tiny%201.0.z80" name="HEADER-Tiny 1.0 " kurz="RIESA Tiny-BASIC mit Sprungverteileraufruf für Headersave" />
 <file aadr="0100" eadr="03f0" sadr="0000" typ="I" link="62ebcfc7562efea5bfaf777a92e121ef-I.HEADERBANK/I.HEADERBANK.z80" name="HEADERBANK      " kurz="HEADER-SAVE BANK" />
+<file aadr="0100" eadr="0755" sadr="0100" typ="C" link="a89ca30bab335ac940411016c26b1905-C.HEADERBANK_ZEIT/C.HEADERBANK%20ZEIT.z80" name="HEADERBANK ZEIT " kurz="HEADER-BANK-Copy, Kopierhilfe für Kassetten" />
 <file aadr="d800" eadr="dfff" sadr="d81b" typ="C" link="0321a5b27707bc1b87a8918fae29750a-headerdisk%2045/headerdisk%2045.z80" name="HEADERDISK 45   " kurz="HEADERSAVE-kompatible Verwaltung von max. 2 RAM-Disketten nach MP 3/88" />
 <file aadr="0800" eadr="1410" sadr="0000" typ="I" link="c15d3e15221b2b540f1343493d4879eb-I.HEADERDISK%2045/I.HEADERDISK%2045.z80" name="HEADERDISK 45   " kurz="HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88. " />
 <file aadr="e000" eadr="e7ff" sadr="e01b" typ="C" link="cd457371685c85e8d6f07051211e787d-C.HEADERDISK%2045/C.HEADERDISK%2045.z80" name="HEADERDISK 45   " kurz="HEADERSAVE-kompatible Verwaltung von max. 2 RAM-Disketten nach MP 3/88" />
@@ -339,6 +347,7 @@
 <file aadr="0200" eadr="0bff" sadr="0200" typ="C" link="aef564c589f1bb60d65fb90b7f0be9b4-irrgarten/irrgarten.z80" name="IRRGARTEN       " kurz="KONZENTRATIONSSPIEL" />
 <file aadr="2bc0" eadr="3973" sadr="0302" typ="B" link="1b1a6a4cca199f9119c62b86fe5649a3-jaeger/jaeger.z80" name="JAEGER          " kurz="METEORe abschießen" />
 <file aadr="0100" eadr="087b" sadr="0100" typ="C" link="bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/joystick_demo.z80" name="JOYSTICK DEMO   " kurz="Testprogramm für Joystick nach Practic 01/88" />
+<file aadr="01f0" eadr="0da8" sadr="01f0" typ="C" link="726e86a3c7e77c13c2ef25d534e8e451-C.JUMPING_JACK_V2/C.JUMPING%20JACK%20V2.z80" name="JUMPING JACK V2 " kurz="V2" />
 <file aadr="0100" eadr="0dff" sadr="0100" typ="C" link="6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80" name="JUMPING-JACK    " kurz="Spinge durch die freien Stellen nach Oben, RST20 Variante" />
 <file aadr="3000" eadr="35ff" sadr="0000" typ="I" link="e69700f56374d9ac98c39d5ccf4ec009-I.JUMPING-JACK/I.JUMPING-JACK.z80" name="JUMPING-JACK    " kurz="Beschreibung des MC-Spiels 'JUMPING-JACK'" />
 <file aadr="0100" eadr="0dce" sadr="0dc0" typ="C" link="602a69f762181fc115b05b0145b4199b-jumping_jack+prJ/jumping_jack+prJ.z80" name="JUMPING-JACK+Joy" kurz="Spinge durch die freien Stellen nach Oben, Joystick nach Practic 01/88" />
@@ -360,11 +369,13 @@
 <file aadr="3000" eadr="71f1" sadr="0000" typ="I" link="1253b767b2df9cb3913ed8bc02dfe5fa-I.KC-BASIC%20m1/I.KC-BASIC%20m1.z80" name="KC-BASIC m1     " kurz="KC-BASIC+ fuer Z1013" />
 <file aadr="0100" eadr="2aff" sadr="0300" typ="C" link="e31af4360f472b76674fb3ca135a5070-C.KC-BASIC+%20m1/C.KC-BASIC+%20m1.z80" name="KC-BASIC+ m1    " kurz="KC-BASIC, 48878 BYTES FREE, belegt den kompletten Speicher bis 0xEBFF" />
 <file aadr="1800" eadr="518f" sadr="0000" typ="I" link="0367b49e890ef6d5c92fa28b7f5e5b27-kc_basic+_doc/kc_basic+_doc.z80" name="KC-BASIC+.DOC   " kurz="" />
+<file aadr="0100" eadr="0290" sadr="0100" typ="C" link="d92f5f4b0a665033a3883335a5b2444d-C.KC-PROGR.EINL./C.KC-PROGR.EINL..z80" name="KC-PROGR.EINL.  " kurz="KC85/x Programme laden" />
 <file aadr="3000" eadr="38ce" sadr="0000" typ="I" link="21a2753c17dab3a9ee672aee1ed4d9b1-I.KC-ROM-BASIC+1.0/I.KC-ROM-BASIC+1.0.z80" name="KC-ROM-BASIC+1.0" kurz="Beschreibung KC-ROM-BASIC+ ab 0xC000" />
 <file aadr="0100" eadr="0300" sadr="0100" typ="C" link="874096bc01bd1f96663297828b14edde-kc_save/kc_save.z80" name="KC-SAVE         " kurz="Z9001,KC85/1 SAVEINTERFACE" />
 <file aadr="3000" eadr="3c36" sadr="0000" typ="I" link="0eb583141c5c3f6173db33eda95ad666-I.KC-SAVE_LOAD/I.KC-SAVE_LOAD.z80" name="KC-SAVE/LOAD    " kurz="Programme der Heimcomputer Z9001, KC85/1 bzw. KC87 laden (Version 3)" />
 <file aadr="3e00" eadr="3fff" sadr="3fd0" typ="C" link="b1e35e6dfb1929dbc025239eca54ef9a-C.KC85_1-LOAD%203E00/C.KC85_1-LOAD%203E00.z80" name="KC85/1-LOAD 3E00" kurz="Z9001,KC85/1 LOAD-INTERFACE" />
 <file aadr="ce00" eadr="cfff" sadr="cfd0" typ="C" link="798e92cd3c69f6beabb8b426cce93df8-C.KC85_1-LOAD%20CE00/C.KC85_1-LOAD%20CE00.z80" name="KC85/1-LOAD CE00" kurz="Z9001,KC85/1 LOAD-INTERFACE" />
+<file aadr="0200" eadr="0441" sadr="0200" typ="C" link="81a0585356f693ff1f429965bb30d890-C.KC85_3-INTERFACE/C.KC85_3-INTERFACE.z80" name="KC85/3-INTERFACE" kurz="KC_KASSETTEN_INTERFACE_V1.0 Mathias Adler eagle-SOFT" />
 <file aadr="d000" eadr="dfff" sadr="d000" typ="C" link="e9720d5c1fe31d708423877936788019-kc87_monitor.com/kc87_monitor.com.z80" name="KC87 MONITOR    " kurz="" />
 <file aadr="2bc0" eadr="3d71" sadr="0300" typ="B" link="a54f3ebf0326e887e055f838908f7231-B.KESA-L/B.KESA-L.z80" name="KESA-L          " kurz="Knotenpotentialverfahren, Netzwerkanalyse, RCLI" />
 <file aadr="2bc0" eadr="5987" sadr="0302" typ="B" link="cf4aa800a27744159d1b8f2536d0eea7-B.KING%201/B.KING%201.z80" name="KING 1          " kurz="SANTA PARAVIA, Z9001 Version mit Anpassungen an 32 Zeichen" />
@@ -391,6 +402,7 @@
 <file aadr="2bc0" eadr="3c07" sadr="0000" typ="B" link="8132ea7391704c0cde1476568d7fff2f-B.LEBENSERWARTUNG/B.LEBENSERWARTUNG.z80" name="LEBENSERWARTUNG " kurz="Fragen gleich mit [6b3b500959b5ffb9c903c977323b4d16]" />
 <file aadr="2bc0" eadr="5ab6" sadr="0000" typ="B" link="4455a79ce9ccf116d729417a5a1d7371-leipzig/leipzig.z80" name="LEIPZIG         " kurz="Wissenstest Leipzig" />
 <file aadr="3000" eadr="3695" sadr="0000" typ="I" link="bdd805a74e20a7671261592bee1aebf6-leipzig_doc/leipzig_doc.z80" name="LEIPZIG DOC     " kurz="Programmbeschreibung: Wissenstest Leipzig" />
+<file aadr="2900" eadr="2a41" sadr="0000" typ="T" link="3e8281ae18711183bd241be3c85f90f6-T.LISSAJOU_ZU_BASI/T.LISSAJOU%20ZU%20BASI.z80" name="LISSAJOU ZU BASI" kurz="Lissajous-Figuren" />
 <file aadr="e000" eadr="e1ff" sadr="e000" typ="C" link="1f3b3cdc42a6dd53d9d9553bd81e0574-C.LOAD%20MC%2085_2/C.LOAD%20MC%2085_2.z80" name="LOAD MC 85/2    " kurz="Programme vom KC85/2 und KC85/3 einlesen" />
 <file aadr="0800" eadr="1742" sadr="0000" typ="I" link="3c93c0730eb299275681a11f1f89ee06-I.LOGICANALYSOR/I.LOGICANALYSOR.z80" name="LOGICANALYSOR   " kurz="Logik-Zustands- und Logik-Zeitanalyse " />
 <file aadr="3c00" eadr="3fff" sadr="3fec" typ="C" link="35a0027f80a63e04065d67e47d99f190-C.MAINSAVE%204.6.4/C.MAINSAVE%204.6.4.z80" name="MAINSAVE 4.6.4  " kurz="Headersave kompatible LOAD/SAVE-Routine" />
@@ -426,6 +438,7 @@
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="ac6bdb65dfc0e7731cc68439a434e18b-C.MicroWORD%201.3%2016/C.MicroWORD%201.3%2016.z80" name="MicroWORD 1.3 16" kurz="Texteditor MicroWORD V1.3 16KByte IG-HC Dresden" />
 <file aadr="0100" eadr="68ac" sadr="0100" typ="C" link="7e46885b1d81a752acfe7a25ba9cf0d4-C.MicroWORD%201.3%2064/C.MicroWORD%201.3%2064.z80" name="MicroWORD 1.3 64" kurz="Texteditor MicroWORD V1.3 64KByte IG-HC Dresden" />
 <file aadr="1800" eadr="6bb2" sadr="0000" typ="I" link="0248834de493f61da12d835548fde927-I.MicroWORD%201.518U/I.MicroWORD%201.518U.z80" name="MicroWORD 1.518U" kurz="Beschreibung zum Texteditor MicroWORD 1.5 13.09.88" />
+<file aadr="0100" eadr="6ceb" sadr="0100" typ="C" link="c40af769cd4ca6d8afa5feb2e6568207-C.MicroWORD_1.519U/C.MicroWORD%201.519U.z80" name="MicroWORD 1.519U" kurz="Textverarbeitung, Texteditor, V20.09.1988" />
 <file aadr="0100" eadr="6cbc" sadr="0100" typ="C" link="01b849b3c1bd4b6ad5709e582f3f633d-C.MicroWORD%201.520U/C.MicroWORD%201.520U.z80" name="MicroWORD 1.520U" kurz="Textverarbeitung, Texteditor, V01.10.1988" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="0ec6a4cb664baed278fa1941576ffe32-microword_1_5gs1/microword_1_5gs1.z80" name="MICROWORD 1.5GS1" kurz="Textverarbeitung, Texteditor, V18.01.1989" />
 <file aadr="0100" eadr="18ff" sadr="0100" typ="C" link="d1357e73351352ea0b04382c7ab3c31b-C.MikroWORD%20S3004/C.MikroWORD%20S3004.z80" name="MikroWORD S3004 " kurz="MicroWORD 1.5GV1 / S3004, Textverarbeitung" />
@@ -616,6 +629,7 @@
 <file aadr="2bc0" eadr="a809" sadr="0000" typ="B" link="74ab0a1676b18c8470e8099d7c8cc483-tatum/tatum.z80" name="TATUM           " kurz="Adventure, PHANTASTISCHES ABENTEUER IM ZAUBERREICH " />
 <file aadr="0300" eadr="33ff" sadr="0300" typ="C" link="89437f192b16fb748fa17e94d993657a-C.TDL%20BASIC/C.TDL%20BASIC.z80" name="TDL BASIC       " kurz="Erweitertes BASIC" />
 <file aadr="1800" eadr="58c9" sadr="0000" typ="T" link="a420fdd83f545f98e32735c6626338fe-T.TDL-BASIC_DOC/T.TDL-BASIC%20DOC.z80" name="TDL-BASIC DOC   " kurz="Erweitertes BASIC" />
+<file aadr="3000" eadr="b188" sadr="0000" typ="T" link="6261885190f964be74c46ee06ea47fee-T.TEAC-BESCHREIB./T.TEAC-BESCHREIB..z80" name="TEAC-BESCHREIB. " kurz="TEAC FD55GFV" />
 <file aadr="2bc0" eadr="2dd0" sadr="0300" typ="B" link="9c89dbf6aedfe92db43b72c37a5bff87-B.TEFRA%20Z1013/B.TEFRA%20Z1013.z80" name="TEFRA Z1013     " kurz="Textfraktale" />
 <file aadr="0800" eadr="3ff7" sadr="0000" typ="T" link="84cb8e9aa82bf61526f3fb640f1f8d6f-T.TEIL%201%20Z-INFO%20^/T.TEIL%201%20Z-INFO%20^.z80" name="TEIL 1 Z-INFO ^ " kurz="Z-1013-INFORMATIONEN, STANDARDS, KLUBARBEIT, ADRESSEN, ALLGEMEINES" />
 <file aadr="0800" eadr="3d94" sadr="0000" typ="T" link="1440fd2f19ddf3cf4c2201454e4cf268-T.TEIL%202%20Z-INFO%20^/T.TEIL%202%20Z-INFO%20^.z80" name="TEIL 2 Z-INFO ^ " kurz="Z-1013-INFORMATIONEN, STANDARDS, KLUBARBEIT, ADRESSEN, ALLGEMEINES" />
@@ -659,6 +673,7 @@
 <file aadr="3000" eadr="41a6" sadr="d000" typ="I" link="6a013102bf34e001950677f209dc67f2-I.UNI-COPY%204.2/I.UNI-COPY%204.2.z80" name="UNI-COPY 4.2    " kurz="Kopieren von Headersave-Programmen auch mit der RAM-FLOPPY" />
 <file aadr="d000" eadr="dfff" sadr="d000" typ="C" link="1b9397a400edd4d327dbf3b6cf8f598a-C.UNI-COPY%204.2+/C.UNI-COPY%204.2+.z80" name="UNI-COPY 4.2+   " kurz="Kopierprogramm für Daten-Kassetten" />
 <file aadr="3000" eadr="4271" sadr="0000" typ="I" link="ea77f077df610cd894a464496732665c-I.UNI-COPY_6.2+/I.UNI-COPY%206.2+.z80" name="UNI-COPY 6.2+   " kurz="Kopieren von Headersave-Programmen auch mit der RAM-FLOPPY" />
+<file aadr="0100" eadr="074f" sadr="0100" typ="C" link="1ab0e2b58043bef3fd6608c2cc64e82b-C.UNI-TEXTLESER/C.UNI-TEXTLESER.z80" name="UNI-TEXTLESER   " kurz="Universal-Textleser V.13.10.1988" />
 <file aadr="1800" eadr="4a41" sadr="0000" typ="I" link="7d91916c669c668f2efe72a7384dffd7-I.UNIMO3_MIT_S3004/I.UNIMO3%20MIT%20S3004.z80" name="UNIMO3 MIT S3004" kurz="UNIMO3, Universalzusatzmonitor, MIT S3004 und SPV" />
 <file aadr="0200" eadr="09df" sadr="0200" typ="C" link="3a3c93cf8f340f920d7b0b8ada7bb982-universe%20rb/universe%20rb.z80" name="UNIVERSE RB     " kurz="" />
 <file aadr="e800" eadr="eaff" sadr="e800" typ="C" link="0b70520fb192060844fb2b09a618cc22-C.V.24+HC/C.V.24+HC.z80" name="V.24+HC         " kurz="V24, Druckertreiber, Hardcopy" />
@@ -668,6 +683,7 @@
 <file aadr="0100" eadr="153f" sadr="1531" typ="C" link="01ab733cd715e108ed59279a8976fc4e-vampir+prJ/vampir+prJ.z80" name="Vampir+Joystick " kurz="" />
 <file aadr="2bc0" eadr="2fcc" sadr="0302" typ="B" link="9f13eb65e2f83a40cf3a267633041264-B.VARI-SUCHE%20BASIC/B.VARI-SUCHE%20BASIC.z80" name="VARI-SUCHE BASIC" kurz="Tools, sucht nach Variablen im BASIC-Programm" />
 <file aadr="1000" eadr="2502" sadr="0000" typ="b" link="e949da4d03ff299435537e311a240de0-b.VERFOLGUNG%201/b.VERFOLGUNG%201.z80" name="VERFOLGUNG 1    " kurz="Brettspiel, Verfolgungsjagd mit Würfeln" />
+<file aadr="0200" eadr="0590" sadr="0200" typ="C" link="2c3229800e8a9a4abd0ef6a576d6642b-C.VIDEOBUCH/C.VIDEOBUCH.z80" name="VIDEOBUCH       " kurz="Videobuch1" />
 <file aadr="1000" eadr="2357" sadr="0000" typ="b" link="f26a9815844f9f07c8a8649ba4ccb137-b.VIER/b.VIER.z80" name="VIER            " kurz="Quattro, 4 Spielsteine SENKRECHT, WAAGERECHT oder DIAGONAL anordnen" />
 <file aadr="0100" eadr="2b5f" sadr="0100" typ="C" link="ba340ff73a9b2429f0150ce1c7af7375-C.VIERTELBASIC/C.VIERTELBASIC.z80" name="VIERTELBASIC    " kurz="HC900 BASIC mit PSET, 21486 BYTES FREE, wie [ac559be453153ac534c19059ce754b32]" />
 <file aadr="2bc0" eadr="3fa0" sadr="0302" typ="B" link="6f00a9e848157e3fa9d72f38e7156b40-voegeln(g%26a)/voegeln(g%26a).z80" name="VOEGELN(G&amp;A)    " kurz="Mit einem Panzer Voegel abschiessen" />
@@ -707,4 +723,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 707 Dateien."/></doc>
+<status src="Datenbank enthält 723 Dateien."/></doc>

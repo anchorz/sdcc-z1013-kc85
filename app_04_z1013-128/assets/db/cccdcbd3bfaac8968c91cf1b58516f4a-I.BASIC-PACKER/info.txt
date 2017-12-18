@@ -1,0 +1,3 @@
+<kurz src="BASIC-Packer:REMKILL und KOMPRI, Kommentare und Leerzeichen entfernen"/>
+<lang><include src="I.BASIC-PACKER.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,59 @@
+BASIC-Packer: REMKILL und KOMPRI
+================================
+Bei langen BASIC- Programmen kann es guenstig sein, sie durch
+Streichen aller Kommentare und Leerzeichen wieder zu verkuerzen.
+Manch ein Programm passt erst dadurch in einen Computer in der 
+Grundversion, ausserdem spart man Platz auf dem Band und Zeit
+beim Einlesen.
+Das Programm REMKILL streicht in einem BASIC-Programm alle
+Leerzeichen (ausser in Strings natuerlich) und alle Kommentare.
+Das Programm KOMPRI enthaelt eine Version von REMKILL und
+streicht  ausserdem alle ueberfluessigen Zeilennummern (noetig
+sind alle  Zeilennummern, die ein Sprungziel von GOTO oder GOSUB
+kennzeichnen; auch die, die nach einer IF... - Verzweigung
+stehen usw.)  Nach Anwendung von REMKILL ist die aeussere
+Struktur des BASIC- Programms voellig erhalten geblieben, es ist
+so weiter uneingeschraenkt editierbar, das ist der Vorteil von
+REMKILL. Nach Anwendung von KOMPRI gibt es nur noch wenige
+Zeilennummern, die   Zeilen werden mitunter ueber 1 KByte lang.
+Das Programm ist also kaum noch lesbar und schon gar nicht mehr
+editierbar, das kann ein Vorteil von KOMPRI sein.
+
+Das MC- Programm REMKILL ist nur 187 Byte lang, das MC-
+Programm KOMPRI hat 649 Byte. Beide Programme benoetigen keinen
+zusaetzlichen Speicherplatz fuer Tabellen, sind also erfreulich
+kurz,  speziell fuer den Z1013 sei aber auch auf die Moeglich-
+keit verwiesen, z.B. KOMPRI nach Loeschen des Bildschirms in den
+Bildspeicher zu laden (L ED76 EFFF). Nach J ED76 und J 302 kann
+man sich von der Wirkung ueberzeugen.
+
+Beide Programme sind Nullbytefrei und verschiebbar, die
+Anfangsadresse ist die Startadresse. Bei dieser Charakteristik
+bietet  es sich natuerlich an, die MC- Programme in eine
+(nachladbare!) BASIC- Zeile zu verpacken. Die Anwesenheit eines
+BASIC- Interpreters ist schliesslich ohnehin gegeben, und der
+Vorteil ist:  Als BASIC-Version laufen REMKILL und KOMPRI unver-
+aendert (!) auf allen Computern, die das BASIC der KC85- Familie
+benutzen. Die  BASIC- Versionen sind 372 bzw. 837 Byte lang.
+Allerdings darf im zu verkuerzenden Programm keine Zeilennummer
+ueber 65430 sein.  Die Programme werden mit CLOAD nachgeladen
+und mit RUN65432 gestartet. Auf dem Bildschirm erscheint eine
+Information ueber den freien Speicherplatz (vorher/nachher), nun
+steht nur noch das verkuerzte Programm im Speicher.
+
+Wenn das BASIC- Programm Maschinencodeanteile in BASIC- Zeilen 
+hat, muessen diese Zeilen mit "DATA*" beginnen, dann bleiben
+sie voellig unangetastet. Bei Anwendung der MC- Programme
+REMKILL   bzw. KOMPRI kann man vorher in BASIC mit RESTORE
+<zlnr.> die niedrigste zu bearbeitende Zeilennummer einstellen
+und damit z.B. den Programmkopf von der Verkuerzung ausnehmen.  
+
+REMKILL und KOMPRI sollen nicht das Programmieren ohne Leerzei-
+chen und Kommentare propagieren. Im Gegenteil, denn im Bewusst-
+sein, die Arbeitsversion des Programms spaeter wieder verkuerzen
+zu koennen, verwendet der der BASIC- Programmierer eher reich- 
+lich Kommentare, und solche Archivversionen fuehren natuerlich 
+tendenziell zu einer besseren Struktur der Programme.
+
+                   (c) 88/89, H.P.Falken, Tel.0941/290934
+

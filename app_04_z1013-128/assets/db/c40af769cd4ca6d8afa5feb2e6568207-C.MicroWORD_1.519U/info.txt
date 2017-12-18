@@ -1,0 +1,3 @@
+<kurz src="Textverarbeitung, Texteditor, V20.09.1988"/>
+<lang></lang>
+<requires></requires>
