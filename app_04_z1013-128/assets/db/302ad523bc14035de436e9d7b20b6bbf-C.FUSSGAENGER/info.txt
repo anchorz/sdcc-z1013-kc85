@@ -1,0 +1,8 @@
+<kurz src="Fußgänger + Joystick Practic 04/87 oder JU+TE 06/87"/>
+<lang> R E G E L N:
+
+Sie muessen in 5 Runden versuchen allen Hindernissen 
+auszuweichen . Viel Glueck !!
+                        
+<include src="C.FUSSGAENGER.b"/></lang>
+<requires></requires>

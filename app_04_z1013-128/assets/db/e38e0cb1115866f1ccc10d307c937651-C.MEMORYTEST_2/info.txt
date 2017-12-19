@@ -1,0 +1,3 @@
+<kurz src="MEMORYTEST 2"/>
+<lang></lang>
+<requires></requires>

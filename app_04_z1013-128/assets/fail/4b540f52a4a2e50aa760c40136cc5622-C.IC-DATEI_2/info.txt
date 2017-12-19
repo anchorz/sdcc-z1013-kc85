@@ -1,0 +1,15 @@
+<kurz src="identisch [0b2d181fba5f2ca23a5315075e727c05]"/>
+<lang>Inhalt ist eine Teilmenge von [0f9fd217ad47ea95cc654a636a4d2a12]
+Beide Datenbanken sind Syntaktisch nicht ganz korrekt. Die .TXT files wurden 
+aber angepasst, um besser vergleichen zu können.
+
+Diese Version ist eigentlich nicht ganz korrekt. Die Anfangsadresse ist zwar mit 0x00B0
+angegeben. Der Inhalt aber ist nicht korrekt. Es sollten wohl die Erweiterungen
+
+@D 108
+@E 268
+
+Installiert werden.
+
+<include src="C.IC-DATEI 2.txt"/></lang>
+<requires></requires>

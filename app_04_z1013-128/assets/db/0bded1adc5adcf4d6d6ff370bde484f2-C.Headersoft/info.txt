@@ -1,0 +1,7 @@
+<kurz src="HEADERSAVE Konvertierung von 2MHz/4MHz, ASCII Speicher-Editor 1988 S.B."/>
+<lang> @L==> Header Load(2 MHz)
+ @S==> Header Save(2 MHz)
+ @R==> Header Load(4 MHz)
+ @W==> Header Save(4 MHz)
+ @A==> ASCII-Anzeige</lang>
+<requires></requires>

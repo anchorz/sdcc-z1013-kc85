@@ -1,0 +1,13 @@
+<kurz src="IC-Datenbank und Editor"/>
+<lang>Inhalt ist eine Teilmenge von [0f9fd217ad47ea95cc654a636a4d2a12]
+Beide Datenbanken sind Syntaktisch nicht ganz korrekt. Die .TXT files wurden 
+aber angepasst, um besser vergleichen zu können.
+
+Es werde die Erweiterungen installiert:
+
+@D 108 - Browser
+@E 268 - Editor
+
+
+<include src="C.IC-DATEI 2.txt"/></lang>
+<requires></requires>

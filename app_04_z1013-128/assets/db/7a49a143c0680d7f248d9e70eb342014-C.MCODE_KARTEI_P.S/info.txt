@@ -1,0 +1,3 @@
+<kurz src="Maschinencode Datenbank Hilfe (RST20)"/>
+<lang><include src="C.MCODE KARTEI P.S.txt"/></lang>
+<requires></requires>

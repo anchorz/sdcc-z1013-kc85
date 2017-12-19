@@ -1,0 +1,3 @@
+<kurz src="Editor Assembler"/>
+<lang>Basiert auf EDAS/4</lang>
+<requires>2.02</requires>

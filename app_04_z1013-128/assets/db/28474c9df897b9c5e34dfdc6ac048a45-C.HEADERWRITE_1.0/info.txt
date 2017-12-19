@@ -1,0 +1,3 @@
+<kurz src="HEADERWRITE (c) by AK V1.0, Kassettenliste erstellen"/>
+<lang></lang>
+<requires></requires>

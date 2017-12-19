@@ -1,0 +1,3 @@
+<kurz src="wie [0bded1adc5adcf4d6d6ff370bde484f2]"/>
+<lang>copyright by S.B. fehlt</lang>
+<requires></requires>

@@ -25,7 +25,7 @@
 <file aadr="1800" eadr="3c89" sadr="0000" typ="I" link="0e705ccf02b960a91547a542eaebfab3-64_zeichen_bs.doc/64_zeichen_bs.doc.z80" name="64-ZEICHEN-BS   " kurz="Zusatzleiterplatte 64-Zeichen-Bildschirm Z1013" />
 <file aadr="2000" eadr="4a0b" sadr="0000" typ="T" link="509c3287d534f7016c9c975d80b2b9c9-T.6502-KURZBESCHR./T.6502-KURZBESCHR..z80" name="6502-KURZBESCHR." kurz="KURZBESCHREIBUNG ZUM PROZESSOR 6502" />
 <file aadr="2bc0" eadr="3ebf" sadr="0000" typ="B" link="59855804b1cf187b6e433247dd2a427e-Ableitung%20(1987)(H.%20Voelz)/Ableitung%20(1987)(H.%20Voelz).z80" name="ABLEI           " kurz="DIFFERENZIALRECHNUNG" />
-<file aadr="0100" eadr="05af" sadr="0100" typ="C" link="0b788aa8f4625cc15c8a00add462de5a-ac_1_tape_v_7/ac_1_tape_v_7.z80" name="AC 1-Tape V.7   " kurz="AC 1 Kassettenroutine V7" />
+<file aadr="0100" eadr="05af" sadr="0100" typ="C" link="0b788aa8f4625cc15c8a00add462de5a-ac_1_tape_v_7/ac_1_tape_v_7.z80" name="AC 1-Tape V.7   " kurz="AC1 Kassettenroutine V7 1988" />
 <file aadr="3000" eadr="3ffc" sadr="cc00" typ="T" link="deefb73d48af21369a88c7105ba6a8d4-T.AC1_=_Z1013/T.AC1_=_Z1013.z80" name="AC1&lt;=&gt;Z1013     " kurz="AC1-TAPE für Z1013" />
 <file aadr="2000" eadr="31ff" sadr="3100" typ="C" link="bc5f6881624fa23635e45ba2b1bdd009-C.AC1_1013%20FolieT./C.AC1_1013%20FolieT..z80" name="AC1/1013 FolieT." kurz="AC1 MONITOR V3.1 (8x4)" />
 <file aadr="2bc0" eadr="313a" sadr="0300" typ="B" link="493a5c8869bb708d76e78d5557f96fa9-B.AD-1KANAL/B.AD-1KANAL.z80" name="AD-1KANAL       " kurz="1 Kanal Digitalvoltmeter, RFE 4/88" />
@@ -172,6 +172,7 @@
 <file aadr="2800" eadr="3cdf" sadr="2800" typ="C" link="e2b0bd5ed5f1f063c34d7d7bfaa44f5c-edas.com/edas.com.z80" name="EDAS            " kurz="robotron Z1013 Editor+Assembler, EDAS 01.01" />
 <file aadr="0800" eadr="1fe1" sadr="0000" typ="I" link="de7273a41ffd17892666ddb0709376f3-I.Edas%201.1%20A+D+H/I.Edas%201.1%20A+D+H.z80" name="Edas 1.1 A+D+H  " kurz="Beschreibung Edas 1.1 A+D+H" />
 <file aadr="2000" eadr="3fff" sadr="2000" typ="C" link="ed03e0be1d049a28f46fbe0de362ab6a-edas_a+d+h+ae_ub/edas_a+d+h+ae_ub.z80" name="Edas A+D+H+ae ub" kurz="neueste Version vom Editor Assembler" />
+<file aadr="2800" eadr="3fff" sadr="2800" typ="C" link="58199bb67bf650da253adbc25e1d59ff-C.EDAS_DRUCK/C.EDAS%20DRUCK.z80" name="EDAS DRUCK      " kurz="modifizierte 01.01 Version" />
 <file aadr="1800" eadr="265d" sadr="0000" typ="T" link="f4e80cb63a5825206a098a61021243a5-edas_text/edas_text.z80" name="Edas TEXT       " kurz="Dokumentation Edas 1.1 a+d+h" />
 <file aadr="1f00" eadr="3fff" sadr="2000" typ="C" link="f6a5f3816009b1d6b6520a98a986ab1d-edas_3_1/edas_3_1.z80" name="EDAS.C          " kurz="Z1013 - EDAS 3.1, Editor+Assembler" />
 <file aadr="0100" eadr="181b" sadr="0100" typ="C" link="a8352373a57e72748e1fd2c82befd2bc-C.EDAS_4/C.EDAS_4.z80" name="EDAS/4          " kurz="EDAS/4 Editor/Assembler "Funkamateur" 1/87 bis 4/87" />
@@ -234,9 +235,11 @@
 <file aadr="1000" eadr="33c7" sadr="0000" typ="I" link="31a70b7cb5a2dc98ba9ee982d81d83e1-I.FORTH.DOC-T3/I.FORTH.DOC-T3.z80" name="FORTH.DOC-T3    " kurz="Programmiersystem FORTH für den Kleinrechner-Bausatz Z1013" />
 <file aadr="2bc0" eadr="4070" sadr="0000" typ="B" link="149ac6aa38ae5ffcc1ddfd67f372bc63-B.FRAKTALE/B.FRAKTALE.z80" name="FRAKTALE        " kurz="Fraktale in Pseudografik" />
 <file aadr="2bc0" eadr="352d" sadr="0000" typ="B" link="45ab07dfbf1fba0aae75ce6f6a7b6f80-frogger/frogger.z80" name="FROGGER         " kurz="FROGGER AND SNAIL, Schnecken einsammeln" />
+<file aadr="0100" eadr="3fff" sadr="0201" typ="C" link="6a6fcda05f8accc60b871245c5015149-C.FROGS-ATTACK/C.FROGS-ATTACK.z80" name="FROGS-ATTACK    " kurz="Invasion Frogs 27.12.1986 Cursortasten" />
 <file aadr="e800" eadr="e9ff" sadr="0000" typ="M" link="97df3e19c77455dd764048c54e92819d-M.FS-TREIBER/M.FS-TREIBER.z80" name="FS-TREIBER      " kurz="Serieller Druckertreiber Port 0x00/0x01" />
 <file aadr="2bc0" eadr="36ec" sadr="0000" typ="B" link="0076def37a674740bc6a9dde18967491-B.FUNKTION/B.FUNKTION.z80" name="FUNKTION        " kurz="Darstellung von Funktionen in Parameterdarstellung, Polar- oder kartesischen Koordinaten" />
 <file aadr="0100" eadr="049f" sadr="0100" typ="C" link="2f4b2c000c99b2b158c2ad31bcaa12fd-fussball/fussball.z80" name="FUSSBALL        " kurz="Tischfussball" />
+<file aadr="0100" eadr="2b50" sadr="0103" typ="C" link="302ad523bc14035de436e9d7b20b6bbf-C.FUSSGAENGER/C.FUSSGAENGER.z80" name="FUSSGAENGER     " kurz="Fußgänger + Joystick Practic 04/87 oder JU+TE 06/87" />
 <file aadr="0200" eadr="11ff" sadr="0200" typ="C" link="783cd4e89fc0aadf585957641a7102cb-galactica/galactica.z80" name="GALACTIKA       " kurz="Reaktionsspiel frei nach dem ARKADE-Spiel CENTIPEDE" />
 <file aadr="0200" eadr="120e" sadr="1200" typ="C" link="635f14dbd74d510b8915598a0fbe0356-galaktika+prJ/galaktika+prJ.z80" name="GALAKTIKA+Joy.  " kurz="Frei nach dem ARKADE-Spiel CENTIPEDE+Joystick Practic 01/88" />
 <file aadr="0100" eadr="0cff" sadr="0cf0" typ="C" link="2b79807c7ef3e2d87d98d4911995dbbd-galaxis+prJ/galaxis+prJ.z80" name="GALAXIS(J)      " kurz="Weltraum-Ballerei, Raumkorridor beschützen+Joystick Practic 01/88" />
@@ -256,6 +259,7 @@
 <file aadr="2300" eadr="5665" sadr="15d1" typ="T" link="b1fb28f798a13da365db2e48201d8942-T.GENS_DOC_NEW/T.GENS%20DOC%20NEW.z80" name="GENS DOC NEW    " kurz="ASSEMBLER GENS 3.2 fuer Z 1013" />
 <file aadr="1800" eadr="2989" sadr="0100" typ="T" link="3dbed8357dce39f5db89fae5451ae728-T.GENS_DOK/T.GENS%20DOK.z80" name="GENS DOK        " kurz="GENS - Arbeitshinweise zum Assembler" />
 <file aadr="0100" eadr="1cff" sadr="0100" typ="C" link="54604c02c55ba988e20e250085204961-C.GENS3.2K%20RE=11A/C.GENS3.2K%20RE=11A.z80" name="GENS3.2K RE=11A " kurz="Assembler" />
+<file aadr="0100" eadr="1ed2" sadr="0100" typ="C" link="439557d8fa0c1ca09c504947b83322ff-C.GENS3M_M/C.GENS3M%20M.z80" name="GENS3M M        " kurz="GENS3M M, Hisoft Gens3M Assembler" />
 <file aadr="2bc0" eadr="3c85" sadr="0000" typ="B" link="560df5dc4a5c588ad52f83d1a48f1583-B.GEO-TEST/B.GEO-TEST.z80" name="GEO-TEST        " kurz="Wissenstest DDR" />
 <file aadr="0100" eadr="16ff" sadr="0928" typ="M" link="bb82200d65e23ba9de3054da33c55762-M.GERAETETREIBER/M.GERAETETREIBER.z80" name="GERAETETREIBER  " kurz="Gerätesteuerung über PIO-Port-A, frühe Form eine Scripts" />
 <file aadr="1000" eadr="299f" sadr="0000" typ="b" link="e1d854bd4b1a3db1b748f096421d19bc-b.GESUNDHEIT%201/b.GESUNDHEIT%201.z80" name="GESUNDHEIT 1    " kurz="Test um festzustellen, ob du gesund lebst" />
@@ -285,6 +289,7 @@
 <file aadr="3100" eadr="608e" sadr="0000" typ="I" link="832206a28857a892757370347ea0a730-I.HDISKCOPY_1.4-2/I.HDISKCOPY%201.4-2.z80" name="HDISKCOPY 1.4-2 " kurz="HDISKCOPY 1.4 und 1.42, 9.10.1989" />
 <file aadr="e000" eadr="e8ff" sadr="e800" typ="C" link="98e9de50c4e5bb8df579b6ffc7367676-C.HEAD.DISK%2045_ME/C.HEAD.DISK%2045_ME.z80" name="HEAD.DISK 45/ME " kurz="HEADERDISK45 auf 0xE000 verschoben+ ME Modifikation" />
 <file aadr="0800" eadr="1826" sadr="0000" typ="I" link="d83c275b948b2cced485646bd3270c37-head_disk%2045_me(i)/head_disk%2045_me(i).z80" name="HEAD.DISK 45/ME " kurz="HEADERDISK45 auf 0xE000 verschoben+ ME" />
+<file aadr="c000" eadr="c8ff" sadr="c800" typ="C" link="e2061ff9994c890dac06b31f9c20436c-head_disk_45_me/head_disk%2045_me.z80" name="HEAD.DISK 45/ME " kurz="HEADERDISK45 auf 0xC000 verschoben+ ME Modifikation" />
 <file aadr="0800" eadr="1781" sadr="0000" typ="I" link="c57560c2326e051f0620e4e4bc10b073-I.HEAD.DISK%2045_ZM/I.HEAD.DISK%2045_ZM.z80" name="HEAD.DISK 45/ZM " kurz="HEADERSAVE-kompatible Verwaltung, leicht verändert" />
 <file aadr="e000" eadr="e707" sadr="e400" typ="C" link="dbfc4d4c8e6daa37a50a2eefafb6f939-C.HEADER_MENUE/C.HEADER%20MENUE.z80" name="HEADER MENUE    " kurz="PROGRAMM ZUM SOFTWARETAUSCH V1" />
 <file aadr="e000" eadr="e4bc" sadr="e000" typ="C" link="479b01b95c4c01336915b59df1247883-C.HEADER-DISK%2027K/C.HEADER-DISK%2027K.z80" name="HEADER-DISK 27K " kurz="HEADERSAVE-kompatible Verwaltung RAM-Diskette nach MP 3/88" />
@@ -296,6 +301,7 @@
 <file aadr="0100" eadr="03f0" sadr="0000" typ="I" link="62ebcfc7562efea5bfaf777a92e121ef-I.HEADERBANK/I.HEADERBANK.z80" name="HEADERBANK      " kurz="HEADER-SAVE BANK" />
 <file aadr="0100" eadr="0755" sadr="0100" typ="C" link="a89ca30bab335ac940411016c26b1905-C.HEADERBANK_ZEIT/C.HEADERBANK%20ZEIT.z80" name="HEADERBANK ZEIT " kurz="HEADER-BANK-Copy, Kopierhilfe für Kassetten" />
 <file aadr="d800" eadr="dfff" sadr="d81b" typ="C" link="0321a5b27707bc1b87a8918fae29750a-headerdisk%2045/headerdisk%2045.z80" name="HEADERDISK 45   " kurz="HEADERSAVE-kompatible Verwaltung von max. 2 RAM-Disketten nach MP 3/88" />
+<file aadr="c000" eadr="c7ff" sadr="c01b" typ="C" link="a63457865607e43abcc41f00cea34793-C.HEADERDISK_45/C.HEADERDISK%2045.z80" name="HEADERDISK 45   " kurz="HEADERSAVE-kompatible Verwaltung von max. 2 RAM-Disketten 0xC000" />
 <file aadr="0800" eadr="1410" sadr="0000" typ="I" link="c15d3e15221b2b540f1343493d4879eb-I.HEADERDISK%2045/I.HEADERDISK%2045.z80" name="HEADERDISK 45   " kurz="HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88. " />
 <file aadr="e000" eadr="e7ff" sadr="e01b" typ="C" link="cd457371685c85e8d6f07051211e787d-C.HEADERDISK%2045/C.HEADERDISK%2045.z80" name="HEADERDISK 45   " kurz="HEADERSAVE-kompatible Verwaltung von max. 2 RAM-Disketten nach MP 3/88" />
 <file aadr="3000" eadr="3e5b" sadr="0000" typ="I" link="2f9ce6b5961b0e1de090700b514da7f0-I.HeaderDisk56/I.HeaderDisk56.z80" name="HeaderDisk56    " kurz="HEADERSAVE, RAM-Disketten, Frank Scheffler IG-HC 01/90" />
@@ -306,9 +312,11 @@
 <file aadr="3000" eadr="6117" sadr="0000" typ="I" link="858006e13e98d663038107625ecacff2-I.HEADERSAVE/I.HEADERSAVE.z80" name="HEADERSAVE      " kurz="HEADER-SAVE V 5.95 (C) by RB" />
 <file aadr="2000" eadr="3bba" sadr="0000" typ="I" link="0cc48f65621a7478c0a3aaaed675e7bf-headersave_5_9_I/headersave_5_9_I.z80" name="HEADERSAVE 5.9  " kurz="HEADER-SAVE Format; Laden und Speichern auf Kassette" />
 <file aadr="e000" eadr="e3ff" sadr="e3ee" typ="C" link="477ad7f00ced7f87c8af62cbed04d112-C.HEADERSAVE%205.95/C.HEADERSAVE%205.95.z80" name="HEADERSAVE 5.95 " kurz="Load/Save-Routine 5.95 0E000h" />
+<file aadr="e000" eadr="ebff" sadr="e3ee" typ="C" link="0bded1adc5adcf4d6d6ff370bde484f2-C.Headersoft/C.Headersoft.z80" name="Headersoft      " kurz="HEADERSAVE Konvertierung von 2MHz/4MHz, ASCII Speicher-Editor 1988 S.B." />
 <file aadr="1000" eadr="1226" sadr="0000" typ="b" link="c7331135b6ce468654c62288080b4c8a-b.HEADERTRANS%201/b.HEADERTRANS%201.z80" name="HEADERTRANS 1   " kurz="" />
 <file aadr="0100" eadr="05d6" sadr="0100" typ="C" link="797fa8073e9dcc91eb7129be7a9dc389-C.HEADERWRITE%200.9/C.HEADERWRITE%200.9.z80" name="HEADERWRITE 0.9 " kurz="Kassettenlisten erstellen, ähnlich HEADERPRINT" />
-<file aadr="0800" eadr="1819" sadr="0000" typ="I" link="2b347b4fb94c73855f98b21a9774a441-I.HEADERWRITE%201.0^/I.HEADERWRITE%201.0^.z80" name="HEADERWRITE 1.0^" kurz="Koepfe von mit HEADERSAVE lesen" />
+<file aadr="0100" eadr="05de" sadr="0100" typ="C" link="28474c9df897b9c5e34dfdc6ac048a45-C.HEADERWRITE_1.0/C.HEADERWRITE%201.0.z80" name="HEADERWRITE 1.0 " kurz="HEADERWRITE (c) by AK V1.0, Kassettenliste erstellen" />
+<file aadr="0800" eadr="1819" sadr="0000" typ="I" link="2b347b4fb94c73855f98b21a9774a441-I.HEADERWRITE%201.0^/I.HEADERWRITE%201.0^.z80" name="HEADERWRITE 1.0^" kurz="Kassettenlisten erstellen, Köpfe von HEADERSAVE Dateien einlesen" />
 <file aadr="0100" eadr="07ff" sadr="0100" typ="C" link="2ae851edc0378818f97c75107dc9dcda-heartrunner/heartrunner.z80" name="HEARTRUNNER     " kurz="Version mit erweiterten Tastenkombinationen" />
 <file aadr="0100" eadr="07ff" sadr="0100" typ="C" link="114084cbf1545cfe9f148cf87215b993-heartrunner_rb/heartrunner_rb.z80" name="HEARTRUNNER RB  " kurz="Version mit RST20" />
 <file aadr="0100" eadr="084e" sadr="0840" typ="C" link="956e4d067515ec3a9083a16b32051c43-heartrunner+prJ/heartrunner+prJ.z80" name="Heartrunner+Joy" kurz="" />
@@ -319,7 +327,7 @@
 <file aadr="0100" eadr="0150" sadr="0100" typ="C" link="1cb652f624f9758d31b79e2277047631-C.HEXDUMP/C.HEXDUMP.z80" name="HEXDUMP         " kurz="Hexdump 6 Bytes pro Zeile mit ASCII Zeichen" />
 <file aadr="d700" eadr="dffd" sadr="d700" typ="C" link="fd495d34cdeab81b09c82b98937deac3-C.HexDump%201.01/C.HexDump%201.01.z80" name="HexDump 1.01    " kurz="Hex-Dump und Hex-Editor (ohne Prüfsummen)" />
 <file aadr="d600" eadr="dff8" sadr="d600" typ="C" link="55e7e88ebf6f3c54a0f174339d391376-C.HexDump%201.021/C.HexDump%201.021.z80" name="HexDump 1.021   " kurz="Hex-Dump und Hex-Editor (ohne Prüfsummen), neuere Version" />
-<file aadr="3000" eadr="637d" sadr="0000" typ="I" link="65fe80df5982c062783827c478b67a59-I.HEXDUMP%201.021/I.HEXDUMP%201.021.z80" name="HEXDUMP 1.021   " kurz="identisch [e47db608460e1b2c182f61ad60bf974b]" />
+<file aadr="3000" eadr="637d" sadr="0000" typ="I" link="65fe80df5982c062783827c478b67a59-I.HEXDUMP%201.021/I.HEXDUMP%201.021.z80" name="HEXDUMP 1.021   " kurz="Hex-Dump und Hex-Editor" />
 <file aadr="2bc0" eadr="3119" sadr="0302" typ="B" link="d0cbc01a09f1d6fb2c54d55c6900a8e9-B.HILFE%20BASICSUCHE/B.HILFE%20BASICSUCHE.z80" name="HILFE BASICSUCHE" kurz="BASIC Parser, Programmstruktur anzeigen FOR/NEXT GOTO GOSUB etc" />
 <file aadr="1000" eadr="308f" sadr="0000" typ="b" link="24bc2dee1ddd0765952df706153a81bb-b.HINDERNIS1%20L/b.HINDERNIS1%20L.z80" name="HINDERNIS**1 L  " kurz="HINDERNISRENNEN" />
 <file aadr="0100" eadr="0500" sadr="0103" typ="C" link="2e5f86ea78f9fd689c60d95a8b62d508-hindernislauf/hindernislauf.z80" name="HINDERNISLAUF   " kurz="Passiere die Hindernisse, ohne anzustossen!" />
@@ -338,6 +346,8 @@
 <file aadr="1000" eadr="19ea" sadr="0000" typ="b" link="1d5f69130b9a6254ba3dced778958448-b.HUEPFECK/b.HUEPFECK.z80" name="HUEPFECK        " kurz="Huepf-Eck durch Hindernisparcour navigieren(8x4)" />
 <file aadr="8aac" eadr="a6cf" sadr="8aac" typ="C" link="5e02d0cbd66c6266bafefa67e767996a-C.HUNDI/C.HUNDI.z80" name="HUNDI           " kurz="Animation Hund" />
 <file aadr="1000" eadr="17ff" sadr="0000" typ="E" link="4e535e15299458a066506aefee8e9912-ibm_zg+din/ibm_zg+din.z80" name="IBM-ZG+DIN      " kurz="Zeichensatz, breite CGA Version+IBM Erweiterung" />
+<file aadr="00b0" eadr="2fdb" sadr="0268" typ="C" link="0b2d181fba5f2ca23a5315075e727c05-ic-datei_2/ic-datei%202.z80" name="IC-DATEI 2      " kurz="IC-Datenbank und Editor" />
+<file aadr="0100" eadr="3277" sadr="0108" typ="C" link="0f9fd217ad47ea95cc654a636a4d2a12-C.IC-DATEI_268/C.IC-DATEI_268.z80" name="IC-DATEI/268    " kurz="IC Datenbank" />
 <file aadr="0200" eadr="1f81" sadr="0203" typ="C" link="bc5bf51b0d22ce837ee1d9d558fcd2a8-C.INFO%201/C.INFO%201.z80" name="INFO 1          " kurz="INFO-MATERIAL ZU: OLITEX, HEADERSAVE, 10K-BASIC" />
 <file aadr="3000" eadr="47e4" sadr="31e4" typ="I" link="5b5330c1236dd35e00f673756abfc4b7-I.INSTAL%205_89/I.INSTAL%205_89.z80" name="INSTAL 5/89     " kurz="Installationshinweise FORTH83-Version der Arbeitsgemeinschaft FORTH" />
 <file aadr="1000" eadr="1eb7" sadr="0000" typ="b" link="52203a1ce0c6a1f676e28719435282e0-b.INVASION/b.INVASION.z80" name="INVASION        " kurz="mit der letzten Protonenkanone Cylonen abschießen" />
@@ -424,8 +434,12 @@
 <file aadr="0100" eadr="1fff" sadr="0100" typ="C" link="284d4fa07375e305990b4cf94f2f7003-mazogs_rb_int_2/mazogs_rb_int_2.z80" name="MAZOGS RB INT 2 " kurz="Spezialversion mit Tastaturinterrupt" />
 <file aadr="1000" eadr="1e4d" sadr="1000" typ="C" link="2493d1ee769c274ef29a640d83d294f8-C.MC-CODE%20EDITOR/C.MC-CODE%20EDITOR.z80" name="MC-CODE EDITOR  " kurz="Tool, Maschinenkode-Editor" />
 <file aadr="2bc0" eadr="3105" sadr="0302" typ="B" link="39a14bfd70f1730c6e7a6a8cdf439ec2-B.MC-IN%20(Eingabe)/B.MC-IN%20(Eingabe).z80" name="MC-IN (Eingabe) " kurz="MC-Programm-Ersteller, Hexdump eingeben und mit Prüfsumme vergleichen." />
+<file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="7a49a143c0680d7f248d9e70eb342014-C.MCODE_KARTEI_P.S/C.MCODE%20KARTEI%20P.S.z80" name="MCODE KARTEI P.S" kurz="Maschinencode Datenbank Hilfe" />
+<file aadr="0100" eadr="1c1c" sadr="0100" typ="C" link="754be3b310a001a811e80fba117b5485-C.MDEDAS7/C.MDEDAS7.z80" name="MDEDAS*7        " kurz="Editor Assembler" />
 <file aadr="2bc0" eadr="3c00" sadr="0000" typ="B" link="5da1272aeddb5d6c417e8ff3e23eb0ff-memory/memory.z80" name="MEMORY          " kurz="Merkspiel, Karten umdrehen" />
 <file aadr="1000" eadr="1e8e" sadr="0000" typ="b" link="f5384973126e856f2e4975b670373e84-b.MEMORY%201/b.MEMORY%201.z80" name="MEMORY 1        " kurz="Memory mit Buchstaben" />
+<file aadr="0100" eadr="0388" sadr="0100" typ="C" link="e67e7d477e10e704ce897d61292c2243-C.MEMORYTEST_1/C.MEMORYTEST%201.z80" name="MEMORYTEST 1    " kurz="MEMORYTEST 1" />
+<file aadr="0100" eadr="0374" sadr="0100" typ="C" link="e38e0cb1115866f1ccc10d307c937651-C.MEMORYTEST_2/C.MEMORYTEST%202.z80" name="MEMORYTEST 2    " kurz="MEMORYTEST 2" />
 <file aadr="2bc0" eadr="4ff1" sadr="2bc0" typ="B" link="13304f5ea0eca8b82e845f578e60dec8-B.MESSE/B.MESSE.z80" name="MESSE           " kurz="Messe-Schauprogramm Z1013, Grafikdemo, Werbung" />
 <file aadr="2bc0" eadr="3330" sadr="0302" typ="B" link="3f0c678da961e47c2e02d051c36ea069-B.METEO/B.METEO.z80" name="METEO           " kurz="METEO 1, RAUMSCHIFF FLIEGT DURCH METEORITENSCHWARM" />
 <file aadr="2bc0" eadr="3b38" sadr="0000" typ="B" link="772570da6960362ab754130ae19591aa-B.METEOR/B.METEOR.z80" name="METEOR          " kurz="Sonde muss Meteoren hinterherjagen oder abfangen" />
@@ -521,6 +535,7 @@
 <file aadr="2bc0" eadr="36ba" sadr="0000" typ="B" link="9af35414a3ff90797d19fef6b3a4f164-B.R+HANOI/B.R+HANOI.z80" name="R+HANOI         " kurz="mathematisches Knobel- und Geduldsspiel" />
 <file aadr="0800" eadr="1d30" sadr="0000" typ="I" link="95f468309172456cfa50fd029a3440d6-I.R-80%20DISK%202.66/I.R-80%20DISK%202.66.z80" name="R-80 DISK 2.66  " kurz="R-80 REASSEMBLER" />
 <file aadr="3000" eadr="43f5" sadr="0000" typ="I" link="ae6dd361d13237ad72da1387687f25a0-I.R-80_DISK_2.68/I.R-80%20DISK%202.68.z80" name="R-80 DISK 2.68  " kurz="R-80 REASSEMBLER 2.68" />
+<file aadr="4000" eadr="5999" sadr="4000" typ="C" link="59a2b7823460952a5a1fe8da91903987-C.R-80_SPV/C.R-80%20SPV.z80" name="R-80 SPV        " kurz="R-80 Reassembler extended version RB by N.Hildebrandt" />
 <file aadr="1800" eadr="3c4b" sadr="0000" typ="I" link="dbc2a1017cc1c21aec6f06566b130f51-r_80_doc_1_2/r_80_doc_1_2.z80" name="R-80.DOC 1.2    " kurz="R-80 REASSEMBLER ver. RB" />
 <file aadr="3000" eadr="5523" sadr="0000" typ="I" link="2e721e9e905dd8a4aa74fd9af0c54690-I.R-80.DOC_1.3/I.R-80.DOC%201.3.z80" name="R-80.DOC 1.3    " kurz="R-80 REASSEMBLER VERSION 1.3" />
 <file aadr="4000" eadr="5b70" sadr="4000" typ="C" link="04247772e5e6737c52fa55d0ab4c8bbb-C.R80-REASSEMBLER/C.R80-REASSEMBLER.z80" name="R80-REASSEMBLER " kurz="R-80 REASSEMBLER VERSION 1.01" />
@@ -575,8 +590,10 @@
 <file aadr="3000" eadr="413b" sadr="0000" typ="I" link="26455e9618c8d20a53d90ec185c3505a-scp_2rf_2_38_doc/scp_2rf_2_38_doc.z80" name="SCP 2RF 2.38 DOC" kurz="Besonderheiten des Betriebssystems SCP-2RF 2.38M für den Z1013" />
 <file aadr="c800" eadr="e362" sadr="de00" typ="C" link="10f334eeba462179c4ea7874c4e44548-C.SCP%20EXT.RF%201.5/C.SCP%20EXT.RF%201.5.z80" name="SCP EXT.RF 1.5  " kurz="CP/M 2.2 Z1013 IG-HC mit ext. RAM-Floppy V.1.5" />
 <file aadr="c800" eadr="e365" sadr="de00" typ="C" link="877797619ef98b63747c19cb6932cfec-C.SCP%20EXT.RF%201.6%20K/C.SCP%20EXT.RF%201.6%20K.z80" name="SCP EXT.RF 1.6 K" kurz="CP/M 2.2 Z1013 IG-HC mit ext. RAM-Floppy V.1.6" />
+<file aadr="c800" eadr="e7ff" sadr="e7e0" typ="C" link="e61ad068800cc40410eeadf1247d5e5f-scp_f_moni_1_31/scp%20f_moni%201_31.z80" name="SCP f.MONI 1.31 " kurz="SCP-2RF 2.38M mit einigen Anpassungen an Moni 1.31" />
 <file aadr="c800" eadr="e3a0" sadr="de00" typ="C" link="00f77046758dd9a20a2403e960cbd7ea-scp_plus_f800.com/scp_plus_f800.com.z80" name="SCP+F800        " kurz="CP/M VERS. 2.2 RAM-DISK 7000H-C3FFH" />
 <file aadr="c800" eadr="ebff" sadr="de00" typ="C" link="689e49eab13a569082412b203f7fd5fe-C.SCP-2+1%203.3/C.SCP-2+1%203.3.z80" name="SCP-2+1 3.3     " kurz="CP/M 2.2 Z1013 IG-HC 1.6 FDD+2*256K RF V.3.3" />
+<file aadr="c800" eadr="e7d6" sadr="de00" typ="C" link="1a866c5653eadbf47eaf11cacc84d565-C.SCP-2RF_2.38M/C.SCP-2RF%202.38M.z80" name="SCP-2RF 2.38M   " kurz=" CP/M 2.2 Z1013 IG-HC mit 2*256K RAM-Floppy V2.3" />
 <file aadr="c800" eadr="e7ff" sadr="de00" typ="C" link="2b0074091d5ffe3fbd3e85b3290ffbc0-scp_2rf_2_40m.com/scp_2rf_2_40m.com.z80" name="SCP-2RF 2.40M   " kurz="" />
 <file aadr="3000" eadr="4161" sadr="0000" typ="I" link="85d12ca551337b3646abf8efd0dc62aa-I.SCP-2RF.DOC/I.SCP-2RF.DOC.z80" name="SCP-2RF.DOC     " kurz="Besonderheiten des Betriebssystems SCP-2RF 2.40M für den Z1013" />
 <file aadr="3000" eadr="384f" sadr="0000" typ="I" link="670767abd6472aa6bb56d03af0c20f1b-I.SEDIT-DOC%205_89/I.SEDIT-DOC%205_89.z80" name="SEDIT-DOC 5/89  " kurz="BESCHREIBUNG FORTH 83 SEDIT" />
@@ -596,6 +613,7 @@
 <file aadr="0100" eadr="02ff" sadr="0200" typ="C" link="663258d4f714f127cea7614f98e32277-C.Speichertest/C.Speichertest.z80" name="Speichertest    " kurz="Speichertest im Bildschirmspeicher" />
 <file aadr="3cd0" eadr="3fff" sadr="3cd0" typ="C" link="3f43cababb5057747e039b6c347e15f4-C.SPEKTR.-INTERF./C.SPEKTR.-INTERF..z80" name="SPEKTR.-INTERF. " kurz="ZX SPEKTRUM KASSETTENINTERFACE Load/Save" />
 <file aadr="2bc0" eadr="405c" sadr="0000" typ="B" link="9ce73591b0deaaef5e795090583b4f57-B.SPIEDI2/B.SPIEDI2.z80" name="SPIEDI2         " kurz="Mauerspiel, Eingabe über PEEK(4)" />
+<file aadr="a000" eadr="a707" sadr="e400" typ="C" link="440f86f5fc4318271921d46d49038e97-C.SPIEL_MENUE__JD_/C.SPIEL%20MENUE%20_JD_.z80" name="SPIEL MENUE &gt;JD&lt;" kurz="RAM-Disk für Spieleauswahl" />
 <file aadr="2bc0" eadr="3a66" sadr="2b50" typ="B" link="1319469090c763b292353cf5c954dce6-B.SPIELBOX/B.SPIELBOX.z80" name="SPIELBOX        " kurz="Spielautomat, einarmiger Bandit, Schachfiguren als Grafik" />
 <file aadr="1000" eadr="26dc" sadr="0000" typ="b" link="958204af3093c3e734eb40e0a38ab274-b.SPIELE%201/b.SPIELE%201.z80" name="SPIELE 1        " kurz="Mastermind, 23, Zahlenraten, Zeichnen" />
 <file aadr="4200" eadr="ebb5" sadr="4200" typ="C" link="f80ef153cb08982e99d68158596262e6-spiele_1/spiele_1.z80" name="Spiele 1        " kurz="Schlange, Pursuit, Mazog, Jumping Jack, Wurmi, Othello, Minefield" />
@@ -723,4 +741,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 723 Dateien."/></doc>
+<status src="Datenbank enthält 741 Dateien."/></doc>

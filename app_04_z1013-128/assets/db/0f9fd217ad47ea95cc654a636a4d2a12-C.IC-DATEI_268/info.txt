@@ -1,0 +1,3 @@
+<kurz src="IC Datenbank"/>
+<lang><include src="C.IC-DATEI_268.txt"/></lang>
+<requires></requires>

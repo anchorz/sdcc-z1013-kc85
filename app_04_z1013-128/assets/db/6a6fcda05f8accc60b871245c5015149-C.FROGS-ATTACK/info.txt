@@ -1,0 +1,6 @@
+<kurz src="Invasion Frogs 27.12.1986 Cursortasten"/>
+<lang>BASIC Programm
+überarbeitete Version von [f07e35b0489276917b59292501a455ce]
+Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ 
+<include src="C.FROGS-ATTACK.B"/></lang>
+<requires></requires>

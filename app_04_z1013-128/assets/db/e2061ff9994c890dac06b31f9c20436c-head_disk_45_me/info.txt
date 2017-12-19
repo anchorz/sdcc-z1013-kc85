@@ -1,0 +1,3 @@
+<kurz src="HEADERDISK45 auf 0xC000 verschoben+ ME Modifikation"/>
+<lang>(ME)Initialisierung Kommandoerweiterung an 0x00B0 unterschiedlich</lang>
+<requires></requires>

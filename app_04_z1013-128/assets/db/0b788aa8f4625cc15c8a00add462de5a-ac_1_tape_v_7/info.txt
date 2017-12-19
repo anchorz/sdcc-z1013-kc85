@@ -1,4 +1,4 @@
-<kurz src="AC 1 Kassettenroutine V7"/>
+<kurz src="AC1 Kassettenroutine V7 1988"/>
 <lang>
 * * AC 1 Kassettenroutine * *
 

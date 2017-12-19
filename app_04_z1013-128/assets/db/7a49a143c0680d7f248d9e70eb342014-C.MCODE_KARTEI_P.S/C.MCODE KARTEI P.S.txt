@@ -1,0 +1,729 @@
+LD A A 7F 
+LD A B 78 
+LD A C 79 
+LD A D 7A 
+LD A E 7B 
+LD A H 7C 
+LD A L 7D 
+LD A (HL) 7E 
+LD A (BC) 0A 
+LD A (DE) 1A 
+LD A (nn) 3A 
+LD A n 3E 
+LD B A 47 
+LD B B 40 
+LD B C 41 
+LD B D 42 
+LD B E 43 
+LD B H 44 
+LD B L 45 
+LD B (HL) 46 
+LD B n 06 
+LD C A 4F 
+LD C B 48 
+LD C C 49 
+LD C D 4A 
+LD C E 4B 
+LD C H 4C 
+LD C L 4D 
+LD C (HL) 4E 
+LD C n 0E 
+LD D A 57 
+LD D B 50 
+LD D C 51 
+LD D D 52 
+LD D E 53 
+LD D H 54 
+LD D L 55 
+LD D (HL) 56 
+LD D n 16 
+LD E A 5F 
+LD E B 58 
+LD E C 59 
+LD E D 5A 
+LD E E 5B 
+LD E H 5C 
+LD E L 5D 
+LD E (HL) 5E 
+LD E n 1E 
+LD H A 67 
+LD H B 60 
+LD H C 61 
+LD H D 62 
+LD H E 63 
+LD H H 64 
+LD H L 65 
+LD H (HL) 66 
+LD H n 26 
+LD L A 6F 
+LD L B 68 
+LD L C 69 
+LD L D 6A 
+LD L E 6B 
+LD L H 6C 
+LD L L 6D 
+LD L (HL) 6E 
+LD L n 2E 
+LD (HL) A 77 
+LD (HL) B 70 
+LD (HL) C 71 
+LD (HL) D 72 
+LD (HL) E 73 
+LD (HL) H 74 
+LD (HL) L 75 
+LD (HL) n 36 
+LD (BC) A 02 
+LD (DE) A 12 
+LD (nn) A 32 
+LD A (IX+d) DD7E 
+LD B (IX+d) DD46 
+LD C (IX+d) DD4E 
+LD D (IX+d) DD56 
+LD E (IX+d) DD5E 
+LD H (IX+d) DD66 
+LD L (IX+d) DD6E 
+LD A (IY+d) FD7E 
+LD B (IY+d) FD46 
+LD C (IY+d) FD4E 
+LD D (IY+d) FD56 
+LD H (IY+d) FD66 
+LD L (IY+d) FD6E 
+LD E (IY+d) FD5E 
+LD (IX+d) A DD77 
+LD (IX+d) B DD70 
+LD (IX+d) C DD71 
+LD (IX+d) D DD72 
+LD (IX+d) E DD73 
+LD (IX+d) H DD74 
+LD (IX+d) L DD75 
+LD (IY+d) A FD77 
+LD (IY+d) B FD70 
+LD (IY+d) C FD71 
+LD (IY+d) D FD72 
+LD (IY+d) E FD73 
+LD (IY+d) H FD74 
+LD (IY+d) L FD75 
+LD (IX+d) n DD36 
+LD (IY+d) n FD36 
+LD A I ED57 
+LD A R ED5F 
+LD I A ED47 
+LD A A ED4F 
+LD BC nn 01 
+LD DE nn 11 
+LD HL nn 21 
+LD SP nn 31 
+LD IX nn DD21 
+LD IY nn FD21 
+LD BC (nn) ED4B 
+LD DE (nn) ED5B 
+LD HL (nn) 2A 
+LD SP (nn) ED7B 
+LD IX (nn) DD2A 
+LD IY (nn) FD2A 
+LD (nn) BC ED43 
+LD (nn) DE ED53 
+LD (nn) HL 22 
+LD (nn) SP ED73 
+LD (nn) IX DD22 
+LD (nn) IY FD22 
+LD SP HL F9 
+LD SP IX DDF9 
+LD SP IY FDF9 
+PUSH BC C5 
+PUSH DE D5 
+PUSH HL E5 
+PUSH AF F5 
+PUSH IX DDE5 
+PUSH IY FDE5 
+POP BC C1 
+POP DE D1 
+POP HL E1 
+POP AF F1 
+POP IX DDE1 
+POP IY FDE1 
+EX (SP) IX DDE3 
+EX (SP) IY FDE3 
+EX DE HL EB 
+EXAF 08 
+EXX D9 
+LDI EDA0 
+LDIR EDB0 
+LDD EDA8 
+LDDR EDB8 
+CPI EDA1 
+CPIR EDB1 
+CPDR EDB9 
+JPC DA 
+JMP C3 
+JMP (HL) E9 
+JMP (IX) DDE9 
+JMP (IY) FDE9 
+RST 00 C7 
+RST 08 CF 
+RST 10 D7 
+RST 18 DF 
+RST 20 E7 
+RST 28 EF 
+RST 30 F7 
+RST 38 FF 
+NOP 00 
+CCF 3F 
+SCF 37 
+EI FB 
+DI F3 
+IM 0 ED46 
+IM 1 ED56 
+IM 2 ED5E 
+IN A ED78 
+IN B ED40 
+IN C ED48 
+IN D ED50  
+IN E ED58 
+IN H ED60 
+IN L ED68 
+OUT A ED79 
+OUT B ED41 
+OUT C ED49 
+OUT D ED51 
+OUT E ED59 
+OUT H ED61 
+OUT L ED69 
+INI EDA2 
+INIR EDB2 
+IND EDAA 
+INDR EDBA 
+OUTI EDA3 
+OTIR EDB3 
+OUTD EDAB 
+OTDR EDBB 
+ADD B 80 
+ADD C 81 
+ADD D 82 
+ADD E 83 
+ADD H 84 
+ADD L 85 
+ADD (HL) 86 
+ADD A 87 
+ADC B 88 
+ADC C 89 
+ADC D 8A 
+ADC E 8B 
+ADC H 8C 
+ADC L 8D 
+ADC (HL) 8E 
+ADC A 8F 
+SUB B 90 
+SUB C 91 
+SUB D 92 
+SUB E 93 
+SUB H 94 
+SUB L 95 
+SUB (HL) 96 
+SUB A 97 
+SBC B 98 
+SBC C 99 
+SBC D 9A 
+SBC E 9B 
+SBC H 9C 
+SBC L 9D 
+SBC (HL) 9E 
+SBC A 9F 
+AND B A0 
+AND C A1 
+AND D A2 
+AND E A3 
+AND H A4 
+AND L A5 
+AND (HL) A6 
+AND A A7 
+XOR B A8 
+XOR C A9 
+XOR D AA 
+XOR E AB 
+XOR H AC 
+XOR L AD 
+XOR (HL) AE 
+XOR A AF 
+OR B B0 
+OR C B1 
+OR D B2 
+OR E B3 
+OR H B4 
+OR L B5 
+OR (HL) B6 
+OR A B7 
+CMP B B8 
+CMP C B9 
+CMP D BA 
+CMP E BB 
+CMP H BC 
+CMP L BD 
+CMP (HL) BE 
+CMP A BF 
+INC B 04 
+INC C 0C 
+INC D 14 
+INC E 1C 
+INC H 24 
+INC L 2C 
+INC (HL) 34 
+INC A 3C 
+DEC B 05 
+DEC C 0D 
+DEC D 15 
+DEC E 1D 
+DEC H 25 
+DEC L 2D 
+DEC (HL) 35 
+DEC A 3D 
+NEG ED44 
+INC BC 03 
+INC DE 13 
+INC HL 23 
+INC SP 33 
+INC IX DD23 
+INC IY FD23 
+DEC BC 0B 
+DEC DE 1B 
+DEC HL 2B 
+DEC SP 3B 
+DEC IX DD2B 
+DEC IY FD2B 
+ADD HL BC 09 
+ADD HL DE 19 
+ADD HL HL 29 
+ADD HL SP 39 
+ADC HL BC ED4A 
+ADC HL DE ED5A 
+ADC HL HL ED6A 
+ADC HL SP ED7A 
+SBC HL BC ED42 
+SBC HL DE ED52 
+SBC HL HL ED62 
+ADD IX BC DD09 
+ADD IX DE DD19 
+ADD IX SP DD39 
+ADD IX IX DD29 
+ADD IY BC FD09 
+ADD IY DE FD19 
+ADD IY SP FD39 
+ADD IY IY FD29 
+RLCA 07 
+RRCA 0F 
+RR B CB18 
+RR C CB19 
+RR D CB1A 
+RR E CB1B 
+RR H CB1C 
+RR A CB1F 
+RL B CB10 
+RL C CB11 
+RL D CB12 
+RL E CB13 
+RL H CB14 
+RL L CB15 
+RL (HL) CB16 
+RL A CB17 
+RRC B CB08 
+RRC C CB09 
+RRC D CB0A 
+RRC E CB0B 
+RRC H CB0C 
+RRC L CB0D 
+RRC (HL) CB0E 
+RRC A CB0F 
+RLC B CB00 
+RLC C CB01 
+RLC D CB02 
+RLC E CB03 
+RLC H CB04 
+RLC L CB05 
+RLC (HL) CB06 
+RLC A CB07 
+SRA B CB28 
+SRA C CB29 
+SRA D CB2A 
+SRA E CB2B 
+SRA H CB2C 
+SRA L CB2D 
+SRA (HL) CB2E 
+SRA A CB2F 
+SLA B CB20 
+SLA C CB21 
+SLA D CB22 
+SLA E CB23 
+SLA H CB24 
+SLA L CB25 
+SLA (HL) CB26 
+SLA A CB27 
+SRL B CB38 
+SRL C CB39 
+SRL D CB3A 
+SRL E CB3B 
+SRL H CB3C 
+SRL L CB3D 
+SRL(HL) CB3E 
+SRL A CB3F 
+RRA 1F 
+RLA 17 
+RLD (HL) ED6F 
+RRD (HL) ED67 
+RNZ C0 
+NOP KEINE OPERATION 
+DI INTERRUT ABWEISEN 
+EI INTERRUPT ANNEHMEN 
+OUTCH 1BF2 
+08 KURSOR RECHTS 
+09 KURSOR LINKS 
+0D NEUE ZEILE 
+0C BILDSCHIRM LOESCHEN 
+INCH 0CF2 
+PRST7 A5F2 
+INHEX F4F2 
+INKEY 30F1 
+INLINB3F2 
+OUTAHX 01F3 
+OUTHLHX 1AF3 
+INSTR B9F2 
+EX (SP) HL E3 
+ADD n C6 
+RR L CB1D 
+RR (HL) CB1E 
+SRL (HL) CB3E 
+SUB n D6 
+ADD (IX+d) DD86 
+ADD (IY+d) FD86 
+AND (IX+d) DDA6 
+AND (IY+d) FDA6 
+AND n E6 
+CMP (IX+d) DDBE 
+CMP (IY+d) FDBE 
+CMP n FE 
+CPD EDA9 
+DEC (IX+d) DD35 
+DEC (IY+d) FD35 
+INF ED70 
+INC (IX+d) DD34 
+INC (IY+d) FD34 
+OR (IX+d) DDB6 
+OR (IY+d) FDB6 
+OR n F6 
+RL (IX+d) DDCB DDCBXX16 
+RL (IY+d) FDCB FDCBXX16 
+RLC (IX+d) DDCB DDCBXX06 
+RLC (IY+d) FDCB FDCBXX06 
+RLD ED6F 
+RR (IX+d) DDCB DDCBXX1E 
+RR (IY+d) FDCB FDCBXX1E 
+RRC (IX+d) DDCB DDCBXX0E 
+RRC (IY+d) FDCB FDCBXX0E 
+RRD ED67 
+SBC (IX+d) DD9E 
+SBC (IY+d) FD9E 
+SBC n DE 
+SLA (IX+d) DDCB DDCBXX26 
+SLA (IY+d) FDCB FDCBXX26 
+SRA (IX+d) DDCB DDCBXX2E 
+SRA (IY+d) FDCB FDCBXX2E 
+SRL (IX+d) DDCB DDCBXX3E 
+SRL (IY+d) FDCB FDCBXX3E 
+SUB (IX+d) DD96 
+SUB (IY+d) FD96 
+XOR (IX+d) DDAE 
+XOR (IY+d) FDAE 
+XOR n EE 
+SBC HL SP ED72 
+LD? ERST ZIEL,DANN QUELLE           n: 8-bit-Konstante              nn: 16-bit-Konstante            (  ): Klammerinhalt liefert           eine Adresse; der                 I N H A L T  des so           addressierten Speicher          platzes wird genutzt 
+EX? Austausch der Registerinhal-    te 
+EXAF AF<->AF' 
+EXX BC<->BC' DE<->DE' HL<->HL' 
+PUSH? Registerinhalt wird in den      STACK gebracht                  H-Teil auf Adr. SP-1            L-Teil auf Adr. SP-2            SP-2 ist gleich neuer SP 
+POP? Stackinhalt wird in Regist.     gebracht                        SP+1 in den H-Teil (links)      SP   in den L-Teil (rechts) 
+PUSH? H-Teil linkes Register          L-Teil rechtes Register 
+LDI (DE) mit (HL) laden             dann DE+1;HL+1;BC-1 
+LDIR (DE) mit (HL) laden             dann DE+1;HL+1;BC-1             bis BC=0 
+LDD (DE) mit (HL) laden             dann DE-1;HL-1;BC-1 
+LDDR (DE) mit (HL) laden             dann DE-1;HL-1;BC-1 bisBC=0 
+CPI Vergleich A mit (HL);dann       HL+1;BC-1 
+CPIR Vergleich A mit (HL);dann       HL+1;BC-1 bis BC=0 oder                   bis A=(HL) 
+CPD Vergleich A mit (HL);dann       HL-1;BC-1 
+CPDR Vergleich A mit (HL);dann       HL-1;BC-1 bis BC=0 oder                   bis A=(HL) 
+ADD? nachfolgender Wert wird zu      A addiert 
+ADC n CE 
+ADC? der folgende Wert und das       C-FLAG werden zu A addiert;     Ergebnis steht in A 
+SUB? nachfolg. Wert wird von A       subtr.;Erg. in A 
+SBC? nachf. Wert und C-FLAG wer-     den von A sub.;Erg. in A 
+NEG A wird negiert 
+DAA 27 Dezimalnormal. von A 
+AND? nachfolg. Wert wird mit A       UND-verknuepft;Erg. in A;       C=0;Anzahl Bit in A gerade      P/V=1;ungerade P/V=0 
+OR? nachfolg. Wert wird mit A       ODER-verknuepft;Erg. in A;      C=0;gerade Bitzahl in A:P/V=    1;ungerade P/V=0 
+XOR? ANTIVALENZ-Verknuepfung des     nachfolg. Wertes mit A; C=0     Erg.in A; Bitzahl  gerade:      P/V=1,sonst P/V=0 
+CPL 2F log. Neg. des A;C=0;Erg.        in A;Bitzahl gerade:P/V=1       sonst P/V=0 
+NEG ED44 math. Neg. von A;A=0-A 
+CMP  Bitmustervergleich mit A        A>Op. Z=0 C=0;A<Op. Z=0 C=1     A=OP. Z=1 C=0;A u.Op.bleibt 
+INC? +1 
+DEC? -1 
+HALT 76 keine Operation,bis INT         oder RESET kommt 
+JMP unbedingter Sprung  
+JR 18 Sprung nach PC+angeg. Wert      max. Sprungdiff.:+129/-126 
+JRC 38 Sprung auf Adresse PC+          angeg. Wert;max.+129/-126 
+JRC 38 Sprung nur bei C=1 
+JRNC 30 Sprung nach PC+angeg.Op.        max.+129/-126;nur beiC=0 
+JRZ 28 Sprung nach PC+angeg. Op.       max.+129/-126;nur bei Z=1 
+JRNZ 20 Sprung nach PC+angeg.Op.        wenn Z=0;max.+129/-126 
+DJNZ 10 B-1;wenn B danach >0 er-        folgt Srung nach PC+Op.;        max. Diff.:+129/-126            max. Durchlaeufe:256 
+CALL CD Unterprogrammaufruf 
+RET C9 Unterprogrammruecksprung 
+RETI ED4D Rueckkehr aus ISR M2 
+RETN ED45 Rueckkehr aus NMI-SR 
+JPZ CA Sprung bei Z=1 
+JPNZ C2 Sprung wenn Z=0 
+JPC DA Sprung wenn C=1 
+JPNC D2 Sprung wenn C=0 
+JPPE EA Sprung wenn P=1 
+JPPO E2 Sprung wenn P=0 
+JPM FA Sprung wenn S=1 
+JPP F2 Sprung wenn S=0 
+CAZ CC UP-Aufruf wenn Z=1 
+CANZ C4 UP-Aufruf wenn Z=0 
+CAC DC UP-Aufruf wenn C=1 
+CANC D4 UP-Aufruf wenn C=0 
+CAPE EC UP-Aufruf wenn P=1 
+CAPO E4 UP-Aufruf wenn P=0 
+CAM FC UP-Aufruf wenn S=1 
+CAP F4 UP-Aufruf wenn S=0 
+LD? n mit 2 Byte hinterm Befehl    nn mit 4 Byte hinterm Befehl 
+LD? d mit 2 Byte hinterm Befehl     treten d u. n im Befehl auf:    beide in dieser Reihenfolge     hinter dem Befehl eingeben! 
+JPZ? JPNZ? JPC? JPNC? JPPE? JPPO? JPM? JPP?                     Zieladresse des Sprunges mit 4  Byte hinter dem Befehl angeben! 
+CAZ? CANZ? CAC? CANC? CAPE?     CAPO? CAM? CAP? CALL?           Anfangsadresse des aufzurufendenUP hinter dem Befehl mit 4 Byte angeben! 
+JMP? Zieladresse hinter dem Be-      fehl mit 4 Byte angeben! 
+JRZ? JRNZ? JRC? JRNC? JR? DJNZ? Der Wert der Sprungdifferenz istmit 2 Byte hinter dem Befehl an-zugeben! 
+IN n DB Kanaladresse'n' 
+OUT n D3 Kanaladresse 'n' 
+IN  OUT  Die gewuenschte Kanal-          adresse ist mit 2 Byte          hinter dem Befehl anzu-         geben 
+ADD? ADC? SUB? SBC? AND? XOR?   OR? CMP? INC? DEC? Bei Verwendg.der Indexreg. ist d und bei Ver-wendung der Konstanten ist n mit2 Byte hinter dem Befehl anzuge-ben! 
+RLCA  Linksverschiebung des A-  Inhaltes um 1 Bit,Bit 7 wird in Bit 0 und in C-FLAG geschoben 
+RLA? Linksverschiebung des A-In-haltes um 1 Bit,C-Flag erscheintin Bit0, Bit 7 in C-Flag 
+RRCA? Rechtsverschiebung des A- Inhaltes um 1 Bit, Bit 0 ersetztBit 7 und C-Flag 
+RRA  Rechtsverschiebung des A-  Inhaltes um 1 Bit,C-Flag wird   Bit 7, Bit 0 wird C-Flag 
+RLC  Linksverschiebung des ge-  waehlten Registerinhaltes um einBit, Bit 7 erscheint im C-Flag  und im Bit 0 
+RRC  Rechtsverschiebung um 1BIT,Bit 0 des gewaehlten Registers  ersetzt Bit7 und das C-Flag 
+RL? Linksverschiebung um 1 Bit, C-Flag wird Bit0,Bit7 wird C-Flg 
+RR? Rechtsverschiebung um 1 Bit C-Flag wird Bit7,Bit0 wird C-Flg 
+SLA? Linksverschiebung um 1 Bit Bit0 wird 0,Bit7 wird C-Flag 
+SRL? Rechtsverschiebung um 1 BitBit7 wird 0,Bit0 wird C-Flag 
+SRA? Rechtsverschiebung um 1 BitBit 7 unveraendert,Bit0 wird C- Flag 
+RLD  Linksverschiebung zwischen A und dem durch HL addr. Spei-  cherplatz (HL), die unteren vierA-Bits werden die unt. von (HL),die oberen von (HL) die un. v. Aund die neuen oberen von (HL)   sind die alten,von A verdraeng- ten unteren  
+RRD  Rechtsverschiebung zwischenA und dem durch HL addressiertenSpeicherplatz (HL), die unteren 4 Bits von (HL) werden die unt.4von A, waehrend die oberen von  (HL) die unteren werden, die al-ten verdraengten unteren von A  werden die oberen von (HL) 
+RENZ C0 zurueck bei Z=0  RNZ 
+REC RC D8 zurueck bei C=1  
+RNC RENC D0 zurueck bei C=0 
+REPE RPE E8 zurueck bei P=1 
+RPO REPO E0 zurueck bei P=0 
+REM RM F8 zurueck bei S=1 
+REP RP F0 zurueck bei S=0 
+RZ REZ C8 zurueck bei Z=1 
+BIT 0 B CB40 
+BIT 0 C CB41 
+BIT 0 D CB42 
+BIT 0 E CB43 
+BIT 0 H CB44 
+BIT 0 L CB45 
+BIT 0 (HL) CB46 
+BIT 0 A CB47 
+BIT 1 B CB48 
+BIT 1 C CB49 
+BIT 1 D CB4A 
+BIT 1 E CB4B 
+BIT 1 H CB4C 
+BIT 1 L CB4D 
+BIT 1 (HL) CB4E 
+BIT 1 A CB4F 
+BIT 2 B CB50 
+BIT 2 C CB51 
+BIT 2 D CB52 
+BIT 2 E CB53 
+BIT 2 H CB54 
+BIT 2 L CB55 
+BIT 2 (HL) CB56 
+BIT 2 A CB57 
+BIT 3 B CB58 
+BIT 3 C CB59 
+BIT 3 D CB5A 
+BIT 3 E CB5B 
+BIT 3 H CB5C 
+BIT 3 L CB5D 
+BIT 3 (HL) CB5E 
+BIT 3 A CB5F 
+BIT 4 B CB60 
+BIT 4 C CB61 
+BIT 4 D CB62 
+BIT 4 E CB63 
+BIT 4 H CB64 
+BIT 4 L CB65 
+BIT 4 (HL) CB66 
+BIT 4 A CB67 
+BIT 5 B CB68 
+BIT 5 C CB69 
+BIT 5 D CB6A 
+BIT 5 E CB6B 
+BIT 5 H CB6C 
+BIT 5 L CB6D 
+BIT 5 (HL) CB6E 
+BIT 5 A CB6F 
+BIT 6 B CB70 
+BIT 6 C CB71 
+BIT 6 D CB72 
+BIT 6 E CB73 
+BIT 6 H CB74 
+BIT 6 L CB75 
+BIT 6 (HL) CB76 
+BIT 6 A CB77 
+BIT 7 B CB78 
+BIT 7 C CB79 
+BIT 7 D CB7A 
+BIT 7 E CB7B 
+BIT 7 H CB7C 
+BIT 7 L CB7D 
+BIT 7 (HL) CB7E 
+BIT 7 A CB7F 
+RES 0 B CB80 
+RES 0 C CB81 
+RES 0 D CB82 
+RES 0 E CB83 
+RES 0 H CB84 
+RES 0 L CB85 
+RES 0 (HL) CB86 
+RES 0 A CB87 
+RES 1 B CB88 
+RES 1 C CB89 
+RES 1 D CB8A 
+RES 1 E CB8B 
+RES 1 H CB8C 
+RES 1 L CB8D 
+RES 1 (HL) CB8E 
+RES 1 A CB8F 
+RES 2 B CB90 
+RES 2 C CB91 
+RES 2 D CB92 
+RES 2 E CB93 
+RES 2 H CB94 
+RES 2 L CB95 
+RES 2 (HL) CB96 
+RES 2 A CB97 
+RES 3 B CB98 
+RES 3 C CB99 
+RES 3 D CB9A 
+RES 3 E CB9B 
+RES 3 H CB9C 
+RES 3 L CB9D 
+RES 3 (HL) CB9E 
+RES 3 A CB9F 
+RES 4 B CBA0 
+RES 4 C CBA1 
+RES 4 D CBA2 
+RES 4 E CBA3 
+RES 4 H CBA4 
+RES 4 L CBA5 
+RES 4 (HL) CBA6 
+RES 4 A CBA7 
+RES 5 B CBA8 
+RES 5 C CBA9 
+RES 5 D CBAA 
+RES 5 E CBAB 
+RES 5 H CBAC 
+RES 5 L CBAD 
+RES 5 (HL) CBAE 
+RES 5 A CBAF 
+RES 6 B CBB0 
+RES 6 C CBB1 
+RES 6 D CBB2 
+RES 6 E CBB3 
+RES 6 H CBB4 
+RES 6 L CBB5 
+RES 6 (HL) CBB6 
+RES 6 A CBB7 
+RES 7 B CBB8 
+RES 7 C CBB9 
+RES 7 D CBBA 
+RES 7 E CBBB 
+RES 7 H CBBC 
+RES 7 L CBBD 
+RES 7 (HL) CBBE 
+RES 7 A CBBF 
+SET 0 B CBC0 
+SET 0 C CBC1 
+SET 0 D CBC2 
+SET 0 E CBC3 
+SET 0 H CBC4 
+SET 0 L CBC5 
+SET 0 (HL) CBC6 
+SET 0 A CBC7 
+SET 1 B CBC8 
+SET 1 C CBC9 
+SET 1 D CBCA 
+SET 1 E CBCB 
+SET 1 H CBCC 
+SET 1 L CBCD 
+SET 1 (HL) CBCE 
+SET 1 A CBCF 
+SET 2 B CBD0 
+SET 2 C CBD1 
+SET 2 D CBD2 
+SET 2 E CBD3 
+SET 2 H CBD4 
+SET 2 L CBD5 
+SET 2 (HL) CBD6 
+SET 2 A CBD7 
+SET 3 B CBD8 
+SET 3 C CBD9 
+SET 3 D CBDA 
+SET 3 E CBDB 
+SET 3 H CBDC 
+SET 3 L CBDD 
+SET 3 (HL) CBDE 
+SET 3 A CBDF 
+SET 4 B CBE0  
+SET 4 C CBE1 
+SET 4 D CBE2 
+SET 4 E CBE3 
+SET 4 H CBE4 
+SET 4 L CBE5 
+SET 4 (HL) CBE6 
+SET 4 A CBE7 
+SET 5 B CBE8 
+SET 5 C CBE9 
+SET 5 D CBEA 
+SET 5 E CBEB 
+SET 5 H CBEC 
+SET 5 L CBED 
+SET 5 (HL) CBEE 
+SET 5 A CBEF 
+SET 6 B CBF0 
+SET 6 C CBF1 
+SET 6 D CBF2 
+SET 6 E CBF3 
+SET 6 H CBF4 
+SET 6 L CBF5 
+SET 6 (HL) CBF6 
+SET 6 A CBF7 
+SET 7 B CBF8 
+SET 7 C CBF9 
+SET 7 D CBFA 
+SET 7 E CBFB 
+SET 7 H CBFC 
+SET 7 L CBFD 
+SET 7 (HL) CBFE 
+SET 7 A CBFF 
+BIT 0 1 2 3 4 5 6 7 (IX+d) DDCB XX  4 4 5 5 6 6 7 7 {im Befehl      6 E 6 E 6 E 6 E  nebenein.) 
+BIT 0 1 2 3 4 5 6 7 (IY+d) FDCB XX  4 4 5 5 6 6 7 7 {im Befehl      6 E 6 E 6 E 6 E nebenein.!} 
+RES 0 1 2 3 4 5 6 7 (IX+d) DDCB XX  8 8 9 9 A A B B {im Befehl      6 E 6 E 6 E 6 E nebenein.!} 
+RES 0 1 2 3 4 5 6 7 (IY+d) FDCB XX  8 8 9 9 A A B B {im Befehl      6 E 6 E 6 E 6 E nebenein.!} 
+SET 0 1 2 3 4 5 6 7 (IX+d) DDCB XX  C C D D E E F F {im Befehl      6 E 6 E 6 E 6 E nebenein.!} 
+SET 0 1 2 3 4 5 6 7 (IY+d) FDCB XX  C C D D E E F F {im Befehl      6 E 6 E 6 E 6 E nebenein.!} 
+CCF C-Flag komplementieren 
+SCF C-Flag setzen 
+BIT? bei 0-Signal Z=1                bei 1-Signal Z=0 
+EX (SP) SP:L-Teil SP+1:H-Teil   oberer  Stackinhalt wird gegen  Inhalt des addr. Doppelreg. aus-getauscht. 
+
