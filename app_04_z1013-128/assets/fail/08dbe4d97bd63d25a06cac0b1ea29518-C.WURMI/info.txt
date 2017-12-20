@@ -1,0 +1,7 @@
+<kurz src="identisch [e23e3f9502a6b428d42fb88f5539eefa]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+der Rest ab 0x0900 scheint vom Programm MAZOG's zu stammen.
+
+</lang>
+<requires></requires>

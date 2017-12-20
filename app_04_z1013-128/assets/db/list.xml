@@ -434,7 +434,7 @@
 <file aadr="0100" eadr="1fff" sadr="0100" typ="C" link="284d4fa07375e305990b4cf94f2f7003-mazogs_rb_int_2/mazogs_rb_int_2.z80" name="MAZOGS RB INT 2 " kurz="Spezialversion mit Tastaturinterrupt" />
 <file aadr="1000" eadr="1e4d" sadr="1000" typ="C" link="2493d1ee769c274ef29a640d83d294f8-C.MC-CODE%20EDITOR/C.MC-CODE%20EDITOR.z80" name="MC-CODE EDITOR  " kurz="Tool, Maschinenkode-Editor" />
 <file aadr="2bc0" eadr="3105" sadr="0302" typ="B" link="39a14bfd70f1730c6e7a6a8cdf439ec2-B.MC-IN%20(Eingabe)/B.MC-IN%20(Eingabe).z80" name="MC-IN (Eingabe) " kurz="MC-Programm-Ersteller, Hexdump eingeben und mit Prüfsumme vergleichen." />
-<file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="7a49a143c0680d7f248d9e70eb342014-C.MCODE_KARTEI_P.S/C.MCODE%20KARTEI%20P.S.z80" name="MCODE KARTEI P.S" kurz="Maschinencode Datenbank Hilfe" />
+<file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="7a49a143c0680d7f248d9e70eb342014-C.MCODE_KARTEI_P.S/C.MCODE%20KARTEI%20P.S.z80" name="MCODE KARTEI P.S" kurz="Maschinencode Datenbank Hilfe (RST20)" />
 <file aadr="0100" eadr="1c1c" sadr="0100" typ="C" link="754be3b310a001a811e80fba117b5485-C.MDEDAS7/C.MDEDAS7.z80" name="MDEDAS*7        " kurz="Editor Assembler" />
 <file aadr="2bc0" eadr="3c00" sadr="0000" typ="B" link="5da1272aeddb5d6c417e8ff3e23eb0ff-memory/memory.z80" name="MEMORY          " kurz="Merkspiel, Karten umdrehen" />
 <file aadr="1000" eadr="1e8e" sadr="0000" typ="b" link="f5384973126e856f2e4975b670373e84-b.MEMORY%201/b.MEMORY%201.z80" name="MEMORY 1        " kurz="Memory mit Buchstaben" />
@@ -452,7 +452,9 @@
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="ac6bdb65dfc0e7731cc68439a434e18b-C.MicroWORD%201.3%2016/C.MicroWORD%201.3%2016.z80" name="MicroWORD 1.3 16" kurz="Texteditor MicroWORD V1.3 16KByte IG-HC Dresden" />
 <file aadr="0100" eadr="68ac" sadr="0100" typ="C" link="7e46885b1d81a752acfe7a25ba9cf0d4-C.MicroWORD%201.3%2064/C.MicroWORD%201.3%2064.z80" name="MicroWORD 1.3 64" kurz="Texteditor MicroWORD V1.3 64KByte IG-HC Dresden" />
 <file aadr="1800" eadr="6bb2" sadr="0000" typ="I" link="0248834de493f61da12d835548fde927-I.MicroWORD%201.518U/I.MicroWORD%201.518U.z80" name="MicroWORD 1.518U" kurz="Beschreibung zum Texteditor MicroWORD 1.5 13.09.88" />
+<file aadr="cc00" eadr="df56" sadr="cc00" typ="C" link="a30132c5d8656d4377352db741fde2b5-C.MicroWORD_1.519O/C.MicroWORD%201.519O.z80" name="MicroWORD 1.519O" kurz="Textverarbeitung, Texteditor, V11.09.1988" />
 <file aadr="0100" eadr="6ceb" sadr="0100" typ="C" link="c40af769cd4ca6d8afa5feb2e6568207-C.MicroWORD_1.519U/C.MicroWORD%201.519U.z80" name="MicroWORD 1.519U" kurz="Textverarbeitung, Texteditor, V20.09.1988" />
+<file aadr="0100" eadr="72ff" sadr="0100" typ="C" link="c9e736709209113629d165d67d4a5f6c-C.MicroWORD_1.520O/C.MicroWORD%201.520O.z80" name="MicroWORD 1.520O" kurz="Textverarbeitung, Texteditor, V01.10.1988" />
 <file aadr="0100" eadr="6cbc" sadr="0100" typ="C" link="01b849b3c1bd4b6ad5709e582f3f633d-C.MicroWORD%201.520U/C.MicroWORD%201.520U.z80" name="MicroWORD 1.520U" kurz="Textverarbeitung, Texteditor, V01.10.1988" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="0ec6a4cb664baed278fa1941576ffe32-microword_1_5gs1/microword_1_5gs1.z80" name="MICROWORD 1.5GS1" kurz="Textverarbeitung, Texteditor, V18.01.1989" />
 <file aadr="0100" eadr="18ff" sadr="0100" typ="C" link="d1357e73351352ea0b04382c7ab3c31b-C.MikroWORD%20S3004/C.MikroWORD%20S3004.z80" name="MikroWORD S3004 " kurz="MicroWORD 1.5GV1 / S3004, Textverarbeitung" />
@@ -533,6 +535,7 @@
 <file aadr="0900" eadr="1bff" sadr="0900" typ="C" link="ecbcf0a2aa858cd4272f64073f08d108-pyramide/pyramide.z80" name="PYRAMIDE        " kurz="nur noch 120s Zeit um aus der Pyramide zu finden" />
 <file aadr="2bc0" eadr="6000" sadr="0302" typ="B" link="394f2a0bb7be25783b2e456a784ed303-pyramide(laeuft)/pyramide(laeuft).z80" name="PYRAMIDE(laeuft)" kurz="Basic-Clone von KINGS-VALLEY" />
 <file aadr="2bc0" eadr="36ba" sadr="0000" typ="B" link="9af35414a3ff90797d19fef6b3a4f164-B.R+HANOI/B.R+HANOI.z80" name="R+HANOI         " kurz="mathematisches Knobel- und Geduldsspiel" />
+<file aadr="4000" eadr="5bcc" sadr="4000" typ="C" link="6f4875f278eecde3b11b2c6593aeea0b-C.R-80_DISK_2.66/C.R-80%20DISK%202.66.z80" name="R-80 DISK 2.66  " kurz="R-80 Reassembler extended vers. RB &amp; FSc" />
 <file aadr="0800" eadr="1d30" sadr="0000" typ="I" link="95f468309172456cfa50fd029a3440d6-I.R-80%20DISK%202.66/I.R-80%20DISK%202.66.z80" name="R-80 DISK 2.66  " kurz="R-80 REASSEMBLER" />
 <file aadr="3000" eadr="43f5" sadr="0000" typ="I" link="ae6dd361d13237ad72da1387687f25a0-I.R-80_DISK_2.68/I.R-80%20DISK%202.68.z80" name="R-80 DISK 2.68  " kurz="R-80 REASSEMBLER 2.68" />
 <file aadr="4000" eadr="5999" sadr="4000" typ="C" link="59a2b7823460952a5a1fe8da91903987-C.R-80_SPV/C.R-80%20SPV.z80" name="R-80 SPV        " kurz="R-80 Reassembler extended version RB by N.Hildebrandt" />
@@ -591,6 +594,7 @@
 <file aadr="c800" eadr="e362" sadr="de00" typ="C" link="10f334eeba462179c4ea7874c4e44548-C.SCP%20EXT.RF%201.5/C.SCP%20EXT.RF%201.5.z80" name="SCP EXT.RF 1.5  " kurz="CP/M 2.2 Z1013 IG-HC mit ext. RAM-Floppy V.1.5" />
 <file aadr="c800" eadr="e365" sadr="de00" typ="C" link="877797619ef98b63747c19cb6932cfec-C.SCP%20EXT.RF%201.6%20K/C.SCP%20EXT.RF%201.6%20K.z80" name="SCP EXT.RF 1.6 K" kurz="CP/M 2.2 Z1013 IG-HC mit ext. RAM-Floppy V.1.6" />
 <file aadr="c800" eadr="e7ff" sadr="e7e0" typ="C" link="e61ad068800cc40410eeadf1247d5e5f-scp_f_moni_1_31/scp%20f_moni%201_31.z80" name="SCP f.MONI 1.31 " kurz="SCP-2RF 2.38M mit einigen Anpassungen an Moni 1.31" />
+<file aadr="c800" eadr="ebff" sadr="de00" typ="C" link="5ea6958f2a51c8e7daf2a6fbc9a889cb-C.SCP_PETERS_4.4/C.SCP%20PETERS%204.4.z80" name="SCP PETERS 4.4  " kurz="CP/M 2.2 Z1013 IG-HC Peters V4.4 1.2FDD K7652 RB" />
 <file aadr="c800" eadr="e3a0" sadr="de00" typ="C" link="00f77046758dd9a20a2403e960cbd7ea-scp_plus_f800.com/scp_plus_f800.com.z80" name="SCP+F800        " kurz="CP/M VERS. 2.2 RAM-DISK 7000H-C3FFH" />
 <file aadr="c800" eadr="ebff" sadr="de00" typ="C" link="689e49eab13a569082412b203f7fd5fe-C.SCP-2+1%203.3/C.SCP-2+1%203.3.z80" name="SCP-2+1 3.3     " kurz="CP/M 2.2 Z1013 IG-HC 1.6 FDD+2*256K RF V.3.3" />
 <file aadr="c800" eadr="e7d6" sadr="de00" typ="C" link="1a866c5653eadbf47eaf11cacc84d565-C.SCP-2RF_2.38M/C.SCP-2RF%202.38M.z80" name="SCP-2RF 2.38M   " kurz=" CP/M 2.2 Z1013 IG-HC mit 2*256K RAM-Floppy V2.3" />
@@ -610,6 +614,7 @@
 <file aadr="0100" eadr="14df" sadr="1400" typ="C" link="cd45bcb2865af839772f929810af4227-sokoban/sokoban.z80" name="SOKO-BAN        " kurz="Kistenschieben, Puzzle" />
 <file aadr="1000" eadr="1f71" sadr="0000" typ="b" link="a4262000f732a4ef8085e51c0c86e2b3-b.SOLOCOMMOTION/b.SOLOCOMMOTION.z80" name="SOLOCOMMOTION   " kurz="Ähnlich wie Billard, mit dem Ball das Loch treffen (8x4)" />
 <file aadr="2bc0" eadr="2e79" sadr="0300" typ="B" link="be8fb92ad884c6dd6a6cc765cc8d4a64-B.SORT/B.SORT.z80" name="SORT            " kurz="Sortierprogramm" />
+<file aadr="0100" eadr="0240" sadr="0100" typ="C" link="634ff0e2b23972a19cdd3aaf209b9103-C.Speichers._Hu/C.Speichers._Hu.z80" name="Speichers./Hu   " kurz="Speicherservice HEX/ASCII-DUMP" />
 <file aadr="0100" eadr="02ff" sadr="0200" typ="C" link="663258d4f714f127cea7614f98e32277-C.Speichertest/C.Speichertest.z80" name="Speichertest    " kurz="Speichertest im Bildschirmspeicher" />
 <file aadr="3cd0" eadr="3fff" sadr="3cd0" typ="C" link="3f43cababb5057747e039b6c347e15f4-C.SPEKTR.-INTERF./C.SPEKTR.-INTERF..z80" name="SPEKTR.-INTERF. " kurz="ZX SPEKTRUM KASSETTENINTERFACE Load/Save" />
 <file aadr="2bc0" eadr="405c" sadr="0000" typ="B" link="9ce73591b0deaaef5e795090583b4f57-B.SPIEDI2/B.SPIEDI2.z80" name="SPIEDI2         " kurz="Mauerspiel, Eingabe über PEEK(4)" />
@@ -697,6 +702,7 @@
 <file aadr="e800" eadr="eaff" sadr="e800" typ="C" link="0b70520fb192060844fb2b09a618cc22-C.V.24+HC/C.V.24+HC.z80" name="V.24+HC         " kurz="V24, Druckertreiber, Hardcopy" />
 <file aadr="0700" eadr="14df" sadr="1000" typ="C" link="21116d60ec96b5bad5067552e3949b67-vampi/vampi.z80" name="VAMPI           " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (8x4)" />
 <file aadr="0700" eadr="14ff" sadr="1000" typ="C" link="5bdb666cbca1e0c8fb0a78b5c5cbae5e-vampi/vampi.z80" name="VAMPI           " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus" />
+<file aadr="06d0" eadr="1fff" sadr="1000" typ="C" link="8284c451e5a2e5fadb56eaf3e5af037c-C.VAMPI2/C.VAMPI2.z80" name="VAMPI2          " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (RST20)" />
 <file aadr="0100" eadr="14ff" sadr="0100" typ="C" link="67d48f2de0c40d41fafaa5110300b5e4-vampir_f1/vampir_f1.z80" name="VAMPIR F1       " kurz="" />
 <file aadr="0100" eadr="153f" sadr="1531" typ="C" link="01ab733cd715e108ed59279a8976fc4e-vampir+prJ/vampir+prJ.z80" name="Vampir+Joystick " kurz="" />
 <file aadr="2bc0" eadr="2fcc" sadr="0302" typ="B" link="9f13eb65e2f83a40cf3a267633041264-B.VARI-SUCHE%20BASIC/B.VARI-SUCHE%20BASIC.z80" name="VARI-SUCHE BASIC" kurz="Tools, sucht nach Variablen im BASIC-Programm" />
@@ -730,6 +736,7 @@
 <file aadr="0800" eadr="30c7" sadr="0000" typ="I" link="840e9839f071ab3696bf004ccc7d5490-I.Z1013-SURL.50%20^/I.Z1013-SURL.50%20^.z80" name="Z1013-SURL.50 ^ " kurz="Z1013 SUPER URLADER PROM V5 15.10.89, überarbeitete Version" />
 <file aadr="1800" eadr="3fff" sadr="0000" typ="I" link="10040f6ed4dd893a980a8932b7831101-z1013_surl_doc/z1013_surl_doc.z80" name="Z1013-SURL.DOC  " kurz="Z1013 SUPER URLADER PROM V3 22.11.1988" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="47c325513f6f5decd08fde4cf6bc568a-z1013_scr/z1013_scr.z80" name="Z1013.SCR       " kurz="" />
+<file aadr="0200" eadr="0cff" sadr="0200" typ="C" link="d09b475f101246b1b1a01231cf2c0503-C.ZAEHLERMODUL_2/C.ZAEHLERMODUL%202.z80" name="ZAEHLERMODUL 2  " kurz="Zählermodul 2 - mit vielen Komfortfunktionen, innovatives UI-Konzept" />
 <file aadr="1000" eadr="1586" sadr="ff00" typ="b" link="6571f83f0b5cfe44302ec6d5e10d1305-b.ZAHLEN%20RATEN/b.ZAHLEN%20RATEN.z80" name="ZAHLEN RATEN    " kurz="Zahlen zwischen 0 und 1000 raten." />
 <file aadr="1000" eadr="1bc2" sadr="0000" typ="b" link="a65adb1215f5d044eb95997fa2906fba-b.ZAUBERWALD%201/b.ZAUBERWALD%201.z80" name="ZAUBERWALD 1    " kurz="Mathe, Rechenspielerei, Zauberwald durchqueren und dabei mitrechnen" />
 <file aadr="0100" eadr="032f" sadr="0100" typ="C" link="6c01681535b7f7ce54fb903f63a282a4-zeicheneditor_32/zeicheneditor_32.z80" name="ZEICHENEDITOR/32" kurz="Editor für den 8x8 Zeichensatz-ROM" />
@@ -741,4 +748,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 741 Dateien."/></doc>
+<status src="Datenbank enthält 748 Dateien."/></doc>

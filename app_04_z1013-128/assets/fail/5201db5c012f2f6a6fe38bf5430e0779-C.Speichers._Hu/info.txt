@@ -1,0 +1,10 @@
+<kurz src="Speicherservice HEX/ASCII-DUMP"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Steuerung: ⇦ ⇨ 
+CTRL-A: neue Adresse
+ESC: schaltet zwischen ASCII/HEX-Mode
+
+es gibt noch andere CTRL-Codes mit mehr Funktionen
+</lang>
+<requires></requires>

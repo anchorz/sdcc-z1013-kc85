@@ -1,0 +1,7 @@
+<kurz src="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (RST20)"/>
+<lang>
+
+Steuerung: ⇦ ⇨ U ␣
+
+</lang>
+<requires></requires>

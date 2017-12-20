@@ -1,0 +1,5 @@
+<kurz src="Textverarbeitung, Texteditor, V01.10.1988"/>
+<lang>Interessanterweise gibt es eine handvoll Unterschiede in der Dokumentation im vergleich zu [01b849b3c1bd4b6ad5709e582f3f633d]
+
+<include src="C.MicroWORD 1.520O.txt"/></lang>
+<requires></requires>

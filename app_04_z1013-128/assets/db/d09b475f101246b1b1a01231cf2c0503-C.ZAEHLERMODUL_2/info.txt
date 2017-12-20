@@ -1,0 +1,6 @@
+<kurz src="Zählermodul 2 - mit vielen Komfortfunktionen, innovatives UI-Konzept"/>
+<lang>Steuerung: ⇦ ⇨ ⏎
+
+Das Interessante an der Nutzerführung ist das UI-Konzept. Es ähnelt den Dialogen,
+wie so von Windows bekannt sind.</lang>
+<requires></requires>
