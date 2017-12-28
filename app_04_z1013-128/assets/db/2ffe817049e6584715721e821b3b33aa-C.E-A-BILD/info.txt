@@ -1,0 +1,3 @@
+<kurz src="Animation/Grafik mit Editor"/>
+<lang>sicher bin ich mir aber nicht.</lang>
+<requires></requires>

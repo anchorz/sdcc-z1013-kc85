@@ -1,0 +1,3 @@
+<kurz src="REHN-SOFT 0287 3K+TINY BASIC"/>
+<lang></lang>
+<requires></requires>

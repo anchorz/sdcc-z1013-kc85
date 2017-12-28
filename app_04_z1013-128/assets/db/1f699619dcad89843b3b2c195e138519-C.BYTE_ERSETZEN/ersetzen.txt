@@ -1,0 +1,29 @@
+E200  3E 45            LD      A,45H
+E202  32 B6 00         LD      (00B6H),A
+E205  21 25 E2         LD      HL,0E225H
+E208  22 B7 00         LD      (00B7H),HL
+E20B  E7               RST     20H
+E20C  02               DB      02H               ;PRST7
+E20D  0D               DB      0DH
+E20E  20 20 20 20 40   DB      '    @'
+E213  45 20 41 61 64   DB      'E Aad'
+E218  72 20 45 61 64   DB      'r Ead'
+E21D  72 20 42 61 42   DB      'r BaB'
+E222  6E               DB      'n'
+E223  8D               DB      8DH
+E224  C9               RET
+E225  2A 1B 00         LD      HL,(001BH)
+E228  ED 4B 23 00      LD      BC,(0023H)
+E22C  ED 5B 1D 00      LD      DE,(001DH)
+E230  78               LD      A,B
+E231  BE               CP      (HL)
+E232  20 02            JR      NZ,0E236H
+E234  79               LD      A,C
+E235  77               LD      (HL),A
+E236  EB               EX      DE,HL
+E237  ED 52            SBC     HL,DE
+E239  28 D0            JR      Z,0E20BH
+E23B  EB               EX      DE,HL
+E23C  23               INC     HL
+E23D  18 ED            JR      0E22CH
+E23F  FF               RST     38H

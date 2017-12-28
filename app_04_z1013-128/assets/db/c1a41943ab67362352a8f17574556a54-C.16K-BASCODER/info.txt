@@ -1,0 +1,3 @@
+<kurz src="Welcome to BASICODE-3 16kB"/>
+<lang></lang>
+<requires></requires>

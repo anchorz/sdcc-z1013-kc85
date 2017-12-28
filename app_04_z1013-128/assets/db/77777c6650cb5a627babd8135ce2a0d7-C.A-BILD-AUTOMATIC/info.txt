@@ -1,0 +1,3 @@
+<kurz src="Animation/Grafik"/>
+<lang>keine Ahnung, was dieses Programm anzeigen soll.</lang>
+<requires></requires>

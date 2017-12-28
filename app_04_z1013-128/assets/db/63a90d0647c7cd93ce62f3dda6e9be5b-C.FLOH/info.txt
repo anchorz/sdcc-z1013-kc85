@@ -1,0 +1,17 @@
+<kurz src="Floh auf LKW verladen, Jump&Run"/>
+<lang>
+
+Steuerung: ⇦ ⇨ U
+
+Stellen Sie sich vor, Sie sollen einen Floh auf einen LKW Typ
+Wackelpritsche verladen. Dabei muessen Sie verschiedene 
+Hindernisse ueberwinden. Sie koennen Ihren Floh nach links '<-', 
+nach rechts '->' und nach obene 'U' springen lassen. Gelangt der
+Floh auf eine Leiter, so Klettert er nach oben. Die Sprungweite 
+wird aus der Zeit berechnet, in der Sie die Richtungstaste 
+betaetigen.
+
+           
+   
+<include src="C.FLOH.b"/></lang>
+<requires></requires>

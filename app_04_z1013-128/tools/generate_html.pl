@@ -304,6 +304,7 @@ sub do_index_html($)
             if (m/\.zg2\./) {
                 $zgfile=get_database_folder()."/db/128947d8f9a3fa363eb602b79615e858-zg_m_uml_+inv/zg_m_uml_+inv.z80";
             }
+            $resolution="32X32";
             if (m/\.64\./) {
                 $resolution="64X16X2";
             }            

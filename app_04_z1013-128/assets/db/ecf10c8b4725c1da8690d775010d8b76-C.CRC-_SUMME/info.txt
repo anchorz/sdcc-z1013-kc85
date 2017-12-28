@@ -1,0 +1,3 @@
+<kurz src="CRC Berechnen"/>
+<lang>Initialisierung der Kommandoerweiterung ist nicht korrekt - fehlendes RST38H am Ende!</lang>
+<requires></requires>

@@ -1,0 +1,7 @@
+<kurz src="Patch für ein unbekanntes Programm"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Keine Ahnung, was und wofür dieses Schnipsel gut sein sollte. Es lag bei der
+Sammlung von "hucki.net/Sammlung IGD/igd17a MC 6" mit dabei.
+</lang>
+<requires></requires>

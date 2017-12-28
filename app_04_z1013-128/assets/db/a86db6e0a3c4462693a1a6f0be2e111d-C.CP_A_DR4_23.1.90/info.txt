@@ -1,0 +1,3 @@
+<kurz src="CP/A V.2.50/PDI.VLE 23.01.1990"/>
+<lang></lang>
+<requires></requires>

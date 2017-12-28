@@ -1,0 +1,5 @@
+<kurz src="Debugger Speicher-Dump V3.02 H.Krull"/>
+<lang>
+Steuerung: B D H ...
+</lang>
+<requires></requires>
