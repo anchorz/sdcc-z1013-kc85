@@ -1,0 +1,7 @@
+<kurz src="Leitern hoch- und runterklettern, Goldstücke einsammeln"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩
+
+</lang>
+<requires></requires>

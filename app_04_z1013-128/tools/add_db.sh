@@ -67,6 +67,9 @@ if (-f $video) {
     move($video,"$dir_dest/");
 }
 
+$gif=$ENV{"HOME"}."/jkcemu.gif";
+unlink($gif) or warn "Could not unlink $gif: $!";
+
 @list = bsd_glob ("~/jkcemu_screen_*.txt");
 for (@list) {
     move($_,"$dir_dest/");

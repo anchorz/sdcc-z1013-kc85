@@ -1,0 +1,5 @@
+<kurz src="Gens3M Assembler HISOFT 1983, BM 7/89"/>
+<lang>Variante von [439557d8fa0c1ca09c504947b83322ff]
+braucht RAM ab 0xF800, kopiert die Monitorerweiterung dorthin
+</lang>
+<requires></requires>

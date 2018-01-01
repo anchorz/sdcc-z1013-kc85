@@ -269,6 +269,8 @@
 <file aadr="1000" eadr="3fff" sadr="0000" typ="b" link="f2ebf8fb985df39668a8f04becf887c2-b.GEISTERFAHRT/b.GEISTERFAHRT.z80" name="GEISTERFAHRT    " kurz="Autofahrer in FALSCHER FAHRTRICHTUNG AUF DER AUTOBAHN" />
 <file aadr="2300" eadr="5665" sadr="15d1" typ="T" link="b1fb28f798a13da365db2e48201d8942-T.GENS_DOC_NEW/T.GENS%20DOC%20NEW.z80" name="GENS DOC NEW    " kurz="ASSEMBLER GENS 3.2 fuer Z 1013" />
 <file aadr="1800" eadr="2989" sadr="0100" typ="T" link="3dbed8357dce39f5db89fae5451ae728-T.GENS_DOK/T.GENS%20DOK.z80" name="GENS DOK        " kurz="GENS - Arbeitshinweise zum Assembler" />
+<file aadr="0100" eadr="23b0" sadr="0100" typ="C" link="4d471a14f5111fdd1a20febc5274ea33-C.GENS_HEADER/C.GENS%20HEADER.z80" name="GENS HEADER     " kurz="Gens3M Assembler HISOFT 1983, BM 7/89" />
+<file aadr="0100" eadr="2330" sadr="0100" typ="C" link="c69aecae2fbec2db5ea22791a11f4edf-C.GENS_HEADER_CEN/C.GENS%20HEADER%20CEN.z80" name="GENS HEADER CEN " kurz="Gens3M Assembler HISOFT 1983, BM 7/89+CENTRONICS" />
 <file aadr="0100" eadr="1cff" sadr="0100" typ="C" link="54604c02c55ba988e20e250085204961-C.GENS3.2K%20RE=11A/C.GENS3.2K%20RE=11A.z80" name="GENS3.2K RE=11A " kurz="Assembler" />
 <file aadr="0100" eadr="1ed2" sadr="0100" typ="C" link="439557d8fa0c1ca09c504947b83322ff-C.GENS3M_M/C.GENS3M%20M.z80" name="GENS3M M        " kurz="GENS3M M, Hisoft Gens3M Assembler" />
 <file aadr="2bc0" eadr="3c85" sadr="0000" typ="B" link="560df5dc4a5c588ad52f83d1a48f1583-B.GEO-TEST/B.GEO-TEST.z80" name="GEO-TEST        " kurz="Wissenstest DDR" />
@@ -279,6 +281,7 @@
 <file aadr="0100" eadr="35b6" sadr="0100" typ="C" link="541d63240556142a7dfee23fac6cf391-C.GLKWUNSCHKARTE/C.GLKWUNSCHKARTE.z80" name="GLKWUNSCHKARTE  " kurz="Glückwunschkarte drucken" />
 <file aadr="2bc0" eadr="3ecc" sadr="0000" typ="B" link="f57d43cadca195144d3657bd646dd8ff-B.GO%201010/B.GO%201010.z80" name="GO 10*10        " kurz="Go 10x10, Othello, Reversi, Brettspiel" />
 <file aadr="0100" eadr="0aff" sadr="0200" typ="C" link="159f779f459fc55b4315a4267db7c80a-gohst_rb/gohst_rb.z80" name="GOHST RB        " kurz="GHOST, Geist ausweichen und $ aufsammeln (Brosig-Tastatur)" />
+<file aadr="0200" eadr="2920" sadr="0200" typ="C" link="38230f34dad4b2e6158bcab7905bc453-goldkeller/goldkeller.z80" name="GOLDKELLER      " kurz="Leitern hoch- und runterklettern, Goldstücke einsammeln" />
 <file aadr="1000" eadr="1ce5" sadr="0000" typ="b" link="827f854ca2bdfb3f795a74d8e7a0a3f7-b.GOLDREGEN%201/b.GOLDREGEN%201.z80" name="GOLDREGEN 1     " kurz="Dollars einfangen (8x4)" />
 <file aadr="0100" eadr="0a8f" sadr="0200" typ="C" link="8da51a0f9e96a2f3faabc9b1a872909e-gost_hut/gost_hut.z80" name="GOST HUT        " kurz="GHOST Original, Geist ausweichen und $ aufsammeln (2.02-Tastatur)" />
 <file aadr="0100" eadr="0c1f" sadr="0100" typ="C" link="cf9f4e99a2f83c6cb8584013b7494174-C.GR.EDITOR%206.03/C.GR.EDITOR%206.03.z80" name="GR.EDITOR 6.03  " kurz="Grafikeditor mit Analogjoystick" />
@@ -307,6 +310,7 @@
 <file aadr="3000" eadr="3be4" sadr="0000" typ="I" link="bb47d0de3691aaf53e7adf6ad8b015e3-I.HEADER-DISK%2054/I.HEADER-DISK%2054.z80" name="HEADER-DISK 54  " kurz="HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88." />
 <file aadr="0800" eadr="1250" sadr="0000" typ="I" link="1851aeb86d095a20d4f612f5c291bebe-I.HEADER-MENUE%202/I.HEADER-MENUE%202.z80" name="HEADER-MENUE 2  " kurz="24 Programme laden und in beliebiger Reihenfolge abspeichern" />
 <file aadr="e000" eadr="e7ff" sadr="e400" typ="C" link="92207154c8adf8e50e32172e91efa519-C.HEADER-MENUE%202/C.HEADER-MENUE%202.z80" name="HEADER-MENUE 2  " kurz="PROGRAMM ZUM SOFTWARETAUSCH V2" />
+<file aadr="e000" eadr="e8ff" sadr="e400" typ="C" link="fb4926e388f6cde48735148816cd4a50-C.HEADER-MENUE_4/C.HEADER-MENUE%204.z80" name="HEADER-MENUE 4  " kurz="PROGRAMM ZUM SOFTWARETAUSCH V4" />
 <file aadr="e800" eadr="ebff" sadr="ebee" typ="C" link="6373e38242eae15913d252c40caf4ef4-C.HEADER-SAVE/C.HEADER-SAVE.z80" name="HEADER-SAVE     " kurz="Load/Save-Routine 5.95 0E800h" />
 <file aadr="0100" eadr="0baf" sadr="0100" typ="C" link="9da506601e7302bd3383c9ac830aa470-C.HEADER-Tiny%201.0/C.HEADER-Tiny%201.0.z80" name="HEADER-Tiny 1.0 " kurz="RIESA Tiny-BASIC mit Sprungverteileraufruf für Headersave" />
 <file aadr="0100" eadr="03f0" sadr="0000" typ="I" link="62ebcfc7562efea5bfaf777a92e121ef-I.HEADERBANK/I.HEADERBANK.z80" name="HEADERBANK      " kurz="HEADER-SAVE BANK" />
@@ -426,6 +430,7 @@
 <file aadr="2900" eadr="2a41" sadr="0000" typ="T" link="3e8281ae18711183bd241be3c85f90f6-T.LISSAJOU_ZU_BASI/T.LISSAJOU%20ZU%20BASI.z80" name="LISSAJOU ZU BASI" kurz="Lissajous-Figuren" />
 <file aadr="e000" eadr="e1ff" sadr="e000" typ="C" link="1f3b3cdc42a6dd53d9d9553bd81e0574-C.LOAD%20MC%2085_2/C.LOAD%20MC%2085_2.z80" name="LOAD MC 85/2    " kurz="Programme vom KC85/2 und KC85/3 einlesen" />
 <file aadr="0800" eadr="1742" sadr="0000" typ="I" link="3c93c0730eb299275681a11f1f89ee06-I.LOGICANALYSOR/I.LOGICANALYSOR.z80" name="LOGICANALYSOR   " kurz="Logik-Zustands- und Logik-Zeitanalyse " />
+<file aadr="0200" eadr="2500" sadr="0200" typ="C" link="f2f980e4fbb876c2fc23be7261ba2309-C.LOGOLAB/C.LOGOLAB.z80" name="LOGOLAB         " kurz="Sokoban Variante, Kisten schieben" />
 <file aadr="3c00" eadr="3fff" sadr="3fec" typ="C" link="35a0027f80a63e04065d67e47d99f190-C.MAINSAVE%204.6.4/C.MAINSAVE%204.6.4.z80" name="MAINSAVE 4.6.4  " kurz="Headersave kompatible LOAD/SAVE-Routine" />
 <file aadr="e000" eadr="e3ff" sadr="e000" typ="C" link="09e01d1c9233d9e7addd611838df12ba-C.maintape%204.6.4/C.maintape%204.6.4.z80" name="maintape 4.6.4  " kurz="headersave kompatibles load/save 0xE000" />
 <file aadr="3c00" eadr="3fff" sadr="3c00" typ="C" link="6d9cee9f8bc5516c665af59abfeadddc-C.maintape%204.6.4%20(maintape%204.6.4)/C.maintape%204.6.4%20(maintape%204.6.4).z80" name="maintape 4.6.4  " kurz="headersave kompatibles load/save 0x3C00" />
@@ -760,4 +765,4 @@
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 </filelist>
-<status src="Datenbank enthält 760 Dateien."/></doc>
+<status src="Datenbank enthält 765 Dateien."/></doc>

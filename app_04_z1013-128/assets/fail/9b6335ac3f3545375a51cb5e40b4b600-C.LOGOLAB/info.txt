@@ -1,0 +1,23 @@
+<kurz src="Sokoban Variante, Kisten schieben"/>
+<lang>1 Byte kürzer als im Header angegeben
+
+Steuerung:
+
+⇦             LINKS
+⇨             RECHTS
+⇧ ODER "U"    HOCH
+⇩ ODER ␣      RUNTER
+R             BILD-RESTART
+N             NEUES BILD
+S             TON AN/AUS
+E             PROGRAMMENDE 
+   
+DEINE AUFGABE BEI LOGOLAB BESTEHT DARIN,
+MIT DEINEM MANN DIE TUERME AUF DIE VORGESEHENEN
+POSITIONEN ZU SCHIEBEN. DU KANNST ABER STETS 
+NUR EINE KISTE SCHIEBEN; ZIEHEN  GEHT  NICHT. 
+
+DU HAST 26 LABYRINTHE ZUR AUSWAHL.
+
+</lang>
+<requires></requires>

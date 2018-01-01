@@ -1,0 +1,7 @@
+<kurz src="identisch [38230f34dad4b2e6158bcab7905bc453]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Steuerung: ⇦ ⇨ ⇧ ⇩
+
+</lang>
+<requires></requires>
