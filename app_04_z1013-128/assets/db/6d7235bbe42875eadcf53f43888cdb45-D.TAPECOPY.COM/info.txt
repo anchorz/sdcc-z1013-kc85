@@ -1,0 +1,3 @@
+<kurz src="CPM COM: TapeCopy Laden/Speichern File Tape/aktuelles Laufwerk"/>
+<lang></lang>
+<requires></requires>

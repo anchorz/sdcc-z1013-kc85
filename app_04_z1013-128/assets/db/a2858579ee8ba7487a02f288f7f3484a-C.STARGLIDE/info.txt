@@ -1,0 +1,6 @@
+<kurz src="Fussballspiel, Tor treffen, Ball auffangen"/>
+<lang>
+
+Steuerung: ⇦ ⇨  ␣ 
+</lang>
+<requires></requires>

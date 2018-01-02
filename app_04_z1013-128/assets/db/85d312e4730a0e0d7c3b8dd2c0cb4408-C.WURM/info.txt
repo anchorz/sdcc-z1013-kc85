@@ -1,0 +1,5 @@
+<kurz src="Zahlen aufsammeln, Wurm wird länger, Kreuzen ausweichen (Tastatur/Joystick)"/>
+<lang>Steuerung mit der Tastatur ist mehr als hakelig
+
+Steuerung: ⇦ ⇨ ⇧ ⇩</lang>
+<requires></requires>

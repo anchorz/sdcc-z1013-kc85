@@ -1,0 +1,3 @@
+<kurz src="TapeCopy Laden/Speichern File Tape/aktuelles Laufwerk"/>
+<lang><include src="I.TAPECOPY BESCHR..txt"/></lang>
+<requires></requires>

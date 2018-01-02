@@ -1,0 +1,9 @@
+<kurz src="Billard für 2 Personen, zweite Kugel über mindestens eine Bande treffen"/>
+<lang>
+Steuerung: R S E
+
+Dieses Spiel wird von 2 Personen gespielt. Ziel ist es, mit der
+ersten Kugel ◯ die zweite Kugel ● zu treffen. Dabei muss vorher
+mindestens eine Bande getroffen worden sein. Wer einen Treffer
+hatte, darf noch einmal stossen.</lang>
+<requires></requires>

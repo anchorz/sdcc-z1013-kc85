@@ -1,0 +1,8 @@
+<kurz src="BoulderDash Variante, Steine sind gefährlich, selbst wenn sie nicht fallen"/>
+<lang>Die Steine fallen etwas seltsam herunter. Also nicht unter einem 
+Stein stehenbleiben. 
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ A G I
+
+</lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Mini-CP/M V2.2 RAM-DISK ab 0x7000"/>
+<lang>ähnlich [00f77046758dd9a20a2403e960cbd7ea]</lang>
+<requires></requires>

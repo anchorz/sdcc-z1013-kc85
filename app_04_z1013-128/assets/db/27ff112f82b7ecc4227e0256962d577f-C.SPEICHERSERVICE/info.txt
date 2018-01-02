@@ -1,0 +1,3 @@
+<kurz src="Speicherservice HEX/ASCII-DUMP 0xB000"/>
+<lang></lang>
+<requires></requires>

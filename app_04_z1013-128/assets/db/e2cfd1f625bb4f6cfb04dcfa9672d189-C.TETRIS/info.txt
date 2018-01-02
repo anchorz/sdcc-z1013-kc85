@@ -1,0 +1,5 @@
+<kurz src="Tetris, Blöcke drehen und stapeln"/>
+<lang>
+
+Steuerung: ⇦ ⇨  ␣ </lang>
+<requires></requires>

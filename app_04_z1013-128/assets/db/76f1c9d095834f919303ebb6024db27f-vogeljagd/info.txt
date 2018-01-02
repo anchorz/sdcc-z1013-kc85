@@ -1,0 +1,6 @@
+<kurz src="Vögel abschießen"/>
+<lang>
+Steuerung: S ⏎
+
+</lang>
+<requires></requires>

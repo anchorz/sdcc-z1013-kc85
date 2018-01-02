@@ -1,0 +1,7 @@
+<kurz src="Hubschrauber, Rettungsmissionen fliegen (andere Version)"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ ␣  L B G T
+
+</lang>
+<requires></requires>

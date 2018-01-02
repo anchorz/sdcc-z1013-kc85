@@ -1,0 +1,90 @@
+ l
+R
+	**************************************
+	*				     *
+	* EG Beschreibung  - TapeCopy - V 1.0FH  *
+	*				     *
+	**************************************
+			      4(c) Frank Herzog5
+				  IG ERF-SOFT
+				  (Maerz 1989)
+
+	Arbeitsbereich: C800H - CFFFH  ( CCP )
+
+Befehle:
+
+Eingabe:	ELw:F -> Laufwerk Lw wird aktuelles Laufwerk
+
+		EDF   -> Anzeige Directory (aktuelles Laufwerk)
+
+		ELF   -> Laden File von Tape auf akt. Laufwerk
+
+		ESF   -> Speichern File von akt. Lw auf Tape
+
+		ECF	-> Statistische Daten Laufwerk
+
+		E^CF  -> Warmstart CP/M
+
+		    -> Anzeige Befehle
+
+
+Load-Routine:
+
+Eingabe:	E>(FileName)F4Enter5
+
+			Einladen einer GkomplettenH Diskette
+			von Tape (ab 'FileName') bis 'Break'(^C)
+			oder File ">No File"
+
+		E(FileName)F4Enter5
+
+			Einladen GeinesH Files ('FileName') von
+			Tape auf aktuelles Laufwerk
+
+
+Save-Routine:
+
+Eingabe:	4Enter5
+
+			Abspeichern des GkomplettenH akt.
+			Laufwerks auf Tape. Als letztes
+			File wird ">No File" als Endekennung
+			ausgegeben.File mit Systemkennzeichen
+			werden nicht mit ausgegeben.
+
+		EFileName.TypF4Enter5
+
+			File "FileName.Typ" wird (wenn auf akt.
+			Lw vorhanden) auf Tape abgespeichert.
+			"FileName.Typ" muß eindeutig sein.
+			(Das File kann auch Systemkennzeichen
+			 besitzen.)
+
+Bemerkungen:
+
+E1.F	Aktuelles File wird immer ab 100H in den Speicher
+	geladen, d.h. max. Länge= 49 KByte
+
+E2.F	Soll ein File eingeladen werden,welches nicht mit Tape-
+	Copy ausgelagert wurde,ist zu beachten,daß der Filename
+	CP/M-Typisch sein sollte.Das heißt,daß Namensfeld muß
+	8 Zeichen lang sein (mit Leerzeichen auffüllen),gefolgt
+	von einem '.' und 3 Zeichen Typangabe.Bei Nichtbeachtung
+	sind Fehleintragungen im Directoryverzeichnis möglich.
+
+E3.F	Das Programm nutzt den Sprungverteiler für
+	LORUF 0FFF1H und
+	SARUF 0FFF4H.
+	Das Programm ist mit dem 4K -Monitor nach R. Brosig
+	nutzbar (z.B. mit SCP-2RF 2.38 ).Bei Verwendung eines
+	anderen Monitors ist zubeachten,daß für die LOAD-Routine
+	nicht der Originaleinsprung auf LORUF genutzt wird.
+	Es wird zu der Adresse auf LORUF+1 (0FFF2H) 11H addiert
+	und zu dieser gesprungen.
+		LD	HL,(LORUF+1)
+		LD	DE,11H
+		ADD	HL,DE
+		JMP	(HL)
+	Damit wird die Namenseingabe der original LOAD-
+	Routine übersprungen.
+

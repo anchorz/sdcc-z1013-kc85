@@ -1,0 +1,3 @@
+<kurz src="Tiny Basic 3.01 mit Autostart-Patch"/>
+<lang></lang>
+<requires></requires>

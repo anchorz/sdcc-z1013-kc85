@@ -1,0 +1,5 @@
+<kurz src="Hubschrauber, Rettungsmissionen fliegen (andere Version)"/>
+<lang>Steuerung: ⇦ ⇨ ⇧ ⇩ ␣  L B G T
+
+</lang>
+<requires></requires>

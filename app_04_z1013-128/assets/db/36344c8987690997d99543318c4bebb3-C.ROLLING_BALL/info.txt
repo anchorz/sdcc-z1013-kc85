@@ -1,0 +1,3 @@
+<kurz src="Zeugs geschickt aufsammeln, Fehler vermeiden"/>
+<lang></lang>
+<requires></requires>

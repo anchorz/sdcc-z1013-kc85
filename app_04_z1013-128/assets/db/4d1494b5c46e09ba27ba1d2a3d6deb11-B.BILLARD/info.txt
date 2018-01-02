@@ -1,4 +1,4 @@
-<kurz src="Kugel über die Bande zu Treffen"/>
+<kurz src="Kugel über die Bande Treffen"/>
 <lang>
 
 Steuerung: ⇦ ⇨ L R K

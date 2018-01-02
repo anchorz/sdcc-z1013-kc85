@@ -1,0 +1,7 @@
+<kurz src="Hindernissrennen, Memory"/>
+<lang>Wir befinden uns in den ROCKY MOUNTAINS und schreiben das
+Jahr 1810 nach der Geburt Jesus. Ein Cowboy  ist  auf  der  Suche
+nach Abenteuern in den Ban des "TAL DER 1000 GEFAHREN" geraten.
+Er hat, um von diesem Ban erloest zu werden, eine Menge von Tests
+zu bestehen und Hindernisse zu ueberwinden.</lang>
+<requires></requires>
