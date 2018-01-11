@@ -1,0 +1,3 @@
+<kurz src="Beschreibung der Besonderheiten des Betriebssystems SCP-2RF 2.1"/>
+<lang><include src="I.SCP-2RF 2.1.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Datenbank, integrierte Schaltkreise in DIL-Bauform"/>
+<lang><include src="I.IC-DATEI.txt"/></lang>
+<requires></requires>

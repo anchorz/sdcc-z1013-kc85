@@ -1,0 +1,6 @@
+<kurz src="fast identisch [b3fad91ed49e3bbbf54e1c1df1d063f4]"/>
+<lang>Hier wird Cursor-Runter verwendet, statt Cursor-Links
+
+Steuerung: ⇦  ⇩
+</lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Erläuterungen zum 12K TDL BASIC"/>
+<lang><include src="C.12K-BASICBUCH.b"/></lang>
+<requires></requires>

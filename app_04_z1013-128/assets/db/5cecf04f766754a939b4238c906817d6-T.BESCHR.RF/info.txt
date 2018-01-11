@@ -1,0 +1,3 @@
+<kurz src="Anleitung zum Aufbau der 256kbyte RAM-Floppy nach MP 3/88"/>
+<lang><include src="T.BESCHR.RF-ALLG..txt"/></lang>
+<requires></requires>

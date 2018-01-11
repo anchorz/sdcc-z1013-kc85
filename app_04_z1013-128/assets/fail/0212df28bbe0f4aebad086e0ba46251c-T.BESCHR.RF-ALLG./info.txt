@@ -1,0 +1,4 @@
+<kurz src="identisch [5cecf04f766754a939b4238c906817d6]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+<include src="T.BESCHR.RF-ALLG..txt"/></lang>
+<requires></requires>

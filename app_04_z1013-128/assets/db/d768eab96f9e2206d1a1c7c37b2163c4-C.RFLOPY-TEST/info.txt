@@ -1,0 +1,3 @@
+<kurz src="RFL-TEST 1, RAM-Floppy Test 0x98"/>
+<lang></lang>
+<requires></requires>

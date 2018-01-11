@@ -1,0 +1,3 @@
+<kurz src="BASIC for Z1013 TDL Z-80 High Precision Version"/>
+<lang>T.D.L. Z-80 BASIC by Neil Colvin & Roger Amidon May 1977</lang>
+<requires></requires>

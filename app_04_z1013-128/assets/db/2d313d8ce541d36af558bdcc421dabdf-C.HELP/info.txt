@@ -1,0 +1,3 @@
+<kurz src="HEX/ASCII-Dump"/>
+<lang></lang>
+<requires></requires>

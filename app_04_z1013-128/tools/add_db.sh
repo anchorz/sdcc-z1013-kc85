@@ -49,7 +49,7 @@ $md5 = md5_hex($bytes);
 close(Z80);
 
 my $base=basename($file,".z80");
-$base=~s/ /_/g; #I don't like spaces in filenames
+$base=~s/[ #]/_/g; #I don't like spaces or other special characters in filenames
 
 my $dir_dest="$dbroot/$md5-$base";
 if (-e $dir_dest) {

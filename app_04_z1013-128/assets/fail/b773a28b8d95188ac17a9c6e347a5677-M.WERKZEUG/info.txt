@@ -1,4 +1,4 @@
-<kurz src="Patch für ein unbekanntes Programm"/>
+<kurz src="ähnlich [2d313d8ce541d36af558bdcc421dabdf] Patch für ein unbekanntes Programm"/>
 <lang>Ist 1 Byte kleiner, als im Header angegeben.
 
 Keine Ahnung, was und wofür dieses Schnipsel gut sein sollte. Es lag bei der

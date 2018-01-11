@@ -1,0 +1,152 @@
+		***********************************
+		*                                 *
+		*     +++  MRB  Z 1013  +++       *
+		*                                 *
+		*  BESCHREIBUNG  I C - D A T E I  *
+		*                                 *
+		*    (c) by A.Schuetz,U.Rehn      *
+		***********************************
+
+(Z 1013 - PROGRAMM ZUR UNTERSTUETZUNG DES ENTWURFS ELEKTRONI-
+SCHER SCHALTUNGEN UND LEITERPLATTEN)
+
+Mit diesem Programm koennen aus der Datei integrierte Schalt-
+kreise der DIL-Bauform abgerufen werden.  Es ist eine graphische
+Darstellung in 8 Varianten und  eine Ausgabe von technischen
+Daten des jeweiligen IC moeglich.  Die graphische Darstellung ist
+besonders geeignet fuer den Entwurf von Leiterplatten und fuer
+die Fehlersuche auf Leiterplatten.  Die 8 Varianten der graphi-
+schen Darstellung richten sich nach den Angaben des Bedieners.
+Diese bezieht sich ausschliesslich auf die Sicht des Betrach-
+ters auf den IC.  Dabei bedeuten:
+L.-Seite                 :Leiterseite
+B.-Seite                 :Bauelementeseite
+senkrecht/quer           :die Lage des IC 
+oben/unten/links/rechts  : die Lage des Pin Nr.1
+Bei der Quer-Lage des IC erfolgt die Beschriftung grund-
+saetzlich von oben nach unten.
+
+Ueber BREAK ist jederzeit ein Verlassen dieses Programms moeg-
+lich.  Mit NMI erfolgt ein Restart des Programms in dem man
+sich gerade befindet.  Ein Ueberwechseln in den jeweils
+anderen Programmteil erfolgt mittels  @D (Dateiausgabe) und  @E
+(Editier-und Eingabe-Modus).  Ein Abspeichern des kompletten
+Programms einschliesslich der aktuellen Datei erfolgt nach  @S.
+Diese Funktion ist nicht vom Betriebssystem aus aufrufbar, da
+anschliessend ein Sprung zur NMI-Adresse (0066H) erfolgt.  Die
+ausgegebenen Adressen fuer den Anfang und das Ende des abge-
+speicherten Bereiches sind zu notieren.  Am Ende des SAVE-Vor-
+gangs erfolgt ein Restart des Programmteils, in dem man sich
+zuletzt befand.
+Die Anfangsbuchstaben des jeweiligen Programmteils erscheinen
+zur Kontrolle oben rechts in der Ueberschrift.
+
+EINGABE UND EDITIEREN DER DATEI
+================================
+Nach der Eingabe des IC-Typs koennen 2 verschiedene Moeglich-
+keiten auftreten.  Entweder der angegebene IC steht schon in der
+Datei, oder nicht.  Im ersten Fall wird der Inhalt der Datei
+uebersetzt und auf den Bildschirm gebracht.  Im zweiten Fall
+bleibt der Eingabebereich leer.  In beiden Faellen wird der
+Cursor auf den Anfang des Eingabebereichs gesetzt, an die
+Stelle nach dem Ausdruck 'DIL'.  Es kann eine max. 255 Zeichen
+lange Zeichenkette eingegeben werden, die in folgender Weise
+auszufuehren ist:
+-als erstes die DIL-Zahl des IC
+-Trennzeichen '\'
+-es folgen entsprechend der DIL-Zahl eine Anzahl Pinbezeich-
+ nungen, von denen jede beendet wird mit dem Trennzeichen '\'
+-zuletzt die technischen Daten des IC.
+Zur Kontrolle werden im Edit-Modus staendig die verfuegbaren
+freien Bytes angezeigt und, falls erforderlich, eine Fehler-
+meldung ausgegeben.  Zu beachten ist, dass das Programm einen
+mindestens freien Speicherbereich von etwa 260 Byte am Dateiende
+benoetigt.
+
+Syntax:
+-------
+1. DIL-Zahl
+Diese muss eine gerade Dezimalzahl im Bereich von 4...40 sein.
+Anstelle einer Zahl kann als Ausnahme der Buchstabe 'L' eingege-
+ben werden.  In diesem Fall wird der aktuelle IC aus der Datei
+entfernt.  Folgt der DIL-Zahl nicht das Trennzeichen '\', so
+erfolgt die Ausgabe eines SN-ERRORs.
+
+2. Pin-Bezeichnung
+Die Pin-Bezeichnung ist wahlfrei, doch nicht laenger als sechs
+Zeichen.  Space werden ausgeblenget, zaehlen jedoch mit bei der
+Anzahl der Zeichen.  Das Zeichen '\' fungiert wieder als Trenn-
+zeichen und wird nicht mit ausgegeben.  Unbeschriftete Pins wer-
+den mit zwei aufeinanderfolgenden Trennzeichen gekennzeichnet.
+Ein Space dazwischen ist ebenfalls moeglich.  Die Anzahl der
+Pin-Bezeichnungen, einschliesslich der unbeschrifteten Pins,
+muss mit der DIL-Zahl uebereinstimmen.  Ist die DIL-Zahl klei-
+ner, so erfolgt eine Fehlermeldung.  Ist die DIL-Zahl groesser,
+werden die ueberfluessigen Zeichen als technische Daten gewer-
+tet.
+
+3. Technische Daten
+Die Zeichen der technischen Daten sind ebenfalls wahlfrei, je-
+doch ist dabei zu beachten:
+-Der Doppelpunkt wird nicht mit ausgegeben. Er bewirkt einen
+ doppelten Zeilensprung.
+-Das Trennzeichen wird nicht mit ausgegeben. Es hat Tabulator-
+ funktion.  Es erfolgt ein Sprung auf Zeile 0 oder 16.
+-Das Gleichheitszeichen hat ebenfalls Tabulatorfunktion, wird
+ aber mit ausgegeben, und zwar auf Spalte 0+6 oder 16+6.
+Dadurch ist eine uebersichtliche Darstellung der technischen Da-
+ten in Tabellenform moeglich.  Eine obere Grenze der Eingaben
+wird gesetzt durch das Bereichsende nach 255 Zeichen.
+
+Die Uebernahme des Bildschirminhaltes erfolgt erst nach ENTER,
+und nur dann, wenn keine Fehlermeldung erfolgt, und zwar immer
+an das Dateiende.  Danach wird der Ursprungstext, falls vorhan-
+den, geloescht.  Wird die Eingabeschleife mit BREAK, NMI oder
+RESET verlassen, so hat der Ursprungstext Gueltigkeit.
+
+BEDEUTUNG AUSGESUCHTER SPEICHERZELLEN
+-------------------------------------
+Treten bei der Arbeit mit der Datei Fehler auf (z.B.durch
+Falschbedienung), koennen zur Fehlersuche folgende Speicher-
+zellen kontrolliert werden:
+00D5  DA ANFG   ;Dateianfang
+00D7  DA ENDE   ;Dateiende
+00D9  DA MSIZE  ;RAM-Ende + 1
+Das Dateiende kann ueber das Betriebssystem ermittelt werden:
+   F <ANFG> 02 00 00
+Fuer ANFG wird der Dateianfang eingetragen.  Die ermittelte
+Adresse +3 ist dann das Dateiende.  Das Programm findet diese
+Adresse normalerweise selbststaendig.  Soll die Datei auf
+einen anderen Speicherbereich transportiert werden, so muss ab
+(00D5) die Adresse des neuen Dateianfangs eingetragen werden.
+Diese Adresse steht fest und kann vom Programm nicht selbst-
+staendig gefunden werden.  Eine Neueroeffnung der Datei kann
+erreicht werden, indem ab Dateianfang die Bytefolge 00 00 ein-
+getragen wird.  Das Dateiende ist dann Dateianfang +3.
+
+Ein IC steht wie folgt in der Datei:
+<FF> Typenbezeichnung <00> DIL-Zahl/2 Pin-Bezeichhungen
+technische Daten <00> ... <00>
+Typenbezeichnung    : Klartext 
+DIL-Zahl/2          : Hex-Zahl,1Byte
+Pin-Bezeichnung     : Anzahl entspricht der DIL-Zahl, je-
+                     weils letztes Byte - Bit 7=1
+technische Daten    : Klartext
+
+FEHLERMELDUNGEN
+---------------
+SN ERROR (Syntax error)
+Ein Zeichen wird als Fehler erkannt und kann nicht uebersetzt
+werden.
+PN ERROR (Pin error)
+Fehler in einer Pin-Bezeichnung, wenn zum Beispiel eine Pin-Be-
+zeichnung laenger als 7 Zeichen ist, oder zu wenig Pins als sol-
+che gekennzeichnet sind.
+DL ERROR (DIL error)
+Fehlerhafte Angabe der DIL-Zahl, d.h. wenn diese eine ungerade
+Zahl oder kleiner als 0 bzw. groesser als 40 ist.
+OV ERROR (overflow error)
+Das RAM-Ende wurde erreicht, bzw. der freie verfuegbare Spei-
+cherbereich reicht fuer das EDIT-Programm nicht mehr aus
+(weniger als 260 Bytes frei).
+

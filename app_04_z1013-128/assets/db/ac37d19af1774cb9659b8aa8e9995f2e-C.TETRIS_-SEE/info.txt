@@ -1,0 +1,6 @@
+<kurz src="TETRIS - FG FORTH"/>
+<lang>
+
+Steuerung: 8 9 0 ␣
+</lang>
+<requires></requires>

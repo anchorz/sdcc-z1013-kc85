@@ -1,0 +1,3 @@
+<kurz src="Beschreibung IDAS"/>
+<lang><include src="I.IDAS.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="BASIC for Z1013 TDL Z-80 High Precision Version+CSAVE"/>
+<lang>CLOAD/CSAVE statt ALOAD/ASAVE</lang>
+<requires></requires>

@@ -1,0 +1,78 @@
+***************************************************************
+*                      IG - HC                                *
+*            Beschreibung der Besonderheiten des              *
+*       CP/M-kompatiblen Betriebssystems SCP-2RF 2.1          *
+*            fuer den Z1013 mit einer oder zwei               *
+*                RAM-Floppys nach  MP 3/88                    *
+*                  (c) by Rainer Brosig                       *
+***************************************************************
+
+
+Standort: C800H-E4FFH  Start: DE00H
+
+          C800H-CFFFH - CCP
+          D000H-DDFFH - BDOS
+          DE00H-E4FFH - BIOS
+
+
+Voraussetzungen:
+
+- 64K Hauptspeicher (eventuell der auf der RF-Karte)
+- RAM-Floppy nach MP 3/88
+    IO-Grundadr. A=98H  (in DE39H aenderbar)
+                 B=58H  (   DE3AH          )
+- Sprungverteiler nach FA 10/88
+    *Headersave File- und Blockroutinen
+    *Druckerschnittstellen
+    *BEEP-Funktion
+- Tastatur nach MP 7/88 bzw. andere, die entsprechend schnell
+  sind, und alle CTRL-Zeichen erzeugen koennen
+
+
+Beguenstigungen:
+
+- 4 MHz Takt
+- Bildschirmorganisation 16*64 Zeichen (Adr. EC00H)
+
+
+Nach dem Start auf DE00H kann das physische Loeschen oder das
+komplette Laden einer RAM-Floppy angefordert werden. Wurde das
+System lediglich neu gestartet, wird durch Eingabe von ENTER
+sofort in die Kommando-Aufrufschleife des CCP gesprungen.
+Alle weiteren Handlungen entsprechen denen der normalen SCP-
+Bedienung, wie sie vom PC her bekannt sind:
+
+DIR                    Anzeige des Diskettenverzeichnisses
+ERA filename.atr       Loeschen eines Files
+TYPE filename.atr      Anzeigen von Textdateien auf dem Bildschirm
+USER nn                Wechsel des Nutzerbereichs
+SAVE blkz filename.atr Saven eines Files von 100H auf die aktu-
+                       elle RAM-Floppy mit einer Laenge von n
+                       Bloecken; blkz= Anzahl der 100H-Bloecke
+                       dezimal z.B. SAVE 58 POWER.COM
+                       wenn vorher POWER mit Hilfe des Monitors
+                       auf 100H-3AFFH gebracht wurde.
+
+Nach jedem Warmstart wird abgefordert, ob das SCP verlassen und
+ob die aktuelle RF geladen oder gesaved werden soll.
+Die Aufzeichnung erfolgt unter Nutzung der Headersave-Blockrou-
+tinen ueber den Sprungverteiler des Monitors. Die Bloecke haben
+Blocknummern, die entgegen des Headersave-Standards den Abstand
+1 haben. Damit ist eine lineare Aufzeichnung bis zu einer max.
+Floppy-Groesse von 4 MByte in einem File moeglich. Ein Laden
+mit dem normalen Headersave in den Hauptspeicher ist aus eben
+genannten sowie aus Kapazitaets-Gruenden nicht mehr moeglich.
+Die Darstellung der Hex-Zahlen waehrend des Saven oder Ladens
+der Floppy entsprechen den Spuren, die gerade gelesen oder ge-
+schrieben werden.
+
+Unter dem Betriebssystem SCP-2RF 2.1 laufen alle CP/M Program-
+me, die sich fuer einen Bildschirm von 16*64 installieren lassen
+und die Groesse einer Floppy nicht ueberschreiten. Programme mit
+einer 24*80 Zeichen-Installation laufen nur mit Einschraenkungen
+und koennen meist nur so bedient werden, dass waehrend des Bild-
+schirmrollens mit Hilfe von ^S der Rollvorgang gestoppt wird,
+damit nicht die Haelfte aus dem Bildschirmbereich laeuft.
+Programme wie TP, die direkt auf den BWS schreiben, muessen ent-
+sprechend uminstalliert werden.
+

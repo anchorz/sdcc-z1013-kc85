@@ -28,10 +28,12 @@ $month=11;
 $year=2017;
 $day=29;
 
-$days=32;
+
 echo "<tr>\n";
 
 $datetime = new DateTime(sprintf("%d-%d-%d",$year,$month,$day));
+$today=new DateTime();
+$days=$today->diff($datetime)->days+1;
 
 for ($x=0; $x<$days; $x++) {
 

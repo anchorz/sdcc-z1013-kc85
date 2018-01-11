@@ -1,0 +1,634 @@
+
+Anleitung zum Aufbau der 256kbyte RAM-Floppy nach MP 3/88
+
+		Werter Elektronikamateur!
+
+Die Rechnerbaugruppe, die Sie als Bausatz erworben haben, ist
+eine kombinierte RAM-Disk- und Hauptspeicherbaugruppe des
+weiterentwickelten K1520-Baugruppensortimentes. Sie wurde ur-
+sprünglich für industrielle Anwendungen entwickelt, ist jedoch
+ebensogut für Amateuzwecke einsetzbar. Ihr Hauptanwendungsgebiet
+liegt in der Umrüstung von Bürocomputern A5120, Datenstationen
+K8915 sowie anderer auf K1520-Technik basierenden Rechnern, die
+mit dieser Baugruppe sowohl einen Strom und Platz sparenden
+Hauptspeicher als auch ein zusätzliches sehr schnelles
+"Laufwerk" erhalten.
+
+
+Kompatibilität mit Heimrechnern
+
+Die in der DDR hergestellten Heimrechner sind zwar nicht aus
+K1520-Baugruppen aufgebaut, aber sie besitzen alle einen von
+außen zugänglichen Systembus, der zumindest in seinen
+elektrischen Daten weitgehend dem K1520-Systembus entspricht.
+Für den erfahrenen Amateur dürfte es daher nicht schwer sein,
+die vorliegende Baugruppe an einen derartigen Rechner anzu-
+schließen. Dem kommt entgegen, daß die Baugruppe außer +5 Volt
+keine anderen Versorgungsspannungen benötigt und stromsparend
+ausgelegt wurde.
+Anders sieht die Situation bei den Amateuren aus, die den Wunsch
+hegen, die RAM-Disk an anderweitige Rechner, so z.B. an
+importierte Heimrechner anzuschließen. Dabei sollte zuerst
+geprüft werden, ob der betreffende Rechner mit dem richtigen
+Mikroprozessor ausgerüstet ist. Es kommen nur solche Rechner in
+Frage, die den Prozessor Zilog Z80 oder einen dazu kompatiblen
+Prozessor (wie den DDR-Typ U880) enthalten.
+Sodann sollte bekannt sein, ob der Systembusanschluß (der
+natürlich vorhanden sein muß!) Signale führt, die den Signalen
+des K1520-Systembusses entsprechen und ob die erforderlichen
+Input-/Output-Adressen in diesem Rechner noch frei verfügbar
+sind. Beim ZX-Spectrum z.B. sind alle geraden I/O-Adressen
+belegt, was zu Konflikten mit der RAM-Disk führt. Erfahrene
+Amateure werden diese Fragen schnell klären können.
+An dieser Stelle ist eine Warnung angebracht:
+Die vorliegende Baugruppe besitzt in Schaltungstechnik und
+Design Industriequalität. Sie erfordert jedoch auch vom
+aufbauenden Amateur ein gewisses Maß an Fähigkeiten. Sie ist
+nicht als Erstlingswerk geeignet! Wer nicht über gründliche
+Kenntnisse und Fertigkeiten auf dem Gebiet der Mikrorechen-
+technik verfügt, sollte Aufbau und Inbetriebnahme einem
+erfahrenem Amateur überlassen.
+
+
+Bestückungsvarianten
+
+Für die Belange des Amateurs ist es durchaus nicht zwingend
+erforderlich, die gesamte Baugruppe auf einmal aufzubauen.
+Auf der Baugruppe sind drei Funktionsgruppen vorhanden, die
+Bauelementemäßig weitgehend voneinander getrennt sind, so daß
+man sie je nach Bedarf auch einzeln bestücken und benutzen kann:
+1.	Die eigentliche RAM-Disk. Diese umfasst 4 Bänke zu je
+	64kbyte, die über Input- und Output-Befehle erreicht
+	werden.
+2.	Der Hauptspeicher. Dieser umfaßt eine Bank von 64kbyte,
+	die mit einer Einrichtung versehen ist, welche mittels
+	des K1520-Signals "/READY" das Betreiben von parallel zu
+	zu dieser Bank liegenden anderen Hauptspeicherbaugruppen
+	(EPROM, Bildschirmansteuerungen u.a.) ermöglicht.
+3.	Eine MEMDI-Erzeugung. Diese gestattet es, mittels OUT-
+	Befehlen mehrere MEMDI-Signale zum Ein- und Ausschalten
+	von anderweitigen Baugruppen zu erzeugen.
+
+So kann man beispielsweise zunächst nur den Haupspeicher
+bestücken und in Betrieb nehmen. Damit kann man erst einmal eine
+einfache Rechnervariante (Beispiel: ZVE K2521, Bildschirm-
+ansteuerung und Hauptspeicher) mit einem Monitorprogramm auf-
+bauen. Später bestückt man dann die RAM-Disk und baut sein
+System aus, so daß man dann zu einem richtigen Betriebssystem
+übergehen kann. (z.B. CP/M 2.2, SCP, CPA, DAC usw.)
+
+
+Anforderungen an den Rechner
+
+Die Anforderungen, die die vorliegende Baugruppe an den Rechner
+stellt, in dem sie betrieben werden soll, sind gering und bei
+fast allen Rechnern erfüllbar, die nicht intern mit
+Trickschaltungen oder sehr unvollständiger Dekodierung von
+Adressen arbeiten.
+Für die eigentliche RAM-Disk wird ein zusammenhängender Input-/
+Output-Adressbereich von 8 Plätzen (entspricht 3 Bit) benötigt.
+Über ein Wickelfeld kann die Lage dieses Adressbereiches im
+Adressraum des Rechners in gewisses Grenzen eingestellt werden.
+Die Adressbit's A3...A7 sind an ein Wickelfeld geführt, wo sie
+mit 5 Eingängen verbunden werden, von denen 3 High und 2 Low
+sein müssen, um die RAM-Disk anzusprechen. Die Adressbit's
+A0...A2 gehen fest an einen Dekoder, der die Bänke selektiert.
+Dies ist beim Anschluß an Rechner mit unvollständiger
+Dekodierung zu beachten. So belegt z.B. der ZX-Spectrum alle (!)
+I/O-Adressen, bei denen das Adressbit A0 Low ist. Will man die
+Baugruppe an derartige Rechner anschließen, so sind Layout-
+änderungen auf der Baugruppe unvermeidlich.
+Die auf der Baugruppe befindliche Hauptspeicherbank umfaßt
+mit 64kbyte den gesamten adressierbaren Hauptspeicher. Sie ist
+nicht in Teilbänke teilbar. Damit neben ihr auch noch andere
+Baugruppen im Hauptspeichervolumen des Rechners betrieben werden
+können, besitzt sie eine Einrichtung zum Entadressieren. Dazu
+wird das K1520-Bussignal "/READY" benutzt. Sobald eine andere
+Baugruppe angesprochen wird, aktiviert sie dieses Signal. Das
+erkennt die Entadressierschaltung, wandelt den begonnenen
+Speicherzugriffszyklus in eine Refreshzyklus um und hält die 
+RAM-Bank ab, an dem gerade begonnenen Buszyklus teilzunehmen.
+Die Funktion der Hauptspeicherbank und damit des gesamten
+Rechners ist also nur dann gewährleistet, wenn die übrigen
+Baugruppen das "/READY"-Signal aktivieren, sobald sie von der
+CPU adressiert werden. Dies trifft für importierte Heimrechner
+im allgemeinen nicht zu.
+Letztendlich benötigt die auf der Baugruppe befindliche MEMDI-
+Erzeugung ähnlich der RAM-Disk auch 8 aufeinanderfolgende I/O-
+Adressen, die in gewissen Grenzen mittels Wickelfeld gewählt
+werden können.
+
+
+
+Vorbereitungen zum Aufbau
+
+Bevor Sie mit dem Aufbau der Baugruppe beginnen, solten Sie Ihr
+Werkzeug einer sorgfältigen Prüfung unterziehen. Zunächst
+benötigen Sie einen oder mehrere Glashaarpinsel zum Feinsäubern
+der Leiterplatte. Ebenso benötigen Sie einen Durchgangsprüfer
+und eine sehr starke Lupe (z.B. die beim Optiker erhältliche Uhr-
+macherlupe) sowie eine Schreibtischlampe. Mit dem Glashaarpinsel
+säubern Sie die Leiterplatte, bis die Leiterzüge völlig
+metallisch blank sind. Dies sollte vorsichtig geschehen, wobei
+der Pinsel immer in Richtung der Leiterzüge geführt wird. Durch
+Transport, Lagerung und Versand bilden sich auf Kupferflächen
+immer Oxidschichten, die erst einmal entfernt werden müssen.
+Lupe und Schreibtischlampe dienen zur Kontrolle der Leiter-
+platte. Nach dem ersten Säubern folgt die erste Kontrolle der
+Leiterplatte auf Haarrisse und Haarbrücken. Dazu beleuchten Sie
+die Platte von hinten und kontrollieren mit der Lupe sämtliche
+Leiterzüge und Zwischenräume. Diese Kontrolle ist zugegebener-
+maßen aufwendig und mühsehlig - man braucht als Amateur
+schätzungsweise 2 Tage dafür - die Industrie benutzt dafür
+rechnergesteuerte Automaten, die Millionen kosten. Diese
+Kontrolle ist nicht als Mißtrauen gegen den Hersteller zu ver-
+stehen, sondern ist eine Sorgfaltspflicht, die aus dem
+Schwierigkeitsgrad der vorliegenden Baugruppe resultiert.
+Den Durchgangsprüfer werden Sie benötigen, um nach dem Einlöten
+der Durchkontaktierungen und der passiven Bauelemente die Platte
+zwischenzuprüfen. Nach dem Einlöten der Halbleiterbauelemente
+sollten Sie ihn nicht mehr benutzen, es sei denn, Sie besitzen
+einen, bei dem Sie ganz genau wissen, daß er für Schaltkreise
+ungefährlich ist.
+Als nächstes Werkzeug benötigen Sie einen passenden Lötkolben,
+einen feinen scharfen Seitenschneider, eine sehr feine Pinzette
+(im Feinmechanikerhandel werden diese als "Kornzange" bezeich-
+net), Feinlötzinn und Kolophonium oder reine Kolophoniumlösung.
+Für die bevorstehenden Lötarbeiten können Sie jedoch nicht jeden
+Lötkolben verwenden. Für Sie kommen nur Feinlötkolben mit Lei-
+stungen von 20...30 Watt sowie die seit einiger Zeit im Handel
+befindlichen elektronisch geregelten Lötkolben in Betracht. Alle
+gröberen Lötkolben, Lötpistolen, Lötnadeln und dergleichen sind
+nicht verwendbar. Der verwendete Feinlötkolben muß unbedingt
+eine auswechselbare Lötspitze besitzen. Das ist wichtig! Es wird
+erfahrungsgemäß am Lötkolben von vielen Amateuren, aber auch von
+Berufselektronikern oft schwer gesündigt. Zerfressene Spitzen,
+falsche Temperaturen und schlechte Verzinnung der Spitze sind
+oft Ursache für späteren Ärger bei Inbetriebnahme und Benutzung.
+Mit Lötkolben verhält es sich wie mit Schnittwerkzeugen: Sie
+sind vom Hersteller vorgefertigt, müssen aber vor Gebrauch vom
+Benutzer erst einmal für die spezielle Verwendung zugerichtet
+werden. Dazu entnehmen Sie die Lötspitze dem Kolben und schmied-
+en sie mit kleinem Hammer auf einem möglichst glatten Amboß kalt
+aus. Die Feile bleibt im Schrank! Durch das kalte Ausschmieden
+wird die Spitze gehärtet und übersteht so auch längeres Löten,
+ohne allzu schnell Ausfraß-Stellen zu bekommen. Wichtig ist die
+Form der Lötspitze: Sie sollte wie eine feine Schraubenzieher-
+klinge mit ca. 1.5mm Breite und ca. 0.5mm Dicke an der Spitze
+aussehen. In ca. 10...12mm Abstand von der Spitze sollte der
+volle Schaftdurchmesser erreicht sein, damit die Wärme gut zur
+Spitze fließen kann. Stecken Sie die Spitze beim Löten immer bis
+zum Anschlag in den Lötkolben hinein, sonst überhitzen sich
+nämlich die hinteren Teile der Heizpatrone und der Kolben lebt
+nicht lange. Bevor Sie die Spitze jedoch benutzen, wird sie nach
+dem Ausschmieden mit einem Dreikantschaber vorsichtig geglättet
+und am besten mit einem zweiten Lötkolben gut verzinnt.
+Letztendlich benötigen Sie auch noch einen einfachen TTL-Prüf-
+stift, ein Voltmeter und ein Labornetzteil (5 Volt, ca. 1
+Ampere) für die Inbetriebnahme.
+
+
+Der Aufbau
+
+Zunächst wird, wie im vorigen Absatz beschrieben, die gesamte
+Leiterplatte gereinigt und geprüft. Als erste Lötarbeit folgt
+dann das Setzen der Durchkontaktierungen. Dazu gibt es zwei
+sinnvolle Verfahren: Man kann z.B. blanke, gut gesäuberte starke
+Kupferdrähte unverzinnt in die Löcher drücken, beidseitig verlö-
+ten und abkneifen. Dies setzt allerdings einige Übung voraus, um
+nicht das auf der Rückseite befindliche Lötauge abzureißen.
+Besser ist es, dünnen Schaltdraht von ca. 0.3mm Durchmesser zu
+benutzen, wie er für Wickelverbindungen verwendet wird. Nachdem
+man ein Stück abisoliert und gut verzinnt hat, wird daraus mit
+der Pinzette eine Art Splint geformt (Haarnadelform mit ver-
+dicktem Kopf), den man dann durch das Loch steckt, auf der Rück-
+seite auseinander spreizt und beidseitig verlötet. Nach dem
+Setzen der Durchkontaktierungen wird der Bus-Steckverbinder auf-
+gesetzt, befestigt und verlötet. Danach folgt eine gründliche
+Zwischenprüfung mit Lupe und Durchgangsprüfer. Als nächstes
+folgen die passiven Bauelemente bis auf die Verzögerungsglieder:
+	R1-C1, R2-C2, R33-C3, R34-C4, R35-C5, R36-C6
+Diese werden erst nach der Funktionsprobe der TTL-Schaltungs-
+teile eingesetzt. Anschliesend werden die TTL-Schaltkreise be-
+stückt. Bevor Sie einen Schaltkreis aufsetzen, reinigen Sie
+dessen Lötaugen noch einmal mit dem Glashaarpinsel. Dann wird
+das Lötzinn auf der frisch gereinigten Fläche leicht und sauber
+den Schaltkreisanschluß umfließen, was besonders auf der B-Seite
+sehr wichtig ist. Erfahrungsgemaß hat man den meisten Ärger mit
+nichtfunktionierenden Schaltungen durch vergessene oder kalte
+Lötstellen auf der B-Seite von Schaltkreisanschlüssen. Nach
+jedem bestückten Schaltkreis lassen Sie deshalb eine gründliche
+Kontrolle mit der Lupe auf Zinnbrücken und vergessene oder un-
+schön erscheinende Lötungen (die meist eine kalte Lötstelle ent-
+halten) folgen.
+Nachdem nun die Baugruppe bis auf die RAM-Schaltkreise und die
+Verzögerungsglieder bestückt ist, folgt nun noch einmal eine
+Kontrolle - diesmal aber auf richtige Bestückung. Folgende
+Fehler werden beim Bestücken am häufigsten gemacht:
+ - falscher Schaltkreistyp bestückt, besonders bei Importschalt-
+   kreisen (SU-Typen)
+ - Elektrolytkondensatoren verpolt
+ - Schaltkreise verpolt
+
+Wenn bisher alles fehlerfrei abgelaufen ist, folgt eine erste
+Funktionskontrolle. Dazu wird die Baugruppe an ein mit einer
+Strombegrenzung von ca. 1 Ampere ausgestattetes Labornetzteil
+angeschlossen. Zunächst werden mit einem Voltmeter die Ver-
+sorgungsanschlüsse aller Schaltkreise (Masse und +5 Volt) kon-
+trolliert. Dann werden die gewünschten I/O-Adressen für RAM-Disk
+und MEMDI-Erzeugung sowie die gewünschten MEMDI-Signale durch
+Verdrahten der Wickelfelder eingestellt.
+Anschliesend werden alle an den Systembus gehenden Leitungen mit
+TTL-Prüfstift und einem 220 Ohm Widerstand, den man zwischen
+Leitung und Masse bzw. +5 Volt legt, überprüft, ob sie High und
+Low werden können und nicht etwa an einem festen Potential
+"kleben". Danach werden die Signalpfade nach Stromlaufplan
+mittels TTL-Prüfstift und Einspeisung von High- und Lowsignalen
+am Systembus-Steckverbinder statisch durchgeprüft. Schritt für
+Schritt werden dann auch die Verzögerungsglieder eingesetzt. Als
+Richtwerte kann man 180 Ohm und 390 pF nehmen. Wer einen guten
+Laboroszillografen benutzen kann, sollte dies auch tun und die
+im Stromlaufplan angegebenen Zeiten einstellen. Wenn soweit
+sichergestellt ist, daß die TTL-Logik auf der Leiterplatte
+richtig funktioniert, wird erst einmal in jede RAM-Bank ein
+Speicherschaltkreis eingesetzt und der erste Test am Rechner
+kann erfolgen.
+
+Achtung! Falls Sie RAM-Schaltkreise im Metall-Keramik-Gehäuse
+einsetzen, so achten Sie unbedingt darauf, daß Sie niemals aus
+Versehen Kurzschlüsse zwischen der Metallkappe und einem
+Anschlussbein verursachen. Dies führt nämlich beim Anlegen der
+Betriebsspannung zur sofortigen Zerstörung des betreffenden
+Schaltkreises. Auch hier hilft die Kontrolle mit der Lupe.
+
+Wie man die Hauptspeicherbank durch Beschreiben und Lesen
+testet, braucht hier wohl nicht weiter erläutert zu werden. Je
+nach Rechner und persönlichem Geschmack wird der eine Amateur
+wohl ein paar Zeilen BASIC schreiben, während der andere eine
+bereits vorhandene Funktion seines Monitors benutzt. Für Tests
+an der RAM-Disk ist es allerdings ratsam, das im Anhang
+befindliche kleine Testprogramm zu benutzen, nachdem man es an
+die eigenen Verhältnisse angepasst hat. Mit BASIC läßt sich die
+RAM-Disk zwar ebenso gut testen, aber das dauert nicht Sekunden,
+sondern je nach Prüftiefe Minuten bis Stunden.
+Natürlich werden vom Testprogramm jetzt noch Fehler gemeldet, da
+ja nur ein Bit in jeder Adresse bestückt ist, aber man kann
+schon erkennen, ob sich diese Beschreiben und Lesen läßt. Ist
+das der Fall, so werden die übrigen Speicherschaltkreise
+bestückt und wieder getestet. Wenn man alles richtig gemacht
+hat, so wird sich der Hauptspeicher auf Anhieb richtig
+beschreiben und lesen lassen. Dies ist jedoch nur die halbe
+Prüfung. Wer sich mit dem Signalspiel des U880-Prozessors gut
+auskennt, weiß, daßes einen gravierenden Unterschied zwischen
+dem Lesezyklus und dem Befehlsholezyklus gibt. Erst wenn man ein
+Maschinenprogramm in den RAM geladen und sich von dessen korrek-
+ter Arbeit überzeugt hat, ist die Inbetriebnahme erfolgreich
+abgeschlossen. 
+
+Was tun, wenn es trotzdem nicht geht?
+
+Wenn man sicher ist, daß keine defekten Bauelemente verwendet
+wurden oder durch Fehler bei Aufbau und Inbetriebnahme
+kaputtgegangen sind, so kommen als Ursachen nur folgende Dinge
+in Betracht:
+ 1. Der Rechner, in dem die Baugruppe betrieben werden soll,
+    erzeugt kein ordentliches "/READY"-Signal. Beim Lesen sollte
+    /READY spätestens 100 ns nach Aktivwerden von /MREQ anliegen
+    und beim Schreiben steht dafür ein ganzer Systemtakt zur
+    Verfügung. Nach dem Verschwinden von /MREQ soll auch /READY
+    so schnell abgeschaltet werden, daß es beim Beginn des
+    nächsten Buszyklus verschwunden ist. Bei Eigenbau-Baugruppen
+    sollte man /READY entweder mit einem TTL-Gatter (DL003 o.ä.)
+    oder mit einem einigermaßen schnellen Schalttransistor
+    (SS 219) erzeugen.
+ 2. Die I/O-Adressen der Baugruppe sind im Rechner anderweitig
+    belegt.
+ 3. Der Rechner wird durch Wait-Zyklen so sehr gebremst, daß der
+    Refresh nicht mehr gesichert ist.
+ 4. Unter den RAM-Schaltkreisen befinden sich Exemplare, die
+    mehr als 250ns Zugriffszeit bzw. mehr als 460ns Zykluszeit
+    benötigen.
+ 5. Die Verzögerungsglieder auf der Baugruppe liefern im Zu-
+    sammenspiel mit den TTL-Schaltkreisen und der gewählten
+    Taktfrequenz des Rechners ungünstige Zeitabläufe.
+
+Am besten ist es in solchen hartnäckigen Fällen, das Signalspiel
+bei laufenden Rechner mit einem guten Oszillografen, der auch
+noch 10ns ordentlich auflösen kann, zu kontrollieren:
+ - 60ns nach der HL-Flanke von /WR oder /RD soll die Adress-
+   umschaltung von RAS-Adressen auf CAS-Adressen erfolgen.
+ - 100ns nach der HL-Flanke von /WR oder /RD soll das CAS-Signal
+   an Pin 11 von D46 erscheinen.
+ - 150ns nach Erscheinen des CAS-Signals an Pin 11 von D46 soll
+   /RAS abgeschaltet werden.
+
+Mit der angegebenen Bestückung und Verzögerungsgliedern zu
+390 pF und 180 Ohm werden diese Werte recht genau erreicht.
+Damit ist der langsame Anfalltyp U2164-C25 in Systemen mit
+2.5Mhz bis ca. 3.5Mhz Taktfrequenz absolut sicher betreibbar.
+Bei einer Taktfrequenz von 4.0Mhz ist dieser Typ ebenfalls noch
+sicher betreibbar, man sollte jedoch dann die angegebenen Zeiten
+unbedingt mit einem Oszillografen kontrollieren, was bei
+langsameren Takt aufgrund der größeren zulässigen Toleranzen
+nicht erforderlich ist.
+
+
+Zur Funktion der RAM-Disk
+
+Der Zugriff auf die RAM-Disk erfolgt über I/O-Befehle. Sobald
+die CPU die richtige Gundadresse auf den Adressbus gelegt und
+/IORQ aktiviert hat, wird der Ausgang von D3 low. Dies führt
+über 2 NOR-Gatter zur Aktivierung von /RAS. Die Widerstände R3,
+R4, R5 erzeugen eine gewisse Hysterese, die notwendig ist, um
+Nadelimpulse auf dem Low-Potential des Ausganges von D3 zu
+unterdrücken. Diese können auftreten, wenn der Bustreiber D10
+auf stark kapazitiv belastete Busleitungen arbeiten muß.
+Wenn AB2=High ist (Zugriff auf den Adresszähler), dann sperrt
+ein NOR-Gatter die Erzeugung von /RAS. Das zweite NOR-Gatter
+erzwingt die /RAS-Erzeugung, wenn /RFSH und /MREQ aktiv sind.
+Durch /RFSH schalten die Adressmultiplexer D6 und D8 die
+Refreshadresse vom Adressbus an die RAM-Matrix. Der Datenbus-
+treiber wird nur beim echten I/O-Zugriff aktiviert. Normaler-
+weise treibt er von der CPU zur RAM-Matrix, bei aktiven /RD-
+Signal wird er jedoch umgeschaltet. Vom Ausgang von D3 führt ein
+zweiter Signalpfad über eine Verzögerungskette zum Dekoder D4.
+Nach einer ersten Verzögerung wird das Umschaltsignal für die
+Adressen (RAS-Adr. ==> CAS-Adr.) abgeleitet. Die RAS-Adressen
+stammen aus einemladbaren 8-Bit-Zähler (2*DL193) und gelangen
+über D6 und D8 zur RAM-Matrix. Die CAS-Adressen stammen aus
+einem Latch D9. Die gewünschte Speicherbank wird über den
+Dekoder D4 ausgewählt. Dieser aktiviert nach Freigabe über die
+Verzögerungskette das zugehöhrige /CAS-Signal. Für die übrigen
+Bänke ist der Zugriff daher nur ein zusätzlicher Refreshzyklus.
+Sobald die CPU /IORQ wieder abschaltet, werden auch /RAS und
+/CAS sofort passiviert. In der Zugriffspause schaltet dann auch
+die Verzögerungskette wieder zurück. Mit der Rückflanke jedes
+I/O-Zugriffs wird der RAS-Adresszähler weitergeschaltet. Damit
+kann man im Bedienprogramm die für derartige Zwecke sehr
+günstigen INIR- und OTIR-Befehle benutzen.
+
+
+Zur Funktion der Hauptspeicherbank
+
+Die Ansteuerung der Hauptspeicherbank weist einige ähnlich-
+keiten mit der RAM-Disk auf. Auch hier werden die Signale für
+die RAM's durch Verzögerungsketten erzeugt. Sobald /MREQ aktiv
+wird, aktiviert es /RAS und gibt ein Tor in der /CAS-Erzeugung
+frei. Sobald /RD oder /WR aktiv wird, schaltet dieses nach ca.
+60 ns die Adressmultiplexer D43 und D44 um. Nach Passieren des
+/MREQ-Tores und des darauffolgenden Entadressiertores aktiviert
+es dann /CAS. Gleichzeitig wird eine Verzögerungskette ge-
+startet, die nach ca. 150 ns /RAS wieder abschaltet, wenn es bis
+dahin nicht durch das Ende des CPU-Zugriffs ohnehin schon wieder
+abgeschaltet worden ist. Beim Lesezugriff bleiben die gelesenen
+Daten unabhängig von /RAS solange an den Datenausgängen lesbar,
+wie /CAS noch aktiv bleibt. Beim Schreibzugriff übernehmen die
+RAM-Schaltkreise die Informationen mit dem Aktivwerden von /CAS.
+
+
+Anhang: zwei Testprogramme für die RAM-Floppy
+;
+;	RAM-Disk-Test 1
+;	===============
+;
+; (Beschreibbarkeit aller Zellen und Datenerhalt)
+;
+; RAM-Floppy-Adresse
+RFL:	EQU	0E0H
+;
+; ca. 8 K freier RAM ab FRAM erforderlich
+FRAM:	EQU	1000H
+FREND:	EQU	2000H
+;
+; benutzte Monitorfunktionen
+PRINT:	EQU	26H		,Text auf Bildschirm
+AUKO4:	EQU	3CH		,HL => 4xHEXA
+AUKO2:	EQU	3FH		, A => 2xHEXA
+CO:	EQU	8		,Zeichen auf Bildschirm
+MONI:	EQU	29H		,Rücksprung
+;
+	ORG	0E00H
+	LD	HL,FRAM
+FILL1:	LD	M,L
+	INC	HL
+	LD	A,H
+	CMP	H(FREND)
+	JRC	FILL1-#
+;
+	CALL	PRINT
+	DB	'RFL-TEST 1'
+	DB	1EH
+	NOP
+;
+; Alle Zellen beschreiben
+;
+	LD	DE,0
+;
+; DE=0...3FF (1024 Sektoren zu je 256 Byte)
+ZYKL1:	XOR	A
+	OUT	RFL+7		,LOW
+	LD	A,E
+	OUT	RFL+6		,HIGH
+	LD	HL,FRAM
+	ADD	HL,DE
+	LD	A,D
+	OR	RFL
+	LD	C,A
+	LD	B,0
+	OTIR
+	INC	DE
+	LD	A,D
+	CMP	4
+	JRC	ZYKL1-#
+;
+; Warten um Refreshwirkung zu testen
+	LD	B,4
+	LD	HL,0
+WART:	DEC	HL
+	LD	A,L
+	OR	H
+	JRNZ	WART-#
+	DJNZ	WART-#
+;
+; Lese- und Vergleichs-Zyklus
+;
+	LD	DE,0
+; DE=0...3FF
+LZYK1:	XOR	A
+	OUT	RFL+7		,LOW
+	LD	A,E
+	OUT	RFL+6		,HIGH
+	LD	HL,FREND
+	LD	A,D
+	OR	RFL
+	LD	C,A
+	LD	B,0
+	INIR
+	PUSH	DE
+	CALL	PRINT
+	DB	1EH
+	DB	'Block:'
+	NOP
+;
+	LD	H,D
+	LD	L,E
+	CALL	AUKO4
+	LD	HL,FRAM
+	ADD	HL,DE
+	EX	DE,HL
+	LD	HL,FREND
+	LD	B,0
+; Vergleich Soll-Ist
+VGL1:	LD	A,(DE)
+	CMP	M
+	JRZ	GUT1-#
+;
+; Fehlerstelle anzeigen
+; ADR:IST-SOLL
+	CALL	AUKO4
+	LD	C,':'
+	CALL	CO
+	LD	A,(DE)
+	CALL	AUKO2
+	LD	C,'-'
+	CALL	CO
+	LD	A,M
+	CALL	AUKO2
+	LD	C,1EH
+	CALL	CO
+;
+GUT1:	INC	HL
+	INC	DE
+	DJNZ	VGL1-#
+	POP	DE
+	INC	DE
+	LD	A,D
+	CMP	4
+	JRC	LZYKL1-#
+	CALL	PRINT
+	DB	'ENDE'
+	NOP
+	JMP	MONI
+;
+;************************************************
+;
+;	RAM-Disk-Test 2
+;	===============
+; (Bankunterscheidung, Adresslatch, Adresszähler)
+;
+;
+; Bereich FRAM...FRAM+0FFFH mit 0E5 füllen
+;
+	LD	HL,FRAM
+FILL:	LD	M,0E5H
+	INC	HL
+	LD	A,H
+	CMP	H(FREND)
+	JRC	FILL-#
+;
+; Meldung
+	CALL	PRINT
+	DB	'RFL-Test 2'
+	DB	1EH
+	NOP
+;
+; Zuerst gesamte RAM-Floppy beschreiben
+; jeder 256-Byte-Block wird wie folgt beschrieben:
+;
+; <Adr,E5,E5,E5,E5,E5,Block,Bank,E5,.......,E5,AA>
+;
+	LD	DE,0		,BANK 0, BLOCK 0
+; Adr.bit 0..7 Werden Beim OTIR/INIR Hochgezählt
+;E (0..FF)=Adr.bit  8-15 vorgeben
+;D (0...3)=Adr.bit 16-18=Bankadresse
+ZYKL:	XOR	A
+	OUT	RFL+7		,Adr. 0..7 mit 0 vorgeben
+	LD	A,E
+	OUT	RFL+6		,Adr. 8...15
+	LD	HL,FRAM
+	LD	(FRAM+8),DE
+	LD	A,0AAH
+	LD	(FRAM+255),A
+	LD	A,D
+	OR	RFL		,+Grundadresse
+	LD	(FRAM),A
+	LD	C,A
+	LD	B,0		,256 Bytes
+	OTIR
+	INC	DE
+	LD	A,D
+	CMP	4		,letzte Bank voll?
+	JRC	ZYKL-#
+;
+; jetzt wird gelesen und verglichen
+	CALL	PRINT
+	DB	'Lesen!'
+	DB	1EH
+	NOP
+	LD	DE,0
+; DE=0...3FF Startpunkte
+LZYKL:	XOR	A
+	OUT	RFL+7		,Adr. 0...7 mit 0 vorgeben
+	LD	(FRAM+8),DE
+	LD	A,E
+	OUT	RFL+6		,Adr. 8...15
+	LD	HL,FREND	;Puffer FREND...FREND+FFH
+	LD	A,D
+	OR	RFL		;+Grundadresse
+	LD	(FRAM),A
+	LD	C,A
+	LD	B,0
+	PUSH	DE
+	INIR
+;
+	CALL	PRINT
+	DB	'Block:'
+	NOP
+	LD	H,D
+	LD	L,E
+	CALL	AUKO4		;Adr. ausgeben
+	LD	C,'-'
+	CALL	CO
+	LD	HL,(FREND+8)
+	CALL	AUKO4
+	LD	C,1EH
+	CALL	CO
+	LD	DE,FRAM
+	LD	HL,FREND
+	LD	B,0
+VGL:	LD	A,(DE)
+	CMP	M
+	JRZ	GUT-#
+; Differenz aufgetreten
+	CALL	AUKO4
+	LD	C,':'
+	CALL	CO
+	LD	A,(DE)
+	CALL	AUKO2
+	LD	C,'-'
+	CALL	CO
+	LD	A,M
+	CALL	AUKO2
+	LD	C,1EH
+	CALL	CO
+	PUSH	HL
+	LD	HL,0
+WA:	DEC	HL
+	LD	A,H
+	OR	L
+	JRNZ	WA-#
+	POP	HL
+GUT:	INC	HL
+	INC	DE
+	DJNZ	VGL-#
+	POP	DE
+	INC	DE
+	LD	A,D
+	CMP	4
+	JRC	LZYKL-#
+	CALL	PRINT
+	DB	'Ende '
+	NOP
+	JMP	MONI
+;
+	END

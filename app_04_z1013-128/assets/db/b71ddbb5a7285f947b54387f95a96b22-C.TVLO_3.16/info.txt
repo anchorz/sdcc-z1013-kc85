@@ -1,0 +1,4 @@
+<kurz src="TV Lichtorgel, Ausgabe an Port 0x00"/>
+<lang>Optionen F,G und H sind mir noch schleierhaft.
+Es erfolg noch eine Portabfrage an 0x02</lang>
+<requires></requires>

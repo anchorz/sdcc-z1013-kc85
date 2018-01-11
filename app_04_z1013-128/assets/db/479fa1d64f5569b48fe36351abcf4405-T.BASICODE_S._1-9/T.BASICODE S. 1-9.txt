@@ -1,0 +1,289 @@
+
+
+
+		BOEK & CASSETTE
+
+		BASICODE-3
+
+
+
+(Auszugsweise Übersetzung aus dem Niederländischen)
+
+
+
+
+	Kluwer Technische Boeken
+
+		- 1 -
+Or. S. 9 - 10
+
+BASICODE löst eine Reihe dieser Probleme für Sie.
+Dafür wurden drei Schritte getan.
+1. In vielen Programmen ist es nicht erforderlich,
+   die besonderen Möglichkeiten einer bestimmten
+   Art Heim-Computer zu nutzen. BASICODE gibt ei-
+   ne Art 'größten gemeinsamen Nenner' für BASIC-
+   Instruktionen. Ein Verzeichnis von Anweisungen,
+   an das sich wohl jeder BASIC-Interpreter/Über-
+   setzer heranwagen kann. Ein Programm, das nur
+   dieses verwendet, kann mithin in ziemlich jedem
+   Computer arbeiten.
+
+2. Danach erweist sich noch, daß es eine Anzahl
+   von Handlungen gibt, die man in einem Programm
+   fast nicht entbehren kann. Ein Beispiel, das je-
+   den ansprechen wird, ist so etwas Einfaches wie
+   das Reinigen des Bildschirmes. Das geht in fast
+   jedem Computer anders vor sich. BASICODE gibt ei-
+   nen einfachen Umweg an, für Kenner: eine verein-
+   barte Subroutine, mit der die Handlung für alle
+   Computer auf die gleiche Weise im Programm ver-
+   arbeitet werden kann. 
+
+3. Das Wegschreiben auf eine Kassette und das Zu-
+   rücklesen der Programme geschieht in ziemlich je-
+   dem Computer durch ein Stückchen Programm in Ma-
+   schinensprache. Das Anschließen des Kassettenre-
+   corders an den Mikroprozessor, das Herz des Com-
+   puters, ist so einfach und billig wie nur möglich
+   gehalten. Alle Schlaubergereien sitzen im Maschi-
+   nensprachprogramm. Das sitzt immer schon im Com-
+
+		- 2 -
+
+-puter, für die Kenner: im ROM. Hierin werden auch
+die Tönchen und Rasselgeräusche bestimmt, womit 
+die BASIC-Programme auf die Kassette gesetzt wer-
+den. Ein anderes Programm für die Untersuchung des 
+Kassettenanschlusses, und es wird ein anderes Ge-
+räusch aufgenommen.
+Für BASICODE ist erstmalig genau vereinbart, was
+für Tönchen da gebraucht werden müssen. Danach wur-
+de für jeden Computer ein neues Stückchen Maschi-
+nensprache gemacht, so daß mit diesen vereinbar-
+ten Tönen gelesen und geschrieben werden kann.
+Dieses Programm ist ein Bestandteil von dem BASI-
+CODE-Übersetzungsprogramm. Das ist unterschiedlich
+für jede Art Heim-Computer. Es muß eingelesen wer-
+den, ebenso wie ein gewöhnliches Programm dieses 
+Computers. Doch danach ist es möglich, ein Pro-
+gramm in BASICODE von einer Kassette einzulesen.
+Das kann mithin aus einem ganz anderen Computer 
+kommen, denn was da auf er Kassette steht, ist
+zuvor ganz genau vereinbart worden. So ist es mei-
+stens auch gleichzeitig möglich, ein eigenes BA-
+SIC-Programm nach diesem BASICODE-Verfahren auf
+die Kassette zu setzen.
+
+
+		- 3 -
+Or. S. 12 - 15
+2 Die Entwicklung von BASICODE
+
+BASICODE ist eigentlich durch ein Rundfunkprogramm
+entstanden. Im Jahre 1979 hat NOS (Nederlands OM-
+roep Stichting = Niederländische Rundfunkstiftung)
+in dem Funkprogramm 'Hobbyscoop' damit begonnen, Com-
+puterprogramm auszustrahlen. Es hat als ein Versuch
+begonnen, doch schon bald ging Hans Ianssen, der Be-
+treuer dieses Programms für Hobbyisten, dazu über,
+allwöchentlich ein Computerprogramm auszustrahlen.
+Das war abwechselnd jedesmal für einen anderen der
+vier zu jener Zeit wirklich verbreiteten Computer:
+Apple II, Exidy, PET (Commodore) und TRS 80 Model-1
+(tandy). Es wurde jede Woche ein von Hobbyisten ein-
+gesandtes Programm auf 'Studiotape' 'gesaved'. Die-
+ses wurde am Ende des Funkprogramms in die Sendung
+eingefügt. Den Hörern wurde empfohlen, alles auf den
+Kassettenrecorder aufzunehmen und danach das Compu-
+terprogramm auf die übliche Weise in den eigenen Com-
+puter einzulesen. Die Sendungen wurden betreut durch
+das qualitativ ausgezeichnete FM-Sendernetz. Bei ei-
+nem störungsfreien Empfang verlief das sehr vernünftig.
+Und so hörten die ahnungslosen Hörer jede Woche ein
+paar Minuten lang unverständliche und gräßliche Ge-
+räusche aus ihrem Rundfunkgerät kommem.
+
+Hans Janssen war durch seine Sendungen mit einer Rei-
+he sehr aktiver Computer-Hobbyistenin Kontakt ge-
+kommen. Von ihnen bekam er auch viele der Programme,
+die ausgestrahlt wurden. Die Probleme, die dieser Art
+
+		- 4 -
+des Rundfunksendens anhaften, waren natürlich allen
+bekannt. Es war Anfang 1981, als einer von ihnen,
+Klaas Robers, Ingenieur im Physikalischen Institut
+von Philips, mit einer neuen Idee kam. Dadurch soll-
+te es möglich werden, die Computerprogramme so aus-
+zustrahlen, daß alle Typen diese einlesen können. Es 
+war der Grundgedanke von BASICODE: ein genau verein-
+barter Geräusch-Code, um Programme auf eine Kassette
+zu bringen, und ein dazugehöriges Hilfsprogramm je
+Computer-Typ. Durch eine geschickt ausgewählte Co-
+dierung würde ein Programm, das mit etwas Störung
+empfangen wird, nur geringfügig verstümmelt sein.
+Jeder Computer-Hobbyist in jenen Tagen hatte eine
+ausreichende Kenntnis des Programmierens, um diesen
+Verstümmelungen abhelfen zu können.
+Am Abend des 14. Mai 1981, einem Donnerstag, wurde
+eine Anzahl aktiver Hobbyisten zusammengetrommelt,
+um die Idee zu erörtern. Jeder von ihnen kannte sei-
+nen Computer in- und auswendig. Das war nötig, denn
+niemand hatte ganz allein das Wissen, um für eine
+andere als seine eigene Maschine die ziemlich kom-
+plizierten Maschinensprachroutinen zu erstellen.
+
+Am 11. August hatte NOS eine Pressekonferenz geplant,
+um BASICODE weltweit bekannt zu machen. Das war das
+erste Mal, daß man wieder zusammenkam, und jeder hat-
+te seinen eigenen Computer mitgebracht. Und seht mal
+an, das Wunder geschah. Eine Kassette, geschrieben
+für eine Marke, wurde einer anderen gegeben und 
+konnte so ohne weiteres eingelesen werden. Bei jedem
+
+		- 5 -
+hörte man das gleiche Rasselgeräusch, ungeachtet der
+Form, der Farbe und des Namens des Computers. Das war's,
+wofür gearbeitet worden war. Doch wenn man es gesche-
+hen sah und hörte, war es phantastischer als man es 
+sich vorgestellt hatte. Durch eine gemeinsame Bemü-
+hung war die Sprachbarriere überwunden worden.
+Ende September 1981 wurde BASICODE in die Presse ein-
+geführt und wurden die ersten Übersetzungsprogramme
+über den Rundfunk ausgestrahlt. Nach kurzer Zeit gab
+es über zehn Marken/Typen, für die in irgendeiner
+Form ein BASICODE-Übersetzungsprogramm erstellt wor-
+den war. Es wurden mitunter sehr schöpferisch gefer-
+tigte Programme in BASICODE ausgestrahlt.
+Es wurde inzwischen Zeit, einmal nachzusehen, was
+noch weter zu tun war. In der Praxis arbeitete der 
+verwendete Ton-Code problemlos. Die Sendungen lißen
+sich überall gut empfangen, und durch das Selbstre-
+staurierungsvermögen war eine kleine Störung kein 
+Problem. Am schwierigsten war es wohl noch, die ge-
+sendeten/ausgestrahlten Programme der eigenen Marke
+anzupassen. Durch die Popularisierung des Heim-Com-
+puters war der Durchschnittsnutzer weniger gut mit
+dem Programmieren vertraut. Die Handreichungen für
+den Nutzer hätten eigentlich weiter gehen müssen. Gab
+es eine Möglichkeit, es so zu machen, daß die Pro-
+gramme ohne weiteres auf allen angeschlossenen Com-
+putern laufen konnten?
+Am Abend des 30. September 1982 kam - wieder im Ge-
+bäude Santbergen in Hilversum - die inzwischen er-
+weiterte und ein wenig veränderte BASICODE-Gruppe
+
+		- 6 -
+zusammen, um neue Pläne aufzustellen. Klaas Robers
+hatte zusammen mit Jochen Herrmann - damals noch Stu-
+dent an der Technischen Hochschule Eindhoven - Pläne
+ausgearbeitet, um eine Programmstruktur mit festen 
+Subroutinen zu erreichen. Im ersten Jahr BASICODE
+hatten sich gute Erkenntnisse in beug auf die größ-
+ten Engpässe ergeben. Bestimmte Handlungen mußten sich
+in den Programmen ausführen lassen. Außerdem hatte
+sich herausgestellt, daß einzelne Instruktionen in
+BASIC von den verschiedenen Computern etwas anders
+behandelt wurden, wie z. B. das Plazieren von Zahlen
+auf dem Schirm. Die vorgeschlagene Methode mit genau
+definierten Subroutinen konnte die bestehenden Pro-
+bleme lösen. Gemeinsam wurden die Zeilenzahlen für
+die Standard-Subroutinen ausgewählt. Auch schien es
+vernünftig, der Zeilennumerierung innerhalb des Pro-
+gramms etwas mehr Beständigkeit zu verleihen. Ins-
+besondere von seiten des Schul-/Bildungswesens wur-
+de darum gebeten, so daß man etwas leichter den Weg
+in ein neu empfangenes Computerprogramm würde finden
+können. entschied man sich dafür, fortan von BASICODE-
+-2 zu sprechen, wenn die Subroutinen für das Laufen
+des Programms erforderlich sind. Die alte Version/
+Fassung - ohne diese Erweiterung - sollte unter dem
+Naman BASICODE-1 weiterbestehen. Dadurch blieb es 
+möglich, Programme unverändert von einer Marke auf
+die andere überzuspielen.
+Unterdessen wurde auch an einem neuen BASICODE-Buch
+
+		- 7 -
+gearbeitet. Anstelle einer Neuauflage des ausverkauf-
+ten BASICODE-Buches erschien im Juli 1983 sofort ein
+BASICODE-2-Buch, natürlich wieder mit einer Kassette.
+Das Protokoll stand vollständig in diesem Buch. Un-
+gefähr gleichzeitig mit dem Erscheinen des neuen Bu-
+ches wurde BASICODE-2 auf dem Wege über Hobbyscoop
+eingeführt. Das Interesse war sehr groß. Zum ersten
+Mal war es wirklich möglich, Programme zu fertigen,
+die ohne weiteres auf unterschiedlichen Computer-
+-Marken/Typen liefen. Das Unterrichts- und Bildungs-
+wesen war hell begeistert. Die Einschränkungen, die
+BASICODE-2 auferlegte, wogen viel weniger schwer als
+der Vorteil der Austauschbarkeit des Programms.
+
+Auch im Ausland begann das Interesse zuzunehmen. An-
+geregt durch NOS begannen WDR und BBC mit Sendungen
+von BASICODE. In Deutschland ging das auf den Ge-
+räuschkanaal des Fernsehens. Die BBC begann auf der
+Langwelle mit Sendungen mitten in der Nacht auf Ra-
+dio-4. Später zog BASICODE in das englische Radio-1
+FM-Sendernetz um. In der Praxis erwies sich die Über-
+tragung über Mittelwelle und Langwelle am Abend und
+in der Nacht als unbrauchbar für die schnellenBASI-
+CODE-Signale. Auch die Kurzwelle läßt sich dafür nicht
+verwenden. Jonathan nahm Proben über den 'Weredom-
+roep' vor, die dieses bestätigten. Rundfunk-Sende-
+Amateure bemerkten, daß die VHF- und UHF-Bänder für
+wechselseitigen Austausch digitaler Information über
+BASICODE zugeschnitten waren.
+
+		- 8 -
+Am 11. Mai 1985 kam die BASICODE-Gruppe wieder in
+einem sälchen in einem der Philips-Komplexe in Eind-
+hoven zusammen. Jedem war folgendes klar: BASICODE-3
+mußte kommen. Eine Anzahl schon lange gewünschter
+Dinge mußte durch diese Erweiterung möglich gemacht 
+werden. Jochen Herrmann und Jacques Haubrich, Mathe-
+matiklehrer in Eindhoven, hatten einen umfangreichen
+Vorschlag gemacht. Musik, graphische Möglichkeiten,
+inverses Video, Bestände: Es war ganz schön was
+hinzugekommen. Es würde nicht leicht sein, aber wir
+waren im Laufe der Zeit auch viel weiser geworden.
+
+Seit Mitte 1986 wurden wöchentlich von TROS Program-
+me in BASICODE-3 ausgestrahlt. Das geschieht in Zu-
+sammenarbeit mit der 'Stichtung (Stiftung) BASICODE'.
+Bis Iuli 1987 geschieht das am Mittwoch von 17.41 bis
+17.46 auf Radio 5. Jeder/jedekann seine/ihre selbst-
+gemachten Programme dem TROS-BASICODE-3, Postbus
+(postschließfach) 450, 1200 AL HILVERSUM, anbieten.
+
+		- 9 -
+Or. S. 21 - 45
+
+4 Das BASICODE-3-Protokoll
+
+4.1 Einleitung
+Dieses Kapitel enthält das offizielle BASICODE-3-
+-Protokoll. Dieses Protokoll enthält alle Regeln,
+an die man sich halten muß. Ein Programm, das die-
+se Regeln nicht erfüllt, ist somit kein gutes BASI-
+CODE-3-Programm. Wer ein Programm veröffentlicht,
+das dieses Protokoll nicht erfüllt, veröf-
+fentlicht somit eigentlich kein BASICODE-3-Programm.
+Wer es dann doch BASICODE-3 nennt, macht einen Witz.
+Das darf nicht sein. Wenn jemand so etwas wieder-
+holt und mit erkennbarer Absicht oder aus reiner
+Schludrigkeit tut, so riskiert er dieses und jenes.
+BASICODE ist ein gutes System, und niemanden ist da-
+mit genützt, daß andere mit schlechten oder unvoll-
+ständigen Programmen den guten Naman von BASICODE
+verderben. Eventuelle Beschwerden in dieser Hinsicht
+bitten wir dem Verleger dieses Buches mitzuteilen.
+
+4.2 Allgemeine Vereinbarungen
+Wie wir bereits bemerkten, gibt es Unterschiede in 
+den verschiedenen Ausführungen der BASIC-Programmier-
+sprache. Um Programme nicht nur austauschen zu können,
+sondern auch problemlos bei einem anderen Computer-
+-Typ arbeiten zu lassen, wurden im BASICODE-3-Proto-
+koll mehrere Regeln festgelegt, die diese Programme
+erfüllen müssen:
+

@@ -1,0 +1,3 @@
+<kurz src="angepasstes Headerdisk 45 mit CRC, Headersave 5.9 und Kopierprogramm, Frei:100-CeFF"/>
+<lang></lang>
+<requires></requires>

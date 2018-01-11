@@ -1,0 +1,3 @@
+<kurz src="Kassetteninterface zur Anpassung an 1MHz Taktfrequenz, 16k"/>
+<lang></lang>
+<requires></requires>

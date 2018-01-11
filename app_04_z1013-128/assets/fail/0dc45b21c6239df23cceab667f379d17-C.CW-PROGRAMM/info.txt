@@ -1,0 +1,7 @@
+<kurz src="ähnlich [202b04605a9d160f679129a523acf513]"/>
+<lang>
+Zwei Zeilen fehlen hier:
+170 P."UHR...................9";P.
+206 IF A=9 G.7000
+</lang>
+<requires></requires>

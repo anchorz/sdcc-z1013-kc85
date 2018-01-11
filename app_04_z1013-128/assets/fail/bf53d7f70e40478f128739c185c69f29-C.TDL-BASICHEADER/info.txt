@@ -1,0 +1,7 @@
+<kurz src="identisch []"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ U ⏎
+
+<include src="a"/></lang>
+<requires></requires>

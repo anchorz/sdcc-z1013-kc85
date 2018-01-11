@@ -1,0 +1,3 @@
+<kurz src="Rubics Würfel ordnen"/>
+<lang></lang>
+<requires></requires>

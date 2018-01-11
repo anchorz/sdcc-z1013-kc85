@@ -1,0 +1,3 @@
+<kurz src="TONBAND-(KASSETTEN- oder PLATTEN-)VERZEICHNIS mit Suchfunktion"/>
+<lang><include src="I.BES.BAENDERDATEI.txt"/></lang>
+<requires></requires>

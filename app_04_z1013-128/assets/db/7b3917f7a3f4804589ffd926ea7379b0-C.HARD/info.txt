@@ -1,0 +1,51 @@
+<kurz src="Druckertreiber (parallel), Interruptbetrieb"/>
+<lang>
+E800  00               NOP
+E801  00               NOP
+E802  00               NOP
+E803  00               NOP
+E804  00               NOP
+E805  00               NOP
+E806  F5               PUSH    AF
+E807  3E 0F            LD      A,0FH
+E809  D3 01            OUT     (01H),A
+E80B  3E 32            LD      A,32H
+E80D  D3 01            OUT     (01H),A
+E80F  3E 83            LD      A,83H
+E811  D3 01            OUT     (01H),A
+E813  3E E8            LD      A,0E8H
+E815  ED 47            LD      I,A
+E817  ED 5E            IM      2
+E819  F1               POP     AF
+E81A  FB               EI
+E81B  FE 1E            CP      1EH
+E81D  28 06            JR      Z,0E825H
+E81F  D3 00            OUT     (00H),A
+E821  97               SUB     A
+E822  30 FE            JR      NC,0E822H
+E824  C9               RET
+E825  3E 0D            LD      A,0DH
+E827  CD 1F E8         CALL    0E81FH
+E82A  3D               DEC     A
+E82B  20 FD            JR      NZ,0E82AH
+E82D  3E 0A            LD      A,0AH
+E82F  C3 1F E8         JP      0E81FH
+E832  34               INC     (HL)
+E833  E8               RET     PE
+E834  37               SCF
+E835  ED 4D            RETI
+E837  00               NOP
+E838  28 FA            JR      Z,0E834H
+E83A  C9               RET
+E83B  7E               LD      A,(HL)
+E83C  CD 2A E8         CALL    0E82AH
+E83F  23               INC     HL
+E840  7D               LD      A,L
+E841  E6 1F            AND     1FH
+E843  00               NOP
+E844  00               NOP
+E845  00               NOP
+E846  00               NOP
+E847  00               NOP
+E848  00               NOP</lang>
+<requires></requires>

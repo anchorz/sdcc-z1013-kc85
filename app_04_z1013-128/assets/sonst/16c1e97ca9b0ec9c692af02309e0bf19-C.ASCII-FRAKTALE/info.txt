@@ -1,0 +1,15 @@
+<kurz src="identisch [52ec6c5d81ce3294c8d3aa38202d243a]"/>
+<lang>Die Unterschiede im Binärfile entstehen durch Initialisierungen.
+Sprich [52ec6c5d81ce3294c8d3aa38202d243a] ist die Version nach der Initialisierung:
+
+04F3  21 24 02         LD      HL,0224H
+04F6  36 0D            LD      (HL),0DH
+04F8  22 4E 07         LD      (074EH),HL
+...
+1393  21 C3 E8         LD      HL,0E8C3H
+1396  C3 99 13         JP      1399H
+1399  22 74 13         LD      (1374H),HL
+
+</lang>
+
+<requires></requires>

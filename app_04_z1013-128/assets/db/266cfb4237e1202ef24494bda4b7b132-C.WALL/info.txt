@@ -1,0 +1,7 @@
+<kurz src="Mauerspiel ohne Tastatureingabe"/>
+<lang>Ich habe keine Stelle gefunden, an der irgendeine Eingabe verarbeitet wird,
+keine IO-Zugriffe.
+
+Eigentlich sollte es aussortiert werden.
+</lang>
+<requires></requires>
