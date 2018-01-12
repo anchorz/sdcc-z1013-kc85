@@ -1,0 +1,5 @@
+<kurz src="identisch [dfd5485b4105a51716c08753f5e6ab75]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+<include src="T.AENDERUNGEN 1013.txt"/></lang>
+<requires></requires>

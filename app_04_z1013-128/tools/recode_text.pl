@@ -5,7 +5,13 @@ use Switch;
 use utf8;
 
 %epson_map=("{"=>"ä"   ,"|"=>"ö"   ,"}"=>"ü"   ,"~"=>"ß"   ,"["=>"Ä"   ,"\\"=>"Ö"  ,"]"=>"Ü");
+#UNICODE!!!
 %ibm_map=  ("\xe4"=>"ä","\xf6"=>"ö","\xfc"=>"ü","\xdf"=>"ß","\xc4"=>"Ä","\xd6"=>"Ö","\xdc"=>"Ü");
+#https://en.wikipedia.org/wiki/Code_page_437
+%ibm_map=  ("\xb3"=>"│","\xb4"=>"┤","\xbf"=>"┐",
+"\xc0"=>"└","\xc1"=>"┴","\xc2"=>"┬","\xc3"=>"├","\xc4"=>"─","\xc5"=>"┼",
+"\xd9"=>"┘","\xda"=>"┌",
+"\xe6"=>"µ","\xea"=>"Ω"); #Code page 437 MSDOS
 
 %no_umlaut=(
 "O|S"=>1,
@@ -17,9 +23,14 @@ use utf8;
 " } "=>1,
 " {a"=>1,
 
+",[C"=>1,
+"5])"=>1,
+
 "'\\'"=>1,
 "=| "=>1,
 " |-"=>1,
+" [3"=>1,
+" ] "=>1,
 
 "t] "=>1,
 " [B"=>1,
@@ -46,18 +57,23 @@ use utf8;
 " ]\x1e"=>1,
 "'] "=>1,
 "E] "=>1,
+" \\\x1e"=>1,
 "\x1e] "=>1,
 
 "\x1e\\ "=>1,
 " \\ "=>1,
 "\x1e\\S"=>1,
+" |\x1e"=>1,
 
 );
 
+# kann sein muss nicht
+#" [n"=>1,  [n] oder Än
+ 
 %is_umlaut=( 
 ".{."=>1,
 " {n"=>1,
-" [n"=>1,
+#" [n"=>1,
 "e{n"=>1,
 "F{h"=>1,"f{h"=>1,
 "f{l"=>1,
@@ -87,6 +103,7 @@ use utf8;
 "K|h"=>1,"k|n"=>1,
 "L|c"=>1,
 "L|s"=>1,"l|s"=>1,
+"M|c"=>1,
 "M|g"=>1,"m|g"=>1,
 "n|t"=>1,
 "r|f"=>1,
@@ -110,6 +127,7 @@ use utf8;
 "t}t"=>1,
 "w}n"=>1,
 
+"a~ "=>1, 
 "a~e"=>1,
 "e~,"=>1,
 "e~b"=>1,
@@ -120,6 +138,7 @@ use utf8;
 "u~e"=>1,
 "u~t"=>1,
 "i~e"=>1,
+"i~t"=>1,
 "|~e"=>1,
 
 );
@@ -164,9 +183,17 @@ sub print_char($) {
         $mapped=$epson_map{$c};
         utf8::encode($mapped);
     }
-    if ($encoding eq "IBM" && $ibm_map{$c}) {
-        $mapped=$ibm_map{$c};
-        utf8::encode($mapped);
+    
+    if ($encoding eq "IBM") {
+        if ($ibm_map{$c}) {
+            $mapped=$ibm_map{$c};
+            utf8::encode($mapped);
+        } else {
+            if (ord($c)<0x20 || ord($c)>0x7e) {
+                printf("[0x%04x]=%02x IBM\n",$i,ord($c));
+            } 
+            #else identisch zu Z1013
+        }
     }
    
     my $umlaut_text=substr($content,$i-1,3);
@@ -195,11 +222,10 @@ sub print_char($) {
         }
         printf("[0x%04x]=%02x Ersetze '%s' durch '%s'%s\n",$i,ord($c),$c,$mapped,$umlaut_text);
     }
-    if ($ibm_map{$c}) {
-        printf("[0x%04x]=%02x '%s' Umlaut oder Klammer, verwende '%s'\n",$i,ord($c),$c,$c);
-    }
 
-    if ($encoding eq "UML" && $epson_map{$c}) {
+    if ($encoding eq "IBM" && $ibm_map{$c}) {
+        printf(OUT $mapped);       
+    } elsif ($encoding eq "UML" && $epson_map{$c}) {
         printf(OUT $mapped);       
     } elsif (ord($c)>=0x00 && ord($c)<=0x1f) {
         my $txt=chr(0xf120+ord($c));

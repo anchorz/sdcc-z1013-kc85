@@ -1,0 +1,4 @@
+<kurz src="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013 mit Bild"/>
+<lang>
+<include src="T.RF AM Z1013+BILD.txt"/></lang>
+<requires></requires>

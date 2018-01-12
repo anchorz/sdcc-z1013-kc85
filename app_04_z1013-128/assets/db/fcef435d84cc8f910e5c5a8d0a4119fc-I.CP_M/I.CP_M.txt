@@ -1,0 +1,467 @@
+ROMAN WEISS
+CP/M
+Staendig im Griff
+Dr. Alfred Huethig Verlag Heidelberg (C) 1986
+INHALTSVERZEICHNIS
+
+    Vorwort...............5
+1.0 Das Betriebssystem CP/M...9
+1.1 Systemkomponenten und Speicher
+    organisation..............10
+1.2 Kommando-Behandlung.......12
+1.3 Steuerzeichen unter CP/M..13
+1.4 Disketten, Laufwerke und dateien
+    ..........................15
+2.0 DIE RESIDENTEN KOMMANDOS..19
+2.1 DIR/DIRS..................20
+2.2 ERA.......................23
+2.3 REN.......................24
+2.4 SAVE......................25
+2.5 TYPE......................26
+2.6 USER......................27
+3.0 DIE WICHTIGSTEN TRANSIENTEN
+    KOMMANDOS.................29 
+3.1 STAT/ SHOW................30
+3.2 PIP.......................37
+3.3 FORMAT....................44
+3.4 COPYDISK..................46
+
+3.5 LDCOPY/ SYSGEN/ COPYSYS...47   
+3.6 HELP......................48
+3.7 TOD/ DATE.................51
+3.8 DUMP......................53
+3.9 SUBMIT/ XSUB..............54
+3.10ASM/ MAC..................57
+3.11LOAD/ HEXCOM..............61
+3.12GENCOM/ LMCMD.............62
+
+3.13ED........................65
+3.14DDT.......................78
+================================================================
+
+1.0 Das Betriebssystem CP/M
+In geraffter Form wird Ihnen im folgenden Kapitel das Betriebs-
+system CP/M vorgestellt.
+     -Systemkomponenten
+     -Kommandobehandlung
+     -Steuerzeichen
+     Disketten, Laufwerke und Dateien
+1.1 Systemkomponenten
+
+CP/M setzt sich aus drei Komponenten zusammen:
+     -BIOS(Basis-Input/Output-System)
+     -BDOS(Basis-Disk-Operating-System)
+     -CCP(Consol-Command-Prozessor)
+
+BIOS, ermoeglicht die Anpassung von CP/M an die unterschied-
+lichsten Rechnerumgebungen.Es umfasst den Input/Output ueber die
+BDOS-Peripherie-Kanaele, die Verbindung zu den Disketten-und
+Festplattenlaufwerken, die Schnittstelle zu BDOS bzw. zu CP/M-
+Programmen und den Pufferspeicher fuer BDOS-Aufgaben.
+
+BDOS ist ein Programmpaket, das U.A. folgende Aufgaben loest:
+     -Ein-Ausgaben ueber Konsole,Drucker usw.
+     -Dateiverwaltung,
+     -Direktory-Veerwaltung,
+     -Initialisierung,
+     -Ausgaben ueber den Systemzustand,
+     -sonstige Hilfsaufgaben.
+
+BDOS wird bei jedem Kalt- bzw. Warmstart automatisch geladen.
+Warmstart: Ein Warmstart wird durch die gleichzeitige Betaeti-
+gung der [CONTROL]-Taste und der [C]-Taste (dargestellt durch ^C)
+ausgeloest.
+Die Zeichenkombination ist jedoch nur dann wirksam, wenn
+sie als erst Zeichenfolge nach der Bereitschaftsanzeige einge-
+geben wird. Beim Warmstart wird von einem Ladeprogramm im
+BIOS-Teil das BDOS mit dem CCP in den den Speicher (die TPA) ge-
+lesen.
+
+CCP stellt die Schnittstelle zwischen dem Benutzer (USER) und 
+dem Rechner dar. Er nimmt Befehle von der Tastatur entgegen,
+meldet sich auf dem Bildschirm mit dem Bereitschaftszeichen A>
+und leitet entsprechende Aktivitaeten ein.
+
+Diese Aktivitaeten bestehen darin, den empfangenen Befehl in ei-
+nem Befehlspuffer abzulegen und zu ueberpruefen, ob es bei 
+diesem Befehl um ein residentes oder trasientes Kommando handelt.
+Entspricht die Eingabe den CP/M-Regeln, wird das Programm durch-
+gefuehrt.
+CCP wird bei jedem Kalt- bzw. Warmstart (^C) automatisch geladen.
+CCP akzeptiert die folgenden residenten Kommandos: 
+DIR(DIRS), ERA, REN, TYPE, (SAVE), USER und die Laufwerksangabe.
+ 
+Der dem Rechner insgesamt zur Verfuegung stehende Arbeitsspei-
+cher wird in 4 Bereiche unterteilt. Drei davon nehmen CP, BIOS
+und BDOS ein. Der vierte Bereich ist die TPA (Transient Program
+Area) und steht, bis auf eine Ausnahme, dem Anwender zur Verfue-
+gung. Diese Ausnahme ist die ZERO PAGE (die Null-Seite), die von
+Adresse 0000H - 0100H reicht und durch CP/M fuer interne Aufga-
+ben (z.B. den Boot(Warmstart), Sprungadressen, Kommandospeicher
+usw.) benutzt wird.
+Die durch CCP in den TPA-Bereich geladenen Dateien muesen vom
+Dateityp COM (bzw. CMD) sein.
+
+1.2 KOMMANDO-BEHANDLUNG
+
+Bei der Eingabe von Kommandos beachten Sie bitte folgende Punkte
+Alle Kommandos werden durch Betaetigung der Return-Taste abge-
+schlossen.
+Optionen hinter einem Schluesselwort - wie z.B. die Angabe einer
+Dateispezifikation - muessen durch ein Leerzeichen vom Kommando
+getrennt werden.
+Hinter dem Bereitschaftszeichen (dem Systempromt z.B. A>) kann
+die Kommandozeile direkt eingegeben werden. CP/M vertraegt je-
+doch auch Leerzeichen zwischen Promt und Kommandozeile.
+Kommandos und Kommando-Optionen koennen in unterschiedlichster
+Schreibweise eigegeben werden: in Kleinschrift, in Grosschrift
+ oder gemischt. CP/M wandelt alles in Grosschrift um!
+
+1.3 STEUERZEICHEN UNTER CP/M
+
+[BS] - Loescht das letzte Zeichen auf Bildschirm und im Eingabe-
+       puffer.
+^C   - Wird diese Zeichenkombination am Anfang einer Zeile ein-
+       gegeben, so bewirkt sie einen Warmstart und bricht das
+       laufende Programm ab.
+[CR] - Das ist die Taste [CARRIAGE RETURN] oder Kombination ^M.
+       Sie bewirkt das Beenden der Puffereingabe und das Ueber-
+       geben der Daten in das Programm.
+[DEL]- Loescht das letzte eingegebene Zeichen.
+^E   - Bringt Cursor in eine neue Zeile.
+^I   - Bewegt den Cursor zur naechsten Tabulatorposition.
+[LF] - Das ist die Taste [LINE FEED] oder die Tastenkombination
+       ^J. Sie bewirkt einen Zeilenvorschub.
+^P   - Schaltet den Drucker mit dem Bildschirm parallel (ueber
+       den LST-Kanal). Die Rueckschaltung erfolgt entweder durch
+       nochmaliges ^P oder einen Warmstart.
+^R   - Bricht die laufende Anzeige mit einem (#) ab und wieder-
+       holt den tatsaechlichen Inhalt des Eingabepuffers auf der
+       naechsten Zeile.
+^S   - Haelt eine laufende Ausgabe an, bis eine beliebige andere
+       Taste die Ausgabe wieder fortsetzt.
+^U   - Loescht die zuletzt eigegebene Zeile und zeigt dieses 
+       durch ein (#) am Zeilenende an. Anschliessend kann in der
+       naechsten Zeile eine neue Eingabe erfolgen.
+^X   - Loescht die zuletzt eingegebene Zeile auf dem Bildschirm.
+  
+
+
+1.4 DISKETTEN, LAUFWERKE UND DATEIEN
+
+Disketten gibt es einseitig (single side, SS) oder beidseitig
+(double side, DS) beschreibbar, mit einfacher (single density,
+SD) oder doppelter (douple density, DD) Schreibdichte. Das 
+haengt vom jeweiligen Laufwerk ab.
+Auf der Diskette befindet sich eine Anzahl von Spuren, von denen
+die aeusseren zwei Spuren fuer das System benoetigt werden. Zum
+Kopieren dieser Systemspuren (und damit zum Erstellen von Sys-
+temsidketten-Kopien) gibt es einige, menuegesteuerte Programme;
+das setzt jedoch eine formatisierte Diskette voraus. Formatisie-
+ren bedeutet, eine Diskette der Rechnerumgebung anzupassen, 
+indem die Reihenfolge der Schreib-Lese-Sektoren, entsprechend 
+dem Zugriffs-Zyklus, festgelegt wird. Das Formatisierungspro-
+gramm ist abhaengig vom Rechnerhersteller und kann daher unter-
+schiedlich benannt sein.
+Zu beachten ist lediglich, das die Diskette nicht schreibge-
+schuetzt sein darf.
+Achten Sie also bei der Diskette, die wiederverwendet werden 
+soll darauf, dass die Schreibschutzkerbe (an der linken Seite 
+der Diskette) nicht zugeklebt ist. Disketten sind zu schuetzen 
+vor:      VERSCHMUTZUNG
+          STATISCHE AUFLADUNG
+          MAGNETISCHEN EINFLUESSEN
+          UND
+          MECHANISCHEN BESCHAEDIGUNGEN!!
+
+Die CP/M-Dateistruktur erlaubt ab der Version 2.0 die Anwahl von
+maximal 16 Laufwerken mit unterschiedlicher Speicherkapazitaet.
+Die Laufwerksbezeichnung wird durch Buchstaben im Bereich A-P 
+vorgenommen.
+Das voreingestellte Laufwerk, d.h. das Laufwerk, das nach dem 
+Systemstart von CP/M automatisch angewaehlt wird, hat die Be-
+zeichnung A und meldet sich auf dem Bildschirm mit der Bereit-
+schaftsanzeige in der Form: A>
+Ein Laufwerkswechsel kann auf zwei Arten durchgefuehrt werden:
+
+1. Direktumschaltung durch Angabe des Kennbuchstabens fuer das
+   einzuwechselnde Laufwerk, abgeschlossen durch einen Doppel-
+   punkt (:) ; A>B:
+
+2. Durch die Angabe eines anderen Laufwerkes in der Kommandozei-
+le, um nur zeitweise irgendwelche Aktivitaeten auf eienem ande-
+ren Laufwerk durchzufuehren. A>DIR B:
+
+Da jeder Eintrag in die Directory in der Standartversion 32 Byte
+benoetigt, kann das Inhaltsverzeichnis max. 64 Eintraege aufneh-
+men!
+
+Die Dateispezifikation unterliegt folgenden Konventionen:
+[Laufwerksbezeichnung]   = 1 Buchstabe zwischen A-P
+[Dateiname]              = 1-8 Zeichen, mit Ausnahme der unten
+                           aufgefuehrten Sonderzeichen.
+[Dateityp]               = 0-3 Zeichen, Ausnahme siehe oben.
+
+Systemabhaengige Sonderzeichen
+------------------------------
+[ ] . , ; : = ? * ( ) ! & + - $ / \ 
+
+Einige uebliche Dateitypen
+ASM = ASM-80-Quell-Programm
+A86 = ASM-86-Quell-Programm
+BAK = Sicherungsdatei
+BAS = BASIC-Quell-Programm
+CMD = 8086/8088-MC-Programm
+COM = 8080/8085-MC-Programm
+FOR = FORTRAN-Quell-Programm
+HEX = Uebersetztes ASM-80-Programm im Hexa-Format
+HLP = Text-datei fuer das Programm HELP
+H86 = Uebersetztes ASM-86-Programm im Hexa-Format
+LIB = Bibliotheks-Datei
+MAC = Makroassembler-Quell-Programm
+PRN = Assembler-listing (Referenz)
+SUB = Liste von Kommandos, die durch SUBMIT durchgefuehrt werden
+$$$ = Temporaere Datei
+
+Dateiname und Dateityp werden durch einen Punkt (.) getrennt
+angegeben:
+          KUNDNAME.DAT
+          PROGRAM1.FOR
+          SPIRALE.BAS
+
+Die Laufwerksbezeichnung (falls erforderlich) wird dem Datei-
+namen - getrennt durch einen Doppelpunkt - vorangestellt:
+          B:KUNDNAME.DAT 
+          C:BATCHKOM.SUB
+Bei der Benutzung einiger Kommandos darf der Dateiname bzw. Da-
+teityp mit Maskenzeichen angegegeben werden. Als Maskenzeichen
+ stehen in CP/M das Fragezeichen (?) und das Sternchen (*) zur
+Verfuegung. Dabei ersetzt das Fragezeichen ein unbekanntes Zei-
+chen und das Sternchen beliebig viele Zeichen.
+          A>DIR *.COM
+          A>DIR KUN???.*
+
+2.0 DIE RESIDENTEN KOMMANDOS
+
+Das nachfolgende Kapitel beschreibt die vom CCP "verstandenen"
+6 residenten Kommandos.
+- DIR/DIRS Inhaltsverzeichnis listen
+- ERA      Loeschen von Dateieintraegen
+- REN      Umbenennen von Dateien
+- SAVE     Speicherbereich in eine Datei ablegen
+- TYPE     Listen von Dateiinhalten
+- USER     Benutzerbereich wechseln/anzeigen
+
+
+2.1 DIR/DIRS
+
+Aufgabe:  Mit DIR: Anzeigen des Inhaltsverzeichnisses aller
+          Dateien, deren Attribut DIR ist.
+          Mit DIRS: Anzeigen des Inhaltsverzeichnisseses aller
+          Dateien, deren Attribut SYS ist.
+
+Kommandobeispiele:
+          A>DIR
+          A>DIR B:
+          A>DIR TEST???.BAK
+          A>DIR B:CBATEST.BAS
+          A>DIRS *.COM
+Optionen: Nur unter CP/M-Plus sind zusaetzlich nachfolgende Op-
+          tioen erlaubt. Sie koennen in einen Liste zusammen-
+          gefasst werden, untereinander getrennt durch ein Leer-
+          zeichen oder ein Komma, eingeschlossen durch eckige
+          Klammern.
+ATT       Zeigt die durch den Benutzer definierbaren Dateiattri-
+          bute F1, F2, F3 und F4 an.
+DATE      Zeigt die Dateien mit ihrem Zeit- und Datumstempel an.
+          Wenn der Zeit- und Datumstempel nicht aktiv ist, 
+          bringt DIR die Mitteilung: Date and Time Stamping 
+          inactive.
+DIR       Zeigt nur Dateien an, die das DIR-Attribut haben.
+DRIVE=ALL Zeigt die Dateien von allen aktiven Laufwerken an.
+          Anstelle von DRIVE kann auch DISK geschrieben werden.
+DRIVE=(A,B) Zeigt die Dateien der spezifizierten Laufwerke an.
+DRIVE=[LW] Zeigt die Dateien des bezeichneten Laufwerkes[LW] an. 
+EXCLUDE   Zeigt alle Dateien des voreingestellten Laufwerkes
+          und Nutzerbereiches an, die nicht der maskierten Da-
+          teispezifikation in der Kommandozeile entsprechen.
+FF        Sendet ein FF zum Drucker, wenn dieser vorher durch
+          ^P aktiviert worden ist. Wenn die LENGTH=[n]-Option 
+          ebenfalls aktiviert wird, loest DIR alle [n]-Zeilen
+          den Seitenvorschub aus.
+FULL      Zeigt den Namen der Datei und ihre Groesse an.
+LENGTH=[n] Zeigt [n]-Zeilen an. Die n-Angabe muss zwischen 
+          5-65536 liegen.
+MESSAGE   Zeigt die Laufwerkskennzeichnung und die Benutzer-num-
+          mer an, die gerade durchsucht wird.
+NOPAGE    Laesst das Listing auf dem Bildschirm durchlaufen.
+NOSORT    Zeigt die Dateien in der Reihenfolge des Auffindens 
+          auf der Disk an.
+RO        Zeigt nur Dateien mit RO-Attribut an.
+RW        Zeigt nur Dateien mit RW-Attribut an.
+SIZE      Zeigt Dateinamen und Dateigroese in Kbyte an.
+SYS       Zeigt nur Dateien mit SYS-Attribut an.
+USER=ALL  Zeigt alle Dateien unter allen Benutzer-Numern des
+          voreingestellten Laufwerkes an.
+USER=[Nr] Zeigt alle Dateien der mit [Nr] spezifizierten Benut- 
+           zer-Nummer.
+USER=(0,1) Zeigt ale Dateien der angegebenen Benutzernumern an.
+
+Optionsbeispiele:
+-----------------
+A>DIR [USER=ALL,DRIVE=ALL,SYS] *.PLI *.COM *.ASM
+A>DIR [E=ALL user=all]TESTFILL.BOB
+A>DIR [DRIVE=C]       (USER 4 ist aktiv)
+
+ACHTUNG   In der Dateinamens- und Dateityp-Angabe ist die Ver-
+          wendung der Maskenzeichen erlaubt; nicht jedoch bei 
+          der Laufwerksangabe!! Es ist nur die Angabe einer (!)
+          Optionsliste erlaubt! In der Standartversion sind 
+          nicht mehr als 64 Directory-Eintraege moeglich!
+
+
+
+2.2 ERA
+
+Aufgabe:  Loeschen von einem oder mereren Dateinamen aus dem In-
+haltsverzeichnis der angegebenen oder der aktiven Diskette 
+(Laufwerk).  
+Kommandobeispiele:
+          A>ERA KUNDEN.DAT
+          A>ERA B:KUNDE??.*
+          A>ERA C:TEST.TXT
+
+Optionen: keine
+
+Achtung:  Maskenzeichen koennen bei der Angabe des Dateinamens
+          und des Dateityp verwendet werden. Bei der Maskie-
+          rungsangabe *.* (also alles loeschen "fragt" ERA 
+          zurueck
+          ALL(Y/N)?
+          so dass Sie noch Gelegenheit haben, dieses "pauschale"
+          Loeschen zurueckzunehmen. Geloescht werden kann immer
+          nur im benutzten USER-Bereich! Entspricht kein Datei-
+          name der Maskierung in Ihrer Spezifikation, so erfolgt
+          die Meldung:
+          NO FILE
+
+
+2.3 REN
+
+AUfgabe:  Umbenenne vorhandener Dateien.
+
+Kommandobeispiele:
+          A>REN TESTNEU.ASM=B:TEST.ASM
+          A>REN B:DELTA.BAS=A:TEST.BAS
+          A>REN NEUASM.A86=ALTASM.A86
+          B>REN A:NEU.PAS=ALT.PAS  
+          B>REN A:NEU.PAS=A:ALT.PAS
+
+Optionen: keine
+Achtung:  Rechts vom Gleichheitszeichen (=) steht der Name der
+          vorhandenen Datei, links der neue Name dieser Datei.
+          Maskierungsangaben sind nicht zugelassen!
+          Werden Laufwerksangaben gemacht, so muessen diese auf
+          beiden Steiten des Gleichheitszeichens identisch sein!
+          Wenn die Dateispezifikation rechts vom
+          Gleichheitszeichen nicht gefunden wird (bzw.
+          nicht existiert) meldet REN:
+
+          NO FILE
+
+          Wurde die links vom Gleichheitszeichen stehende Datei-
+          spezifikation bereits im Inhaltsverzeichnis (Directory
+          ) vorgefunden, so meldet REN:
+
+          FILE EXIST
+
+          Bei dem Versuch, eine schreibgeschuetzte Datei umzube-
+          nennen, erfolgt die Fehlermeldung:
+
+          Bdos Err On [Laufwerk]:File R/O
+
+
+2.4 SAVE
+
+Aufgaben: Speichern von Teilbereichen der TPA in eine Disketten-
+          Datei. Es werden n Speicherseiten a 256 Byte, begin-
+          nend ab, 0100H, in die angegebene Datei gespeichert.
+          Die Seitenangabe n hat dezimal zu erfolgen.
+Kommandobeispiele:
+
+          SAVE 3 TEST.COM
+          SAVE 10 B:TEST.COM
+Optionen: keine
+Achtung:  Unter CP/M-86 gibt es dieses Kommando nicht. Dort ist
+          es Bestandteil des Kommandos DDT!
+          Unter CP/M-Plus ist der Anfang und das Ende des Spei-
+          cherausschnittes frei waehlbar. Daher wird die Angabe
+          des Speicherumfangs auch hexadezimal gemacht. SAVE
+          laeuft unter CP/M-Plus im Dialog.
+
+
+
+2.5.TYPE
+
+Aufgabe:  TYPE (Display File) zeigt den Inhalt einer Zeichen-Da-
+          tei (Text-Datei) auf dem Bildschirm.
+
+Kommandobeispiele:
+          A>TYPE BRIEF.TXT
+          A>TYPE B:DELTA.BAS
+
+Optionen: keine
+
+Achtung:  Maskenzeichen sind nicht erlaubt!
+          Die durchlaufende Anzeige kann durch die Eingabe eines
+          beliebigen Zeichens unterbrochen werden.
+          Wird die angegebene Datei nicht gefunden, so meldet
+          TYPE:
+
+          NO FILE
+
+
+2.6 USER
+
+Aufgabe:  Anzeigen der laufenden User (Benutzer)-Nummer oder
+          wechseln in andere User-Bereiche.
+
+Kommandobeispiele:
+          USER
+          USER 1
+          USER 15
+
+Optionen: keine
+Achtung:  Zugelassen sind 16 Benutzerbereiche mit den User-Num-
+          mern 0 bis 15. Wenn CP/M gestartet wird, ist die lau-
+          fende User-Nummer Null. Dateien, die unter dieser 
+          User-Nummer abgelegt werden, sind nicht generell unter
+          anderen User-Nummern verfuegbar. Zugriff haben Sie auf
+          solche Dateien nur, wenn Sie mit dem SYS-Attribut ver-
+          sehen sind (durch das Kommando STAT), oder durch das
+          PIP-Kommando mit dem Parameter G.
+          Beachten Sie in diesem Zusammenhang auch das Kommando
+          STAT USR:, mit dem Sie eine Liste der User-Nummern be-
+          kommen, unter denen Dateien abgelegt wurden.
+
+
+3.0 DIE WICHTIGSTEN TRANSIENTEN KOMMANDOS
+
+Dieses Kapitel befasst sich mit den wichtigsten transienten Kom-
+mandos der CP/M-Familie, die in der Form von Utilitys(Hilfspro-
+grammen) auf einer Diskette vorliegen muessen.
+          - STAT/ SHOW
+          - PIP
+          - FORMAT
+          - COPYDISK
+          - LDCOPY/ SYSGEN/ COPYSYS
+          - HELP
+          - TOD/ DATE
+          - DUMP
+          - SUBMIT/ XSUB
+          - ASM/MAC
+          - LOAD/ HEXCOM
+          - GENCOM/ LMCMD
+          - ED
+          - DDT
+

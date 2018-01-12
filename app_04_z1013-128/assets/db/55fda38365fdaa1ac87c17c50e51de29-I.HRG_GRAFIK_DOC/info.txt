@@ -1,0 +1,6 @@
+<kurz src="VOLLGRAPHIK mit Z1013, eine KRT Variante für den Bereich 0xE800-0xEBFF"/>
+<lang>Encoding: Umlaute und Klammern gemischt
+der "Nachtrag" wurde hinzugefügt ohne die Kodierung zu beachten.
+  
+<include src="I.HRG GRAFIK DOC.txt"/></lang>
+<requires></requires>

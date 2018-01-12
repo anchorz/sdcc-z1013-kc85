@@ -1,0 +1,23 @@
+Zu den Problemen mit der Reaktionsgeschwindigkeit ist folgendes
+zu sagen:
+Die Tastaturabfrage an sich ist extrem schnell (ca. 130 µs), 
+aber die Einbindung in Programmen ist des öfteren recht mangel-
+haft. Man sollte beispielsweise beachten, daß bei einer ge-
+wünscht "blinden" Abfrage der Tastatur die Zelle 4 mit 0 vorge-
+laden werden muß (vor jeder Abfrage!). "Blind" heißt in diesem
+Fall, daß beim Aufruf von RST 20H DB 4 so lange Zeichen in max.
+Zeichenfolgegeschw. ausgegeben werden, so lange die Taste ge-
+drückt bleibt. Im Gegensatz dazu gibt die originale "nicht blin-
+de" Abfrage nur ein Zeichen aus und bleibt beim zweiten Aufruf
+in der Tastaturroutine hängen (Software-Flip-Flop) bis die Re-
+peat-Funktion anspricht oder die Taste losgelassen wurde.
+Beim .A2-Monitor von Riesa hat man sich nicht an den alten eigenen
+Standard gehalten, sodaß in diesem Monitor immer eine "blinde"
+Abfrage gemacht wird. Dies führt leider dazu, daß man ein Pro-
+gramm nicht so schreiben kann, daß es auf beiden Monitoren in
+gleicher Weise läuft. Die von mir entwickelte Tastaturvariante
+hält sich im Verhalten an den alten Monitor von Riesa.
+Der Mangel am neuen Riesaer Monitor führt leider dazu, daß sich
+auch Software breit macht, die nur noch auf dem neuen Monitor
+mit der richtigen Reaktionsgeschwindigkeit läuft.
+

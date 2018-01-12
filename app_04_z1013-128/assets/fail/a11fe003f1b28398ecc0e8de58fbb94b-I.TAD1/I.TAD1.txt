@@ -1,0 +1,116 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++                                                              +
++                  Mikrorechnerbausatz Z 1013                  +
++                                                              +
++ TAD1 - Textadapter zur Anpassung von Texten an verschiedene  +
++                                                              +
++ Textverarbeitungssysteme.         (c) by RACYsoft            +
++                                                              +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Fuer den Z1013 wurden viele Textverarbeitungssysteme entwickelt.
+Die meisten Z1013-Nutzer haben ihr ganz "privates" Tvs.
+Dadurch entstehen Probleme beim Austausch von Beschreibungen.
+Aber wer will schon mit mehreren verschiedenen Tvs arbeiten ?
+Um Texte an ein Tvs anzupassen wurde TAD1 entwickelt.
+
+Programmstandort: E000h - E800h
+
+Start           : E000h
+
+Systemzellen    : E003h - Anfangsadresse des Textes
+                  E005h - Endadresse des Textes
+                  E007h - Laenge
+                  E009h - altes Zeilenendezeichen
+                  E00Ah - neues Zeilenendezeichen
+                  E00Bh - altes Textendezeichen
+                  E00Ch - neues Textendezeichen
+                  E00Dh - Zeilenlaenge
+
+Andere Versionen beim Autor anfordern!
+
+Bedienung:
+----------
+
+Zunaechst wird nach dem Standort des Textes gefragt.
+Diese Adressen werden dann in die Systemzellen eingetragen.
+Zu  b e a c h t e n  ist, dass der Text eine Laenge von
+mindestens 100h haben sollte.
+Die Adressen werden auf dem Bildschirm sichtbar.
+Auf die Frage 
+
+ altes Zeilenendezeichen: 
+
+gibt es 2 Moeglichkeiten.
+
+1. Sie antworten mit einer Hexzahl zwischen 0 und FFh.
+------------------------------------------------------
+
+   Die Systemzelle wird mit dieser Hexzahl beschrieben.
+   Die Zahl wird auf dem Bildschirm sichtbar.
+   Weitere Textbearbeitung.
+
+2. Sie antworten mit dem Buchstaben ' K '.
+------------------------------------------
+
+   ' K ' steht fuer kein Zeilenendezeichen vorhanden.
+   In die Systemzelle altes Zeilenendezeichen wird 4Bh ein-
+   getragen.
+   Um eine weitere Bearbeitung des Textes zu vereinfachen,
+   wird selbststaendig ein Zeilenendezeichen ( 1Eh ) und ein
+   Textendezeichen ( 03h ) eingetragen.
+   Zuvor wird nach der Zeilenlaenge gefragt. Es wird eine
+   Hexzahl zwischen 00h und FEh erwartet.
+   Der Text wird entsprechend verschoben und die neuen Adressen
+   werden, wie auch das ' alte Zeilenendezeichen ', auf dem
+   Bildschirm sichtbar.
+   Weitere Textbearbeitung.
+
+Jetzt wird nach dem neuem Zeilenendezeichen gefragt.
+Auch hier gibt es 2 Moeglichkeiten.
+
+1. Sie antworten mit einer Hexzahl zwischen 0 und FFh.
+------------------------------------------------------
+
+   Das neue Zeilenendezeichen wird gegen das alte ausgetauscht.
+   Das neue Zeilenendezeichen wird auf dem Bildschirm sichtbar.
+   Weitere Textbearbeitung.
+
+2. Sie antworten mit dem Buchstaben ' K '.
+------------------------------------------
+
+   ' K ' steht fuer kein Zeilenendezeichen.
+   In die Systemzelle neues Zeilenendezeichen wird 00h ein-
+   getragen. ( Verwechslung mit eventl. 00h als
+   Zeilenendezeichen moeglich !! )
+   Die vorhandenen alten Zeilenendezeichen werden
+   herausgefiltert und der Text wird entsprechend verschoben.
+   Die neuen Adressen werden in die entsprechenden Systemzellen
+   geschrieben und auf dem Bildschirm sichtbar.
+   Das neue Textendezeichen wird auf dem Bildschirm sichtbar.
+   Weitere Textbearbeitung.
+
+Als weiteres wird nach dem alten Textendezeichen gefragt.
+Es wird eine Zahl zwischen 00h und FFh erwartet.
+Sollte der Text kein Textendezeichen besitzen, so wird mit 'K'
+geantortet.
+Es wird jetzt nach dem neuen Textendezeichen gefragt.
+Es wird eine Zahl zwischen 00h und FFh erwartet.
+Soll der neue Text kein Textendezeichen haben, antworten
+Sie mit 20.
+
+Zum Schluss werden Sie danach gefragt, ob der Text auf eine neue
+Anfangsadresse verschoben werden soll.
+
+Achtung: alle Eingabe waehrend des Programmlaufes sind
+         hexadezimal
+
+Ueber den gesamten Programmlauf sind die Textparameter auf dem
+Bildschirm verfolgbar.
+
+
+Viel Erfolg wuenscht RACYsoft !   Uwe Jansky     
+                                  K.-Kolwitz-Str.1
+                                  Schwarzenberg
+                                  9 4 3 0
+

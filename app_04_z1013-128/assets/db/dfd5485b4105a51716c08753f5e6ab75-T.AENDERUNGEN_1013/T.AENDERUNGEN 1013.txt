@@ -1,0 +1,102 @@
+IG-HC der KdT 		     		 Dresden, den 3. 1. 1988
+an der TU-Dresden
+
+
+  Änderungsvorschläge für die Überarbeitung des Z 1013
+  ----------------------------------------------------
+
+1.   Fehler in der Schaltung, die unbedingt beseitigt werden
+     sollten
+
+
+1.1. Kassetteninterface
+     Das Kassetteninterface ist nach TGL 28200 Blatt 13
+     zu gestalten. D. h. die Aufzeichnung und Wiedergabe muß
+     mit jedem normgerechten Gerät möglich sein. 
+     (Schwerpunkte Impedanz und Empfindlichkeit)
+     Günstig wäre eine Verringerung der Brummempfindlichkeit.
+     Das RC-Glied zum Verschleifen der Flanken des Ausgangs-
+     signals sollte überarbeitet werden, um bei automatischer 
+     Aussteuerung den Aufzeichnungspegel zu erhöhen.
+
+1.2. /OE des Monitor-ROM's muß mit /RD verknüpft werden
+
+1.3. Ein Reset, das durch die Taste ausgelöst wird, muß auf den
+     Bus wirken, um externe Baugruppen mit zurückzusetzen.
+     Vorschlag: Open-Kollektor-Ausgang am Bus
+
+1.4. Das Resetsignal muß mit /M1 synchronisiert werden, um
+     Speicherfehler bei Reset zu vermeiden.
+
+1.5. In die Leiterzugführung von CASG zum Systemsteckverbinder
+     muß eine entfernbare Brücke (oder Wickelverbindung) ein-
+     gefügt werden, um ein RDY-Signal zu ermöglichen.
+
+1.6. Die Dekodierung der I/O-Adressen muß vollständig sein,
+     um eine Interruptfähigkeit zu sichern.
+
+1.7. In die Leiterzugführung der 12V-Spannung zum Steckver- 
+     binder muß eine entfernbare Brücke eingefügt werden,
+     um einen Einsatz von U 2164 zu ermöglichen.  
+
+1.8. Die Diode (1/2 D8) in der MEMDI-Leitung muß entfallen
+     (durch Open-Kollektor ersetzt werden), um extern einen
+     L-Pegel von 0,4 V für eine sichere Funktion zulassen
+     zu können.
+
+1.9. Alle Steuerzeichen müssen von der Tastatur erreichbar 
+     sein.
+
+1.10. Das Netzteil muß überarbeitet werden. 
+
+
+
+2. Änderungs- und Erweiterungsvorschläge, die bei der Überar-
+   beitung des Z 1013 nach Möglichkeit mit verwirklicht werden
+   sollten.
+
+2.1.  Realisierung eines normgerechten Video-Ausganges oder zu-
+      mindest Vorbereitung zum einfachen Selbstnachrüsten.
+
+2.2.  Negierte Bilddarstellung (event. wickelbar) realisieren.
+
+2.3.  Bildschirmzugriff nicht flimmernd (Vorschlag Kindermann)
+
+2.4.  Umschaltbares Bildformat 64 Zeichen und 16 Zeilen (Vor-
+      schlag Peters) realisieren oder durch entsprechende 
+      Brücken leicht nachrüstbar machen.
+
+2.5.  Eine Vollgraphik als Zusatzbaugruppe bereitstellen, die
+      software-kompatibel zu einem verbreiteten Computer ist.
+
+2.6.  Einsatz von Fassungen für Monitor, Zeichengenerator und
+      PIO
+
+2.7.  /OE und /CS für Zeichengenerator über Brücke zuführen,
+      um Umschaltbarkeit des ZG zu erleichtern.
+
+2.8.  Bauhöhe minimieren und Reset-Taste parallel zur Leiter-
+      platte anordnen, so daß alle Anschlüsse (außer System-
+      steckverbinder) und Betätigungen von einer Seite erfol-
+      gen.
+
+2.9.  Bei generellem Einsatz von U 2164 sollte das Netzteil so
+      überarbeitet werden, daß nur noch + 5V mit einer Reserve
+      von etwa 400 mA für einfache Erweiterungen erzeugt werden.
+      (Kassetteninterface nur noch mit einer Spannung betreiben)
+      Zur Minimierung der Verluste wird ein diskreter Aufbau mit
+      pnp-Leistungstransistor als Regelglied in der positiven 
+      Betriebsspannung oder Regelung der negativen Spannung
+      (Masseleitung) mit npn-Leistungstransistor und Ansteuerung 
+      durch OV vorgeschlagen.
+
+2.10. Der Platz für die statischen RAM (E000H) kann für die 
+      Ergänzungen genutzt werden, da er nicht mehr benötigt
+      wird.
+
+2.11. Für Zusatzschaltungen, die an das E/A-Erweiterungsmodul
+      angeschlossen werden können, fehlen die Versorgungsspan-
+      nungen auf dem 3*13 poligen Steckverbinder.
+      Man sollte eine feste Zuordnung der freien Kontakte zu den
+      Spannungen vereinbaren.
+

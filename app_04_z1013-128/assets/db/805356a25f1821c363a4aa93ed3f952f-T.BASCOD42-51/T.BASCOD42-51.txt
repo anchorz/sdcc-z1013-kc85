@@ -1,0 +1,466 @@
+
+
+
+                            - 42 -
+
+          A B C   aber bei einem anderen Computer:
+         A B C 
+
+     TAN  Berechnet den Tangens eines in Radialen angegebe-
+          nen Winkels. Vgl. des weiteren bei COS
+     THEN Vgl. IF
+     TO   Vgl. FOR
+     VAL  Bestimmt den nummerischen Wert eines 'string'.
+          Wenn der 'string' nicht rein numerisch ist, ist
+          das Ergebnis nicht bei jedem Computer das gleiche.   
+     
+          Beispiel:
+          AS= "1.4E6": A=VAL (AS)  nach Ablauf ist A=1,4E6
+          AS= 12D : A=VAL(AS)      nach Ablauf ist A unbestimmt.
+
+
+     4.7 Die zugelassenen Operatoren
+     _______________________________
+     4.7.1 Die Rechnoperatoren
+     Auf die Rechenoperatoren findet folgendes Anwendung:
+     erst Potenzieren, dann von links nach rechts Multipli-
+     zieren und Dividieren, dann von links nach rechts Ad-
+     dieren und Subtrahieren. Darüber hinaus gilt folgendes:
+     Was zwischen Klammern steht, wird zuerst berechnet, und
+     Funktionswerte werden bestimmt, ehe das Rechnen mit den
+     Rechenoperatoren beginnt.
+
+     =  Ordnet den Wert des Ausdrucks rechts vom =-Zeichen 
+        den Variablen links vom =-Zeichen zu. Beispiele:
+        A=4+6 
+
+     ^  Erhebt eine Zahl oder Variable in eine bestimmte 
+        Potenz. Beispiel:
+        A=2:B=16:C=A^B
+
+     *  Multipliziert zwei Zahlen oder Variable miteinander.
+        Beispiel:
+        A=5:B=3*2*A
+
+
+
+
+
+                            - 43 -
+
+
+     /  Dividiert zwei Zahlen oder Variable miteinander.
+        Beispiel:
+        A=5:B=100/A/2       nach Ablauf ist B=10
+
+     +  Addiert zwei Zahlen oder Variale miteinander.
+        Beispiel: 
+        B=1:A=B+9           nach Ablauf ist B=10
+
+     -  Subtrahiert zwei Zahlen oder Variable von einan-
+        der. Beispiel:
+        A=10-3-4            nach Ablauf ist A=3
+
+
+     4.7.2 Die 'string'-Operatoren
+     +  Koppelt 'strings' miteinander. Beispiele:
+        AS="BAS": BS = "ICO" : CS="DE-3": DS=AS+BS+CS
+                            nach Ablauf ist DS="BASICODE-3"
+        Im Hinblick auf 'string'-Operatoren vergleiche man
+        auch mit LEFTS, MIDS und RIGHTS.
+
+
+     4.7.3 Die logischen Operatoren
+     Unter logischen Operatoren verstehen wir die Operato-
+     ren, die als Ergebnis der Operation einen logischen
+     Wert, nämlich 'wahr' oder 'unwar', liefern. Dieser 
+     logische Wert kann sofort genutzt werden, beispielsweise
+     nach IF, kann aber auch in einer numerischen Variablen 
+     gespeichert/aufbewahrt werden. Man beachte jedoch fol-
+     gendes: Eine numerische Variable, in der ein logischer
+     Wert gespeichert/aufbewahrt wird, darf nicht fuer re-
+     chenkundige Bearbeitungen genutzt werden.
+
+     =  Vergleicht die zwei Variablen oder Ausdrücke links
+        und rechts vom Gleichheitszeichen/=-Zeichen mitein-
+        ander. Das Ergebnis ist entweder 'war' oder aber 
+        'unwar'.
+        (Gleichzeitig: Ordnet den Wert des Ausdrucks rechts
+
+
+
+
+
+
+
+
+                            - 44 -
+
+
+        vom =-Zeichen der Variablen links vom =-Zeichen zu).
+        Beispiele:
+        A=(5=6)                   nach Ablauf ist
+                                  A = 'unwar'
+        IF AS=BS THEN
+
+     
+     <  Vergleicht zwei Variable oder Ausdrücke miteinander
+        und betrachtet, ob der linke kleiner ist als der rech-
+        te. Das Ergebnis ist eine logische Variable. Wen
+        'strings' verglichen werden, wird darauf gesehen,
+        ob der linke 'string' eher als der rechte in einer
+        alphanumerisch geordneten Reihe vorkommt (so können
+        Sie also alphabetisch ordnen). Beispiele:
+        A=5:B(A<7)              B ist nun 'wahr'
+        AS="HO":BS="HA":A=(AS<BS)    A ist nun 'unwahr'
+
+     >  Ebenso wie bei < , nur wird jetzt geprüft, ob
+        groeßer als bzw. später in der Reihe.
+
+    <>  Schaut, ob zwei Variable oder Ausdrücke ungleich
+        zueinander sind.
+        Das Ergebnis ist wieder ein logischer Wert. Beispiele:
+        A=(6<>7)                   A ist nun 'wahr'
+        AS="HO":BS ="H": A=(AS<>BS) A ist nun 'wahr'
+        IF A<>5 THEN ...
+
+    <=  Kleiner als oder gleich mit. In bezug auf die Wir-
+        kungsweise vgl. <, doch man lese anstelle von
+        'kleiner als' 'kleiner als oder gleich mit'.
+
+    >=  Grösser als oder gleich mit.
+
+     Für logische Operatoren vergleiche man des weiteren mit
+     AND, OR und NOT.
+
+
+
+
+
+
+
+
+                            - 45 -
+
+
+     Bei den letzten drei Operatoren ist ausschließlich
+     die oben angegebene Reihenfolge der Zeichen gestattet.
+     Somit ist IF A = < 5  beispielsweise FALSCH.
+
+
+     4.8 Der Aufbau eines BASICODE-3-Programms
+     -----------------------------------------
+ 
+     Dieser Paragraph gibt die vorgeschriebene Einteilung
+     für die Zeilenzahlen eines guten BASICODE-3-Programms:
+
+           0  -  999: Die Standardroutinen (vgl. Kapitel 5).
+                      Diese Routinen sind für jeden Computer
+                      anders und werden durch das Übersetzungs-
+                1000: programm geliefert.
+
+                1000: Die erste Zeile des BASICODE-3-Pro-
+                      gramms. Diese muß die folgende Form
+                      haben:        ---
+
+                      1000 A = <Wert> : GOTO 20: REM Programm-
+                                                     name
+
+                      <Wert> ist die Höchstzahl der Zeichen,
+                      die von allen 'strings' zusammen ver-
+                      wendet werden. Durch den Sprung nach
+                      Zeile 20 reservieren die Computer, die
+                      das nötig haben, Gedächtnisraum für die
+                      'strings'.
+
+        1010 - 19999: das Hauptprogramm
+
+       20000 - 24999: Subroutinen, die Sie bestimmt für das
+                      Programm brauchen, in denen aber Auf-
+                      träge stehen, die in BASICODE-3 nicht
+                      zugelassen sind und sich ebensowenig
+                      mittels der Subroutinen verwirklichen
+                      lassen. Diese Aufträge müssen in REM-
+
+
+
+
+
+
+
+                            - 46 -
+
+
+                      -Zeilen mit der erforderlichen Er-
+                      läuterung versehen werden, so daß
+                      andere sie ihrem Computer anpassen
+                      können.
+
+       25000 - 29999: eventuell benötigte DATA-Zeilen.
+
+       30000 - 31999: Ausschließlich REM-Zeilen. Hier kann
+                      eine kurze Beschreibung des Programms
+                      stehen (falls erforderlich; ebenso kön-
+                      nen hier eventuelle Literaturhinweise
+                      stehen.
+
+       32000 - 32767: In REM-Zeilen der Name und die An-
+                      schrift des Ausarbeiters dieses Pro-
+                      gramms.
+
+
+     Über die Subroutinen von 20000-24999 bemerken wir noch
+     das folgende: Versuchen Sie, so weit wie nur möglich zu
+     vermeiden, daß Sie Auftraege verwenden, die in BASICODE-3
+     nicht zugelassen sind. In einigen Fällen ist das jedoch
+     nicht zu vermeiden (beispielsweise wenn Sie durchaus auf
+     diese oder jene Weise mit Farbe arbeiten wollen).
+     In diesem Falle setzen Sie diese Routinen auf die Zeilen
+     20000-24999. Es ist dann von großer Bedeutung, das Sie mit
+     REM-Aufträgen gut angeben, was in diesen Routinen genau
+     geschehen soll.
+     Es ist des weiteren eine gute Gewohnheit, die Zeilenzahlen
+     mit Abständen von 10 auflaufen zu lassen, so daß später
+     noch Zeilen dazwischen eingefügt werden können.
+
+
+
+
+
+
+                            - 47 -
+
+
+     Or. S. 55 - 57
+     --------------
+
+
+     Commodore 64 und Commodore 128
+     --------------------------
+     Einlesen des Übersetzungsprogramms
+     -----------------------------------
+     Das Übersetzungsprogramm ist vällig in Mschinenspra-
+     che geschrieben, und es kann somit nicht mit einem
+     LIST-Auftrag ausgelesen werden. Es wird nach dem 're-
+     setten' (aus- und ansetzen) des Computers von der Kas-
+     sette aus mit dem Auftrag LOAD oder - falls gewünscht -
+     mit LOAD"C-64 BASICODE-3 eingelesen. Während des Ein-
+     lesens ist leider nichts auf dem Schirm zu sehen. Das
+     Einlesen von der Kassette dauert fast drei Minuten.
+     Nach dem Einlesen kann das Programm mit RUN gestartet
+     werden.
+     Nach diesem RUN-Auftrag bringt das Programm den Com-
+     puter in den BASICODE-3-Zustand. Dabei wird der Gedächt-
+     nisraum von S8C00 bis einschl. SCFFF in Gebrauch ge-
+     nommen und für BASIC abgeschirmt. Das dauert nur eine
+     Sekunde. Sodann erscheint die Meldung, daß die Maschi-
+     ne in den BASICODE-Zustand gebracht worden ist, und im
+     Gedächtnis stehen nur die festen BASICODE-3-Subroutine-
+     zeilen.
+     Es ist höchstwarscheinlich , daß das Übersetzungspro-
+     gramm nicht arbeiten wird in einem C-64 mit anderem
+     Zubehör als einem ursprünglichen Commodore-diskdrive
+     und/oder Printer. Insbesondere wird das Programm nicht
+     arbeiten, wenn ein Cartridge eingebracht worden ist.
+     Wird das Programm in einen anderen Commodore-Computer
+     als den C-64 geladen, so wird es ebenfalls nicht ar-
+     beiten, sondern ziemlich sicher den ganzen Computer
+
+
+
+
+
+
+                            - 48 -
+
+
+     auf 'tilt' bringen, und warscheinlich wird nur ein
+     'reset' diesen Computer wieder zu einer normalen Ver-
+     haltensweise bringen.
+     Gemäß Angabe vieler Nutzer arbeitet das Programm zu-
+     gleich auf einem Commodore 128, der in '64 mode' ge-
+     startet wurde. Leider war es dem Verfasser nicht mög-
+     lich, diese Angaben ordentlich zu überprüfen. Es ist
+     mithin nicht ganz ausgeschlossen, dass bestimmte Pro-
+     gramm-Bestandteile in einem Commodore 128 doch Pro-
+     bleme mit sich bringen.
+
+
+     Nutzung des Übersetzungsprogramms
+     ----------------------------------
+     Nachdem der Computer in den BASICODE-Zustand gekommen
+     ist, kann man ein Wahl-Menu aufrufen, indem man auf
+     eine (ganz gleich welche) der Funktionstasten drückt.
+     ----
+     In diesem Menu wird dann erwähnt, daß man mit einem
+     Drücken auf die Funktionstaste f3 ein BASICODE-Pro-
+     gramm einlesen kann (wobei - wenn nötig - die festen
+     Subroutinen automatisch eingeregelt werden) und daß
+     man mit einem Druck auf Funktionstaste f5 ein bereits
+     vorhandenes Programm, das das BASICODE-3-Protokoll er-
+     fuellt, wegschreiben kann.
+     Mit einem Druck auf den Zwischenraumstab wird das Menu
+     wieder verlassen, und man kehrt zurück zur normalen
+     Funktionsweise des Computers.
+     Wenn man - während das Menu auf dem Schirm steht - auf
+     f2 drückt, erscheinen einige Extra-Zeilen im Bild,
+     woraus hervorgeht, daß nächstens mit Funktionstaste
+     f2 die Standard-Subroutinen bereitgestellt werden (nütz-
+     lich, wenn man ein Programm in BASICODE schreiben will),
+
+
+
+
+
+
+                            - 49 -
+
+
+     daß mit Funktionstaste f4 BASICODE eingelesen und
+     dem eventuell bereits vorhandenen Programm angekop-
+     pelt wird (man achte dann darauf, daß die Zeilenzah-
+     len weiter laufen) und daß mit Funktionstaste f6
+     alle Programmzeilen (also ab Zeilennummer 0) in BA-
+     SICODE-Format weggeschrieben werden. Die letzten bei-
+     den Möglichkeiten sind nur von Bedeutung, wenn man
+     gemäß dem jetzt völlig veralteten BASICODE-1-Stan-
+     dard arbeiten möchte.
+     Entscheidet man sich für das Einlesen von BASICODE,
+     so muß der Recorder angelassen werden. Dazu erscheint 
+     die übliche Meldung auf dem Schirm. Danach wird der
+     ganze Schirm rot. Sobald das Leseprogramm einen BA-
+     SICODE-Anlaufton liest, wird der Schirm grün. So-
+     bald das eigentliche Programm eingelesen wird, wird
+     der Bildschirm alle 1,2 Sekunden seine Farbe veraen-
+     dern, bis das ganze Programm eingelesen ist. Danach
+     erscheint die normale READY-Meldung. Wenn ein Lese-
+     fehler festgestellt wird, wird das nach dem Einlesen
+     gemeldet. Das Programm kann dann doch 'gelistet' wer-
+     den, wodurch man möglicherweise den Lesefehler fin-
+     den und beheben kann. Wenn die Farbveränderungen aus-
+     bleiben, wird offenbar nicht korrekt gelesen. Man
+     kann das Einlesen dann abbrechen, indem man den Re-
+     corder stillsetzt, das Band zurückspult und durch 
+     mehrmaliges Drücken der Funktionstasten das Einlesen
+     erneut versucht.
+     Wenn man sich im Menu für Funktionstaste f5 (oder f6)
+     entscheidet, also für das Wegschreiben, so wird das 
+     Übersetzungsprogramm erst kontrollieren, ob die weg-
+
+
+
+
+
+
+                            - 50 -
+
+
+     -zuschreibenden Programmzeilen die wichtigsten For-
+     derungen erfüllen, nämlich ob die Zeilenlaenge maxi-
+     mal 60 Zeichen beträgt und ob in den Programmzeilen
+     verbotene Kommandos vorkommen (wie beispielsweise
+     POKE und SYS). Diese Kontrolle geht sehr schnell und 
+     ist auf dem Schirm sichtbar. Wenn ein Fehler gefun-
+     den wird, stoppt das Programm mit einer Meldung, in
+     welcher Zeile welcher Fehler ermittelt wurde. Man 
+     muß dann selbst diese Zeile 'listen' und verbessern.
+     Danach kann wieder mit der richtigen Funktionstaste
+     das Wegschreiben aufgerufen werden.
+     Wenn keine Fehler gefunden werden, erscheint kurz
+     nach der Kontrolle die normale Meldung, daß man den
+     Recorder auf das Aufnehmen einstellen soll. Danach
+     beginnt das Wegschreiben. Wärend dessen, daß ein
+     BASICODE-Programm auf die Kassette weggeschrieben
+     wird, wird - genau so wie während des Einlesens - 
+     der Bildschirm alle 1,2 Sekunden die Farbe wechseln.
+     Nur während des Schreibens des 5 Sekunden wärenden
+     Anlauftons ist der Schirm konstant grün gefärbt.
+
+
+     Das Übersetzungsprogramm kopieren
+     ----------------------------------
+     Eine Kopie des Übersetzungsprogramms kann dadurch ge-
+     fertigt werden, daß das Übersetzungsprogramm erst mit
+     LOAD eingelesen wird, wobei vor allem noch kein RUN-
+     -Auftrag gegeben wird, sondern gerade ein passender
+     SAVE-Auftrag, beispielsweise:
+     SAVE"C-64 BASICODE-3" oder
+     SAVE"0:C-64 BASICODE-3", 8 wenn man über einen 'disk-
+     drive' verfügt.
+
+
+
+
+
+
+                            - 51 -
+   
+
+     
+     Das Kopieren des Programms ist ausschließlich für den
+     eigenen Gebrauch gestattet.
+     Man vergleiche in diesem Zusammenhang den Anhang
+     über 'copyright'.
+
+
+     Spezielle Besonderheiten bei Commodore 64:
+     ------------------------------------------ 
+     In BASICODE besteht der Textschirm aus 25 Zeilen mit
+     je 40 Zeichen. Graphische Zeichen sind nicht gestat-
+     tet. Unter BASICODE arbeitet die Maschine immerhin
+     ausschließslich im Textstand, wobei Großbuchstaben ne-
+     ben Kleinbuchstaben möglich sind.
+     Der graphische Schirm umfaßt 200 Zeilen/Linien von
+     288 Bildpunkten. Der graphische Schirm ist somit et-
+     was schmaler als das, was maximal möglich wäre.
+     Im graphischen Schirm sind 25 Zeilen Text mit maxi-
+     mal 36 Zeichen je Zeile möglich.
+     Das Geräusch umfaßt theoretisch fast neun Oktaven,
+     nämlich von SP=0 bis einschließlich SP=106. Die nie-
+     drigsten beiden Oktaven produzieren jedoch eher Brumm-
+     toene als das, was man als angenehmes Geräusch empfin-
+     det.
+     Die in den meisten Computern verfügbaren 'accolades'
+     sind im C-64 nicht möglich. An deren Stelle erschei-
+     nen Blockhaken auf dem Schirm.
+     Die Funktionstasten werden ausschließlich für das
+     Aufrufen des BASICODE-Menu verwendet. Die Farbtasten
+     duerfen in BASICODE nicht verwendet werden.
+     Das Übersetzungsprogramm kann wärend des Lesens oder
+     Schreibens von der Kassette getrennt werden, indem man
+     den Recorder stillsetzt. In Notfällen kann man STOP +
+
+
+
+
+
+
+
+
+
+
+
+*************************************************************
+
+
+
+
+        10 Seiten Abschrift beendet !!!
+
+
+
+
+
+
+                Dieter Schleinitz
+
+
+                Fominstr. 61/204
+
+                Ruf: 2985
+                                       
+                R A D E B E R G 
+                ---------------
+                8142
+
+

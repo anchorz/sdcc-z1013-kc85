@@ -1,4 +1,4 @@
-<kurz src="Durch Höhle fliegen"/>
+<kurz src="Cave, Durch Höhle fliegen"/>
 <lang>
 
 Steuerung: 2 9 

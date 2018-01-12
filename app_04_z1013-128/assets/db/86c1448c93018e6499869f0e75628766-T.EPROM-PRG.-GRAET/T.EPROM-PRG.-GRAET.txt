@@ -1,0 +1,907 @@
+ Inhaltsverzeichnis
+__________________
+
+
+0.     Einleitung
+
+1.     Software zum Programmiergeraet
+1.1.   Allgemeiner Aufbau des EPROM-HANDLER V 2.9
+1.1.1. Typauswahl
+1.1.2. Lesen
+1.1.3. Programmieren
+1.1.4. Vergleichen
+1.1.5. Loeschtest
+1.1.6. Wiederholen
+1.1.7. Fortsetzen
+
+2.     Hardware des EPROM-Programmiergeraetes
+2.1.   Allgemeiner Aufbau
+2.2.   Fassung und Typstecker
+2.3.   Adresszaehler
+2.4.   Read/Write-Logik
+2.5.   Programmierspannungserzeugung
+2.6.   Relaisblock
+2.7.   Anschluss an den Z 1013
+2.8.   Netzteil
+
+       Literaturverzeichnis
+
+
+
+
+
+
+
+
+
+
+
+EPROM-PROGRAMMIERGERAET
+-----------------------
+
+
+
+0. Einleitung
+
+
+Obwohl in der letzten Zeit die Bedeutung von Festprogrammen 
+wegen der weitverbreiteten Disketten zurueckgegangen ist,
+bleibt es vor allem fuer Computeramateure wichtig, EPROMs
+einzusetzen, zumal ihre Preise stark sinken und die Speicher-
+kapazitaet pro Schaltkreis steigt.
+
+Um sich fuer ein Programmiergeraet entscheiden zu koennen,  
+sind mehrere Auswahlkriterien zu beachten:
+
+- Anzahl der zu programmierenden Typen        (maximal)
+
+- automatische Typerkennung
+
+- Art und Umfang des Interfaces               (minimal)
+
+- Portabilitaet bezueglich der Rechnertypen   (maximal)
+
+- Softwareunterstuetzung                      (maximal)
+
+- Preis-Leistungsverhaeltnis                  (optimal)
+
+- Vorleistungen                               (maximal)
+
+Bei den zu Programmiergeraeten erschienenen Veroeffentli-
+chungen lassen sich zwei Kategorien unterscheiden. Die erste
+Kategorie umfasst Programmiergeraete, die auf einen Typ von
+EPROMs zugeschnitten sind /2/ /3/ /4/. Sie kommen fuer hoehere
+Ansprueche nicht in Betracht. In der zweiten Kategorie fin-
+den sich Beispiele, die den o. g. Kriterien besonders gut ge-
+recht werden /1/ /5/ /6/. Hervorzuheben ist das Programmierge-
+raet nach /1/. Von V. LUEHNE wurde innerhalb der Z 1013-Gruppe
+der IG Heimcomputer am Informatikzentrum der TU Dresden eine
+Leiterplatte entwickelt. R. BROSIG hat ein sehr anspruchsvolles
+Programmierprogramm namens EPROM-HANDLER V 2.9 beigesteuert.
+
+
+                  
+1. Software zum Programmiergeraet
+
+
+
+1.1. Allgemeiner Aufbau des
+EPROM-HANDLER V 2.9 von R. BROSIG
+
+
+
+Der EPROM-HANDLER V 2.9 ist ein komfortables, menueorientier-
+tes, fuer den Z 1013 entwickeltes Werkzeug. Er belegt den 
+Adressraum von 100H bis 08FBH, wird mit J 100 gestartet und ist
+selbst nicht EPROM-faehig. Das im Anhang befindliche HEX-Li-
+sting gibt das Programm vollstaendig wieder, wobei darauf zu
+achten ist, dass es mit einem Adress-Offset von 1000H ausge-
+druckt wurde. 
+
+Die vier I/O-Adressen: PIO-Port A/Daten  30H   D0...D7
+                        "  Port A/Code   31H
+                        "  Port B/Daten  32H   Steuersignale
+                        "  Port B/Code   33H
+ 
+entsprechen denen des KC 87-EPROM-Programmiergeraetes und 
+ordnen sich in die Empfehlung fuer I/O-Adressen fuer den 
+Z 1013 ein, welche auf der Nachfolgetagung der "1. Z 1013-Ta-
+gung" bekanntgegeben wurde.
+
+Der EPROM-HANDLER V 2.9 bietet dem Nutzer insgesamt sieben 
+Funktionen, wie:
+
+     1. Typauswahl
+     2. Lesen
+     3. Programmieren
+     4. Vergleichen
+     5. Loeschtest
+     6. Wiederholen
+     7. Fortsetzen
+
+an.
+
+Kernstueck dieser Funktionen sind die Leseroutine (03FAH bis
+0422H) und die Zellen-Programmierroutine (060BH bis 063EH).
+Sie erzeugen unter Nutzung der beschriebenen Hardware ein Sig-
+nalspiel, das auf die international gebraeuchliche EPROM-Fa-
+milie 27xxx anwendbar ist. Bild 6 gibt einen Ueberblick fuer
+das Signalspiel der Zellen-Programmierroutine.
+
+
+1.1.1. Typauswahl
+
+
+Nachdem man den EPROM-HANDLER V 2.9 mit J 100 gestartet hat,
+wird nach dem EPROM-Typ gefragt, was sich jedoch auf die
+EPROM-Groesse bezieht. Nicht die Typen einzelner Hersteller
+sind gemeint, denn diese unterscheiden sich meist nach dyna-
+mischen Kennwerten, der Programmierspannung oder der Betriebs-
+stromaufnahme. Stellvertretend fuer die EPROM-Groesse werden 
+deshalb die international ueblichen Endnummern:
+
+     08 fuer  1 KByte-EPROMs
+     16 fuer  2 KByte-EPROMs
+     32 fuer  4 KByte-EPROMs
+     64 fuer  8 KByte-GPROMs
+    128 fuer 16 KByte-EPROMs
+    256 fuer 32 KByte-EPROMs
+
+zur Unterscheidung herangezogen.    
+
+In den Arbeitszellen 0128H und 0129H wird die Byteanzahl, die
+sich aus der EPROM-Groesse ergibt, abgelegt. Diese Byteanzahl 
+ist die einzige Unterscheidungsmoeglichkeit fuer die EPROM-
+Groesse innerhalb der internen Ablaeufe des EPROM-Handlers.
+Sollen andere EPROM-Groessen durch den EPROM-Handler V 2.9 be-
+arbeitet werden, so ist darauf zu achten, dass sie in ihrer
+Programmiervorschrift dem Signalspiel nach  Bild  6  entspre-
+chen. 1/2 K- und 64 K-EPROMs liessen sich also mit dem EPROM-
+HANDLER V 2.9 bei vorhandenem Typstecker (vgl. Bild 5.1...5.6)
+ebenfalls programmieren, doch werden sie im Typauswahldialog
+nicht beruecksichtigt.
+
+Ehe man die eingegebene Endnummer durch ENTER gueltig macht,
+sollte man sich in jedem Falle noch einmal ueberzeugen, ob der
+richtige Typstecker gewaehlt wurde. Hat man irrtuemlicherweise
+eine falsche Groesse bestaetigt, dann laesst sich mit dem Kom-
+mando N (NEU) zur Typauswahl zurueckkehren.
+
+
+1.1.2. Lesen
+
+
+Nachdem die Typauswahl erfolgt ist, bietet der EPROM-Handler 
+ein Funktionswahlmenue an. Hierin steht die Kennziffer 1 fuer
+"Lesen". Nachdem man die Kennziffer eingegeben hat, stellt der 
+EPROM-Handler die Frage, ob man den steckenden EPROM vollstaen-
+dig oder teilweise lesen moechte.
+Mit ENTER entscheidet man sich fuer vollstaendiges Lesen und 
+mit N (NEIN) fuer bereichsweises.
+
+Nachdem man sich fuer das letztere entschieden hat, ist der in-
+terne EPROM-Adressbereich ("rel. EPROM-Adresse (HEX):?") anzu-
+geben. Vor Fehleingabe, wie:
+
+   - Anfangsadresse groesser als Endadresse und
+   - Endadresse groesser als EPROM-Groesse,
+
+besteht Schutz. Soll nur eine einzelne EPROM-ZELLE gelesen wer-
+den, dann sind die Angaben fuer Anfangs- und Endadresse gleich.
+Nachdem der einzulesende EPROM-Adressbereich endeutig und feh-
+lerfrei feststeht, bestaetigt man mit ENTER, sodass das Pro-
+gramm nach dem Ziel des EPROM-Inhaltes fragen kann. Obwohl in 
+der Frage der Text "nach RAM-Adresse (HEX)?:" erscheint, be-
+steht kein Schutz vor Angabe einer ROM-Adresse. Man koennte al-
+so als Ziel die Adresse angeben, auf der bereits der Z 1013-Mo-
+nitor steht.
+
+Auch der RAM-Bereich, in dem der EPROM-Handler selbst steht,
+kann bei Fehlangabe vom eingelesenen EPROM-Inhalt ueberschrie-
+ben werden! Nachdem die (Anfangs-) RAM-Adresse mit ENTER quit-
+tiert ist, beginnt der Lesevorgang. Hierfuer wird zunaechst der
+EPROM-Adresszaehler mit Hilfe des CLEAR-Impulses rueckgesetzt.
+Gegebenenfalls schliesst sich dann ein Hochzaehlen auf die ge-
+waehlte Anfangsadresse an, wenn man den EPROM nicht vollstaen-
+dig auslesen will.
+
+Als naechstes folgt das Einschalten der Betriebsspannungen UCC 
+und UDD (ob beide verwendet werden, bestimmt der Typstecker). 
+Mit Hilfe eines Zeit-Unterprogrammes ab Adr. 0595H bis 05A0H
+wird eine Wartezeit von ca. 70 ms eingeschoben, in der alle
+Einschwingvorgaenge, welche mit der Zuschaltung zusammenhaen-
+gen, abklingen koennen. Unmittelbar darauf folgt das Auslesen
+der ersten EPROM-Zelle. Mit Hilfe eines COUNT-UP-Impulses wird
+der EPROM-Adresszaehler inkrementiert, sodass ein neuer Lese-
+vorgang eingeleitet werden kann. Ein Zellen-Lesezyklus bean-
+sprucht insgesamt 190 us. Fuer einen 1 K-EPROM entsteht so ei-
+ne effektive Lesezeit von 0,2 s. Die anschliessende Checksum-
+menbildung mit etwa gleicher Dauer laesst fuer die Funktion
+"Lesen" eines 1 K-EPROMs etwa 0,5 s zusammenkommen. Hierbei ist
+zu beachten, dass die Checksumme des RAM-Inhaltes gebildet 
+wird. Hat man irrtuemlicherweise als Ziel einen Adressbereich 
+mit Festwertspeicherbelegung angegeben, erhaelt man eine fal-
+sche Angabe. Gleiches geschieht natuerlich auch, wenn die Lese-
+operationen durch Hardwarefehler gestoert sind. Nach Abschluss 
+der Pruefsummenbildung wird das Ergebnis dargestellt und mit OK
+die abgearbeitete Funktion "Lesen" fertiggemeldet. Erst mit ei-
+ner beliebigen Tastenbedienung gelangt man wieder ins Funktions-
+menue.
+
+
+
+1.1.3. Programmieren
+
+
+Die Funktion "Programmieren" ruft man mit der Kennziffer 2 auf.
+In der sich unmittelbar anschliessenden Frage, ob der EPROM 
+vollstaendig oder teilweise zu programmieren ist, muss man sich
+mit N (NEIN) fuer teilweise entscheiden. Wie beim "Lesen" folgt
+dann die Frage nach Anfangs- und Endadresse des Teilbereiches, 
+der nur eine einzige EPROM-Zelle lang sein kann. Ist alles feh-
+lerfrei, mit CTRL C gelangt man wieder ins Funktionsmenue, wird
+durch ENTER quittiert. Ehe das Programm aber nach der Quellad-
+resse des zukuenftigen EPROM-Inhaltes fragt, wird der genannte
+EPROM-Adressbereich nach geloeschten Zellen abgefragt, die den 
+Inhalt FFH besitzen. Erst danach erscheint der Text "von RAM-
+Adresse (HEX)?:", wobei das Programm alle Angaben akzeptiert,
+die eine Adresse im Adressraum des U880 bezeichnen, gleichguel-
+tig, ob mit RAM, ROM oder ohne Speicher besetzt. Ist die Quell-
+adresse mit ENTER bestaetigt, wird der Bildschirm geloescht.
+
+Ehe programmiert werden kann, folgt ein Vertraeglichkeitstest. 
+Waehrend der Loeschtest nach dem EPROM-Inhalt FFH fragt, sucht 
+der Vertraeglichkeitstest alle diejenigen Bits der EPROM-Zelle,
+die eine 0 haben, obwohl sie nicht programmiert werden sollen, 
+z. B.:
+
+        programmierbar     unvertraeglich
+
+EPROM   FF: 1111 1111      F7: 1111 0 111
+RAM     3E: 0011 1110      3E: 0011 1 110
+
+Fehlerhafte EPROMs, Kontaktprobleme, mangelhafte Loeschung und 
+Bedienfehler zeigt dieser Vertraeglichkeitstest mit grosser Si-
+cherheit an. Zusaetzlich wird nicht nur die Unvertraeglichkeit
+konstatiert, sondern auch alle unvertraeglichen EPROM-Zellen im
+Tabellenvergleich zu den RAM-Zellen angezeigt. Mit CTRL C kann 
+man anschliessend wieder ins Funktionswahlmenue zurueckkehren. 
+Erst nach erfolgreichem Vertraeglichkeitstest schliesst sich 
+der erste Programmierzyklus an. Er ist im Bild 6 als Zeit-Zu-
+standsdiagramm dargestellt. Zu Beginn sind alle Randbedingun-
+gen, wie anliegende erste EPROM-Adresse, anliegende Daten fuer
+die erste EPROM-Zelle, passiver Programmierimpuls, Umschaltung
+in den Schreibmodus (LED VB 2 leuchtet, Programmierimpuls IMP 
+noch passiv), erfuellt. Erst wenn all dies geschehen ist (bis 
+zum Zeitpunkt 1), kann der EPROM-Handler den Programmierimpuls 
+durch eine L/H-Flanke des Signales IMP anstossen. Bis zum Zeit-
+punkt 2 schliesst sich eine Wartezeit (Pauschalzeit) von 256 us 
+an. Unabhaengig vom EPROM-Handler verlaeuft die restliche Zeit 
+des Programmierimpulses bis zum Zeitpunkt 3. Laenger als dieser
+Impuls dauert aber die Tastaturabfrage, die vor Ende des Pro-
+grammierimpulses begonnen wird und ca. 10 ms in Anspruch nimmt 
+(Zeitpunkt 4). Vom Zeitpunkt 4 an beginnt bereits der folgende 
+Zyklus, was durch den COUNT-UP-Impuls und die sich einstellende
+naechste EPROM-Adresse zum Zeitpunkt 5 erkennbar ist. Die Zeit-
+spanne zwischen 5 und 6 benoetigt der EPROM-Handler, um den In-
+halt der naechsten Zelle aus dem RAM zu holen, die internen 
+Adressregister zu erhoehen, auf "Ende" zu testen und zu fragen, 
+ob die Zelle ueberhaupt programmiert werden muss. Ist eine Pro-
+grammierung nicht noetig (RAM: FFH, EPROM: FFH), dann faellt 
+der eigentliche Programmiervorgang aus und der Uebergang zur
+naechsten Zelle dauert nur 210 us. Soll keine Zelle ueber-
+sprungen werden, dann sind ab Zeitpunkt 7 wieder alle Vorbe-
+dingungen erfuellt und der naechste Zellen-Progammierzyklus 
+kann mit der L/H-Flanke von IMP beginnen.
+
+Fuer die Programmierung einer EPROM-Zelle stehen, wie im Bild 6
+zu erkennen ist, ca. 13 ms zur Verfuegung. Fuer einen 1 K-EPROM
+entsteht eine reine Programmierzeit von 13,4 s, an die sich 
+noch der Erfolgstest anschliesst. Dieser vergleicht den nunmehr
+vorliegenden EPROM-Inhalt mit dem Quellbereich im RAM. Stellt 
+der Erfolgstest fuer eine EPROM-Zelle Ungleichheit fest, dann 
+unterscheidet er zusaetzlich, ob Vertraeglickeit vorliegt, also
+weiterprogrammiert werden kann, oder wegen Unvertraeglichkeit 
+unterbrochen werden muss. Unvertraeglichkeit kann trotz vorhe-
+riger ausreichender Loeschung dann auftreten, wenn die Program-
+mierspannung UPRG zu gross gewaehlt wurde und dadurch benach-
+barte Bitpositionen auf dem EPROM-Chip unbeabsichtigt auf "0"
+gebracht werden. Die erste un- vertraegliche EPROM-Zelle wird 
+mit Angabe von RAM- und EPROM-Adresse angezeigt, so dass man 
+danach mit CTRL C zum Funktionswahlmenue zurueckkehren oder mit
+einer beliebigen anderen Taste fortsetzen kann.
+
+Verlaeuft der Erfolgstest so, dass Ungleichheit verbunden mit 
+Vertraeglichkeit festgestellt wir, dann bestaetigt der EPROM-
+Handler einen vollstaendig abgearbeiteten Programmierzyklus mit
+einem ungefuellten Kreis als Quittungssymbol. Danach folgen bis
+maximal 100 Programmierzyklen, ehe gaenzlich abgebrochen wird. 
+Wenn vorher bei einem Erfolgstest Uebereinstimmung aller Zellen 
+festgestellt wird, schliesst der EPROM-Handler Sicherheits(pro-
+grammier)zyklen an. 
+Insgesamt die dreifache Anzahl der benoetigten Programmierzyk-
+len folgen, bis ein abschliessender Erfolgstest und eine Check-
+summenberechnung das "Programmieren" abschliesst. Als zugehoe-
+rige Fertigmeldung schliesst sich ein OK an.
+
+
+1.1.4. Vergleichen
+
+
+Die Funktion "Vergleichen" wird mit der Kennziffer 3 innerhalb 
+des Funktionswahlmenues aufgerufen. Sie entspricht in ihren 
+Grundlagen dem "Lesen", ohne dass der EPROM-Inhalt in den Spei-
+cher des Z 1013 uebergeben wird.
+
+So wie bei allen vorher beschriebenen Funktionen kann man den 
+gesamten EPROM-Inhalt oder Teile davon auswaehlen. Mit N (NEIN)
+entscheidet man sich fuer Teilbereiche des EPROM. Anschliessend
+werden die Bereichsadressen, als "rel. EPROM-Adresse" bezeich-
+net, abgefordert. Nach abgeschlossener Eingabe derselben fragt 
+der EPROM-Handler nach der (Anfangs-)RAM-Adresse, von der an 
+verglichen werden soll. Faellt der Vergleich positiv aus, dann 
+meldet sich der EPROM-Handler mit einem OK, so dass man mit ei-
+nem beliebigen Tastendruck zum Funktionswahlmenue zurueckkehren
+kann.
+
+Treten jedoch Abweichungen auf, dann wird die erste festge-
+stellte Zelle mit RAM-Adressangabe, dazugehoerige EPROM-Adresse 
+und deren nicht uebereinstimmenden Inhalten in einer Bild-
+schirmzeile angezeigt und der Vergleichsvorgang danach unter-
+brochen. Mit jeder beliebigen Taste faehrt das Programm mit der
+Arbeit fort, bis die naechste Abweichung auftritt. Nachdem alle
+Zellen ueberprueft sind, meldet sich der EPROM-Handler mit OK 
+zurueck. Durch Druck einer beliebigen Taste erreicht man, wie 
+oben gesagt, das Funktionswahlmenue. Vorher laesst sich mit CTRL
+C ein Zwangsabbruch der Funktion "Vergleichen" herbeifuehren.
+
+
+1.1.5. Loeschtest
+
+
+Die Funktion "Loeschtest" wird ueber die Kennziffer 5 erreicht.
+Ebenso wie beim "Lesen", "Programmieren" und "Vergleichen" sind
+Bereichsangaben moeglich. Bei einem erfolgreichen Test, der
+Loeschtest ist ein abgewandeltes "Vergleichen", wobei alle EPROM
+-Zellen den Inhalt FFH haben sollen, folgt das uebliche OK.
+Andernfalls wird die erste ungeloeschte Zelle mit EPROM-Adresse
+und dem Hinweis "no blank" angezeigt. Nach jedem Tastendruck
+wird der Loeschtest fortgefuehrt, bis die naechste ungeloeschte
+Zelle ermittelt ist oder bis alle Zellen ueberprueft worden 
+sind. Nach OK kehrt man mit beliebigem Tastendruck zum Funk-
+tionswahlmenue zurueck.
+
+
+1.1.6. Wiederholen
+
+
+Alle oben beschriebenen Funktionen lassen sich unter Aufruf der
+Kennziffer 5 wiederholen. Hierbei bleiben alle Parameter, also:
+
+     gewaehlte Kennziffer,
+     Typ (EPROM-Groesse),
+     EPROM-Anfangsadresse,
+     EPROM-Endadresse und
+     RAM-Adresse
+
+unveraendert erhalten. Das ist besonders vorteilhaft, wenn man 
+groessere Serien von EPROMs bearbeitet. Die Fehler durch fal-
+sche Eingabe aller Art reduzieren sich merklich.
+
+
+1.1.7. Fortsetzen
+
+
+Besonders bei den Funktionen "Lesen" und "Programmieren" ist es
+guenstig, beim Bearbeiten von EPROM-Saetzen den Parameter
+
+     RAM-Adresse
+
+fortlaufend vor jedem naechsten EPROM des Satzes automatisch 
+weiterzustellen. Unter Kennziffer 6 ist dies moeglich und kann
+jederzeit mit CTRL C abgebrochen werden. 
+
+
+
+2. Hardware des EPROM-Programmiergeraetes
+
+
+2.1. Allgemeiner Aufbau
+
+
+Das EPROM-Programmiergeraet findet auf einer Zweiebenenleiter-
+karte von Format 135 mm x 72,5 mm Platz. Der Leiterbildentwurf 
+stammt von V. LUEHNE und weist bereits Aenderungen zum Vorbild 
+aus /1/ auf. Insgesamt fuenf Baugruppen
+
+     - Fassung und Typsteckverbinder
+     - Adresszaehler
+     - Read/Write-Logik
+     - Programmierspannungserzeugung und
+     - Relaisblock
+
+finden auf der Leiterkarte Platz.
+
+Im Bild 1 ist der Stromlaufplan des EPROM-Programmiergeraetes 
+ausgewiesen. Er stellt ausser Netzteil und Verbindungselemente
+zum Z 1013 alle oben genannten Baugruppen dar. Die Bestuek-
+kungszeichnung ist unter Bild 2 angegeben.
+
+So wie in beiden Abbildungen dargelegt, ist das EPROM-Program-
+miergeraet bereits funktionsfaehig. Ueber einen 26poligen EFS-
+Steckverbinder (X1) kann es an eine PIO gemaess der Tabellen 3
+und 4 angeschlossen werden, wobei es nicht zwingend ist, einen
+Z 1013 als Master zu benutzen. Lediglich alle betriebssystembe-
+dingten Besonderheiten des unter Punkt 1 beschriebenen EPROM-
+Handlers sind zu beruecksichtigen.
+
+
+2.2. Fassung und Typsteckverbinder
+
+
+Den EPROM nimmt eine mindestens 28polige Schwenkhebelfassung
+auf. Sie ist so angeordnet, dass der EPROM einen sicheren Halt
+hat und vom Bediener leicht zugaenglich bleibt. Besonders emp-
+fehlenswert ist es, die Fassung nicht direkt auf die Leiter-
+platte zu loeten, sondern sie etwas erhoeht anzubringen, damit
+sie von keinem anderen Bauelement auf der Leiterplatte ueber-
+ragt werden kann. Wenn man auf eine gesonderte Befestigung der
+Fassung verzichten moechte, ist es unbedingt notwendig, die
+verlaengerten Zuleitungen auch auf der Leiterseite anzuloeten.
+Auf die Fassung werden acht festverdrahtete Adressleitungen und
+acht festverdrahtete Datenleitungen gefuehrt. Das sind dieje-
+nigen Signale, deren Anschlusslage bei allen EPROMs von 2708
+bis 27512 gleich ist (vgl. Tab. 1 und 2). Alle anderen Leitun-
+gen, ausser dem Masseanschluss, haben von Typ zu Typ andere Sig-
+nalbelegung oder andere elektrische Kennwerte. Um diese Haupt-
+probleme der Mehrtypen-EPROM-Programmiergeraete zu loesen, be-
+nutzen die Autoren aus /1/ einen Typstecker als variablen Lei-
+tungsverteiler fuer Adress-Signale, Betriebsspannungen, Pro-
+grammierimpulse, Programmierspannung und Schaltkreissteuerung.
+
+Bild 3 zeigt die Belegung der Signale, die bei geeigneter Ver-
+bindung fuer die jeweilige EPROM-Groesse die geforderten An-
+schlussbedingungen ergeben. In den Bildern 4.1 bis 4.6 sind die
+Typstecker aufgefuehrt. Ihre Schaltungen sind teilweise der Li-
+teratur entnommen. Die Typstecker der Bilder 4.1...4.2. stammen
+aus /1/, wobei jedoch zu bemerken ist, dass der Typstecker des
+4 K-EPROMs (2732) auf S. 84 fehlerhaft ist. Der im Bild 4.2.
+wurde korrigiert. Fuer die Typen 2764 und 27128 stammt die
+Schaltung aus /7/ und musste ebenfalls berichtigt werden. Die
+uebrigen zwei Typstecker wurden vom Autor entworfen, wobei je-
+doch nur der fuer 32 K-EPROMs getestet werden konnte. Zum Typ-
+stecker nach Bild 4.6. sei vermerkt, dass er vom EPROM-HANDLER 
+V 2.9 nur indirekt gestuetzt wird (siehe    ). Als Typsteckver-
+bindertyp wurde ein 26poliger direkter Steckverbinder
+(TGL           ) gewaehlt, wie ihn auch die Autoren in /1/ vor-
+schlagen. Dies gestattet es, sich die Typstecker relativ
+leicht selbst herzustellen. Solche Abweichungen koennen Poten-
+tiometer sein, die anstelle des Festwiderstandes stehen und so
+die Programmierspannung kontinuierlich zu veraendern gestatten.
+Auch zusaetzliche Leuchtdioden, die die anliegende Betriebs-
+spannung signalisieren, sind denkbar, wenn man VB 4 in Bild 1
+nicht auf der Leiterplatte unterbringen will. Selbstverstaend-
+lich kann auf der Typsteckerleiterplatte eine Hilfsspannungs-
+quelle (Batterie, Transverter) untergebracht werden.
+
+
+2.3. Adresszaehler
+
+
+Die EPROM-Adress-Signale von einem Zaehler zu erzeugen, ist ein
+erheblicher Vorteil des EPROM-Programmierens nach /1/. Gegen-
+ueber anderen Varianten aus /2/, /3/, /4/ reduzieren sich die
+Anzahl Steuerleitungen von mindestens 16 auf nur zwei, naemlich
+COUNT-UP und /CLEAR. Ehe die Signale auf die vier Zaehlerschalt-
+kreise D1, D2, D3 und D4 gelangen, werden sie von Treibern,
+D6.2 und D6.4 fuer den COUNT-UP- und D.6.3 fuer den /CLEAR-Im-
+puls, elektrisch gepuffert.
+
+In /1/ werden fuer die Adresszaehlerschaltkreise die Typen D193
+genannt. Sie besitzen den Nachteil, insgesamt ca. 250 mA Be-
+triebsstrom aufzunehmen. Aus diesem Grunde wurde durch
+V. LUEHNE dem Typ DL093 (74LS93) der Vorzug gegeben. Er bela-
+stet das Netzteil lediglich mit 4 und 7 mA. Auf den Rueckwaerts-
+zaehleingang wurde verzichtet, da er nicht unmittelbar notwen-
+dig ist.
+
+Insgesamt hat der Adresszaehler einen Zaehlumfang von 15 bit,
+so dass man ohne zusaetzliche Massnahmen nur EPROMs bis zu ei-
+nem Fassungsvermoegen von 32 K-Byte bearbeiten kann. Mit Hilfe
+des Typsteckers nach Bild 5.1. laesst sich die Einschraenkung
+ueberwinden, da der Bankschalter ein Signal am A15-Pin des
+27512 nachbildet.
+
+
+2.4. Read/Write-Logik
+
+
+Unter Read/Write-Logik sind alle Bauelemente zusammengefasst,
+die unmittelbar zu VT4 gehoeren. Gemeinsam sorgen sie dafuer,
+dass mit Hilfe des Typsteckers eine uebliche Transistorschalt-
+stufe (VT4, R12 (R13)) hergestellt werden kann. Wenn VT4 durch-
+gesteuert ist, entsteht an seinem Kollektor Low-Potential.
+Ueber den Typstecker gelangt das Signal an die Freigabe-Ein-
+gaenge CE (CS) oder OE, so dass der jeweils gesteckte EPROM ge-
+lesen werden kann.
+
+Die VT4 ansteuernden zwei Negatoren D6.1 und D6.5 arbeiten als
+Leuchtdiodentreiber und sichern dem Anschluss /WRITE (A4:X1)
+einen TTL-gerechten Eingang. Der Widerstand R18 sorgt dafuer,
+dass das Highpotential den Vorrang hat, auch wenn der steuernde
+PIO-Ausgang, nach dem Einschalten des Z 1013, ein undefiniertes
+Signal fuehrt. Durch diese als Sicherheitsvorkehrung zu verste-
+hende Massnahme sichert den Vorrang des Modus' "EPROM-Lesen".
+Die LED VB2 ist in diesem Zustand dunkel.
+
+     /WRITE: low        /WRITE: high
+ 
+     Programmieren      Lesen
+
+     VB2 hell           VB2 dunkel
+
+Im Programmiermodus, wenn die Read/Write-Logik mit einem stati-
+schen Low-Signal angesteuert wird, geht die Emitter-Kollektor-
+Strecke von VT4 in den hochohmigen Zustand ueber. Je nach Her-
+stellervorschrift laesst sich an den OE-Pins der EPROMs nun ver-
+mittels der Typstecker ein gewuenschtes Potential herstellen.
+Sicherheitshalber sollte abweichend von SS 218 im Bild 1 ein
+Typ gewaehlt werden, der eine maximale Kollektor-Emitter-Span-
+nung von groesser als 30 V (UPRGmax. = 30 V) besitzt.
+
+
+
+2.5. Programmierspannungserzeugung
+
+
+Die Programmierspannungserzeugung verlaeuft in mehreren Stufen
+und beginnt mit der Rohspannungserzeugung ausserhalb der Pro-
+grammiererleiterplatte. Sie kann bis zu 0,5 V verbrummt sein
+und sollte mit mehr als 60 mA belastbar sein, ohne um mehr als
+1 V zurueckzugehen. Diese Werte haben sich bei Untersuchungen
+ergeben, die davon ausgehen, dass EPROMs mit einer Programmier-
+spannung von groesser als 26 V sehr selten sind. Im un-
+guenstigsten Falle sollte der Spannungsstabilisator-Schaltkreis
+N1 noch eine Regelreserve von 3 V haben.
+
+N1 besorgt die zweite Stufe der Programmierspannungserzeugung,
+indem er eine typgerechte Gleichspannung bereitstellt. Ueber
+den Spannungsteiler R1, R2 wird sie wunschgemaess justiert. Die
+Widerstandswerte von R1 und R2 sind so gewaehlt, dass ohne Typ-
+stecker und ohne bestaetigten Paketschalter 12 V am Ausgang des
+MAA 723 (N1) erscheinen. Als besonderer Grund ist hierfuer der
+Umstand zu nennen, dass die niedrigste bekannte Programmier-
+spannung bei 12,5 V liegt. Alle anderen geforderten Werte bewe-
+gen sich oberhalb dieser Grenze und koennen erzielt werden,
+indem man den Widerstand R2 vermindert. Diese Verminderung ist
+nach /1/ am leichtesten durch einen Paralellwiderstand zu errei-
+chen, der zwischen den Anschluessen B1 und B6 des Typsteckers
+angebracht wird. Hieran ist nachteilig, dass nicht nur fuer n
+EPROM-Groessen, sondern auch fuer m verschiedene Programmier-
+spannungen Typstecker herzustellen sind. Im Extremfall muessten
+n x m Typstecker angefertigt werden. Der Ausweg bietet sich hier
+durch einen zusaetzlichen Schalter an, durch den sich die Pro-
+grammierspannung unabhaengig vom Typstecker einstellen laesst.
+Nicht nur der Umstand der eingesparten zusaetzlichen Typstecker,
+sondern auch die Moeglichkeit bei unbekannter Programmierspan-
+nung sich an einen akzeptablen Wert heranzutasten, lassen diesen
+Paketschalter als attraktiv erscheinen. Neben den sieben 
+Schaltstufen fuer Festspannungen von:
+
+     12,5 V
+     13,0 V
+     16,0 V
+     18,5 V
+     21,0 V
+     24,0 V
+     26,0 V,
+
+hat der Schalter eine achte Stellung, die keinen Widerstand
+bedient. Sie ist dafuer vorgesehen, um vorhandene Typstecker
+mit Widerstand einsetzen zu koennen.
+
+Vom Ausgang des Programmierspannungserzeugers N1 wird auf zwei
+Stellen verzweigt. Die erste ist der Typsteckverbinderkontakt
+B2:X2. Von hier aus koennen die EPROM-Typen
+
+     2716
+     2764
+     27128 und
+     27256
+
+fuer die Programmierung versorgt werden, denn sie benoetigen
+eine Gleichspannung /8/, /9/ der vom Hersteller geforderten
+Hoehe.
+
+Als zweite Stelle ist ein Chopper zu nennen, der als Gegentakt-
+Komplementaer-Stufe aufgebaut ist und aus den Transistoren VT 1,
+2, 3 nebst den Widerstaenden R4...R10 besteht. Alle EPROM-
+Typen, die eine pulsierende Programmierspannung benoetigen
+(2708, 2732 und 27512), werden ueber den Anschluss A1:X2 von
+diesem Chopper versorgt. Er schaltet fast restspannungslos mit
+steiler Flanke zwischen 0 V und der durch  R2 eingestellten
+Programmierspannung UPRG hin und her. Eventuelles Ueberschwin-
+gen soll das RC-Glied R4, C2 unterdruecken, da es empfindliche
+EPROM-Exemplare zerstoeren kann.
+
+Um den Chopper zu bedienen, wird an den Basen von VT1 und VT2
+als Steuerspannung eine gegenphasige Impulsfolge benoetigt. Ein
+monostabiler Trigger (D5) mit komplementaeren Ausgangssignalen
+ist hierfuer besonders geeignet. Er sichert naemlich, dass sein
+stabiler Zustand fuer die ausgeschaltete Programmierspannung 
+steht und im Falle von Programmabstuerzen UPRG auf 0 V zurueck-
+kehrt.
+
+Die Dauer eines Programmierspannungsimpulses wird von der R/C-
+Kombination C3, R14 bestimmt und liegt nach Empfehlung aus /1/
+bei 1 ms. Sollte naemlich ein EPROM z. B. nach bereits zwei Pro-
+grammierzyklen zu je 1 ms schon stabile Inhalte haben, dann
+kann auf den geforderten Rest von 48 ms Programmierzeit zumin-
+dest teilweise verzichtet werden. Eine laengere Lebensdauer
+dieses EPROM-Exemplares ist dann eine angenehme Folge jenes Ver-
+zichtes.
+
+Vom Rechner wird der Programmierspannungs-Impulserzeuger ueber
+Pin 5 des Schaltkreises D5 mit einer Low-High-Flanke ange-
+stossen (vgl. Bild 6). Nach der Ausloeseflanke durchlaeuft das
+Programmirprogramm EPROM-HANDLER V 2.9 eine Warteschleife. Nach
+dieser Warteschleife (Pauschalzeit) erfolgt zunaechst eine Ta-
+staturabfrage nach dem Abbruchzeichen CTRL C. Bei einer Rechner-
+taktfrequenz von 2 MHz dauert eine solche Tastaturabfrage ca.
+10 ms, so dass das nachfolgende Lesen des /READY-Signales einen
+beendeten Programmierimpuls anzeigt. Wenn man jedoch eine Ta-
+staturroutine verwendet, die weniger als 1 ms benoetigt, um ein
+Abbruchzeichen zu erkennen, ist Vorsicht geboten. Bei andauern-
+dem Programmierimpuls werden nach erkanntem CTRL C die EPROM-
+Betriebsspannung UCC und die Programmierspannung UPRG ueber Re-
+lais (K1, K2) ausgeschalten und das datenfuehrende PIO-Port A
+wegen Uebergang zum Eingabe-Mode (Bitbetrieb) auf undefinierte
+Ausgangssignale umgeschaltet. Ehe der andauernde Programmierim-
+puls zwangsweise ueber das verzoegert(!) abfallende Relais K1 ab-
+geschaltet werden kann, kann sich fuer die aktuelle EPROM-
+Adresse ein falsches Datum an den Dateneingaengen einstellen. Un-
+guenstigenfalls kann dies zu einem Programmierfehler fuehren.
+Eine vorsorglich eingebaute kleine Warteschleife (siehe oben),
+von momentan eingestellten 256 us, schafft fuer die Tastatur-
+variante von R. BROSIG /10/ nicht ausreichend Sicherheit. Der
+Inhalt der Speicherzelle 061FH ist fuer die Pauschalzeit verant-
+wortlich und liefert beim Wert von 20H die erwaehnten 256 us.
+Vollstaendige Sicherheit ergibt erst eine Zeit von ca. 1 ms,
+die mit 80H in der Zelle 061FH erreicht wird.
+
+EPROM-Typen, die keine pulsierende Programmierspannung benoeti-
+gen, haben einen TTL-gerechten Programmierimpuls. Er gibt die
+Programmierspannung erst im Inneren des EPROMs zur Wirkung frei.
+Von den gegenphasigen Ausgaengen des 74121 werden diese Program-
+mierimpulse auf den Typsteckverbinder X2 (Bild 3) gefuehrt, um
+je nach Typstecker zur Anwendung zu kommen.
+
+Die Leuchtdiode VB1 soll nach Absicht der Verfasser aus /1/ den
+aktivierten Impulsgeber D5 hervorheben. Jedoch ist dies nicht
+guenstig gewaehlt, denn die Impulsfolge an Pin 6 von D5 hat ein
+Tastverhaeltnis von 0,08. Die maessig glimmende LED steht daher
+im Schatten von VB2, zumal beide ohnehin gleichzeitig leuchten,
+weil der Zustand "aktive Programmierimpulserzeugung" an den Zu-
+stand "/WRITE" gebunden ist. Man koennte auf VB1 verzichten,
+wenngleich die Leuchtdiode eine willkommene Testhilfe bei der
+Inbetriebnahme ist.
+
+
+2.6. Relaisblock
+
+
+Vom Programmierprogramm EPROM-HANDLER V 2.9 werden zwei Relais
+(K1 und K2) bedient. K1 besitzt einen Arbeitskontakt und schal-
+tet damit die Programmier(gleich)spannung auf den Typsteckver-
+binder X2. Um einen geschlossenen Kontakt anzeigen zu koennen,
+wird der Spulenstrom ueber die Leuchtdiode VB3 gefuehrt. Der
+Widerstand R24 liefert einen Nebenschluss, um einen Teil des
+Spulenstromes umzuleiten. Seine Groesse richtet sich nach der
+verwendeten Leuchtdiode und nach der gewuenschten Helligkeit.
+Fuer die Inbetriebnahme sei vermerkt, dass der EPROM-HANDLER
+V 2.9 nicht zwischen EPROM-Typen mit pulsierender und gleich-
+bleibender Programmierspannung unterscheidet. Man koennte z. B.
+erwarten, dass bei den Groessen 2708, 2732 und 27512 das Relais
+K1 nicht bedient wird. Dem ist jedoch nicht so.
+
+Das Relais K2 verfuegt ueber zwei Arbeitskontakte und hat hier-
+mit die Aufgabe, die EPROM-Betriebsspannungen UCC (+5 V) mit
+K1.1 und UDD (+12 V) mit K1.2 einzuschalten. Leider haben die
+Autoren aus /1/ hier keinen Indikator vorgesehen. Es waere
+durchaus ratsam, die eingeschalteten EPROM-Betriebsspannungen
+anzuzeigen, denn das kann ein Achtungszeichen sein, bei span-
+nungsfuehrender Fassung, z. B. bei der Funktion 3 (Vergleichen),
+den EPROM nicht abzunehmen. VB4 ist nicht auf der Bestueckungs-
+zeichnung enthalten.
+
+
+
+2.7. Anschluss an den Z 1013
+
+
+Der Anschluss des Programmiergeraetes an den Z 1013 geschieht
+vermittels einer zusaetzlichen PIO, da das USER-Port am Steck-
+verbinder X4 nicht ausreicht. Von den 16 Portanschluessen der
+PIO (A0...A7; B0...B7) werden 15 verwendet. Die ihnen zuge-
+teilten logischen Signale mit ihren Spezifikationen sind in
+Tab. 3 aufgefuehrt.
+
+Mit Hilfe eines mehradrigen Kabels wird das EPROM-Programmier-
+geraet an die zusaetzliche PIO angeschlossen, wobei man aus
+Bild 8 erkennen kann, dass die Anschlussleitung kuerzer als
+60 cm sein muss, da sich ansonsten Adressversatzfehler ergeben.
+Die Laengenangabe gliedert sich in einen fixen Anteil von 30 cm,
+der sich aus den Leitungen auf dem Programmiergeraet und der
+PIO-Baugruppe zusammensetzt, und aus einem variablen Teil, der
+die Laenge des Kabels angibt. Um ohne Zusatzmassnahmen fehler-
+frei zu arbeiten, muss das Anschlusskabel also kuerzer als
+30 cm sein! 
+
+Ist man gezwungen, laengere Anschlusskabel einzusetzen, ergeben
+sich Schwierigkeiten. Diese sind durch die Anpassungsverhaelt-
+nisse an der Anschlussleitung bedingt, denn sie ist bei 200 Ohm
+Wellenwiderstand durch niederohmige Sender (50 Ohm) und durch
+hochohmige Empfaenger (6 kOhm) beschaltet. Nach einem graphi-
+schen Loesungsverfahren, das in /11/ beschrieben ist, wurde der
+Signalverlauf am Leitungsende ermittelt (Bild 7). Bemerkenswert
+ist hierbei das positive Ueberschwingen. Es kann nach einer
+H/L-Flanke unerwuenschte zusaetzliche Schaltvorgaenge ausloesen,
+was namentlich am COUNT-UP-Eingang zu Fehlern fuehrt, da anstel-
+le eines Zaehlimpulses zwei wirken. Mitten im "Lesen" oder 
+"Programmieren" scheint dann eine EPROM-Adresse ausgelassen zu
+sein!
+
+Ob der Zusatzimpuls zur Wirkung kommt, haengt vorrangig von
+seiner Dauer ab, und diese wird von der Leitungslaenge bestim-
+mt. Bei 60 cm Leitungslaenge entsteht eine Impulsbreite von
+6 ns, bei 90 cm 9 ns und bei 1,4 m 14 ns.
+
+Betrachtet man nun noch den minimalen Schaltabstand
+eines LS-TTL-Gatters von 9 ns, dann wird klar, dass dadurch be-
+Schaltvorgaenge ausloesten werden koenen.
+Aus Bild 8 ergibt sich, dass nach durchschnittlich 1100
+COUNT-UP-Impulsen ein stoerender Zusatzimpuls wirkt.
+
+Als Gegenmassnahme, die nur fuer die COUNT-UP-Leitung noetig
+ist, bietet sich als Minimalvariante ein "Entprellkondensator"
+gemaess Bild 10 an. Nach Empfehlung aus /12/ darf er eine Kapa-
+zitaet von bis zu 1 nF haben. Mit ihm lassen sich Ueberschwing-
+impulse bis zu einer Breite von 20 ns sicher unterdruecken.
+Die sich daraus ergebende Anschlusskabellaenge von 1,7 m duerf-
+te fuer die meisten Anwendungsfaelle ausreichen. 
+
+Weniger auffaellig, jedoch gefaehrlicher, ist das negative
+Ueberschwingen. Fuer den Fall, dass man einen EPROM program-
+miert, liegt an seinen Dateneingaengen kurzzeitig negatives
+Potential an, was kleiner als der zulaessige Grenzwert von
+-0,3 V ist. Um den EPROM vor negativen Eingangsspannungen zu
+schuetzen, empfiehlt es sich, in die Daten-Anschlussleitungen
+einen Leitungstreiber-IC einzufuegen (siehe Bild 9). Das hat
+neben dem EPROM-Schutz den guenstigen Nebeneffekt, dass bei der
+Funktion "Lesen" die Datenausgaenge des EPROMs nicht das An-
+schlusskabel treiben muessen.
+
+Selbstverstaendlich entsteht das negative Ueberschwingen auch
+an den PIO-Eingaengen beim "Lesen". Hier bietet sich an, die
+PIO-Pins des Ports A mit Germanium-Dioden gegen Masse zu sich-
+ern. 
+
+
+2.8. Netzteil
+
+
+Zum Netzteil lassen sich lediglich Empfehlungen geben, denn je-
+der Amateur ist hierbei durch seine speziellen Gegebenheiten
+gebunden. Als Entscheidungshilfe sollen hierzu die Gegenueber-
+stellung von externer und interner Stromversorgung dienen.
+
+
+                      extern                 intern
+
+
+
+Stromaufnahme         problemlos, uebliche   problematisch, 
+                      Schaltungen            drei Spannungen
+                                             im Rechner noetig
+
+Programmierspannung   problemlos, uebliche   problematisch,
+                      Schaltungen            Verwendung des
+                                             Koppelbusses bei
+                                             K 1520-kompatib-
+                                             len Baugruppen,
+                                             Abweichungen von
+                                             der Systembusbe-
+                                             legung (auf alle
+                                             Faelle vermeiden),
+                                             Aufbau eines
+                                             Transver-
+                                             ters auf dem PIO-
+                                             Modul, separate 
+                                             Zufuehrung
+
+Schaltungsaufwand     mittlerer Aufwand      mittlerer Aufwand
+
+mechanischer Aufwand  sehr hoch              gering
+
+Anschluss             lange Leitungen        kurze Leitungen
+
+Handhabbarkeit        gut, an anderen Orten  eingeschraenkt,
+                      Rechnertypen einsetz-  da an Ort und
+                      bar                    Aufbau gebunden
+                                           
+
+
+In Bild 4 ist der Vorschlag eines externen Netzteiles abgebil-
+det. Die Stromergiebigkeit der 17 V-Gleichspannungsquelle soll-
+te mindestens 500 mA betragen. Nachstehend aufgefuehrte Tabel-
+le gibt ueber die Stromaufnahme des EPROM-Programmierers Aus-
+kunft:
+
+
+          passiv           aktiv
+
++ 5 V     65 mA            140 mA + ICC-EPROM
++12 V      0 mA             40 mA + IDD-EPROM
+- 5 V      0 mA            IBB-EPROM
++30 V     kleiner 2 mA     kleiner 50 mA
+
+
+
+
+Literaturverzeichnis
+____________________
+
+
+/ 1/ Huebler, H.; Evert, K.-P.:  Amateurreihe "Elektronika"   
+                                 Nr. 227 u. 228/ Huebler, H.;
+                                 Evert, K.-P. - Berlin, 1985 
+                                 S. 76
+
+/ 2/                             LC-80 Systemunterlagen
+
+/ 3/ Buerger, B.:                Reihe "Information Applika-
+                                 tion" Nr. 41 Halbleiterspei-
+                                 cher Teil 3 / Buerger, B. - 
+                                 KdT Frankfurt/O., 1987 S. 42
+                                     
+/ 4/ Buerger, B.:                Reihe "Information Applika-
+                                 tion" Nr. 41 Halbleiterspei-
+                                 cher Teil 3 / Buerger, B. -
+                                 KdT Frankfurt/O., 1987 S. 40
+
+/ 5/ Mueller, M.; Krueger, S.:   EPROM-Programmiergeraet / 
+                                 Mueller, M.; Krueger, S.     
+                                 Radio Fernsehen Elektronik. -
+                                 Berlin 31 (1982) 10. S. 621
+
+/ 6/ Kuehnel, Th.:               Einfacher EPROM-Programmier-
+                                 modul / Kuehnel, T. Radio 
+                                 Fernsehen Elektronik. - 
+                                 Berlin 35 (1986) 10. S. 633
+
+/ 7/ Brosig, R.:                 CODIERSTECKER 4. Textfile zum
+                                 EPROM-Handler v. 2.9 
+
+/ 8/ Mueller, M.:                EPROM-Programmiergeraet / 
+                                 Mueller, M. Radio Fernsehen
+                                 Elektronik. - Berlin 37 (1988)
+                                 7. S. 429
+
+/ 9/ Buerger, B.:                Reihe "Information Applikation"
+                                 Nr. 41 Halbleiterspeicher
+                                 Teil 3 / Buerger, B. - KdT 
+                                 Frankfurt/O., 1987
+
+/10/ Brosig, R.:                 Z-1013-Tastatur mit Raffines-
+                                 sen. Mikroprozessortechnik   
+                                 7/88, S. 215
+
+/11/ Turinsky, G.:               Leitungsabschlussschaltungen /
+                                 Turinsky, G. Radio Fernsehen
+                                 Elektronik. - Berlin 32 (1983)
+                                 8. S. 182
+
+/12/ Kuehn, E.; Schmied, H.:     Handbuch Integrierter Schalt-
+                                 kreise / Kuehn, E.; Schmied, H.
+                                 - Berlin, 1979 S. 113     
+

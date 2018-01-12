@@ -1,0 +1,3 @@
+<kurz src="Beschreibung der Umwandlungsroutine 'PICTURE'"/>
+<lang><include src="I.PICTURE.txt"/></lang>
+<requires></requires>

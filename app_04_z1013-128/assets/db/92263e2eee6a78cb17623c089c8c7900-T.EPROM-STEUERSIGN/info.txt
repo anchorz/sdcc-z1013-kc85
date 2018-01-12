@@ -1,0 +1,3 @@
+<kurz src="Übersicht der Steuersignale wichtiger EPROMS"/>
+<lang><include src="T.EPROM-STEUERSIGN.txt"/></lang>
+<requires></requires>

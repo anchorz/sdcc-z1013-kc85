@@ -1,0 +1,4 @@
+<kurz src="identisch [4d795f4b17ccf7cc44859ff5ff0516b9]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+<include src="I.TAD1.txt"/></lang>
+<requires></requires>

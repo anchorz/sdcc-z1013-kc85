@@ -1,0 +1,42 @@
+
+Funktionstasten (erzeugen keinen Code):
+
+F01 - RST 38H
+F06 - JMP 100H
+F07 - JMP 200H
+F08 - JMP 300H
+F09 - SCREEN-COPY
+F53 - GRAFIK ON/OFF
+E53 - HARDCOPY ON/OFF
+D53 - SLOW/FAST
+C53 - BEEP ON/OFF
+D00 - SHIFT-LOCK ON/OFF
+B11 - SHIFT (+B99)
+C00 - CTRL
+
+
+Steuerzeichentasten (derzeitige Belegung)
+
+Pos. | 1.Code 2.Code 1.Funktion      2.Fkt.(m.Shift)  1.CTRL  2.CTRL
+-----+--------------------------------------------------------------
+A00  |  0AH    0AH   Cursor runter   Cursor runter      ^J     ^J
+A01  |  0BH    0BH   Cursor hoch     Cursor hoch        ^K     ^K
+A10  |  08     08    Cursor links    Cursor links       ^H     ^H
+A11  |  09     09    Cursor rechts   Cursor rechts      ^I     ^I
+F14  |  03     03    BREAK           BREAK              ^C     ^C
+F02  |  1BH    1BH   ESCAPE          ESCAPE
+B13  |  0DH    0DH   ENTER           ENTER              ^M     ^M
+F05  |  06     1EH   TAB-DUMMY       NL                 ^F
+D95  |  05     1CH   CRSR ANF.EDIT.  Fettdruck-DUMMY    ^E
+B95  |  01     1DH   CRSR END.EDIT.  Norm.druck-DUMMY   ^A
+E14  |  14H    13H   LIST (HC-BASIC)                    ^T     ^S
+D13  |  7FH    02    DEL-Editor                                ^B
+F10  |  15H    0FH   RUN (HC-BASIC)                     ^U     ^O
+F11  |  19H    18H   CRSR Anf.-BASIC CRSR End.-BASIC    ^Y     ^X
+F12  |  12H    11H   INSERT HC-BASIC                    ^R     ^Q
+F13  |  10H    1FH   DEL HC-BASIC                       ^P
+E95  |  1CH    1CH   Fettdr.DUMMY    Fettdr.DUMMY  
+F95  |  1DH    1DH   Norm.dr.DUMMY   Norm.dr.DUMMY 
+
+
+

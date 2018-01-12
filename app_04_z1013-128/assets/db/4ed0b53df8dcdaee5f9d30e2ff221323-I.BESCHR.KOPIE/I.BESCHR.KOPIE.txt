@@ -1,0 +1,48 @@
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                     BESCHRIEBUNG ZU KOPIE                       
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Mit diesem Programm Koennen Maschinenprogramme im Speicher
+verschoben werden. Dabei werden die CALL-,Absolutsprung- und Lade-
+befehle korrigiert.
+Falls im Programm Byte vorkommen, die keine Befehle sind(z.B.Text),
+kann es passieren, dass diese veraendert werden.
+Text, der mit RST 20H/DB2 ausgegeben wird, wird nicht veraendert.
+Das Programm ist ueber ein Erweiterungskommando des Monitor zu
+starten. Startadresse des Originals(Speicherbereich 3E00H-3FFFH)
+ist 3E05. Damit hat das Kommando folgende Form:
+T adresse 1  adresse 2  adresse 3
+T      ... Kommandobuchstabe
+adresse 1 ... Anfangadresse
+adresse 2 ... Endeadresse
+adresse 3 ... Zieladresse
+
+Wird ein zu korrigierender Befehl gefunden, so werden die ent-
+sprechenden Bytes angezeigt. Es gibt folgende Moeglichkeiten zur
+Fortsetzung:
+ENTER....Korrektur und Weitersuchen, bei naechstem gefundenen
+         Befehl wird eine neue Eingabe erwartet
+N    ....keine Korrektur, sonst wie ENTER
+F    ....keine Korrektur, sonst wie W
+
+Folgende Parameter koennen zusaetzlich veraendert werden:
+ADRESSE                BEDEUTUNG
+3E00H     0 :  RST 20H-Befehle werden als 2-Byte-Befehle interpretiert
+          1 :  RST 20H-Befehle werden als 1-Byte-Befehle interpretiert
+3E01H     Anfangsadresse des Bereichs, in dem die Befehle Korri-
+          giert werden (erst L-Byte, dann H-Byte)
+3E03H     Endeadresse des genannten Bereichs
+
+Dadurch ist es z.B. auch moeglich den Arbeitsspeicher eines Pro-
+gramms zu verlegen. Das Programm ist aus den oben genannten
+Gruenden mit Vorsicht anzuwenden.
+Es kann passieren, dass ein direkt auf Text folgender Befehl
+nicht gefunden und korrigiert wird (z.B. IDAS Adresse 53CH).
+Das Programm kann sich selbst verschieben. Gute Ergebnisse wurden
+auch mit HEADERSAVE, dem Reassembler von Robotron, KSCHRIEB und
+KLESEN erzielt.
+

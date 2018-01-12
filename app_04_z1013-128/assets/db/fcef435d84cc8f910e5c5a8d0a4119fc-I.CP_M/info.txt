@@ -1,0 +1,3 @@
+<kurz src="CP/M Ständig im Griff"/>
+<lang><include src="I.CP_M.txt"/></lang>
+<requires></requires>

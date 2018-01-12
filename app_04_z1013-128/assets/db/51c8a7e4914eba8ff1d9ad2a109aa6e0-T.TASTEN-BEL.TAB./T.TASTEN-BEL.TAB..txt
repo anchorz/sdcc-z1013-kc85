@@ -1,0 +1,174 @@
+
+Erste Shiftebene
+R
+Code     Pos.   Zeichen
+------------------------
+ 31H      E1      1
+ 51H      D1      Q
+ 41H      C1      A
+ 59H      B1      Y
+ 32H      E2      2
+ 57H      D2      W
+ 53H      C2      S
+ 58H      B2      X
+ 33H      E3      3
+ 45H      D3      E
+ 44H      C3      D
+ 43H      B3      C
+ 34H      E4      4
+ 52H      D4      R
+ 46H      C4      F
+ 56H      B4      V
+ 35H      E5      5
+ 54H      D5      T
+ 47H      C5      G
+ 42H      B5      B
+ 36H      E6      6
+ 5AH      D6      Z
+ 48H      C6      H
+ 4EH      A6      N
+ 37H      E7      7
+ 55H      D7      U
+ 4AH      C7      J
+ 4DH      B7      M
+ 38H      E8      8
+ 49H      D8      I
+ 4BH      C8      K
+ 2CH      B8      ,
+ 39H      E9      9
+ 4FH      D9      O
+ 4CH      C9      L
+ 2EH      B9      .
+ 30H      E10     0
+ 50H      D10     P
+ 5CH      C10     \
+ 2DH      B10     -
+ 7EH      E11     ~
+ 5DH      D11     ]
+ 5BH      C11     [
+ 3CH      E12     <
+ 2BH      D12     +
+ 23H      C12     #
+R 5EH      E00     ^
+ 40H      B00     @
+ 3EH      E13     >
+ 0DH      B13     ENTER
+ 0BH      A1      CURSOR HOCH
+ 8        A10     CURSOR LINKS
+ 20H      A5      SPACE
+ 0        D0      SHIFT-LOCK ON/OFF
+ 0AH      A0      CURSOR RUNTER
+ 9H       A11     CURSOR RECHTS
+ 0        B99,B11 SHIFT
+ 0        C0      CTRL-TASTE
+ 7FH      D13     DEL (ROTES C)
+ 14H      E14     ^T (ROTES L)
+ 0        F01     MONITORRUECKKEHR 
+ 1BH      F02     ESCAPE
+ 7BH      F03     {
+ 7DH      F04     }
+ 0        F06     JMP 100H
+ 0        F07     JMP 200H
+ 0        F08     JMP 300H
+ 0        F09     CALL SCREEN-COPY
+ 15H      F10     ^U (RUN->BASIC)
+ 19H      F11     ^Y
+ 12H      F12     ^R (INSERT->BASIC)
+ 10H      F13     ^P (DEL->BASIC)
+ 3        F14     BREAK=^C
+ 6        F05     ^F (TAB->EDITOR)
+ 0        F53     GRAFIK ON/OFF
+ 0        E53     HARDCOPY ON/OFF
+ 0        D53     SLOW/FAST
+ 0        C53     BEEP ON/OFF 
+ 1CH      E95     ^\ 
+ 1DH      F95     ^]
+ 5        D,C95   ^E (WIPPE+)
+ 1        B95     ^A (WIPPE-)
+
+Zweite Shiftebene
+  
+R 21H      E1      !
+ 71H      D1      q
+ 61H      C1      a
+ 79H      B1      y
+ 22H      E2      "
+ 77H      D2      w
+ 73H      C2      s
+ 78H      B2      x
+ 40H      E3      @
+ 65H      D3      e
+ 64H      C3      d
+ 63H      B3      c
+ 24H      E4      $
+ 72H      D4      r
+ 66H      C4      f
+ 76H      B4      v
+ 25H      E5      %
+ 74H      D5      t
+ 67H      C5      g
+ 62H      B5      b
+ 26H      E6      &
+ 7AH      D6      z
+ 68H      C6      h
+ 6EH      B6      n
+ 2FH      E7      /
+ 75H      D7      u
+ 6AH      C7      j
+ 6DH      B7      m
+ 28H      E8      (
+ 69H      D8      i
+ 6BH      C8      k
+ 3BH      B8      ;
+ 29H      E9      )
+ 6FH      D9      o
+ 6CH      C9      l
+ 3AH      B9      :
+ 3DH      E10     =
+ 70H      D10     p
+ 7CH      C10     |
+ 5FH      B10     _
+ 3FH      E11     ?
+ 7DH      D11     }
+ 7BH      C11     {
+R 5BH      E12     [
+ 2AH      D12     *
+ 27H      C12     '
+ 7CH      E0      |
+ 5CH      B0      \
+ 5DH      E13     ]
+ 0DH      C,B13   ENTER (CR)
+ 0BH      A01     CURSOR HOCH
+ 8        A10     CURSOR LINKS
+ 20H      A05     SPACE
+ 0        D00     SHIFT-LOCK ON/OFF
+ 0AH      A00     CURSOR RUNTER
+ 9        A11     CURSOR RUNTER
+ 0        B99,B11 SHIFT
+ 0        C00     CTRL-TASTE
+ 2        D13     ^B (ROTES C)
+ 13H      E14     ^S (ROTES L)
+ 0        F01     MON. RUECKKEHR
+ 1BH      F02     ESCAPE 
+ 60H      F03     `
+ 7EH      F04     ~
+ 0        F06     JMP 100H
+ 0        F07     JMP 200H
+ 0        F08     JMP 300H
+ 0        F09     BS-DRUCK
+ 0FH      F10     ^O
+ 18H      F11     ^X
+ 11H      F12     ^Q
+ 1FH      F13
+ 3        F14     ^C=BREAK
+ 1EH      F05     NL (SIF1000)
+ 0        F53     GRAFIK ON/OFF
+ 0        E53     HARDCOPY ON/OFF
+ 0        D53     SLOW/FAST
+ 0        C53     BEEP ON/OFF
+ 1CH      E95     
+ 1DH      F95     
+ 19H      D,C95   ^Y (WIPPE+)
+ 18H      B95     ^X (WIPPE-)
+
+

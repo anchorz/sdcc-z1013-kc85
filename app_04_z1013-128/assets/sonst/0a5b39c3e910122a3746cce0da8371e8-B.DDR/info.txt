@@ -1,0 +1,8 @@
+<kurz src="ähnlich [560df5dc4a5c588ad52f83d1a48f1583]"/>
+<lang>
+Formatierung ist verschieden.
+Zeile 1290 TG$ ist fehlerhaft
+
+Bonus: hat korrekte Window 0,31,0,31 Anweisung.
+<include src="DDR.B"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="BOEK and CASSETTE BASICODE-3 Auszugsweise Seite 52-61"/>
+<lang><include src="T.BASCOD 52-61.txt"/></lang>
+<requires></requires>

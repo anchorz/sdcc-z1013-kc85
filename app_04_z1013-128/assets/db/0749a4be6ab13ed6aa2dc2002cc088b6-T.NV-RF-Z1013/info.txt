@@ -1,0 +1,3 @@
+<kurz src="Neuerervorschlag zum Betrieb der 256K-RAM-Floppy am Z1013"/>
+<lang><include src="T.NV-RF-Z1013.txt"/></lang>
+<requires></requires>

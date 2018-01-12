@@ -1,0 +1,3 @@
+<kurz src="Dateiprogramm zur Bearbeitung von Personalien"/>
+<lang><include src="I.DAT.txt"/></lang>
+<requires></requires>

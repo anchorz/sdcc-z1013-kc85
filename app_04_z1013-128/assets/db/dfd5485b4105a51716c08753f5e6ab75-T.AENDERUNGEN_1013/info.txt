@@ -1,0 +1,3 @@
+<kurz src="Änderungsvorschläge für die Überarbeitung des Z1013"/>
+<lang><include src="T.AENDERUNGEN 1013.txt"/></lang>
+<requires></requires>

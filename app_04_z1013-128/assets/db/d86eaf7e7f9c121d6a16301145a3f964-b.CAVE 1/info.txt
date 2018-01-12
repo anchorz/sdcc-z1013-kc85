@@ -1,4 +1,4 @@
-<kurz src="Höhlenfliegerei"/>
+<kurz src="Die Höhle, Höhlenfliegerei"/>
 <lang>
 Steuerung: 
 ⇧ C

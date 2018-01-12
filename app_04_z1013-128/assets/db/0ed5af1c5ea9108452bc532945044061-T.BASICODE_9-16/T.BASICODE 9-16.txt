@@ -1,0 +1,271 @@
+           - 9 -
+
+-tine den Wert von 10 SD nach unten auf eine ganze
+Zahl abrundet. Man bedenke des weiteren, daß diese
+Routine erst aufgegeben wird, wenn der Ton abgelau-
+fen ist, somit also wenn die in SD angegebene Zeit
+verstrichen ist! Wenn das nicht exakt möglich ist,
+darf die Routine eine Fraktion eher stoppen (10 + SD
+nach unten abgerundet), um auf diese Weise die over-
+head-Zeit in BASIC ein wenig zurückzugewinnen.
+
+Subroutine 450 kommt ebenfalls mit einem nicht-ganzen
+SD auf die Beine. Man sorge dafür, daß nach Beendi-
+gung nicht unglücklicherweise eine negative Zahl an
+SD geliefert wird und daß SD in den richtigen Einhei-
+ten ausgedrückt wird. Der Wert in IN stimmt wieder
+mit dem überein, was bei den Routinen 200/210 erwähnt
+wurde.
+
+Die beständigen Routinen 500, 540, 560 und 580 dür-
+fen die unterste Schirmzeile für Anweisungen und Mel-
+dungen benutzen. Vor dem Verlassen der Routinen müs-
+sen diese Meldungen natürlich wieder entfernt werden.
+Es wird sogar noch eine schönere Lösung empfohlen:
+Vor dem Verlassen der Routine wird die unterste Schirm-
+zeile wieder so hergestellt wie diese beim Anruf der
+Routine ausgesehen hat (man achte auf den Unteshied
+zwischen textlichen und graphischem Betrieb; man tue
+es nur, wenn es wirklich mit Leichtigkeit möglich ist:
+Im Buch steht immerhin, daß die unterste Zeile für Mel-
+dungen verwendet wird. Ein gutes BASICODE-Prgramm
+hält mithin die unterste Zeile prinzipiell frei). Wäh-
+rend des Lesens und Schreibens vn Bestandsblöcken geht
+
+                - 10 -
+
+auch der Inhalt dieses Blockes über diese unterste
+Schirmzeile.
+
+Wohlgemerkt: Solange sich der Computer im graphischen
+Betrieb befindet, ist es für einige Computer sehr mü-
+hevoll, Meldungen auf die unterste Schimzeile z druk-
+ken/printen. Daher denken wir daran, in das Buch auf-
+zunehmen, daß die Bestandsroutinen nur verwendet wer-
+den dürfen, wenn die Maschine im textlichen Betrieb
+steht. Wenn das tatsächlich aufgenommen wird (im näch-
+ten Druck), wird es nötig sein, daß die Bestandsrou-
+tinen bei einer Fehlermeldung stoppen, wenn sie an-
+gesprochen werden, während sich die Maschine im gra-
+phischen Betrieb befindet. Sie werden noch von uns
+hören! Werden wir etwas hören, wenn Sie im graphischen
+Betrieb Probleme mit dem Printen/Drucken des Textes
+haben?
+Bei NF=2 bis einschließlich NF=7 ist es möglich, daß
+Meldungen nicht auf die unterste Zeile gelangen. In
+diesen Fällen ist es immerhin das eigene 'operating
+system', das für die Datenübertragung/-beförderung
+sorgt, und das hat man nicht immer ganz unter Kontrol-
+le. Wenn es ausführbar ist, auch diese Meldung abzu-
+fangen und auf die unterste Schirmzeile zu plazieren,
+dann natürlich gern!
+Diese Bestandsroutinen geben alle vier nach Ablauf
+eines jeden Anrufes in IN einen 'Statuscode':
+   IN=0 : alles ist gut gegangen
+   IN=1 : in INS wurde jetzt oder früher der letzte
+          'string' (engl. Strick, Seil) abgeliefert
+          (nur während des Lesens von Beständen)
+   IN=-1: es ist ein nicht behebbarer Fehler aufgetreten.
+
+             - 11 -
+
+Beim Lesen wird stets INS="" (und IN=1), wenn der
+letzte 'string' aus dem Bestand schon eher abgelie-
+fert worden ist.
+Wie Bestände genau auf dem Band stehen, steht im
+BASICODE-3-Buch. Es ist zu empfehlen, den letzten
+Bestandsblock mit hex 04 aufzufüllen.
+Wenn sich ein Bestandsblock als nich gut lesbar er-
+weist, darf zweimal mittels einer Meldung auf der
+untersten Schirmzeile zum Zurückspulen des Bandes
+aufgefordert werden, wonach ein neuer Leseversuch
+stattfindet. Tritt dann noch immer ein Einlesepro-
+blem auf, so wird das mittels IN=-1 dem Programm ge-
+meldet, und der Inhalt des (mit Fehlern) eingelese-
+nen Blocks wird weiterhin auf dem Weg über Subrou-
+tine 540 ganz normal (also mitunter mit IN=-1) dem
+Programm angeboten. Damit wollen wir ereichen, daß
+schlecht lesbare Bestände doch noch möglichst gut
+verarbeitet werden. Man vermeide auf jeden Fall,
+daß das Programm ein INS geliefet bekommt, in dem
+Zeichen auftreten, die in BASICODE-3 unmöglich sind,
+ganz davon zu schweigen, daß im 'string' fremde Kon-
+troll-Codes stehen. Man ersetze eventuelle fremde
+Zeichen durch Gitter (#).
+Als NF=2 oder NF=3 wird ein Bestand entweder auf ei-
+ne Kassette oder auf eine Diskette geschrieben bzw.
+von dort abgelesen, nämlich nach/von dem, was in dem
+jeweiligen Computer Standard ist. Vielleicht kann
+das Übersetzungsprogramm einholen, was dort genau
+angeschlossen ist? In der Gebrauchsanweisung muß er-
+
+             - 12 -
+
+wähnt werden, was das Übersetzungsprogramm bei die-
+sen Werten von NF genau tut!
+
+Die graphischen Routinen 600, 620, 630 und 650 müssen
+die Werte, die in HO und VE angegeben werden, intern
+vervielfältigen mit der verfügbaren Zahl von Bildpunk-
+ten und dem Ergebnis den INT entnehmen. Das erbringt
+die Nummer des angegebenen Bildpunktes. Man beachte
+folgendes: (0,0) ist links oben, und (1/2,1/2) ist die
+Mitte des Schirmes.
+Es darf nichts aus der Hand gehen, wenn HO und/oder
+VE kleiner als 0 oder größer als 1 sind. Was da wohl
+geschieht, ist nicht so von Bedeutung, wenn dort nur
+etwas geschieht, woran der Programmierer eines BASI-
+CODE-3-Programmes sehen kann, daß etwas falsch ge-
+laufen ist. Empfehlung: Genau so wie in Subroutine
+110 wird bei negativen Werten so getan, als würde der
+Wert 0 aufgegeben, und bei Werten ab 1 wird so getan,
+als würde 1-1/HG bzw. 1-1/VG aufgegeben. Bei Werten
+ab 1 wird mithin so getan, das heißt, es wird auf dem
+äußersten Schirmrand plaziert. Darüber hinaus wird
+ein kurzes Tönchen aus dem Lautsprecher gegeben.
+
+Man achte darauf, daß Subroutine 630 aufgerufen wr-
+den kann, wenn sich in HO, VE die Koordinaten des
+Punktes befinden, wo sich der graphische Cursor zu-
+fällig schon befindet. In diesem Fall wird natürlich
+nur dieser eine Punkt plaziert.
+Subroutine 650 hat nur Einfluß auf die Bildpunkte,
+die mit dem gewünschten Buchstaben übereinstimmen.
+
+              - 13 -
+
+Beim Drucken/Printen eines Zwischenraumes tut diese
+Routine überhaupt nichts, ungeachtet dessen, ob CN=0
+oder CN=1. Es ist zugelassen, daß Routine 650 bei ei-
+nem zu langen 'string' in dem eventuellen rechten
+'border' weiter printet/druckt. Was dann wirklich
+nicht mehr darauf kann, muß auf jeden Fall 'irgendwo'
+auf dem Schirm unterkommen. Die in HO und VE angege-
+bene Position stimmt auf jeden Fall überein mit dem
+linken Oberwinkel der Charakterzelle des ersten Zei-
+chens in dem zu plazierenden 'string' (und somit
+nicht mit dem am meisten links oben plazierten Bild-
+punkt, der wirklich 'geplottet' wird).
+
+In Zeile 950 (wohin mit GOTO gesprungen wird) wird
+die Maschine wieder in den normalen Stand versetzt.
+Diese Zeile enthält somit einen internen GOSUB100,
+und um auf jeden Fall auf textlichen Betrieb umzu-
+schalten, setzt der Cursor wieder ein, schaltet die
+Stopptaste auf 'arbeitend' um usw. Das Programm
+bleibt normal erhalten, ebenso wie alle Variablen.
+Tipp: Man setze in Zeile 950 den Auftrag GOSUB951:
+END und setze die benötigten Umschaltungen in eine
+Subroutine, die somit auf Zeile 951 beginnt.
+
+Allgemein: Es ist möglich, daß das BASICODE-3-Programm
+einen Progammierfehler enthält, bei dem der Computer
+mit einer Fehlermeldung stoppt. Es ist wohl ganz in
+Ordnung, wenn diese von den Subroutinen aufgefangen
+wird, die dann erst eine interne GOSUB951 ausführen
+und erst danach die Fehlermeldung auf den Schirm kom-
+men lassen. Auf dem Weg über/mittels "ON ERROR" oder
+
+                 - 14 -
+
+durch das Umsetzen des 'Fehlermeldungsvektors' läßt
+sich das eine oder andere wohl regeln.
+Die Subroutinen 200, 210 und 220 geben in der Varia-
+blen IN unter allen Umständen ausschließlich Zahlen
+von 32 bis einschl. 95 ab (oder die Codes 28 bis 31
+und 127).
+Subroutine 330 tut etwas Ähnliches: Nach dem Ablauf
+wird SRS nur Charaktere mit ASCII-Codes von 32 bis
+einschl. 95 enthalten.
+Einige Computer kennen zwei Logarithmen: den elog
+und den 10log. Wo im BASICODE-3-Buch von LOG die Re-
+de ist, ist der elog gemeint. Wenn ein Computer in-
+tern für den elog ein anderes BASIC-Wort als LOG ge-
+braucht, muß das Übersetzungsprogramm für eine kor-
+rekte Übertragung sorgen und muß in der Gebrauchs-
+anweisung in dem Buch bei diesem Computer deutlich
+erwähnt werden, daß diese Übertragung notwendig ist
+und autamatisch erfolgt.
+
+Paragraph 3: BASICODE-1, -2 oder -3
+
+Obwohl die BASICODE-1-Methode kaum mehr angewandt
+wird, haben wir auf unsere Fahne geschrieben, daß das
+immer noch möglich sein muß. Somit muß normalerweise
+ein Leseprogramm für die Subroutine sorgen und ab
+Zeile 1000 laden; ein Schreibprogramm muß ab Zeile
+1000 schreiben.
+Aber ... es muß daneben ein Kommando verfügbar sein,
+vorzugsweise nur erwähnt in der schriftlichen Ge-
+brauchsanweisung, wodurch das Leseprogramm die Sub-
+routine NICHT klarstellt und nur immer so drauflos
+
+               _ 15 -
+
+einließt. So muß es auch möglich sein, mittels eines
+geeigneten Kommandos das SAVEN von der ersten Pro-
+grammzeile an starten zu lassen.
+Wenn möglich, muß ein Leseprogramm auch in der Lage
+sein einzulesen, während bereits ein BASIC-Programm
+im Gedächtnis steht, und dann alles, was hereinkommt,
+einzufügen (zu MERGEN) in das, was bereits vorhanden
+war. In der Praxis wird diese Möglichkeit kaum ge-
+nutzt. Daher kann man sich eventuell mit einem Lese-
+programm begnügen, das die neu eingelesenen Zeilen
+nicht dazwischenfügt, sondern hinter der letzten Zei-
+le plaziert (APPEND).
+BASICODE-2 ist veraltet, seit es BASICODE-3 gibt. Le-
+se- und Schreibprogramme brauchen mithin nicht nach
+dem BASICODE-2-Verfahren arbeiten zu können.
+
+Paragraph 4: BASICODE einlesen
+Das BASICODE-Einleseprogramm muß ohne weiteres zuve-
+lässig einlesen, auch und gerade dann, wenn die Flan-
+ken im Signal nicht exakt auf der richtigen Stelle
+stehen (jitter).
+Lesefehler können als solche kaum festgestllt wer-
+den, nur wenn die Charakter/Zeichen außerhalb des
+Bereiches von ASCII 32 bis ASCII 126 hineinkommen
+und/oder wenn an Ende die 'checksum' nicht stimmt,
+stellt sich heraus, daß da etwas schief gegangen ist.
+
+Das Lesen von BASICODE kann auf 4 Arten enden:
+a) dadurch, daß das ganze Programm geladen ist, bis
+   einschließlich ETX, 'checksum' und Auslaufton;
+b) wenn entweder kein Signal oder aber ein erkenn-
+   barer Auslaufton gelesen wird;
+c) wenn der Nutzer das Lesen mit einem Druck auf
+   die STOP- oder BREAK-Taste des Tastenbretts
+   und/oder dadurch, daß er den Recorder stoppt,
+   abbricht;
+d) dadurch, daß das verfügbare Gedächtnis voll
+   läuft; das Leseprogramm muß daraufhin testen
+   und rechtzeitig abbrechen, so daß keine lebens-
+   wichtigen Bestandteile des Systems durch Über-
+   schreibung in Betriebsunfähigkeit geraten kön-
+   nen.
+
+Auf jeden Fall muß der eingelesene Teil als BASIC
+verfügbar sein (oder mindestens mit einem Druck auf
+eine Taste in BASIC umgesetzt werden). Im Falle einer
+nicht stimmenden 'checksum' oder anderer erzwungener
+Abbrechungen des Leseprozesses, muß auf dem Schirm
+eine Meldung erscheinen, daß das Eingelesene kein
+vollständiges und richtiges Programm ist (z.B. LOAD
+ERROR oder LESEFEHLER).
+
+Ein gutes Leseprogramm reagiert folgendermaßen auf
+das ETX-Zeichen:
+a) es schaut, ob das folgende Zeichen eine über 8
+   'bits' stimmende 'checksum' sein kann, und behält,
+   daß eventuell eine Fehlermeldung nötig ist;
+b) es schaut, ob danach tatsächlich ein Auslaufton
+   folgt. Wenn nicht, dann war ETX offensichtlich ein
+   verstümmeltes Zeichen, und es kommt noch viel mehr.
+   Das Einlesen geht als normal weiter. Wenn dann
+   doch ein Auslaufton folgt, wird in Abhängigkeit
+
+
+          
+ 
+

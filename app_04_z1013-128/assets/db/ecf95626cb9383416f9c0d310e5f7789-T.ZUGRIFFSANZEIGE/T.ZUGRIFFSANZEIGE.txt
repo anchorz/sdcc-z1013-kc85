@@ -1,0 +1,54 @@
+        -Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88-
+
+           IO-Grundadressen Disk A: 98H
+                            Disk B: 58H
+
+
+
+
+         DS 8205                    33 K                     +5V
+                  +     o
+ A7A      0       10F                         
+ A6B      1             180
+ A4C      2             Rx         
+              3  98-9FH    Cx     Q1          
+ A3E3     4  A                 
+ A5E2     5   +5V o B      /Q1   
+/IORQE1     6          R                  
+              7 58-5FH        Disk A   
+         A                  
+       B     Q2           
+                 10F       R                  
+             Cx      /Q2 
+          33 K     +     Rx                
+                        Disk B
+                                        DL 123
+
+
+
+
+Beim Betrieb von zwei RF-Karten nach MP 3/88 war der nicht sicht-
+bare Zugriff auf die RAM-Floppy's durch den Rechner störend, da
+man nicht weiß, ob überhaupt noch etwas passiert, wenn der Rech-
+ner an einer etwas länger dauernden Aufgabe arbeitet.
+Da an der RF-Karte keine Anzeige für einen Zugriff vorgesehen
+ist, wurde, um eine Änderung der RF-Karte zu vermeiden, die An-
+zeige über den Systembus realisiert. Das heißt, daß die kleine
+Zusatzschaltung auf einer kleinen Universal-Leiterkarte aufge-
+baut und auf einen freien Bus-Steckplatz gesteckt werden kann.
+Wird durch den Rechner auf eine der zu einer RAM-Floppy gehören-
+den Adressen zugegriffen, dekodiert der Dekoder ein Steuersignal
+für ein nachfolgendes Mono-Flop, welches die sehr kurzen Zu-
+griffsimpulse auf ein "sichtbares" Maß verlängern. 
+Durch eine Änderung der Anschlüsse am Dekoder 8205 oder durch
+Belegung mit anderen Adreßleitungen können auch andere IO-Grund-
+adressen gewählt werden. Die in der Schaltung benutzten IO-Grund-
+adressen resultieren aus dem Betrieb am Z 1013 und haben eine
+untergeordnete Bedeutung.
+
+
+
+                                          Rainer  Brosig
+                                              IG-HC
+                                             DRESDEN
+

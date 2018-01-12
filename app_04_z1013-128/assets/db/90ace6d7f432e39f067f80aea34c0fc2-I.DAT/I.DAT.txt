@@ -1,0 +1,128 @@
+*****************************************************************
+*                                                               *
+*            Beschreibung des Dateiprogramms 'DAT'              *
+*                                                               *
+*  'DAT' -> Dateiprogramm zur Bearbeitung von Personalien       *
+*                                                               *
+*  (c) by RACYsoft * B.P. & U.J. aus Schwarzenberg * 04/1989    *
+*                                                               *
+*****************************************************************
+
+Programmstandort ->  100H - FFFH
+
+Start            ->  100H
+
+Restart          ->  103H
+
+Textpuffer       -> 1000H ...
+
+
+Funktionen :
+------------
+
+Eingabe (1)  -> Hier koennen nacheinander nach den Kriterien
+                Name, Vorname, Geb.-dat., Strasse, Wohnort, PLZ
+                und Tel.-Nr. die entsprechenden Angaben eingege-
+                ben werden. (jede mit 'Enter' abschliessen)
+                Eine Eingabe darf maximal 29 Zeichen lang sein.
+                Wenn diese 7 Eingaben erfolgt sind, kann durch
+                'Break' eine Rueckkehr ins Menue erfolgen. Wird
+                eine andere Taste betaetigt, so wird mit der Ein-
+                gabe des naechsten Datensatzen begonnen.
+                Es koennen maximal 255 Datensaetze eingegeben
+                werden.
+
+Suchen (2)   -> Es wird der gesuchte String oder Teilstring ein-
+                gegeben. Ist dieser nicht enthalten, so erscheint
+                'Nicht gefunden !'. Ansonsten wird der jeweilige
+                Datensatz angezeigt. Jetzt kann durch 'Break' die
+                Rueckkehr ins Menue erfolgen. Wenn eine andere
+                Eingabe gemacht wird, so wird der naechste Da-                
+                tensatz ausgegeben, der den selben String ent-
+                haelt. Wenn dies nicht der Fall ist, wird die Ein-
+                gabe eines neuen Suchwortes gefordert.
+
+Aendern (3)  -> Es wird erst die Datensatz-Nr. des zu aendernden
+                Satzes eingegeben. Dann erscheint hinter den Kri-
+                terien der alte Inhalt. Jetzt kann dieser geaen-
+                dert werden. Jede Eingabe ist mit 'Enter' zu been-           
+                den. Nach 7 Kriterien kann durch 'Break' wieder
+                ins Menue zurueckgekehrt werden. Mit jeder ander-
+                en Eingabe wird eine neue Datensatz-Nr. abge-
+                fragt.
+
+Anzeigen (4) -> Zuerst erfolgt die Eingabe von und bis zu welchem
+                Datensatz angezeigt werden soll.
+                Danach wird der erste (von) Datensatz ausgege-
+                ben. Die Anzeige kann nach jedem Datensatz durch
+                'Break' abgebrochen werden. (Rueckkehr ins Menue)
+                Bei jeder anderen Tastenbetaetigung wird der
+                naechste Datensatz ausgegeben. Die aktuelle
+                Satz-Nr. wird unten auf dem BS angezeigt.
+                Nach dem letzen Satz erfolgt eine neue Eingabe.
+                (von, bis)
+
+Load (5)     -> Es wird unter Verwendung des Headersave eine Da-
+                tei geladen.(Typ D)
+                Dabei wird die alte Datei geloescht.
+
+Save (6)     -> Es wird unter Verwendung des Headersave die kom-
+                plette Datei auf Kassette abgespeichert.(Typ D)
+
+Status (7)   -> Hier wird ein Ueberblick ueber den gegenwaertigen
+                Stand der Datei gegeben. Es wird die Anzahl der
+                erfassten und freien Datensaetze angegeben. Wei-
+                terhin wird der Anfang, das Ende und die Laenge
+                des Textpuffers angezeigt.
+                Durch beliebige Tastenbetaetigung kann ins Menue
+                zurueckgekehrt werden.
+
+Waehrend der Arbeit mit der Datei wird die aktuelle Satz-Nr.
+unten auf dem BS ausgegeben. Bei Suchen, Aendern, Anzeige und
+Save steht dort anfangs die Anzahl der Datensaetze.
+
+
+Anpassung :
+-----------
+
+12EH        E7 00 C9        ; RST 20H, DB  0  :  OUTAK
+131H        E7 01 C9        ; RST 20H, DB  1  :  INCH
+134H        E7 03 C9        ; RST 20H, DB  3  :  INHEX
+137H        E7 06 C9        ; RST 20H, DB  6  :  OUTHX
+13AH        E7 07 C9        ; RST 20H, DB  7  :  OUTHL
+14DH        E7 0B C9        ; RST 20H, DB 11  :  WIND
+150H        E7 0F C9        ; RST 20H, DB 15  :  TRANS
+153H        E7 10 C9        ; RST 20H, DB 16  :  INSTR
+
+1CDH        C3 DC FF        ; JMP FFDCH       :  BEEP
+EB2H        C3 F1 FF        ; JMP FFF1H       :  LORUF
+F29H        C3 F4 FF        ; JMP FFF4H       :  SARUF
+
+
+Die Anspruenge (Jump) fuer LORUF, SARUF und BEEP erfolgen in den
+Sprungverteiler des Brosig-Monitors (MP 7/88).
+Wird nicht diese Monitorvariante genutzt, muessen die Ansprung-
+adressen fuer LORUF und SARUF entsprechend geaendert werden.
+Der Ansprung (Jump) von BEEP muss dann durch RET (C9H) kurzge-
+schlossen werden.
+
+
+Textpuffer :
+------------
+
+Die Daten werden ab 1000H im Textpuffer abgelegt. (Ascii)
+Die Kriterien eines Satzes werden durch 12H voneinander getrennt.
+Die Datensaetze werden durch 1EH voneinander getrennt. Das Text-
+pufferendezeichen ist 18H.
+Es sollten also keine Manipulationen im Textpuffer gemacht wer-
+den, da sonst das Programm durch fehlende oder zuviele Steuerzei-
+chen abstuerzen kann. Die Datei wuerde dann auch verlorengehen.
+
+
+Programmierer :      RACYsoft
+---------------      Boris Prey
+                     Willy-Krause-Str.7
+                     Schwarzenberg
+                     9430
+                     Tel. 2992
+

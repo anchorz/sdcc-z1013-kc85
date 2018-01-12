@@ -1,0 +1,3 @@
+<kurz src="BASICODE-3 Seite 17-END"/>
+<lang><include src="T.BASICODE 17..END.txt"/></lang>
+<requires></requires>

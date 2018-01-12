@@ -1,0 +1,3 @@
+<kurz src=" Beschreibung Hex-ASCII-Dump  V1.01 und 1.02"/>
+<lang><include src="T.HexDump1.01+02.txt"/></lang>
+<requires></requires>

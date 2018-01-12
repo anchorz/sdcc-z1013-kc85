@@ -68,7 +68,9 @@ if (-f $video) {
 }
 
 $gif=$ENV{"HOME"}."/jkcemu.gif";
-unlink($gif) or warn "Could not unlink $gif: $!";
+if (-e $gif) {
+    unlink($gif) or warn "Could not unlink $gif: $!";
+}
 
 @list = bsd_glob ("~/jkcemu_screen_*.txt");
 for (@list) {

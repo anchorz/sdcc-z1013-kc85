@@ -1,0 +1,3 @@
+<kurz src="Textadapter zur Anpassung von Texten an verschiedene Systeme"/>
+<lang><include src="I.TAD1.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Funktionstasten (erzeugen keinen Code), Steuerzeichentasten beim Brosig-Monitor"/>
+<lang><include src="T.FKT-BELEGUNG KOR.txt"/></lang>
+<requires></requires>

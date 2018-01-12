@@ -1,0 +1,686 @@
+Symbolischer Debugger (Version 1.7/1.8)
+---------------------------------------
+
+Programmstandort:   100H-2300H Start: 100H
+
+1.  Allgemeines
+---------------
+Waehrend das UDOS-systeminterne Monitorprogramm DEBUG nur eini-
+ge Grundfunktionen zum Programmtest realisiert (sh. UDOS-Hand-
+buch), steht mit dem Testsystem SYD ein wesentlich komfor-
+tableres Testsystem zur Verfuegung.
+Es realisiert folgende Funktionen:
+-  symbolische Fehlersuche
+   - - - - - - - - - - - -
+   d.h. Zugriff zu Programm- und Datenstrukturen ueber die vom
+   Programmierer festgelegten symbolischen Adressen, anstelle
+   hexadezimaler
+-  Makrokommandofaehigkeit
+   - - - - - - - - - - - -
+   Moeglichkeit der automatisierbaren Abarbeitung umfangreicher
+   Tests
+-  Unterstuetzung der Basistypen BYTE (hexadezimal), WORD
+   (hexadezimal), CHAR (ASCII-Zeichen) und Programmcode
+   (U880-Assembler),
+   dadurch koennen Programm- und Datenobjekte typengerecht
+   dargestellt werden.
+-  komfortable Kommandosprache einschliesslich Ausdrucksberech-
+   nung numerischer Parameter (Operatoren +, -, indirekt, sym-
+   bolisch)
+-  Die Beschreibung der Kommandos kann staendig vom Bediener
+   ueber die Help-Funktionen angefordert werden (Maximalvarian-
+   te).
+
+2.  Einsatzbedingungen
+----------------------
+1.  SYD liegt im Speicher auf hohen Adressen D000 ... E034 H.
+    Zu testendes Programm beginnt meist bei 4000 H.
+    SYD ist dafuer geeignet, wenn Programm keine Adressen
+    > D000 H belegt.
+2.  SYD4 liegt im Speicher auf niedrigen Adressen 4000-7041 H.
+    Es ist fuer zu testende Programme geeignet, die ab
+    ca. 8000 H bis zum Anwenderspeicherende gebunden sind.
+3.  Mit Hilfe der Netztaste erreicht man den Abbruch bei End-
+    losschleifen.
+
+3.  Arbeitsweise mit Symbolinformationen
+    ------------------------------------
+Das Testhilfsprogramm SYD erwartet Symblinformationen in
+Listenform. Die Elemente der Liste bestehen aus einem Symbol
+(Name) in unbegrenzter Laenge und einem Wert (in gegenwaertiger
+Implementierung 16 Bit).
+Bei Variablen und Programmobjekten ist der Wert die betref-
+fende Adresse.
+Die Symbolinformation erhaelt man, indem man beim Linken
+die Option 'SY' angibt. Dadurch werden in eine Datei, die
+den Namen des jeweiligen Maschinenprogrammes (erweitert durch
+.SYM) traegt, vom Linker alle globalen Symbole eingetragen.
+Interne Symbole aus Assemblermodulen werden ebenfalls ein-
+getragen, wenn beim Assemblieren der Datei die Option 'S'
+angegeben wurde.
+Waehrend der Arbeit mit SYD kann man von Hand weitere
+Symbole (Symbol/Wert) definieren.
+Da die Symboldatei formatmaessig dem Bearbeitungsformat
+des Testsystems entspricht, kann diese wie jede an-
+dere Datei geladen werden.
+
+
+4.  Bedienung
+-------------
+4.1 Allgemeines zur Eingabe von Kommandos
+-----------------------------------------
+Das Testhilfsprogramm wird aus UDOS mit SYD bzw. SYD4 (ET1)
+aufgerufen. Es meldet sich mit Namen, Versionsnummer, Kon-
+figurationsangaben und dem Systemzeichen *.
+Das Systemzeichen + gilt fuer Eingaben ausserhalb des
+Kommandomodus.
+Am Systemzeichen * koennen folgende Kommandos ein-
+gegeben werden:
+
+Store        Go          SAve        Fill
+WStore       Interpret   GEt         Move
+Display      Next        Help        Locate
+Worddisplay  Break       Kommando    SYmbols
+Register     CBreak      Xexecute    DSymbol
+PIn          ONBreak_do  Yexecute    HSymbol
+POut         CAXecute    Zexecute    Allocate
+LIst         CAInterpret RSave       DEAllocate
+
+- Ein Kommandoname kann gekuerzt eingegeben werden, indem
+  man nur die jeweiligen Grossbuchstaben (sh. Kommando-
+  liste) eingibt.
+- Vor und zwischen den Parametern ist ein Leerzeichen er-
+  forderlich.
+- Parameter koennen Zeichenketten (Dateinamen) oder nu-
+  merische Werte sein.
+_ Numerischer Parameter kann ein arithmetischer Ausdruck,
+  bestehend aus Elementarausdruecken mit Operatoren
+  + und - sein.
+  Die Berechnung erfolgt mit vorzeichenloser 16-Bit-
+  Arithmetik, ohne Meldung eines Ueberlaufs.
+               B000 - 38E+2A
+- Vor jedem Elementarausdruck kann eine Anzahl Indirekt-
+  operanden @ stehen, der dahinter stehende Wert wird als
+  Zeiger auf den eigentlichen Wert interpretiert.
+  Die Zahl der @ bestimmt den Grad der Indirektheit.
+  Beispiel:   @8000 Es wird der Inhalt der Adresse 8000
+                    (bei Benutzung als Wert der Adresse
+                    8000/8001) als Wert des Elementaraus-
+druckes verwendet.
+              @@.SP Zugriff zum Stapelspeicherinhalt; es
+                    bezeichnet die Stelle, an der die Pro-
+                    grammausfuehrung nach Beendigung des
+                    laufenden Unterprogramms fortgesetzt
+                    wird.
+- Alle Zahlenwerte werden hexadezimal interpretiert, d.h.
+  sie besitzen folglich 1...4 Stellen. Werden Bytewerte
+  gefordert, werden nur die 2 niederwertigen Stellen ver-
+  wendet.
+- Anstelle eines hexadezimalen Wertes kann ein symbolischer
+  Wert, bestehend aus Symbolankuendigung '.' und Symbol
+  verwendet werden.
+  Das bedingt, dass das Symbol im Symbolbereich vorhanden
+  sein muss, ansonsten erfolgt Fehlermeldung 'SY'.
+  Beispiel:   .ALPHA
+  Der Symbolbereich besteht aus dem residenten und variab-
+  len Teil. Im residenten Teil stehen die Registerbezeich-
+  nungen und einige wesentliche Systemparameter.
+  Der varaiable Teil kann durch spezielle Kommandos oder
+  durch Laden von Symboldateien gefuellt werden.
+  Die Kommandos koennen durch Eingabe von nur ET1 wiederholt
+  werden.
+- Das System meldet sich mit '?' bei Eingaben von falschen
+  Kommandos, fehlerhaften oder fehlenden bzw. ueberflues-
+  sigen Parametern.
+
+4.2  Kommandos zur Zustandsanzeige und -aenderung
+-------------------------------------------------
+
+DISPLAY  Anzeige /Aenderung von Speicherplaetzen (hexa)
+-------
+
+      *D adresse ET1; Anzeige Adresseninhalt
+z.B.: *D 9000 ET1
+      9000: 91+
+      Nach dem Systemzeichen '+' sind folgende Eingaben
+      moeglich:
+        + wert              ET1; Bytewert (auch Ausdruecke,
+                                 Symbole u.a.)
+                                 Uebergang zur naechsten Adr.
+        + 'zeichenkette     ET1; ASCII-Zeichenkette
+                                 Uebergang zur naechsten Adr.
+        + _assemblerbefehl  ET1; Assemblerbefehl in U880-Mne-
+                                 monik; Konstanten hexa (be-
+                                 ginnend mit Ziffer 0...9 und
+                                 mit 'H' endend);
+                                 v o r  Befehl und zwischen
+                                 Operationscode und Operand
+                                 muss genau ein Leerzeichen
+                                 stehen;
+                                 mehrere Operanden sind durch
+                                 Komma zu trennen
+        +              ^ ET1; Uebergang zur vorherigen Adr.
+        +                ET1; Uebergang zur naechsten Adr.
+        +              Q ET1; Rueckkehr in Kommandomodus
+
+Beispiele: *D 9000               ET1
+           9000: 91+             ET1; naechste Adresse
+           9001: 91+00           ET1; Bytewert 00 eingeben
+           9002: 2A+^            ET1; vorherige Adresse
+           9001: 00+'BEISPIEL1   ET1; Zeichenketteneingabe
+           900A: 01+Q            ET1
+           *
+
+DISPLAY   Anzeige Speicherbereich hex. und als ASCII-Zeichen
+-------
+
+      *D anfangadresse laenge ET1
+z.B.: *D 9000 0A ET1
+      9000: 9142 4549 5350 4945 4C31 .BEISPIEL1
+      *
+                         - Fortsetzung der Ausgabe:  ET1
+                         - Abbruch                :Q ET1
+
+FILL    Fuellen des Speicherbereiches mit konstanten Daten
+----
+
+      *F anfangsadresse laenge datenbyte ET1
+z.B.: *F 9100 10 00 ET1; ab Adresse 9100 werden 16 Bytes auf 00
+                         geloescht
+
+LIST    Speicheranzeige rueckassembliert (U880-Code)
+----
+
+      *LI anfangsadresse befehlsanzahl ET1
+z.B.: *LI 8500 5 ET1
+      8500: INC HL
+      8501: DEC BC
+      8502: INC DE
+      8503: LD A,C
+      8504: OR B
+      *
+                            - aus Symboltabelle entnehmbare
+                              Marken werden eingetragen;
+                            - bei Absolutwerten zugehoerige
+                              Symbole werden als Kommentar
+                              angefuehrt
+
+LOCATE  Suche nach Daten lt. Muster im Speicher
+------
+
+      *L vergleichsmusteranfang laenge suchbereichsanfang ET1
+z.B.: *D A000        ET1
+      A000: FF+'ABC  ET1; Eingabe Vergleichsmuster
+      A003: FF+Q     ET1
+      *L A000 3 A100 ET1
+      D000              ; Ausgabe der gefundenen Adresse
+      *
+                        - ab Anfangsadresse des Suchbereichs
+                          wird die angegebene Bytezahl mit
+                          dem Muster verglichen
+                        - bei Uebereinstimmung - Ausdruck der
+                          Anfangsadresse des gefundenen Bereichs
+
+MOVE    Umspeicherung von Bloecken
+----
+
+      *M zieladresse quelladresse laenge ET1
+z.B.: *M A200 A000 3  ET1
+      *D A200         ET1
+      A200: 41+       ET1
+      A201: 42+       ET1
+      A202: 43+Q      ET1
+
+PORT_IN    Lesen eines Ports
+-------
+
+      *PI portadresse ET1
+z.B.: *PI 54   ET1
+       C0
+      *
+
+PORT_OUT  Ausgabe auf Port (ohne Lesezugriff)
+--------
+
+      *PO portadresse datenbyte ET1
+z.B.: *PO 55 FF ET1
+      *
+
+REGISTER  Anzeige Prozessorregister
+--------
+
+                                   - als Registerpaare sowie
+                                     die Speicherstelle, auf
+                                     die PC zeigt (hexadezimal
+                                     und als Assemblermnemonik)
+       *R  ET1
+ AF   BC   DE   HL   AF"  BC"  DE"  HL"  IX   IY   IE   SP   PC
+2504 0020 8056 23B4 302C 9003 23B8 30B2 C503 44C7 0F01 00F2 4708
+LD B,A 47 CD BD 47
+                                   - IE: Interrupt-Register,In-
+                                     terrupt-Enable-Flip Flop
+                                   - Anzeige und Aenderung ein-
+                                     zelner Register mit den
+                                     Kommandos WORDDISPLAY bzw.
+                                     WSTORE zusammen mit der re-
+                                     sidenten Symboldatei (alle
+                                     Registerpaare ohne Zweitre-
+                                     gistersatz)
+z.B.: *W .BC          ET1
+      78DD: 0020+0000 ET1; Loeschen BC
+      78DF: 8056+Q    ET1
+      *
+      *WS .SP 00F3    ET1; Stackpointer auf 00F3 einstellen
+      *
+
+STORE   Setzen eines Bytespeicherplatzes auf einen festen Wert
+-----
+
+      *S adresse datenbyte ET1
+z.B.: *S .MAX 00 ET1
+      *
+
+WSTORE   Setzen eines Wortspeicherplatzes auf einen festen Wert
+------
+
+      *WS adresse datenwort ET1
+z.B.: *WS .MIN 4142  ET1
+      *D .MIN 2      ET1
+      A000: 4241 BA
+      *                       - das Wort belegt den Inhalt
+                                von Adresse und Adresse+1;
+                              - die richtige Reihenfolge nie-
+                                derwertiges/ hoeherwertiges
+                                Byte ist gesichert
+
+WORDDISPLAY   wortweise Anzeige/ Aenderung von Speicherplaetzen
+-----------
+
+      *W adresse ET1; Anzeige Adresseninhalt
+z.B.: *W 9000    ET1
+      9000: 0102+   ; bedeutet: 9000: 02
+                               9001: 01
+               Nach dem Systemzeichen '+' sind nachfolgende
+               Eingaben moeglich:
+                 + wort  ET1; Wortwert (auch Ausdruecke, Sym-
+                              bole u.a.)
+                 +    ^  ET1; Uebergang zur vorherigen Adresse
+                 +       ET1; Uebergang zur naechsten Adresse
+                 +     Q ET1; Rueckkehr in Kommandomodus
+z.B.: *W 9000         ET1
+      9000: 0102+     ET1; naechste Adresse
+      9002: 0304+0000 ET1; Wortwert 0000 eingeben
+      9004: 0506+   ^ ET1; vorheriger Speicherplatz
+      9002: 0000+   Q ET1
+      *
+
+WORDDISLAY  wortweise Anzeige Speicherbereich
+----------
+
+      *W anfangsadresse wortanzahl ET1
+z.B.: *W 9000 3   ET1
+      9000: 0102 0000 0506
+      *                  - Fortsetzung der Ausgabe:   ET1
+                         - Abbruch                : Q ET1
+
+
+4.3 Kommandos zur Programmablaufsteuerung
+-----------------------------------------
+
+BREAKPOINT_DISPLAY  Anzeige aller gesetzten Pruefpunkte
+------------------
+
+      *B     ET1
+z.B.: *B     ET1
+      B0 4000
+      B1 5200
+      B2 B725
+      *                  - zugehoerige Symbole werden soweit
+                           vorhanden, angezeigt
+
+BREAKPOINT_SET    Setzen von Pruefpunkten
+--------------
+
+       *B adresse  ET1
+ z.B.: *B .HALT     ET1
+       *                          - max. 16 Pruefpunkte, die in
+                                    Pruefpunktliste eingetragen
+                                    werden (B0,B1,...,BF)
+
+CALL_INTERPRET    Standardinterpretation von Unterprogrammen
+--------------
+
+      *CAI     ET1
+      *                                  - UP-Aufrufe werden wie alle
+                                    anderen Befehle behandelt,
+                                    d.h. Fortsetzung der Inter-
+                                    pretation im UP (Zustand ent-
+                                    spricht der Voreinstellung)
+                                  - Kommando wirkt bei allen fol-
+                                    genden Ausfuehrungen von IN-
+                                    TERPRET und NEXT bis zum
+                                    Kommando CAX
+
+CALL_XECUTE    Ausfuehrung von Unterprogrammen als ein Befehl
+-----------
+
+      *CAX   ET1
+      *                           - alle UPs werden als ein Be-
+                                    fehl betrachtet und in Echt-
+                                    zeit ausgefuehrt
+                                  - Voraussetzung: UP muss regu-
+                                    laer, d.h. an die Stelle nach
+                                    dem CALL zurueckkehren
+                                  - Kommando wirkt bei allen fol-
+                                    genden Ausfuehrungen von IN-
+                                    TERPRET und NEXT bis zum Kom-
+                                    mando CAI
+
+CLEAR_BREAKPOINT  Pruefpunkt loeschen
+----------------
+
+      *CB adresse   ET1; Loeschen eines bestimmten Pruef-
+                         punktes
+      *CB           ET1; Loeschen aller Pruefpunkte
+
+GO                 Programmstart zur Echtzeitausfuehrung
+--
+
+       *G adresse    ET1; Programmstart lt. Adresse
+       *G            ET1; Programmstart lt. PC
+                                - alle Pruefpunkte werden ins
+                                  Programm eingefuegt, d.h.
+                                  der Befehlscode wird jeweils
+                                  durch RST 38H ersetzt (nur im
+                                  RAM wirksam, fuer ROM gilt
+                                  INTERPRET)
+                                - ist Startadresse identisch
+                                  mit einem Pruefpunkt, wird
+                                  der erste Befehl im Schritt-
+                                  betrieb abgearbeitet, um
+                                  diesen Pruefpunkt zu umgehen
+                                  (bequemes Testen von Schlei-
+                                  fen)
+                                 -Programmabbruch bei Erreichen
+                                  eines Pruefpunktes bzw. mit
+                                  Netztaste (alle Pruefpunkte
+                                  durch urspruenglichen Opera-
+                                  tionscode ersetzt);
+                                  Ausgabe der Registerinhalte
+
+INTERPRET     Programmstart zur interpretativen Ausfuehrung
+---------
+
+      *I adresse ET1; Programmstart lt. Adresse
+      *I         ET1; Programmstart lt. PC
+                                - bewirkt Zeitdehnung um den
+                                  Faktor 100
+                                - ist Startadresse identisch
+                                  mit einem Pruefpunkt, wird
+                                  dieser wie bei GO uebergangen
+                                - Programmabbruch: bei Errei-
+                                  chen eines Pruefpunktes bzw.
+                                  mit Netztaste
+
+NEXT          Schrittweise Programmausfuehrung
+----
+
+      *N anzahl ET1; Ausfuehrung von n Befehlen
+      *N        ET1; Ausfuehrung eines Befehls
+                                - Ausfuehrung mittels Interpre-
+                                  tationssystem
+                                - nach Befehlsausfuehrung: Re-
+                                  gisteranzeige sowie Ausgabe
+                                  des Folgebefehls
+                                - Fortsetzung des Schrittbe-
+                                  triebes mit ET1
+
+
+4.4 Kommandos zur Systemverwaltung
+----------------------------------
+
+ALLOCATE    Reservieren vo Speicherplatz
+--------
+
+      *A anfangsadresse endadresse laenge ET1
+z.B.: *A 4000 5000 300 ET1
+         BEG=4000   END=427F   LEN=0300
+      *A 4000 8000 3000 ET1
+     INSUFFICIET MEMORY  BEG=4000 LEN=0000
+                              - Ausgabe des tatsaechlich reservierten
+                                Bereichs oder einer Fehlermeldung mit
+                                Beginn und Laenge der groessten ver-
+                                fuegbaren Luecke
+
+DEALLOCATE    Freigabe des reservierten Speicherplatzes
+----------
+
+      *DEA anfangsadresse laenge ET1
+z.B.: *DEA 4000 300 ET1
+      *
+                              - Freigabe jedoch nicht moeglich, wenn
+                                nicht alle freizugebenden Speicher-
+                                bloecke tatsaechlich reserviert waren
+                                ---> Fehlermeldung
+
+DEFINE_SYMBOL    Definition neuer Symbole
+-------------
+
+      *DS wert symbol ET1
+z.B.: *DS 1000 MAX  ET1
+      *DS .MAX-1000 MIN  ET1
+                              - Wert auch als Symbol moeglich;
+                                keine Pruefung auf Mehrfachdefinition
+
+GET        Laden von Diskettendateien
+---
+
+      *GE dateiname ladeadresse ET1
+      *GE dateiname             ET1; Ladeadresse wird auf 0000
+                                     gesetzt
+z.B.: *GE OTTO.S 4000 ET1; Laden einer ASCII-Datei ab Adr.4000
+      *
+      *GE OTTO        ET1; Laden einer P-Datei entsprechend
+                           der Adresse im Beschreibungssatz
+                         - f o r t l a u f e n d e s  Laden ab
+                           Ladeadresse fuer alle Dateien, die
+                           n i c h t  vom Typ P sind
+                         - s e g m e n t w e i s e s  Laden von
+                           P-Dateien entsprechend ihrer Be-
+                           schreibungsaufzeichnung; bei Angabe
+                           einer Ladeadresse -> zusaetzliche Re-
+                           lativverschiebung im Speicher (nur in
+                           Ausnahmefaellen)
+                         - Anwenderregister PC: mit Startadresse
+                                                geladen
+                                            SP: mit hoechster
+                                                Programmadresse
+                                                einschliesslich
+                                                Stack geladen
+                         - Pruefung auf Ueberschreiben des Be-
+                           triebssystems bzw. Testprogramms;
+                           Fehlermeldung "OVERWRITE PROTECTION"
+                           und Abbruch des Ladevorganges
+                         - die Wortvariablen "LOW" und "HIGH"
+                           kennzeichnen den ersten und letzten
+                           schreibgeschuetzten Platz und koennen
+                           bei Bedarf geaendert werden
+                         - mit "ENDE" kann die letzte beschrie-
+                           bene Adresse abgefragt werden
+                         z.B.: *W .LOW   ET1
+                               D004: 4000+
+                               *W .HIGH  ET1
+                               D006: CFFF+
+                               *W .ENDE  ET1
+                               ED64: FFFF+
+      *GE OTTO.SYM @.SYM ET1; Laden Symboltabelle auf Adresse
+                              Systemvariable SYM.
+                              Falls der 4 K Bytebereich nicht
+                              ausreicht, muss die Symboltabelle
+                              durch Aenderung der Variable SYM
+                              verlegt werden. Wird danach nicht
+                              sofort eine Symboldatei geladen,
+                              ist mit Kommando
+                              *WS @.SYM 0 ET1
+                              das Endekennzeichen (2 = 00) der
+                              der Tabelle zu setzen.
+
+HELP    Ausgabe Kommando-Kurzbeschreibung
+----
+
+      *H kommando ET1
+z.B.: *H GE       ET1; Ausgabe Kommandobeschreibung "GEt"
+      *H          ET1; Ausgabe Kommandovorrat
+
+HEXADECIMAL_TO_SYMBOL  Ausgabe Symbol fuer angegebenn Wert
+---------------------
+
+      *HS wert ET1
+z.B.: *HS 4000 ET1
+      ANF
+      *HS D005 ET1
+      TEIL1
+                         - falls kein Symbol vorhanden,
+                           erfolgt keine Ausgabe
+
+KOMMANDODATEI      Laden einer Kommandodatei
+-------------
+
+      *K dateiname makrokommandobezeichner ET1
+z.B.: *K KOM1 Y   ET1; Kommandodatei KOM1 in Puffer Y geladen
+      *K KOM2     ET1; Kommandodatei KOM2 in Puffer X geladen
+                         - als Makrokomandobezeichner
+                           sind X, Y, und Z erlaubt
+                         - ohne Angabe des Bezeichners
+                           wird Datei in Puffer X gela-
+                           den
+                         - Laenge einer Kommandodatei:
+                           max. 255 Bytes (einzelne
+                           Kommandos durch ET1 getrennt)
+                         - direkte Eingabe bzw. Aenderung
+                           von Makrokommandos ist mit
+                           dem DISPLAY-Kommando (Zei-
+                           chenketteneingabe) moeglich;
+                           Abschluss jedes Einzelkomman-
+                           dos mit 0D und des gesamten
+                           Makros mit 0DFF; Anfangs-
+                           adressen der Makropuffer
+                           ueber die residenten Symbole
+                           XMAC, YMAC und ZMAC verfuegbar
+
+ON_BREAK_DO    Makrokommandoausfuehrung bei Erreichen eines
+-----------    Pruefpunktes
+
+      *ON pruefpunktadresse makrokommandobezeichner ET1
+z.B.: *ON .HALT Z  ET1; ab .HALT - Abarbeitung der Kommando-
+                        datei im Puffer Z
+      *ON 5100     ET1; ab Adr. 5100 - Abarbeitung der Komman-
+                        dodatei im Puffer X
+                         - als Makrokommandobezeichner sind
+                           X, Y und Z erlaubt; ohne Angabe des
+                           Bezichners wird X angenommen
+                         - Pruefpunkte muessen vorher mit "B"
+                           gesetzt worden sein
+
+QUIT     Verlassen des Testhilfsprogramms
+----
+
+RSAVE     Hinzufuegen einer neuen Beschreibungsaufzeich-
+-----     nung zu einer existierenden Datei
+
+      *RS dateiname   ET1
+                         - Kommando RSAVE ist hauptsaechlich
+                           zur Aenderung der Segmente in der
+                           Beschreibungsaufzeichnung vorgesehen
+                         - Beschreibungsbereich ist 116 Byte
+                           (74H) lang und steht ab Adresse .REC
+                           zur Verfuegung
+                         - Laden des Bereichs mit GET oder SAVE
+                         - Manipulation (z.B. andere Segmente
+                           setzen) vor dem Kommando RSAVE aus-
+                           fuehren
+
+SAVE     Erzeugen von P-Dateien
+----
+
+      *SA dateiname anfangsadresse endadresse   ET1
+
+z.B.: *SA TEST 4000 4520   ET1
+                         - Wert des PC-Registers als Start-
+                           adresse uebernommen
+                         - Stackgroesse erhaelt Standardwert 80
+                         - Begrenzungsadresse LOW und HIGH wer-
+                           den mit dem Anfang des 1. Segments
+                           und dem Ende des letzten Segments
+                           belegt
+                         - Erzeugung mehrerer Segmente durch An-
+                           gabe weiterer Adresspaare (max. 15)
+                           moeglich
+z.B.: *SA TEST 4000 4520 4710 4790   ET1
+
+SYMBOL_DISPLAY    Ausgabe der Symboltabelle
+--------------
+
+      *SY    ET1
+                         - Fortsetzung der Ausgabe:   ET1
+                         - Abbruch                : Q ET1
+
+X Y Z - XECUTE     Ausfuehrung geladener Makrokommandos
+-----
+
+      *X    ET1
+      *Y    ET1
+      *Z    ET1
+                         - Abbruch mit ET2 moeglich
+                         - Direktzugriff zu den Makropuffern
+                           ueber die residenten symbolischen
+                           Anfangsadressen XMAC, YMAC und ZMAC
+
+
+4.5. Inhalt der residenten Symboldatei
+--------------------------------------
+Prozessorregister: AF BC DE HL IX IY IE SP PC
+
+Systemkonstanten : RET-  Eintrittsadresse vom Anwenderprogramm
+                         her (z.B. fuer UP- Abarbeitung)
+Systemvariablen  : BS-   Bildschirmbreitenkennzeichnung
+                         (00-80 Zeichen/Zeile)
+                   ENDE- Zeiger auf letzten beschriebenen
+                         Speicherplatz beim Dateiladen
+                   HIGH- Zeiger auf Ende des beschreibbaren
+                         Speichers beim Dateiladen
+                   LOW-  Zeiger auf Anfang des beschreibbaren
+                         Speichers beim Dateiladen
+                   REC-  Anfang der 116 Byte langen Dateibe-
+                         schreibung (beginnend mit TYP)
+                   SYM-  Zeiger auf Anfang des Symbolbereichs
+                   XMAC
+                   YMAC
+                   ZMAC- Anfangsadressen der Makrokommandopuffer
+
+
+4.6. Konventionen des integrierten Zeilenassemblers /Rueckass.
+--------------------------------------------------------------
+
+Bei der Eingabe mnemonischer Befehle muessen folgende Hinweise
+beachtet werden:
+
+      - v o r  OP-Code und  z w i s c h e n  OP-Code und Operand
+        muss genau ein Leerzeichen stehen; zwischen mehreren
+        Operanden ein Komma
+
+      - Konstantenangabe hexadezimal, mit Ziffer 0...9 begin-
+        nend und mit 'H' endend
+
+      - bei Relativspruengen Wert des zweiten Befehlsbytes
+        direkt angeben, z.B. JR 0FEH bewirkt JR #
+
+      - Der Zeilen- und Rueckassembler arbeitet mit den Mnemo-
+        niks nach TGL 26176. die Abweichungen zu UDOS sind
+        im Systemhandbuch UDOS angegeben.
+
+        Ergaenzung: TGL 26176       UDOS
+                    RST 7           RST 38H
+
+------------- E N D E --------------------------------------
+

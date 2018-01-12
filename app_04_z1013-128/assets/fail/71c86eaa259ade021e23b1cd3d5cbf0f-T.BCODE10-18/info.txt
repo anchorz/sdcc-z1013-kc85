@@ -1,0 +1,5 @@
+<kurz src="BOEK and CASSETTE BASICODE-3 Auszugsweise Seite 10-18"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+<include src="T.BCODE10-18.txt"/></lang>
+<requires></requires>

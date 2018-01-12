@@ -1,0 +1,3 @@
+<kurz src="BOEK and CASSETTE BASICODE-3 Auszugsweise Seite 19-28"/>
+<lang><include src="T.BASICODE S.19-28.txt"/></lang>
+<requires></requires>

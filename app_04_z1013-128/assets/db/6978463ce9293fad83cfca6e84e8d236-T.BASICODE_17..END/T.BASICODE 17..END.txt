@@ -1,0 +1,408 @@
+*******************************************************
+
+		- 17 -
+
+    von der 'checksum' wohl oder nicht eine Fehler-
+    meldung gegeben. Der Recorder wird am Ende des
+    Auslauftones stillgesetzt.
+
+Das Leseprogramm sorgt in Wirklichkeit für zwei Din-
+ge: erstens für das Lesen von Kassettensignalen und 
+deren Umsetzung in 'bits' und 'bytes', und zweitens 
+für das Umsetzen der eingelesenen Reihe ASCII-Zeichen 
+in ein BASIC-Programm bzw. in Zeichencodes, so wie 
+diese in dem betreffenden Computer erforderlich sind 
+(beispielsweise: Computer, die nicht mit Kleinbuchsta-
+ben zurecht kommen, müssen hereinkommende Kleinbuch-
+staben in Großbuchstaben umsetzen. Das gleiche gilt 
+für andere abweichende Codes. man denke nur an die 
+Mmöglichkeit, daß durch Lesefehler Kontroll-Codes her-
+einkommen: Diese müssen ebenfalls abgefangen und un-
+schädlich gemacht werden. Empfehlung: Man setze schäd-
+			  ----------
+liche Kontrollzeichen in 'Gitterchen'(#) um).
+
+Beide Aufgaben können mitunter teilweise erledigt 
+werden, indem man bereits im System vorhandene Sub-
+routinen (passen Sie dabei auf, falls von Ihrem Com-
+puter verschiedene Versionen bestehen!) aufruft.
+
+Einige Computer können die von der Kassette herein-
+kommenden Signale über einen 'hardware-interrupt'
+verarbeieten, so daß das Umsetzen in BASIC anschei-
+nend gleichzeitig geschieht. Andere Computer müssen 
+diese zwei Aufgaben notgedrungen nacheinander erledi-
+gen, wobei die eingelesene Zeichenreihe erst im RAM 
+gespeichert wird (hinter dem schon vorhandenen Pro-
+gramm!) und wonach erst in einer zweiten Phase die 
+
+*******************************************************
+
+		- 18 -
+
+Zeichen in BASIC umgesetzt werden.
+
+Ungeachtet dessen, welches System verwendet wird, muß 
+der Nutzer ständig auf dem Bildschirm verfolgen kön-
+nen, daß da was geschieht. Am schönsten ist es wohl, 
+wenn die hereinkommenden Zeilen nacheinander über den 
+Schirm (oder zumindest über die unterste Schirzeile) 
+'scrollen', doch andere Lösungen sind auch möglich. 
+Dieses 'Folgenkönnen' gilt sowohl für die Lesephase 
+als auch für die Umsetzphase (vgl. den nächsten Para-
+graphen).
+
+Paragraph 5: BASICODE wegschreiben
+----------------------------------
+
+Das BASICODE-Schreibprogramm schreibt das BASIC-Pro-
+gramm (ab Zeile 1000, wenn BASICODE-3, ab Zeile 0, 
+wenn BASICODE-1) in BASICODE-Format nach  Band.
+Ebenso wie das Leseprogramm erfüllt auch das Schreib-
+programm zwei Funktionen: einerseits das Umsetzen des 
+Gedächtnisinhalts in ASCII-Zeichen (durchweg ist das 
+ganz einfach das LISTen des Programms, auf jeden Fall 
+das Umsetzen von TOKENS in Zeichen), und als zweites 
+das richtige Beschreiben des Bandes. Auch hier hängt 
+es von der Hardware ab, ob das eine oder das andere in 
+zwei Runden nacheinander kommen muß oder aber schein-
+bar zugleich geschieht durch die Unterbrechungsmög-
+lichkeiten ('interruptfaciliteiten').
+Wiederum gilt die Forderung, daß der Nutzer auf dem 
+Schirm das Nötige geschehen sieht, wobei das 'summum' 
+(der Gipfel) der Schönheit das mit-scrollen desjeni-
+gen ist, was gleichzeitig auf Band geschrieben wird.
+
+Bei einem Schreibsystem in zwei Runden, also erst 
+
+*******************************************************
+
+		- 19 -
+
+LISTen und dann Schreiben, kann ein Raumproblem ent-
+stehen, weil das gleiche Programm sowohl 'tokenized' 
+als auch in ASCII aufbewahrt/gelagert wird. Das ist 
+schlauer möglich, aber vielleicht arbeitet das in ei-
+nigen Computern unerträglich langsam: 
+
+Es ist möglich, immer sobald das 'listing' einer Zei-
+le gemacht ist, die ursprüngliche BASIC-Version von 
+dieser Zeile zu entfernen. Sobald das 'listing' fer-
+tig ist, ist das BASIC-Programm verschwunden. Das 
+'listing' wird dann auf 'tape' geschrieben, und so-
+bald das geschieht bzw. geschehen ist, wird das 'li-
+sting' wieder in BASIC umgesetzt mittels des betreffen-
+den Teils aus dem Leseprogramm. Dieser 'truc' bringt 
+einige Risiken mit sich und ist daher nur ausführbar, 
+wenn sich die Kontrolle über den Computer ganz in den 
+Händen des Programms befindet. Sollte der Nutzer das 
+Programm abbrechen wollen, so sorgt das Programm auf 
+jeden Fall erst noch für die Wiederherstellung des 
+ursprünglichen Programms. 
+
+Einige Forderungen werden ohne weiteres gestellt: 
+
+1 Das Signal, so wie es auf Band geschrieben wird, muß 
+  EXAKT der BASICODE-Norm genügen. Hierbei sei insbe-
+  sondere an die 'timing' der Signale gedacht, sowohl 
+  zwischen den einzelnen 'bits' als auch zwischen den 
+  nächsten 'bytes' und auch im An- und Auslaufton. Des 
+  weiteren sei verwiesen auf die Tatsache, daß das 
+  MSB eines jeden 'byte' in der Praxis immer 1 ist, 
+  außer eventuell in der 'checksum'. Des weiteren die 
+  Reihenfolge der Zeichen in einem Programmblock: erst 
+
+*******************************************************
+
+		- 20 -
+
+  5 Ssekunden Anlaufton, dann STX ($82), dann CR ($8D),
+  die 'listing' mit immer einem Zwischenraum zwischen 
+			  -----
+  Zeilennummer und Zeilentext, und am Ende einer je-
+  den Zeile ein CR ($8D), nach dem letzten CR ein ETX 
+  ($83) und unmittelbar danach die 8-bit-checksum, der 
+  1 Sekunde Auslaufton folgt.
+
+2 Das Wegschreiben muß vom Nutzer abgebrochen werden 
+  können (STOP-Taste auf dem Tastenbrett);
+
+3 eine BASICODE-Zeile so wie diese auf dem Band ange-
+  bracht wird, darf grundsätzlich nicht länger als 60 
+  Zeichen sein (plus einem CR); somit dürfen zwischen 
+  zwei aufeinanderfolgenden CR prinzipiell höchstens 
+  60 andere Zeichen stehen. Der einzige Grund, weshalb
+  auf dem Band mehr als 60 Zeichen gesetzt werden kön-
+  ------------
+  nen, kann derjenige sein, daß das Übersetuungspro-
+  gramm einen Zwischenraum oder mehrere Zwischenräu-
+  me hinzugefügt hat, entsprechend dem, was nach Punkt 
+  7 erwähnt wird.
+
+4 Es dürfen unter keiner Bedingung andere ASCII-Codes 
+  darin vorkommen als Hex 20 (Zwischenraum) bis ein-
+  schließlich Hex 7E. Auf dem Band werden es dann Hex 
+  C0 bis einschließlich Hex FE. Daneben kommt CR (Hex 
+  8D) vor, Hex 82 zu Beginn und Hex 83 am Schluß. Nur 
+  die 'checksum',die über 8 bits den Exor all des Vor-
+  angegangenen bildet, kann alle 8-bit Code sein. Es 
+  sei erwähnt, daß die Buchstaben von BASIC-Variablen 
+  und die Buchstaben der BASIC-keywords immer einen 
+  ASCII-Code von Hex 41 vor dem A bis einschließlich 
+  Hex 5A (vor dem Z) haben müssen. Buchstaben von Hex 
+  61 bis Hex 7A sind ausschließlich zwischen 'quotes'
+
+*******************************************************
+
+		- 21 -
+
+  und in REM-Zeilen erlaubt;
+
+5 Nach dem $82 zum Beginn folgt immer erst ein $8D 
+  (CR). Jede Zeilennummer wird von dem eigentlichen 
+  Zeilentext getrennt durch einen Zwischenraum. Die-
+  ser Zwischenraum zählt durchaus mit bei der Kontrol-
+  le der Zeilenlänge der 60 Zeichen. Die CR am Ende 
+  und eventuell hinzugefügte Zwischenräume zählen 
+  nicht mit.
+
+Um die Forderungen 2, 3 und 4 zu erfüllen, wäre zu 
+empfehlen, das Schreibprogramm beim Wegschreiben in 
+BASICODE-3 in zwei Phasen arbeiten zu lassen: In bei-
+den Phasen wird das BASIC-Programm ausgelesen und um-
+gesetzt in ASCII. Dabei wird je Zeichen und je Zeile 
+die Zahl der erlaubten Zeichen und die Zeilenlänge 
+kontrolliert. Sollte ein Verstoß gegen eine dieser 
+Regeln festgestellt werden, so wird der Wegschreib-
+prozeß abgebrochen mit einer Fehlermeldung, die an-
+gibt, in welcher Zeile welcher Fehler entdeckt wor-
+den ist.
+Phase 1 und Phase 2 sind in dieser Hinsicht identisch. 
+Der Unterschied besteht darin, daß in Phase 1 nichts 
+nach Band geschrieben wird und in Phase gerade doch. 
+Phase 1 verläuft somit ziemlich schnell und stoppt 
+bei einem Fehler. Der Nutzer behebt diesen und star-
+tet aufs neue. Erst wenn in Phase 1 keine Fehler ent-
+deckt werden, wird sofort danach von selbst Phase 2 
+ausgeführt. Darin kann dann natürlich kein Stop als 
+Folge einer Fehlermeldung mehr vorkomen, so daß dann 
+das Programm insgesamt gut auf das Band kommt (wenn 
+nicht der Nutzer mit einer Stopp-Taste das Schreiben 
+
+********************************************************
+
+		- 22 -
+
+unterbricht).
+Beim Wegschreiben gemäß dem BASICODE-1-Format wird 
+Phase 1 nicht ausgeführt und wird ohne jegliche Kon-
+trolle nur Phase 2 erledigt. Auf diese Weise kann man 
+BASICODE-1 für etwas mißbrauchen, wofür es ursprüng-
+lich nicht bestimmt war, nämlich für die Übertragung 
+eines Programmtextes in einen anderen Computer, unge-
+achtet dessen, was da genau in diesem Text steht.
+
+In Anbetracht dessen, daß Kassettenlesezeit ein rarer 
+Artikel ist, ist es erwünscht, daß das Schreibprogramm 
+alle Zwischenräume - außer zwischen "" und nach REM - 
+entfernt. Es muß ein Zwischenraum eingefügt werden, 
+	     ---
+und zwar vor den BASIC-Kommandos GOTO, THEN, GOSUB, 
+TO und STEP, sofern solch ein Kommando nicht das erste 
+einer Zeile ist oder unmittelbar einem Doppelpunkt 
+folgt (:). Nachbemerkung: Es ist somit kein Zwischen-
+raum erforderlich für AND und OR. Diesen muß in BASI-
+CODE 3 immerhin ein Häkchen vorangehen und folgen. Aus 
+diesem Grunde hinzugefügte Zwischenräume zählen nicht 
+mit für die maximale Zeilenlänge von 60 Zeichen.
+
+eine Kontrolle über erlaubte BASIC-Kommandos ist fein. 
+Insbesondere Instruktionen, wie POKE, USR oder CALL 
+(Instruktionen, die somit bei falschem Gebrauch den 
+Computer auf den Grund laufen lassen) sollten eigent-
+lich durch das Schreibprogramm messerscharf abgelehnt 
+werden. In einem REM-Auftrag oder als Text zwischen 
+"" nach beisp@pielsweise PRINT kann natürlich wohl so 
+etwas wie POKE stehen (z.B. in einem Poker-Programm). 
+Es wäre nicht schön, wenn das Schreibprogramm auch 
+daraufhin anhalten würde.
+
+*******************************************************
+
+		- 23 -
+
+Paragraph 6: Polarität, Tondetektion und Anlaufdetek-
+-----------------------------------------------------
+tion
+----
+
+6.1 Schreiben auf und Lesen von der Kassette
+
+Es erweist sich, daß Schreiben und Lesen ausgezeich-
+net geht mit einem sehr einfachen 'interface'. Alles, 
+was benötigt wird, um zu schreiben, ist ein Drähtchen/
+Fädchen, auf dem die Spannung bei der Steuerung des 
+Schreibprogramms hoch und niedrig gehalten werden kann.
+Mit einem geeigneten Serienwiderstand läßt sich das 
+Signal abschwächen bis zum Stand des Mikrophoneingangs.
+Oft ist der Standard-Kassetteneingang auch schon so 
+gemacht. Bei Computern ohne geeigneten Kassettenein-
+gang läßt sih meistens mit wenig Mühe etwas finden, 
+was sich geeignet machen läßt: ein 'game-output', und 
+ein einziger Draht von einem parallelen 'output', bei-
+spielsweise dem 'printer' oder einem der begleitenden 
+Drähte des V24-Eingangs.
+
+Auch der 'input' kann sehr einfach sein. Das Programm 
+muß feststellen können, ob die Spannung auf einem Draht
+niedrig oder hoch ist. Der Lautsprecherausgang eines 
+Kassettenrecorders gibt auf einem durchschnittlichen 
+Stand/Niveau 100 mV ab, wenn er hart steht, mehr als 
+1 Volt. Diese (Wechsel-) Spannung reicht aus, um ei-
+nen TTL-Eingang oder einen V24-Eingang anzusteuern. 
+Zwar ist es dabei nötig, den Gleichspannungsstand mit
+einigen Widerständen so einzustellen, daß der Eingang 
+genau "auf der Grenze zwischen 0 und 1" steht. Wer ei-
+nen Eindruck davon bekommen möchte, wie so etwas mög-
+lich ist, sehe nur mal im BASICODE-3-Buch unter P2000 
+nach. Dort wird unter anderem sobeim 'printerconnector'
+verfahren.
+
+*******************************************************
+
+		- 24 -
+
+Was nicht ohne weiteres gebraucht werden kann, ist 
+der Daten-Ein- und Ausgang eines serienmäßigen Ein-
+gangs.
+
+6.2. Programmtips für die Schreibroutine
+
+- Man versuche, das 'timing' der Wellenform so genau 
+  wie nur möglich zu machen.
+- Man kalkuliere auch die Zeit ein, die nötig ist, um 
+  das nächste Zeichen aus dem Gedächtnis heranzuholen.
+- Man sei gefaßt auf eine eventuelle Systemunterbre-
+  chnung (interrupt); man schalte diesen/diese aus, wenn 
+  er/es das 'timing' stören kann.
+- Man sei gefaßt auf 'wait-cycles' des Prozessors; ei-
+  nige Systeme fügen diese selbständig hinzu.
+- BASICODE ist unabhängig von der Polarität. Es ist 
+  daher erwünscht, die Routine so zu machen, daß er 
+  wegzuschreibende Programme entweder 'random' oder 
+  abwechselnd in die eine oder in die andere Polarität 
+  schreibt (man vergleiche Seite 107 im Buch).
+- Schreibroutine muß grundsätzlich zu jedem Zeit-
+  punkt vom Nutzer abgebrochen werden können.
+
+6.3 Programmiertips für die Leseroutine
+
+- Man ermittle sowohl die aufwärts gehenden Flanken 
+  (0 auf 1) als auch die abwärts gehenden Flanken 
+  (1 auf 0). Bei 1200 Hz hat man dann 2400 mal je Se-
+  kunde Information über die Tonhöhe, und die braucht 
+  man ja auch.
+- Man berechne immer die Zeit zwischen 2 übereinstim-
+  menden Flanken (durch die zwei letzten Zeiten mitein-
+  ander zu addieren). Es kann immerhin ganz leicht ge-
+
+*******************************************************
+
+		- 25 -
+
+  -schehen, daß die Wellenform symmetrisch wird. Die 
+  positiven Impulse werden dann kürzer als die negati-
+  ven, oder umgekehrt, jedoch zusammen sind sie immer 
+  gleich lang. Man monitoriere somit immer die gemein-
+  same Zeit der beiden letzten halben Perioden.
+- Man halte beim Lesen gesondert die Zeit bei, um die 
+  'bits' einzunehmen. Man vertraue also nicht auf die 
+  Beziehung 'bits'-Wellenform. Bei Störungen und 'drop-
+  -outs' im Band hält man so besser Schritt mit den Zei-
+  chen.
+- Man warte nach dem Ende eines Zeichens wiederum auf 
+  einen 'startbit', unabhängig von der Polarität. Man 
+  vertraue nicht auf die 8 Perioden.
+- Man mache ein 'timeout' beim Warten auf den 'start-
+  bit'.
+- Man wähle die 'Bit-Detektion' so, daß eine halbe 
+  Periode von 2400 Hz plus einer halben Periode von 
+  1200 Hz als 0 wiedererkannt wird.
+- Man mache eine Anlauf-Tondetektion, in der 2 Sekun-
+  den hintereinander ein Ton von 2400 Hz +/- 10% de-
+  tektiert wird. Das verhindert, daß man mit Sprech-
+  einlesen und Musik beginnt. 
+- Die Leseroutine muß zu jeder Zeit vom Nutzer abge-
+brochen werden können.
+
+6.4 Graphische Übersicht über den Lesealgorithmus
+
+*******************************************************
+
+		- 26 -
+
+1 Man warte auf den 'startbit'
+2 Man warte 1 1/2 bit
+3 Man warte 1 bit
+4 feste Zeit!
+5 feste Zeit!
+6 ausgelesene Zeit
+7 detektierter bit
+
+t ist die Zeit zwischen zwei Nulldurchgängen
+T ist die Zeit zwischen den letzten beiden übereinstim-
+  menden Nulldurchgängen
+Das Messen und Beibehalten von T ist ein frei laufen-
+der Prozeß.
+
+Das Warten auf einen 'startbit' bedeutet, daß gewartet 
+wird bis T einen bestimmten Wert Überschreitet, im obi-
+gen Beispiel z.B. 10. Danach in festen Zeitabständen 
+nachsehen, was T ist, und auf diese Weise die 'bits' 
+zusammenbringen. Man achte darauf, daß die 'sample'-
+Momente am Ende der 'bits' liegen. Dann erst ist die 
+Information ausreichend stabilisiert.
+
+Wenn Sie das Leseprogramm so machen, daß ein 'startbit'
+dadurch entdeckt wird, daß hintereinander vier Zyklen 
+von 2400 Hz, gefolgt von einem Zyklus von 1200 Hz, vor-
+beikommen, so wird erreicht, daß man nach einer Signal-
+störung am schnellsten wieder in die Synchronisierung 
+gelangt.
+
+*******************************************************
+
+		- 27 -
+
+Es ist zu empfehlen, in das Übersetzungsprogramm ei-
+ne klare Copyright-Angabe aufzunehmen. Außerdem wäre 
+es gut, an einer oder an mehreren Stellen im Überset-
+zungsprogramm eine verborgene Identifizierungsmöglich-
+keit aufzunehmen, an der bei einer gesetzwidrigen Ko-
+pierung festgestellt werden kann, daß es tatsächlich 
+Ihr Programm ist.
+Sie werden gebeten, eventuelle Fehler im Übersetzungs-
+programm nicht nur zu verbessern, sondern auch die Lei-
+tung der Stiftung über diese Fehler zu informieren.
+
+--------------------------------------------------------
+
+Dieser Text ist ausschließlich bestimmt für Autoren 
+von BASICODE-3-Übersetungsprogrammen und ist Eigentum 
+der Stiftung BASICODE. Dieser Text darf nur durch die 
+oder im Namen der Leitung der Leitung der Stiftung
+BASICODE verbreitet werden.
+
+	- Ende der Seite 27 -
+
+********************************************************
+
+
+  - Ende des Textes BASICODE -
+
+F.d.R.z.(Seite 17 BIS 27):
+
+  Friedrich Henlich
+  Hübnerstr.26
+  Dresden 8027
+

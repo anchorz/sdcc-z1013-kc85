@@ -1,0 +1,90 @@
+KURZBESCHREIBUNG MINTEX/3 
+ ========================= 
+  
+ Rechnertyp: alle KC85 kompatiblen 
+ Programmiersprache: HC-BASIC 
+ Speicherbedarf: 6 KBytes 
+  
+ FUNKTION: 
+  
+ MINTEX/3 ist ein minimaler in BASIC geschriebener Texteditor 
+der fuer die Bildschirmformate der KC85 kompatiblen 
+Kleincomputer eingestellt werden kann. Das Programm ermoeglicht 
+bei einem verfuegbaren Anwenderspeicher von 5 KBytes die 
+Texteingabe und Anzeige sowie das Abspeichern auf Kassette. 
+Stehen mindestens 6 KBytes zur Verfuegung sind zusaetzlich 
+Textaenderungen und Textausdruck moeglich.  Der Textspeicher 
+kann ca. 3.5 KBytes (entspr. 1 Druckseite) aufnehmen. In dem nur
+2 KBytes grossen Programm konnten natuerlich keine besonders 
+komfortablen und von anderen Textsystemen her bekannten 
+Funktionen realisiert werden. Es soll den KC85 Nutzern die 
+Erstellung und Weitergabe von Programmdokumentatonen auf 
+Kassette ermoeglichen. 
+  
+ BEDIENUNG: 
+  
+ Das Programm wird mit CLOAD"MINTEX" geladen und mit RUN 
+gestartet. Stehen weniger als 6 KBytes Anwenderspeicher zur 
+Verfuegung erfolgt die Ausschrift ZU WENIG SPEICHER! NEU 
+STARTEN! Dabei werden die Betriebsarten AENDERN und DRUCKEN zur 
+Speicherplatzgewinnung geloescht. Es ist nochmals RUN 
+einzugeben. 
+ Es wird nun das Bildschirmformat abgefragt. Zeilen- und 
+Spaltenzahl sind durch Komma getrennt und mit ENTER 
+abgeschlossen einzugeben. Nun erscheint das Betriebsartenmenue 
+aus dem die gewuenschte Betriebsart durch Eingabe ihrer Kennzahl
+und ENTER auszuwaehlen ist. 
+  
+ 1=EINGABE 
+  
+ Zunaechst wird der Hinweis ausgegeben dass der Text KEIN KOMMA 
+enthalten darf. Danach kann die Texteingabe beginnen. In einer 
+Statuszeile wird die Nummer der Eingabezeile des Blockes und der
+freie Speicherplatz angezeigt. Die Blocknummer kann maximal 31 
+erreichen. Eine Eingabezeile kann unabhaengig vom 
+Bildschirmformat 72 Zeichen enthalten. Darin sind Aenderungen 
+durch Cursorverschieben Ueberschreiben und Benutzung der Tasten 
+INS und DEL moeglich. Mit ENTER wird die Zeile uebernommen. Eine
+besondere Bedeutung hat das Add-Zeichen (Affenschwanz 
+Klammeraffe). Ein Affenschwanz erzwingt bei Anzeige und Ausdruck
+einen Zeilenwechsel und zwei Affenschwaenze kennzeichnen das 
+Textende. 
+  
+ 2=ANZEIGEN 
+  
+ Der im Speicher stehende Text wird dem Bildschirmformat 
+angepasst angezeigt. Nach Fuellen des Bildschirms wird auf eine 
+Tastenbetaetigung gewartet wobei $ die Betriebsart beendet. Am 
+Textende wird mit ENTER das Menue erreicht. 
+  
+ 3=EINLESEN 
+  
+ Nach Eingabe des Dateinamens und Betaetigung der ENTER-Taste 
+wird ein Text von Kassette eingelesen. 
+  
+ 4=AUSGEBEN 
+  
+ Nach Eingabe des Dateinamens und Betaetigung der ENTER-Taste 
+wird der im Speicher stehende Text auf Kassette ausgegeben. 
+  
+ 5=AENDERN 
+  
+ Es ist die Blocknummer fuer den zu aendernden Textbereich 
+einzugeben. Null ermoeglicht ein Weiterschreiben am Textende. 
+Ansonsten wird der Blockinhalt wortweise angezeigt. Mit ENTER 
+wird das Wort unveraendert uebernommen mit $ die Betriebsart 
+abgebrochen. Ansonsten kann ein anderer Text von maximal der als
+frei angezeigten Laenge bzw. max. 72 Zeichen eingegeben werden. 
+(VORSICHT Dabei kann der Gesamtspeicher ueberlaufen!) 
+  
+ 6=DRUCKEN 
+  
+ Zunaechst ist das Druckformat in der Form Zeilenzahl Komma 
+Spaltenzahl einzugeben. Danach erfolgt der Auusdruck 
+gegebenenfalls mit Stop nach jeder Seite. 
+  
+ 0=ENDE 
+  
+ Beendet die Abarbeitung des Programms MINTEX.  
+ 
+

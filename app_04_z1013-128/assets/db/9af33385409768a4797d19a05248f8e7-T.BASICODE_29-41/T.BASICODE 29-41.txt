@@ -1,0 +1,460 @@
+                                - 29 -
+630 man ziehe eine Linie nach Punkt HO, VE in Farbe CN
+650 man drucke SRS als Text aus der Position HO; VE 
+950 man schließe das Programm ab und schalte die Maschine auf
+    normalen Betrieb 
+4.5 Variable und BASIC-Aufträge
+
+Die Variablen, die im Programm verwendet werden, sind an einige
+Einsachränkngen gebunden. Das ist nötig, um die
+Austauschbarkeit des Programms zu gewährleisten.
+
+a. Numerisache Variable sind "real" und haben einige Präzision.
+   Die Genauigkeit beträgt in Abhängigkeit vom Computer mitunter
+   nicht mehr als 6 Dezimale; man rechne auf keinen Fall  mit einer
+   größeren Genauigkeit.
+
+b. Die Namen der Variablen sind maximal zwei Zeichen lang, wobei
+   das erste Zeichen ein Großbuchstabe sein muß. Wenn noch ein
+   weiters Zeichen folgt, darf es ein Großbuchstabe oder eine
+   Zahl sein. In Namen von Variablen dürfen somit keine
+   Kleinbuchstaben gebraucht werden. Für "String" -Variable
+   folgt dem Namen ein S. Alle anderen Zusätze (wie %,# und !) sind in BASICODE-3
+   untersagt.
+
+c. Logisch Variable sind Variable, die "wahr" oder "unwahr"
+   sind. Es darf kein Gebrauch gemacht werden, von dem evtl.
+   numerischen Wert logischer Variablen. In einigen Computern
+   wird "wahr" nämlich
+
+
+                                - 30 - 
+
+    ducrch +1 dargestellt, in anderen d3urch -1.
+    Das Ergebnis kann nur verwendet werden in einer
+    IF...THEN-Konstruktion (so etwas wie A=3*(B=1) ist also
+    absolut nicht erlaubt! Man gebrauche in einem solchen Falle
+    beispielsweise A=0: IF B=1 THEN  (A=3).
+
+d. Bevor eine Variable verwendet wird, muß sie stets einen
+   Wert    bekommen. Sie dürfen mithin nicht annehmen, daß die
+   Variablen beim Start eines Programmes automatisach auf Null
+   gesetzt werden.
+
+e. "String"-Variable dürfen maximal 255 Zeichen lang sein.
+
+f. Namen von Variablen dürfen nich mit dem Buchstaben O
+   beginnen. So lche Namen sind dem Gebrauch innerhalb der
+   BASICODE-3-Standardroutinen vorbehalten.
+
+g. Ausgeschlossen sind gleichzeitig folgende Variablen:
+   AS, AT, DI, EI, FN, GO, GR, IF, LN, PI, SQ, ST, TI, TIS, TO.
+
+h. Beim Aufrufen von BASICODE-3-Subroutinen können die
+   fkolgenden Variablen verwendet werden: CN, CT, FR, HG, HO, IN,
+   INS, NF, NFS, RV, SD, SP, SR, SRS, SV, VE, VG.
+
+4.6 Erlaubte BASIC- Aufträge
+
+Dieser Paragraph gibt eine erschöpfende Darstellung der
+Programme in BASIC. Von jedem Auftrag wird eine kurze,
+sachliche Beschreibung gegeben, weil das BASICODE-3-Protokoll
+der Verwendung mancher Aufträge einige Einschränkungen
+auferlegt.  
+                                - 31 - 
+
+Ausschließlich die nachstehenden BASIC-Aufträge und -Operatoren
+dürfen in den Programmen verwendet werden:
+ABS    AND    ASC    ATN     CHRS   COS    DATA   DIM
+EXP    FOR    GOSUB  GOTO    IF     INPUT  INT    LEFTS
+LEN    LET    LOG    MIDS    NEXT   NOT    ON     OR
+PRINT  READ   REM    RESTORE RETURN RIGHTS SGN    SIN
+SOR    STEP   TAB    TAN     THEN   TO     VAL
+
+
+Graphisache Zeichen vgl. Or. S. 34 unten
+
+
+Nachstehen finden Sie in alphabetischer Reihenlfolge die
+Beschreibungen der Arbeitsweise der erlaubten BASIC-Aufträge.
+
+ABS Gibt den absoluten Wert der mitgegebenen Variablen.Beispiele:
+    A = 10 : B = ABS (A)     nach Ablauf ist B = 10
+    A = -20 : B = ABS (A)    nach Ablauf ist B = 20
+    A = -1 : B = ABS (A-5)   nach Ablauf ist B = 6
+
+AND Logisches AND. Darf nur verwendet werden, für logische
+    Variable. Das Ergebnis ist ein logisacher Ausweg. Die
+    Verwendung von Klammern, um die Bearbeitiungsfolge klar
+    anzugeben, ist in BASICODE-3 obligatorisch. 
+
+Beispiele:
+    IF (A=5) AND (B=0) THEN ...
+    Q=(A=5) AND (B=0) : IF Q THEN ...
+
+ASC Gibt den ASCII-Wert des ersten Zeichens des mitgegebenen
+    'string'.
+
+
+                                - 32 -
+
+Beispiele:
+
+    AS = "A" : B=ASC(AS)       meistens gilt jetzt: B=65
+    AS = "BEER" : B=ASC(AS)    meistens gilt jetzt: B=66
+
+Nachbemerkung: Bei einigen Computer-Typen wird intern ein
+    anderer Code für die verschiedenen Zeichen verwendet. Es
+    kann dann beispielsweise geschehen, daß in den obigen
+    Beispielen in B die Zahlen 193 bzw. 194 stehen. Was die
+    Buchstaben oder Zahlen betrifft, gilt wohl immer, daß sich
+    die abweichenden Werte um ein Vielfaches von 32 vom
+    "normalen" Wert unterscheiden. Die Verwendung der
+    ASC-Funktion muß daher am besten so weit wie nur möglich
+    vermieden werden.  
+ANT Gibt den Arctangens in Radialen der beigegebenen Variablen.
+
+Beispiele:
+PRINT ANT(1)           gibt das Ergebnis .785398
+PRINT ANT(-1.5)        gibt das Ergebnis -0.982794
+
+CHRS Gibt ein Zeichen, das im Computer übereinstimmt mit dem
+    Wert der mitgegebenen Variablen. Die Variable darf einen
+    Wert von 32 bis einsachlileßl. 127 annehmen. Bei Werten,
+    die kleiner sind als 32, ist Vorsicht am Platze, da sich die
+    Kontrollzeichen bei verschiedenen Computern stark
+    unterscheiden; lediglich die RETURN-Taste hat immer ASCII-
+    Code 13.
+Beispiel:
+
+AS=CHRS(66)    AS enthält jetzt (meistens) den Buchstaben B.
+Wie bereits bei ASC erwähnt, gibt es Computer,
+
+                                - 33 -
+
+die intern abweichende Codes verwenden. Man gebrauche daher
+auch die CHRS-Funktion mit der gößtmöglichen Vorsicht.
+
+COS Gibt den 0co2sinus des mitgegebenen Winkels. Die Variable
+    muß den Winkel in Radialen enthalten.
+
+Beispiel:
+PRINT COS(1)   gibt das Ergebnis .540302
+
+DATA Nach diesem Kommando folgen bis zum Ende des Zeile Werte
+    für Variable, die mit READ gelesen werden können. Auf der
+    Zeile dürfen nach mit READ zu lesenden Variablen keine
+    anderen Kommandos (beispielsweise REM) auftreten.
+
+Beispiel:
+DATA 100, 200, "HALLO", "BASICODE", 4.6.89
+
+DIM muß immer verwendet werden, um 'arrays' zu dimensionieren.
+    Ein 'array' darf nur einmal in einem Programm dimensioniert
+    werden, und zwar ehe es im Programm verwendet wird. Die
+    Zahl der Dimensionen beträgt im BASICODE-3 maximal zwei. die
+    zahl der Elemente wird begrenzt durch die Größe des
+    Gedächtnisses. Verschiedene 'arrays' dürfen mit dem gleichen
+    DIM-Auftrag dimensioniert werden. Man vergleiche das
+     Beispiel.
+Nachbemerkung 1: Bei einigen Computern brauchen 'arrays' bis zu
+    zehn Elementen nicht dimensioniert zu werden. In
+    BASICODE-Programmen ist das an sich immer nötig!
+
+                                - 34 - 
+
+Nachbemerkung 2: Auch das Element mit der Nummer 0 mach mit,
+    also A(0), und ADS (0,0) gibt es auch.
+
+Beispiel:
+DIM AS(12), HD(100,100), MP(1000).
+
+EXP Erhebt die Zahl e (2.71828...)in eine bestimmte Potenz.
+
+Beispiel:
+PRINT EXP(2)     erbringt als Ergebnis 7.38906
+
+FOR FOR ... TO ... STEP ... NEXT ... 
+    Schleifenkonstruktion; die Schleife wird midesten einmal
+    durchlaufen. STEP und der Wert dürfen weggelassen werden,
+    die Schrittgröße ist dann 1. Nach NEXT muß immer die
+    Variable mitgegeben werden! Mehr als eine Variable nach
+    NEXT ist nicht zulässig.
+
+Beispiele:
+
+FOR X=10 TO 100
+PRINT X,X+34
+NEXT X
+FOR C=A TO B STEP -3
+PRINT C,C-B
+NEXT C
+FOR I=1 TO 10; FOR J=1 TO 5
+PRINT I; " "; J; "="; I; J
+NEXT J : NEXT I
+Nachbemerkukng: Man verhüte das Springen aus einer FOR-NEXT-
+    Schleife, ohne daß diese beendet ist! Man verlasse eine
+    FOR-NEXT-Schleife also nur über NEXT, nötigenfalls durch
+    die Schleifenvariable auf den Endwert zu setzen.
+    Verwenden Sie in Fällen, bei denen Sie aus der
+
+                                - 35 - 
+
+     Schleife springen wollen, kein FOR-NEXT für die
+     Schleifenstruktur.
+
+GOSUB Man rufe eine Subroutine auf, beginnend bei der
+    Zeilenzahl, die hinter diesem Kommando erwähnt wird.
+  
+Beispiel:
+GOSUB 100
+Nachbemerkung: Verboten ist A = 100: GOSUB A
+
+
+GOTO Man springe auf die Zeilenzahl, die hinter diesem
+     Kommando erwähnt wird.
+
+Beispiel:
+
+GOTO 1500
+Nachbemerkung 1: Verboten ist A=1500. GOTO A
+Nachbemerkung 2: Ein GOTO-Auftrag darf nie auf eine
+     nicht vorhandene Zeilennummer oder auf eine Zeilennummer in
+     einer BASICODE - Subroutine springen. Für das letztgenannte
+     gibt es zwei Ausnahmen:
+     -1- In Zeile 1000 muß GOTO20 stehen und
+     -2-  GOTO950 muß mindestens einmal im Programm als
+          Absachluß Programmes vorkommen (an Stelle der in den
+          meisten BASIC- Versionen gebräuchlichen END- oder
+          STOP-Aufträge, die in BASICODE nicht erlaubt sind).
+
+IF IF ... THEN Bedingte Spaltung. Zwischen IF und THEN  steht
+     eine logische Variable oder ein logischer Vergleich. Wenn
+     dieser 'wahr' ist, geht die Ausführung nach THEN weiter,
+     wenn nicht, dann geht die Ausführung weiter auf die
+     nächste BASIC- Zeile. Auch kann nach THEN eine Zeilennummer folgen, wo
+
+                                - 36 - 
+
+     die Ausführung des Programmes weitergehen soll. 
+
+Nachbemerkkung: ELSE ist in BASICODE-3 nicht zulässig.
+
+Beispiele: vgl. Or. S. 38 oben
+
+INPUT  Ersucht den Nutzer um Eingabe, die der Variablen nach
+     INPUT zuerkannt wird. Diese Variable darf eine numerisache
+     Variable oder eine 'string'-Variable sein. Ein
+     eingegebener 'string' darf keine Kommas oder
+     'Doppelpunkte' enthalten. Wenn man das doch wünscht,
+     sollte man lieber die Subroutine auf Zeile 210
+     verwenden. Ein 'prompt-string' ist nicht erlaubt,
+     ebensowenig wie mehr als eine  Variable nach einem INPUT.
+     Die mesten BASICs drucken ein Fragezeichen, wenn
+     dieser Auftrag erteilt wird.
+     Nach dem Eintippen der Return-Taste wird bei einigen
+     Computern die übrige Zeie von der Curskorposition bis zum
+     Ende ausgelöscht.
+
+Beispiele:
+
+PRINT 'Wie ist Ihr Name';: INPUT NS
+PRINT 'Tippen Sie die Werte ein';: INPUT A: INPUT B
+
+Nachbemerkung: INPUT'Ihr Name'; AS
+               ist somit nicht zulässig!
+
+INT Geben Sie die größte ganze Zahl, die höchstens der
+     mitgegebenen  Variablen gleich ist. 
+
+Beispiele:
+A=2.1 : B=INT(A)  nach Ablauf ist B=2
+B=INT(-2.5)       nach Ablauf ist B=3
+
+
+                                - 37 -
+
+LEFTS Geben Sie einen 'string', der aus mehreren Zeichen des
+     mitgegebenen 'string' besteht, zu beginnen mit dem am
+     meisten links stehenden Zeichen. Die Zahl der Zeichen,
+     die verlangt wird, muß minimal 1 sein und darf maximal die
+     Länge des 'string' betragen.
+
+Beispiele: 
+
+AS=LEFTS ("BASICODE",5) nach Ablauf ist AS=BASIC
+
+Nachbemerkung: CS=LEFTS (BASICODE, 0) ist also nicht erlaubt!
+
+LEN Gibt die Länge des mitgegebenen 'string' 
+
+Beispiele.
+
+AS=BASICODE-3 : A=LEN(AS)  nach Ablauf ist A=10
+AS="" : A=LEN(AS)          nach Ablauf ist A=0
+
+LET  darf verwendet werden, wenn einer Variablen ein Wert
+     zuerkannt wird, ist jedoch nicht erforderlich.
+  
+Beispiel:
+
+LET A=5 ist dasselbe wie A=5
+     LET wird daher fast immer weggelassen.
+
+LOG Berechnet den natürlichen Logarithmus der mitgegebenen
+     Variablen oder des mitgegebenen Ausdruckes.
+
+Beispiele:
+
+PRINT LOG(1)     bringt das Ergebnis  0
+PRINT LOG(10)    bringt das Ergebnis  2.302585
+
+Nachbemerkung: In einigen Computern wird der e-Logarithmus
+     nicht mit LOG, sondern mit LN angegeben; in diesem Falle
+     wird also LOG für den 10-Logarithmus gebraucht. Das
+     Übersetzungsprogramm sorgt in diesen Fällen für eine
+     richtige Übersetzung.
+
+                                - 38 -
+
+MIDS Holt eine Anzahl von Zeichen aus einem 'string'.
+     MIDS(AS, X, Y) gibt Y Zeichen von AS zu beginnen mit dem
+     X-ten Zeichen (das erste Zeichen hat die Nummer 1, X=0
+     oder Y=0 ist nicht erlaubt).
+
+Beispiele:
+
+AS = BASICODE IST HüBSCH: BS = MIDS (AS,10,2)
+BS enthält nun IS
+Nachbemerkung: Nicht erlaubt ist der Auftrag 
+               AS=MIDS (CS,5)
+
+NEXT Abschließende Aufbringung einer Wiederholungsschleife
+     (vgl. auch FOR). Nach NEXT muß immer die dazugehörige
+     Variable stehen.
+Beispiele: vgl. FOR...
+
+NOT Logische Verneinung, nur anwendbar auf logische Variable
+     (vgl. auch AND).
+Beispiele:
+A=5; B=NOT(A=6)     nach Ablauf ist B= 'wahr'
+A=(5=5): B = NOT A  nach Ablauf ist B = 'unwahr'
+
+ON   ON ... GOSUB ... oder
+     ON ... GOTO ...
+     Machen Sie einen Sprung zu einer Subroutine oder zu einer
+     Programmzeile. Nach ON folgt ein Ausdruck oder eine
+     Variable, nach GOSUB oder GOTO eine Reihe von Zeilenzahlen,
+     untereinander durch Kommas getrennt. Der Wert der Variablen
+     oder des Ausdrucks muß eine ganze Zahl sein und bestimmt,
+     welche Zeilennummer gewählt wird. Dazu können Sie sich die
+     Zeilenzahlen nummeriert denken: Wenn die Variable 1 ist,
+     wird die erste Zeilenzahl  gewählt, wenn die Variable
+
+                                - 39 -
+
+     2 ist, die zweite Zeilenahl usw. Die Variable darf nicht
+     grösser werden können als die Zahl der angegebenen
+     Zeilennummern.
+Beispiel:
+ON K GOTO 100,3400,1500         K muss nun 1, 2, oder 3 sein!
+ON K-5 GOSUB 6000, 7000, 3000   K muss nun 6, 7, oder 8 sein!
+
+OR  Logischer OR, darf nur verwendet werden, bei logischen
+     Variablen (vgl. auch AND).
+Beispiele:
+IF (A=5) OR (B=3) THEN ...
+C = (A=5) OR (B 3): IF C THEN ...
+Nachbemerkung: Ebenso wie bei AND ist die Verwendung von
+     Klammern obligatorisch.
+
+PRINT Druckt eine Variable oder 'string' auf dem Schirm ab.
+     Verschiedene Variable in einem PRINT-Auftrag müssen
+     getrennt weden durch ein Semikolon. Wenn kein
+     automatischer Übergang zur nächsten Zeile gewünscht wird,
+     muß am Ende des Auftrages ein Semikolon stehen. Bei einigen
+     Computern werden beim Drucken einer Zahl ein Zwischenraum
+     oder mehrere Zwischenräume vor und/oder nach den Zahlen   
+     gedruckt. Wenn Sie das nicht möchten, können Sie die
+     Subroutine auf Zeile 300 oder Zeile 310 verwenden.
+
+Beispiele:
+Vgl. Or. S. 40, Mitte
+
+READ  Liest die Angaben in den DATA-Aufträgen und erkennt
+      sie der/den Variablen nach READ zu. Mehrere Variable nach einem
+      READ müssen durch ein Komma getrennt werden. Nach dem 
+      Starten eines Programms
+                                - 40 -
+
+     beginnt das Lesen beim DATA-Auftrag mit der niedrigsten
+     Zeilenzahl, bis alle Angaben auf dieser Zeile gelesen
+     sind. Danach ist die nächste DATA-Zeile an der Reihe. Man
+     beachte: Eine numerische Variable muß Zahlen lesen, eine
+     'string'- Variable muß 'strings' lesen!
+
+Beispiele:
+DATA 1, "COMPUTER" , 3
+READ A: READ AS: READ B  oder
+READ A, AS: READ B       oder
+READ A, AS, B
+
+REM  Mit diesem Auftrag können Sie einen Kommentar in ein
+     Programm bringen, um es für andere verständlicher zu
+     machen. Alles, was nach REM steht bis zum Ende der Zeile,
+wird von BASIC übersprungen. Es darf in der Zeile kein
+Doppelpunkt vorkommen. Das bringt mitunter Probleme mit sich.
+
+RESORE Lassen Sie das READ-Kommando wieder von der ersten DATA
+     Zeile an im Programm lesen. Beachten Sie: Nach RESORE darf
+     keine Zeilenzahl sehen!
+
+RETURN Gibt das Ende einer Subroutine an. Nach diesem Auftrag
+     geht die Ausführung des Programms weiter bem ersten Auftrag ,
+     der dem dazugehörigen GOSUB folgt. Eine Subroutine muß
+     immer mit RETURN abgeschlossen werden!
+
+RHIGS Gibt eine Anzahl von Zeichen eines bestimmten 'string',
+     der beim letzten Zeichen endet. Die Mindestzahl der
+     geforderten Zeichen muß 1 sein, die Höchstzahl die Länge
+     des 'string'. 
+                                - 41-
+
+Beispiele:
+AS = BASICODE: BS=RIGHTS (AS, 4)  nach Ablauf ist BS = "CODE"
+Man beachte: AS = Protokoll: A = 0: BS=RIGHTS (AS,A) ist nicht
+erlaubt, weil A = 0
+
+SIN  Bestimmt den Sinus eines in Radialen angegebenen Winkels.
+     Man vergleiche des weiteren bei COS.
+
+SGN  Gibt -1, wenn die Variable (oder der Ausdruck) negativ ist,
+     0, wenn die Variable gleich 0 ist und +1, wenn die Variable
+     positiv ist.
+Beispiele:
+A=5: B=SGN(A)      nach Ablauf ist B = 1
+A=- 001: B=SGN(A)  nach Ablauf ist B = - 1
+
+SQR  Bestimmt die Wurzel einer Variablen oder eines Ausdrucks,
+     die nicht negativ sein dürfen.
+
+Beispiel:
+A=SQR(2*32)     Nach Ablauf ist A = 8
+
+STEP bestimmt die Schrittgröße in elner Wiederolungsschleife.
+     Vgl FOR ...
+TAB  Wird in den Print-Aufträgen verwendet, um den Cursor auf
+     eine bestimmte Stelle auf der Zeile zu setzen. Der Cursor
+     kann weiter in die Zeile gesetzt werden, und in
+     Abhängigkeit vom Computer werden Zwischenräume gedruckt,
+     oder es bleibt stehen, was schon auf der Zeile stand.
+     TAB (0) ist nicht gestattet. Die meisten Computer
+     beginnen bei 0 zu zählen. Es gibt jedoch auch Computer,
+     die bei 1 zu zählen beginnen. Daher ist es besser, die
+     Subroutine auf Zeile 110 zu verwenden!
+
+Beispiel:
+PRINT "A"; TAB (5); "B"; TAB (10); "C"
+
+folgt Seite 42
+

@@ -1,0 +1,41 @@
+36-Neuerervorschlag zum Betrieb der 256K-RAM-Floppy am Z 1013-
+
+
+Der Z 1013 verfügt im Originalzustand über keine physischen
+Floppy-Laufwerke. Aus diesem Grund war es nicht möglich, auf
+diesem Rechner ein standardisiertes Betriebssystem zu implemen-
+tieren und die dafür vorhandene kommerzielle Software zu nutzen.
+Durch den Einsatz einer RAM-Floppy können physische Laufwerke
+simuliert werden, die den Einsatz hochwertiger Software ermögli-
+chen. Daraus ergibt sich eine vervielfachte Effektivität in der
+Arbeit mit diesem Rechner.
+Um einen Betrieb der RAM-Floppy nach Heft 3/88 der "Mikroprozes-
+sortechnik" an einem Z 1013 zu ermöglichen, wurde eine Lösung
+erarbeitet, die eine einfache Einbindung in die Original-Hard-
+ware des Rechners ermöglicht. Sie ist von jedem halbwegs kundi-
+gen Amateur realisierbar.
+Mit dieser RAM-Floppy-Karte kann der Z 1013 zu einem Leistungs-
+fähigen Personalcomputer ausgebaut werden, der es ermöglicht,
+kommerzielle CP/M-Software mit einer überdurchschnittlichen Ef-
+fektivität zu nutzen.
+Weiterhin ist diese RAM-Floppy auch ohne die Verwendung eines
+CP/M-Betriebssystems nutzbar, indem auch dafür eine entsprechende
+Einbindung erarbeitet wurde.
+Mit einem besonderen Test-Algorithmus, der zum Teil sogar defekte
+Bauelemente im Klartext ermittelt, ist die Inbetriebnahme der
+RF-Karte am Z 1013 erleichtert worden.
+Die Neuererlösung umfaßt eine 10-seitige Dokumentation mit Hin-
+weisen zu Änderungen am Z 1013 und zur Inbetriebnahme der RAM-
+Floppy an diesem Rechner. Weiterhin enthält sie die Lösung zur
+Nutzung der RAM-Floppy-Karte am Z 1013 ohne CP/M-Betriebssystem.
+Der Arbeitszeitaufwand für die Erarbeitung der Lösung betrug et-
+wa 110 Stunden.
+
+
+                     Einreicher :    Dipl.-Ing. Rainer Brosig
+                                     W.-Florin-Str. 2c
+                                     Coswig, 8270
+                        Dienstl.:    Informatikzentrum Dresden
+                                     Momsenstr. 13 
+                                     Tel. 4575240 Mo+Do 9-12
+

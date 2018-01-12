@@ -1,0 +1,3 @@
+<kurz src="BASICODE-3 Seite 9-16"/>
+<lang><include src="T.BASICODE 9-16.txt"/></lang>
+<requires></requires>

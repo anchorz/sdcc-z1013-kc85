@@ -1,0 +1,404 @@
+6                             -10-
+
+a.Wir verwenden nur die BASIC-Aufträge,die alle
+  Computer kennen und auf die gleiche Weise ausfüh-
+  ren.Die Aufträge werden in Paragraph 4.6 einge-
+  hend beschrieben.
+
+b.Wir reservieren die Zeilennummern bis Zeile 1000
+  für Subroutinen, die bestimmte wichtige Aufgaben 
+  erfüllen, die aufgrund von Regel a nicht program-
+  mierbar sind. Die Arbeitsweise dieser Subroutinen
+  wird in Paragraph 4.3 festgelegt. So wischt die 
+  mit GOSUB 100 angerufene Subroutine den Bildschirm,
+  setzt die Subroutine auf Zeile 110 den Cursor auf
+  eine bestimmte Stelle am Schirm usw. Da diese Rou-
+  tinen für jeden Computer-Typ anders sind, werden
+  sie nicht zusammen mit dem BASICODE-Programm auf
+  die Kassette geschrieben. Es ist die Aufgabe des
+  Übersetzungsprogramms, diese Routinen hinzuzufü-
+  gen und so das Programm zu vervollständigen.
+
+c.Die Abmessungen des Bildschirmes sind so ziemlich
+  bei jeder Computer-Marke und bei jedem Computer-
+  Typ unterschiedlich. Die Zahl der Zeilen zwi-
+  schen 16 (TRS-80) und 32 oder mehr, und die Zahl 
+  der Zeichen je Zeile beträgt in einem VIC-20 nur
+  22 und in vielen anderen Computern 40, 80 oder mit-
+  unter noch mehr. So unterscheiden sich auch die 
+  graphischen Möglichkeiten stark voneinander, von
+  grober Blockgraphik mit nur 80 Blöckchen je Zeile
+  bis zu einer wirklich hohen Lösung mit 300 oder
+  mehr Bildpunkten je Zeile. Ein gutes BASICODE-Pro-
+  gramm berücksichtigt derartige Unterschiede. Beim
+
+
+
+
+
+                             -11-
+
+  Start eines BASICODE-3-Programms steht daher in 
+  der Variablen HO, wieviel Zeichen je Zeile mög-
+  lich sind, und in der Variablen VE, wieviel Zei-
+  len auf den Schirm dürfen (eigentlich steht in
+  beiden Variablen 1 weniger als soeben beschrie-
+  ben; wir kommen darauf noch zurück). Ebenso wird
+  in den Variablen HG und VG angegeben, wieviel gra-
+  phische Punkte dort horizontal bzw. vertikal in
+  dem jeweiligen Computer möglich sind. In Bezug
+  auf Einzelangaben hierüber wird auf Anhang 1 ver-
+  wiesen.
+  Als vernünftigen Durchschnitt darf man einen Bild-
+  schirm von 24 Zeilen mit jeweils 40 Zeichen und
+  eine grafische Lösung von 180 Linien mit jeweils
+  250 Bildpunkten betrachten. Ein wirklich gutes BA-
+  SICODE-Programm sorgt für eine Schirmeinteilung,
+  die übereinstimmt mit den Möglichkeiten des Com-
+  puters, in dem es arbeitet.
+  Man vermeide so viel wie nur möglich das Printen/
+  Drucken von Zeichen auf die letzte Position einer
+  Schirmzeile. Nicht alle Computer reagieren auf die 
+  gleiche Weise.
+
+d.Jede Programmzeile darf einschließlich der Zeilen-
+  nummer und der Zwischenräume höchstens 60 Zeichen
+  lang sein.
+
+e.Programme, die sich eines Printers bedienen, müs-
+  sen mit einem Printer mit einer Zeilenlänge von 80 
+  rechnen. Die Nutzung des Printers muß mithin so er-
+  folgen, daß nie mehr als 80 Zeichen auf die gleiche
+  Zeile gedruckt werden.
+
+
+
+
+
+
+                             -12-
+
+f.Der Aufbau des Programms.
+
+  Wenn das BASICODE-Programm erst einmal vollstän-
+  dig mit Subroutinen im Gedächtnis steht, ist der
+  Aufbau des Programms folgendermaßen:
+
+
+
+  Das Programm beginnt und endet immer in dieser
+  Reihenfolge. Zeile 10 ist nur dazu bestimmt, über
+  die Standard-Subroutinen hinwegzuspringen. Zeile    
+  1000 gibt an, wieviel 'stringbytes' das Programm    
+  benötigt. Zeile 20 reserviert den benötigten Raum   
+  in Computern, wo das erforderlich ist, bringt den
+  Computer in den BASICODE-Stand, setzt den Schirm
+  in die richtige Farbe und regelt noch das eine und
+  das andere, das geregelt werden muß. Dannach wird
+  auf Zeile 1010 übergesprungen, für das eigentli-
+  che BASICODE-Programm. Wenn das abgelaufen ist,
+  springt es auf Zeile 950, wo der Computer wieder
+  in den normalen Betriebsstand, in die normale Far-
+  be und dergleichen zurückgebracht wird.
+
+
+4.3 Die BASICODE-3-Standardroutinen
+-----------------------------------
+In diesem Paragraphen werden die Standard-Subrouti-
+nen beschrieben so wie diese auf den Zeilen mit Zah-
+len unter 1000 zu finden sind. Diese Subroutinen sind
+für jeden Computer gesondert geschrieben, so daß sie
+für jedes BASIC anders aussehen. Sie tun jedoch in
+allen Computern genau das gleiche !
+
+GOTO 20 (Programm-Anlauf)
+Dieser Auftrag (also eigentlich noch keine
+Subroutine!)
+
+
+
+
+
+
+
+
+
+                             -13-
+
+darf und muß allein in Zeile 1000 stehen. Hiermit
+wird der Computer in den BASICODE-Zustand gebract,
+wird der Schirm gesäubert, wird die nötige Raummenge
+für 'strings' reserviert, werden alle Variablen ge-
+löscht, werden die Variablen HO und VE mit den Ma-
+ßen des Textschirmes versehen und werden in HG und
+VG die Maße des graphischen Schirmes gesetzt. Dannach
+wird auf Zeile 1010 im Programm übergesprungen. Zei-
+le 1010 ist eigentlich die erste Zeile des Programms.
+Die Werte, die in HO und VE gesetzt werden, sind bei-
+de um 1 niedriger als die Zahl der Zeichen je Zeile
+bzw. die Zahl der Textzeilen, die möglich ist. In
+einem Computer mit 40 Zeichen je Zeile wird somit in
+HO der Wert 39 stehen. In HG und VG wrd angegeben,
+wieviel Bildpunkte dort im graphischen Betrieb in
+horizontaler und vertikaler Richtung gezeigt werden
+können. Die Bedeutung dessen wird bei der Besprechung
+der graphischen Subroutinen klar werden.
+
+GOSUB 110 (Cursor nach HO,VE)
+
+Die Subroutine setzt den Cursor in der Position HO,
+VE auf den Schirm. HO ist die Position auf der Zeile;
+dabei stimmt der Wert 0 mit der am meisten links lie-
+genden Position überein. VE ist die Zahl der Schirm-
+zeile; die oberste Schirmzeile ist Zeile 0.
+In vielen Computern ist der Schirm 40 Zeichen lang
+und 24 Zeilen hoch. In diesen Fällen darf HO nicht
+größer sein als 39 und VE nicht größer als 23.
+Die Variablen HO und VE verändern sich wertmäßig 
+nicht durch Aufruf dieser Subroutinen. Ein schlaues
+
+
+
+
+
+
+
+
+
+
+                             -14-
+
+Programm bedient sich bei der Bestimmung der Schirm-
+positionen der Werte, die beim Start (nach GOTO 20)
+in HO und VE gesetzt werden.
+
+
+GOSUB 120 (Cursor-Position in HO und VE)
+
+Man gebe die Position an, in der der Cursor auf dem
+Schirm steht, und setze diese in die Variablen HO
+und VE. Wenn somit nach dem Ablauf HO=0 ist, so
+steht der Cursor auf der linkesten Position auf ei-
+ner Zeile, und wenn VE=0 ist, so steht der Cursor
+in der obersten Zeile des Schirms. Zusammen mit der
+vorigen Subroutine können Sie beispielsweise den Cur-
+sor eine Zeile oder mehrere Zeilen höher oder tiefer
+setzen:
+
+
+GOSUB 150 (man drucke auffallend)
+
+Man drucke den Inhalt von 'string' SRS auf eine auf-
+fallende Weise auf den Schirm. In vielen Computern
+wird das dadurch verwirklicht, daß man den Text von
+SRS im 'reverse-field' wiedergibt. Vor und nach den
+Zeichen von SRS werden auf dem Schirm drei Zwischen-
+räume gedruckt; einige davon können ebenfalls auf ei-
+ne auffällige Weise wiedergegeben werden. Insgesamt
+werden somit sechs Zeichen mehr gedruckt als es der
+Länge von SRS entspricht. Das Ganze darf nicht auf
+die folgende Schirmzeile 'überlaufen'. Ein Beispiel:
+
+Nach Zeile 2200 wird der Text KOPF DES PROGRAMMS auf
+eine auffällige Weise in der Mitte der obersten Schirm-
+       
+
+
+
+
+
+
+
+
+
+
+                             -15-
+
+zeile zu lesen sein. Warnung: Man benutze diese Sub-
+routine mit Maßen ! Wenn  a l l e s  auffällig ist,
+fällt gerade gar nichts mehr auf !
+
+
+
+GOSUB 200 (man sehe auf das Tastenbrett)
+
+Man sehe nach, ob eine Taste eingedrückt ist. Wenn
+ja, so setze man den 'string'-Wert dieser Taste in 
+die Variable INS. Wenn nicht, setze man in INS einen
+leeren 'string'. Gleichzeitig wird in der Vari-
+ablen IN der 'wirkliche' ASCII-Wert der (eventuell)
+eingedrückten Taste angegeben. Damit ist gemeint:
+eine Zahl entsprechend der Tabelle in Anhang 4, das
+heißt somit in normalen Fällen mindestens 32 und
+höchstens 95. Ungeachtet dessen, ob ein Klein- oder
+ein Großbuchstabe eingedrückt ist, beispielsweise 
+A oder a, wird in beiden Fällen der Code 65 abge-
+geben. Ziffer-/Zahlentasten geben Codes von 48 bis
+einschließlich 57. Wenn keine Taste eingedrückt ist,
+wird in IN der Wert 0 stehen.
+Grundsätzlich können alle Tastenanschläge in INS 
+stehen, also auch Kontrollzeichen wie RETURN oder 
+ein Druck auf eine andere Steuerungstaste .Man ach-
+te jedoch auf folgendes: Die Kontrollzeichen haben
+bestimmt nicht bei allen Computern den gleichen
+Zahlenwert oder 'string'-Wert. Man gebrauche diese
+also lieber nicht in einem Programm. Ausnahmen sind
+dabei die folgenden:
+Die RETURN- (oder ENTER-, NEW LINE- usw.) Tasten ha-
+ben bei allen Computern den Code 13; wenn also diese
+Taste eingedrückt ist, wird in IN=13 und INS=CHR$(13).
+
+
+
+
+
+
+
+
+
+
+                             -16-
+
+Des weiteren wird beim Berühren bestimmter Steuerungs-
+tasten garantiert der folgende Code in IN (als Zahl)
+abgegeben (somit auch, wenn der Computer von Natur aus
+bei dieser Taste einen anderen Code abgeben müßte):
+
+Cursor links         : 28 (dezimal)
+Cursor rechts        : 29
+Cursor nach unten    : 30
+Cursor nach oben     : 31
+wis/Delete           : 127
+
+Nachbemerkung 1: Nach Ablauf dieser Routine kann sich
+in Abhängigkeit vom Computer-Typ ASC(INS) von dem Wert
+in IN unterscheiden, und ebenso kann sich CHR$(IN) von
+INS unterscheiden. Dieser mögliche Unterschied kann
+grundsätzlich bei allen Zeichen auftreten.
+
+Nachbemerkung 2: Wenn eine Cursor- oder Delete-Taste
+eingedrückt war, ist der Wert in INS in Wirklichkeit
+unbestimmt. Testen auf INS oder ein Auftrag als PRINT
+INS ist dann nicht sinnvoll.
+
+
+GOSUB 210 (man warte auf Tastendruck)
+
+Man warte bis eine Taste eingedrückt ist und setze den
+'string'-Wert dieser Taste in die Variable INS und den
+Code in die Variable IN. Der Unterschied zur vorigen
+Routine besteht darin, daß diese Subroutine wartet,
+bis eine Taste eingedrückt wird, währnd die vorige
+eben nur danach schaute,ob in diesem Augenblick
+zufällig eine Taste eingedrückt war.
+Auch bei dieser Subroutine wird auf die gleiche Weise
+an die  Variable  IN  der  wirkliche  ASCII-Wert abge-
+
+
+
+
+
+
+
+
+
+
+
+                             -17-
+
+geben. Siehe dafür die oben bei Subroutine 200 gege-
+bene nähere Erläuterung.
+
+GOSUB 220 (man lese vom Textschirm)
+
+Diese Subroutine liefert in IN den Code des Zeichens,
+das in der Position HO,VE auf dem Schirm sichtbar ist.
+Wenn HO,VE sich außerhalb des Schirms befinden,
+liefert die Subroutine als Ergebnis IN=0. Im anderen
+Fall erfüllt der Wert in IN die bei der Subroutine 200
+genannte Regel, daß der Wert in IN immer mindestens 32
+beträgt und höchstens 95 (vorbehaltlich der
+eingedrückten Steuerungstatste). Wenn also auf dem
+Schirm ein Kleinbuchstabe a sichtbar ist, dann wird in
+IN der Wert 65 (von 'A') geliefert. Der Wert von INS
+wird durch diese Subroutine nicht geändert.
+
+GOSUB 250 (Aufmerksamkeitssignal)
+
+Diese Subroutine bringt einen kleinen Pfiff hervor,
+um den Nutzer ein Aufmerksamkeitssignal zu geben. Die
+Tonhöhe und Dauer sind nicht genau festgelegt, so daß
+die Routine sich nicht für das Musikmachen eignet. Man
+gebrauche diese Subroutine vernünftig. Viele Nutzer
+des Programms erbosen sich durch zuvieles Pfeifen eher
+als das sie besonders aufmerksam werden.
+
+GOSUB 260 (man gebe eine Random-Zahl)
+
+Diese Subroutine gibt eine willkürlice Zahl in der
+Variablen RV. Diese Zahl ist immer kleiner als 1 und
+beträgt mindestens 0. So etwas ist nützlich in
+statistischen Programmen und bei Spielen.
+
+GOSUB 270 (man melde freien Raum)
+
+Diese Subroutine säubert den Variablenraum und be-
+
+
+
+
+
+
+
+
+
+
+
+
+                             -18-
+
+stimmt,wieviel Gedächtnisraum noch frei ist (die
+Variablen werden nicht ausgelöscht !). Die Anzahl noch
+freier 'bytes' wird in der Variablen FR aufgestellt.
+Programme, die viel Gedächtnisraum benötigen, können
+auf dem Wege über diese Subroutine erfahren, ob der
+benötigte Raum verfügbar ist. Beispiel:
+
+Bei der Annahme, daß für jede Zahl sechs Gedächtnis-
+plätze benötigt werden, dimensioniert man auf diese
+Weise eine möglichst große quadratische Matrix, wobei
+für andere Zwecke noch mindestens 500 'bytes'
+Gedächtnisraum reserviert bleiben.
+
+GOSUB 280 (STOP-Taste schalten)
+
+Wenn beim Anrufen dieser Subroutine der Wert in FR
+gleich 1 ist, wird die Stoptaste ausgeschaltet. Wenn
+FR=0 ist, so wird diese Taste wieder in den normalen
+Betriebszustand gebraucht. Das ist insbesondere von
+Bedeutung für Programme, die im Unterricht verwendet
+werden und bei denen nicht beabsichtigt ist, daß ein
+Schüler das Programm stillsetzen kann.
+
+GOSUB 300 (Umsetzung in 'string')
+
+Man mache einen 'string' SRS, der den Wert der
+Variablen SR angibt. Der 'string' enthält keine
+Zwischenräume am Anfang oder am Ende der Zahl, und
+zwar im Gegensatz zur BASIC-Funktion STR$(), die das
+bei einigen BASIC-Dialekten eben gerade tut. Die Ver-
+wendung der Funktion STR$() ist in BASICODE-3 nicht
+gestattet.
+
+Ein Beispiel (man achte auf die Zwischenräume in
+              Zeile 5010):
+
+
+
+
+
+
+
+
+
+                                          

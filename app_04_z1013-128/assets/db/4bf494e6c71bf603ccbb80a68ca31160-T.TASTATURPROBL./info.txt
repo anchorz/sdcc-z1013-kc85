@@ -1,0 +1,4 @@
+<kurz src="Tastaturabfrage, Probleme mit Reaktionsgeschwindigkeit"/>
+<lang>Encoding hat Umlaute statt Klammer UND nutzt den IBM Sonderzeichensatz. 
+<include src="T.TASTATURPROBL..txt"/></lang>
+<requires></requires>

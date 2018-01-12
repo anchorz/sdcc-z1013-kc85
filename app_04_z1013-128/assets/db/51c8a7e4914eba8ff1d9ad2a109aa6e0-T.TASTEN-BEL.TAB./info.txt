@@ -1,0 +1,3 @@
+<kurz src="Tastaturcodetabelle Brosig Monitor"/>
+<lang><include src="T.TASTEN-BEL.TAB..txt"/></lang>
+<requires></requires>

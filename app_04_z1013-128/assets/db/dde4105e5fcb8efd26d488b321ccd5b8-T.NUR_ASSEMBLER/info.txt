@@ -1,0 +1,3 @@
+<kurz src="Nur Assembler kann alles, ct 1/89"/>
+<lang><include src="T.NUR ASSEMBLER.txt"/></lang>
+<requires></requires>

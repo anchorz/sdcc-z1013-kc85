@@ -1,0 +1,302 @@
+                            - 52 -
+RESTORE verwenden.
+Ein BASICODE-3-Programm kann mit der STOP-Taste abge-
+brochen werden. Es ist dann zu empfehlen, sofort das
+Kommando GOTO950 einzutippen, um auf diese Weise den
+Computer in den normalen Zustand zu schalten. Wenn das
+Programm die STOP-Taste ausgeschaltet hat (Subroutine
+280), wird in den meisten Fällen auch STOP+RESTORE
+nicht arbeiten, und das Abbrechen ist dann nur mög-
+lich durch das Ausschalten des Computers.
+Im C-64 ist das Lesen und Schreiben von Beständen auf
+Kassette oder Diskette (anders als im BASICODE-Format,
+also mit NF=2 oder grösser) nicht ganz gemäß dem Pro-
+tokoll ausgeführt. In allen Fällen wird nämlich IN =
+0 abgeliefert. Der Urheber/Verfasser des Üebersetzungs-
+programms nimmt gern Vorschläge zur Verbesserung der
+jeweiligen Subroutinen entgegen.
+Die BASICODE-3-Subroutinen enthalten viel SYS-Aufträ-
+ge nach Programmen in Maschinensprache im abgeschirm-
+ten Gedächtnisbereich. Ein BASICODE-Programm wird al-
+so nur arbeiten können, wenn in diesem Gedächnisbe-
+reich die jeweilige Programmierung vor-
+handen ist. Man bringe somit erst den Computer in den
+BASICODE-Zustand, bevor man ein BASICODE-Programm ver-
+wendet. Man lese also erst das Übersetzungsprogramm
+ein und lasse dieses laufen, bevor man ein BASICODE-
+3-Programm aufnimmt und startet.das ist vor allem
+von Bedeutung, wenn man eingelesene BASICODE-Program-
+me auf eigener Diskette speichert und sie später wie-
+der von der Scheibe/Platte aus wieder einliest.
+                            - 53 -
+Or. S. 78 - 81
+--------------
+SINCLAIR ZX-SPECTRUM
+--------------------
+Einlesen
+--------
+Man lese das Übersetzungsprogramm ein mit LOAD "".
+Das Übersetzungsprogramm besteht aus zwei Teilen,
+die nacheinander eingelesen werden: die BASIC-Sub-
+routinen und das eigentliche Übersetzungsprogramm.
+
+Sobald das Ganze eingelesen ist, startet das Pro-
+gramm von selbst und präsentiert sich. Danach gelan-
+gen Sie zu BASIC. Das Programm ist jetzt fertig zum
+Gebrauch.
+
+Arbeitsweise und Wahlmöglichkeiten
+----------------------------------
+Die verschiedenen Teile des Übersetzungsprogramms
+werden akttiviert duch das Eintippen eines Stern-
+chens '*', dem ein Buchstabe folgt:
+*L : Lesen Sie ein BASICODE-Programm ein.
+*T : Übersetzen Sie das eingelesene Programm in
+     Spectrum-BASIC.
+*C : Verwandeln Sie ein Programm in Spectrum-BASIC
+     zu BASICODE.
+*W : Schreiben Sie das umgewandelte Programm in
+     BASICODE um.
+*K : 'LIST' das übersetzte Programm.
+*S : 'SAVE' das übersetzte Programm in Spectrum-Format.
+*B : 'Backup' des Übersetzungsprogramms.
+Sie dürfen sowohl Großbuchstaben als auch Kleinbuch-
+staben eintippen. Wenn Sie nur ein Sternchen oder ein 
+nicht bestehendes Kommando eingeben, wird ein Menue mit
+                            - 54 -
+den obenstehenden Kommandos gezeigt. Sie können dann
+die gewünschte Wahl treffen, inddem Sie auf die jewei-
+lige Buchstabentaste drücken.
+*L
+Hiermit lesen Sie ein BASICODE-Programm ein. Setzen
+Sie den Recorder auf den Anfangston der Aufnahme und
+stellen Sie ihn auf das übliche Niveau ein. Sobald
+das Einleseprogramm den Anfangston gefunden hat, er-
+scheinen Streifen auf dem Schirmrand. Wenn das wirk-
+liche Programm eingegeben wird, sehen Sie die Pro-
+grammzeilen unten auf dem Schirm vorbeihuschen.
+Solange das Einleseprogramm keinen BASICODE-Anfangs-
+ton liest, wird der Schirmrand regelmaessig zwischen
+Rot und Zyan flackern.
+Das Einlesen hört auf, wenn Sie auf die Zwischenraum-
+leiste drücken oder wenn das Gedächtnis voll ist oder
+wenn das Ende des BASICODE-Programms erreicht ist.
+Wenn das Einlesen erfolgreich verlaufen ist, macht
+das Programm sofort weiter mit dem Übersetzen (der
+nächste Schritt), sonst bekommen Sie eine Fehlermel-
+dung 'BREAK into program', 'Out of memory' oder 'Ta-
+pe loading error'. Sie können dann eventuell dennoch
+übersetzen, indem Sie die *T-Option wählen.
+
+*T
+Diese Option wird normalerweise nach dem fehlerlosen
+Einladen automatisch ausgeführt. Das in den freien Ge-
+dächtnisbereich eingelesene BASICODE-Programm wird um-
+gesetzt in ein Programm in Spectrum-BASIC. Jede über-
+setzte Programmzeile wird auf dem Schirm gezeigt.
+
+                            - 55 -
+*C
+Das ist das entgegengesetzte der Option *T: Das im
+Spectrum vorhandene BASIC-Programm wird ab Zeile 1000
+zu einem BASICODE-Programm im freien Gedächtnisbereich
+umgesetzt.
+Zuallererst sieht sich das Übersetzungsprogramm um,
+ob Sie keine verbotenen Auftraege verwendet haben, wie
+beispielsweise POKE, oder PLOT, und ob alle Funk-
+tionen gefolgt werden durch ein Argument zwischen Klam-
+mern (also nicht SIN X und TAB 10, sondern SIN (X) und
+TAB (10). Sollte dennoch solch ein Fehler in Ihrem Pro-
+gramm sitzen, so bekommen Sie die Meldung 'ERROR', der
+die Zeile folgt, in der der Fehler steckt, mit einem
+Fragezeichen hinter dem falschen Wort. Sie können dann
+diese Zeile verbessern und die *C-Option aufs neue be-
+ginnen.
+Wenn das Programm keinen der oben genannten Fehler ent-
+hält, so wird automatisch weitergemacht mit dem eigent-
+lichen Übersetzen. Es ist hierbei möglich, daß Ssie ei-
+ne Meldung ' Line too long at line', gefolgt von der
+Zeilennummer, bekommen. Da ist dann eine Zeile entstan-
+den, die länger ist als die zugelassenen 60 Zeichen.
+Das Umsetzen wird hierdurch NICHT aufhören. Wenn das
+Gedächtnis zu klein ist fuer das unübersetzte und über-
+setzte Programm gleichzeitig, bekommen Sie nach dem
+Umsetzen die Meldung 'BASIC PROGRAM OVERWRITTEN'; soll-
+te das Gedächtnis auch zu klein sein fuer das äbersetz-
+te Programm allein, so folgt die Fehlermeldung 'OUT
+OF MEMORY'. In beiden Fällen sind Sie dann das ursprüng-
+liche Programm los!
+                            - 56 -
+
+*W
+Hiermit schreiben Sie das auf obige Weise umgesetz-
+te Programm in BASICODE-Format in die Kassette. Sie
+können das so viele Male machen wie Sie wollen. Das
+in die Kassette weggeschriebene Signal wird auf dem
+Schirmrand gezeigt wie beim Einlesen. Sie können das
+unterbrechen mit der Zwischenraumleiste.
+
+*K
+Diese ist die List-Option (Wink: Das LIST-Schlüssel-
+wort sitzt auf der K-Taste). Ein Programm, das in BA-
+SICODE-Form (unmittelbar nach dem Einlesen oder vor
+dem Wegschreiben) im Gedächtnis sitzt, können Sie nor-
+malerweise nicht LISTen, und daher diese Option. Sie
+können hiermit auch beurteilen, was nach einem Einlese-
+fehler hineingekommen ist.
+
+*S und *B
+Mit der '*S'-Option können Sie das übersetzte BASICO-
+de-Programm SAVEn in einem gewöhnlichen Spectrum-For-
+mat, so daß Sie es später direkt einladen können. Mit
+'*B' machen Sie ein 'backup' des Übersetzungsprogramms.
+Sie haben bei diesen Optionen die Wahl zwischen Kas-
+sette und Microdrive (sofern angeschlossen).
+Anmerkung: Diese Optionen laufen über die BASIC-Zei-
+len 960 bzw. 980, so daß Sie eventuell an Ihr ei-
+genes Speicherungssystem anpassen können.
+
+Arbeiten mit BASICODE-3-Beständen
+---------------------------------
+Die Bestandsroutinen arbeiten fuer NF=0 und NF=1 mit
+BASICODE-Beständen gemäß dem Protokoll. Soll ein Da-
+tenblock nach 'tape' abgeschrieben werden, so erscheint
+                            - 57 -
+auf der untersten Schirmzeile die Meldung 'PRESS
+<PLAY> & <REC> THEN ANY KEY' und wartet Spectrum auf einen
+Tastendruck, bevor die Daten weggeschrie-
+ben werden. Beim Eeinlesen bekommen Sie die Meldung
+'START TAPE ...' Wenn ein Block eingelesen wird, der
+neben dem erwarteten Block liegt, so erscheint die
+Meldung 'WRONG RECORD - REWIND TTAPE' auf dem Schirm.
+
+Wenn beim Einlesen eines Blocks ein Lesefehler ent-
+deckt wird, kann einmal oder mehrmals die Meldung
+LOAD ERROR - REWIND TAPE auf dem Schirm erscheinen.
+Man spule in einem solchen Fall das Band ein Stueck-
+chen zurueck, so daß der fehlerhaft gelesene Block
+erneut gelesen werden kann.
+Für die übrigen Werte von NF wird Microdrive als
+Speicherungsmedium verwendet.
+Arbeiten mit BASICODE-1
+-----------------------
+Es ist mit dem Übersetzungsprogramm möglich, ge-
+mäß dem alten BASICODE-1-Standard alle Programmzei-
+len ab Zeilennummer 2 auf Kassette zu schreiben. Da-
+zu dienen zwei POKE-Aufträge, die eingetippt werden:
+
+POKE 54580,2 und
+POKE 5481,0.
+
+Nach diesen Aufträgen ist das Arbeiten gemäß der
+BASICODE-3-Norm nicht mehr möglich. Man muss das Über-
+setzungsprogramm erneut einlesen.
+
+Inbetriebnahme BASICODE-3
+-------------------------
+Der Textschirm umfasst 24 Zeilen mit 42 Zeichen. Ein
+eventuell angeschlossener ZX-Printer oder damit ver-
+gleichbarer Printer gibt ebenfalls 42 Zeichen je Re-
+gel.
+Der graphische Bildschirm umfaßt 192 Linien mit jeweils
+256 Punkten je Linie (die zwei untersten Schirmzei-
+len machen also auch mit).
+Der graphische Schirm kann 24 Zeilen Text mit 42 Zei-
+chen wiedergeben.
+Das Geräusch umfaßt alle zugelassenen Werte von SP 
+(0 bis 127); es ist jedoch nur ein Volumen möglich
+(bei SV = 0 gibt Subroutine 400 kein Geräusch, bei
+allen anderen Werten allerdings und in der gleichen
+Stärke). Der Ton kann maximal 10 Sekunden dauern
+(SD = 104).
+Sie dürfen NICHT das Copyright-Symbol (Code 127) ver-
+wenden, weil dieser Code in BASICODE-3 fuer die DELE-
+TE-Funktion gebraucht wird. Die Kontroll-Codes der
+42-zeiligen Schirmroutine sind folgendermassen:
+  16 bis einschl. 23 als normal,
+  24, gefolgt von N, stellt die Zahl der Schirmzei-
+      len ein (...24),
+  25 = PRINT Komma.
+  26 = ständig 'scrollen',
+  27 = man warte fuer 'scroll' auf Tastendruck,
+  28 bis einschl. 31 und 127 gemaess BASICODE-3-Stan-
+     dard.
+Besonderheiten
+--------------
+Dieses Übersetzungsprogramm enthält einen speziellen
+BASIC-Dolmetscher, der Spectrum-BASIC mit BASICO-
+DE-3 in Übereinstimmung bringt. Sie dürfen jetzt al-
+                            - 59 -
+so Zeilenzahlen ueber 9999 sowie String-, Array- und
+FOR-NNEXT-Variable namentlich mit maximal zwei Buch-
+staben verwenden. Gleichzeitig brauchen Sie bei 'string-
+arrays' nicht mehr eine Extra-Dimension anzugeben, und
+es ist auch ein Index 0 zulässig.
+Die Ffunktionen LEFT$, MID$ und RIGHT$ sind vorhanden,
+jedoch in der Form von 'user-defined' Funktionen. Sie
+müssen sie somit als FN LEFT$ usw. eintippen.
+Nachbemerkung: Die bei Sinclair gebräuchliche Notie-
+rung A$ (X TO Y) ist NICHT zulässig.
+ON-GOTO und ON-GOSUB sind vorhanden in der Form GOTO/
+GOSUB * V; 2000, 3000, 4000 ... anstelle der gebräuch-
+lichen ON V GOTTO/GOSUB 2000, 3000, 4000 ... (man le-
+se das Sternchen als ON).
+Es ist nun aber wohl ein 'CLEAR, A' erforderlich (vgl.
+Zeile 20), dessen Wert abhängig ist von dem gesamten
+Gedächtnisraum an 'strings', die Sie mit INPUT und
+'string'-Kopplung zusammenstellen. Fuer die meisten
+Programme genügt ein Wert von 100 bis 250. Wenn Sie 
+dieses zu klein wählen, bekommen Sie eine Fehlermel-
+dung 'Out of string space'. Berücksichtigen Sie vor
+allem die obenstehenden Dinge beim Schreiben eines
+BASICODE-3-Programms. Das Umsetzprogramm kann nicht
+alle Fehler aufstöbern!
+Bei Verwendung von 'diskinterfaces' anders als
+die Sinclair Interface1 können Sie Schwierigkeiten 
+bekommen bei Aufträgen, die den Gebrauch der 'inter-
+face' betreffen. Vermeiden Sie hierbei die Verwen-
+dung von Variablen und tippen Sie Zahlen wie VAL
+"getal" ein.
+                            - 60 -
+Nachbemerkung: Zeile 1 darf niemals aus dem Überset-
+zungsprogramm entfernt werden!
+Ohhne diese Zeile ist das Arbeiten mit BASICODE nicht
+zuverlässig.
+ 
+
+                     Jan Bredenbeek
+
+                            - 61 -
+
+Or. S. 104 - 113
+----------------
+
+Anhang 2
+--------
+Der Unterschied zwischen BASICODE-2 und BASICODE-3
+--------------------------------------------------
+Dieser Anhang behandelt die Unterschiede zwischen
+BASICODE-2 und BASICODE-3. Das eine und das andere
+wird speziell fuer diejenigen erwähnt, die mit BASI-
+CODE-2 vertraut sind und in aller Kuerze überschauen
+möchten, was sich an BASICODE-3 verändert hat und
+was ihm hinzugefügt wurde.
+A2.1 Allgemeine Vereinbarungen
+------------------------------
+In BASICODE-2 wurde der Bildschirm definiert als 24
+Zeilen von 40 Zeichen. Die Computer, die mehr oder
+weniger zu bieten hatten, erwiesen sich in einigen
+Programmen als abweichend reagierend. In BA-
+SICODE-3 ist daher das Maß von 24 zu 40 nur als ver-
+nünftiger Durchschnitt erwähnt. Jedes Programm kann
+sich jetzt einfach anpassen an das wirkliche Bild-
+format und zwar dadurch, daß in Zeile 1010 in HO
+und VE die maximal zulässigen Werte fuer die jewei-
+ligen Computer verfügbar sind.
+Neu ist der graphische Bildschirm, der ein eigenes
+Koordinatensystem bekommen hat: (0,0) im linken obe-
+eren Winkel, (1,0) genau neben dem rechten oberen
+Winkel und (0,1) genau unter dem linken unteren Win-
+kel. Des weiteren wurde festgelegt, daß die Höhe des
+graphischen Bildschirms genau 3/4 der Breite beträgt.
+

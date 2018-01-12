@@ -1,0 +1,316 @@
+		    - 19 -	
+5000 SR=VR: GOSUB 300
+5010 PRINT 'Ihr habt jetzt SRS Fragen gehabt'
+
+GOSUB 310 (Zahl formatieren)
+Diese Subroutine macht in SRS einen 'string', der be-
+stimmt wird durch die Variablen CT, CN und SR. SRS
+wird ebebso wie in der vorigen Routine den Wert von
+SR angegeben. Die Gesamtlänge von SRS beträgt nun ge-
+nau CT Zeichen, davon CN Zeichen nach dem Dezimal-
+punkt, besteht SRS aus CT Sternen. Falls erforderlich,
+wird SR korrekt abgerundet. Die Variablen CT, CN und
+SR werden nicht verändert durch Aufruf der Routine.
+Einige Beispiele:  (Or. S. 27 unten)
+
+GOSUB 330 (Großbuchstaben machen)
+Diese Subroutine verwendet alle eventuell in SRS vor-
+handenen Buchstaben in Großbuchstaben. Nach Ablauf
+kann beispielsweise MIDS (SRS, 3.1) wohl 'A', aber
+nie 'a' sein. In Programmen, wo Daten in alphabeti-
+scher Reihenfolge sortiert werden, kann das sehr nütz-
+lich sein.
+GOSUB 350 (Text nach Printer)
+Man drucke SRS auf dem Printer ab, schließe jedoch
+die Zeile noch nicht ab. Sie kÖnnen somit noch mehr
+mittels dieser Routiene auf die gleiche Zeile printen.
+Auf eine andere Weise etwas zum Printer zu schicken,
+ist in BASICODE-3 nicht gestattet.
+Man beachte: Lange nicht jeder hat einen Printer zur
+Verfügung! Man bitte daher im Programm den Nutzer,
+
+
+		    - 20 -
+eine Wahl zu treffen zwischen dem Abdrucken auf dem
+Printer und dem Abdrucken auf dem Schirm.
+GOSUB 360 (Printer für die Zeilenführung)
+Man schließe die Zeile auf dem Printer ab und begin-
+ne eine neue Printerzeile. Wenn auf einem neuen Blatt
+Papier angefangen werden muß, wird es nötig sein, daß
+das Programm selbst behält, wieviele Zeilen schon ge-
+druckt sind, und aufgrund dessen die Subroutine in
+einer richtigen Zahl von Malen aufruft.
+GOSUB 400 (Musik)
+Diese Subroutiene produziert einen Ton. Der gewünsch-
+te Ton wird in drei Variablen angegeben:
+   SP (Sound Pitch) für die Tonhöhe,  0 < = SP < = 127
+   SD (Sound Duration) für die Dauer, 1 < = SD < = 255
+   sv (Sound Volume) für die Stärke,  0 < = SV < =  15
+Die Subroutine wird erst beendet, wenn der Ton abge-
+laufen ist.
+Ein paar Beispiele:
+SV = 0    absolute Stille
+SV = 7    durchschnittliche, normale Stärke
+SV = 15   maximale Stärke
+SD        die Zeitdauer in Einheiten von 100 Milli-
+          sekunden. SD = 10 stimmt somit überein mit
+          einer Dauer von 1 Sekunde.
+SP = 1    der niedrigste Ton, ein abscheuliches Ge-
+          brumm
+SP = 60   das 'zentrale C'
+SP = 69   das 'Standard'-A, meistens etwa 440 Hz
+SP = 127  der höchste Ton, für viele Mensschen unhörbar
+
+		    - 21 -
+Für jeden halben Ton höher oder tiefer ist SP 1 höher
+bzw. tiefer. Jede Oktave umfaßt 12 Töne. Es ist nicht
+sinnvoll, alle möglichen Werte von SP zu verwenden.
+Erstens weil die sehr niedrigen und sehr hohen Werte
+kein angenehmes Geräusch erbringen, und zweitens weil
+nicht jeder Computer in der Lage ist, den vollen Be-
+reich von 127 Tönen hören zu lassen. In bezug auf die-
+ses Letztgenannte sei auch auf Anhang 1 verwiesen.
+GOSUB 450 (abbrechbare Warteroutine)
+Beim Aufrufen dieser Subroutine muß in SD eine Zahl
+stehen, die eine Wartezeit in Einheiten von 100 Mil-
+lisekunden angibt. SD = 10 stimmt somit genau mit ei-
+ner Sekunde überein. Die Subroutine wird automatisch
+verlassen, wenn die angegebene Zeit um ist. In die-
+sem Fall ist beim Verlassen der Routine SD = 0, INS
+= "" und IN = 0.
+Wenn jedoch während der Wartezeit eine Taste einge-
+drückt wird, wird die Routine sofort beendet. In SD
+steht dann noch die übrige Zeit in Einheiten von 100
+Millisekunden, in INS die eingedrückte Taste und in
+IN der Code dieser Taste. Man beachte für die Codes
+in IN die Bemerkungen bei Subroutinne 200.
+Bemerkung: Für eine nicht unterbrechbare Warteroutine
+können Sie GOSUB 400 mit SV=0 benutzen.
+Ein Beispiel: (Or. S. 29, Mitte)
+1 Drücken Sie auf eine Taste ...
+2 Nach 5 Sekunden haben Sie noch immer nichts eingedruckt
+3 Es dauerte SRS Sekunden
+4 ehe Sie die INS eindrucken
+
+		    - 22 -
+GOSSUB 500 (Bestand öffnen)
+Beim Aufrufen dieser Subroutine muß in NFS der Name
+des zu öffnenden Bestandes stehen (maximal 7 Zeichen),
+und in NF ein Code:
+NF = 0 : Öffnen für eine Eingabe von der BASICODE-
+         -Kassette aus
+NF = 1 : Öffnen für die Ausgabe zur BASICODE-Kassette
+NF = 2 : Öffnen für eine Eingabe aus dem eigenen Hin-
+         tergrundgedächtnis
+NF = 3 : Öffnen für die Ausgabe an das eigene Hinter-
+         grundgedächtnis
+NF = 4 : Öffnen für die Eingabe aus der Diskette
+NF = 5 : Öffnen für die Ausgabe aus der Diskette
+NF = 6 : Öffnen für die Eingabe aus der Diskette
+NF = 7 : Öffnen für die Ausgabe in die Diskette.
+Kurzum:
+gerade Zahlen = Eingabe
+ungerade Zahlen = Ausgabe
+Nummer 0 und 1: Kassette in BASICODE-Format (siehe
+                weiter unten); NSF nicht verwendet;
+Nummer 2 und 3: Diskette oder Kassette auf die Art,
+                gemäß der es der Computer normaler-
+                weise selbst tut;
+Nummer 4 und 5: ein zweiter Bestand, der nur möglich
+                ist nach der Diskette;
+Nummer 6 und 7: ein dritter Bestand, auch wieder nur
+                auf Diskette.
+Kassetten, die mit Beständen in BASICODE-Format (NF =
+1) beschrieben sind, können allen BASICODE-Compu-
+
+		    - 23 -
+-tern eingelesen (NF = 0) und verarbeitet werden.
+Auf diese Weise können Computer verschiedener Typen
+somit Daten austauschen.
+Während des Arbeitens dieser Bestandsroutine und
+der folgenden Bestandsroutinen können auf der unter-
+sten Schirmzeile bestimmte Meldungen erscheinen (bei-
+spielsweise: 'Stell den Recorder auf Wiedergabe').
+Diese Meldungen müssen natürlich vom Nutzer befolgt
+werden. Während des Lesens und Schreibens von der
+Kassette wird auf dem Schirm 'unterste Zeile) eini-
+ge Aktivität sichtbar sein. Diese dient als Kontrol-
+le über die Wirkung der Routinen. Nach Ablauf der Rou-
+tine werden diese Meldungen wieder gelöscht. Dabei
+kann somit die unterste Schirmzeile gelöscht werden.
+Diese Zeile wird somit durch ein gutes BASICODE-3-
+Programm nicht genutzt werden.
+Bemerkung: Zur Diskette können somit maximal drei Be-
+stände zugleich geöffnet werden. Es gibt keine Ga-
+rantie (im Gegenteil), daß jeder BASICODE-Computer
+dazu imstande ist.
+GOSUB 540 (Eingabe aus Bestand)
+Bei Aifruf dieser Subroutine steht in NF der Bestands-
+code liefert in INS den ersten 'string' aus dem zuvor
+geöffneten Bestand und zugleich in IN den Wert 0. Wenn
+jedoch in INS der letzte 'string' aus dem Bestand ge-
+liefert wird, wird in IN der Wert 1 abgegeben. Wenn
+die Subroutine aufgerufen wird, wenn der letzte 'string'
+bereits abgeliefert ist, wird INS = "" und IN = 1.
+Wenn die Subroutine einen Fehler entdeckt, beisiels-
+
+		    - 24 -
+-weise einen Lesefehler von der Kassette her, so
+wird IN = -1 gemacht. Wenn keine Antwort in INS mög-
+lich ist, beispielsweise wenn der Bestand nicht geöff-
+net ist, wird INS = "" und IN = -1 abgeliefert.
+GOSUB 560 (Ausgabe zum Bestand)
+Der Inhalt von SRS wird in den Bestand mit Codenummer
+NF geschrieben. In der Variablen IN werden eventueel-
+le Fehler gemeldet: IN=0 wenn alles gut ist, IN = -1
+wenn die erbetene Ausgabe unmöglich ist
+GOSUB 580 (Bestand abschließen)
+Der Bestand mit Code NF wird abgeschlossen. In der
+Variablen IN werden eventuelle Fehler gemeldet: IN = 0
+wenn alles gut ist, IN = -1, wenn die erbetenen Aktion
+unmöglich ist.
+Ein Programmbeispiel für die Bestandsroutinen:
+Or. S. 31
+1 REM offen für Ausgabe
+2 Tippe einen Namen ein
+3 REM-Bestand abschließen
+4 Spule die Kassette zurück dann auf eine
+  Taste
+5 REM offen für Eingabe
+
+GOSUB 600 (graphischer Betrieb und Löschen des Schirms)
+Diese Subroutine schaltet auf graphischen Betrieb um
+und löscht/reinigt den Schirm. Der graphische Cursor
+wird am Punkt 0,0 aufgestellt, was übereistimmt mit 
+dem linken oberen Winkel des graphischen Schirms. Die
+Einteilung des graphischen Schirms ist folgendermaßen:
+
+		    - 25 -
+0,0 ist der Punkt genau links oben auf dem graphi-
+schen Schirm,
+1,0 ist der Punkt genau außerhalb des rechten obe-
+ren Winkels,
+0,1 ist der Punkt genau unter dem linken unteren
+Winkel und
+1,1 liegt schräg unter dem rechten unteren Winkel
+des graphische Schirms.
+Nachbemerkung 1: Im graphischen Betrieb haben der
+übliche PRINT-Auftrag und die Subroutinen 100, 110,
+120, 150, und 220 keine Bedeutung. Diese dürfen nicht
+verwendet werden, bevor mit GOSUB 100 wieder auf den
+textlichen Betrieb zurückgeschaltet worden ist. Be-
+halten Sie das im Auge, wenn Sie mit Beständen ar-
+beiten!
+Nachbemerkung 2: Gemessen auf dem Bildschirm ist der
+Abstand von Punkt (0,0) zum Punkt (0,1) genau 3/4
+(75%) des Abstandes von (0,0) zu (0,1). Der Punkt
+(1/2, 1/2) kommt in die Mitte des Bildschirms.
+GOSUB 620 (Plot und Punkt)
+Diese Subroutine setzt den graphische Cursor auf den
+Punkt Ho, VE und 'plottet' diesen Punkt. Sowohl HO
+als VE müssen mindestens gleich 0 und kleiner
+als 1 sein. Wenn CN = 0 wird, wird der Schirmpunkt
+angesetzt (Vordergrundfarbe), wenn CN = 1 wird, wird
+gerade dieser Punkt ausgesetzt (Hintergrundfarbe).
+GOSUB 630 (Zug und Linienstück)
+Diese Subroutine tut fst das gleiche wie Subroutine
+
+		    - 26 -
+620. Jetzt jedoch nicht nur der angegebene Punkt
+geplottet, sondern ein vollständiges Linienstück von
+dort an, wo der graphische Cursor stand, zu dem in
+HO und VE angegebenen Punkt. Das gesamte Linienstück
+wird in die mi CN bezeichnete Farbe gezogen. Nach
+Ablauf steht der graphische Cursor in dem von HO und
+VE angegebenen Endpunkt.
+GOSUB 650 (Text auf dem graphischen Schirm)
+Diese Subroutine printet den Text in SRS auf den gra-
+phischen Schirm. HO und VE müssen die (graphische) Po-
+sition des linken oberen Wnnkels des ersten Zeichens
+angeben. Die Zeichen werden so weit wie nur möglich
+auf dem Schirm im 'normalen' Format abgebildet, wo-
+bei somit prinzipiell 40 auf den Schirm passen. Das
+ist jedoch nicht in allen Computern gewährleistet
+(vgl. Anhang 1). Es wird daher empfohlen, in SRS nicht
+zu viele Zeichen einzugeben. Der Text wird wiederge-
+geben in Vordergrundfarbe (wie CN =0 ) oder in Hin-
+tergrundfarbe (wie CN = 1). Nach Beendigung steht der
+graphische Cursor in HO, VE.
+Ein einfaches Beispiel:
+Original S. 32, Mitte
+
+Dieses Stückchen Programm zeichnet auf den Schirm ein
+großes Quatrat, wobeei zum linken unteren Winkel hin
+die Werte stehen 'LINKS UNTEN'.
+
+GOTO 950 (Programm-Beendigung)
+Die Aufträge END und STOP sind in BASICODE-3 nicht zu-
+
+		    - 27 -
+-lässig. Stattdessen muß man verwenden: GOTO 950.
+Dann wird diee Maschine wieder in den Zustand gebracht,
+in dem sie sich auch normalerweise auch nach dem Ein-
+schalten befindet, also Cursor an, Stopptaste in Be-
+trieb, normaler Schirm, normaler 'string'-Raum usw.
+Danach wird der Schirm gelöscht, und und das Programm ist
+zu Ende. Jedoch das Programm wird nicht angetasteet,
+und die BASICODE-Routine werden nicht vernichtet.
+BASICODE-2-Programme müssen - um in BASICODE-3 arbei-
+ten zu können - auf die gleiche Weise angepaßt wer-
+den.
+GOTO 1000 (Programmstart)
+Die Instruktion RUN ist in einem BASICODE-3-Programm
+untersagt. Wenn es erforderlich ist, vom Programm
+aus neu zu beginnen (beispielsweise um 'arrays' zu
+löschen und neu zu dimensionieren), so muß man (obli-
+gatorisch) GOTO 1000 verwenden.
+
+4.4. Übersicht der BASICODE-3-Subroutinen
+__________________________________________
+ 10 erste Zeile des Subroutineblocks
+ 20 Programmstart, System-Reset, Variable löschen usw.
+100 man schalte um auf textlichen Betrib und lösche
+    den Schirm
+110 man versetze den Cursor in die Position HO, VE
+120 man registriere die Cursor-Positio in HO, VE
+150 man drucke auf aufällige Weise 3 Zwischenräume;
+    SRS; 3 Zwischenräume
+200 man gebe eine eventuell eingedrückte Taste in INS
+    und IN
+210 man warte bis zum Tastendruck und gebe diesen
+    in INS und IN
+
+		    - 28 -
+220 man gebe in IN den Code desse, was in Schirmpo-
+    sition HO, VE zu sehen ist
+250 man gebe einen kleinen Pfiff als Aufmerksamkeits-
+    zeichen
+260 man gebe 'random' in rv, so daß 0 < = RV < 1
+270 man mache 'garbage collect' und gebe in FR die
+    Gesamtzahl freier 'bytes'
+280 man schalte die Stopp-Taste ein (FR = 0) oder
+    aus (FR = 1)
+300 man gebe in SRS die Textform von SR, ohne Zwischen-
+    räume
+310 man gebe in SRS die Textform von SR, formatiert
+    gemäß CT und CN
+330 man verändere alle Kleinbuchstaben in SRS in Groß-
+    buchstaben
+350 man schicke SRS in den Printer
+360 man schließe die Printzeile ab mit 'Wagen zu-
+    rück' und 'Papierstapeln'
+400 man mache einen Ton gemäß SV, SD und SP
+450 man warte maximal SD + 100 Millisekunden auf ei-
+    nen Tastendruck
+500 man öffne den Bestand NFS gemäß code NF
+540 man lese INS aus geöffneten Bestand NF und in
+    IN den Status
+560 man Bringe SRS in den geöffneten Bestand mit Co-
+    de NF
+580 man schließe den Bestand mit Code NF ab
+600 man schalte um auf graphischen Betrieb und lösche
+    den Schirm
+620 man plotte den Punkt in Position HO, VE in Farbe
+    CN   
+
+

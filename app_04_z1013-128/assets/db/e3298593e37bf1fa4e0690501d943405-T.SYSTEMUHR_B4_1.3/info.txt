@@ -1,0 +1,3 @@
+<kurz src="Systemuhr für  Z1013, externer 1s-Takt an B4"/>
+<lang><include src="T.SYSTEMUHR B4 1.3.txt"/></lang>
+<requires></requires>

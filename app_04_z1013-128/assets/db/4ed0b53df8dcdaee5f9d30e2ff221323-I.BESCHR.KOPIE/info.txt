@@ -1,0 +1,3 @@
+<kurz src="Maschinenprogramme im Speicher verschieben"/>
+<lang><include src="I.BESCHR.KOPIE.txt"/></lang>
+<requires></requires>

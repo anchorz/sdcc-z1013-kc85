@@ -1,0 +1,59 @@
+                 Nur Assembler kann alles
+                --------------------------
+
+            aus c't Heft 1/89 von Frank Börnke
+
+Da soll es doch tatsächlich Leute geben, die ernsthaft behaupten,
+nur mit einer Hochsprache könne man richtig programmieren.
+Hier offenbart sich in meinen Augen ein Trend zur Überzivili-
+siertheit, der doch nur einengen und nicht befreien kann. Da
+pflegen sie ihre zahmen Lieblinge und geben ihnen so possier-
+liche Namen wie Logo, Ada oder Pascal. Betrachtet man dann
+noch die Art und Weise, wie die Hochsprachler in ihrem Elfen-
+beinturm die Vorzüge von Assembler geflissentlich übersehen,
+lassen sich schon geradezu dekadente Züge ausmachen.
+
+Mögen sie in Frieden ruhen in ihrer sauberen, syntaktisch durch-
+strukturierten Welt. Hier ganz unten auf der Ebene des Prozes-
+sors kann ich überzeugt auf jede Hochsprache herabsehen. Zu-
+gegeben, wer es noch nie erlebt hat, wird dieses Gefühl kaum
+nachempfinden können, mit dem Prozessor auf du und du zu stehen.
+Da wird das Programmieren zum Erlebnis, zu einer echten Heraus-
+forderung. Hier darf ich die Pfade der Struktur verlassen, mich
+durch vefilzten Spaghetti-Code schlagen und sich selbst modifi-
+zierende Routinen erschaffen. Was nur irgendwie möglich ist, das
+kann gemacht werden - und das Resultat gibt mir recht. Welche
+Sprache ist derart flexibel, kann einen so kompakten Code vor-
+weisen und ist so schnell in der Ausführung? Da bedarf es keiner
+Prädikate wie Quick, Turbo oder Speed. Assembler - das ist der
+Inbegriff von Geschwindigkeit.
+
+Aus meiner Position heraus ist jede andere Sprache eine Hoch-
+sprache, weswegen ich gewissermaßen mit dem Rücken zur Wand ste-
+he. So fällt es mir leicht, mir einen gewissen Überblick über
+die Situation zu verschaffen. Mit meinem Nachbarn C verstehe ich
+mich noch ganz gut, aber dann hört meine Freundschaft auch schon
+auf. Wenn ich sehe, wie so manch einer versucht, seinen
+Programmtext durch besserwisserische Compiler zu quälen (in wel-
+che Sprache denn eigentlich?), kommt echte Schadenfreude auf.
+Peinlich wird es dann, wenn der vermeintliche Programmierer ver-
+kündet, das fertige Programm habe er ganz allein entwickelt. Hat
+er da nicht etwas übersehen? 
+
+Was hindert ernsthafte Programmierer bloß daran, sich auf Assem-
+bler einzulassen? Sollte es vielleicht die Angst vor den Mnemo-
+nics sein? Die Vorstellung, ein solch furchterregendes Wort sei
+am Ende nur der Vorbote desssen, was den angehenden Assembler-
+alchimisten am Ende erwartet? Sicherlich, ein Spaziergang ist es
+nicht, sich dem Rechner auf diese Weise mitzuteilen. Dieser 
+wehrt sich heftig mit Exceptions, Dead-End-Alerts und Medita-
+tionen. Da fliegen die Bomben, da wird aufgehängt und abge-
+stürzt. Was mag das für eine Welt sein, in der solche Wörter zur
+Umgangssprache gehören?
+
+Nur mit Geduld schafft man es am Ende, sein Ziel zu erreichen.
+Der wahre Programmierer gibt sich damit jedoch nicht zufrieden.
+Benutzen mögen das fertige Programm die anderen. Ihn zieht es
+weiter, auf in die nächste Runde und zu neuen Abenteuern.
+
+

@@ -40,7 +40,7 @@ for ($x=0; $x<$days; $x++) {
     $res = $mysqli->query("SELECT * FROM counter WHERE DATE(date) BETWEEN '".$datetime->format("Y-m-d")."' AND '".$datetime->format("Y-m-d")."'");   
     $num_rows = $res->num_rows;
     
-    echo "<td><img src=\"../img/1x1.png\" width=\"24\" height=\"".($num_rows*15)."\" alt=\"Besucher\"/><br/>".$num_rows."</td>\n";
+    echo "<td><img src=\"../img/1x1.png\" width=\"7\" height=\"".($num_rows*15)."\" alt=\"Besucher\"/><br/>".$num_rows."</td>\n";
     $datetime->modify('+1 day');
 }
 echo "</tr>\n";

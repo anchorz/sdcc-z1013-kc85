@@ -1,0 +1,3 @@
+<kurz src="Symbolischer Debugger (Version 1.7/1.8)"/>
+<lang><include src="I.SYD.txt"/></lang>
+<requires></requires>

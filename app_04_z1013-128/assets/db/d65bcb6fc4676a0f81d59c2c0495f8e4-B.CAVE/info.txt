@@ -1,0 +1,7 @@
+<kurz src="PERLENTAUCHER, Höhlenfliegerei ruckelfrei"/>
+<lang>erstaunlich ruckelfreies Scrolling
+
+Steuerung: ␣ U E
+
+<include src="CAVE.B"/></lang>
+<requires></requires>

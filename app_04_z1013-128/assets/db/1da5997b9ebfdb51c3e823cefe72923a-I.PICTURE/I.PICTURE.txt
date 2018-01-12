@@ -1,0 +1,132 @@
+*****************************************************************
+*                                                               *
+*         Beschreibung der Umwandlungsroutine 'PICTURE'         *
+*                                                               *
+*   (c) by RACYsoft * B.P. & U.J. aus Schwarzenberg * 05/1989   *
+*                                                               *
+*****************************************************************
+
+'PICTURE' soll die Arbeit mit dem Assembler erleichtern, speziell
+beim Entwerfen von Bildern mit Datenbytes. Ein Bild, das zum Bei-
+spiel mit 'GEDIT' entwurfen wurde, kann in Datenbytes umgewandelt
+werden. 'PICTURE' wurde als Teilprogramm in 'GEDIT' integriert.
+
+Programmstandort -> E000H - E600H
+
+Start            -> E000H
+
+
+Bedienung :
+-----------
+
+Zuerst erfolgt die Abfrage des Bildanfangs und Bildendes im RAM.
+Danach wird daraus die Bildlaenge berechnet und angezeigt.
+Nun erfolgt die Auswahl, ob der Quelltext fuer MicroWORD oder
+TP (Textprozessor CP/M) erstellt werden soll. Danach werden fol-
+gende Steuerzeichen vereinbart :
+
+MicroWORD -> Zeilenendezeichen 1EH
+             Textendezeichen   03H
+
+TP (CP/M) -> Zeilenendezeichen 0DH/0AH
+             Textendezeichen   10 mal 1AH.
+
+Jetzt wird der Quelltext erstellt. Es wird Quellanfang, Quell-
+ende und die Laenge der Quelle angegeben. Alle Zahlen in den
+Datenbytes sind dezimal.
+Der Quelltext kann dann unter Nutzung des Headersave (Brosig-
+Monitor MP 7/88) abgespeichert werden.
+
+
+Programmzellen :
+----------------
+
+E003H  ->  Bildbeginn (2 Byte)
+E005H  ->  Bildende (2 Byte)
+E007H  ->  Bildlaenge (2 Byte)
+E009H  ->  Beginn - Quelle (2 Byte)
+E00BH  ->  Ende - Quelle (2 Byte)
+E00DH  ->  Anzahl umgewandelter Zeichen/Zeile (1 Byte)
+E00EH  ->  Quelltextart (1 Byte); 0 = TP (CP/M), 1 = MicroWORD
+
+
+Anpassung :
+-----------
+
+E00FH   C3 DC FF    :    JMP FFDCH       ;  BEEP
+E012H   C3 F4 FF    :    JMP FFF4H       ;  SARUF
+E015H   E7 00 C9    :    RST 20H, DB  0  ;  OUTAK
+E018H   E7 01 C9    :    RST 20H, DB  1  ;  INCH
+E01BH   E7 03 C9    :    RST 20H, DB  3  ;  INHEX
+E01EH   E7 07 C9    :    RST 20H, DB  7  ;  OUTHL
+E021H   E7 0B C9    :    RST 20H, DB 11  ;  WIND
+E024H   E7 10 C9    :    RST 20H, DB 15  ;  INSTR
+
+Der Ansprung (Jump) von BEEP erfolgt ueber den Sprungverteiler
+des Brosig-Monitors. Wird eine anderer Monitor genutzt, so muss
+dieser Sprung mit C9H (RET) kurzgeschlossen werden. Die Ansprung-
+adresse fuer SARUF muss dann entsprechend geaendert werden.
+
+
+Hinweise :
+----------
+
+Nach der Umwandlung der Bilder muss vor die entsprechende Daten-
+bytekette eine Marke (B1,...) gesetzt werden. Im Hauptprogramm
+wird das HL-Register mit dieser Marke geladen. Dann wird die Aus-
+gaberoutine 'OUT$' aufgerufen. Diese Routine gibt solange den In-
+halt von HL aus, und erhoeht diesen nach jedem Durchlauf um 1,
+bis HL den Wert 0 hat. Wenn dies der Fall ist, wird in das Haupt-
+programm zurueckgekehrt. Die '0', die automatisch an ein umgewan-
+deltes Bild angefuegt wird, steht also als Endezeichen fuer ein
+Bild.
+Das folgende Beispielprogramm zeigt die Ausgabe eines Bildes :
+
+	.
+	.
+	.
+;
+;Betriebssystemrufe
+;------------------
+;
+OUTAK:	RST	20H
+	DB	0
+	RET
+;
+;Unterprogramme
+;--------------
+;
+OUT$:	LD	A,M
+	OR	A
+	RZ
+	CALL	OUTAK
+	INC	HL
+	JR	OUT$-#
+;
+;Bilder
+;------
+;
+B1:	DB	12,13,13,'Testprogramm',13,0
+;
+;Hauptprogramm
+;-------------
+;
+	LD	SP,90H
+	LD	HL,B1
+	CALL	OUT$
+	.
+	.
+	.
+
+Nach dem Assemblieren dieses Programms, muss der Bildschirm ge-
+loescht, 2 Leerzeilen, 'Testprogramm' und noch eine Leerzeile
+ausgegeben werden.
+
+
+Programmierer :   RACYsoft
+---------------   Boris Prey
+                  Willy-Krause-Str.7
+                  Schwarzenberg
+                  9430
+                  Tel. 2992
+

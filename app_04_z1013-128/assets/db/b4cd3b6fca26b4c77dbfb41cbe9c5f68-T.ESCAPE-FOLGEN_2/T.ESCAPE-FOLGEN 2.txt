@@ -1,0 +1,42 @@
+***************************************************************
+**                                                           **
+*          Escape  - Folgen          K6313                    *
+**                                                           **
+***************************************************************
+
+ESC E - EINSCHALTEN FETTSCHRIFT
+ E FETTSCHRIFTF
+ESC F - AUSSCHALTEN FETTSCHRIFT
+
+ESC G - EINSCHALTEN DOPPELDRUCK
+ G DOPPELDRUCKH
+ESC H - AUSSCHALTEN DOPPELDRUCK
+
+ESC M - EINSCHALTEN ELITE-SCHRIFT
+ M ELITE-SCHRIFTP
+ESC P - EINSCHALTEN PICA-SCHRIFT
+
+ESC S0 - EINSCHALTEN HOCHSCHRIFT
+ S0 HOCHSCHRIFTT
+
+ESC S1 - EINSCHALTEN TIEFSCHRIFT
+ S1 TIEFSCHRIFTT
+ESC T - AUSSCHALTEN HOCH- UND TIEFSCHRIFT
+
+ESC W1 - EINSCHALTEN SPERRSCHRIFT
+ W1 SPERRSCHRIFT W0
+ESC W0 - AUSSCHALTEN SPERRSCHRIFT
+
+ESC -1 - EINSCHALTEN UNTERSTREICHMODUS
+ -1 UNTESTREICHMODUS-0
+ESC -0 - AUSSCHALTEN UNTERSTREICHMODUS
+
+ESC l - SETZEN LINKER RAND
+
+ESC @ - INITIALISIERUNG DES DRUCKERS
+
+**********************************************MicroWORD*******
+Jens Möckel, Magdeburger Str. 1b, Riesa, 8400
+Z1013, 26.8.90
+**************************************************************
+
