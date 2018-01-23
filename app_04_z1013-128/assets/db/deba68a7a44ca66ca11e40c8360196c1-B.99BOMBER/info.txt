@@ -1,0 +1,19 @@
+<kurz src="Ballerspiel mit Flakstellungen, RB/2.02"/>
+<lang>
+Direkter Monitoraufruf geändert
+CALL*F50B KILL
+
+die INKEY Routine verhält sich im Vergleich zum A2 Monitor etwas behäbig, 
+vielleicht hätte man die Speicherzelle 0x0004 erst auf 0 setzen sollen, 
+wie implizit beim A2 Monitor schon erreicht.
+
+---
+
+Sie fuehren 3 Flakstellungen. Mittels Kursortasten 
+koennen sie die Stellung wechseln. Als Feuertaste 
+dient >SPACE<.
+
+Sie duerfen keinen der 99 Bomber durchlassen.         
+
+<include src="99BOMBER.B"/></lang>
+<requires>RB,2.02</requires>

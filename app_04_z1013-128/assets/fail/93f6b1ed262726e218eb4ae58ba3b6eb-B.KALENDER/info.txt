@@ -1,0 +1,5 @@
+<kurz src="identisch [2ea733528db7ee4feffd00605c687ee7]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+<include src="KALENDER.B"/></lang>
+<requires></requires>

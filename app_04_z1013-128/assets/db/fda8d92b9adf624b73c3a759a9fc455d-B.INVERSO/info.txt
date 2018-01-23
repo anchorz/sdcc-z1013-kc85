@@ -1,0 +1,12 @@
+<kurz src="Puzzle, Felder werden invertiert"/>
+<lang>Durch Angabe von Zeile und Spalte wird jeweils ein Feld der
+4x4-Matrix ausgewählt.
+
+Danach werden die Inhalte der Nachbarfelder in Nord-, Süd-,
+Ost-,u. West-Richtung invertiert
+
+-->  ZIEL:
+mit möglichst wenigen Versuchen die Endstellung zu erreichen.
+
+<include src="INVERSO.B"/></lang>
+<requires></requires>

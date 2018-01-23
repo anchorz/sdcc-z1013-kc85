@@ -1,0 +1,3 @@
+<kurz src="Würfelspiel für 1-4 Personen"/>
+<lang><include src="JAZZY.B"/></lang>
+<requires></requires>

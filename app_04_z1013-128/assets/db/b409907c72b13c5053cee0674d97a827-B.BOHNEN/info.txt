@@ -1,0 +1,3 @@
+<kurz src="Bohnenspiel mit variabler Größe"/>
+<lang><include src="BOHNEN.B"/></lang>
+<requires></requires>

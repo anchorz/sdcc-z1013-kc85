@@ -1,0 +1,195 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 WINDOW:CLS
+   20 E=64:R=7
+   30 FOR A=1 TO 32:PRINT "";:NEXT:PRINT
+   40 PRINT "*Y43RK*     DICKWANST"
+   50 PRINT:FOR A=1 TO 32:PRINT "";:NEXT
+   60 PRINT:PRINT:PRINT
+   70 PRINT "     "
+   80 PRINT "      "
+   90 PRINT "     " 
+  100 PRINT "      "
+  110 PRINT "    "
+  120 PRINT "    "
+  130 PRINT "    "
+  140 PRINT "     "
+  150 PRINT "    "
+  160 PRINT "     "
+  170 PRINT "      "
+  180 PRINT "      "
+  190 PRINT "      "
+  200 PRINT "     
+  210 FOR A=1 TO 10:PRINT AT(9,6);"":PAUSE 5:PRINT AT(9,6);"":PAUSE 5::NEXT
+  220 WINDOW 7,31,11,31
+  230 PRINT "Ziel des Spieles ist es,Konservenjonny's"
+  240 PRINT "Bauch auf den"
+  250 PRINT "hoechstmoeglichsten "
+  260 PRINT "Umfang zu bringen "
+  270 PRINT "Dabei muessen die   "
+  280 PRINT "Konserven durch ein "
+  290 PRINT "Labyrinth gefuehrt  "
+  300 PRINT "werden. "
+  310 PRINT
+  320 PRINT
+  330 PRINT
+  340 PRINT:PRINT:PRINT "*******************"
+  350 PRINT AT(22,11);" "
+  360 WINDOW 24,25,0,31
+  370 A=24:FOR Q=0 TO 29:PRINT AT(A,Q+1);"@":PAUSE 5:PRINT AT(A,Q);" ":PAUSE 5
+  375 BEEP:BEEP
+  380 NEXT Q
+  390 WINDOW:PRINT AT(0,0);"":PRINT AT(27,0);"So sehen die Konserven aus @ @ @"
+  400 PRINT AT(30,20);"ENTER":J$=INKEY$:IF J$=""THEN 400
+  410 WINDOW:CLS:R=7:X=0:E=64:M=RND(1)*30:Y=INT(M)
+  411 PRINT AT(22,24);Y
+  420 PRINT "             "
+  430 PRINT
+  440 PRINT "            "
+  450 PRINT AT(29,0);"" 
+  460 PRINT AT(31,0);"0      1      2      3     4   5"
+  470 V=11
+  480 PRINT "  "
+  490 PRINT " "
+  500 PRINT " "
+  510 PRINT "  "
+  520 PRINT " "
+  530 PRINT "       "
+  540 PRINT ""
+  550 PRINT "  "
+  560 PRINT "  "
+  570 PRINT "  "
+  580 PRINT "  "
+  590 PRINT "  "
+  600 PRINT " "
+  610 PRINT "    "           " 
+  620 PRINT "  " 
+  630 PRINT "                    ";
+  640 PRINT "                          "; 
+  650 PRINT "                        kg"; 
+  660 PRINT "                    "; 
+  670 PRINT "                          "; 
+  680 PRINT "                        "; 
+  690 PRINT "                              ":PRINT
+  691 PRINT AT(0,2);"ENTER"
+  695 IN$=INKEY$:IF IN$=""THEN 695
+  696 PRINT AT(0,2);"     "
+  700 D=-5025
+  710 V=V-1
+  720 IF V=0 THEN PRINT AT(14,12);"AUF WIEDERSEHEN":PAUSE 100:BEEP:BEEP:GOTO 1200
+  730 PRINT AT(28,0);"Versuche":PRINT AT(28,9);V
+  740 D=D-1
+  750 PAUSE 1
+  760 POKE D,E:POKE D+1,32
+  770 IF D=-5048 THEN 970
+  780 Q=PEEK(D+32)
+  790 J$=INKEY$:IF J$="U"THEN 860
+  800 IF Q=32 THEN 820
+  810 GOTO 740
+  820 D=D+32:POKE D,E:POKE D-32,32
+  830 D=D+32:POKE D,E:POKE D-32,32
+  840 FOR A=1 TO 10:BEEP:NEXT
+  850 D=D+32:POKE D,32:POKE D-32,32:GOTO 950
+  860 D=D-32
+  870 POKE D+32,32
+  880 D=D-1:POKE D,E:POKE D+1,32
+  890 PAUSE 1
+  910 W=PEEK(D-32)
+  920 J$=INKEY$:IF J$=" "THEN 940
+  930 IF W=32 THEN BEEP:CLS:PRINT "   AUF   WIEDERSEHEN ":GOTO 1330
+  940 D=D+32:POKE D-32,32:GOTO 740
+  950 POKE -5025,E:GOTO 700
+  960 FOR A=1 TO 10:BEEP:NEXT:POKE D,3
+  970 S=7:T=2:PRINT AT(T,S);"@":PRINT AT(T,S+1);" "
+  980 PRINT AT(T,S-1);"@":PRINT AT(T,S);" "
+  990 FOR C=T TO T+4:PRINT AT(C,S-1);"@":PRINT AT(C-1,S-1);" ":PAUSE 3:NEXT
+ 1000 X=X+1
+ 1010 T=6:S=6
+ 1020 T=T+1:S=S+1
+ 1030 IF T=10 THEN 1060
+ 1040 PRINT AT(T,S);"@":PAUSE 3
+ 1050 PRINT AT(T-1,S-1);" ":GOTO 1020
+ 1060 T=9:S=10
+ 1070 S=S-1
+ 1080 IF S=4 THEN PRINT AT(T,S+1);"":Y=Y+22:GOTO 1110
+ 1090 PRINT AT(T,S);"@":PAUSE 3:PRINT AT(T,S+1);" "
+ 1100 GOTO 1070
+ 1110 PRINT AT(22,25);Y:T=11
+ 1111 PRINT AT(22,29);"kg"
+ 1120 A$=""
+ 1130 PRINT AT(T,R);A$
+ 1140 PRINT AT(T+1,R+1);A$
+ 1150 T=T+1:PRINT AT(T,R+2);A$ :IF T=16 THEN 1170
+ 1160 GOTO 1150
+ 1170 T=T+1:PRINT AT(T,R+1);A$:IF T=19 THEN R=R+2:GOTO 700
+ 1180 PRINT AT(29,R+3);"  "
+ 1190 GOTO 1170
+ 1200 CLS:PRINT:PRINT:PRINT:PRINT " Durch Deine Hilfe hat          "
+ 1210 PRINT "   Konservenjonny    "
+ 1220 PRINT:PRINT:PRINT "      ";X;" Konserven verschluckt"
+ 1222 PRINT:PRINT " Jetzt wiegt Jonny ";Y;" kg ":PRINT:PRINT
+ 1230 IF X=0 OR X=1 THEN PRINT AT(8,18);" ":PRINT " Das ist katastrophal ":GOTO 1330
+ 1240 IF X<5 THEN PRINT:PRINT "Soll der arme Kerl verhungern?":PRINT:GOTO 1330
+ 1250 IF X=10 THEN 1280
+ 1260 IF X>=5 AND X<10 THEN PRINT:PRINT " Das war nicht schlecht,   ";
+ 1270 PRINT " aber satt ist er noch nicht ":PRINT:PRINT:PRINT:PRINT:GOTO 1330
+ 1280 FOR A=1 TO 20:BEEP:PAUSE 5:NEXT:PRINT:PRINT:PRINT:PRINT
+ 1290 PRINT " H E R Z L I C H E N      "
+ 1300 PRINT:PRINT
+ 1310 PRINT "      G L U E C K W U N S C H":GOTO 1500
+ 1320 PRINT:PRINT:PRINT:PRINT:PRINT:PRINT
+ 1330 PRINT:PRINT:PRINT:PRINT: PRINT " Noch einmal   J|N ";
+ 1340 P$=INKEY$:IF P$=""THEN 1340
+ 1350 IF P$="N"THEN END
+ 1360 GOTO 410
+ 1500 PAUSE 10:CLS:N=0:Q=0:C=10:Z=0
+ 1501 V=0
+ 1502 REM 2.STUFE
+ 1503 PRINT "   Konservenabschiessen         "
+ 1504 PRINT:PRINT:PRINT:PRINT:PRINT "        @               @"   
+ 1506 PRINT "       @ @             @ @   "
+ 1508 PRINT "      @ @ @           @ @ @  "
+ 1510 PRINT "     @ @ @ @         @ @ @ @ "
+ 1512 PRINT "    @ @ @ @ @       @ @ @ @ @"
+ 1514 PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT:PRINT       
+ 1516 PRINT "                              " 
+ 1518 T=22:S=1
+ 1520 S=S+1:IF S=30 THEN 1526
+ 1522 PRINT AT(T,S);"":PRINT AT(T,S-1);" "
+ 1523 J$=INKEY$:IF J$="U"THEN Z=Z+1:BEEP:PRINT AT(4,5);Z:GOSUB 1550
+ 1524 GOTO 1520
+ 1526 S=S-1:IF S=1 THEN 1520
+ 1528 PRINT AT(T,S);"":PRINT AT(T,S+1);" "
+ 1529 J$=INKEY$:IF J$="U"THEN Z=Z+1:BEEP:PRINT AT(4,5);Z:GOSUB 1550
+ 1530 GOTO 1526
+ 1540 STOP
+ 1550 A1=-4796:A2=A1+2:A3=A2+2:A4=A3+2:A5=A4+2:A6=A5+8:A7=A6+2:A8=A7+2:A9=A8+2
+ 1551 A10=A9+2
+ 1552 W1=PEEK(A1):W2=PEEK(A2):W3=PEEK(A3):W4=PEEK(A4):W5=PEEK(A5)
+ 1553 W6=PEEK(A6):W7=PEEK(A7):W8=PEEK(A8):W9=PEEK(A9):W10=PEEK(A10)
+ 1554 IF W1 AND W2 AND W3 AND W4 AND W5 AND W6 AND W7 AND W8 AND W9 AND W10=32 THEN 1610
+ 1555 PRINT AT(C,S);" " 
+ 1600 RETURN
+ 1610 C=9:PRINT AT(C,S);" ":A1=-4827:A2=A1+2:A3=A2+2:A4=A3+2:A5=A4+10:A6=A5+2
+ 1611 A7=A6+2:A8=A7+2
+ 1615 W1=PEEK(A1):W2=PEEK(A2):W3=PEEK(A3):W4=PEEK(A4):W5=PEEK(A5):W6=PEEK(A6)
+ 1616 W7=PEEK(A7):W8=PEEK(A8)
+ 1617 IF W1 AND W2 AND W3 AND W4 AND W5 AND W6 AND W7 AND W8=32 THEN 1640
+ 1630 RETURN
+ 1640 C=8:PRINT AT(C,S);" ":A1=-4858:A2=A1+2:A3=A2+2:A4=A3+12:A5=A4+2:A6=A5+2
+ 1641 W1=PEEK(A1):W2=PEEK(A2):W3=PEEK(A3):W4=PEEK(A4):W5=PEEK(A5)
+ 1642 W6=PEEK(A6)
+ 1643 IF W1 AND W2 AND W3 AND W4 AND W5 AND W6=32 THEN 1650
+ 1645 RETURN
+ 1650 C=7:PRINT AT(C,S);" ":A1=-4889:A2=A1+1:A3=A2+14:A4=A3+2
+ 1651 W1=PEEK(A1):W2=PEEK(A2):W3=PEEK(A3):W4=PEEK(A4)
+ 1652 IF W1 AND W2 AND W3 AND W4=32 THEN 1660
+ 1654 RETURN
+ 1660 C=6:PRINT AT(C,S);" ":A1=-4920:A2=A1+16
+ 1661 W1=PEEK(A1):W2=PEEK(A2)
+ 1662 IF W1 AND W2=32 THEN 1670
+ 1664 RETURN
+ 1670 PRINT:PRINT AT(7,5);" Geschafft mit ":PRINT AT(7,21);Z
+ 1672 PRINT AT(7,25);"Schuss "
+ 1680 IF Z<80 THEN PRINT:PRINT AT(9,10);"     Wunderbar  "
+ 1690 PRINT AT(9,10);"ueben, ueben , ueben "

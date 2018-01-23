@@ -1,0 +1,3 @@
+<kurz src="Adventure: Märchen vom Rumpelstilzchen"/>
+<lang><include src="RUMPI.B"/></lang>
+<requires></requires>

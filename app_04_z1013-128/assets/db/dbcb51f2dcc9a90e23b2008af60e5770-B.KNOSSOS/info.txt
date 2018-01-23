@@ -1,0 +1,5 @@
+<kurz src="Labyrinth mit 3D Effekt"/>
+<lang>Steuerung: ⇦ ⇨ U
+
+<include src="KNOSSOS.B"/></lang>
+<requires></requires>

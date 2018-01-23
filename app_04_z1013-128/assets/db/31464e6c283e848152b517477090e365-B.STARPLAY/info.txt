@@ -1,0 +1,7 @@
+<kurz src="Anaconda Variante, Anzahl der Fehler werden nur aufaddiert"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩
+
+<include src="STARPLAY.B"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="Zinsen berechnen, Festzins 3,25%"/>
+<lang><include src="ZINSEN.B"/></lang>
+<requires></requires>

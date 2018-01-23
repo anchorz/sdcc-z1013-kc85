@@ -1,0 +1,3 @@
+<kurz src="Kalenderberechnung, Ostern, Pfingsten"/>
+<lang><include src="KALENDER.B"/></lang>
+<requires></requires>

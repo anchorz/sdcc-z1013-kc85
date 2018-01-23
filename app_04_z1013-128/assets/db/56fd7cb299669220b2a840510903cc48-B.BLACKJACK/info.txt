@@ -1,0 +1,3 @@
+<kurz src="Casino BlackJack, Kartenspiel mit Pseudografikbildern"/>
+<lang><include src="BLACKJACK.B"/></lang>
+<requires></requires>

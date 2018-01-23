@@ -1,0 +1,14 @@
+<kurz src="Bomben abwerfen, Stadt säubern"/>
+<lang>
+EIN FLUGZEUG FLIEGT UEBER EINE STADT.
+UM LANDEN ZU KOENNEN MUSS DIE STADT ZERBOMBT 
+WERDEN.
+
+BEI JEDEN ABWURF EINER BOMBE SINKT DAS FLUGZEUG.
+
+  BOMBS = LEERTASTE
+
+  FLUGZEUG <--          
+
+<include src="KNOPF.B"/></lang>
+<requires></requires>

@@ -1,0 +1,43 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 CLS:CLEAR:PRINT AT(5,8);"Berechnung von"
+   15 PRINT AT(7,8);"HEX - Adressen "
+   17 PRINT AT(9,4);"zum Umladen von Dateien"
+   20 PRINT AT(15,1);"(c) Dr.Trog,Berlin, Mai 1988":GOSUB 500
+   40 WINDOW:CLS:PRINT:PRINT "Bitte eingeben:":PRINT:PRINT
+   50 PRINT "Adressen berechnen = 1":PRINT
+   60 PRINT "Ende (im BASIC)    = 2":PRINT
+   70 PRINT "Zum Betriebssystem = 3":PRINT
+  110 I$=INKEY$:P=VAL(I$)
+  120 ON P GOTO 149,140,145
+  130 IF P<1 OR P>3 THEN 110
+  140 CLS:END
+  145 CLS:BYE
+  149 CLS:PRINT:PRINT:PRINT:PRINT
+  150 D=0:B=0:INPUT "Alte AADR.";H$:INPUT "Alte EADR.";J$:FOR I=1 TO LEN(H$)
+  160 Z=ASC(MID$(H$,I,1))
+  170 IF Z<58 THEN Z=Z-48:ELSE Z=Z-55
+  180 D=Z+D*16:NEXT I
+  190 FOR T=1 TO LEN(J$)
+  200 K=ASC(MID$(J$,T,1))
+  210 IF K<58 THEN K=K-48:ELSE K=K-55
+  220 B=K+B*16:NEXT T
+  230 C=B-D
+  280 D=0:PRINT:PRINT:INPUT "Neue AADR.:";Q$:FOR I=1 TO LEN(Q$)
+  290 Z=ASC(MID$(Q$,I,1))
+  300 IF Z<58 THEN Z=Z-48:ELSE Z=Z-55
+  310 D=Z+D*16:NEXT I
+  330 K=0
+  340 K=D+C
+  350 H$=""
+  360 R=K-INT(K/16)*16
+  370 IF R<10 THEN H$=CHR$(48+R)+H$:ELSE H$=CHR$(55+R)+H$
+  380 IF K>15 THEN K=INT(K/16):GOTO 360
+  390 PRINT:PRINT:PRINT "Datei ist zu laden :":PRINT:PRINT
+  400 PRINT "von ";Q$;" bis ";H$
+  410 PRINT:GOSUB 500:GOTO 40
+  420 END
+  500 PRINT AT(23,20);">ENTER<"
+  510 I$=INKEY$:IF I$=""THEN 510
+  520 IF I$<>CHR$(13)THEN 510
+  530 RETURN

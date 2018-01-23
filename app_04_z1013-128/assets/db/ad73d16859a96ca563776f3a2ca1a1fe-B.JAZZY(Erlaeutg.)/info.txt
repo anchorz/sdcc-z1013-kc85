@@ -1,0 +1,78 @@
+<kurz src="JAZZY, Spielregeln"/>
+<lang> Spielregeln:
+JAZZY - Ein Wuerfelspiel für 1 bis 4 Spieler
+
+Folgende Werte sind zu erreichen:
+                           
+Die Pflichtwürfe:
+==================
+
+  I.EINER   max. 6 Augen
+ II.Zweier  max.12 Augen
+III.Dreier  max.18 Augen
+ IV.Vierer  max.24 Augen
+  V.Fuenfer max.30 Augen
+ VI.Sechser max.36 Augen
+
+Werden mit den Pflichtwürfen mehr als 83 Augen
+erreicht, erhält der Spieler einen Bonus von 50.
+
+  Stammwuerfe
+  ============
+
+  Ein Zweier      max.12 Augen
+  Zwei Zweier     max.22 Augen
+  Drei Zweier     max.30 Augen
+  Ein Dreier      max.18 Augen
+  Ein Vierer      max.24 Augen
+  Ein Fuenfer     max.30 Augen
+  Jazzy               75 Augen
+  Zwei Dreier     max.33 Augen
+  kleiner Weg         15 Augen
+  grosser Weg         20 Augen
+  Strasse             25 Augen
+  kleines Haus    max.28 Augen
+  grosses Haus    max.34 Augen
+  Chance     Summe aller Augen
+  Joker    alles,ausser Chance
+
+  Erlaeuterungen
+  ===============
+
+- Bei den Pflichtwuerfen werden
+    die erreichten Augen eingtr.
+
+- Ein kleiner Weg besteht aus:
+    1-2-3-4-5
+
+- Der grosse Weg:
+    2-3-4-5-6
+
+- Eine Strasse besteht aus:
+    1-2-3-4-5-6
+
+- Der Jazzy besteht aus
+  6 gleichen Augen-ein Sechser !
+
+- Das kleine Haus:
+    einem Dreier u.einem Zweier
+
+- Das grosse Haus aus einem
+    Vierer und einem Zweier
+
+- Bei der Chance wird die
+  Summe aller Augen eingetragen,
+  ohne besonderem Bild
+
+- Fuer den Joker kann jedes
+  Bild, ausser der Chance
+  eingetragen werden
+
+
+Jeder Spieler kann 3 Würfe ausführen. Die Würfel, mit denen 
+nochmal gewürfelt werden soll, werden gelöscht.
+
+Das Ergebnis wird in die entsprechende Zeile eingeschrieben.
+
+<include src="JAZZY(Erlaeutg.).B"/></lang>
+<requires></requires>

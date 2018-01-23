@@ -1,0 +1,3 @@
+<kurz src="Test des Kurzzeitgedächtnisses, Buchstaben- oder Zeichenketten merken"/>
+<lang><include src="MEMORY.B"/></lang>
+<requires></requires>

@@ -1,0 +1,126 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 GOSUB 1000
+   20 WINDOW:CLS:P=-5120
+   30 GOSUB 260
+   40 GOTO 120
+   50 I$=INKEY$:IF I$=""THEN 50
+   60 IF I$=CHR$(9)THEN SN=SA+1:RETURN
+   70 IF I$=CHR$(8)THEN SN=SA-1:RETURN
+   80 IF I$=" "THEN ZN=ZA+1:RETURN
+   90 IF I$="U"THEN ZN=ZA-1:RETURN
+  100 ZN=ZA:SN=SA:RETURN
+  120 PRINT AT(30,0);"  GESAMMELTE  DOLLARS :":PRINT AT(31,16);"FIGUR : 3":SP=3
+  130 ZA=27:SA=INT(RND(1)*28+1):SN=SA:ZN=ZA
+  140 PRINT AT(ZN,SN);""
+  150 GOSUB 50
+  160 L=(PEEK(P+32*ZN+SN)):IF L=198 THEN ZN=ZA:SN=SA:PRINT AT(ZN,SN);"":GOTO 150
+  170 IF L=36 THEN PZ=PZ+INT(RND(1)*10+1):GOSUB 710:PRINT AT(30,23);INT(PZ)
+  180 IF L=175 THEN GOSUB 430
+  190 IF ZN=0 THEN 480
+  200 R=RND(1):IF R>(LA)THEN Z1=INT(RND(1)*13)*2+1:Z2=INT(RND(1)*28+1)       
+  210 IF R>(LA)THEN PRINT AT(Z1,Z2);""
+  220 PRINT AT(ZN,SN);"":PRINT AT(ZA,SA);" ":ZA=ZN:SA=SN
+  230 GOTO 150
+  240 PZ=PZ/2.3:I=1
+  250 GOTO 480
+  260 FOR X=0 TO 31:PRINT AT(0,X);"":PRINT AT(28,X);"":NEXT
+  270 FOR X=1 TO 27:PRINT AT(X,0);"":PRINT AT(X,31);"":NEXT
+  280 Z=INT(RND(1)*29+1):PRINT AT(0,Z);"" 
+  290 FOR Y=2 TO 26 STEP 2:BEEP
+  300 FOR X=1 TO 30:PRINT AT(Y,X);"":NEXT
+  310 Z=INT(RND(1)*16+1):PRINT AT(Y,Z);" ":Z=INT(RND(1)*16+15):PRINT AT(Y,Z);" "
+  320 FOR S=1 TO(I*2+3):Z=INT(RND(1)*30+1):PRINT AT(Y-1,Z);"$":NEXT
+  330 NEXT
+  333 RETURN
+  340 PRINT AT(30,0);"Welche Spielstaerke ? (1 bis 6)"
+  350 I$=INKEY$:IF I$=""OR VAL(I$)>6 OR VAL(I$)<1 THEN 350:ELSE BEEP
+  360 I=VAL(I$):IF I$="1"THEN LA=.97
+  370 IF I$="2"THEN LA=.92
+  380 IF I$="3"THEN LA=.84
+  390 IF I$="4"THEN LA=.72
+  395 IF I$="5"THEN LA=.6
+  396 IF I$="6"THEN LA=.45
+  400 PRINT AT(30,0);"                               "
+  410 RETURN
+  430 FOR X=1 TO 10:PRINT AT(ZN,SN);"":BEEP:PAUSE 1:PRINT AT(ZN,SN);"":BEEP
+  440 PAUSE 1:NEXT
+  450 SP=SP-1:IF SP<=0 THEN 240
+  460 PRINT AT(31,16);"FIGUR :",SP
+  470 RETURN
+  480 WINDOW 30,31,0,31:CLS:PRINT "     M O M E N T   B I T T E":BEEP
+  490 PRINT AT(0,0);"":PRINT AT(31,0);" "
+  500 FOR X=-5120 TO(-5120+32*29):IF PEEK(X)=36 THEN VD=VD+1
+  510 NEXT
+  520 WINDOW:CLS:PRINT:PRINT
+  530 PRINT "Sie haben";VD;"Geldsaecke liegen"
+  540 PRINT:PRINT "gelassen.":PRINT
+  550 ON SP GOTO 570,590,600
+  560 PRINT "Und das mit 3 'verbrauchten' Fi- ":PRINT "guren !!":GOTO 610
+  570 PRINT "Aber Sie haben  wenigstens  den  ":PRINT "Ausgang erreicht !"
+  580 GOTO 610
+  590 PRINT "Und das mit nur einer geopferten":PRINT "Figur !":GOTO 610
+  600 PRINT "Sie  haben  keine  Figur  opfern":PRINT "muessen ! Ich gratuliere !
+  610 PRINT
+  620 PU=PZ+PZ*3-100*(3-SP)-9*VD+10*I^2:PU=INT(PU)
+  630 PRINT "Damit  besitzen  Sie  mit  der  ":PRINT "Spielpraemie";PU;"Dollars
+  650 PRINT:PRINT "Moechten  Sie  noch  einmal     ":PRINT "spielen ? (J/N)"
+  660 I$=INKEY$:IF I$=""THEN 660:ELSE BEEP
+  670 IF I$="J"THEN RUN
+  680 IF I$><"N"THEN 660
+  690 IF(PU-PZ)<100 THEN PRINT:PRINT "IST BEI IHRER SPIELSTAERKE AUCH "
+  700 IF(PU-PZ)<100 THEN PRINT "BESSER !!!":PRINT:END:ELSE WINDOW:CLS:END
+  710 HH=RND(1):IF HH>.6 OR HH<.52 THEN RETURN:ELSE PZ=PZ+100
+  720 RETURN
+ 1000 WINDOW:CLS:PRINT AT(0,0);" "
+ 1010 DATA 7,31,7,30,7,29,7,28,7,27,7,26,6,26,5,27,4,28,3,29,2,30,1,31
+ 1020 DATA 1,30,1,29,1,28,1,27,1,26,7,22,6,22,5,22,4,22,3,22,2,22,1,22,1,23
+ 1030 DATA 1,24,1,21,1,20,4,16,4,17,7,18,6,18,5,18,4,18,3,18,2,18,1,17,1,16
+ 1040 DATA 2,15,3,15,4,15,5,15,6,15,7,15,7,13,6,13,5,13,4,13,3,13,2,13,1,13
+ 1050 DATA 4,12,4,11,7,10,6,10,5,10,4,10,3,10,2,10,1,10,6,8,7,8,7,7,7,6,7,5
+ 1060 DATA 6,5,5,5,4,5,3,5,2,5,1,5,7,3,7,2,7,1,7,0,6,3,5,3,4,3,4,2,4,1,4,0
+ 1070 DATA 3,0,2,0,1,0,1,1,1,2,1,3,1,6,1,7,1,8,2,8,6,27,5,28,4,29,3,30,2,31
+ 1080 DATA 16,30,15,29,14,28,14,27,14,26,15,26,16,26,13,26,12,26,11,26,10,26
+ 1090 DATA 10,27,10,28,10,29,11,30,12,30,13,30,14,29,16,24,16,23,16,22,16,21
+ 1100 DATA 15,21,14,21,13,21,13,22,13,23,12,21,11,21,10,21,10,22,10,23,10,24
+ 1110 DATA 16,19,15,19,14,19,13,19,12,19,11,19,10,19,16,16,15,16,14,16,13,16
+ 1120 DATA 12,16,11,16,10,16,13,17,13,18,15,14,16,14,16,13,16,12,16,11,15,11
+ 1130 DATA 14,11,13,11,12,11,11,11,10,11,10,12,10,13,10,14,11,14,16,8,15,9
+ 1140 DATA 14,9,13,9,12,9,11,9,10,9,16,6,15,5,14,5,13,5,12,5,11,5,10,5,16,0
+ 1150 DATA 16,1,16,2,16,3,15,3,14,3,13,3,13,2,13,1,13,0,12,0,11,0,10,0,10,1
+ 1160 DATA 10,2,10,3,16,7
+ 1300 FOR U=1 TO 191:READ X,Y:PRINT AT(X,Y);"":BEEP:NEXT
+ 1313 PRINT AT(24,0);""
+ 1320 GOSUB 340:CLS:PRINT "":PRINT
+ 1322 PRINT " S P I E L E R K L A E R U N G":PRINT:PRINT
+ 1330 PRINT "Mit  den  drei, Ihnen  zur  Ver-"
+ 1340 PRINT "fuegung stehenden,Figuren mussen"
+ 1350 PRINT "Sie  moeglichst  den Ausgang des "
+ 1360 PRINT "Labyrinths erreichen.           "
+ 1370 PRINT "Dabei sollten Sie so viele Geld-"
+ 1380 PRINT "saecke wie moeglich  einsammeln."
+ 1390 PRINT "Achtung ! Ihre  Figur  darf  die"
+ 1400 PRINT "das Geld  bewachenden  Ungeheuer"
+ 1410 PRINT "nicht beruehren !":PRINT
+ 1420 PRINT "In den Geldsaecken befinden sich"
+ 1430 PRINT "jeweils  ein  paar  Dollars,  in"
+ 1440 PRINT "einigen sogar ueber 100 Dollar !"
+ 1460 FOR X=1 TO 2 STEP 0:PRINT AT(30,0);" E N T E R "
+ 1461 I$=INKEY$:IF I$><""THEN 1480
+ 1462 PAUSE 4:PRINT AT(30,0);""
+ 1463 I$=INKEY$:IF I$><""THEN 1480
+ 1464 PAUSE 4:NEXT
+ 1480 CLS:PRINT "":PRINT:PRINT
+ 1490 PRINT " Die Spielfiguren :":PRINT:PRINT
+ 1500 PRINT "   Ungeheuer : ":PRINT:PRINT
+ 1510 PRINT " Ihr Spieler : ":PRINT:PRINT
+ 1520 PRINT "     Ausgang : ":PRINT:PRINT
+ 1530 PRINT "  Geldsaecke : $":PRINT:PRINT:PRINT
+ 1540 PRINT "Bereiten  Sie  sich  vor ,       ":PRINT "Konzentrieren Sie sich !!
+ 1545 PRINT:PRINT:PRINT
+ 1550 FOR X=1 TO 2 STEP 0:PRINT AT(26,0);" E N T E R "
+ 1560 I$=INKEY$:IF I$><""THEN 1600
+ 1570 PAUSE 4:PRINT AT(26,0);""
+ 1580 I$=INKEY$:IF I$><""THEN 1600
+ 1590 PAUSE 4:NEXT
+ 1600 GOTO 20

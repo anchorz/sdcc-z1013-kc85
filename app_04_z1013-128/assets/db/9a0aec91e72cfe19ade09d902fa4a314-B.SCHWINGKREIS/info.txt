@@ -1,0 +1,13 @@
+<kurz src="Schwingkreis berechnen"/>
+<lang>
+Der Faktor R/2L ist die Daempfungskonstante,und
+wird im allgemeinen ververnachlaessigt (R=0).
+
+Der Verlustfaktor des Schwingkreises d=R/(2*PI*f*L),
+die Guete Q=1/d und der Kennwiderstand
+Zo=SQR(L/C) werden mit berechnet
+
+Der Kreiswiderstand Rk=L/R*C wird ebenfalls angegeben       
+
+<include src="SCHWINGKREIS.B"/></lang>
+<requires></requires>

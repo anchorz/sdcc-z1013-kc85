@@ -1,0 +1,56 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 WINDOW:CLS:REM SCHWINGKREIS
+   20 PRINT:PRINT:PRINT
+   30 PRINT "Der Faktor R/2L ist die"
+   40 PRINT "Daempfungskonstante,und"
+   50 PRINT "wird im allgemeinen ver-"
+   60 PRINT "vernachlaessigt (R=0)."
+   70 PRINT:PRINT "Der Verlustfaktor des"
+   80 PRINT "Schwingkreises d=R/(2*PI*f*L),"
+   90 PRINT "die Guete Q=1/d und der Kenn-"
+  100 PRINT "widerstand"
+  110 PRINT "Zo=SQR(L/C) werden mit berechnet"
+  120 PRINT "Der Kreiswiderstand Rk=L/R*C"
+  130 PRINT "wird ebenfalls angegeben":PAUSE 100
+  140 WINDOW:CLS:RESTORE 190
+  150 FOR I=1 TO 50
+  160 READ X,Y,Z
+  170 PRINT AT(X,Y);CHR$(Z)
+  180 NEXT I
+  190 DATA 2,15,82,4,11,160,4,12,160,4,13,165,3,13,168,5,13,167,3,14,160
+  200 DATA 3,15,160,3,16,160,3,17,169,5,14,160,5,15,160,5,17,170,4,17
+  210 DATA 163,4,18,160,4,19,160,4,20,169,5,9,129,5,20,161,6,9,129,6,20,161
+  220 DATA 7,9,129,7,19,160,7,20,162,7,21,160,8,9,129,8,8,76,8,19,160,8,20
+  230 DATA 164,8,21,160,9,9,129,9,20,161,9,22,67,10,9,129,10,20,161,11,20
+  240 DATA 170,11,10,160,11,11,160,11,12,160,11,13,160,11,14,160,11,15,160
+  250 DATA 11,16,160,11,17,160,11,18,160,11,19,160,4,10,160,5,16,160,4,9
+  260 DATA 246,11,9,242
+  270 PRINT AT(14,9);"Berechnung der"
+  280 PRINT AT(15,8);"Resonanzfrequenz"
+  290 PRINT AT(16,7);"****  Y2 8OH  ****"
+  300 WINDOW 18,31,0,31:CLS
+  310 PAUSE 10
+  320 INPUT "L=";L
+  330 INPUT "C=";C
+  340 INPUT "R=";R
+  350 PRINT
+  360 FO=(1/(2*PI))*SQR((1/(L*C))-((R*R)/(4*L*L)))
+  370 D=R/(2*L)
+  380 Q=(2*PI*FO)/L
+  390 ZO=SQR(L/C)
+  400 IF R=0 THEN GOTO 420
+  410 RK=L/R*C
+  420 CLS:PAUSE 10
+  430 PRINT "Fo=";FO
+  440 PRINT:PAUSE 10
+  450 PRINT "D =";D
+  460 PRINT:PAUSE 10
+  470 PRINT "Q =";Q
+  480 PRINT:PAUSE 10
+  490 PRINT "Zo=";ZO
+  500 PRINT:PAUSE 10
+  505 IF R=0 THEN GOTO 520
+  510 PRINT "Rk=";RK
+  520 PRINT:PRINT
+  530 END

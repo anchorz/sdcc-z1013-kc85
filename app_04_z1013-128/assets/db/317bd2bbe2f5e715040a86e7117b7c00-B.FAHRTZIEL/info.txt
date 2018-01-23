@@ -1,0 +1,3 @@
+<kurz src="Zugfahrkarten, Preise (leider nur) ab Dresden ausrechnen"/>
+<lang><include src="FAHRTZIEL.B"/></lang>
+<requires></requires>

@@ -1,0 +1,7 @@
+<kurz src="Testet Reaktionsschnelligkeit"/>
+<lang>Der Computer  testet  Ihre Reaktionsschnelligkeit.  
+Sie muessen nur bei  >>> jetzt <<<  eine beliebige Taste druecken.
+
+
+<include src="REAKTIONS-TEST.B"/></lang>
+<requires></requires>

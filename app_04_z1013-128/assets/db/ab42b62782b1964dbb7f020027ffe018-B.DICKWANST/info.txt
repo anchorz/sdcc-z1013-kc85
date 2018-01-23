@@ -1,0 +1,11 @@
+<kurz src="mit @ über die Lücken springen"/>
+<lang>
+
+Steuerung: U ⏎
+
+Ziel des Spieles ist es, Konservenjonny's Bauch auf den
+höchstmöglichsten Umfang zu bringen. Dabei müssen die
+Konserven durch ein Labyrinth gefuehrt werden.
+
+<include src="DICKWANST.B"/></lang>
+<requires></requires>

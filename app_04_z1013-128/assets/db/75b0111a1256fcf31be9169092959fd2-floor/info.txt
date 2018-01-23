@@ -1,0 +1,9 @@
+<kurz src="Ladder Variante, Kraftkekse sammeln"/>
+<lang>
+
+Steuerung: ⇦ ⇨  
+U Hoch
+⏎ Springen
+
+<include src="floor.B"/></lang>
+<requires></requires>

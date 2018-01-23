@@ -1,0 +1,7 @@
+<kurz src="identisch [75b0111a1256fcf31be9169092959fd2]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ U ⏎
+
+<include src="FLOOR.B"/></lang>
+<requires></requires>

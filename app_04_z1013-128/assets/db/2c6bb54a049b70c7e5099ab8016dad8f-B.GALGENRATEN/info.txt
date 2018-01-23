@@ -1,0 +1,3 @@
+<kurz src="Unterprogramme: Animation Galgenraten"/>
+<lang><include src="GALGENRATEN.B"/></lang>
+<requires></requires>

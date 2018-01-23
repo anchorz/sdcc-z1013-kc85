@@ -1,0 +1,5 @@
+<kurz src="identisch [f292cbe33aa03cfd89cd9418c233acc2]"/>
+<lang>REMKILL nachladen, dann RUN 65432   
+
+<include src="REM-KILL.B"/></lang>
+<requires></requires>

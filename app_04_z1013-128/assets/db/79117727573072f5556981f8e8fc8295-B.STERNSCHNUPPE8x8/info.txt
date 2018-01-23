@@ -1,0 +1,9 @@
+<kurz src="Sternschuppe für A2"/>
+<lang>
+Warum auch immer hier ein Monitoraufruf verwendet wird:
+CALL F6F5h WIND
+
+Steuerung: ⇦ ⇨ ⇧ ⇩
+
+<include src="STERNSCHNUPPE8x8.B"/></lang>
+<requires>A2</requires>

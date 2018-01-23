@@ -1,0 +1,13 @@
+<kurz src="Ballerspiel mit Flakstellungen, A2"/>
+<lang>
+Direkter Monitoraufruf:
+CALL*F548 KILL , statt F50B beim 2.02
+
+Sie fuehren 3 Flakstellungen. Mittels Kursortasten 
+koennen sie die Stellung wechseln. Als Feuertaste 
+dient >SPACE<.
+
+Sie duerfen keinen der 99 Bomber durchlassen.         
+
+<include src="99BOMBER.B"/></lang>
+<requires>A2</requires>

@@ -1,0 +1,22 @@
+<kurz src="Funkamateur Locator-System (Standortkenner) und geographische Koordinaten"/>
+<lang>
+Bestimmen der geographischen Koordinaten aus dem Locator (z.B. JK50CE)
+
+Bestimmen des Locators aus den geographischen Koordinaten  
+
+Erläuterung des Locator-Systems
+━━━━━━━━━━━━━━━━━━━
+
+Die Erdoberfläche ist in 18 X 18 Felder eingeteilt.
+
+Sie haben eine Ausdehnung von 20 Grad Laenge und 10 Grad Breite.
+
+Die Felder sind unterteilt in 10 X 10 Quadrate.
+
+Diese Quadrate haben eine Ausdehnung von 2 Grad Länge und 1 Grad Breite.
+
+Die Quadrate werden wiederum in 24 X 24 Kleinquadrate eingeteilt 
+und haben eine Ausdehnung von 2,5 X 5,0 Minuten, das sind in der DDR ca. 5,7 X 4,6 km ...
+
+<include src="LOCATORSYSTEM.B"/></lang>
+<requires></requires>

@@ -1,0 +1,6 @@
+<kurz src="Pferdewetten für 1-8 Personen"/>
+<lang>Variante von [190b3264694b00a9f3745c8febda6604], noch nicht angepasst
+für 32 Zeichen pro Zeile
+
+<include src="PFERDERENNEN.B"/></lang>
+<requires></requires>

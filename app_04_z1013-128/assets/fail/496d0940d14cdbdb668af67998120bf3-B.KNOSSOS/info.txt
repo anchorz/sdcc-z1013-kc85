@@ -1,0 +1,7 @@
+<kurz src="identisch [dbcb51f2dcc9a90e23b2008af60e5770]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Steuerung: ⇦ ⇨ U
+
+<include src="KNOSSOS.B"/></lang>
+<requires></requires>

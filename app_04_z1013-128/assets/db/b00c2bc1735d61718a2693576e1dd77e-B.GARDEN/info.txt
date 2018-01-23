@@ -1,0 +1,7 @@
+<kurz src="Alf Variante, Bäume aufsammeln, Kreuzen ausweichen"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ U ⏎
+
+<include src="GARDEN.B"/></lang>
+<requires></requires>

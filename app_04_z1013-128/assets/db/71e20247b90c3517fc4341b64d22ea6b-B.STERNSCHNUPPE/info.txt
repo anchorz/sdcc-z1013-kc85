@@ -1,0 +1,9 @@
+<kurz src="Sternschuppe für 2.02"/>
+<lang>
+Warum auch immer hier ein Monitoraufruf verwendet wird:
+CALL F6D1h WIND
+
+Steuerung: P W V Q
+
+<include src="STERNSCHNUPPE.B"/></lang>
+<requires>2.02</requires>

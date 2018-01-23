@@ -1,0 +1,7 @@
+<kurz src="Einfacher 3-stelliger Spielautomat"/>
+<lang>
+
+Steuerung: S
+
+<include src="SPIELAUTOMAT.B"/></lang>
+<requires></requires>

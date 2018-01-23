@@ -1,0 +1,3 @@
+<kurz src="Ladeadressen mit Offset berechnen"/>
+<lang><include src="ADR.umrechn..B"/></lang>
+<requires></requires>

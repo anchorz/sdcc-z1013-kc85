@@ -1,0 +1,22 @@
+<kurz src="Schatzsucher, $ einsammeln"/>
+<lang>
+
+Steuerung: ⇦ ⇨  ␣ U 
+
+
+
+ S P I E L E R K L A E R U N G
+
+
+Mit  den  drei, Ihnen  zur  Verfügung stehenden, Figuren müssen
+Sie  möglichst  den Ausgang des Labyrinths erreichen.
+
+Dabei sollten Sie so viele Geldsäcke wie möglich einsammeln.
+
+Achtung! Ihre Figur darf die das Geld bewachenden Ungeheuer nicht berühren !
+
+In den Geldsäcken befinden sich jeweils ein paar Dollars, in einigen 
+sogar über 100 Dollar!
+
+<include src="SCHATZ.B"/></lang>
+<requires></requires>

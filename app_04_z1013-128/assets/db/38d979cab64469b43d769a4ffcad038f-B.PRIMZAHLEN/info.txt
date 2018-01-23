@@ -1,0 +1,15 @@
+<kurz src="Primzahlenermittlung, dauert 1 Minute bis für Zahlen bis 160 "/>
+<lang>
+           320 ┃ 00 03 08
+           160 ┃ 00 00 55
+            80 ┃ 00 00 18
+            40 ┃ 00 00 06
+            20 ┃ 00 00 03
+            10 ┃ 00 00 01
+      ━━━━━━━━━┻━━━━━━━━━━
+      Anzahl d.  h  m  s
+     Primzahlen  Z e i t        
+
+
+<include src="PRIMZAHLEN.B"/></lang>
+<requires></requires>

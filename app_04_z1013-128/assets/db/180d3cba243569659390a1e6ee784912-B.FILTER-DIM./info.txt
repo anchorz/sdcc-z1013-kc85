@@ -1,0 +1,3 @@
+<kurz src="Filter Dimensionierung"/>
+<lang><include src="FILTER-DIM..B"/></lang>
+<requires></requires>

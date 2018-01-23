@@ -1,0 +1,45 @@
+<kurz src="Demonstration ZUM HC-BASIC+PSET"/>
+<lang>
+
+robotron-HC-BASIC mit den Funktionstasten S4+
+
+A-AUTO
+C-CONTINUE
+D-DELETE
+I-INSERT
+J-CLEARLINE
+K-STOP
+L-LIST
+N-RENUMBER
+P-PAUSE
+R-RUN
+V-KURSOR an den Zeilenanfang
+W-KURSOR an das Zeilenende   
+
+An dieses BASIC wurden zwei Routinen angehaengt,welche
+im Textpuffer stehen und beim ersten Kaltstart aktiviert
+und dann abgehaengt werden.
+
+Die NMI-TASTE wird auf BRK programmiert und das PSET-Programm
+am oberen RAM-Ende installiert.
+
+Das UP ist A0H lang woraus sich fuer 16k RAM ein MEMORYSIZE von
+16222 ergibt. Benutzt wird der 4. Quadrant,also 1,1 ist
+links oben (wie PRINTAT), die Aufteilung 63x63 Punkte.     
+
+Die Zeile wird in 16378 gepokt,die Spalte in 16379.
+Aufruf dann mit CALL 16224.
+Fuer Erweiterte:Das UP steht dann in 3F60-3FFF,das NWT ist
+nicht aenderbar,das HWT ist in folgende Zellen einzutragen:
+
+(vor erstem BASIC-Kaltstart nach dem Laden!) 2B0D,-2B,-34,-76 .
+
+Die UPs in Basic sind
+PSET (Z,S   Start Z.20)
+LINE  (XA,XE,YA,YE Start Z.40)
+CIRCLE (XA,YA,XE>r Start Z.80)
+
+Viel Erfolg  M.Voigt,Magdeburg  
+
+<include src="DEMOGRAF.B"/></lang>
+<requires></requires>

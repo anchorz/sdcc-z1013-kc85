@@ -1,0 +1,5 @@
+<kurz src="Tool: REM Zeilen entfernen mit BASIC-Programm"/>
+<lang>REMKILL nachladen, dann RUN 65432   
+
+<include src="REM-KILL.B"/></lang>
+<requires></requires>
