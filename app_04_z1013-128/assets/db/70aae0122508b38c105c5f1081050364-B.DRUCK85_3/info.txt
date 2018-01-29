@@ -1,0 +1,6 @@
+<kurz src="Druck 89, Version KC85/3+Z1013, Drucken von BASIC-Textfeldern"/>
+<lang>
+Laden, Saven, Drucken von BASIC-Textfeldern bekannter Feldlaenge
+(fuer KC 85/3 u. Z1013)
+<include src="DRUCK85_3.B"/></lang>
+<requires></requires>

@@ -1,0 +1,4 @@
+<kurz src="wie [6c5bd875ff0996695ec535583195d851]"/>
+<lang>es werden anderen Grafikzeichen benutzt
+<include src="GANYMED.B"/></lang>
+<requires></requires>

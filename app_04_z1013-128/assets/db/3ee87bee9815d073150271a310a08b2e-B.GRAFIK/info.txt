@@ -1,0 +1,12 @@
+<kurz src="Demo Grafikfunktionen."/>
+<lang>Grafikroutinen werden noch gebraucht. Wo sind sie?
+
+Ruft verschiedene Routinen auf:
+CALL*9393 Punkt setzen
+CALL*9395 Punkt löschen
+CALL*9399
+CALL*939B
+CALL*939D 
+
+<include src="GRAFIK.B"/></lang>
+<requires></requires>

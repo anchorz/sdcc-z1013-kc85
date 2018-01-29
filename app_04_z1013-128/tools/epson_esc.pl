@@ -91,11 +91,12 @@ while($index<$len) {
         {
             case "9" { print "PE detection enabled\n"; }
             case "@" { print "RESET\n"; }
+            case "*" { $mode=get_byte(); $count=get_word(); printf ("* %d:%d\n",$mode,$count); print_dots($count,$scale); }
             case "A" { $line_spaceing=get_byte(); printf ("line_spaceing=%d\n",$line_spaceing); }
             #double density 120dpi horizontal 60dpi vertical
             case "L" { $count=get_word(); printf ("L 960-dpl:%d\n",$count); print_dots($count,$scale); }
             case "O" { print "cancel bottom margin\n"; }
-            case "l"    { $left_margin=get_byte(); printf ("left margin=%d\n",$left_margin); }
+            case "l" { $left_margin=get_byte(); printf ("left margin=%d\n",$left_margin); }
             else { printf("unhandled ESC+0x%02x'%s':[%04x]\n",ord($b),$b,$index-1); exit 1;}
         }
     } else {
@@ -104,6 +105,7 @@ while($index<$len) {
             case "\x0" { print "NUL\n"; }
             case "\xa" { $y+=8*$scale;} #LF
             case "\xd" { $x=$scale/2; } #CR
+            case " " { $x+=$scale; } #SPACE
             else {
                 printf("unknown character [%04x]%02x\n",$index-1,ord($b));
                 exit 1;
@@ -117,6 +119,6 @@ open my $out, '>', 'tmp.png' or die;
 binmode $out;
 print $out $img->png;
 printf("output: \"%s\"\n","tmp.png");
-system("convert tmp.png -motion-blur 2x6+45 -resize 33% -normalize -rotate 180 -quality 70% tmp2.png" );
-
+system("convert tmp.png -motion-blur 2x6+45 -resize 33% -normalize -rotate 180 -quality 70% final_blur.png" );
+printf("output: \"%s\"\n","final_blur.png");
 

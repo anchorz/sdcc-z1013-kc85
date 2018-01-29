@@ -200,6 +200,8 @@
 <file aadr="1800" eadr="523b" sadr="0000" typ="T" link="b46e075770d4fa30974f356d96e9dece-T.DRUCK-TAST%20(esc)/T.DRUCK-TAST%20(esc).z80" name="DRUCK-TAST (esc)" kurz="MicroWORD mit Schreibmaschine Erika S3004 (andere Formatierung, ggf anderer Drucker)" />
 <file aadr="7d00" eadr="7e7f" sadr="7e56" typ="C" link="c87b378300e6c5d27b13b21be02d9a25-C.DRUCK/C.DRUCK-TAST%20S3004.z80" name="DRUCK-TAST S3004" kurz="Drucker- &amp; Tastaturtreiber S3004 für MicroWord" />
 <file aadr="3000" eadr="7026" sadr="1c00" typ="T" link="d50366ccb6e19f23dd64ec303be8d75b-T.DRUCK-TAST%20S3004/T.DRUCK-TAST%20S3004.z80" name="DRUCK-TAST S3004" kurz="MicroWORD mit Schreibmaschine Erika S3004/Steuerzeichen" />
+<file aadr="2bc0" eadr="35ea" sadr="0000" typ="B" link="70aae0122508b38c105c5f1081050364-B.DRUCK85_3/B.DRUCK85_3.z80" name="DRUCK85/3       " kurz="Druck 89, Version KC85/3+Z1013, Drucken von BASIC-Textfeldern" />
+<file aadr="2bc0" eadr="36b5" sadr="0000" typ="B" link="471657242241822982ca95c33845aeba-B.DRUCKKC1/B.DRUCKKC1.z80" name="DRUCKKC1        " kurz="Druck 89, Version KC85/1, Drucken von BASIC-Textfeldern" />
 <file aadr="1800" eadr="2393" sadr="0000" typ="I" link="b84e2e45db1288e47f9bc0905a254a12-I.DVM%202_89%20us._sof/I.DVM%202_89%20us._sof.z80" name="DVM 2/89 us./sof" kurz="Digitalvoltmeter mit 8 Meßeingängen" />
 <file aadr="2bc0" eadr="3bdd" sadr="0300" typ="B" link="a2dd2fff8038e594be7dcc34a72038bb-B.DYNA-L/B.DYNA-L.z80" name="DYNA-L          " kurz="Knotenpotentialverfahren, Netzwerkanalyse, REIC" />
 <file aadr="0400" eadr="05bf" sadr="0400" typ="C" link="2ffe817049e6584715721e821b3b33aa-C.E-A-BILD/C.E-A-BILD.z80" name="E-A-BILD        " kurz="Animation/Grafik mit Editor" />
@@ -282,6 +284,7 @@
 <file aadr="1000" eadr="437f" sadr="0000" typ="I" link="9814524cf57a87a4affd616d87c0af5f-I.FORTH.DOC-T1/I.FORTH.DOC-T1.z80" name="FORTH.DOC-T1    " kurz="Programmiersystem FORTH für den Kleinrechner-Bausatz Z1013" />
 <file aadr="1000" eadr="3d67" sadr="0000" typ="I" link="29ee9784ed9b98da1612b66fcc45547a-I.FORTH.DOC-T2/I.FORTH.DOC-T2.z80" name="FORTH.DOC-T2    " kurz="Programmiersystem FORTH für den Kleinrechner-Bausatz Z1013" />
 <file aadr="1000" eadr="33c7" sadr="0000" typ="I" link="31a70b7cb5a2dc98ba9ee982d81d83e1-I.FORTH.DOC-T3/I.FORTH.DOC-T3.z80" name="FORTH.DOC-T3    " kurz="Programmiersystem FORTH für den Kleinrechner-Bausatz Z1013" />
+<file aadr="2bc0" eadr="3ab4" sadr="0300" typ="B" link="c415a905808e7ddb36a8393bf12514fd-B.FOURIER/B.FOURIER.z80" name="FOURIER         " kurz="FOURIER, Untersuchung auf harmonische Frequenzanteile" />
 <file aadr="2bc0" eadr="4070" sadr="0000" typ="B" link="149ac6aa38ae5ffcc1ddfd67f372bc63-B.FRAKTALE/B.FRAKTALE.z80" name="FRAKTALE        " kurz="Fraktale in Pseudografik" />
 <file aadr="2bc0" eadr="352d" sadr="0000" typ="B" link="45ab07dfbf1fba0aae75ce6f6a7b6f80-frogger/frogger.z80" name="FROGGER         " kurz="FROGGER AND SNAIL, Schnecken einsammeln" />
 <file aadr="0100" eadr="3fff" sadr="0201" typ="C" link="6a6fcda05f8accc60b871245c5015149-C.FROGS-ATTACK/C.FROGS-ATTACK.z80" name="FROGS-ATTACK    " kurz="Invasion Frogs 27.12.1986 Cursortasten" />
@@ -327,6 +330,7 @@
 <file aadr="0100" eadr="0a8f" sadr="0200" typ="C" link="8da51a0f9e96a2f3faabc9b1a872909e-gost_hut/gost_hut.z80" name="GOST HUT        " kurz="GHOST Original, Geist ausweichen und $ aufsammeln (2.02-Tastatur)" />
 <file aadr="0100" eadr="0c1f" sadr="0100" typ="C" link="cf9f4e99a2f83c6cb8584013b7494174-C.GR.EDITOR%206.03/C.GR.EDITOR%206.03.z80" name="GR.EDITOR 6.03  " kurz="Grafikeditor mit Analogjoystick" />
 <file aadr="0100" eadr="0a50" sadr="0100" typ="C" link="269f707fd4842f82f4264d8e5b64ab7d-C.GRAF.DEMO%20FZG3.1/C.GRAF.DEMO%20FZG3.1.z80" name="GRAF.DEMO FZG3.1" kurz="Grafikeditor (Weiss jemand mehr?)" />
+<file aadr="2bc0" eadr="3ef1" sadr="0000" typ="B" link="3ee87bee9815d073150271a310a08b2e-B.GRAFIK/B.GRAFIK.z80" name="GRAFIK          " kurz="Demo Grafikfunktionen." />
 <file aadr="d000" eadr="d950" sadr="d000" typ="C" link="8deca199ed1635b2d2a61698a93a54d1-C.GRAFIK-DEMO_FZG/C.GRAFIK-DEMO%20FZG.z80" name="GRAFIK-DEMO FZG " kurz="andere Version, FZG Freiprogrammierbarer-ZeichenGenerator" />
 <file aadr="0100" eadr="2820" sadr="2810" typ="C" link="c9490afb5f6a0b7b428456e5eda153b1-graverobber/graverobber.z80" name="GRAVEROBBER     " kurz="Grabraeuber, Schaetze sammeln (Brosig)" />
 <file aadr="0100" eadr="284e" sadr="2840" typ="C" link="58d5584eacb0f5bb95208dc74bc042ae-graverobber+prJ/graverobber+prJ.z80" name="GRAVEROBBER(J)  " kurz="Grabraeuber, Schaetze sammeln" />
@@ -334,6 +338,7 @@
 <file aadr="0100" eadr="c4c0" sadr="0100" typ="C" link="701732139296da2a16126ef357e8e4e5-hacker_com/hacker_com.z80" name="HACKER.COM      " kurz="Strategiespiel" />
 <file aadr="e800" eadr="e848" sadr="e800" typ="C" link="7b3917f7a3f4804589ffd926ea7379b0-C.HARD/C.HARD.z80" name="HARD#           " kurz="Druckertreiber (parallel), Interruptbetrieb" />
 <file aadr="1000" eadr="2429" sadr="0000" typ="b" link="508954d71b34930ca3f11251ce15b35f-b.HASCHMICH%201/b.HASCHMICH%201.z80" name="HASCHMICH 1     " kurz="Spieler einfangen (8x4)" />
+<file aadr="2bc0" eadr="3490" sadr="0000" typ="B" link="56d35656b8bcb919ba696c46e172f51a-B.HASE_CENTRONICS/B.HASE%20CENTRONICS.z80" name="HASE CENTRONICS " kurz="identisch []" />
 <file aadr="2bc0" eadr="3975" sadr="0000" typ="B" link="191843607f9b3c8d6cf3a11514fde1c4-B.HASE%26WOLF/B.HASE%26WOLF.z80" name="HASE&amp;WOLF       " kurz="Wölfe gegen Baum rennen lassen" />
 <file aadr="0100" eadr="400e" sadr="4000" typ="C" link="0fd7e15a38d589f921094f0112d6344a-hase+wolf+prJ/hase+wolf+prJ.z80" name="HASE+WOLF+Joy.  " kurz="Pursuit-Clone: Kohlköpfe aufsammeln, Wölfen ausweichen" />
 <file aadr="2bc0" eadr="3db2" sadr="0000" typ="B" link="7e7088da569becba66a6fca2148f1320-B.Hauptstaedte/B.Hauptstaedte.z80" name="Hauptstaedte    " kurz="Hauptstädte zuordnen" />
@@ -882,4 +887,4 @@
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 </filelist>
-<status src="Datenbank enthält 882 Dateien."/></doc>
+<status src="Datenbank enthält 887 Dateien."/></doc>

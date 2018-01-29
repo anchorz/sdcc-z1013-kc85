@@ -1,0 +1,21 @@
+<kurz src="FOURIER, Untersuchung auf harmonische Frequenzanteile"/>
+<lang>
+Quelltext ist noch mit dem Programm DEMOGRAF verbunden. 
+Man kann es mit DELETE 10,450 löschen und anschließend das 
+Hauptprogramm mit RUN 10 starten.
+
+Beschreibung FOURIER
+
+Dieses Programm dient der Untersuchung von oszillografierten Signalen
+auf ihre harmonischen Frequenzanteile hin.
+Die Ein-und Ausgaben sind BS-Skalen-orientiert, bis auf das Diagramm, 
+es ist %-ual, der  max. analysierte Anteil ist 100%. Die geforderten
+Eingaben beziehen sich relativ auf den betrachteten Nulldurchgang, ab
+dann eine ganze Periode
+
+Die Startzeile ist 10 .
+
+Viel Erfolg ! M.Voigt,Magdeburg
+
+<include src="FOURIER.B"/></lang>
+<requires></requires>

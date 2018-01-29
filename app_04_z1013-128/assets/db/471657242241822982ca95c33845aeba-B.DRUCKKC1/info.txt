@@ -1,0 +1,14 @@
+<kurz src="Druck 89, Version KC85/1, Drucken von BASIC-Textfeldern"/>
+<lang>Beim Z1013 gibt es die Fehlermeldungen:
+?SN ERROR IN 1230
+?SN ERROR IN 1235
+
+Die WINDOW-Anweisungen müssen auf die Spaltenanzahl vom Z1013 angepasst werden:
+1230 WINDOW0,4,0,39 ⇨ 1230 WINDOW0,4,0,31 
+
+Laden, Saven, Drucken von BASIC-Textfeldern bekannter Feldlaenge
+(für den KC 85/1) (mit V24A3)
+(C) Dr.Trog,H-J;Berlin,Febr.89
+
+<include src="DRUCKKC1.B"/></lang>
+<requires></requires>
