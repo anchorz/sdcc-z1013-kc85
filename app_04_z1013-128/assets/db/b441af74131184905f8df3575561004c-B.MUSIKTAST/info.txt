@@ -1,0 +1,3 @@
+<kurz src="Anzeige Tastaturcode HEX/DEZ"/>
+<lang><include src="MUSIKTAST.B"/></lang>
+<requires></requires>

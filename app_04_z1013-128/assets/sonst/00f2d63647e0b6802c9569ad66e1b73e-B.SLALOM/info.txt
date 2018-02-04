@@ -1,0 +1,8 @@
+<kurz src="Variante von [7e6ed1969fe2ba438a9d69475310006b]"/>
+<lang>
+ohne INK Befehle
+
+Steuerung: ⇦ ⇨
+
+<include src="SLALOM.B"/></lang>
+<requires></requires>

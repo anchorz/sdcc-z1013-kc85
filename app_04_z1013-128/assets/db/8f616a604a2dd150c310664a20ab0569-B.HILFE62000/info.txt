@@ -1,0 +1,7 @@
+<kurz src="Umrechnungprogramm HEX/DEC, Speicherdump"/>
+<lang>
+62240 FOR Q = 00000 TO 100    :!
+ENTER, ^C und RUN 62000
+
+<include src="HILFE62000.B"/></lang>
+<requires></requires>

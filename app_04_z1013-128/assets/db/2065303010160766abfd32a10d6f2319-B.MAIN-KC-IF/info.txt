@@ -1,0 +1,3 @@
+<kurz src="BASIC Patch: Erhöhung Fehlertoleranz für das KC-Interface"/>
+<lang><include src="MAIN-KC-IF.B"/></lang>
+<requires></requires>

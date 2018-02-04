@@ -1,0 +1,9 @@
+<kurz src="Mau Mau, Kartenspiel"/>
+<lang>
+Farben entweder als Grafikzeichen eingeben. Wohl dem, der weiss, wo 
+die Sonderzeichen auf der Tastatur liegen:
+ oder YXCV statt dessen.
+z.B. "C DAME" steht für  “ DAME”
+
+<include src="TRUMPF, MAU u.a..B"/></lang>
+<requires></requires>

@@ -1,0 +1,8 @@
+<kurz src="Textkonvertierung V7"/>
+<lang>Unbekannte Funktion. Weder sehe ich hier aus dem Quelltext heraus, was für ein Text konvertiert 
+werden soll, noch was während der Konvertierung verändert werden soll.  
+
+Steuerung: ⇦ ⇨ B
+
+<include src="KONV.7.B"/></lang>
+<requires></requires>

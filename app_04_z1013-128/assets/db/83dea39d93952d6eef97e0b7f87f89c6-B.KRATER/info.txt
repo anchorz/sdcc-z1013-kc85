@@ -1,0 +1,13 @@
+<kurz src="EINSAMMELN VON METEORITEN"/>
+<lang>noch nicht ganz von 40 auf 32 Zeichen pro Zeile umgestellt
+
+Steuerung: 
+⇦,Y
+⇨,C
+V   Runter 
+B,X Hoch
+
+
+
+<include src="KRATER.B"/></lang>
+<requires></requires>
