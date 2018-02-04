@@ -101,7 +101,7 @@ obj/z1013/bin: obj/z1013/$(OUT).z80
 obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS) $(SDCC_OBJECTS)))
 	$(LINK) $(SDLD_OPT) -b _HEADER=$(Z1013_HEADER) $(Z1013_DATA_OPTION) -b _CODE=$(Z1013_CODE)  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/z1013 -k ../lib/ -l z1013 -l krt -l conio -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z1013/$(OUT).ihx" "$@"
-	echo -n $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
+	printf %s $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
 	
 obj/z1013/%.asm : src/%.c
