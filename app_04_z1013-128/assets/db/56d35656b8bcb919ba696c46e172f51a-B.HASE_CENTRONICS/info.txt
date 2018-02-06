@@ -1,7 +1,4 @@
-<kurz src="identisch []"/>
+<kurz src="Grafik Hase"/>
 <lang>
-
-Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ U ⏎
-
 <include src="HASE CENTRONICS.B"/></lang>
 <requires></requires>

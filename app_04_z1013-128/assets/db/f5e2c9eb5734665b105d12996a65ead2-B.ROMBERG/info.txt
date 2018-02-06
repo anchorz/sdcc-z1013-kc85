@@ -1,0 +1,5 @@
+<kurz src="Integral berechnen"/>
+<lang>Formatierung erfolgt mit 40 Zeichen pro Zeile
+
+<include src="ROMBERG.B"/></lang>
+<requires></requires>

@@ -1,0 +1,11 @@
+<kurz src="Hofnarr von Banania soll Kaiser werden, Paravia Variante"/>
+<lang>
+?UL ERROR IN 2670 
+
+Ist da ein Fehler in der Zeile 2670:
+2670 IF P(A)>P(E)*2.4 THEN GOSUB[[[
+nach dem GOSUB sollte eine Zahl stehen
+
+
+<include src="Promotion.B"/></lang>
+<requires></requires>

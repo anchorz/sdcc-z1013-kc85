@@ -1,0 +1,7 @@
+<kurz src="Demoprogramm für Menüsteuerung"/>
+<lang>Sicher bin ich mir aber dabei nicht
+
+Steuerung: W ⇦ ⇨ 
+
+<include src="UNI-MENUE 3C.B"/></lang>
+<requires></requires>

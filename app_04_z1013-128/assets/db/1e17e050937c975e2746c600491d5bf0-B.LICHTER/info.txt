@@ -1,0 +1,3 @@
+<kurz src="Lichter schalten über IO-Port 0x00"/>
+<lang><include src="LICHTER.B"/></lang>
+<requires></requires>
