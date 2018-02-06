@@ -1,7 +1,24 @@
 #include <conio.h>
 #include <z1013.h>
 
-void joystick_initialize()
+#define FALSE   (1 == 0)
+#define TRUE    (1 == 1)
+
+/*
+    return values for joystick_get_*
+    0001    joy 1 left
+    0002    joy 1 right
+    0004    joy 1 down
+    0008    joy 1 up
+    0010    joy 1 fire
+    0100    joy 2 left
+    0200    joy 2 right
+    0400    joy 2 down
+    0800    joy 2 up
+    1000    joy 2 fire
+*/
+
+void joystick_initialize_practic_1_88()
 {
     __asm__("ld a,#0xcf"); //bitwise io
     __asm__("out (0x1),a"); //PIOA-CONTROL
@@ -11,7 +28,7 @@ void joystick_initialize()
     __asm__("out (0x0),a"); //PIOA-DATA
 }
 
-int joystick_get() __naked
+int joystick_get_practic_1_88() __naked
 {
     __asm__("ld c,#0x1f"); //bitmask ...FOURL
     __asm__("ld a,#0x20"); //select JOYSTICK 2
@@ -32,6 +49,99 @@ int joystick_get() __naked
     __asm__("and c"); 
     __asm__("ld l,a"); 
     __asm__("ret");
+}
+
+
+char in_pio_a() __naked
+{
+    __asm__("ld a,#0x00"); 
+    __asm__("ld h,a"); 
+    __asm__("in a,(0x00)"); //PIOA-DATA
+    __asm__("ld l,a"); 
+    __asm__("ret");
+}
+
+
+void joystick_initialize_jute_6_87()
+{
+    __asm__("ld a,#0xcf"); //mode 3, bitwise io
+    __asm__("out (0x1),a"); //PIOA-CONTROL
+    __asm__("ld a,#0xfe"); //bit 1..7 input
+    __asm__("out (0x1),a"); //PIOA-CONTROL
+}
+
+int joystick_get_jute_6_87()
+{
+    // original no fire
+    // but jkcemu use all bits as fire
+    // bit 0 is sound out
+    unsigned char value;
+    unsigned char result;
+    result = 0;
+    value = in_pio_a();
+
+    if(( value & 0x10) == 0x00) result += 0x04; // down
+    if(( value & 0x20) == 0x00) result += 0x01; // left
+    if(( value & 0x40) == 0x00) result += 0x02; // right
+    if(( value & 0x80) == 0x00) result += 0x08; // up
+    if(( value & 0xf0) == 0x00) result  = 0x10; // fire
+
+    return result;
+}
+
+
+void joystick_initialize_practic_4_87()
+{
+    __asm__("ld a,#0xcf"); //mode 3, bitwise io
+    __asm__("out (0x1),a"); //PIOA-CONTROL
+    __asm__("ld a,#0xff"); //bit 0..7 input
+    __asm__("out (0x1),a"); //PIOA-CONTROL
+}
+
+int joystick_get_practic_4_87()
+{
+    // all bits as fire
+    // no sound out
+    unsigned char value;
+    int result1;
+    int result2;
+    result1 = 0;
+    result2 = 0;
+    value = in_pio_a();
+
+    if(( value & 0x80) == 0x00) result1 += 0x02; // right
+    if(( value & 0x40) == 0x00) result1 += 0x04; // down
+    if(( value & 0x20) == 0x00) result1 += 0x01; // left
+    if(( value & 0x10) == 0x00) result1 += 0x08; // up
+    if(( value & 0xf0) == 0x00) result1  = 0x10; // fire
+
+    if(( value & 0x08) == 0x00) result2 += 0x0200; // right
+    if(( value & 0x04) == 0x00) result2 += 0x0400; // down
+    if(( value & 0x02) == 0x00) result2 += 0x0100; // left
+    if(( value & 0x01) == 0x00) result2 += 0x0800; // up
+    if(( value & 0x0f) == 0x00) result2  = 0x1000; // fire
+
+    return result1 + result2;
+}
+
+
+int joystick_get_erf_soft()
+{
+    // one joystick
+    unsigned char value;
+    unsigned char result;
+    result = 0;
+    value = in_pio_a();
+
+    // 0 0 0 fire  up      down  right left   // ist practic 88
+    // 0 0 0 fire  left    up    right down   // soll nach erf
+    if(( value & 0x08) == 0x00) result += 0x01; // left
+    if(( value & 0x02) == 0x00) result += 0x02; // right
+    if(( value & 0x04) == 0x00) result += 0x08; // up
+    if(( value & 0x01) == 0x00) result += 0x04; // down
+    if(( value & 0x10) == 0x00) result += 0x10; // fire
+
+    return result;
 }
 
 
@@ -170,74 +280,144 @@ void draw_down_right(char ox,char on)
         clear_window(ox+9,10,3,3);
 }
 
+enum { practic_1_88, jute_6_87, practic_4_87, erf_soft};
 
 unsigned int ret;
 char device;
+unsigned char   mode      = practic_1_88;
+char            value;
+unsigned char   new_joy   = FALSE;
 
 int main()
 {
-    clrscr();
-    joystick_initialize();
-    
-    rahmen(0,0,12,12);
-    rahmen(18,0,12,12);
-    gotoxy(14,1);
-    cputs("#1");
-    gotoxy(14,2);
-    cputs("<--");
-    
-    gotoxy(16,6);
-    cputs("#2");
-    gotoxy(15,7);
-    cputs("-->");
-
-    gotoxy(0,16);
-    cputs("Beispiel fuer die Verwendung");
-    gotoxy(0,17);
-    cputs("zweier Joysticks nach");
-    gotoxy(0,18);
-    cputs("Practic 1/88.");
-    gotoxy(0,21);
-    cputs("Bewege den oder die Joysticks"); 
-    gotoxy(0,22);
-    cputs("  und teste den Feuer-Knopf."); 
-    
-    while(1)
+    while( 1)
     {
-        ret=joystick_get();
-        device=ret&0x0f;
+        clrscr();
 
-        gotoxy(0,14);
-        cputs("Status: ");
-        OUTHL(ret);
-        
-        draw_top_left(1,device==0x09);
-        draw_up(1,device==0x08);
-        draw_top_right(1,device==0x0a);
+        switch( mode)
+        {
+            case practic_1_88:  joystick_initialize_practic_1_88(); break;
+            case jute_6_87:     joystick_initialize_jute_6_87();    break;
+            case practic_4_87:  joystick_initialize_practic_4_87(); break;
+            case erf_soft:      joystick_initialize_practic_1_88(); break;
+        } // switch( mode)
 
-        draw_left(1,device==0x01);
-        draw_fire(1,ret&0x0010);
-        draw_right(1,device==0x02);
-       
-        draw_down_left(1,device==0x05);
-        draw_down(1,device==0x04);
-        draw_down_right(1,device==0x06);
-        
-        ret/=256;
-        device=ret&0x0f;
-        
-        draw_top_left(19,device==0x09);
-        draw_up(19,device==0x08);
-        draw_top_right(19,device==0x0a);
+        rahmen(0,0,12,12);
+        rahmen(18,0,12,12);
+        gotoxy(14,1);
+        cputs("#1");
+        gotoxy(14,2);
+        cputs("<--");
 
-        draw_left(19,device==0x01);
-        draw_fire(19,ret&0x0010);
-        draw_right(19,device==0x02);
-       
-        draw_down_left(19,device==0x05);
-        draw_down(19,device==0x04);
-        draw_down_right(19,device==0x06);
-        
-        
-    }
+        gotoxy(16,6);
+        cputs("#2");
+        gotoxy(15,7);
+        cputs("-->");
+
+        gotoxy(0,16);
+        cputs("Beispiel fuer die Verwendung");
+        gotoxy(0,17);
+        switch( mode)
+        {
+            case practic_1_88:
+            case practic_4_87:  cputs("zweier Joysticks nach"); break;
+            case jute_6_87:
+            case erf_soft:      cputs("eines Joysticks nach");  break;
+        }
+        gotoxy(0,18);
+        switch( mode)
+        {
+            case practic_1_88:  cputs("practic 1/88."); break;
+            case jute_6_87:     cputs("Ju+Te 6/87.");   break;
+            case practic_4_87:  cputs("practic 4/87."); break;
+            case erf_soft:      cputs("ERF-soft.");     break;
+        }
+        gotoxy(0,21);
+        cputs("Bewege den oder die Joysticks"); 
+        gotoxy(0,22);
+        cputs("  und teste den Feuer-Knopf."); 
+
+        gotoxy(0,25);
+        cputs("Auswahl");
+        gotoxy(0,27);
+        cputs("1: practic 1/88");
+        gotoxy(0,28);
+        cputs("2: Ju+Te 6/87");
+        gotoxy(0,29);
+        cputs("3: practic 4/87");
+        gotoxy(0,30);
+        cputs("4: ERF-soft"); 
+
+        while( !new_joy)
+        {
+            switch( mode)
+            {
+                case practic_1_88:  ret=joystick_get_practic_1_88();    break;
+                case jute_6_87:     ret=joystick_get_jute_6_87();       break;
+                case practic_4_87:  ret=joystick_get_practic_4_87();    break;
+                case erf_soft:      ret=joystick_get_erf_soft();        break;
+            } // switch( mode)
+            device=ret&0x0f;
+
+            gotoxy(0,14);
+            cputs("Status: ");
+            OUTHL(ret);
+
+            draw_top_left(1,device==0x09);
+            draw_up(1,device==0x08);
+            draw_top_right(1,device==0x0a);
+
+            draw_left(1,device==0x01);
+            draw_fire(1,ret&0x0010);
+            draw_right(1,device==0x02);
+
+            draw_down_left(1,device==0x05);
+            draw_down(1,device==0x04);
+            draw_down_right(1,device==0x06);
+
+            ret/=256;
+            device=ret&0x0f;
+
+            draw_top_left(19,device==0x09);
+            draw_up(19,device==0x08);
+            draw_top_right(19,device==0x0a);
+
+            draw_left(19,device==0x01);
+            draw_fire(19,ret&0x0010);
+            draw_right(19,device==0x02);
+
+            draw_down_left(19,device==0x05);
+            draw_down(19,device==0x04);
+            draw_down_right(19,device==0x06);
+            
+            if( kbhit())
+            {
+                value = getch();
+                switch( value)
+                {
+                    case '1':
+                        mode = practic_1_88;
+                        new_joy = TRUE;
+                        break;
+
+                    case '2':
+                        mode = jute_6_87;
+                        new_joy = TRUE;
+                        break;
+
+                    case '3':
+                        mode = practic_4_87;
+                        new_joy = TRUE;
+                        break;
+
+                    case '4':
+                        mode = erf_soft;
+                        new_joy = TRUE;
+                        break;
+                } // switch( value)
+            } // kbhit()
+            
+        } // while( not (new_joy))
+        new_joy = FALSE;
+    } // while( 1)
 }
