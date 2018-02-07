@@ -1,0 +1,27 @@
+<kurz src="Umwandlung Tiny-BASIC nach KC-BASIC RAM-Version ab 0x0400"/>
+<lang>wie [b53cdfa21459c03fd9e114cc62ad4258]
+Startadresse ist 0x7d00. Wahrscheinlich durch einen Fehler beim Abspeichern 
+wurde das Programm um (jetzt ab 0x7CE0) 32 Bytes verschoben. 
+
+Die Ausgabe wird ab Adresse 0x0400 gespeichert. Eigentlich sollte man diese ROM-Basic 
+Variante bevorzugen,  da andernfalls der Speicher bis 0x2bc0 ungenutzt bleibt und leicht 
+ein Überlauf in den Tiny-Basic-Bereich ab 0x4000 erfolgen kann.
+
+Springt am Schluss zum ROM-BASIC nach 0xC002
+
+Das Programm hat noch Ecken und Kanten. So z.B. wird der Array 
+Operator @ nicht mit übersetzt oder OUTCHAR und muss dann noch manuell 
+nachbearbeitet werden.
+
+Das Tiny-BASIC Programm sollte mit Z1013-Header ab Adresse 0x4000 
+(ohne Header dann ab 0x4020) geladen werden, so dass der eigentliche 
+Quelltext ab 0x4172 (im Original 0x1152) beginnt.
+EINGABE-Beispiel:
+<include src="../f999c7d7efa3ca730fb35bd68e35e597-b.SCHIFF1 L/SCHIFF1 L.b"/>
+
+ERGEBNIS:
+<include src="out.txt"/></lang>
+
+
+</lang>
+<requires></requires>

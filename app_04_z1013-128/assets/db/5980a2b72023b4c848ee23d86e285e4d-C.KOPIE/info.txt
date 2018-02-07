@@ -1,0 +1,13 @@
+<kurz src="Verschiebt ein Programm an eine andere Speicheraddresse"/>
+<lang>Verändert dabei absolute Lade- und Sprungadressen.
+
+Aufruf: 
+Parameter [ARG1...3] Speicherbereich
+CALL 0x3e05
+
+Kopiert irgendetwas irgendwohin.
+greift dabei auf den Speicherbereich 0x3000 zu (via [0x3e01]), was aber aber
+ausserhalb des Programmes liegt. Vielleicht war mal dort das zu verschiebende 
+Programm. Sucht dann nach absoluten Sprung und Ladebefehlen.
+</lang>
+<requires></requires>

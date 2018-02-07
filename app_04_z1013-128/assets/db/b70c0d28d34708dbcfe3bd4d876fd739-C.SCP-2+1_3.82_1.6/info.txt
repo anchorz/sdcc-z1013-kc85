@@ -1,0 +1,3 @@
+<kurz src="CP/M 2.2 Z1013 IG-HC 1.6 FDD 624K + 2*RF 256K V3.8 K7659 RB"/>
+<lang></lang>
+<requires></requires>

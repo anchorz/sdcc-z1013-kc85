@@ -1,0 +1,20 @@
+<kurz src="ähnlich [4216216cc733b15680f5c1e60474e7e2]"/>
+<lang>Besser man nimmt das Programm [4216216cc733b15680f5c1e60474e7e2].
+Wenn nur der Speicher ab 0x2C00 benutzt wird erfolgt leicht ein Überlauf
+in den Bereich  
+
+Das Programm hat noch Ecken und Kanten. So z.B. wird der Array 
+Operator @ nicht mit übersetzt oder OUTCHAR und muss dann noch manuell 
+nachbearbeitet werden.
+
+Das Tiny-BASIC Programm sollte mit Z1013-Header ab Adresse 0x4000 
+(ohne Header dann ab 0x4020) geladen werden, so dass der eigentliche 
+Quelltext ab 0x4172 (im Original 0x1152) beginnt.
+EINGABE-Beispiel:
+<include src="../f999c7d7efa3ca730fb35bd68e35e597-b.SCHIFF1 L/SCHIFF1 L.b"/>
+
+ERGEBNIS:
+<include src="out.txt"/></lang>
+
+</lang>
+<requires></requires>

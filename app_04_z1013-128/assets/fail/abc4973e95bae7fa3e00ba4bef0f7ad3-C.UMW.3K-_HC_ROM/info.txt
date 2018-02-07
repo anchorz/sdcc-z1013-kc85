@@ -1,0 +1,6 @@
+<kurz src="identisch [43c9f24f636aabc80e79c1de5b6eb3ff]"/>
+<lang>falscher Bereich abgespeichert. 
+Die Startadresse ist nach wie vor 0x7d00, aber hier stehen 32 Bytes zu viel am Anfang,
+so dass die Startadresse noch nach Unten korrigiert werden muss.
+</lang>
+<requires></requires>

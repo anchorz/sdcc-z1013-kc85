@@ -1,0 +1,5 @@
+<kurz src="CED Texteditor"/>
+<lang>muss zwischen Bildschirmmodus und Kommandomodus hin- und herschalten
+<include src="C.CED-EDITOR 2.44.txt"/>
+</lang>
+<requires></requires>

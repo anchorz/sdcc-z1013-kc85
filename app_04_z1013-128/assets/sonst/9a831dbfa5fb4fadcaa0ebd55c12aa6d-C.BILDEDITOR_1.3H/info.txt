@@ -1,0 +1,3 @@
+<kurz src="identisch [e340c05799ed4311b3e0bfd19d38ab49]"/>
+<lang>Wartet auf Eingaben an IO-Port 0x00</lang>
+<requires></requires>

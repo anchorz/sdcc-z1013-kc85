@@ -1,0 +1,3 @@
+<kurz src="Jump'n'Run - Ducken und Springen"/>
+<lang>Steuerung: ⇦ ⇨  ␣ U</lang>
+<requires></requires>

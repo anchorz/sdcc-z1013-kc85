@@ -1,0 +1,4 @@
+<kurz src="Komprimiert Basic-Programme"/>
+<lang>Funktioniert für Programme ab 0x2c00 und wahrscheinlich auch 0x300.
+Entfernt REM Zeilen und Leerzeichen, modifiziert DATA Anweisungen</lang>
+<requires></requires>

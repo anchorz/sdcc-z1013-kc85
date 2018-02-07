@@ -138,6 +138,7 @@
 <file aadr="1000" eadr="2241" sadr="0000" typ="b" link="d86eaf7e7f9c121d6a16301145a3f964-b.CAVE%201/b.CAVE%201.z80" name="CAVE 1          " kurz="Die Höhle, Höhlenfliegerei" />
 <file aadr="0800" eadr="116c" sadr="0000" typ="T" link="da8d7ea5b5474ad3eea25a3ea4be56ad-T.CC/T.CC-Fragebogen.z80" name="CC-Fragebogen   " kurz="Fragebogen, Konzeption zur Gründung von Computerclub's" />
 <file aadr="2800" eadr="4800" sadr="de00" typ="M" link="035a6c5ffee24b723fadca3b502f5e64-ccp+bios12v_16/ccp+bios12v_16.z80" name="CCP+BIOS12V.16  " kurz="CP/M 2.2 Z1013-ZI./DC 1.2 Disk" />
+<file aadr="0100" eadr="5c75" sadr="0100" typ="C" link="3ba99bcb72faccfd2fe189a960746681-C.CED-EDITOR_2.44/C.CED-EDITOR%202.44.z80" name="CED-EDITOR 2.44 " kurz="CED Texteditor" />
 <file aadr="0100" eadr="5c75" sadr="0100" typ="C" link="8e8d5a2e0813c8d680498fb568253776-C.CED-EDITOR%202.44/C.CED-EDITOR%202.44.z80" name="CED-EDITOR 2.44 " kurz="Texteditor CED (V. 25.10.'87) " />
 <file aadr="2bc0" eadr="481c" sadr="0000" typ="B" link="303a9fff4af21078f4b559e48b017740-centipede/centipede.z80" name="CENTIPEDE       " kurz="CENTIPEDE IST EIN GIFTIGER WURM AUS SEGMENTEN." />
 <file aadr="1000" eadr="392e" sadr="0000" typ="b" link="cc00615980fae93214a701d14e8a0ef8-b.CENTIPEDE%201/b.CENTIPEDE%201.z80" name="CENTIPEDE 1     " kurz="Centipede, aber extrem langsam" />
@@ -346,6 +347,7 @@
 <file aadr="1000" eadr="26e5" sadr="0000" typ="b" link="057fcb505548e5dbf62ca80066f88c55-b.HAUS%201/b.HAUS%201.z80" name="HAUS 1          " kurz="Würfelspiel, gelange als erster durch's Haus" />
 <file aadr="0100" eadr="2b60" sadr="0100" typ="C" link="ac559be453153ac534c19059ce754b32-hc_900_basic.com/hc_900_basic.com.z80" name="HC-900 BASIC    " kurz="BASIC Variante mit PSET-Funktion (HC900)" />
 <file aadr="0100" eadr="29ff" sadr="0100" typ="C" link="5a46abe3d1f711b8121252e98d56f80c-C.HC/C.HC-BASIC%2085_2.z80" name="HC-BASIC 85/2   " kurz="ähnlich [ac559be453153ac534c19059ce754b32]" />
+<file aadr="0200" eadr="2faf" sadr="0200" typ="C" link="837c6fab35ca63bdcd44c3c5cffe82ba-C.HC-PASCAL_V2.1/C.HC-PASCAL_V2.1.z80" name="HC-PASCAL/V2.1  " kurz="KC Pascal, V2.1 by Burmeister, Lehmann, Vetters" />
 <file aadr="1800" eadr="283c" sadr="0000" typ="I" link="092feff3fa06e5d4bebef747c8561b83-I.HCopy%20FT/I.HCopy%20FT.z80" name="HCopy FT        " kurz="Schnellueberspielhilfe zum Laden Kassette-Kassette/RAM-Disk" />
 <file aadr="d000" eadr="e3ff" sadr="d001" typ="C" link="088b38377f57c4cf4f1db24e8c263e22-C.HDISKCOPY_1.4/C.HDISKCOPY%201.4.z80" name="HDISKCOPY 1.4   " kurz="angepasstes Headerdisk 45 mit CRC, Headersave 5.9 und Kopierprogramm, Frei:100-CFFF" />
 <file aadr="3100" eadr="608e" sadr="0000" typ="I" link="832206a28857a892757370347ea0a730-I.HDISKCOPY_1.4-2/I.HDISKCOPY%201.4-2.z80" name="HDISKCOPY 1.4-2 " kurz="HDISKCOPY 1.4 und 1.42, 9.10.1989" />
@@ -408,6 +410,7 @@
 <file aadr="0100" eadr="4080" sadr="0100" typ="C" link="2d7a9a200ed1e1f344e61da19c933543-his__pascal_1_04/his__pascal_1_04.z80" name="HIS.-PASCAL 1.04" kurz="Pascal-Compiler" />
 <file aadr="2000" eadr="3e53" sadr="0000" typ="I" link="5b9cec8af8a707bb7cbc47cfde6d888d-hisoft_pascal_I/hisoft_pascal_I.z80" name="HISOFT-PASCAL   " kurz="Beschreibung HiSoft-Pascal" />
 <file aadr="0100" eadr="407f" sadr="1800" typ="C" link="884833615520bd57f1290f4876236e22-C.Hisoft/C.Hisoft-Pascal.z80" name="Hisoft-Pascal   " kurz="ähnlich [2d7a9a200ed1e1f344e61da19c933543]" />
+<file aadr="0100" eadr="0900" sadr="0100" typ="C" link="7e76ced847c629402124161d9438c8f5-C.HOPPLA_U_SPACE/C.HOPPLA%20U_SPACE.z80" name="HOPPLA U/SPACE  " kurz="Jump'n'Run - Ducken und Springen" />
 <file aadr="1000" eadr="3c32" sadr="0000" typ="b" link="c5515b4b8ed1f1089b90bcf6c811ca3f-b.HOROSKOP%201/b.HOROSKOP%201.z80" name="HOROSKOP 1      " kurz="sucht Horoskope nach Datum heraus" />
 <file aadr="3000" eadr="c813" sadr="0000" typ="I" link="55fda38365fdaa1ac87c17c50e51de29-I.HRG_GRAFIK_DOC/I.HRG%20GRAFIK%20DOC.z80" name="HRG GRAFIK DOC  " kurz="VOLLGRAPHIK mit Z1013, eine KRT Variante für den Bereich 0xE800-0xEBFF" />
 <file aadr="0100" eadr="0a9f" sadr="0250" typ="C" link="5900d7f586462db8092d905bd3b3c0fc-C.HS%20ACMT/C.HS-TEST%20ACMT.z80" name="HS-TEST *ACMT*  " kurz="umfangreiches Hauptspeicher-Testprogramm" />
@@ -473,10 +476,12 @@
 <file aadr="2bc0" eadr="33f8" sadr="0000" typ="B" link="df360225b7b9ad1fc5782c45488a1a47-B.KNOPF/B.KNOPF.z80" name="KNOPF           " kurz="Bomben abwerfen, Stadt säubern" />
 <file aadr="2bc0" eadr="3920" sadr="0302" typ="B" link="dbcb51f2dcc9a90e23b2008af60e5770-B.KNOSSOS/B.KNOSSOS.z80" name="KNOSSOS         " kurz="Labyrinth mit 3D Effekt" />
 <file aadr="0100" eadr="24ff" sadr="0103" typ="C" link="b5acc7e1d8f7495ee50ba94d7d85f296-knossost_%5bb%5d/knossost_%5bb%5d.z80" name="KNOSSOST [b]    " kurz="Labyrinth mit 3D Effekt+Tiny-Basic" />
+<file aadr="ed76" eadr="efff" sadr="ed76" typ="C" link="860d4484ce891001312bb09748f74d84-C.KOMPRI-MC/C.KOMPRI-MC.z80" name="KOMPRI-MC       " kurz="Komprimiert Basic-Programme" />
 <file aadr="2bc0" eadr="344c" sadr="0000" typ="B" link="8569913f3c418fa4c77c54c0f86dd3b2-B.KONTO/B.KONTO.z80" name="KONTO           " kurz="Kontoführung" />
 <file aadr="2bc0" eadr="4185" sadr="0000" typ="B" link="b91c01cf892368c2f64292cd58ad4a22-B.KONV.7/B.KONV.7.z80" name="KONV.7          " kurz="Textkonvertierung V7" />
 <file aadr="3cd0" eadr="3fff" sadr="3cd0" typ="C" link="83c85fba6260366c7ebd863ef141b14b-C.KONVERT_1-2/C.KONVERT%201-2.z80" name="KONVERT 1-2     " kurz="Kassetteninterface zur Anpassung an 1MHz Taktfrequenz, 16k" />
 <file aadr="0800" eadr="3d45" sadr="0000" typ="T" link="0c1e8f4a811ef5e49673bf3233f92c7d-T.Konz.f.CC-DDR%205/T.Konz.f.CC-DDR%205.z80" name="Konz.f.CC-DDR 5 " kurz="KLUB-Info, Konzeption zur Gründung eines Computerclub" />
+<file aadr="3e00" eadr="3fff" sadr="3e05" typ="C" link="5980a2b72023b4c848ee23d86e285e4d-C.KOPIE/C.KOPIE.z80" name="KOPIE           " kurz="Verschiebt ein Programm an eine andere Speicheraddresse" />
 <file aadr="0100" eadr="2bff" sadr="0100" typ="C" link="b637e47d80e6d3b3d6387f4b564fcf56-kraftfeld/kraftfeld.z80" name="KRAFTFELD       " kurz="Geschicklichkeitsspiel mit Simulation von Anziehungskräften" />
 <file aadr="2bc0" eadr="395b" sadr="0300" typ="B" link="83dea39d93952d6eef97e0b7f87f89c6-B.KRATER/B.KRATER.z80" name="KRATER          " kurz="EINSAMMELN VON METEORITEN" />
 <file aadr="2bc0" eadr="2eb8" sadr="0300" typ="B" link="55c28a2b3052eb323024f390e7c02ad8-B.KREIS/B.KREIS.z80" name="KREIS           " kurz="Kreisberechnung und grafische Ausgabe" />
@@ -665,6 +670,7 @@
 <file aadr="2bc0" eadr="7445" sadr="0000" typ="B" link="f0e51ca40f63c02848b6911891a58f8a-B.REISE/B.REISE.z80" name="REISE           " kurz="Weltreise zur Testamentseröffnung" />
 <file aadr="2bc0" eadr="2d80" sadr="0302" typ="B" link="f292cbe33aa03cfd89cd9418c233acc2-B.REM/B.REM-KILL.z80" name="REM-KILL        " kurz="Tool: REM Zeilen entfernen mit BASIC-Programm" />
 <file aadr="2bc0" eadr="3198" sadr="0302" typ="B" link="b9b8389eeb2f2ddaf2014ba03df3dbf2-B.REM-LISTING/B.REM-LISTING.z80" name="REM-LISTING     " kurz="Anleitung zum Schreiben von Dokumentationen" />
+<file aadr="ef44" eadr="efff" sadr="ef44" typ="C" link="b1d88f9d1758d0bdcca75eb1c9f8b872-C.REMKILL-MC/C.REMKILL-MC.z80" name="REMKILL-MC      " kurz="Entfernt REM Zeilen und Leerzeichen" />
 <file aadr="1800" eadr="3e3f" sadr="0000" typ="T" link="59fc467989b3b211c653d62c3b2aa285-rf_am_z1013/rf_am_z1013.z80" name="RF AM Z1013     " kurz="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013+HEADERDISK 45" />
 <file aadr="1800" eadr="4194" sadr="0000" typ="T" link="b3b6d962af52b3744b008b646ce9200e-T.RF_AM_Z1013+BILD/T.RF%20AM%20Z1013+BILD.z80" name="RF AM Z1013+BILD" kurz="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013 mit Bild" />
 <file aadr="c000" eadr="c57f" sadr="c000" typ="C" link="e30566da92787060c849464dde9db848-C.RF-SICHTTEST_3.6/C.RF-SICHTTEST%203.6.z80" name="RF-SICHTTEST 3.6" kurz="RAM Floppy Test" />
@@ -714,6 +720,7 @@
 <file aadr="c800" eadr="ebff" sadr="de00" typ="C" link="5ea6958f2a51c8e7daf2a6fbc9a889cb-C.SCP_PETERS_4.4/C.SCP%20PETERS%204.4.z80" name="SCP PETERS 4.4  " kurz="CP/M 2.2 Z1013 IG-HC Peters V4.4 1.2FDD K7652 RB" />
 <file aadr="c800" eadr="e3a0" sadr="de00" typ="C" link="00f77046758dd9a20a2403e960cbd7ea-scp_plus_f800.com/scp_plus_f800.com.z80" name="SCP+F800        " kurz="CP/M VERS. 2.2 RAM-DISK 7000H-C3FFH" />
 <file aadr="c800" eadr="ebff" sadr="de00" typ="C" link="689e49eab13a569082412b203f7fd5fe-C.SCP-2+1%203.3/C.SCP-2+1%203.3.z80" name="SCP-2+1 3.3     " kurz="CP/M 2.2 Z1013 IG-HC 1.6 FDD+2*256K RF V.3.3" />
+<file aadr="c800" eadr="ebff" sadr="de00" typ="C" link="b70c0d28d34708dbcfe3bd4d876fd739-C.SCP-2+1_3.82_1.6/C.SCP-2+1%203.82%201.6.z80" name="SCP-2+1 3.82 1.6" kurz="CP/M 2.2 Z1013 IG-HC 1.6 FDD 624K + 2*RF 256K V3.8 K7659 RB" />
 <file aadr="3000" eadr="3cf1" sadr="0000" typ="I" link="4dd6b21818586b6417120bafafd10846-I.SCP-2RF_2.1/I.SCP-2RF%202.1.z80" name="SCP-2RF 2.1     " kurz="Beschreibung der Besonderheiten des Betriebssystems SCP-2RF 2.1" />
 <file aadr="3000" eadr="3fa8" sadr="0000" typ="I" link="719d4be3f945dffc38d1025f07391bc0-I.SCP-2RF_2.3/I.SCP-2RF%202.3.z80" name="SCP-2RF 2.3     " kurz="Beschreibung der Besonderheiten des Betriebssystems SCP-2RF 2.3" />
 <file aadr="c800" eadr="e7d6" sadr="de00" typ="C" link="1a866c5653eadbf47eaf11cacc84d565-C.SCP-2RF_2.38M/C.SCP-2RF%202.38M.z80" name="SCP-2RF 2.38M   " kurz=" CP/M 2.2 Z1013 IG-HC mit 2*256K RAM-Floppy V2.3" />
@@ -833,6 +840,7 @@
 <file aadr="d000" eadr="d7ff" sadr="d000" typ="C" link="d4ac932ec58d81801cd5784466f337c3-C.U807-MONITOR/C.U807-MONITOR.z80" name="U807-MONITOR    " kurz="U807 Tastaturtreiber, Z 1013 64k 0.01  C  SB" />
 <file aadr="1000" eadr="1ec3" sadr="0000" typ="b" link="299fcdd4dd728803f9769f5bef0aeb60-b.UFO/b.UFO.z80" name="UFO             " kurz="Ufojagt von festinstallierten Positionen aus" />
 <file aadr="2bc0" eadr="3cc9" sadr="0000" typ="B" link="69a99c11fb175caa559ee338997bba88-ufo/ufo.z80" name="UFO             " kurz="UFO's ziellos im Weltall, Rücksturz!" />
+<file aadr="7ce0" eadr="7edf" sadr="7d00" typ="C" link="4216216cc733b15680f5c1e60474e7e2-C.UMW.3K/C.UMW.3K-_HC%20ROM.z80" name="UMW.3K-&gt;HC ROM  " kurz="Umwandlung Tiny-BASIC nach KC-BASIC RAM-Version ab 0x0400" />
 <file aadr="3000" eadr="41a6" sadr="d000" typ="I" link="6a013102bf34e001950677f209dc67f2-I.UNI-COPY%204.2/I.UNI-COPY%204.2.z80" name="UNI-COPY 4.2    " kurz="Kopieren von Headersave-Programmen auch mit der RAM-FLOPPY" />
 <file aadr="d000" eadr="dfff" sadr="d000" typ="C" link="1b9397a400edd4d327dbf3b6cf8f598a-C.UNI-COPY%204.2+/C.UNI-COPY%204.2+.z80" name="UNI-COPY 4.2+   " kurz="Kopierprogramm für Daten-Kassetten" />
 <file aadr="d000" eadr="dfff" sadr="d000" typ="C" link="56abfd9847d6f58b8118d1e7e642bfbc-C.UNI-COPY_6.2+/C.UNI-COPY%206.2+.z80" name="UNI-COPY 6.2+   " kurz="Kopieren von Headersave-Programmen auch mit der RAM-FLOPPY" />
@@ -898,4 +906,4 @@
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 </filelist>
-<status src="Datenbank enthält 898 Dateien."/></doc>
+<status src="Datenbank enthält 906 Dateien."/></doc>

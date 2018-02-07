@@ -1,0 +1,3 @@
+<kurz src="KC Pascal, V2.1 by Burmeister, Lehmann, Vetters"/>
+<lang></lang>
+<requires></requires>

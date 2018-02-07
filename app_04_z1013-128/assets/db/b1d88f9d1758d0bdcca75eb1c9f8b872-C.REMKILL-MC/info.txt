@@ -1,0 +1,4 @@
+<kurz src="Entfernt REM Zeilen und Leerzeichen"/>
+<lang>Änhlich wie [860d4484ce891001312bb09748f74d84], aber bearbeitet nur REMs und Leerzeichen.
+</lang>
+<requires></requires>
