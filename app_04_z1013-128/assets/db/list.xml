@@ -18,6 +18,7 @@
 <file aadr="0100" eadr="3fff" sadr="0103" typ="C" link="3e6f4f8997610e39b6263171cad50051-C.3K+POKE%20KURS%201/C.3K+POKE%20KURS%201.z80" name="3K+POKE KURS 1  " kurz="PEEK und POKE Beispiele für Tiny-Basic" />
 <file aadr="0100" eadr="26ad" sadr="0102" typ="C" link="c615a356848693ebd97119b34be0c90a-C.3K+ROBOT/C.3K+ROBOT.z80" name="3K+ROBOT        " kurz="Präsentation: Informatik und Technologie" />
 <file aadr="1100" eadr="156b" sadr="0000" typ="I" link="b10132be4be29f763a85c66defc26391-3k-)10k-basic/3k-)10k-basic.z80" name="3K-)10K-BASIC   " kurz="3k-Basic-Progamme in 10k-HC-Basic-Programme umwandeln" />
+<file aadr="0100" eadr="0e00" sadr="0100" typ="C" link="5f39422c337a6556eabf64106cd43cb7-C.3K/C.3K-BASIC+JST.z80" name="3K-BASIC+JST    " kurz="Original Robotron 3.01 Tiny-Basic Interpreter+JST Erweiterung" />
 <file aadr="0100" eadr="0fff" sadr="0100" typ="C" link="178bfafe381c748f58a1ba8479d2c573-C.3K-BASIC-EDIT/C.3K-BASIC-EDIT.z80" name="3K-BASIC-EDIT   " kurz="REHN-SOFT 0287 3K+TINY BASIC" />
 <file aadr="0100" eadr="0cff" sadr="0100" typ="C" link="8b4efcedf925450a6afb1976cf5aa836-C.3K-KLICK-BASIC/C.3K-KLICK-BASIC.z80" name="3K-KLICK-BASIC  " kurz="Riesa Basic 3.01 Klick-Sound-Erweiterung" />
 <file aadr="1000" eadr="2204" sadr="0000" typ="b" link="45729983e66bf939c98ea6f707568f15-b.4-TAKT-OTTO%201/b.4-TAKT-OTTO%201.z80" name="4-TAKT-OTTO 1   " kurz="Demonstration 4-TAKT OTTO Motor" />
@@ -32,6 +33,7 @@
 <file aadr="05c0" eadr="06af" sadr="05c0" typ="C" link="77777c6650cb5a627babd8135ce2a0d7-C.A-BILD-AUTOMATIC/C.A-BILD-AUTOMATIC.z80" name="A-BILD-AUTOMATIC" kurz="Animation/Grafik" />
 <file aadr="2bc0" eadr="3ebf" sadr="0000" typ="B" link="59855804b1cf187b6e433247dd2a427e-Ableitung%20(1987)(H.%20Voelz)/Ableitung%20(1987)(H.%20Voelz).z80" name="ABLEI           " kurz="DIFFERENZIALRECHNUNG" />
 <file aadr="0100" eadr="05af" sadr="0100" typ="C" link="0b788aa8f4625cc15c8a00add462de5a-ac_1_tape_v_7/ac_1_tape_v_7.z80" name="AC 1-Tape V.7   " kurz="AC1 Kassettenroutine V7 1988" />
+<file aadr="0780" eadr="0eff" sadr="0780" typ="C" link="a67fa48cc1724d1c5be078c1519ee9c5-C.AC1_MONITOR/C.AC1%20MONITOR.z80" name="AC1 MONITOR     " kurz="AC1 MONITOR V3.2" />
 <file aadr="3000" eadr="3ffc" sadr="cc00" typ="T" link="deefb73d48af21369a88c7105ba6a8d4-T.AC1_=_Z1013/T.AC1_=_Z1013.z80" name="AC1&lt;=&gt;Z1013     " kurz="AC1-TAPE für Z1013" />
 <file aadr="2000" eadr="31ff" sadr="3100" typ="C" link="bc5f6881624fa23635e45ba2b1bdd009-C.AC1_1013%20FolieT./C.AC1_1013%20FolieT..z80" name="AC1/1013 FolieT." kurz="AC1 MONITOR V3.1 (8x4)" />
 <file aadr="2bc0" eadr="313a" sadr="0300" typ="B" link="493a5c8869bb708d76e78d5557f96fa9-B.AD-1KANAL/B.AD-1KANAL.z80" name="AD-1KANAL       " kurz="1 Kanal Digitalvoltmeter, RFE 4/88" />
@@ -100,7 +102,11 @@
 <file aadr="3000" eadr="37df" sadr="0000" typ="I" link="4ed0b53df8dcdaee5f9d30e2ff221323-I.BESCHR.KOPIE/I.BESCHR.KOPIE.z80" name="BESCHR.KOPIE    " kurz="Maschinenprogramme im Speicher verschieben" />
 <file aadr="3000" eadr="8c60" sadr="0000" typ="T" link="5cecf04f766754a939b4238c906817d6-T.BESCHR.RF/T.BESCHR.RF-ALLG..z80" name="BESCHR.RF-ALLG. " kurz="Anleitung zum Aufbau der 256kbyte RAM-Floppy nach MP 3/88" />
 <file aadr="1000" eadr="168e" sadr="0000" typ="b" link="6105837f76c5ac8b1f58a2a43ecc0b8a-b.BIGRA%201/b.BIGRA%201.z80" name="BIGRA 1         " kurz="Demo Cursorsteuerung, ASCII Zeichen umwandeln" />
+<file aadr="1000" eadr="13ff" sadr="1300" typ="C" link="4718e4a08baf7b67a63e34daabeed016-C.BILD_DISKETTE/C.BILD%20DISKETTE.z80" name="BILD DISKETTE   " kurz="Grafik Diskette" />
+<file aadr="1000" eadr="13ff" sadr="1300" typ="C" link="c2eb325a8b8a59b0b88afaa6900fc5d7-C.BILD_DRUCKER/C.BILD%20DRUCKER.z80" name="BILD DRUCKER    " kurz="Grafik Drucker" />
 <file aadr="d600" eadr="d9c1" sadr="d9a0" typ="C" link="1bbc4b72b4d59553b6111ad76ceea13d-C.Bild%20HexDump/C.Bild%20HexDump.z80" name="Bild HexDump    " kurz="Vorspann Titelbildschirm zum Programm HexDump" />
+<file aadr="1000" eadr="13ff" sadr="1300" typ="C" link="cdefc42b3c5bf08c9a01502803d27a9e-C.BILD_ROBOTER/C.BILD%20ROBOTER.z80" name="BILD ROBOTER    " kurz="Grafik Roboter" />
+<file aadr="1000" eadr="13ff" sadr="1300" typ="C" link="20eee5e6bddbc644270f7393c6207980-C.BILD_TELEFON/C.BILD%20TELEFON.z80" name="BILD TELEFON    " kurz="Grafik Telefon" />
 <file aadr="0100" eadr="06ff" sadr="0100" typ="C" link="10af07994dc4eefacf5d91ad4f26c6fa-C.BILDED.1.3%20H/C.BILDED.1.3%20H.z80" name="BILDED.1.3 H    " kurz="Grafikeditor?, Joystick oder anderes Eingabegerät, Schreibmaschine?" />
 <file aadr="0100" eadr="05cc" sadr="0100" typ="C" link="e340c05799ed4311b3e0bfd19d38ab49-C.BILDEDITOR%201.3H/C.BILDEDITOR%201.3H.z80" name="BILDEDITOR 1.3H " kurz="Grafikeditor?, wie [10af07994dc4eefacf5d91ad4f26c6fa]" />
 <file aadr="2bc0" eadr="37d7" sadr="0000" typ="B" link="4d1494b5c46e09ba27ba1d2a3d6deb11-B.BILLARD/B.BILLARD.z80" name="BILLARD         " kurz="Kugel über die Bande Treffen" />
@@ -906,4 +912,4 @@
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 </filelist>
-<status src="Datenbank enthält 906 Dateien."/></doc>
+<status src="Datenbank enthält 912 Dateien."/></doc>

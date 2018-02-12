@@ -1,0 +1,4 @@
+<kurz src="Grafik Telefon"/>
+<lang>Eigentlich ein Programm, dass die Grafik ausgibt.
+Serieller (EPSON-)Drucker ist an Port 0x34 angeschlossen.</lang>
+<requires></requires>

@@ -1,0 +1,8 @@
+<kurz src="identisch [5f39422c337a6556eabf64106cd43cb7]"/>
+<lang>Wofür das JST steht, ist unbekannt.
+
+Basiert auf [a607237be522ae2b2ccc9013a53d0de5], hat aber eine
+Erweiterung ab 0x0C00, eine Art serielles Interface.
+
+</lang>
+<requires></requires>
