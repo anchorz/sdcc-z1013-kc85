@@ -38,7 +38,7 @@ our $y=$scale/2;
 sub paint($)
 {
     my $val=shift;
-    for($i=0;$i<8;$i++) {
+    for(my $i=0;$i<8;$i++) {
         if ($val&0x80) {
             $img->filledEllipse($x,$y+$i*$scale,10,10,$black);
             for ($j=0; $j<20; $j++) {
@@ -46,7 +46,7 @@ sub paint($)
               my $dy = rand($scale);
               $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$white);
             }
-            for ($j=0; $j<10; $j++) {
+            for (my $j=0; $j<10; $j++) {
               my $dx = rand($scale);
               my $dy = rand($scale);
               $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$black);
@@ -68,9 +68,40 @@ sub print_dots($ $)
     }
 }
 
-$file=$ARGV[0];
+#hitachi-lcd-dot-font-sheet.png
+our %font=(
+" "=>"12345678",
+"W"=>"\x00\xfc\x02\x1c\x02\xfc\x00\x00", #57
+"g"=>"\x00\x30\x4a\x4a\x4a\x7c\x00\x00"  #67
+);
 
-my $len=-s "$file";
+sub print_char($)
+{
+    my $char=shift;
+    my $x_inc=$scale;
+    my $pixels=$font{$char};
+    if (!defined($pixels)) {
+        $pixels=$font{" "};
+    }
+
+    for (my $i=0;$i<length $pixels;$i++) { 
+        my $bit=ord(substr($pixels,$i,1));   
+        #printf("char: 0x%02x\n",$bit);
+        paint($bit);
+        $x+=$x_inc;
+    }
+}
+
+
+$file=$ARGV[0];
+my $len=$ARGV[1];
+if (!defined($len)) {
+    $len=-s "$file";
+}
+if (substr($len,0,2) eq "0x") {
+    $len=hex $len;
+}
+
 open(FILE,"<:raw", $file);
 read(FILE,$content,$len);
 close(FILE);
@@ -105,9 +136,11 @@ while($index<$len) {
             case "\x0" { print "NUL\n"; }
             case "\xa" { $y+=8*$scale;} #LF
             case "\xd" { $x=$scale/2; } #CR
-            case " " { $x+=$scale; } #SPACE
+            # nochmal testen space sollte 8*scale Platz machen case " " { $x+=$scale; } #SPACE
+            case "g" { print_char($b); } #dot matrix g
+            case "W" { print_char($b); } #dot matrix g
             else {
-                printf("unknown character [%04x]%02x\n",$index-1,ord($b));
+                printf("unknown character [%04x,%d]%02x\n",$index,$index,ord($b));
                 exit 1;
             }
         }
