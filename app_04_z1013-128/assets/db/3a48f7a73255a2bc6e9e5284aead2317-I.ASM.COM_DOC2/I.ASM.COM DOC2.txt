@@ -1,0 +1,834 @@
+
+;
+72
+.mt 8
+.mb 8
+.pc 32
+.fm 1
+.hm 1
+.pn 23
+9.4.1.1._Pseudooperationen_zur_Auswahl_der_Anweisungsliste
+
+
+Standard ist die 8080-Mnemonik.
+Wenn nicht die richtige Pseudooperation zur Auswahl der Anwei-
+sungsliste angegeben wurde,  gibt der Assembler einen schweren 
+Fehler fuer jene Operationscodes zurueck, die fuer die aktuel-
+le Anweisungsliste ungueltig sind. Das heisst, .Z80 uebersetzt 
+nur Z80-Operationscodes und .8080 nur 8080-Operationscodes.
+Deshalb muss bei einem im Z80-Code geschriebenen Assemblerpro-
+gramm  die Pseudooperation zur Auswahl dieser Anweisungsliste, 
+ .Z80, geschrieben werden.
+
+Bemerkung:
+Alle in diesem Kapitel aufgelisteten Pseudooperationen  werden 
+bei beiden Anweisungslisten verarbeitet.
+
+  .Z80
+
+ .Z80 hat keine Argumente.
+ .Z80 weist den Assembler auf die Uebersetzung  von Z80-Opera-
+ tionscodes hin.
+
+  .8080
+ 
+ .8080 hat keine Argumente.
+ .8080 weist den Assembler auf die Uebersetzung von 8080- Code 
+ hin. Die Auswahl dieses Befehlssatzes ist Standard.
+
+Alle Operationscodes,  die der Pseudooperation zur Auswahl des 
+Befehlssatzes folgen,  werden entsprechend uebersetzt, bis die 
+alternative Pseudooperation auftritt.
+Tritt  ein  Operationscode auf,  der nicht  zum  ausgewaehlten 
+Befehlssatz  gehoert,  gibt  der  Assembler  einen  "U-Fehler" 
+zurueck.
+
+
+9.4.1.2._Pseudooperation_zur_Daten-_und_Symboldefinition
+
+
+Alle Programmoperationen zur Definition von Daten und Symbolen 
+werden  fuer  beide Befehlssaetze unterstuetzt.  (Die  einzige 
+Ausnahme  bildet SET,  das fuer die Z80-Anweisungsliste  nicht 
+erlaubt ist.)
+
+Zu beachten: Es gilt:
+
+     * zeigt an, dass die Pseudooperation fuer .Z80 ist.
+
+       Kein  Stern  zeigt an,  dass die  Pseudooperation  fuer 
+       .8080 ist.
+
+.pa
+Definiere_Byte
+
+      DB   <exp>[,<exp>...]
+    * DEFB <exp>[,<exp ...]
+      DB   <string>[,<string>...]
+    * DEFM <string>[,<string>...]
+
+Die  Argumente der DB's sind entweder Ausdruecke oder Zeichen-
+ketten.Die Argumente der DEFB's sind Ausdruecke. Die Argumente 
+der  DEFM's  sind  Ketten.  Ketten muessen  in  einfache  oder 
+doppelte Anfuehrungszeichen eingeschlossen werden.
+
+Bemerkung:
+DB  wird  in den folgenden Erklaerungen  stellvertretend  fuer 
+alle moeglichen Definiere-Byte-Pseudooperationen verwendet.
+
+DB  wird verwendet,  um einen Wert (Kette oder  numerisch)  in 
+einem  Speicherplatz abzulegen,  beginnend ab laufenden  Spei-
+cherplatzzuordnungszaehler.
+Ausdruecke  muessen sich auf ein Byte auswerten  lassen.  Wenn 
+das hoehere Byte 0 oder 255 ergibt,  ergibt sich kein  Fehler, 
+anderenfalls wird ein A-Fehler erzeugt.
+
+Ketten  mit  3 oder mehr Zeichen koennen in Ausdruecken  nicht 
+verwendet werden (sie muessen unmittelbar von einem Komma oder 
+dem Ende der Zeile gefolgt werden).
+Die  Zeichen einer 8080- oder Z80-Kette werden in der  Reihen-
+folge  ihres Auftretens gespeichert,  jedes als ein  Ein-Byte-
+Wert, das hoechstwertige Bit auf 0 gesetzt.
+
+Beispiel:       DB   'AB'
+                DB   'AB' AND 0FFH
+                DB   'ABC'
+erzeugt:
+
+0000' 41 42     DB  'AB'
+0002' 42        DB  'AB' AND 0FFH
+0003' 41 42 43  DB  'ABC'
+
+
+Definiere_Zeichen
+
+     DC <string>
+ 
+DC speichert die Zeichen der Kette in <string> in aufeinander-
+folgende  Speicherplaetze,  beginnend ab laufenden Speicherzu-
+weisungszaehler.
+Wie  bei DB werden die Zeichen in der Reihenfolge  ihres  Auf-
+tretens gespeichert, jedes als ein Ein-Byte-Wert, das hoechst-
+wertige  Bit auf 0 gesetzt.  Jedoch wird beim letzten  Zeichen 
+der Kette das hoechstwertige Bit auf 1 gesetzt.
+Es  wird  ein Fehler erzeugt,  wenn das Argument von  DC  eine 
+Nullkette ist.
+.pa
+Beispiel:
+
+                           MARKE:  DC  "ABC"
+
+          erzeugt:
+
+          0000  41 42 C3   MARKE:  DC  "ABC"
+
+
+Definiere_Speicher
+
+     DS   <exp>[,<val>]
+   * DEFS <exp>[,<val>]
+
+Die  Pseudooperation  "Definiere  Speicher"  reserviert  einen 
+Speicherbereich.  Der  Wert  von <exp> gibt die Anzahl der  zu 
+reservierenden Bytes an.
+Zum  Initialisieren des reservierten Bereiches setzt <val> den 
+gewuenschten Wert.
+
+Wenn  <val>  weggelassen ist,  wird der  reservierte  Speicher 
+nicht  initialisiert.  Der  reservierte  Speicherbereich  wird 
+nicht  automatisch auf 00H initialisiert.  Eine  Moeglichkeit, 
+den  reservierten  Speicherbereich auf 00H zu  initialisieren, 
+bietet  der /M-Schalter waehrend der Uebersetzung (siehe  Pkt. 
+9.5.2.4.).
+
+Alle  Namen,  die  in Ausdruecken  verwendet  werden,  muessen 
+vorher definiert sein (alle Namen muessen im Pass 1 zu  diesem 
+Zeitpunktpunkt bekannt sein).
+Ansonsten wird waehrend des Pass 1 ein V-Fehler  erzeugt,  ein 
+U-Fehler  kann  im 2.  Pass erzeugt werden;  ein  Phasenfehler 
+ergibt  sich wahrscheinlich,  weil die Pseudooperation  "Defi-
+niere Speicher" im Pass 1 keinen Code erzeugt hat.
+
+Beispiel:
+
+                    DS  100H
+
+reserviert  100 Byte Speicherplatz nicht initialisiert,  d.h., 
+es bleiben dort die Werte stehen,  die an dieser Stelle waren, 
+bevor das Programm geladen wurde.
+
+Soll  der Bereich auf 00H initialisiert werden,  kann waehrend 
+der Uebersetzung der /M-Schalter verwendet werden.
+Oder es kann die folgende Anweisung geschrieben werden, um den 
+reservierten  Speicherbereich  auf 00H oder  einen  beliebigen 
+anderen Wert zu setzen.
+ 
+                    DS  100H,2
+
+reserviert  100H  Bytes,  von denen jedes Byte mit dem Wert  2 
+(02H) initialisiert wird.
+.pa
+
+Definiere_Wort
+  
+     DW    <exp>[,<exp>...]
+    *DEFW  <exp>[,<exp>...]
+
+Die  Pseudooperation "Definiere Wort" speichert den  Wert  des 
+Ausdruckes  in aufeinanderfolgende Speicherplaetze,  beginnend 
+ab laufenden Speicherzuordnungszaehler. Ausdruecke sind 2-Byte 
+Werte (Wort).
+Die  Werte werden,  das niederwertige Byte zuerst und dann das 
+hoeherwertige Byte, gespeichert.Das ist ein Unterschied zu DB!
+
+Beispiel:
+
+                    MARKE:  DW     1234H
+
+erzeugt:
+
+        0000 1234   MARKE:  DW     1234H
+
+Bemerkung:  Die Bytes werden in der Liste in Reihenfolge ihres             
+            Auftretens gezeigt,  nicht in der Reihenfolge, wie 
+            sie abgespeichert sind.
+
+
+Equate
+
+     <name> EQU <exp>
+
+EQU weist <name> den Wert des Ausdruckes <exp> zu. <name> kann 
+ein Label,  ein Symbol oder eine Variable sein und spaeter  in 
+Ausdruecken verwendet werden.
+Nach <name> darf kein Doppelpunkt(e) stehen.
+Wenn <exp> ein External ist, wird ein Fehler erzeugt.
+Wenn <name> schon einen anderen Wert als <exp> hat,  erscheint 
+ein M-Fehler.
+Wenn  <name>  spaeter im Programm wieder  (zurueck)  definiert 
+werden soll, so ist die Pseudooperation SET oder ASET anstelle 
+von EQU zu verwenden.
+Das ist ein Unterschied zu SET.
+
+Beispiel:
+
+          BUF EQU 0F3H
+
+
+Externes_Symbol
+
+     EXT            <name>[,<name>...]
+     EXTRN          <name>[,<name>...]
+   * EXTERNAL       <name>[,<name>...]
+     BYTE EXT       <symbol>
+     BYTE EXTRN     <symbol>
+     BYTE EXTERNAL  <symbol>
+
+Diese Pseudooperation erklaert,  dass der (die) Name(n) in der 
+Liste  extern  (ist)  sind (d.h.  definiert in  einem  anderen 
+Modul).
+Ist   einer der in der Liste auftretenden Namen  im  laufenden 
+Programm definiert, wird ein M-Fehler erzeugt.
+Ein  Verweis auf einen Namen,  bei dem dem Namen unmittelbar 2 
+Doppelkreuze folgen (z.B.  NAME##) wird ebenfalls als EXTERNAL 
+erklaert.
+EXTERNAL's  koennen auf ein oder zwei Byte ausgewertet werden. 
+Bei allen externen Symbolnamen werden nur die ersten 6 Zeichen 
+an den Programmverbinder uebergeben.
+Zusaetzliche Zeichen werden intern abgeschnitten.
+
+Beispiel:
+
+         EXTRN      MARKEX
+
+Der Assembler generiert fuer diese Anweisungszeile keinen Code 
+beim  Uebersetzten dieses Moduls.  Wenn MARKEX als Argument in 
+einer  CALL-Anweisung verwendet wird,  wird nur der Code  fuer 
+CALL erzeugt und fuer MARKEX wird ein 0-Wert eingetragen.
+Der  Programmverbinder durchsucht alle geladenen  Moduln  nach 
+einer  PUBLIC  MARKEX-Anweisung und verwendet die  Definition, 
+die er fuer MARKEX gefunden hat in der CALL MARKEX-Anweisung.
+
+
+PUBLIC-Symbol
+
+     ENTRY     <name>[,<name>...]
+     GLOBAL    <name>[,<name>...]
+     PUBLIC    <name>[,<name>...]
+
+Die  Pseudooperation PUBLIC erklaert jeden Namen der Liste als 
+intern  und deshalb verfuegbar fuer die Verwendung  in  diesem 
+Programm  und  in anderen,  die gemeinsam geladen und mit  dem 
+Programmverbinder gebunden sind.
+Es wird ein M-Fehler erzeugt,  wenn der Name ein EXTERNAL oder 
+ein Common-Block-Name ist.
+Nur die ersten 6 Zeichen des PUBLIC-Symbolnamens werden an den 
+Programmverbinder uebergeben.
+Zusaetzliche Zeichen werden intern abgeschnitten.
+
+Beispiel:
+
+               PUBLIC     MARKEX
+     MARKEX:   LD         HL,BER1
+
+Der Assembler uebersetzt die LD-Anweisung wie ueblich, aber er 
+generiert fuer die PUBLIC MARKEX-Anweisung keinen Code.
+Wenn der Programmverbinder im anderen Modul die EXTERN MARKEX-
+Anweisung  findet,  weiss  er,  dass er  suchen  muss,  bis er 
+diese PUBLIC MARKEX-Anweisung gefunden hat. Dann verbindet der 
+Programmverbinder   den  Adresswert  der  MARKEX:LD   HL,BER1-
+Anweisung  mit der (den) CALL MARKEX-Anweisung(en) im (in den) 
+anderen Modul(n).
+
+
+SET
+     
+     <name>  SET  <exp>    (nicht fuer den .Z80-Modus)
+   * <name>  DEFL  <exp>
+     <name>  ASET  <exp>
+
+Die  Pseudooperation SET weist <name> den Wert von  <exp>  zu. 
+<name> kann ein Label,  ein Symbol oder eine Variable sein und 
+kann spaeter in Ausdruecken verwendet werden.
+
+Nach <name> duerfen keine Doppelpunkte stehen.  Wenn <exp> ein 
+EXTERNAL ist, wird ein Fehler erzeugt.
+
+Die  Pseudooperation  SET kann im .Z80-Modus  nicht  verwendet 
+werden, weil SET ein Z80-Operationscode ist.
+
+ASET  und  DEFL koennen in beiden  Anweisungslisten  verwendet 
+werden.
+Wenn <name> spaeter neu definiert werden soll,  muss eine  der 
+SET-Pseudooperationen anstelle von EQU verwendet werden.
+Zum  neu Definieren von <name> kann jede beliebige SET-Pseudo-
+operation benutzt werden,  unabhaengig, mit welcher Pseudoope-
+ration die urspruengliche Definition erfolgte (das Verbot  von 
+SET im .Z80-Modus wird davon nicht beruehrt).
+Das ist ein Gegensatz zu EQU.
+
+Beispiel:
+
+       MARKE   ASET  BER+1000H
+ 
+Wann immer MARKE als Ausdruck (Operand) verwendet wird, wertet 
+der Assembler den Ausdruck BER+1000H aus und setzt diesen Wert 
+fuer MARKE.  Spaeter, wenn MARKE einen anderen Wert darstellen 
+soll, wird einfach eine MARKE ASET-Anweisung mit einem anderen 
+Ausdruck eingetragen.
+
+     MARKE  ASET   BER+1000H
+        .
+        .
+        .
+     MARKE  ASET   3000H
+        .
+        .
+        .
+     MARKE  DEFL   6CDEH
+    
+
+9.4.1.3._Pseudooperation_zum_Zuweisen_des_Speicherplatz-
+         zuordnungszaehler-Modus      
+
+
+Viele  Pseudooperationen beziehen sich auf den aktuellen Spei-
+cherplatzzuordnungszaehler.
+Der  laufende Speicherplatzzuordnungszaehler ist  die  Adresse 
+des naechsten Bytes, das zu erzeugen ist.
+Im   Assembler   erhalten   Symbole   und   Ausdruecke   ihren 
+zugewiesenen  Modus (siehe Pkt. 9.3.2.).
+
+Jeder Modus fuer ein Speichersegment wird durch den  Programm-
+verbinder  entsprechend  dem  Typ der  uebersetzten  Anweisung 
+zugeordnet.
+
+Es gibt 4 Modi:
+
+     . absoluter Modus
+     . datenrelativer Modus
+     . coderelativer Modus
+     . commonrelativer Modus.
+
+Wenn  der  Speicherplatzzuordnungszaehler-Modus  absolut  ist, 
+dann ist er eine absolute Adresse.
+
+Wenn  der  Speicherplatzzuordnungszaehler-Modus  relativ  ist, 
+dann ist er eine relative Adresse und kann einen Offset einbe-
+ziehen  von  der absoluten Startadresse eines  relativen  Seg-
+ments, das vom Programmverbinder geladen werden kann.
+
+Die Pseudooperation zur Zuweisung des Speicherplatzzuordnungs-
+zaehler-Modus wird fuer die Spezifizierung genutzt, in welchem 
+Typ ein Programmteil zu uebersetzen ist.
+
+
+Absolutes_Segment
+
+     ASEG
+
+ASEG hat niemals Operanden.  ASEG erzeugt nichtverschieblichen 
+Code.
+ASEG  setzt den Speicherplatzzuordnungszaehler auf ein absolu-
+tes Speichersegment (aktuelle Adresse).  Der Standardwert  ist 
+0,  das kann die Ursache sein,  dass Teile des Betriebssystems 
+ueberschrieben werden.
+Nach  ASEG  sollte  eine ORG-Anweisung mit  103H  oder  hoeher 
+geschrieben werden.
+
+
+Code-Segment
+
+     CSEG
+
+CSEG hat niemals Operanden.
+Der  Code wird im coderelativen Modus uebersetzt und  kann  in 
+den ROM oder PROM geladen werden.
+CSEG  setzt den Speicherzuordnungszaehler auf das coderelative 
+Segment des Speichers zurueck.
+Die  Zuordnung  ist diejenige des letzten CSEG  (Standard  0), 
+wenn nicht danach eine ORG-Anweisung folgt,  die die Zuordnung 
+aendert.
+
+Man muss jedoch beachten, dass die ORG-Anweisung im CSEG-Modus 
+keine absolute Adresse setzt.
+Eine ORG-Anweisung im CSEG-Modus veranlasst den Assembler,  zu 
+der  letzten  fuer CSEG geladenen Adresse die im Argument  der 
+ORG-Anweisung festgelegte Anzahl Bytes zu addieren.
+
+Wenn   beispielsweise  ORG  50  angegeben  ist,   addiert  der 
+Assembler 50 Bytes zu der aktuellen CSEG-Zuordnung,  und  dies 
+ist dann die neue Zuordnung von CSEG.
+Die  Wirkung der auf ein CSEG (oder DSEG) folgenden ORG-Anwei-
+sung ist die, dass einem Modul ein Offset gegeben werden kann.
+ORG  setzt  keine  absolute Adresse fuer  CSEG,  sondern  CSEG 
+behaelt seine Verschieblichkeit.
+
+Will man fuer CSEG eine absolute Adresse setzen, verwendet man 
+den /P-Schalter im Programmverbinder.
+
+CSEG  ist  der Standard-Modus des  Assemblers.  Der  Assembler 
+beginnt  automatisch  mit  einem CSEG und  der  Speicherplatz-
+zuordnungszaehler im coderelativen Modus weist auf den Platz 0 
+des coderelativen Speichersegments. Alle folgenden Anweisungen 
+werden  in das coderelative  Speichersegment  uebersetzt,  bis 
+eine  ASEG-,  DSEG- oder COMMON- Pseudooperation  abgearbeitet 
+wird.
+
+CSEG wird folglich eingetragen,  damit der Assembler zum code-
+relativen Modus zurueckkehrt, der Speicherplatzzuordnungszaeh-
+ler  wird auf den Punkt des naechsten freien Platzes im  code-
+relativen Segment zurueckgesetzt.
+
+
+Daten-Segment
+
+     DSEG
+
+Die Pseudooperation DSEG hat keine Operanden.
+DSEG  spezifiziert Segmente des  uebersetzten  verschieblichen 
+Codes, die spaeter nur in den RAM geladen werden.
+
+DSEG setzt den Speicherplatzzuordnungszaehler auf das datenre-
+lative Speichersegment.
+Die  Zuordnung des datenrelativen Zaehlers ist die des letzten 
+DSEG (Standard 0),  wenn nicht eine folgende ORG-Anweisung die 
+Zuordnung aendert.
+Man muss jedoch beachten, dass die ORG-Anweisung im DSEG-Modus 
+keine absolute Adresse setzt.
+
+Eine ORG-Anweisung im DSEG-Modus veranlasst den Assembler,  zu 
+der  letzten fuer DSEG geladenen Adresse die im  Argument  der 
+ORG-Anweisung festgelegte Anzahl Bytes zu addieren.
+Wenn   beispielsweise  ORG  50  angegeben  ist,   addiert  der 
+Assembler 50 Bytes zu der aktuellen DSEG-Zuordnung,  und  dies 
+ist dann die neue Zuordnung von DSEG.
+
+Die  Wirkung der auf ein DSEG (oder CSEG) folgenden ORG-Anwei-
+sung ist die, dass einem Modul ein Offset gegeben werden kann.
+ORG  setzt  keine  absolute Adresse fuer  DSEG,  sondern  DSEG 
+behaelt seine Verschieblichkeit.
+Will  man eine absolute Adresse fuer DSEG  setzten,  verwendet 
+man den /D-Schalter im Programmverbinder.
+
+
+Common-Block_(gemeinsamer_Bereich)
+
+     COMMON /[<blockname>]/
+
+das   Argument  von  COMMON  ist  der  Name  des   gemeinsamen 
+Bereiches.
+COMMON legt einen  gemeinsamen Datenbereich fuer alle  COMMON-
+Bloecke an, die in dem Programm benannt sind.
+Wenn   <blockname>  weggelassen  wurde  oder  aus  Leerzeichen 
+besteht, wird der Block als leerer Bereich betrachtet.
+
+COMMON-Anweisungen sind nicht ausfuehrbare Speicherzuordnungs-
+anweisungen.
+COMMON  weist einem Speicherbereich,  genannt gemeinsamer  Be-
+reich, Variable, Felder und Daten zu.
+Das ermoeglicht,  dass sich verschiedene Programmoduln in den-
+selben Speicherbereich teilen. 
+
+Die  der COMMON-Anweisung folgenden Anweisungen werden in  den 
+COMMON-Bereich unter <blockname> uebersetzt.
+Die  Laenge eines COMMON-Bereiches ergibt sich aus der  Anzahl 
+Bytes,  die erforderlich sind,  um die in diesem  COMMON-Block 
+definierten  Variablen,  Felder und Daten unterzubringen.  Der 
+COMMON-Block  wird beendet,  wenn eine andere  Pseudooperation 
+zur  Zuweisung  des Speicherplatzzuordnungszaehler-Modus  auf-
+tritt.
+Gemeinsame  Bloecke desselben Namens koennen  unterschiedliche 
+Laenge haben.
+Ist die Laenge verschieden, dann muss der Programmodul mit dem 
+laengsten gemeinsamen Block zuerst geladen werden (,  d.h., er 
+muss der erste Modulname in der Kommandozeile des Programmver-
+binders sein).
+Siehe dazu auch die Beschreibung des Programmverbinders.
+
+COMMON setzt den Speicherplatzzuordnungszaehler auf den ausge-
+waehlten gemeinsamen Speicherblock.
+Die  Zuweisung  ist immer der Beginn des  Bereiches,  so  dass 
+Kompatibilitaet mit der FORTRAN COMMON-Anweisung besteht.
+
+Beispiel:
+
+          COMMON         /DATBIN/
+BER2      EQU            100H
+          DB             0FFH
+          DW             1234H
+          DC             'WERK'
+          CSEG           
+
+.pa
+Set_Origin
+
+     ORG <exp>
+
+Der  Wert  des Speicherplatzzuordnungszaehlers kann  zu  jeder 
+Zeit  durch die Verwendung von ORG geaendert werden.  Im ASEG-
+Modus wird der Speicherplatzzuordnungszaehler auf den Wert von 
+<exp>  gesetzt,  und  der Assembler weist den  erzeugten  Code 
+beginnend mit diesem Wert zu.
+
+Im CSEG-, DSEG- und COMMON- Modus wird der Speicherplatzzuord-
+nungszaehler  in diesem Segment um den Wert von <exp> erhoeht, 
+und  der Assembler weist den erzeugten Code beginnend mit  der 
+letzten geladenen Segmentadresse plus dem Wert von <exp> zu.
+
+Alle in <exp> verwendeten Namen muessen im Pass 1 bekannt sein 
+und  der  Wert muss entweder absolut sein oder im  selben  Be-
+reich, wie der Speicherplatzzuordnungszaehler.
+
+Beispiel:
+          
+     DSEG
+     ORG   50
+
+Setzt  den datenrelativen  Speicherplatzzuordnungszaehler  auf 
+50,  relativ  zum  Start des datenrelativen  Speichersegments. 
+Diese Methode liefert Verschieblichkeit.  Die ORG <exp>  - An-
+weisung  spezifiziert  im CSEG- oder DSEG- Modus  keine  feste 
+Adresse,  vielmehr laedt der Programmverbinder das Segment auf 
+eine  flexible  Adresse,  die fuer die gemeinsam  zu  ladenden 
+Moduln verwendet wird.
+Andererseits wird ein Programm, das mit den Anweisungen
+                    
+     ASEG
+     ORG 800H
+
+beginnt  und vollstaendig im absoluten Modus  uebersetzt  ist, 
+immer beginnend ab 800H geladen,  es sei denn,  die ORG-Anwei-
+sung wird in der Quelldatei geaendert.
+Das heisst,  die dem ASEG folgende ORG <exp> - Anweisung setzt 
+das Segment auf eine feste (im Beispiel absolute) Adresse, die 
+durch <exp> bestimmt wird.
+
+Das  gleiche  Programm - im coderelativen Modus,  ohne  ORG  - 
+Anweisung uebersetzt - kann auf jede beliebige Adresse geladen 
+werden,  wenn  an die Kommandokette des Programmverbinders der 
+Schalter /P:<address> angehaengt wird.
+
+   
+Verschieben
+
+     .PHASE <exp>
+     .DEPHASE
+
+ .PHASE ermoeglicht es,  Code in einen Bereich zu laden,  aber 
+nur   in  einem anderen Bereich mit der durch  <exp>  spezifi-
+zierten  Adresse  abzuarbeiten.
+<exp>  muss ein absoluter Wert sein.  .DEPHASE wird verwendet, 
+um   anzuzeigen, dass der verschobene Codeblock zu Ende ist.
+Der Modus innerhalb eines .Phase-Blockes ist absolut. Der Code  
+wird  in den Bereich geladen,  wenn die  .PHASE-Anweisung  er-
+reicht  wird.
+Der  Code  innerhalb eines Blockes wird spaeter auf die  durch 
+<exp>   fuer die Ausfuehrung spezifizierte  Adresse  transpor-
+tiert.
+
+ Beispiel:
+                            
+                       .PHASE       100H
+              MARKE:   CALL         UP1
+                       JMP          MARKE1
+                UP1:   RET
+                       .DEPHASE
+              MARKE1:  JMP          5
+
+erzeugt folgende Uebersetzung:
+
+                       .PHASE       100H
+0100  CD 0106 MARKE:   CALL         UP1
+0103  C3 0007          JMP          MARKE1
+0106  C9        UP1:   RET 
+                       .DEPHASE
+0007' C3 0005 MARKE1:  JMP          5
+                       END
+
+ .PHASE-....  .DEPHASE-Block sind eine Moeglichkeit, den Code-
+block ab  einer spezifischen absoluten Adresse auszufuehren.
+
+
+9.4.1.4._Dateibezogene_Pseudooperationen
+ 
+
+Die dateibezogenen Pseudooperationen:
+ 
+     . fuegen lange Kommentare ein
+     . geben dem Modul einen Namen
+     . beenden den Modul oder
+     . transportieren andere Dateien in das laufende Programm
+
+
+Comment-Anweisung
+
+     .COMMENT <delim><text><delim>
+
+Das erste nichtleere Zeichen, das nach .COMMENT gefunden wird,  
+wird als Begrenzer genommen. Der dem Begrenzer folgende <text>  
+wird ein Kommentarblock,  der fortgesetzt wird bis zum  naech-
+sten  Auftreten des Begrenzers <delim>.
+ .COMMENT  wird fuer lange Kommentare verwendet.  Es ist nicht  
+notwendig,  das  Semikolon  zum  Anzeigen  des  Kommentars  zu 
+schreiben.
+
+Waehrend  der  Uebersetzung wird der .COMMENT-Block  ignoriert  
+und  nicht uebersetzt.
+
+ Beispiel:
+
+     .COMMENT * hier kann jeder beliebige Text
+                eingetragen sein
+                .
+                .
+                .
+              * ; Rueckkehr zur normalen Uebersetzung
+
+
+Programmende
+
+     END [<exp>]
+
+Die  End-Anweisung  bezeichnet das  Programmende.  Wenn  diese 
+Anweisung fehlt, wird folgende Warnung erzeugt:
+
+          "%NO END statement".
+
+<exp> kann ein Label,  ein Symbol, eine Zahl oder jedes andere 
+gueltige Argument sein,  das der Programmverbinder als  Start-
+punkt fuer das Pogramm laden kann.
+
+Wenn <exp> angegeben wurde, schreibt der Programmverbinder auf 
+die  Adresse 100H eine Sprunganweisung im 8080-Code zu der  in 
+<exp> angegebenen Adresse.
+Wenn <exp> nicht angegeben wurde,  wird an den Programmverbin-
+der fuer dieses Programm keine Startadresse uebergeben und die 
+Ausfuehrung beginnt mit dem ersten geladenen Modul.
+(Das heisst,  wenn kein <exp> spezifiziert wurde,  ist der /G-
+Schalter im Programmverbinder unwirksam.)
+<exp>  teilt dem Programmverbinder mit,  dass das Programm ein 
+Hauptprogramm ist, sonst wird es als Unterprogramm angesehen.
+Wenn nur Assemblerprogramme gebunden werden,  von denen keines 
+eine END-Anweisung mit <exp> enthaelt,  wird der  Programmver-
+binder nach dem Hauptprogramm fragen.
+Haben  zwei oder mehr Programme eine END-Anweisung mit  <exp>, 
+so kann der Programmverbinder nicht unterscheiden, welches das 
+Hauptprogramm ist.
+
+Wenn  zwei  oder mehr Programme gebunden werden  sollen,  muss 
+/G:Name - oder /E:Name - Schalter im Programmverbinder benutzt 
+werden.
+Name  ist der <exp> der END-Anweisung des  Programms,  welches 
+als Hauptprogramm angesehen werden soll.
+Wenn ein Programm in einer hoeheren Programmiersprache gemein-
+sam mit einem Assemblerprogramm geladen werden soll,  wird vom 
+Programmverbinder  automatisch  das Programm in  der  hoeheren 
+Sprache als Hauptprogramm genommen.
+Das  kann man aendern mit dem /G:Name - oder /E:Name  - Schal-
+ter, dabei muss Name der Name des Assemblerprogramms sein.
+.pa
+Eine  andere  Moeglichkeit  ist das  Setzen  eines  CALL  oder 
+INCLUDE  an den Anfang des Programms in der hoeheren  Program-
+miersprache, um das Assemblerprogramm zuerst abzuarbeiten.
+
+
+INCLUDE-Anweisung
+
+     INCLUDE   <dateiname>
+     $INCLUDE  <dateiname>
+     MACLIB    <dateiname>
+
+Alle drei Pseudooperationen sind sinnverwandt.
+Waehrend  der Assemblierung fuegen die INCLUDE-Pseudooperatio-
+nen  Quellcode  aus einer anderen Quelldatei in  die  laufende 
+Quelldatei ein.
+
+Durch  die Verwendung der INCLUDE-Pseudooperation ist es nicht 
+erforderlich,  haeufig gebrauchte Anweisungsfolgen in der lau-
+fenden Quelldatei wiederholt zu schreiben.
+
+<dateiname>   ist  jede  fuer  das   Betriebssystem   gueltige 
+Dateispezifikation  und muss in grossen Buchstaben geschrieben 
+werden.
+Wenn der Dateityp und/oder die Geraetezuweisung andere als die 
+zugewiesenen  sind,  muss die  Quelldatei-Spezifikation  diese 
+enthalten.
+Der  zugewiesene  Dateityp  fuer Quelldateien  ist  .MAC.  Die 
+Standard-Geraetezuweisung ist das aktuelle (current)  Laufwerk 
+bzw. Geraet.
+
+Die INCLUDE-Datei wird eroeffnet und in die  aktuelle Quellda-
+tei  uebersetzt,  unmittelbar  anschliessend an  die  INCLUDE-
+Anweisung.  Wenn das Dateiende erreicht worden ist,  setzt der 
+Assembler mit der auf INCLUDE folgenden Anweisung fort.
+Geschachtelte  INCLUDE's sind nicht erlaubt.  Fuer  den  Fall, 
+dass  dies auftritt,  wird ein Objektcode-Syntax-Fehler,  "O", 
+erzeugt.
+Die  im   Operandenfeld spezifizierte Datei  muss  existieren, 
+ansonsten  wird  ein "V"-Fehler erzeugt und das  INCLUDE  wird 
+ignoriert.  Es  wird  auch ein "V"-Fehler  erzeugt,  wenn  der 
+Dateityp der INCLUDE-Datei nicht .MAC ist.
+
+Im  Assemblerprotokoll  wird der Buchstabe  "C"  zwischen  den 
+uebersetzten  Code und die Quellzeile  gedruckt   (Siehe  Pkt. 
+9.5.3.).
+
+
+Modulname
+
+     NAME ("modulname")
+
+Name  definiert den Namen fuer den Modul.  Die runden Klammern 
+und  Anfuehrungszeichen um den Modulnamen  sind  erforderlich. 
+Nur die ersten 6 Zeichen des Modulnamens sind signifikant.
+Ein  Modulname  kann auch mit der Pseudooperation TITLE  defi-
+niert  werden.  Wenn keine der beiden  Pseudooperationen  NAME 
+oder  TITLE vorhanden sind,  wird der Modulname aus dem  Namen 
+der Quellcodedatei erzeugt.
+
+
+RADIX_(Zahlenbasis)
+     
+             .RADIX <exp>
+
+<exp>  in einer .RADIX-Anweisung ist immer eine dezimale nume-
+rische Konstante,  ohne Ruecksicht auf die aktuelle  Zahlenba-
+sis.
+Die .RADIX-Anweisung erlaubt die Aenderung der Standardzahlen-
+basis in irgendeine beliebige zwischen 2 und 16.
+
+ .RADIX  aendert nicht die Zahlenbasis auf der Liste,  sondern 
+ermoeglicht die Eingabe numerischer Werte in der  gewuenschten 
+Basis ohne spezielle Schreibweise. (Werte in anderen Zahlenba-
+sen erfordern spezielle Schreibweisen, erlaeutert im Abschnitt 
+"Operanden")
+
+Die  Werte im erzeugten Code erscheinen immer in der hexadezi-
+malen Zahlenbasis.
+
+Beispiel:
+
+          DEC:      DB     20
+                    .RADIX 2
+          BIN:      DB     00011110
+                    .RADIX 16
+          HEX:      DB     0CF
+                    .RADIX 8
+          OCT:      DB     73
+                    .RADIX 10
+          DECI:     DB     16
+          HEXA:     DB     0CH
+
+erzeugt folgende Uebersetzung:
+
+0000' 14  DEC:      DB     20
+0002                .RADIX 2
+0001' 1E  BIN:      DB     00011110
+0010                .RADIX 16
+0002' CF  HEX:      DB     0CF
+0008                .RADIX 8
+0003' 3B  OCT:      DB     73
+000A                .RADIX 10
+0004' 10  DECI:     DB     16
+0005' 0C  HEXA:     DB     0CH
+ 
+
+Request_(Anforderung)
+
+     .REQUEST <dateiname>[,<dateiname>...]
+
+ .REQUEST stellt an den Programmverbinder die  Forderung,  die 
+in   der  Liste  enthaltenen  Dateinamen  nach   undefinierten 
+externen  Symbolen zu durchsuchen (externe Symbole,  fuer  die 
+zum  gleichen Zeitpunkt kein korrespondierendes  PUBLIC-Symbol 
+geladen ist).
+Die  vom  Programmverbinder gefundenen  undefinierten  Symbole 
+werden  benoetigt,  um einen oder mehrere zusaetzliche  Moduln 
+fuer einen kompletten Programmverbinderlauf zu laden.
+
+Die Dateinamen in der Liste sollten gueltige Symbole sein  und 
+weder Dateityp noch Geraetezuweisung beinhalten.
+Der  Programmverbinder setzt den Standarddateityp .REL und das 
+aktuelle Laufwerk voraus.
+   
+Beispiel:
+
+          .
+          .
+          .
+        .REQUEST SUBR1
+          .    
+          .
+          .
+
+
+Der Programmverbinder durchsucht SUBR1 nach externen Symbolen, 
+fuer  die kein korrespondierendes PUBLIC-Symbol in den bereits 
+geladenen Moduln definiert ist.
+
+
+9.4.1.5_Pseudooperationen_zur_Listensteuerung
+
+
+Die Pseudooperationen zur Listensteuerung fuehren 2 allgemeine 
+Funktionen aus:
+
+     . Formatsteuerung
+     . Listensteuerung.
+
+Die  Pseudooperationen  zur Formatsteuerung  ermoeglichen  dem 
+Programmierer Seitenwechsel und Kopfzeilen einzufuegen.
+Das  Protokollieren gesamter Assemblerdateien oder von  Teilen 
+davon  wird mit den Pseudooperationen zur Listensteuerung ein- 
+und ausgeschaltet.
+
+
+Pseudooperationen_zur_Formatsteuerung
+
+
+Diese Pseudooperationen erlauben das einfuegen von Seitenwech-
+seln  und  das Festlegen von  Titel- und  Untertitelzeilen  im 
+Assemblerprotokoll.
+
+

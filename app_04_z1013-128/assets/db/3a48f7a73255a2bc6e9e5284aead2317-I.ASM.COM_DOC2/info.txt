@@ -1,0 +1,3 @@
+<kurz src="SCP Assembler Teil 2"/>
+<lang><include src="I.ASM.COM DOC2.txt"/></lang>
+<requires></requires>

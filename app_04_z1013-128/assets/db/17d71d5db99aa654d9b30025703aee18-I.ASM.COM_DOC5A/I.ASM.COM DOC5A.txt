@@ -1,0 +1,470 @@
+
+;
+70
+.pl 72
+.mt 8
+.mb 8
+.pc 32
+.fm 1
+.hm 1
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| MVI  r,n | LD   r,n     | Der Direktoperand n wird in das  |
+|          |              | Register r geladen.              |
+|          |              |                                  |
+| MOV  r,M | LD   r,M     | Inhalt des durch Registerpaar HL |
+|          |              | addressierten Speicherplatzes M  |
+|          |              | wird in das Register r geladen.  |
+|          |              | Es ist auch die Schreibweise     |
+|          |              | LD r,(HL) zulaessig. Register L  |
+|          |              | beinhaltet dabei die niederwerti-|
+|          |              | gen 8 Bit der Adresse und das Re-|
+|          |              | gister H die hoeherwertigen 8 Bit|
+|          |              |                                  |
+|   ---    | LD   r,(IX+d)| Inhalt des durch Register IX plus|
+|          |              | Verschiebung adressierten Spei-  |
+|          |              | cherplatzes wird in das Register |
+|          |              | r geladen.                       |
+|          |              |                                  |
+|   ---    | LD   r,(IY+d)| Inhalt des durch Register IY plus|
+|          |              | Veschiebung adressierten Spei-   |
+|          |              | cherplatzes wird in das Register |
+|          |              | r geladen.                       |
+|          |              |                                  |
+| MOV  M,r | LD   M,r     | Bringt ein Byte aus dem Register |
+|          |              | auf den Speicherplatz M, dessen  |
+|          |              | Adresse durch den Inhalt des     | 
+|          |              | Registerpaares HL spezifiziert   | 
+|          |              | wurde. Register L beinhaltet     |
+|          |              | dabei die niederwertigen 8 Bit   |
+|          |              | der Adresse, Register H die      |   
+|          |              | hoeherwertigen 8 Bit.            |
+|          |              |                                  |
+|   ---    | LD   (IX+d),r| Dieser Befehl bringt Daten aus   |
+|          |              | dem Register r an einen Speicher-|
+|          |              | platz, dessen Adresse durch den  |
+|          |              | Inhalt des IY-Registers plus Ver-|
+|          |              | schiebung spezifiziert ist.      |
+|          |              |                                  |
+|   ---    | LD   (IY+d),r| Dieser Befehl bewirkt den Trans- |
+|          |              | port von Daten aus dem Register r|
+|          |              | an einen Speicherplatz, dessen   |
+|          |              | Adresse durch den Inhalt des IY- |
+|          |              | Registers plus Adressverschiebung|
+|          |              | spezifiziert ist.                |
+|          |              |                                  |
+| MVI  M,n | LD   M,n     | Dieser Befehl bewirkt  den Trans-|
+|          |              | port des mit n definierten       |
+|          |              | Direktoperanden an einen Spei-   |
+|__________|______________|__________________________________|
+
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | cherplatz M, dessen Adresse durch|
+|          |              | den Inhalt des Registerpaares HL |
+|          |              | spezifiziert ist.                |
+|          |              | Register L beinhaltet dabei die  |
+|          |              | niederwertigen 8 Bit der Adresse |
+|          |              | und das Register H die hoeherwer-|
+|          |              | tigen 8  Bit.  Die  Schreibweise |   
+|          |              | LD (HL),n ist ebenfalls moeglich.|
+|          |              |                                  |
+|   ---    | LD   (IX+d),n| Dieser Befehl bewirkt den Trans- |
+|          |              | port des mit n definierten       |
+|          |              | Direktoperanden an einen Spei-   |
+|          |              | cherplatz, dessen Adresse durch  |
+|          |              | den Inhalt des IX-Registers plus |
+|          |              | Adressverschiebung spezifiziert  |
+|          |              | ist.                             |
+|          |              |                                  |
+|   ---    | LD   (IY+d),n| Ein mit n definierter Direktope- |
+|          |              | rand wird an einen Speicherplatz |
+|          |              | transportiert, dessen Adresse    |
+|          |              | durch den Inhalt des IY-Registers|
+|          |              | plus Adressverschiebung spezifi- |
+|          |              | ziert ist.                       |
+|          |              |                                  |
+| LDAX B   | LD   A,(BC)  | Der Inhalt des durch das Regi-   |
+|          |              | sterpaar BC adressierten Spei-   |
+|          |              | cherplatzes wird in den Akkumula-|
+|          |              | tor (A-Register) geladen.        |
+|          |              | Das C-Register beinhaltet die    |
+|          |              | niederwertigen 8 Bit der Adresse |
+|          |              | und das Register B die hoeherwer-|
+|          |              | tigen 8 Bit.                     |
+|          |              |                                  |
+| LDAX D   | LD   A,(DE)  | Der Inhalt des durch das Regi-   |
+|          |              | sterpaar DE adressierten Spei-   |
+|          |              | cherplatzes wird in den Akkumula-|
+|          |              | tor (A-Register) geladen.        |
+|          |              | Das Register E beinhaltet die    |
+|          |              | niederwertigen 8 Bit der Adresse |
+|          |              | und das Register D die hoeherwer-|
+|          |              | tigen 8 Bit.                     |
+|          |              |                                  |
+| LDA  nn  | LD   A,(nn)  | Der Inhalt des durch nn adres-   |
+|          |              | sierten Speicherplatzes wird in  |
+|          |              | den Akkumulator (A-Register)     |
+|          |              | geladen.                         |
+|          |              |                                  |
+| STA  nn  | LD   (nn),A  | Der Inhalt des Akkumulators (A-  |
+|          |              | Register) wird auf den durch nn  |
+|__________|______________|__________________________________|
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | adressierten Speicherplatz       |
+|          |              | transportiert.                   |
+|          |              |                                  |
+| STAX B   | LD   (BC),A  | Der Inhalt des Akkumulators (A-  |
+|          |              | Register) wird auf den Speicher- |
+|          |              | platz geladen, dessen Adresse im |
+|          |              | Registerpaar BC definiert ist.   |
+|          |              | Das Register C beinhaltet die    |
+|          |              | niederwertigen 8 Bit der Adresse |
+|          |              | und das Register B die hoeherwer-|
+|          |              | tigen 8 Bit.                     |
+|          |              |                                  |
+| STAX D   | LD   (DE),A  | Der Inhalt des Akkumulators (A-  |
+|          |              | Register) wird auf den Speicher- |
+|          |              | platz geladen, dessen Adresse im |
+|          |              | Registerpaar DE definiert ist.   |
+|          |              | Das Register E beinhaltet die    |
+|          |              | niederwertigen 8 Bit der Adresse |
+|          |              | und das Register D die hoeherwer-|
+|          |              | tigen 8 Bit.                     |
+|          |              |                                  |
+|   ---    | LD   A,I     | Der Registerinhalt von I wird in |
+|          |              | den Akkumulator (A-Register) ge- |
+|          |              | laden. I ist das Interrupt-Regi- |
+|          |              | ster.                            |
+|          |              |                                  |
+|   ---    | LD   A,R     | Der Registerinhalt von R wird in |
+|          |              | den Akkumulator (A-Register) ge- |
+|          |              | laden R ist das Refresh-Register.|
+|          |              |                                  |
+|   ---    | LD   I,A     | Der Inhalt des Akkumulators (A-  |
+|          |              | Register) wird in das Interrupt- |
+|          |              | Register geladen.                |
+|          |              |                                  |
+|   ---    | LD   R,A     | Der Akkumulatorinhalt wird in das|
+|          |              | Refresh-Register geladen.        |
+|__________|______________|__________________________________|
+
+
+9.6.1.2._16-Bit-Ladebefehle
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| LXI dd,nn| LD   dd,nn   | Ein 16-Bit-Direktoperand wird in |
+|          |              | ein Doppelregister geladen.      |
+|__________|______________|__________________________________|
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | LD   IX,nn   | Ein 16-Bit-Direktoperand wird in |
+|          |              | das Indexregister IX geladen.    |
+|          |              |                                  |
+|   ---    | LD   IY,nn   | Ein 16-Bit-Direktoperand wird in |
+|          |              | das Indexregister IY geladen.    |
+|          |              |                                  |
+| LHLD nn  | LD   HL,(nn) | Der Inhalt der durch nn und nn+1 |
+|          |              | adressierten Speicherplaetze wird|
+|          |              | in das Doppelregister HL geladen:|
+|          |              | Inhalt von nn+1 ---> Register H  |
+|          |              | Inhalt von nn   ---> Register L  |
+|          |              |                                  |
+|   ---    | LD   dd,(nn) | Der Inhalt der durch nn und nn+1 |
+|          |              | adressierten Speicherplaetze wird|
+|          |              | in ein Doppelregister geladen:   |
+|          |              | Inhalt von nn+1 ---> hoeherwerti-|
+|          |              |                      ges Register|
+|          |              |                      (B,D,SPH)   |
+|          |              |                                  |
+|          |              | Inhalt von nn   ---> niederwerti-|
+|          |              |                      ges Register|
+|          |              |                      (C,E,SPL)   |
+|          |              |                                  |
+|   ---    | LD   IX,(nn) | Der Inhalt der durch nn und nn+1 |
+|          |              | adressierten Speicherplaetze wird|
+|          |              | in das Indexregister IX geladen: |
+|          |              | Inhalt von nn+1 ---> Register IXH|
+|          |              |                                  |
+|          |              | Inhalt von nn   ---> Register IXL|
+|          |              |                                  |
+|   ---    | LD   IY,(nn) | Der Inhalt der durch nn und nn+1 |
+|          |              | adressierten Speicherplaetze wird|
+|          |              | in das Indexregister IY geladen: |
+|          |              | Inhalt von nn+1 ---> Register IYH|
+|          |              |                                  |
+|          |              | Inhalt von nn   ---> Register IYL|
+|          |              |                                  |
+| SHLD nn  | LD   (nn),HL | Der Inhalt des Doppelregisters HL|
+|          |              | wird auf die Adressen nn und nn+1|
+|          |              | transportiert:                   |
+|          |              | Inhalt Reg. H --->Inhalt Adr.nn+1|
+|          |              | Inhalt Reg. L --->Inhalt Adr.nn  |
+|          |              |                                  |
+|   ---    | LD   (nn),dd | Der Inhalt eines Registerpaares  |
+|          |              | wird auf die Adressen nn und nn+1|
+|          |              | transportiert:                   |
+|          |              | Inhalt des hoeherwertigen Regi-  |
+|          |              | sters (B,D,SPH) ---> Adr. nn+1   |
+|__________|______________|__________________________________|
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | Inhalt des niederwertigen Regi-  |
+|          |              | sters (C,E,SPL) ---> Adr. nn     |
+|          |              |                                  |
+|   ---    | LD   (nn),IX | Der Inhalt des Indexregisters IX |
+|          |              | wird auf die Adressen nn+1 und nn|
+|          |              | transportiert:                   |
+|          |              | Inhalt IXH ---> Adr. nn+1        |
+|          |              |                                  |
+|          |              | Inhalt IXL ---> Adr. nn          |
+|          |              |                                  |
+|   ---    | LD   (nn),IY | Der Inhalt des Indexregisters IY |
+|          |              | wird auf die Adressen nn+1 und nn|
+|          |              | transportiert:                   |
+|          |              | Inhalt IYH ---> Adr. nn+1        |
+|          |              |                                  |
+|          |              | Inhalt IYL ---> Adr. nn          |
+|          |              |                                  |
+| SPHL     | LD   SP,HL   | Der Inhalt des Doppelregisters HL|
+|          |              | wird in den Stackpointer (Keller-|
+|          |              | zeiger) uebertragen:             |
+|          |              | Inhalt Register H ---> SPH       |
+|          |              |                                  |
+|          |              | Inhalt Register L ---> SPL       |
+|          |              |                                  |
+|   ---    | LD   SP,IX   | Der Inhalt des Indexregisters IX |
+|          |              | wird in den Stackpointer (Keller-|
+|          |              | zeiger) uebertragen.             |
+|          |              | Inhalt Register IXH ---> SPH     |
+|          |              |                                  |
+|          |              | Inhalt Register IXL ---> SPL     |
+|          |              |                                  |
+|   ---    | LD   SP,IY   | Der Inhalt des Indexregisters IY |
+|          |              | wird in den Stackpointer (Keller-|
+|          |              | zeiger) uebertragen:             |
+|          |              | Inhalt Register IYH ---> SPH     |
+|          |              |                                  |
+|          |              | Inhalt Register IYL ---> SPL     |
+|__________|______________|__________________________________|
+
+
+Anmerkung:
+
+
+Das gegebenenfalls auf den Operationscode unmittelbar folgende 
+Byte ist das niederwertige Byte des 16-Bit-Wortes.
+.pa
+9.6.2.___Indirekte_Registeroperationen_(PUSH-_und_POP-Befehle)
+
+
+9.6.2.1._PUSH-Befehle
+
+
+Bei  den PUSH-Befehlen wird der Inhalt des  Registerpaares  qq 
+oder  des  Registers IX bzw.  IY in einen externen  RAM-Keller 
+(Stack)  uebertragen,  der als LIFO-Datei  (letzte  Eintragung 
+wird zuerst gelesen) organisiert ist.
+Der Stackpointer enthaelt dabei staendig eine aktuelle 16-Bit-
+Adresse,  die  der aktuell niedrigsten Adresse des Stackberei-
+ches entspricht.
+
+Der PUSH-Befehl subtrahiert 1 vom Inhalt des Stackpointers und 
+laedt das hoeherwertige Byte des Registerpaares bzw. des Regi-
+sters IX oder IY in die Speicherstelle,  die durch den  Inhalt 
+des Stackpointers SP adressiert ist.
+Danach  wird  der Inhalt des Stackpointers nochmals  dekremen-
+tiert. Das niederwertige Byte wird jetzt in die Speicherstelle 
+eingetragen, die durch den Inhalt des Stackpointers adressiert 
+ist.
+ 
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| PUSH PSW | PUSH AF      | Erniedrigen SP                   |
+|          |              | (SP-1) <--- A                    |
+|          |              | Erniedrigen SP                   |
+|          |              | (SP-2) <--- F                    |
+|          |              |                                  |
+| PUSH B   | PUSH BC      | analog PUSH AF                   |
+|          |              |                                  |
+| PUSH D   | PUSH DE      | analog PUSH AF                   |
+|          |              |                                  |
+| PUSH H   | PUSH HL      | analog PUSH AF                   |
+|          |              |                                  |
+|   ---    | PUSH IX      | (SP-2) <--- IXL                  |
+|          |              |                                  |
+|          |              | (SP-1) <--- IXH                  |
+|          |              |                                  |
+|   ---    | PUSH IY      | analog PUSH IX                   |
+|__________|______________|__________________________________|
+
+
+9.6.2.2._POP-Befehle
+
+
+Bei  den  POP-Befehlen wird der Inhalt  der  vom  Stackpointer 
+(Kellerzeiger) SP und (SP+1) adressierten 2 Bytes des externen 
+Stacks in ein Registerpaar qq bzw.  in ein Register IX oder IY 
+uebertragen.
+
+Der  POP-Befehl uebertraegt zunaechst den Inhalt der Speicher-
+stelle,  die durch den aktuellen Wert des Stackpointers adres-
+siert ist,  in den niederwertigen Teil des Registerpaares bzw. 
+des Registers IX oder IY.
+Danach wird der Stackpointer inkrementiert, und der Inhalt der 
+jetzt  adressierten Speicherstelle wird in den  hoeherwertigen 
+Teil des Registerpaares bzw. Registers IX oder IY uebertragen. 
+Der Stackpointer wird anschliessend erneut inkrementiert.
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| POP  PSW | POP  AF      | F <--- (SP)                      |
+|          |              | Erhoehen SP                      |
+|          |              | A <--- (SP+1)                    |
+|          |              | Erhoehen SP                      |
+|          |              |                                  |
+| POP  B   | POP  BC      | analog POP AF                    |
+|          |              |                                  |
+| POP  D   | POP  DE      | analog POP AF                    |
+|          |              |                                  |
+| POP  H   | POP  HL      | analog POP AF                    |
+|          |     Hi       |
+|   ---    | POP  IX      | IXH <--- (SP+1)                  |
+|          |              |                                  |
+|          |              | IXL <--- (SP)                    |
+|          |              |                                  |
+|   ---    | POP  IY      | analog POP IX                    |
+|__________|______________|__________________________________|
+
+
+Beispiel: Retten Register im Unterprogramm
+
+
+BEISP: PUSH HL
+       PUSH DE
+       PUSH BC
+         .        ) Unterprogramm-
+         .        ) verarbeitungs-
+         .        ) befehle
+
+       PUSH BC
+       PUSH DE
+       PUSH HL
+       RET  
+
+Nach  Verarbeitung  des Unterprogramms besitzen  die  Register 
+(HL, DE, BC) wieder die gleichen Inhalte wie vor dem Aufruf.
+
+.pa
+9.6.3.___Register-Austausch-Befehle
+
+
+Die Register-Austausch-Befehle sind ein Byte lang, ausgenommen 
+der zwischen (SP) und jeweils einem Basisregister.  Sie besit-
+zen eine Befehlslaenge von 2 Byte.
+Durch  die  geringe Befehlslaenge werden  kurze  Interruptant-
+wortzeiten  moeglich.  Fuer  den Registeraustausch  steht  ein 
+Hintergrundsatz der CPU-Register zur Verfuegung (auch 2. Regi-
+stersatz genannt). 
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| XCHG     | EX   DE,HL   | Die 16-Bit-Inhalte der Register- |
+|          |              | paare DE und HL werden ausge-    |
+|          |              | tauscht:                         |          
+|          |              | DE <---> HL                      |
+|          |              |                                  |
+|   ---    | EX   AF,AF'  | Die 16-Bit-Inhalte der Register- |
+|          |              | paare AF und AF' werden ausge-   |
+|          |              | tauscht. AF' besteht aus den     |
+|          |              | Registern A' und F'.             |
+|          |              | AF <---> AF'                     |
+|          |              |                                  |
+|   ---    | EXX          | Die 16-Bit-Inhalte der nachste-  |
+|          |              | henden Register werden in folgen-|
+|          |              | der Weise getauscht:             |
+|          |              | BC <---> BC'                     |
+|          |              | DE <---> DE'                     |
+|          |              | HL <---> HL'                     |
+|          |              |                                  |
+| XTHL     | EX   (SP),HL | Der Inhalt des Registers L wird  |
+|          |              | gegen den Inhalt der Speicher-   |
+|          |              | stelle ausgetauscht, die durch   |
+|          |              | den Inhalt des Stackpointers SP  |
+|          |              | adressiert ist. Der Inhalt des   |
+|          |              | Registers H wird gegen den Inhalt|
+|          |              | der Speicherstelle ausgetauscht, |
+|          |              | die durch den Inhalt des Stack-  |
+|          |              | pointers SP plus 1 adressiert    |
+|          |              | ist.                             |
+|          |              | H <---> (SP+1)                   |
+|          |              | L <---> (SP)                     |
+|          |              |                                  |
+|   ---    | EX   (SP),IX | Der niederwertige Teil des Regi- |
+|          |              | sters IX wird gegen den Inhalt   |
+|          |              | der Speicherstelle ausgetauscht, |
+|          |              | die durch den Inhalt des Stack-  |
+|          |              | pointers SP adressiert ist.      |
+|          |              | Der hoeherwertige Teil von IX    |
+|          |              | wird gegen den Inhalt der Spei-  |
+|__________|______________|__________________________________|
+ ____________________________________________________________ 
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | cherstelle ausgetauscht, die     |
+|          |              | durch den Inhalt SP plus 1 adres-|
+|          |              | siert ist.                       |
+|          |              | IXH <---> (SP+1)                 |
+|          |              |                                  |
+|          |              | IXL <---> (SP)                   |
+|          |              |                                  |
+|   ---    | EX   (SP),IY | analog EX (SP),IX                |
+|          |              | IYH <---> (SP+1)                 |
+|          |              |                                  |
+|          |              | IYL <---> (SP)                   |
+|__________|______________|__________________________________|
+
+

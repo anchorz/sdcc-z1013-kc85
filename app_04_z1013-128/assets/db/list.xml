@@ -56,6 +56,14 @@
 <file aadr="1000" eadr="29f3" sadr="0000" typ="b" link="4ff396ebc1b49df20d59bb3d37ebb7dc-b.ARKTIS%201/b.ARKTIS%201.z80" name="ARKTIS 1        " kurz="5 Tage die Heizung in der Arktis füttern" />
 <file aadr="0100" eadr="170b" sadr="0100" typ="C" link="52ec6c5d81ce3294c8d3aa38202d243a-C.ASCII-FRAKTALE_5/C.ASCII-FRAKTALE%205.z80" name="ASCII-FRAKTALE 5" kurz="TEFRA Textfraktale, compiliert" />
 <file aadr="1000" eadr="36ff" sadr="1000" typ="C" link="d13ddd251c1a43637a119e2001c90c32-C.ASM%20KC85_1%20_1800/C.ASM%20KC85_1%20_1800.z80" name="ASM KC85/1 :1800" kurz="Editor, Assembler (funktioniert?)" />
+<file aadr="3000" eadr="a838" sadr="0000" typ="I" link="2875dce535cb60360ce39d30d104383b-I.ASM.COM_DOC1/I.ASM.COM%20DOC1.z80" name="ASM.COM DOC1    " kurz="SCP Assembler Teil 1 (defekt)" />
+<file aadr="3000" eadr="a244" sadr="0000" typ="I" link="3a48f7a73255a2bc6e9e5284aead2317-I.ASM.COM_DOC2/I.ASM.COM%20DOC2.z80" name="ASM.COM DOC2    " kurz="SCP Assembler Teil 2" />
+<file aadr="3000" eadr="a4b9" sadr="0000" typ="I" link="522fa5619910ef7f166cef5e2aefac69-I.ASM.COM_DOC3/I.ASM.COM%20DOC3.z80" name="ASM.COM DOC3    " kurz="SCP Assembler Teil 3" />
+<file aadr="3000" eadr="aa87" sadr="0000" typ="I" link="295803f3859af3810cc57670801ab7d5-I.ASM.COM_DOC4/I.ASM.COM%20DOC4.z80" name="ASM.COM DOC4    " kurz="SCP Assembler Teil 4 (defekt)" />
+<file aadr="3000" eadr="975a" sadr="0000" typ="I" link="17d71d5db99aa654d9b30025703aee18-I.ASM.COM_DOC5A/I.ASM.COM%20DOC5A.z80" name="ASM.COM DOC5A   " kurz="SCP Assembler Teil 5A" />
+<file aadr="3000" eadr="adf7" sadr="0000" typ="I" link="5d990d26b712083d93f29f8366a17eda-I.ASM.COM_DOC5B/I.ASM.COM%20DOC5B.z80" name="ASM.COM DOC5B   " kurz="SCP Assembler Teil 5B (defekt)" />
+<file aadr="3000" eadr="9e75" sadr="0000" typ="I" link="5d7b622faa21755c8636f063a5e7ef19-I.ASM.COM_DOC6A/I.ASM.COM%20DOC6A.z80" name="ASM.COM DOC6A   " kurz="SCP Assembler Teil 6A" />
+<file aadr="3000" eadr="77e1" sadr="0000" typ="I" link="96751d94d1a8f76b26b339864ff7387c-I.ASM.COM_DOC6B/I.ASM.COM%20DOC6B.z80" name="ASM.COM DOC6B   " kurz="SCP Assembler Teil 6B" />
 <file aadr="0800" eadr="5d65" sadr="0000" typ="I" link="26a7292133036e2795c32674093300c9-assembler_5_3_I/assembler_5_3_I.z80" name="ASSEMBLER 5.3   " kurz="Dokumentation Assembler 5.3 SCF" />
 <file aadr="3000" eadr="6cdd" sadr="0000" typ="I" link="516129f70ad81410cc175899ac286b2a-I.ASSM%20TU/I.ASSM%20TU.z80" name="ASSM TU         " kurz="U880-Assembler ASM (V. 25.10.87)" />
 <file aadr="0100" eadr="20bf" sadr="20b0" typ="C" link="6567c3fc7635d4fef36ca47b1540b991-C.ASTRO/C.ASTRO-NEBEL.z80" name="ASTRO-NEBEL     " kurz="Animation/Grafik" />
@@ -894,7 +902,7 @@
 <file aadr="e000" eadr="ebff" sadr="e800" typ="C" link="47200a65bd74c59a993c93acfda3b782-C.UNIMO_3/C.UNIMO%203.z80" name="UNIMO 3         " kurz="Universalzusatzmonitor 3, Monitorerweiterung 0xF800" />
 <file aadr="1800" eadr="4a41" sadr="0000" typ="I" link="7d91916c669c668f2efe72a7384dffd7-I.UNIMO3_MIT_S3004/I.UNIMO3%20MIT%20S3004.z80" name="UNIMO3 MIT S3004" kurz="UNIMO3, Universalzusatzmonitor, MIT S3004 und SPV" />
 <file aadr="0200" eadr="09df" sadr="0200" typ="C" link="3a3c93cf8f340f920d7b0b8ada7bb982-universe%20rb/universe%20rb.z80" name="UNIVERSE RB     " kurz="" />
-<file aadr="1800" eadr="2249" sadr="0000" typ="T" link="fb1d0af38fc9ca742d79be02cd715209-T.URLADER_R.BROSIG/T.URLADER%20R.BROSIG.z80" name="URLADER R.BROSIG" kurz="Beschreibung Urlader " />
+<file aadr="1800" eadr="2249" sadr="0000" typ="T" link="fb1d0af38fc9ca742d79be02cd715209-T.URLADER_R.BROSIG/T.URLADER%20R.BROSIG.z80" name="URLADER R.BROSIG" kurz="Beschreibung Urlader, Bootloader" />
 <file aadr="e800" eadr="eaff" sadr="e800" typ="C" link="0b70520fb192060844fb2b09a618cc22-C.V.24+HC/C.V.24+HC.z80" name="V.24+HC         " kurz="V24, Druckertreiber, Hardcopy" />
 <file aadr="0700" eadr="14df" sadr="1000" typ="C" link="21116d60ec96b5bad5067552e3949b67-vampi/vampi.z80" name="VAMPI           " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (8x4)" />
 <file aadr="0700" eadr="14ff" sadr="1000" typ="C" link="5bdb666cbca1e0c8fb0a78b5c5cbae5e-vampi/vampi.z80" name="VAMPI           " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus" />
@@ -952,4 +960,4 @@
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 </filelist>
-<status src="Datenbank enthält 952 Dateien."/></doc>
+<status src="Datenbank enthält 960 Dateien."/></doc>

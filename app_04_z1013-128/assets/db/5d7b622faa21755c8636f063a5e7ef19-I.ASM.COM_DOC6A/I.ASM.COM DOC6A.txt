@@ -1,0 +1,489 @@
+
+;
+72
+.mt 8
+.mb 8
+.pc 32
+.fm 1
+.hm 1
+.pn 87
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | JR   Z,e     | Relativer Sprung um Verschiebung |
+|          |              | e, wenn Z-Flag gleich 1 ist.     |
+|          |              |                                  |
+|   ---    | JR   NC,e    | Relativer Sprung um Verschiebung |
+|          |              | e, wenn C-Flag gleich 0 ist.     |
+|          |              |                                  |
+|   ---    | JR   C,e     | Relativer Sprung um Verschiebung |
+|          |              | e, wenn C-Flag gleich 1 ist.     |
+|          |              |                                  |
+| PCHL     | JP   M       | Unbedingter Sprung zur Adresse,  |
+|          |              | die im Register HL steht.        |
+|          |              |                                  |
+|   ---    | JP   (IX)    | Unbedingter Sprung zur Adresse,  |
+|          |              | die im Register IX steht.        |
+|          |              |                                  |
+|   ---    | JP   (IY)    | Unbedingter Sprung zur Adresse,  |
+|          |              | die im Register IY steht.        |
+|          |              |                                  |
+|   ---    | DJNZ e       | Der Inhalt des Registers B wird  |
+|          |              | um 1 vermindert. Bedingter rela- |
+|          |              | tiver Sprungbefehl um Verschie-  |
+|          |              | bung  e, wenn der Inhalt des     |
+|          |              | Registers B != 0 ist.             |
+|__________|______________|__________________________________|
+
+
+9.6.8.___Verschiebebefehle
+
+
+Durch diese Befehle ist die Moeglichkeit gegeben, im Akkumula-
+tor  (A-Register),  in einem Universalregister oder  in  einem 
+Speicherplatz Daten einfach oder zyklisch zu verschieben.
+Diese  Operationen sind in einem externen grossen Gebiet  ein-
+schliesslich  der  ganzzahligen  Multiplikation  und  Division 
+anwendbar.
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| RLC      | RLCA         | Linksrotation des Akkumulatorin- |
+|          |              | halts. Der Inhalt des Akkumula-  |
+|          |              | tors wird um eine Bitposition    |
+|          |              | nach links verschoben. Das       |
+|          |              | hoechstwertige Bit 7 wird zum In-|
+|          |              | halt des niederwertigen Bits 0   |
+|__________|______________|__________________________________|
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | und des Carry-Flags.             |
+|          |              |          _____________           |
+|          |              |  ____   |  ________   |          |
+|          |              | |_CY_|<-'--|_7<---0_|<-'          |
+|          |              |                                  |
+| RRC      | RRCA         | Rechtsrotation des Akkumulatorin-|
+|          |              | halts. Der Inhalt des Akkumula-  |
+|          |              | tors wird um eine Bitposition    |
+|          |              | nach rechts verschoben. Das nie- |
+|          |              | derwertige Bit 0 wird zum Inhalt |
+|          |              | des hoechstwertigen Bit 7 und des|
+|          |              | Carry-Flags.                     |
+|          |              |  ____________                    |
+|          |              | |   ________ |  ____             |
+|          |              | '->|_7--->0_|'->|_CY_|            |
+|          |              |                                  |
+|          |              |                                  |
+| RAL      | RLA          | Linksrotation des Akkumulatorin- |
+|          |              | halts durch CY. Der Inhalt des   |
+|          |              | Akkumulators wird um eine Bitpo- |
+|          |              | sition nach links verschoben.    |
+|          |              | Das hoechstwertige Bit 7 ersetzt |
+|          |              | das Carry-Flag, waehrend das Car-|   
+|          |              | ry-Flag das niederwertigste Bit  |
+|          |              | 0 des Akkumulators ersetzt.      |
+|          |              |  _____________________           |
+|          |              | |  _________    ___   |          |
+|          |              | '-|_CY<---7_|<-|_0_|<-'          |
+|          |              |                                  |
+| RAR      | RRA          | Rechtsrotation des Akkumulatorin-|
+|          |              | halts durch CY. Der Inhalt des   |
+|          |              | Akkumulators wird um eine Bitpo- |
+|          |              | sition nach rechts verschoben.   |
+|          |              | Das niederwertigste Bit 0 ersetzt|
+|          |              | des Carry-Flag, waehrend das     |
+|          |              | hoechstwertige Bit 7 durch das   |
+|          |              | Carry-Flag ersetzt wird.         |
+|          |              |  _____________________           |
+|          |              | |   ________    ____  |          |
+|          |              | '->|_7--->0_|->|_CY_|-'          |
+|          |              |                                  |
+|          |              |                                  |
+|   ---    | RLC  t       | Linksrotation von t analog dem   |
+|          |              | Befehl  RLCA.                    |
+|          |              |                                  |
+|   ---    | RRC  t       | Rechtsrotation von t analog dem  |
+|          |              | Befehl RRCA.                     |
+|          |              |                                  |
+|__________|______________|__________________________________|
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | RL   t       | Linksrotation von t durch CY ana-|
+|          |              | log dem Befehl RLA.              |
+|          |              |                                  |
+|   ---    | RR   t       | Rechtsrotation von t durch CY    |
+|          |              | analog dem Befehl RRA.           |
+|          |              |                                  |
+|   ---    | SLA  t       | Linksverschiebung von t um 1 Bit |
+|          |              | durch CY. Das niederwertige Regi-|
+|          |              | gisterbit 0 wird 0.              |
+|          |              |  ____     ________               |
+|          |              | |_CY_|<--|_7<---0_|<--0          |
+|          |              |                                  |
+|   ---    | SRL  t       | Rechtsverschiebung von t um 1 Bit|
+|          |              | durch CY. Das hoechstwertige Re- |
+|          |              | gisterbit 7 wird 0.              |
+|          |              |      ________     ____           |
+|          |              | 0-->|_7--->0_|-->|_CY_|          |
+|          |              |                                  |
+|   ---    | SRA  t       | Rechtsverschiebung von t um 1 Bit|
+|          |              | durch CY. Der Inhalt von Bit 7   |
+|          |              | bleibt erhalten.                 |
+|          |              |                                  |
+|          |              |  ______                          |
+|          |              | |  ____|v____     ____             |     
+|          |              | '-|_7--->0_|-->|_CY_|            |   
+|          |              |                                  |
+|   ---    | RLD          | Zyklische Verschiebung nach links|
+|          |              | zwischen dem Akkumulator und dem |
+|          |              | Inhalt des durch HL adressierten |
+|          |              | Speicherplatzes.                 |
+|          |              |                                  |
+|          |              |     A            (HL)            |
+|          |              |  _________     _________         |
+|          |              | |0101|1111|   |0000|1111|        |
+|          |              |       vor dem Befehl             |
+|          |              |  _________     _________         |
+|          |              | |0101|0000|   |1111|1111|        |
+|          |              |       nach dem Befehl            |
+|          |              |                                  |
+|          |              | Die unteren 4 Bit des durch HL   |
+|          |              | adressierten Speicherplatzes wer-|
+|          |              | den in die oberen 4 Bitstellen   |
+|          |              | uebertragen und diese ihrerseits |
+|          |              | in die unteren 4 Bitstellen des  |
+|          |              | Akkumulators. Die unteren 4 Bits |
+|          |              | des Akkumulators werden in die   |
+|          |              | unteren 4 Bits der Speicherstelle|
+|          |              | transportiert.                   |
+|__________|______________|__________________________________|
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | RRD          | Zyklische Verschiebung nach      |
+|          |              | rechts zwischen dem Akkumulator  |
+|          |              | und dem Inhalt des durch HL ad-  |
+|          |              | ressierten Speicherplatzes.      |
+|          |              |                                  |
+|          |              |     A             (HL)           |
+|          |              |  _________     _________         |
+|          |              | |0101|1111|   |0000|1111|        |
+|          |              |      vor dem Befehl              |
+|          |              |  _________     _________         |
+|          |              | |0101|1111|   |1111|0000|        |
+|          |              |      nach dem Befehl             |
+|          |              |                                  |
+|          |              | Die unteren 4 Bits der durch HL  |
+|          |              | adressierten Speicherstelle wer- |
+|          |              | den in die unteren 4 Bitstellen  |
+|          |              | des Akkumulators uebertragen und |
+|          |              | diese in die oberen der durch HL |
+|          |              | adressierten Speicherstelle.     |
+|          |              | Die oberen 4 Bits aus der durch  |
+|          |              | HL adressierten Speicherstelle   |
+|          |              | werden in die unteren 4 Bitstel- |
+|          |              | lentransportiert.                |
+|__________|______________|__________________________________|
+
+
+9.6.9.___Spezielle_Akkumulator-_und_Flagbefehle
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| DAA      | DAA          | Korrigiert nach Addition / Sub-  |
+|          |              | traktion zweier gepackter BCD-   |
+|          |              | Zahlen den Akkumulatorinhalt so, |
+|          |              | dass im Akkumulator wieder die   |
+|          |              | gepackte BCD-Darstellung erreicht|
+|          |              | wird.                            |
+|          |              | Beispiel:                        |
+|          |              |                                  |
+|          |              |  65  0110 0101                   |
+|          |              | +57  0101 0111                   |
+|          |              | --------------                   |
+|          |              |      1011 1100                   |
+|          |              | ==============                   |
+|__________|______________|__________________________________|
+
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | Der DAA-Befehl fuehrt jetzt die  |
+|          |              | notwendige Korrektur aus. In Ab- |
+|          |              | haengigkeit von der Wertigkeit   |
+|          |              | der zwei Halbbytes wird ein be-  |
+|          |              | stimmtes Korrekturbyte (im vor-  |
+|          |              | liegenden Beispiel 66) addiert.  |
+|          |              |                                  |
+|          |              | CY | 0110 0110                   |
+|          |              | |v  |----------                   |
+|          |              | L  | 0010 0010 = 122             |
+|          |              |                                  |
+| CMA      | CPL          | Bitweises Negieren (Komplemen-   |
+|          |              | tieren) des Akkumulatorinhaltes. |
+|          |              |                                  |
+|   ---    | NEG          | Subtrahieren des Akkumulator-    |
+|          |              | Inhalts von 0.                   |
+|          |              | Entspricht wertmaessig dem       |
+|          |              | Zweierkomplement.                |
+|          |              |                                  |
+| CMC      | CCF          | Komplementieren des Carry-Flags. |
+|          |              |                                  |
+| STC      | SCF          | Setzen des Carry-Flags.          |
+|__________|______________|__________________________________|
+
+
+9.6.10.___Unterprogramm-Aufruf-Befehle
+
+
+Diese Befehle sind eine Spezialform der Sprungbefehle.  Es ist 
+zwischen  unbedingten  und bedingten Unterprogrammaufrufen  zu 
+unterscheiden.  Beim unbedingten Unterprogrammaufruf wird  der 
+dem Aufruf folgende Speicherplatzzuordnungszaehlerstand in den 
+Stack gerettet.
+
+Die im Befehl angegebene Unterprogrammstartadresse nn wird vom 
+Speicherplatzzuordnungszaehler  wieder mit der Absprungadresse 
+aus dem Stack geladen.
+Bei   bedingten  Unterprogrammaufrufen  wird  bei   erfuellter 
+Sprungbedingung  analog  dem  unbedingten  Unterprogrammaufruf 
+verfahren.  Bei  nicht erfuellter Sprungbedingung wird der Be-
+fehl ignoriert.
+Der hoeherwertige Adressteil im Speicherplatzzuordnungszaehler 
+wird  nach  der  Stackadresse minus 1  und  der  niederwertige 
+Adressteil nach der Stackadresse minus 2 gebracht.
+.pa
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| CALL nn  | CALL nn      | Unbedingter Unterprogrammaufruf  |
+|          |              | (SP-1) <--- PCH                  |
+|          |              |                                  |
+|          |              | (SP-2) <--- PCL                  |
+|          |              |                                  |
+|          |              | PC     <--- nn                   |
+|          |              |                                  |
+| CNZ  nn  | CALL NZ,nn   | Unterprogrammaufruf, wenn Z-Flag |
+|          |              | gleich 0 ist.                    |
+|          |              |                                  |
+| CZ   nn  | CALL Z,nn    | Unterprogrammaufruf, wenn Z-Flag |
+|          |              | gleich 1 ist.                    |
+|          |              |                                  |
+| CNC  nn  | CALL NC,nn   | Unterprogrammaufruf, wenn das    |
+|          |              | C-Flag gleich 0 ist.             |
+|          |              |                                  |
+| CC   nn  | CALL C,nn    | Unterprogrammaufruf, wenn das    |
+|          |              | C-Flag gleich 1 ist.             |
+|          |              |                                  |
+| CPO  nn  | CALL PO,nn   | Unterprogrammaufruf, wenn das    |
+|          |              | P/V-Flag gleich 0 ist.           |
+|          |              |                                  |
+| CPE  nn  | CALL PE,nn   | Unterprogrammaufruf, wenn das    |
+|          |              | P/V-Flag gleich 1 ist.           |
+|          |              |                                  |
+| CP   nn  | CALL P,nn    | Unterprogrammaufruf, wenn das    |
+|          |              | S-Flag gleich 0 ist.             |
+|          |              |                                  |
+| CM   nn  | CALL M,nn    | Unterprogrammaufruf, wenn das    |
+|          |              | S-Flag gleich 1 ist.             |
+|          |              |                                  |
+| RST  k   | RST  p       | Der RST-Befehl ist ein spezieller|
+|          |              | Unterprogrammaufruf. Es sind fol-|
+|          |              | genden 8 RST-Adressen zugelassen:|
+|          |              | p={00H; 08H; 10H; 18H; 28H; 30H; |
+|          |              | 38H}.                            |
+|          |              | Der hoeherwertige Adressteil ist |
+|          |              | dabei 0.                         |
+|          |              | Der RST-Befehl entspricht in der |
+|          |              | weiteren Wirkung dem unbedingten |
+|          |              | Unterprogrammaufruf.             |
+|__________|______________|__________________________________|
+
+
+9.6.11.___Unterprogramm-Ruecksprung-Befehle
+
+
+Ein Ruecksprungbefehl beendet ein Unterprogramm.  Es wird zwi-
+schen einem unbedingten Ruecksprung und bedingten Rueckspruen-
+gen aus Interrupt-Behandlungsroutinen unterschieden.
+Bei einem unbedingten Ruecksprung und bei erfuellter Sprungbe-
+dingung  bei bedingten Rueckspruengen wird der beim Aufruf des 
+Unterprogramms in den Stack gerettete  Speicherzuordnungszaeh-
+lerinhalt  wieder in den Speicherzuordnungszaehler  zurueckge-
+schrieben.
+
+           PCL <---  (SP)
+ 
+           PCH <---  (SP+1)
+
+           SP  <---  (SP+2)
+
+Bei  nichterfuellter Sprungbedingung wird der dem  Ruecksprung 
+folgende Befehl abgearbeitet.                 
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| RET      | RET          | Unbedingter Ruecksprung          |
+|          |              |                                  |
+| RNZ      | RET  NZ      | Unterprogrammruecksprung, wenn   |
+|          |              | das Z-Flag gleich 0 ist.         |
+|          |              |                                  |
+| RZ       | RET  Z       | Unterprogrammruecksprung, wenn   |
+|          |              | das Z-Flag gleich 1 ist.         |
+|          |              |                                  |
+| RNC      | RET  NC      | Unterprogrammruecksprung, wenn   |
+|          |              | das C=Flag gleich 0 ist.         |
+|          |              |                                  |
+| RC       | RET  C       | Unterprogrammruecksprung, wenn   |
+|          |              | das C=Flag gleich 1 ist.         |
+|          |              |                                  |
+| RPO      | RET  PO      | Unterprogrammruecksprung, wenn   |
+|          |              | das P/V-Flag gleich 0 ist.       |
+|          |              |                                  |
+| RPE      | RET  PE      | Unterprogrammruecksprung, wenn   |
+|          |              | das P/V-Flag gleich 1 ist.       |
+|          |              |                                  |
+| RP       | RET  P       | Unterprogrammruecksprung, wenn   |
+|          |              | das S-Flag gleich 0 ist.         |
+|          |              |                                  |
+| RM       | RET  M       | Unterprogrammruecksprung, wenn   |
+|          |              | das S-Flag gleich 1 ist.         |
+|          |              |                                  |
+|   ---    | RETI         | Es erfolgt ein Ruecksprung aus   |
+|          |              | einer Interrupt-Behandlungsrou-  |
+|          |              | tine.Dem Peripheriebaustein, der |
+|          |              | das Interrupt anmeldete, wird das|
+|          |              | Ende seines Programms mitgeteilt.|
+|          |              | Der Baustein gibt daraufhin die  |
+|          |              | von ihm blockierte Interrupt-Ket-|
+|          |              | te (DAISY-CHAIN) wieder frei und |
+|__________|______________|__________________________________|
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | ermoeglicht damit die Abarbeitung|
+|          |              | niederwertiger Interrupts.       |
+|          |              | Der Inhalt von IFF2 wird nach    | 
+|          |              | IFF1 uebertragen.                |
+|          |              | Durch die RETI-Anweisung wird der|
+|          |              | maskierbare Interrupt nicht frei-|
+|          |              | gegeben. Es sollte grundsaetzlich|
+|          |              | vor jeder RETI-Anweisung ein EI- |
+|          |              | Befehl stehen, der die Annahme   |
+|          |              | spaeter folgender Interruptanfor-|
+|          |              | derungen ermoeglicht.            |
+|          |              |                                  |
+|   ---    | RETN         | Es erfolgt ein Ruecksprung aus   |
+|          |              | einer Interrupt-Behandlungsrou-  |
+|          |              | tine, die durch einen nichtmas-  |
+|          |              | kierbaren Interrupt (NMI) ausge- |
+|          |              | loest wurde. Die Anweisung wirkt |
+|          |              | zunaechst wie die RET-Anweisung. |
+|          |              | Zusaetzlich wird der Inhalt von  |
+|          |              | IFF2 nach IFF1 uebertragen, so   |
+|          |              | dass die Abarbeitung maskierbarer|
+|          |              | Interrupt-Anforderungen unmittel-|
+|          |              | bar nach Ausfuehrung des RETN-Be-|
+|          |              | fehls freigegeben ist, falls sie |
+|          |              | vor der NMI-Anforderung frei-    |
+|          |              | geben war.                       |
+|__________|______________|__________________________________|
+
+
+9.6.12.___CPU-Steuerbefehle
+
+
+Diese  Steuerbefehle loesen bei der CPU verschiedene Bedingun-
+gen und Betriebsarten aus.
+Diese  Gruppe  enthaelt auch solche Befehle wie  das  Ein- und 
+Ausschalten  des Interrupt-Annahme-Flip-Flops oder das  Setzen 
+der Betriebsart Interruptverhalten.
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| NOP      | NOP          | Die CPU fuehrt keine Operationen |
+|          |              | aus. Es werden Refresh-Zyklen er-|
+|          |              | zeugt.                           |
+|__________|______________|__________________________________|
+
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| HLT      | HALT         | Die CPU fuehrt solange eine Folge|
+|          |              | von NOP-Befehlen aus, bis ein In-|
+|          |              | terrupt oder der RESET-Eingang an|
+|          |              | der CPU aktiv wird. Es werden    |
+|          |              | Refresh-Zyklen erzeugt.          |
+|          |              |                                  |
+| DI       | DI           | Der maskierbare Interrupt wird   |
+|          |              | durch Ruecksetzen der Interrupt- |
+|          |              | Freigabe-Flip-Flops IFF1 bzw.    |
+|          |              | IFF2 der CPU  gesperrt.          |
+|          |              | Nichtmaskierbare Interrupts wer- |
+|          |              | den anerkannt.                   |
+|          |              |                                  |
+| EI       | EI           | Der maskierbare Interrupt wird   |
+|          |              | durch Setzen der Interrupt-Frei- |
+|          |              | gabe-Flip-Flops IFF1 bzw. IFG2   |
+|          |              | der CPU freigegeben.             |
+|          |              | Waehrend der Ausfuehrung des Be- |
+|          |              | fehls akzeptiert die CPU keine   |
+|          |              | Interruptanforderungen.          |
+|          |              |                                  |
+|   ---    | IM 0         | Der Befehl bringt die CPU in den |
+|          |              | Interruptmodus 0.                |
+|          |              |                                  |
+|   ---    | IM 1         | Der Befehl bringt die CPU in den |
+|          |              | Interruptmodus 1.                |
+|          |              |                                  |
+|   ---    | IM 2         | Der Befehl bringt die CPU in den |
+|          |              | Interruptmodus 2.                |
+|__________|______________|__________________________________|
+

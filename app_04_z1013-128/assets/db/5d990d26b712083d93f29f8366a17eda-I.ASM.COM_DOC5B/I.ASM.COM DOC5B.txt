@@ -1,0 +1,556 @@
+
+;
+9.6.4.___Blocktransportbefehle
+
+
+Mit  einem einzigen Befehl kann ein beliebig grosser Block des 
+Speichers zu einem anderen Speicherplatz transportiert werden. 
+Dieser  Satz von Blocktransportbefehlen  ist  ausserordentlich 
+wertvoll fuer die Verarbeitung grosser Datenbloecke.
+
+ ____________________________________________________________ 
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | LDIR         | Transport mehrerer Datenbytes    |
+|          |              | ab der Speicherstelle, die durch |
+|          |              | das Registerpaar HL adressiert   |
+|          |              | wird nach der Speicherstelle, die|
+|          |              | durch das Registerpaar DE adres- |
+|          |              | siert wird.Die Bytezahl  ist  im |  
+|          |              | Registerpaar BC enthalten.       |
+|          |              | Nach jeder Byteuebertragung  wird|
+|          |              | der Inhalt von HL und DE um 1 er-|
+|          |              | hoeht und BC um 1 vermindert. Die|
+|          |              | Uebertragung endet, wenn (BC)=0  |
+|          |              | ist.                             |
+|          |              | Beispiel:                        |
+|          |              | LD HL,DATA;Startadr. d. Quellber.|
+|          |              | LD DE,PUF ;Startadr. d. Zielber. |
+|          |              | LD BC,737 ;Laenge der Datenkette |
+|          |              | LDIR      ;Transport der Daten-  |
+|          |              |           ;kette nach Zielbereich|
+|          |              |           ;Erhoehen HL und DE,   |
+|          |              |           ;Vermindern BC, Wieder-|
+|          |              |           ;holen bis BC=0.       |
+|__________|______________|__________________________________|
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | LDI          | Transport eines Datenbytes von   |
+|          |              | der Speicherstelle, die durch das|
+|          |              | Register HL adressiert wird, nach|
+|          |              | der Speicherstelle, die durch das|
+|          |              | Register DE adressiert wird.     |
+|          |              | Die Register DE und HL werden um |
+|          |              | 1 erhoeht, und das Register BC   |
+|          |              | wird um 1 vermindert.            |
+|          |              | Beispiel:                        |
+|          |              | LD HL,DATA;Startadr. d. Quellber.|
+|          |              | LD DE,PUF ;Startadr. d. Zielber. |
+|          |              | LD BC,132 ;Max. Kettenlaenge BC  |
+|          |              | LD A,'K'  ;Endemerkmal im Reg. A |
+|          |              | LOOP: CMP (HL);Vergleich Spei-   |
+|          |              |           ;cherinh.mit Endemerkm.|
+|          |              | JR Z,END-$;Sprung zu END, wenn   |
+|          |              |           ;Zeichen gleich        |
+|          |              | LDI       ;Zeichentransport (HL) |
+|          |              |           ;zu (DE)               |
+|          |              |           ;Erhoehen HL und DE,   |
+|          |              |           ;Vermindern BC         |
+|          |              | JP PE,LOOP;Sprung zu LOOP, wenn  |
+|          |              |           ;noch Zeichen zu trans-|
+|          |              |           ;portieren sind, sonst |
+|          |              |           ;gehe weiter.          |
+|          |              |           ;P/V-Flag=1, solange   |
+|          |              |           ;BC!=0 ist.             |
+|          |              | END: JP HALT; Halt               |
+|          |              |                                  |
+|   ---    |  LDDR        | Der Befehl wirkt wie LDIR,  nur  |
+|          |              | werden die Register DE und HL um |
+|          |              | 1 vermindert.                    |
+|          |              |                                  |
+|   ---    | LDD          | Der Befehl wirkt wie LDI, nur    |
+|          |              | werden die Register DE und HL um |
+|          |              | 1 vermindert.                    |
+|__________|______________|__________________________________|
+
+
+9.6.5.___Blocksuchbefehle
+
+
+Diese  Befehle sind fuer die Verarbeitung grosser  Datenmengen 
+geeignet.  Mit  einem einzigen Befehl kann  ein  Speicherblock 
+beliebiger  Groesse nach einem bestimmten 8-Bit-Zeichen durch-
+sucht  werden.  Der Befehl ist automatisch beendet,  wenn  das 
+Zeichen gefunden wurde.
+
+.pa
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | CPI          | Vergleich des Inhalts des durch  |
+|          |              | HL adressierten Speicherplatzes  |
+|          |              | mit dem Inhalt des Akkumulators  |
+|          |              | (A-Register). Das Register BC    |
+|          |              | kann als Bytezaehler arbeiten.   |
+|          |              | Das Register HL wird um 1 er-    |
+|          |              | hoeht. Das Registerpaar BC wird  |
+|          |              | um 1 vermindert.                 |
+|          |              |                                  |
+|   ---    | CPIR         | Vergleich des Inhalts des Akkumu-|
+|          |              | lators mit dem Inhalt eines ad-  |
+|          |              | ressierten Speicherbereiches. Die|
+|          |              | Startadresse des Bereiches ist in|
+|          |              | dem Registerpaar HL enthalten,   |
+|          |              | die Laenge des Bereiches in dem  |
+|          |              | Registerpaar BC. Die zu suchende |
+|          |              | Konstante steht im Akkumulator.  |
+|          |              | Der Vergleich endet, wenn der    |
+|          |              | Akkumulator = (HL) ist oder wenn |
+|          |              | BC = 0 ist. Der Befehl sucht,    |
+|          |              | indem er Register HL erhoeht und |
+|          |              | Register BC um 1 vermindert.     |
+|          |              |                                  |
+|   ---    | CPD          | Der Befehl wirkt wie CPI, nur das|
+|          |              | Register HL wird vermindert.     |
+|          |              |                                  |
+|   ---    | CPDR         | Der Befehl wirkt wie CPIR, nur   |
+|          |              | das Register HL wird vermindert. |
+|__________|______________|__________________________________|
+
+
+9.6.6.___Arithmetische_und_logische_Operationen
+
+
+Die  arithmetischen und logischen Befehle arbeiten mit  Daten, 
+die sich im Akkumulator (A-Register) und in anderen Universal-
+CPU-Registern oder auf den Speicherplaetzen befinden.
+Die Ergebnisse dieser Operationen werden im Akkumulator unter-
+gebracht. Geeignete Flags werden entsprechend dem Ergebnis der 
+Operationen gesetzt. 
+
+.pa
+9.6.6.1._8-Bit-Arithmetik
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| ADD  r   | ADD  A,r     | Der Registerinhalt r wird zum    |
+|          |              | Akkumulatorinhalt addiert.       |
+|          |              |                                  |
+| ADD  M   | ADD  A,M     | Der durch das Registerpaar HL ad-|
+|          |              | ressierte Inhalt des Speicher-   |
+|          |              | plates M wird zum Inhalt des     |
+|          |              | Akkumulators addiert.            |
+|          |              |                                  |
+| ADI  n   | ADD  A,n     | Der Direktoperand n wird zum In- |
+|          |              | halt des Akkumulators addiert.   |
+|          |              |                                  |
+|   ---    | ADD  A,(IX+d)| Der Inhalt des durch Register IX |
+|          |              | plus Adresssverschiebung adres-  |
+|          |              | sierten Speicherplatzes wird zum |
+|          |              | Inhalt des Akkumulators addiert. |
+|          |              | Das Ergebnis steht nach der Ope- |
+|          |              | ration im Akkumulator.           |
+|          |              |                                  |
+|   ---    | ADD  A,(IY+d)| Der Inhalt des durch Register IY |
+|          |              | plus Verschiebung adressierten   |
+|          |              | Speicherplatzes wird zum Inhalt  |
+|          |              | des Akkumulators addiert.        |
+|          |              | Das Ergebnis steht nach der Ope- |
+|          |              | ration im Akkumulator.           |
+|          |              |                                  |
+| ADC  r   | ADC  A,r     | Der Registerinhalt r plus Carry- |
+|          |              | Flag (CY) wird zum Akkumulatorin-|
+|          |              | halt addiert.                    |
+|          |              |                                  |
+| ADC  M   | ADC  A,M     | Der durch das Registerpaar HL ad-|
+|          |              | ressierte Inhalt des Speicher-   |
+|          |              | platzes M plus Carry-Flag (CY)   |
+|          |              | wird zum Inhalt des Akkumulators |
+|          |              | addiert.                         |
+|          |              |                                  |
+| ACI  n   | ADC  A,n     | Der Direktoperand n plus CY werden zum Inhalt des Akkumulators addiert.
+|          |              | addiert.                         |
+|          |              |                                  |
+|   ---    | ADC  A,(IX+d)| Der Inhalt des durch Register IX |
+|          |              | plus Verschiebung d adressierten |
+|          |              | Speicherplatzes plus CY werden   |
+|          |              | zum Akkumulator addiert.         |
+|          |              |                                  |
+|   ---    | ADC  A,(IY+d)| Der Inhalt des durch Register IY |
+|          |              | plus Verschiebung d adressierten |
+|          |              | Speicherplatzes plus CY werden   |
+|__________|______________|__________________________________|
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | zum Akkumulators addiert.        |
+|          |              |                                  |
+| SUB  r   | SUB  r       | Der Registerinhalt r wird vom Ak-|
+|          |              | kumulator subtrahiert.           |
+|          |              |                                  |
+| SUB  M   | SUB  M       | Der durch Registerpaar HL adres- |
+|          |              | sierte Inhalt des Speicherplatzes|
+|          |              | M wird vom Inhalt des Akkumula-  |
+|          |              | tors subtrahiert.                |
+|          |              |                                  |
+| SUI  n   | SUB  n       | Der Direktoperand wird vom Inhalt|
+|          |              | des Akkumulators subtrahiert.    |
+|          |              |                                  |
+|   ---    | SUB  (IX+d)  | Der Inhalt des durch Register IX |
+|          |              | plus Verschiebung adressierten   |
+|          |              | Speicherplatzes wird vom Inhalt  |
+|          |              | des Akkumulators subtrahiert.    |
+|          |              | (-128 <= d <= 127)                 |
+|          |              |                                  |
+|   ---    | SUB  (IY+d)  | Der Inhalt des durch Register IY |
+|          |              | plus Verschiebung adressierten   |
+|          |              | Speicherplatzes wird vom Inhalt  |
+|          |              | des Akkumulators subtrahiert.    |
+|          |              |                                  |
+| SBB  r   | SBC  A,r     | Das Carry-Flag wird zum Register-|
+|          |              | inhalt r addiert und dieses Er-  |
+|          |              | gebnis vom Inhalt des Akkumula-  |
+|          |              | tors subtrahiert.                |
+|          |              |                                  |
+| SBB  M   | SBC  A,M     | Das Carry-Flag wird zum Inhalt   |
+|          |              | des durch Registerpaar HL adres- |
+|          |              | sierten Speicherplatzes M addiert|
+|          |              | und dieses Ergebnis wird vom In- |
+|          |              | halt des Akkumulators subtrahiert|
+|          |              |                                  |
+| SBI  n   | SBC  A,n     | Der Direktoperand n plus CY wird |
+|          |              | vom Inhalt des Akkumulators sub- |
+|          |              | trahiert.                        |
+|          |              |                                  |
+|   ---    | SBC  A,(IX+d)| Das Carry-Flag wird zum Inhalt   |
+|          |              | des durch Register IX plus Ver-  |
+|          |              | schiebung adressierten Speicher- |
+|          |              | platzes addiert und vom Inhalt   |
+|          |              | des Akkumulators subtrahiert.    |
+|          |              |                                  |
+|   ---    | SBC  A,(IY+d)| Das Carry-Flag wird zum Inhalt   |
+|          |              | des durch Register IY plus Ver-  |
+|          |              | schiebung adressierten Speicher- |
+|          |              | platzes addiert und vom Inhalt   |
+|__________|______________|__________________________________|
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | des Akkumulators subtrahiert.    |
+|          |              |                                  |
+| INR  r   | INC  r       | Der Inhalt des Registers r wird  |
+|          |              | um 1 erhoeht.                    |
+|          |              |                                  |
+| INR  M   | INC  M       | Der Inhalt des durch HL adres-   |
+|          |              | sierten Speicherplatzes M wird um|
+|          |              | 1 erhoeht.                       |
+|          |              |                                  |
+|   ---    | INC  (IX+d)  | Der Inhalt des durch IX plus Ver-|
+|          |              | schiebung adressierten Speicher- |
+|          |              | platzes wird um 1 erhoeht.       |
+|          |              |                                  |
+|   ---    | INC  (IY+d)  | Der Inhalt des durch IY plus Ver-|
+|          |              | schiebung adressierten Speicher- |
+|          |              | platzes wird um 1 erhoeht.       |
+|          |              |                                  |
+| DCR  r   | DEC  r       | Der Inhalt des Registers r wird  |
+|          |              | um 1 vermindert.                 |
+|          |              |                                  |
+| DCR  M   | DEC  M       | Der Inhalt des durch Registerpaar|
+|          |              | HL adresssierten Speicherplatzes |
+|          |              | wird um 1 vermindert.            |
+|          |              |                                  |
+|   ---    | DEC  (IX+d)  | Der Inhalt des durch IX plus Ver-|
+|          |              | schiebung adressierten Speicher- |
+|          |              | platzes wird um 1 vermindert.    |
+|          |              |                                  |
+|   ---    | DEC  (IY+d)  | Der Inhalt des durch IY plus Ver-|
+|          |              | schiebung adressierten Speicher- |
+|          |              | platzes wird um 1 vermindert.    |
+|__________|______________|__________________________________|
+
+
+9.6.6.2._16-Bit-Arithmetik
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| DAD  dd  | ADD  HL,dd   | Der Inhalt von dd wird zum Inhalt|
+|          |              | des Registerpaares HL addiert.   |
+|          |              |                                  |
+|   ---    | ADD  IX,IX   | Der Inhalt des Registers IX wird |
+|          |              | mit sich selbst addiert. Diese   |
+|          |              | Verdoppelung ist gleichbedeutend |
+|          |              | mit einer Linksverschiebung der  |
+|__________|______________|__________________________________|
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | 16 Bit um eine Position.         |
+|          |              |                                  |
+|   ---    | ADD  IY,IY   | Der Inhalt des Registers IY wird |
+|          |              | mit sich selbst addiert. Diese   |
+|          |              | Verdoppelung ist gleichbedeutend |
+|          |              | mit einer Linksverschiebung der  |
+|          |              | 16 Bit um eine Bitposition.      |
+|          |              |                                  |
+|   ---    | ADD  IX,pp   | Der Inhalt von pp wird zum Inhalt|
+|          |              | des 16-Bit-Registers IX addiert. |
+|          |              |                                  |
+|   ---    | ADD  IY,pp   | Der Inhalt von pp wird zum Inhalt|
+|          |              | des 16-Bit-Registers IY addiert. |
+|          |              |                                  |
+|   ---    | ADC  HL,dd   | Der Inhalt von dd wird zum Inhalt|
+|          |              | des Registerpaares HL addiert.   |
+|          |              | Der Inhalt des Carry-Flags wird  |
+|          |              | ebenfalls addiert.               |
+|          |              |                                  |
+|   ---    | SBC  HL,dd   | Das Carry-Flag wird zu dem Dop-  |
+|          |              | pelregister dd addiert und dieses|
+|          |              | Ergebnis vom Inhalt des Register-|
+|          |              | paares HL subtrahiert.           |
+|          |              |                                  |
+| INX  dd  | INC  bb      | Der Inhalt des Doppelregisters dd|
+|          |              | (bb) wird um 1 erhoeht.          |
+|          |              |                                  |
+| DCX  dd  | DEC  bb      | Der Inhalt des Doppelregisters dd|
+|          |              | (bb) wird um 1 vermindert.       |
+|__________|______________|__________________________________|
+
+
+9.6.3._8-Bit-Logikbefehle
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| ANA  r   | AND  s       | Logisches UND eines Registers,   |
+| ANA  M   |              | Speicherbytes  oder Direktwertes |
+| ANI  n   |              | mit dem Akkumulator. Das spezifi-|
+|          |              | zierte Byte wird bitweise mit dem|
+|          |              | Inhalt des Akkumulators konjunk- |
+|          |              | tiv verknuepft. Das logische UND |
+|          |              | zweier Bits ist nur dann 1, wenn |
+|          |              | beide Bits 1 sind.               |
+|__________|______________|__________________________________|
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|          |              | Beispiel:                        |
+|          |              | Akkumulator: FCH  1111 1100      |
+|          |              | Register:    0FH  0000 1111      |
+|          |              |              --------------      |
+|          |              | Resultat:    0CH  0000 1100      |
+|          |              |                                  |
+| ORA  r   | OR   s       | Logisches ODER eines Registers,  |
+| ORA  M   |              | Speicherbytes  oder Direktwer-   |
+| ORI  n   |              | tes  mit dem Akkumulator. Das    |
+|          |              | spezifizierte Byte wird bitweise |
+|          |              | mit dem Inhalt des Akkumulators  |
+|          |              | disjunktiv verknuepft.  Das logi-|
+|          |              | sche ODER zweier Bits ist nur    |
+|          |              | dann 0, wenn beide Bits 0 sind.  |
+|          |              | Beispiel:                        |
+|          |              | Akkumulator: FCH  1111 1100      |
+|          |              | Register:    F1H  1111 0001      |
+|          |              |              --------------      |
+|          |              | Resultat:    FDH  1111 1101      |
+|          |              |                                  |
+| XRA  r   | XOR  s       | Exklusives ODER eines Registers, |
+| XRA  M   |              | Speicherbytes  oder Direktwertes |
+| XRI  n   |              | mit dem Akkumulator. Das spezifi-|
+|          |              | zierte Byte wird bitweise mit dem|
+|          |              | Inhalt des Akkumulators exklusiv |
+|          |              | verknuepft. Das exklusive ODER   |
+|          |              | ist dann gleich 1, wenn ein Bit=1|
+|          |              | und ein Bit=0 ist.               |
+|          |              | Beispiel:                        |
+|          |              | Akkumulator: FCH  1111 1100      |
+|          |              | Register:    F1H  1111 0001      |
+|          |              |              --------------      |
+|          |              | Resultat:    0DH  0000 1101      |
+|          |              |                                  |
+| CMP  r   | CP   s       | Der Inhalt von s (r, M, n) wird  |
+| CMP  M   |              | mit dem Akkumulator verglichen.  |
+| CPI  n   |              | Der urspruengliche Inhalt von A  |
+|          |              | bleibt erhalten. Das Vergleichs- |
+|          |              | ergebnis ist durch Flags erkenn- |
+|          |              | bar.                             |
+|__________|______________|__________________________________|
+
+
+9.6.7.___Sprungbefehle
+
+
+Es ist zwischen unbedingten und bedingten Spruengen zu  unter-
+scheiden.  Es  sind weiterhin relative Spruenge moeglich,  die 
+zur Adressenbildung anstelle von zwei Bytes nur eines benoeti-
+gen.
+
+Bei  bedingten  Spruengen werden  Sprungbedingungen  getestet. 
+Diese Bedingungen sind im Flagregister F enthalten.
+In Abhaengigkeit von den Bedingungsflags koennen die Sprungbe-
+dingungen erfuellt sein oder nicht.
+Bei  einer erfuellten Sprungbedingung wird der  Speicherzuord-
+nungszaehler  entsprechend der Adressenangabe im  Sprungbefehl 
+veraendert.
+Bei  nicht  erfuellter Sprungbedingung wird  der  Sprungbefehl 
+ignoriert.
+Bei den relativen Spruengen wird das Sprungziel ueber den Wert 
+e  errechnet.  Die Sprungweite e wird zum aktuellen Stand  des 
+Speicherzuordnungszaehlers  addiert  (im  2er-Komplement)  und 
+ermoeglicht  einen  Sprung im Bereich zwischen  -128  und  127 
+Bytes.
+Bei symbolischer Adressierung in relativen Spruengen berechnet 
+der Assembler automatisch den Speicherzuordnungszaehler. 
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| JMP  nn  | JP   nn      | Unbedingter Sprung nach Adresse  |
+|          |              | nn                               |
+|          |              |                                  |
+| JNZ  nn  | JP   NZ,nn   | Sprung nach Adresse nn, wenn Z-  |
+|          |              | Flag gleich 0 ist.               |
+|          |              |                                  |
+| JZ   nn  | JP   Z,nn    | Sprung nach Adresse nn, wenn Z-  |
+|          |              | Flag gleich 1 ist.               |
+|          |              |                                  |
+| JNC  nn  | JP   NC,nn   | Sprung nach Adresse nn, wenn C-  |
+|          |              | Flag gleich 0 ist.               |
+|          |              |                                  |
+| JC   nn  | JP   C,nn    | Sprung nach Adresse nn, wenn C-  |
+|          |              | Flag gleich 1 ist.               |
+|          |              |                                  |
+| JPO  nn  | JP   PO,nn   | Sprung nach Adresse nn, wenn P/V-|
+|          |              | Flag gleich 0 ist.               |
+|          |              |                                  |
+| JPE  nn  | JP   PE,nn   | Sprung nach Adresse nn, wenn P/V-|
+|          |              | Flag gleich 1 ist.               |
+|          |              |                                  |
+| JP   nn  | JP   P,nn    | Sprung nach Adresse nn, wenn S-  |
+|          |              | Flag gleich 0 ist.               |
+|          |              |                                  |
+| JM   nn  | JP   M,nn    | Sprung nach Adresse nn, wenn S-  |
+|          |              | Flag 1 ist.                      |
+|          |              |                                  |
+|   ---    | JR   e       | Unbedingter relativer Sprung.    |
+|          |              |                                  |
+|   ---    | JR   NZ,e    | Relativer Sprung um Verschiebung |
+|          |              | e, wenn Z-Flag gleich 0 ist.     |
+|__________|______________|__________________________________|
+    laufen  infolge einer falschen Bedingung,  eines 
+              nichtabgeschlossenen IRP-,  IRPC-,  REPT-Blockes 
+              oder eines abgeschlossenen Makros.
+
+Unterminated conditional
+
+              Wenigstens eine Bedingung ist am Ende der  Datei 
+              nicht abgeschlossen worden.
+
+Unterminated REPT/IRP/IRPC/MACRO
+
+              Es  ist wenigstens ein Block nicht abgeschlossen 
+              worden.
+
+Symbol table full
+
+     eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee          schoepft.  Die haeufigste Ursache ist eine ganze 
+              Anzahl Makrobloecke,  die Anweisungen fuer viele 
+              Anweisungszeilen enthalten.
+
+              Die  Makrobloecke  werden  vollstaendig  in  der 
+              Symboltabelle abgespeichert, einschliesslich der 
+              Koeeentare,  die den Zeilen angehaengt sind  in-
+              nerhalb eines Makroblockes.
+
+              Es  solnten also alle Makrobloecke im  Quellpro-
+              gramm geprueft werden.
+.pa
+              Um die Kommentare innerhalb der Makrobloecke aus 
+              der  Symboltabelle auszuschliessen,  sollten vor 
+              die Kommentare zwei Semiko (...FEHLER?...)
+
+              Anzahl der schweren Fehler und Warnungen, die im 
+              Programm aufgetreten sind.
+
+              Diese  Meldung  wird am Ende jeder  Uebersetzung 
+              auf den Bildschirm und in die Druckdatei  ausge-
+              geben.
+
+              Wenn diese Meldung erscheint, ist der Assembler-
+              lauf beendet.
+              Die Meldung "No Fatal Errors" zeigt an, dass die 
+              Uebersetzung vollstaendig und erfolgreich ist.
+
+
+9.6._____Beschreibung_der_Befehle
+
+
+In  diesem Kapitel wird die Wirkung der einzelnen  CPU-Befehle 
+beschrieben.
+Der Abschnitt 9.6.16. enthaehlt das Abkuerzungsverzeichnis. Im 
+Abschnitt  9.6.17.  ist  die  Arbeit  mit  den  Bedingungsbits 
+(Flags) beschrieben.
+
+
+9.6.1.___Ladebefehle
+
+
+Die Ladebefehle transportieren Daten intern zwischen den  CPU-
+Registern oder zwischen CPU-Registern und dem Schreib- / Lese-
+speicher (RAM).  Die Befehle muessen eine Ausgangsadresse, von 
+der  die  Daten  zu  entnehmen  sind,   und  eine  Zieladresse 
+enthalten.
+Der Quellspeicherplatz wird durch den Ladebefehl nicht veraen-
+dert.
+
+
+9.6.1.1._8-Bit-Ladebefehle
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| MOV  r,r'| LD   r,r'    | Inhalt des Registers r' wird in  |
+|          |              | das Register r umgespeichert.    |
+|__________|______________|__________________________________|
+
+

@@ -1,0 +1,825 @@
+
+;
+72
+.mt 8
+.mb 8
+.pc 32
+.fm 1
+.hm 1
+.pn 6  
+9.1._____Einleitung
+
+
+Der  Assembler benoetigt 19 K Speicherplatz plus 4 K Pufferbe-
+reich.
+
+
+Syntax-Notation
+
+
+ [ ]      Die Eingabe ist optional (wahlfrei).
+
+ < >      Ein Text in Kleinbuchstaben in spitzen Klammern muss 
+          durch   den  Anwender  bereitgestellt  werden  (Bsp. 
+          <dateiname>).  Ein Text in Grossbuchstaben gibt eine 
+          Tastenbedienung an (Bsp. <ENTER>).
+          
+ { }      Auswahl zwischen 2 oder mehreren Eintragungen
+
+ ...      Die Eintragung kann wiederholt werden.
+
+Alle anderen Interpunktionszeichen
+
+          ,  :  =  / * $ .
+
+werden unveraendert uebernommen.
+
+
+9.2._____Ueberblick
+
+
+a)  Der Assembler unterstuetzt 2 Assemblersprachen:
+
+          - 8080-Mnemonik
+          - Z80-Mnemonik
+
+b)  Der Assembler erzeugt relativen und/oder  absoluten  Code.
+
+c)  Der Assembler unterstuetzt das Schreiben von Makros.
+    Der  Programmierer  schreibt einen Block fuer eine  Anzahl     
+    Anweisungen. Dieser Block erhaelt einen Namen, mit dem der     
+    Makro  aufgerufen wird.  Die Anweisungen sind  die  Makro-
+    Definition.
+    Wenn diese Befehle an irgendeiner Stelle benoetigt werden,     
+    ruft  der  Programmierer den Makro auf.  Der  Makro-Aufruf 
+    uebergibt  ausserdem  die Parameter an den Assembler  fuer 
+    die Makro-Expansion.
+    Das  Verwenden  von Makros reduziert den Umfang fuer  eine 
+    Quelle,  da  die Makro-Definitionen in  einer  gesonderten 
+    Datei auf der Diskette stehen koennen und nur in den Modul 
+    uebernommen  werden,  wenn sie waehrend der  Assemblierung 
+    gefordert werden.
+    Makros koennen geschachtelt werden,  d.h.  in einem  Makro 
+    kann ein anderer aufgerufen werden. Die Schachtelungstiefe 
+    ist nur durch den Speicherplatz begrenzt.
+
+d)  bedingte Assemblierung
+    Der Assembler unterstuetzt die bedingte Assemblierung.
+    Der  Programmierer  kann eine Bedingung  bestimmen,  unter 
+    welcher  Teile  des Programms  entweder  assembliert  oder 
+    nicht assembliert werden.
+    Die  Moeglichkeiten  der  bedingten  Assemblierung  werden 
+    durch  einen  kompletten Satz bedingter  Pseudooperationen 
+    vergroessert,  welche das Testen der Assembler-Paesse, der 
+    Symbol-Definitionen und der Makro-Parameter einschliessen.
+    Die  Bedingungen koennen bis zu 255-mal geschachtelt  wer-
+    den.
+
+
+9.3._____Quelldatei-Organisation
+
+
+9.3.1.___Formate
+
+
+Eine Assembler-Quelldatei ist eine Anzahl von Zeilen geschrie-
+ben in Assembler-Sprache.
+Die letzte Zeile der Datei muss eine END-Anweisung sein.
+Entsprechende Anweisungen, wie z.B. IF...ENDIF, muessen in der 
+richtigen Reihenfolge stehen.  Anderenfalls koennen die Zeilen 
+in beliebiger Reihenfolge des Programmentwurfs erscheinen.
+
+
+9.3.1.1._Quellzeilen-Format
+
+
+Eine   Eingabe-Quelldatei  fuer  den  Assembler  besteht   aus 
+Anweisungs-Zeilen, die in Teile oder Felder unterteilt sind:
+
+     Symbol    Operation    Argument    Kommentar
+
+Symbol:        Dieses  Feld  kann eines der  drei  Symboltypen 
+               enthalten:
+               . Label (Marke)
+               . Public
+               . External,
+               gefolgt von einem Doppelpunkt,  ausser wenn das                
+               Symbol Teil einer SET- ,EQU- oder  MAKRO-Anwei-
+               sung ist.
+
+Operation:     Dieses Feld enthaelt einen Operationscode, eine                
+               Pseudooperation,  einen Makro-Namen  oder einen                
+               Ausdruck.
+
+Argument:      Dieses  Feld  enthaelt  Ausdruecke,   Variable, 
+               Register-Namen, Operanden und Operatoren.
+
+Kommentar:     Dieses Feld enthaelt Kommentartext,  der  immer 
+               mit einem Semikolon beginnen muss.
+.pa
+Alle Felder sind optional. Auch Leerzeilen sind moeglich.
+Die  Anweisungen beginnen in einer beliebigen Spalte.  Mehrere 
+Leerzeichen oder Tabulatoren zwischen den Feldern koennen  zur 
+besseren  Lesbarkeit  eingefuegt werden,  aber mindestens  ein 
+Leerzeichen oder Tabulator ist zwischen zwei Feldern noetig.
+
+
+9.3.1.2._Kommentar
+
+
+Ein Kommentar beginnt immer mit einem Semikolon und endet  mit 
+<ENTER>.
+Fuer  lange  Kommentare kann man die  .COMMENT-Pseudooperation 
+verwenden,  um das Einfuegen des Semikolons auf jeder Zeile zu 
+vermeiden.
+
+
+9.3.2.___Symbole
+
+
+Symbole sind Namen fuer Teilfunktionen oder Werte. Symbolnamen 
+werden  durch den Programmierer definiert.  Die  Symbole  fuer 
+dieses  Programmpaket gehoeren zu einem  von drei  Typen,  ge-
+maess ihrer Funktion. 
+Diese 3 Typen sind:
+
+     . Label
+     . Public
+     . External
+
+Alle 3 Typen haben ein Modus-Attribut,  das mit dem  Speicher-
+segment  korrespondiert,  welches  das  Symbol  repraesentiert
+(siehe Pkt. 9.3.2.4.).
+
+Alle 3 Typen der Symbole haben folgende Charakteristik:
+
+1. Symbole koennen beliebige Laenge haben, aber die Anzahl der       
+   signifikanten Zeichen,  die an den Programmverbinder ueber-
+   geben werden, varriiert mit dem Typ des Symbols:
+
+   a) Fuer Labels (Marken) sind die ersten 16 signifikant.
+   b) Fuer  Public- und External-Symbole werden  die ersten  6 
+      Zeichen an den Programmverbinder uebergeben.
+
+   Zusaetzliche Zeichen werden "intern" abgeschnitten.
+
+2. Ein gueltiges Symbol kann folgende Zeichen enthalten:
+   A-Z  0-9  $  .  ?  @  _
+
+3. Ein  Symbol darf nicht mit einer Ziffer oder  einem  Unter-
+   streichungszeichen beginnen.
+
+4. Beim  Lesen eines Symbols werden Kleinbuchstaben in  Gross-
+   buchstaben  gewandelt.  Es  koennen  also  auch  Klein- und          
+   Grossbuchstaben in einem Symbol gemischt auftreten.
+
+
+9.3.2.1._Label_(Marke)
+
+
+Ein  Label ist ein Referenzpunkt fuer eine Anweisung innerhalb 
+des Programmoduls, in dem diese Marke definiert ist.
+Eine  Marke  setzt  ihren Adresswert der Symbolmarke  auf  die 
+Adresse der Daten, die der Marke zugeordnet sind.
+
+Beispiel:
+
+         BUFF: DS 10̷0̷0̷H
+
+BUFF ist gleich der 1.  Adresse der 10̷0̷0̷H Bytes des reservier-
+ten Platzes.
+
+Ist   eine Marke einmal definiert,  kann sie als Eintragung im 
+Argumentfeld verwendet werden.
+Eine Anweisung mit einer Marke in ihrem Argument bezieht  sich 
+auf die Anweisungszeile,  in welcher diese Marke im Symbolfeld 
+als  Marke  definiert ist.  
+
+Beispiel:
+
+         STA   BUFF
+
+schreibt den Inhalt des A-Registers auf den Speicherplatz, den 
+die Marke definiert.
+
+Eine Marke kann ein beliebiges gueltiges Symbol mit bis zu  16 
+Zeichen Laenge sein.
+Wenn eine Marke definiert werden soll,  so muss sie als erstes 
+in der Anweisungszeile stehen.
+Sowohl  bei  Z80- als auch bei 8080-Mnemonik muss  nach  einer 
+Marke sofort ein Doppelpunkt (kein Leerzeichen) folgen; es sei 
+denn,  die Marke ist Teil einer SET- oder EQU-Anweisung  (dann 
+kein Doppelpunkt).
+(Folgen  der Marke 2 Doppelpunkte,  dann wird sie zum  Public-
+Symbol!)
+
+
+9.3.2.2._Public
+
+
+Ein  Public-Symbol ist als Marke  definiert.  Der  Unterschied 
+zur  Marke  besteht darin,  dass ein  Public-Symbol  auch  als 
+Referenzpunkt in anderen Programmoduln verfuegbar ist.
+
+Es gibt 2 Moeglichkeiten, ein Symbol als Public zu erklaeren:
+ 
+1.  2 Doppelpunkte (::) folgen dem Namen
+
+          MARKE:: RET
+.pa
+2.  Verwendung einer der Pseudo-Operationen
+    PUBLIC, ENTRY oder GLOBAL
+
+          
+          PUBLIC MARKE
+
+Beispiel:
+
+Das Resultat beider Moeglichkeiten ist identisch:
+
+          MARKE:: RET
+
+ist aequvalent zur Anweisungsfolge
+
+          PUBLIC  MARKE
+          MARKE:  RET
+
+
+9.3.2.3._External
+
+
+Ein externes Symbol ist ausserhalb des aktuellen Programmoduls 
+in  einem  anderen,  separaten  Modul als Public-Symbol  defi-
+niert.
+
+Die  Wertzuweisung  erfolgt waehrend  der  Programmverbindung. 
+Dabei wird dem externen Symbol der Wert des Public-Symbols aus 
+dem anderen Programmodul uebergeben.
+
+Beispiel:
+
+     MODUL1
+
+     MARKE::    DB         7         ;PUBLIC  MARKE=7
+
+     MODUL2
+
+                BYTE EXT   MARKE     ;EXTERNAL MARKE
+
+Waehrend  der Programmverbindung wird fuer EXTERNAL MARKE  der 
+Wert von PUBLIC MARKE verwendet.
+
+Ein Symbol wird zum External erklaert durch:
+
+1.  2 Doppelkreuze (##) nach dem Namen des Symbols.
+
+    Beispiel:     
+    
+          CALL  MARKE##
+
+    erklaert MARKE als ein Symbol mit einem 2-Byte-Adresswert, 
+    definiert in einem anderen Modul.
+.pa
+2.  Fuer 2-Byte-Werte eine der Pseudo-Operationen
+
+          EXT, EXTRN oder EXTERNAL
+
+    Beispiel:
+          
+          EXT MARKE
+
+    erklaert MARKE als ein 2-Byte-Symbol,  definiert in  einem 
+    anderen Modul.
+
+3.  Fuer 1-Byte-Werte eine der Pseudooperationen
+
+          BYTE EXT ,BYTE EXTRN oder BYTE EXTERNAL
+          
+    Beispiel:
+          
+          BYTE EXT   MARKE
+
+    erklaert MARKE als 1-Byte-Wert, definiert in einem anderen 
+    Programmodul.
+
+Das  Ergebnis  aller Moeglichkeiten der Vereinbarung ist  das-
+selbe.
+
+          CALL  MARKE##
+
+ist aequivalent zur Anweisungsfolge
+
+          EXT   MARKE
+          CALL  MARKE
+
+
+9.3.2.4._Speicherzuordnungszaehler-Modus_(Typenarten)
+
+
+Ein  Symbol bezieht sich beim Auftreten seines Namens im Argu-
+mentfeld auf eine Anweisungszeile.
+Der Wert des Symbols ist die Adresse der Anweisung,  die durch 
+das  Symbol  markiert wird.  Wenn das Symbol  im  Argumentfeld 
+auftritt, wird es druch seinen Wert ersetzt  und in der Opera-
+tion verwendet.  
+
+Der Wert eines Symbols wird gemaess seinem Speicherzuordnungs-
+zaehler (PC)-Modus bestimmt.
+
+Durch den Speicherzuordnungszaehler-Modus ist eine Teilung des 
+Speichers  in  4 Segmente moeglich.  Er bestimmt,  in  welches 
+Segment der Programmteil geladen wird.
+
+Die 4 Segmente sind:
+
+    . absolutes Segment
+    . coderelatives Segment
+    . datenrelatives Segment
+    . commonrelatives Segment 
+Der PC-Modus legt fest, ob ein Programmteil
+
+- in  den  Speicher  auf  eine  absolute,   vom  Programmierer 
+  festgelegte Adresse, geladen wird (absoluter Modus)  
+
+- oder auf relative Adressen, die sich aendern, abhaengig  von 
+  der  Groesse  und der Anzahl  der  Programme  (coderelativer 
+  Modus) und dem Umfang der Daten (datenrelativer Modus)  
+   
+- oder auf Adressen,  die gemeinsame Bereiche mit anderen Pro-
+  grammen  darstellen (commonrelativer Modus).
+
+Wurde nichts angegeben, ist der Modus coderelativ (standard).
+Ein Programm kann Programmteile fuer verschiedene Speicherseg-
+mente enthalten.
+
+
+Absoluter_Modus
+
+
+Der absolute Modus erzeugt nichtverschiebbaren Code.  Der Pro-
+grammierer waehlt den absoluten Modus,  wenn ein Programmblock 
+stets  auf festgelegte absolute Adressen zu laden  ist,  unab-
+haengig  von sonstigen zu ladenden Segmenttypen  (DSEG,  CSEG, 
+COMMON).
+
+
+Datenrelativer_Modus
+
+
+Der  datenrelative  Modus erzeugt  verschieblichen  Code  fuer 
+einen  Programmteil,  der veraenderlichen Code enthalten  kann 
+und  folglich  in den RAM-Bereich geladen  werden  muss.  Dies 
+bezieht  sich besonders auf Programmdatenbereiche.  Symbole im 
+datenrelativen Modus sind verschieblich.
+
+
+Coderelativer_Modus
+
+
+Der  Code- (programm-) relative Modus erzeugt Code fuer  einen 
+verschieblichen  Programmteil,  dessen Codeinhalt  sich  nicht 
+veraent-Wt.  Programmteile  fuer PROM-Abspeicherung muessen im 
+coderelativen Modus erzeugt werden.
+
+
+Common-relativer_Modus
+
+
+Der Common-relative Modus erzeugt Code, der in einem definier-
+ten Common-Bereich (gemeinsamen Datenbereich) geladen wird.
+Das ermoeglicht,  den Programmodul in einen Speicherblock  und 
+gemeinsame Werte zu teilen.
+.pa
+Zum  Aendern des Modus wird in einer Anweisungszeile eine  PC-
+Modus-Pseudooperation verwendet.
+
+ASEG           absoluter Modus
+DSEG           datenrelativer Modus
+CSEG           coderelativer Modus (zugewiesener Modus)
+COMMON         commonrelativer Modus
+
+Diese  Pseudooperationen  sind  in  Pkt.  9.4.1.3.  detailiert 
+beschrieben.
+Die PC-Modus-Faehigkeit im Assembler gestattet dem Programmie-
+rer, verschiebbare Assemblerprogramme zu entwickeln. 
+
+Verschieblich bedeutet,  der Programmodul kann auf jede belie-
+bige  Adresse auf verfuegbaren Speicher geladen  und  getestet 
+werden, unter Verwendung des /P- und /D-Schalters (Spezialkom-
+mandos) des Programmverbinders.
+
+
+9.3.3.___Operationscodes_und_Pseudooperationen
+ 
+
+Operationscodes  sind mnemonische Namen fuer die  Maschinenan-
+weisungen (CPU-Befehle).
+Pseudooperationen sind Vorschriften fuer den Assembler,  nicht 
+fuer den Mikroprozessor.
+Operationscodes  und Pseudooperationen werden (meist)  in  das 
+Operationsfeld der Anweisungszeile eingetragen. 
+
+Eine Operation kann sein:
+
+     . jede beliebige Z80- oder 8080-Mnemonik
+     . eine Assembler-Pseudooperation
+     . ein Makro-Aufruf
+     . ein Ausdruck
+   
+Die   Eintragungen  im Operationsfeld werden vom Assembler  in 
+der folgenden Reihenfolge ausgewertet:
+
+     1. Makro-Aufruf
+     2. Operationscode/Pseudooperation
+     3. Ausdruck
+
+Der Assembler vergleicht die Eintragung im Operationsfeld  mit 
+einer  internen Liste von Makronamen.  Wenn der Name  gefunden 
+wurde,  wird die Makroexpansion durchgefuehrt und die  entste-
+henden  Anweisungen  in den Modul eingefuegt (siehe dazu  auch 
+Abschnitt 9.4.2.). Ist die Eintragung kein Makro, versucht der 
+Assembler die Eintragung als Operationscode auszuwerten.
+
+War die Eintragung kein Operationscode, versucht der Assembler 
+die Eintragung als Pseudooperation auszuwerten. 
+Wenn die Eintragung auch keine Pseudooperation ist, wertet der 
+Assembler die Eintragung als Ausdruck.
+.pa
+Wenn  ein  Ausdruck als Anweisungszeile  ohne  vorangestelltem 
+Operationscode,  Pseudooperation  oder  Makroname  geschrieben 
+wurde,  meldet der Assembler keinen Fehler.  Vielmehr setzt er 
+voraus,  dass  ein definiertes Byte (Pseudooperation) vor  den 
+Ausdruck gehoert und uebersetzt diese Zeile.
+
+Wegen der Auswertungsreihenfolge verhindert ein Makroname, der 
+identisch  einem  Operationscode ist,  desses  Verwendung  als 
+Operationscode.  Dieser  Name  wird dann  ausschliesslich  als 
+Makroaufruf  gebraucht.  Wurde z.B.  einem  Makro der Name ADD 
+zugewiesen,  kann in diesem Programm ADD nicht mehr als Opera-
+tionscode verwendet werden!
+
+
+9.3.4.___Argumente_(Ausdruecke)
+
+
+Die  Argumente fuer die Operationscodes und  Pseudooperationen 
+werden gewoehnlich als Ausdruecke bezeichnet, da sie  mathema-
+tischen Ausdruecken aehneln, 
+
+     wie z.B. 5+4*3.
+
+Die  Teile  eines  Ausdruckes werden Operanden (5,4 und  3  in 
+diesem  mathematischen Ausdruck) und Operatoren (+ und *  sind 
+Beispiele)  genannt.  Ausdruecke  koennen einen  oder  mehrere 
+Operanden beinhalten.
+
+Ein-Operand-Ausdruecke  sind  die am  haeufigsten  gebrauchten 
+Argumente.
+Wenn  ein  Ausdruck  mehr als einen Operanden  hat,  sind  die 
+Operanden miteinander durch einen Operator verbunden.
+
+Beispiel:      5+4  6-3  7*2  8/7  9>8  usw.
+
+Im  Assembler sind die Operanden numerische  Werte,  vertreten 
+durch Zahlen,  Zeichen, Symbole oder 8080-Operationscodes. Die 
+Operatoren koennen arithmetische oder logische sein.
+
+Die  folgenden Abschnitte  definieren die vom Assembler  zuge-
+lassenen Operanden und Operatoren.
+
+
+9.3.4.1._Operanden
+
+
+Operanden koennen sein
+
+     . Zahlen
+     . Zeichen
+     . Symbole
+     . 8080-Operationscodes
+.pa
+Zahlen
+
+Mit diesem Assembler kann in unterschiedlichen  Zahlensystemen 
+gearbeitet werden.
+Die  zugewiesene  Basis fuer Zahlen  ist  dezimal  (Standard). 
+Diese  Basis  kann durch die Pseudooperation .RADIX  geaendert 
+werden.  Jede  Basis von 2 (binaer) bis 16 (hexadezimal)  kann 
+ausgewaehlt  werden.  Wenn die Grundzahl groesser als 10̷  ist, 
+werden  fuer die auf 9 folgenden Ziffern A-F  verwendet.  Wenn 
+das  erste Zeichen einer Zahl nicht numerisch  ist,  muss  der 
+Zahl eine 0̷ vorausgehen.
+Eine Zahl wird immer in der augenblicklich zugewiesenen Grund-
+zahl  ausgewertet,  falls  keine der  folgenden  Bezeichnungen 
+verwendet wurden:
+
+     nnnnB          binaer
+     nnnnD          dezimal
+     nnnnO          oktal
+     nnnnH          hexadezimal
+     Xnnnn          hexadezimal
+ 
+Zahlen  sind vorzeichenlose binaere 16-Bit-Werte (im  Wertebe-
+reich 0...65535). Der Ueberlauf einer Zahl beim Ueberschreiten 
+von  2 Byte wird ignoriert,  das Ergebnis bilden  die  nieder-
+wertigen 16 Bits.
+
+
+ASCII-Zeichen-Ketten
+
+
+Eine Zeichenkette wird gebildet aus null oder mehr Zeichen und 
+begrenzt durch Anfuehrungsstriche (") oder Apostroph (').
+
+Wenn eine durch  " begrenzte Kette als Argument auftritt, wird 
+der  Wert der Zeichen einer nach dem anderen im Speicher abge-
+legt.
+
+Beispiel:      DB  "ABC"
+
+speichert  den Code von A auf die erste Adresse,  B auf Adres-
+se+1 und C auf Adresse+2.
+
+Die Begrenzer koennen als Zeichen verwendet werden,  wenn  sie 
+fuer jedes gewuenschte Vorkommen zweifach erscheinen.
+
+Beispiel:
+     
+     "Heute ist ein ""schoener"" Tag"
+     
+     speichert die Zeichenkette
+
+     Heute ist ein "schoener" Tag.
+
+Stehen  keine Zeichen zwischen den Anfuehrungszeichen,wird die 
+Kette als Nullkette ausgtige Byte in  die  zweite 
+    Adresse.
+
+     Beispiel:
+          
+      DW 'AB'+0̷
+
+    wertet  4142H aus und speichert 42H in die erste  Adresse 
+    und 41H in die zweite Adresse.
+
+Eine Zeichenkonstante, die nur ein Zeichen beinhaltet, bekommt 
+den Code des Zeichens zugeordnet.  Das heisst,  das hoeherwer-
+tige Byte des Wertes ist Null,  das niederwertige Byte ist der 
+Code des Zeichens.
+
+Beispiel: Der Wert der Zeichenkonstanten 'A' ist 410̷0̷H.
+
+Eine Zeichenkonstante,  die aus zwei Zeichen besteht,  hat als 
+ihren  Wert  den ASCII-Wert des 1.Zeichens  im  hoeherwertigen 
+Byte  und  den ASCII-Wert des 2.  Zeichens  im  niederwertigen 
+Byte.
+
+Zum Beispiel ist der Wert der Zeichenkonstanten
+
+         'AB'+0̷  gleich 41H*256+42H+0̷.
+
+Die  ASCII-Werte dezimal und hexadezimal fuer Zeichen sind  im 
+Anhang zusammengefasst.
+.pa
+Symbole_in_Ausdruecken
+
+Ein  Symbol kann als Operand in einem Ausdruck verwendet  wer-
+den.
+Das Symbol wird ausgewertet und der Wert wird fuertige Byte in  die  zweite 
+    Adresse.
+
+     Beispiel:
+          
+      DW 'AB'+0̷
+
+    wertet  4142H aus und speichert 42H in die erste  Adresse 
+    und 41H in die zweite Adresse.
+
+Eine Zeichenkonstante, die nur ein Zeichen beinhaltet, bekommt 
+den Code des Zeichens zugeordnet.  Das heisst,  das hoeherwer-
+tige Byte des Wertes ist Null,  das niederwertige Byte ist der 
+Code des Zeichens.
+
+Beispiel: Der Wert der Zeichenkonstanten 'A' ist 410̷0̷H.
+
+Eine Zeichenkonstante,  die aus zwei Zeichen besteht,  hat als 
+ihren  Wert  den ASCII-Wert des 1.Zeichens  im  hoeherwertigen 
+Byte  und  den ASCII-Wert des 2.  Zeichens  im  niederwertigen 
+Byte.
+
+Zum Beispiel ist der Wert der Zeichenkonstanten
+
+         'AB'+0̷  gleich 41H*256+42H+0̷.
+
+Die  ASCII-Werte dezimal und hexadezimal fuer Zeichen sind  im 
+Anhang zusammengefasst.
+.pa
+Symbole_in_Ausdruecken
+
+Ein  Symbol kann als Operand in einem Ausdruck verwendet  wer-
+den.
+Das Symbol wird ausgewertet und der Wert wird fueriert,  ist das Ergebnis unbekannt. Der Assembler uebergibt 
+   den  Ausdruck  an den Programmverbinder als  unbekannt  und 
+   dieser loest den Ausdruck.
+
+
+Der_laufende_Speicherzuordnungszaehler
+
+
+Ein zusaetzliches Symbol fuer das Argumentfeld ist:
+
+        der Speicherzuordnungszaehler.
+
+Der Speicherzuordnungszaehler ist die Adresse der naechsten zu 
+uebersetzenden Anweisung.
+Der  Speicherzuordnungszaehler  ist oft ein passender  Bezugs-
+punkt fuer die Berechnung neuer Adressen.
+
+Anstatt  sich die laufende Programmadresse zu merken  oder  zu 
+berechnen,  kann  der Programmierer ein Symbol verwenden,  das 
+dem  Assembler den Wert des aktuellen  Speicherzuordnungszaeh-
+lers mitteilt.
+
+Das laufende Speicherzuordnungszaehlersymbol ist $.
+
+
+8080-Operationscodes_als_Operanden
+
+
+8080-Operationscodes sind nur im 8080-Modus gueltige Ein-Byte-
+Operanden.
+
+Waehrend  der  Uebersetzung  wird der  hexadezimale  Wert  des 
+Operationscodes berechnet und als Operand verwendet.
+
+Beiiert,  ist das Ergebnis unbekannt. Der Assembler uebergibt 
+   den  Ausdruck  an den Programmverbinder als  unbekannt  und 
+   dieser loest den Ausdruck.
+
+
+Der_laufende_Speicherzuordnungszaehler
+
+
+Ein zusaetzliches Symbol fuer das Argumentfeld ist:
+
+        der Speicherzuordnungszaehler.
+
+Der Speicherzuordnungszaehler ist die Adresse der naechsten zu 
+uebersetzenden Anweisung.
+Der  Speicherzuordnungszaehler  ist oft ein passender  Bezugs-
+punkt fuer die Berechnung neuer Adressen.
+
+Anstatt  sich die laufende Programmadresse zu merken  oder  zu 
+berechnen,  kann  der Programmierer ein Symbol verwenden,  das 
+dem  Assembler den Wert des aktuellen  Speicherzuordnungszaeh-
+lers mitteilt.
+
+Das laufende Speicherzuordnungszaehlersymbol ist $.
+
+
+8080-Operationscodes_als_Operanden
+
+
+8080-Operationscodes sind nur im 8080-Modus gueltige Ein-Byte-
+Operanden.
+
+Waehrend  der  Uebersetzung  wird der  hexadezimale  Wert  des 
+Operationscodes berechnet und als Operand verwendet.
+
+Beiperatoren.
+Operatoren,  die wahre oder falsche Bedingungen melden,  geben 
+wahr  zurueck,  wenn  das Ergebnis ungleich 0̷ ist und  falsch, 
+wenn das Ergebnis gleich 0̷ ist.
+Die folgenden arithmetischen und logischen Operatoren sind  in 
+Ausdruecken erlaubt:
+.pa
+Operator        Definition
+-------------------------------------------------------------- 
+NUL           - Gibt  wahr  zurueck,  wenn das  Argument  (ein 
+                Parameter) null ist.
+                Der  Rest der Zeile nach NUL wird als Argument 
+                zu NUL genommen.
+
+                Die  Bedingung  IF NUL <argument> ist  falsch, 
+                wenn  das  erste Zeichen des  Arguments  alles 
+                andere als ein Semikolon oder ein <ENTER> ist.
+
+                Bemerkung: IFB und IFNB fuehren dieselbe Funk-
+                tion aus,  aber sie sind einfacher zu  verwen-
+                den (siehe Pkt.  9.4.1.5. ).
+  
+
+TYPE          - Der TYPE-Operator gibt ein Byte  zurueck,  das 
+              peratoren.
+Operatoren,  die wahre oder falsche Bedingungen melden,  geben 
+wahr  zurueck,  wenn  das Ergebnis ungleich 0̷ ist und  falsch, 
+wenn das Ergebnis gleich 0̷ ist.
+Die folgenden arithmetischen und logischen Operatoren sind  in 
+Ausdruecken erlaubt:
+.pa
+Operator        Definition
+-------------------------------------------------------------- 
+NUL           - Gibt  wahr  zurueck,  wenn das  Argument  (ein 
+                Parameter) null ist.
+                Der  Rest der Zeile nach NUL wird als Argument 
+                zu NUL genommen.
+
+                Die  Bedingung  IF NUL <argument> ist  falsch, 
+                wenn  das  erste Zeichen des  Arguments  alles 
+                andere als ein Semikolon oder ein <ENTER> ist.
+
+                Bemerkung: IFB und IFNB fuehren dieselbe Funk-
+                tion aus,  aber sie sind einfacher zu  verwen-
+                den (siehe Pkt.  9.4.1.5. ).
+  
+
+TYPE          - Der TYPE-Operator gibt ein Byte  zurueck,  das 
+                Das Definitionsbit ist das 5. Bit.  Dieses Bit 
+                ist 1, wenn der Ausdruck lokal definiert wurde 
+                und  es ist 0̷,  wenn der Ausdruck  undefiniert 
+                oder extern ist.
+
+
+                TYPE  wird meistens innerhalb von Makros  ver-
+                wendet,  wo der Modus eines Arguments getestet 
+                werden  muss,  um Entscheidungen betreffs  des 
+                Programmablaufs zu treffen, z.B. wenn bedingte 
+                Assemblierung enthalten ist.
+                        
+.pa
+Operator        Definition
+--------------------------------------------------------------
+
+                Beispiel:       
+                        
+                MARKE     MACRO    X             
+                          LOCAL    Z
+                Z         SET TYPE X
+                IF        Z...
+ 
+                TYPE testet den Modus und die Zuordnung von X.
+                Abhaengig  von  der Auswertung von X wird  der 
+                angibt,  um die  der 
+                Wert nach links verschoben werden soll.
+ 
+- (Vorzeichen - zeigt an,  dass der folgende Wert negativ  ist 
+  -Minus)       (negative ganze Zahl).
+
++             - Addition
+
+-             - Subtraktion  des rechten Operanden vom  linken 
+                Operanden.
+
+EQ            - Gleichheit.
+                Gibt wahr zurueck, wenn die Operanden einander 
+                gleich sind.
+
+
+Operator        Definition
+--------------------------------------------------------------
+NE            - Nicht gleich.
+                Gibt wahr zurueck, wenn die Operanden einander 
+                nicht gleich sind.
+
+LT            - Kleiner als.
+                Gibt  wahr  zurueck,  weno der  linke  Operand 
+                kleiner als der rechte Operand ist.
+
+LE            - Kleiner als oder gleich.
+                Gibt  wahr  zurueck,  wenn der  linke  Operand 
+                kleiner oder gleich dem rechten Operanden ist.
+
+GT            - Groesser als.
+                r sind.  Gibt falsch  zurueck,  wenn 
+                beide Operanden falsch sind.
+                Beide Operanden muessen absolute Werte sein.
+                
+XOR           - Exklusives Oder.
+                Gibt  wahr zurueck,  wenn einer der  Operanden 
+                wahr und der andere falsch ist.
+                Gibt falsch zurueck, wenn beide Operanden wahr 
+                oder beide Operanden falsch sind.
+                Beide Operanden muessen absolute Werte sein.
+
+.pa
+Die_Reihenfolge_fuer_diese_Operatoren_ist:
+
+
+                 NUL,TYPE
+                 LOW,HIGH
+                 *,/,MOD,SHR,SHL
+                 Vorzeichen Minus
+                 +,(...hier fehlt etwas Text...)GT,GE
+                 NOT
+                 AND
+                 OR,XOR
+
+Wenn  Unterausdruecke  Operatoren  hoeherer  Rangordnung  ein-
+schliessen, dann wird dieser Ausdruck zuerst berechnet.
+Die  Abarbeitungsreihenfolge  kann durch das Verwenden  runder 
+Klammern um den Teil des Ausdrucks, 
+     . Speicherzuordnungszaehler-Modus
+     . Dateibezogene Pseudooperationen
+     . Listensteuerung
+
+

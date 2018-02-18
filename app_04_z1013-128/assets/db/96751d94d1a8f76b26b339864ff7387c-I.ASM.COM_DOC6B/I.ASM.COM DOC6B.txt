@@ -1,0 +1,409 @@
+
+;
+9.6.13.___Bittest-_und_-Setzbefehle_(Bitmanipulation)
+
+
+Die  Bitmanipulationsbefehle erlauben,  Bits in einem Register 
+oder  auf einem Speicherplatz zu setzen,  zu loeschen  und  zu 
+testen.
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | SET  b,r     | Die durch b gekennzeichnete Bit- |
+|          |              | position wird in dem Register r  |
+|          |              | gesetzt.                         |
+|__________|______________|__________________________________|
+
+ ____________________________________________________________ 
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | SET  b,M     | Die durch b gekennzeichnete Bit- |
+|          |              | position wird in der Speicher-   |
+|          |              | stelle gesetzt, die durch das    |
+|          |              | Register HL adressiert ist.      |
+|          |              |                                  |
+|   ---    | SET  b,(IX+d)| Die durch b gekennzeichnete Bit- |
+|          |              | position wird in der Speicher-   |
+|          |              | stelle gesetzt,  die durch  den  |
+|          |              | Inhalt des Indexregisters IX plus|
+|          |              | Verschiebung adressiert ist.     |
+|          |              |                                  |
+|   ---    | SET  b,(IY+d)| Die durch b gekennzeichnete Bit- |
+|          |              | position wird in der Speicher-   |
+|          |              | stelle gesetzt, die durch den In-|
+|          |              | halt des Indexregisters IY  plus |
+|          |              | Verschiebung adressiert ist.     |
+|          |              |                                  |
+|   ---    | RES  b,t     | Die durch b gekennzeichnete Bit- |
+|          |              | position in t wird geloescht.    |
+|          |              |                                  |
+|   ---    | BIT  b,t     | Die durch b gekennzeichnete Bit- |
+|          |              | position in t wird getestet. Das |
+|          |              | Komplement des zu testenden Bits |
+|          |              | wird in das Z-Flag geladen.      |
+|__________|______________|__________________________________|
+
+
+9.6.14.___Eingabebefehle
+
+
+Die  Ein- und  Ausgabegruppe gestattet einen  weiteren  Anwen-
+dungsbereich  von Datentransfer zwischen Speicherplaetzen oder 
+den Universalregistern der CPU und den externen E/A-Geraeten.
+Die  Eingabebefehle  setzen automatisch das  Flagregister,  so 
+dass  keine zusaetzlichen Befehle noetig sind,  um den  Status 
+der Eingabedaten zu ermitteln.
+
+ ____________________________________________________________ 
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| IN   n   | IN   A,(n)   | Kanaladresse wird mittels Direkt-|
+|          |              | operand eingestellt.             |
+|          |              | Zielregister ist der Akkumulator |
+|          |              | A <--- (n)                       |
+|__________|______________|__________________________________|
+
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | IN   r,(C)   | Kanaladresse wird indirekt ueber |
+|          |              | das Register C eingestellt.      |
+|          |              | r <--- (C)                       |
+|          |              |                                  |
+|   ---    | INI          | Kanaladresse wird indirekt ueber |
+|          |              | Register C eingestellt. Zieladr. |
+|          |              | ueber Register HL. B kann als    |
+|          |              | Bytezaehler arbeiten.            |
+|          |              | B wird dekrementiert, HL inkre-  |
+|          |              | mentiert.                        |
+|          |              | (HL) <--- (C)                    |
+|          |              | B    <--- B-1                    |
+|          |              | HL   <--- HL+1                   |
+|          |              |                                  |
+|   ---    | INIR         | Kanaladresse wird indirekt ueber |
+|          |              | Register C eingestellt, Zieladr. |
+|          |              | ueber Register HL. B arbeitet    |
+|          |              | als Bytezaehler. B wird dekremen-|
+|          |              | tiert, HL inkrementiert. Es wird |
+|          |              | eine Blockuebertragung durchge-  |
+|          |              | fuehrt bis B=0 ist.              |
+|          |              | (HL) <--- (C)                    |
+|          |              | B    <--- B-1                    |
+|          |              | HL   <--- HL+1                   |
+|          |              | Wiederholen bis B=0.             |
+|          |              |                                  |
+|   ---    | IND          | Kanaladresse wird indirekt ueber |
+|          |              | Register C eingestellt. Zieladr. |
+|          |              | ueber Register HL. B kann als    |
+|          |              | Bytezaehler arbeiten.     B und  |
+|          |              | HL werden dekrementiert.         |
+|          |              | (HL) <--- (C)                    |
+|          |              | B    <--- B-1                    |
+|          |              | HL   <--- HL-1                   |
+|          |              |                                  |
+|   ---    | INDR         | Kanaladresse wird indirekt ueber |
+|          |              | Register C eingestellt. Zieladr. |
+|          |              | ueber Register HL. B arbeitet    |
+|          |              | als Bytezaehler.  B und HL werden|
+|          |              | dekrementiert. Es wird eine      |
+|          |              | Blockuebertragung durchgefuehrt, |
+|          |              | bis B = 0 ist.                   |
+|          |              | (HL) <--- (C)                    |
+|          |              | B    <--- B-1                    |
+|          |              | HL   <--- HL-1                   |
+|          |              | Wiederholen  B = 0.              |
+|__________|______________|__________________________________|
+
+.pa
+Die  Kanaladresse liegt auf der unteren Haelfte des  Adressen-
+busses  A0  - A7.  Auf der oberen Haelfte  des  Adressenbusses 
+liegt  bei  IN A,(n) der Akkumulatorinhalt bei den  restlichen 
+Befehlen der Inhalt des Registers B.
+
+
+9.6.15.___Ausgabebefehle
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| OUT  n   | OUT  (n),A   | Kanaladresse wird mit Direktope- |
+|          |              | rand eingestellt. Quellregister  |
+|          |              | ist der Akkumulator: (n) <--- A. |
+|          |              |                                  |
+|   ---    | OUT  C,r     | Kanaladresse wird indirekt ueber |
+|          |              | Register C eingestellt. Quellre- |
+|          |              | gister ist r: (C) <--- r.        |
+|          |              |                                  |
+|   ---    | OUTI         | Kanaladresse wird indirekt ueber |
+|          |              | das Register C eingestellt,      |
+|          |              | Quelladresse ueber Register HL.  |
+|          |              | B kann als Bytezaehler arbeiten. |
+|          |              | B wird dekrementiert, HL inkre-  |
+|          |              | mentiert.                        |
+|          |              | (C) <--- (HL)                    |
+|          |              | B   <--- B-1                     |
+|          |              | HL  <--- HL+1                    |
+|          |              |                                  |
+|   ---    | OTIR         | Kanaladresse wird indirekt ueber |
+|          |              | das Register C eingestellt,      |
+|          |              | Quelladresse ueber Register HL.  |
+|          |              | B arbeitet als Bytezaehler.      |
+|          |              | B wird dekrementiert, HL inkre-  |
+|          |              | mentiert. Es wird eine Block-    |
+|          |              | uebertragung durchgefuehrt, bis  |
+|          |              | B = 0 ist.                       |
+|          |              | (C) <--- (HL)                    |
+|          |              | B   <--- B-1                     |
+|          |              | HL  <--- HL+1                    |
+|          |              | Wiederholen bis B = 0            |
+|          |              |                                  |
+|   ---    | OUTD         | Kanaladresse wird indirekt ueber |
+|          |              | Register C eingestellt, Quell-   |
+|          |              | adresse ueber Register HL. B kann|
+|          |              | als Bytezaehler arbeiten. B und  |
+|          |              | HL werden dekrementiert.         |
+|          |              | (C) <--- (HL)                    |
+|          |              | B   <--- B-1                     |
+|          |              | HL  <--- HL-1                    |
+|__________|______________|__________________________________|
+.pa
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+|   ---    | OTDR         | Kanaladresse wird indirekt ueber |
+|          |              | das Register C eingestellt,      |
+|          |              | Quelladresse ueber Register HL. B|
+|          |              | arbeitet als Bytezaehler. B und  |
+|          |              | HL werden dekrementiert. Es wird |
+|          |              | eine Blockuebertragung durchge-  |
+|          |              | fuehrt, bis B=0 ist.             |
+|          |              | (C) <--- (HL)                    |
+|          |              | B   <--- B-1                     |
+|          |              | HL  <--- HL-1                    |
+|          |              | Wiederholen bis B=0 ist.         |
+|__________|______________|__________________________________|
+
+
+9.6.16.___Abkuerzungsverzeichnis_zur_Befehlsbeschreibung
+
+
+r,r' : Register A, B, C, D, E, H und L koennen eingesetzt     
+       werden.
+
+dd   : Doppelregister BC, DE, HL und SP koennen eingesetzt     
+       werden.
+
+qq   : Doppelregister AF, BC, DE und HL sind moeglich.
+
+pp   : Doppelregister BC, DE und SP sind erlaubt.
+
+bb   : Doppelregister BC, DE, HL, SP, IX und IY sind erlaubt.
+ 
+s    : r, n, M, (IX+d) und (IY+d) sind erlaubt.
+
+t    : r, M, (IX+d) und (IY+d) sind moeglich.
+
+n    : 8-Bit-Direktoperand
+
+nn   : 16-Bit-Direktoperand
+
+d    : Verschiebung bei Adressierung ueber Indexregister,
+       erlaubt im Bereich von -128 <= d <= 127
+       Die Bereichsgrenzen werden vom Assembler nicht geprueft!
+
+e    : relative Sprungsadresse,
+       erlaubt im Bereich von -128 <= e <= 127
+       Die Bereichsgrenzen werden vom Assembler nicht geprueft!
+
+b    : Bit, das in den Bitmanipulierbefehlen behandelt werden     
+       soll 0 <= b <= 7
+
+M    : Inhalt des durch HL adressierten Speicherplatzes
+
+k    : Die Werte 0, 1, 2, 3, 4, 5, 6, 7 sind erlaubt.
+
+p    : Die  Werte 00H,  08H,  10H,  18H,  28H,  30H,  38H sind 
+       erlaubt.
+
+CY   : Carry-Flag
+
+
+Anmerkung:
+
+
+In  der  8080-Mnemonik wird fuer die Operanden nur  der  erste 
+Buchstabe geschrieben:
+
+     . H fuer HL
+     . D fuer DE
+     . B fuer BC.
+
+Aber es bleibt SP, und fuer AF wird PSW verwendet.
+Fuer M darf nicht (HL) geschrieben werden.
+
+
+6.6.17.___Arbeit_mit_den_Bedingungsbits_(Flags)
+
+
+Das Flagregister F gibt Auskunft ueber das Ergebnis der  letz-
+ten Prozessoroperation.
+Es dient im wesentlichen dazu,  bedingte Programmverzweigungen 
+bzw.  bedingte Unterprogrammaufrufe oder -rueckspruenge auszu-
+fuehren.         
+
+Flagregister
+
+         _______________________________ 
+        |_7_|_6_|_5_|_4_|_3_|_2_|_1_|_0_|
+        |_S_|_Z_|_X_|_H_|_X_|P/V|_N_|_CY|
+
+S    - Vorzeichenbit (Sign - Flag)
+Z    - Nullbit (Zero - Flag)
+H    - Halbbyteueberlaufbit (Half - Carry - Flag)
+N    - Additions- / Subtraktionsbit
+P/V  - Paritaets- / Uebertragsbit (Parity / Overflow - Flag)
+CY   - Uebertragsbit (Carry - Flag)
+X    - nicht belegt
+
+
+Vorzeichenbit_(S-Flag)
+
+
+Bei  bestimmten Befehlen wird das hoechstwertige Bit des Akku-
+mulators geladen.
+Bei  Ausfuehrung von arithmetischen Befehlen mit vorzeichenbe-
+hafteten Zahlen wird eine positive Zahl durch eine 0 und  eine 
+negative  Zahl  durch eine 1 in der hoechstwertigen  Bitstelle 
+gekennzeichnet.
+
+Nullbit_(Z-Flag)
+
+
+Es  wird bei arithmetischen und  logischen  1-Byte-Operationen 
+gesetzt,  wenn das Ergebnisbyte des Akkumulators 0 ist.  Sonst 
+wird das Ergebnisbyte zurueckgesetzt.
+
+Bei  Vergleichs- und  Suchbefehlen  wird das  Z-Flag  gesetzt, 
+sobald der Vergleich positiv ausgeht.
+
+Bei  den Bit-Befehlen wird das Z-Flag mit dem  komplementaeren 
+Wert des getesteten Bits geladen.
+
+Bei der Uebertragung eines Bytes zwischen einer Speicherstelle 
+und einer E/A-Schnittstelle (INI, IND, OUTI, OUTD) wird das Z-
+Flag 1 gesetzt, wenn der Wert des Zaehlregisters 0 wird.
+Bei  IN r,(C) wird das Z-Flag gesetzt,  wenn die  eingezogenen 
+bzw. am E/A-Tor anliegenden Daten den Wert 0 haben.
+
+
+Halbbyte-Uebertragsbit_(H-Flag)
+
+
+Das  H-Flag wird entsprechend dem  Uebertragungsergebnis  zwi-
+schen  den Bits 3 und 4 einer arithmetischen  1-Byte-Operation 
+gesetzt (falls Uebertrag) oder rueckgesetzt (falls kein Ueber-
+trag).  Es  wird  beim Befehl DAA verwendet,  um das  Ergebnis 
+einer gepackten BCD-Addition bzw. -Subtraktion zu korrigieren.
+
+ __________________________________________________
+|   |                     |                        |
+| H | Addition            | Subtraktion            |
+|___|_____________________|________________________|
+|   |                     |                        |
+| 1 | Uebertrag von Bit 3 | Negativer Uebertrag    |
+|   | zu Bit 4            | von Bit 4              |
+|___|_____________________|________________________|
+|   |                     |                        |
+| 0 | Kein Uebertrag von  | Kein negativer Ueber-  |
+|   | Bit 3 zu Bit 4      | trag von Bit 4         |
+|___|_____________________|________________________|
+
+
+Paritaets-_/_Ueberlaufbit_(P/V-Flag)
+
+
+Es wird unterschiedlich genutzt.
+Bei arithmetischen Befehlen wird das P/V-Flag gesetzt, wenn im 
+Ergebnis das hoechste Bit des Akkumulators gesetzt wird.
+
+Bei  logischen  Operationen und Verschiebebefehlen  dient  das 
+P/V-Flag zur Ueberpruefung der Paritaet des  Ergebnisses.  Ist 
+die  Anzahl  der gesetzten Bits im angesprochenen Byte  gerade 
+(0,  2,  4,  6,  8),  so wird das P/V-Flag gesetzt,  ansonsten 
+rueckgesetzt.
+
+Bei Blocktransport- (LDI, LDIR, LDD, LDDR) und Blocksuchbefeh-
+len (CPI,  CPIR,  CPD,  CPDR) gibt das P/V-Flag Auskunft ueber 
+den  Stand des Bytezaehlers.  Das P/V-Flag wird  rueckgesetzt, 
+wenn nach Dekrementieren des Bytezaehlers (=<BC>) als Ergebnis 
+0 entsteht. In allen uebrigen Faellen bleibt das P/V-Flag 1.
+
+
+Additions-_/_Subtraktionsbit_(N-Flag)
+
+
+Es wird intern bei dem DAA-Befehl benutzt,  um zwischen  Addi-
+tions- und  Subtraktionsbefehlen zu unterscheiden.  Bei  allen 
+Additionsbefehlen wird das N-Flag rueckgesetzt.  Subtraktions-
+befehle setzten das N-Flag.
+
+
+Uebertragsbit_(CY-Flag)
+
+
+Das Setzen / Ruecksetzen des CY-Flags wird je nach ausgefuehr-
+ter Operation verschieden behandelt.
+
+Das CY-Flag wird gesetzt, wenn
+
+  - bei Additionsbefehlen ein Uebertrag und
+  - bei Subtraktionsbefehlen ein negativer Uebertrag entsteht.
+
+Es wird rueckgesetzt,
+
+  - bei Additionsbefehlen, die keinen Uebertrag erzeugen und
+  - bei Subtraktionsbefehlen, die keinen negativen Uebertrag
+    erzeugen.
+
+Bei Verschiebebefehlen (RLA, RLC, RL, RR) wird das CY-Flag als 
+Zwischenspeicher  fuer  die Uebertragung des  niederwertigsten 
+bzw.  hoechstwertigen Bits eines CPU-Registers bzw.  Speicher-
+platzes benutzt.
+
+Bei  den Befehlen RLCA,  RLC und SLA enthaelt das CY-Flag  den 
+Wert  des hoechstwertigen Bits,  das durch den Befehl aus  dem 
+behandelten Register bzw. Speicherplatz hinausgeschoben wurde.
+
+Bei  den Befehlen RRCA,  RRC,  SRA,  SRL enthaelt das  CY-Flag 
+analog den Wert des niederwertigsten Bits.
+
+Die logischen Befehle AND,  OR,  XOR setzen das CY-Flag grund-
+saetzlich zurueck.
+
+Die speziell fuer das CY-Flag vorgesehenen Befehle SCF (Setzen 
+CY-Flag) und CCF (Komplement C-Flag) erlauben das Setzen  bzw. 
+Komplementieren des CY-Flags.
+
+
+
+

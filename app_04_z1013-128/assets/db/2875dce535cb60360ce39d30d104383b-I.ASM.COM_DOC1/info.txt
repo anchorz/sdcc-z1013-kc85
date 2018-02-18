@@ -1,0 +1,5 @@
+<kurz src="SCP Assembler Teil 1 (defekt)"/>
+<lang>Hier fehlt zwischendurch immermal etwas vom Text. Ist die Datei korrekt digitalisiert worden?
+
+<include src="I.ASM.COM DOC1.txt"/></lang>
+<requires></requires>

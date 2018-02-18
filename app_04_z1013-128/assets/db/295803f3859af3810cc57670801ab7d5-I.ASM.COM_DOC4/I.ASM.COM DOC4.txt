@@ -1,0 +1,837 @@
+
+;
+72
+.mt 8
+.mb 8
+.pc 32
+.fm 1
+.hm 1
+.pn 55
+Bevor  mit  dem Assembler gearbeitet  werden  kann,  muss  die 
+Diskette mit dem Programm ASM.COM in das zu verwendende  Lauf-
+werk eingelegt werden.
+Die Diskette, auf der sich die Quelldatei befindet, muss eben-
+falls in einem Laufwerk liegen.
+
+
+9.5.1___Aufrufen_des_Assemblers
+
+
+Der Assembler wird aufgerufen durch die Eingabe von:
+
+   ASM
+
+Die  Programmdatei  ASM.COM wird geladen.  Der Assembler  gibt 
+einen  Stern (*) aus und zeigt damit an,  dass er bereit  ist, 
+eine Kommandozeile entgegenzunehmen.
+
+
+9.5.2.___Die_Kommandozeile_des_Assemblers
+
+
+Die  Kommandozeile des Assemblers setzt sich aus 4 Feldern zu-
+sammen:
+
+     [Object][,[List]]=Source[/Switch]
+
+Die  Kommandozeile  kann als eigene Zeile  geschrieben  werden 
+oder auf dieselbe Zeile wie das ASM-Kommando.
+(Wenn  Kommandozeile und ASM-Kommando auf derselben Zeile ste-
+hen, kehrt der Assembler nicht mit * zurueck, sondern gibt die 
+Steuerung nach Beenden an das Betriebssystem.)
+Bei  getrennter Eingabe von ASM und Kommandozeile besteht  zu-
+saetzlich  die Moeglichkeit,  eine weitere Uebersetzung auszu-
+fuehren,  ohne dass der Assembler wieder aufgerufen wird. Wenn 
+die Uebersetzung beendet ist,  meldet sich der Assembler  dann 
+sofort mit einem * und wartet auf eine neue Kommandozeile. Der 
+Assembler wird in diesem Fall durch Druecken von ^C beendet.
+
+Wenn nur ein Programm uebersetzt werden soll, ist es bequemer, 
+das ASM-Kommando und die Kommandozeile  auf dieselbe Zeile  zu 
+schreiben; es erfordert weniger  Eingaben und bietet die Moeg-
+lichkeit,  die Assembler-Operation einem SUBM-Kommando  mitzu-
+teilen.
+Wenn  das  ASM-Kommando und die Kommandozeile  zusammenstehen, 
+kehrt der Assembler automatisch nach Abschluss  zum  Betriebs-
+system zurueck.
+
+Bemerkung:
+
+Wenn  die  Kommandozeile eine vom ASM-Kommando separate  Zeile 
+ist,  kann die Kommandozeile nur in Grossbuchstaben eingegeben 
+werden!  Wird anders gearbeitet,  erscheint die Meldung "?Com-
+mand Error".  Wenn das ASM-Kommando und die Kommandozeile eine 
+Zeile  bilden,  koennen die Eingaben in grossen  oder  kleinen 
+Buchstaben  oder gemischt gemacht werden.  Das  Betriebssystem 
+wandelt vor der Uebergabe alle Eingaben in grosse Buchstaben .
+
+
+9.5.2.1._Source_(=dateiname)
+
+
+Um  ein  Quellprogramm zu  uebersetzen,  muss  wenigstens  ein 
+Gleichheitszeichen  (=) und der Quelldateiname eingegeben wer-
+den.
+
+Das  "=dateiname" zeigt an,  welche Quelldatei zu  uebersetzen 
+ist.  Wenn  die  Diskette mit der Quelldatei nicht im  aktuell 
+zugewiesenen  Laufwerk liegt,  muss die  Laufwerksauswahl  als 
+Teil von dateiname mit spezifiziert werden.
+Enthaelt  der Dateiname keinen Dateityp,  nimmt der  Assembler 
+an,  dass er .MAC ist. Ist er nicht .MAC, muss er als Teil von 
+dateiname unbedingt angegeben werden.
+
+Ueber  andere Moeglichkeiten der Zuweisung von Geraet und  Da-
+teityp siehe Pkt. 9.5.2.6.
+
+Die Eintragung source ist die einzige,  die fuer ASM unbedingt 
+erforderlich ist.
+Das einfachste Kommando lautet:
+
+   ASM =source
+
+Dieses  Kommando veranlasst den Assembler,  die Quelldatei  zu 
+uebersetzen  und  das  Ergebnis in einer  verschieblichen  Ob-
+jectcodedatei (genannt .REL-datei) mit demselben Namen wie die 
+Quelldatei abzulegen.
+   
+    Beispiel:
+
+    Die Quelldatei soll PROG.MAC heissen, dann lautet die
+    Kommandozeile
+
+           ASM =PROG
+
+    und es wird eine uebersetzte Datei mit dem Namen
+
+           PROG.REL
+
+    erzeugt.
+
+Als  zusaetzliche Option kann nur ein Komma (,) auf der linken 
+Seite des Gleichheitszeichens geschrieben werden.  Dann werden 
+vom  Assembler  alle Ausgabedateien (object und  list)  unter-
+drueckt.
+
+Die Kommandozeile
+ 
+           ASM ,=PROG
+
+veranlasst  den Assembler,  die Datei PROG.MAC zu uebersetzen, 
+aber die erzeugten Dateien nicht auszugeben.
+Die Programmierer verwenden diese Kommandozeile, um die Syntax 
+im  Quellprogramm zu testen,  bevor das  Uebersetzungsergebnis 
+ausgegeben wird. Weil keine Dateien ausgegeben werden, ist der 
+Assembler rascher beendet, die Fehler eher bekannt.
+
+
+9.5.2.2._Object_(dateiname)
+
+
+Die Eintragung object ist immer optional.
+Bestimmte Bedingungen zwingen dazu, object anzugeben.
+
+Die Objectdatei schreibt das uebersetzte Programm in eine Dis-
+kettendatei.  Diese  wird vom Programmverbinder  zum  Erzeugen 
+eines ausfuehrbaren Programms verwendet.
+
+Wenn beide Eintragungen, object und list, in der Kommandozeile 
+weggelassen sind (wie bei =source), erzeugt der Assembler eine 
+Objectdatei  mit  dem gleichen Dateinamen wie die  Quelldatei, 
+aber mit der Standarderweiterung .REL.
+
+Wenn  ein  vom Quelldateinamen verschiedener  Name  gewuenscht 
+wird, muss dieser dateiname im Object-Feld eingetragen werden. 
+Der   Assembler  haengt  dann  den  Dateityp  .REL  an,   wenn 
+kein Dateityp  eingetragen war.
+Wenn  beide  Dateien - Objectcode und Druckdatei  - gewuenscht 
+werden,  muessen beide Felder - object und list  - ausgefuellt 
+werden.  Es wird nur eine Druckdatei erzeugt, wenn das Object-
+Feld frei bleibt.
+Diese Form verwendet der Programmierer zum Testen der  Syntax. 
+Der Programmausdruck ist ausserdem eine Testhilfe.
+
+Der Name fuer die Objektcodedatei kann jeder gueltige Dateina-
+me sein.  Es ist moeglich, einen anderen als den Quelldateina-
+men zu waehlen,  aber es hat sich als guenstig erwiesen,  alle 
+Dateien,  die  zu einem Programm gehoeren,  mit  dem  gleichen 
+Namen zu versehen.
+
+     
+9.5.2.3._List_(,dateiname)
+
+
+Die  Eintragung  list ist immer optional.  Das Komma  vor  der 
+list-Eintragung muss geschrieben werden.
+Wird  eine  Druckdatei gewuenscht,  muss ein Dateiname in  das 
+list-Feld geschrieben werden (Eine Alternative zu dieser Regel 
+siehe Pkt. 9.5.2.4.).
+
+Der Assembler haengt .PRN als Standarddateityp an,  wenn keine 
+andere in der list-Eintragung angegeben wurde.
+
+Die Kommandozeile
+
+           ASM ,PROG=PROG
+
+uebersetzt  die  Datei PROG.MAC (Quelldatei) und  erzeugt  die 
+Druckdatei PROG.PRN. Eine Objectdatei wird nicht erzeugt.
+
+Die  Druckdatei kann denselben Namen wie die Quelldatei  haben 
+oder jeden anderen gueltigen Dateinamen.
+
+Wenn  auf  der  linken Seite des Gleichheitszeichens  nur  ein 
+Komma  und keine Dateinamen stehen,  uebersetzt der  Assembler 
+die Quelldatei, aber er erzeugt keine Ausgabedateien.
+
+Dieses Kommando
+
+           ASM ,=PROG
+
+erlaubt  die Pruefung der Quelldatei auf  Syntaxfehler,  bevor 
+das  uebersetzte Programm auf die Diskette  geschrieben  wird. 
+Waehrend   der  Assembler  die  Pruefung  der   Fehler   immer 
+durchfuehrt,  werden  mit diesem Kommando keine Ausgabedateien 
+erzeugt und damit ist der Assemblerlauf um einiges schneller.
+
+Wenn die Uebersetzung beendet ist, gibt der Assembler folgende 
+Meldung aus:
+
+           [xx][No] Fatal Errors [,xx warnings]
+
+Diese  Meldung zeigt die Anzahl der schwerwiegenden Fehler und 
+Warnungen, die im Programm aufgetreten sind, an.
+Diese  Meldung  wird am Ende des Uebersetzungslaufes  auf  den 
+Bildschirm und auf die Druckdatei ausgegeben.
+Wenn diese Meldung erscheint, ist der Assembler fertig.
+Heisst die Meldung "No Fatal Errors",  dann ist die  Ueberset-
+zung vollstaendig und erfolgreich.
+
+
+Beispiele:
+
+ASM =TEST           Uebersetzen  der  Quellcodedatei  TEST.MAC 
+                    und Erzeugen der Objektcodedatei TEST.REL
+ 
+ASM ,=TEST          Uebersetzen  der Quellcodedatei  TEST.MAC, 
+                    ohne dass Ausgabedateien erzeugt werden.
+
+ASM TEST,TEST=TEST  Uebersetzen  der Quellcodedatei  TEST.MAC, 
+                    Erzeugen der Objectcode-Datei TEST.REL und 
+                    der Druckdatei TEST.PRN
+
+ASM OBJECT=TEST     Uebersetzen  der Quellcodedatei und Erzeu-
+                    gen der Objektcodedatei OBJECT.REL.
+
+
+9.5.2.4._Schalter_(/switch)
+
+
+Das Assembler-Kommando kann neben dem Uebersetzen und Erzeugen 
+von  Object- und  Druckdatei  einige  zusaetzliche  Funktionen 
+ausfuehren.
+
+Diese zusaetzlichen Kommandos werden an das Ende der Kommando-
+zeile eingegeben.
+Eine  solche  Eingabe veranlasst den Assembler  eine  zusaetz-
+liche oder alternative Funktion "einzuschalten":  Diese Einga-
+ben werden Schalter genannt.
+Schalter  sind  Buchstaben,  vor denen ein  Schraegstrich  (/) 
+steht.  Es kann jede beliebige Anzahl Schalter eingegeben wer-
+den, aber vor jedem Schalter muss ein Schraegstrich stehen.
+
+
+Beispiel:
+
+           ASM ,=PROG/L/R
+
+
+Folgende Schalter des Assemblers sind moeglich:
+
+Schalter      Bedeutung
+--------------------------------------------------------------
+/O            Der   Assembler  druckt  die  Adressen  in   der 
+              Druckdatei oktal (zur Basis 8).
+                                  
+/P            Jedes  /P  legt einen extra Stack von 256  Bytes 
+              zur Verwendung waehrend der Uebersetzung an.
+              /P sollte dann verwendet werden,  wenn  waehrend 
+              der   Uebersetzung   ein  Stack-Ueberlauf-Fehler 
+              aufgetreten ist. Sonst ist er nicht notwendig.
+                 
+/R            Erzwingt  das Erzeugen einer Objektdatei mit dem 
+              gleichen Namen wie die Quelldatei.  Das kann an-
+              stelle der Angabe des Dateinamens im Objekt-Feld 
+              der Kommandozeile verwendet werden. 
+              Die Angabe dieses Schalters ist  geeignet,  wenn 
+              eine   .REL-datei  erzeugt  werden  soll,   aber 
+              vergessen wurde, einen Dateinamen in das Object-
+              Feld  einzutragen und ein Komma und ein Druckda-
+              teiname oder nur ein Komma vor dem  Gleichheits-
+              zeichen geschrieben wurde.
+              Also wenn geschrieben wurde:
+                  
+                   ASM ,PROG=PROG
+
+              oder
+
+                   ASM ,=PROG
+
+              dann  kann auch eine .REL-Datei erzwungen werden 
+              durch einfaches Anfuegen eines /R vor dem Druek-
+              ken von <ENTER>.
+              Die Kommandozeile heisst dann:
+
+              ASM ,PROG=PROG/R
+
+              oder
+
+              ASM ,=PROG/R
+Schalter      Bedeutung
+--------------------------------------------------------------
+/X            Der  /X-Schalter setzt den Standard und die  ak-
+              tuelle  Zuordnung  auf Unterdruecken  der  Liste 
+              falscher Bedingungen.
+              Nichtvorhandensein von /X bedeutet, der Standard 
+              und  die aktuelle Zuordnung werden  auf  Drucken 
+              der falschen Bedingungen gesetzt.
+              /X  wird  oft  in Verbindung mit  der  bedingten 
+              Pseudooperation  .TFCOND verwendet  (Siehe  Pkt. 
+              9.4.1.5.).
+
+/L            Erzwingt  das Erzeugen einer Druckdatei mit  dem 
+              gleichen Namen wie die Quelldatei. Das kann ver-
+              wendet  werden,  statt der Angabe  eines  Druck- 
+              dateinamens im list-Feld der Kommandozeile.
+
+              Wenn eingegeben wurde:
+              
+                   ASM =PROG
+              oder
+                   ASM ,=PROG
+              oder
+                   ASM PROG=PROG
+
+              dann kann durch einfaches Anhaengen eines /L vor 
+              dem Druecken von <ENTER> eine Druckdatei erzwun-
+              gen werden. Die Kommandozeile heisst dann:
+
+                   ASM =PROG/L
+              oder
+                   ASM ,=PROG/L
+              oder
+                   ASM PROG=PROG/L
+
+/C            Veranlasst   den   Assembler,   eine   spezielle 
+              Druckdatei mit dem gleichen Namen wie die Quell-
+              datei anzulegen, fuer die Verwendung mit REF.
+              Wenn  das  Erzeugen  einer  Cross-Referenz   ge-
+              wuenscht  wird,  muss  das Programm  mit  diesem 
+              Schalter uebersetzt werden (siehe Pkt. 9.7.).
+
+/Z            Veranlasst den Assembler, Z80-Operationscodes zu 
+              uebersetzen.
+              Dieser Schalter muss angegeben werden,  wenn die 
+              Quelldatei im Z80-Code geschrieben  wurde,  aber 
+              keine .Z80-Pseudoopration enthaelt.
+
+/I            Veranlasst  den Assembler,  8080-Operationscodes 
+              zu uebersetzen.
+              Dieser Schalter muss angegeben werden,  wenn die 
+              Quelldatei im 8080-Code geschrieben wurde,  aber 
+              keine .8080-Pseudooperation enthaelt.
+.pa
+Schalter      Bedeutung
+--------------------------------------------------------------
+/P            Das ist der Standard. 
+              Der   Assembler  druckt  die  Adressen  in   der 
+              Druckdatei hexadezimal.
+
+/M            Der /M-Schalter initialisiert einen  Blockdaten-
+              bereich, der mit DS definiert wurde auf 00H.
+              Andererseits  wird  der Bereich nicht  initiali-
+              siert.  Das heisst,  DS initialisiert den  Spei-
+              cherbereich nicht automatisch auf 00H. In diesem 
+              Fall kann man nicht wissen,  was in diesem Spei-
+              cherbereich steht.
+
+
+9.5.2.5._Zusaetzliche_Angaben_der_Kommandozeile
+
+
+In jedes Feld der Kommandozeile koennen noch zwei zusaetzliche 
+Arten  von Eintragungen vorgenommen werden - der Dateityp  und 
+die Geraetezuordnung.  Diese beiden Arten sind aktuelle  Teile 
+einer "Dateispezifikation".
+Eine  Dateispezifikation besteht aus dem Geraet,  wo die Datei 
+lokalisiert ist,  dem Namen der Datei und dem Dateityp.
+
+Meist  wird  die  Standardzuweisung fuer das  Geraet  und  der 
+Dateityp  verwendet;  sie wird dann vom Assembler  eingefuegt, 
+wenn  diese Positionen in der Kommandozeile nicht  ausgefuellt 
+waren.
+Die  Standardannahmen hindern nicht daran,  entweder  Dateityp 
+oder  Geraetezuweisung einzugeben,  einschliesslich der Einga-
+ben, die den Standard darstellen.
+Der  Programmierer kann diese zusaetzlichen Eingaben in  jeder 
+Kombination angeben oder weglassen.
+
+Das Format fuer eine Dateispezifikation ist:
+
+              dev:dateiname.ext
+wobei
+              dev:      1-3 Buchstaben Geraetezuweisung (zwin-
+                        gend) gefolgt von einem  Doppelpunkt
+
+              dateiname:1-8 Zeichen Dateiname
+
+             .ext:      1-3 Zeichen  Dateityp, dem  (zwingend)
+                        ein Punkt vorausgehen muss.
+
+
+Dateityp_(.ext)
+
+
+Zum Unterscheiden zwischen Quelldatei,  Objectdatei und Druck-
+datei fuegt der Assembler einen Dateityp an den Dateinamen an. 
+Der  Dateityp ist eine aus 3 Zeichen bestehende Mnemonik,  die 
+an den Dateinamen angehaengt wird,  wobei zwischen  Dateinamen 
+und Dateityp ein Punkt (.) steht.
+Der  vom  Assembler ergaenzte Dateityp  wird  Standarddateityp 
+genannt.
+
+Die Standarddateitypen sind:
+
+              .REL  Objectdatei
+              .PRN  Druckdatei
+              .COM  absolute (ausfuehrbare) Datei
+
+Wenn  fuer die Quelldatei kein Dateityp angegeben  ist,  nimmt 
+der Assembler an, dass der Dateityp .MAC ist.
+
+Es kann aber auch ein eigener Dateityp angegeben werden,  wenn 
+dies notwendig oder wuenschenswert ist.  Es ist ein  Nachteil, 
+dass beim Rufen der Datei dann immer der Dateityp mit eingege-
+ben  werden  muss.  Bei Verwendung des Standarddateityps  kann 
+beim Ruf der Datei diese Angabe entfallen.
+
+
+Geraetezuweisung_(dev:)
+
+
+Jedes  Feld in der Kommandozeile kann auch eine  Geraetezuwei-
+sung beinhalten.
+
+Die  im source-Feld spezifizierte Geraetezuweisung  teilt  dem 
+Assembler mit, wo die Quelldatei zu finden ist. Die im Object-
+Feld  oder list-Feld spezifizierte Geraetezuweisung  sagt  dem 
+Assembler,   wohin  die  Ausgabe  der  Objectdatei  bzw.   der 
+Druckdatei erfolgen soll.
+Wenn  in einem der Felder die Geratezuweisung weggelassen ist, 
+nimmt  der  Assembler standardmaessig das aktuell  zugewiesene 
+Laufwerk an.
+Das heisst,  wenn das Geraet das aktuell zugewiesene  Laufwerk 
+ist,  braucht  die Geraetezuweisung nicht spezifiziert zu wer-
+den.  Es ist notwendig,  das Geraet zu spezifizieren, wenn ein 
+anderes  als  das aktuell zugewiesene  Laufwerk  waehrend  der 
+Uebersetzung verwendet werden soll.
+
+Beispiel:
+
+Die  Diskette  mit  dem Assembler liegt  im  Laufwerk  A,  die 
+Programmdiskette im Laufwerk B.  Die .REL-Datei soll ebenfalls 
+auf B ausgegeben werden.
+Dann muss in der Kommandozeile nur
+
+     ASM =B:PROG
+
+angegeben werden.
+
+Wenn die .REL-Datei ausgegeben ist,  ist das zugewiesene Lauf-
+werk B.  (Jedoch, wenn der Assembler beendet ist, ist A wieder 
+das zugewiesene Laufwerk.)
+
+Im Gegensatz dazu das folgende Beispiel:
+
+Beispiel:
+
+Die Quelldatei befindet sich mit auf der Diskette, auf der der 
+Assembler ist.  Diese Diskette liegt im Laufwerk A.  Die .REL-
+Datei soll auf die im Laufwerk B liegende Diskette  ausgegeben 
+werden.
+Die Kommandozeile lautet dann:
+
+     ASM B:=A:PROG
+
+Man sollte es sich zur Regel machen:
+
+Wenn man nicht sicher ist,  ob eine Geraetezuweisung angegeben 
+werden muss,  dann sollte man sie auf jeden Fall angeben.  Das 
+ist  der  sichere Weg,  jede Datei auf den richtigen Platz  zu 
+bringen!
+
+Gueltige Geraetezuweisungen fuer den Assembler sind:
+
+A:,B:,C:,...   Diskettenlaufwerke
+LST:           Drucker
+TTY:           Bildschirm oder Tastatur
+
+
+Geraetezuweisung_als_Dateiname
+
+
+Eine  weitere Option ist die Angabe der Geraetezuweisung  ohne 
+Dateiname in der Kommandozeile an die Stelle des Dateinames.
+Mit der Verwendung dieser Option werden verschiedene Resultate 
+erzielt,  abhaengig davon, welches Geraet in welches Feld ein-
+getragen wird.
+
+Beispiel:
+
+     ASM ,TTY:=TTY:
+
+ermoeglicht, eine unmittelbar eingegebene Zeile zu uebersetzen 
+und auf Syntax- oder andere Fehler zu pruefen.
+
+Aehnliches bewirkt:
+
+     ASM ,LST:=TTY:
+
+jedoch wird das Ergebnis nicht auf den Bildschirm, sondern auf 
+den Drucker ausgegeben.
+
+Wenn eines der Kommandos (,TTY:=TTY: oder ,LIST:=TTY:) verwen-
+det  wird,  sollte  als erstes eine  END-Anweisung  eingegeben 
+werden.  Der  Assembler  muss in den Pass 2  versetzt  werden, 
+bevor er Code ausgibt. Wenn einfach begonnen wird, Anweisungs-
+zeilen  einzugeben  ohne vorheriges END,  wird  keine  Antwort 
+kommen,  bis eine END-Anweisung auftritt.  Danach muessen alle 
+Anweisungen erneut eingegeben werden,  ehe der generierte Code 
+sichtbar wird.
+
+Tabelle  1 verdeutlicht das.  Diese Tabelle soll einige  Moeg-
+lichkeiten  zeigen,  sie  ist keine vollstaendige Liste  aller 
+Kombinationen.
+
+Tabelle_1: Wirkungen der Geraetezuweisung ohne Dateiname
+ __________________________________________________________    
+|  dev:  |    object     |     ,list     |     =source     |
+|--------|---------------|---------------|-----------------|
+| A:,B:, | Schreiben der | Schreiben der | nicht moeglich  |
+| C:,D:, | Datei auf das | Datei auf das | (ein Dateiname  | 
+|        | spezifizierte | spezifizierte |  muss spezifi-  |
+|        | Laufwerk      | Laufwerk      |  fiziert wer-   |
+|        |               |               |  den)           |
+|--------|---------------|---------------|-----------------|
+| LST:   | nicht moeglich| Schreiben der | nicht moeglich  |
+|        | (unlesbares   | Liste auf     | (nur Ausgabe)   |
+|        |  Dateiformat) | den Drucker   |                 |
+|--------|---------------|---------------|-----------------|
+| TTY:   | nicht moeglich| "Schreiben"   | "Lesen" des     |
+|        | (unlesbares   | der Liste auf | Quellprogrammes |
+|        |  Dateiformat) | den Bildschirm| von der Tastatur|
+|________|_______________|_______________|_________________|
+
+
+9.5.3.___Format_des_Assemblerprotokolls
+
+
+Die  Druckliste  des  Assemblers  besteht aus 2  Teilen  in  2 
+verschiedenen Formaten,  zum einen die Zeilen der Assemblerli-
+ste und zum anderen die Symboltabelle.
+
+
+9.5.3.1._Format_der_Assemblerliste
+
+
+Jede Seite der Assemblerliste beginnt mit 2  Kopfzeilen.  Wenn 
+die  Quelldatei  keine Kopfzeilen aufweist (weder  TITLE  noch 
+SUBTTL  wurden  angegeben),  sind diese Teile  der  Kopfzeilen 
+leer.
+
+Das Format ist:
+
+     [TITLE text]        ASM(SCPX) 1520 V n.n   X
+     [SUBTTL text]
+
+Dabei sind:
+
+TITLE text    ist  der Text,  der mittels der  Pseudooperation 
+              TITLE in der Quelldatei angegeben wurde.
+              War in der Quelldatei keine TITLE-Pseudooperation 
+              vorhanden,  dann  ist dieser Platz in der  Kopf-
+              zeile leer.
+   
+n.n           ist die Versionsnummer des Assemblers
+
+X             ist die Seitennummer.
+              Diese  wird nur angezeigt und erhoeht,  wenn  in 
+              der  Quelldatei die Pseudooperation  .PAGE  auf-
+              tritt,  oder  wenn die gerade bearbeitete  Seite 
+              gefuellt ist.
+
+
+SUBTTL text   ist  der  Text,  der mitels der  Pseudooperation 
+              SUBTTL in der Quelldatei angegeben wurde.
+              War  in  der Quelldatei keine  SUBTTL-Pseudoope-
+              ration vorhanden,  dann ist dieser  Platz in der 
+              Kopfzeile leer.
+
+Den beiden Kopfzeilen folgt eine Leerzeile.
+In der darauf folgenden Zeile beginnt der Text der Druckdatei.
+
+Das Format einer Druckzeile ist:
+
+              [error] ####m xx xxxxm [w] text
+
+Dabei sind:
+
+error         stellt einen Fehlercode aus einem Zeichen beste-
+              hend dar.
+              Ein Fehlercode wird nur gedruckt, wenn in dieser               
+              Zeile  ein Fehler aufgetreten ist.  Sonst bleibt 
+              der Platz frei.
+
+####          stellt den Zuordnungszaehler dar.
+              Die  Zahl  ist eine  4-stellige  Hexadezimalzahl 
+              oder eine 6-stellige Oktalzahl.
+              Die Basis des Zuordnungszaehlers wird durch  die 
+              Verwendung  des /O- oder /H-Schalters im switch-
+              Feld der Kommandozeile des Assemblers  bestimmt.
+              Der Standard ist hexadezimal.
+
+m             zeigt den Zuordnungszaehlermodus an.
+              Die moeglichen Symbole dafuer sind:
+              
+              '      Coderelativ
+              "      Datenrelativ
+              !      Commonrelativ
+              <leer> Absolut
+              *      External
+
+xx und xxxx   stellen den uebersetzten Code dar.
+              xx  ist  ein  1-Byte-Wert.  1-Byte-Werten  folgt 
+              immer ein Leerzeichen.
+              xxxx ist ein 2-Byte-Wert mit dem  hoeherwertigen 
+              Byte zuerst! (Der Druck erfolgt im Gegensatz zur 
+              Reihenfolge  der Abspeicherung  von  2-Byte-Wer-
+              ten!) 
+              2-Byte-Werten  folgt ein Zeichen,  das den Modus 
+              anzeigt (wie oben erlaeutert).
+              Dieses  Zeichen wird durch das zweite  m  darge-
+              stellt.
+
+[w]           zeigt  an,  dass  diese  Zeile aus einer anderen 
+              Datei stammt.
+              Sie  kann  durch  eine   INCLUDE-Pseudooperation 
+              erzeugt  worden sein oder Teil einer Makroerwei-
+              terung sein.
+              Eine  Zeile aus einer INCLUDE-Anweisung  erhaelt 
+              ein C, eine Zeile aus einer Makroerweiterung ein 
+              Pluszeichen  (+).  Sonst bleibt der Platz  frei.     
+
+text          steht  fuer den Rest der  Zeile,  den  Quelltext 
+              einschliesslich Marken,  Operationscodes,  Argu-
+              mente und Kommentare.
+
+
+9.5.3.2._Format_der_Symboltabelle
+
+
+Die Seiten der Symboltabelle haben die gleichen Kopfzeilen wie 
+die Assemblerliste.Aber anstelle der Seitennummer erscheint S.
+
+Danach werden alle Makronamen,  die im Programm verwendet wer-
+den in alphabetischer Reihenfolge aufgelistet.
+Im Anschluss daran erscheinen alle Symbole,  ebenfalls in  al-
+phabetischer Reihenfolge.
+Hinter  jedem  Symbol steht sein Wert,  gefolgt von einem  der 
+nachfolgenden Zeichen:
+
+                   I    Public-Symbol
+                   U    Undefiniertes Symbol
+                   C    Commonblock-Name.
+                        Der Wert,  der hierfuer angzeigt wird, 
+                        ist die Laenge des Blockes in Byte auf 
+                        hexadezimaler oder oktalen Basis.
+                   *    EXTERNAL
+                   '    Coderelativer Wert
+                   "    Datenrelativer Wert
+                   !    Commonrelativer Wert
+
+
+9.5.4.___Fehlercodes_und_Fehlermeldungen
+
+
+Waehrend  der Uebersetzung auftretende Fehler veranlassen  den 
+Assembler,  entweder  einen Fehlercode oder eine  Meldung  zu-
+rueckzugeben. Fehlercodes werden durch ein Zeichen dargestellt 
+und in der Spalte 1 der Druckdatei gedruckt.
+
+Auch  wenn die Druckdatei nicht auf den Bildschirm  ausgegeben 
+wird,  erscheinen  die  fehlerhaften Zeilen trotzdem  auf  dem 
+Bildschirm.
+Fehlermeldungen  werden  an das Ende der  Druckdatei  gedruckt 
+oder  am Ende nach den Fehlerzeilen auf dem  Bildschirm  ange-
+zeigt.
+
+
+     
+9.5.4.1._Fehlercodes
+
+          
+Fehlercode    Bedeutung
+--------------------------------------------------------------
+A             Argumentfehler 
+              Das  zu  der Pseudooperation gehoerige  Argument 
+              befindet sich nicht im korrekten Format oder  es 
+              liegt ausserhalb des zugelassenen Bereiches.
+
+C             Fehler der Bedingungsschachtelung 
+              ELSE ohne IF,  ENDIF ohne IF,  zweimal ELSE fuer 
+              ein IF, ENDC ohne COND.
+ 
+D             Doppelt definiertes Symbol 
+              Bezugnahme  auf ein Symbol,  das mehrfach  defi-
+              niert wurde.
+
+E             Externer Fehler
+              Verwendung eines externen Symbols, das in diesem 
+              Zusammenhang nicht erlaubt ist.
+              (Bsp.: MARKE1 SET NAME##)
+
+M             Mehrfach definiertes Symbol
+              Definition eines Symbols, das  bereits definiert 
+              wurde.
+
+N             Fehler einer Zahl
+              Fehler  in einer Zahl;  meist ein falsches  Zei-
+              chen, (bsp.: 8Q).
+               
+O             Falscher  Operationscode oder nicht einwandfreie 
+              Syntax
+              SET,  EQU oder MACRO ohne einen  Namen;  falsche 
+              Syntax  in  einem  Operationscode  oder  falsche 
+              Syntax  in  einem Ausdruck  (nichtpaarige  runde 
+              Klammern, Anfuehrungszeichen, aufeinanderfolgen-
+              de Operatoren usw.)
+
+P             Phasenfehler
+              Der  Wert einer  Marke oder eines EQU-Namens ist 
+              im Pass 2 anders als im Pass 1.
+
+Q             Fragwuerdig
+              Meistens  ist eine Zeile nicht ordentlich  abge-
+              schlossen (bsp.: MOV AX,BX).
+              Dies ist eine Warnung.
+
+R             Verschiebung
+              Nichterlaubte  Verwendung einer Verschiebung  in 
+              einem Ausdruck, (bsp.: abs-rel).
+              Daten,  Code und Common-Bereiche sind verschieb-
+              lich.
+.pa
+Fehlercode    Bedeutung
+--------------------------------------------------------------
+U             Undefiniertes Symbol
+              Ein  Symbol,  auf das in einem anderen  Ausdruck 
+              Bezug genommen wird, ist nicht definiert.
+              Fuer einige Pseudooperationen wird im Pass 1 ein 
+              V-Fehler erzeugt und im Pass 2 ein U-Fehler
+              (Siehe auch V-Fehler).
+
+V             Wertfehler
+              Eine Pseudooperation (bsp.:  .RADIX,  .PAGE, DS, 
+              IF,  IFE),  hat  im Pass 1  einen  undefinierten 
+              Wert, obwohl er im Pass 1 bekannt sein muesste.
+              Wenn  das  Symbol spaeter im  Program  definiert 
+              wird,  erzeugt der Assembler  im  Pass  2 keinen 
+              U-Fehler. 
+  
+
+9.5.4.2._Meldungen
+
+
+%NO END statement
+
+              Keine END-Anweisung.
+              Entweder  sie fehlt oder sie wurde nicht  durch-
+              laufen  infolge einer falschen Bedingung,  eines 
+              nichtabgeschlossenen IRP-,  IRPC-,  REPT-Blockes 
+              oder eines abgeschlossenen Makros.
+
+Unterminated conditional
+
+              Wenigstens eine Bedingung ist am Ende der  Datei 
+              nicht abgeschlossen worden.
+
+Unterminated REPT/IRP/IRPC/MACRO
+
+              Es  ist wenigstens ein Block nicht abgeschlossen 
+              worden.
+
+Symbol table full
+
+     (...FEHLER?...)schoepft.  Die haeufigste Ursache ist eine ganze 
+              Anzahl Makrobloecke,  die Anweisungen fuer viele 
+              Anweisungszeilen enthalten.
+
+              Die  Makrobloecke  werden  vollstaendig  in  der 
+              Symboltabelle abgespeichert, einschliesslich der 
+              Koeeentare,  die den Zeilen angehaengt sind  in-
+              nerhalb eines Makroblockes.
+
+              Es  solnten also alle Makrobloecke im  Quellpro-
+              gramm geprueft werden.
+.pa
+              Um die Kommentare innerhalb der Makrobloecke aus 
+              der  Symboltabelle auszuschliessen,  sollten vor 
+              die Kommentare zwei Semiko (...FEHLER?...)
+              Anzahl der schweren Fehler und Warnungen, die im 
+              Programm aufgetreten sind.
+
+              Diese  Meldung  wird am Ende jeder  Uebersetzung 
+              auf den Bildschirm und in die Druckdatei  ausge-
+              geben.
+
+              Wenn diese Meldung erscheint, ist der Assembler-
+              lauf beendet.
+              Die Meldung "No Fatal Errors" zeigt an, dass die 
+              Uebersetzung vollstaendig und erfolgreich ist.
+
+
+9.6._____Beschreibung_der_Befehle
+
+
+In  diesem Kapitel wird die Wirkung der einzelnen  CPU-Befehle 
+beschrieben.
+Der Abschnitt 9.6.16. enthaehlt das Abkuerzungsverzeichnis. Im 
+Abschnitt  9.6.17.  ist  die  Arbeit  mit  den  Bedingungsbits 
+(Flags) beschrieben.
+
+
+9.6.1.___Ladebefehle
+
+
+Die Ladebefehle transportieren Daten intern zwischen den  CPU-
+Registern oder zwischen CPU-Registern und dem Schreib- / Lese-
+speicher (RAM).  Die Befehle muessen eine Ausgangsadresse, von 
+der  die  Daten  zu  entnehmen  sind,   und  eine  Zieladresse 
+enthalten.
+Der Quellspeicherplatz wird durch den Ladebefehl nicht veraen-
+dert.
+
+
+9.6.1.1._8-Bit-Ladebefehle
+
+ ____________________________________________________________
+|          |              |                                  |
+| 8080-    | Z80-         |                                  |
+| Mnemonik | Mnemonik     | Wirkungsweise der Befehle        |
+|__________|______________|__________________________________|
+|          |              |                                  |
+| MOV  r,r'| LD   r,r'    | Inhalt des Registers r' wird in  |
+|          |              | das Register r umgespeichert.    |
+|__________|______________|__________________________________|
+
+

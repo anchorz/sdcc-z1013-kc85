@@ -1,0 +1,940 @@
+
+;
+72
+.mt 8
+.mb 8
+.fm 1
+.hm 1
+.pc 32
+.pn 38
+Form_Feed
+
+*    *EJECT [<exp>]
+     PAGE   [<exp>]
+     $EJECT
+
+Die  Pseudooperation  Seitenwechsel veranlasst den  Assembler, 
+die Ausgabe mit einer neuen Seite zu beginnen.
+Er  setzt ein Seitenwechsel-Steuerzeichen an das Seitenende in 
+die Protokolldatei.
+Der  Wert von <exp>,  falls er angegeben wurde,  bestimmt  den 
+Umfang der neuen Seite (gemessen in Zeilen pro Seite) und muss 
+im Bereich zwischen 10 und 255 liegen.  Die Standardzeilenzahl 
+pro Seite ist 50.
+*EJECT muss in der Spalte 1 beginnen.
+
+Beispiel:
+         
+      *EJECT 72
+
+Der  Assembler  veranlasst den Drucker,  eine  neue  Seite  zu 
+beginnen  und  jedesmal 72 Programmzeilen  zu  drucken  (Diese 
+Angabe  ist  zu waehlen bei einer Papierlaenge von 12"  und  6 
+Zeilen pro Zoll).  
+
+
+Titel
+
+     TITLE <text>
+
+TITLE  spezifiziert  eine Kopfzeile,  die auf jede  Seite  als 
+erste Zeile gesetzt wird.
+Wenn  mehr als eine TITLE-Anweisung angegeben wird,  wird  ein 
+"Q"-Fehler erzeugt.
+Wenn keine NAME-Anweisung geschrieben wurde, werden die ersten 
+6 Zeichen des Titels als Modulname verwendet.
+(Ist  weder NAME noch TITLE vorhanden,  wird der Modulname aus 
+der Quelldatei genommen.)
+
+Beispiel:
+
+          TITLE PROG1
+
+Der Modul heisst jetzt PROG1.  Er kann mit diesem Namen aufge-
+rufen  werden und PROG1 wird als Kopf auf jede  Protokollseite 
+gedruckt.
+ 
+
+   
+Untertitel
+
+     SUBTTL  <text>
+     $TITLE (<text>)
+
+SUBTTL spezifiziert einen Untertitel,  der in jeden Seitenkopf 
+in die Zeile nach dem Titel gedruckt werden soll.
+<text> wird abgebrochen, wenn 60 Zeichen erreicht wurden.
+In  einem Programm kann eine beliebige Anzahl von  Untertiteln 
+angegeben werden.
+Wenn der Assembler eine SUBTTL-Anweisung findet, wird der alte 
+Text durch den neuen Text ersetzt.
+Um den SUBTTL fuer einen Teil der Ausgabe auszuschalten,  muss 
+ein  SUBTTL  mit  einer leeren Kette fuer  <text>  geschrieben 
+werden.
+
+Beispiel:
+
+          SUBTTL SPEZIELLE E/A-ROUTINE
+           .
+           .
+           .
+          SUBTTL
+           .
+           .
+           .
+           .
+
+Das  erste  SUBTTL  veranlasst den Druck  von  SPEZIELLE  E/A-
+ROUTINE im Kopf jeder Seite.
+Das zweite SUBTTL schaltet den Untertitel aus (die Untertitel-
+zeile im Protokoll besteht aus Leerzeichen).
+
+
+Allgemeine_Pseudooperationen_zur_Listensteuerung
+
+     .LIST   Protokollieren aller Zeilen mit ihrem Code
+     .XLIST  Unterdruecken des Protokollierens
+
+ .LIST ist die Standardbedingung.
+Wenn  eine  Protokolldatei in der  Kommandozeile  spezifiziert 
+wurde,  dann wird die Datei aufgelistet.
+Wenn .XLIST in der Quelldatei vorgefunden wird,  werden Quell- 
+und Objektcode nicht aufgelistet.
+ .XLIST wirkt bis zum Auftreten eines .LIST.
+ .XLIST  setzt alle anderen Pseudooperationen zur Listensteue-
+rung (ausser .LIST) ausser Kraft.
+
+Beispiel:
+     .
+     .
+     .
+   .XLIST     ; Protokollieren wird hier abgebrochen
+     .
+     .
+     .
+     .
+   .LIST      ; Protokollieren wird hier fortgestzt
+     .
+     .
+     .
+   
+
+Ausgeben_einer_Meldung_auf_den_Bildschirm
+
+
+     .PRINTX <delim><text><delim>
+
+Das  erste nichtleere Zeichen nach .PRINTX ist der  Begrenzer. 
+Der  folgende  Text  wird waehrend der  Uebersetzung  auf  den 
+Bildschirm ausgegeben bis der naechste Begrenzer auftritt.
+ .PRINTX  ist nuetzlich,  um den Prozess waehrend einer langen 
+Uebersetzung  darzustellen  oder den Wert  von  Schaltern  der 
+bedingten Assemblierung anzuzeigen.
+ .PRINTX wird in beiden Paessen ausgegeben.
+Wird  die Ausgabe nur in einem Pass gewuenscht,  verwendet man 
+die Pseudooperation IF1 oder IF2,  um zu bestimmen, in welchem 
+Pass die Ausgabe gewuenscht wird (siehe auch Pkt. 9.4.3.).
+
+Beispiel:
+
+          PRINTX *Uebersetzung zur Haelfte fertig*
+
+Der  Assembler gibt diese Meldung bei ihrem Auftreten auf  den 
+Bildschirm aus.
+
+          IF1
+          .PRINTX *PASS 1 BEENDET*; Meldung nur im Pass 1
+          ENDIF
+          IF2
+          .PRINTX *PASS 2 BEENDET*; Meldung nur im Pass 2
+          ENDIF
+
+
+Pseudooperationen_zur_bedingten_Listensteuerung
+
+
+Die  3 Pseudooperationen zur bedingten Listensteuerung  werden 
+verwendet, um anzuzeigen, ob in einem falschen Bedingungsblock 
+enthaltene Anweisungen auf der Liste erscheinen oder nicht.
+Siehe  dazu auch die Beschreibung zum /X-Schalter im Abschnitt 
+"Schalter".
+
+
+Unterdruecken_falscher_Bedingungen
+
+     .SFCOND
+
+ .SFCOND  unterdrueckt den Teil der  Liste,  welcher  bedingte 
+Ausdruecke beinhaltet, die als falsch gewertet werden.
+
+
+Protokollieren
+
+     .LFCOND
+
+ .LFCOND sichert das Protokollieren der bedingten  Ausdruecke, 
+die als falsch gewertet wurden.
+
+Umkippen_der_Listensteuerung_falscher_Bedingungen
+
+     .TFCOND
+
+ .TFCOND  kippt  die aktuelle Einstellung um,  die  durch  das 
+Vorhandensein  oder Nichtvorhandensein vom /X-Schalter in  der 
+Kommandozeile gesetzt wurde.
+ .TFCOND ist unabhaengig von .LFCOND und .SFCOND.
+Wenn /X vorhanden war, veranlasst .TFCOND, die falschen Bedin-
+gungen zu drucken. Wenn /X nicht angegeben wurde, unterdrueckt 
+ .TFCOND die falschen Bedingungen.
+
+  
+Pseudooperationen_zur_Listensteuerung_der_Makro-Erweiterung
+
+
+Pseudooperationen  zur  Listensteuerung der  Makro-Erweiterung 
+steuern die Protokollierung der Zeilen innerhalb eines  Makros 
+oder einer Wiederholungs-Pseudooperation (REPT, IRP, IRPC) und 
+koennen  nur innerhalb eines Makros oder eines  Wiederholungs-
+blockes verwendet werden.
+
+Ausschliessen_von_Makrozeilen,_die_keinen_Code_erzeugen
+
+     .XALL
+
+ .XALL ist Standard. .XALL protokolliert Quellcode und Objekt-
+code, der durch einen Makro erzeugt wird.
+Quellzeilen,  die keinen Code erzeugen, werden nicht protokol-
+liert.
+
+
+Protokollieren_Makrotext
+
+     .LALL
+
+ .LALL  protokolliert  den kompletten Text fuer die ganze  Ma-
+croerweiterung  einschliesslich der Zeilen,  die  keinen  Code 
+erzeugen.
+
+
+Unterdruecken_der_Makro-Protokollierung
+
+     .SALL
+
+ .SALL unterdrueckt das Protokollieren des gesamten Textes und 
+des durch den Makro erzeugten Objektcodes.
+
+
+Pseudooperationen_zur_Steuerung_der_Cross-Referenz
+
+Es ist moeglich,  die Cross-Referenz nur fuer einen Teil, aber 
+nicht  fuer das ganze Programm zu generieren.  Dazu  verwendet 
+man  die  Pseudooperation  .CREF und .XCREF in der  Quelldatei 
+fuer den Assembler.
+
+Diese beiden Pseudooperationen koennen an jede beliebige Stel-
+le im Programm in das Operationsfeld geschrieben werden.
+Wie alle Pseudooperationen zur Listensteuerung haben sie keine 
+Argumente.
+
+
+Unterdruecken_der_Cross-Referenz
+
+     .XCREF
+
+ .XCREF schaltet .CREF (Standard) aus.  .XCREF bleibt  wirksam 
+bis der Assembler ein .CREF trifft.
+ .XCREF  wird verwendet,  um in einem ausgewaehlten  Teil  der 
+Dateien das Erzeugen einer Cross-Referenz zu unterdruecken.
+Weil weder .CREF noch .XCREF Wirkung haben, wenn nicht der /C-
+Schalter  in  der Assembler-Kommandozeile  gesetzt  ist,  muss 
+ .XCREF nicht verwendet werden,  wenn eine normale Liste (ohne 
+Cross-Referenz) gewuenscht wird.  Das wird auch erreicht, wenn 
+/C in der Kommandozeile weggelassen wird.
+
+
+Erzeugen_einer_Cross-Referenz
+
+     .CREF
+
+ .CREF ist die Standard-Bedingung.
+ .CREF wird verwendet,  um mit der Erstellung der  Cross-Refe-
+renz fortzufahren,  nachdem diese durch .XCREF gestoppt worden 
+war.
+ .CREF bleibt wirksam bis ein .XCREF auftritt.
+ .CREF  hat  nur  dann Wirkung,  wenn der /C-Schalter  in  der 
+Kommandozeile des Assemblers gesetzt ist.
+
+
+9.4.2.___Makrofaehigkeit
+
+
+Die  Makrofaehigkeit  erlaubt,   Bloecke  von  Anweisungen  zu 
+schreiben,  die wiederholt verwendet werden koennen, ohne dass 
+sie wieder aufgeschrieben werden muessen.
+Diese Anweisungsbloecke beginnen entweder mit der Pseudoopera-
+tion  Makrodefinition oder mit einer der  Wiederholungspseudo-
+operationen.  Sie enden mit ENDM. Alle Makro-Pseudooperationen 
+koennen innerhalb eines Makroblockes verwendet werden.
+Die Schachtelungstiefe von Makros ist nur durch den  Speicher-
+platz begrenzt.
+Die Makrofaehigkeit des Assemblers beinhaltet folgende Pseudo-
+operationen, die nachfolgend erlaeutert werden:
+
+- Makrodefinition
+
+      MACRO
+.pa
+- Wiederholungen
+
+      REPT    (Wiederholung)
+      IRP     (undefinierte Wiederholung)
+      IRPC    (undefinierte Wiederholung mit Zeichen)
+
+- Abschluss
+ 
+      ENDM
+      EXITM
+
+- nur einmal vorkommende Symbole innerhalb des Makroblockes
+
+      LOCAL
+
+Die  Makrofaehigkeit  unterstuetzt ausserdem einige  spezielle 
+Makrooperatoren:
+
+      &
+      ;;
+      !
+      %
+
+
+9.4.2.1._Pseudooperation_zur_Makrodefinition
+
+
+<name> MACRO <dummy>[,<dummy>...]
+       .
+       .  
+       .
+       ENDM
+
+Der  Anweisungsblock  von MACRO bis ENDM bildet den  Kern  des 
+Makros oder die Makrodefinition.
+<name>  ist ein LABEL und unterliegt den Regeln fuer die  Bil-
+dung  von Symbolen.  <name> kann jede beliebige Laenge  haben, 
+aber nur die ersten 16 Zeichen werden an den Programmverbinder 
+uebergeben.
+Nachdem der Makro definiert worden ist, kann <name> zum Aufru-
+fen des Makros verwendet werden.
+<dummy>  ist ein symbolischer Parameter,  der durch den echten 
+Parameter durch Eins-zu-Eins-Textsubstitution bei der  Verwen-
+dung des Makros ersetzt wird.
+Jedes <dummy> kann 32 Zeichen lang sein. Die Anzahl der symbo-
+lischen Parameter ist nur durch die Laenge der Zeile begrenzt. 
+Die  symbolischen  Parameter werden durch  Kommas  voneinander 
+getrennt.
+Der Assembler interpretiert alle Zeichen zwischen zwei  Kommas 
+als einen einzigen symbolischen Parameter.
+
+Bemerkung:   
+
+Ein  symbolischer Parameter wird ausschliesslich  als  solcher 
+erkannt.
+
+Wenn zum Beispiel ein Registername (A oder B) als symbolischer 
+Parameter  verwendet wurde,  wird er waehrend der  Erweiterung 
+durch einen Parameter ersetzt.
+
+Ein  Makroblock  wird nicht bei seinem  Auftreten  uebersetzt, 
+sondern dann, wenn er aufgerufen wird, erweitert der Assembler 
+die Makro-Aufruf-Anweisung durch den passenden Makroblock.
+Wenn die Pseudooperation TITLE, SUBTTL oder NAME fuer den Teil 
+des Programms,  wo der Makroblock erscheint,  verwendet werden 
+soll, ist Vorsicht beim Schreiben dieser Anweisungszeile gebo-
+ten. 
+
+Beispiel:  SUBTTL MACRO DEFINITION
+ 
+Der Assembler uebersetzt die Anweisung als Makrodefinition mit 
+dem Namen SUBTTL und DEFINITION als symbolischen Parameter. Um 
+das zu vermeiden, koennte das Wort MACRO abgeaendert werden.
+
+
+Makroaufruf
+
+
+Soll ein Makro verwendet werden,  muss eine Makroaufruf-Anwei-
+sung geschrieben werden.
+
+     <name> <parameter>[,<parameter>...]
+
+<name> ist gleich <name> des Makroblockes.
+<parameter> ersetzt Eins-zu-Eins <dummy>. Die Anzahl der Para-
+meter wird nur durch die Laenge der Zeile begrenzt.  Die Para-
+meter muessen durch Kommas voneinander getrennt werden.
+Wenn  um  Parameter,  die durch Kommas getrennt  sind,  spitze 
+Klammern geschrieben sind,  uebergibt der Assembler alles, was 
+in den spitzen Klammern steht, als einen einzigen Parameter.
+
+
+Beispiel:
+
+     MAC 1,2,3,4,5
+
+uebergibt 5 Parameter an den Makro, aber
+
+     MAC <1,2,3,4,5>
+
+uebergibt nur einen Parameter.
+
+Die  Anzahl  der Parameter in der  Makroaufruf-Anweisung  muss 
+nicht  mit der Anzahl der symbolischen Parameter (<dummy>)  in 
+der Makrodefinition uebereinstimmen.
+Wenn  der  Aufruf mehr Parameter enthaelt als die  Definition, 
+werden die uebrigen ignoriert.  Wenn es weniger  sind,  werden 
+die uebriggebliebenen symbolischen Parameter Null gesetzt.
+Nach  jeder  Makroaufruf-Anweisung wird der Makroblock in  den 
+uebersetzten Code eingefuegt.
+.pa
+Beispiel:
+
+EXCHNG              MACRO     X,Y  
+                    PUSH      X
+                    PUSH      Y
+                    POP       X
+                    POP       Y
+                    ENDM
+
+Folgendes Programmstueck enthaelt den Makroaufruf:
+
+
+                    LDA       2FH
+                    MOV       H,A
+                    LDA       3FH
+                    MOV       D,A
+                    EXCHNG    H,D
+
+Es wird folgende Uebersetzung erzeugt:
+
+0000' 3A  002F      LDA       2FH
+0003' 67            MOV       H,A
+0004' 3A  003F      LDA       3FH
+0007' 57            MOV       D,A
+                    EXCHNG    H,D
+0008' E5           +PUSH      H
+0009' D5           +PUSH      D
+000A' E1           +POP       H
+000B' D1           +POP       D
+
+
+9.4.2.2._Wiederholungs-Pseudooperationen
+
+
+Die  Pseudooperationen ermoeglichen es,  Operationen in  einem 
+Codeblock so oft zu wiederholen, wie spezifiziert wurde.
+Die  Hauptunterschiede  zwischen  den  Wiederholungs- und  den 
+Makropseudooperationen sind:
+
+1. MACRO  gibt dem Block einen Namen,  mit welchem er  in  den 
+   Code an die Stelle, wo er gebraucht wird, aufgerufen werden 
+   kann.
+   Der  Makro kann in mehreren verschiedenen Programmen  durch 
+   einfaches  Schreiben einer Makroaufruf-Anweisung  verwendet 
+   werden.
+
+2. MACRO  ermoeglicht das  Uebergeben von Parametern  an   den 
+   Makroblock,  wenn er aufgerufen wird; diese Parameter koen-
+   nen sich aendern.
+
+Die  Wiederholungs-Pseudooperationen muessen als ein Teil  des 
+Codeblockes zugewiesen sein.
+Das  Verwenden der Wiederholungs-Pseudooperationen ist bequem, 
+wenn die Parameter im Voraus bekannt sind und nicht  geaendert 
+werden und wenn die Wiederholung bei jeder Programmausfuehrung 
+realisiert werden soll.
+Mit der Makro-Pseudooperation muss der Makro jedesmal, wenn er 
+gebraucht wird, aufgerufen werden!
+Beachte, dass jeder Wiederholungsblock mit der ENDM-Pseudoope-
+ration abgeschlossen werden muss.
+
+
+Wiederholung
+
+     REPT <exp>
+      .
+      .
+      .
+     ENDM
+
+Wiederholen  des  Anweisungsblockes  zwischen  REPT  und  ENDM 
+<exp>-mal.
+<exp> ergibt eine vorzeichenlose 16-bit-Zahl.
+
+Wenn  <exp>  ein externes Symbol oder  undefinierte  Operanden 
+enthaelt, wird ein Fehler generiert.
+
+Beispiel:
+          
+          X    SET  0
+               REPT 10
+          X    SET  X+1
+               DB   X
+               ENDM
+
+erzeugt folgendes Uebersetzungsprotokoll:
+
+0000      X    SET  0
+               REPT 10
+          X    SET  X+1
+               REPT 10
+               ENDM
+0000 '01  +    DB   X
+0001 '02  +    DB   X
+0002 '03  +    DB   X
+0003 '04  +    DB   X
+0004 '05  +    DB   X
+0005 '06  +    DB   X
+0006 '07  +    DB   X
+0007 '08  +    DB   X
+0008 '09  +    DB   X
+0009 '0A  +    DB   X
+               END
+
+Undefinierte_Wiederholung
+
+
+   IRP <dummy>,<parameter, eingeschlossen in spitze Klammern>
+    .
+    .
+    .
+   ENDM
+
+Die  Parameter muessen in spitze Klammern eingeschlossen  wer-
+den!
+
+Die  Parameter koennen gueltige Symbole, Zeichenketten, Zahlen 
+oder Zeichenkettenkonstanten sein.
+Der Anweisungsblock wird fuer jeden Parameter wiederholt. Jede 
+Wiederholung  ersetzt den naechsten Parameter fuer jedes  Auf-
+treten von <dummy> in dem Block.
+Wenn ein Parameter Null ist (z,B.  <>),  wird der Block einmal 
+mit einem Nullparameter ausgefuehrt.
+   
+Beispiel:
+
+          IRP  X,<1,2,3,4,5,6,7,8,9,10>
+          DB   X
+          ENDM
+
+Dieses  Beispiel erzeugt denselben Code (DB 1 - DB 10)  wie im 
+Beispiel bei REPT.
+Wenn  IRP  innerhalb eines  Makrodefinitionsblockes  verwendet 
+wird,  werden  die  spitzen Klammern um die Parameter  in  der 
+Makroaufruf-Anweisung  entfernt,  bevor die Parameter  an  den 
+Makroblock uebergeben werden.
+Ein Beispiel, das den gleichen Code wie oben erzeugt, verdeut-
+licht das Entfernen der Klammern von den Parametern:
+
+MAC       MACRO     X
+          IRP       Y,<X>
+          DB        Y
+          ENDM
+          ENDM
+          
+Wenn die Makroaufruf-Anweisung
+
+          MAC <1,2,3,4,5,6,7,8,9,10>
+
+uebersetzt wird, dann sieht die Makroerweiterung folgendermas-
+sen aus:
+          IRP       Y,<1,2,3,4,5,6,7,8,9,10>
+          DB        Y
+          ENDM
+
+Die spitzen Klammern um die Parameter sind entfernt worden und 
+der Inhalt wird als ein einziger Parameter uebergeben.
+
+
+Undefinierte_Wiederholung_mit_Zeichen
+
+     IRPC <dummy>,<string>
+      .
+      .
+      .
+     ENDM
+.pa
+Die  Anweisungen  in dem Block werden fuer jedes  Zeichen  der 
+Zeichenkette wiederholt.
+Jede Wiederholung ersetzt das naechste Zeichen der Zeichenket-
+te fuer jedes Auftreten von <dummy> im Block.
+
+Beispiel:
+
+          IRPC      X,0123456789
+          DB        X+1
+          ENDM
+
+Dieses  Beispiel erzeugt den gleichen Code (DB 1 - DB 10)  wie 
+die beiden vorhergehenden Beispiele.
+
+
+9.4.2.3._Beendigungs-Pseudooperationen
+
+
+Makro-Ende
+
+          ENDM
+
+ENDM teilt dem Assembler mit,  dass der Makro- oder  Wiederho-
+lungsblock zu Ende ist.
+
+Jede  Pseudooperation MACRO,  REPT,  IRP,  IRPC muss mit einem 
+zugehoerigen  ENDM beendet werden.  Andererseits wird am  Ende 
+jedes  Passes  die Meldung "Unterminated  REPT/IRP/IRPC/MACRO" 
+(nicht beendetes REPT/...) erzeugt.
+
+Ein ueberzaehliges ENDM verursacht einen "O"-Fehler.
+Wenn ein Makro- oder Wiederholungsblock verlassen werden soll, 
+bevor die Erweiterung vollstaendig ist,  wird die Pseudoopera-
+tion EXITM verwendet.
+
+
+Verlassen_des_Makro
+
+          EXITM
+
+EXITM  wird innerhalb eines  Makro- oder  Wiederholungsblockes 
+zum  vorzeitigen  Beenden einer  Erweiterung  verwendet,  wenn 
+irgendeine  Bedingung  die weitere Erweiterung  unnoetig  oder 
+unerwuenscht  macht.  Meistens  wird EXITM in  Verbindung  mit 
+einer bedingten Pseudooperation verwendet.
+
+Wenn  ein EXITM uebersetzt wird,  wird die Erweiterung  sofort 
+abgebrochen.  Die restliche Erweiterung oder uebrige Wiederho-
+lungen werden nicht generiert.
+
+Wenn der Block, der das EXITM enthaelt, in einem anderen Block 
+verschachtelt ist, wird die Erweiterung in der aeusseren Ebene 
+fortgesetzt.
+.pa
+Beispiel:
+
+MAC       MACRO     X
+Y         SET       0
+          REPT      X
+Y         SET       Y + 1
+          IFE       Y - 0FFH ; Test Y
+          EXITM              ; wenn 0, verlassen REPT
+          ENDIF
+          DB        Y
+          ENDM
+          ENDM
+
+
+9.4.2.4._Pseudooperation_fuer_Makro-Symbole
+
+
+     LOCAL <dummy>[,<dummy>...]
+
+Die  Pseudooperation LOCAL wird nur innerhalb eines Makrodefi-
+nitionsblockes verwendet.
+
+Wenn LOCAL ausgefuehrt wird,  legt der Makroassembler ein ein-
+maliges Symbol fuer jedes <dummy> an und ersetzt dieses Symbol 
+fuer jedes Auftreten von <dummy> in der Erweiterung.
+Diese einmaligen Symbole werden meistens zur Definition  einer 
+Marke  innerhalb eines Makros verwendet,  auf diese Weise ver-
+meidet man Mehrfachdefinitionen bei mehrfacher Erweiterung des 
+Makros.
+
+Die  vom Assembler angelegten Symbole reichen von  ..0001  bis   
+ ..FFFF.  Der  Anwender sollte eigene Symbole der Form  ..nnnn 
+vermeiden!  Die LOCAL-Anweisung muss allen anderen Anweisungs-
+typen in der Makrodefinition vorausgehen.
+
+Beispiel:
+          
+             MAC       MACRO     NUM,Y
+                       LOCAL     A,B,C,D,E
+             A:        DB        7
+             B:        DB        8
+             C:        DB        Y
+             D:        DB        Y+1
+             E:        DW        NUM+1
+                       JMP       A
+                       ENDM
+                       MAC       0C00H,0BEH
+                       END
+.pa
+erzeugt folgende Uebersetzungliste:
+
+             MAC       MACRO     NUM,Y
+                       LOCAL     A,B,C,D,E
+             A:        DB        7
+             B:        DB        8
+             C:        DB        Y
+             D:        DB        Y+1
+             E:        DW        NUM+1
+                       JMP       A
+                       ENDM
+                       MAC       0C00H,0BEH
+0000' 07   + ..0000:   DB        7
+0001' 08   + ..0001:   DB        8
+0002' BE   + ..0002:   DB        0BEH
+0003' BF   + ..0003:   DB        0BEH+1
+0004' 0C01 + ..0004:   DW        0C00H+1
+0006'      +           JMP       ..0000
+                       END
+
+
+
+9.4.2.5._Spezielle_Makro-Operatoren
+
+
+Besondere  spezielle  Operatoren koennen in  einem  Makroblock 
+verwendet werden,  um zusaetzliche Assemblerfunktionen  auszu-
+waehlen.
+
+&     Ampersand  verkettet Text oder Symbole.  (Das  Ampersand 
+      kann  nicht  in  einer  Makroaufruf-Anweisung  verwendet 
+      werden.)
+      Ein symbolischer Parameter wird in der Erweiterung nicht       
+      ersetzt, wenn nicht unmittelbar vorher ein & steht.
+      Ein  Symbol  wird aus Text  und  symbolischem  Parameter 
+      gebildet, indem zwischen beide ein & geschrieben wird.
+ 
+      Beispiel:
+
+          ERRGEN    MACRO     X
+          ERROR&X:  PUSH      B
+                    MVI       B,'&X'
+                    JMP       ERROR&X
+                    ENDM
+
+      Der Aufruf ERRGEN A wird erzeugen:
+
+         ERROR&A:   PUSH      B
+                    MVI       B,'A'
+                    JMP       ERROR&A
+
+;;    In  einem  Block wird ein Kommentar,  dem  2  Semikolons       
+      vorausgehen, nicht als Teil der Erweiterung erhalten (er       
+      erscheint bei .LALL nicht auf dem Protokoll).
+      Ein Kommentar nach nur einem Semikolon wird erhalten und       
+      erscheint in der Erweiterung.
+
+!     Ein  Ausrufezeichen kann in einem  Argument  geschrieben       
+      werden,  um  anzuzeigen,  dass das naechste Zeichen  als             
+      Literal genommen werden soll.
+      Deswegen ist  !;  dasselbe wie  <;>.
+
+%     Das  Prozentzeichen wird  nur in einem Makroargument zum       
+      Konvertieren  des auf das  % folgenden Ausdruckes  (mei-
+      stens ein Symbol) in eine Zahl  in der aktuellen Zahlen-
+      basis (festgesetzt mit .RADIX) verwendet.
+      Waehrend  der Makroerweiterung  ersetzt diese  Zahl  den 
+      symbolischen Parameter.
+      Die  Verwendung des  %-Operators erlaubt den Makroaufruf 
+      mit einer Zahl.
+      (Meistens  ist  ein Makroaufruf ein   Aufruf  mit  einer 
+      Referenz,  wobei  der Text des Makroarguments  exakt den 
+      symbolischen  Parameter ersetzt.)
+      Der  auf  % folgende Ausdruck  muss den gleichen  Regeln 
+      genuegen,  wie  der Ausdruck bei  einer  DS-Pseudoopera- 
+      tion.  Das heisst, es ist ein gueltiger  Ausdruck erfor-
+      derlich,  der  eine absolute Konstante  (nichtverschieb-
+      lich) ergibt.
+
+Beispiel:
+
+     PRINTE    MACRO     MSG,N
+               .PRINTX    *MSG,N*
+               ENDM
+
+     SYM1      EQU       100
+     SYM2      EQU       200
+               PRINTE <SYM1+SYM2=>,%(SYM1+SYM2)
+      
+Normalerweise wuerde beim Makroaufruf der symbolische  Parame-
+ter N durch die Kette (SYM1+SYM2) ersetzt.
+Das Resultat waere:
+
+     PRINTX*SYM1+SYM2=,(SYM1+SYM2)*
+
+Wenn das % vor dem Parameter steht, wird folgendes erzeugt:
+
+     PRINTX*SYM1+SYM2=,300*
+
+
+9.4.3.___Pseudooperationen_zur_bedingten_Assemblierung
+
+
+Die  bedingten  Pseudooperationen  ermoeglichen  dem  Anwender 
+Codebloecke zu entwerfen, die spezielle Bedingungen testen und 
+entsprechend vorgehen.
+.pa
+Alle Bedingungen haben folgendes Format:
+
+     IFxxxx [argument]  |     *    COND [argument]
+      .                 |           .
+      .                 |           .
+      .                 |           .
+     [ELSE              |          [ELSE
+      .                 |           .
+      .                 |           .
+      .  ]              |           .  ]
+     ENDIF              |     *    ENDC
+ 
+Zu  jedem IFxxxx muss ein zugehoeriges ENDIF die Bedingung ab-
+schliessen.
+Zu  jedem  COND muss ein zugehoeriges ENDC die  Bedingung  ab-
+schliessen. Andererseits wird die Meldung "Unterminated Condi-
+tional"  (nicht beendete Bedingung) am Ende jedes  Passes  er-
+zeugt.
+Ein ENDIF ohne zugehoeriges IF oder ein ENDC ohne zugehoeriges 
+COND verursacht einen "C"-Fehler.
+
+Der  Assembler  bewertet eine Bedingungsanweisung  mit  "wahr" 
+(ist  gleich FFFFH oder -1 oder jeder Wert ungleich Null) oder 
+mit "falsch" (ist gleich Null).
+
+Der Code in dem Bedingungsblock wird uebersetzt, wenn der Wert 
+der  Bedingung  entspricht,  die  in  der  Bedingungsanweisung 
+definiert wurde. Wenn der Wert dem nicht entspricht, ignoriert 
+der  Assembler den Bedingungsblock entweder vollstaendig oder, 
+wenn er eine optionale ELSE-Anweisung enthaelt,  uebersetzt er 
+nur den ELSE-Teil.
+
+Bedingungen  koennen bis zu 255mal geschachtelt werden.  Jedes 
+Argument einer Bedingung muss im Pass 1 bekannt sein, um einen 
+"V"-Fehler  und unkorrekte Auswertung zu vermeiden.  Der  Aus-
+druck fuer IF/IFT/COND und IFF/IFE muss einen Wert haben,  der 
+vorher definiert wurde und der absolut ist.
+
+Wenn  der Name nach einem IFDEF oder IFNDEF  definiert  wurde, 
+betrachtet  der Assembler ihn im Pass 1 als undefiniert;  aber 
+er wird im Pass 2 definiert.
+
+Jeder  Bedingungsblock kann optional die Pseudooperation  ELSE 
+enthalten,  die  die Moeglichkeit gibt,  alternativen Code  zu 
+erzwingen, wenn die entgegengesetzte Bedingung auftritt.
+Fuer ein IFxxxx/COND ist nur ein ELSE erlaubt.
+Das  ELSE ist immer mit dem zuletzt eroeffneten IF  verbunden. 
+Eine Bedingung mit mehr als einem ELSE oder ein ELSE ohne eine 
+Bedingung wird einen "C"-Fehler verursachen.
+
+
+Bedingte_Pseudooperation
+
+     IF <exp>
+     IFT <exp>
+*    COND <exp>
+
+Die  Anweisungen innerhalb des Bedingungsblockes werden ueber-
+setzt, wenn <exp> nicht Null ergibt.
+
+     IFE <exp>
+     IFF <exp>
+
+Die Anweisungen innerhalb des Bedingungsblockes werden  ueber-
+setzt, wenn <exp> den Wert Null hat.
+
+     IF1       Pass 1 Bedingung
+
+Die  Anweisungen innerhalb des Bedingungsblockes werden ueber-
+setzt, wenn sich der Assembler im Pass 1 befindet.
+
+     IF2       Pass 2 Bedingung
+
+Die Anweisungen innerhalb des Bedingungsblockes werden  ueber-
+setzt, wenn sich der Assembler im Pass 2 befindet.
+
+     IFDEF <symbol>
+
+Die  Anweisungen innerhalb des Bedingungsblockes werden ueber-
+setzt,  wenn  das Symbol definiert ist oder als  EXTERNAL  er-
+klaert wurde.
+
+     IFNDEF <symbol>
+
+Die  Anweisungen innerhalb des Bedingungsblockes werden ueber-
+setzt,  wenn das Symbol nicht definiert und nicht als EXTERNAL 
+erklaert wurde.
+
+     IFB <arg>
+
+Die  spitzen Klammern um <arg> sind erforderlich.  Die  Anwei-
+sungen im Bedingungsblock werden uebersetzt, wenn das Argument 
+leer (nicht angegeben) oder Null (<>) ist.
+
+     IFNB <arg>
+
+Die  spitzen  Klammern  um das <arg>  sind  erforderlich.  Die 
+Anweisungen innerhalb des Bedingungsblockes werden uebersetzt, 
+wenn das Argument nicht leer ist.
+Dies wird verwendet, um symbolische Parameter zu testen.
+
+     IFIDN <arg1>,<arg2>
+
+Die spitzen Klammern um <arg1> und <arg2> sind erforderlich.
+Die  Anweisungen innerhalb des Bedingungsblockes werden ueber-
+setzt, wenn die Kette <arg1> identisch der Kette <arg2> ist.
+
+     IFDIF <arg1>,<arg2>
+
+Die spitzen Klamern um <arg1> und <arg2> sind  erforderlich.
+Die  Anweisungen innerhalb des Bedingungsblockes werden ueber-
+setzt,  wenn die Kette <arg1> verschieden von der Kette <arg2> 
+ist.
+
+     ELSE
+
+ELSE bietet die Moeglichkeit,  alternativen Code zu  erzeugen, 
+wenn  die entgegengesetzte Bedingung auftritt.  ELSE kann  mit 
+jeder bedingten Pseudooperation verwendet werden.
+
+     ENDIF
+*    ENDC
+
+Diese Pseudooperationen schliessen den Bedingungsblock ab. Sie 
+muessen  zu  jeder verwendeten bedingten  Pseudooperation  ge-
+schrieben werden.
+ENDIF muss ein zugehoeriges IFxxxx haben und ENDC ein zugehoe-
+riges COND.
+     
+
+9.5._____Abarbeitung_des_Assemblers
+
+
+Wenn das Assemblerprogramm vollstaendig entworfen ist, kann es 
+uebersetzt werden.
+Der   Assembler  uebersetzt  die  Quelldateianweisungen   ein-
+schliesslich der Erweiterung von Makros und Wiederholungspseu-
+dooperationen.
+
+Das Ergebnis ist ein verschieblicher Objektcode,  der mit  dem 
+Programmverbinder  gebunden und geladen werden kann.  Der ver-
+schiebliche  Objektcode kann in eine Diskettendatei,  die  vom 
+Assembler den Dateityp .REL bekommt,  geschrieben werden.  Die 
+uebersetzte Datei (.REL) ist nicht ausfuehrbar.
+Die Datei wird erst nach der Behandlung durch den Programmver-
+binder ausfuehrbar.
+
+Der  Assembler  benoetigt ungefaehr 19K Speicherplatz und  hat 
+eine Abarbeitungsgeschwindigkeit von mehr als 1000 Zeichen  je 
+Minute.
+Der Assembler arbeitet unter dem Betriebssystem SCPX 1526.
+
+Der Assembler uebersetzt die Quelldatei in zwei Paessen.
+Waehrend des 1.  Passes wertet er die Programmanweisungen aus, 
+berechnet,  wieviel Code er erzeugen wird, bildet eine Symbol-
+tabelle,  in  der  jedem Symbol ein Wert zugewiesen  wird  und 
+erweitert die Makroaufruf-Anweisungen.
+
+Waehrend des 2.  Passes setzt er in die Symbole und Ausdruecke 
+die  Werte  aus der Symboltabelle ein,  erweitert  erneut  die 
+Makroaufruf-Anweisungen und gibt den verschieblichen Code aus. 
+Der  Assembler prueft die Werte der Symbole,  Ausdruecke   und 
+Makros waehrend beider Paesse.  Er gibt einen Phasenfehlercode 
+zurueck,  wenn der Wert waehrend des 2.  Passes nicht mit  dem 
+Wert waehrend des 1. Passes uebereinstimmt.
+

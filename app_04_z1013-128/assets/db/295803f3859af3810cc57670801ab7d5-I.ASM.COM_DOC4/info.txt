@@ -1,0 +1,3 @@
+<kurz src="SCP Assembler Teil 4 (defekt)"/>
+<lang><include src="I.ASM.COM DOC4.txt"/></lang>
+<requires></requires>
