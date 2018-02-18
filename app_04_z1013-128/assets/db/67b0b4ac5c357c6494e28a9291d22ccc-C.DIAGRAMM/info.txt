@@ -1,0 +1,6 @@
+<kurz src="Unterprogramm zur grafischen Ausgabe eines Diagramms"/>
+<lang>Aufruf erfolgt aus einem Hauptprogramm. Der Rücksprung erfolgt am Ende mit RET (Opcode: 0xC9)
+Die Daten stehen von 0x3FDB-0x3FF8.
+</lang>
+<requires>2.02_RB(MCALL2)</requires>
+

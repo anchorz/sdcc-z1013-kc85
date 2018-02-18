@@ -1,0 +1,1119 @@
+.PL72
+.MT1
+.MB3
+.FM1
+.FO                                                              
+.HE                                       TURBO-Pascal  Seite #
+.PN66
+.PO8
+
+
+
+15. Pointertypen
+
+Die bisher besprochenen Variablen sind statische Variablen,  d.h. 
+ihre Form und Groesse sind im Deklarationsteil festgelegt und sie 
+bleiben auch waehrend der gesamten Ausfuehrung des Blockes, indem 
+sie erklaert sind,  existent.  Programme benoetigen jedoch häufig 
+eine  Datenstruktur,  die  sich in Form und Groesse waehrend  der 
+Ausfuehrung des Programmes aendern kann. Aus diesem Grunde wurden 
+dynamische  Variable eingefuehrt,  die man erst  dann  generieren 
+kann,  wenn sie gebraucht werden,  und die man nach ihrer Verwen-
+dung, wenn sie nicht mehr bebraucht werden, beseitigen kann. 
+
+Solche   dynamischen  Variablen  werden  nicht  explizit  in  der 
+Variablendefinition   wie die statischen Variablen  erklaert  und 
+man  kann  sich auf sie auch nicht direkt durch einen  Bezeichner 
+beziehen.  Man  verwendet fuer sie spezielle  Variable,  die  nur 
+jeweils   die   Speicheradresse  der   entsprechenden   Variablen 
+enthalten,  die  also zu diesen Variablen zeigen  (point).  Diese 
+speziellen Variablen werden als Pointervariablen bezeichnet.
+
+
+15.1 Definition einer Pointervariablen
+
+Ein  Pointertyp wird durch das Symbol ^ definiert.  Diesem Symbol 
+folgt der Typbezeichner der dynamischen Variablen,  auf die  sich 
+die Pointervariablen dieses Typs beziehen.
+
+Das  folgende Beispiel zeigt,  wie ein Satz und die auf ihn  sich 
+beziehenden Pointer definiert werden:
+
+     type
+          PersonPointer = ^PersonRecord;
+
+          PersonRecord  = Record
+                              Name   : String[50];
+                              Job    : String[50];
+                              Next   : PersonPointer;
+                          end;
+     
+     var
+          FirstPerson,LastPerson,NewPerson : PersonPointer;
+
+Die Variablen FirstPerson, LastPerson und NewPerson sind Pointer-
+variablen,  die  den Zugriff zu Saetzen vom Typ PersonRecord  ge-
+statten.  Aus  dem Beispiel ist auch ersichtlich,  dass sich  der 
+Typbezeichner  in einer Pointertypdefinition auf einen Bezeichner 
+beziehen kann, der bis dahin noch nicht erklaert wurde.
+
+15.2 Zuweisungsvariable (New)
+
+Bevor es ueberhaupt einen Sinn hat,  eine von diesen Pointervari-
+ablen zu verwenden, benoetigen wir natuerlich einige neue Variab-
+le,  auf die sie zeigen. Die Generierung und Zuweisung zu solchen 
+neuen Variablen von irgendeinem Typ erfolgt mit der  Standardpro-
+zedur New.  Die Prozedur hat einen Parameter, der eine Pointerva-
+riable von dem Typ ist, den wir generieren wollen.
+Beispielsweise generiert 
+
+               New(FirstPerson)
+
+eine neue Variable vom Typ PersonRecord.  Damit zeigt FirstPerson 
+auf einen dynamisch erzeugten Satz von Typ PersonRecord.
+
+.pa
+
+Zuweisungen zwischen Pointervariablen kann man solange durchfueh-
+ren,  solange  sie  vom gleichen Typ sind.  Pointervariablen  vom 
+gleichen Typ koennen ebenso durch die Vergleichsoperatoren =  und 
+<>  verglichen  werden.  Diese Operationen geben  ein  Boolesches 
+Ergebnis (True oder False) zurueck. 
+
+Der  Pointerwert  nil gehoert jedem Pointertyp  an.  Dieser  Wert 
+verweist auf keine dynamische Variable und kann  Pointervariablen 
+zugewiesen  werden,  um anzuzeigen,  dass sie keinen verwertbaren 
+Zeiger enthalten. Natuerlich kann nil auch im Vergleich verwendet 
+werden.
+
+Variable, die man mit der Standardprozedur New erzeugt, werden in 
+einer  Stack-artigen Struktur aufgebaut.  Man bezeichnet sie  als 
+Heap.  Das  TURBO-Pascal-System steuert den Heap durch Verwendung 
+eines  Heap-Pointers,  der zu Programmbeginn auf die erste  freie 
+Adresse  des Speichers weist.  Bei jedem Aufruf von New wird  der 
+Heap-Pointer um soviele Bytes in Richtung Speicherende  weiterge-
+stellt, als die dynamische Variable Bytes enthaelt.
+
+
+15.3 Mark und Release
+
+Wenn  eine  dynamische Variable nicht mehr im Programm  benoetigt 
+wird,  kann man durch Verwendung der Standardprozeduren Mark  und 
+Release  den Speicherplatz zurueckerhalten,  der dieser Variablen 
+zugewiesen wurde. 
+
+Die  Prozedur Mark weist den Wert des Heap-Pointers einer Variab-
+len zu:
+Syntax:
+               Mark(Var);
+
+wobei Var eine Pointervariable ist.
+
+Die Prozedur Release setzt den Heap-Pointer auf die Adresse,  die 
+in seinem Argument enthalten ist:
+Syntax:
+               Release(Var);
+
+wobei Var eine Pointervariable ist, die vorher durch Mark gesetzt 
+wurde.
+Release gibt damit den gesamten Speicherplatz zurueck,  der ober-
+halb der im Argument angegebenen Variablen liegt.  Es ist natuer-
+lich nicht moeglich, den Speicherplatz von Variablen zurueckzuer-
+halten, die in der Mitte des Heap liegen.
+
+Mit der Standardfunktion MemAvail ist es moeglich zu einer belie-
+bigen  Zeit,  die augenblickliche Groesse des vom Heap  benutzten 
+Speicherplatzes zu erhalten. Genaueres darueber im Anhang A.
+
+
+15.4 Verwendung der Pointer
+
+Nehmen  wir  an,  in  einem  Programm  sei die  Prozedure  New 
+verwendet worden,  um  eine  Reihe  von Saetzen  des  Typs  PersonRecord 
+(wie  im obigen Beispiel) aufzubauen.  Dabei sei das Feld Next so 
+verwendet worden,  dass es auf den naechsten PersonRecord  weist. 
+Dann  wuerden  die folgenden Anweisungen durch die  Liste  dieser 
+Saetze   gehen   und   den  Inhalt  jedes   Satzes   ausschreiben 
+(FirstPerson weist auf den ersten Satz in der Liste):
+
+     while FirstPerson <> nil do
+     begin
+          Writeln(FirstPerson^.Name,'is a  ',FirstPerson^.Job);
+          FirstPerson := FirstPerson^.Next;
+     end;
+
+Hierbei kann man FirstPerson^.Name lesen als FirstPerson's  Name, 
+das ist das Feld Name in dem Satz, auf den FirstPerson zeigt.
+
+Das  folgende Beispiel demonstriert die Verwendung  von  Pointern 
+bei einer Liste,  die Namen und entsprechende Berufswuensche ent-
+haelt.  Die Namen und Berufswuensche werden nacheinander eingege-
+ben.  Die  Eingabe  der Liste wird durch Druecken nur der  Enter-
+Taste bei der Eingabe des Namens beendet. Danach wird die gesamte 
+Liste gedruckt.  Nach dem Druck wird der Speicherplatz  freigege-
+ben,  der  von  der  Liste benutzt  wurde.  Die  Speichervariable 
+HeapTop  wird  nur fuer den Zweck benutzt,  den ersten  Wert  des 
+Heap-Pointers aufzuheben.  Seine Definition als ^Integer (Pointer 
+zu Integer) ist daher voellig willkuerlich.
+
+
+   program   Jobs;
+   type
+      PersonPointer  = ^PersonRecord;
+
+      PersonRecord   = record
+                          Name  : String[50];
+                          Job   : String[50];
+                          Next  : PersonPointer;
+                       end;
+
+   var
+      HeapTop  : ^Integer;
+      FirstPerson,LastPerson,NewPerson : PersonPointer;
+      Name  : String[50];
+
+   begin
+      FirstPerson := nil;
+      Mark(HeapTop);
+      repeat
+         Write('Enter Name:   ');
+         Readln(Name);
+         if Name <> '' then
+         begin
+            New(NewPerson);
+            NewPerson^.Name := Name;
+            Write('Enter profession:  ');
+            Readln(NewPerson^.Job);
+            Writeln;
+            if FirstPerson = nil then
+               FirstPerson := NewPerson
+            else
+               LastPerson^.Next := NewPerson;
+            LastPerson := NewPerson;
+            LastPerson^.Next := nil;
+         end;
+      until Name = '';
+      Writeln;
+      while FirstPerson <> nil do
+      begin
+         Writeln(FirstPerson^.Name,' is a ',FirstPerson^.Job);
+         FirstPerson := FirstPerson^.Next;
+      end;
+      Release(HeapTop);
+   end.
+
+.pa
+
+15.5 Speicherplatzzuordnung
+
+Mit  der  Standardprozedur GetMem ist es  moeglich  Speicherplatz 
+beliebiger  Groesse  aus dem Heap zuzuweisen.  Waehrend  New  nur 
+soviel Speicherplatz zuweist, wie der Typ der im Argument verwen-
+deten Pointervariablen benoetigt,  erlaubt GetMem dem Programmie-
+rer  die  Groesse des zugewiesenen Speicherplatzes selbst zu  be-
+stimmen. GetMem wird mit zwei Parametern aufgerufen:
+Syntax:
+               GetMem(Pvar,I);
+wobei  Pvar irgendeine Pointervariable und I  in  Integerausdruck 
+ist, der die Anzahl der zugewiesenen Bytes angibt.
+
+
+.pa
+
+
+16. Prozeduren und Funktionen
+
+Ein  Pascal-Programm  besteht aus einem oder  mehreren  Bloecken. 
+Jeder  von ihnen kann wiederum aus Bloecken  bestehen  etc.  Eine 
+Prozedur,  wie eine Funktion,  ist einer von diesen Bloecken.  Im 
+allgemeinen kann man sie als Unterprogramme auffassen.  Eine Pro-
+zedur  ist  also  ein separater Teil eines  Programmes,  das  von 
+irgendwelchen  anderen Stellen im Programm aus durch eine  Proze-
+duranweisung  aktiviert wird (s.7.1.2).  Eine Funktion  ist  ganz 
+aehnlich,  nur  berechnet  sie etwas und gibt diesen  berechneten 
+Wert durch eine Variable zurueck,  wenn ihr Bezeichner (der Funk-
+tionsaufruf) waehrend der Ausfuehrung des Programmes benutzt wird 
+(s.6.2).
+
+
+16.1 Parameter
+
+Werte  koennen  den Prozeduren oder  Funktionen  durch  Parameter 
+uebergeben werden.  Durch diese Parameter wird ein Substitutions-
+mechanismus bereitgestellt,  der erlaubt, die Logik des Unterpro-
+grammes  mit  verschiedenen Anfangswerten zuversehen,  sodass  es 
+entsprechend verschiedene Ergebnisse produziert.
+Die Prozeduranweisung oder der Funktionsbezeichner,  die das ent-
+sprechende Unterprogramm aufrufen, koennen eine Liste von Parame-
+tern  enthalten,  die man als die aktuellen Parameter bezeichnet. 
+Diese werden den formalen Paramtern uebergeben,  die im Kopf  des 
+Unterprogrammes  spezifiziert sind.  Die Zuordnung der  Parameter 
+bei  der Uebergabe erfolgt in der Reihenfolge ihres Auftretens in 
+der  Parameterliste.  Pascal unterstuetzt  zwei  unterschiedliche 
+Methoden  der Parameteruebergabe:  Uebergabe der Parameter  durch 
+Uebergabe  eines Wertes (Wertuebergabe) und Uebergabe der Parame-
+ter  durch Austausch der formalen Parameter durch  die  aktuellen 
+Parameter (Referenz).
+
+Werden  Parameter  durch Wertuebergabe  uebertragen,  stellt  der 
+formale Parameter eine selbstaendige logische Variable im  Unter-
+programm dar und alle Wertveraenderungen an diesem formalen Para-
+meter  im  Unterprogramm haben keinen Einfluss auf den  Wert  des 
+aktuellen  Parameters nach Ausfuehrung des  Unterprogrammes.  Der 
+aktuelle  Parameter  kann  ein  beliebiger  Ausdruck,  auch  eine 
+Variable,  sein, muss aber den gleichen Typ wie der formale Para-
+meter haben.  Solche Parameter werden als Wert-Parameter bezeich-
+net und im Kopf des Unterprogrammes,  wie im folgenden  Beispiel, 
+definiert. (Die folgenden Beispiele zeigen, dass die Prozedurver-
+einbarungen gegenueber den Funktionsvereinbarungen, die in 16.3.1 
+erklaert  sind,  ganz aehnlich sind,  der Funktionskopf definiert 
+nur noch zusaetzlich den Typ des Ergebnisses).
+
+Beispiel Wertparameter:
+
+          procedure Example(Num1,Num2:Number; Str1,Str2:Txt);
+
+Hierbei  sind Number und Txt vordeklarierte Typen  (z.B.  Integer 
+und  String[255]) und Num1 ,  Num2,  Str1 und Str2  sind  formale 
+Parameter,  denen  die  Werte der aktuellen Parameter  uebergeben 
+werden.  Die  Typen der formalen und aktuellen Parameter  muessen 
+uebereinstimmen. 
+.pa
+
+Bei der Definition  des Kopfes ist zu beachten,  dass der Typ der 
+Parameter  durch einen Bezeichner eines vordeklarierten Typs spe-
+zifiziert  werden  muss.  Die folgende Konstruktion  ist  deshalb 
+nicht erlaubt:
+
+          procedure Select(Model: array[1..500] of Integer);
+
+Es  ist  notwendig  den Typ von Model in  der  Typdefinition  des 
+Blockes  zu erklaeren.  Dann kann der Bezeichner des Typs in  der 
+Parametererklaerung des Kopfes verwendet werden:
+
+          type
+               Range = array[1..500] of Integer;
+
+          procedure Select(Model: Range);
+
+Wird  ein Parameter durch Referenz ubergeben,  stellt in der  Tat 
+der  aktuelle  Parameter  den  formalen  Parameter  waehrend  der 
+Ausfuehrung  des  Unterprogrammes  dar.   Jede  im  Unterprogramm       
+vorgesehene  Veraenderung  des Inhaltes des  formalen  Parameters 
+aendert   waehrend   der  Ausfuehrung  des   Unterprogrammes   in 
+Wirklichkeit  den  Inhalt des aktuellen  Parameters.  Aus  diesem 
+Grunde  muss  der aktuelle Parameter stets  eine  Variable  sein. 
+Solche   durch   Referenz  uebergebenen  Parameter   werden   als 
+Variablen-Parameter  bezeichnet.  Die  Definition erfolgt wie  im 
+folgenden Beispiel:
+
+Beispiel Variablenparameter:
+
+          procedure Example(var Num1,Num2:Number; Str1,Str2:Txt);
+
+Hierbei  sind  Num1 und Num2 Variablenparameter und Str1 und Str2 
+Wertparameter. 
+Alle  Adressrechnungen werden erst zur Zeit des  Prozeduraufrufes 
+ausgefuehrt.  Ist  eine  Variable beispielsweise  die  Komponente 
+eines Array, wird ihr Index erst zum Zeitpunkt des Unterprogramm-
+aufrufes berechnet.
+
+Beachte,  File-Parameter  muessen  immer  als  Variablenparameter 
+erklaert werden.
+
+Wird  eine grosse Datenstruktur,  wie ein Array,  einem Unterpro-
+gramm als Parameter uebergeben,  dann spart die Verwendung  eines 
+Variablenparameters  Abarbeitungszeit und Speicherplatz,  da  als 
+einzige  Information  zwei Bytes an das Unterprogramm  uebergeben 
+werden,  die die Adresse des aktuellen Parameters enthalten.  Ein  
+Wertparameter  wuerde  Speicherplatz fuer eine  extra  Kopie  der 
+gesamten  Datenstruktur  verlangen  und ausserdem Zeit  fuer  das 
+Kopieren benoetigen.
+
+
+16.1.1 Reduzierung der Parametertyppruefung
+
+Normalerweise  muessen bei Verwendung von Variablenparametern die 
+formalen  und  aktuellen Parameter exakt vom gleichen  Typ  sein. 
+Dies bedeutet, wenn ein Variablenparameter vom Typ String verwen-
+det  wird,  duerfen als aktuelle Parameter nur Strings mit  exakt 
+der im Unterprogramm definierten Laenge zugewiesen werden.  Diese 
+Einschraenkung kann man durch Verwendung der V-Compiler-Direktive 
+beseitigen.  Fuer  diese  Direktive erzeugt  der  Standard-aktiv-
+Status {$V+} eine genaue Typpruefung, waehrend der passive Status 
+{$V-} die Typpruefung soweit vermindert,  dass aktuelle Parameter 
+mit  beliebiger  Stringlaenge,  unabhaengig von  der  definierten 
+Laenge des formalen Parameters, uebertragen werden duerfen.
+.pa
+
+
+Beispiel:
+
+     program NSA;
+     {This program must be compiled with the $V-Directive}
+     {$V-}
+     type
+          WorkString = string[255];
+
+     var
+          Line1 : string[80];
+          Line2 : string[100];
+
+     procedure     Encode(var LineToEncode : WorkString);
+     var I : Integer;
+     begin
+          for I := 1 to Length(LineToEncode) do
+          LineToEncode[I] := Chr(Ord(LineToEncode[i]) - 30);
+     end;
+     begin
+          Line1 := 'This is s secret message';
+          Encode(Line1);
+          Line2 := 'Here is another (longer) secret message';
+          Encode(Line2);
+     end.
+
+
+
+16.1.2 Nichttypisierte Variablenparameter
+
+Ist  der  Typ eines formalen  Parameters  nicht  definiert.  d.h. 
+enthaelt  der  Parameterteil  im Kopf des  Unterprogrammes  keine 
+Typdefinition,  dann  wird der Parameter als  nichttypisiert  be-
+zeichnet.  Der  aktuelle  Parameter kann dann ein beliebiger  Typ 
+sein.  Andererseits  ist der nichttypisierte Parameter mit  allen 
+Typen  inkompatibel.  Aus diesem Grunde kann man  nichttypisierte 
+formale Parameter nur dort verwenden, wo der Datentyp ohne Bedeu-
+tung  ist.  Dies ist beispielsweise bei den Parametern von  Addr, 
+BlockRead,   BlockWrite,  FillChar  oder  Move  und  bei  Adress-
+spezifikationen von absoluten Variablen der Fall.
+
+Im folgenden Beispiel wird bei der Prozedur SwitchVar die Verwen-
+dung nichttypisierter Parameter demonstriert. Sie uebertraegt den 
+Inhalt der Variablen A1 nach A2 und von A2 nach A1.
+
+     procedure SwitchVar(var A1p,A2p; Size : Integer);
+     type
+          A = array[1..MaxInt] of Byte;
+     var
+          A1    : A absolute A1p;
+          A2    : A absolute A2p;
+          Tmp   : Byte;
+          Count : Integer;
+     begin
+          for Count := 1 to Size do
+          begin
+               Tmp       := A1[Count];
+               A1[Count] := A2[Count];
+               A2[Count] := Tmp;
+          end;
+     end;
+
+.pa
+
+
+Definiert man:
+
+     type
+          Matrix = array[1..50,1..25] of Real;    
+     var
+          TestMatrix,BestMatrix : Matrix;
+
+dann  kann man SwitchVar zum Austauschen des Inhaltes der  beiden 
+Matrizen  verwenden. Der Prozeduraufruf lautet dann:
+
+     SwitchVar(TestMatrix,BestMatrix,SizeOf(TestMatrix));
+
+
+16.2 Prozeduren
+
+Eine   Prozedur  kann  entweder  vordeklariert  (Standard)   oder 
+nutzerdeklariert   (durch  den  Programmierer  vereinbart)  sein. 
+Vordeklarierte Proceduren sind Teile des TURBO-Pascal-Systems und 
+koennen  ohne  weitere  Vereinbarungen  verwendet  werden.  Einer 
+nutzerdeklarierten Prozedur kann der Name einer  Standardprozedur 
+gegeben werden,  aber dann ist die Standardprozedur innerhalb des 
+Gueltigkeitsbereiches   der  nutzerdeklarierten  Prozedur   nicht 
+aufrufbar.
+
+
+16.2.1 Prozedurvereinbarung
+
+Eine  Prozedurvereinbarung  besteht  aus einem  Prozedurkopf  und 
+einem  ihm  folgenden  Block.  Dieser  Block  besteht  aus  einem 
+Deklarationsteil und einem Anweisungsteil.
+
+Der Prozedurkopf besteht aus dem reservierten Wort procedure, dem 
+ein Bezeichner folgt,  der als Name der Prozedur bezeichnet wird. 
+Gewoehnlich folgt ihm eine formale Parameterliste,  wie in  16.1. 
+beschrieben.
+
+Beispiele:
+          procedure LogOn;
+          procedure Position(X,Y : Integer);
+          procedure Compute(var Data : Matrix; Scale : Real);
+
+Der  Deklarationsteil einer Prozedur hat die gleiche Form wie bei 
+einem   Programm.   Alle  in  der  formalen   Parameterliste   im 
+Deklarationsteil  erklaerten  Bezeichner sind lokal zur  Prozedur 
+und   zu   jeder   Prozedur  in   ihr.   Dieser   Bereich   heisst 
+Gueltigkeitsbereich der Bezeichner.  Ausserhalb dieses  Bereiches 
+sind  sie nicht bekannt.  Eine Prozedur kann jede in einem zu ihr 
+äusseren Block definierte  Konstante,  Type,  Variable,  Prozedur 
+oder Funktion verwenden. 
+
+Der  Anweisungteil  spezifiziert die  Aktionen,  die  ausgefuehrt 
+werden sollen, wenn die Prozedur aufgerufen wird. Er hat die Form 
+einer  Verbundanweisung (s.7.2.1).  Wird  der  Prozedurbezeichner 
+selbst innerhalb des Anweisungsteiles verwendet,  wird die Proze-
+dur  rekursiv ausgefuehrt (bei CP/M80 muss dann beachtet  werden, 
+dass  zu  diesem Zeitpunkt bei der Compilierung  die  A-Compiler-
+Direktive passiv {$A-} gesetzt ist s.Anhang E).
+
+.pa
+
+Das  naechste  Beispiel  zeigt ein Programm,  das  eine  Prozedur 
+verwendet  und  dieser  Prozedur  Parameter  uebergibt.   Da  die 
+aktuellen  Parameter,  die  an die  Prozedur  uebergeben  werden, 
+Konstante  (oder  einfache  Ausdruecke) sind,  muss  der  formale 
+Parameter als Wertparameter definiert werden:
+
+
+     program Box;
+     var
+          I :Integer;
+     procedure DrawBox(X1,Y1,X2,Y2 : Integer);
+          var  I : Integer;
+          begin
+               GotoXY(X1,Y1);
+               for I := X1 to X2 do Write('-');
+               for I := Y1+1 to Y2 do
+               begin
+                    GotoXY(X1,I); Write('!');
+                    GotoXY(X2,I); Write('!');
+               end;
+               GotoXY(X1,Y2);
+               for I := X1 to X2 do Write('-');
+          end;
+     begin
+          ClrScr;
+          for I := 1 to 5 do DrawBox(I*4,I*2,10*I,4*I);
+          DrawBox(1,1,80,23);
+     end.
+
+
+Häufig  sollen Veraenderungen des formalen Parameters in der Pro-
+zedur  direkt auch den aktuellen Parameter betreffen.  In  diesen 
+Faellen  sind natuerlich Variablenparameter  anzuwenden,  wie  im 
+folgenden Beispiel:
+
+     procedure Switch(var A,B : Integer);
+     var Tmp : Integer;
+     begin
+          Tmp := A; A := B; B := Tmp;
+     end;
+
+Wenn diese Prozedur durch die Anweisung Switch( I,J ); aufgerufen 
+wird,   werden  die  Werte  von  I  und  J  ausgetauscht.  Wuerde 
+stattdessen faelschlicherweise der Prozedurkopf durch
+
+     procedure Swap( A,B : Integer);
+
+d.h.  mit  einem  Wertparameter erklaert,  dann werden durch  die 
+Anweisung Swap( I,J ); die Werte von I und J nicht veraendert.
+
+
+.pa
+
+16.2.2 Standardprozeduren
+
+TURBO-Pascal enthaelt eine Anzahl von Standardprozeduren:
+
+     1) Stringbehandlungsprozeduren (s. 9.5),
+     2) Filebehandlungsprozeduren (s. 14.2, 14.5.1, 14.7.1),
+     3) Zuordnungsprozeduren fuer dynamische Variable (s. 15.2, 15.5) 
+     4) Input- und Output-Prozeduren (s. 14.6).
+
+Zusaetzlich  werden  die folgenden  Standardprozeduren  bereitge-
+stellt,  vorausgesetzt, die entsprechenden Terminalkommandos sind 
+installiert.
+
+
+16.2.2.1 Delay
+Syntax:   Delay(Time)
+
+Diese  Prozedur erzeugt eine Warteschleife,  die in ungefaehr so-
+viel  Millisekunden durchlaufen wird,  wie im Argument  angegeben 
+ist.  Die  exakte Zeit kann wegen der  unteschiedlichen  Hardware 
+etwas davon abweichen.
+
+16.2.2.2 ClrEol
+Syntax:   ClrEol
+
+Diese  Prozedur  loescht alle Zeichen ab Cursorposition  bis  zum 
+Ende der Zeile, ohne die Cursorposition zu veraendern.
+
+16.2.2.3 ClrScr
+Syntax:   ClrScr
+
+Diese Prozedur loescht den Bildschirm und setzt den Cursor in die 
+linke obere Ecke. (Bei einigen Bildschirmtypen koennen dabei auch 
+eventuell  vorhandene  Videoattribute bzw.  vom  Nutzer  gesetzte 
+Attribute veraendert werden).
+
+16.2.2.4 DelLine
+Syntax:   DelLine
+
+Diese  Prozedur loescht die Zeile,  in der der Cursor  steht  und 
+schiebt alle darunter stehenden Zeilen um eine Zeile nach oben.
+
+16.2.2.5 InsLine
+Syntax:   InsLine
+
+Diese  Prozedur fuegt an der Cursorposition eine leere Zeile  ein 
+und schiebt alle Zeilen unterhalb um eine Zeile nach  unten,  die 
+letzte Zeile wird weggerollt.
+
+16.2.2.6 Init
+Syntax:   Init
+
+Diese Prozedur sendet die  Terminal-Initialisierungszeichenkette, 
+die  bei der Installierung von TURBO-Pascal definiert  wurde,  an 
+den Bildschirm.
+
+16.2.2.7 Exit
+Syntax:   Exit
+
+Diese  Prozedur sendet die Terminal-Reset-Zeichenkette,  die  bei 
+der Installierung definiert wurde, an den Bildschirm.
+.pa
+
+
+16.2.2.8 GotoXY
+Syntax:   GotoXY(Xpos,Ypos)
+
+Diese  Prozedur  setzt den Cursor an die Position auf  dem  Bild-
+schirm,  die durch die Integerausdruecke Xpos (horizontaler  Wert 
+oder  Zeile)  und  Ypos (vertikaler Wert oder  Spalte)  angegeben 
+werden. Die linke obere Ecke (Home-Position) ist (1,1).
+
+16.2.2.9 LowVideo
+Syntax:   LowVideo
+
+Diese  Prozedur  setzt im Bildschirm das Attribut,  das  bei  der 
+Installation al "Ende der Hellsteuerung" festgelegt wurde.
+
+16.2.2.10 HighVideo
+Syntax:   HighVideo
+
+Diese  Prozedur  setzt im Bildschirm das Attribut,  das  bei  der 
+Installation als "Hellsteuerung" definiert wurde.
+
+16.2.2.11 Randomize
+Syntax:   Randomize
+
+Diese Prozedur erzeugt mittels Zufallszahlgenerator eine Zufalls-
+zahl.
+
+16.2.2.12 Move
+Syntax:   Move(var1,var2,num)
+
+Diese  Prozedur  kopiert im Speicher eine  bestimmte  Anzahl  von 
+Bytes.  Hierbei  sind var1 und var2 zwei Variable von  beliebigem 
+Typ  und num ist ein Integerausdruck.  Die Prozedur kopiert einen 
+Block von num Bytes von der Stelle des ersten Bytes von var1  zur 
+Stelle des ersten Bytes von var2.  Move behandelt automatisch bei 
+der  Uebertragung auftretende Ueberlappungen,  sodass "moveright" 
+und "moveleft" Prozeduren nicht benoetigt werden.
+
+16.2.2.13 FillChar
+Syntax:   FillChar(var,num,value)
+
+Diese Prozedur fuellt einen Bereich im Speicher mit eine, gegebe-
+nen  Wert.  Hierbei ist var eine Variable eines beliebigen  Typs, 
+num  ist ein Integerausdruck und Value ist ein Ausdruck  vom  Typ 
+Byte oder Char.  Es werden durch die Prozedur num Bytes beginnend 
+ab dem ersten Byte von var mit dem Wert von value gefuellt.
+.pa
+
+
+
+16.3 Funktionen
+
+Funktionen   sind   wie  Prozeduren   entweder   (vordeklarierte) 
+Standardfunktionen oder sie sind vom Programmierer definiert.
+
+
+16.3.1 Funktionsvereinbarung
+
+Eine  Funktionsvereinbarung besteht aus einem  Funktionskopf  und 
+einem Block, der aus einem Deklarationsteil und einem Anweisungs-
+teil besteht.
+
+Der  Funktionskopf  ist mit dem Prozedurkopf  equivalent,  ausser 
+dass der Funktionskopf mit dem reservierten Wort function eroeff-
+net  wird und auch den Typ des Ergebnisses mit  definieren  muss. 
+Dies  wird durch Anfuegung eines Doppelpunktes und eines Types an 
+den Funktionskopf erreicht.
+
+Beispiele:
+     funktion KeyHit : Boolean;
+     function Comput(var Value : Sample) : Real;
+     function Power(X,Y : Real) : Real;
+
+Der Ergebnistyp einer Funktion muss ein Skalartyp (d.h.  Integer, 
+Real, Boolean, Char deklariert als Skalar- oder Teilbereich), ein 
+Stringtyp oder ein Pointertyp sein.
+
+Der Deklarationsteil einer Funktion ist der gleiche wie bei einer 
+Prozedur.
+
+Der Anweisungsteil einer Funktion ist eine  Verbundanweisung,  so 
+wie  in  7.2.1 beschrieben.  Innerhalb des Anweisungsteiles  muss 
+wenigstens eine Ergibtanweisung auftreten,  die dem  Funktionsbe-
+zeichner einen Wert zuweist.  Die allerletzte dieser Ergibtanwei-
+sungen zum Funktionbezeichner ergibt den Wert der Funktion.  Wenn 
+der Funktionsbezeichner selbst als Funktionsaufruf im Anweisungs-
+teil  der  Funktion  auftritt,  dann wird die  Funktion  rekursiv 
+aufgerufen.  In  diesem  Falle muss zu diesem  Zeitpunkt  die  A-
+Compiler-Direktive {$A-} passiv sein (s. Anhang E).
+
+Das  folgende  Beispiel zeigt die Verwendung einer  Funktion  zur 
+Berechnung der Summe eine Reihe ganzer Zahlen von I bis J:
+
+
+     function RowSum(I,J : Integer) : Integer;
+          function SimpleRowSum(S : Integer) : Integer;
+          begin
+             SimpleRowSum := S * (S+1) div 2;
+          end;
+     begin
+          RowSum := SimpleRowSum(J) - SimpleRowSum(I-1);
+     end;
+
+Die Funktion SimpleRowSum ist in die Funktion RowSum eingebettet. 
+SimpleRowSum  ist  deshalb nur im Gueltigkeitsbereich von  RowSum 
+zulaessig.
+.pa
+
+
+Das folgende Beispiel zeigt die Verwendung rekursiver Funktionen:
+
+     program Fact;
+     var number : Integer;
+     function factorial(value : Integer) : Real;
+     begin
+        if value = 0 then factorial := 1
+        else factorial := value * factorial(value-1);
+     end;
+     begin
+        Write('input number: ');
+        Readln(number);
+        if number < 0 then Writeln('non valid input!')
+        else Writeln(number,'! = ',factorial(number):8:0);
+     end.
+
+Bei  der Definition eines Funktiontyps ist zu beachten,  dass der 
+in  der  Definition  verwendete  Typ  vorher  als   Typbezeichner 
+erklaert   sein  muss.   Aus  diesem  Grunde  ist  die   folgende 
+Konstruktion nicht erlaubt:
+
+     function LowCase(Line : UserLine) : string[80];
+
+Man  muss  stattdessen  vorher  den Typ  string[80]  durch  einen 
+Bezeichner   erklaeren   und  mit  diesem  dann   den   Typ   des 
+Funktionsergebnisses definieren:
+
+     type
+        str80 = string[80];
+     function LowCase(Line : UserLine) : str80;
+
+Wegen der Art der Implementation der Prozeduren Write und Writeln 
+darf  eine Funktion,  die irgendeine der Standardprozeduren Read, 
+Readln,   Write  oder  Writeln  verwendet,  niemals  durch  einen 
+Ausdruck in einer Write oder Writeln Anweisung aufgerufen werden.
+
+
+16.3.2 Standardfunktionen
+
+Die folgenden (vordeklarierten) Standardfunktionen sind in TURBO-
+Pascal implementiert:
+     
+     1) Stringbehandlungsfunktionen (s. 9.5),
+     2) Filebehandlungsfunktionen (s. 14.2, 14.5.1),
+     3) Pointerbezogene Funktionen )s. 15.2, 15.3, 15.5)
+
+und darueber hinaus folgende Funktionen:
+
+
+16.3.2.1 Arithmetische Funktionen
+
+16.3.2.1.1 Abs
+Syntax:        Abs(num)
+
+Gibt  den absoluten Wert von num zurueck.  Das Argument num  muss 
+entweder Real oder Integer sein und das Ergebnis ist vom gleichen 
+Typ, wie das Argument.
+
+
+16.3.2.1.2 Arctan
+Syntax:        Arctan(num)
+
+Gibt den Winkel im Bogenmass zurueck,  dessen Tangens gleich  num 
+ist.  Das Argument num muss entweder Real oder Integer sein,  das 
+Ergebnis ist Real.
+
+
+
+16.3.2.1.3 Cos
+Syntax:        Cos(num)
+
+Gibt den Cosinus von num zurueck. Das Argument num wird im Bogen-
+mass  ausgedrueckt und muss entweder Real oder Integer sein.  Das 
+Ergebnis ist Real.
+
+16.3.2.1.4 Exp
+Syntax:        Exp(num)
+
+Gibt  die Exponentialfunktion von  num  zurueck,  d.h.  e^x.  Das 
+Argument  num muss entweder Real oder Integer sein.  Das Ergebnis 
+ist Real.
+
+16.3.2.1.5 Frac
+Syntax:        Frac(num)
+
+Gibt den gebrochenen Teil von num zurueck, d.h. Frac(num) = num - 
+Int(num).  Das Argument num muss entweder Real oder Integer sein. 
+Das Ergebnis ist Real.
+
+16.3.2.1.6 Int
+Syntax:        Int(num)
+
+Gibt  den ganzen Teil von num zurueck,  d.h.  die groesste  ganze 
+Zahl,  die kleiner oder gleich num ist,  fall num >= 0 ist,  oder 
+die kleinste ganze Zahl,  die groesser oder gleich num ist, falls 
+num  < 0 ist .  Das Argument num muss entweder Real oder  Integer 
+sein. Das Ergebnis ist Real.
+
+16.3.2.1.7 Ln
+Syntax:        Ln(num)
+
+Gibt den natuerlichen Logarithmus von num zurueck.  Das  Argument 
+num muss entweder Real oder Integer sein. Das Ergebnis ist Real.
+
+16.3.2.1.8 Sin
+Syntax:        Sin(num)
+
+Gibt  den Sinus von num zurueck.  Das Argument num muss im Bogen-
+mass ausgedrueckt sein und sein Typ ist entweder Real oder  Inte-
+ger. Das Ergebnis ist Real.
+
+16.3.2.1.9 Sqr
+Syntax:        Sqr(num)
+
+Gibt das Quadrat von num zurueck,  d.h. num*num. Das Argument num 
+muss entweder Real oder Integer sein.  Das Ergebnis ist vom glei-
+chen Typ wie das Argument.
+
+16.3.2.1.10 Sqrt
+Syntax:        Sqrt(num)
+
+Gibt  die  Quadratwurzel von num zurueck.  Das Argument num  muss 
+entweder Real oder Integer sein. Das Ergebnis ist Real.
+
+.pa
+
+
+16.3.2.2 Skalarfunktionen
+
+16.3.2.2.1 Pred
+Syntax:        Pred(num)
+
+Gibt den Vorgaenger von num zurueck (falls er existiert). num ist 
+ein beliebiger Skalartyp.
+
+
+16.3.2.2.2 Suc
+Syntax:        Suc(num)
+
+Gibt den Nacgfolger von num zurueck (falls er existiert). num ist 
+ein beliebiger Skalartyp.
+
+
+16.3.2.2.3 Odd
+Syntax:        Odd(num)
+
+Gibt  den  Booleschen Wert True zurueck,  wenn num eine  ungerade 
+Zahl ist und False,  wenn num eine gerade Zahl ist.  num muss vom 
+Typ Integer sein.
+
+
+
+16.3.2.3 Konvertierungsfunktionen
+
+Die Konvertierungsfunktionen werden verwendet,  um den Wert eines 
+Skalartyps in den eines anderen Skalartyps umzuwandeln.  Zusaetz-
+lich zu den folgenden Funktionen kann man "Retyping" (s.8.3) fuer 
+diese Zwecke verwenden.
+
+
+16.3.2.3.1 Ord
+Syntax:        Ord(num)
+
+Gibt die Ordnungszahl des Wertes von num in der durch den Typ von 
+num  definierten  Menge zurueck.  Ord(num) ist  mit  Integer(num) 
+equivalent.  num kann ein beliebiger Skalartyp sein. Das Ergebnis 
+ist vom Typ Integer.,
+
+
+16.3.2.3.2 Round
+Syntax:        Round(num)
+
+Gibt  den  Wert von num gerundet zur naechsten  ganzen  Zahl  wie 
+folgt zurueck:
+     wenn num >= 0, dann ist Round(num) = Trunc(num+0.5),
+     wenn num < 0 , dann ist Round(num) = Trunc(num-0.5).
+num muss vom Typ Real sein. Das Ergebnis ist vom Typ Integer.
+
+
+16.3.2.3.3 Trunc
+Syntax:        Trunc(num)
+
+Gibt  fuer num >= 0 die groesste ganze Zahl zurueck,  die kleiner 
+oder gleich num ist.  Wenn num < 0 ist,  dann gibt diese Funktion 
+die  kleinste ganze Zahl zurueck,  die groesser oder  gleich  num 
+ist.  num  muss  vom Typ Real sein und das Ergebnis ist  vom  Typ 
+Integer.
+.pa
+ 
+
+16.3.2.4 Verschiedene Standarfunktionen
+
+
+16.3.2.4.1 Hi
+Syntax:        Hi(I)
+
+Das niederwertige Byte des Ergebnisses enthaelt das hoeherwertige 
+Byte des Wertes vom Integerausdruckes I.  Das hoeherwertige  Byte 
+des Ergebnisses ist Null. Das Ergebnis ist vom Typ Integer.
+
+
+16.3.2.4.2 KeyPressed
+Syntax:        Keypressed
+
+Gibt  den  Wert  True zurueck,  wenn eine Taste auf  der  Console 
+gedrueckt  wurde.  Das  Ergebnis wird durch  Aufruf  der  Consol-
+Status-Routine des BIOS realisiert.
+
+
+16.3.2.4.3 Lo
+Syntax:        Lo(I)
+
+Gibt  das  niederwertige  Byte des Wertes vom  Integerausdruck  I 
+zurueck,  wobei das hoeherwertige Byte auf Null gesetzt wird. Der 
+Typ des Ergebnisses ist Integer.
+
+
+16.3.2.4.4 Random
+Syntax:        Random
+
+Gibt eine Zufallszahl zurueck,  die groesser oder gleich Null und 
+kleiner als Eins ist. Der Typ ist Real.
+
+
+16.3.2.4.5 Random(I)
+Syntax:        Random(num)
+
+Gibt eine Zufallszahl zurueck,  die groesser oder gleich Null und 
+kleiner  als num ist.  num und die Zufallszahl sind beide vom Typ 
+Integer.
+
+
+16.3.2.4.6 SizeOf
+Syntax:        SizeOf(name)
+
+Gibt die Anzahl von Bytes zurueck, die von der Variablen oder dem 
+Typ name belegt werden. Das Ergebnis ist vom Typ Integer.
+
+
+16.3.2.4.7 Swap
+Syntax:        Swap(I)
+
+Die Swapfunktion vertauscht vom Wert des Integerausdruckes I  das 
+hoeher- und niederwertige Byte und gibt das Ergebnis als Integer-
+zahl  aus.  Beispiel  Swap($1234) gibt $3412 zurueck  (Werte  zur 
+Verdeutlichung in hexadezimaler Schreibweise ).
+
+.pa
+
+
+16.4 Vorwaerts Referenz
+
+Ein  Unterprogramm  wird vorwaerts deklariert,  indem man  seinen 
+Kopf  separat  von seinem  Block  spezifiziert.  Dieser  separate 
+Unterprogrammkopf  ist exakt der gleiche,  wie der eines normalen 
+Unterprogrammes, ausser dass er mit dem reservierten Wort forward 
+endet.  Der  Block  selbst folgt spaeter innerhalb  des  gleichen 
+Deklarationsteiles.  Der Block beginnt mit einer Kopie des vorher 
+definierten Kopfes ohne Parameter,  Typen etc,  d.h.  nur mit dem 
+Namen.
+
+Beispiel:
+
+     program Catch22;
+     var
+        X : Integer;
+     function Up(var I : Integer) : Integer; forward;
+     function Down(var I : Integer) : Integer;
+     begin
+        I := I div 2; Writeln(I);
+        if I <> 1 then I := Up(I);
+     end;
+     function Up;
+     begin
+        while I mod 2 <> 0 do
+        begin
+           i := I*3+1; Writeln(I);
+        end;
+        I := Down(I);
+     end;
+     begin
+        Write('Enter any integer: ');
+        Readln(X);
+        X := Up(X);
+        Write('Ok Program stopped again.');
+     end.
+
+Wird  das Programm gestartet und eine 6 eingegeben,  dann  ergibt 
+sich folgendes Bild:
+
+     Enter any integer : 6
+     3
+     10
+     5
+     16
+     8    
+     4
+     2
+     1
+     Ok Program stopped again.
+
+.pa
+
+
+Das  obige Programm ist eine kompliziertere Version des folgenden 
+Programmes:
+
+     program Catch222;
+     var
+        X : Integer;
+     begin
+        Write('Enter any integer: ');
+        Readln(X);
+        while X <> 1 do
+        begin
+           if X mod 2 = 0 then X := X div 2
+                          else X := X*3+1;
+           Writeln(X);
+        end;
+        Write('Ok Program stopped again');
+     end.
+ 
+
+Sie sind sicher ueberrascht, dass man bei diesem kleinen und sehr 
+einfachen Progamm im Voraus nicht einschaetzen kann, wie lange es 
+bei Eingabe einer beliebigen ganzen Zahl läuft.
+
+.pa
+
+
+17. Einfuegen von Programmteilen
+
+Die  Tatsache,  dass der TURBO-Editor den gesamten  Quelltext  im 
+Speicher  bearbeitet,  schraenkt die Groesse des Quelltextes ein. 
+Diese  Beschraenkung  kann man durch Verwendung  der  I-Compiler-
+Direktive  umgehen.  Dazu  teilt man den  gesamten  Quelltext  in 
+kleinere Einheiten.  Eine Einheit, das Rahmenprogramm, bildet den 
+Kern  des  Programmes und in diese werden die anderen  Teile  zur 
+Zeit  der  Uebersetzung mittels I-Compiler-Direktive  eingefuegt. 
+Diese  Include-Option gestattet ein uebersichtliches  Programmie-
+ren.  Es eroeffnet auch die Moeglichkeit der Verwendung einzelner 
+Programmteile  in anderen Programmen und damit kann man  Bibilio-
+theken von Dateien schaffen,  die fuer den flexiblen Aufbau  ver-
+schiedener Programme zur Verfuegung stehen.
+
+Die Syntax fuer die I-Compiler-Direktive ist
+
+               {$I filename}
+
+wobei filename ein beliebiger erlaubter kompletter Dateiname ist. 
+Blanks  werden ignoriert und kleine Buchstaben in grosse umgewan-
+delt.  Wurde kein Typ spezifiziert,  wird .PAS angehaengt.  Diese 
+Direktive  muss allein in einer Zeile des Rahmenprogrammes  defi-
+niert werden.
+Beispiele:
+          {$I first.pas}
+          {$I STDPROC}
+          {$I COMPUTE.MOD}
+
+Zur  Demonstration der Include-Option nehmen wir an,  in  unserer 
+Bibliothek  exisitiere die Datei STUPCASE.FUN.  Sie enthalte  die 
+Funktion  StUpCase,   die  mit  einem  Zeichen  oder  String  als 
+Parameter  aufgerufen wird und die den Wert des Parameters  unter 
+Umwandlung aller Kleinbuchstaben in Grossbuchstaben zurueckgibt.
+
+Datei STUPCASE.FUN:
+
+     function StUpCase(St : ALlStrings) : AllStrings;
+        var I : Integer;
+        begin
+           for I := 1 to Length(St) do
+           St[I] := UpCase(St[I]);
+           StUpCase := St;
+        end;
+
+In  einem  anderen  Programm  kann man dann  diese  Funktion  zur 
+Umwandlung  von Klein- in Grossbuchstaben  verwenden,  indem  man 
+diese Datei mittels  der Include-Option einfuegt,  anstatt sie in 
+das Programm einzukopieren:
+
+     program STUPCASE;
+     type
+        InData     = string[80];
+        AllStrings = string[255];
+     var
+        Answer : InData;
+        I : Integer;
+     {$I F:STUPCASE.FUN}
+     begin
+        Writeln('Enter Name: ');
+        Readln(Answer);
+        Writeln(StUpCase(Answer));
+     end.
+.pa
+
+
+Diese  Methode ist nicht nur einfacher und Speicherplatz  sparen-
+der,  sie  ermoeglicht auch einen sicheren und  einfachen  Aende-
+rungsdienst.  Eine  Verbesserung  in einer solchen Routine  wirkt 
+dann  sofort automatisch auf alle Programme,  die  diese  Routine 
+mittels Include einfuegen.
+
+Man  sollte auch beachten,  dass TURBO-Pascal fuer die  einzelnen 
+Bestandteile  des Deklarationsteiles keine feste Ordnung  fordert 
+und  diese  auch mehrfach auftreten koennen.  Damit  besteht  die 
+Moeglichkeit,  bestimmte  häufig  verwendete  Typdefinitionen  in 
+einer  Bibliothek aufzunehmen und sie von dort aus in die einzel-
+nen Programme einzufuegen.
+
+Alle Compiler-Direktiven, ausser B und C, sind lokal zu dem File, 
+in dem sie auftreten. Das heisst, wenn eine Compiler-Direktive in 
+einem  Include-File  veraendert wird,  wird  sie  nach  Verlassen 
+dieses Include-Files auf den urspruenglichen Wert zurueckgesetzt. 
+Die Compiler-Direktiven B und C sind immer global. Eine Beschrei-
+bung aller Compiler-Direktiven steht im Anhang E.
+
+Include-Files  koennen  nicht  geschachtelt  werden,   d.h.   ein 
+Include-File  kann  immer  nur  von  einem  "Rahmenprogramm"  aus 
+aufgerufen und eingefuegt werden,  niemals von einem eingefuegten 
+Programm aus.
+

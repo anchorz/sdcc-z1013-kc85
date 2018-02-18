@@ -1,0 +1,3 @@
+<kurz src="Texteditor V9.0"/>
+<lang><include src="../dbff77acb4a2d5f49c8102f7afc222e6-I.TEDIT_9.0/I.TEDIT 9.0.txt"/></lang>
+<requires></requires>

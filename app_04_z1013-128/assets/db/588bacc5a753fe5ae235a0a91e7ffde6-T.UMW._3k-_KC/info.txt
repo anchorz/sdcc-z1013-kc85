@@ -1,0 +1,3 @@
+<kurz src="Umwandlung von 3k Tiny-BASIC in KC-Basic"/>
+<lang><include src="T.UMW. 3k-_KC.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="BIOS 4.8 für 2 Ram-Floppy's+RB angepasst von Andreas Müller"/>
+<lang><include src="T.CP_M-4.8.txt"/></lang>
+<requires></requires>

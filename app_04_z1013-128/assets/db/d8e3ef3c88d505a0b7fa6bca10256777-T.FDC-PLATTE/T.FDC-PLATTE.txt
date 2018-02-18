@@ -1,0 +1,208 @@
+Beschreibung der FDC-Platine
+===================================
+
+1. Bestückungsplan
+Nr.	Anzahl	Bezeichnung		Teil
+---------------------------------------------------------
+1	1	SW1			SW DIP-8 
+2	1	IC2			D 8272 
+3	2	IC6,IC3			DL 004
+4	1	IC4			DS 8205
+5	2	R1,2			560
+6	1	C1			4.7 nF
+7	1	IC5			DL 020
+8	1	IC7			DL 193
+9	1	IC14			DL 257
+10	1	IC8			DL 123
+11	2	IC10,IC13		DL 074
+12	2	T1,2			SS 219
+13	1	D2			VQA 14
+14	1	D1			VQA 34
+15	2	R9,10			47k(Dickschichteinst.r.)
+16	1	C5			47nF
+17	1	C4			680
+18	1	R7			1 k
+19	2	R6,R8			820 k
+20	1	IC 12			V 4046
+21	6	R11-16			220
+21a	1	C2			220
+22	1	IC11			DS 8287
+23	1	IC9			V 40098
+24	1	C3			170
+25	2	R3,4			3.3k
+26	1	C6			70
+27	1	R5			20k
+28	7	C8-14			33n
+29	1	R17			4.7k
+30	1	C7			47y/16V
+31	2	R19,21			300
+32	2	D3,4			SAY 15				
+33	2	R18,20			270k
+34	2	C15,16			10yF/16V
+35	1	Q1			8000 kHz
+36	2	IC15			B 555
+37	1	IC1			Ds 8286
+
+Einstellhinweise:
+Nachzuweisende Frequenzen : IC7 PIN 5 :8 MHz
+           		    IC7 PIN 3 :4 MHz
+                            IC2 PIN 21:500 kHz;Impulsbreite 250
+                            +/- 20 ns
+                            IC2 PIN 19:4 MHz
+Einstellung der PLL:
+-Controllerschaltkreis nicht stecken!!
+-R9 und R10 auf Linksanschlag (maximaler Wert)
+-dabei ist an IC 12 Pin 3 und 4 eine Rechteckschwingung mit
+einer Frequenz < 500 kHz zu messen
+-R 9 und 10 werden nun gleihmäßig verkleinert, bis sich eine
+Frequenz von 500 kHz +/- 2 kHz einstellt. Beide Widerstände
+sollten etwa den gleichen Wert haben.
+-für IC 2 Pin 22 ist die halbe VCO Frequenz nachzuweisen
+-mit einem Funktionsgenerator wird nun an XS 2 B13 eine Recht-
+eckspannung (500 kHz,TTL-Pegel) eingespeist. An IC2 Pin 23 sind
+High-Impulse (300 +/- 20 ns) nachzuweisen.
+
+Allgemeine Hinweise zum Aufbau:
+Die gelötete Platte sollte zuerst auf ordentliche Lötstellen
+untersucht werden. Danach ist der Stromverbrauch ohne FDC zu
+überprüfen (Kurzschluß). Es ist vor allen auf die spannungsfüh-
+renden Leiterzüge zu achten, die knapp an den Pin's der IC's vor-
+beiführen!!! Anschlüsse des Laufwerkes genau mit den Signalen de
+Platte vergleichen, um Fehlfunktionen zu unterbinden. Es gibt
+unterschiedliche Busse der einzelnen Laufwerke (1.2"-1.6").
+Bei Unsicherheit in entsprechender Literatur nachlesen, z.B. RFE
+oder Funkamateur.
+Weiterhin ist beim Anschluß des Laufwerkes darauf zu achten, daß
+das DRIVE-SELECT-SIGNAL (/SE:Pin B5),das MOTOR ON/OFF-SIGNAL
+(/MO:Pin A3) und HEAD LOAD (/HL:Pin B4) am Laufwerk miteinander
+verbunden werden müssen, da es softwaremäßig so angesteuert
+wird!!!!!!!!!
+Die Out- Adressen, welche vom BIOS angesteuert werden, sind F0H
+bis FAH. Der High-Teil läßt sich mittels der Adressen AB4-AB7
+hardwaremäßig einstellen. Das geschieht durch den Dip-Schalter
+oder einmal durch feste Drahtbrücken. Für F0H sind das die
+Leitungen 2,4,6 und 8 am Dip-Schalter. Der Low-Teil wird durch
+den Decoder 8205 bereitgestellt. Funktionsprüfung mittels Pegel-
+stift! Mit der Platte lassen sich zwei Laufwerke ansteuern, wird
+aber vom BIOS nicht unterstützt. Durch den zusätzlichen Einbau
+eines B555 konnte eine schnellere Datenübertragung erreicht wer-
+den. (kein ständiges Ausschalten des Schrittmotors nach RD/WR
+von 128 Byte!).
+Noch Etwas zum Reset. Auf der Platte ist das Reset vom Bus an
+den FDC gelegt (Hardwarereset). Nach Erfahrungen lassen sich
+nicht alle FDC's sofort zurücksetzen, Wiederholung ist angesagt.
+Im Bios wird auch ein "Softreset" mittels OUT-Signal unterstützt
+(FAH). Wenn diese Funktion genutzt werden soll, muß eine
+Verbindung vom IC4 (DS8205) Pin 10 zum IC6 (DL004) Pin 3 mittels
+einer Drahtbrücke erfolgen. Dabei ist das RESET vom Bus (A20) zu
+t r e n n e n !!!! Eine Und/Oder Verknüpfung von Hard-und Softre-
+set mittels einer Doppeldiode wäre dann denkbar.   			
+
+Hinweise zur Installation eines 1.2 Diskettenlaufwerkes an den Z1013,
+(bzw. 1.4 oder 1.6 Laufwerk 5/89)
+____________________________________________________________________
+
+
+   Das Laufwerk 1.2 (K 5600.10/20) einschl. Leiterplatte benoetigen
+   5V , 1.25A und 12V , 600mA. Ein stabile Stromversorgung ohne "Span-
+   nungseinbrueche" ist unbedingt fuer die einwandfreie Funktion zu
+   garantieren.
+   Ein 1.4 Laufwerk benoetigt ca. bei 5V 600 mA und 12V 300mA.
+
+1) Bei einem 1.2er Laufwerk ist es guenstig, das FAULT-RESET vom
+   Schreibflipflop zu trennen, da es sonst zu Aufzeichnugsfehlern
+   kommen kann (siehe Bild 1).
+   Am Schaltkreis IC5 (Laufwerk) ist Pin 9 auf +5V zu legen ! 
+
+8) Belegung Steckverbinder am Laufwerk 1.2 bzw. 1.4 
+
+         Steckverbinder      Steckverbinder
+         1.2 Laufw.          1.4 Laufw.   
+   
+A1       Masse              2  
+A2 	 + 5		    4   Head Load---|
+A3       Motor ON           6               |  
+A4       Ready              8   Index       |
+A5       Track 0            10  DS 0 	----|
+A6       Write Protect      12
+A7       Fault Write        14
+A8       Read Data          16 Motor ON
+A9       Index              18 Step Direction
+A10      Fault Reset        20 Step
+A11      Masse              22 Write Data
+A12      Masse              24 Write Enable
+A13      Masse              26 Track 0
+B1       Masse              28 Write Protect
+B2       + 5                30 Read Data
+B3       + 5                32 Head Select
+B4       Head Load          34 Ready (nicht angesch.)
+B5       Select---| Verbindung muss 
+B6       Step     | hergestellt werden !!!!
+B7       Lock-----|-wird an DS 0 angeschl.
+B8       Write Data
+B9       Write Enable
+B10      Step Direction
+B11      + 12
+B12      + 12
+B13      + 12
+
+Steckverbinder am 1.4 Laufwerk!(von oben auf das Laufwerk gesehen)
+
+        
+      +12,0,0,+5                ______________________                        
+      _________ (Spannungen)    ||.............|...|||  
+      |       |                 |34            8   42|     
+   _____________________________|                    |____ 
+
+Lediglich bei den 1.2er Laufwerken gab es die unterschiedlichsten
+Erscheinungen, die aber mit der Leiterplatte nichts zu tun haben.
+
+- bei einigen muessen die 12Volt wenigstens 12ms vor den 5Volt an-
+  liegen. Verzoegerung ueber Relais reicht aus.
+- die Spannungen 5 und 12 Volt muessen stabil anliegen
+- auf der Grundplatte des Z1013 ist der PIO vorsichtshalber voll-
+  staendig auszudecodieren!!!
+-noch einiges zu 1.2"-LW
+ /RDY wird aktiv, wenn: SELECT, SE ,B5 (LED SELECT ON)
+                        HEAD LOAD, HL, B4 (Kopfandrückmagnet)
+                        LOCK, LCK, B7 (Verrieglungsmagnet)
+                        Indeximpulse anliegen
+
+d.h. das Signal MOTOR ON, MO wird mit SE und HL verbunden,
+solange der Motor läuft, ist der Kopf geladen und RDY ist aktiv.
+Nur so kann die softwaremäßige Ansteuerung mit der FDC-Platte
+das Laufwerk voll ansteuern!!
+Für Interessenten ist es möglich für 5,-DM + 2,-DM (Porto), die
+v o l l s t ä n d i g e n  Serviceunterlagen für das
+1.2"-Laufwerk zu erhalten. (K 5600.10) .
+Damit kann jederzeit eine Reparatur oder Testung gut ermöglicht
+werden.
+Nochmal die richtige Anschlußliste, damit keine Zweifel
+auftreten:
+
+        FDC-Leiterplatte                  Floppy-Laufwerk
+_______________________________________________________________
+Signal		Anschluß		Anschluß
+
+RD		B13			A8
+RDY		B5			A4
+WP		B12			A6
+T0		B11			A5
+IX		A3			A9
+Masse		A1,A13 ,B1		A1,11,12,13
+5P		A12			A2,B2,3
+12P		A8,10			B11,12,13
+WD		B10			B8
+WE		A11			B9
+HL		B2			bleibt frei
+HDS		A6			nur für LW 1.4"-1.6"
+SD		B6			B10
+ST		A7			B6
+SE0		B7			MO A3, SE B5, HL B4
+SE1		B8 			2.Laufwerk
+Die Anschlußbelegung ist für das Laufwerk 1.2" gedacht. Bei
+anderen Laufwerken sind entsprechend die gleichen Signal richtig
+an die FDC-Platine zu legen!!
+	
+		 		  CC Jena
+

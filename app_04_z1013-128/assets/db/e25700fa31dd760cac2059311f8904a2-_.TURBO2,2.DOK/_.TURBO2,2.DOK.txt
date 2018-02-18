@@ -1,0 +1,699 @@
+.PL72
+.MT1
+.MB3
+.FM1
+.FO                                                              
+.HE                                       TURBO-Pascal  Seite #
+.PN38
+.PO8
+14.5 Textfiles
+
+Textfiles  bestehen  im Prinzip nicht wie alle anderen Files  aus 
+Folgen von Komponenten gleichen Typs. Obwohl die Basiskomponenten 
+eines  Textfiles alle vom Typ Char sind,  besteht  ihre  Struktur 
+doch  aus  Zeilen.  Jede Zeile endet mit  einer  Zeilenendemarke: 
+einer CR/LF-Folge. Das File selbst endet mit einer Fileendemarke: 
+CTRL-Z.  Da die Zeilenlaenge beliebig variieren kann, laesst sich 
+die  Position  einer  beliebigen Zeile in  einem  Textfile  nicht 
+berechnen.  Aus  diesem Grunde kann man Textfiles nur sequentiell 
+verarbeiten und Ein- und Ausgaben duerfen nicht gleichzeitig  auf 
+ein Textfile erfolgen.
+
+
+14.5.1 Textfileoperationen
+
+Eine Textfilevariable wird erklaert,  indem man sie dem Standard-
+typbezeichner Text zuweist:
+
+               var       Filvar : Text;
+
+Als  erste muss vor allen anderen Fileoperationen fuer ein  Text-
+file zum Zuweisen des physischen Filenamens die Prozedure  ASSIGN 
+aufgerufen werden. Danach ist zur Eroeffnung des Textfile vor den 
+I/O-Operationen entweder RESET oder REWRITE auszufuehren. REWRITE 
+wird  fuer  den Aufbau eines neuen  Textfiles  verwendet.  Danach 
+koennen nur Schreiboperationen folgen, da das File noch leer ist. 
+RESET  verwendet  man,  um ein bereits existierendes Textfile  zu 
+eroeffnen.  Danach ist nur sequentielles Lesen erlaubt.  Wenn ein 
+neues  File  mit CLOSE geschlossen wird,  wird  automatisch  eine 
+Fileendemarke(EOF): CTRL-Z an das File angehaengt.
+
+Zeichenweise I/O-Operationen werden fuer Textfiles mit den  Stan-
+dardprozeduren READ und WRITE ausgefuehrt.  Zeilen werden mit den 
+speziellen  Textfileoperationen READLN,  WRITELN und EOLN  behan-
+delt, dabei ist F eine beliebige Filevariable:
+
+     Readln(F)   Springt zum Beginn der naechsten Textzeile, d.h. 
+                 ueberspringt  alle Zeichen bis und  einschliess-
+                 lich der naechsten CR/LF-Folge.
+
+     Writeln(F)  Schreibt die Zeilenendemarke,  d.h.  die  CR/LF-
+                 Folge auf das Textfile.
+
+     Eoln(F)     Ist eine Boolesche-Funktion,  die den Wert  True 
+                 zurueckgibt,  wenn  das Ende der aktuellen Zeile 
+                 erreicht ist,  d.h.  der Filepointer auf das CR-
+                 Zeichen der CR/LF-Folge zeigt.  Wenn Eof(F) True 
+                 ist, dann ist auch Eoln(F) True.
+                 
+Wird  die  Eof-Funktion auf ein Textfile  angewendet,  dann  gibt 
+diese  Funktion den Wert True zurueck,  wenn der Filepointer  die 
+Fileendemarke  CTRL-Z erreicht hat.  
+Auf  Textfiles  sind folgende Prozeduren  bzw.  Funktionen  nicht 
+anwendbar:
+
+                 SEEK, FLUSH, FilePos und FileSize.
+
+.pa
+
+Das  folgende Beispielprogramm liest ein Textfile von einer  Dis-
+kette und druckt es auf einen vorher definierten Drucker LST aus. 
+Die  Worte,  die in ^S eingeschlossen sind,  werden unterstrichen 
+gedruckt.
+
+     program TextFileDemo;
+     var
+       FileVar    : Text;
+       Line,
+       ExtraLine  : string[255];
+       I          : integer;
+       UnderLine  : boolean;
+       FileName   : string[14];
+     begin
+       UnderLine := False;
+       Write('Enter name of file to list: ');
+       Readln(FileName);
+       Assign(FileVar,FileName);
+       Reset(FileVar);
+       while not Eof(FileVar) do
+       begin
+         Readln(FileVar,Line);
+         I := 1; ExtraLine := ' ';
+         for I := 1 to Length(Line) do
+         begin
+           if Line[I] <> ^S then
+           begin
+             Write(Lst,Line[I]);
+             if UnderLine then ExtraLine := ExtraLine + '_'
+                          else ExtraLine := ExtraLine + ' ';
+           end
+           else UnderLine := not UnderLine;
+         end;
+         Write(Lst,^M); Writeln(Lst,ExtraLine);
+       end;             {while not Eof}
+     end.
+
+Erweiterungen der Prozeduren READ und WRITE bezueglich formatier-
+ter Ein- und Ausgaben werden in Abschnitt 14.6 beschrieben.
+
+
+
+14.5.2 Logische Geraete
+
+In  TURBO-Pascal werden externe Geraete,  wie Terminals,  Drucker 
+und Modems als logische Geraete bezeichnet.  Sie werden  genauso, 
+wie Textfiles behandelt:
+
+  CON:   Console.  Ausgaben  werden an  das  Consolausgabegeraet, 
+         normalerweise ein Bildschirmgeraet,  gesendet.  Eingaben 
+         werden vom Consoleingabegeraet,  normalerweise eine Tas-
+         tatur,  gelesen. Im Gegensatz zum TRM-Geraet puffert das 
+         CON-Geraet die Eingaben.  Dies bedeutet,  dass READ oder 
+         READLN  ueber CON eine ganze Zeile aus dem  Zeilenpuffer 
+         einliest, und der Operator, bis zur Eingabe von CR ueber 
+         die  ENTER-Taste,  die Editiermoeglichkeiten des Systems 
+         fuer Eingaben nutzen kann.  Genauere Eingaben ueber  die 
+         Conoleingaben in Abschnitten 14.5.3 und 14.6.1.
+
+  TRM:   Terminal.  Ausgaben erfolgen an das Consolausgabegeraet, 
+         normalerweise ein Bildschirmgeraet.  Eingaben werden vom 
+         Consoleingabegeraet,  normalerweise der Tastatur,  gele-
+         sen.  Eingegebene Zeichen, ausser Controlzeichen, werden 
+         als Echo an das Consolausgabegeraet gesendet. Das einzi-
+         ge Controlzeichen,  das als Echo gesendet wird,  ist das 
+         Zeichen CR und zwar in Form der Folge CR/LF.  
+
+
+  KBD:   Keyboard.    Eingaben   werden   von   der    Consolein-
+         gabe,normalerweise der Tastatur,  gelesen. Ein Echo wird 
+         nicht gesendet.
+
+  LST:   Listing.  Die  Ausgaben werden an des  Systemlistgeraet, 
+         normalerweise ein Zeilendrucker, gesendet.
+
+  AUX:   Auxiliary. Ausgaben werden an den Systemstanzer gesendet 
+         und Eingaben werden vom Systemleser  gelesen.  Normaler-
+         weise sind beide Lochbandgeraete.
+
+  USR:   Usergeraet.  Ausgaben  gehen an das  Nutzerausgabegeraet 
+         und   Eingaben  werden  ueber  die  Nutzereingaberoutine 
+         gelesen. Weitere Einzelheiten siehe A.12.
+
+Diese  logischen  Geraete koennen durch vorher  definierte  Files 
+(siehe  14.5.3)  oder wie ein Diskettenfile  einer  Filevariablen 
+zugewiesen werden. Wurde ein File einem logischen Geraet zugewie-
+sen,  gibt es zwischen REWRITE und RESET keinen Unterschied.  Die 
+Prozedur  CLOSE  fuehrt dann keine Funktion aus und ERASE  bringt 
+einen I/O-Fehler.
+ 
+Die  Standardfunktionen  Eof  und  Eoln  arbeiten  bei  logischen 
+Geraeten anders als bei Diskettenfiles.  Bei einem  Diskettenfile 
+gibt Eof den Wert True zurueck, wenn das naechste Zeichen im File 
+das Zeichen CTRL-Z ist, und Eoln gibt den Wert True zurueck, wenn 
+das naechste Zeichen das Zeichen CR oder CTRL-Z ist,  d.h.  diese 
+beiden Prozeduren sind dann praktisch vorausschauende Routinen.
+Bei   logischen  Geraeten  gibt  es  jedoch  keine   Moeglichkeit 
+vorauszuschauen,  welche Zeichen als naechste kommen werden.  Aus 
+diesem  Grunde  liefern Eof und Eoln bei logischen  Geraeten  das 
+Ergebnis  immer  vom   letzten behandelten Zeichen und nicht  vom 
+naechsten:  Eof gibt True zurueck, wenn das letzte Zeichen CTRL-Z 
+war und Eoln gibt True zurueck,  wenn das letzte Zeichen CR  oder 
+CTRL-Z war.
+Folgende Tabelle soll einen Ueberblick geben:
+
+                Diskettenfiles                 Logische Geraete
+
+Eoln ist True  wenn  aktuelles  Zeichen  CR   wenn aktuelles Zei-
+               und  naechstes LF  ist  oder   chen CR oder CTRL-Z
+               wenn naechstes Zeichen CTRL-   ist.
+               Z ist.
+
+Eof  ist True  wenn naechstes Zeichen CTRL-   wenn aktuelles Zei-
+               Z ist.                         chen CTRL-Z ist.
+
+
+Auch die Prozedur READLN arbeitet in beiden Faellen  anders.  Bei 
+einem  Diskettenfile liest  READLN alle Zeichen bis  einschliess-
+lich  der  CR/LF-Folge,  waehrend  ein logisches Geraet  nur  bis 
+einschliesslich  dem ersten CR liest.  Der Grund ist der  gleiche 
+wie oben,  ein logisches Geraet kann erst CR erkennen, wenn es CR 
+gelesen hat.
+
+
+14.5.3 Standardfiles
+
+Alternativ  zur  oben  beschriebenen Zuweisung von  Textfiles  zu 
+logischen  Geraeten stellt TURBO-Pascal einige  Standardtextfiles 
+zur  Verfuegung,  die bereits logischen Geraeten zugewiesen  sind 
+und die so vorbereitet sind,  dass sie unmittelbar benutzt werden 
+koennen.  Der Programmierer spart damit einerseits  Speicherplatz 
+und  andererseits  den  Aufruf  von  RESET,  REWRITE  und  Close. 
+.pa
+
+Folgende Standardtextfiles sind implementiert:
+
+     Input     Primaeres Inputfile. Dieses File ist entweder dem
+               CON- oder TRM-Geraet zugewiesen (s.u.).
+     Output    Primaeres Ausgabefile. Dieses File ist entweder 
+               dem CON- oder TRM-Geraet zugewiesen (s.u.).
+     Con       Zugewiesen dem Consolgeraet CON:.
+     Trm       Zugewiesen dem Terminalgeraet TRM:.
+     Kbd       Zugewiesen dem Keyboard KBD:.
+     Lst       Zugewiesen dem Listgeraet LST:.
+     Aux       Zugewiesen dem Auxiliarygeraet AUX:.
+     Usc       Zugewiesen dem Usergeraet USR:.
+
+Bei der Verwendung dieser Standardtextfiles ist zu beachten, dass 
+die  Verwendung  von RESET,  REWRITE und CLOSE  nicht  nur  nicht 
+notwendig,  sondern  sogar verboten ist.  Die Zuweisung des logi-
+schen  Geraetes  zu den Standardtextfiles Input und  Output  wird 
+durch die Compilerdirektive $B bestimmt:
+
+               {$B+}  weist  CON: zu,
+               {$B-}  weist  TRM: zu.
+
+Bei Zuweisung von CON:  werden die Eingaben gepuffert und koennen 
+in diesem Puffer bei der Eingabe editiert werden ,  aber fuer das 
+Einlesen der Variablen gelten spezielle Gesetze  (s.14.6.1).  Bei 
+Zuweisung von TRM: ist ein editieren der Eingaben nicht moeglich, 
+das  Einlesen  der  Variablen  erfolgt aber  nach  den  bekannten 
+Regeln.  Bei  den Ausgabeoperationen gibt es fuer CON:  und  TRM: 
+keinen Unterschied.
+Die  Compilerdirektive  $B muss vor dem Programmblock stehen  und 
+darf als globale Direktive im Programmblock nicht geaendert  wer-
+den.  Wenn  in  einem Programm sowohl CON- als  auch  TRM-Geraete 
+verwendet  werden,  ist die Direktive $B entsprechend dem am häu-
+figsten  verwendeten  Geraet zu setzen und in  den  anderen  I/O-
+Operationen ist das andere Geraet explizit anzugeben.
+
+Beispiel:
+     {$B-}
+     program ReadAndWrite(input,output);
+     ...
+     ...
+     ...
+     Readln(input,Var1);           Read von TRM:
+     Readln(Con,Var2);             Read von CON:
+
+An  den Stellen,  wo auf dem Bildschirm kein  automatisches  Echo 
+erscheinen soll, muss man das Standardtextfile Kbd zuweisen:
+
+               Read(Kbd,Var);
+
+Da  die Standardtextfiles Input und Output sehr häufig  verwendet 
+werden,  wurde  implementiert,  dass  sie automatisch  zugewiesen 
+werden,  wenn kein Filebezeichner explizit angegeben wurde. Damit 
+sind die folgenden Textfileoperationen equivalent:
+
+     Write(Ch)      Write(Output,Ch)
+     Read(Ch)       Read(Input,Ch)
+     Writeln        Writeln(Output)
+     Readln         Readeln(Output)
+     Eof            Eof(Input)
+     Eoln           Eoln
+.pa
+
+Das folgende Programm zeigt die Verwendung des Standardfiles  Lst 
+zur Ausgabe des ProductFile von 14.4 ueber den Drucker:
+
+     program ListProductFile;
+     const
+       MaxNumberOfProducts = 100;
+     type
+       ProductName         = string[20];
+       Product             = record
+                               Name         : ProductName;
+                               ItemNumber   : Integer;
+                               InStock      : Real;
+                               Supplier     : Integer;
+                             end;
+     var
+       ProductFile         : file of Product;
+       ProductRec          : Product;
+       I                   : Integer;
+     begin
+     Assign(ProductFile,'PRODUCT.DTA');
+     Reset(ProductFile);
+     for I := 1 to MaxNumberOfProducts do
+          begin 
+               Read(ProductFile,ProductRec);
+               with ProductRec do
+               begin
+                    if Name <> ' ' then
+                    Writeln(Lst,'Item:',ItemNumber:5,' ',Name:20,
+                            'From: ',Supplier:5,
+                            'Now in Stock: ',InStock:0:0);
+               end;
+          end; 
+          close(ProductFile);
+     end.
+
+14.6 Ein- und Ausgabe von Textfiles 
+
+Die  Ein- und  Ausgabe von Daten in lesbarer  Form  wird  mittels 
+Textfiles so,  wie in 14.5 beschrieben, ausgefuehrt. Ein Textfile 
+kann irgendeinem Geraet, d.h. einem Diskfile oder einem Standard-
+I/O-Geraet  zugewiesen werden.  Die Ein- und Ausgabe kann  ausge-
+fuehrt werden mit den Standardprozeduren READ, READELN, WRITE und 
+WRITELN,  die eine spezielle Syntax fuer ihre Parameterliste ver-
+wenden,  um  eine maximale Flexibilitaet der Ein- und Ausgaben zu 
+erreichen.
+Die  Parameter koennen im Einzelnen einen unterschiedliche  Typen 
+haben.  In  diesen Faellen erfolgt eine automatische Datenkonver-
+tierung  bei der Ein- und Ausgabe in und aus  den  Standard-Char-
+Typen des Textfiles.
+Ist  der erste Parameter einer I/O-Prozedur ein Variablenbezeich-
+ner eines Textfiles,  dann bezieht sich die Ein- oder Ausgabe auf 
+dieses File, andernfalls bezieht sie sich auf des Standartextfile 
+Input oder Output (s.14.5.3).
+
+14.6.1 READ-Prozedur
+
+Die  Read-Prozedure ermoeglicht die Eingabe von Zeichen,  Strings 
+und numerischen Daten.
+Syntax:
+          Read(Var1, Var2, .. , VarN) 
+oder      Read(File, Var1, .. , VarN) 
+
+wobei Var1,  .. ,VarN Variable vom Typ Char, String, Integer oder 
+Real  sein koennen.  Die erste Form liest Daten vom  Standardfile 
+Input,  normalerweise  dem Keyboard (Tastatur).  Die zweite  Form 
+liest Eingaben vom Textfile File,  welches fuer das Lesen  vorbe-
+reitet werden muss.
+
+Mit  einer Variablen vom Typ Char liest Read vom File ein Zeichen 
+und  weist dieses der Variablen zu.  Wenn das File  ein  Diskfile 
+ist, wird Eoln True, wenn das naechste Zeichen CR oder CTRL-Z ist 
+und Eof wird True, wenn das naechste Zeichen CTRL-Z ist.
+Wenn  das  File ein logisches Geraet (einschliesslich  Input  und 
+Output)  ist,  wird  Eoln True,  wenn das letzte Zeichen CR  oder 
+CTRL-Z war und Eof wird True, wenn das letzte Zeichen CTRL-Z war.
+
+Mit  einer Variablen vom Typ String liest Read  soviele  Zeichen, 
+wie  durch  die maximale Laenge des String erlaubt sind,  es  sei 
+denn Eoln oder Eof wurde vorher erreicht.
+Eoln wird True,  wenn das letzte gelesene Zeichen CR oder  CTRL-Z 
+war,  und Eof wird True,  wenn das letzte gelesene Zeichen CTRL-Z 
+war.
+
+Mit einer numerischen Variablen (Integer oder Real) erwartet Read 
+eine Zeichenkette,  die mit dem Format einer numerischen Konstan-
+ten  des entsprechenden Typs,  wie in Abschnitt  4.2.  definiert, 
+uebereinstimmt.  Voranstehende Leerzeichen, HT, CR oder LF werden 
+uebersprungen. Die Zeichenkette darf nicht laenger als 30 Zeichen 
+sein und muss mit einem Leerzeichen,  HT,  CR oder CTRL-Z beendet 
+sein.  Wenn die Zeichenkette nicht mit dem Format uebereinstimmt, 
+tritt  ein  I/O-Fehler auf.  Im anderen Fall wird die  numerische 
+Zeichenkette  in  den  entsprechenden  Typ  konvertiert  und  der 
+Variablen zugewiesen. 
+Wenn von einem Diskfile gelesen wurde und die Eingabezeichenkette 
+endet  mit einem Leerzeichen oder HT,  dann startet die  naechste 
+Read  oder  Readln Operation mit  dem  Zeichen,  das  unmittelbar 
+diesem  Leerzeichen  oder HT folgt.  Fuer  beide,  Diskfile  oder 
+logischem  Geraet,  wird Eoln True,  wenn die Zeichenkette mit CR 
+oder CTRL-Z endete und Eof wird True, wenn sie mit CTRL-Z endete. 
+Ein   Spezialfall  der  numerischen  Eingabe  tritt   auf,   wenn        
+Eoln  oder  Eof bereits beim  Beginn  (beispielsweise,  wenn  die 
+Eingabe nur CR war) True wird. In diesem Falle wird der Variablen 
+kein  neuer Wert zugewiesen und die Variable behaelt ihren  alten 
+Wert.
+
+Wenn das Eingabefile CON:  zugewiesen wurde,  oder wenn das Stan-
+dardfile im {$B+}-Modus verwendet wurde, gelten spezielle Gesetze 
+fuer  das Lesen der Variablen.  Beim Aufruf von Read oder  Readln 
+wird die ganze Zeile von der Console in einen Puffer gebracht und 
+das Einlesen der Variablen erfolgt aus diesem Puffer als Eingabe-
+quelle. Dadurch wird ein Editieren waehrend der Eingabe moeglich:
+
+Backspace und DEL  Ruecksetzen des Cursors und Loeschen des  dort 
+                   stehenden  Zeichens.  Backspace wird durch die 
+                   Taste --> oder CTRL-H erzeugt.  DEL wird durch 
+                   die Taste DEL oder RUBOUT erzeugt.
+
+CTRL-X             Ruecksetzen  des Cursor auf den  Eingabebeginn 
+                   und loschen aller eingegebenen Zeichen. CTRL-X 
+                   wird  durch  die Taste (Pfeil nach unten)  er-
+                   zeugt.
+
+Die  Enter-Taste  beendet die Eingabe.  Das dabei eingegebene  CR 
+wird nicht als Echo auf dem Bildschirm ausgegeben.
+Intern  wird  die Eingebezeile mit einem CTRL-Z am  Ende  gespei-
+chert.  Ist  diese Eingabezeile kuerzer als die Variablen in  der 
+Parameterliste,  werden die restlichen Variablen wie folgt behan-
+delt:  bei  Char  wird CTRL-Z eingetragen,  bei String  wird  mit 
+Leerzeichen aufgefuellt,  und numerische Variable bleiben  unver-
+aendert.
+.pa
+
+
+
+Maximal  koennen   in  eine Eingabezeile 127  Zeichen  eingegeben 
+werden.  Man  kann die Eingabezeile jedoch auch  begrenzen.  Dazu 
+wird der vordeklarierten Variable Buflen eine Integerzahl aus dem 
+Bereich 0 bis 127 zugewiesen.
+Beispiel:
+          Write('Filename (max.14 Zeichen):');
+          Buflen := 14;
+          Readln(FileName);
+Es ist zu beachten,  dass die Zuweisungen zu Buflen nur fuer  das 
+unmittelbar darauffolgende Read wirken. Danach wird Buflen sofort 
+wieder auf 127 gesetzt.
+
+
+
+14.6.2 Readln-Prozedur
+
+Die Readln-Prozedur ist mit der Read-Prozedur  identisch,  ausser 
+dass  nach dem Einlesen der letzten Variablen der Rest der  Zeile 
+uebersprungen wird, d.h. alle Zeichen bis und einschliesslich der 
+naechsten  CR/LF-Folge (oder dem naechsten CR bei einem logischen 
+Geraet) werden uebersprungen.
+Syntax:
+          Readln(Var1, Var2, .. , VarN)
+oder      Readln(File, Var1, .. , VarN)
+
+Nach einem Readln liest das naechste Read oder Readln vom  Beginn 
+der  naechsten Zeile.  Eoln ist immer False nach Readln,  es  sei 
+denn,  Eof ist True. Readln kann ebenso ohne Parameter aufgerufen 
+werden:
+          Readln         oder      Readln(File)
+
+In  diesen  Faellen wird die gesamte  Zeile  uebersprungen.  Wenn 
+Readln  von  der Console liest (mit dem Standardfile  Input  oder 
+einem File, dem CON: zugewiesen wurde), wird im Gegensatz zu Read 
+das  beendende CR als Echo in der Form CR/LF-Folge auf den  Bild-
+schirm uebertragen.
+
+
+
+14.6.3 Write-Prozedure
+
+Die Write-Prozedure ermoeglicht die Ausgabe von Zeichen, Strings, 
+Booleschen und numerischen Werten.
+Syntax:
+          Write(Wp1, Wp2, .. , WpN)
+oder      Write(File,Wp1, .. , WpN)
+
+wobei Wp1, .. , WpN die (Write-Parameter) Variablen vom Typ Char, 
+String,  Boolean,  Integer oder Real sind. Wahlweise folgt diesen 
+Parametern  jeweils ein Doppelpunkt und ein Integerausdruck,  der 
+die  Laenge  des Ausgabefeldes angibt.  In der  ersten  der  oben 
+angegebenen  Formen  erfolgt die Ausgabe der Variablen durch  das 
+Standardtextfile Output,  das gewoehnlich ein Bildschirm ist.  Im 
+zweiten  Fall  werden  die  Variablen  durch  das  Textfile  File 
+ausgegeben.  Dieses File muss natuerlich fuer die Ausgabe  vorbereitet 
+werden.
+.pa
+
+Die Formate der Write-Parameter haengen vom Typ der Variablen ab. 
+Im  Folgenden  werden  die  unterschiedlichen  Formate  und  ihre 
+Eigenschaften beschrieben. Dabei bezeichenen die Symbole:
+
+          I,m,n     Ausdruecke vom Typ       Integer
+          R         Ausdruecke vom Typ       Real    
+          Ch        Ausdruecke vom Typ       Char    
+          S         Ausdruecke vom Typ       String 
+          B         Ausdruecke vom Typ       Boolean
+
+
+                       Formatuebersicht
+
+Ch       Ausgabe des Zeichen Ch.
+
+Ch:n     Ausgabe des Zeichens Ch rechtsbuendig in einem n Zeichen 
+         langen Feld, d.h. vor Ch stehen n-1 Blanks.
+
+S        Ausgabe  des String S.  Zeichenfelder  (Arrays)  koennen 
+         ebenfalls  ausgegeben werden,  wenn sie mit den  Strings 
+         uebereinstimmen.
+
+S:n      Ausgabe  der  Strings rechtsbuendig in einem  n  Zeichen 
+         langen Feld, d.h. vor S stehen n-Len(S) Blanks.
+
+B        Ausgabe des Wortes True oder False.
+
+B:n      Ausgabe  des  Wortes  True oder False  rechtsbuendig  in 
+         einem n Zeichen langen Feld.
+
+I        Ausgabe der Dezimaldarstellung von I.
+
+I:n      Ausgabe  der Dezimaldarstellung von I  rechtsbuendig  in 
+         einem n Zeichen langen Feld.
+
+R        Ausgabe  der  Dezimaldarstellung von R rechtsbuendig  in 
+         einem  18 Zeichen langen Feld als Gleitkommazahl in  der 
+         Form:
+               R >= 0        __d.ddddddddddEtdd
+               R <  0        _-d.ddddddddddEtdd
+         Dabei  bedeuten die Zeichen _ Blanks,  d Ziffern  und  t 
+         endweder + oder -.
+
+R:n      Ausgabe  der  Dezimaldarstellung von R rechtsbuendig  in 
+         einem  n Zeichen langen Feld als Gleitkommazahl  in  der 
+         Form:
+               R >= 0        blanks d. digits Etdd
+               R <  0        blanks-d. digits Etdd
+         Dabei bedeuten blanks keine oder mehrere Blanks,  digits 
+         ein  bis zehn Ziffern,  d eine Ziffer und T  entweder  + 
+         oder -.  Nach dem Dezimalpunkt wird mindestens eine Zif-
+         fer ausgegeben,  d.h.  n muss mindestens 7 (bzw.8) sein. 
+         Ist  n groesser als 16 (bzw.17),  so stehen vor der Zahl 
+         n-16 (bzw.n-17) Blanks.
+
+R:n:m    Ausgabe  der Dezimaldarstellung von R  rechtsbuendig  in 
+         einem  n  Zeichen  langen Feld als Festpunktzahl  mit  m 
+         Dezimalziffern.  Dabei  muss m im Bereich 0 <= m  <=  24 
+         liegen,  sonst wird Gleitkommaformat verwendet. Das Feld 
+         wird vor der Zahl mit Blanks aufgefuellt.
+
+.pa
+
+14.6.4 Writeln-Prozedur
+
+Die Writeln-Prozedur ist identisch mit der Write-Prozedur, ausser 
+dass nach der letzten Variablen eine CR/LF-Folge ausgegeben wird. 
+Syntax:
+         Writeln(Wp1, Wp2, .. , WpN)
+oder     Writeln(File,Wp2, .. , WpN)
+
+Wird die Prozedur ohne Write Parameter angegeben in der Form   
+
+         Writeln     oder       Writeln(File)
+
+so wird nur die CR/LF-Folge ausgegeben.
+
+
+
+14.7Nichttypisierte Files
+
+Nichttypisierte  (untyped) Files sind Kanalein- und -ausgaben auf 
+dem  niedrigsten  Niveau.  Sie werden fuer den  Direktzugriff  zu 
+einem Diskfile mit der Standardlaenge von 128 Bytes verwendet.
+Bei Ein- und Ausgabeoperationen mit nichttypisierten Files werden 
+die  Daten direkt zwischen dem Diskfile und der Variablen  ueber-
+tragen, ohne Platz fuer einen Sektorpuffer, wie bei den typisier-
+ten  Files,  zu  benoetigen.  Eine  nichttypisierte  Filevariable 
+braucht  daher weniger Platz als andere Filevariable.  Wird  eine 
+Filevariable  nur fuer die Prozeduren Erase,  Rename oder  andere 
+I/O-Operationen verwendet, die eigentlich gar keine Eingaben oder 
+Ausgaben sind, so sind nichttypisierte Filevariable vorzuziehen.
+
+Ein  nichttypisiertes  File wird durch das reservierte Wort File
+definiert:
+Beispiel:
+          Var
+               datafile : File
+
+
+14.7.1 Operationen mit nichttypisierten Files 
+
+Fuer  nichttypisierte Files sind  alle  Standard-Filebehandlungs-
+Prozeduren und -Funktionen, ausser Read, Write und Flush erlaubt. 
+Read   und   Write   werden   durch   zwei   spezielle   schnelle 
+Uebertragungsprozeduren ersetzt: 
+Syntax:
+          BlockRead(filvar,var,recs)
+          BlockWrite(filvar,var,recs)
+
+dabei sind filvar ein Variablenbezeichner eines  nichttypisierten 
+Files,  var irgendeine Variable und recs ein Integerausdruck, der 
+die  Anzahl  der zu uebertragenden 128-Bytes-Saetze zwischen  dem 
+Diskfile und dem Speicher ist.
+
+Die Uebertragung beginnt mit dem ersten Byte,  das zur  Variablen 
+var gehoert.  Der Programmierer hat selbst dafuer zu sorgen, dass 
+hinter der Variablen genuegend Platz bereitgestellt ist,  um alle 
+Daten  der  Uebertragung  ablegen  zu  koennen.  Der  Aufruf  von 
+BlockRead  und  BlockWrite  rueckt auch den  Filepointer  um  die 
+entsprechende Anzahl von Saetzen weiter.
+Ein File, das durch   BlockRead oder BlockWrite bearbeitet werden 
+soll, muss zuerst durch Assign und Rewrite oder Reset vorbereitet 
+werden.  Rewrite eroeffnet und baut ein neues File auf und  Reset 
+eroeffnet ein bereits existierendes File. Nach den Uebertragungs-
+prozeduren  sollte  mit Close ein sicherer  Abschluss  garantiert 
+werden.  Die  Standardprozedure  Seek und die  Standardfunktionen 
+Pos,  FileSize und Eof arbeiten exakt genauso wie bei typisierten 
+Files. 
+.pa
+
+
+
+Das folgende Programm zeigt die Verwendung eines nichttypisierten 
+Files.  Es  liest ein Diskfile und kopiert seinen Inhalt auf  ein 
+anderes Diskfile:
+
+     program Copy;
+
+     const
+        BufSize     = 100;
+        BufByteSize = 12800;
+
+     var
+        Source,
+        Destination     : File;
+        SourceName,
+        DestinationName : String[14];
+        Buffer          : Array[1..BufByteSize] of Byte;
+        NoOfRecsToRead,
+        Remaining       : Integer;
+
+     begin
+        Write('Enter Source file name:     ');
+        Readln(SourceName);
+        Assign(Source,SourceName);
+        Reset(Source);
+        Write('Enter destination file name:  ');
+        Readln(DestinationName);
+        Assign(Destination,DestinationName);
+        Rewrite(Destination);
+        Remaining := FileSize(Source);
+        if Remaining <> 0 then
+           begin
+              repeat
+                 if BufSize <= Remaining then NoOfRecsToRead := BufSize
+                 else NoOfRecsToRead := Remaining;     
+                 BlockRead(Source,Buffer,NoOfRecsToRead);
+                 BlockWrite(Destination,Buffer,NoOfRecsToRead);
+                 Remaining := Remaining - NoOfRecsToRead;
+              until Remaining = 0;
+              Close(Destination);
+              Close(Source);
+           end;
+     end.
+
+.pa
+
+14.8 Ein- und Ausgabepruefung
+
+Zur Generierung einer Ein- und Ausgabepruefung waehrend der Lauf-
+zeit  eines  Programmes wird die I-Compiler-Direktive  verwendet. 
+Der Standard-Status ist aktiv,  d.h.{$I+}.  Damit wird nach jeder 
+I/O-Operation eine I/O-Pruefroutine aufgerufen und bei auftreten-
+den I/O-Fehlern wird das Programm abgebrochen und eine Fehlermit-
+teilung ausgegeben, die den Typ des Fehlers anzeigt.
+ 
+Ist die I-Compiler-Direktive passiv,  d.h.  {$I-},  dann wird zur 
+Laufzeit  des Programmes keine I/O-Pruefung  durchgefuehrt.  Dann 
+ist es notwendig,  das Ergebnis von I/O-Operationen durch Verwen-
+dung der Standardfunktion IOresult zu ueberwachen. Denn in diesem 
+Falle  fuehren I/O-Fehler zwar nicht zum Programmstop,  aber  sie 
+unterbinden jede weitere Ein- und Ausgabe, bis die Funktion IOre-
+sult  aufgerufen wurde.  Bei Ausfuehrung dieser Funktion wird die 
+Fehlerbedingung  zurueckgesetzt  und es koennen  wieder  Ein- und 
+Ausgaben durchgefuehrt werden.  Nach dieser Ruecksetzung der Feh-
+lerbedingung  liefern spaeter folgende Aufrufe von  IOresult  den 
+Wert 0,  bis der naechste Fehler auftritt. Damit ist der Program-
+mierer selbst in der Lage,  geeignete Massnahmen bei auftretenden 
+Fehlern  vorzunehmen.  Die Rueckgabe des Wertes 0 durch  IOresult 
+zeigt stets nach einer Ein- oder Ausgabe eine erfolgreiche Opera-
+tion  an,  alle  anderen zurueckgegebenen Werte weisen auf  einen 
+Fehler  bei der letzten I/O-Operation hin.  Im Anhang  sind  alle 
+Fehlermitteilungen und ihre Nummern aufgelistet.
+
+Die  IOresult-Funktion ist fuer die Faelle sehr geeignet,  wo bei 
+einem  Fehler  ein Programmstop unzweckmaessig ist.  So  kann  im 
+folgenden  Beispiel  damit solange nach einem  Filenamen  gefragt 
+werden,  bis  die Reset-Funktion ein erfolgreiches Ergebnis  lie-
+fert, d.h. das File gefunden wurde.
+
+program OPINFILE;
+
+  var
+  InFile       : File;
+  InFileName   : String[14];
+  OK           : Boolean;
+     procedure OpenInFile;
+     begin
+        repeat
+           Write('Enter name of input File: ');
+           Readln(InFileName);
+           Assign(InFile,InFileName);
+           {$I-} Reset(InFile); {$I+}
+           OK := (IOresult = 0);
+           if not OK then Writeln('Cannot find file: ',InFileName);
+        until OK;
+     Close(InFile);
+     end;
+begin
+OpenInFile;
+end.
+
+Wenn in einem Programm die I-Compiler-Direktive {$I-} passiv ist, 
+sollten  fuer die folgenden Standardprozeduren stets mittels  der 
+Funktion  IOresult geeignete Fehlermassnahmen durchgefuehrt  wer-
+den:
+
+     BlockRead BlockWrite     Chain     Close
+     Erase     Execute        Flush     Read
+     Readln    Rename         Reset     Rewrite
+     Seek      Write          Writeln

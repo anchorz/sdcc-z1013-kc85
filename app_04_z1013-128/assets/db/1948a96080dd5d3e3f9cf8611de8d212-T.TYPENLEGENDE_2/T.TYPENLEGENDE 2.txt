@@ -1,0 +1,38 @@
+Typenlegende:
+
+B...Basic-Programm fuer KC-BASIC+ im Headersaveformat
+C...selbststartendes Maschinenprogramm
+E...EPROM-Inhalt
+I...Programmbeschreibung
+K...Basic-Programm fuer KC85/2-BASIC im Headersaveformat
+L...Basic-Programm fuer TDL-BASIC im Headersaveformat
+M...Maschinenprogramm nicht selbststartend
+P...Pascal-Quellprogramm (HISOFT) im Headersaveformat
+S...Assembler-Quellprogramm in ASCII mit NL
+T...Text mit NL
+b...Tiny-Basic-Programm
+s...IDAS-Quellprogramm im Headersaveformat
+c...Basic-Quellprogramm fuer Microbas-Compiler
+Q...mit NSWEEP gequetschtes File
+
+Saemtliche Programme sind mit Headersave aufgezeichnet. Durch
+Weglassen des Kopfes sind die Programme auch mit dem normalen
+Monitor-Load (L) ladbar.
+Typ 'B' ist fuer das 10K-Basic bestimmt. Sollte darin die 
+HLOAD-Funktion nicht implementiert sein, so koennen die Pro-
+gramme nach folgendem Schema geladen werden:
+
+1. Interpreter laden und starten (Memory size auf max.)
+2. Herausgehen mit BYE
+3. Programm mit Header oder Monitor an entspr. Stelle laden
+4. Warmstart auf 302H
+5. Absaven mit CSAVE"xxxx"
+
+Texte und Beschreibungen sind mit Hilfe von kompatiblen Text-
+systemen les- und druckbar.
+ 
+Programme mit einem Attribut im Namen (z.B. .COM) sind CPM-Pro-
+gramme und nur mit einem CP/M-kompatiblen Betriebssystem und
+entsprechender Hardware (mindestens ein Laufwerk oder eine RAM-
+Floppy von >128K) lauffaehig.
+

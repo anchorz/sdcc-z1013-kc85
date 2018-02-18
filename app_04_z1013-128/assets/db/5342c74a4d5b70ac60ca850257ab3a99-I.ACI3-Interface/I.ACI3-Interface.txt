@@ -1,0 +1,640 @@
+****************************************************************
+*							       *
+*	Audio Kassetten Interface - ACI fuer Buerocomputer     *
+*							       *
+*    BC 5120 und PC 1715 unter dem Betriebssystem SCPX und CPA *
+*							       *
+****************************************************************
+
+
+
+
+Dieses Interface dient der Kopplung zwischen einem Buerocomputer
+BC 5120 oder PC 1715 mit den Kleincomputern
+
+HC 900 bzw. KC 85/2,3  vom VEB Mikroelektronik
+Z 9001 bzw. KC 85/1    vom VEB ROBOTRON
+ZX-Spektrum von Sinclair (bzw. Software-Kompatible)
+
+zum Einlesen und Ausgeben von Programmen und Daten.
+
+
+Das Interface besteht aus den Programmen KCLOAD und KCSAVE fuer
+die Kleincomputer KC 85/x, dem Programm SP fuer den ZX-Spektrum
+und dem Hardwaretestprogramm TC.
+Benoetigt wird ausserdem die spezielle Leiterkarte ACI3, die
+direkt an die V.24-Schnittstelle angesteckt wird und die notwen-
+dige Pegelwandlung realisiert.
+Der NF-Anschluss erfolgt ueber eine Diodenbuchse mit folgender
+Belegung:
+
+Kontakt   1	NF-Ausgang		ca. 250mV
+	  2	Masse
+	  3	NF-Eingang		10 bis 3 000 mV
+
+Um eine sichere Signaluebertragung zum Buerocomputer zu
+erreichen, ist der genaue Abgleich der Offsetkorrektur
+(Regler R6) erforderlich. Am Diodeneingang Kontakt 3 muss dazu
+eine Sinusspannung von ca. 10 mV bei 1 kHz angelegt werden. Der
+Abgleich erfolgt auf Symmetrie am Ausgang (Pin6/IC1) des OPV
+mittels eines Oszillographen oder dem Testprogramm TC (SIGNAL-
+Symmetrie).
+
+Die Motorsteuerung des Kassettengeraetes kann bei Verwendung des
+ACI3 mit Kontakt 4 und 5 des Diodenanschlusses erfolgen.
+
+Kontakt   4	STOP  Motor
+	  5	Motor EIN
+
+Die Open-Kollektor-Ausgaenge der Steuerleitungen sind low-aktiv
+und mit ca. 50 mA belastbar. Falls die Motorsteuerung nicht
+genutzt wird, sollte ein dreipoliges Diodenkabel verwendet
+werden, um einen NF-Signalkurzschluss ueber die Steuerleitungen
+zu vermeiden.
+
+
+Software-Interface fuer die Kleincomputer KC 85/x
+-------------------------------------------------
+
+
+Mit dem Programm KCLOAD erfolgt die Eingabe und Abspeicherung
+auf Diskette unter dem Namen des orginalen Daten- oder Programm-
+files. Mit dem Programm KCSAVE erfolgt die Ausgabe von Kassette
+oder die direkte Ausgabe zu einem Heimcomputer.
+
+Als Programmnamen sind beliebige, unter SCPX uebliche Namen zu-
+gelassen. Der Name darf maximal 8 und die Erweiterung maximal 3
+Zeichen lang sein, wobei Name und Erweiterung durch einen Punkt
+zu trennen ist.
+
+Fuer die Namenserweiterung gelten folgende Besonderheiten:
+
+1.   Mit CSAVE   ausgegebene BASIC-Programme werden im
+		 Buerocomputer automatisch mit der Erweiterung
+
+	 .SSS	 abgelegt.
+
+2.   Mit LIST #1 ausgegebene BASIC-Programme werden automatisch
+		 mit der Erweiterung
+
+	 .UUU	 abgelegt.
+
+3.   Die Namenserweiterung .ASM ist fuer Programme reserviert,
+     die auf dem KC 85/2,3 bzw. HC 900 mit dem Assembler/Editor
+     EDAS erstellt wurden.
+
+
+Bemerkung:
+----------
+
+
+- Um ein druckbares BASIC-Programm zu erhalten ist dieses am
+  Heimcomputer mit LIST #1 auszugeben.
+
+- Beim Austausch von Basic-Programmen zwischen einem KC 85/x und
+  einem BC/PC kann man folgendermassen vorgehen:
+
+  a) KC 85/x --> BC/PC
+
+     .Ausgabe auf Kassette am KC mit dem BASIC-Befehl 
+
+      LIST#1 "Name"
+
+     .Einlesen und Abspeichern auf Diskette am BC/PC mit
+
+      KCLOAD Name
+
+     .Laden ins BASIC-System des BC/PC mit
+
+      LOAD "Name.UUU"
+
+  b) BC/PC --> KC 85/x
+
+     .Abspeichern des BASIC-programms auf Diskette am BC/PC mit
+
+      SAVE "Name.UUU",A
+
+     .Ausgabe auf Kassette am BC/PC mit
+
+      KCSAVE name.UUU
+
+     .Einlesen von Kassette ins BASIC-System des KC mit
+
+      LOAD#1 "Name"
+
+
+Im einzelenen stehen folgende Moeglichkeiten zur Verfuegung:
+
+
+KCLOAD:	Format:	KCLOAD [N:][Name]
+
+	N	- Laufwerk fuer Ablage auf Diskette (A,B,C,...)
+	Name	- Name des einzulesenden Programms
+
+Wird die Laufwerksbezeichnung weggelassen erfolgt die Ablage auf
+dem aktuellen Laufwerk. Bei fehlen des Prgrammnamens wird das
+naechste auf der Kassette beginnende Programm eingelesen.
+Vor Beginn des Einlesens des gesuchten Programms erfolgt die
+Anzeige der auf dem Band befindlichen Bloecke mit dem Zeichen
+'#' und bei Lesefehler mit dem Zeichen '*'. Das Einlesen der
+Bloecke des gesuchten Programms wird mit dem Zeichen '>' ange-
+zeigt. Bei Lesefehlern erscheint ein '*' und bei falscher Block-
+nummer ein '#'. Durch Rueckspulen des Bandes vor die Lesefehler
+kann versucht werden fehlerhafte Bloecke erneut einzulesen.
+Das Einlesen kann durch die Taste 'B' (Break) abgebrochen
+werden. Nach erfolgtem Einlesen vom Band wird abgefragt, ob das
+Programm auf Diskette ausgegeben werden soll. Bei einer anderen
+Eingabe als 'Y' wird das Programm KCLOAD abgebrochen.
+
+Moegliche Fehlerausschriften:
+-----------------------------
+
+'File already exists'	- Programmname ist bereits auf der
+			  Diskette vorhanden; es erfolgt keine
+			  neue Ausgabe
+
+'Write-Error on Disk'	- Schreibfehler auf Diskette
+
+
+KCSAVE:	Format:	a) KCSAVE [N:]Name
+		b) KCSAVE aaaa bbbb
+
+	N     - Laufwerk auf dem das Programm steht
+	Name  - Name des auszugebenden Programms
+	aaaa  - Anfang Speicherbereich (hex.)
+	bbbb  - Erster Speicherplatz nach dem Ende des abzu-
+		speichernden Programms
+zu   a)	Auf dem Laufwerk N bzw. auf dem aktuellen Laufwerk wird
+	das Programm mit dem Namen gesucht und ausgegeben.
+zu   b)	Der Speicherbereich von aaaa bis bbbb-1 ist auszugeben.
+	Es erfolgt die Abfrage des Programmnamens fuer das
+	auszugebende Programm.
+zu a+b)	Falls es sich nicht um ein BASIC-Programm oder
+	ein ASM-Programm handelt, wird die Ladeadresse abge-
+	fragt, ab welcher das Programm im Heimcomputer einege-
+	ben werden soll. Anschliessend erfolgt die Kassettenaus-
+	gabe, wobei die auszugebenden Bloecke durch Angabe der
+	Blocknummer angezeigt werden. Die Kassettenausgabe kann
+	mit der Taste 'B' abgebrochen werden.
+
+Moegliche Fehlerausschriften:
+-----------------------------
+
+'File not exists'	- Auf dem angegebenen Laufwerk wird das
+			  Programm nicht gefunden
+
+'Read-Error on Disk'	- Lesefehler auf Diskette
+
+'Memory - End'		- Programm zu lang fuer Ablage im
+			  Speicher
+
+
+Software-Interface fuer den Heimcomputer ZX-Spektrum und
+		software-kompatible Rechner
+-------------------------------------------------------
+
+Das Interfaceprogramm wird mit dem Namen SP aufgerufen und
+meldet sich mit dem Menue der moeglichen Funktionen. Die Auswahl
+der entsprechenden Funktion erfolgt durch Eingabe des ange-
+zeigten Buchstaben, wobei keine Bestaetigung der Eingabe notwen-
+dig ist.
+Die im Menue im oberen Block angezeigten Funktionen sind immer
+moeglich, die Funktionen des unteren Blocks werden nur akzep-
+tiert, wenn im Hauptspeicher ein "Arbeitsfile" vorhanden ist.
+Der Name dieses "Workfile", zusammen mit dem aktuellen Laufwerk,
+wird stets rechts oben in das Menue eingeblendet. Das "Workfile"
+kann sowohl ueber den Interface-Baustein vom Kassettenrecorder,
+als auch von einer Diskette eingelesen werden. Dabei kann das
+Einlesen von Kassette mit der Taste B (Break) abgebrochen werden
+(Break wird aber nur akzeptiert, wenn ein Signal anliegt).
+Als Namenserweiterung wird entsprechend dem Spectrum-Format
+automatisch einer der 4 Buchstaben ausgewaehlt:
+
+	.B - BASIC-Programm
+	.N - Numerische Feldvariable
+	.A - Alphanumerische Feldvariable
+	.S - Speicherbereich
+
+Im einzelnen sind folgende Funktionen moeglich:
+
+
+EXIT (E):
+---------
+
+Ruecksprung ins SCP-Betriebssystem.
+
+
+Load File from Cassette (L):
+----------------------------
+
+Es wird die Eingabe eines Programmnamens abgefordert, nach dem
+auf der Kassette gesucht werden soll. Anschliessend ist der
+Recorder mit Wiedergabe zu starten. Ist das gesucte Spectrum-
+File gefunden, so wird der Programmname auf dem Bildschirm aus-
+gegeben und der Ladevorgang beginnt. Stimmt der gefundene Name
+nicht mit dem gesuchten ueberein, so wird der Vermerk "- File
+not loadet" ausgeschrieben und weiter auf der Kassette gesucht.
+Wird kein Programmname eingegeben (nur die Enter-Taste
+druecken), dann wird das erste auf der Kassette stehende
+Programm geladen.
+Das geladene Programm steht im Hauptspeicher und wird als "Work-
+file" angezeigt.
+
+
+Read File from Disk (R):
+------------------------
+
+Es wird der Programmname eines auf der Diskette abgespeicherten
+Spectrum-Progamms abgefordert. Das Programm wird in den Haupt-
+speicher geladen und als "Workfile" angezeigt.
+
+
+Load Headerless File from Cassete (I):
+--------------------------------------
+
+Es wird ein Filename und eine Startadresse abgefragt, aus denen
+ein File-Header fuer einen Spectrum-Speicherblock erzeugt wird.
+Anschliessend wird der naechste auf der Kassette stehende
+Spektrum-Datenblock eingelesen und als "Workfile" angezeigt.
+
+
+Read Headerless File from Disk (H):
+-----------------------------------
+
+Es wird der Name eines SCP-Files abgefordert und dieses in den
+Hauptspeicher eingelesen. Dabei wird ein File-Header fuer einen
+Spectrum-Speicherblock erzeugt. Die Startadresse, ab der im
+Spectrum eingelesen werden soll wird abgefordert.
+
+
+Wordstar-TASWORD Conversion (U):
+--------------------------------
+
+Es wird der Name einer Wordstar-Datei abgefordert. Diese Datei
+wird von Diskette als "Workfile" eingelesen und dabei eine Um-
+wandlung in das TASWORD-Format vorgenommen (TASWORD ist ein
+Textverarbeitungssystem fuer den ZX-Spectrum). Bei einer Zeilen-
+laenge ueber 64 Zeichen werden zwei Zeilen aus einer erzeugt.
+"Weiche" Abteilungszeichen am Zeilenende werden in normale kon-
+vertiert.
+
+
+Wordstar-TWcompress Conversion (G):
+-----------------------------------
+
+Wie Funktion U, jedoch wird ein TASWORD-File mit kompremierter
+Space-Darstellung erzeugt.
+
+
+Directory (D):
+--------------
+
+Es erfolgt die Anzeige des Disketteninhaltsverzeichnisses vom
+aktuellen Laufwerk.
+
+
+Exchange Drive (X):
+-------------------
+
+Das aktuelle Diskettenlaufwerk kann geaendert werden. Einzugeben
+ist eine zulaessige Laufwerksbezeichnung (A,B,...).
+
+
+Save File on Cassette (S):
+--------------------------
+
+Das als "Workfile" angezeigte Spectrum-File wird auf Kassette
+ausgegeben. Nach der angezeigten Aufforderung ist der Kassetten-
+recorder mit Aufnahme zu starten und die Enter-Taste zu
+druecken.
+
+
+Write File on Disk (W):
+-----------------------
+
+Das im Hauptspeicher befindliche "Workfile" wird aud das aktuel-
+le Laufwerk ausgegeben.
+
+
+Write Headerless File on Disk (K):
+----------------------------------
+
+Wie Funktion W, jedoch wird nur der reine Datenblock abgespei-
+chert; der Spectrum-Header geht verloren. Der Filename wird mit
+XX ergaenzt (2. und 3. Zeichen der Namenserweiterung).
+
+
+BASIC/Pascal-Listing to Display (B):
+------------------------------------
+
+Das im Hauptspeicher vorhandene "Workfile" wird als BASIC-
+Listing (bei der Namenserweiterung .B) bzw. Pascal-Listing (bei
+Namenserweiterung .S) interpretiert und auf den Bildschirm aus-
+gegeben. Die kompremierte Schluesselwortdarstellung wird in
+Klartext umgewandelt. Dabei werden auch die Schluesselwoerter
+des BASIC-Systems Beta-Basic 3.0 erkannt und umgewandelt.
+
+
+BASIC/Pascal-Listing to Printer (P):
+------------------------------------
+
+Wie Funktion B, jedoch erfolgt die Ausgabe auf den Drucker. Die
+Druckbreite betraegt 64 Zeichen je Zeile. Beim Seitenwechsel
+werden 4 Leerzeilen eingefuegt.
+
+
+BASIC/Pascal-Listing to Disk (C):
+---------------------------------
+
+Wie Funktion B, jedoch erfolgt die Ausgabe auf das aktuelle
+Laufwerk. Dabei ist eine Weiterverarbeitung des Programmtextes
+mit dem BASIC-Interpreter bzw. dem Pascal-Compiler unter SCP
+moeglich.
+
+
+TASWORD-Wordstar Conversion (T):
+--------------------------------
+
+Ein mit dem Textverarbeitungssystem TASWORD auf dem ZX-Spectrum
+erstellter Text wird in das Wordstar-Format umgewandelt und auf
+das aktuelle Laufwerk ausgegeben (mit Namenserweiterung .TXT).
+Dabei werden generell "weiche" Zeilenenden eingetragen. Ein
+"hartes" Zeilenende (Absatz) wird bei nachfolgender Leerzeile
+oder Leerzeichen am nachfolgenden Zeilenanfang erzeugt.
+Leerzeichen am Zeilenanfang sind stets "weich", d.h. wegforma-
+tierbar.
+
+
+TWcompress-Wordstar Conversion (F):
+-----------------------------------
+
+Wie Funktion T, jedoch muss das Ausgangs-File ein TASWORD-File
+in kompremierter Space-Darstellung sein.
+
+
+
+
+
+Bemerkung:
+----------
+
+Bei der Ausgabe auf Diskette (Funktionen W, K, C, T) wird ein
+Filename (ohne Namenserweiterung) abgefragt, unter dem das File
+auf Diskette abgelegt werden soll. Wird kein Name angegeben, so
+erfolgt die Ablage unter dem Namen des Workfiles. Ausserdem wird
+geprueft, ob ein File mit gleichem Namen und gleicher Namenser-
+weiterung schon auf dem aktuellen Laufwerk existiert. Ist dies
+der Fall, so wird abgefragt, ob dieses ueberschrieben werden
+kann (Y). Wenn nicht (N), dann erfolgt keine Abspeicherung.
+Bei einem spaeteren Einlesen von Diskette erscheint wieder der
+urspruengliche Workfilename.
+
+
+Moegliche Fehlerausschriften:
+-----------------------------
+
+- File not exists: File auf aktueller Diskette nicht vorhanden
+- Read-Error on Disk: Lesefehler beim Einlesen von Diskette
+- Write-Error on Disk: Schreibfehler beim Abspeichern auf Dis-
+  kette (ev. Diskette voll)
+- Parity-Error: Lesefehler beim Einlesen von Kassette
+- File to big: File ist zu gross fuer Ablage im Hauptspeicher
+
+
+
+
+Testprogramm TAPECHECK
+----------------------
+
+Dieses Programm ermoeglicht das Pruefen der ACI3-Hardware sowie
+der Funktionen des Recorders und der Qualitaet der Kassetten.
+
+Einzelfunktionen: MOTOR Start	;	MOTOR Stop
+		  AUSGABE Messton 1,2,3,4,5,6,7,8 oder 9 kHz
+		  CHECK einer mit 3kHz bespielten Kassette
+		  HISTOGRAMM Anzeige der Kassettenfrequenzen
+		  SIGNAL-Symmetrie-Anzeige des ACI3-Interface
+
+
+Bemerkung :	  Die unterschiedliche Schraeglage des Kopfspal-
+		  tes der Recorder fuehrt oft zu Datenfehlern.
+		  Um mehrere Geraete zueinander kompatibel
+		  einzustellen, ist zu empfehlen, eine Eich-
+		  kassette mit 6 kHz herzustellen und die ande-
+		  ren Recorder danach zu justieren. Mit der
+		  HISTGRAMM-Anzeige wird dabei auf minimale An-
+		  teile anderer Frequenzen eingestellt.
+
+
+Nachnutzung:
+------------
+
+Folgende Unterlagen und Software werden von ZKI zur Nachnutzung
+angeboten:
+
+
+1. Beschreibung "Audio-Kassetten-Interface" auf Diskette
+
+
+2. Schaltbild "ACI3" fuer V.24-Anschluss am BC 5120 oder PC 1715
+
+3. Programme fuer BC 5120 oder PC 1715 mit Pegelwandler ACI3:
+
+   3.1 "KCSAVE.COM"	- Ausgabe im KC 85/x	- Format
+   3.2 "KCLOAD.COM"	- Eingabe im KC 85/x	- Format
+   3.3 "KCSAVEW.COM"	- Ausgabe im KC 85/2,3	- Format
+			  mit Wordstar/Wordpro-Konvertierug
+   3.4 "KCLOADW.COM"	- Eingabe im KC 85/2,3	- Format
+			  mit Wordpro/Wordstar-Konvertierung
+   3.5 "SP.COM"  	- Ein-/Ausgabe im ZX-Spectrum-Format
+   3.6 "TC.COM"  	- Testprogramme fuer ACI3
+
+
+Alle Programme arbeiten ohne Interrupt und sind somit in jedem
+CP/M-kompatiblen Mikrorechner auf Z80-Basis verwendbar, welcher
+ueber eine V.24-Schnittstelle mit SIO und CTC verfuegt.
+Die Anpassung der Adressen und Taktfrequenz des Rechners kann am
+Programmanfang mit einem Debugger oder POWER realisiert werden.
+Die Zeitkonstante wird wie folgt berechnet:
+
+		T = 20 * Taktfrequenz/MHz
+zum Beispiel:	T = 20 * 2,5 MHz = 50 = 32H
+
+
+		PC 1715	   BC 5120
+
+0100H	JP	XXXX
+0103H	DEFB	0FH	;  51H	; SIO - Steuerport der V.24
+0104H	DEFB	09H	;  0DH	; CTC - Kanal Zeitgeber
+0105H	DEFB	32H	;  32H	; T = Zeitkonstante (hex.)
+0106H	DEFB	'B'	;  42H	; 'B' = Break-Taste
+
+
+Interessenten wenden sich bitte an:
+
+	Akademie der Wissenschaften der DDR
+	Zentralinstitut fuer Kybernetik und
+	Informationsprozesse
+	BfN, Koll. Zier
+	Kurstrasse 33, PSF 1298
+	Berlin
+	1086
+
+________________________________________________________________
+
+
+
+Stueckliste ACI 3
+=================
+
+1.	IC1	B081D	Operationsverstaerker
+2.	R1,R2	47K	Widerstand 1/8 W	TGL 36 521
+3.	R3	4,7K	    "
+4.	R4	220K	    "
+5.	R5	1,5K	    "
+6.	R6	220K	Dick.regler/NG 513.1010 TGL 27 423
+7.	R7,R8	47R	Widerstand 1/8 W	TGL 36 521
+8.	R9,R10	10K	    "
+9.	C1,C2	100 nF	Scheibenkondensator
+10.	C3,C4	4,7 uF	Elko 16 V		TGL  7 198
+11.	D1-D4	SAY12	Diode
+12.	T1,T2	SS216d	Transistor
+13.	LP	ACI3	34 x 36,5 x 1 mm
+14	Buchsenleiste	26 polig/loetbar	TGL 29 331/04
+15.	2 Ausgleichsstuecke	   332210001044	       "
+16.	2 Befestigungselemente V7  332280001010	       "
+17.	Griffschale	Form 120		TGL 29 331/04
+18.	Diodenbuchse	5-polig
+
+
+
+
+Schaltplan
+==========
+
+Diodon-                                                    V.24 
+buchse
+
+               R4/220K   C2/0,1                                 
+ 1                                                   RTS/105
+
+ NF-Eing.                                                A5
+                                 R8/47    D2                 
+                                                      TxD/103
+                        
+                                                        A3
+          4K7                          SAY12     
+          R3                 +                     DSR/107
+                                               
+                              4,7/16                  A7
+                          C4                      10K
+ 2                                                R9
+                                    
+ Masse                7                            CTS/106 
+                       B081D    
+                     2                                B6
+                  -                        
+                           6                    DTR/108
+          C1/0,1      IC1            
+ 3                3                               B8
++   Offsetkorr.              
+ Eingang           5                          
+                    1          4,7/16   D1      
+                     4   R5/1K5                   
+           47K    47K                   
+           R1     R2    R6       C3+    47       10K
+                        100K          R2       R10
+                                             
+ 4                                                  
+                   
+ Stop                                                  
+                      
+                                                       
+ 5                              E   E        
+                     
+ Vorlauf                           B           B  
+                  2 x SS216D                
+                                                
+                                                  
+                               C         D3  C         D4
+                                   T1            T2   
+                                                       A1
+         
+                                                        GND/102
+
+
+LeiterpLatte
+============
+
+
+          
+   ACI3                   I
+                   K                I
+                      I
+ 1                                 I
+                         I
+                                  I
+3          DTR/108  I
+                       (B8)     I
+                         I
+                               I
+           CTS/106  I
+2      1                (B6)     I
+                I
+        B081D                     I 34
+        RTS/105  I
+                          (A5)     I
+                              I
+                                   I
+                     TxD/103  I
+                          (A3)     I
+                     I
+                K A              I
+5        DSR/107  I
+    CB KC B K             (A7)     I
+4                        I
+      E A   E A                       I
+ GND/102  I
+ (A1)     
+
+-----------------------------
+              36,5
+
+
+
+Bestueckungsplan
+================
+
+(Ansicht von der Leiterseite)
+
+
+
+
+       K       
++      C3    R4    D1        
+             
+   R3          R1           
+1       C2     
+       C1  R5              
+3             R7 
+             R2            
+                   
+          1 2 3 4          
+                  
+2                        
+                       
+                          
+   R6    B081D           
+                           
+                    
+                           
+                   
+          8 7 6 5            
+        
+        C4  +     R8         
+5          A    
+       R10           D2      
+4   C  D3 T2 D4     
+              R9       
+    T1EA  EA            
+        

@@ -1,0 +1,47 @@
+<kurz src="Einfaches und kleines Schachprogramm"/>
+<lang>basiert auf [b7a9e2f138a0651a74985ef27d224f00], hat aber noch zusätzliche Erläuterungen:
+
+          S C H A C H
+********************************
+
+Dieses ist ein grafikfähiges Schachprogramm mit vielen
+Möglichkeiten. Im normalen Spielverlauf erfolgt die Zugeingabe
+in der Form z.B.  D2 D4.
+
+Durch Eingabe einer der Buchststaben rechts im Bild, erfolgt eine
+Änderung des normalen Ablaufes. 
+
+Dabei bedeutet 
+M=Monitorrestart,
+N=Neustart, 
+S=Spielstaerke (1-6)
+U=Umkehr der Spielfarben, 
+W=Computer spielt allein weiter, 
+V=Variante; 
+Z=Zurueck, 
+P=Problem-eingabe. 
+
+Das automatische Schach spielen des Computers kann durch
+Betätigen einer beliebigen Taste unterbrochen werden. Die
+Anzahl der speicherbaren und abrufbaren Varianten ist 10 (0-9).
+Die Eingabe von Figuren bei der Problemeingabe erfolgt z.B. wie
+folgt: DE2 oder -BA7. Fuer das Entfernen einer Figur beginnt
+die Eingabe mit einem Leerfeld.
+
+N bewirkt Neuaufbau und C das Löschen des Feldes. Mit P wird
+die Problemeingabe verlassen. Alle Eingaben bei Problemschach
+werden mit Enter abgeschlossen.
+
+Eine weitere Möglichkeit des Programms besteht in der Wiederholung 
+des Spiels nach dessen Ende. Die Kennbuchstaben bedeuten 
+W=Wiederholung, 
+S=Spiel
+# (Enter)=nächster Zug, 
+M=Monitorrestart, 
+N=neues Spiel. 
+
+Wird vorher über Problemeingabe die Stellung geändert, so ist diese
+Stellung die Ausgangsstellung für die Wiederholung.
+
+</lang>
+<requires></requires>

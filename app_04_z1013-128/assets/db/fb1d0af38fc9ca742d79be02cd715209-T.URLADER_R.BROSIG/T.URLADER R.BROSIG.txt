@@ -1,0 +1,49 @@
+****************************************************************
+*Beschreibung Urlader von R. Brosig , angepaßt von A. Müller ***
+****************************************************************
+
+Der Urlader benötigt zum Funktionieren eine ROM-Abschaltung, die
+über die OUT-Adresse 4 Datenbit 4 angesprochen wird. Eine solche
+Abschaltung ist auf der 64-Zeichen-Platine nach Peters IG
+Dresden realisiert wurden. Dieser Urlader enthält ebenfalls einen
+Treiber für die 80-Zeichen-Platine, so daß hier die GDC-Karte
+oder auch die 64-Zeichen-Karte angesteuert wird.	
+Folgende Funktionen werden realisiert:
+Nach Einschalten des Rechners erscheint ein Menü, welches
+abfragt, ob der Z-1013-Monitor (Z) oder CP/M (C) geladen werden
+sollen. Nach Drücken der entsprechenden Taste können die
+Betriebssysteme auf zweierlei Art geladen werden:
+1. Vom Eprommer nach U. Hinz 
+Dieser Eprommer(Software von IG Dresden) wurde auf der 2. Tagung
+vorgestellt und ist bei Gerlich, Neubrandenburg erhältlich.
+Dafür ist ein E/A- Modul mit einer PIO (30-33H) erforderlich,
+was bei uns bezogen werden kann. Je nach System ist entweder ein
+4K-Eprom (2732) für den Z1013-Monitor, gebrannt von 0-FFFH, oder
+ein 8K-Eprom (2764) , gebrannt von 1000H-3BFFH erforderlich. Die
+Software wird dabei automatisch an die richtige Stelle geladen.
+Ist kein Eprom gesteckt, bzw. kein Eprommer angeschlossen (alles
+FFH) wird a u t o m a t i s c h ein 1.6"-Laufwerk angesprochen,
+d.h. ohne weitere Abfrage Ansteuerung des Floppy-Laufwerkes. In
+diesem muß eine Systemdiskette stecken, welche das Format 624K
+(SCP) oder 780K (CP/M) besitzt. Das Sektorformat wird automa-
+tisch ermittelt. Es ist auf jeden Fall eine Sytemdiskette mit 3
+Systemspuren vonnöten (also nicht 800k wie bei CP/A oder andere
+Formate). Der Urlader lädt dabei generell die ersten 3 Spuren (0-
+2) an die richtige Stelle im Hauptspeicher, wenn CP/M (C)
+gewählt worden war. Ansonsten lädt er die 4. Spur (Spur 3) nach
+F000H , wenn Z1013 (Z) gewählt wurde. Das zum allgemeinen Teil
+ds Urladers. Beim Stecken des Urladers und Anschließen nicht
+Adresse A11 vergessen (liegt sonst auf 5P)!!!
+Für das Aufspielen des Systems ist folgender Modus anzuraten:
+Mit Hilfe von POWER wird zuerst das CCP und BDOS auf die Adresse
+4000H geladen. Danach BIOS.COM auf die Adresse 5600H und
+schreibe danach mit WRITE 0 1 4000 100 dieses Paket auf die
+ersten 3 Spuren. Mit dem Monitor verfährt man analog, nur das
+hier mit WRITE 3 1 4000 32 der Monitor auf die 4. Spur geladen
+wird, wenn er vorher auf die 4000H geladen worden ist. Das
+dazu.Ich hoffe, daß die Beschreibung ausreicht und wünsche gutes
+Gelingen.
+
+
+A. Müller CC Jena
+

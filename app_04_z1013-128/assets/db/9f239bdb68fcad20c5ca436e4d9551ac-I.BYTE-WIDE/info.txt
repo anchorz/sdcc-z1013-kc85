@@ -1,0 +1,3 @@
+<kurz src="Pinbelegung byteweiser Speicher, ROM RAM EPROM"/>
+<lang><include src="I.BYTE-WIDE.txt"/></lang>
+<requires></requires>

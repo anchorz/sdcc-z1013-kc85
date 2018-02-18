@@ -1,0 +1,16 @@
+<kurz src="Editor(2.2) Assembler(2.1) TU Dresden "/>
+<lang>Der Assembler wird mit J 2000 angesprungen.
+
+Wie funktioniert der Assembler? bekannte Befehle:
+
+E Exit
+F assembliert ohne Listenausgabe
+L assembliert mit Listenausgabe
+S Symboltabelle anzeigen
+
+Programm Daten liegen im Hauptspeicher ab 0x5000.
+Programm Text liegt im Hauptspeicher ab 0x8000.
+
+</lang>
+<requires></requires>
+

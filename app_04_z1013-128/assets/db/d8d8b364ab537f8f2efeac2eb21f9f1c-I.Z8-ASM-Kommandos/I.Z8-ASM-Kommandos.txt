@@ -1,0 +1,50 @@
+****************************************************************
+*							       *
+*	Z8-ASM-Kommandobeschreibung			       *
+*							       *
+****************************************************************
+
+
+A  - Sprung zu vorstehender Marke
+B  - Bindekommando (ersetzt symb. Adr. durch hexadez. Adr.),
+     erzeugt lauffaehiges Programm   
+     B Adr.  (CR) - Binden ab Adr.
+     B       (CR) - Binden ab Anzeigeadresse
+C  - Druckerausgabe
+E  - Eingabebereich schaffen
+     E Adr.  (CR) - Von Anzeigeadresse bis Adr.
+     E	     (CR) - 1 Byte einfuegen
+
+G  - G Adr.  (CR) - Anzeige ab Adr.
+     G       (CR) - Anzeige ab Programmende
+H  - Vereinbarung der Anzeigeadresse als Breakpoint
+M  - Verschieben von Programmen mit Marken
+
+     M Adr.1 (CR) Adr.2 (CR) - Verschiebung von Adr.1 bis Adr.2
+			       auf Anzeigebereich
+     M Adr.  (CR) 	(CR) - Verschiebung von Adr. auf Anzei-
+			       gebereich
+Q  - Uebergang zum Quellcodeeingabemodus
+R  - Uebergang zum RAM-Mode
+S  - Streichen von Befehlen
+     S Adr.  (CR) - Streichen von Anzeigeadresse bis Adr.
+     S       (CR) - Befehl streichen
+T  - Uebergang in Testmode
++  - PC+1
+^C - Monitorrueckkehr
+
+
+
+
+Testmodekommandos :
+
+A  - Reg. entspricht Reg.pointer
+E  - Porteingabe, max. 16 Eingaben ( Eingabe zweistellig )
+G  - Go, Adr. o. Marke
+H  - Abarbeitung bis Breakpoint
+N  - Schleifenabarbeitung
+R  - Registermode
+S  - Schrittbetrieb
+Q  - Testmode verlassen
+^C - Analog Q
+

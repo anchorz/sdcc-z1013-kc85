@@ -1,0 +1,7 @@
+<kurz src="Grafikeditor mit Tiny-Basic"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ␣ U ⏎
+
+<include src="C.PAINT.b"/></lang>
+<requires></requires>

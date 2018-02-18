@@ -1,0 +1,998 @@
+7.   Makros
+===========
+
+Jeder  Assembler  gestattet  das Arbeiten  mit  Macros,  die  bei 
+bestimmten  Programmstrukturen  wesentlich  zur  Verkuerzung  der 
+Entwicklungszeit  beitragen koennen.  Hier ist bei den Assemblern 
+Z8,  Z80 auch die Moeglichkeit des INCLUDE besonders nutzbar,  um 
+ganze Bibliotheken aufzubauen.
+
+Der  Assembler benoetigt drei Bereiche,  um Makros definieren  zu 
+koennen.  Diese Bereiche werden wie folgt in den Speicher  einge-
+ordnet:
+
+a) Macroquellenpuffer
+Dieser Puffer wird durch die Option M reserviert und zwar bei der 
+ersten  Angabe von M mit 300H Bytes und bei jeder weiteren Angabe 
+von  M  zusaetzlich mit 400H Bytes.  Dieser Platz  geht  von  der 
+Markentabelle ab, sodass hier genau ueberlegt werden muss.
+
+b) Parameterpuffer
+Dieser  Puffer steht am Ende des Makroquellenpuffers und hat  80H 
+Bytes  Laenge.  Dies reicht in jedem Fall zur Unterbringung aller 
+Parameter, die auf einer Zeile angegeben werden koennen.
+
+c) Macroverschachtelungsstack
+Er  steht  nach dem Parameterpuffer und hat eine Laenge  von  80H 
+Bytes.   Da  je  Macro- Verschachtelungstiefe  6  Byte  benoetigt 
+werden,  sind 21 Schachteltiefen moeglich. Dies ist in jedem Fall 
+ausreichend.
+
+
+An  den letzten Puffer schliesst sich unmittelbar  das  Betriebs-
+system an.  Dies ist normalerweise das BDOS.  sind jedoch mit dem 
+OPEN-Kommando   andere  Systemprogramme  in  das   Betriebssystem 
+eingefuegt worden, werden diese nicht ueberschrieben.
+
+
+
+7.1. Definition
+===============
+
+Eine Makrodefinition hat folgende Struktur:
+     Makrokopf
+     Macrokoerper
+
+
+7.1.1. Macrokopf
+----------------
+
+     MACNAM    MACR      P0,P1,P2,...
+
+Der Kopf der Makrodefinition wird durch das Finden der Pseudoope-
+ration  MACR identifiziert.  Der Makrokopf beginnt stets mit  der 
+Vorgabe  eines Makronamens,  welche der Syntax einer Marke unter-
+liegt.  Ausserdem  enthaelt die Zeile eine allgemeine  Parameter-
+liste.  Als  Parameter koennen beliebige Zeichenfolgen  definiert 
+werden. Begrenzer trennen die Parameter voneinander.
+Parameter koennen jedoch auch entfallen.
+
+
+7.1.2. Macrokoerper
+-------------------
+
+Der Makrokoerper besteht aus einer Summe von Quellzeilen,  die an 
+beliebiger Stelle Parameter enthalten koennen. Aufgabe des allge-
+meinen  Parameters ist es,  Platz zu halten und an der Stelle  im 
+Makrokoerper  die  beim Aufruf  uebergebenen  Werte  einzusetzen. 
+Jeder Parameter im Operandenfeld muss von Begrenzern einge
+schlossen sein. 
+
+Jede Zeile des Macrokoerpers wird nach dem Auftreten von Bezeich-
+nungen durchsucht, die einem Parameter entsprechen und dann durch 
+den  Wert  des beim Aufruf des Macors angegebenen Parameters  er-
+setzt.
+
+Koennen  Konstruktionen  im Makrokoerper  als  Parameter  erkannt 
+werden und sind diese jedoch beim Aufruf nicht angegeben, so wird 
+der Wert des Parameters mit Null belegt und eingefuegt.
+
+Innerhalb  des Makrokoerpers sind noch einige Besonderheiten  der 
+Befehlsabwicklung eingebaut:
+
+     a)   Kommentare werden mit gespeichert und stehen bei Aufruf 
+          des Makros wieder zur Verfuegung.
+
+     b)   Sollen  Kommentare nicht gespeichert werden (spart viel 
+          Platz), so ist das eroeffnende Semikolon zweifach anzu-
+          geben.  Diese  Kommentare werden dann nicht bei  Aufruf 
+          des Makros ausgegeben.
+
+     c)    Fuer  die Assembler Z8 und Z80 gibt es  die  Anweisung 
+          REPT.  Alle  Anweisungen  zwischen dem Macroanfang  und 
+          dieser  Angabe werden sooft ausgefuehrt,  wie der  Aus-
+          druck nach REPT angibt. Beispiel:
+
+     ;Makrokoerper:
+     TEST    MACR
+             DEFB   0 
+             REPT   3;; gilt fuer 3 Wiederholungen
+             ENDM
+
+          Bei Aufruf des Makros wird folgender Kode erzeugt:
+
+        TEST
+     +  DEFB   0
+     +  DEFB   0
+     +  DEFB   0
+
+          Der Kommentar wird nicht gespeichert.
+
+
+7.2. Ende des Macrokoerpers
+===========================
+
+Der Macrokoerper muss mit der Pseudoanweisung 
+
+     ENDM
+
+abgeschlossen werden.
+
+
+7.3. Aufruf des Macros
+======================
+
+
+Die  Ausfuehrung  des  Makros ist dann an  beliebiger  Stelle  im 
+Quellprogramm  moeglich.  Wird eine Makrodefinition von NLIST und 
+LIST eingeschlossen, bleibt sie bei der Listausgabe verborgen.
+
+o.g. Beispiel kann aufgerufen werden:
+
+     EX        R2,@R15
+     MACNAM    #ADDR,LD,R9
+     PUSHL     @R15,RR2
+
+Die Einfuegung fuer MACNAM sieht dann so aus:
+     LD   R1,#ADDR
+     LD   R9,#ADDR+1
+     
+oder z.B.
+     MACNAM    POINT-1,JP,Z
+
+Die Einfuegung sieht hier dann so aus:
+     LD   R1,POINT-1
+     JP   POINT-1+1
+     
+Der Aufruf des Makros erfolgt ueber seinen Namen,  der im  Opera-
+tionsfeld  anzugeben  ist.  Enthaelt die aktuelle  Parameterliste 
+weniger Parameter als in der Vereinbarung,  so werden die fehlen-
+den Felder als Null angenommen.
+
+
+     
+
+7.4. Verschachtelung von Macros
+===============================
+
+Makros koennen verschachtelt werden,  auch rekursiv.  Dabei  wird 
+eine  interne Steuerung ueber den Namen wirksam,  die die  Rekur-
+sionstiefe  bis  21 Ebenen ermoeglicht.  Marken innerhalb  dieser 
+Makros muessen dann folgenden Namensaufbau haben:
+
+     LAB$$
+
+Statt  den $$ wird intern eine Zahl gesetzt,  die der  Schachtel-
+tiefe entspricht.
+
+Der   Abbruch   der  Verschachtelung   ist   z.B.   ueber   einen 
+Aufrufzeahler erreichbar.
+
+     SELF      MCR       ....
+          .
+          .
+     COUNT     DEFL      CONST-1
+     CONST     DEFL      COUNT
+               IF        COUNT
+               ...
+               ENDIF
+               .
+               .
+               ENDM
+
+Die zum Abbruch des Selbstaufrufes erforderlichen  Pseudoinstruk-
+tionen koennen mit NLIST und LIST unsichtbar gemacht werden.  Ein 
+mit der Verschachtelung und dem Mehrfachaufruf von Macros verbun-
+denes Problem besteht in der Behandlung von Macrointernen Marken, 
+da  diese bei jedem Aufruf nochmals definiert werden und so  eine 
+fehlerhafte  Quellzeile erzeugen.  Deshalb wird die  Moeglichkeit 
+der  Angabe von 2 "$" Zeichen nacheinander innerhalb des  Marken-
+namens  (gesamt jedoch nur 6 Zeichen) gestattet.  Die 2 $-Zeichen 
+werden intern mit den Buchstaben A ..  Z belegt und gestatten  so 
+eine Unterscheidung der Marken je Schachtelung. 
+
+8.   Linker
+===========
+
+8.1. Wirkungsweise
+------------------
+
+Waehrend  der  Eingabe der Namen der  zu  verbindenden  Programme 
+werden   die   dazugehoerigen   MAP-Dateien  gesucht   und   eine 
+Markenliste aufgebaut. Damit stehen dem Linker alle Informationen 
+zum Verbinden der Programme zur Verfuegung.
+Danach  erfolgt  ein  2.   Pass,  in  dem  die  Verbindungen  auf 
+Zulaessigkeit  getestet  werden.  Ausserdem  kann hier  auch  die 
+Programmausgabe erfolgen.
+
+
+8.2. Aufruf des Linkers
+----------------------
+
+Der Linker wird vom Monitor aus mit dem Kommando
+
+     Link
+aufgerufen. Der erste Buchstabe ist signifikant.
+
+
+8.3. Kommandofile
+-----------------
+
+Nach dem Aufruf des Linkers wird nach einem Kommandofile gefragt. 
+Dieses  Kommandofile  kann  mit einem beliebigen  Editor  erzeugt 
+werden  und  muss  alle Angaben enthalten,  die  sonst  von  Hand 
+eingegeben  werden.  Das Kommandofile wird durch ein  nochmaliges 
+RETURN am Ende aller Angaben abgeschlossen.
+Wird bei der Namensangabe das logische Geraet
+     CON:
+gewaehlt,  koennen  die  Linkangaben von der Tastatur  eingegeben 
+werden. Ein Kommandofile muss die Namenserweiterung .CRL haben.
+
+
+8.4. Programmanordnung
+----------------------
+
+Die Reihenfolge der Eingabe der Dateinamen entscheidet ueber ihre 
+Stellung  im  Programm,  wenn  nicht Ladeadressen  etwas  anderes 
+befehlen. Diese Ladeadressen koennen fuer jedes Programm vorgege-
+ben  werden  und legen den Anfang dieses Programmes  im  Speicher 
+relativ zur Ladeadresse des ersten Programmes fest.
+Wird  keine  Ladeadresse angegeben,  wird die erste Datei ab  der 
+Adresse  0 und alle weiteren Dateien lueckenlos daran  anschlies-
+send gelinkt. 
+Die  Eingabe der Dateinamen kann durch RETURN abgeschlossen  wer-
+den.  Mit diesem Abschluss braucht jedoch der  Verbindungsvorgang 
+noch  nicht  abgeschlossen  zu sein.  Es ist  vielmehr  moeglich, 
+Programmabschnitte nacheinander zu verbinden und sich die fehlen-
+den Marken anzeigen zu lassen.  Bei jedem RETURN wird die Verbin-
+dung der bereits angegebenen Dateien versucht.  Dabei werden  um-
+fangreiche Fehlerkontrollen durchgefuehrt. Sind alle Verbindun
+gen 
+fehlerfrei,  kann  das fertige Programm ausgegeben  werden.  Nach 
+jeder  Kommandozeile  ist die Ausgabe der Ladeadresse der  bisher 
+verbundenen  Da
+teien  einschl.  ihrer globalen  Marken  moeglich. 
+Weiterhin wird eine grobe Speicherbelegung angezeigt.
+
+
+8.5. Dateiangaben
+-----------------
+
+Die  zu verbindenden Dateien sind mit ihrem Namen anzugeben.  Die 
+volle  Namenskonstruktion  wie  im  Kapitel  1  beschrieben   ist 
+moeglich. Logische Geraete muessen jedoch vermieden werden:
+
+     dev:name.erw
+
+dev: und/oder .erw koennen entfallen. Fuer dev: wird das aktuelle 
+Laufwerk gesetzt und fuer .erw die Namenserweiterung .HXL
+Um auch absolute Programme verbinden zu koennen (natuerlich  nur, 
+wenn  sie auch auf die gleichen Adressen gelinkt werden,  wie  in 
+der jeweiligen ORG-Anweisung angegeben),  kann die Namenserweite-
+rung in diesem Fall .HEX sein.
+
+Die  Angabe der Ladeadresse der Datei erfolgt durch die Konstruk-
+tion:
+
+     dateiname(adresse)
+
+Die Klammer schliesst die Adresse, die hexadezimal angege
+ben werden 
+muss,  jedoch ohne H!, ein.  Fuehrende Nullen muessen entfal
+len, es 
+sind maximal 4 Hex-Ziffern eingebbar.
+
+Um Systemdateien oder andere Markenlisten mit zu  verbinden,  ist 
+die Angabe
+
+     dateiname/(adresse)
+
+moeglich.  Die  Datei  wird nur mit ihren globalen Marken  einge-
+fuegt, bei Angabe der Adresse mit entsprechender Verschiebung.
+
+Ist  eine Datei als absolut gekennzeichnet,  muss sie  mit  einer 
+Adressenangabe gelinkt werden,  wobei die Adresse der ORG-Adresse 
+des Files entsprechen muss.  In diesem Fall ist auch die Dateina-
+menserweiterung .HEX
+Alle Adressangaben beziehen sich auf den Anfang der ersten Datei. 
+Wird z.B. 
+
+     name1,name2(2000)
+
+gegeben,  wird die Datei name1 ab 0 und die Datei name2 ab  2000H 
+verbunden.
+
+Alle Dateibezeichnungen sind durch ein Komma voneinander zu tren-
+nen. Die Kommandozeile wird durch ein RETURN beendet.
+
+
+8.6. Programmausgabe
+--------------------
+
+Wird  nach  der Angabe aller zu verbindenden Dateien  ein  Gleich-
+heitszeichen  eingegeben  (kann auch auf einer der folgenden  Kom-
+mandozeilen stehen),  so wird die Eingabe eines Dateinamen  erwar-
+tet,  unter dem das fertige Programm ausgegeben werden soll.  Hier 
+gilt das gleiche wie oben gesagt.  Die Namenserweiterung ist stan-
+dardmaessig  .HEX;  fehlt die Laufwerksangabe,  ist  das  aktuelle 
+Laufwerk  gemeint.  Die  Ausgabe ist aber auch auf  einem  anderen 
+logischen Geraet moeglich, da ACSII-Code erzeugt wird.
+Nach  dem  Dateinamen kann ausserdem noch eine durch eine  Klammer 
+eingeschlossene  Adresse angegeben werden.  Diese Adresse ist  die 
+Anfangsadresse des erzeugten Programms.  Fehlt diese Angabe,  wird 
+die Anfangsadresse auf 100H (TPA) gesetzt:
+
+     =nameo(500)
+
+Die  im  obigen Beispiel gelinkten Dateien werden  verbunden  und 
+unter   dem  Namen  nameo  im  Intel-Hex-Code   ausgegeben.   die 
+Ladeadressen des o.g. Beispiels sind dann:
+     name1     =  500H
+     name2     = 2500H
+
+
+8.7. Kommentare
+---------------
+
+Auf jeder Kommandozeile koennen Kommentare nach jedem Namen  einge-
+fuegt  werden.  Ein Kommentar beginnt nach dem Zeichen ";" (Semiko-
+lon) und endet entweder mit einem Semikolon,  welches wie ein Komma 
+zwischen  den Dateinamen wirkt oder mit einem Return als  Abschluss 
+der Zeile.  Kommentare sind wirkungslos und werden nur beim Listing 
+mit ausgegeben.
+Beispiel: 
+name1;Datei Nr. 1;name2;Datei Nr. 2;(2000)
+
+
+8.8. Listing
+------------
+
+Wird auf einer neuen Kommandozeile 
+
+     #dev:name.erw
+
+gegeben,  wird  ein  Protokoll  des  bisherigen  Standes  der  zu 
+verbindenden  Dateien  mit  ihrer Startadresse und  den  globalen 
+Marken ausgegeben.
+Die Erweiterung ist standardmaessig .PRL, falls nicht im Kommando 
+anders angegeben.  Fuer dev:  gilt das oben gesagte.  Ebenso kann 
+ein logisches Geraet, insbesondere CON: angegeben werden.
+Das Listing wird mit Blattkopf,  in dem ausser einer Ueberschrift 
+noch das Datum (falls generiert) und der Dateiname des  gelinkten 
+Programms stehen. Die Seitennummerierung erfolgt automatisch.
+
+
+8.8. Fehler
+-----------
+
+Fehler werden erkannt und auf der Konsole im Klartext ausgegeben. 
+Nach  Abschluss jeder Kommandozeile wird die momentane  Speicher-
+belegung  angezeigt.  Vor der Angabe einer Ausgabeadresse bezieht 
+sich die Speicherbelegung stets auf die Anfangsadresse  0.  Diese 
+Belegung  muss  durch die Consoleingabe von Y oder  N  bestaetigt 
+werden. Bei N wird die bisherige Belegung geloescht.
+Nach  der  Angabe  einer  Ausgabeadresse wird  nun  die  richtige 
+Speicherbelegung angezeigt und kann bestaetigt werden.
+
+Hat man einen Fehler gemacht,  kann durch Eingabe eines Fragezei-
+chens  als  erstes Zeichen einer Kommandozeile  der  Grundzustand 
+hergestellt  werden  und alle Eingaben einschl.  der  Angabe  des 
+Kommandofiles koennen von vorn wiederholt werden.
+
+Der  Linker wird durch Eingabe von RETURN als erstes und einziges 
+Zeichen einer Kommandozeile verlassen.
+
+Ein Kommandofile kann fuer das obige Beispiel so aussehen:
+
+name1,name2(2000)=nameo
+#con:
+(RETURN)
+
+Nach  der  Erzeugung des Programmes wird das  Protokoll  auf  dem 
+Bildschirm ausgegeben.
+
+9. Verschiebelader
+==================
+
+9.1. Wirkungsweise
+------------------
+
+Der  Verschiebelader gestattet das Herstellen von  ablauffaehigen 
+Programmen, die mit dem Programm SYS entwickelt wurden. Dazu sind 
+mehrere   Moeglichkeiten  installiert,   die  die  Vorzuege   des 
+Betriebssystems voll ausnuetzen.
+
+Aus einem Intel-Hex-Code,  der entweder vom Linker oder auch  vom 
+Assembler  Z80  oder Z8 kommen kann,  wird das Programm  und  die 
+dazugehoerige  Verschiebeinformation gelesen und in eine absolute 
+Adressierung umgewandelt.  Die rela
+tiven Bytes werden jedoch  ge-
+merkt,  um  fuer  relative Programme die Verschiebbarkeit zu  ge-
+waehrleisten.
+
+Ein  Laden  in  den  Speicher  erfolgt  nicht,  sondern  nur  die 
+Erzeugung eines ladbaren Files.
+
+
+9.2. Aufruf
+-----------
+
+Der Verschiebelader wird vom Monitor aufgerufen mit
+
+     Shiftloader
+
+Der erste Buchstabe ist signifikant.
+Die Ueberlagerung wird geladen und meldet sich mit  ihrem  Namen. 
+Danach wird nach dem Namen des Objektfiles gefragt. Die Namensan-
+gabe ist nach den Ausfuehrungen im Kapitel 1 zu konstruieren,  es 
+sind  die  Angabe  eines Laufwerkes und  einer  Namenserweiterung 
+moeglich.  Fehlt eine dieser Angaben,  wird als Standard das  ak-
+tuelle Laufwerk und fuer die Namenserweiterung
+      .HEX
+gesetzt.
+
+Auf der gleichen Zeile koenen noch Optionen angegeben werden, die 
+vom  Namen  durch einen oder mehrere Leerschritte getrennt  sind. 
+Die  Zeile  wird mit RETURN beendet und  der  Umcodierungsvorgang 
+beginnt.
+
+
+9.3. Optionen
+-------------
+
+Fuer eine komfortable Verwendung der erzeugten Programme ist  die 
+Angabe einer Option erlaubt. Die Option L kann jedoch zusaetzlich 
+stets vor Angabe einer anderen Option stehen.
+
+     Lx        Auswahl  des   Laufwerkes,  auf  dem  das  fertige 
+               Programm ausgelagert werden soll.
+               x ist die Laufwerksangebe (A,...,D).  Der Name des 
+               erzeugten  Programmes ist der gleiche wie  der  in 
+               der Kommandozeile als Objektfile angegebene.
+
+Wird  ausser L keine weitere Option gegeben,  ist das Programm ab 
+100H (TPA) als -.COM File lad- und abarbeitbar.
+Nachfolgend  wird  immer das maximal moegliche Kommando  mit  der 
+Option angegeben. Die Optionen sind:
+
+     R                        c:test1.hex Lb R
+     Es wird ein File erzeugt,  welches mit dem OPEN-Kommando des 
+     Betriebssystems geladen und als Bestandteil des Betriebssys-
+     tems eingefuegt wird.  Das File enthaelt einen Verschiebela-
+     der  auf 100H,  der die Zelle MEMGR (29H) abfragt und  damit 
+     den  freien  Speicherplatz unter dem Betriebssystems  ermit-
+     telt.  Nach  dem Laden dieses Programmes wird dieses an eine 
+     freie Stelle verschoben,  die relativen Verbindungen  aufge-
+     loest und das Programm angesprungen.
+     Die Namenserweiterung des erzeugten Files ist .REL
+
+     O.erw                    b:test2.hex Lc O.ovr
+     Es  wird ein .COM-File erzeugt ab Adresse 100H mit der  Ori-
+     ginaladresse aus den Angaben des Linkers bzw. des Assemblers 
+     bei  ORG.  Es wird keinerlei Verschiebung vorgenommen,  alle 
+     Referenzen beziehen sich auf den Programmanfang. Damit koen-
+     nen z.B. Betriebssysteme als File erzeugt werden, die jedoch 
+     mit  speziellen Ladeprogrammen dann an die  richtige  Stelle 
+     gela
+den werden muessen.
+     Die Erweiterung der Option mit .erw gestattet die  Namenser-
+     weiterung des erzeugten Programmes beliebig zu waehlen.  Der 
+     Standard  ist .COM,  im obigen Beispiel heisst das File dann 
+     TEST2.OVR
+
+     C:adr                    a:test3.hex Lb C:2000
+     Wie vor wird ein selbstverschiebliches Programm erzeugt. Die 
+     andere Wirkung der Option bezieht sich auf die Ladeadresse.
+     Wird  adr nicht angegeben,  so wird der CCP (Command Proces-
+     sor)  durch das Programm waehrend des  Ladevorganges  ueber-
+     schrieben.
+     Die  Angabe der Adresse bewirkt das Laden des Programmes auf 
+     die angegebene Adresse.  Dabei wird BDOS ueberwacht und  nur 
+     nach Bestaetigung der Frage
+          BDOS Overwrite? (Y/N):
+     mit Y dies zugelassen. Bei der Antwort N wird die Ladeadres-
+     se so berechnet, dass nur der CCP ueberlegert wird.
+
+     H:adr                    d:test4.hex La H:5100
+     Fuer spezielle Zwecke ist es moeglich, das geladene Programm 
+     auf die angegebene Adresse zu binden und dann  anschliessend 
+     als Intel-Hex-File auszugeben.  Wird adr nicht angegeben, so 
+     bleibt die Adresse aus dem Linkvorgang erhalten.
+
+
+9.4. Fehler
+-----------
+
+Auftretende  Fehler  werden  im  Klartext  angezeigt.  CRC-Fehler 
+werden  nur angezeigt,  der Ladevorgang jedoch nicht abgebrochen. 
+Eingabefehler fuehren zum Abbruch des Verschiebeladers.
+
+
+     Turbo-Pasccal-Parser
+
+1.   Einleitung
+===============
+
+Fuer den Inline-Assembler von Turbo Pascal ist es sehr schwer, die 
+erforderlichen Codes zu schreiben.  Lange Quellen in Maschinencode 
+sind  fast ueberhaupt nicht zu bearbeiten.  Aus diesem Grund wurde 
+der  hier beschriebene Parser geschaffen,  der dem Anwender  diese 
+Arbeit abnimmt.
+Der  Parser ist Bestandteil des Programmes SYS und durch die  dort 
+angewandten Ausgaben fuer alle Assembler anwendbar. Die erfolgrei-
+che  Testung  konnte jedoch nur bei  Z80  Prozessoren  vorgenommen 
+werde.
+
+
+2.   Aufruf
+===========
+
+Der Parser wird vom Monitor mit dem Kommando
+
+     Parse
+
+aufgerufen.  Der  erste Buchstabe (P) ist signifikant.  Der Parser 
+benoetigt einen relative Objektcode,  der mit einem Assembler  des 
+Systems erzeugt werden muss.  Die Quelle darf kein 'ORG' enthalten 
+und  die  Uebersetzung muss relativ erfolgen.  Gelinkte  Programme 
+sind nicht anwendbar.
+Nach  dem Laden der Ueberlagerung wird nach dem Namen des  Objekt-
+codes gefragt mit
+
+     Input File:
+
+Das Eingabefile hat standardmaessig die Namenserweiterung .HXL
+
+Danach muss der Name des Ausgabefiles eingegeben werden:
+
+     Output File:
+
+Hier ist die Namenserweiterung .PAS Standard, wie von Turbo Pascal 
+gefordert.
+Die Programmabarbeitung beginnt und nach Ausgabe des  Inline-Codes 
+wird der Monitor wieder aktiv.
+
+
+3.   Aufbau des Quellcodes
+==========================
+
+
+Die  zu  assemblierende Quelle muss den vom  jeweiligen  Assembler 
+geforderten  Aufbau haben.  Eine ORG-Anweisung darf nicht oder nur 
+mit dem Argument Null vorhanden sein.
+Alle  fuer  Turpo Pascal erforderlichen Namen der  Variablen  usw. 
+sind am Programmanfang als Extern zu erklaeren.
+Die Assemblierung hat relativ zu erfolgen,  wo eine Wahl  hierfuer 
+besteht (Z80 und Z8).
+Die Anwendung von Macros ist beliebig moeglich.
+Die Quelle muss aus einem Stueck bestehen.  Laengere Quellen koen-
+nen  mit  mehreren getrennten Uebersetzungen und  dann  getrennten 
+Einfuegungen in Turbo Pascal bearbeitet werden.
+
+
+4.   Ausgabe
+============
+
+Die Ausgabe erfolgt in der Form
+
+     INLINE ($opcode/
+             $opcode/adresse
+             $opcode/external
+             ....
+             $opcode)
+
+auf  ein  File  mit dem angegebenen Namen.  Dieses File  ist  ohne 
+Aenderungen von Turbo Pascal als Include-File verwendbar.
+
+
+
+5.   Fehler
+===========
+
+Treten waehrend der Bearbeitung Fehler auf,  werden sie im Klatext 
+angezeigt. Dies sind i.a. Diskettenfehler oder Speicherfehler.
+Intern koennen 4 K fuer externe Symbole (ca.  400 Marken) und  bis 
+12 K Programmcode gespeichert werden. Groessere Programme erzeugen 
+Speicherfehler.
+
+Anlage    A
+===========    
+
+                    ***  Z80 Mnemonik ***
+
+
+Verwendete Abkuerzungen:
+------------------------
+
+( )  Klammern um einen Ausdruck bedeuten Inhalt des Ausdruckes
+(l)  untere 8 Bit
+(h)  obere 8 Bit
+b    Bit-Position in Register oder Speicherstelle
+cc   Flagauswertung:
+     NZ   ungleich Null
+     Z    gleich Null
+     NC   kein Uebertrag
+     C    Uebertrag
+     PO   Ungerade oder kein Ueberlauf
+     PE   Gerade oder Ueberlauf
+     P    Positiv
+     M    Negativ
+CY   Carry-Flag
+Z    Zero-Flag
+d    Zielregister 8 Bit
+dd   Zielregister 16 Bit
+aa   Zieladresse im Speicher 16 Bit
+e    8 Bit Zweierkomplement der Distanz bei relativen Spruengen
+     oder indizierter Adressierung
+L    8 spezielle Zieladressen der Seite 0:
+     0 entspricht Adresse 00H
+     1    "         "     08H
+     2    "         "     10H
+     3    "         "     18H
+     4    "         "     20H
+     5    "         "     28H
+     6    "         "     30H
+     7    "         "     38H
+     die Werte sind einander aequivalent
+n    8 Bit Binaerzahl
+nn   16 Bit Binaerzahl
+r    allgemeines 8-Bit-Register:
+     A, B, C, D, E, H, L oder M bzw (HL)
+ss   16 Bit Senderegister
+ss'  16 Bit Hintergrundregisterpaar
+dd+  Register wird um 1 erhoeht         dd:=dd+1
+dd-  Register wird um 1 vermindert      dd:=dd-1
++-   angebbares  Vorzeichen  +  oder -.  Fehlt es,  muss  auch  e 
+     fehlen!
+vgl  Vergleich Register A mit einem Wert ohne Veraenderung von A
+(C)  Bei  Ein- und  Ausgaben wird die Portadresse im  Register  C 
+     angegeben.
+
+Mnemonik       Operation           Bemerkung
+----------------------------------------------------------------
+
+               8 Bit Ladebefehle
+               -----------------
+
+LD r,s         r := s              s= r, n, (HL),(IX+-e),(IY+-e)
+LD d,r         d := r              d=    r, (HL),(IX+-e),(IY+-e)
+LD d,n         d := n              d=       (HL),(IX+-e),(IY+-e)
+LD A,s         A := s              s= (BC), (DE), (nn), I, R 
+LD d,A         d := A              d= (BC), (DE), (nn), I, R
+
+               16 Bit Ladebefehle
+               ------------------
+
+LD dd,nn       dd := nn            dd = BC, DE, HL, SP, IX, IY
+LD dd,(aa)     dd := (aa)
+LD (aa),ss     (aa) := ss          ss = BC, DE, HL, SP, IX, IY
+LD SP,ss       SP := ss            ss = HL, IX, IY
+PUSH ss        (SP-1) := ss(h)     ss = BC, DE, HL, IX, IY, AF
+               (SP-2) := ss(l)
+               SP := SP - 2
+POP dd         dd(l) := (SP)       dd = BC, DE, HL, IX, IY, AF
+               dd(h) := (SP+1)
+               SP := SP + 2
+
+               Registeraustauschbefehle
+               ------------------------
+
+EX (SP),ss     (SP) <--> ss(l)     ss = HL, IX, IY
+               (SP+1) <--> ss(h)
+EX DE,HL       DE <--> HL
+EX AF oder 
+EXAF           AF <--> AF'
+EXX            BC <--> BC'
+               DE <--> DE'
+               HL <--> HL'
+
+               Blocktransfer
+               -------------
+
+LDI            (DE) := (HL), DE+, HL+, BC-
+LDIR           (DE) := (HL), DE+, HL+, BC-, solange, bis BC = 0
+LDD            (DE) := (HL), DE-, HL-, BC-
+LDDR           (DE) := (HL), DE-, HL-, BC-, solange, bis BC = 0
+
+               Blocksuchbefehle
+               ----------------
+
+CPI            A vgl (HL), HL+, BC-
+CPIR           A vgl (HL), HL+, BC-, solange, bis BC = 0  
+                                              oder A = (HL); Z=1
+CPD            A vgl (HL), HL-, BC-
+CPDR           A vgl (HL), HL-, BC-, solange, bis BC = 0
+                                              oder A = (HL); Z=1
+
+Bei  den  Blocktransfer- und Blocksuchbefehlen ist das  Flag  P/V 
+solange gesetzt, wie BC nicht Null ist.
+
+
+
+Mnemonik       Operation           Bemerkung
+----------------------------------------------------------------
+
+               Rechenbefehle in A
+               ------------------
+
+ADD A,s        A := A + s          s=r, n, (HL), (IX+-e), (IY+-e)
+ADD s
+
+ADC A,s        A := A + s + CY
+ADC s
+
+SUB s          A := A - s
+
+SBC A,s        A := A - s - CY
+SBC s
+
+AND s          A := A & s          Konjunktion
+OR s           A := A v s          Disjunktion
+XOR s          A := A x s          Inhibition
+
+CP s           A vgl s
+CMP s
+
+INC d          d := d + 1          d = s, (HL), (IX+-e),(IY+-e)
+DEC d          d := d - 1
+
+               arithmetische Operationen 16 Bit
+               --------------------------------
+
+ADD HL,ss      HL := HL + ss       ss = BC, DE, HL, SP
+ADC HL,ss      HL := HL + ss + CY
+SBC HL,ss      HL := HL - ss - CY
+ADD IX,ss      IX := IX + ss       ss = BC, DE, IX, SP
+ADD IY,ss      IY := IY + ss       ss = BC, DE, IY, SP
+INC dd         dd := dd + 1        dd = BC, DE, HL, SP, IX, IY
+DEC dd         dd := dd - 1
+
+               sonstige arithmetische Operationen
+               ----------------------------------
+
+DAA            Konvertierung in BCD im Register A, auf ADD oder
+               SUB folgend
+CPL            bitweises Komplement in A
+NEG            A := 0 - A, Negation
+CCF            Komplement Carry-Flag
+SCF            CY := 1
+
+               sonstige Operationen
+               --------------------
+
+NOP            keine Operation
+HALT           CPU-Halt, nur mit Interrupt loesbar
+DI             Interrupt verboten
+EI             Interrupt erlaubt
+IM0            Interruptmode 0, 8080-Mode
+IM1            Interruptmode 1, CALL 38H
+IM2            Interruptmode 2, indirekter CALL ueber Vektor
+
+
+
+Mnemonik       Operation           Bemerkungen
+----------------------------------------------------------------
+
+               Verschiebebefehle
+               -----------------
+
+RLCA           CY<--7<-----0<--7   s = r, (HL),(IX+-e),(IY+-e)
+RLC s                              sonst in Register A
+
+RLA            CY<--7<-----0<--CY
+RL s
+
+RRCA           0-->7----->0-->CY
+RRC s
+
+RRA            CY-->7----->0-->CY
+RR s
+
+SLA s          CY<--7<-----0<--Null
+
+SRA s          7-->7----->0-->CY
+
+SRL s          Null-->7----->0-->CY
+
+RLD            Rotation Bit 0--3 A     nach Bit 0--3  (HL)
+                        Bit 0--3 (HL)  nach Bit 4--7  (HL)
+                        Bit 4--7 (HL)  nach Bit 0--3  A 
+
+RRD            Rotation Bit 0--3 A     nach Bit 4--7  (HL)
+                        Bit 4--7 (HL)  nach Bit 0--3  (HL)
+                        Bit 0--3 (HL)  nach Bit 0--3  A
+
+Bei  beiden  Befehlen  bleiben  die  Bits  4--7  im  Register   A 
+unberuehrt.
+
+               Bitoperationen
+               --------------
+
+BIT b,s        Z := negiertes Bit b von s    Z ist Zero-Flag
+RES b,s        Bit b von s := 0
+SET b,s        Bit b von s := 1
+
+               Ein- und Ausgaben
+               -----------------
+
+IN A,(n)       A := (port n)
+IN n
+
+IN r,(C)       r := (port (C))     r = A, B, C, D, E, H, L
+IN r
+
+INI            (HL) := (port(C)), HL+, B-
+INIR           (HL) := (port(C)), HL+, B-, solange bis B = 0
+IND            (HL) := (port(C)), HL-, B-
+INDR           (HL) := (port(C)), HL-, B-, solange bis B = 0
+
+OUT (n),A      (port n) := A
+OUT n
+
+OUT (C),r      (port(C)) := r
+OUT r
+Mnemonik       Operation           Bemerkungen
+----------------------------------------------------------------
+
+OUTI           (port(C)) := (HL), HL+, B-
+OTIR           (port(C)) := (HL), HL+, B-, solange bis B = 0
+OUTD           (port(C)) := (HL), HL-, B-
+OTDR           (port(C)) := (HL), HL-, B-, solange bis B = 0
+
+               Sprungbefehle
+               -------------
+
+JP aa          PC := aa                 Bei nicht erfuellter
+JMP aa                                  Bedingung PC := PC + 3
+
+JP NZ,aa       PC := aa, wenn Z = 0
+JPNZ aa
+
+JP Z,aa        PC := aa, wenn Z = 1
+JPZ aa
+
+JP NC,aa       PC := aa, wenn CY = 0
+JPNC aa
+
+JP C,aa        PC := aa, wenn CY = 1
+JPC aa
+
+JP PO,aa       PC := aa, wenn ungerade
+JPPO aa
+
+JP PE,aa       PC := aa, wenn gerade
+JPPE aa
+
+JP P,aa        PC := aa, wenn positiv
+JPP aa
+
+JP M,aa        PC := aa, wenn negativ
+JPM aa
+
+JP (ss)        PC := ss                 ss = HL, IX, IY
+
+JR e           PC := e                  bei nicht erfuellter
+                                        Bedingung wird PC:=PC+2  
+JR NZ,e        PC := e, wenn Z = 0
+JRNZ e
+
+JR Z,e         PC := e, wenn Z = 1
+JRZ e
+
+JR NC,e        PC := e, wenn CY = 0
+JRNC e
+
+JR C,e         PC := e, wenn CY = 1
+JRC e
+
+DJNZ e         PC := e, solange, bis B = 0
+               B := B - 1
+
+Bei  der robotron-Mnemonik der relativen Spruenge ist die  Angabe 
+nach e (meistens +# oder -#) wegzulassen!
+
+
+Mnemonik       Operation           Bemerkung
+----------------------------------------------------------------
+
+               Unterprogammaufrufe
+               -------------------
+
+CALL aa        (SP-1) := PC(h)     Dieser Ablauf gilt stets bei
+               (SP-2) := PC(l)     erfuellter Bedingung, sonst
+               SP := SP - 2        wird PC := PC + 3
+
+CALL NZ,aa     Aufruf, wenn Z = 0
+CANZ aa
+
+CALL Z,aa      Aufruf, wenn Z = 1
+CAZ aa
+
+CALL NC,aa     Aufruf, wenn CY = 0
+CANC aa
+
+CALL C,aa      Aufruf, wenn CY = 1
+CAC aa
+
+CALL PO,aa     Aufruf, wenn ungerade
+CAPO aa
+
+CALL PE,aa     Aufruf, wenn gerade
+CAPE aa
+
+CALL P,aa      Aufruf, wenn positiv
+CAP aa
+
+CALL M,aa      Aufruf, wenn negativ
+CAM aa
+
+RST L          (SP-1) := PC(h)
+               (SP-2) := PC(l)
+               SP := SP -2
+               PC(h) := 0
+               PC(l) := L
+
+               Rueckspruenge
+               -------------
+
+RET            PC(l) := (SP)       Dieser Ablauf gilt immer, wenn
+               PC(h) := (SP+1)     die Bedingung erfuellt ist,
+               SP := SP + 2        wird PC := PC + 1
+
+RET NZ         Ruecksprung, wenn Z = 0
+RNZ
+
+RET Z          Ruecksprung, wenn Z = 1
+RZ
+
+RET NC         Ruecksprung, wenn CY = 0
+RNC
+
+RET C          Ruecksprung, wenn CY = 1
+RC
+
+RET PO         Ruecksprung, wenn ungerade
+RPO
+Mnemonik       Operation           Bemerkung
+---------------------------------------------------------------
+
+RET PE         Ruecksprung, wenn gerade
+RPE
+
+RET P          Ruecksprung, wenn positiv
+RP
+
+RET M          Ruecksprung, wenn negativ
+RM
+
+RETI           Rueckkehr vom Interrupt, sonst wie RET
+RETN           Rueckkehr vom nicht maskierten Interrupt, sonst
+               wie RET
+
+Ausserdem  sind noch folgende sogen.  nichtbekanten  Operationen 
+mit  implementiert,  die  die  Indexregister  als  Einzelregister 
+behandeln. Es ist vor ihrer Anwendung der Prozessor zu testen, ob 
+er diese Befehle richtig ausfuehrt!
+Die  Operationen werden wie die anderen Operationen mit  normalen 
+Register ausgefuehrt. Hier wird nur die Mnemonik angegeben:
+
+INC HX         INC HY         INC LX         INC LY
+DEC HX         DEC HY         DEC LX         DEC LY
+ADD A,HX       ADD A,HY       ADD A,LX       ADD A,LY
+SUB HX         SUB HY         SUB LX         SUB LY
+AND HX         AND HY         AND LX         AND LY
+OR  HX         OR  HY         OR  LX         OR  LY
+ADC A,HX       ADC A,HY       ADC A,LX       ADC A,LY
+SBC A,HX       SBC A,HY       SBC A,LX       SBC A,LY
+XOR HX         XOR HY         XOR LX         XOR LY
+CP  HX         CP  HY         CP  LX         CP  LY
+
+               LD HX,LX       LD LX,HX       LD LX,LX
+               LD HY,LY       LD LY,HY       LD LY,LY
+LD r,HX        LD r,HY        LD r,LX        LD r,LY
+LD HX,r        LD HY,r        LD LX,r        LD LY,r
+
+r ist eines der Register A, B, C, D, E
+LX  oder  LY  bezeichnet die unteren 8 Bit  und HX  oder  HY  die 
+oberen 8 Bit eines Indexregisters.
+

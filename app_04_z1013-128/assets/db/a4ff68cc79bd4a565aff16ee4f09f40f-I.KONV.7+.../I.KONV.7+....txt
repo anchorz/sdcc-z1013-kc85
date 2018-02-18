@@ -1,0 +1,88 @@
+      Kurzbeschreibung fuer KONV.7, DRUCK85/3, DRUCKKC1
+================================================================
+(c) Dr.Trog,H.-J., Berlin, Februar 1989
+
+KONV.7     = fuer den Z 1013
+DRUCK85/3  = fuer den KC 85/3
+DRUCKKC1   = fuer den KC 85/1 bzw. Z 9001
+
+
+Da der Z 1013 kein KC-kompatibles Kassetteninterface hat,
+koennen bei fehlendem Drucker keine Texte auf den KC's ausge-
+druckt werden. Deshalb wurden von mir die o.g. 3 Programme ge-
+schrieben, die mit dem 10K - HC-BASIC lauffaehig sind.
+
+
+KONV.7
+******
+
+KONV.7 konvertiert Texte, z.B. von MicroWORD, in ein BASIC-
+Feld. Dabei wird 1EH in 0DH umgewandelt, der Seitenvorschub 0CH
+bleibt unveraendert erhalten, ebenso alle Steuerzeichen.
+Das Programm ist verwendbar fuer 32K und variabel groesser 32K
+RAM. Es stellt sich selbst auf diese Speichergroessen ein.
+
+Zuerst wird mit der Funktion >laden< der Text geladen (bei 32K
+ohne HEADER). Sonst wird der Sprungverteiler genutzt(aender-
+bar). Die Adressen werden umgerechnet und der Text an das RAM-
+Ende geladen.
+
+Mit der Funktion >einrichten< wird das BASIC-Feld entsprechend
+des verfuegbaren Speicherplatzes dimensioniert. Dabei werden
+Zeilen und Seiten gezaehlt. Anschliessend wird der Text in das
+Feld gepokt.
+
+Dieses Feld kann mit einem einzugebenen Namen gesaved werden.
+Dabei wird die Feldlaenge angezeigt, die fuer das Laden in den
+Druckprogrammen notwendig ist.
+
+Ist der Text noch nicht voellig konvertiert, so wird das
+naechste Feld eingerichtet. Dazu muss der Wert H (wird ange-
+zeigt) eingegeben werden. Ab dieser Dez-adresse wird weiterkon-
+vertiert.
+
+Werden Texte ohne Seitenvorschub (0CH) konvertiert, kann auf Ab-
+frage die Zeilenzahl bis max. 72 festgelegt werden. Diese Zahl
+sollte man sich dann aber fuer das Druckprogramm merken. Eben-
+so ist es guenstig, sich die Zeichenzahl/Zeile zu notieren.
+Sie wird im Druckprogramm abgefragt.
+
+Die konvertierten Felder koennen weiterhin angesehen u./o. ge-
+laden werden.
+
+
+DRUCK85/3 und DRUCKKC1
+**********************
+
+Diese Druckprogramme sind fuer die KC's geschrieben. Der KC 85/3
+benoetigt 1 Expander-RAM, der Z 9001 einen RAM-Modul. Die Druck-
+befehle entsprechen denen des EPSON-Druckers LX 86.
+Fuer die V24 des KC 85/3 sind noch die entsprechenden Programme
+notwendig. Der Z 9001 benoetigt den V24-Modul, der im OS mit
+V24A3 aufgerufen wird (es wurden keine OUT-Befehle vewendet).
+
+fuer beide Programme:
+---------------------
+
+Nach dem Laden des Feldes kann es angesehen, gesaved und
+gedruckt werden. 
+Fuer das Ausdrucken wird der linke Rand abgefragt und wieviel
+Zeichen/Zeile (ohne linken Rand!) gedruckt werden sollen. 
+Beim Z 9001 schaltet die Eingabe 5 fuer den linken Rand auf
+Grafik um !! Abfrage Zeilen/Seite erfolgt, ob mit oder ohne
+Seitenzahl und ab welcher Textseite gedruckt werden soll.
+Beide Programme drucken grundsaetzlich im Einzelblattmodus und
+drucken erst auf Abfrage weiter.
+
+Zum Laden des naechsten Feldes wird ein Seitenvorschub durchge-
+fuehrt. Soll dann ausgedruckt werden, wird die Einstellung
+Drucker alt gewaehlt (oder neu eingestellt).
+
+
+Alle 3 Programme fuehren ueber ein Menue.
+
+################################################################
+BITTE GEBEN SIE KEIN VON IHNEN GEAENDERTES PROGRAMM WEITER,
+SONDERN NUR DIE ORIGINALVERSION!!
+################################################################
+

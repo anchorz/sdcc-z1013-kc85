@@ -1,0 +1,4 @@
+<kurz src="Inhalt identisch [92263e2eee6a78cb17623c089c8c7900]"/>
+<lang>Übersicht der Steuersignale wichtiger EPROMS 
+<include src="I.PROGRAMMIERUNG.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="erweiterter Disassembler (Speicherzellen ändern), 0xD300"/>
+<lang></lang>
+<requires></requires>

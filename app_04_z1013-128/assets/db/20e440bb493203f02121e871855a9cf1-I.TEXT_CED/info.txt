@@ -1,0 +1,3 @@
+<kurz src="Texteditor CED 1987-10-25"/>
+<lang><include src="I.TEXT CED.txt"/></lang>
+<requires></requires>

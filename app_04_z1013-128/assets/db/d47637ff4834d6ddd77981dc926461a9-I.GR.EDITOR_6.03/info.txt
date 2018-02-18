@@ -1,0 +1,3 @@
+<kurz src="GRAFIKEDITOR V6.03 by rehn-soft"/>
+<lang><include src="I.GR.EDITOR 6.03.txt"/></lang>
+<requires></requires>

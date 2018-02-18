@@ -1,0 +1,3 @@
+<kurz src="Typenlegende, Dateitypen erläutert"/>
+<lang><include src="T.TYPENLEGENDE 2.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,3 @@
+<kurz src="AUTOSTART BEIM TINY-BASIC INTERPRETER 1988-02-01"/>
+<lang><include src="T.AUTO-START 3K.txt"/></lang>
+<requires></requires>

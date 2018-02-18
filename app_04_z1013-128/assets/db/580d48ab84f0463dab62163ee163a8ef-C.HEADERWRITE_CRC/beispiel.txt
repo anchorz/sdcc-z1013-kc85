@@ -1,0 +1,17 @@
+Name     : ABB            
+Vorname  : ABC            
+Strasse  : SSSSSS                             
+Ort      : XXXXX                     
+PLZ      : 0000
+Kassette : 1
+Seite    : A
+Datum    : 01.01.2018
+
+Nr.   Anf.  Ende  Start CRC    Typ  Filename         Pos.
+---------------------------------------------------------
+
+0001  2BC0  36EC  2BC0  4B4A    B...FUNKTION         001
+0002  2BC0  36EC  2BC0  4B4A    B...FUNKTION         010
+0003  2BC0  36EC  2BC0  4B4A    B...FUNKTION         012
+
+

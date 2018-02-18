@@ -1,0 +1,9 @@
+<kurz src="Kurzbeschreibung fuer KONV.7, DRUCK85/3, DRUCKKC1"/>
+<lang>
+KONV.7 konvertiert Texte, z.B. von MicroWORD, in ein BASIC-Feld.
+
+DRUCK85/3 und DRUCKKC1 Druckprogramme sind fuer die KC's geschrieben. 
+Die Druckbefehle entsprechen denen des EPSON-Druckers LX 86.
+
+<include src="I.KONV.7+....txt"/></lang>
+<requires></requires>

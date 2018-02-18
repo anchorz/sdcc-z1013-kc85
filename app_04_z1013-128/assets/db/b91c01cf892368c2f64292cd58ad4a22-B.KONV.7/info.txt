@@ -1,6 +1,10 @@
 <kurz src="Textkonvertierung V7"/>
 <lang>Unbekannte Funktion. Weder sehe ich hier aus dem Quelltext heraus, was für ein Text konvertiert 
 werden soll, noch was während der Konvertierung verändert werden soll.  
+Doku lesen:
+
+KONV.7 konvertiert Texte, z.B. von MicroWORD, in ein BASIC-
+Feld. Dabei wird 1EH in 0DH umgewandelt, der Seitenvorschub 0CH
 
 Steuerung: ⇦ ⇨ B
 

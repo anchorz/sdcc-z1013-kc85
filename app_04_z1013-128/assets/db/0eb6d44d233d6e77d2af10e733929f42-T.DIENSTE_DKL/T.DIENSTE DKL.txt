@@ -1,0 +1,168 @@
+Liste GDC
+
+os. Bezeichnung               Stueck
+01   DS 8286                    1
+02   DS 8205                    2
+03   DL 004                     2
+04   DL 074                     2
+05   DL 000                     1
+06   DL 086                     1
+07   DL 020                     1
+08   DL 299                     1
+09   DL 193                     1
+10   U 82720 8 MHz              1
+11   U 2764                     1
+12   Quarz 16,0 MHz             1
+13   100 pF Keramik             1
+14   820 Ohm                   10
+15   220 Ohm                    2
+16   SAY 32                     2
+17   100 Ohm                    1
+18   StL 58-polig, 2-reihig
+     Loetanschluss              1
+
+
+
+
+
+ Liste FDC
+
+Pos. Bezeichnung               Stueck
+01   DS 8287                    1
+02   DS 8286                    1
+03   DS 8205                    1
+04   DL 004                     2
+05   DL 020                     1
+06   DL 074                     2
+07   DL 193                     1
+08   DL 123                     1
+09   DL 257                     1
+10   V 4046                     1
+11   V 40098                    1
+12   U 8272 D04                 1
+13   8-fach DIP-Schalter        1
+14   Quarz 8 MHz                1
+15   70 pF                      1
+16   170 pF                     1
+17   220 pF                     1
+18   4,7 nF                     1
+19   47 nF                      1
+20   33 nF                      7
+21   680 nF                     1
+22   10 uF                      1
+23   47 uF                      1
+24   4,7 kOhm                   1
+25   560 Ohm                    2
+26   3,3 kOhm                   2
+27   20 kOhm                    1
+28   1,0 kOhm                   1
+29   820 KOhm                   1
+30   300 Ohm                    1
+31   47 kOhm Dickschichtein-
+     stellregler                2
+32   220 Ohm                    6
+33   VQA 14                     1
+34   VQA 34                     1
+35   SAY 32                     1
+36   StL 58-pol., 2-reihig gew.
+     Leiterplattenanschluss     1
+37   StL 26-pol., 2-reihig gew.
+     Loetanschluss              1
+38   Klemmleiste oder BuL gew.
+     26-pol., 2-reihig Leiter-
+     plattenanschluss fuer
+     Flachbandkabel             1
+
+
+
+
+Wir bieten weiterhin an:
+
+-Zusammenstellung aller aktiven und passiven Bauelemente
+ einschliesslich Steckverbinder für die GDC- und FDC-DKL 
+
+ Teilen Sie uns bitte mit, welcher Bussteckverbinder (58-
+ polig 2-reihig oder 3-reihig) gewuenscht wird.
+
+
+1. Unsere kalkulierten Preise richteten sich nach dem günstigsten 
+Preisen in Katalogen bzw. Anzeigen.
+2.  Mit der D-Mark setzte aber offenbar ein RUN von DDR-Amateuren 
+auf den Bauelementemarkt ein und das führte dazu,  daß die Anbie
+ter ihrerseits die Preise erhöhten, so daß der im Textfile angeg
+bene  SET-Preis  von 50,-DM leider z.Zt.  nicht  gehalten  werden 
+kann.
+3.  Bestimmte  DDR-spezifische BE wie z.B.  Steckverbinder für 
+K1520-Bus,  Bustreiber (DS8205,8286,8287) usw. sind auf inter
+nationalen Markt entweder gar nicht erhältlich oder sehr teuer 
+(z,B.  8286 7,- - 10,-DM).  Dazu kommt noch die Tatsache,  daß 
+der Handel und Vertrieb von DDR-Bauelementen bei uns  faktisch 
+zusammengebrochen ist.
+Wir  wollen  Sie  keinesfalls mit unserem Angebot  aufs  Glatteis 
+locken  und möchten Sie deshalb über unseren präzisierten   aktu
+ellen Preisvorschlag informieren.
+
+* SET GDC mit 8 MHz GDC yA 7220 AD von NEC und programmierten 8K-
+Zeichengenerator  (deutsch)..............................76.50 DM
+* SET GDC ohne GDC-IC....................................40.50 DM
+* SET FDC mit getypten FDC-IC............................72.80 DM
+* SET FDC mit S1-Typ U 8272 (getestet bei 4 MHz) ........59.90 DM
+* SET FDC ohne FDC-IC ...................................49.90 DM
+* Stecker/Buchsenleiste 58-polig zweireihig/dreireihig....5,-  DM
+
+Die  S1-Typen  erhielten wir übrigens von Herrn  Besser  von  der 
+PRACTIC.
+Pro  Bestellung werden noch 3,- DM Nachnahmegebühr +  Zahlkarten
+gebühr mit abgefordert.
+
+-Reparatur von defekten Baugruppen (allerdings kann eine 
+ Reparatur mitunter teurer werden als eine neue).
+
+
+*Leiterplatten für Computer (insbesondere DKL's stellen auch
+ in Zukunft einen bedeutenden Wert dar, deshalb bieten wir
+ folgenden Dienst an:
+
+-Entloetarbeiten mit computergesteuertem Loetbad zum schonenden
+ Ausloeten von groesseren Bauelementen (bis einschlieÖlich 58-
+ polige Steckverbinder bei Erhalt der Leiterplatte)
+
+-Testung ausgeläteter IC's
+
+-Auswechseln von IC bzw. Austausch gegen Fassungen
+
+Bedingungen fuer letztere vier Dienste:
+
+-kein bzw. ein loetfaeger Schutzlack
+
+-keine Drahtbruecken oder andere Bauelemente in der Naehe der
+ zu behandelten Flaeche auf der L-Seite
+
+-keine zweiseitige NDKL mit "oben" angeloeteten Bauelementen
+
+-nur CEVAUSIT-Leiterplatten
+
+-keine Elkos oder andere temperaturempfindliche Bauelemente 
+ in der Naehe der Entloetstelle
+
+-keine umgebogenen BE-Anschluesse oder andere Befestigung
+ (Nieten, Leim o.ae.)
+
+Durch Nichteinhaltung der obigen Bedingungen ist ein erhoehter
+Arbeitsaufwand notwendig, der sich in entsprechenden Zuschlae-
+gen im Preis bemerkbar macht. Bei Punkt 3 und 4 kann eine
+ordnungsgemaesse Entloetung nicht garantiert werden.
+
+Preise
+
+BE Pin's      Ausloeten             BE-Wechseln
+              ohne         mit
+              Erhalt der LPl.
+IC bis 20     -,20         -,50     -,80
+IC  ...28     -,40         1,-      1,50
+IC  ...40     -,80         1,60     2,40
+IC     64     1,-          2,-      3,-
+StV bis15     -,20         -,50     1,-
+StV ...39     -,40         1,-      1,50
+StV ...58     -,80         1,60     2,40
+

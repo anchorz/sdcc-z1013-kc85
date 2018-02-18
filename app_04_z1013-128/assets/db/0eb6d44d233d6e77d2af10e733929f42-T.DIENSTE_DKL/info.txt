@@ -1,0 +1,5 @@
+<kurz src="Bauteilbeschaffung nach 1990, Vertrieb von DDR-Bauelementen"/>
+<lang>Angebote in DM, leider ohne Adresse oder Telefonnummer
+
+<include src="T.DIENSTE DKL.txt"/></lang>
+<requires></requires>

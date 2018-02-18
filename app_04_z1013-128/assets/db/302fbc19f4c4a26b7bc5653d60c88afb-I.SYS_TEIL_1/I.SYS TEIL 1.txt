@@ -1,0 +1,1375 @@
+*****************************************************************
+*                                                               *
+*         "    ****        *       *           ****             *
+*             *    *        *     *           *    *            *
+*             *              *   *            *                 *
+*              ****           * *              ****             *
+*                  *           *                   *            *
+*             *    *           *              *    *            *
+*              ****            *               ****             *
+*                                                               *
+*****************************************************************
+
+
+
+
+
+  
+=================================================================
+=                                                               =
+=    Programmsystem zur Entwicklung von Anwenderprogrammen      =
+=              Autor H. Blume Karl-Marx-Stadt                   =
+=                   Copyright (C) 1986                          =
+=                 Ingenieurbuero Bauwesen                       =
+=                                                               =
+=================================================================
+
+
+
+
+
+
+0.  Inhaltsverzeichnis:
+=======================
+                                                         Seite
+1.   Einleitung                                              1
+     1.1.      Dateien                                       1.1
+     1.2.      Dateibezeichnung                              1.2
+     1.2.1.    Geraetezuweisung                              1.2
+     1.2.2.    Dateiname                                     1.2
+     1.2.3.    Namenserweiterung                             1.2
+     1.3.      Ein- und Ausgaben                             1.3
+     1.4.      Systemkomponenten                             1.3
+
+2.   Editor                                                  2
+     2.1.      Aufruf des Editors                            2.1
+     2.2.      Bedienung des Editors                         2.1
+     2.3.      Edit-Kommandos                                2.2
+     2.4.      Fehler                                        2.5
+
+3.   Assembler Z80/U880                                      3
+     3.1.      Einleitung                                    3.1
+     3.2.      Aufruf des Assemblers                         3.1
+     3.3.      Optionen                                      3.2
+     3.4.      Assemblersprache                              3.2
+     3.4.1.    Zeichenvorrat                                 3.2
+     3.4.2.    Format des Quellcodes                         3.3
+     3.4.3.    Symbole und Marken                            3.4
+     3.4.4.    Numerische Konstante                          3.4
+     3.4.5.    Ketten und Kettenkonstante                    3.4
+     3.4.6.    Befehlszaehler                                3.5
+     3.4.7.    Kommentar                                     3.5
+     3.4.8.    Sofortbefehle                                 3.5
+     3.5.      Ausdruecke                                    3.6
+     3.5.1.    Register                                      3.6
+     3.5.2.    Variable                                      3.6
+     3.5.3.    Operatiosnzeichen                             3.6
+     3.5.4.    Bildung eines Ausdruckes                      3.7
+     3.5.5.    Typ eines Ausdruckes                          3.7
+     3.5.6.    Externe Symbole                               3.7
+     3.6.      Pseudooperationen                             3.7
+     3.7.      Fehlermitteilungen                            3.11
+     3.8.      Protokoll des Assemblers                      3.11
+     3.9.      Objektcode                                    3.12
+     3.10.     Symboltabelle                                 3.12
+     3.11.     Symboldatei                                   3.12
+
+4.   Z8000 Cross Assembler                                   4
+     4.1.      Aufruf des Assemblers                         4.1
+     4.2.      Sprachelemente                                4.2
+     4.3.      Pseudooperationen                             4.3
+     4.4.      Operandenstrukturen                           4.6
+     4.5.      Arithmetik                                    4.6
+     4.5.1.    Zahlen                                        4.6
+     4.5.2.    Symbolische Konstante                         4.6
+     4.5.3.    Zeichenketten                                 4.6
+     4.6.      Ausdruecke                                    4.7
+     4.7.      Adressierungsformen                           4.7
+     4.7.1.    Segmentierung                                 4.7
+     4.7.2.    Adressierungsformen                           4.8
+     4.7.3.    -IM- Daten Adressierung                       4.8
+     4.7.4.    -R-  Register Adressierung                    4.8
+     4.7.5.    -IR- Indirekte Register Adressierung          4.9
+     4.7.6.    -DA- direkte Adresse                          4.9
+     4.7.7.    -X-                                           4.10
+     4.7.8.    -RA-                                          4.10
+     4.7.9.    -BA-                                          4.11
+     4.7.10.   -BX-                                          4.11
+
+     4.8.      Reservierter Wortschatz                       4.12
+     4.9.      Fehlercodes                                   4.12
+     4.10      Ausgaben                                      4.13
+     4.10.1    Listing                                       4.13
+     4.10.2.   Objektcode                                    4.14
+     4.10.3.   Symboltabelle                                 4.14
+
+5.   Crossassembler Z8                                       5
+     5.1.      Einleitung                                    5.1
+     5.2.      Aufruf des Assemblers                         5.1
+     5.3.      Optionen                                      5.1
+     5.4.      Assemblersprache                              5.2
+     5.4.1.    Zeichenvorrat                                 5.2
+     5.4.2.    Format des Quellcodes                         5.3
+     5.4.3.    Symbole und Marken                            5.3
+     5.4.4.    Numerische Konstante                          5.4
+     5.4.5.    Ketten und Kettenkonstante                    5.4
+     5.4.6.    Befehlszaehler                                5.4
+     5.4.7.    Kommentar                                     5.5
+     5.4.8.    Sofortbefehle                                 5.5
+     5.5       Ausdruecke                                    5.5
+     5.5.1.    Register                                      5.5
+     5.5.2     Variable                                      5.6
+     5.5.3.    Operationszeichen                             5.6
+     5.5.4.    Bildung eines Ausdruckes                      5.7
+     5.5.5.    Typ eines Ausdruckes                          5.7
+     5.5.6.    Externe Symbole                               5.7
+     5.6.      Pseudooperationen                             5.7
+     5.7       Fehlermitteilungen                            5.9
+     5.8       Protokoll des Assemblers                      5.10
+     5.9.      Objektcodes                                   5.10
+     5.10      Symboltabelle                                 5.11
+
+6.   Crossassembler 8086                                     6
+     6.1.      Einleitung
+               ****fehlt noch ***
+
+7.   Macros                                                  7
+     7.1.      Definitionen                                  7.1
+     7.1.1.    Macrokopf                                     7.1
+     7.1.2.    Macrokoerper                                  7.2
+     7.2       Ende des Macrokoerpers                        7.2
+     7.3       Aufruf des Macros                             7.3
+     7.4       Verschachtelung von Macros                    7.3
+     
+8.   Linker                                                  8
+     8.1.      Wirkungsweise                                 8.1
+     8.2.      Aufruf des Linkers                            8.1
+     8.3.      Kommandofile                                  8.1
+     8.4.      Programmanordnung                             8.1
+     8.5.      Dateiangeben                                  8.2
+     8.6.      Programmangaben                               8.2
+     8.7.      Kommentare                                    8.3
+     8.8       Listing                                       8.3
+     8.9.      Fehler                                        8.3
+
+9.   Verschiebelader                                         9
+     9.1.      Wirkungsweise                                 9.1
+     9.2.      Aufruf des Verschiebeladers                   9.1
+     9.3.      Optionen                                      9.1
+     9.4.      Fehler                                        9.2
+
+10.  Turbo-Pascal Parser                                     10
+
+
+
+
+               A N H A N G
+               ===========
+ 
+
+A.   Mnemonik Z80                                            A
+
+B.   Mnemonik Z8000                                          B
+     1.        Notation                                      B.1
+     1.1.      Adressierungsarten                            B.1
+     1.2.      Steuerregister (CTRL)                         B.1
+     1.3.      Die Statusflags                               B.2
+     1.4.      Interruptsteuerflags                          B.2
+     1.5.      Register                                      B.2
+     1.6.      Bedingungscodes                               B.2
+     1.7.      Abkuerzungen in der Befehlsbeschreibung       B.3
+     2.        Mnemonics                                     B.4
+     2.1.      Lade- und Austauschbefehle                    B.4
+     2.2.      Arithmetische Operationen                     B.5
+     2.3.      Logische Operationen                          B.7
+     2.4.      Programmsteuerung                             B.7
+     2.5.      Bitmanipulation                               B.8
+     2.6.      Verschiebebefehle                             B.9
+     2.7.      Blocktransporte, Kettenmanipulationen         B.11
+     2.8.      Ein- und Ausgabe                              B.15
+     2.9.      Steueranweisungen                             B.18
+
+C    Z8 Mnemonik                                             C
+
+D    8086 Mnemonik                                           D
+
+1.  Einleitung
+==============
+
+Das Programmsystem SYS beinhaltet eine Reihe von Programmen,  die 
+eine schnelle Herstellung von Anwenderprogrammen fuer Rechner mit 
+folgenden CPU:
+
+     U880 (Z80)
+     U8000 (Z8001, Z8002)
+     U881..883 (Z8)
+     8086, iAPX286
+
+mit allen CP/M kompatiblen Betriebssystemen gestatten. Die Bedie
+nung  erfolgt  von einem Minimalmonitor aus  durch  entsprechende 
+Aufrufe.  Fuer alle Programmteile ist eine einheitliche Bedienung 
+moeglich.
+
+
+
+1.1. Dateien
+------------
+
+Fuer  die  Arbeit  des gesamten Systems ist die  Dateiarbeit  wie 
+folgt  organisiert:  Der  Editor  erzeugt  eine  Quelldatei,  die 
+maximal  m-12 K Byte lang sein kann.  m ist  der  zur  Verfuegung 
+stehende  RAM-Bereich,  der  z.B.  bei 64k CP/B   52 K  betraegt. 
+Diese  Quelle  befindet sich staendig im Speicher  und  wird  vom 
+Assembler ohne Datentransporte uebernommen.
+Ist eine Quelle laenger als 30k bei CP/B,  so kann mit der Option 
+"L" jede beliebige Quelle assembliert werden.
+Der  Assembler erzeugt aus dieser Quelle  eine  Objektdatei,  die 
+recordweise ausgegeben wird.
+Der  Linker  bzw.  Lader  erzeugt dann  eine  abarbeitungsfaehige 
+Objektdatei im Intel-Hex-Code bzw. eine COM-Datei.
+
+
+
+Die Definitionen der verschiedenen Dateien ist:
+
+Objektdatei    beinhaltet ein ausfuehrbares, absolut adressiertes
+               Maschinenprogramm  im  Intel-Hex-Code.  Der  erste 
+               Befehl  einer  Objektdatei  ist  ein  Sprung   zum 
+               Programmbeginn oder der Programmbeginn selbst.
+
+Quelldatei     beinhaltet  eine  beliebige Darstellung im  ASCII-
+               Code.  Die  Quelldatei ist zeilenweise  orientiert 
+               und enthaelt keine Zeilennummern.  Eine Zeile wird 
+               mit CR (RETURN,  ET1) beendet. Eine Quelldatei ist 
+               stets mit 1AH abgeschlossen.
+
+Link-Datei     hat  einen  speziellen Aufbau in  ASCII-Code.  Sie 
+               enthaelt  bei  externen  Marken  deren  Namen  und 
+               ermoeglicht   damit  dem  Linker   die   Adressen
+               zuweisung.
+
+Listdatei      enthaelt  alle  notwendigen ASCII-Zeichen fuer die
+               Ausgabe  eines  Protokolls  einschl.  Seitennumme
+               rierung und Blattwechsel.
+
+Markendatei    enthaelt  alle  Marken eines absoluten  Programmes 
+               zur spaeteren Verwendung im symbolischen Debugger.
+
+1.2. Dateibezeichnung
+---------------------
+
+Jede Datei hat einen Namen,  der durch das Betriebssystem bedingt 
+folgende Konstruktion hat:
+
+     dev:name.ext
+
+Hierin bedeuten
+
+     dev:      Geraetezuweisung
+     name      Dateiname
+     ext       Namenserweiterung
+
+
+
+
+1.2.1. Geraetezuweisung
+-----------------------
+
+Fuer die Auswahl eines Diskettenlaufwerkes,  auf dem eine bestim
+mte Datei existieren soll,  ist eine zusaetzliche Angabe moeglich 
+durch dev:  vor dem Dateinamen. dev: kann mit A: fuer Laufwerk 1, 
+B: fuer Laufwerk 2 usw. angegeben werden. Ist dev: nicht gegeben, 
+wird das aktuelle Laufwerk benutzt.
+
+Die  Zuweisung  eines logischen Geraetes erfolgt ueber die Angabe
+
+     CON: Console
+     LST: Drucker
+     AUX: Auxilary-Ein-Ausgabe
+
+Der Doppelpunkt ist unbedingt anzugeben, er dient dem Rechner zur 
+Kennzeichnung des Laufwerkes bzw. logischen Geraetes.
+
+
+
+
+1.2.2. Dateiname
+----------------
+
+Der  Dateiname kann aus einem bis 8 Zeichen bestehen,  wobei  das 
+erste  Zeichen ein Buchstabe sein muss.  Ausser  Alfazeichen  ist 
+noch  das  Zeichen "$" (24 Hex)  zulaessig.  Zwischen  Gross- und 
+Kleinschreibung wird nicht unterschieden.
+Ein Dateiname kann beliebig gewaehlt werden.
+
+
+
+
+1.2.3. Namenserweiterung
+------------------------
+
+Die   Namenserweiterung  dient  der  Unterscheidung  von  Dateien 
+gleichen  Namens und ist vom Namen durch einen Punkt zu  trennen. 
+Sie darf aus 3 Zeichen bestehen,  weitere Zeichen sind ungueltig. 
+Fehlt diese Angabe (einschliesslich dem Punkt!), setzt das System 
+einen Standard:
+
+   Quelldateien          .ASM
+   Linkdateien           .HXL
+   Objektdateien         .HEX
+   Rueckkehrdateien      .BAK
+   Listing Assembler     .PRN
+   Listing Linker        .PRL
+   Hilfsdateien          .$$$
+   Markendateien         .SYS
+
+
+
+  
+1.3. Ein- und Ausgaben
+----------------------
+
+Bei der Definition eines Dateinamens bzw. eines logischen  Gerae
+tes wird der Ein- oder Ausgabekanal festgelegt.
+Eingaben erfolgen Zeichen fuer Zeichen, bei Disketten ueber einen 
+128  Byte langen Puffer.  Die Zeichen werden bei ASCII-Code  ohne 
+Paritaetsbitpruefung  jedoch mit 8 Bits gelesen.  Die Zeichen 0aH 
+und 7FH werden ueberlesen,  ein Zeichen ^Z (1AH) dient als  Ende
+kennzeichen einer Datei.
+
+Ausgaben werden ebenso behandelt,  jedoch wird nach jedem  RETURN 
+(0DH)  ein  Line Feet (0AH) hinzugefuegt.  Das Zeichen 1AH  dient 
+wieder als Endekennzeichen der Datei.
+
+Wird  bei  der Ausgabe ein Fehler festgestellt  oder  steigt  das 
+gewaehlte  Geraet aus oder ist nicht vorhanden,  wird nach  einer 
+Fehlerausschrift:
+
+     Write Error, Abort (Y/N):
+
+der  Fehler  mit  der Eingabe von N uebergangen und  die  Ausgabe 
+erfolgt auf dem Bildschirm. Bei der Eingabe von Y wird das momen
+tan laufende Programm abgebrochen und der Monitor eingeschaltet.
+
+Alle Dateien ausser .COM Dateien sind in ASCII-Code dargestellt.
+
+
+
+
+1.4. Systemkomponenten
+----------------------
+
+Der Minimalmonitor verwaltet die einzelnen Systembestandteile
+
+     Editor
+     Assembler fuer verschiedene Prozessoren
+     Linker fuer Z80 und Z8 -Programme
+     Verschiebelader fuer U880-Rechner
+     Parser fuer Turbopascal
+
+Diese   Systemkomponenten   koennen   mit   folgenden   Kommandos 
+aufgerufen werden, nach dem auf dem Display das Menue zur Auswahl 
+erscheint.  Eine  falsche Angabe wird ignoriert,  bei der Auswahl 
+eines  Assemblers ist darauf zu achten,  dass die Angabe ohne Typ 
+auf den U880 schaltet.
+
+     Edit                Auswahl Editor
+     Assembler           Auswahl Z80-  Assembler
+     Assembler z8        Auswahl Z8-   Assembler
+     Assembler z80       Auswahl Z80-  Assembler
+     Assembler z86       Auswahl 8086- Assembler
+     Assembler z8000     Auswahl Z8000-Assembler
+     Assembler 86        Auswahl 8086- Assembler
+     Linker              Auswahl Linker fuer Z80 und Z8
+     Shiftloader         Auswahl Verschiebelader fuer Z80
+     Parser              Auswahl TurboPascal Parser
+
+Der  erste Buchstabe des Aufrufes ist  signifikant.  Alle  andern 
+Buchstaben  duerfen entfallen.  Ausser bei Z80-Assembler sind die 
+Ziffern vollstaendig einzugeben.
+Fehler bei der Eingabe werden angezeigt, fehlende Ueberlagerungs-
+programme  fuehren ebenfalls zu Fehleranzeigen.  Die Eingabe kann 
+dann richtig wiederholt werden.
+
+Soll  das  Programmsystem verlassen werden,  ist im  Monitor  nur 
+RETURN  statt eines Kommandos zu geben.  Das Betriebssystem  wird 
+dann ueber einen Warmstart aktiv.
+
+
+2.   EDITOR
+===========
+
+2.1. Aufruf
+-----------
+
+Vom Monitor oder von jedem Assembler aus kann der Editor mit  dem 
+Kommando 
+     Edit
+aufgerufen werden. Der erste Buchstabe ist signifikant.   
+Der  Editor  meldet sich und durchsucht zuerst den Speicher  nach 
+einem Quellfile. Ist ein solches vorhanden, wird gefragt:
+     dateiname found in Buffer, accept? (Y/N):
+
+dateiname ist der Name der gefundenen Quelldatei.
+Bei der Antwort mit Y wird dieses File fuer gueltig erklaert, bei 
+N als Eingabe wird dieses File im Speicher geloescht und nach dem 
+Namen des Quellfiles gefragt:
+
+     Filename:
+Hier ist ein Filename der Form
+
+     dev:name.erw
+einzugeben.  Die  Angabe von CON:  gestattet die direkte  Eingabe 
+einer Quelle von der Tastatur aus. Sonst wird auf dem angegebenen 
+Laufwerk  nach  diesem Namen gesucht und eine Quelldatei  in  den 
+Arbeitsspeicher geladen.  Existiert eine solche Datei nicht, wird 
+der  Inputmodus eingestellt und eine neue Quelldatei unter diesem 
+Namen  kann  eingegeben  werden.
+Ist eine einzugebende Quelldatei groesser,  als der Speicherplatz 
+dies zulaesst, wird die Fehlermitteilung
+
+     *** MAX ***
+ausgegeben  und die Eingabe abgebrochen.  Die Datei kann trotzdem 
+in gekuerzter Form bearbeitet werden.  Quellen sollen nie so lang 
+werden, denn die Bearbeitungszeit steigt dann wesentlich an.
+
+
+2.2. Bedienung des Editors
+--------------------------
+
+Der Editor meldet sich mit seinem Systemzeichen
+
+          >
+
+Danach  befindet er sich im Kommandoeingabe-Modus.  Ein  Kommando 
+kann  eingegeben und durch Parameter naeher spezifiziert  werden. 
+Fehlen  Parameter,  wird  fuer die Anzahl 1 und fuer  Ketten  die 
+Nullkette gesetzt.  Ist der letzte Parameter ein Dezimalwert,  so 
+bezieht er sich auf die Anzahl,  die Nummer der Zeile  o.ae.  Bei 
+Angabe  eines * (Sternchen) ist fuer diesen der Dezimalwert 65535 
+gesetzt.  Fehlt ein Kommando vollstaendig (nur ET1 druecken),  so 
+wird  das  letzte  Kommando  vollstaendig  mit  allen  Parametern 
+wiederholt. Dies gilt nicht fuer Macro-Kommandos.
+Alle  Antworten  auf  eine  Kommandoeingabe  erfolgen  ueber  den 
+Bildschirm.  Die  Ausgabe  einer  Quellzeile  erfolgt  mit  einer 
+vorangestellten 5 stelligen Zeilennummer, die dynamisch verwaltet 
+wird.
+
+
+2.3. EDIT-Kommandos
+-------------------
+
+Ein  Kommando ist durch seinen ersten Buchstaben  gekennzeichnet. 
+Weitere Buchstaben sind unwirksam.  Das erste Leerzeichen,  Stern 
+oder  die  erste Ziffer oder ein Escape zeigen den  Beginn  eines 
+Parameters  an.  In der folgenden Beschreibung ist das Escape aus 
+drucktechnischen Gruenden durch ^[ dargestellt,  n ist eine Dezi
+malzahl.
+
+
+A n                                                     ASSEMBLER
+Der Editor wird verlassen und der Assembler aufgerufen.  n ist in 
+diesem  Fall die genauere Auswahl des Assemblers.  Fehlt n,  wird 
+der Z80-Assembler aufgerufen.  Die Quelldatei bleibt im  Speicher 
+erhalten.
+
+     n = 8          Z8-   Assembler
+     n = 80         Z80-  Assembler
+     n = 8000       Z8000-Assembler
+     n = 86         8086- Assembler
+
+
+
+B                                                          BOTTOM
+Der Zeilenzeiger wird auf die letzte Zeile der Quelldatei gesetzt 
+und diese Zeile auf der Konsole ausgegeben.
+
+
+C^[kette1^[kette2^[n                                       CHANGE
+Ab  der aktuellen Zeile wird auf n Zeilen,  die die Kette  kette1 
+enthalten, diese durch die Kette kette2 ersetzt. Entfaellt n, ist 
+das  Kommando  nur fuer die erste Zeile wirksam,  die  die  Kette 
+kette1  enthaelt.  Fehlt kette2,  so wird kette1  geloescht.  Ist 
+kette1  in  einer Zeile nicht enthalten,  wird diese Zeile  nicht 
+veraendert. Steht * fuer n, wird das Auswechseln fuer die gesamte 
+restliche Datei vorgenommen.
+
+
+
+Dn                                                         DELETE
+D^[kette
+Ab  der  aktuellen Zeile werden n Zeilen geloescht  bzw.  ab  der 
+Zeile bis zu der Zeile,  die die angegebene Kette kette enthaelt, 
+werden  alle  Zeilen geloescht.  Diese letzte Zeile mit  der  ge
+suchten Kette wird nicht geloescht.
+Wird  dieses Kommando vor der ersten Zeile (vor dem  Dateianfang) 
+gegeben, ist es wirkungslos.
+
+
+
+E dev:name.erw                                               EXIT
+Die  generierte  Quelldatei wird unter dem angegebenen Namen  auf 
+das   angegebene  Laufwerk  ausgegeben.   Fehlt  .erw,   ist  die 
+Erweiterung  standardmaessig .ASM.  Eine evtl.  vorhandene  Datei 
+dev:name.$$$ wird vorher geloescht,  falls dies gewuenscht  wird. 
+Die  neue  Quelldatei wird mit der Erweiterung .$$$  erzeugt.  Es 
+folgt  eine  Kontrolle  auf richtige Uebertragung  und  dann  die 
+Umbenennung  von  .ASM in .BAK fuer die alte Quelldatei  und  von 
+.$$$ in .ASM fuer die neue Quelldatei.
+Wird kein Dateiname angegeben, so ist der beim Aufruf des Editors 
+angegebene Name gueltig. 
+Nach  diesem  Kommando wird der Editor verlassen und der  Monitor 
+aktiv. 
+
+
+
+F^[kette                                                     FIND
+In der Datei wird ab der naechsten Zeile nach der aktuellen Zeile 
+nach  einer Zeile gesucht,  die die angegebene Kette enthaelt und 
+diese  Zeile angezeigt.  Die Datei wird bis zum Ende  durchsucht, 
+falls die Kette nicht gefunden wird.
+
+
+
+Gn                                                             GO
+G^[kette
+Es wird der Zeilenzeiger auf die n.  Zeile bzw. auf die Zeile mit 
+der  angegebenen  Kette gesetzt und diese  Zeile  angezeigt.  Die 
+Suche erfolgt vom Dateianfang an.
+
+
+
+I                                                          
+Input-Modus.  Hier  kann eine Datei aufgebaut  werden.  Nach  der 
+J@usgabe  der  aktuellen Zeilennummer kann eine satzweise  Eingabe 
+von   Quellzeilen   erfolgen.   Es  werden   alle   ASCII-Zeichen 
+akzeptiert.  Zweimalige  Eingabe  von ET1  (RETURN)  beendet  den 
+Inputmodus.  Alle  eingegebenen Zeichen werden nach der aktuellen 
+Zeile  eingefuegt,  die gerade einzugebende Zeile wird  dann  die 
+aktuelle Zeile. Zeilen nach dieser Einfuegung bleiben erhalten.
+
+
+
+I kette                                                    INSERT
+Der Abschluss des I-Kommandos mit einem Leerschritt gestattet die 
+Einfuegung  einer  Zeile nach der aktuellen Zeile.  Alle  Zeichen 
+nach  diesem 1.  Leerschritt werden bis zum  abschliessenden  ET1 
+eingefuegt.
+
+
+
+K                                                          KURSOR
+Die  aktuelle Zeile wird angezeigt und der Kursor auf  das  erste 
+Zeichen dieser Zeile gesetzt. Nun kann mit den Kursorsteuertasten 
+der  Kursor beliebig bewegt werden.  An beliebiger Stelle koennen 
+dann  Zeichen  eingefuegt  (einfach  eintippen)  oder   geloescht 
+werden.  Mit  der Angabe von ^D wird das Zeichen,  unter dem  der 
+Kursor steht, geloescht.
+
+
+
+^Q beendet dieses Kommando, ohne die angezeigte Zeile im Speicher 
+zu veraendern.
+Ein  RETURN  speichert die veraenderte Zeile.  Ebenso wirken  die 
+Kursortasten -Kursor hoch, -Kursor runter.
+Ein TAB in der Zeile wird als Leerzeichen dargestellt.
+
+
+
+Ln                                                           LADE
+Ab  der aktuellen Zeile werden aus einer externen Datei n  Zeilen 
+in die Quelldatei eingefuegt. Alle L-Kommandos laden stets ab der 
+ersten  Zeile  der  externen  Datei.  Nach  dem  Dateinamen  wird 
+gefragt.  Er  muss eingegeben werden.  Die Namenserweiterung  ist 
+standardmaessig .$$$.  Alle logische Eingabegeraete sind als dev: 
+zulaessig.
+
+
+
+M&kom1&kom2&...&komi                                        MACRO
+Die  Kommandos kom1 bis komi werden gekettet und spaeter mit  dem 
+Kommando Xecute nacheinander ausgefuehrt.  Es sind alle Kommandos 
+ausser dem MACRO-Kommando selbst zulaessig.
+
+
+
+N^[kette                                                     NEXT
+Nn
+Der  Zeilenzeiger  wird um n Zeilen weiter in Richtung  Dateiende 
+bzw. bis zur Kette verschoben und diese Zeile angezeigt.
+
+
+
+O^[kette                                                   OUTPUT
+On
+Ausgabe  von n Zeilen bzw.  bis zu der Zeile mit der  angegebenen 
+Kette  ab  der aktuellen Zeile auf eine externe Datei.  Nach  dem 
+Namen  dieser  Datei  wird  gefragt.  Die  Namenserweiterung  ist 
+standardmaessig .$$$.  Es ist jedes logische Geraet angebbar.
+L- und O-Kommandos dienen der kurzfristigen Auslagerung einzelner 
+Quellzeilen. Sie eroeffnen eine Zwischendatei und nach dem Daten
+transport wird diese Datei wieder geschlossen.  Bei Anwendung des 
+O-Kommandos wird eine Datei unter diesem Namen vorher geloescht.
+
+
+
+Pn                                                          PRINT
+P^[kette
+Ab  der aktuellen Zeile werden n Zeilen auf der Konsole  ausgege
+ben.  Bei  der  Angabe einer Kette sind alle Zeilen  bis  zu  der 
+Zeile,  die diese Kette enthaelt,  auf der Konsole sichtbar.  Das 
+Bild wird zeilenweise gerollt.  Unterbrechungen der Ausgabe koen
+nen  durch  Druecken von ^S unterbrochen werden (Halt)  und  nach 
+erneutem Betaetigen von ^S weiter ausgegeben werden.  Ein ^C nach 
+einem Halt bricht das gesamte Programm SYS ab, das Betriebssystem 
+ist aktiv!
+
+Q                                                            QUIT
+Die  Datei im Speicher wird nicht mehr veraendert und auch  keine 
+Datei  ausgegeben.  Das  Editieren  ist beendet und  der  Monitor 
+wieder  aktiv.  Fuer eine Speicheruebersicht wird die Anzahl  der 
+editierten Bytes angegeben.
+
+
+
+R kette                                                   REPLACE
+Die  aktuelle Zeile wird durch die angegebene Kette ersetzt.  Die 
+Kette  muss  vom Kommando durch genau  ein  Leerzeichen  getrennt 
+sein. Alle ASCII-Zeichen wie bei Input sind bis zum abschliessen
+den RETURN gueltig.
+
+
+T                                                             TOP
+Der Zeilenzeiger wird vor den Dateianfang gesetzt
+
+
+
+Un                                                             UP
+Der  Zeilenzeiger wird um n Zeilen nach oben in Richtung Dateian
+fang verschoben und diese Zeile angezeigt.
+
+
+
+X                                                          XECUTE
+Ausfuehrung der mit dem MACRO-Kommando eingegebenen Kommandos  in 
+der Reihenfolge, wie dort angegeben.
+
+
+
+2.4. Fehler
+-----------
+
+Alle Fehler,  die waehrend der Editierung auftreten, sind auf der 
+Konsole im Klartext dargestellt. Dabei bedeuten:
+
+     *** ???***
+     es wurde ein falsches  Kommando oder eine falscher Parameter 
+     gegeben
+     
+     ***MAX***
+     Das   Speicherende  ist  erreicht,   weitere  Eingaben  sind 
+     fehlerhaft.
+
+
+3.   ASSEMBLER Z80
+==================
+
+3.1. Einleitung
+---------------
+
+Der Assembler gestattet es, die Mnemoniks von robotron oder ZILOG 
+zu verwenden. Bei genuegend kleinen Quellen bleibt die Quelldatei 
+im  Speicher  und  es  sind  sehr  kurze  Bearbeitungszeiten  zur 
+Fehlerkorrektur moeglich.
+Zum vollstaendigen Ablauf der Assemblierung gehoeren 2 Laeufe. Im 
+ersten  Pass  wird  ein Adressbuch angelegt und im  2.  Pass  der 
+Objektcode   erzeugt,   ein   Listing  ausgegeben   und   weitere 
+Informationen mitgeteilt. Die Beendigung des 1. Passes wird durch 
+eine Ausschrift mitgeteilt.  Die Uebersetzung wird bei  Auftreten 
+von  Fehlern nicht abgebrochen,  sondern weiter versucht und alle 
+Fehler werden auf der Konsole angezeigt.
+
+
+3.2. Aufruf des Assemblers
+--------------------------
+
+Der Assembler wird vom Monitor oder vom Editor mit dem Kommando
+     Assembler z80
+aufgerufen.  Der erste Buchstabe ist fuer den Aufruf signifikant, 
+weitere Angaben brauchen nicht gemacht werden.
+Der Assembler meldet sich und erwartet die Eingabe von Optionen.
+
+Ist  im  Speicher  bereits eine Quelldatei  vorhanden,  wird  sie 
+verwendet. Andernfalls wird nach dem Namen der Quelldatei gefragt 
+und diese geladen, wenn nicht die Option L verwendet wird.
+
+
+3.3. Optionen
+-------------
+
+Optionen  sind  durch  Kommata  getrennte  Angaben  zur  naeheren 
+Bestimmung  des Uebersetzungslaufes.  Abschluss der Kommandozeile 
+ist ET1.   Die Uebersetzung wird nach ET1 sofort  begonnen.  Wird 
+kein Kommando eingegeben, setzt das System einen Standard:
+     -absolut assemblieren
+     -keine Objekt-, Link- oder MAP-Datei erzeugen
+     -keine Listdatei erzeugen
+     -Fehler ueber Konsole ausgeben
+     -Die Quelle hat im Speicher vollstaendig Platz
+Nach einem Uebersetzungslauf erscheint ebenfalls die Aufforderung 
+nach der Eingabe von Optionen und es koennen neue Optionen einge
+geben werden. Bei einer Wiederholung des Uebersetzungslaufes wird 
+der  erste  Pass  nicht nochmal abgearbeitet.  Dadurch  kann  ein 
+Wechsel  von  relativer zu absoluter Uebersetzung  und  umgekehrt 
+nicht erfolgen.
+Die Optionen koennen sein:
+
+     E    Editor. Der Editor wird geladen. Falls die Quelle im
+          Speicher steht, wird sie beibehalten.
+
+     H    Header,  es  wird  die  Kopfzeile  mit  dieser  Angabe 
+          ergaenzt.  Maximal  68 Zeichen moeglich.  Diese  Angabe 
+          wird  jedoch  durch die  Assembleranweisungen  *H  oder 
+          TITLE ueberschrieben.
+
+     L    Long, die Quelldatei wird von Diskette gelesen und darf
+          deshalb beliebig lang sein. Eine Quelldatei im Speicher
+          muss  vorher gerettet  werden, deshalb  wird der Editor
+          nachgeladen  und die Ausgabe vor der Assemblierung ver
+          langt.
+
+     M    Macros  sind  erlaubt.  Je Angabe von M (auch  mehrfach 
+          moeglich) werden im  RAM 400H Bytes (1k Byte) fuer  die 
+          Macros   reserviert.   Macros  sollten  ohne  Kommentar 
+          geschrieben  werden,  da dieser  ebenfalls  gespeichert 
+          wird.
+
+     O    Ausgabe  des Objektcodes.  Spaeter wird nach dem  File
+          namen fuer den Objektcode gefragt.
+
+     P    Ausgabe des Listings
+
+     Q    Rueckkehr in den Monitor
+
+     R    relative Uebersetzung
+
+     S    Ausgabe der Symboltabelle
+
+     Y    Ausgabe der Markendatei. 
+
+Die Uebersetzung erfolgt absolut,  falls nicht die Option R gege
+ben wurde.
+Die Option Y muss nach!  einem vorherigen 1. Pass gegeben werden, 
+sonst  ist  sie wirkungslos.  
+
+Bei  den  Optionen  O,  S,  P und Y wird  nach  einem  Dateinamen 
+gefragt,  ebenso,  wenn die Quelle noch nicht im Speicher  steht. 
+Die Fragen sind mit der Namensangabe
+
+     dev:name.erw
+
+zu beantworten. Siehe auch Angaben im Kapitel 1.
+
+Bei  den Optionen S und Y wird nach der Abarbeitung des Passes  2 
+der  Pass  2  nicht  nochmals  wiederholt,   sondern  sofort  die 
+gewuenschte Liste erzeugt.
+
+
+3.4. Assemblersprache
+---------------------
+
+Die  vom Assembler akzeptierten Mnemoniks sind im Anhang  angege
+ben. Die Uebersetzung erfolgt fuer beide Sprachen.
+
+3.4.1. Zeichenvorrat
+--------------------
+
+Buchstaben sind die Zeichen des Alphabets:
+     A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, 
+     U, V, W, X, Y, Z,
+     a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t,
+     u, v, w, x, y, z
+     Ausser  in  Zeichenketten  wird  nicht  zwischen  Gross- und 
+     Kleinschreibung unterschieden.
+     Die Ausgabe des Listings erfolgt ausser in Zeichenketten nur in 
+     Grossbuchstaben. 
+
+
+Ziffern sind die Dezimalziffern:
+     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+     und bei hexadezimaler Schreibweise  die Buchstaben A,  B, C, 
+     D, E und F.
+
+Trennzeichen  dienen der Trennung von Bezeichnungen und Ausdruek-
+ken und bestehen aus den Zeichen
+
+     SP   Space, Leerschritt
+     HT   Horizontaltabulator
+sie koennen in beliebiger Menge stehen.
+
+Endezeichen  dienen der Beendigung des signifikanten Teils  einer 
+Quellzeile:
+
+     ;    Semikolon, es kann ein Kommentar folgen
+     CR   ET1, RETURN, Ende einer Zeile
+
+Sonderzeichen werden in Ausdruecken verwendet:
+     &    logisches Und
+     (    Klammer auf
+     )    Klammer zu, paarweise verwenden!
+     *    Multiplikationszeichen
+     /    Divisionszeichen
+     #    Doppelkreuz und
+     $    Dollar fuer den aktuellen Befehlszaehlerstand
+     .    Punkt zur Kennzeichnung logischer Operationen
+     +    Pluszeichen
+     -    Minuszeichen
+     ,    Komma,  Trennzeichen zwischen Registern,  Listentrenn
+          zeichen
+     :    Doppelpunkt, wahlweiser Markenbegrenzer
+
+Begrenzer, werden je nach Notwendigkeit benutzt:
+
+     : , . ) SP HT ;
+
+Alle  anderen druckbaren Zeichen aus dem ASCII-Vorrat koennen  in 
+Zeichenketten Verwendung finden.  VT (Vertikaltabulation) und  FF 
+(Blattwechsel) sind verboten.
+
+
+3.4.2. Format des Quellcodes
+----------------------------
+
+Jede  Anweisung wird auf einer Zeile geschrieben.  Ist das  erste 
+Zeichen  einer  Zeile  ein Endezeichen,  wird diese  Zeile  nicht 
+assembliert.   Ist   das  erste  Zeichen  ein  *,   so  ist   ein 
+Sofortkommando  auszufuehren.  Alle anderen Anweisungen  erfolgen 
+nach dem Schema:
+
+     MARKE[:]  OPCODE    AUSDRUCK
+
+Wird keine Marke angegeben,  muss die Zeile mit mindestens  einem 
+Trennzeichen beginnen.
+Zwischen   MARKE   und  OPCODE  muss  entweder   mindestens   ein 
+Trennzeichen oder der Doppelpunkt stehen,  falls kein Endezeichen 
+die  Zeile  abschliesst.  Eine  Marke muss nicht  ab  der  ersten 
+Position beginnen,  wenn sie mit einem  Doppelpunkt abgeschlossen 
+wird. 
+
+
+3.4.3. Symbole und Marken
+-------------------------
+
+Eine Marke dient der Markierung einzelner Anweisungen,  wobei ihr 
+Wert  der Befehlszaehlerstand des ersten Bytes  dieser  Anweisung 
+ist. Marken koennen maximal aus 6 Alfazeichen bestehen, das erste 
+Zeichen  muss ein Buchstabe sein.  Innerhalb einer Marke  duerfen 
+einige Sonderzeichen stehen:
+
+     $  ?  =  _ (Unterstreichung)
+
+Die  Marke wird durch ein Trennzeichen oder den Doppelpunkt  oder 
+ein   Endezeichen  abgeschlossen.   Mehr  als  6  Zeichen  werden 
+ueberlesen.
+Ein Symbol ist eine Marke, deren aktueller Wert in einem Ausdruck 
+verwendet wird. Hier sind die Registernamen nicht gestattet!
+
+
+3.4.4. Numerische Konstante
+---------------------------
+
+Numerische Konstante sind Zahlen,  die in Ausdruecken  Verwendung 
+finden. Es gibt verschiedene Darstellungen:
+
+          0101101B
+   ---binaere Darstellung
+      Verwendung finden die Ziffern 0 und 1.  Die Binaerzahl muss 
+      mit dem Buchstaben B abgeschlossen sein.
+
+          7213O     oder      72130Q
+   ---oktale Darstellung
+      Verwendung  finden die Ziffern 0 bis 7.  Die Oktalzahl muss 
+      mit dem Buchstaben O oder Q abgeschlossen sein.
+
+          1250      oder      1250D
+   ---dezimale Darstellung
+      Verwendung finden die Ziffern 0 bis 9. Die Dezimalzahl kann 
+      mit dem Buchstaben D abgeschlossen werden.
+
+          0FF5CH
+   ---hexadezimale Darstellung
+      Verwendung finden die Ziffern 0 bis 9 und die Buchstaben  A 
+      bis  F fuer die Pseudodezimalen 10 - 15.  Eine Hexadezimal
+      zahl  muss mit dem Buchstaben H abgeschlossen sein und  mit 
+      einer Ziffer beginnen (Null evtl. voranstellen).
+
+Der Zahlenbereich ist
+     vorzeichenloses Byte               0 bis 0FFH
+     Byte mit Vorzeichen             -7FH bis +7FH
+     Wort                               0 bis 0FFFFH
+
+
+3.4.5. Ketten und Kettenkonstante
+---------------------------------
+
+Ketten  sind eine Folge von beliebigen druckbaren  ASCII-Zeichen. 
+Die  Zeichen werden in Hochkomma  eingeschlossen,  das  Hochkomma 
+selbst muss doppelt angegeben werden,  um es einmal darzustellen. 
+In Ketten sind CR, LF, VT und FF nicht erlaubt. Die Abspeicherung 
+erfolgt im Programm von links nach rechts,  jedes Zeichen  belegt 
+ein Byte. 
+Kettenkonstante  sind Ketten mit einem oder zwei  Zeichen,  deren 
+ASCII-Wert  interpretiert  wird und als Zahl  in  einem  Ausdruck 
+Verwendung findet.
+
+
+3.4.6. Befehlszaehler
+---------------------
+
+In  einem Ausdruck kann der Befehlszaehlerstand  als ein  16-Bit-
+Wert  Verwendung finden.  Zur Kennzeichnung werden die Zeichen  $ 
+oder   #  verwendet.   Ein  solches  Zeichen  in  einem  Ausdruck 
+repraesentiert  damit  die 16 Bit des Befehlszaehlers  zu  diesem 
+Zeitpunkt. Der Typ dieses Wertes ist relativ.
+
+
+3.4.7. Kommentar
+----------------
+
+In  jeder  Zeile  kann ein Kommentar  angegeben  werden.  Er  ist 
+gekennzeichnet  durch  ein beginnendes Semikolon  und  endet  mit 
+einem ET1. Kommentare sind bei der Uebersetzung wirkungslos.
+
+
+3.4.8. Sofortbefehle
+--------------------
+
+Folgende  Sofortkommandos  sind  implementiert,   die  bei  einem 
+Auftreten im Programm sofort ausgefuehrt werden:
+
+*Eject    Blattwechsel im Listing
+
+*Head txt Erzeugen  eines Kopftextes auf Zeile 1 des Listings. Es 
+          werden  bis 64 Zeichen akzeptiert.  Ausserdem wird  ein 
+          Blattwechsel ausgefuehrt.  
+
+*LISTOFF Die Listing-Ausgabe wird unterdrueckt
+
+*LISTON  Die Listing-Ausgabe wird weitergefuehrt. Beide Kommandos 
+         sind auszuschreiben!
+
+*INCLUDE  name   Die  mit name bezeichnete Datei wird  an  dieser 
+          Stelle  in den Quellcode zusaetzlich in  voller  Laenge 
+          eingefuegt  und mit uebersetzt.  name ist ein nach  den 
+          oben  angegebenen Regeln konstruierter  Dateiname  (mit 
+          d:name.erw,  wobei die Angabe von name unbedingt erfor
+          derlich ist). 
+
+*PRINTX   text    Der  angegebene Text wird  auf  dem  Bildschirm 
+          angezeigt.  Die  Ausgabe  erfolgt sowohl bei Pass1  als 
+          auch bei Pass2.
+
+Sofortkommandos  beginnen  mit einem * und sind  mit  dem  ersten 
+Buchstaben signifikant ausser LISTON und LISTOFF 
+
+
+
+
+3.5. Ausdruecke
+---------------
+
+Ausdruecke  sind  beliebige,  mit arithmetischen  oder  logischen 
+Operationen  verknuepfte Konstante,  Symbole oder Variable  sowie 
+Registernamen.
+
+
+
+3.5.1. Register
+---------------
+
+Als Operanden koennen die Register der CPU 880 sowohl als Einzel- 
+wie auch als Doppelregister verwendet werden.
+
+Einzelregister sind:
+     A, B, C, D, E, H, L, I, R  und die Teile der Indexregister
+     LX, LY    fuer den LOW-Teil und
+     HX, HY    fuer den HIGH-Teil
+
+
+Doppelregister sind:
+     AF, BC, DE, HL, SP, IX, IY und
+     PC (dargestellt durch die Zeichen # oder $)
+
+
+3.5.2. Variable
+---------------
+
+Variable  sind  Werte,  die sich auf RAM-Plaetzen befinden und  8 
+oder  16  Bit  lang sein koennen.  Bei 16  Bit  langen  Variablen 
+befinden  sich auf dem addressierten Speicherplatz die unteren  8 
+Bit  und  auf  dem  folgenden Speicherplatz  die  oberen  8  Bit. 
+Variable werden in einem Ausdruck durch ein Symbol beschrieben.
+
+
+3.5.3. Operationszeichen
+------------------------
+Folgende Operationszeichen koennen verwendet werden:
+
+Rang Zeichen   Wirkung
+ 1   .LOW.     nur die niederen 8 Bit eines Wortes
+ 1   .HGH.     nur  die oberen 8 Bit eines Wortes,  als untere  8 
+               Bit interpretiert
+ 1   .SHL.     Verschiebung  des  links  vom  Operationszeichen 
+               stehenden Ausdruckes um soviel Stellen nach links,
+               wie der rechts stehende Ausdruck angibt
+ 1   .SHR.     wie vor, jedoch Verschiebung nach rechts
+
+ 2     *       Multiplikation 16 Bit ohne Beruecksichtigung des
+               Ueberlaufes
+ 2     /       Division 16 Bit ganzzahlig ohne Runden
+ 2   .MOD.     Rest einer ganzzahligen Division
+
+ 3     +       Addition 16 Bit ohne Ueberlauf
+ 3     -       Subtraktion 16 Bit ohne Ueberlauf
+
+ 4   .NOT.     Negation 16 Bit des folgenden Ausdruckes
+ 5   .AND.     logische Konjunktion 16 Bit
+ 6   .XOR.     logische Inhibition 16 Bit
+ 7   .OR.      logische Disjunktion 16 Bit
+
+Die Zeichen +, -, .NOT., .LOW. und .HGH. koennen allein vor einem 
+Ausdruck stehen,  alle anderen Operationszeichen muessen zwischen 
+zwei Operanden stehen.
+
+
+3.5.4. Bildung eines Ausdruckes
+-------------------------------
+
+Ein  Ausdruck wird durch die Verknuepfung von Zahlen,  Variablen, 
+numerischen- und Kettenkonstanten  gebildet.   Die   Verknuepfung 
+mittels  Operationszeichen wird innerhalb des gleichen Ranges von 
+links  nach  rechts ausgefuehrt,  sonst die Operationen  mit  dem 
+hoechsten Rang zuerst. Runde Klammern, die stets paarweise stehen 
+muessen,   durchbrechen  diese  Reihenfolge.   Ein   geklammerter 
+Ausdruck  wird  wie ein Operand verwendet.  Die Klammertiefe  ist 
+nicht unbegrenzt, ein entsprechender Fehler wird angezeigt.
+Ein  Ausdruck  besitzt nach seiner Bildung einen  16  Bit  langen 
+Wert,  die  vorderen Bits evtl.  mit Null  aufgefuellt.  Negative 
+Werte werden im Zweierkomplement dargestellt.
+
+
+3.5.5. Type eines Ausdruckes
+----------------------------
+
+Ein  Ausdruck  kann sowohl absolut als auch  relativ  sein.  Dies 
+haengt davon ab, ob in ihm programmrelative Werte vorhanden sind. 
+Der  Typ des Ausdruckes wird im Listing mit dargestellt durch die 
+Zeichen:
+     R    relativ
+     A    absolut
+     E    external
+
+Bei  der  Berechnung  des Ausdruckes  wird  eine  Typueberwachung 
+durchgefuehrt und Verknuepfungen zwischen nicht zulaessigen Typen 
+verhindert.  Die  Differenz zweier relativer Werte  ergibt  dabei 
+einen absoluten Wert!
+
+
+3.5.6. Externe Symbole
+----------------------
+
+Sind  bestimmte Symbole in einem Programm noch nicht bekannt  und 
+koennen diese nur von anderen Programmen bestimmt werden, so sind 
+diese Symbole mit der Pseudoanweisung EXTERNAL zu deklarieren.
+
+
+
+3.6. Pseudooperationen
+----------------------
+
+Zur Steuerung des Uebersetzungslaufes werden bestimmte  Operatio
+nen benoetigt,  die nicht zum Befehlssatz der CPU gehoeren. Diese 
+Pseudooperationen werden nachfolgend erlaeutert:
+
+DW   ausdruck
+DEFW ausdruck
+DA   ausdruck
+
+Das  den Wert des Ausdruckes repraesentierende Wort wird  gespei
+chert.
+
+DB   ausdruck,ausdruck,...
+DEFB ausdruck,ausdruck,...
+
+Die  Folge von durch Kommata getrennten Ausdruecken wird als Byte 
+erwartet  und abgespeichert.  Die Anzahl der Ausdruecke  ist  auf 
+Zeilenlaenge beschraenkt (max 64).
+
+DB   'text'
+DEFM 'text'
+
+Diese  Anweisung erzeugt beliebigen Text im ASCII-Code.  Der Text 
+muss als Zeichenkette angegeben werden,  deren Laenge 64  Zeichen 
+nicht uebersteigen darf.
+
+DEFT 'text'
+
+Diese Anweisung wirkt die DEFM, jedoch wird die Laenge des Textes 
+als erstes Byte ausgegeben.
+
+
+BER  Ausdruck
+DEFS Ausdruck
+
+Diese  Anweisung  reserviert innerhalb des  Programmes  Speicher
+plaetze,  deren  Anzahl  durch den Wert des  Ausdruckes  bestimmt 
+wird.  Dieser  Wert  muss bereits im ersten Pass  vorher  bekannt 
+sein. Im Programm haben diese Speicherplaetze einen undefinierten 
+Inhalt.  
+
+name      DEF  ausdruck
+name      DEFL ausdruck
+
+Der   Wert  des  Ausdruckes  wird  einmalig!   dem  Symbol   name 
+zugewiesen.  Fehlt  name,  entsteht ein Fehler wie auch bei einer 
+nochmaligen  Verwendung  des  Namen als Marke  an  einer  anderen 
+Stelle.
+
+PN   text
+NAME text
+
+Es  werden  maximal 6 Zeichen als  Programmname  akzeptiert.
+
+
+EJEC
+EJECT
+
+Innerhalb des Listings wird ein Blattwechsel ausgefuehrt
+
+END  Ausdruck
+
+Mit  dieser Anweisung wird das Programm beendet,  weitere  Zeilen 
+werden  nicht  mehr gelesen.  Der Wert des  Ausdruckes  wird  bei 
+absoluter  Assemblierung  im  Endeblock des  Intel-Hex-Codes  als 
+Einsprungadresse  angegeben.  Der Ausdruck muss deshalb auf  eine 
+Marke fuer den Programmstart hinweisen.  Fehlt der Ausdruck,  ist 
+dieser Wert Null.
+IF   Ausdruck
+COND Ausdruck
+
+Wenn der Wert des Ausdruckes Null ist, wird die Assemblierung bis 
+zum Auftreten der Anweisung ENIF unterbrochen (die entsprechenden 
+Zeilen werden ueberlesen).
+
+ENIF
+ENDIF
+ENDC
+
+Ende  der  bedingten  Assemblierung.   
+
+IF1
+
+Die Bedingung ist wahr, wenn der Pass 1 abgearbeitet wird
+
+IF2
+
+Die Bedingung ist wahr, wenn der Pass 2 abgearbeitet wird
+
+ELSE
+
+Die mit IF, IF1 oder IF2 gestellte Bedingung wird umgekehrt
+
+Alle IF-Anweisungen duerfen bis 16-fach geschachtelt werden.
+
+
+
+LISTOFF 
+
+Das Listing wird ab hier unterdrueckt
+
+NLIST   ausdruck
+
+Ist der Wert des Ausdruckes Null oder fehlt er,  wird das Listing 
+ab diesem Zeitpunkt unterdrueckt.
+
+LIST    ausdruck
+LISTON  ausdruck
+
+Ist  der  Wert des Ausdruckes Null oder fehlt  er,  so  wird  das 
+Listing  ab diesem Zeitpunkt nach einem Ausschalten des  Listings 
+weitergefuehrt, sonst ist die Anweisung wirkungslos.
+
+PRINTX    text
+
+Der  angegebene  Text  wird auf  dem  Bildschirm  angezeigt.  Zur 
+Unterscheidung  zwischen  Pass1 und Pass2 koennen  die  bedingten 
+Anweisungen IF1 und IF2 verwendet werden.
+
+
+ORG  Ausdruck
+
+Dem  Befehlszaehler  wird  der Wert  des  Ausdruckes  zugewiesen. 
+Dieser Wert muss bereits im ersten Pass vorher bekannt sein.  Bei 
+relativer  Assemblierung  sollte diese Anweisung nicht  verwendet 
+werden.
+
+
+
+EXTE     Liste
+EXTERNAL Liste
+
+Liste ist eine Aufzaehlung von Markennamen, durch Komma getrennt. 
+Diese  Marken  werden in die Markenliste aufgenommen und mit  dem 
+Wert  Null belegt.  Sie koennen erst beim Linken mit  einem  Wert 
+belegt  werden.   Ihr  Typ  ist  E  (External).  Wird  eine Marke 
+angegeben,  die  bereits im Programm enthalten ist,  wird  Fehler 
+angezeigt und diese Marke nicht nochmals aufgenommen.
+
+
+GLOB   Liste
+GLOBAL Liste
+
+Liste ist eine Aufzaehlung von Markennamen, durch Komma getrennt. 
+Diese Anweisung zeigt anderen Programmen die Adressen von Marken, 
+die  in diesem Programm definiert sind.  Die Marken werden gesam
+melt  und stehen dann dem Linker zur Verfuegung.  Ist eine  Marke 
+angegeben,  die  nicht  im Programm enthalten  ist,  wird  Fehler 
+angezeigt.
+
+name      EQU  ausdruck
+
+Der  Wert  des Ausdrucks ausdruck wird der Marke name  zugewiesen 
+und bleibt bis zu einer evtl. neuen Wertzuweisung erhalten.
+
+TITL  text
+TITLE text
+
+Diese Pseudoanweisung wirkt wie das Sofortkommando *H text (siehe 
+dort).
+
+name      MACR      dummylist
+
+Vereinbarung eines Makrokoerpers mit Parametern (dummy) unter dem 
+Namen name.  Die Parameter duerfen entfallen,  mehrere  Parameter 
+werden durch Komma getrennt.
+
+ENDM
+
+Abschluss einer Makrovereinbarung
+
+Makros siehe Kapitel 7 mit genauer Beschreibung
+
+
+3.7. Fehlermitteilungen
+-----------------------
+
+Entsteht waehrend der Assemblierung ein Fehler auf einem externen 
+Geraet,  wird die Assemblierung abgebrochen oder die Ausgabe  auf 
+Display  versucht.  Alle  anderen Fehler werden auf  der  Konsole 
+angezeigt  mit  der  Ausgabe  der fehlerhaften  Zeile  und  einem 
+vorangestellten Buchsteben, der auf den Fehler hinweist. 
+
+
+Buchst.        Art des Fehlers
+
+ A        Ueberlauf des Makropuffers  *Abort
+ B        Ungueltiger Operator
+ C        nicht verschiebbarer Ausdruck
+ D        falsches Zeichen in einer Zahl (Digit)
+ E        externes Symbol in einem Ausdruck
+ F        Symboltabelle voll          *Abort
+ G        INCLUDE ist geschachtelt
+ H        unzulaessiger Typ des Operanden
+ I        Unzulaessiger Operand
+ J        Unzulaessiger Begrenzer
+ K        Sprungweite zu gross bei relativen Spruengen
+ L        Unzulaessige Markenkonstruktion
+ M        mehrfach definiertes Symbol
+ N        Marke erforderlich bei DEFL, EQU
+ O        ungueltiger Operationscode (Mnemonik)
+ Q        Hochkommas oder IF-ENDIF nicht geradzahlig
+ R        Zahlenbereichsfehler
+ S        Syntaxfehler allgemein
+ T        Eingabezeile zu lang, abgeschnitten
+ U        Undefiniertes Symbol
+ V        Ausdruck ausserhalb des darstellbaren Bereiches
+ W        MACRO vorhanden und nicht erlaubt   *Abort
+ X        Symboltabellen Fehler               *Abort
+ Y        Undefinierte Bedingung
+
+Die  mit  *Abort gekennzeichneten Fehler fuehren zum Abbruch  der 
+Uebersetzung und zur Rueckkehr in den Monitor.
+
+
+3.8. Protokoll des Assemblers
+-----------------------------
+
+Das  Listing ist ein Protokoll  des  Assemblierungsvorganges.  Es 
+wird formatiert ausgegeben in der folgenden Form:
+
+Erste Zeile mit Modulnamen und Anwendertext aus *H oder TITLE
+Kopfzeile mit einer Ueberschriftenzeile und in  der 3.  Zeile der 
+Dateiname  und  das  Datum,  falls es  vorher  im  Betriebssystem 
+vereinbart wurde.
+Nach einer Leerzeile beginnt der Assemblertext.  Es wird je Zersetzung und zur Rueckkehr in den Monitor.
+
+
+3.8. Protokoll des Assemblers
+-----------------------------
+
+Das  Listing ist ein Protokoll  des  Assemblierungsvorganges.  Es 
+wird formatiert ausgegeben in der folgenden Form:
+
+Erste Zeile mit Modulnamen und Anwendertext aus *H oder TITLE
+Kopfzeile mit einer Ueberschriftenzeile und in  der 3.  Zeile der 
+Dateiname  und  das  Datum,  falls es  vorher  im  Betriebssystem 
+vereinbart wurde.
+Nach einer Leerzeile beginnt der Assemblertext.  Es wird je Zeile 
+der  aktuelle Befehlszaehlerstand und der uebersetzte  Objektcode 
+ausgegeben.  Danach  erfolgt die Darstellung des  Quelltextes  in 
+Grossbuchstaben.  Zur Darstellung des Types eines Ausdruckes wird 
+noch  ein Buchstabe vor dem Opcode ausgegeben.
+Fehler  werden  in der ersten Spalte durch  den  Fehlerbuchstaben 
+angezeigt.  Je  Seite werden 72  Druckzeilen  ausgegeben,  Blatt
+wechsel erfolgt automatisch einschl. der Seitenzaehlung.
+
+
+3.9. Objektkode
+---------------
+
+Der  Objektkode  wird  im  Intel-Hex-Code  ausgegeben,   der  bei 
+relativer Assemblierung noch modifiziert wird. Um Kompatibilitaet 
+zu erreichen, werden alle Sonderausgaben mit $ statt : markiert.
+
+Am Anfang wird der Modulname mit KZ 5 ausgegeben.
+Danach folgen die globalen Marken mit KZ 2.
+Der  folgende  Programmtext  wird  normal  ausgegeben.   Je  nach 
+Erfordernis  wird bei relativer Assemblierung noch eine Liste der 
+relativen  Adressen und bei Auftreten einer externen Marke  deren 
+Name und die Adresse ihres Auftretens mit KZ 4 bzw. 3 ausgegeben.
+Der Intel-Endeblock (KZ 1) beschliesst die Ausgabe.
+Bei  relativer  und absoluter Assemblierung sind die  Daten  ohne 
+weiteres mit DDT oder LOAD lesbar, die Sonderausgaben werden dort 
+ueberlesen. Deshalb brauchen absolut assemblierte Programme nicht 
+gelinkt  zu werden,  sie koennen sofort mit DDT oder LOAD geladen 
+werden.
+
+
+
+3.10. Symboltabelle
+-------------------
+
+Die  Symboltabelle  wird  auf  dem  mit  LIST gewaehlten Geraet
+ausgegeben. Die Ausgabe erfolgt 4 spaltig mit Name der Marke,
+deren Typ und deren Adresse.
+
+3.11 Symboldatei
+----------------
+
+Fuer die Testung des Programmes mit dem symbolischen Debugger SDT
+kann eine Liste aller Marken mit deren Adresse ausgegeben werden.
+Die Ausgabe erfolgt nach der Abarbeitung des 2. Passes bei einer
+anschliessenden Eingabe der Option Y. Der Dateiname wird abge-
+fragt. Es muss fuer SDT der gleiche Name wie das Objektprogramm
+gewaehlt werden.
+

@@ -1,0 +1,16 @@
+<kurz src="Grafik Computer"/>
+<lang>
+Eigentlich ein Programm, dass die Grafik ausgibt.
+Serieller (EPSON-)Drucker ist an Port 0x34 angeschlossen
+
+Ich denke, das Ende 
+1303  11 B4 12    LD      DE,12B4H
+ist nicht korrekt, nach dem Offset 0x275 kommen noch vierschiedenen ESC Sequenzen
+und Müll-Bytes:
+00000270  20 c0 0d 0a 1b 3f 1b 38  1b 33 20 00 52 61 69 6e  | ....?.8.3 .Rain|
+1b 3f  ESC ? ohne Parameter
+1b 38  ESC 8
+1b 33  ESC 3
+
+</lang>
+<requires></requires>

@@ -1,0 +1,7 @@
+<kurz src="Kassettenlisten erstellen mit CRC, ähnlich HEADERPRINT"/>
+<lang>Name, Vorname, Straße, Ort und PLZ müssen im Textfile ggf. noch geändert oder entfernt werden.
+
+Gibt man bei "mit Pos." ein Y ein, kann man nach jedem Programm den Zählerstand mitschreiben.
+
+<include src="beispiel.txt"/></lang>
+<requires>(SPV)</requires>

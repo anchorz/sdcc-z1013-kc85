@@ -1,0 +1,14 @@
+<kurz src="identisch [7c63566b3a04038ea1297a151c34cbd8]"/>
+<lang>Ist 1 Byte kleiner, als im Header angegeben.
+
+Beim Start T drücken für Tastatursteuerung.
+
+allerdings wird der Joystick nicht korrekt initialisiert bzw. die obersten Bits
+vom Port 0x00 sollten LOW sein.
+
+Bei Benutzung der RB Tastatur sollte der SLOW Modus benutzt werden.
+
+Steuerung: ⇦ ⇨ 
+
+</lang>
+<requires>2.02_RB(MCALL2,SLOW)</requires>

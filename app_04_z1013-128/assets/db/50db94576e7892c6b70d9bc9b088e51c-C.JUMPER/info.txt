@@ -1,0 +1,14 @@
+<kurz src="Fallschirmspringen mit Winddrift."/>
+<lang>J U M P E R
+-----------
+
+Sie sind Fallschirmspringer! Sie muessen die Zielmarke moeglichst
+exakt treffen. Entsprechend Ihres Aufsprunges werden
+Punkte vergeben. 
+
+Mit SPACE springen Sie ab und mit ENTER oeffnen Sie den Fallschirm.
+
+Steuerung:  ␣ ⏎
+
+</lang>
+<requires></requires>

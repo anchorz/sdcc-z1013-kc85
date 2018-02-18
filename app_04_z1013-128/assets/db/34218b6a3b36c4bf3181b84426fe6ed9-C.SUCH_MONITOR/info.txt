@@ -1,0 +1,3 @@
+<kurz src="Ersetzt 2.02 Minitoraufrufe durch RST 20H"/>
+<lang>sucht nicht nach A2 Minitoraufrufen</lang>
+<requires></requires>

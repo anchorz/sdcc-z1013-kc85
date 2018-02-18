@@ -1,0 +1,311 @@
+
+*DIE EDITIERKOMMANDOS UND IHRE WIRKUNGEN*
+ 
+-Eingabe in Gross- oder Kleinbuchstaben
+-Optionen,getrennt durch ein Komma,unmittelbar nach dem
+ Editierkommando eingeben 
+-Vor jedem Argument muss mindestens ein Leerzeichen bzw. ein
+-Syntaxzeichen (befehlsspezifisch) stehen
+-Eingabefehler werden erkannt und durch Fehlermeldungen
+ angezeigt.   
+Innerhalb der weiteren  Beschreibung gelten folgende Verein- 
+barungen:                             
+o=Option                              
+n1,n2=Zeilennummern(0-9999),fehlt n1,so gilt die aktuelle             
+ Zeilennummer.Ist diese=0 so wird n1=1.fehlt n2,so wird n2=n1.        
+ Ist n2<n1,so wird n2=n1.ist n2>als die hoechste Zeilennummer,        
+ so erhaelt n2 diesen Maximalwert.                               
+t=beliebiges ASCII-Trennzeichen        
+s1,s2=beliebiger ASCII-String,Gesamtlaenge begrenzt                               
+p1,p2=Positionsnummern(0-99) zur Angabe von Zeichenpositionen         
+ innerhalb von Textzeilen.             
+z=einzelnes ASCII-Zeichen              
+hh=zweistellige Hexzahl(00-ff)         
+d=maximal zweistellige Dezimalzahl(0-99)                               
+KOMMANDOS:                             
+__________                             
+ENTRY                                
+-dient zur Ueberpruefung der Fileparameter.nach Aufruf
+ meldet sich der Editor mit "Change Options(o)                                 
+ man kann nun folgende Option setzen:  
+t-prueft ob zwischen sof und eof Adresse im Speicher ein              
+ Textfile liegt.Wenn ja wird im Controlmode mit C0..fortge-           
+ fahren,sonst wird eine neue Option verlangt.                               
+n-ab der sof-Adresse wird ein neuer (leerer) Textfile erzeugt.        
+ Tabulator ist":",Tab.stop ist Pos.6   
+f-liegt zwischen sof und eof kein File, wird ein neuer erzeugt.                               
+ Sonst bleibt das alte File erhalten.
+x-Ruecksprung ins Betriebssystem        
+EXIT                                 
+-Rueckkehr ins Betriebssystem,optionen: 
+x-einfacher Ruecksprung                 
+p-wie x,mit Ausdruck des File und der File-Informationen                               
+l-wie p,mit Zeilennummern               
+HELP                                 
+-Druckt Liste aller Editierkommandos.    
+TAB z                                
+-Definiert z als Tabulatorzeichen.       
+SET p1 p2 p3 p4...pn                    
+ Definiert Tabulatorstops p1 bis pn.Wenn der Editor auf den           
+Tabulator trifft rueckt er den Kursor durch Ausgabe von               
+Leerzeichen(20hex)bis zur naechsten Tabulatorposition, die            
+durch den SET-Befehl gesetzt wurde weiter.Beispiel:                               
+c256  TAB :                             
+c256  SET 10 20 30                      
+c256                                    
+I257  eins:zwei:drei:vier               
+I258                                    
+c257  PRT                          
+eins     zwei     drei     vier    
+c257  SET 10 20 25                 
+c257  PRT                          
+eins     zwei     drei  vier       
+c257  TAB +                        
+c257  PRT                          
+eins:zwei:drei:vier                
+c257                                
+INFO                                 
+-Druckt alle Informationen ueber den Textfile.Beispiel:                               
+ c45  INFO                           
+ sof:2300  (Anf.Adresse Textfile)    
+ eof:hhhh  (Endadresse Textfile)     
+ eor:4000  (Ram Ende)                 
+ soi:31f5  (Eingabeadresse)           
+ maxline:0026  (letzte Zeile)         
+ TAB * 6 17 44 77                     
+n1                                   
+-Sprung zur Zeilennummer n1. Beisp.:  
+ c187  38                             
+ c38                                 
+TOP(KUERZEL:0)                        
+-Sprung zum c-Modus-Zeile 0 (Fileanfang-1).                               
+LAST(KUERZEL:A)                       
+-Sprung zur letzten c-Moduszeile      
+HEAD(KUERZEL:H)                       
+-wie TOP, zur 1. i-Modus zeile        
+BOTM(KUERZEL:B)                       
+-wie LAST, zur hoechsten i-Zeile (max.Zeilennr.+1)                               
+PRT n1 n2(KUERZEL:P)                  
+-Druckt Textzeilen n1-n2.Tab-Zeichen werden nicht mit                               
+ ausgegeben, sondern enspr. SET-Befehl als Leerz.strings                               
+ interpretiert.                        
+LNP n1 n2(KUERZEL:L)                  
+-Wie PRT, aber mit Zeilennummern.      
+GO n1 n2                              
+-Wie LNP, Zeiger auf c-Modus Zeile n1.Beisp.:                               
+ c144  GO 257                         
+ 257. eins zwei drei vier              
+ c257                                 
+COPY n1 n2                             
+-Zeilenblock n1-n2 wird hinter aktuelle Zeilennummer                               
+ eingefuegt, alle folgenden Nummern sind verschoben.                               
+DEL n1 n2(KUERZEL:D)                   
+-Loescht Zeilen n1-n2, nachfolgende Zeilen ruecken nach.                               
+MOVE n1 n2                             
+-Wie COPY, Zeilen n1-n2 am alten Ort werden geloescht.                               
+FIND,o n1 n2 :ts1t (KUERZEL:F)          
+-Sucht in den Zeilen n1-n2 nach dem String s1.                               
+ Zeilen, in denen s1 vorkommt, werden mit Zeilennummer                               
+ ausgedruckt.Ausserdem wird angegeben wie oft s1 enthalten ist.                               
+ c130  FIND  10 20 :/ware/              
+ 0016(01)microcomputer hard- und software                               
+ 0018(03)hardware,software,firmware    
+ c130                                
+CHANGE,o n1 n2 :ts1ts2t(z=hh)(KUERZEL:C)
+-Ersetzt innerhalb der Zeilen n1-n2 den String s1 durch s2.               
+ Es muss eine der folgenden Optionen o gesetzt werden:                               
+ p-Erstelle eine Liste, in der veraenderte Zeilen sowie die                                
+ Anzahl der Veraenderungen aufgefuert sind.                               
+ n-Erstelle keine Liste.                
+ der Zusatz(z=hh) bewirkt, dass dort,wo in s1 und s2 das                               
+ Zeichen z vorkommt, dieses durch das ASCII-Zeichen hh                               
+ ersetzt wird. (Fuer Zeichen,die mit der Tastatur nicht                               
+ ausgebbar sind z.B. Steuerzeichen.) Beispiele:                                                           
+ c45  CHANGE,p 20 28 :/hard/soft/       
+ Ersetzt in Zeilen 20-28 den String hard durch soft.                               
+ c98  CHANGE,n :/ende/x/(x=0d)          
+ Ersetzt in der Z.98 das Wort "ende"durch ein CR-Zeichen.                               
+ c15  c,n :/beispiel//                  
+ Loescht in Zeile 15 das Wort "beispiel".                              
+ASC n1 n2 :h1th2
+-Ersetzt in den Zeilen n1-n2 den ASCII-Code h1 durch den Code h2.
+ (h1 und h2 hexidezimal),Beispiel:
+ c100  ASC 32 33 :0d/20
+ (Fuegt die Zeilen 32,33 zu einer zusammen.)
+DFN n1 n2 :z1tz2
+-Wie ASC,  z1,z2 sind ASCII-Zeichen.Beispiel:
+ c43  DFN 1 99 :+/&
+ Definiert Zeichen"&" als das Zeichen fuer"+".
+CASE,o n1 n2
+-Gross-/Kleinschreibung,Optionen:
+ u-Inhalt von n1-n2 wird in Grossbuchstaben umgewandelt.
+ l-Wie u,jedoch in Kleinschrift.
+EDIT,t n1(KUERZEL:E)                   
+-Dies ist ein ausserordentlich leistungsfaehiger Befehl zum           
+ Editieren des Inhaltes einer bestimmten Textzeile.                   
+ Der Editor druckt die Zeile n1 ohne Beruecksichtigung der            
+ Tabulatoren auf dem Bildschirm aus.Unter der Zeile kann              
+ man einen Korrektursatz eingeben,der nach (Enter) mit derem          
+ Inhalt verrechnet wird. Beispiel:      
+ c67  EDIT 95                        
+   EDIT:in der text ist ein fehlerhaft.
+ I0095     Iies*  Izeile*        D    * 
+ c95  e                               
+   EDIT:in dieser textzeile ist ein fehler.                               
+ I0095 CIn!                    Ik!         I mehr!                               
+ c95  p                               
+ In dieser zeile ist kein fehler mehr.  
+ c95                                 
+                                     
+ Fehlt die Option t, so wird als Trennzeichen "!" angenommen.         
+ Alle zwischen dem "I" und dem Trennzeichen t stehenden               
+ Zeichen werden an der Stelle in die Zeile eingefuegt, unter          
+ der das erste einzufuegende Zeichen steht.                               
+ Zeichenpositionen zwischen "D" und t werden aus der Zeile            
+ entfernt.                               
+ Ebenso werden alle Zeichen zwischen"C" und t ersetzt.                               
+ Es koennen auch mehrere Korrekturen in einer Zeile sein.                               
+                                     
+ RTP n1(KUERZEL:R)                      
+-Dient zum Editieren mit dem Betriebssystem.                               
+ dabei wird n1 auf dem Bildschirm ausgedruckt und im Speicher         
+ geloescht und an die Input Routine des Systems uebergeben.           
+ Beispiel:                              
+ c12  R 53                               
+ I0053  diese zeile soll verbessert werden                            
+ Der Cursor steht unterhalb der Textzeile, es wird Eingabe im 
+ I-Modus simuliert.Mit den Editiermoeglichkeiten des Betriebs-            
+ systems kann man die Zeile verbessern und mit Enter (Cursor          
+ am Zeilenende) in das File zurueckschreiben.                               
+                                     
+NPR n1(KUERZEL:N)                  
+-Druckt Zeile n1 und darunter die Positionsnummern der Zeichen.                               
+ Beispiel:                         
+ c198  NPR 66                       
+ 1000   rem  basicprogramm         
+  123...9 123456789 1234567        
+ Die Punkte deuten an, dass an dieser Stelle keine Blanks             
+ im Speicher stehen, sondern die Leerzeichen mit dem Tabulator        
+ erzeugt wurden.                  
+I$ n1 n2 :ts1tp1t(z=hh)
+-Fuegt in n1-n2 den String s1 ab Pos.p1 ein.Zusatz (z=hh)
+ wie bei CHANGE.Beispiel:
+ c75  I$ 60 100:/   /15/
+D$ n1 n2:tdtp1t
+-Loescht in n1-n2 jeweils d Zeichen ab Pos.p1.Beispiel:
+ c44  d$/5/16/
+FILL  
+-Ersetzt die Tabulatoren im  Text durch die Anzahl von
+ Leerzeichen die sie jeweils repraesentieren.Die Form des Files
+ bleibt erhalten, der Speicherbedarf waechst.Notwendig wenn das File
+ z.B.von einem Assembler weiterverarbeitet werden soll.
+PACK  
+-Umkehrung zu FILL.Leerzeichenstrings werden an den Stellen
+ die durch den SET Befehl definiert wurden, durch ein Tabulator-          
+ zeichen ersetzt.                       
+USER hhhh                               
+-Maschinenprogrammaufruf                
+ hhhh=Startadresse,Programm muss mit RET Befehl enden.                               
+FORMAT n1 n2:tp1tp2t                    
+-Erzeugt Textzeilen mit linkem und rechtem Rand.                               
+ Dazu wird ausgehend vom Inhalt der Zeilen n1-n2 ein neuer            
+ Zeilenblock beginnend mit nr.n1 erzeugt.                               
+ Der Text beginnt ab Pos.p1 und endet mit Pos.p2 in jeder             
+ Zeile des Textblocks.                   
+ Jeder Block kann beliebig oft mit beliebigen Zeilenraendern          
+ formatiert werden.Beispiel:            
+ c3  LNP 5 9                            
+ 5.beim FORMAT-kommando                 
+ 6.wird ein wort,                  
+ 7.das nicht                       
+ 8.mehr in eine zeile passt,in die naechste                               
+ 9.geschrieben.                    
+                                     
+ c3  FORMAT 5 9:/10/39/            
+ last line:0008                    
+ c3  LNP 5 8                       
+ 5.beim FORMAT-kommando wird ein   
+ 6.wort, das nicht mehr in eine    
+ 7.zeile passt, in die naechste    
+ 8.geschrieben.                               
+ c3                                  
+                                     
+-Tabulatoren werden besonders behandelt.                               
+ Wird beim Formatieren ein Tabulatorzeichen erkannt, so wird          
+ an dieser Stelle ein Absatz gelassen (cr-Zeichen eingefuegt).                               
+ Tabulatoren sollten direkt nach dem letzten Wort des
+ entsprechenden Absatzes stehen (Auf Tab.Zeichen sollte ein           
+ Leerzeichen oder Zeilenende (CR=0Dhex) folgen.).                               
+                                     
+SPACE n1 n2:tp1tp2t                
+-Randausgleich                     
+ Dazu werden solange Leerzeichen ab Pos.p1 zwischen die               
+ Woerter eingefuegt, bis deren letztes Zeichen an Pos.p2 steht.       
+ beispiel:                          
+ c3  SPACE 5 8:/10/38/              
+ c3  LNP 5 8                        
+ 5.beim FORMAT-kommando wird ein    
+ 6.wort, das  nicht mehr in eine    
+ 7.zeile passt,  in die naechste    
+ 8.geschrieben.                     
+ c3                                 
+-Zuruekschreiben mit FORMAT Befehl
+ C3  FORMAT 5 8:/0/0/
+ last line:0020
+ C3  FORMAT 5 20:/10/39/
+ last line:0008
+ C3   
+      
+ Beim 1. Formatieren wird fuer jedes Wort eine neue Zeile eroeffnet;
+ Leerz. entfallen,da bei p1=0 der FORMAT-Befehl alle Leerzeichen am
+ Zeilenende loescht.
+ Beim 2.Formatieren wird ein neuer Textabschnitt gebildet.
+SAVE  
+-Textfile wird auf Band abgespeichert.
+  Zum Abspeichern ist der Typ des Files und der Filenamen anzu-
+  geben.Es wird das Header Save Load Verfahren verwendet.                                
+LOAD  
+-Lesen vom Band
+  Es ist der Filetyp und der Filenamen anzugeben. Bedienung
+entsprechend des Header Save Load.
+ Nach Enter wird gelesen.                               
+HINWEISE ZUM TEXTEDITOR:                               
+Workspace-Speicherbereich,zur Anpassung an den Rechner                               
+Beginn ab 300h bei vorliegender Version, einige Adressen:                               
+300,1     :SOF(Start of File)          
+302,3     :EOF(End of File)            
+304,5     :EOR(End of RAM)             
+306,7     :SOI(Start of Input)         
+308,9     :LP(Linepointer)             
+30a,b,c   :Sprung zur Input Routine C3 xx xx                               
+30d,e,f   :Sprung zur Output Routine C3 xx xx                               
+310,1,2 Sprung ins System                  
+313,4,5 Sprung-Headerroutine           
+316,7 Anf.Adresse 2. Kommandoblock      
+...                                  
+ERWEITERUNGEN:                         
+ Im Workspace(w+16,17=916,917) Anfangsadresse fuer 2.Kommando-                               
+ block eintragen.                       
+ 3E-Kommandowort-0D-Befehlsfolge...JP BACK(C3 D1 15)                               
+ Beispiel DEL Befehl:                   
+ 3E 44 45 4C 0D X1 X2....C3 D1 15       
+LITERATUR:                              
+-Z80-Texteditor mc Heft 2/1981,S25-34   
+-Nachtrag zum Z80-Texted. mc H.2/1982,S52                               
+-Erweiterung des Texted.(Sort-Programm) mc H.6/1982 S57                               
+                               
+Die vorliegende Version gestatett die Anpassung an verschiedene
+Druckerschnittstellen. Realisiert sind eine Druckerschnittstelle
+für S 6005 und S 3004 (V.24 1 Start- 8 Daten- 1 Stoppbit).
+Für die Anpassung an andere Druckerschnittstellen besteht die
+Möglichkeit folgende Routinen zu ändern:
+0200      Init des PIO Ausgabekanals
+0220      Ausgabe eines Bytes in A an den Drucker.
+ 
+Für Rückfragen und Fehlerhinweise bitte an 
+A. Köhler
+Tiroler Str.9
+Dessau 
+4500         wenden.
+
+

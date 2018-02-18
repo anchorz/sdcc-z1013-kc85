@@ -1,0 +1,98 @@
+			===================================
+			=     +++   MRB   Z 1013   +++    =
+			= AUTOSTART BEIM TINY-INTERPRETER =
+			=                                 =
+			=   (c) by  rehn-soft    FEB/88   =
+			===================================
+
+Der  3k-BASIC-Interpreter von  RIESA benutzt nicht den Bereich
+von  BA6-FFFh.    Programme werden von diesem Interpreter erst
+ab 1152h abgelegt.   Damit kann der Interpreter im Bereich von
+BA6-FFFh erweitert werden.    Solche Erweiterungen sind jedoch
+genau zu durchdenken.     Durch eine Reihe von  Basic-Befehlen
+laesst sich der Interpreter steuern. Diese Befehle koennen nur
+im Direkt-Modus, also ohne  Zeilennummer, abgearbeitet werden.
+Es sind dies die Befehle:
+ LIST , RUN , NEW , END , CSAVE , CLOAD , BYE
+Alle anderen Befehle koennen zwar auch im Direkt-Modus abgear-
+beitet werden (mit Einschraenkungen) ,  stellen aber im allge-
+meinen Programmanweisungen dar und werden unter einer  Zeilen-
+nummer als Programm abgelegt.  Damit wird deutlich, dass  Aen-
+derungen in der  Bearbeitung  solcher  Anweisungen zu  Veraen-
+derungen des Interpreters fuehren, die meist keine  Kompatibi-
+litaet zu  eigenen oder zu  fremden Programmen gewaehrleisten.
+Ergaenzungen,  die die  Interpretersteuerung  betreffen,  sind
+dagegen problemlos implementierbar.     Die  Moeglichkeit  des
+"AUTO-STARTs"  soll gezeigt werden.   Da hier aus Gruenden der
+Einfachheit  der  Interpreter  waerend  der  Bearbeitung   des
+"CLOAD"-Befehls veraendert  wird,  ist der  Interpreter aller-
+dings nicht mehr  ROM-faehig.
+PRINZIP:
+--------
+Nach Bearbeitung  eines  Basic-Befehls  kehrt  der  Interpeter
+stets zur RESTART-Routine zurueck.    Das wird mit der Meldung
+"READY,>" deutlich. So auch nach Laden eines Programms von der
+Kassette.  Durch die unten beschriebenen  Veraenderungen  wird
+das fuer den "CLOAD"-Befehl anders gestaltet.   Die erste Ver-
+aenderung betrifft diesen Ruecksprung zum RESTART.   An dessen
+Stelle wird ein anderer Sprung eingetragen.  Und zwar soll der
+Interpreter nach dem   "CLOAD"-Befehl  zuerst pruefen,  ob ein
+AUTO-START vorgesehen wurde.    Ist das der Fall,  erfolgt ein
+Sprung zur RUN-Routine. Falls nicht, kehrt der Interpreter wie
+ueblich zum RESTART zurueck.  Die zweite Veraenderung betrifft
+jetzt den Test und die Ausfuehrung des AUTO-STARTs.   Da neben
+dem  eigentlichen  Basic-Programm  auch  alle  Merkzellen  des
+Interpreters bei  "CSAVE"  mit  ueberspielt werden,  ist es so
+moeglich,  in einer dieser  Merkzellen eine  Information ueber
+einen vorgesehenen AUTO-START dem Programm hinzuzufuegen.  Als
+AUTO-START-Zelle fungiert hier die Zelle  1050h.     Wird hier
+eine "0" eingetragen, so wird nach dem Laden des Programms der
+AUTO-START verhindert.  Alle anderen Werte erzeugen den  AUTO-
+START.  Die AUTO-START-Information  kann also vor dem  Abspei-
+chern eines Programms mit "POKE HEX (1050),X"   ( x=0.....kein
+AUTO-START , x<>0.....AUTO-START) festgelegt werden.      Nach
+Laden eines Programms springt der Interpreter also zur   AUTO-
+START-Routine. Hier erfolgt zuerst ein Test, ob der AUTO-START
+erlaubt ist.   Ist das der Fall,  wird die  RESTART-Routine so
+veraendert, dass der  Interpreter  das  Programm  selbstaendig
+startet.  Die Aenderung in der RESTART-Routine wird jedoch so-
+fort wieder  rueckgaengig  gemacht, um nach der  selbstgestar-
+teten  Abarbeitung  eines  Programms  die  originale  RESTART-
+Routine wieder vorliegen zu haben.   Wenn der AUTO-START nicht
+erlaubt ist, wird die RESTART-Routine nicht veraendert.
+AENDERUNGEN:
+------------
+1.: Auf Adresse A09h sind folgende 3 Bytes einzutragen:
+        C3 A7 0B
+2.: Ab Adresse BA7h ist die AUTO-START-Routine neu aufzu-
+    nehmen:
+	BA7: 3A 50 10      LD A,(1050H)
+	BAA: B7            OR A
+	BAB: CA BB 01      JPZ RESTART
+	BAE: 21 DE 01      LD HL,01DEH
+	BB1: 36 C3         LD (HL),0C3H
+	BB3: 23            INC HL
+	BB4: 11 BD 0B      LD DE,0BBDH
+	BB7: 73            LD (HL),E
+	BB8: 23            INC HL
+	BB9: 72            LD (HL),D
+	BBA: C3 BB 01      JMP RESTART
+	BBD: 21 DE 01      LD HL,01DEH
+	BC0: 36 CD         LD (HL),0CDH
+	BC2: 23            INC HL
+	BC3: 11 6C 06      LD DE,066CH
+	BC6: 73            LD (HL),E
+	BC7: 23            INC HL
+	BC8: 72            LD (HL),D
+	BC9: C3 4F 02      JMP 024FH
+
+Die Aenderungen am  Interpreter  sind mit dem  M-Kommando  des
+Monitors vorzunehmen.    Danach ist der geaenderte Interpreter
+im Bereich von 100h-BCFh neu zu ueberspielen.
+
+Beim Autor steht eine bereits weiter bearbeitete  Variante des
+3k-Interpreters zur Verfuegung.
+
+			SCHWARZENBERG, FEB/88
+			 UWE REHN
+

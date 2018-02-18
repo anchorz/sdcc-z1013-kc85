@@ -1,0 +1,3 @@
+<kurz src="ARBEITSZELLEN DES Z1013 MONITORS"/>
+<lang><include src="I.ARB.ZELLEN.txt"/></lang>
+<requires></requires>

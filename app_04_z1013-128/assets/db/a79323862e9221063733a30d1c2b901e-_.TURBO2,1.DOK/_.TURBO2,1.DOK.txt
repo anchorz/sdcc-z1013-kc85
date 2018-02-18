@@ -1,0 +1,1056 @@
+.PL72
+.MT1
+.MB3
+.FM1
+.FO                                                              
+.HE                                       TURBO-Pascal  Seite #
+.PN38
+.PO8
+
+
+10. Feldtypen (ARRAY)
+
+Ein Feld (ARRAY) ist ein strukturierter Typ, der aus einer festen 
+Anzahl  von  Komponenten besteht.  Die Komponenten sind alle  vom 
+gleichen Typ.  Diesen bezeichnet man als Komponententyp oder  Ba-
+sistyp.  Jede dieser Komponenten kann man exakt durch Indizierung 
+des  Feldes erreichen.  Indizes sind INTEGER-Ausdruecke,  die  in 
+eckigen Klammern geschrieben,  an den Bezeichner des Feldes ange-
+haengt werden. Ihr Typ heisst Indextyp.
+
+
+10.1 Feld-Definition
+
+Die  Definition  eines Feldes besteht aus dem  reservierten  Wort 
+array,  dem  ein  in eckigen Klammern  eingeschlossener  Indextyp 
+folgt.  Nach  diesem steht das reservierte Wort of und ein Kompo-
+nententyp.
+
+Beipiele:
+     type
+          Day      = (Mon,Die,Mit,Don,Fre,Sam,Son);
+     Var
+          WorkHour : array[1..8]  of Integer;
+          Week     : array[1..52] of Day;
+
+     type
+          Players  = (Player1,Player2,Player3,Player4);
+          Hand     = (One,Two,Pair,TwoPair,Three,Straight,Flush,
+                    FullHouse,Four,StraightFlush,RSF);
+          LegalBid = 1..200;
+          Bid      = array[Players];
+     Var  
+          Player   : array[Players] of Hand;
+          Pot      : Bid;
+
+Die Zuweisung zu einer Feld-Komponente erfolgt durch Angabe eines 
+in  eckigen Klammern eingeschlossenen Indexes hinter dem  Variab-
+lenbezeichner.
+
+Beispiele:
+     Player[Player3] := FullHouse;
+     Pot[Player3]    := 100;
+     Player[Player4] := Flush;
+     Pot[Player4]    := 50;
+
+Es  ist  erlaubt,  einer  Variablen  x  den  Wert  einer  anderen 
+Variablen Y zuzuweisen, wenn beide den gleichen Typ haben. Analog 
+ist es moeglich ganze Felder zu kopieren:
+               Index1 := Index2.
+Die Compiler-Direktive R steuert auch die Erzeugung eines  Codes, 
+der  zur Laufzeit des Programmes die Index-Ausdruecke prueft,  ob 
+sie innerhalb des erlaubten Bereiches liegen.  Standard ist dabei 
+{$R-},  d.h.  es muss im Programm {$R+} gesetzt werden,  wenn die 
+Index-Ausdruecke geprueft werden sollen.
+.pa
+
+10.2 Mehrdimensionale Felder
+
+Der  Komponententyp  eines Feldes kann  ein jeder Datentyp  sein, 
+d.h.  der  Komponententyp kann auch ein Feld  sein.  Eine  solche 
+Konstruktion heisst mehrdimensionales Feld.
+
+Beispiele:
+     type
+          card = (Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,
+                  Knight,Queen,King,Ace);
+          Suit = (Hearts,Spade,Clubs,Diamonds);
+          AllCards = array[Suit] of array[1..13] of Card;
+     var   
+          Deck : AllCards;
+
+Ein  mehrdimensionales  Feld  kann  auch  durch  mehrdimensionale 
+Indices definiert werden:
+     
+     type
+          AlCards = array[Sui,1..13] of Card;
+
+Aus  diesem  Grunde kann man auch folgende kuerzere  Schreibweise 
+fuer die Auswahl eines Feldes anwenden:
+
+     Deck[Hearts,10]   equivalent mit    Deck[Hearts][10]
+
+Es ist natuerlich auch moeglich mehrdimensionale Felder in Termen 
+vorher definierter Feldtypen zu definieren.
+
+Beispiele:
+     type
+          Pupils = string[10];
+          Class  = array[1..30]  of Pupils;
+          Scool  = array[1..100] of Class;
+     var
+          J,P,Vacant    : Integer;
+          ClassA,ClassB : Class;
+          NewTownScool  : Scool;
+
+Mit diesen Definitionen gelten folgende Zuweisungen:
+
+          ClassA              := 'Peter';
+          NewTownScool[5][21] := 'Peter Brown';
+          NewTownScool[8,J]   := NewTownScool[7,J];
+          ClassA[Vacant]      := ClassB[P];
+
+10.3 Zeichenfelder (Caracter Arrays)
+
+Zeichenfelder  sind  Felder mit einem Index und  Komponenten  vom 
+Standard-Skalar-Typ Char.  Zeichenfelder koennen auch als  String 
+mit fester Laenge aufgefasst werden. 
+In  TURBO-Pascal duerfen Zeichenfelder auch in STRING-Ausdruecken 
+auftreten.  In diesen Faellen werden jeweils in einen String  von 
+der Laenge des Zeichenfeldes umgewandelt.  Damit koennen Zeichen-
+felder  in  gleicher Weise wie String miteinander verglichen  und 
+manipuliert werden.  Auch Stringkonstanten duerfen Zeichenfeldern 
+zugewiesen  werden,  wenn sie die gleiche Laenge  haben.  STRING-
+Variable und -Werte, die aus STRING-Ausdruecken berechnet werden, 
+koennen Zeichenfeldern nicht zugewiesen werden.
+
+
+10.4 Standard-Felder
+
+TURBO-Pascal stellt zwei Standard-Felder vom Typ Byte zur Verfue-
+gung:  MEM und PORT.  Mit ihnen erhaelt man den Zugriff zum Spei-
+cher und zu den Datenports.  Ihre Besprechung erfolgt in Anhang A 
+und B.
+
+11. Datensatztypen
+
+Ein Datensatz ist eine Struktur,  die aus einer festen Anzahl von 
+Komponenten, den Datenfeldern, besteht. Die einzelnen Datenfelder 
+koennen  von  unterschiedlichem Typ sein und jedes Datenfeld  hat 
+einen  eigenen  Datenfeldbezeichner,  der dem Zugriff  zu  diesem 
+Datenfeld dient.
+
+
+11.1 Datensatz-Definition
+
+Die  Definition eines Datensatztyps besteht aus dem  reservierten 
+Wort  record,  dem eine Datenfeldliste folgt.  Diese  Liste  wird 
+durch  das  reservierte Wort end abgeschlossen.  Sie besteht  aus 
+Datensatzabschnitten,  die  voneinander durch Semikolon  getrennt 
+sind.  Jeder  Datensatzabschnitt besteht aus einem oder  mehreren 
+Datenfeldbezeichnern,  die durch Komma voneinander getrennt sind. 
+Der  letzte wird durch einen  Doppelpunkt  abgeschlossen.  Diesem 
+folgt  ein Typbezeichner.  Jeder Datensatzabschnitt  spezifiziert 
+demnach den Typ und die Bezeichner fuer einen oder mehrere Daten-
+felder. 
+
+Beispiele: 
+     type
+          Date = record
+                    Day   : 1..31;
+                    Month : (Jan,Feb,Mrz,Apr,Mai,Jun,Jul,Aug,
+                             Sep,Okt,Nov,Dez);
+                    Year  : 1900..1999;
+                 end;
+     var 
+          Birth   : Date;
+          WorkDay : array[1..5] of date;
+
+In diesem Beispiel sind Day,  Month und Year Datenfeldbezeichner. 
+Ein  Datenfeldbezeichner  muss  nur eindeutig  in  dem  Datensatz 
+selbst  sein,  indem  er definiert wurde.  Den Zugriff  zu  einem 
+Datenfeld  erhaelt  man durch den Datenfeldbezeichner,  dem  man, 
+getrennt durch einen Punkt,  den Variablenbezeichner fuer  diesen 
+Datensatz voranstellt.
+
+Beispiele:
+     Birth.Month        := Jun;
+     Birth.Year         := 1950;
+     WorkDay[Current]   := WorkDay[Current-1];
+
+Man  beachte,  dass  wie bei den Feltypen auch ganze  Datensaetze 
+einander  zugewiesen werden koennen,  wenn sie vom  gleichen  Typ 
+sind.
+Da  der  Typ der Datensatzkomponenten nicht  eingeschraenkt  ist, 
+kann er selbstverstaendlich auch ein Datensatztyp sein. Damit ist 
+es moeglich, einen Datensatz von Datensaetzen zu bilden:
+
+     type
+          Name = record
+                    FamilyName     : string[32];
+                    ChristianName  : array[1..3] of string[16];
+                 end;
+          Rate = record
+                    NormalRate,OverTime,NightTime,Weekend:Integer;
+                 end;
+          Date = record
+                    Day   : 1..31;
+                    Month :  (Jan,Feb,Mrz,Apr,Mai,Jun,Jul,Aug,
+                             Sep,Okt,Nov,Dez);
+                    Year  : 1900..1999;
+                 end;
+          Person = record
+                    Id   : Name;
+                    Time : Date;
+                   end;
+          Wages  = record
+                    Individual : Person;
+                    Cost       : Rate;
+                   end;
+     var
+          Salary,Fee  : Wages;
+
+Mit diesen Definitionen sind folgende Zuweisungen erlaubt:
+     
+     Salary                          :=  Fee;
+     Salary.Cost.OverTime            :=  950;
+     Salary.Individual.Time          :=  Fee.Individual.Time;
+     Salary.Individual.Id.FamilyName := 'Smith';
+
+
+
+11.2 WITH-Anweisung
+
+Die Verwendung von Datensaetzen in der obigen Weise ergibt  meis-
+tens  ziemlich weitschweifige Anweisungen.  Die Schreibweise  der 
+Ergibtanweisungen wuerde einfacher sein, wenn die Datensatzfelder 
+einfache  Variablen waeren.  Genau dies ermoeglicht die  WITH-An-
+weisung:  Sie "eroeffnet" einen Datensatz so, dass die Datenfeld-
+bezeichner  wie  einfache  Variablenbezeichner  verwendet  werden 
+koennen.
+Eine  WITH-Anweisung besteht aus dem reservierten Wort with,  dem 
+eine Liste von Datensatzvariablen folgt,  die durch Komma vonein-
+ander getrennt sind.  Anschliessend folgt das reservierte Wort do 
+und eine Anweisung.
+In  einer  WITH-Anweisung  wird ein Datenfeld  nur  durch  seinen 
+Datenfeldbezeichner gekennzeichnet, d.h. ohne Datensatzvariablen-
+bezeichner.
+
+     with Date do
+          begin
+               Day   := 23;
+               Month := Feb;
+               Year  := 1982;
+          end;
+
+Datensaetze koennen in einer WITH-Anweisung geschachtelt  werden, 
+d.h.  Datensaetze  von  Datensaetzen koennen wie folgt  eroeffnet 
+werden:
+
+     with Salary do with Individual do with Id do ...
+
+oder kuerzer:
+
+     with Salary,Individual,Id do
+          begin
+               FamilyName    := 'Smith';
+               ChristianName := 'Jones';
+          end;
+
+Die maximale Tiefe dieser Schachtelung der WITH-Folgen,  d.h. die 
+maximale  Anzahl  der Datensaetze,  die man in  einem  Block  zur 
+gleichen Zeit eroeffnen kann, haengt von der Implementierung ab. 
+Eine ausfuehrliche Besprechung erfolgt im Anhang A und B.
+.pa
+
+
+11.3 Definition von Datensatz-Varianten.
+
+Die  Syntax eines Datensatztypes erlaubt auch die Definition  von 
+Datensatzteil-Varianten,  d.h. von alternativen Datensatzstruktu-
+ren,  die aus Datensatzteilen bestehen, deren Datenfeldanzahl und 
+Datenfeldtypen  unterschiedlich  sind und deren Struktur  jeweils 
+vom Wert eines Kennzeichnungsfeldes abhaengen.
+Ein Varianten-Datensatzteil besteht aus einem  Kennzeichnungsfeld 
+eines vorher definierten Typs,  dem Marken folgen,  die den moeg-
+lichen  Werten des Kennzeichnungsfeldes entsprechen.  Jede  Marke 
+fuehrt  eine  Datenfeldliste  an,  die den Typ der  dieser  Marke 
+zugeordneten Datensatzteil-Variante definiert.
+Als Beispiel gelte obige Typdefinition fuer Name und Date, sowie
+
+     type      Origin = (Citizen,Alien);
+
+Dann  ist es mit der folgenden Datensatztyp-Definition  moeglich, 
+fuer  das Datenfeld CitizenChip zwei verschiedene  Strukturen  zu 
+definieren,  die nur von seinem Wert:  Citizen oder Alien abhaen-
+gen:
+     type
+       Name = record
+               FamilyName       : string[32];
+               ChristianNames   : array[1..3] of strings[16];
+               HourRates        : array[1..4] of Integer;
+              end;
+       Person  = record
+                    PersonName       : Name;
+                    BirthDate        : Date;
+                    case CitizenShip : Origin of
+                         Citizen: (BirthPlace :Name);
+                         Alien  : (CountryOfOrigin : Name;
+                                   DateOfEntry     : Date;
+                                   PermittedUntil  : Date;
+                                   PortOfEntry     : Name);
+                 end;
+
+Bei  dieser Definition von Datensatzvarianten ist das  Kennzeich-
+nungsfeld  ein  explizites Datenfeld,  das man wie  jedes  andere 
+Datenfeld  auswaehlen und mit Werten versehen kann.  Es sind des-
+halb auch die folgenden Anweisungen exakt gueltig:
+
+     var  Passenger : Person;
+
+     Passenger.CitizenShip  := Citizen;
+     with Passenger,Person,Name do
+          if CitizenShip = Alien then writeln(FamilyName); 
+
+Der  feste Teil eines Datensatzes,  d.h.  der Teil,  der  gleiche 
+Datenfelder enthaelt,  muss stets vor dem variablen Teil  liegen. 
+Im  obigen  Beispiel  sind PersonName und  BirthDate  die  festen 
+Felder.  Ein  Datensatz darf nur einen variablen Teil  haben.  Im 
+variablen Teil muessen die Klammern geschrieben werden, auch wenn 
+sie nichts enthalten. 
+Die Nutzung eines Kennzeichnungsfeldes liegt in der Verantwortung 
+des Programmierers und nicht bei TURBO-Pascal.  Aus diesem Grunde 
+kann  man sich auf das Feld DateOfEntry im Typ Person auch bezie-
+hen, wenn das Kennzeichnungsfeld CitizenChip nicht den Wert Alien 
+hat.  Tatsaechlich kann man das Kennzeichnungsfeld ueberall  weg-
+lassen, indem man den Typbezeichner streicht. Solche Datensatzde-
+finitionen sind bekannt als freie Vereinigungen (free unions). Im 
+Gegensatz  dazu heissen diejenigen mit Kennzeichnungsfeld gekenn-
+zeichnete  Vereinigungen (discriminated unions).  Die  Verwendung 
+freier  Vereinigungen sind selten und sollten nur von  erfahrenen 
+Programmierern praktiziert werden.
+.pa
+
+
+12. Mengentypen
+
+Eine Menge ist eine Sammlung verwandter Objekte, die man sich als 
+eine Gesamtheit vorstellen kann. Jedes Objekt einer solchen Menge 
+heisst  Mitglied oder Element der Menge.  Beispiele  fuer  Mengen 
+sind:
+     1) Alle ganzen Zahlen von 0 bis 100.
+     2) Alle Buchstaben des Alphabets.
+     3) Alle Konstanten des Alphabets.
+Zwei Mengen sind dann und nur dann gleich, wenn ihre Elemente die 
+gleichen  sind.  Es gibt in dieser Definition keinen  Ordnungsbe-
+griff, sodass folgende Mengen gleich sind:
+   [1,3,5]     [5,3,1]     [3,5,1].
+Wenn  alle Elemente einer Menge auch Elemente einer anderen Menge 
+sind,  sagt man,  dass diese Menge in der anderen Menge enthalten 
+ist. Sie wird auch als Teilmenge der anderen Menge bezeichnet. Im 
+obigen Beispiel ist 3) in 2) enthalten.
+Es gibt drei Operationen, die den Zahlenoperationen entlehnt sind 
+und auf Mengen angewandt werden koennen: die Vereinigung (+), der 
+Durchschnitt (*) und das relative Komplement (-):
+
+     Die   Vereinigung  (oder  Summe)  zweier  Mengen  A  und  B, 
+     geschrieben A+B,  ist die Menge aller Elemente, die entweder 
+     in A oder in B enthalten sind. Die Vereinigung von [1,3,5,7] 
+     und [2,3,4] ist [1,2,3,4,5,7].
+
+     Der  Durchschnitt  (oder  Produkt) zweier Mengen  A  und  B, 
+     geschrieben A*B, ist die Menge aller Elemente, die sowohl in 
+     A  als  auch  in B  enthalten  sind.  Der  Druchschnitt  von 
+     [1,3,4,5,7] und [2,3,4] ist [3,4].
+
+     Das   relative  Komplement  (oder  die  Differenz)   von   B 
+     bezueglich A, geschrieben A-B, ist die Menge aller Elemente, 
+     die  in A aber nicht in B enthalten sind.  Die Differenz von 
+     [1,3,4,5,7] und [2,3,4] ist [1,5,7].
+
+12.1 Mengentyp-Definition
+
+Obgleich  es  in der Mathematik keine Einschraenkungen  fuer  die 
+Elemente  einer  Menge gibt,  gestattet Pascal  nur  eine  einge-
+schraenkte Form der Definition von Mengen:
+Die Elemente einer Menge muessen alle vom gleichen Typ sein,  dem 
+Basistyp.  Der  Basistyp muss ein einfacher Typ  sein,  d.h.  ein 
+beliebiger Skalartyp ausser REAL.  Die Definition eines Mengentyp 
+besteht aus einem Mengentypbezeichner, dem ein Gleichheitszeichen 
+und die reservierten Worte set of und ein einfacher Typ folgen.
+
+Beispiele:
+     DaysOfMonth     =   set of 0..31;
+     WorkWeek        =   set of Mon..Fre;       
+     Letter          =   set of 'A'..'Z';
+     Additiv Colors  =   set of [Red,Green,Blue];
+     Characters      =   set of Char;
+
+In TURBO-Pascal betraegt die maximale Anzahl von Elementen  einer 
+Menge  256     und die Ordnungswerte des Basistyp muessen im  Be-
+reich 0..255 liegen.
+.pa
+
+
+12.2 Mengenausdruecke
+
+Mengenwerte  koennen  aus anderen Mengenwerten  durch  Mengenaus-
+druecke berechnet werden. Mengenausdruecke bestehen aus:
+          Mengenkonstruktionen,
+          Mengenoperatoren,
+          Mengenkonstanten und
+          Mengenvariablen. 
+
+
+
+12.2.1 Mengenkonstruktionen
+
+Eine  Mengenkonstruktion besteht aus einer oder mehreren  Elemen-
+tenspezifikationen,  die  durch Komma voneinander getrennt und in 
+eckige Klammern eingeschlossen sind.  Eine Elementenspezifikation 
+ist ein Ausdruck vom gleichen Typ wie der Basistyp der Menge. Sie 
+kann  auch ein Bereich sein,  der durch zwei  solcher  Ausdruecke 
+dargestellt wird, getrennt durch zwei aufeinanderfolgende Punkte.
+
+Beispiele:
+     ['T','U','R','B','O']
+     ['X','Y']
+     [X..Y]
+     [1..5]
+     ['A'..'Z','a'..'z','0'..'9']
+     [1,3..10,12]
+     []   
+
+Das  letzte Beispiel stellt die leere Menge dar.  Da  sie  keinen 
+Ausdruck enthaelt, der ihren Basistyp festlegt, ist sie mit allen 
+Mengentypen   kompatibel.    Die  Menge  [1..5]  ist  der   Menge 
+[1,2,3,4,5]  equivalent.  Wenn  X>Y,  dann bezeichnet [X..Y]  die 
+leere Menge.
+
+
+12.2.2 Mengenoperationen
+
+Die  Mengenoperationen  werden entsprechend  ihrer  Rangfolge  in 
+folgende drei Klassen eingeteilt:
+
+     1)  *    Mengendurchschnitt.
+
+     2)  +    Mengenvereinigung,
+         -    Mengendifferenz.
+
+     3)  =    Test auf Gleichheit,
+         <>   Test auf Ungleichheit,
+         >=   Wahr,  wenn der zweite Operand im ersten  enthalten 
+              ist,
+         <=   Wahr,  wenn der erste Operand im zweiten  enthalten 
+              ist,
+         in   Test auf Mitgliedschaft in einer Menge.  Der zweite 
+              Operand ist ein Mengentyp und der erste ein Mengen-
+              ausdruck  vom  gleichen  Typ wie der  Basistyp  der 
+              Menge.  Das Ergebnis ist wahr,  wenn der erste Ope-
+              rand ein Element des zweiten Operanden ist, andern-
+              falls ist es falsch.
+
+Es gibt keinen Operator fuer ein exaktes Nichtenthaltensein. Aber 
+man kann dies in der Form  A*B = [] programmieren.
+.pa
+
+
+Mengenausdruecke sind oft brauchbar,  um komplizierte Tests  ein-
+facher zu programmieren. Dafuer einige Beispiele:
+
+fuer:     (CH='T') or (CH='U') or (CH='R') or (CH='B') or (CH='O')
+
+besser:   CH in ['T','U','R','B','O']
+
+
+fuer:     (CH>'0') and (CH<'9')
+
+besser:   CH in ['0'..'9']
+
+
+
+12.2.3 Mengenzuweisungen
+
+Mengenvariablen wird das Ergebnis von Mengenausdruecken durch das 
+Ergibtzeichen ':=' zugewiesen.
+
+Beispiele:
+     type
+          ASCII = set of 0..127;
+     var
+          NoPrint,Print,AllChars : ASCII;
+     begin
+          AllChars := [0..127];
+          NoPrint  := [0..31,127];
+          Print    := AllChars - NoPrint;
+     end;
+
+
+.pa
+
+
+13. Typisierte Konstante
+
+Typisierte Konstante sind eine TURBO Spezialitaet. Eine typisier-
+te  Konstante  kann man exakt wie eine Variable vom gleichen  Typ 
+verwenden. Sie koennen deshalb als initialisierte Variable einge-
+setzt werden. Denn ihr Wert ist von Anfang an definiert, waehrend 
+eine Variable solange undefiniert ist,  bis ihr ein Wert zugewie-
+sen wurde.
+Man  sollte  natuelich  darauf  achten,   das  einer  typisierten 
+Konstante  keine Werte zugewiesen werden,  denn ihr  Wert  sollte 
+eben wirklich konstant sein.
+Die Verwendung typisierter Konstanten hilft Speicherplatz sparen, 
+wenn sie haeufig im Programm verwendet werden. Denn sie werden im 
+Programmcode nur einmal gespeichert,  im Gegensatz zu den untypi-
+sierten Konstanten, die im Code jedesmal gespeichert werden, wenn 
+sie im Text vorkommen.
+Typisierte   Konstanten   werden  wie   untypisierte   Konstanten 
+definiert (siehe 5.2.2), sie enthalten nur zusaetzlich auch ihren 
+Typ. 
+Die  Definition  einer  typisierten Konstanten  besteht  aus  dem 
+Konstantenbezeichner,  einem  Doppelpunkt,  einem  Typbezeichner, 
+einem Gleichheitszeichen und dem wirklichen Konstantenwert.
+
+
+13.1 Unstrukturierte typisierte Konstante
+
+Eine unstrukturierte typisierte Konstante ist eine Konstante, die 
+durch einen Skalartyp definiert wird. 
+
+Beispiele:
+     NumbersOfCars : Integer = 1267;
+     Interest : Real = 12.67;
+     Heading : string[7] = 'Section';
+     Xon : Char = ^Q;
+
+Im Gegensatz zu den untypisierten Konstanten kann eine typisierte 
+Konstante anstelle  einer Variablen als Parameter in  einer  Pro-
+zedur  oder Funktion verwendet werden.  Eine typisierte Konstante 
+ist  tatsaechlich eine Variable mit einem  konstanten  Wert.  Sie 
+kann  deshalb  nicht  in der Definition anderer  Konstanten  oder 
+Typen  verwendet werden.  Deshalb ist im folgenden  Beispiel  die 
+Verwendung der typisierten Konstanten Min und Max nicht erlaubt:
+
+     const
+          Min : integer = 0;
+          Max : integer = 50; 
+     type 
+          Range : array[Min..Max] of integer;   {Falsch !}
+
+
+13.2 Strukturierte typisierte Konstante
+
+Strukturierte Konstante sind
+                    Feldkonstante,
+                    Datensatzkonstante und 
+                    Mengenkonstante.
+Sie werden häufig verwendet,  um initialisierte Tabellen und Men-
+gen fuer Tests,  Konvertierungen,  Abbildungsfunktionen usw.  be-
+reitzustellen.  Die  folgenden Abschnitte definieren jeden Typ im 
+Einzelnen.
+.pa
+
+13.2.1 Feldkonstante
+
+Die  Definition einer typisierten Feldkonstanten besteht aus  dem 
+Konstantenbezeichner,  einem Doppelpunkt, dem Typbezeichner eines 
+vorher definierten Feldtyps,  dem Gleichheitszeichen und dem kon-
+stanten Wert.  Letzterer besteht aus einer Liste von  Konstanten, 
+die durch Komma getrennt und in Klammern eingeschlossen sind.
+
+Beispiele:
+     type
+          Status         =    (Activ,Passiv,Wartend);
+          StringRep      =    array[Status] of string[7];
+     const
+          Stat:StringRep =    ('aktiv','passiv','wartend');
+
+Das  Beispiel  definiert die Feldkonstante  Stat,  die  verwendet 
+werden kann,  um Werte vom Skalartyp Status in ihre entsprechende 
+Stringdarstellung zu konvertieren:
+     Stat[Aktiv]    = 'aktiv'
+     Stat[Passiv]   = 'passiv'
+     Stat[Wartend]  = 'wartend'
+
+Der  Komponententyp  einer  Feldkonstanten kann  jeder  Typ  sein 
+ausser  einem Feld- oder Pointertyp.  Charakterfeldtypen  koennen   
+sowohl  als einzelne Char als auch als Strings definiert  werden. 
+Aus diesem Grunde ist es guenstiger statt:
+
+     const
+          Digits : array[0..9] of 
+               Char=('0','1','2','3','4','5','6','7','8','9');
+besser:
+     
+     const
+          Digits : array[0..9] of Char='0123456789';
+
+zu schreiben.
+
+
+13.2.2 Mehrdimensionale Feldkonstante
+
+Eine  typisierte mehrdimensionale Feldkonstante wird analog defi-
+niert,  indem  man jede Dimension in separate Klammernpaare  ein-
+schliesst, die durch Komma voneinander getrennt sind. Die inners-
+te  Konstant entspricht der am weitesten rechts  stehenden  Dimen-
+sion:
+
+Beipiele:
+     type
+          Cube = array[0..1,0..1,0..1] od integer;
+     const
+          Maze : Cube = (((0,1),(2,3)),((4,5),(6,7)));
+     begin
+          writeln(Maze[0,0,0],' =0');
+          writeln(Maze[0,0,1],' =1');
+          writeln(Maze[0,1,0],' =2');
+          writeln(Maze[0,1,1],' =3');
+          writeln(Maze[1,0,0],' =4');
+          writeln(Maze[1,0,1],' =5');
+          writeln(Maze[1,1,0],' =6');   
+          writeln(Maze[1,1,1],' =7');   
+     end;
+
+.pa
+
+13.2.3 Datensatzkonstante
+
+Die Definition einer typisierten Datensatzkonstanten besteht  aus 
+dem  Konstantenbezeichner,  einem Doppelpunkt,  dem Typbezeichner 
+eines vorherdefinierten Datensatztyps,  einem  Gleichheitszeichen 
+und  dem Konstantenwert.  Letzterer ist eine Liste,  die aus  den 
+Datenfeldkonstanten,  getrennt  durch Komma und eingeschlossen in 
+runde Klammern, besteht. 
+
+Beipiele:
+     type
+          Point     = record
+                         X,Y,Z : integer;
+                      end;
+          OS        = (CPM80,CPM86,MSDOS,UNIX);
+          UI        = (CCP,SomethingElse,MenuMaster);
+          Computer  = record
+                         OperatingSystems : array[1..4] of OS;
+                         UserInterfacs : UI;
+                      end;    
+     const
+          Origo     : Point   = (X:0; Y:0; Z:0);
+          SuperComp : Computer=
+                         (OperatingSystems:(CPM80,CPM86,MSDOS,UNIX);
+                          UserInterface:MenuMaster);
+          Planel : array[1..3] of Point =
+                         ((X:1;  Y:4;  Z:5),
+                          (X:10, Y:-78,Z:45),
+                          (X:100,Y:10, Z:-75));    
+
+Die Feldkonstanten muessen in der gleichen Reihenfolge  definiert 
+werden,  wie  sie in der Datensatzdefinition auftreten.  Wenn ein 
+Datensatz  Felder  vom File- oder  Pointertyp  enthaelt,  koennen 
+typisierte  Konstanten fuer diesen Datensatztyp  nicht  definiert 
+werden. Wenn eine Datensatzkonstante eine Variante enthaelt, dann 
+ist der Programmierer selbst dafuer verantwortlich,  dass nur die 
+Datenfelder der gueltigen Variante spezifiziert werden.  Wenn die 
+Variante ein Kennzeichnungsfeld enthaelt, dann muss auch ihr Wert 
+spezifiziert werden.
+
+
+
+13.2.4 Mengenkonstanten
+
+Eine  typisierte Mengenkonstante besteht aus einer oder  mehreren 
+Elementenspezifikationen, die durch Komma getrennt und in eckigen 
+Klammern  eingeschlossen sind.  Eine Elementenspezifikation  darf 
+eine  Konstante  oder  ein Bereichsausdruck sein,  der  aus  zwei 
+Konstanten, getrennt durch zwei Punkte, besteht.
+
+Beipiele:
+     type
+          Up  = set of 'A'..'Z';
+          Low = set of 'a'..'z';
+     const
+          UpperCase : Up  = ['A'..'Z'];
+          Vocals    : Low = ['a','e','i','o','u'];
+          Delimiter : set of Char = 
+                         [' '..'/',':'..'?','['..'`','{'..'~'];
+
+.pa
+
+
+14. Filetypen
+
+Computerprogramme produzieren häufig so grosse Datenmengen,  dass 
+man  sie nicht bis zu einer spaeteren Verwendung im gleichen oder 
+anderen Programmen im Speicher belassen kann.  Aus diesem  Grunde 
+speichert man solche Datenmengen auf externen Datentraegern,  wie 
+Magnetbandkassetten  oder  Disketten.  Die Einheit einer  solchen 
+Datenmenge heisst File oder Datei. 
+Ein  File besteht aus einer Folge von Komponenten gleichen  Typs. 
+Die  Anzahl der Komponenten im File (die Filegroesse) wird  nicht 
+in der Filedefinition festgelegt.  Stattdessen wird in Pascal der       
+Zugriff  zu  den  einzelnen Komponenten ueber  einen  Filepointer 
+organisiert.  Jedesmal,  wenn  eine Komponente des Files  gelesen 
+oder  geschrieben wird,  rueckt der Filepointer  eine  Komponente 
+weiter, d.h. er weist auf die naechste Komponente. Da alle Kompo-
+nenten eines File die gleiche Laenge haben, weil sie vom gleichen 
+Typ sind, kann die Position einer bestimmten Komponente berechnet 
+werden  d.h.  man kann ueber den Filepointer zu jeder  Komponente 
+des File zugreifen. Damit sind die Voraussetzungen gegeben, einen 
+wahlfreien Zugriff zu den Komponenten des File aufzubauen.
+
+
+14.1 Filetyp-Definition
+
+Ein Filetyp wird durch die reservierten Worte file of,  denen der 
+Typbezeichner der Komponenten folgt, definiert. Eine Filevariable 
+wird definiert durch einen Filevariablenbezeichner, einem Doppel-
+punkt  und  einen  Filetyp.  Dabei gibt es  zwei  Moeglichkeiten, 
+jenachdem, ob der Filetyp mit einem Filetypbezeichner explizit im 
+Typdefinitionsteil definiert wurde oder nicht:
+
+     1) type   Komponente =  record
+                              x,y,z : integer;
+                             end;
+               Filetyp    =  file of Komponente;
+        var    FileVar    :  Filetyp;
+oder
+     2) type   Komponente =  record
+                              x,y,z : integer;
+                             end;
+        var    FileVar    : file of Komponente  
+
+Beispiele: 
+     type
+       ProductName = string[80];
+       Product     = record
+                      Name      : ProductName;
+                      ItmNumber : Real;
+                      InStock   : Real;
+                      MinStock  : Real;
+                      Supplier  : Integer;
+                     end;
+     FProduct      = file of Product;
+
+     var
+       ProductFiles   :   FProduct;  
+       ProductNames   :   file of ProductName;
+
+Der Komponententyp eines Files kann irgend ein Typ  sein,  jedoch 
+kein Filetyp!, d.h. in obigem Beispiel ist 
+     var ProdFile : file of FProduct
+nicht erlaubt.
+.pa
+
+Man beachte auch, dass zwar       var P1File : FProduct;          
+und                                   P2File : FProduct;
+den gleichen Filetyp haben, aber nicht:
+                                  var PM1File : file of Product;
+und                                   PM2File : file of Product;
+Weiterhin merke man sich: Filevariable duerfen weder in Ergibtan-
+weisungen noch in Ausdruecken auftreten.
+
+
+14.2 Fileoperationen
+
+In den folgenden Abschnitten werden die in TURBO-Pascal vorhande-
+nen Fileprozeduren beschrieben. Dabei werden folgende Kurzzeichen 
+fuer die Parameter verwendet:
+
+     str       Stringausdruck,  der einen gueltigen Filenamen  in 
+               der bekannten Form 
+                    '[A:]Dateinam.Typ'
+               darstellen muss.
+     filvar    Filevariable.
+     var       Eine  Variable  oder mehrere  Variable,  die  dann 
+               durch  Komma getrennt sein muessen,  und die  alle 
+               den  gleichen  Komponententyp wie das  File  haben 
+               muessen.
+     num       Integerkonstante.
+
+
+14.2.1 Assign
+
+Syntax:        Assign(filvar,str)
+
+Durch diese Prozedur wird der in str enthaltene physische Filena-
+men  der  Filevariablen filvar zugewiesen.  Danach beziehen  sich 
+alle auf filvar ausgeuebte Operationen auf das genannte physische 
+Diskettenfile.  Wurde  der Filevariablen bereits  ein  physischer 
+Filenamen zugewiesen,  und mit der Filevariablen gearbeitet, darf 
+ein erneutes ASSIGN auf sie nicht angewendet werden.
+
+
+
+14.2.2 Rewrite
+
+Syntax:        Rewrite(filvar)
+
+Mit  dieser Prozedur wird auf der Diskette ein neues File mit dem 
+filvar zugewiesenen physischen Filenamen aufgebaut. Der Filepoin-
+ter wird dabei auf den Anfang des File,  d.h.  auf die Komponente 
+mit der Nummer 0, gesetzt. Existiert auf der Diskette bereits der 
+gleiche physische Filenamen,  dann wird das zugehoerige File  ge-
+loescht!  Ein  mit REWRITE erzeugtes File ist anfangs immer  leer 
+und enthaelt kein Element.
+
+
+
+14.2.3 Reset
+
+Syntax:        Reset(filvar)
+
+Das  filvar zugewiesene File wird fuer die Verarbeitung vorberei-
+tet und der Filepointer auf den Anfang des File,  d.h. die Kompo-
+nente mit der Nummer 0,  gesetzt.  Das zugewiesene File muss  be-
+reits existieren, sonst entsteht in I/O-Fehler.
+
+.pa
+
+14.2.4 Read
+
+Syntax:        Read(filvar,var)
+
+Durch  diese  Prozedur werden die Variablen var nacheinander  mit 
+dem  Inhalt  der Komponenten des filvar  zugeordneten  Files  ge-
+fuellt. Begonnen wird mit der Komponente, auf die der Filepointer 
+zeigt.  Nach  jeder  Zuweisung wird der Pointer auf die  naechste 
+Komponente eingestellt.
+
+
+14.2.5 Write
+
+Syntax:        Write(filvar,var)
+
+Durch diese Prozedur werden nacheinander der Inhalt der Variablen 
+var in die Komponenten des filvar zugewiesenen Files geschrieben. 
+Begonnen wird mit der Komponente,  auf die der Filepointer zeigt. 
+Nach  jedem  Schreibvorgang  wird der Pointer  auf  die  naechste 
+Komponente eingestellt.
+
+
+14.2.6 Seek
+
+Syntax:        Seek(filvar,num)
+
+Der  Filepointer des filvar zugeordneten Files wird  durch  diese 
+Prozedur auf die Komponente mit der Nummer num-1 eingestellt (die 
+1.Komponente  hat  die  Nummer 0!).  Um ein  File  zu  erweitern, 
+braucht  man  nur den Filepointer auf die Komponente  hinter  der 
+letzten Komponente des File einzustellen.
+
+
+14.2.7 Flush
+
+Syntax:        Flush(filvar)
+
+Diese  Prozedur wird eigentlich nur in Multi-User-Systemen benoe-
+tigt,  in denen mehrere Nutzer zum gleichen Diskettenfile zugrei-
+fen  koennen.  Flush  schreibt sofort den Update-Puffer  auf  die 
+Diskette  zurueck und sichert damit nach  Updatefunktionen,  dass 
+die  naechste  Leseoperation wirklich als  ein  physisches  Lesen 
+ausgefuehrt  wird.  Flush  darf  niemals  auf  ein  geschlossenes 
+(CLOSE) File angewendet werden.
+
+
+14.2.8 Close
+
+Syntax:        Close(filvar)
+
+Diese  Prozedur  schliesst das filvar zugeordnete physische  File 
+und schreibt den aktuellen Filestatus in das Diskettenvezeichnis. 
+In Multi-User-Systemen sollte man oefter diese Prozedur anwenden, 
+auch wenn nur gelesen wurde.
+
+
+14.2.9 Erase
+
+Syntax:        Erase(filvar)
+
+Diese Prozedur loescht das filvar zugeordnete File im  Disketten-
+verzeichnis.  Wenn das File bereits eroeffnet wurde,  d.h.  RESET 
+oder REWRITE ausgefuehrt wurde,  sollte man stets CLOSE vor ERASE 
+aufrufen.
+.pa
+
+14.2.10 Rename
+
+Syntax:        Rename(filvar,st)
+
+Das filvar zugewiesene File erhaelt den in str enthaltenen  neuen 
+Filenamen.  Der neue Name wird in das Diskettenverzeichnis einge-
+tragen  und  die weiteren Operationen von filvar werden dann  mit 
+diesem File unter dem neuen Namen ausgefuehrt.
+Man sollte RENAME niemals auf ein bereits eroeffnetes File anwen-
+den.  Ebenso  sollte der Programmierer sichern,  dass das mit str 
+benannte  File nicht bereits auf der  Diskette  existiert.  Sonst 
+entstehen doppelte Namen in der Direktory. 
+
+Die  folgende Funktion gibt den Wert True zurueck,  falls der  im 
+Parameter  spezifizierte Filenamen bereits in der Direktory exis-
+tiert, andernfalls ist der Wert False:
+
+     function Exist(Filename:Boolean):Boolean;
+     var
+          File:file;
+     begin
+          Assign(File,FileName);
+          {$I-};
+          Reset(File);
+          {$I+};
+          if Ioresult <> 0 then Exist := False;
+                           else Exist := True;
+     end;
+
+
+
+
+14.3 Standardfilefunktionen
+
+TURBO-Pascal enthaelt die folgenden Standardfilefunktionen:
+
+
+14.3.1 EOF
+
+Syntax:        Eof(filvar)
+
+Diese  Boolesche-Funktion gibt den Wert True  zurueck,  wenn  der 
+Filepointer  das Fileende erreicht hat,  d.h.  hinter die  letzte 
+Komponente  des filvar zugewiesenen Files weist.  Andernfalls ist 
+der zurueckgegebene Wert False.
+
+
+14.3.2 FilePos
+
+Syntax:        FilePos(filvar)
+
+Diese  Integer-Funktion gibt den Wert der aktuellen Position  des 
+Filepointer zurueck. Die erste Komponente hat den Wert 0.
+
+
+14.3.3 FileSize
+
+Syntax:        FileSize(filvar)
+
+Diese  Integer-Funktion  gibt  den Wert der  Groesse  des  filvar 
+zugeordneten Files zurueck,  d.h.  die Anzahl der Komponenten des 
+Files.  Wenn FileSize(filvar) gleich Null ist,  dann ist das File 
+leer.
+
+.pa
+
+
+
+14.4 Filenutzung
+
+Bevor ein File benutzt werden kann,  muss ASSIGN aufgerufen  wer-
+den,  um  der Filevariablen ein physisches File  zuzuordnen.  Vor 
+einer I/O-Operation sollte das File durch Aufruf von REWRITE oder 
+RESET eroeffnet werden. Damit zeigt der Filepointer auf die erste 
+Komponente des File,  d.h. es ist FilePos(filvar)=0. Nach REWRITE 
+ist  stets FileSize(filvar)=0.  Ein Diskettenfile kann nur  durch 
+Anfuegen  von weiteren Komponenten hinter die letzte  existierend 
+Komponente  des File erweitert werden.  Den Filepointer kann  man 
+dafuer an das  Fileende positionieren durch:
+
+          Seek(filvar,FileSize(filvar));
+
+Nach  Beendigung  aller Input/Output-Operationen  sollte  man  in 
+einem  Programm stets die eroeffneten Files durch CLOSE  schlies-
+sen.  Vergisst man dies, kann das zu Datenverlust fuehren, da das 
+Diskettenverzeichnis  dann eventuell nicht dem letzten Stand  des 
+Filestatus entspricht.
+
+Das  folgende Programm baut ein File mit dem  Namen  PRODUCTS.DTA 
+auf  und  schreibt 100 Saetze vom Typ Product auf das  File.  Das 
+File  ist  fuer einen wahlfreien Zugriff  vorbereitet  (d.h.  die 
+Saetze koennen von jeder Stelle des File gelesen oder geschrieben 
+werden).
+
+     program InitProductFile;
+     const
+       MaxNumberOfProducts = 100;
+     type
+       ProductName         = string[20];
+       Product             = record
+                               Name         : ProductName;
+                               ItemNumber   : Integer;
+                               InStock      : Real;
+                               Supplier     : Integer;
+                             end;
+     var
+       ProductFile         : file of Product;
+       ProductRec          : Product;
+       I                   : Integer;
+     begin
+       Assign(ProductFile,'F:PRODUCT.DTA');
+       Rewrite(ProductFile);   {eroeffnet File und loescht alle Daten}
+       with ProductRec do
+         begin
+           Name := ' '; InStock := 0; Supplier := 0;
+           for I := 1 to MaxNumberOfProducts do
+           begin
+             ItemNumber := I;
+             Write(ProductFile,ProductRec);
+           end;
+         end;
+         Close(ProductFile);
+       end.
+.pa
+
+
+
+Das  folgende Programm demonstriert die Verwendung von SEEK  fuer 
+den  wahlfreien  Zugriff.  Mit diesem Programm kann  man  in  dem    
+soeben  aufgebauten  File PRODUCT.DTA den Inhalt in  die  bereits 
+existierenden  Datensaetze (Komponenten) bringen oder den  Inhalt 
+spaeter aendern.
+
+
+
+
+
+     program UpdateProductFile;
+     const
+       MaxNumberOfProducts = 100;
+     type
+       ProductName         = string[20];
+       Product             = record
+                               Name         : ProductName;
+                               ItemNumber   : Integer;
+                               InStock      : Real;
+                               Supplier     : Integer;
+                             end;
+     var
+       ProductFile         : file of Product;
+       ProductRec          : Product;
+       I,Pnr               : Integer;
+     begin
+       Assign(ProductFile,'F:PRODUCT.DTA');
+       Reset(ProductFile);
+       ClrScr;
+       Write('Enter product number (0 = stop):'); Readln(Pnr);
+       while Pnr in [1..MaxNumberOfProducts] do
+       begin
+         Seek(ProductFile,Pnr-1); Read(ProductFile,ProductRec);
+         with ProductRec do
+         begin
+           Write('Enter name of product(',name:20,') ');
+           Readln(Name);
+           Write('Enter number in stock (',InStock:20:0,') ');
+           Readln(InStock);
+           Write('Enter supplier number (',Supplier:20,') ');
+           Readln(Supplier);
+           ItemNumber := Pnr;
+         end;
+         Seek(ProductFile,Pnr-1);
+         Write(ProductFile,ProductRec);
+         ClrScr; Writeln;
+         Write('Enter product number (0 = stop):'); Readln(Pnr);
+       end;
+       Close(ProductFile);
+     end.
+
+.pa
+

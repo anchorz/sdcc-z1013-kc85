@@ -1,0 +1,3 @@
+<kurz src="Editor-Beschreibung"/>
+<lang><include src="I.Beist-Assembler.txt"/></lang>
+<requires></requires>

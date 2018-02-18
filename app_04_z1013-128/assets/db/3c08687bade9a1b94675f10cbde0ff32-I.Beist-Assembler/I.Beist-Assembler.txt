@@ -1,0 +1,1213 @@
+Editor-Beschreibung
+
+Bestandteile:
+  Editor/Assembler
+  Reassembler
+  Binder
+
+Es erfolgt eine Speicherung von
+Maschinencode (MC) und
+Markentabelle. Die Eingabe der
+Befehle erfolgt zeilenweise; 
+Syntaxfehler werden sofort er-
+kannt.Es gibt 3 Betriebsarten
+mit spezifischen Kommandos:
+ Anzeigemodus
+ Quellcode-Eingabe-Modus
+ RAM-Modus
+
+Aufruf des Editors:
+ J 2C03 NEUSTART
+ J 2C00 RESTART zur Weiterbear-
+beitung vorhandener MC und MTB
+(Markentabelle)
+
+Ausschrift:  EDIT MTB#1C20
+
+Die Vorzugsadresse der MTB kann
+ueberschrieben werden, wenn
+diese auf anderem RAM-Bereich
+liegen soll. Vor MTB werden
+noch 20H Byte Arbeitsspeicher
+benoetigt. Das 1.Byte der MTB
+muss 00 sein. Bei Start auf
+2C03H ist das in der angegebenen
+MTB der Fall. Nach der Betaeti-
+gung von ENTER befindet sich der
+Editor im Anzeigemodus. Von hier
+aus sind alle Modi erreichbar.
+Mit dem Kommando "G#adr" kann
+man die gewuenschte Programm-
+stelle (Adr) anwaehlen. Zur Be-
+staetigung von Kommandos dient
+immer die ENTER-Taste, zur
+Ablehnung dient in der Regel die
+OFF-Taste. Folgende Tasten er-
+hielten fuer den Editor zusaetz-
+liche Funktionen:
+
+@     =  OFF
+S4-S  =  Kursor nach oben
+S4-R  =  Kursor nach unten
+S4-J  =  Kursor an Bildanfang
+S4-O  =  Kursor an Zeilenanfang
+S4-V  =  Tabulator
+S4-W  =  Zeichen loeschen
+S4-N  =  Zeile loeschen
+S4-T  =  BS loeschen
+
+Uebergaenge zwischen den Modi:
+
+________________________________
+|Anzeigemodus(OFF->>Betr.-Syst)|
+________________________________
+|"R"    ^       |"Q"       ^   
+|Enter  |OFF    |          |OFF
+V       |       V          |   |
+RAM-Mod.|       | Eingabe-Mod. |
+
+Das Ende der MTB ist immer 0.
+Werden bei der Eingabe Marken
+vereinbart, wird MTB automatisch
+gefuellt (127 Marken sind moeg-
+lich). Ein Ueberlaufen der MTB 
+(in den Bereich des Editors zB.)
+wird nicht verhindert. Der Be-
+diener kann sich aber jederzeit
+im RAM-Modus ueber die Ausdeh-
+nung der MTB (belegter RAM-Be-
+reich) informieren.
+Ausserdem kann mit dem Kommando
+"P" im Anzeigemodus der Editor
+auf Vollstaendigkeit und Fehler-
+freiheit getestet werden.
+Erfolgt nach dem Kdo "P" der
+Sprung ins Betriebssystem, ist
+der Editor zerstoert (zB. auch
+im Ergebnis eines fehlerhaften
+Anwendertestlaufes) und muss
+wieder vom Band geladen
+werden. Verlassen des Editors:
+Der Editor wird durch Betaeti-
+gung der OFF-Taste in das Be-
+triebssystem verlassen. Mittels
+Monitorkommandos werden nun die
+RAM-Bereiche des Maschinencodes
+und der MTB auf Band ausgela-
+gert (Ausdehnung vorher im
+RAM-Modus oder mit "D" fest-
+stellen).Es ist zweckmaessig,
+aber nicht Bedingung, die MTB
+einschliessl. der 20H Byte
+Arbeitsspeicher (also ab
+1C00H) auszugeben. Nach dem
+Laden von MC und MTB sowie Start
+des Editors befindet sich in
+diesem Fall der Editor auf der
+Anzeigeadresse, von der aus er
+verlassen wurde. Das Ausla- 
+gern von Programmen erfolgt vor
+deren Test, sonst gibt es meist
+Aerger! Ein ordnungsgemaess
+ausgelagertes Programm (MC+MTB)
+kann jederzeit wieder geladen
+und im Editor erweitert, geaen-
+dert oder korrigiert werden.
+Zur Lauffaehigkeit eines
+fertigen und gebundenen Progr.
+ist die MTB nicht erforderlich. 
+Nach dem Einschalten des Z1013
+ist zuerst der Editor zu laden,
+auf 2C03H zu starten
+(definierte RAM-Belegung) und
+mit OFF wieder zu verlassen.
+Erst jetzt werden vorhandene
+Programme und deren MTB geladen
+und der Editor auf 2C00H
+gestartet.
+Folgend werden die einzelnen
+Modi und deren Kommandos be-
+schrieben.
+
+Anzeigemodus         
+------------
+
+Hier ist es moeglich, bereits
+erstellte Programme zu kontrol-
+lieren, interessierende Stellen
+zu suchen, anzuwaehlen und zu
+korrigieren. Der Anzeigemodus
+ist durch folgende Bildschirm-
+ausschrift gekennzeichnet (Bsp):
+EDIT 02EF
+MAR 02D0
+      * LD HL,0123H
+MA1:    ADD     HL,DE
+	INC
+	JRNZ	MA1
+	LD	A,B
+	POP     DE
+	RET
+Das * steht vor der Befehlsaus-
+schrift des zur Bearbeitung an-
+stehenden Befehls. Die oberste 
+Zeile enthaelt nach der Kennung
+EDIT die Adresse (hex) des zur 
+Bearbeitung anstehenden Befehls
+(Anzeigeadresse). Danach folgt 
+die Angabe der davor stehenden
+Globalmarke. Das ist eine
+Marke, die als 3. Zeichen einen
+Buchstaben enthaelt. Es folgt
+die Adresse dieser Marke.
+Bezeichnet man Programmanfaenge
+oder markante Stellen im
+Programm mit Globalmarken, so
+erhaelt man einen Ueberblick,
+in welchem Programmstueck man
+sich befindet. Danach folgt die
+Auflistung der Befehle.
+Im Anzeigemodus gibt es Anzeige-
+und Korrekturkommandos. Die
+Anzeigekommandos dienen der
+Kontrolle des Programms und der
+Positionierung zwecks Korrektur
+und Eingabe. Angezeigt wird das,
+was der Reassembler an MC aus
+dem RAM angeboten bekommt. Dem-
+zufolge werden auch Daten oder
+Texte (ASCII) als Befehle aus-
+geschrieben. Ausserdem werden
+die Informationen aus der MTB
+genutzt. Liegt zu einer Befehls-
+adresse eine Markenvereinbarung
+vor, so wird die Marke mit an-
+gegeben. Gibt es bei einer Be-
+fehlsadresse einen
+Markenzugriff,so wird statt der
+im RAM stehenden Hexazahl die
+Marke ausgegeben.
+Kdo's im Anzeigemodus:
+
+Taste Zusatz Funktion %Hinweisnr
+________________________________
+R #adr ENTER RAM-Anz.ab adr,Ein-
+	     tritt in RAM-Mod.%7
+
+R      ENTER RAM-Anz.ab Anz.-adr
+             Eintr. in RAM-Mod.
+
+G #adr ENTER Anzeige ab adr   %7    
+
+G #0   ENTER Anzeige der mit EXT
+             zugewiesenen Marken   
+
+G      ENTER Anzeige ab Programm
+             ende             %3
+
+B      ENTER Binden des Progr.
+	     auf Anzeigeadr.
+
+B #adr ENTER Binden des Progr.so
+	     dass angezeigter
+	     Befehl auf adr.
+	     laeuft
+M #adr1ENTER Verschieben d.Prog
+  #adr2ENTER mit Marken von:
+	     adr1 bis ausschl.
+	     adr2 auf Bereich
+	     ab Anzeigeadr  %4%5
+
+M #adr ENTER *adr bis Progr.Ende
+       ENTER auf Anz-Adr    %3%4
+
+V #adr1ENTER Verschieben nur
+  #adr2ENTER der Marken von:
+	     *adr1 bis ausschl.
+	     adr2 auf Bereich
+	     ab Anzeigeadr.%5%6
+
+V #adr ENTER *adr bis Progr.Ende
+       ENTER auf Anz.Adr    %3%6
+
+E #adr ENTER Schaffen eines Ein-
+	     gabebereiches ab
+	     Anzeigeadr bis aus-
+	     schl. adr ;das fol-
+  	     gende Progr. wird
+	     mit Marken auf adr
+	     verschoben       %4
+
+E      ENTER Schaffen 1 Byte
+	     Eingabebereich   %4
+
+S #adr ENTER Streichen der Be-
+	     fehle ab Anz.adr
+	     bis adr	    %5%7
+
+S      ENTER Str.angez.Befehl
+
+OFF        Verlassen des Editors
+
+P 	     Pruefen des Editors
+			      %8
+
+Q	     Eintritt in Quell-
+	     eingabemodus
++            Anz.Adr.increment.
+			      %2
+
+A	     Anzeige ab letzter
+	     Globalmarke
+
+N	     Naechste Seite
+	     anzeigen 
+
+Z	     Vorige Seite anzei-
+	     gen (zurueck)    %1
+
+S4-R	     Anzeigeadr :=
+	     Adresse des
+	     naechsten Befehls
+
+S4-S	     Davorstehender
+	     Befehl wird
+	     aktueller Befehl
+
+
+
+Hinweise:
+---------
+
+%1 Ein Befehlsblock benoetigt
+ an seiner Anfangsadresse immer
+ eineGlobalmarke. Existiert
+ im Bereichvon 256 Bytes vor der
+ aktuellen Befehlsadresse keine
+ Globalmarke, so werden die
+ Kommandos "Z" u. "S4-S" nicht
+ ausgefuehrt. In diesem Fall
+ muss man sich mit dem
+ "G"-Kommando an den Progr.-
+ anfang oder eine markante Pro-
+ grammstelle zurueckbewegen und 
+ eine Globalmarke eingeben.
+
+%2 Dieses Kdo ist noetig, um   
+ zwischen Datenbloecken einen
+ Befehlsanfang wieder finden zu 
+ koennen (mit Globalmarke kenn-
+ zeichnen; dann besser
+ findbar).
+
+%3 Programmende = Adresse, ab
+ der mindestens 4 Mal 0FFH als
+ Speicherinhalt steht.
+
+%4 Verschieben ist nur in
+ einem Speicherbereich moeglich,
+ der zuvor mit 00H oder 0FFH
+ geladen wurde (verhindert
+ versehentliche Zerstoerung von
+ Programmen). "M" geht nur in
+ einen genuegend grossen
+ Freibereich. "E" benoetigt am
+ Progr.ende genuegend freie
+ Speicherplaetze.  Sonst werden
+ diese Kdo's ignoriert.
+
+%5 Bei Angabe von 2 Adressen
+ muss Endadr>Anfangsadr sein.
+ Bei "S" muss die angegebene
+ Adresse>Anzeigeadr sein. Sonst 
+ erfolgt keine Kdo-Ausfuehrung. 
+ Angabe der Adresse 0 bei "S"
+ verhindert das Streichen.
+
+%6 Verwenden, wenn der
+ zugehoerige MC schon auf dem 
+ Zielbereich steht und der
+ Urspruengliche RAM nicht mehr
+ verfuegbar ist (zB ander-
+ weitig  belegt).
+
+%7 Unter adr kann eine Hexazahl
+ mit fuehrender Ziffer  oder
+ eine vereinbarte Marke eingege-
+ ben werden
+
+%8 Bei defektem Editor erfolgt 
+ ein Sprung in das Betriebs-
+ system Er ist dann neu zu
+ laden.
+
+Quellcode-Eingabemodus
+----------------------
+Nach Eintritt in diesen Modus
+kann der anstehende Befehl korr
+giert oder ueberschrieben
+werden
+(ACHTUNG BEIM UEBERSCHREIBEN:  
+Soll zB. ein 1Byte-Befehl durch
+einen 2 yte-Befehl ersetzt wer-
+den, ist vorher der noetige
+Freibereich ( E-Kdo)  zu
+schaffen, sonst werden folgende
+Befehle zerstoert. Ebenso sind
+umgekehrt die Restbytes zu
+streichen. Marken duerfen nicht
+ueberschrieben  werden, sie sind
+mit dem S- Kdo zu streichen und
+nach der Schaffung eines Frei-
+bereiches neu einzugeben.
+Anderenfalls verschwindet die
+Marke zwar aus der Anzeige, aber
+nicht aus MTB. Bei dem Bindelauf
+passieren dann sehr schwer zu
+findendede Fehler. Der Aufruf
+einer Marke kann hingegen
+bedenkenlos ueberschrieben
+werden zB. CALL MUL o.JR EM1.)
+Nach Betaetigen von ENTER wird 
+uebersetzt. Liegt ein
+Syntaxfehhler vor, wird ausge-
+schrieben. Wird eine Marke zum
+2. Mal vereinbart, erfolgt die
+Ausschrift M. In diesen Faellen
+wird korrigiert und erneut
+ENTER betaetigt.  Der richtig
+uebersetzte Befehl wird im MC ab
+Anzeigeadr. abgelegt. Marken
+werden in MTB eingetragen. Der
+uebersetzte Befehl und folgende
+werden reassembl. zur Kontrolle
+angezeigt. Vor dem aktuellen
+Befehl steht + . Nach Betaetigen
+von ENTER wird das Programm ab
+der naechsten Befehlsadr
+angezeigt und die Eingabe des
+naechsten Befehles kann
+erfolgen. Die OFF-Taste fuehrt 
+wieder in den Anzeigemodus.
+
+Eingabeformat:
+--------------
+Das Markenfeld beginnt ab der 2.
+Position der Eingabezeile
+(Position des Kursors am
+Anfang). Eine Marke muss aus 3
+Zeichen bestehen! Die Trennung 
+Markenfeld - Operationscodefeld
+erfolgt durch mindestens 1 Leer-
+zeichen.
+Wird keine Marke eingegeben,
+genuegt die Eingabe eines Leer-
+zeichens bis zum Operationscode
+oder das Betaetigen des Tabulat
+rs. Operationscode und
+Operanden duerfen nur durch 1
+Leerzeichen getrennt werden.
+Kommentar ist nicht moeglich.
+
+Befehlssatz 
+-----------
+Der Befehlssatz entspricht dem
+der Anlage 1 des Handbuches des
+MRB Z1013. Abweichend davon wer-
+den die RST-Befehle nicht mit
+ihrer Adress dargestellt:
+RST 00 = RST 0 
+RST 08 = RST 1
+RST 10 = RST 2
+RST 18 = RST 3
+RST 20 = RST 4
+RST 28 = RST 5
+RST 30 = RST 6
+RST 38 = RST 7
+Zahlen koennen hexadezimal oder
+dezimal eingegeben werden. Sie 
+muessen mit einer Ziffer begin-
+nen (zB. 27F0H ; 0FF35H).
+Hexazahlen sind mit dem Zeichen
+H abzuschliessen, bei Dezimal-
+zahlen erfolgt keine weitere
+Kennzeichnung. Fuer alle Zahlen
+koennen Marken angegeben werden,
+die geeignet vereinbart werden.
+Nach Angabe einer Marke kann be-
+ginnend mit der Kennzeichnung  
+"+" oder "-" ein Offset als Zahl
+im Bereich von +127...-128 ange-
+geben werden, (zB. CALL DI +3). 
+Diese Informationen werden in
+der MTB gespeichert. Die Zuwei-
+sung des Zahlenwertes erfolgt  
+beim Binden. Das Zeichen # mit
+der folgenden Angabe eines
+Offsets kann fuer die Angabe des
+Zuweisungszaehlers geschrieben 
+werden, wird aber sofort ueber-
+setzt und reassembliert. 
+Folgende Pseudooperationen
+werden verarbeitet:
+
+DB nn    Definiere Byte mit Wert
+	 n
+
+DW nnnn  definiere Doppelbyte 
+	 mit Wert nnnn
+
+DM 'ABC' Definie e ASCII-Zei-
+	 chenkette (hier ABC)
+
+MAR EXT nnnn                    
+	 Definiere Marke mit der
+	 externen Adr nnnn
+	 (entspr.EQU Anweisg)
+
+Binden  
+------
+Es kann nur das erstellte Progr.
+als Gesamtmodul gebunden werden.
+Die Bindeoperation bezieht sich
+auf die 64K des U880. Alle
+Zahlen die symbolisch mit einer
+Marke angegeben wurden, werden
+entspr. dem Markenwert in den MC
+des erstellten Programms einge-
+tragen. Dami wird der MC lauf-
+faehig. Beim Binden auf Anzeige-
+adresse entspr. den Marken die
+Adressen, auf denen sie verein-
+bart wurden. Beim Binden auf an-
+gegebene Adr. werden die Marken-
+werte so verschoben, dass das
+Progr. auf der angegebenen Adr.
+lauffaehig ist. Marken, die
+mittels Pseudooperation EXT ver-
+einbart wurden, werden dabei
+nicht mit verscho ben, sondern b
+halten ihren Wert bei.
+EXT-Marken sind solche, die sich
+auf Eintrittsadr. anderer fer-
+tiger oder noch zu erstellender
+Programme beziehen. Sie lassen
+sich im Anzeigemodus auf einen
+beliebigen Bereich verschieben
+oder koennen im R-Modus
+durch erneute Eingabe anderen  
+Adressen zugewiesen werden. So 
+koennen sie entsprechend der
+Bindeadresse eines anderen
+Programms positioniert werden.
+Ein modularer Aufbau sehr
+umfangreicher Gesamtprogramme
+ist ohne weiteres moeglich.
+
+Fehlermeldungen des Binders:
+----------------------------
+
+Nicht zugewiesene Markennamen  
+werden mit der Adr., an der auf 
+sie zugegriffen wird, ausge-
+schrieben. Zu grosse Distanzen 
+bei Relativspruengen fuehren zur
+Ausschrift der Adr., auf der der
+Relativsprung steht
+
+Fortsetzung Beschreibung Editor
+Binder
+
+Relativspruenge mit zu grosser 
+Distanz werden durch Absolutspr.
+ersetzt. Nach jeder Fehleraus- 
+schrift wird ENTER betaetigt, um
+weitere Fehler zu finden. Erst
+wenn beim Bindelauf keine
+Fehlerausschrift erfolgte, war
+dieser erfolgreich und ist das
+Progr. lauffaehig! Die Marken-
+tabelle wird beim Binden nicht
+veraendert.
+
+RAM-Modus
+---------
+
+Der RAM-Modus meldet sich mit
+64 Datenbytes in folgender Form:
+
+
+aaaa   00 01 02 03 04 05 06 07
+bbbb>  08 09 0A 0B 0C 0D 0E 0F 
+       10 11 12>13 14 15 16 17  
+       18 19 1A 1B 1C 1D 1E 1F   
+       20 21 22 23 24 25 26 27    
+       28 29 2A 2B 2C 2D 2E 2F     
+       30 31 32 33 34 35 36 37      
+       38 39 3A 3B 3C 3D 3E 3F
+
+Die Anfangsadresse steht links
+oben (aaaa). Die vor dem Zeichen
+> stehende Adr bezeichnet die
+RAM-Zelle, auf die sich die
+naechste Eingabe bezieht. Der
+Kursor steht nach dem > .Hier
+koennen Datenbytes als Hexazif-
+fern eingetragen werden. Falsche
+Eingaben werden mit S4-W ge-
+loescht. Die Eingabe eines Byte
+wird mit ENTER vollzogen. Die
+gleichen Daten koennen durch
+weiteres Betaetigen von ENTER
+auf die naechsten Eingabe-
+adressen gegeben werden. Das
+Zeichen > ist in der Datenbyte-
+ausschrift wiederzufinden und
+kennzeichnet nochmals das
+aktuell anstehende Byte. Es
+wirkt hier gleichzeitig als
+Kursor und laesst sich mit den
+Kursorsteuertasten bewegen  (->
+<- S4-S S4-R). Am oberen und
+unteren Bildrand wird gerollt.
+Das aktuelle Datenbyte bleibt
+so immer im Anzeigebereich. Die
+Adressen am linken oberen Bild-
+rand werden staendig aktuali-
+siert. Kommandos im RAM-Progr.:
+
+Kdo  Zusatz  Funktion
+________________________________
+S4-R         Rollen
+
+S4-S         Rollen   
+
+->           Eingabeadr incr.
+
+<-           Eingabeadr decr.
+
+0...9        Eingabedaten
+A...F        angeben
+
+S4-W   ENTER Eingabedaten
+             uebernehmen;Adr
+             incr.
+
+I eeee       Eingabedaten auf
+       ENTER Bereich ab Eingabe-
+             adr bis ausschl.
+             eeee eintragen
+
+M qqqq ENTER Daten ab Adr qqqq
+  eeee ENTER bis ausschliessl.  
+             eeee auf Bereich   
+             ab Eingabeadr ver- 
+             schieben.          
+
+G aaaa ENTER Anzeige der Ziel-  
+             adr aaaa
+
+OFF          Verlassen des
+             RAM-Mod.
+                                
+I            Das Kommando "I"
+             dient zum Eingeben
+von Daten im Block bis zu einer
+Endadresse. nach dem Betaetigen
+von I steht der Kursor in der 3.
+Zeile. Hier wird die  4-Stellige
+hexadezimale Endadresse ver-
+langt. Die Eingabe wird mit
+ENTER abgeschlossen bzw. mit
+OFF ignoriert. Die Uebernahme
+der nach > angegebenen Daten in
+den RAM erfolgt nur bei
+richtigen Angaben und wenn die
+Endadresse groesser als die
+Anzeigeadresse ist. Das Kommando
+"M" dient dem Verschieben von
+Bytes. Verschoben wird auf den
+Bereich ab Anzeigeadresse. Nach
+"M" werden die Anfangs und die
+Endadresse des Quellbereiches
+angefordert. Sie werden jeweils
+mit ENTER bestaetigt. Beim
+Umladen wird der Quellbereich
+geloescht (zu FFH). Die
+Ueberlappung von Quelle und Ziel
+ist teilweise moeglich. Die
+Kommandos "M" (move) bzw. "I"
+(initialise) entsprechen
+den Monitorkommandos "T"
+(Transfer) bzw. "K" (Kill). Ein 
+besonderer Vorteil des RAM-Modus
+ist seine Echtzeitfaehigkeit
+(im Gegensatz zu "D" oder  "M"
+des Monitors). D.h. die Anzeige
+der Speicherzellen erfolgt
+dynamisch, so dass sich aendern-
+de RAM-Inhalte beobachtet
+werden koennen. Durch die Moeg-
+lichkeit der Vorbereitung der
+Dateneing. (Ausfuehrung gezielt
+mit ENTER) kann auch in laufende
+Programme (Interruptebenen)
+eingegriffen  werden. Ebenso ist
+die Einbindung nur des
+RAM-Programmes in ein Echtzeit-
+betriebssystem denkbar (ohne
+Editor). Damit werden auch
+Programme beobachtbar, die nicht
+ueber Interrupt laufen, sondern
+von dem genannten EZ-BS
+verwaltet werden. Wie der RAM- 
+Modus ohne Editor zu handhaben 
+ist, wird im folgenden
+Abschnitt erlaeutert.
+
+Nutzung des RAM-Programms ohne
+Editor
+--------------------------------
+
+
+Das RAM-Programm benutzt die
+Zellen 00D4 und 00D5 als
+Arbeitszellen. Es ist als Unter-
+progr. geschrieben, endet also
+mit RET. Die Startadresse ist
+2EBE. Zuerst wird der Editor V8
+geladen. Zum Start des Pr.
+werden 2 MC-Befehle auf
+beliebigen Adr. (zB. 0200H)
+benoetigt:
+
+0200    CALL 2EBEH
+0203    JMP 0F000H
+
+Wird nun mit dem Monitor-Kdo.
+# J 0200 gestartet, ist der
+RAM wie im Editor manipulierbar.
+Die Betaetigung der OFF-Taste
+fuehrt in das BS zurueck. Diese
+Nutzungsmoegl. hat den Nachteil,
+dass der gesamte Editorbereich
+(2C00 -3FFF) belegt ist. Das
+RAM-Pr. laesst sich durch
+folgende Schritte im Monitor
+einfach auf 1K (2C00- 2FFF)
+abruesten. Damit steht der
+Bereich 3000-3FFF wieder zur
+freien Verfuegung.
+# M 3B77	 ENTER
+E5 # 12 2C;      ENTER
+# M 3B7B         ENTER
+E5 # 12 2C;      ENTER
+# T 3B74 2C2F 0B ENTER         
+# M 2C28         ENTER
+74 # 2F 2C;      ENTER
+# K 3000 3FFF FF ENTER
+
+Diese Reihenfolge ist einzuhal-
+ten. Nun kann wieder wie oben
+beschrieben gestartet werden.
+Es ist weiterhin moeglich, vor
+dem Start die gewuenschte
+Anzeigeadr in 00D4 und 00D5
+(L-H) einzutragen.
+
+SPEICHERBELEGUNG EDITOR
+-----------------------
+
+002B  Kursorpos.
+
+002C  Zwischensp. Kursor
+
+00D0- Tabulatoren
+00D3
+
+00D4  Merkzellen f."RAM"
+00D5
+
+0100- Stack
+01FF
+
+2C00- Unterpr.f.Editor u."RAM" 
+2EBD
+
+2EBE- "RAM"-Pr.d.Editors
+2FFF
+
+3000- Editor                
+3BFF
+
+3C00- Listen f. Editor
+3FFF
+
+ED00-Bildwiederholspeicher
+EDFF
+
+Ausser den hier angegebenen
+Speichern werden mit Ausnahme
+der MTB(+20H Byte) keine wei-
+teren benoetigt, benutzt oder
+geaendert. Bei Nutzung nur des
+RAM-Pr. wird der Anwenderstack
+des Z1013 genutzt. Bei Nichtaus-
+reichen des  Stacks, insbeson-
+dere in Verbindung mit Inter-
+ruptroutinen, ist dieser entspr.
+auf einen groesseren Adressraum
+zu verlegen. Vom Betriebssystem
+des Z1013 werden die Routinen
+OUTCH u. INKEY genutzt.
+
+VIEL ERFOLG BEI DER ERSTELLUNG
+VON MASCHINENPROGRAMMEN!!
+Ende
+
+Aenderungen und Hinweise nach
+Redaktionsschluss:
+--------------------------------
+- als Kursorzellen werden statt 
+  2BH und 2CH die Zellen D6H und 
+  D7H genutzt.
+- die Beschreibung bezieht sich 
+  auf die Version 9 (ohne Test)
+- Namen von gestrichenen Marken 
+  sollten notiert werden. Sie   
+  koennen mit gleichem Namen    
+  spaeter wieder verwendet
+  werden. Nur so ist die Nutzung
+  aller 127 moeglichen Marken
+  realisierbar.
+- externe Marken sollten ausser-
+  halb des Speicherbereiches lie
+  gen, auf dem das Progr. ge-
+  schrieben wird. Andernfalls
+  werden diese bei Nutzung der
+  Kdos E# und S# mit verschoben.
+  Erforderlichenfalls muss hier 
+  die Zuweisung der Adressen
+  unmittelbar vor dem Binden
+  erfolgen bzw mit G#0
+  ueberpruefen.
+- ein mit EXT vereinbarter Mar-
+  kenname bleibt extern, auch
+  nach Streichung und Wiederver-
+  wendung. Eine einfache Marke  
+  kann in eine EXT-Marke geaen- 
+  dert werden.
+- fuer eigene Erweiterungen des 
+  Editors stehen im Anzeigemodus
+  die Kdo's "X" und "C" zur Ver-
+  fuegung. Diese werden auf 3127
+  bzw 3122H abgefragt und
+  koennen von dort mit JPZ
+  verzweigt werden:
+
+  3122  CMP 043H  ;"C"?
+  3122  CMP 043H
+        JPZ CCC
+  3127  CMP 058H
+        JPZ XXX
+
+  Damit veraendert sich die
+  Pruefsumme. Diese wird ab
+  2C2FH berechnet (Summe ueber
+  gesamten Programmspeicher =
+  0).Im Anschluss an die Pruef-
+  summenberechnung folgt das er-
+  forderliche Ausgabebyte ( nach
+  RET). Die eigenen Erweiterung-
+  en muesse mit RET enden und
+  fuehren in den Anzeigemodus
+  zurueck. Folgende
+  Unterprogramme koennen zum
+  Dialog auf dem kleien BS des
+  Editors genutzt werden:
+
+BSS 2C06
+BBZ 2C1E
+BSL 2C09
+TX  2C21
+BKS 2C0C
+BSZ 2C24
+BKL 2C0F
+ DS 2C27
+HBS 2C12
+ SN 2C2D
+HDA 2C15
+ZLE 2C18
+BBS 2C1B
+
+Erlaeuterungen:
+---------------
+
+UP EING-REG    AUSG-REG
+-------------------------------
+BSN     A      A
+BSS     A,DE   -
+BSL     DE     A
+BKS     DE     -
+BKL     -      DE
+HBS     A,DE
+HDS    HL,DE   -
+HBA    DE      A
+HDA    DE      HL
+ZLE    A, E    HL,AF
+BSZ    A,DE,C  -
+BBS    -       Cy
+BBZ    DE,C    Cy
+TXS    HL      HL;A=undf.
+
+Funktionen:
+-----------
+
+SN     Zeichen auf Kursorpos.
+       bzw. Steuerzeichen
+       ausfuehren
+SS     Zeichen schreiben
+BSL    -"-     lesen
+KS     Kursor setzen
+BKL    -"-    -pos. lesen
+BS     Byte schreiben
+HD     Doppelbyte schreiben
+HBA    Byte lesen (mit Anforder-
+       g.)
+DA     Doppelbyte wie HBA
+LE     Zahl lesen;bit7,A=1->HEX
+                        =0->DEZ
+SZ     Zeichen in Zeile
+       schreiben
+BBS    Tast auf BS bis ENTER/OFF
+BZ     Taste auf Zeile (wie BBS)
+TXS    Text ausschreiben
+
+Reg.DE gibt eine Displayposition
+an nach: D=Zeile  (0-7)
+         E=Spalte (0-31);
+         E 32-> next line
+
+Um alle moeglichen Steuerzeichen
+zu nutzen, sollte die Tastatur- 
+routine des Editor (2C2AH) ver-
+wendet werden.
+
+BSN: schreibt das Zeichen in A 
+     (ASCII) ab Kursor auf
+     ldschirm und rueckt den
+     Kursor.
+     Steuerzeichen werden
+     ausgefuehrt:
+ 8   Kursor links
+09   -"-  rechts
+0A   -"-  nach unten
+0B   -"-  -"-  oben
+0C   CLS
+0D   Kursor an Zeilenanfang
+1A   Zeichen streichen
+18   Zeile loeschen ;
+02   home
+
+BBS: schreibt Zeichen in A auf 
+     Position DE
+BSL: liest Zeichen von Pos. DE
+     nach A
+KS:  setzt Kursor auf Pos. DE
+BKL: liest Kursorpos. nach DE
+HBS: schreibt Zahl aus A in 2  
+     Hexaziffer auf Pos. DE
+HDS: schreibt Zahl aus HL ab
+     Position DE
+HDA: fordert hex.Zahlenwert in
+     Form von 4 Hexaziffern ab
+     Pos.DE(aktiviert Tastatur)
+ZLE: liest beliebig lange
+     Zahl hex oder dez ab Pos.
+     DE. Maximal zu lesende
+     Ziffernzahl wird in 
+     Bit 0...6,A uebergeben.
+     Bit7,A=0 als Dezimalzahl;
+     Bit7,A=1 als Hexazahl.
+     Gelesener Wert in HL
+BSZ: ASCII-Zeichen in A auf Kur-
+     sorpos., wenn Kursor auf
+     einer Pos. der Zeile D und
+     der Spalten E bis E+C
+     befindet.
+BBS: Taste auf Bildschirm bis
+     ENTER oder OFF betaetigt
+     wurde  Cy=1:OFF betaetigt; 
+     Cy=0:ENTER
+BBZ: wie BS, aber in Grenzen
+     wie BSZ
+TXS: Schrieben eines durch HL
+     gezeigerten Textes (Folge
+     von ASCIIund Steuerzeichen)
+     Das 1. und das letzte Byte
+     des Textes wird durch Bit 7
+     =1 markiert.
+TNS: nummerierten Text
+     schreiben; wie TXS, nur
+     dass mehrere mit Bit7 ge-
+     kennzeichnete Texte hinter-
+     einander stehen. HL zeigert
+     den Anfang der Texttabelle;
+     A gibt die lfd. Nr. des
+     Textes an.(verwendet TXS)
+Die Beschreibung der Unterpro-
+gramme ist als Hinweis zu
+verstehen und erhebt keinen Ans-
+pruch auf Vollstaendigkeit!!!!
+Sie ist sozusagen eine Hacker-
+Hilfe.
+
+BESCHREIBUNG DES TESTMODUS      
+--------------------------
+
+                             
+Der Testmodus ist im Editor ab 
+Version 10 implementiert. Damit
+verbunden sind abweichend von
+der Beschreibung der Version 9
+einige folgend beschriebene
+Veraenderungen bzw. Erweiter-
+ungen.
+
+Erweiterungen:
+Arbeitsspeicher      00D8 - 00DC
+Merkzellen
+Programmspeicher     2800 - 3FFF
+
+Editor+Test enthaelt Freibereich
+f. List-pr. Kommandos im
+Anzeigemodus:
+T -Eintritt in den Testmodus
+H -Vereinbarung der aktuellen  
+   Anzeigeadresse als Haltepkt.
+   Die Startadressen des Editors
+   wurden beibehalten
+
+!! Veraenderungen:
+Aufgrund des laengeren Programms
+musste die Markentabelle (Stan-
+dart) weiter nach vorn verlagert
+werden. Sie beginnt jetzt auf
+1820H und wird bei Neustart auf
+2C03H dort initiiert und auch
+vom Restart dort angeboten. Der
+verfuegbare Anwenderspeicher
+verringert sich so zwangslaeufig
+auf 5,5kByte (200 - 17FF) in
+derGrundausbaustufe (16K).
+
+Der Testmodus
+_____________
+
+Es ist moeglich, ein Programm
+schrittweise oder abschnitts-
+weise (Halt bei jew. vereinb.
+Haltepunkten) zu testen oder v.
+einem bestimmten Programmzaeh-
+lerstand mit angebbaren
+Registerbelegungen im Echtzeit-
+lauf zu starten. Besonders vor-
+teilhaft ist der direkte Dialog
+mit dem Editor.  Startadresse
+und Haltepkte. werden durch bzw.
+im Anzeigemod. festgelegt und
+bei Abbruch des Tests wird zum
+zum Test anstehenden Befehl in
+den Anzmod. zurueckgekehrt. So
+ist der Ablauf Test-Korrektur-
+Test-... schnell und sehr un-
+kompliziert moeglich.
+Bei Eintritt in den Testmod. mit
+Kdo T wird automatisch auf die
+Eintrittsadresse gebunden.
+Bei vom Binden her bekannten
+Fehlerausschriften ist der Test
+sofort mit OFF zu verlassen und
+es sind die noetigen Korrekturen
+auszufuehren.
+(BEACHTE: Bindelaeufe auf
+externe Adressen sind erst nach
+erfolgtem Test sinnvoll)
+Der Testmodus meldet sich :
+
+TEST SCHRI     MAR:1800
+
+Beispiel:
+
+1820 LD HL,0FFFFH   !!!!!
+AF:5500 BC:0000 DE:1234
+HL:CCAB  M:FF   SP:xxxx
+IX:0000 IY:1DEF CSPZ:0100
+
+Nach Ausschrift TEST steht der
+Kursor, es folgt ein der Test-
+art zugeordneter Text. Danach
+wird die Globalmarke mit Adr.
+angezeigt. Naechste Zeile:
+Adr. des auszufuehrenden Befehls
+und Befehl mit Markenangabe. Es
+folgen Vordergrundregister und
+Flags. Durch Ueberschreiben
+koennen die Inhalte geaendert
+werden (ausser SP und Programm-
+zaehler). Die Flags werden durch
+Ueberschreiben des F-Registers
+(AF) geaendert. Die Aenderung
+ist mit ENTER abzuschliessen.
+
+Kommandos Testmod.:
+-------------------
+
+OFF: Eintr. in Anzeigemodus
+T  : Test bis Haltepkt. oder
+     Ausfuehrung eines Befehls
+     %1
+     Ausschr. SCHRI (Schrittest)
+N  : Test bis zum naechsten no- 
+     tierten Befehl -> Abarbeit-
+     ung von Schleifen u. Unter-
+     pr. %2
+     Ausschrift SCHLE (Schleife)
+L  : Start des Echtzeitlaufes %3
+     Ausschr.: LAUF
+R ENTER: Register ueberschreiben
+     Ausschrift: REG.K
+
+Erlaeuterungen:
+---------------
+
+%1 Testlauf wird nach jedem Be-
+   fehl unterbrochen und die
+   Haltebedingung uebeprueft.
+   Wurde im Anzeigemodus ein
+   Haltepkt. eingegeben (H-Kdo),
+   laeuft das Pro-gramm bis zu
+   diesem. Nun kann der
+   Schrittest durch weitere
+   Betaetigung der Taste T im
+   Einzelschrittbetrieb
+   fortgesetzt werden oder es
+   erfolgt im Anzeigemodus die
+   Eingabe eines neuen Halte-
+   punktes. Die Definition
+   eines Haltepunktes vor Ein-
+   tritt in den Testmodus ist
+   NICHT Bedingung. Ohne HP wird
+   sofort Einzelschrittbetrieb
+   (Befehl fuer Befehl) ausge-
+   fuehrt. Ein eingegebener HP
+   wird bei Erreichen geloescht.
+   Der Testlauf kann mit OFF
+   unterbrochen werden. Dieser
+   Lauf bis HP ist etwa 1000 mal
+   langsamer als der Echtzeit-
+   lauf.
+
+%2 Kdo N setzt den HP auf den
+   naechsten notierten Befehl
+   und startet den Testlauf in
+   der Art wie bei T. War der
+   anstehender Befehl ein CALL,
+   wird nach Abarbeitung des UP
+   angehalten. Dieser Testlauf
+   ist auch bei langen Schleifen
+   mit DJNZ oder bedingten
+   Spruengen sehr sinnvoll. Auch
+   hier kann mit OFF unter-
+   brochen werden.
+
+%3 Der Echtzeitlauf wird mit
+   Abarbeitung des Befehls RST 7
+   unterbrochen. Sonst ist ein
+   Abbr. bei einem Irrlauf z.B.
+   nur mit RESET moeglich. Be-
+   dingt durch die Hardware des 
+   Z 1013 koennen nur im RAM
+   stehende Programme getestet
+   werden. Sollen aber z.B.
+   Teile des Betriebssystems in
+   ihrer Funktion analysiert
+   werden, so muessen diese vor-
+   her in den RAM geschoben und
+   dort lauffaehig gemacht
+   werden. Weiterhin stehen fuer
+   T und N folgende Forderungen
+   an das zu testende Programm:
+   Das I-Register der CPU darf
+   nicht veraendert werden.
+   IM2 darf nicht verlassen
+   werden. PIO-Port B (System-
+   port) darf nicht initiali-
+   siert werden. Die Befehle DI
+   und EI sollen nicht verwendet
+   werden. Ein mit DI und EI
+   eingeschlossenes Programm-
+   stueck kann vom Testpr. nicht
+   unterbrochen werden und
+   laeuft im Echtzeitlauf.
+   Dieser Sachverhalt kann ziel-
+   gerichtet genutzt werden, DI
+   und EI fuehren also nicht zu
+   Fehlern, nur zu anderem
+   Verhalten als fuer diese
+   Testart vorgesehen. Uner-
+   wuenschte oder verbotene Be-
+   fehle werden nicht mit ge-
+   testet, indem der Testmodus
+   verlassen, im Anz.-mod.
+   weitergeblaettert, und wieder
+   in den Testmodus eingetreten
+   wird. Das Testen von
+   Programmen wird mit dieser
+   Testhilfe zum Erlebnis.                           
+
+
+Viel Erfolg !
+-------------
+
+Ergaenzungen zu Version 14:
+---------------------------
+
+Quellcodeeingabe ist auf belie-
+biger Zeile moeglich. Bei Ein-
+tritt in den Q-Modus oberhalb
+oder in der 3.Zeile erfolgt ein
+Rollen in der 3.Zeile (2 letzte
+Befehle bleiben sichtbar). Bei
+Eintritt unterhalb der 3.Zeile
+wird auf der Eintrittszeile
+gerollt. Achtung, hierbei werden
+weniger als 4 folgende Bytes an-
+gezeigt!
+Bei Verwendung der DM-Anweisung
+in Verbindung mit Marken tritt
+ein "Schoenheitsfehler" auf,der
+aus speicheroekonomischen
+Gruenden nicht beseitigt wurde:
+Die Marke wird auf dem BS nur
+eine Zeile weiter gerollt und
+steht dann scheinbar an einer
+falschen Adresse. Das ist aber
+nicht der Fall!!
+Im RAM-Modus kann durch Betae-
+tigung der Taste "U" auf ASCII-
+Anzeige umgeschaltet werden.
+U wirkt als Ringschalter und hat
+drei Modi:
+-hexa
+-ASCII
+-ASCII ohne Bit7 (Zwangs-ASCII).
+Merk- und Arbeitszellen belegen
+jetzt den Bereich von 00D0H bis
+einschliesslich 00DDH. (Stack ab
+100H, Anwenderbereich ab 200H,
+Markentabelle ab 1820H) Der im
+Echtzeittest als Haltepunkt
+dienende RST7 wird beim Er-
+reichen durch NOP ersetzt.
+

@@ -1,0 +1,79 @@
+		===========================
+		=    MRB     Z 1013       =
+		= "3K-rs-BASIC   V. 1.12" =
+		= (c) by rehn-soft   0388 =
+		===========================
+
+Programmstandort: 100h - DBBh
+Programmstart   : 100h , 103h
+
+Der 3k-rs-BASIC-Interpreter enthaelt als Kern den  Orginal-3k-
+BASIC-Interpreter von RIESA.    Alle  Aenderungen und  Ergaen-
+zungen wurden so vorgenommen,  dass bisherige  Programme  ohne
+Einschraenkungen ladbar und lauffaehig sind.     Um alle neuen
+Befehle nutzen zu koennen, sind das Programm  "HEADERSAVE" und
+ein physischer Druckertreiber erforderlich.
+
+Folgende Befehle wurden geaendert bzw. neu aufgenommen:
+
+HSAVE (HS.)
+-----------
+Mit diesem Befehl werden BASIC-Programme ueber die TBG-Routine
+des HEADERSAVE auf Kassette abgelegt.
+
+Synt.: HSAVE (ENT) , Titel
+
+HLAOD (HL.)
+-----------
+Mit diesem Befehl koennen die mit dem neuen "HSAVE" abgelegten
+Programme geladen werden.   Vorher vorhandene Programme werden
+geloescht.
+Synt.: HLOAD (ENT) , Titel
+       Wird kein Titel angegeben, so wird das erste BASIC-Pro-
+       gramm geladen.
+
+LIST (L.)
+---------
+Es werden 16 Zeilen ab angegebener Zeilennumer gelistet.   Mit
+ENT  wird fortgesetzt, mit BRAEK abgebrochen.
+Synt.: LIST (Znr.)
+
+LLIST (LL.)
+-----------
+Mit  "LLIST"  koennen Programmlistings an einen Druckertreiber
+ausgegeben werden.   Dazu wird nach Aufruf zuerst der Drucker-
+treiber auf  11Dh mit "CALL DRINI" initialisiert.  Danach wer-
+den alle Zeichen ueber Adresse  121h  mit "CALL DRAKK"  an den
+Druckertreiber uebergeben.
+Synt.: LLIST
+
+HELP (H.)
+---------
+Mit diesem Befehl wird eine Liste der vorhandenen Befehlsworte
+ausgegeben.
+Synt.: HELP
+
+EDIT (E.)
+---------
+Es erfolgt ein Editieren einer Zeile.     In der Zeile koennen
+Aenderungen durch  Ueberschreiben, durch   INSERT (12h)   oder
+durch  DELETE (10h)  durchgefuehrt werden.    Mit  ENT  werden
+alle Zeichen bis zum Cursor als neue Zeile uebernommen.    Mit
+BRAEK (03h) erfolgt keine Uebernahme.    Die Zeilennummer kann
+auch geaendert werden.
+Synt.: EDIT Znr.
+
+LPRINT (LP.)
+------------
+Entsprechend dem  PRINT-Befehl  erfolgt eine   Bildschirm- und
+Druckerausgabe.
+Synt.: LPRINT (weiter wie PRINT)
+
+Zusammenfassung der neuen Rufe:
+-------------------------------
+10E :  CD C1 FA     HSAVE (CALL SARUF)
+112 :  CD A4 FB     HLOAD (CALL LORUF)
+11D :  CD 00 E8     CALL DRINI
+121 :  CD 09 E8     CALL DRAKK
+
+

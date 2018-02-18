@@ -1,0 +1,5 @@
+<kurz src="Beschreibung der FDC-Platine"/>
+<lang>Kodierung gemischt ö,| - hier korrigiert
+
+<include src="T.FDC-PLATTE.txt"/></lang>
+<requires></requires>

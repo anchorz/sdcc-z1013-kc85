@@ -1,0 +1,3 @@
+<kurz src="angepasstes Headerdisk, neue CRC-Routine von Martin Duchow"/>
+<lang></lang>
+<requires></requires>

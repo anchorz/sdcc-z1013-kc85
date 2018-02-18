@@ -16,6 +16,8 @@ nachbearbeitet werden.
 Das Tiny-BASIC Programm sollte mit Z1013-Header ab Adresse 0x4000 
 (ohne Header dann ab 0x4020) geladen werden, so dass der eigentliche 
 Quelltext ab 0x4172 (im Original 0x1152) beginnt.
+<include src="../588bacc5a753fe5ae235a0a91e7ffde6-T.UMW._3k-_KC/T.UMW. 3k-_KC.txt"/>
+
 EINGABE-Beispiel:
 <include src="../f999c7d7efa3ca730fb35bd68e35e597-b.SCHIFF1 L/SCHIFF1 L.b"/>
 

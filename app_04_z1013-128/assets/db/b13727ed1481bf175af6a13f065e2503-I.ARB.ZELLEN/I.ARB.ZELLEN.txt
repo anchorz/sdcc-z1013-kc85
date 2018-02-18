@@ -1,0 +1,92 @@
+****************************************************************
+*							       *
+*	ARBEITSZELLEN DES MONITORS			       *
+*							       *
+****************************************************************
+
+
+Adr.	Laenge 	Bedeutung
+
+0000 	  3	RST 0H, frei fuer den Anwender
+0003	  1	Zwischenspeicher fuer Spezifikationsbyte
+		RST 20H
+0004	  1	Merkzelle fuer letztes Zeichen von der
+		Tastatur
+0005 	  3	Frei fuer die Anwendung eines zentralen
+		CALL 5
+0008	  3	RST 8H, frei fuer den Anwender
+000B	  2	Zwischenspeicher fuer Breakadresse
+000D	  3	Zwischenspeicher fuer Operandenfolge bei
+		BREAK
+0010	  3	RST 10H, frei fuer den Anwender
+0013	  3	Arbeitszellen fuer INHEX-Routine
+0016	  2	Anfangsadresse der Eingabezeile
+		( Eingabepuffer )
+0018	  3	RST 18H, frei fuer den Anwender
+001B	  2	Parameter 1
+001D	  2	Parameter 2
+001F	  1	Code-Zwischenspeicher fuer OUTCH
+0020	  3	REST 20H, Zentr. Ansprung fuer Monitorroutinen
+0023	  2	Parameter 3
+0025	  2	2. Adresse der Eingabezeile
+0027	  1	MODE-Zelle ( Bit gesetzt )
+
+		Bit 0 - lange Repeatverzoegerung
+		    1 - Stringausgabe
+		    2 - Grafikmode
+		    3 - Hardcopy
+		    4 - SM-Tastenbelegung
+		    5 - Tastaturpeep
+		    6 - Slow
+		    7 - Taste betaetigt
+
+0028	  3	RST 28H, frei fuer den Anwender
+002B	  2	Aktuelle Cursorposition
+002D	  1	Cursor-Zwischenspeicher
+002F	  1	Merkzelle der Phasenlage bei CLOAD
+0030	  3	RST 30H, frei fuer den Anwende
+0033	  2	Laenge der Synchronisationsluecke bei CSVE
+0035	  2	Beginn Tastencodetabelle
+0038	  3	RST 38H, wird als zentraler Fehleransprung ver-
+		wendet, bei Eintritt in den Monitor ercheint ?#
+003B	  2	Tastenbelegungsfeldpointer
+003D	  2	Stringfeldpointer
+003F	  2	Pointer auf naechsten auszugebenden String
+0041	  2	Laenge Funktionstastenpositionsfeld
+0043	  2	Funktionstastenpositionsfeldpointer
+0045	  2	Funktionstastenadressfeldpointer
+0047	  2	Rolldistanz im OUTCH
+0049	  2	Anfangsadresse des BS-Rollberiches
+004B	  2	Endadresse+1 des Rollbereiches
+004D	  24	Registerrettebereich
+0066	  3	NMI, frei fuer den Anwender
+  .
+  .
+0090	  >32	Anwender-Stackbereich ( Stack laueft nach
+  .		unten ! )
+  .
+  .
+00B0	  >=32	System-Stackbereich ( Stack laueft nach
+		unten ! )
+00B0	  <=48	Frei fuer Kommandoerweiterungstabelle des
+		Monitors, welche ueber @... erreichbar sind
+
+		Standartbelegung :
+
+		Kom.  Adr.  Code
+
+		@L  > B0  - 4CH  ( Headersave load )
+			    96H
+			    FBH
+		@S  > B3  - 53H  ( Headersave save )
+			    BEH
+			    FAH
+		@D  > B6  - 44H  ( Druckerreset )
+			    FFH
+			    EBH
+		@I  > B9  - 49H  ( Druckerinitialisierung )
+			    CDH
+			    FFH
+
+00E0	  32	Kassetten-Ueberspielbereich ( Kopfdaten )
+

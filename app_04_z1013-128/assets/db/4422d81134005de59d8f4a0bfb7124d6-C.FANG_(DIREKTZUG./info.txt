@@ -1,0 +1,26 @@
+<kurz src="Fängerspiel für 2 Personen"/>
+<lang>
+Der Jaeger (schwarzer Laeufer rechts) versucht den Ausreisser
+(weisses Pferd - links) zu fangen, wobei die Figuren durch
+folgende Tasten bewegt werden koennen:
+
+    Pferd     Laeufer
+    -----     -------
+      H  links   N
+      I  rechts  O
+      A  oben    G
+      Q  unten   W
+
+Bei Zusammenstoss mit einem Hindernis kann die Figur nicht weiter 
+bewegt werden und es ertoent Piepsignal.
+
+Am oberen BS-Rand laeuft die Spielzeit rueckwaerts (99-00)
+mit. War der Jaeger in dieser Zeit erfolgreich, ertoent ein
+Sirenensignal und der Punktestand wird angezeigt. Ansonsten
+erhaelt der Jaeger 0 Punkte.
+
+Die Programmfortsetzung erfolgt durch Betaet. einer bel. Taste.
+Programmende: Taste "E". 
+
+Tonband auf Aufnahme stellen !</lang>
+<requires>2.02(SPAL)</requires>

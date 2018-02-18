@@ -1,0 +1,28 @@
+	=================================
+	= Umwandlung von 3k in KC-Basic =
+	=================================
+
+Mit diesem Programm koennen  3k-Basic-Progamme in  10k-KC-Basic-
+Programme umgewandelt werden.   Die Ausnahme bilden  3k-Progamme
+mit Maschienenprogrammanteilen.
+
+1. Umwandlungsprogramm laden (7D00 - 7EFF)
+2. 3k-Programm ab dem  zweiten Kennton, also ohne  'Vorspann' ab
+   Adresse 4000H laden.
+3. HC-Basic Interpreter neu starten (J 300).
+4. Vom Basic aus : CALL*7D00.
+   Je nach Laenge des  Programms bis zu einigen  Minuten warten,
+   bis sich der Interpreter mit  OK  meldet.
+5. Jetzt muessen alle Zeilen im  Basic editiert werden,  egal ob
+   sie geaendert werden muessen oder nicht.    Vor dem Editieren
+   sollte man sich aber ueber  LIST  das  Programm  ansehen,  ob
+   eventuell  Zeilennummern in  Grafikzeichen  umgewandelt  oder
+   ganz verschwunden sind oder andere undefitierte Fehler aufge-
+   treten sind.   Die Ursache hierfuer ist meist in fehlerhaften
+   3k-Programmen zu suchen, wie z.B. das Fehlen der  Anfuerungs-
+   striche am Ende von  PRINT-Zeilen,  ohne die das  3k-Programm
+   noch laeuft, beim Umwandeln jedoch Fehler auftreten, weil das
+   Ende der PRINT-Zeilen nicht erkannt wird.
+6. Alle  Zeilen mit  Befehlen,  die es im  KC-Basic  nicht gibt,
+   muessen entsprechend geaendert werden (z.B. OUTCHAR 12 - CLS)
+

@@ -1,0 +1,3 @@
+<kurz src=" Programmsystem SYS,  Anwenderprogrammen für Z80, Z8000, Z8 und x86"/>
+<lang><include src="I.SYS TEIL 1.txt"/></lang>
+<requires></requires>

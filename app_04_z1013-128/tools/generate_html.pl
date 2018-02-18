@@ -171,19 +171,21 @@ sub resolve_entry($) {
     my %knownFileTypes=(
       'A'=>"Assembler",
       'b'=>"TinyBasic",
-      'B'=>"KC-Basic",
+      'B'=>"KC-Basic", #Basic-Programm fuer KC-BASIC+ im Headersaveformat
+#c...Basic-Quellprogramm fuer Microbas-Compiler
       'C'=>"Executable",
       'D'=>"Dump",
       'E'=>"EPROM",
       'G'=>"Grafik",
       'I'=>"Dokumentation",
-#      'K'=>"BASIC KC82/2",      
-#      'L'=>"BASIC TDL",      
-      'M'=>"Executable ohne Autostart",
-      'P'=>"Pascal",
-      'Q'=>"NSWEEP gequetschte Files",
-      's'=>"Assembler EDAS",
-      'T'=>"Text",
+#      'K'=>"BASIC KC82/2",  #Basic-Programm fuer KC85/2-BASIC im Headersaveformat - noch nicht gefunden 
+#      'L'=>"BASIC TDL",     #Basic-Programm fuer TDL-BASIC im Headersaveformat - noch nicht gefunden 
+      'M'=>"Executable ohne Autostart", #Maschinenprogramm nicht selbststartend
+      'P'=>"Pascal", #Pascal-Quellprogramm (HISOFT) im Headersaveformat
+      'Q'=>"NSWEEP gequetschte Files", #Q...mit NSWEEP gequetschtes File
+      's'=>"Assembler EDAS", #IDAS-Quellprogramm im Headersaveformat
+#S Assembler-Quellprogramm in ASCII mit NL
+      'T'=>"Text", #Text mit NL
       ' '=>"CPM",
     );
 

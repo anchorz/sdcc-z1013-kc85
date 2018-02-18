@@ -1,0 +1,1437 @@
+.PL72
+.MT1
+.MB3
+.FM1
+.FO                                                              
+.HE                                       TURBO-Pascal  Seite #
+.PN13
+.PO8
+
+
+2. Grundlegende Sprachelemente
+
+
+
+2.1 Grundsymbole
+
+Das  Grundvokabular  von TURBO-Pascal besteht aus  Grundsymbolen, 
+die zu folgenden Klassen zusammengefasst sind:
+
+<Buchstaben>    ::= A|B|C|D|E|F|G|H|I|J|K|L|M|
+                    N|O|P|Q|R|S|T|U|V|W|X|Y|Z|
+                    a|b|c|d|e|f|g|h|i|j|k|l|m|
+                    n|o|p|q|r|s|t|u|v|w|x|y|z|_
+                 
+<Ziffern>       ::= 0|1|2|3|4|5|6|7|8|9 
+
+<Sonderzeichen> ::= +|-|*|/|=|^|<|>|(|)|[|]|{|}|
+                    .|,|:|;|'|@|$
+
+Es gibt weiterhin einige Operatoren, die aus zwei Symbolen bestehen:
+
+Zuweisungsoperator:     :=
+Vergleichsoperatoren:   <>   <=   >=      
+Teilbereichsbegrenzer:  ..
+Klammern:               (. .) gleichbedeutend mit [ ]
+Kommentar:              (* *) gleichbedeutend mit { }
+
+
+
+2.2 Reservierte Worte
+
+Folgende  Worte sind in TURBO-Pascal fest definiert  und  duerfen 
+nur  fuer die entsprechenden Zwecke verwendet werden.  Mit  Stern 
+versehene Worte sind nicht in Standard-Pascal enthalten:
+
+    *absolute  and       array     begin     case      const
+     div       do        downto    else      end      *external
+     file     *forward   function  goto      if        in
+    *inline    label     mod       nil       not       of 
+     or        packed    procedure programm  record    repeat
+     set      *shl      *shr      *string    then      to
+     type      until     var       while     with     *xor
+
+
+
+2.3 Begrenzer
+
+Sprachelemente  muessen  durch  wenigstens  einen  der  folgenden 
+Begrenzer getrennt werden:
+
+     <space>,
+     Zeilenende,
+     Kommentar
+
+
+
+2.4 Programmzeilen
+
+Die  maximale  Laenge einer Programmzeile betraegt  127  Zeichen. 
+Alle weiteren Zeichen werden ignoriert.
+.pa
+
+2.5 Standardbezeichner
+
+TURBO-Pascal  verwendet  eine Anzahl von Standardbezeichnern  als 
+Namen fuer Konstante, Typen, Variable, Prozeduren und Funktionen. 
+Jeder dieser Bezeichner kann umdefiniert werden.  Man sollte dies 
+jedoch grundsaetzlich nicht tun, um von vornherein Missverstaend-
+nisse und Probleme beim Austausch von Programmen zuvermeiden.  Es 
+wird  deshalb die Umdefinition von Standardbezeichnern nicht  er-
+laubt. Als Standardbezeichner werden verwendet:
+
+     Abs       ArcTan    Assign    Aux       AuxInPtr  AuxOutPtr
+     Bdos      BdosHL    BlockRead BlockWriteBios      BiosHL
+     Boolean   Buflen    Byte      Chain     Char      Chr       
+     Close     ClrEOL    ClrScr    Con       ConInPtr  ConOutPtr 
+     Concat    ConstPtr  Copy      Cos       CrtExit   CrtInit   
+     DelLine   Deley     Delete    Dispose   EOF       EOLN      
+     Erase     Execute   Exp       False     FilePos   FileSize  
+     FillChar  Flush     Frac      GetMem    GotoXY    HeapPtr   
+     Hi        HighVideo IOresult  Input     Insline   Insert    
+     Int       Integer   Kbd       KeyPressedLength    Ln        
+     Lo        Lst       LstOutPtr Mark      MaxInt    Mem       
+     MemAvail  Move      New       NormVideo Odd       Ord       
+     Output    Overlay   Pi        Port      Pos       Pred
+     Ptr       Random    Randomize Read      Readln    Real
+     RecurPtr  Release   Rename    Reset     Rewrite   Round     
+     Seek      Sin       SizeOf    Sqr       Sqrt      StackPtr
+     Str       Succ      Swap      Text      Truc      True
+     Trunc     UpCase    Usr       UsrInPtr  UsrOutPrt Val
+     Write     Writeln
+.pa
+
+3.Standard-Scalartypen
+
+Eine  Datentyp-Definition  legt  die Menge der  Werte  fest,  die 
+Variable des entsprechenden Typs annehmen koennen und ordnet  dem 
+Typ einen Bezeichner zu.
+Jede  Variable  im  Programm muss einem und  nur  einem  Datentyp 
+zugeordent  sein.  Obwohl  Datentypen in  TURBO-Pascal  gaenzlich 
+veraendert   werden  koennen,   werden  sie  alle  aus  einfachen 
+(unstrukturierten) Typen aufgebaut.  
+Ein einfacher Typ kann entweder vom Programierer definiert werden 
+(er heisst dann definierter Scalartyp) oder er ist ein  Standard-
+Scalartyp: Integer, Real, Boolean, Char oder Byte.
+
+3.1 Integer
+
+Integer  sind ganze Zahlen.  In TURBO-Pascal ist ihr Wertebereich 
+von                 -32768 bis 32767
+Im Speicher benoetigen sie 2 Bytes. Ex ist zu beachten:
+    -Ueberlauf von Integerzahlen wird nicht angezeigt.
+    -Zwischenergebnisse muessen sich innerhalb des Wertebereiches 
+     halten,  sonst ergeben sich falsche Werte. So ist beispiels-
+     weise 1000*100/50 nicht 2000 sondern -621 !
+
+3.2 Byte
+
+Im Speicher benoetigt dieser Typ genau 1 Byte. Er ist ein Teilbe-
+reich vom Typ Integer mit einem Wertebereich von:
+                    0  bis  255.
+Bytes  sind deshalb mit Integervariablen kompatibel  und  koennen 
+statt  dessen  definiert werden.  In Ausdruecken koennen sie  ge-
+mischt auftreten und Integervariablen koennen auch Bytes zugewie-
+sen werden.
+
+3.3 Real
+
+Der absolute Wertebereich reicht fuer Realzahlen von
+                    1E-38  bis  1E+38                
+(dabei  bedeutet  E:  "mal  10 hoch") mit einer Mantisse  von  11 
+signifikanten Zeichen. Der Typ benoetigt im Speicher 6 Bytes.
+Bei  Ueberlauf  haelt das Programm an und meldet  einen  Ausfueh-
+rungsfehler. Ein Unterlauf ergibt den Wert Null.
+Obgleich  Realzahlen  ein Standardtyp sind,  sollte man  folgende 
+Unterschiede zu den anderen Standardtypen beachten:
+
+1)   Sie  duerfen in den Funktionen Pred und Suc nicht als  Argu-
+     mente auftreten.
+2)   Sie  duerfen  nicht als Indexzahlen in  Bereichen  verwendet 
+     werden.
+3)   Sie duerfen nicht den Grundtyp einer Menge definieren.
+4)   Sie  duerfen  nicht zur Steuerung von If und Case  verwendet 
+     werden.
+5)   Von ihnen duerfen keine Teilbereiche definiert werden.
+
+
+3.4 Boolean
+
+Eine  Boolesche Variable kann entweder den Wert wahr oder  falsch 
+haben:  (True | False).  Es ist festgelegt,  dass False<True ist. 
+Der Type benoetigt im Speicher 1 Byte.
+
+3.5 Char
+
+Die  Werte  dieses Typs sind die in 2.1  definierte  Zeichenmenge 
+(ASCII-Zeichen).  Die  Menge  ist entsprechend  ihrem  ASCII-Wert 
+geordnet.  Den normalen ASCII-Zeichen sind Zahlenwerte von  0-255 
+zugeordnet. Der Typ benoetigt im Speicher 1 Byte.
+
+
+4. Nutzerdefinierte Sprachelemente
+
+4.1 Bezeichner
+
+Bezeichner werden zur Bezeichnung von Marken,  Konstanten, Typen, 
+Variablen, Prozeduren und Funktionen verwendet.
+
+     <Bezeichner> ::= <Buchstabe>{<Buchstabe>|<Ziffer>}
+
+Ein Bezeichner besteht also aus einem Buchstaben,  dem Buchstaben 
+und  Ziffern folgen koennen.  Die Laenge ist maximal 127  Zeichen 
+und alle Zeichen sind signifikant.
+
+Beispiel:
+     TORBO
+     square
+     person_counted
+     BirthDate
+     3teWurzel           falsch! Ziffer am Anfang.
+     zwei Worte          falsch! Leerzeichen unerlaubt.
+
+Bei  TURBO-Pascal gibt es zwischen grossen und kleinen Buchstaben 
+keinen Unterschied. So sind
+          SehrlangeDefinition = SEHRLANGEDEFINITION
+identisch,  aber  der linke Bezeichner duerfte wohl klar leichter 
+zu lesen sein.
+
+
+4.2 Zahlen
+
+Zahlen sind Konstante der Typen Integer und  Real.  Integerzahlen 
+sind ganze Zahlen, die dezimal und hexadezimal dargestellt werden 
+koennen.  Hexadezimale  Integerzahlen werden durch vorangestellte 
+$-Zeichen erklaert. 
+Dezimalzahlen  haben  einen  Bereich  von -32768 .. +32767.
+Hexadezimalzahlen haben einen Bereich von  $0000 .. $FFFF.
+Unmittelbar vor einer Dezimalzahl darf ein Vorzeichen stehen.
+
+Beispiele:
+     1
+     12345
+     -345
+     $ABC
+     $123
+     $12c
+     $12G           Falsch! G keine Hexadezimalzahl.
+     $12.3          Falsch! Punkt keine Hexadezimalzahl.
+
+Der Bereich der Realzahlen betraegt 1E-38 ..  1E+38 mit 11 signi-
+fikannten  Ziffern.  Die  Exponentialdarstellung  kann  verwendet 
+werden  mit  E  als "mal 10  hoch".  Eine  Integerkonstante  gilt 
+ueberall dort, wo eine Realzahl gueltig ist. Trennzeichen duerfen 
+nicht  innerhalb  von Zahlen stehen.  Unmittelbar vor einer  Zahl 
+darf ein Vorzeichen stehen.
+
+Beispiele:
+     1.0
+     1234.5678
+     -0.024
+     1E6
+     2E-7
+     -1.2345678901E+12
+     1                   erlaubt, ist aber eine Integerkonstante.
+.pa
+
+4.3 Zeichenkette
+
+Eine  Zeichenkettenkonstante ist eine Folge von Zeichen,  die  in 
+Hochkomma eingeschlossen sind:
+          'Dies ist eine Zeichenketten '
+In einer Zeichenkette kann auch ein Hochkomma enthalten sein, nur 
+muss man es dann an der betreffenden Stelle zweimal angeben.
+Zeichenketten,  die  nur aus einem Zeichen bestehen sind vom  Typ 
+Char. Eine Zeichenkette ist kompatibel mit einem Bereich von Char 
+mit gleicher Laenge.  Alle Zeichenkettenkonstanten sind mit allen 
+Zeichenkettentypen kompatibel.
+
+Beispiele:
+     'TURBO'
+     'Du wirst''s sehen!'
+     ''''
+     '.'
+     ''                       leere Zeichenkette.
+
+4.3.1 CXTRL-Steuerzeichen
+
+TURBO-Pascal  erlaubt die Verwendung von  CTRL-Steuerzeichen  als 
+Zeichenketten. Dabei gibt es zwei Moeglichkeiten der Darstellung: 
+
+1)   als  #-Symbol  gefolgt  von einer dezimal  oder  hexadezimal 
+     Zahl.  Damit wird ein Zeichen mit dem entsprechenden  ASCII-
+     Wert  definiert.
+2)   als ^-Symbol gefolgt von einem ASCII-Zeichen. Damit wird das 
+     entsprechende CTRL-Zeichen definiert.
+
+Beispiele:
+     #10       entspricht     CTRL-J oder LINE FEED
+     #$1B      entspricht     CTRL-[ oder ESCAPE
+     ^G        entspricht     CTRL-G oder BELL
+
+Folgen von Steuerzeichen koennen ohne Begrenzer aneinandergehaengt 
+werden:
+
+Beispiele:
+     #13#10
+     #27^U#20
+     ^G^G^G^G
+
+Steuerzeichen  koennen  auch mit anderen  Zeichenketten  gemischt 
+auftreten:
+
+Beispiele:
+     'Wach auf!'^G^G^G'Bitte, wach auf! '
+
+
+4.4 Kommentare
+
+Kommentare  koennen  ueberall im Programm  stehen,  wo  Begrenzer 
+stehen  koennen.   Sie werden durch geschweifte Klammern { } oder 
+durch (* *) begrenzt.
+
+Beispiele:
+     {Das ist ein Kommentar}
+     (* das ist das gleiche *)
+
+Es  koennen  in  Kommentaren nicht Kommentare  mit  den  gleichen 
+Begrenzern eingeschlossen werden.  Aber es ist erlaubt in Kommen-
+taren mit { } Kommentare mit (* *) einzuschliessen und umgekehrt. 
+Damit kann man Quelltexte, die Kommentare enthalten in Kommentar-
+klammern  einschliessen und damit im Quelltext bei der  Ueberset-
+zung verschwinden lassen.
+.pa
+
+4.5 Compiler-Direktiven
+
+Einige   der  Optionen  des  Compilers  werden  durch  Direktiven 
+gesteuert.  Sie werden in den Quelltext als Kommentare mit  einer 
+speziellen  Syntax eingefuegt.  Sie koennen ueberall dort im Text 
+stehen, wo Kommentare stehen koennen.
+Eine  Compiler-Direktive besteht aus einer oeffnenden  Kommentar-
+Klammer der unmittelbar ein $-Zeichen und eine Compiler-Direktive 
+oder  eine  Liste derartiger Direktiven folgt,  die  durch  Komma 
+untereinander  getrennt  sind.  Die Syntax  der  Direktiv-Zeichen 
+selbst  haengt von der speziellen Direktive ab,  die im Anhang  E 
+beschrieben sind.
+
+Beispiele:
+     {$I-} 
+     {$I E:INCLUDE.FIL}
+     {$R-,B+,V-}
+.pa
+
+5. Programmkopf und Programmblock
+
+Ein Pascal-Programm besteht aus dem
+          - Programmkopf, dem der
+          - Programmblock folgt.
+Der Programmblock selbst besteht aus dem
+          - Deklarationsteil und dem 
+          - Anweisungsteil.
+Im  Deklarationsteil werden alle lokalen Objekte  des  Programmes 
+definiert  und  im Anweisungteil stehen alle  Aktionen,  die  mit 
+diesen Objekten ausgefuehrt werden sollen.
+
+
+5.1 Programmkopf
+
+In  TURBO-Pascal  ist der Programmkopf voellig unverbindlich  und 
+hat  fuer  das Programm keinerlei Bedeutung.  Wenn  er  angegeben 
+wird, und dies ist sehr zu empfehlen, sollte er ausser dem reser-
+vierten Namen Program den Programmnamen und in der Parameterliste 
+die speziell verwendeten Ein- und Ausgabegeraete  enthalten.  Die 
+Liste  Parameter  besteht aus einer Folge  von  Bezeichnern,  die 
+durch Komma getrennt und in runde Klammern eingeschlossen sind.
+
+Beipiele:
+     Program Circles;
+     Program Rechnung(Input,Output)
+     Program Druck(Input,Drucker)
+
+5.2 Deklarationsteil
+
+Der Deklarationsteil eines Blockes definiert alle Bezeichner, die 
+im  Anweisungsteil des Blockes und in dem in ihm  moeglicherweise 
+enthaltenen Bloecken verwendet werden.  Er besteht aus fuenf Tei-
+len:
+     1) Markenvereinbarungsteil
+     2) Konstantendefinitionsteil
+     3) Typdefinitionsteil
+     4) Variablenvereinbarungsteil
+     5) Prozedur- und Funktionsvereinbarungsteil
+
+Waehrend  Standard-Pascal festlegt,  dass jeder dieser Teile  nur 
+Null  oder einmal und nur in der oben angegeben Ordnung auftreten 
+darf,  erlaubt TURBO-Pascal,  dass obige fuenf Teile mehrmals  in 
+beliebiger Ordnung im Deklarationsteil auftreten duerfen.
+
+5.2.1 Markenvereinbarungsteil
+
+Jede   Anweisung  ein  einem  Programm  kann  durch  eine   Marke 
+gekennzeichnet  werden.  Dadurch  wird es moeglich  mittels  eine 
+GOTO-Anweisung direkt zu dieser Anweisung zu verzweigen.
+Eine  Marke  besteht aus einem  Markennamen,  gefolgt  von  einem 
+Doppelpunkt.  Bevor eine Marke verwendet werden darf, muss sie im 
+Markenvereinbarungsteil definiert sein. Die Definition beginn mit 
+dem reservierten Wort Label,  dem eine Liste von Markennamen, die 
+alle durch Kommas voneinander getrennt sind,  folgt und die durch 
+ein Semikolon abgeschlossen wird.
+
+Beispiel:
+     Label 10,error,999,Quit;
+
+Waehrend  Standard-Pascal  nur maximal vierstellige ganze  Zahlen 
+als  Markannamen  zulaesst,   erlaubt  TURBO-Pascal  sowohl   die 
+Verwendung von Ziffern als auch von Bezeichnern.
+
+.pa
+
+
+ 
+5.2.2 Konstantendefinitionsteil
+
+Der  Konstantendefinitionsteil  enthaelt die  Definitionen  aller 
+Synomyme  fuer  Konstanten,  die in einem  Block  auftreten.  Die 
+Definition  beginnt  mit dem reservierten Wort  const,  dem  eine 
+Liste von Konstantenzuweisungen folgt,  die durch Semikolon  von-
+einander  getrennt  sind.  Jede Konstantenzuweisung  besteht  aus 
+einem Bezeichner ,  dem ein Gleichheitszeichen und eine Konstante 
+folgt.
+
+Beispiel:
+     const
+          Limit = 255;
+          Max = 1024;
+          PassWord = 'SESAM';
+          CursHome = ^['V';
+
+In TURBO-Pascal gibt es folgende fest definierten Konstante,  die 
+ohne vorherige Definition verwendet werden koennen:
+                         
+    Name      Typ       Wert
+     Pi        Real      -3.1415926536E+00
+     False     Boolean   Wahrheitswert: falsch
+     True      Boolean   Wahrheitswert: richtig
+     Maxint    Integer   32767
+
+Im Konstantendefinitionsteil koennen auch typ-definierte Konstan-
+ten vereinbart werden (siehe 13).
+
+
+
+
+5.2.3 Typdefinitionsteil
+
+Ein  Datentyp kann in Pascal entweder direkt im  Variablendefini-
+tionsteil  oder durch einen Typbezeichner beschrieben werden.  Es 
+gibt  bestimmte festgelegte Typbezeichner,  aber der Nutzer  kann 
+durch  Verwendung der Typdefinition diese Liste  beliebig  erwei-
+tern. 
+Die  Typdefinition  beginnt mit dem reservierten Wort  type,  dem 
+eine oder mehrere Zuweisungen folgen, die durch Semikolon vonein-
+ander  getrennt  werden.  Jede Zuweisung besteht aus  einem  Typ-
+Bezeichner, dem ein Gleichheitszeichen und ein Typ folgt.
+
+Beispiele:
+     type
+          Number = Integer;
+          Tag = (Montag,Dienstag,Mittwoch,Donnerstag,
+                 Freitag,Sonnabend,Sonntag);
+          List = array[1..10] of Real;
+.pa
+
+5.2.4 Variablenvereinbarungsteil
+
+Jede in einem Programm auftretende Variable muss vorher definiert 
+werden. Die Definition muss im Text vor der ersten Verwendung der 
+Variablen auftreten,  d.h. die Variable muss dem Compiler bekannt 
+sein, bevor sie verwendet wird.
+Eine Variablenvereinbarung beginnt mit dem reservierten Wort Var, 
+dem ein oder mehrere Bezeichner folgen,  die durch Kommas vonein-
+ander getrennt sind.  Dieser Liste folgt ein Doppelpunkt und  ein 
+Typ. Damit werden von dem spezifizierten Typ neue Variable aufge-
+baut,  denen  als Namen die spezifizierten Bezeichner  zugewiesen 
+sind.  Der  Gueltigkeitsbereich der Bezeichner ist der Block,  in 
+dem sie definiert wurden.  Zu diesem Gueltigkeitsbereich gehoeren 
+auch alle Bloecke, die in dem genannten Block enthalten sind. Man 
+beachte jedoch, dass in jedem solchen Block, der in einem anderen 
+enthalten ist,  andere Variable definiert werden koennen, die die 
+gleichen Bezeichner verwenden.  Diese Variable heissen dann lokal 
+zu  diesem Block und zu anderen Bloecken,  die in  ihm  enthalten 
+sind.  Variable,  die  ausserhalb eines Blockes definiert wurden, 
+heissen  globale  Variable und sind,  wenn  lokale  Variable  mit 
+gleichem  Bezeichner  auftreten in diesem Block dann  nicht  mehr 
+zugaenglich.
+
+Beispiel:
+Var
+     Result,Intermediate,SubTotal:Real;
+     I,J,X,Y:Integer;
+     Accepted,Valid:Boolean;
+     Period:Tag
+     Buffer:array[0..127] of Byte
+
+
+
+
+5.2.5 Prozedur- und Funktionsvereinbarungsteil
+
+Eine  Prozedurvereinbarung  dient der Definition  einer  Prozedur 
+innerhalb  einer  anderen Prozedur oder eines  Programmes  (siehe 
+16.2).  Eine Prozedur wird durch eine Prozeduranweisung aktiviert 
+(siehe  7.1.2) und nach der Ausfuehrung dieser  Prozeduranweisung 
+wird das Programm mit der Anweisung fortgesetzt,  die unmittelbar 
+der Call-Anweisung der Prozedur folgt.
+Eine  Funktionsvereinbarung  dient zur Defintion eines  Programm-
+teiles, das eine Variable berechnet und zurueckgibt (siehe 16.3). 
+Eine Funktion wird aktiviert, wenn sein Bezeichner als Teil eines 
+Ausdruckes auftritt (siehe 6.2).
+
+
+5.3 Anweisungsteil
+
+Der Anweisungsteil ist der letzte Teil eines Blockes. Er spezifi-
+ziert  die Aktionen,  die durch das Programm ausgefuehrt  werden. 
+Der  Anweisungsteil besteht aus einer Verbundanweisung,  der  ein 
+Punkt '.' folgt. Eine Verbundanweisung besteht aus dem reservier-
+ten Wort begin,  dem eine Liste von einzelnen Anweisungen  folgt. 
+Diese  sind in der Liste durch Semikolon voneinander getrennt und 
+werden durch das reservierte Wort end abgeschlossen.
+
+.pa
+
+
+
+6. Ausdruecke
+
+Ausdruecke  sind Konstruktionen,  die Regeln fuer das Rechnen mit 
+den  vorliegenden  Werten von Variablen und die  Erzeugung  neuer 
+Werte durch Anwendung von Operatoren zum Inhalt haben. Sie beste-
+hen aus Operanden,  d.h.  Variablen,  Konstanten und Funktionsbe-
+zeichnungen,  die mittels der unten definierten Operatoren kombi-
+niert  werden.  Dieser Abschnitt beschreibt,  wie Ausdruecke  aus 
+Standard-Skalartypen  Integer,  Real,  Boolean und Char  gebildet 
+werden.  Ausdruecke,  die definierte Skalartypen, Stringtypen und 
+Mengentypen  enthalten,  werden in 8.1,  9.2 und 12.2  respektive 
+definiert.
+
+
+6.1 Operatoren
+
+Operatoren koennen entsprechend ihrer Rangfolge in fuenf  Katego-
+rien eingeteilt werden:
+     1) Minusvorzeichen (Minus mit einem Operanden).
+     2) Not Operator.
+     3) Multiplikationsoperatoren: *,/,div,mod,and,shl,shr.
+     4) Additionsoperatoren: +,-,or,xor.
+     5) Vergleichsoperatoren: =,<>,<,>,<=,>=,in.
+
+Folgen  von  Operatoren  gleichen Ranges werden  von  links  nach 
+rechts abgearbeitet. 
+Ausdruecke  in Klammern werden zuerst  abgearbeitet,  unabhaengig 
+von  den  davor oder dahinter stehenden  Operatoren.  Sind  beide 
+Operanden eines Multiplikations- oder Additionsoperators vom  Typ 
+Integer,  dann  ist auch das Ergebnis vom Integertyp.  Wenn einer 
+oder beide Operanden vom Typ Real sind,  dann ist auch das Ergeb-
+nis vom Realtyp.
+
+
+6.1.1 Minuszeichen
+
+Das  Minuszeichen bezeichnet die Negation des Operanden,  der vom 
+Typ Integer oder Real sein muss.
+
+
+6.1.2 NOT-Operator
+
+Der  NOT-Operator  negiert den logichen  Wert  eines  Booleschen 
+Operanden:
+     not True  = False
+     not False = True
+
+TURBO-Pascal  erlaubt  auch die Anwendung des  NOT-Operators  auf 
+Integer-Operanden.  In diesem Falle erfolgt die Negation der ein-
+zelnen Bits.
+
+Beispiele:
+     not 0     = -1
+     not -15   = 14
+     not $2345 = $DCBA
+.pa
+
+
+
+6.1.3 Multiplikationsoperanden
+
+Operator  Operation                Operandentypen      Ergebnistyp
+ *        Multiplikation           Real,Real           Real
+ *        Multiplikation           Integer,Integer     Integer
+ *        Multiplikation           Integer,Real        Real
+ /        Division                 Real,Real           Real
+ /        Division                 Integer,Real        Real
+ /        Disision                 Integer,Integer     Real
+ div      Ganzzahlige Division     Integer             Integer
+ mod      Modulo                   Integer             Integer
+ and      Arithmetisches and       Integer             Integer
+ and      Logisches and            Boolean             Boolean
+ shl      Shift links              Integer             Integer
+ shr      Shift rechts             Integer             Integer
+
+Beispiele:
+     123*456        =    492 falsch, Ueberlauf der Integerzahl!
+     123/4          =    30.75          
+     123 div 4      =    30
+     12 mod 5       =    2
+     true and false =    falsch
+     12  and 22     =    4
+     2   shl 7      =    256
+     256 shr 7      =    2
+
+
+
+6.1.4 Additionsoperatoren
+
+Operator  Operation                Operandentypen      Ergebnistyp
+ +        Addition                 Real,Real           Real
+ +        Addition                 Real,Integer        Real
+ +        Addition                 Integer,Integer     Integer
+ -        Subtraktion              Real,Real           Real
+ -        Subtraktion              Real,Integer        Real
+ -        Subtraktion              Integer,Integer     Integer
+ or       Arithmetisches or        Integer,Integer     Integer
+ or       Logisches or             Boolean,Boolean     Boolean
+ xor      Arithmetisches xor       Integer,Integer     Integer
+ xor      Logisches xor            Boolean,Boolean     Boolean
+
+Beispiele:
+     123 + 456      =    579
+     456 - 123.0    =    333.0
+     true or false  =    True
+     12 or 22       =    30
+     true xor false =    True
+     12 xor 22      =    26
+.pa
+
+
+6.1.5 Vergleichsoperatoren
+
+Vergleichsoperatoren   koennen  mit  allen  Standardtypen   Real, 
+Integer,  Boolean,  Char und Byte verbunden werden. Operanden vom 
+Typ  Integer,  Real  und Byte  koennen  gemischt  auftreten.  Der 
+Ergebnistyp ist stets Boolean, d.h. True oder False.
+Es bedeuten:
+     =    gleich                   <>   nicht gleich
+     <    groesser als             >    kleiner als
+     <=   kleiner oder gleich      >=   groesser oder gleich
+
+Beispiele:
+     a =  b    True,wenn      a    gleich    b
+     a <> b    True,wenn      a    ungleich  b
+     a >  b    True,wenn      a    groesser  b
+     a <  b    True,wenn      a    kleiner   b
+     a >= b    True,wenn      a    groesser oder gleich  b
+     a <= b    True,wenn      a    kleiner  oder gleich  b
+
+
+
+6.2 Funktionsaufruf
+
+Ein  Funktionsaufruf besteht aus einem  Funktionsbezeichner,  dem 
+eine  wahlfreie  Parameterliste folgt.  Diese Liste  besteht  aus 
+einer oder mehreren Variablen oder Ausdruecken,  die durch  Komma 
+voneinander getrennt und insgesamt in runde Klammern eingeschlos-
+sen sind. 
+Das  Auftreten  eines Funktionsaufrufes im Programm  bewirkt  die 
+Aktivierung der Funktion, die durch sie bezeichnet wird. Wenn die 
+Funktion keine Standardfunktion ist, muss sie vor der Aktivierung 
+definiert sein.
+
+Beispiele:
+ Round(PlotPos)
+ Writeln(Pi * (Sqr(R)))
+ (Max(x,y) < 25) and (Z > Sqrt(x*y))
+ Volumen(Radius,Hoehe)
+
+.pa
+
+
+
+7.Anweisungen
+
+Der  Anweisungsteil eines Programmes,  einer Prozedur oder  einer 
+Funktion  definiert  die algorithmischen Aktionen als Folge  aus-
+fuehrbarer Anweisungen.  Diese Folge besteht aus Anweisungen, die 
+durch  Semikolon voneinander getrennt sind.  Sie beginnt mit  dem 
+reservierten Wort begin und endet mit dem reservierten Wort  end. 
+Anweisungen  in Pascal sind entweder einfache oder  strukturierte 
+Anweisungen.
+
+
+7.1 Einfache Anweisungen
+
+Einfache Anweisungen sind Anweisungen,  die keine weiteren Anwei-
+sungen enthalten. Es sind dies die 
+               Ergibtanweisung,
+               Prozeduranweisung,
+               Sprunganweisung und
+               Leeranweisung.
+
+
+7.1.1 Ergibtanweisung
+
+Die Ergibtanweisung ist die fundamentalste aller Anweisungen. Sie 
+wird  verwendet,  um einer bestimmten Variablen einen  bestimmten 
+Wert  zuzuweisen.  Eine Ergibtanweisung besteht aus einem Variab-
+lenbezeichner,  dem  Ergibtoperator := und einem  Ausdruck.  Eine 
+Zuweisung  ist moeglich zu Variablen von beliebigem  Typ  (ausser 
+Files),  wenn der Ausdruck vom gleiche Typ ist.  Es gibt nur eine 
+Ausnahme:  Ist  die Variable vom Realtyp,  kann der Ausdruck  vom 
+Integertyp sein.
+
+Beispiele:
+     Angle    :=   Angle * Pi;
+     AccessOk :=   False;
+     Entry    :=   Answer = Password; 
+     SpherVol :=   4 * Pi * R * R;
+     UpCas    :=   (Ch > 'A') and (Num <= 'Z')
+
+
+7.1.2 Prozeduranweisung
+
+Eine Prozeduranweisung dient der Aktivierung einer Standardproze-
+dur oder einer vorher vom Nutzer definierten Prozedur. Die Anwei-
+sung besteht aus dem Prozedurbezeichner, dem wahlweise eine Para-
+meterliste  folgt.  Diese  Liste besteht aus Variablen oder  Aus-
+druecken,  die  durch  Komma voneinander getrennt und  in  runden 
+Klammern eingeschlossen sind. Wird die Prozedur bei der Programm-
+ausfuehrung  erreicht,  geht die Steuerung an die Prozedur  ueber 
+und  die angegebenen Parameterwerte werden uebergeben.  Wenn  die 
+Prozedur ausgefuehrt wurde, wird das Programm mit der Ausfuehrung 
+der dieser Prozedur folgenden Anweisung fortgesetzt.
+
+Beispiele:
+      Find(Name,Adresse);
+     Sort(Adresse);
+     UpperCase(Text);
+     UpdateLastFile(LastRecord);
+
+.pa
+
+7.1.3 Sprunganweisung
+
+Eine Sprunganweisung besteht aus dem reservierten Wort goto,  dem 
+ein  Markenbezeichner folgt.  Sie dient der Fortfuehrung des Pro-
+grammes an der Stelle im Programmtext, an der die Marke steht.
+Es gelten folgende Einschraenkungen:
+     1) Jede Marke muss durch eine Markenvereinbarung im Kopf des 
+     Blockes  definiert und durch Kennzeichnung  einer  Anweisung 
+     festgelegt sein.
+     2) Der Gueltigkeitsbereich einer Marke ist der Block, in dem 
+     die  Marke definiert ist.  Deshalb ist es nicht moeglich  in 
+     oder aus einer Prozedur oder Funktion zu springen.
+
+
+7.1.4 Leeranweisung
+
+Eine  Leeranweisung  ist eine Anweisung,  die aus  keinem  Symbol 
+besteht  und  die  nichts macht.  Sie kann  entstehen,  wenn  die 
+Pascal-Syntax eine Anweisung verlangt, aber keine vom Algorithmus 
+her benoetigt wird.
+
+Beispiele:
+     begin end.
+     while Antwort <> '' do;
+     repeat until KeyPressed; {Wartet bis Taste gedrueckt wurde}
+
+
+
+7.2 Strukturierte Anweisungen
+
+Strukturierte  Anweisungen sind aus anderen Anweisungen zusammen-
+gesetzte Konstruktionen,  die entweder nacheinander  auszufuehren 
+sind  (Verbundanweisungen),  bedingt auszufuehren sind  (Bedingte 
+Anweisungen)  oder zu wiederholen sind  (Zyklusanweisungen).  Die 
+Besprechung der WITH-Anweisung erfolgt in 11.2.
+
+
+7.2.1 Verbundanweisung
+
+Eine  Verbundanweisung wird verwendet,  wenn mehr als eine Anwei-
+sung an einer Stelle auszufuehren sind,  an der die Pascal-Syntax 
+die  Spezifikation von nur einer Anweisung erlaubt.  Sie  besteht 
+aus einer beliebigen Anzahl von Anweisungen,  die durch Semikolon 
+voneinander getrennt und in die reservierten Worte begin und  end 
+eingeschlossen werden.  Die einzelnen Anweisungen in der Verbund-
+anweisung werden nacheinander in der Reihenfolge ausgefuehrt,  in 
+der sie aufgeschrieben wurden.
+
+Beispiel:
+     if Small > Big than
+          begin
+               Tmp   :=   Small;
+               Small :=   Big;
+               Big   :=   Tmp;
+          end;
+.pa
+
+7.2.2 Bedingte Anweisungen
+
+Eine bedingte Anweisung waehlt eine einzelne ihrer Komponentenan-
+weisungen zur Ausfuehrung aus.
+
+
+7.2.2.1 IF-Anweisung
+
+Die  IF-Anweisung  waehlt  die nach dem  reservierten  Wort  then 
+stehende  Anweisung nur dann zur Ausfuehrung aus,  wenn eine  be-
+stimmte Bedingung (Boolescher Ausdruck) wahr ist. Ist sie falsch, 
+dann  wird  entweder  keine Anweisung oder die  Anweisung  ausge-
+fuehrt, die dem wahlweise stehenden reservierten Wort else folgt.
+Da  die  bedingten IF-Anweisungen  geschachtelt  werden  koennen, 
+entstehen zweideutige Konstruktionen. Die Konstruktion :
+
+     if  expr1  then
+         if  expr2  then
+         stmt1
+         else
+         stmt2
+
+wird wie folgt ausgefuehrt:
+
+     if  expr1  then
+         begin
+          if  expr2  then
+          stmt1
+          else
+          stmt2
+         end;
+
+Damit  ist klar:  Die ELSE-Klausel gehoert stets zur letzten  IF-
+Anweisung, die keine ELSE-Klausel hat.
+
+Beispiele:
+     if Interest > 25 then
+          Usury := True
+     else
+          TakeLoan := OK;
+
+     if (Entry < 0) or (Entry > 100) then
+          begin
+               Write('Bereich ist 1 bis 100, bitte eingeben:';
+               Read(Entry);
+          end;
+
+
+7.2.2.2 CASE-Anweisung
+
+Die CASE-Anweisung besteht aus einem Ausdruck (dem Selektor), der 
+in  die  reservierten Worte case und of eingeschlossen  ist,  und 
+einer Liste von Anweisungen,  von denen jede durch eine Konstante 
+vom  Typ  des Selektors markiert ist.  Die Liste wird  durch  das 
+reservierte Wort end abgeschlossen. Die CASE-Anweisung legt fest, 
+dass die eine Anweisung auszufuehren ist, deren CASE-Marke gleich 
+dem vorliegenden Wert des Selektors ist. Enthaelt keine der CASE-
+Marken den vorliegenden Wert,  dann wird entweder keine Anweisung 
+ausgefuehrt,  oder wahlweise die Anweisung,  die dem reservierten 
+Wort else folgt. Die ELSE-Klausel ist eine Erweiterung gegenueber 
+Standard-Pascal.
+Eine  CASE-Marke kann aus einer beliebigen Anzahl von  Konstanten 
+oder  Teilbereichen bestehen,  die durch Komma getrennt sind  und 
+durch  einen Doppelpunkt abgeschlossen  werden.  Ein  Teilbereich 
+wird  dargestellt  durch zwei Konstanten,  die durch den  Teilbe-
+reichsbegrenzer '..' getrennt sind.  Der Typ der Konstanten  muss 
+der  gleiche wie der des Selektors sein.  Die Anweisung,  die der 
+
+CASE-Marke folgt,  wird ausgefuehrt,  wenn der Wert des Selektors 
+gleich  einer der Konstanten ist oder in einem  der  Teilbereiche 
+liegt.
+Gueltige Selektortypen sind alle einfachen Typen,  d.h. alle Ska-
+lartypen ausser Real.
+
+Beispiele:
+     case Operator of
+          '+': Result := Input + Result;
+          '-': Result := Innput * Result;
+          '/': Result := Input / Result;
+          end;
+
+     case Year of
+          Min..1939: begin
+                         Time := PreWordWar2;
+                         write('The world at peace...');
+                     end;
+          1946..Max: begin
+                         Time := PostWorldWar2;
+                         write('Building a new world');
+                     end;
+          else
+               Time := WorldWar2;
+               writeln('We are at war');
+          end;
+
+
+7.2.3 Zyklusanweisungen
+
+Zyklusanweisungen legen fest, dass gewisse Anweisungen wiederholt 
+ausgefuehrt  werden sollen.  Wenn die Anzahl  der  Wiederholungen 
+vorher bekannt ist, d.h. bevor der Zyklus gestartet wird, ist die 
+FOR-Anweisung die angemessene Konstruktion.  Andernfalls  sollte 
+die WHILE-Anweisung oder die REPEAT-Anweisung verwendet werden.
+
+
+7.2.3.1 WHILE-Anweisung
+
+Die WHILE-Anweisung hat die Form:
+
+     while  expr  do  stmt;
+
+Der  Ausdruck,  der  die  Wiederholungen steuert,  muss  vom  Typ 
+Boolean  sein.  Die Anweisung wird solange ausgefuehrt,  wie  der 
+Ausdruck wahr ist.  Ist der Ausdruck zu Beginn schon falsch, wird 
+gar keine Anweisung ausgefuehrt.
+
+
+7.2.3.2 REPEAT-Anweisung
+
+Die Wiederholanweisung REPEAT hat die Form:
+
+     repeat  stmt1;stmt2;...;stmtN  until expr;
+
+Der  die  Wiederholung steuernde Ausdruck muss vom  Type  Boolean 
+sein.  Die  Folge der Anweisungen zwischen repeat und until  wird 
+wiederholt (mindestens jedoch einmal) ausgefuehrt,  bis der  Aus-
+druck den Wert True erhaelt.
+
+Beispiele:
+     repeat
+          write(^M,'Delete this item? (Y/N)');
+          read(Answer)
+     until  UpCase(Answer) in ['Y','N'];
+
+
+7.2.3.3 FOR-Anweisung
+
+Die FOR-Anweisung gibt an,  dass eine Anweisung wiederholt ausge-
+fuehrt werden soll,  waehrend einer Variablen (der Laufvariablen) 
+eine  Folge von Werten zugewiesen wird.  Die Folge kann auf- oder 
+absteigend sein bis zum Endwert.  Die Laufvariable,  der Anfangs-
+wert und der Endwert muessen alle vom gleichen Typ sein.  Gueltig 
+sind alle einfachen Typen, d.h. alle Skalartypen ausser Real.
+Die Laufanweisung hat die Form:
+
+     for var := Anfwert to Endwert do stmt;
+oder
+     for var := Anfwert downto Endwert do stmt;
+
+Dabei  darf die Laufvariable nicht durch die Anweisung  geaendert 
+werden. 
+Falls Anfangswert > Endwert bei einer TO-Klausel oder Angangswert 
+<  Endwert  bei einer DOWNTO-Klausel ist,  wird  keine  Anweisung 
+ausgefuehrt.
+
+Beispiele:
+     for i := 2 to 100 do if A[i] > Max then Max := A[i];
+
+     for i := 1 to NoOflines do
+          begin
+           readln(Line);
+           if Length(Line)<Limit then ShortLines := ShortLines+1;
+           else 
+              LongLines := LongLines+1;
+          end;
+
+Falls  die Wiederholung beendet werden soll,  bevor  der  Endwert 
+erreicht ist,  muss eine GOTO-Anweisung benutzt werden. In diesen 
+Faellen  ist es besser eine WHILE- oder REPEAT-Anweisung zu  ver-
+wenden.
+Wenn die FOR-Anweisung verlassen wird,  hat die Laufvariable  den 
+Endwert,  ausser  wenn  die Schleife nie  durchlaufen  wurde.  In 
+diesem Falle wird der Laufvariablen kein Wert zugewiesen.
+
+
+
+
+
+
+.pa
+
+
+
+8. Skalar- und Teilbereichstypen
+
+Die fundamentalen Datentypen in Pascal sind die Skalartypen.  Sie 
+definieren  jeweils eine endliche und lineargeordnete  Menge  von 
+Werten. Obgleich der Standardtyp Real zu den Skalartypen gehoert, 
+stimmt  er  nicht  voellig mit dieser  Definition  ueberein.  Aus 
+diesem Grunde duerfen auch Realtypen nicht ueberall dort im  Text 
+verwendet werden, wo Skalartypen eingesetzt werden koennen.
+
+
+8.1 Skalartypen
+
+Abgesehen von den Standard-Skalartypen (Integer,  Real,  Boolean, 
+Char  und Byte) unterstuetzt TURBO-Pascal vom  Nutzer  definierte 
+Skalartypen,  sogenannte  erklaerte oder definierte  Skalartypen. 
+Die Definition eines solchen Skalartypes gibt die einzelnen moeg-
+lichen  Werte  in  geordneter Folge an.  Die Werte  dieses  Types 
+werden durch die Bezeichner dargestellt,  die die Konstanten  des 
+neuen Types sein werden.
+
+Beispiele:
+     type
+          Karte = (Karo,Herz,Pik,Kreuz);
+          Tag   = (Mo,Di,Mi,Do,Fr,Sa,So);
+          Monat = (Jan,Feb,Mrz,Apr,Mai,Jun,Jul,Aug,Sep,Nov,Dez);
+          Operator = (Plus,Minus,Mult,Div);
+
+Variable vom Typ Karte koennen also die vier Werte:  Karo,  Herz, 
+Pik und Kreuz annehmen. 
+Bereits  bekannt ist der Standard-Skalartyp Boolean.  Mit  diesem 
+Definitionsverfahren kann man ihn definieren als:
+
+     type
+          Boolean = (False,True)
+
+Die  Vergleichsoperatoren  =,<,>,<>,>=,<=  kann man auf alle Ska-
+lartypen anwenden,  solange beide Operanden vom gleichen Typ sind 
+(Real und Integer duerfen gemischt auftreten). Die in der Defini-
+tion festgelegte Ordnung wird fuer den Vergleich verwendet,  d.h. 
+links stehende Werte sind kleiner als rechts stehende.  Fuer  den 
+Typ Karte gilt also:
+
+          Karo < Herz < Pik < Kreuz
+
+Bei folgenden Funktionen duerfen die Argumente Skalartypen sein:
+
+     Succ(Pik)      Der Nachfolger von Pik ist Kreuz.
+     Pred(Pik)      Der Vorgaenger von Pik ist Herz.
+     Ord(Pik)       Der Ordnungswert von Pik ist 2.
+
+Der  Typ des Ergebnisses von Succ und Pred ist der  gleiche,  wie 
+der Typ des Argumentes. Das Ergebnis von Ord ist vom Integertyp.
+
+.pa
+
+
+8.2 Teilbereichstypen
+
+Ein  Typ  kann als Teilbereich eines bereits definierten  Skalar-
+types  definiert werden und zwar durch Angabe des  kleinsten  und 
+des groessten Wertes des Teilbereiches.  Die erste Konstante darf 
+dabei nicht groesser als die zweite sein. Ein Teilbereich vom Typ 
+Real ist nicht erlaubt.
+
+Beispiele:
+     type
+          HemiSphere = (North,South,East,West);
+          World      = (East,West);
+          CompassRange = 0..360;
+          Gross      = 'A'..'Z';
+          Klein      = 'a'..'z';
+          Grad       = (Celc,Fahr,Ream,Kelv);
+          Wein       = (Rot,Weiss,Rose,Schaum);
+
+Hierbei  ist  World ein Teilbereich  des  Skalartyps  HemiSphere. 
+Letzterer  heisst  der assoziative Skalartyp  des  ersteren.  Der 
+assoziative  Skalartyp  von CompassRange ist Integer und der  von 
+Gross und Klein ist Char.
+Der  bereits  genannte Standard-Skalartyp Byte  kann  mit  dieser 
+Konstruktion definiert werden als:
+
+     type
+          Byte = 0..255
+
+Ein Teilbereichstyp behaelt alle Eigenschaften seines  assoziati-
+ven  Skalartyps  und ist nur durch den Bereich seiner  Werte  be-
+schraenkt.
+Die  Verwendung  definierter Skalar- und  Teilbereichstypen  wird 
+dringend  empfohlen,  da sie die Lesbarkeit von  Programmen  sehr 
+verbessern.  Ausserdem  koenne leicht Pruefungen in den Programm-
+text eingefuegt werden (siehe 8.4),  die waehrend der Ausfuehrung 
+des Programmes die den Skalar- und Teilbereichsvariablen zugeord-
+neten  Werte ueberwachen.  Ein weiterer Vorteil ist,  dass  diese 
+Typen Speicherbereich sparen. TURBO-Pascal ordnet einer Variablen 
+eines  Skalar- oder Teilbereichstyps nur ein Byte zu,  falls  die 
+Anzahl der Elemente des Typs kleiner als 256 ist. Analog benoeti-
+gen Integer Teilbereichsvariable,  deren untere und obere  Grenze 
+innerhalb von 0 bis 255 liegen, ebenfalls nur einen Speicherplatz 
+von einem Byte.
+
+
+8.3 Typumwandlung
+
+Die Funktion Ord kann man verwenden,  um Skalartypen in Werte vom 
+Integertyp  umzuwandeln.  Standard-Pascal enthaelt  jedoch  keine 
+Moeglichkeit  der Umwandlung in der anderen  Richtung,  d.h.  der 
+Umwandlung  eines  Integerwertes  in  einen  anderen  Skalarwert. 
+TURBO-Pascal enthaelt jedoch die Moeglichkeit des "retyping": Man 
+kann  den Wert eines Skalartyps in den Wert eines anderen Skalar-
+typs umwandeln,  der die gleiche Ordnungszahl besitzt.  Diese Um-
+wandlung erreicht man,  indem man den Typbezeichner des  entspre-
+chenden  Typs  als Funktionsbezeichner verwendet und in  Klammern 
+einen Parameter folgen laesst.  Als Parameter setzt man den  Wert 
+des anderen Skalartyps ein.  Als Wert wird der entsprechende Wert 
+des ersten Skalartyps zurueckgegeben.  Retyping kann man auf alle 
+Skalartypen ausser Real anwenden. 
+
+.pa
+
+
+Unter  Verwendung  obiger Definitionsbeispiele gilt dann folgendes:
+
+     Integer(Herz)  = 2   
+     Monat(10)      = Nov
+     HemiSphere(2)  = East
+     Gross(14)      = 'N'
+     Grad(3)        = Kelv
+     Char(78)       = 'N'
+     Integer('7')   = 55
+
+
+
+8.4 Bereichspruefung
+
+Das  Einfuegen  von Bereichspruefungen fuer  Skalar- und  Teilbe-
+reichsvariable in den Programmtext wird durch die Compiler-Direk-
+tive  {$R+}  erzeugt.  Der Standardwert fuer diese Direktive  ist 
+{$R-},  d.h. im Normalfall wird keine Bereichspruefung eingebaut. 
+Wenn  diese Direktive aktiv ist,  wird bei jeder Zuweisung  eines 
+Wertes zu einer Skalar- oder Teilbereichsvariablen  geprueft,  ob 
+dieser  Wert auch in dem Bereich der betreffenden Variable liegt. 
+Es wird empfohlen,  diese Pruefungen solange in neuen  Programmen 
+zu belassen, bis sie voellig ausgetestet sind.
+
+Beispiele:
+     program RangeCheck;
+          type
+               Digit = 0..9;
+          var
+               Digit1,Digit2,Digit3: Digit;
+          begin
+               Dig1 := 5;       {gueltig} 
+               Dig2 := Dig1 + 3;{gueltig}
+               Dig3 := 47       {ungueltig, keine Fehlermeldung}
+         {$R+} Dig3 := 55       {ungueltig, Fehlermeldung}
+         {$R-} Dig3 := 167      {ungueltig, keine Fehlermeldung}
+
+.pa
+
+
+9. Zeichenkettentypen (Strings)
+
+TURBO-Pascal  gestattet den Gebrauch von  Stringtypen,  d.h.  die 
+Verarbeitung  von Zeichenketten.  Stringtypen sind  strukturierte 
+Typen,  die  in vielerlei Weise den Feldtypen (siehe  10:  array) 
+aehneln.  Es gibt jedoch einen Hauptunterschied zwischen  beiden. 
+Die  Anzahl der Zeichen in einer Zeichenkette (ihre Laenge)  kann 
+sehr  stark  dynamisch zwischen 0 und einer  festgelegten  oberen 
+Grenze waehrend der Verarbeitung schwanken, im Gegensatz dazu ist 
+die Anzahl der Elemente eines Feldes immer fest.
+
+
+9.1 Stringtyp-Definition
+
+Die Definition eines Stringtyp erfolgt durch Angabe der maximalen 
+Anzahl der Zeichen,  die er enthalten kann,  durch seine maximale 
+Laenge:
+     
+     type      name = string[n];
+
+Die Definition besteht also aus dem reservierten Wort string, dem 
+die  Laenge  n in eckigen Klammern folgt.  Die Laenge n ist  eine 
+Integerkonstante  im Bereich 1 bis 255.  Es gibt  keine  Standard 
+Laenge, sie muss immer definiert werden.
+
+Beispiele:
+     type
+          FileName   = string[14];
+          ScreenLine = string[80];
+
+Eine Stringvariable der Laenge n belegt im Speicher n+1 Byte. Das 
+zusaetzliche Byte enthaelt die aktuelle Laenge der Variablen. Die 
+einzelnen Zeichen im String sind indiziert von 1 bis n.
+
+
+9.2 STRING-Ausdruecke
+
+Zeichenketten  koennen durch Bildung von STRING-Ausdruecken mani-
+puliert werden. STRING-Ausdruecke bestehen aus STRING-Konstanten, 
+STRING-Variablen, Funktionsaufrufen und Operatoren.
+Das Pluszeichen kann man als STRING-Operator verwenden,  um  zwei 
+Zeichenketten  miteinander  zu verknuepfen.  Die  CONCAT-Funktion 
+(siehe 9.5) vermag das gleiche, aber der + Operator wird vorangig 
+verwendet.  Das Ergebnis ist die Verkettung beider Operanden. Ist 
+die  Laenge  des Ergebnis-String laenger als  255,  entsteht  ein 
+Laufzeitfehler.
+
+Beispiele:
+     'TURBO-' + 'Pascal'       = 'TURBO-Pascal'
+     '123'    + '456'          = '123456'
+     'A' + 'B' + 'C' + 'D   '  = 'ABCD   '
+
+Die Vergleichsoperatoren haben eine niedrigere Rangfolge, als der 
+Kettungs-Operator  +.  Wenn sie auf  STRING-Operanden  angewendet 
+werden,  ist  das Ergebnis ein Boolescher Wert (True oder False). 
+Werden zwei Strings miteinander verglichen, erfolgt der Vergleich 
+von   links nach rechts.  Sind die Strings von  unterschiedlicher 
+Laenge,  aber gleich bis einschliesslich zum letzten Zeichen  des 
+kuerzeren  Strings,  dann ist der kuerzere kleiner.  Strings sind 
+nur  dann  gleich,  wenn sie gleiche Laenge und  gleichen  Inhalt 
+haben.
+
+.pa
+
+
+Beispiele:
+     'A' < 'B'                                =  richtig
+     'A' > 'b'                                =  falsch
+     '2' < '12'                               =  falsch
+     'TURBO'   =   'TURBO'                    =  richtig
+     'TURBO '  =   'TURBO'                    =  falsch
+     'Pascal Compiler ' < 'Pascal compiler '  =  richtig           
+
+
+9.3 STRING-Ergibtanweisung
+
+Der  Ergibtoperator wird verwendet, um das Ergebnis eines STRING-
+Ausdruckes einer STRING-Variablen zuzuweisen. 
+
+Beispiele:
+     Alter  :=  'fuenfzehnten';
+     Zeile  :=  'Herzlichen Glueckwunsch zu Deinem ' + Alter + 
+                'Geburtstag';
+
+Wird  die  maximale Laenge einer STRING-Variablen  ueberschritten 
+(durch  Zuweisung  zuvieler Zeichen),  so werden  die  restlichen 
+Zeichen  abgeschnitten.  Wurde beispielsweise die Variable  Alter 
+mit       type  Alter = string[5];
+definiert, dann ist ihr Wert nach obiger Zuweisung 'fuenf'.
+
+
+9.4 STRING-Prozeduren
+
+In  TURBO-Pascal koennen die folgenden Standard-STRING-Prozeduren 
+verwendet werden:
+
+
+9.4.1 DELETE-Prozedur
+
+Syntax:   Delete(str,pos,num);
+
+Die Parameter sind:
+          str       STRING Variable,
+          pos       Integer Ausdruck,
+          num       Integer Ausdruck.
+
+Delete  erzeugt  aus str einen Teilstring durch Loeschen von  num 
+Zeichen  beginnend  ab Position pos.  Wenn pos  groesse  als  die 
+Laenge  von str ist,  wird kein Zeichen geloescht.  Wenn  pos+num 
+ausserhalb  der  Zeichenkette  liegt,   werden  nur  die  Zeichen 
+geloescht,  die  ab  pos  innerhalb liegen.  Liegt pos  nicht  in 
+1..255, wird ein Laufzeitfehler erzeugt.
+
+Beispiele:
+     type  str = string[10];
+     str :=  'ABCDEFG';
+     Delete(str,2,4);  ergibt 'AFG'.
+     Delete(str,2,10); ergibt 'A'.
+
+
+9.4.2 INSERT-Prozedur
+
+Syntax:   Insert(obj,target,pos);
+
+Die Parameter sind:
+          obj       STRING Ausdruck,
+          target    STRING Variable,
+          pos       Integer Ausdruck.
+
+Insert fuegt den String obj in den String target ab Position  pos 
+ein.  Ist  pos  groesser als die Laenge von target,  wird obj  an 
+target  angefuegt.  Wenn  das Ergebnis laenger als  die  maximale 
+Laenge  von  target  ist,   werden  die  ueberstehenden   Zeichen 
+abgeschnitten  und target erhaelt nur die links  stehenden.  Wenn 
+pos ausserhalb von 1..255 liegt, entsteht ein Laufzeitfehler. Mit 
+dem oben definierten String str='ABCDEFG' ergeben sich folgende
+
+Beispiele:
+     Insert('XX',str,3);     ergibt  'ABXXEFG'
+     Insert('UVWXYZ',str,4); ergibt  'ABCUVWX'
+
+
+
+9.4.3 STR-Prozedur
+
+Syntax:   Str(value,str-var);
+
+Die Paramter sind:
+          value     WRITE-Prozedur-Parameter vom INTEGER/REAL-Typ 
+          str-var   STRING-Variable.
+
+Die  STR-Prozedur  konvertiert den numerischen Wert von value  in 
+eine Zeichenkette und speichert sie in str-var ab.
+
+Beispiele:
+     Wenn      I = 1234
+     ergibt    Str(I:5,str1);    in str1 = ' 1234'
+     Wenn      X = 2.5E4
+     ergibt    Str(x:10:0,str2); in str2 = ' 25000'
+
+
+9.4.4 VAL-Prozedur
+
+Syntax:   Val(str,var,code);
+
+Die Parameter sind:
+          str       STRING-Ausdruck,
+          var       INTEGER/REAL-Variable,
+          Code      INTEGER-Variable.
+
+Der  STRING-Ausdruck  str muss den Regeln einer numerischen  Kon-
+stanten (siehe 4.2) genuegen.  Weder fuehrende noch  nachfolgende 
+Leerzeichen sind erlaubt.  Val konvertiert die Konstante zu einem 
+Wert  vom  gleichen Typ wie var und speichert diesen Wert in  var 
+ab.  Wird  kein Fehler festgestellt,  ist der Wert der  Variablen 
+code=0. Andernfalls erhaelt code den Wert der Position des ersten 
+fehlerhaften  Zeichens  in str und der Wert von var  ist  undefi-
+niert.
+
+Beispiele:
+     Wenn      str1 = '234'   ergibt
+     Val(str1,I,Result);      I = 234        Result = 0
+     
+     Wenn      str2 = ' 234'  ergibt
+     Val(str2,I,Result);      I = undef.     Result = 1
+
+     Wenn      str3 = '2.5E4' ergibt
+     Val(str3,X,Result);      X = 25000      Result = 0
+
+.pa
+
+
+9.5 STRING-Funktionen
+
+In  TURBO-Pascal stehen die folgenden   Sandard-STRING-Funktionen 
+zur Verfuegung:
+
+
+9.5.5 COPY-Funktion
+
+Syntax    Copy(str,pos,num);
+
+Die Parameter sind:
+          str       STRING-Ausdruck,
+          pos       INTEGER-Ausdruck,
+          num       INTEGER-Ausdruck.
+
+Copy  gibt  einen String zurueck,  der aus num Zeichen  von  str, 
+beginnend  ab Position pos,  besteht. Wenn pos > Laenge(str) ist, 
+besteht das Ergebnis aus der leeren Zeichenkette ''. Wenn pos+num 
+ausserhalb  von str liegt,  werden nur die innerhalb von str lie-
+genden  Zeichen zurueckgegeben.  Liegt pos nicht  in  1..255,  so 
+entsteht ein Laufzeitfehler.
+
+Beispiele:
+     Wenn str1 := 'ABCDEFG' , dann ist
+     str2 := Copy(str1,3,2);   gleich    'CD'
+     str2 := Copy(str1,4,10);  gleich    'DEFG'
+     str2 := Copy(str1,4,2);   gleich    'DE'
+
+
+
+9.5.2 CONCAT-Funktion
+
+Syntax:   Concat(str1,str2{,strN});
+
+Die Parameter sind:
+          str1      STRING-Ausdruck,
+          str2      STRING-Ausdruck,
+          ....      ...............
+          strN      STRING-Ausdruck.
+
+Die Anzahl N der STRING-Ausduecke ist beliebig.  Das Ergebnis der 
+CONCAT-Funktion  ist  eine Zeichenkette,  die aus  den  einzelnen 
+Zeichenketten  durch  Kettung entsteht und zwar in  der  gleichen 
+Reichenfolge,  wie die STRING-Parameter in der Liste stehen. Wird 
+die  Laenge groesser als 255,  entsteht ein  Laufzeitfehler.  Man 
+kann, wie bereits in 9.3 erwaehnt, mit dem +-Operator das gleiche 
+erhalten.  CONCAT  sichert  nur die Kompatibilitaet  mit  anderen 
+Compilern.
+
+Beispiel:
+     str1 := 'TURBO ';
+     str2 := 'ist am schnellsten';
+     str3 := Concat(str1,'-Pascal ',str2); ergibt
+     str3 gleich 'TURBO-Pascal ist am schnellsten'
+
+.pa
+
+9.5.3 LENGTH-Funktion
+
+Syntax:   Length(str);
+
+Der Parameter ist:
+          str       STRING-Ausdruck.
+
+Diese Funktion gibt die Laenge des STRING-Ausdruckes str zurueck, 
+d.h.  die Anzahl der Zeichen von str. Der Typ des Ergebnisses ist 
+Integer.
+
+Beispiel:
+     str := '123456789';
+     Length(str) ist gleich 9.
+
+
+9.5.4 POS-Funktion
+
+Syntax:   Pos(obj,target);
+
+Die Parameter sind:
+          obj       STRING-Ausdruck,
+          target    STRING-Ausdruck.
+
+Der  Ergebnistyp  ist Integer.  Die POS-Funktion  durchsucht  den 
+String target nach dem String obj.  Das Ergebnis ist die Position 
+in target, an der das erste Zeichen von obj steht. Wenn obj nicht 
+in target gefunden wurde, gibt POS den Wert 0 zurueck.
+
+Beispiele:          
+     str := 'ABCDEFG';
+     Pos('BC',str)  ergibt  2,
+     Pos('H',str)   ergibt  0.
+
+
+
+9.6 STRINGS und CHARACTER
+
+STRING-Typen  und  Standard-Skalar-Typen  CHAR  sind  kompatibel. 
+Deshalb  kann man ueberall dort,  wo STRING-Werte  erlaubt  sind, 
+CHAR-Werte  einsetzen und  umgekehrt.  Weiterhin kann man STRINGS 
+und  CHARACTER in Ausdruecken mischen.  Wenn einem CHARACTER  ein 
+STRING-Wert zugewiesen wird,  muss die Laenge des STRING genau  1 
+sein,  sonst  wird  ein Laufzeitfehler angezeigt.  Man  kann  die 
+einzelnen Zeichen einer STRING-Variablen durch Indizierung errei-
+chen.  Dies  geschieht  durch Anfuegen eines Indexausdruckes  vom 
+INTEGER-Typ,  eingeschlossen in eckigen Klammern, an den Bezeich-
+ner der STRING-Variablen.
+
+Beispiele:
+     Buffers[5]
+     Line[Length(Line)-1]
+     Ord(Line[0])
+
+Das  erste Zeichen eines STRING (mit Index 0) enhaelt die STRING-
+Laenge. Dies ist genau der Wert von Ord(Line[0]). Wenn jedoch vom 
+Programmierer der Laengenindikator selbst geaendert wird, muss er 
+auch selbst sichern,  dass dieser die maximale Laenge der STRING-
+Variablen nicht uebersteigt.  Wenn die Compiler-Direktive R aktiv 
+ist {$R+},  wird ein Code generiert,  der sichert,  dass der Wert 
+des  STRING-Index-Ausdruckes  die  maximale  Laenge  der  STRING-
+Variablen nicht uebersteigt.  Es ist jedoch auch moeglich,  einen 
+String ueber seine aktuelle dynamische Laenge hinaus zu  indizie-
+ren.  Die  dann  gelesenen Zeichen haben jedoch  rein  zufaellige 
+Werte  und  haben  keinerlei Bezug zu den wirklichen  Werten  der 
+STRING-Variablen.
+.pa
+

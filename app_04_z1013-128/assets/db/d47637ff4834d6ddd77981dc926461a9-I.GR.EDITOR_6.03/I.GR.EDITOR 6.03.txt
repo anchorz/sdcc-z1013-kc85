@@ -1,0 +1,158 @@
+		========================
+		= GRAFIK-EDITOR   6.03 =
+		=   (c) by rehn-soft   =
+		========================
+
+
+Programmstandort: 0100h - 0C1Fh
+Programmstart   : 0100h
+Restart         : 0103h
+
+Systemzellen    : 0FF0h - 0FFFh
+RAM-Bereich     : 1000h - 173Fh
+
+
+
+Der Grafik-Editor ist in Version 6.03 zum Anschluss eines
+analogen Joysticks ausgelegt.
+Der Grafik-Editor gestattet das schnelle Entwerfen von
+grafischen Bildern am Z1013.  Die Bilder werden auf dem
+Bildschirm im Bereich  EC00h - EF9Fh  entworfen.   Die
+gesamte Entwurfsarbeit wird dabei Menue-gestuetzt.  Durch
+Einbeziehung eines Pseudobildspeicherbereiches (Hintergrund)
+koennen Entwuerfe zwischengespeichert werden.  Vom Haupt-
+menue aus ist es moeglich, fertige Bilder auf Kassette ab-
+zulegen bzw. von Kassette zu laden.  Diese Ladeoperationen
+nutzen den HEADERSAVE ueber den Sprungverteiler des MONITORs.
+Nach Verlassen des Grafik-Editors befindet sich eine ak-
+tuelle Kopie des letzten Bildes im Hintergrundspeicher und
+kann dort weiterverarbeitet werden  (evtl. mit
+"L(S) 1000 13A0", fall HEADERSAVE nicht genutzt wird).
+
+
+
+
+Kommandos des Hauptmenues
+-------------------------
+
+
+
+- ^C(=BREAK) -
+
+Das letzte Bild wird im Hintergrundspeicher abgelegt und zum
+MONITOR des  Z1013  zurueckgesprungen.
+
+
+- M -
+
+Das letzte Bild wird im Hintergrundspeicher abgelegt.  An-
+schliessend erfolgt ein Sprung zum Hauptmenue des Grafik-
+Editors.  Dieses Kommando kann zu jeder Zeit erteilt
+werden.
+
+
+- L -
+
+Es wird ein fertiges Bild (Typ "G") von Kassette in den
+Hintergrundspeicher geladen.
+
+
+- S -
+
+Es wird ein fertiges Bild (Typ "G") aus dem Hintergrund-
+speicher auf Kassette abgelegt.
+
+
+- Z -
+
+Uebergang zum grossen Zeichenmenue des Grafik-Editors und
+Eintritt in den Zeichenmodus (kann zu jeder Zeit erteilt
+werden).
+
+
+
+Kommandos des Zeichenmodus
+--------------------------
+
+
+- M -
+
+Uebergang zum Hauptmenue.
+
+
+- Z -
+
+kleines Zeichenmenue.
+
+
+- L -
+
+Loeschen des Bildes auf dem Bildschirm (Vordergrund).
+
+
+- R -
+
+Hintergrundspeicher wird in den Voerdergrund kopiert.
+
+
+- S -
+
+Hintergrundspeicher wird so in den Vordergrund
+kopiert, dass nur Leerzeichen auf dem Vordergrund
+ueberschrieben werden.
+
+
+- W -
+
+Vordergrund wird in den Hintergrund kopiert.
+
+
+- F -
+
+Eine Flaeche wird mit einem Zeichen gefuellt.
+
+
+- V -
+
+Ein Bereich wird mit dem Cursor verschoben.
+
+
+- A -
+
+Fortgesetztes Aufblenden von ASCII-Zeichen.
+
+
+- T -
+
+Schreiben von Text ab Cursor bis ENT.
+- ENT -
+
+Aufnehmen eines Zeichens.
+
+
+- SP -
+
+Setzen eines Zeichens bzw.(nach Aufforderung)
+des Cursors.
+
+
+
+Anmerkungen
+-----------
+
+Die Abfrageroutiene des analogen Joysticks steht
+von 0120h - 01A9h und kann hier angepasst werden.
+Diese Routiene uebergibt in  IX  die aktuelle Bild-
+schirmposition des Cursors, in (0FF1h) die Spalten-
+position (0-31 von unten gezaehlt) und in (0FF2h)
+die Zeilenposition (0-31 von links gezaehlt).
+
+Die Spruege zum HEADERSAVE stehen auf  011Ah (LORUF)
+und auf  011Dh (SARUF).
+
+Der Grafik-Editor ist im Bereich von  0100h - 0C1Fh
+ROM-faehig, benoetigt aber von 0FF0h - 173Fh RAM-
+Plaetze.
+
+
+

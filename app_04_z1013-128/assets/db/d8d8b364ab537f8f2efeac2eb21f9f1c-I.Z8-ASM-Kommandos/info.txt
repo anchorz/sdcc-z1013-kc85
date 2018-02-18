@@ -1,0 +1,3 @@
+<kurz src="Z8-ASM-Kommandobeschreibung"/>
+<lang><include src="I.Z8-ASM-Kommandos.txt"/></lang>
+<requires></requires>

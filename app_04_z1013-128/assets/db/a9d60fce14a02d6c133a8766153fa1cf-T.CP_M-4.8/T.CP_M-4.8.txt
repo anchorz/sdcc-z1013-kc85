@@ -1,0 +1,111 @@
+****************************************************************
+*
+*  BIOS 4.8 für 2 Ram-Floppy's, ein Floppy-Disc-Laufwerk, wahl-*
+*  weise 64/80-Zeichenbildschirm und Tastaturansteuerung nach  *
+*  Rainer Brosig, angepaßt von Andreas Müller                  *
+*                                                              *
+****************************************************************
+
+1. Allgemeine Bemerkungen:
+
+Das BIOS stellt die hardwareabhängige Componente des CP/M dar.
+Deswegen ist es an den jeweiligen Computer und an die Schnitt-
+stellen anzupassen. Das CCP und BDOS kann von anderen CP/M's
+übernommen werden!
+BIOS 4.8 integriert neben den beiden Ram-Floppy's, einem Floppy-
+laufwerk, 64/80-Zeichenbildschirm, Tastatur und Druckerschnitt-
+stelle. Außerdem gestattet es das automatische Nachladen des CCP
+bei dessen Zerstörung (Puffer von F800H-FFFFH). An den Adressen
+ist schon ersichtlich, daß eine ROM-Abschaltung (OUT 4 , DB 4)
+unabkömmlich ist. Daraus folgt, daß zum Einladen des CP/M ein
+Urlader notwendig ist. Hier bietet sich der SURL50 oder der
+Brosig-Urlader an. Insgesamt erstreckt sich das BIOS von DE00H -
+FFFFH, Start DE00H.
+
+Vorraussetzungen:
+-----------------
+-64k Hauptspeicher (eventuell auf RF-Karte)
+-mindestens eine Ram-Floppy nach MP 3/88
+                 I/O-Adresse Disc A=98H (in DE3CH änderbar)
+                             Disc B=58H ("  DE3DH         )
+-Tastatur nach MP 7/88 (K7652,K7659,K7669 wird unterstützt)
+-Zusatzhardware nach Peters (4 MHz-->für Disc, 64*16 Zeichen,
+ ROM-Abschaltung,Zeichengeneratorumschaltung)
+-Disc-Floppy 1.2"-1.6", auch mit Shugard-Bus
+
+Begünstigungen:
+---------------
+-Textgraphikplatine mit GDC für 80*25 Zeichen-Bildschirm
+
+Bedienung:
+----------
+
+Alle Handlungen entsprechen dem normalen CP/M. Die RAM-Floppy's
+A und B müssen nach dem Start initialisiert werden. Laufwerk C -
+F entsprechen verschiedenen Formaten des angeschlossenen Lauf-
+werks (wird beim Start angezeigt!)
+Befehle und Leistungen des CP/M entsprechen sonst den Vorgänger-
+versionen. Darüberhinaus sollten noch folgende Ergänzungen be-
+schrieben werden.
+
+1. Floppyanschluß:
+------------------
+
+Je nach Wahl des Laufwerkes können verschiedene Aufzeichnungsfor-
+mate in dem CP/M verwendet werden. Fehlermeldungen sind im BIOS
+integriert. Folgende Adressen wurden zur Ansteuerung verwendet:
+F0H	Steuerung FDC
+F1H	Daten FDC
+F8H	Terminal Count
+F6H	Motor ein
+F2H	Motor aus
+FAH	Reset FDC (Soft-Reset)
+
+2. Tastatur 
+-----------
+
+Unterstützt werden die obengenannten Tastaturen. Verändert
+wurden die bekannten Tastaturen hinsichtlich Funktionstasten,
+Stringfunktionen und Cursorfunktionen. Letztere sind den CP/M-
+Pfeiltasten angepaßt. Die Funktionstasten sind durch die
+Umschaltmöglichkeiten 64/32-Zeichen, 2/4 Mhz, Zeichengenerator,
+Inversdarstellung (59,69) und Speed (59) gekennzeichnet. Die
+Lage der einzelnen Tasten ist durch Probieren auszutesten. Die
+Stringtasten sind durch CP/M-Strings belegt (Shift+^ drücken.
+Auch hier gilt ausprobieren. Andere Tastaturen müssen mindestens
+die Control und die Escape-Taste besitzen. Die Matrix sollte
+ebenfalls gleich sein!
+
+3.Bildschirm
+------------
+
+Sollte eine GDC-Karte installiert sein, kann ein 80*24 Zeichen
+Bildschirm bei allen CP/M-Programmen eingestellt werden.
+Weiterhin ist eine Statuszeile vorgesehen, die die wichtigsten
+Parameter, wie Frequenz, Laufwerk unf Fehlermeldungen anzeigt.
+
+4. Druckereinbindung
+--------------------
+
+OUT-Adressen : 34H,35H ----> E/A-Modul Riesa
+               0,1     ----> Userport
+
+Der Sprung zur Druckerroutine steht in DE0FH. Die Abfrage des
+Status in DE2DH. Realisiert ist eine V24-Schnittstelle, die
+selbst die Taktfrequenz erkennt.
+Folgende Bitbelegungen :  Bit 0 ----> RxD (Datenübertragung)
+                          Bit 3 ----> CTS (Empfangsbereitschaft)
+
+Sollten andere Bitbelegungen oder anderer Treiber (z.B. CENTRO-
+NIC) verwendet werden, kann ja der Treiber reassembliert werden
+und Bit oder Treiber geändert werden.
+
+Sollten schwerwiegende Fragen entstehen, kann Nachfrage erfolgen
+(biite mit frankierten Rückumschlag). Viel Spaß beim Arbeiten!!
+
+
+Andreas Müller
+Humboldtstr. 10
+Jena
+6900
+

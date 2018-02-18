@@ -1,0 +1,3 @@
+<kurz src="TURBO-Pascal Beschreibung"/>
+<lang><include src="_.TURBO3.DOK.txt"/></lang>
+<requires></requires>

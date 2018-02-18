@@ -1,0 +1,22 @@
+<kurz src="Utility, lädt Programme in den Bildschirmspeicher"/>
+<lang>Lädt Daten immer wieder in den Bereich von 0xEC00-0xEFFF. Abbruch, wenn ENTER betätigt wird.
+
+Wenn das Programm mit einem Header versehen ist, dann erscheint er zusammen mit dem
+Inhalt der Datei auf dem Bildschirm. So kann man sich einen Überblick über den Inhalt der
+Kassette verschaffen.
+
+0100  21 00 EC         LD      HL,0EC00H
+0103  22 1B 00         LD      (001BH),HL
+0106  21 FF EF         LD      HL,0EFFFH
+0109  22 1D 00         LD      (001DH),HL
+010C  CD F8 F3         CALL    0F3F8H
+010F  3E 0C            LD      A,0CH
+0111  E7               RST     20H
+0112  00               DB      00H               ;OUTCH
+0113  CD FA FF         CALL    0FFFAH
+0116  FE 0D            CP      0DH
+0118  38 E6            JR      C,0100H
+011A  FF               RST     38H
+
+</lang>
+<requires></requires>
