@@ -1,0 +1,5 @@
+<kurz src="Universelles Manipulationsprogramm für Diskettenarbeit"/>
+<lang>andere Version, nochmal abgetippt?
+
+<include src="i.POWER.COM.txt"/></lang>
+<requires></requires>

@@ -1,0 +1,549 @@
+
+Nutzerdokumentation (Stand 15.10.84)
+
+Tableauprogramm SUPERCALC (1.12.)
+---------------------------------
+
+1.   Allgemeines
+----------------
+1.1. Das Tableau
+
+SUPERCALC  ist ein CP/M-compatibles Programmpaket,  welches  sich 
+aus drei Dateien zusammensetzt:
+   SC.COM  24 K-Byte  resisdente Befehlsdatei
+   SC.HLP   9 K-Byte  transiente Hilfsmenuedatei
+   SC.OVL  14 K-Byte  transiente Funktionsueberlaufdatei
+Mit  ihrer  Hilfe wird im verbleibenden Hauptspeicher (bei  64-K-
+Rechnern   ca.   20   K-Byte)   ein  Tableau   mit   63   Spalten 
+(gekennzeichnet durch die Buchstaben A-Z,  AA-AZ und BA-BK) sowie 
+254  Zeilen (Nr.  1-254) generiert.  Die Spalten  koennen,  unab-
+haengig  von der zwischen 0 bis 126 Zeichen  waehlbaren  Ausgabe-
+breite,  je Zeile ein Element aufnehmen,  welches damit eindeutig 
+durch  Spaltenbuchstabe  und Zeilennummer adressiert werden  kann 
+(z.B.  AG123).  Ein  Element wiederum kann jederzeit 116  Zeichen 
+Text  oder Formeln (10 Zeichen bleiben Format-und  Steuerzeichen) 
+aufnehmen.  Zahlen  koennen  maximal  mit  16  Stellen  angegeben 
+werden,  wobei ein Faktor 10exp+/-63 (z.B.  0.12345678901234e-63, 
+d.h.,  e steht fuer die Basis 10) ausreichende  Groeszenordnungen 
+ermoeglicht.
+
+Die  Formelbelegung der Felder enthaelt die Voraussetzungen viel-
+faeltigste  Beziehungen der Elemente (Zahlen-und  Formelfelder  / 
+Textfelder  haben den Wert = 0) zu definieren,  die bei Aenderung 
+eines  Elementes automatisch oder auf Befehl alle  neu  berechnet 
+werden.  Damit ensteht die Moeglichkeit,  ein geschaffenes Schema 
+zum Variantenspiel beliebig oft zu benutzen.  Neben der Anwendung 
+als  direktes Hilfsmittel eines Leiters zur  Entscheidungsfindung 
+sollen  mit Projektierung,  Bilanzierung,  Planung und Abrechnung 
+(z.B.  durch das Arbeiten mit vertrauten Formblaettern) nur  vier 
+Eisatzgebiete genannt werden.
+
+1.2. Kommunikation Nutzer-SUPERCALC
+
+Nach  dem  Laden des Betriebssystems (M/OS ab Version 3) und  der 
+SUPERCALC enthaltenden Komponentenkassette wird die  Befehlsdatei 
+aufgerufen:
+            sc(ENTER)
+Das  erscheinende  Titelbild kann durch einen beliebigen  Tasten-
+druck  uebersprungen werden und der Bildschirm zeigt  den  linken 
+oberen  Ausschnitt  des unter 1.1.  beschriebenen  Grundtableaus. 
+Unter diesem "Fenster" sind noch weitere drei Zeilen zu sehen:
+            1. Statuazeile
+            2. Mentor
+            3. Eingabezeile
+Ueber diese Zeilen erfolgt die gesamte Kommunikation. Sie enthal-
+ten folgende Informationen:
+zu 1.- Tableaukursorprogrammirung (angezeigt durch Pfeilsymbol)
+     - Adresse, Formatierung und Inhalt des aktuellen Elements
+       (Dort befindet sich der Tableaukursor gerade.)
+     - Fehlerausschriften des Betriebssystems
+
+zu 2.- Ausgabebreite der aktuellen Spalte (in Zeichen)
+     - noch verfuegbarer Speicherbereich (in K-Byte)
+     - letztes z.Z.  in Benutzung befindliches Element (links un-
+       ten) zur Eingrenzung des beschriebenen Bereichs
+     - Hinweis  des Mentors zur Fortsetzung der Arbeit  (staendig 
+       kann mit Fragezeichen ein Hilfsmenue aufgerufen werden)
+
+zu 3.- laufende Nummer des aktuellen Zeichens in der Eingabezeile
+     - fuer  die Eingabe in das aktuelle Element bzw.  fuer  eine 
+       Befehlmontage erstellte Zeichenfolge
+
+Hat man sich aber bei einer Eingabe vertippt,  ist das gleich  in 
+der  Eingabezeile korrigierbar,  da die vier Richtungspfeiltasten 
+fuer den Kursor der Eigabezeile entsprechende Bedeutung haben und 
+alle Zeichen (auszer Startsymbole) muehelos ueberschrieben werden 
+koennen:
+
+Pfeil rechts:  ein Zeichen nach rechts bzw. Freizeichen
+Pfeil links :  ein Zeichen nach links
+Pfeil tiefer:  loeschen des aktuellen Zeichens und  Verschieben 
+               des Folgetextes um ein Zeichen nach links
+Pfeil hoeher:  verschieben des aktuellen Zeichens einschlieszlich 
+               des  Folgetextes  um ein Zeichen nach  rechts  und 
+               einfuegen eines Freizeichens
+
+Durch  (CTRL)z  kann  auch  die  gesamte  Eingabezeile  geloescht 
+werden.  Alle  Eingaben von Daten (Zahlen,Formeln und Text)  sind 
+mit  (ENTER)  abzuschlieszen.  Bei der  Befehlsmontage  gibt  der 
+Mentor  gesonderte  Hinweise.  Bei Fehlerausschriften des BS  ist 
+entweder die Befehlseingabe nach Beheben des Fehlers (z.B. Kasste 
+laden) zu wiederholen oder nach Abbruch von neuem mit der  Arbeit 
+zu beginnen.
+
+1.3. Zur Kapazitaet
+
+Das  im  Hauptspeicher generierte Tableau ist natuerlich mit  den 
+verbleibenden 20 K-Byte nicht auszuschoepfen.  Z.B.  koennen  bei 
+einer  Eingabe von 6 Zeichen je Element etwa 3400 Elemente  - ca. 
+20%  der Gesamtheit - belegt werden.  Ganz abgesehen davon,  dasz 
+damit schon erhebliche Probleme loesbar sind,  bietet das  grosze 
+Tableau  die Moeglichkeit einer Untergliederung in Daten-und Pro-
+blembereiche. Letztere koennen dann strukturiert und nacheinander 
+abgearbeitet  werden,  da die dort enthaltenen Formeln  oft  viel 
+Speicherplatz   benoetigen.   So   sind  mit  etwas   gestiegenem 
+Zeitaufwand auch groeszere Aufgaben loesbar.
+
+
+
+
+
+2.   Befehle und Funktionen
+----------------------------
+2.1. Startsymbole
+
+Startsymbole stehen am Anfang einer Eingabe und beschreiben ihren 
+Charakter bzw. loesen direkte Reaktionen aus:
+/ ... Beginn eines Befehls
+" ... Beginn eines Textelements
+` ... Beginn eines Wiederholungstextes (z.B. Unterstreichung) bis
+      zum naechsten belegten Element
+= ... Beginn  eines  Sprungbefehls,  dem die anzuspringende Feld-
+      adresse folgt
+! ... Berechnungsbefehl fuer das gesamte Tableau (auszer in Text-
+      feldern)
+; ... Wechsel  des  Tableaukursors in die alternative Bildschirm-
+      haelfte (nach einer Bildschirmteilung)
+ 
+Alle anderen Zeichen werden als Beginn eines Zahlen-bzw.  Formel-
+feldes interpretiert.
+
+2.2. Adressierung von Feldern
+------------------------------
+
+Zur  Montage von Befehlen werden neben den Startsymbolen und  den 
+Befehlsbuchstaben  noch  Adressen von Einzelfeldern  oder  ganzen 
+Feldgruppen   benoetigt.    Dabei   sind   folgende   Faelle   zu 
+unterscheiden:
+
+cell (Einzelfeld) Spaltenbuchstabe und Zeilennummer (ENTER)  oder 
+                  wenn  es  sich  um die  Adresse  des  aktuellen 
+                  Elements handelt nur:   (ENTER)
+row  (Zeile)      Zeilennummer (ENTER) oder bei aktueller  Zeile 
+                  nur:   (ENTER)
+column  (Spalte)  Spaltenbuchstabe (ENTER) oder  bei  aktueller 
+                  Spalte nur:   (ENTER) 
+block   (eine von zwei Eckelementen-links oben oder rechts unten-
+         begrenzte Menge von Elementen)
+         Spbuchst.Zeilennr.   :Spbuchst.Zeilennr.   (ENTER)
+range   (Reihe)   wahlweise cell oder block
+
+2.3. Befehle
+
+Befehle  untergliedern  sich  in  den  Grundbefehl  und  einzelne 
+Parameter.  Dabei  kann  es sich um  Befehlsworte  oder  Adressen 
+handeln.  Die  Eingabe  der Befehlsworte erfolgt nur durch  ihren 
+Anfangsbuchstaben.   Vor   der  Befehlsliste  sind  jedoch   drei 
+grundlegende Bemerkungen notwendig:
+
+1) Die Grundfunktionen des Betriebssystems M/OS werden groeszten-
+teils vom Tableauprogramm realisiert und der Nutzer ist nicht ge-
+zwungen das Programm zu verlassen.
+
+- Loeschen einer Datei (erase) ueber:   / d(elete) f(ile) ...
+- Sichern einer Datei (save) ueber  :   / s(ave) ...
+- Ausgeben einer Datei (type) ueber :   / o(utput) ...
+- Anzeigen eines Speicherverzeichnisses (directory) ueber:
+       / l(oad) ... / s(ave) ... oder / x(execute) ...
+       ohne die Angabe eines Dateinamens
+
+       Dabei  sind  sowohl Laufwerkwechsel (chose disk)  wie  der 
+       Aufruf  eines speziellen Verzeichnisses  fuer  CAl-Dateien 
+       (supercale directory) moeglich.  Dieses liest jeweils alle 
+       Elemente  A1  und  schreibt ihren Inhalt  zum  Dateinamen. 
+       Somit  besteht  die Moeglichkeit,  die  kurzen  Dateinamen 
+       durch einen Text bis zu 116 Zeichen zu kommentieren.
+
+- Umbenennung einer Datei (rename) nur fuer CAL-Dateien ueber:
+       / l(oad) ... und / s(ave) ... (mit anderen Namen)
+
+2) Bei einer Reihe von Befehlen (copy,load und replicate) ist  es 
+moeglich, als letzten Teil adjustment-Parameter zu unterscheiden, 
+mit   denen   die   Adressinhalte  der  Elemente   entgegen   dem 
+automatischen  Anpassungsverfahren nur teilweise oder  gar  nicht 
+angepaszt  uebertragen  bzw.   nicht  uebertragen  werden.  Diese 
+Parameter sind:
+
+n(o adjust) ... unveraenderte Uebertragung aller Adressen
+a(sk for adjust) ...  es wird gefragt, welche Adressen anzupassen 
+                      und welche konstant zu uebertragen sind
+v(alue) ... es werden nur die Werte (Zahlen oder Text) aber nicht 
+            die Fojmeln uebertragen
+
+3) Dateinamen sind 1-8 Stellen lang (keine Leerzeichen) und durch 
+einen Punkt von ihrer Klassebezeichnung getrennt.  Diese wiederum 
+umfaszt 0-3 Zeichen,  d.h., bei 0 Zeichen wird die Standardklasse 
+(CAL-Dateien)  angenommen und der Trennungspunkt entfaellt.  Soll 
+eine  Datei von einem anderen Laufwerk (aktuelles  Bezugslaufwerk 
+enthaelt SC-Dateien) geladen bzw.  dorthin gespeichert werden, so 
+sind  vor dem Dateinamen Laufwerksbuchstabe und Doppelpunkt  ein-
+zugeben.
+
+z.B. :   c:computer.cal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Befehlswort         Aufbau und Inhalt
+-----------------------------------------------------------------
+
+b(lank)             / b range (ENTER)
+                    Loeschen der Elementeinhalte einschlieszlich 
+                    Einzelformaten
+
+
+
+Befehlswort         Aufbau und Inhalt
+-----------------------------------------------------------------
+
+c(opy)              / c quellrange (ENTER) zielcell (ENTER) oder
+                      adjustment
+                    Einfaches Kopieren von Elementeinhalten (vom
+                    Zielblock  musz  nur das linke obere  Element 
+                    als Adresse angegeben werden)
+
+d(elete)            / d 1.Parameter 2.Parameter (ENTER)
+                    Loeschen einer Zeile, Spalte oder Datei; bei 
+                    Zeile  bzw.  Spalte werden  die  Folgespalten 
+                    bzw.-zeilen nachgerueckt und ihre Adressen 
+                    automatisch umgewandelt
+
+1.Parameter:
+
+c(olumn)            Loeschen einer Spalte - 2.Param.:Sp.buchstabe
+r(ow)               Loeschen einer Zeile  - 2.Param.:Zeilennummer
+f(ile)              Loeschen einer Datei -ohne 2.Param.:directory
+                                         -2.Param.:Dateiname
+
+e(dit)              / e cell (ENTER)
+                    Den  Inhalt des angegebenen Elements  in  die 
+                    Eingabezeile schreiben (z.B. zur Korrektur)
+
+f(ormat)            / f 1.Param.  2.Param.  (ENTER)  Param.liste 
+                    (ENTER)
+                    legt Ausgabeformat fest
+
+1.Parameter:
+
+g(lobal)            Formatieren des Tableaus - 2.Param.:entfaellt
+c(olumn)            Formatieren einer Spalte -2.Param.:Sp.buchst.
+r(ow)               Formatieren einer Zeile - 2.Param.:Zeilen-Nr.
+e(ntry)             Formatieren von Einzelelementen-2.P.:range
+   
+Parameterliste:     Die folgenden Parameter koennen teilweise
+                    alternativ durch Komma getrennt in der ver-
+                    wendeten Reihenfolge angegeben werden.
+
+i(nteger)           Ausgabe gerundeter ganzzahliger Zahlenwerte
+g(eneral)           Ausgabe im Eingabeformat mit Gleitkomma, bei
+                    zu geringer Ausgabebreite in Exponential-
+                    schreibweise
+
+e(xponential)       Ausgabe in Exponentialschreibweise (e steht 
+                    fuer die Basis 10)
+$(Dollarsymbol)     Ausgabe von Zahlen mit zwei Kommastellen
+r(ight)/l(eft)      Ausgabe von Zahlen rechts-/linksbuendig
+t(ext)r/t(ext)l     Ausgabe von Text rechts-/linksbuendig
+*(Sternsymbol)      Ausgabe einer einfachen Wichtungsgrafik mit
+                    *-Balken
+d(efault)           setzt Ausgabestandard (g,r,tl)
+(column  idth)      Festlegen der Ausgabespaltenbreite als Ziffer
+
+g(lobal)            / g Parameter
+                    gestattet den Wechsel globaler Ausgabe-,
+                    Kursor-bzw. Rechenregeln  fuer das ganze 
+                    Tableau
+
+Parameter:
+
+f(ormeln)           Alternative Ausgabe von Formeln oder ihren
+                    Ergebnissen
+n(ext)              Ein-/Ausschalten der Kursorschrittautomatik
+                    (Kursorbewegung um ein Element in gleicher
+                    Richtung nach Beenden einer Eingabe)
+b(order)            Ein-/Ausschalten der Zeilenbeschriftung
+t(ab)               Ein-/Ausschalten der Kursorsprungautomatik
+                    (Ueberspringen leerer bzw. schreibge-
+                    schuetzter Elemente)
+c(olumn)/r(ow)      Berechnung des Tableaus spalten-/zeilenweise
+m(anual)/a(uto)     Ein-/Ausschalten der Berechnungsautomatik
+                    nach jeder Eingabe
+
+i(nsert)            / i 1.Param. 2.Param. (ENTER)
+
+                    Einfuegen einer Spalte bzw. Zeile, wobei der
+                    Platz durch Verschieben der nachfolgenden und
+                    durch Loeschen der letzten Spalte bzw. Zeile
+                    geschaffen wird. Adressen werden automatisch 
+                    angepaszt.
+
+1.Parameter:
+
+c(olumn)            Einfuegen einer Spalte - 2.Param.:Sp.buchst.
+r(ow)               Einfuegen einer Zeile  - 2.Param.:Zeilen-Nr.
+
+l(oad)              / l dateiname (ENTER) 1.Param. 2.Param. 
+                    (ENTER) 3.Param. (ENTER) oder, adjustment
+                    Laden einer Tableaudatei der Klasse CAL vom
+                    externen in den Arbeitsspeicher
+
+dateiname           Ohne Dateiname:directory
+
+1.Parameter:
+
+a(ll)               Einlesen des gesamten Tableaus und Uebername
+                    seiner Formatbefehle; 2.und 3.Param. entfallen
+
+Befehlswort         Aufbau und Inhalt
+------------------------------------------------------------------
+
+p(art)              Einlesen eines Tableauausschnittes und nur 
+                    Ubername von Einzelelementformaten entweder
+                    a(ll)...einschlieszlich aller Formeln oder
+                    v(alues)...ohne Formeln
+                    2.Param.:quellrange; 3.Param.:zielcell
+
+m(ove)              / m 1.Param. 2.Param.(ENTER) 3.Param.
+                    (ENTER)
+                    Verschieben einer Spalte bzw. Zeile mit 
+                    automatischer Adressenaenderung          
+
+1.Parameter:
+
+c(olumn)            Spaltenverschiebung; 2.Param.:Quellsp.buchst.
+                                         3.Param.:Zielsp.buchst.
+r(ow)               Zeilenverschiebung ; 2.Param.:Quellzeilennr.
+                                         3.Param.:Zielzeilennr.
+
+o(utput)            / o 1.Param. range (ENTER) 2.Param.        
+                    Ausgabe des Tableaus
+
+1.Parameter:
+
+d(isplay)           Ausgabe in der Form, wie sie auf dem Bild-
+                    schirm gerade sichtbar ist 
+c(ontens)           Ausgabe der Formeln als Protokoll (je Zeile 
+                    ein Element)
+
+2.Parameter:
+
+s(etup)             Ausgabe ueber Datenfernuebertragungsleitung
+                    (bei ensprechendem Anschlusz)
+c(onsole)           Ausgabe ueber Bildschirm
+p(rinter)           Ausgabe ueber Drucker, wobei vor dem Seiten-
+                    vorschub  zum  evtl.  Papierwechsel  gewartet 
+                    wird (Druckfortsetzung mit ENTER)
+o(utput)            Ausgabe einer PRN-Datei auf externen Speicher
+                    die auch andere M/OS-Komponenten bearbeiten 
+                    koennen.
+
+p(retsot)           / p range (ENTER)
+                    Schutz von Elementen vor dem unbeabsichtigten
+                    Ueberschreiben
+
+q(uit)              / q (y/n)
+                    Verlassen des Tableauprogramms und Sprung in 
+                    das Betriebssystem (Das gasamte Tableau wird
+                    unwiederruflich zerstoert.) mit y(es).
+                    Sonst n(o).
+
+
+
+Befehlswort         Aufbau und Inhalt
+-----------------------------------------------------------------
+
+r(eplicate)         / r quellrange(ENTER) zielrange (ENTER) oder,
+                    adjustment
+                    Mehrfaches Kopieren einer Reihe von Elementen
+                    (kein Block), wobei ziejrange die Menge der 
+                    ersten Elemente jeder Kopie umfaszt.
+
+s(ave)              / s dateiname (ENTER) 1.Param. 2.Param.       
+                    (ENTER) oder, adjustment               
+                    Sichern eines Tableaus durch Kopieren auf ex-
+                    ternen Speicher als CAL-Datei
+
+dateiname           Existiert der eingegebene Dateiname schon, so
+                    gibt es hier noch einen Wahlparameter:
+                    c(ange name) ... Dateiname der zusichernden
+                                     aendern
+                    b(ackup) ... Erhalten der vorhandenen Datei
+                                 mit gleichen Namen als BAK-Datei
+                    o(verwrite) ...Ueberschreiben der alten Datei
+                    Schlieszlich ohne dateiname: directory
+
+1.Parameter:
+
+a(ll)               Sichern des gesamten Tableaus einschlieszlich
+                    der Formeln fuer resultierende Elemente
+                        2.Parameter: entfaellt
+p(art)              Sichern eines Teils des Tableaus-Hier gibt es
+                    die Moeglichkeit zu waehlen:
+                    a(ll) ... Sichern einschlieszlich der Formeln
+                    v(alues) ... Sichern ohne Formeln
+                        2.Parameter: range
+v(alues)            Sichern des gesammten Tableaus ohne Formeln
+                        2.Parameter: entfaellt
+
+t(itle)             / t Parameter
+                    Definition (durch Kursorpossitionierung) von
+                    Titelspalten und/oder -zeilen, die bei Ver-
+                    schiebung auf dem Bildschirm sichtbar bleiben
+
+Parameter:
+
+v(ertical)          Fixiert alles links von der aktuellen Spalte
+                    (einschlieszlich derselben)
+h(orizontal)        Fixiert alles ueber der aktuellen Zeile (ein-
+                    schlieszlich derselben)
+b(oth)              Umfaszt vertical und horizontal
+c(lear)             Aufloesen der Titelfixierung
+
+u(nprotect)         / u range (ENTER)
+                    Aufheben des Schreibschutzes von Elementen
+
+
+
+Befehlswort         Aufbau und Inhalt
+-----------------------------------------------------------------
+
+w(indow)            / w Parameter
+                    Teilen des Bildschirms in zwei Teile, indem 
+                    an der aktuellen Spalte/Zeile eine Koordina-
+                    tenleiste  angelegt wird (Kursorsprung  durch 
+                    ;)
+
+Parameter:
+
+v(ertical)          Vertikale Bildschirmteilung
+h(orizontal)        Horizontale Bildschirmteilung
+c(lear)             Aufloesen der Bildschirmteilung
+s(ynchr)/n(syn.)    Paralleles/unabhaengiges Rollen  der  beiden 
+                    Bildschirmteile
+
+x(execute)          / x dateiname (ENTER)
+                    Akzeptiert Befehle und Daten einer PRN-Datei,
+                    durch Eintragen und Berechnen beginnend mit 
+                    dem aktuellen Element
+
+dateiname:          Ohne Dateiname: directory
+
+z(ap)               / z (y/n)
+                    Loeschen  des  gesamten  Tableauinhalts  (un-
+                    wiederruflich) mit y(es)-ja, sonst n(o)-nein
+
+2.4. Funktionen
+---------------
+
+Als Funktionen fuer ein Element sind beliebige Verknuepfungen der 
+folgenden     Grundrechenarten     und     Funktionsworte     mit 
+Elementeadressen  moeglich.  Dabei  kann die auch  hier  gueltige 
+Reihenfolge    der    Berechnung    (hoehere    Funktionen    vor 
+Multiplikation/Division  vor Addition/Subtraktion) beliebig durch 
+das Setzen von runden Klammern variiert werden.  Der  Bindestrich 
+gilt  als negatives Vorzeichen.  Fuer einen Term kann also  immer 
+eine  Ziffer,  eine  Elementaradresse oder eine weitere  Funktion 
+stehen.
+
+2.4.1. Rechenopperationen
+
+Term1-Term2             Subtraktion
+Term1+Term2             Addition
+Term1*Term2             Multiplikation
+Term1/term2             Division
+SQRT(Term)              Quadratwurzel
+Term1 Term2             Potenz zur Basis (Term1)  mit  Exponent 
+                        (Term2)
+EXP(Term)               Potenz zur Basis 10
+LN(Term)                Natuerlicher Logarithmus
+LOG10(Term)             Dekadischer Logarithmus
+SIN(Term)
+COS(Term) 
+TAN(Term)
+ASIN(Term)              Arcussinusfunktion
+ACOS(Term)
+ATAN(Term)
+ABS(Term)               positiver Zahlenwert
+IWT(Term)               Loeschen des Dezimalanteils  einer  Zahl 
+                        ohne Rundung
+PI                      PI mit 15 Dezimalstellen
+
+2.4.2. Logische Funktionen
+
+Ist eine Aussage wahr,  so wird der Wert 1 angenommen - sonst der 
+Wert 0.
+
+Term1= Term2            Term1 gleich Term2
+Term1  Term2            Term1 ungleich Term2
+Term1  Term2            Term1 kleiner als Term2
+Term1 =Term2            Term1 kleiner gleich Term2
+Term1  Term2            Term1 groeszer als Term2
+Term1 =Term2            Term1 groeszer gleich Term2
+AND(Term1,Term2)         logisches und
+OR(Term1,Term2)          logisches oder (schlieszt und ein)
+NOT(Term)                Negation der Aussage
+IF(Term1,Term2,Term3)    Wenn Term1 wahr ist, wird Term2 ausge- 
+                         fuehrt, sonst Term3
+
+2.4.3. Spezielle Funktionen
+
+COUNT(range)             Zaehlt  die belegten Elemente in  einem 
+                         Bereich
+LOORUP(term,range)       Sucht  das Ergebnis des  Terms  in  dem 
+                         durch range bezeichneten Bereich (musz
+                         in     einer    Spalte/Zeile     liegen, 
+                         Zahlenwerte aufsteigend) und uebertraegt 
+                         den in seinem Nachbarelement stehenden
+                         Zahlenwert.  Nachbarelemente  liegen bei 
+                         Spaltenvektoren in der rechten Nachbar-
+                         spalte und bei Zeilenvektoren eine Zeile
+                         tiefer.
+MAX(range)               Sucht  maximalen Zahlenwert im  angege-
+                         benen Bereich
+MIN(range)               Sucht   minimalen    Zahlenwert    im 
+                         angegebenen Bereich
+SUM(range,range...)      Summieren aller Elemente eines oder  
+                         mehrerer Bereiche
+AVERAGE(range,...)       Arithmetisches Mittel aller Elemente 
+                         eines oder mehrerer Bereiche
+NPV(Rate,range)          Berechnung der kummulativen Zinsen fuer
+                         die     Zahlenwerte    eines    Spalten-
+                         /Zeilenbereichs entsprachend der dezimal 
+                         anzugebenden Zinsrate(z.B.5%  entspricht 
+                         0.05)
+
+             

@@ -1,0 +1,3 @@
+<kurz src="SCP Assembler Teil 9B"/>
+<lang><include src="I.ASM.COM DOC9B.txt"/></lang>
+<requires></requires>

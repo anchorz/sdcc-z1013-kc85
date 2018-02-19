@@ -1,0 +1,295 @@
+
+  
+
+E*POWER*F
+
+Universelles Manipulationsprogramm fuer Diskettenarbeit
+=======================================================
+
+
+Aufruf  des Programmes unter seinem Namen:
+
+          POWER
+
+Danach  wird ein Buchstabe zur Kennzeichnung eines Laufwerks (i.a. 
+A:)  ausgegeben. Wird ein anderes Laufwerk gewuenscht, kann dieses
+  
+mit  der  Eingabe der Laufwerkbezeichners  (z.B.  B:)  angewaehlt 
+werden.  Die nachfolgende Eingabe kann ein Kommando sein. Einige
+ Kommandos  zeigen  auf dem Bildschirm die Directory  (evtl. 
+nur  Dateigruppen) an mit einer laufenden Nummer. Diese Nummer
+dient zur Kennzeichnung der Datei zur weiteren Bearbeitung des 
+Kommandos. Nach der Frage "SELECT:" kann nun eine, mehrere oder 
+Gruppen von Dateien durch diese Nummer angegeben werden. Die 
+Ziffern sind durch Leerzeichen voneinander zu trennen, Bereiche 
+werden durch Anfang und Ende, mit Minus (-) verbunden angegeben.
+ Fehlt bei einem Bereich die Angabe des Endes, wird bis zur 
+letzten Nummer der Bereich gesetzt (z.B. 1 2 5-7 9-). 
+
+Nach einem Kommando kann eine Dateigruppenbezeichnung angegeben 
+werden, wenn das sinnvoll ist. Die Anzeige und Auswahl erfolgt 
+dann nur fuer diese Dateigruppe. Ein Laufwerkbezeichner vor
+dieser Angabe oder auch nur der Laufwerkbezeichner allein lassen
+ das Kommando auf dem angegebenen Laufwerk wirksam werden.
+
+Werden Disketten gewechselt waehrend der Arbeit mit POWER, dann 
+ist  ^C vor der weiteren Eingabe zu geben, sonst wird dies durch
+ eine Ausschrift verlangt. ^C unterbricht ausserdem jedes
+Kommando,waehrend ESC (Escape) ein Kommando abbricht.
+
+Das Zeichen BS (Backspace) gestattet die Korrektur einer
+Kommandozeile vor der Eingabe des abschliessenden RETURN.
+
+Zusaetzlich koennen bei jedem Kommando weitere Optionen,in
+eckige Klammern eingeschlossen, angegeben werden.Fehlt diese
+Angabe, wird ein Standard gesetzt, der mit dem Kommando LOG auf 
+dem Bildschirm angezeigt werden kann. 
+Alle Kommandos koennen durch Eingabe eines Fragezeichens 
+(Helpfunktion) angezeigt werden,bei falschen Kommandos wird auf 
+diese Moeglichkeit hingewiesen.
+
+Auswahl des Laufwerkes:       A:, B:,...,D:
+oder auch  1:, 2:,...,9:
+Die Angabe eines Kassettenlaufwerkes ist nicht moeglich.
+
+Auswahl der Files:
+Angabe einzeln:               1 3  7...
+Angabe fuer Gruppen:          3-8; 8-  (8 bis  Ende)
+
+Folgende  Abkuerzungen werden in der Beschreibung  der Kommandos
+ verwendet:      com       Kommando
+     ufn  Filename
+     adr       Adresse, hexadezimal  angegeben
+
+EKommandos:F
+E==========F
+  
+ECHECKF  -  Kontrollsumme gesamt
+Errechnet eine Kontrollsumme fuer die ausgewaehlten Dateien.
+ 
+ECM aadr eadr adr2F    -  vergleicht  Speicher aadr..eadr mit
+aadr. Es wird ein byteweiser Vergleich der Speicherinhalte
+durchgefuehrt und Abweichungen mit Adresse und Inhalt angezeigt.
+
+ECOPYF                 -  Kopieren von Dateien
+Die ausgewaehlten Dateien werden auf ein anderes Laufwerk
+kopiert. Die Optionen sind:    
+  [A]  automatisches Kopieren auch der Ueberlagerungen
+  [B]  automatisches Aendern der Namenserweiterung in .BAK
+  [C]  fragt, wenn File bereits existiert
+  [D]  loescht automatisch vorhandene Files gleichen Namens
+  [T]  stellt die Reihenfolge des Kopierens nach der Groesse
+  [M]  markiert originale und kopierte Files
+  [Q]  aendert den Namen waehrend des Kopierens 
+
+
+EDIR [UXi]F  Anzeige der Directory
+U - alle USER-Felder    
+X - alle gewuenschten Laufwerke
+i - Anzahl der Spalten
+Kennzeichnung der Files:
+    *    - File ist R/O (schreibgeschuetzt)
+    (..) - File ist SYS (systemgeschuetzt) 
+Durch  die  Option  [S] kann die Anzeige von Systemfiles unter-
+drueckt werden.
+
+
+EDISKF  - Anzeige des DISK-Status
+
+EDUMP adrF            - Anzeige eines Speicherbereiches in
+ASCII Die  Anzeige  erfolgt als Text. Alle nicht druckbaren
+Zeichen  werden nicht angezeigt. 
+
+EDUMPXF               - HEX- und ASCII- Anzeige auf Bildschirm
+EDUMPHF               - HEX- Anzeige auf Bildschirm
+EDUMPAF               - ASCII- Anzeige ohne Tabulatoren
+Die Adresse kann folgend angegeben werden:
+     . - 128 Bytes ab aktueller Position
+     ,i- i Bytes   ab     "         "
+     ,,- weiter    ab     "         "
+  adr  - 1 Byte von adr
+  adr,i- i Byte ab adr 
+  adr, - 128 Bytes von adr
+  adr,,- alle Bytes 
+
+EERAF  - Loeschen der ausgewaehlten Dateien
+EERA [R]F             - Loeschen mit vorheriger Frage
+
+  
+EEXITF                - verlaesst POWER mit Speichertest 
+(? wenn Fehler)
+  
+EFILL aadr eadr byteF - Fuellt Speicher von aadr-eadr mit byte
+
+EGO ufn adrF          -  laedt File ufn nach adr und startet
+es 
+  
+EGROUPF               -  Zeigt alle Filegruppen auf Display an
+Die Filegruppen sind die Dateibloecke, die in der Directory  die
+ gestreute Speicherung auf Diskette angeben. Es wird die
+logische Nummer jedes verwendeten Dateiblockes der Datei
+angegeben, vor jeder Angabe steht noch die Extend-Nummer.
+
+EJP adr argF          -  startet Programm ab adr
+dann  wird  Warmstart ausgefuehrt. arg ist Kommandozeile wie im 
+Betriebssystem.
+  
+EEX  adr  argF        -  startet Programm ab adr
+dann zurueck nach POWER    
+ 
+ELOAD  ufn adrF       -   laedt ufn nach adr
+Es  wird keine Veraenderung des Files vorgenommen. Der Bereich 
+von POWER darf nicht ueberschrieben werden (siehe LOG).
+
+ESAVE ufn adr [sect]F -  rettet adr nach ufn
+Der Transport wird fuer die angegebene Zahl von Sektoren ausge-
+fuehrt. Diese Angabe kann entfallen, wenn vorher das File ufn
+mit LOAD geladen wurde.
+
+ELOGF                 - zeigt die gestellten Schalter
+auf Display an. Gleichzeitig wird der freie Anwenderspeicher 
+angegeben. Die Schalter koennen durch die Angabe in eckige 
+Klammern gestellt werden. Jede Angabe schaltet die Wirkung um: 
+      A - automat overlaying files when COPY
+      B - automat rename old files to .BAK when COPY 
+      C - asks it file exist files when COPY
+      D - automat skipping existing files when COPY
+      P - paging (ON-paging, OFF-scrolling)
+      Q - renaming files when copying
+      R - request Y/N on currens file
+      S - display or hide SYSTEM files
+      T - serie file copying (ON-abort, OFF=next smaller file)
+      M - mark original and copied files
+
+EMOVE aadr eadr aadr2F - Speichertransport
+Es wird der Speicherbereich aadr bis eadr nach adr2 verschoben. 
+Der Transport erfolgt aufsteigend, Ueberdeckungen sind zu 
+vermeiden.
+
+EREAD trk secF         - Lesen von Diskette
+Von Spur trk, Sektor sec wird 1 Sektor vom aktuellen Laufwerk 
+gelesen und auf Speicherbereich 80H .. 0FFH transportiert.
+
+EWRITE trk sec adrF    - Schreiben auf Diskette
+Nach Spur trk, Sektor sec wird ein Sektor vom Speicherbereich
+80H  .. 0FFH auf die aktuelle Diskette transportiert.
+   
+EREAD trk sec kind nsecF - Lesen von Diskette
+Ab Spur trk, Sektor sec werden nsec Sektoren gelesen und auf 
+Display dargestellt. kind bedeutet dabei:
+     XX   HEX- und ASCII- Darstellung
+     XH   HEX- Darstellung
+     XA   ASCII- Darstellung
+
+EREADGR ngroup mem nsecF  - Lesen von Diskette
+Es werden nsec Sektoren einer Speichergruppe (logische Nummer
+wie  DM  in Directory) von Diskette gelesen und nach dem
+Speicher ab Adresse mem transportiert.
+
+EWRITEGR ngroup mem nsecF - Schreiben auf Diskette
+Wie vor, jedoch vom Speicher ab Adresse mem nach Diskette, 
+logische Gruppennummer ngroup mit nsec Sektoren.
+
+EREADER  ngroup  kind nsecF -  Wie vor Lesen der Dateigruppe 
+und Anzeige auf Display. kind darf XX, XH oder XA sein.
+  
+ERECLAIMF             - Wiederherstellen geloeschter Files
+Bereits geloeschte Files werden wieder gueltig, wenn sie noch
+den  alten Dateninhalt haben.
+
+ERENF                 - Umbenennen Filename
+Die ausgewaehlten Files koennen umbenannt werden. Dazu wird nach
+ dem neuen Namen gefragt bei jedem File. Die Angabe eines
+Sternes "*" im Namen oder der Namenserweiterung laesst den alten
+ Namensteil unveraendert:
+ *.ext  --> setzt eine andere Namenserweiterung ext
+ name.* --> setzt einen anderen Namen name
+
+ERESET d:F            - Setzt Laufwerk d zurueck
+Dieses Kommando gestattet das Ruecksetzten einzelner Laufwerke 
+und damit den Diskettenwechsel auf diesem Laufwerk.
+
+ERUN [ufn param]F - Laedt und startet das .COM-File ufn
+Es duerfen Parameter angegeben werden.
+
+ESEARCH aadr eadr byte....F - Sucht im Speicher nach byte
+ab aadr bis eadr. Die gefundenen Bytes werden mit ihrer Adresse 
+angezeigt. Fuer byte kann ausserdem angegeben werden:
+     ?    zeigt alle Bytes des Bereiches an
+     ""   schliesst ein ASCII-Zeichen ein,welches gesucht wird
+
+ESET [-{1..8,S,R,X}]F - Setzt Fileskennzeichen
+Es werden bei Angabe einer Ziffer n das n.Zeichen des Filenamens
+mit dem Bit 7 = 1 gesetzt.  S,  R und X setzen das Bit 7 = 1 der
+ Namenserweiterung.
+ESET [+{....}]  F      - Setzt Fileskennzeichen zurueck
+Wie vor, es wird im angegegebenen Zeichen das Bit 7 auf Null 
+gesetzt.
+
+ESETF                  - Zeigt die gesetzten 7.Bits an
+   
+ESETDIRF               - Setzt DIR/SYS - Attribute
+ESETSYSF
+ 
+ESETROF                - Setzt R/O oder R/W - Attribute
+ESETWRF
+  
+ESIZEF                 - Zeigt die Groesse der Datei an
+Es werden angezeigt: Sektoren,  freie Sektoren, Kilobyte und 
+Gesamtbelegung
+
+ESORT iF               - Sortiert Files zur Anzeige
+Die Files werden sortiert angezeigt:
+     i = O unsortiert
+     i = 1 sortiert nach dem Filenamen
+     i = 2  wie 1, SYS-File zuletzt
+     i = 3 sortiert nach Namenserweiterung
+     i = 4  wie 3, SYS-File zuletzt
+
+ESPEED iF              - Setzt Ausgabegeschwindigkeit
+     i = 0      schnell
+     ...
+     i = 9      sehr langsam
+  
+ESTAT d:F              - Zeigt freien Speicherplatz auf
+Diskette d (und allen anderen aktiven Laufwerken)   
+
+ETESTF                 - Test
+Liest alle Sektoren und zeigt dies an. Fehlerhafte Sektoren 
+werden mit ===...,=== angezeigt, repariert alle Filegruppen und 
+defekten Files und errechnet eine Kontrollsumme. Nicht
+reparierbare Spuren werden mit einem besonderen Filenamen 
+belegt und nicht in die Directory aufgenommen (R/O  und 
+SYS-Attribute gesetzt). 
+ETEST SF              - Test wie vor
+Es werden zusaetzlich die beiden Systemspuren ueberprueft.
+ 
+ETYPE [A,H,X] F       - Zeigt Files auf Display an (TYPE)
+^K beendet die Ausgabe, es wird das naechste File angezeigt. Die
+ Ausgabe kann gesteuert werden mit einer Option:
+     [A]  Ausgabe in ASCII
+     [H]  Ausgabe in HEX
+     [X]  Ausgabe in ASCII und HEX
+
+EUSER iF              - Schaltet zum USER i um
+
+EXUSER iF             - Setzt die Quelle fuer das Kopieren auf
+Anwender i. 
+EUR1...4F             - Anwenderkommandos
+Sind diese installiert, koennen sie aufgerufen werden.Sie
+muessen in folgenden Speicherplaetzen von POWER angegeben
+werden:      UR1  140..147H
+             UR2  148..14FH
+             UR3  150..157H
+             UR4  158..15FH
+
+****************************************************************
+
+		Bearbeiet fuer microWORD 1.5
+		Andreas Werner
+		Dorfstrasse 25
+		DOLSENHAIN
+		  7 2 3 1
+
+						Mai 1989
+

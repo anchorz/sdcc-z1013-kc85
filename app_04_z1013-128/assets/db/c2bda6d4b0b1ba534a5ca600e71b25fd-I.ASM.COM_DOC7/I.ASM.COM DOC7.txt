@@ -1,0 +1,329 @@
+
+;
+72
+.mt 8
+.mb 8
+.fm 1  
+.hm 1
+.pc 32
+.pn 103
+9.7._____Cross-Referenz
+
+
+Das  Cross-Referenz-Programm verarbeitet eine speziell  ueber-
+setzte  Druckdatei zu einer Liste aller Adressverweise  inner-
+halb  des Moduls einschliesslich der Speicherplaetze,  wo  sie 
+definiert sind.
+Die  Cross-Referenz  kann als  Hilfsmittel  beim  Programmtest 
+genutzt werden.
+Das  Cross-Referenz-Programm  erlaubt  dem  Programmierer  das 
+Verarbeiten  einer  vom  Assembler  erzeugten  Cross-Referenz-
+Datei.
+Diese Datei enthaelt Steuerzeichen, die waehrend der Ueberset-
+zung mit dem Assembler eingesetzt wurden.
+
+Das Cross-Referenz-Programm erzeugt eine Liste,  die der .PRN-
+Datei gleicht und zwei zusaetzliche Merkmale besitzt:
+
+1. Jede  Quellanweisung wird mit  einer  Cross-Referenz-Nummer    
+   versehen.
+
+2. Am  Listenende erscheinen die Variablennamen in  alphabeti-
+   scher Reihenfolge.
+   Jedem  Namen werden die Nummer der Zeilen in  aufsteigender 
+   Folge zugeordnet,  wo er auftritt. Die Nummer der Zeile, wo 
+   er definiert wurde, ist durch # gekennzeichnet.
+
+Die Cross-Referenz-Liste ersetzt die .PRN-Datei des Assemblers 
+und erhaelt auch den Dateityp .PRN.
+
+
+9.7.1.___Erzeugen_einer_Cross-Referenz-Liste
+
+
+Das   Erzeugen  einer  Cross-Referenz-Liste  erfolgt  in  zwei 
+Schritten:
+
+1. Erzeugen einer Cross-Referenz-Datei (.CRF)
+2. Generieren einer Cross-Referenz-Liste (.PRN)
+
+Der erste Schritt wird im Assembler ausgefuehrt; der zweite im 
+Cross-Referenz-Programm.
+
+
+9.7.1.1._Erzeugen_einer_Cross-Referenz-Datei
+
+
+Fuer  das Erzeugen einer Cross-Referenz-Datei muss in der Kom-
+mandozeile des Assemblers der /C-Schalter gesetzt werden.
+
+Beispiel: ASM =PROG/C
+
+damit wird PROG.MAC uebersetzt und PROG.REL (Objektdatei)  und 
+PROG.CRF (Cross-Referenz-Datei) erzeugt.
+
+
+9.7.1.2._Generieren_der_Cross-Referenz-Liste
+
+
+Die  Cross-Referenz-Liste wird beim Durchlaufen der .CRF-Datei 
+durch das Cross-Referenz-Programm erzeugt.
+
+Der Aufruf erfolgt mit
+
+     REF
+
+Das Programm meldet sich mit einem Stern (*).
+Nun ist der Name der .CRF-Datei einzugeben:
+
+     =dateiname
+
+Beispiel:
+     
+     REF =PROG
+
+es wird die Datei PROG.PRN erzeugt.
+
+Diese  .PRN-Datei kann unter Nutzung der Betriebssystemkomman-
+dos gedruckt oder auf dem Bildschirm angezeigt werden.
+Zusaetzlich  unterstuetzt REF die gleichen Ausgabegeraete  wie 
+der Assembler.
+
+Beispiel:
+
+     REF LST:=PROG
+
+gibt  die Liste auf den Drucker aus.  Es wird keine Disketten-
+datei erzeugt.
+
+     REF TTY:=PROG
+
+Die Ausgabe erfolgt nur auf dem Bilschirm.
+
+Es  ist auch moeglich,  ein anderes Laufwerk fuer die  Ausgabe 
+anzugeben.
+
+Beispiel:
+     
+     REF B:=A:PROG
+
+Die  Diskette  mit  PROG.CRF  befindet  sich  im  Laufwerk  A; 
+PROG.PRN soll auf die Diskette gebracht werden,  die im  Lauf-
+werk B liegt.
+
+Nach  Beenden meldet sich REF mit einem Stern (*) zurueck,  es 
+kann ein neuer Dateiname eingegeben werden.
+
+Die Rueckkehr zum Betriebssytem erfolgt mittels ^C.
+
+Die Druckdatei kann auch einen anderen Namen und einen anderen 
+Dateityp erhalten, dann sind diese anzugeben.
+
+Beispiel:
+     
+     REF  PROG.CRL=PROG
+bzw.
+     REF  PROGREF=PROG
+
+Die obere Kommandozeile erzeugt eine Druckdatei mit dem  Namen 
+PROG.CRL;  die untere generiert eine Datei mit der Bezeichnung 
+PROGREF.PRN.
+Dateitypen  koennen angegeben werden,  um die  Cross-Referenz-
+Liste von der Druckdatei des Assemblers zu unterscheiden.
+
+
+9.7.2.___Pseudooperationen_zur_Listensteuerung
+
+
+Die  Option fuer das Erzeugen einer Cross-Referenz  kann  fuer 
+Programmabschnitte aber nicht fuer das ganze Programm angewen-
+det werden.
+Zum  Steuern des Auflistens oder Weglassens der Cross-Referenz 
+sind  in der Quelldatei die Pseudooperationen .CREF und .XCREF 
+anzugeben.  Sie koennen an jeder beliebigen Stelle im Programm 
+in das Operationsfeld geschrieben werden.
+
+ .CREF und .XCREF haben keine Argumente.
+
+Pseudooperation    Bedeutung
+--------------------------------------------------------------
+
+ .CREF             Erzeugen der Cross-Referenz
+                   .CREF ist die Standardbedingung:  .CREF ist 
+                   zu  verwenden,  wenn nach einem .XCREF  das 
+                   Erzeugen  der Cross-Referenz wieder gestat-
+                   tet werden soll.
+                   .CREF wirkt, bis ein .XCREF erscheint.
+
+                   Bemerkung:
+                   .CREF wirkt nur,  wenn in der Kommandozeile 
+                   des Assemblers der /C-Schalter gesetzt 
+                   wurde.
+
+
+ .XCREF            Unterdruecken der Cross-Referenz  
+                   .XCREF schaltet die Wirkung von .CREF aus.
+                   .XCREF unterdrueckt die Cross-Referenz fuer 
+                   Programmabschnitte.
+                   Weil weder .CREF noch .XCREF Wirkung haben, 
+                   wenn   nicht   der   /C-Schalter   in   der 
+                   Assembler-Kommandozeile  gesetzt  ist  muss 
+                   .XCREF  nicht verwendet werden,  wenn  eine 
+                   normale  Liste  (ohne  Cross-Referenz)  ge-
+                   wuenscht wird.  Das wird auch erreicht ein-
+                   fach  durch Weglassen des  /C-Schalters  in 
+                   der Kommandozeile.
+
+
+9.8._____Uebersicht_ueber_die_Pseudooperationen_des_Assemblers
+
+
+Bemerkung:
+
+*            Z80 - Pseudooperationen
+kein Stern   8080 -  Pseudooperationen
+
+
+9.8.1._Einzelfunktions-Pseudooperationen
+
+                                                           
+Pseudooperationen zur Auswahl der Anweisungsliste
+
+                                                         Seite
+         .Z80                                              23
+         .8080                                             23
+
+Pseudooperationen zur Daten- und Symboldefinition
+
+                                                         Seite
+         <name> ASET <exp>                                 28
+         BYTE EXT <symbol>                                 26
+         BYTE EXTRN <symbol>                               26
+         BYTE EXTERNAL <symbol>                            26
+         DB <exp>[,<exp>...]                               24
+         DB <string>[,<string>...]                         24
+         DC <string>                                       24
+    *    DEFB <exp>[,<exp>...]                             24
+    *    <name> DEFL <exp>                                 28
+    *    DEFM <string>[,<string>...]                       24
+    *    DEFS <exp>[,<exp>...]                             25
+    *    DEFW <exp>[,<exp>...]                             26
+         DS <exp>[,<val>]                                  25
+         DW <exp>[,<exp>...]                               26
+         ENTRY <name>[,<name>...]                          27
+         <name> EQU <exp>                                  26
+         EXT <name>,[<name>...]                            26
+         EXTRN <name>[,<name>...]                          26
+         EXTERNAL <name>[,<name>...]                       26
+         GLOBAL <name>[,<name>...]                         27
+         PUBLIC <name>[,<name>...]                         27
+         <name> SET <exp>  (Nicht fuer Z80-Anweisungs-
+                           liste!)                         28
+
+Pseudooperationen zur Zuweisung des Speicherzuordnungs-
+zaehlers
+
+                                                         Seite
+         ASEG                                              29
+         CSEG                                              29
+         DSEG                                              30
+         COMMON /<blockname>/                              31
+         ORG                                               32
+         .PHASE <exp>                                      32
+         .DEPHASE                                          32
+Dateibezogene Pseudooperationen
+
+                                                         Seite
+         .COMMENT <delim><text><delim>                     33
+         END [<exp>]                                       34
+         INCLUDE <filename>                                35
+         $INCLUDE <filename>                               35
+         MACLIB <filename>                                 35
+         NAME ("modulname")                                35
+         .RADIX <exp>                                      36
+         .REQUEST <filename>[,<filename>...]               36
+
+
+9.8.2._Pseudooperationen_zur_Listensteuerung
+
+
+Pseudooperationen zur Formatsteuerung
+
+                                                         Seite
+    *    *EJECT [<exp>]  (ein * ist Teil der 
+                         Pseudooperation)                  38
+         $EJECT                                            38
+         PAGE <exp>                                        38
+         SUBTTL [<text>]                                   38
+         TITLE <text>                                      38
+         $TITLE [<text>]                                   38
+                                                           38
+Allgemeine Pseudooperationen zur Listensteuerung
+
+                                                         Seite
+         .LIST                                             39
+         .XLIST                                            39
+         .PRINTX <delim><text><delim>                      40
+
+Pseudooperationen zur bedingten Listensteuerung
+
+                                                         Seite
+         .SFCOND                                           40
+         .LFCOND                                           40
+         .TFCOND                                           41
+
+Pseudooperationen zur Listensteuerung der Makroerweiterung
+
+                                                         Seite
+         .LALL                                             41
+         .SALL                                             41
+         .XALL                                             41
+
+Pseudooperationen zur Steuerung der Cross-Referenz
+
+                                                         Seite
+         .XCREF                                            42
+         .CREF                                             42
+
+
+
+9.8.3._Pseudooperationen_zur_Makrofaehigkeit
+
+
+Pseudooperationen zur Makrodefinition
+
+                                                         Seite
+         <name> MACRO <parameter>[,<parameter>...]         43
+         ENDM                                              48
+         EXITM                                             48
+         LOCAL <parameter>[,<parameter>...]                49
+
+Wiederholungspseudooperationen
+
+                                                         Seite
+         REPT <exp>                                        46
+         IRP <dummy>,<parameter in spitze Klammern
+                      eingeschlossen>                      46
+         IRPC <dummy>,<string>                             47
+
+Pseudooperationen zur bedingten Assemblierung
+
+                                                         Seite
+    *    COND <exp>                                        52
+         ELSE                                              54
+    *    ENDC                                              54
+         ENDIF                                             54
+         IF <exp>                                          52
+         IF <arg>                                          52
+         IFB <arg>                                         53
+         IFDEF <symbol>                                    53
+         IFDIF <arg1>,<arg2>                               53
+         IFE <exp>                                         53
+         IFF <exp>                                         53
+         IFIDN <arg1>,<arg2>                               53
+         IFNB <arg>                                        53
+         IFNDEF <symbol>                                   53
+         IFT <exp>                                         52
+         IF1                                               53
+         IF2                                               53
+

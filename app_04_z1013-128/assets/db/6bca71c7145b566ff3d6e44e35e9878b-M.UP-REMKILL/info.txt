@@ -1,0 +1,5 @@
+<kurz src="Unterprogramm, entfernt (möglicherweise) REM-Zeilen"/>
+<lang>Unterprogramm für ein unbekanntes BASIC oder Haupt-Programm.
+
+Vielleicht ist dies hier die Dokumentation: [cccdcbd3bfaac8968c91cf1b58516f4a]</lang>
+<requires></requires>

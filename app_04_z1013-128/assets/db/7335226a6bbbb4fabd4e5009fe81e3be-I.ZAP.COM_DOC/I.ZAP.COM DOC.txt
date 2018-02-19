@@ -1,0 +1,107 @@
+
+;
+0 release R1.4,   serial # ZP0000C0
+ copyright (c) 1980, phase four software inc.
+
+ operating system ==> cp/m 2.0+ 
+
+
+                    Menu's
+
+                      PM   = primary menu
+                      FM   = file menu
+                      MM   = miscellaneous menu
+                      SM   = special functions menu
+
+                      CS   = configure system for ZAP80
+
+                      LM,<?>,<help>   = redisplay this menu 
+
+                    ZAP80  Primary  Menu
+
+ AP   = ascii patch
+ HI   = step head in,read logon sector & display
+ HO   = step head out,read logon sector & display
+ HP   = hex patch
+ LM   = display list of menus
+ NS,RS= read next skew sector
+ PS   = read previous skew sector
+ RC,RL= read sector given by current logon parameters & display
+ RN,NL= read next logon sector
+ RP,PL= read previous logon sector
+ SD   = select drive
+ SS   = set sector
+ ST   = set track
+ WL   = write contents of screenbuf to sector given by current logon parameters
+<cr>  = read next file sector if open, else next logon sector
+<bs>  = read previous file sector if open, else previous logon sector 
+
+
+
+                    ZAP80  File  Menu
+
+
+F<sp>,F<=>,F<:>   = open  file
+F<cr>,FE          = close file
+FA   = read random file sector containing specified address
+FB   = set file base address (def=100h; can be set in system configuration)
+FC   = compare two files
+FD   = display file directory
+FI   = find a string within a file (file search)
+FO   = open file address for patching
+FR   = read random file sector by logical sector number
+FS   = file search (same as FI)
+FW   = write contents of screenbuf to sector given by current file parameters
+
+PM   = primary menu
+MM   = miscellaneous menu
+SM   = special functions menu 
+
+
+                    ZAP80  Miscellaneous Menu
+
+
+ EN,Q = exit to o/s (end,quit)
+ CD   = copy drive <x> to drive <y> (track to track)
+ CF   = compare two files
+ CL   = clear & restart
+^D    = toggle density (note: uses ZAP80 sector translation tables)
+ DF   = display file control block (fcb)
+ DM   = display memory
+ DP   = display current file & logon parameters
+ DS   = display current contents of screenbuf
+^F    = fill temporary buffer with a hex character
+ GB   = get temporary buffer & display
+ GI   = get 128 byte buffer of E5's (initbuf) & display
+ ID   = initialize drive <x> with E5's (directory or data tracks)
+ LD   = load a COM file on disk at default file base address & execute
+ LM   = display list of menus
+^P    = set list device on
+ PB   = put contents of screenbuf into temporary buffer
+^Q    = set list device off
+^C,RD = reset disk system 
+
+
+                    ZAP80  Special  Functions  Menu
+
+
+ SF   = set first sector # (def=1; can be set to 0 in system configuration)
+<lf>  = read next logon sector (same as RN)
+<ro>  = read previous logon sector (same as RP)
+<+>   = read next skew sector (same as NS)
+<->   = read previous skew sector (same as PS)
+
+Cursor controls for hex and ascii patch
+<esc> = end patch                     ^W  = cursor home (within patch block)
+  ^E  = cursor up one row             ^R  = cursor top (within patch block)
+  ^S  = cursor left one character     ^A  = cursor left, end of line
+  ^D  = cursor right one character    ^F  = cursor right end of line
+  ^X  = cursor down one row           ^C  = cursor bottom (within patch block)
+
+Special functions for comparing files (FC/CF commands)
+<esc> or ^S    = Break (interrupt the compare); can be followed by:
+          E    = end compare & display current # of differences found
+        SF/CF  = set/cancel file parameter display
+        SD/CD  = set/cancel display of sectors
+        SS/CS  = set/cancel stop when differences are found in a sector 
+    

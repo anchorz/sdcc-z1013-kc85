@@ -1,0 +1,87 @@
+****************************************************************
+*			    TOOL V1.1			       *
+****************************************************************
+
+TOOL wurde entwickelt um für Arbeiten im MC einige Hilfsmittel
+in einfacher Art und Weise zur Verfügung zu haben. U.a. werden
+folgende Arbeiten unterstützt :
+	- HEX/ASCII-Anzeige von Speicherbereichen
+	- editieren durch Eingabe von Hex-Zahlen oder 
+	  ASCII-Zeichen
+	- Reassemblieren
+	- "Protokoll"-Druck
+
+Es existieren 2 Versionen, die sich praktisch nur im Standort
+unterscheiden. Bei der unteren Version wird allerdings der
+Druckertreiber direkt über den programminternen Sprungverteiler
+erreicht. Bei der oberen Version geschieht das anschließend über
+den Sprungverteiler am Ende des 64-k-Bereiches.
+Die Bedienung dürfte sich im Wesentlichen selbst erklären. An
+dieser Stelle nur noch einige Ergänzungen :
+*Such-Modus (F)
+ gilt für Muster-Bytefolge ab Cursorposition;
+ Suche geht über FFFFH hinaus, also ab 0 weiter;
+ keine Änderung der Anzeige -> Muster nirgendwoanders vorhanden;
+ falls noch kein Muster vorhanden,dann im Editmode an beliebiger
+   Stelle eingeben;
+ mit (Q) wird Suche beliebig oft wiederholt;
+*Direktsprung (D)
+ 2 Byte nach (!) Cursorpos. werden als Zieladr. interpretiert;
+*Relativsprung (R)
+ analog für 1 Byte
+*Rücksprung (B)
+ die jeweils letzte "Absprung"-Adr. ist gepeichert -> Rückehr
+*Reassembler (S)
+ vorhandenes Programm wurde anpepasst (u.U.Fehler bei Befehlen
+   mit Indexregistern) u. durch einf. Druckrout. ergänzt;
+ Übersetzung ab Cursoradr.;
+ Rückehr zu 1.Byte nach letztem überstztem Befehl;
+ Druck : 1 Leerzeile + Bildschirminhalt bis Cursorposition;
+*Druck (D)
+ HEX/ASCII-Liste ab Cursorposition;
+ nach 62 Zeilen Stop für Seitenwechsel;
+
+Vorsicht ist in jedem Fall im Editmode geboten, da Eingaben den
+RAM-Inhalt sofort ändern (bei HEX-Eingabe nach Eingabe der 
+2.Ziffer).Im Editmode sind nur Cursormanipulationen und 
+Seiten-Blättern möglich. 
+Tonausgabe ist über die TB-Buchse möglich.
+Die Blinkfrequenz des Cursors ist auf den BROSIG-Monitor abge-
+stimmt und kann durch die entsprechende Konstante geändert
+werden.
+Möchte man keinen Druckertreiber nutzen, muüßen DRAKK und DRINI
+unbedingt mit RET (C9H) kurzgeschlossen werden.
+Die INKEY-Routine muß für den A2-Monitor eventuell angepaßt
+werden.
+Der Druckertreiber ist für die S3004 vorgesehen und verwendet
+den USER-Port des Z1013.Über Bit 0 werden die Zeichen ausgege-
+ben, über Bit 1 erfolgt die Bereitschftsmeldung der S3004.
+Der Treiber kann durch eigene Treiber ersetzt werden. Insofern
+it auch die problemlose Nutzung des Programms im 16-k-Bereich
+möglich, wenn man den Treiber ab 4000H einfach wegläßt.
+ACHTUNG !
+Alle Eingaben werden über CMP-Befehle (FEH) ausgewertet. Man
+kann den Aufruf der einzelnen Funktionen relativ einfach finden
+und notfalls eigenen Gegebenheiten anpassen. In der Original-
+version sind mindestens die CTRL-Taste, aber besser auch noch
+alle 4 Cursortasten notwendig.
+
+Wichtige Adressen :
+Standort	D400H - E8F0H
+		2C00H - 40F0H
+Start		D400H		2C00H
+Restart		D403H		2C03H
+INKEY		D416H		2C16H
+DRAKK		D433H		2C33H
+DRINI		D437H		2C37H
+Konst.BLINK	D635H		2E35	(orig. 8000H)
+
+
+						Okt.1989
+
+Hinweise an :
+	F.Stinner
+	Großmannstr.3
+	Leipzig
+	7033
+

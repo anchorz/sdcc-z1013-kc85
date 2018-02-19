@@ -1,0 +1,3 @@
+<kurz src="12K TDL Basic + HSAVE"/>
+<lang>Überarbeitete Version von [89437f192b16fb748fa17e94d993657a] mit HSAVE etc.</lang>
+<requires></requires>

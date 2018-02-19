@@ -1,0 +1,3 @@
+<kurz src=".COM Audio 1520 SCPX, Koppelmodul V24"/>
+<lang></lang>
+<requires></requires>

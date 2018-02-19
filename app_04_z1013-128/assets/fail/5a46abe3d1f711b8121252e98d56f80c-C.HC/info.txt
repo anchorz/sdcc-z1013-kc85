@@ -1,0 +1,9 @@
+<kurz src="ähnlich [ac559be453153ac534c19059ce754b32]"/>
+<lang>Wahrscheinlich ist diese Version fehlerhaft.
+ 
+im wesentlichen nur 1 Byte Unterschied:
+27a0  18 a7 2a de b7 72 cb 73 20!! 24 3a dc b7 3d 20 e9 
+                              24!! 24 3a dc b7 3d 20 e9 
+
+</lang>
+<requires></requires>

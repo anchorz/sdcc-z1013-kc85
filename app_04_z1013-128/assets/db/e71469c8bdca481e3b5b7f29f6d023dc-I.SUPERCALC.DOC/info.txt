@@ -1,0 +1,3 @@
+<kurz src="Nutzerdokumentation Tableauprogramm SUPERCALC 1984-10-15"/>
+<lang><include src="I.SUPERCALC.DOC.txt"/></lang>
+<requires></requires>

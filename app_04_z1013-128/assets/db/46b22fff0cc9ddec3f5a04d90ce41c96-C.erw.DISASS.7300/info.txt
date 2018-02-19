@@ -1,0 +1,3 @@
+<kurz src="erweiterter Disassembler (Speicherzellen ändern), 0x7300"/>
+<lang>wie [90ab1e45079d6bfbb8f6c253e16d53a3]</lang>
+<requires></requires>

@@ -1,0 +1,19 @@
+<kurz src="Original Brosig Monitor+SPV erweitert für RAM/Disketten-Funktionen"/>
+<lang> 
+Monitor ist identisch zu [c3816ad765acb29b0ae1dff403b1ec71], aber mit folgenden Änderungen im 
+Sprungverteiler:
+
+FFBE  C3 15 D8         JP      0D815H (AKP Aufbereitung Kopfpuffer, mit Namenabfrage)
+FFC1  C3 12 D8         JP      0D812H (SUCHK Suchen eines Kopfblocks)
+FFC4  C3 0F D8         JP      0D80FH (BSMK	Schreibes eines Blocks)
+FFC7  C3 0C D8         JP      0D80CH (BLMK	Lesen eines Blocks)
+
+FFF1  C3 00 D8         JP      0D800H (LORUF ruft die LOAD-Routine des Headersave)
+FFF4  C3 03 D8         JP      0D803H (SARUF ruft die SAVE-Routine des Headersave)
+
+Jetzt ist natürlich die Frage, wo diese BIOS-Funktionen ab 0xD800 implementiert werden? Eventuell werden sie von
+[0321a5b27707bc1b87a8918fae29750a] headerdisk45 implementiert.
+
+Jetzt habe ich es: HDISK steht für HeaderDisk!
+</lang>
+<requires></requires>

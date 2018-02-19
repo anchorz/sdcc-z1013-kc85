@@ -48,8 +48,12 @@ for($i=32; $i<length $content; $i++)
         printf(OUT "%s",$c);
         next;
     }
- 
-   $c=substr($content,$i,1);
+    #skip over underline 
+    if (substr($content,$i,2) eq "\x08_") {
+        $i+=1;
+        next;
+    }
+    $c=substr($content,$i,1);
     $n=ord($c);
     # 8D soft CR (inserted, followed by normal linefeed 0A, to mark soft line break at word-wrap)
     if ($n>=128){
@@ -64,15 +68,16 @@ for($i=32; $i<length $content; $i++)
         }
     } elsif ($n<32) {
         switch ($n) {                                #wordstar code
-            case 0x00 { $c=""; printf("?"); } #stx B toggle bold
-            case 0x02 { $c=chr(0xf120+$n);  } #stx B toggle bold
+            case 0x00 { $c=""; printf("?"); } #bisher fehlerhaft
+            case 0x02 { $c=chr(0xf120+$n);  $c=""; } #stx B toggle bold
             #bs braucht noch besondere Behandlung            
             #case 0x08 { $c=chr(0xf120+$n);  } #bs  H backspace, overwrite previous character
-            case 0x11 { $c=chr(0xf120+$n);  } #dc1 Q custom print control - Bedeutung: ??
-            case 0x13 { $c=chr(0xf120+$n);  } #dc3 S toggle underline 
-            case 0x14 { $c=chr(0xf120+$n);  } #dc4 T toggle superscript mode 
-            case 0x16 { $c=chr(0xf120+$n);  } #syn V toggle subscript mode
+            case 0x11 { $c=chr(0xf120+$n); $c=""; } #dc1 Q custom print control - Bedeutung: ??
+            case 0x13 { $c=chr(0xf120+$n); $c=""; } #dc3 S toggle underline 
+            case 0x14 { $c=chr(0xf120+$n); $c=""; } #dc4 T toggle superscript mode 
+            case 0x16 { $c=chr(0xf120+$n); $c=""; } #syn V toggle subscript mode
             case 0x1a { $c="";             }  #sub Z end of text
+            case 0x1e { $c="\n";             } #rs  ^ Inactive Soft Hyphen or new line
             case 0x1f { $c='-';             } #us  _ active soft hyphen
             else {
                 printf("unbekanntes Sonderzeichen: 0x%02x [%04x] CTRL-%s\n",$n,$i,chr(0x40+$n));

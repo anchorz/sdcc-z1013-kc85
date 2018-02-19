@@ -1,0 +1,662 @@
+
+          8. DU 1520 (SCPX)
+          -----------------
+
+  8.1 Einfuehrung
+  ---------------
+
+DU (Debugger) unterstuetzt das dynamische Testen von Programmen,
+die in Z80- Mnemonik geschrieben sind. Bei Vorhandensein einer
+Symboltabelle (SYM-Datei) fuer das zu testende Programm ist ein
+symbolisches Testen moeglich. 
+DU wird durch Eintasten eines der nachfolgenden SCP-Kommandos:
+	(1) DU
+	(2) DU p.COM
+	(3) DU p.COM p.SYM
+geladen, wobei p den Namen des mit DU zu ladenden und zu
+testenden Programmes bezeichnet, bei (3) wird zusaetzlich die
+Symboltabelle geladen. Anstatt einer COM-Datei kann auch eine
+beliebige andere Datei geladen werden. Nach dem Start meldet
+sich DU mit:
+	DU 1520 (SCPX) V x.y
+	U880-Debugger
+	SYMBOLS
+	NEXT   PC   END
+	nnnn  pppp  eeee
+, wobei x.y die Versionsnummer, nnnn die Adresse des naechsten
+freien Speicherplatzes nach dem zu testenden Programm, pppp den
+durch das zu testende Programm initialisierten
+Befehlszaehlerstand und eeee die Adresse des letzten freien
+Speicherplatzes hexadezimal angibt.
+Falls keine Symboltabelle geladen wird, entfaellt "SYMBOLS".
+Wird DU ohne das zu testende Programm geladen, so werden nur die
+ersten beiden Zeilen ausgegeben.
+Anschliessend wird durch "#" angezeigt, dass DU eine
+Kommandoeingabe erwartet.
+Jedes DU- Kommando besteht aus dem Kommando- Typ (ein Buchstabe)
+und optionalen Spezifikationen, die durch Leerzeichen oder Komma
+getrennt sind.
+Alle Kommando- Zeilen koennen 64 Zeichen lang sein und werden
+durch <ENTER> beendet. Danach wird das Kommando ausgefuehrt.
+DU wird mit Warmstart (^C) beendet.
+Folgende Kommando-Typen enthaelt DU:
+
+A (Assemble)       Assemblieren
+C (Call)           Aufruf Unterprogramm
+D (Display)        Anzeige Speicher
+F (Fill Memory)    Fuellen Speicher
+G (Go)             Echtzeitabarbeitung
+H (Hex)            Hexa-Rechnung
+I (Input Line)     Vorbereitung Datei-Eingabe
+L (List Mnemonics) Reassemblieren
+M (Move)           Transport Speicherbereich
+P (Pass Point)     Durchlauf-Punkt
+R (Read)           Dateieingabe
+S (Set Memory)     Speichermanipulation
+T (Trace)          Protokollierung
+U (Untrace)        kein Protokollieren
+X (Examine)        CPU-Registermanipulation
+
+  8.2. DU-Kommandos
+  -----------------
+Die in den Kommandospezifikationen enthaltenen Zahlen koennen in
+verschiedener Form dargestellt werden, wobei der Zahlenbereich 0
+- 65535 betraegt. Zahlen, die diesen Bereich uebersteigen,
+  werden modulo 65536 interpretiert.
+
+- Hexadezimale Darstellung (Standartdarstellung)
+  Verwendet werden die Ziffern 0 - 9 und die Buchstaben A - F.
+  Gross- und Kleinbuchstaben sind gleichberechtigt, z.B.
+	3f,FF3e.
+
+- Dezimale Darstellung
+  Dezimalzahlen werden durch ein vorangestelltes Zeichen "#" ge-
+  kennzeichnet und bestehen aus den Ziffern 0 - 9. Beispiele
+  fuer Dezimalzahlen sind: #48, #9873, #0.
+
+- String-Darstellung
+  Verwendet werden ASCII-Zeichen, die in Apostrophe einge-
+  schlossen werden. Der Code des am weitesten rechts stehenden
+  Zeichens wird dabei als niederer Wert angesehen.
+
+Beispiele:
+  'A' ist aequivalent mit dem Hexwert 41 bzw. #65, '*B'
+  entspricht 2A42.
+  Ein Apostroph wird im String als Apostrophenpaar dargestellt:
+  '#''' entspricht dem Hexawert 2327.
+
+- Symbol-Darstellung
+  Ist eine Symboltabelle geladen, koennen auch Symbol-Bezuege
+  verwendet werden.
+Beispiele:
+	.s  Adresse des Symbols s
+	@s  2-Byte-Wert von .s
+	=s  1-Byte-Wert von .s
+Es sei zum Beispiel der Adresse 0104 das Symbol T1 in der Symbol-
+tabelle zugeordnet und der Inhalt des entsprechenden Speicher-
+platzes <0104>=14 und <0105>=5A, so entsprechen in Hexa-Darstel-
+lung
+	.T1 - 0104
+	@T1 - 5A14
+	=T1 - 14
+
+- Ausdruecke
+Ausdruecke bestehen aus einer von links nach rechts verlaufen-
+den Folge von Hexazahlen, Dezimalzahlen, Strings und Symbol-Be-
+zugnahmen, verbunden durch die Operanden + oder -. Die einzelnen
+Werte werden entsprechend der verwendeten Operatoren addiert
+oder subtrahiert und ergeben den Zahlenwert.
+Ein fuehrendes Minus, wie in -x, wird wie 0-x verrechnet. Ein
+fuehrendes Plus, wie +x, wird verrechnet als x'+x, wobei x' der
+Wert des vorhergehenden Ausdrucks ist.
+Beispiele:
+	100
+	#100+2-'A'
+	.T1+5
+Weitere Beispiele werden zu den einzelnen Kommandos gegeben.
+
+
+ 8.2.1 A-Kommando
+ ----------------
+Das A-Kommando gestattet ein befehlsweises Sofortuebersetzen.
+Es ist zu beachten, dass die Quellanweisungen in Z80-Mnemonik
+erfolgen muessen (Unterschiede zur U880-Mnemonik!).
+Moegliche Formen des A-Kommandos:
+	(1) As
+	(2) A
+	(3) -A
+Bei (1) beginnt die Assemblierung ab der Speicheradresse s, die
+nach der Uebersetzung des Befehls um die Laenge des Befehls
+erhoeht wird.
+(2) beginnt bei der aktuellen Adresse entsprechend der letzten
+Assembler-, Trace-, oder Listadresse.
+Bei Form (3) werden Assembler-, und Disassembler-Teil von DU
+ueberschrieben, damit wird der freie Speicherbereich um etwa
+4K Byte erhoeht. Nachfolgend sind keine A- und L-Kommandos mehr
+moeglich, bei Protokollierung (T-, U-Kommandos) wird nur der
+Befehlscode angezeigt.
+Das A-Kommando wird durch die Eingabe eines Punktes "." anstelle
+des naechsten Befehls beendet.
+Beispiele:
+	A100
+	A#100
+	A.T1+5
+	A@T1+@T2-=T3
+	A+10
+Nachfolgend ein Beispiel fuer die Befehlseingabe. Die Operanden
+koennen aus symbolischen Adressen bestehen, wenn die zugehoerige
+Symboltabelle eingegeben wurde.
+Angenommen es wurde   A100  eingegeben und die Symbole T1 und T2
+existieren, so sind folgende Eingaben gueltig:
+	LD  A,B
+	LD  A,0FC
+	LD  B,#149
+	LD  (HL),'a'
+	LD  HL,'ab'
+	JP  200
+	CALL.T1
+	JP  z,@T2
+	LD  HL,@T1+=T2
+Es ist zu beachten, dass keine Pseudo-Operationen erlaubt sind
+und Marken nicht eingefuegt werden koennen.
+LD HL,'ab' fuellt H mit 'a' und L mit 'b'.
+Bei Relativspruengen muss die Angabe der Zieladresse folgen.
+
+  8.2.2.  C-Kommando
+  ------------------
+Das C-Kommando bewirkt das Abarbeiten eines Unterprogrammes im
+zu testenden Programm im Echtzeitbetrieb bis zum abschliessenden
+Ruecksprung in den aufrufenden Programmteil.
+Form des C-Kommandos:
+	Cs
+s ist dabei die Ansprungadresse des Unterprogrammes.
+Beispiele:
+	C.T1
+	C20A
+
+
+  8.2.3. D-Kommando
+  -----------------
+Das D-Kommando bewirkt die Anzeige des Inhaltes eines zusammen-
+haengenden Speicherbereiches in Hexa-Darstellung und als ASCII-
+Zeichen. In einer Zeile wird eine Speichergruppe bis zur End-
+adresse f (max. 16 Byte) angezeigt, darunter in der Folgezeile
+das entsprechende ASCII-Zeichen.Nichtdruckbare Zeichen werden
+als Punkt dargestellt.
+Formen des Kommandos:
+	(1) Ds
+	(2) Ds,f
+	(3) D
+	(4) D,f
+Bei (1) beginnt die Anzeige ab Adresse s, es werden sechs auf-
+einanderfolgende Speichergruppen (12 Zeilen) angezeigt.
+Bei (2) endet die Anzeige bei Adresse f.
+Bei (3) erfolgt die Anzeige entsprechend (1), aber ab dem
+zuletzt angezeigten Speicherplatz oder dem Inhalt des
+HL-Registers nach vorherigem T- oder U-Kommando.
+Bei (4) erfolgt die Anzeige mit der Anfangsadresse wie bei (3)
+und endet bei der Adresse f.
+Ausserdem besteht die Moeglichkeit der Anzeige im Adress-Format,
+d.h. zwei aufeinanderfolgende Bytes werden als Adresse inter-
+pretiert und (gedreht) in der Darstellung H-, L-Teil angezeigt.
+Die zugehoerigen ASCII-Zeichen werden speichergerecht angezeigt.
+Formen:
+	(5) DWs
+	(6) DWs,f
+	(7) DW
+	(8) DW,f
+(5) bis (8) wirken entsprechend (1) bis (4).
+Beispiele:
+	DF3F
+	D#100,#200
+	D.T1,.T2+#20
+	d,.T1
+	DW@T1,+#96
+
+  8.2.4. F-Kommando
+  -----------------
+Das F-Kommando bewirkt, dass einem zusammenhaengenden Speicher-
+bereich, beginnend mit Adresse s und endend mit Adresse f der
+Wert d (1 Byte) zugewiesen wird.
+Formen des Kommandos:
+	Fs,f,d
+Beispiele:
+	f200,+#10,41
+	f200,+3,'B'
+	F.T1,.T2,=T1
+
+  8.2.5. G-Kommando
+  -----------------
+Mit dem G-Kommando erfolgt die Abarbeitung des zu testenden
+Programmes im Echtzeitbetrieb.
+	(1) G
+	(2) Gp
+	(3) G,a
+	(4) Gp,a
+	(5) G,a,b
+	(6) Gp,a,b
+(1) startet das zu testende Programm ab der aktuellen Befehls-
+adresse.
+Bei (2) erfolgt der Programmstart ab Befehlsadresse p.
+(3) wirkt wie (1), es wird aber ein temporaerer Haltepunkt bei
+a gesetzt.
+Bei (4) wird das zu testende Programm von p bis zur Adresse a
+abgearbeitet.
+(5) und (6) wirken wie (3) und (4), es kann aber ein zweiter
+Haltepunkt b angegeben werden.
+Beim Erreichen eines Haltepunktes (oder der Abarbeitung eines 
+RST7 im zu testeten Programm) wird seine Adresse in der Form 
+	*nnnn		 angezeigt und die Haltepunkte werden
+geloescht, d.h. es ist gegebenenfalls eine Neueingabe erforder-
+lich. Der bei der Haltepunkt-Adresse beginnende Befehl ist dabei
+noch nicht ausgefuehrt.
+Sind Pass-Punkte gesetzt (s. P-Kommando), so erfolgt bei (1) bis
+(6) bei jedem Durchlauf eines Pass-Punktes eine Protokollierung.
+Hat der Pass-Zaehler den Wert 1, so erfolgt ein Programmstop und
+damit das Beenden des G-Kommandos. Soll bei gesetzten Pass-
+Punkten ein Protokollierung nur erfolgen, wenn der zugehoerige 
+Pass-Zaehler den Wert 1 besitzt, so ist analog (1)-(6) 
+	(7)-G...	als Kommando einzugeben.
+Ist ein Haltepunkt in einem Unterprogramm erreicht, so setzt
+	G,		einen naechsten Haltepunkt an der
+Rueckkehradresse in dem das Unterprogramm aufrufenden Programm.
+Beispiele:
+	G100
+	G100,103
+	G.T1,.T2,#1416
+	G@T1+=T2,.A1,.A2
+	-G100,+20,+20
+
+  8.2.6. H-Kommando
+  -----------------
+Das H-Kommando unterstuetzt das Rechnen mit Hexawerten.
+Formen des Kommandos:
+	(1) Ha,b
+	(2) Ha
+	(3) H
+(1) liefert die hexadezimale Summe (a+b) und die Differenz (a-b)
+der Operanden a und b.
+(2) liefert den Wert von a im Format
+	hhhh .ssss #dddd
+,wobei hhhh den Hexawert von a, .ssss die symbolische Adresse
+(falls vorhanden) und #dddd den Dezimalwert bezeichnen.
+(3) gibt eine Liste der Adressen jedes Elements der
+Symboltabelle (falls vorhanden) hexadezimal aus.
+Beispiele:
+	H200,300
+	H#2000,#1617
+	H.T1+=T2,@T3-#10
+	H#67
+	H@T1+=T2-5
+
+  8.2.7 I-Kommando
+  ----------------
+Das I-Kommando initialisiert den Standart-Dateisteuerblock (FCB)
+mit Dateinamen c1,c2,...cn:
+Form des Kommandos:
+	Ic1,c2,...cn
+Wird als Datei eine COM- bzw. SYM-Datei spezifiziert, kann ein
+zu testendes Programm in Verbindung mit dem R-Kommando
+eingelesen werden.
+Beispiele:
+	Ix.dat
+	ix.inp y.out
+	Ia:x.inp b:y.out
+	ITEST.COM
+	ITEST.COM TEST.SYM
+
+  8.2.8. L-Kommando
+  -----------------
+Das L-Kommando wird benutzt, um Speicherinhalte in Assembler-
+sprachmnemonik aus einem bestimmten Programmbereich aufzulisten.
+Formen des Kommandos:
+	(1) Ls
+	(2) Ls,f
+	(3) L
+	(4) -L...
+(1) listet den disassemblierten Maschinencode, beginnend bei s,
+(2) von s bis f. (3) beginnt ab der letzten gelisteten,
+assemblierten oder getracten Adresse.
+(4) wird wie (1)-(3) angewendet,aber Marken und symbolische
+Operanden werden nicht ausgegeben.
+Nicht-Z80-Mnemoniks werden als
+	??=hhhh
+ausgegeben, wobei hhhh der Hexawert des entsprechenden
+Speicherplatzes ist.
+Beispiele:
+	L100
+	L#1213,#1304
+	L.TEST
+	L@T1,+20
+	-L.PUFF+=T1,+'B'
+
+  8.2.9.  M-Kommando
+  ------------------
+Mit dem M-Kommando koennen zusammenhaengende Speicherbereiche
+verschoben werden.
+Form des Kommandos:
+	Ms,h,d
+Das Kommando transportiert den Inhalt des Speicherbereiches mit
+der Anfangsadresse s und der Endadresse h byteweise nach dem bei
+der Adresse d beginnenden Bereich.
+Beispiele:
+	M100,20F,400
+	M.A,.B,.C
+	M.AB,+FF,.CD
+	M@A+=B,+#30,+200
+
+  8.2.10. P-Kommando
+  ------------------
+Mit dem P-Kommando koennen bestimmte Stellen im zu testenden
+Programm als "Pass-Punkte" definiert werden. Jeder Pass-Punkt
+erhaelt einen Zaehler, den Pass-Zaehler (1-FF), der jedesmal
+dann dekrementiert wird, wenn das Programm den am Pass-Punkt
+beginnenden Befehl ausfuehrt.
+Hat der Zaehler den Wert 1 erreicht, wird der Pass-Punkt zum
+staendigen Protokollier- und Haltepunkt und behaelt den Zaehler-
+Wert 1.
+Im Gegensatz zum temporaeren Unterbrechungspunkt beim G-Kommando
+unterbrechen die Pass-Punkte mit dem Pass-Zaehler 1 das
+Abarbeiten des zu testenden Programms  n a c h  Abarbeiten
+des am Pass-Punkt beginnenden Befehls.
+Formen des P-Kommandos:
+	(1) Pp
+	(2) Pp,c
+	(3) P
+	(4) -P
+	(5) -P
+(1) setzt einen Pass-Punkt auf Adresse p mit dem Zaehler-Anfangs-
+wert 1, (2) initialisiert den Zaehler-Anfangswert c (1-FF).
+Form (3) bringt die aktivierten Pass-Punkte mit den zugehoerigen
+Zaehlerwerten zur Anzeige.
+(4) loescht den Pass-Punkt auf p, waehrend bei (5) alle Pass-
+Punkte geloescht werden.
+Es koennen bis zu 8 Pass-Punkte gleichzeitig aktiviert werden.
+Beim Erreichen eines Pass-Punktes erfolgt bei Protokollierung
+eine Ausschrift der Art
+	nn PASS hhhh .ssss
+,wobei nn den Pass-Zaehlerwert, hhhh die Pass-Punkt-Adresse und
+ssss das entsprechende Symbol des Pass-Punktes (falls vorhanden)
+angeben. Dazu werden die CPU-Register-Inhalte angezeigt, ausser
+bei den Kommandos -G oder -U, falls der Pass-Zaehler groesser 1
+ist.
+Beispiele:
+	P200,ff
+	P.T1
+	P@T1+30,#11
+	-P.T1
+
+  8.2.11. R-Kommando
+  ------------------
+Das R-Kommando laedt die beim I-Kommando angegeben Dateien.
+Formen des Kommandos:
+	(1) R
+	(2) Rd
+(1) liest die mit dem I-Kommando spezifizierte Datei und
+speichert sie ab 0100H, mit (2) wird die Datei ab 0100H+d
+gespeichert.
+Mit der Kommandofolge
+	Ix.COM x.SYM
+	R
+werden sowohl die COM-Datei x als auch die zugehoerige
+Symboltabelle in den Speicher geladen.
+Soll die Symboltabelle nachgeladen werden, ohne die ab 0100H ge-
+speicherte COM-Datei zu ueberschreiben, dann muss die
+Kommandofolge
+	I* x.SYM
+	R
+eingegeben werden.
+Wenn eine Symbol-Datei spezifiziert wurde, zeigt die Ausschrift
+	SYMBOLS
+den Start der Leseoperation. Ein Fragezeichen "?" vor der
+Ausschrift SYMBOLS kennzeichnet einen Fehler beim Lesen des
+Maschinencodes, waehrend ein "?" nach der Ausschrift einen
+Fehler beim Lesen der Symbol-Datei anzeigt.
+Beispiele:
+	ITEST.COM
+	R
+	ITEST.COM TEST.SYM
+	R1000
+	I* TEST.SYM
+	R-#256
+
+  8.2.12. S-Kommando
+  ------------------
+Mit dem S-Kommando koennen Speicherplaetze geprueft und beliebig
+geaendert werden.
+Formen des Kommandos:
+	(1) Ss
+	(2) SWs
+Form (1) gibt den Speicherplatz s im Byte-Format an, (2) im
+Adress-Format, d.h. sei:
+	S100 - 34
+	101 - 12
+, so erfolgt bei unveraenderten Speicherinhalten mit Form (2)
+folgende Anzeige:
+	SW100 -  1234 .
+Wenn keine Eingabe erfolgt, wird der Inhalt nicht veraendert und
+die naechste Adresse angezeigt. Wird ein Wert eingegeben, so
+ueberschreibt er den vorherigen Inhalt und die naechste Adresse
+wird angezeigt.
+Das Kommando endet mit irgendeiner fehlerhaften Eingabe oder der
+Eingabe eines Punktes "." .
+Mit (1) koennen auch ASCII-Zeichenketten eingegeben werden. Dies
+geschieht durch Eingabe eines Anfuehrungszeichens ("), gefolgt
+von der Zeichenkette. Beendet wird die Eingabe durch <ENTER>.
+In den folgenden Beispielen werden die Tastatureingaben durch 
+<> gekennzeichnet.
+	<S100>
+	 0100 C3 <34>
+	 0101 24 <#253>
+	 0102 BD < >
+	 0103 4A <"Test>
+	 0107 2E <=T1+5>
+	 0108 14 <.>
+
+	<sw.T1+#10>
+	 1200 005A <33F>
+	 1202 4A12 <@TEST>
+	 1204 1101 < >
+	 1206 AB1C <0+.T1+=T2-#10>
+	 1208 186B <.>
+
+  8.2.13. T-Kommando
+  ------------------
+Das T-Kommando gestattet wahlweises Protokollieren der Programm-
+abarbeitung von 1 bis 65535 Programmschritten.
+Formen:
+	(1) Tn
+	(2) T
+	(3) Tn,c
+	(4) -T...
+	(5) TW...
+	(6) -TW...
+Form (1) protokolliert n Programmschritte, wobei der CPU-Status
+bei jedem Schritt angezeigt wird, waehrend (2) nur einen Schritt
+protokolliert.
+Form (3) wird in Verbindung mit den DU-Zusatzfunktionen HIST und
+TRACE benutzt und "ruft" die Zusatzfunktion c bei jedem Schritt.
+Form (4) wirkt wie (1)-(3), aber ohne Anzeige der Symbole.
+Form (5) wirkt ebenfalls wie (1)-(3), aber ohne Protokollierung
+der durch "call" aufgerufenen Unterprogramme.
+(6) wirkt wie (5), aber ohne Symbolanzeige.
+Beispiele:
+	T200
+	T#10,.COLLECT
+Das Protokollieren erfolgt bis zum Erreichen von BDOS und wird
+nach Rueckkehr aus dem BDOS-Teil ins aufrufende Programm
+fortgesetzt.
+
+
+  8.2.14. U-Kommando
+  ------------------
+Das U-Kommando wirkt wie das T-Kommando mit der Ausnahme, dass
+grundsaetzlich Zwischenprogrammschritte nicht protokolliert
+werden.
+Formen des Kommandos:
+	(1) U...
+	(2) -U...
+	(3) UW...
+	(4) -UW...
+U fuehrt die gleichen Funktionen wie T aus, es wird aber nur der
+CPU-Status vor Ausfuehrung des ersten Befehls angezeigt. Bei (2)
+und (4) jedoch erfolgt keine Protokollierung dazwischenliegender
+Pass-Punkte, wenn deren Zaehler den Wert 1 noch nicht erreicht
+hat.
+Beispiele:
+	Ufa24
+	U#100,.COLLECT
+	UW=SUMME,.COLLECT
+
+
+  8.2.15. X-Kommando
+  ------------------
+Mit dem X-Kommando kann der CPU-Status angezeigt und veraendert
+werden.
+Formen des Kommandos:
+	(1) X
+	(2) Xf
+	(3) Xr
+(1) zeigt den CPU-Status im Format:
+
+	f A=a B=b D=d H=h S=s P=p i y
+	  A'  B'  D'  H'  X   Y
+
+an, wobei f den Flag-Status, a den Inhalt des Akkumulators A,
+b den Inhalt des Doppelregisters BC, d den DE-Inhalt, h den
+Inhalt von HL, s den Wert das Stack-Pointers und p den PC-Wert
+bezeichnet. i stellt die Mnemonik des bei p beginnenden Befehls
+und y die symbolische Adresse dar.
+A', B', D', H' bezeichnen den Zweitregistersatz und X, Y die
+Doppelregister IX und IY.
+Der Flag-Status wird durch Striche "-" bei Wert 0 dargestellt
+oder den entsprechenden Kennbuchstaben ( C arry Z ero M inus
+E ven parity I nterdigit carry) bei Wert 1.
+(2) ermoeglicht eine Aenderung des Flag-Status, f ist einer der
+Buchstaben C, Z, M, E oder I. Der aktuelle Status wird angezeigt
+(entweder "-" oder der entsprechende Buchstabe) und eine 1 oder
+0 eingegeben bzw. bei einer Leereingabe der Status beibehalten.
+(3) ermoeglicht ein Aendern des Registerinhaltes, wobei r einer
+der Buchstaben A, B, D, H, S, A', B', D', H', X, Y oder P ist.
+Die Form "=mm" wird bei speicherbezogenen Befehlen
+(z.B. ADD A,(HL)) angezeigt, wobei mm der Speicherinhalt vor 
+Ausfuehrung des Befehls ist.
+Beispiele: Eingabe in <>
+	<XM>
+	H	<0>
+	<XB>
+	2A04	<1B23>
+	<XP>
+	0100	<.TEST+3>
+
+  8.3. DU-Zusatzfunktionen
+  ------------------------
+Die Zusatzfunktionen von DU gestatten weitere Testmoeglich-
+keiten. Eine Zusatzfunktion wird zusammen mit DU durch die
+Eingabe von
+	DU x.UTL
+geladen, wobei x den Namen der Zusatzfunktion bezeichnet. Nach
+dem Laden ist die Zusatzfunktion zur Ausfuehrung mit DU bereit 
+und antwortet mit
+	.INTIAL=iiii
+	.COLLECT=cccc
+	.DISPLAY=dddd
+, wobei iiii, cccc und dddd die Absolutadressen der Eintritts-
+punkte der Zusatzfunktion fuer die Initialisierung, des Sammeln
+von Testdaten und die Anzeige der gesammelten Informationen dar-
+stellen. Eine interne DU-Symbol-Tabelle enthaelt diese drei 
+symbolischen Eintrittsnamen (auch wenn keine SYM-Datei geladen
+wurde).
+Eine Zusatzfunktion wird durch die Eingabe von
+	Ciiii oder G.INITIAL
+neu initialisiert. Die Anzeige der gesammelten Informationen er-
+folgt durch
+	Cdddd oder C.DISPLAY
+, waehrend das Sammeln der Daten bei Ausfuehrung eines T- oder
+U-Kommandos erfolgt, bei dem als zweites Argument die COLLECT-
+Adresse angegeben ist.
+Beispiele:
+	Uffff,.collect
+	U#1000,AA24
+	TW500,.COLLECT
+	UW@TEST,.COLLECT
+Die spezielle Initialisierung, Datensammlung und Anzeige ist von
+der jeweiligen Zusatzfunktion abhaengig.
+
+  8.3.1. HIST
+  -----------
+Die Zusatzfunktion HIST erzeugt ein Histogramm der Programmaus-
+fuehrung zwischen zwei bei der Initialisierung vorgegebenen
+Punkten. Die Daten werden waehrend der Ausfuehrung eines U- oder
+T-Kommandos gesammelt und koennen zu beliebiger Zeit angezeigt
+werden. Nach dem Einlesen oder Neuinitialisierung meldet sich
+HIST mit der Ausschrift
+	TYPE HISTOGRAM BOUNDS:
+Es wird die Eingabe zweier Speicheradressen aaaa und bbbb er-
+wartet, zwischen denen ein Histogramm erzeugt werden soll.
+Beispiel:
+	<DU HIST.UTL>
+	TYPE HISTOGRAM BOUNDS  <100,A00>
+	.INITIAL = AA21
+	.COLLECT = AA24
+	.DISPLAY = AA27
+	<#I TEST.COM TEST.SYM>
+	#R
+	SYMBOLS
+	<Uff,.collect>
+(Anzeige der Register und Stop nach Kommando-Ausfuehrung)
+	<#C.DISPLAY>
+(Anzeige Histogramm)
+	<#C.INITIAL>
+(Histogramm-Grenzen neu festlegen)
+	...........
+
+  8.3.2. TRACE
+  ------------
+Die Zusatzfunktion TRACE ermoeglicht ein Rueckprotokollieren von
+maximal 256 Befehlen, das am aktuellen Unterbrechungspunkt
+endet. Die Sammlung der entsprechenden Adressen erfolgt nur mit
+dem T- oder U-Kommando.
+Es koennen Pass-Punkte waehrend der Datensammlung gesetzt sein.
+Sie fuehren zur Unterbrechung, wenn der Pass-Zaehler den Wert
+1 erreicht hat.
+Beim Initialisieren werden die gesammelten Informationen
+geloescht, beim Sammeln der Daten erfolgt das Einspeichern der
+Adressen der abgearbeiteten Befehle in einen zyklischen Puffer
+und bei der Anzeige die Rueckprotokollierung in mnemonischer
+Form mit Symbolbezuegen, wenn sie vorhanden sind.
+Wurde vor Aktivierung von TRACE das A-Kommando abgearbeitet, so
+werden nur die Befehlsadressen protokolliert. In diesem Fall ist
+TRACE durch folgende Eingabe zu laden:
+	<DU>
+	<#-A>
+	<#I TRACE.UTL>
+	<#R>
+	"-A" IN EFFECT, ADRESS BACKTRACE
+	....
+Beispiele:
+(fuer die normale Anwendung)
+
+	<DU TRACE.UTL>
+	READY FOR SYMBOLIC BACKTRACE
+	<#I TEST.COM TEST.SYM>
+	<#R>
+	<#Ufff,.collect>
+	(Registeranzeige, Stop nach Kommandoausfuehrung)
+	#C.DISPLAY
+	(symbolische Rueckprotokollierung wird angezeigt)
+	........
+
+  8.4. Abschlussbemerkungen
+  -------------------------
+DU benoetigt einen Speicherbereich von etwa 10K Bytes und
+verschiebt sich selbst direkt unter BDOS (ueberlagert den CCP-
+Bereich). Die Symboltabelle wird speicherabwaerts ab DU-Beginn
+angelegt. Entsprechend der Tabellenbelegung veraendert sich die
+BDOS-Sprungadresse, die den reduzierten freien Bereich
+kennzeichnet.
+Die Programme, die einen grossen Speicherbereich benoetigen und
+die BDOS-Sprungadresse benutzen, sollten nicht vor dem Laden der
+Symboltabelle gestartet werden.
+Das "-A"-Kommando erhoeht den freien Bereich um etwa 4K Bytes.
+

@@ -1,0 +1,59 @@
+
+;
+                Wordstar-Installation fuer A5120/30
+(mit 1152 PIO-Drucker und virtueller Drucker im BIOS, s. A5120.DOC)
+     
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+1. Terminal
+~~~~~~~~~~~
+248  #24  - Zeilenzahl auf Bildschirm
+249  #80  - Zeilenlaenge 
+24A 011B  - Kursorpositionoierung - Vorspann
+25E  0    - eine offset 
+25F  0    - column offset
+26D 0116  - loesche Zeilenrest
+2AA   FF  - Zeichen auf letzter Bildschirmposition erlaubt
+            (da memory-mapped)
+2B0   FF  - memory-mapped video display
+2B1 00F8  - Anfang des Bildwiederholspeichers
+2B4   FF  - Kursor wird durch BIT 7 gesetzt
+2DC    1  - default DBK fuer ... OVR-Suche (A=1, B=2,....)
+   
+2. Drucker
+~~~~~~~~~~
+690   00  - overprint durch backspace (WSN)
+      01  - overprint in daisy wheel
+691   03  - Anschlaege fuer Boldface (WSN)
+      02  -     ---"---
+692   02  - Anschlaege fuer Doube strike
+   
+nur fuer WSN:
+696  02 0D 0A     -  erste Position der naechsten Zeile
+6A1  02 0D 00     -  erste Position der aktuellen Zeile (nicht noetig)
+6AF  01 08        -  backspace
+6B5  02 01 05     -  alternativer Druck (10 CPI, 6 LPI)  ^A
+6BA  02 02 06     -  normaler Druck (12 CPI, 8 LPI) ^N               
+6BF  03 18 01 1A  -  Halbzeile zurueck ^T
+6C4  03 18 01 0B  -  Halbzeile vorwaerts ^V
+  
+  
+6C9  -- -- -- --  -                   ^Q
+6CE  -- -- -- --  -                   ^W
+6D3  01 1F        -  drucke lateinisch  ^E 
+6D3  01 1E        -  drucke kyrillisch  ^R
+6DD  01 14        -  Farbbandumschaltung  ^Y
+6E2  01 14        -      --"--            
+6E7  04 0d 02 06 0F  -  Drucker-Initialisierung
+                        CR, 12 CPI, 8LPI, fester Zeichenabstand (WSN)
+     05 0D 02 06 0E 16  -  CR, 12 CPI, 8 LPI, variabler Zeichenabstand  
+                           Vorwaertsdruck (WSR)
+6F8  02 0D 0F     -  Druckende  CR, fester Zeichenabstand (WSR)
+  
+  
+nur fuer WSR (daisy wheel):
+790  01 18        -   vertikale Druckkopfbewegung (danach Schrittzahl in 
+                      Halbzeilen)
+795  00 00        -   min. Halbzeilenzahl
+797  00 7E        -   max.   --"--
+

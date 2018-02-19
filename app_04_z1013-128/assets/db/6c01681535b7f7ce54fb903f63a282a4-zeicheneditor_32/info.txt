@@ -1,6 +1,5 @@
 <kurz src="Editor für den 8x8 Zeichensatz-ROM"/>
-<lang>Der Zeichenkode wird direkt eingegeben. Es braucht also 
-eine Tastatur, die alle Kodes generieren kann. Selbst dann 
-bleibt die Frage, wie kann man das Zeichen mit dem ASCII-Kode
-0x00 editieren.</lang>
+<lang>Der Zeichenkode wird direkt eingegeben. Es braucht also ein Tastaturlayout, das alle 8-Bit-Zeichen generieren kann. 
+
+Selbst fehlt noch ein Zeichen. Wie kann man das Zeichen mit dem ASCII-Kode 0x00 editieren?</lang>
 <required></required>

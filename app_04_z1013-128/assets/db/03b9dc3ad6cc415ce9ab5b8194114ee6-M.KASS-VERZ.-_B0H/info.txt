@@ -1,0 +1,9 @@
+<kurz src="Kassettenlisten editieren und verwalten"/>
+<lang>Programm wird auf die Adresse 0x00B0 geladen und stellt dann die Befehle
+@R und @N bereit.
+
+Die Befehle und Fehlermeldungen folgen der Idee von KC-BASIC
+LIST, EDIT, KILL, FRE, NEW, BYE,CLS oder
+UL ERR, LN ERR
+</lang>
+<requires></requires>

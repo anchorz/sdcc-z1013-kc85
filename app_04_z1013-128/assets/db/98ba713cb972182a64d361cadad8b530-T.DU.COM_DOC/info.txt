@@ -1,0 +1,3 @@
+<kurz src="DU 1520 Debugger (SCPX)"/>
+<lang><include src="T.DU.COM DOC.txt"/></lang>
+<requires></requires>

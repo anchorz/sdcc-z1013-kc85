@@ -1,0 +1,3 @@
+<kurz src="Wordstar-Installation für A5120/30 (mit SD1152 PIO-Drucker)"/>
+<lang><include src="I.WORDSTARINST.DOC.txt"/></lang>
+<requires></requires>

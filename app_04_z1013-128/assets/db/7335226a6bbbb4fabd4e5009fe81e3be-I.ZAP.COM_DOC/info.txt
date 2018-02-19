@@ -1,0 +1,3 @@
+<kurz src="Hilfsprogramm ZAP, Disk Access Utility für CP/M"/>
+<lang><include src="I.ZAP.COM DOC.txt"/></lang>
+<requires></requires>

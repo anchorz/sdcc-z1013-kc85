@@ -1,0 +1,3 @@
+<kurz src="HEX/ASCII-Anzeige, Editor und Reassembler"/>
+<lang><include src="T.TOOL-BESCHR..txt"/></lang>
+<requires></requires>

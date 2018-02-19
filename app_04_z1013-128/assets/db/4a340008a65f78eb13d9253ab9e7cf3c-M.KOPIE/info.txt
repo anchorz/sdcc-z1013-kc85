@@ -1,0 +1,3 @@
+<kurz src="Verschiebt ein Programm an eine andere Speicheraddresse 0x0100"/>
+<lang>wie [5980a2b72023b4c848ee23d86e285e4d], Startadresse ist aber hier 0x0105</lang>
+<requires></requires>

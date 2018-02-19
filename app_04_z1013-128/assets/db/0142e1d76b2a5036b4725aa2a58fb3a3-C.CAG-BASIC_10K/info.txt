@@ -1,0 +1,9 @@
+<kurz src="HC-BASIC 32K und Tastatur-CLICK"/>
+<lang>mit Erweiterung ab 0x2625 CLICK
+und Speichergrenze 0x7fff
+ansonsten wie [00ca4f8ef57275753a08ede5c4697724] HC-BASIC,
+
+Speicher ab 0x2A00 ist nicht von Bedeutung. Es wurde lediglich die
+falsche Endadresse gewählt 0x2A00 statt 0x29FF.
+</lang>
+<requires></requires>
