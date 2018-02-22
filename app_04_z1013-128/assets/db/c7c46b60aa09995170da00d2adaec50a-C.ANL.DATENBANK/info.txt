@@ -1,0 +1,69 @@
+<kurz src="Bedienungsanleitung Datensuchprogramm 08.03.1988"/>
+<lang>
+EDIENUNGSANLEITUNG FUER DATENSUCHPROGRAMM (100-500 / J 100)
+Peter Schellin Melanchthonstr.4
+G O E R L I T Z   8 9 0 0
+****************************************************************
+
+Mit diesem Programm ist es moeglich, beliebige Daten formatfrei
+abzuspeichern und wiederzufinden sowie zu loeschen und im be-
+grenztem Umfang auch zu aendern.
+
+Nach dem Laden und Starten erscheint die Aufforderung,den Lade-
+oder den Suchmodus auszuwaehlen.
+Wird weder L noch S eingegeben, erfolgt der Ruecksprung in den Monitor.(E)
+
+Mit L kommt man in den Lademodus und kann jetzt beliebige Daten-
+saetze eingeben.Jedes Wort innerhalb eines Satzes ist durch ein
+Space vom anderen zu trennen.Auch nach dem letzten Wort eines
+Satzes ist ein Space anzufuegen, bevor Ent gedrueckt wird. Aus
+dem Lademodus gelangt man heraus mit @,wenn man keine Daten mehr
+eingeben will.Sollte der verfuegbare RAM (z.Zt. 16 K) mit Daten
+gefuellt sein, erscheint die Ausschrift RE.
+Mit S gelangt man in den Suchmodus. Dabei ist im Modus 'Einzel-
+ausgabe' auch das Loeschen und korrigieren moeglich.
+Es koennen beliebig viele, durch Space getrennte Suchwoerter
+eingegebn werden, die Laenge aller zusammen darf aber zwei BS-
+Zeilen nicht ueberschreiten.Tippfehler bei der Suchworteingabe
+lassen sich nur ueber @ loeschen. Wird nur ein Suchwort eingege-
+ben, werden alle Datensaetze angezeigt, in denen dieses Suchwort
+enthalten ist. Werden mehrere Suchwoerter (mit Space getrennt)
+eingegeben, werden nur die Datensaetze angezeigt, in denen alle
+eingegebenen Suchwoerter enthalten sind.Ausser dem senkrechten
+Strich, dem Doppelkreuz und der Schlange duerfen alle Zeichen
+verwendet werden. Im Korrekturmodus ist zu beachten, dass der   
+
+Cursor den Bereich des angezeigten Datensatzes nicht verlaesst,
+weil sonst die benachbarten Saetze im Speicher veraendert werden
+koennten. Beim Loeschen wird derfreie Speicherplatz wieder groe-
+sser.Um die gespeicherten Datenauf Magnetband zu retten, geht
+man mit L in den Lademodus. Hinter dem L steht die Speicherenda_
+dresse, die man notiert. Mit Schlange und irgendeinem Zeichen
+ausser L bzw. S (oder mit sicherem RESET) gelangt man in den Mo-
+nitor und kann nun mit S 100 bis notierte Endadresse das Pro-
+gramm samt Daten speichern und mit L 100 bis not. Adresse/ J 100
+wieder laden und starten.Guenstig ist dabei der HEADERSAVE.
+
+Ergaenzungen:
+
+-die gefundenen Datensaetze werden gezaehlt
+-bei Korrektur muss immer ein freies Feld vor dem Strich bleiben
+-das eigegebene Suchwort bleibtgespeichert, bei Wiederholung
+reicht es dann,@ zu druecken (damit lassen sich mehrere Daten-
+saetze, die alle ein gleiches Wort enthalten, durch staendiges
+Druecken von @ schnell hintereinander loeschen)
+-auf den Speicherplaetzen
+    4FC/D  und   4FE/F sind eingetragen:
+    Rueckwaerts-   Vorwaertszaehler
+ Diese sind bei Speichererweiterung um den gegenueber 3FFF zu-
+ saetzlichen RAM zu erhoehen bzw. zu vermindern
+-zum Einbinden einer Druckroutine muss auf 3AA der entsprechende
+ Sprung eingetragen werden(jetzt steht dort der RST20 zur Ausga-
+ be auf BS
+
+
+Stand: 8.3.88
+                  
+
+</lang>
+

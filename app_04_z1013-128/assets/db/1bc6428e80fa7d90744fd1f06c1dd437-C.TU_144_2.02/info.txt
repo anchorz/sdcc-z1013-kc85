@@ -1,0 +1,10 @@
+<kurz src="Höhlenvariante, mit TU144"/>
+<lang>
+Tastaturabfrage funktioniert nicht auf allen Rechnern, zumindest nicht im Emulator.
+
+Steuerung: G ⏎
+
+</lang>
+<requires>2.02(SPAL)</requires>
+<port range="02" mode="2" device="Systemport, Tastatur"/>
+

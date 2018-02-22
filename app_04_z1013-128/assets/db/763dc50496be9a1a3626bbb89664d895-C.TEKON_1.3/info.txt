@@ -1,0 +1,22 @@
+<kurz src="Textkonvertierungsprogramm EDITEX- zu MicroWORD-Files "/>
+<lang>TEKON 1.3     (c) ORION INC. '89
+
+--------------------------------
+
+TEXTKONVERTIERUNGSPROGRAMM fuer die Umwandlung von EDITEX- zu MicroWORD-Files
+
+
+Textbeginn EDITEX-File: 2000H
+
+EOT        EDITEX-File: 20B3H
+
+Textbeginn ASCII -File: 1800H
+
+Start mit >ENT<
+
+Zum Abspeichern :
+
+    @S 1800 18B9  
+
+</lang>
+<requires></requires>

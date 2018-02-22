@@ -1,0 +1,5 @@
+<kurz src="Apfelmännchen"/>
+<lang><include src="C.APFELMAENCHEN.B"/></lang>
+<requires>2.02_RB(MCALL2)</requires>
+
+

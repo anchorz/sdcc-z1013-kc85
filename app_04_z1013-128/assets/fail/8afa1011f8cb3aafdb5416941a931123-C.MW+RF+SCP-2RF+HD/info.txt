@@ -1,0 +1,19 @@
+<kurz src="ähnlich [0ec6a4cb664baed278fa1941576ffe32]"/>
+<lang>Textfiles korrupt. Gibt es aber an anderer Stelle nocheinmal, aber in korrekter Form.
+
+Im Textspeicher sind neben der eigentlichen Dokumentation zum MicroWord, noch die Hinweise
+für die RamFloppy, SCP und HeaderDisk.
+
+Das Textfile scheint an mehreren Stellen defekt zu sein:
+00003280  6c 20 77 69 72 64 20 62  69 73 20 7a 75 72 1e 61  |l wird bis zur.a|
+00003290  6b 74 75 65 6c 6c 65 6e  20 43 75 72 73 6f 72 70  |ktuellen Cursorp|
+000032a0  6c 20 77 69 72 64 20 62  69 73 20 7a 75 72 1e 61  |l wird bis zur.a|
+000032b0  6b 74 75 65 6c 6c 65 6e  20 43 75 72 73 6f 72 70  |ktuellen Cursorp|
+000032c0  4d 3e 2d 4b 6f 6d 6d 61  6e 64 6f 20 6d 61 72 2d  |M>-Kommando mar-|
+000032d0  1e 6b 69 65 72 74 65 72  20 54 65 78 74 74 65 35  |.kierter Textte5|
+
+Weiter: Haupuspeicher Gsundadresse
+
+<include src="C.MW+RF+SCP-2RF+HD.txt"/></lang>
+<port range="00-01" device="Serial_S3004"/>
+<requires></requires>

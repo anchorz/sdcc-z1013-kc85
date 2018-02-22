@@ -1,0 +1,27 @@
+<kurz src="Z1013-Datenbanksystem mit freier Formatwahl 01.01.1989"/>
+<lang>
+
+Steuerung: E , L , S , F , K , d , ? , ^C 
+
+E = Eingabe von Datensaetzen
+    entsprechend den Feldver-
+    einbahrungen ab Dtop
+
+L = Liste aller Daten eines
+    Feldnamens
+
+S = Suchen nach beliebigen
+    Strings, Anzeige des Daten-
+    satzes, Aenderungen
+
+F = Formatieren der Datei
+
+K = Kassettenarbeit
+
+? = Hilfeseite
+
+d = Drucker off  D = Drucker on
+
+^C= Betriebssystemruf  
+</lang>
+

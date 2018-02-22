@@ -1,0 +1,5 @@
+<kurz src="PROGRAMM- UND KASSETTENINHALTSVERZEICHNIS"/>
+<lang>Keine Ahnung, ob und wie es funktioniert.
+<include src="C.BIBLIOTHEKAR.b"/></lang>
+<requires>2.02_RB(MCALL2)</requires>
+

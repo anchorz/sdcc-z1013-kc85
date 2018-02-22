@@ -1,0 +1,7 @@
+<kurz src="EXTENDED FIG-FORTH V2.1 15525 bytes free"/>
+<lang>
+Direkter Sprung zur Tastaturabfrage im Monitor 2.02:
+01CB  CD 88 F1    CALL    0F188H
+
+</lang>
+<requires>2.02(MCALL2D)</requires>

@@ -1,0 +1,3 @@
+<kurz src="identisch [4df50045ce689f42fe3c56f0de5ce676-PING_PONG]"/>
+<lang></lang>
+<requires></requires>

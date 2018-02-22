@@ -1,0 +1,1361 @@
+MicroWORD 1.5 GS1
+
+fuer Z1013 Grundversion
+
+(c) by R. Brosig  18.01.89
+
+
+Editiertasten:
+
+S4 CTRL   Bedeutung 
+______________________________
+Q   I   Cursor rechts
+P   H   Cursor links
+R   J   Cursor runter
+S   K   Cursor hoch
+I   A   Cursor eine Seite vor
+M   E   Cursor Seite zurueck
+@   P   Zeichen links loeschen
+S2G DEL Zeichen loeschen
+K   C   Bild-/Komm.-Mode
+J   B   Ank. Steuerzeichen
+B   R   Wandlung Buchstabe gr/kl.
+E   U   CAPS (SHIFT-LOCK)
+W   O   Loeschen einer Zeile
+A   Q   Ersetze/Wiederhole FIND
+T   L   FORM FEED (fuer Drucker)
+D   T   Tabulator
+V   N   NUL
+C   S   Einfuegen/Ueberschreiben
+F   V   Marke setzen
+O   G   Cursor Wort rechts
+N   F   Cursor Wort links
+L   D   Reclaim, geloeschte
+        Zeichen zurueckholen
+
+
+1. Speicheraufteilung: 
+
+ 100H-18FEH  Programm mit Header-
+             save und S 3004 
+             Druckertreiber
+18FFH-1BFEH  SAVE-Bereich
+             (Merkzettel)
+   ab 1BFFH  Textpuffer
+
+Ohne Beschreibung muss nur der 
+Bereich von 100-18FF abgesaved
+werden!
+
+
+2. Der Textspeicher:
+
+Als Textspeicher dient der
+Speicherbereich ab 1BFFH.
+Die genaue Lage des Textpuffers
+kann durch das A-Kommando im
+gesamten Textspeicherbereich
+eingestellt werden. Bei Bedarf 
+kann der Save-Bereich auch zum
+Textpuffer definiert werden.
+Die Definition kann dann im Be-
+reich von 18FFH bis Speicherober-
+grenze erfolgen (max. 3FFFH bei
+16K RAM, DFFF bei 64K RAM).
+
+
+3. Allgemeine Funktionen:
+
+Nach Start des Texteditors wird
+ein Speichertest durchgefuehrt,
+der einen evtl. groesser def.
+Textpuffer auf das Speicher-
+ende begrenzt (Anzeige 'M').
+Danach wird das Ende eines evtl.
+im Textpuffer liegenden Textes
+gesucht (Anzeige 'I').
+Nachdem wird ein Kommando-
+modus erreicht. Dieser zeigt
+
+- das Menue der moeglichen
+  Kommandos,
+- die Zeile, in der sich der 
+  Cursor befindet (nach Start
+  immer in der letzten)<LINE>,
+- die Cursorposition innerhalb
+  der aktuellen Zeile <POS>,
+- den freien Platz im Textpuffer
+  dezimal <FREE>,
+- die aktuelle Cursor-Textposi-
+  tion in hex <TXP>,
+- das Textpufferende in hex <ETB>
+- das definierte Zeilenende
+  (max. 255) dezimal <LE> ,
+- den eingeschalteten Editiermo-
+  de (Insert'I'/Overwrite'O')<M>
+- sowie den Hexcode des durch
+  den Cursor im Bildmode vedeck-
+  ten Zeichens <CD> an.
+
+
+4. Der Kommandomodus
+
+Folgende Kommandos koennen ver-
+wendet werden:
+
+
+<A> - assign
+
+Damit kann der Textpufferbereich
+neu definiert werden.
+Die Eingabe der Adressen kann
+dezimal oder hexadez. (nachstel-
+len eines H, ohne fuehrende 0)
+erfolgen.
+
+
+<B> - bye
+
+Rueckkehr zum Monitor und Reor-
+ganisation des Textes.
+
+
+<S> - start
+
+Cursor auf Textanfang 
+
+
+<E> - end
+
+Cursor auf Textende
+
+
+<N> - number
+
+Cursor wird nach Eingabe der
+Zeilennummer mit maximal fuenf
+Ziffern auf die entsprechende
+Zeile gesetzt.
+
+
+<M> - set mark
+
+Der Cursor wird im Bildschirm-
+modus vor Anwendung des Komman-
+dos auf eine bestimmte Textstel-
+le positioniert, anschliessend
+wird mit diesem Kommando diese
+Stelle markiert und wieder in
+den Bildschirmmodus zurueckge-
+schaltet. Die Markierung wird
+durch andere Kommandos ausgewer-
+tet. Diese Funktion kann alter-
+nativ auch durch eine entspre-
+chende Steuertaste (^V,S4-F) im
+Bildschirmmode ausgefuehrt werden.
+
+
+<%> - delete part
+
+Mit diesem Kommando kann ein 
+Textteil, dessen Anfang mit dem
+<M>-Komm. gekennzeichnet wurde,
+bis zur aktuellen Cursorposi-
+tion geloescht werden.
+
+
+<&> - all clear
+
+Loeschen des gesamten Textpuf-
+fers.
+
+
+<F> - find/change
+
+Soll eine Textfolge im Textpuf-
+fer gesucht werden und ggf.
+durch eine andere Textfolge er-
+setzt werden, so muss nach
+Aufruf dieses Kommandos der 
+Text, der gesucht werden soll,
+eingegeben werden, durch '/'
+getrennt kann anschliessend der
+einzusetzende Text angegeben 
+werden. Die gesamte Textfolge
+ist auf 32 Zeichen begrenzt. 
+Dabei kann das Verhaeltnis der
+beiden Textteile beliebig sein.
+Die Suche erfolgt dabei grund-
+saetzlich ab aktueller Cursor-
+position.
+Bei der ersten Uebereinstim-
+mung wird der Curuor auf das
+erste Zeichen dieser Zeichen-
+kette gesetzt und in den Bild-
+schirmmodus umgeschaltet.
+Im Bildschirmmodus existiert 
+eine Funktionstaste, die diesen
+Kommandokomplex ohne erneute
+Eingabe der Zeichenkette wie-
+derholt startet (CTRL-Q / S4-A
+=Ersetzen/Wiederholen).
+Die Find-Routine startet immer
+auf der aktuellen Zeilenposition
+
+
+<H> - print part
+
+Ueber die Druckerschnittstelle
+kann mit diesem Kommando der
+Text zwischen einer im <M>-Kom-
+mando (bzw.^V) markierten Stelle
+und der aktuellen Cursorposi-
+tion formatiert ausgedruckt
+werden.
+Es besteht die Moeglichkeit der
+Einstellung des Seitenformates
+und der Auswahl der zu drucken-
+den Seiten. Eine Arbeit mit
+Seitenstop kann eingestellt
+werden. Nach Aufruf des Komman-
+dos erfolgt die Aufforderung
+zur Eingabe der Zeilenzahl/Sei-
+te (lines/page),die man mit
+einer Dezimalzahl (>9) beant-
+wortet (normale Seite=72). 
+Bei Zeilenzahl=0 bzw. keine Ein-
+gabe erfolgt keine Seitenforma-
+tierung.
+Bei geforderter Seitenforma-
+tierung wird abgefragt, mit 
+welcher Numerierung die ge-
+druckten Seiten beginnen sollen.
+Bei leerer Eingabe wird ohne
+Fusszeile, in der die Seitennum-
+mer untergebracht ist, gedruckt.
+Anschliessend wird abgefragt, 
+ob ein Druckstop nach jeder
+Seite erfolgen soll. Wird diese
+Frage bejaht, stoppt der Druck
+definiert nach jeder Seite.
+
+
+<P> - print file
+
+wie <H>, nur dass der komplette
+Text gedruckt wird.
+
+
+<L> - line-end
+
+Mit diesem Kommando wird die
+rechte Zeilenbegrenzung einge-
+stellt (10-255).
+Bei Ueberschr. der Pos. erfolgt
+ein Wortumbruch bis zum vorher-
+gehenden Leerzeichen oder TAB. 
+Wird innerhalb der letzten 6 Zei-
+chen ein '-' eingegeben, so er-
+folgt automatisch ein Zeilen-
+abschluss. Die Eingabe einer 0
+als max. Zeilenlaenge schaltet
+die Funktion aus.
+
+
+<R> - read file
+
+Es wird ein Text, der mit Header-
+save aufgezeichnet wurde, in den
+Textpuffer geladen. Ein evtl.
+vorhandener Text wird ueber-
+schrieben.
+
+
+<W> - write file
+
+Der gesamte Text, der sich im
+Textpuffer befindet, wird mit
+Hilfe des integrierten Header-
+saves anl wird bis zur
+aktuellen Cursorpl wird bis zur
+aktuellen CursorpM>-Kommando mar-
+kierter Textte5l wird bis zur
+aktuellen Cursorposition mit 
+Headersave ausgegeben.
+ 
+ 
+<D> - read part
+
+Der ueber die Headersaveschnitt-
+stelle eingelesene Text wird an
+der Cursorposition eingefuegt.
+Dabei ist darauf zu achten, dass
+der eingefuegte Text kleiner als
+der freie Textbereich ist.
+Es ist wichtig, dass der Einle-
+sevorgang nicht vorzeitig abge-
+brochen wird, da es sonst zu
+einem Textverlust kommen kann.
+
+
+
+<X> - expand
+
+Hiermit wird der zweizeilige
+Bildmode eingeschaltet. Damit
+koennen Texte, die fuer ein brei-
+teres Format geschrieben sind,
+ohne seitliches Bildrollen gele-
+sen und bearbeitet werden.
+
+
+<C> - compact
+
+Der zweizeilige Bildmode wird
+wieder ausgeschaltet.
+
+
+<T> - write repeat
+
+Die vorangegangene Write-Funktion
+wird wiederholt (Sicherheitsko-
+pie erzeugen). Zwischen der ers-
+ten Schreiboperation und diesem
+Kommando darf die aktuelle Cur-
+sorposition nicht veraendert
+werden.
+
+
+<=> - NL->CRLF
+
+Wandelt ueber den gesamten Text 
+das Zeilenendezeichen NL (1EH)
+in die Steuerzeichenfolge CRLF
+(0DH,0AH). Anschliessend wird
+das Kommando <W> aufgerufen,
+sodass der gewandelte Text auf
+Kassette ausgelagert werden 
+kann. Nach Beendigung oder Ab-
+bruch der Save-Funktion wird der
+Text wieder zurueckgewandelt.
+Es ist zu beachten, dass der
+Text durch die Wandlung in CRLF
+um die Zeilenzahl laenger wird
+und deshalb der freie Speicher-
+platz diesem Fakt entsprechen
+muss. Mit dieser Funktion koen-
+nen CP/M-kompatible Texte er-
+zeugt werden.
+
+
+<I> - in save
+
+Dieses sehr leistungsfaehige
+Kommando dient im Zusammenhang
+mit dem <O> Kommando dem Mischen
+von Textteilen. 
+Ein Textbereich von einer
+definierten Marke bis zur Cur-
+sorposition wird in den SAVE
+geladen. Der SAVE stellt einen
+Sondertextpuffer von 1K Laenge
+dar, der direkt hinter dem Edi-
+tor plaziert ist. Ist der mar-
+kierte Bereich groesser als der
+SAVE, erfolgt eine Fehlermeldung.
+Bei Verzicht auf die SAVE-Funk-
+tion kann der SAVE-Bereich mit
+zum Textpuffer gemacht werden.
+ 
+
+<O> - out save
+
+Der Inhalt des im <I> Kommando
+gefuellten SAVE's wird an der 
+aktuellen Cursorposition einge-
+fuegt.
+
+
+5. Der Bildschirmmodus
+
+Im Bildschirmmodus wird der 
+Bildschirm entsprechend des
+eingegebenen Textes aktualisiert.
+Das Textfenster wird dabei
+so dargestellt, dass der Cursor
+im Bildfenster erscheint. Dabei
+kann an den Raendern Text abge-
+schnitten sein, der nicht mehr 
+auf den Bildschirm passt.
+
+
+6. Die Druckerschnittstelle
+
+Der Anschluss einer elektro-
+nischen Schreibmaschine S 3004
+ist im Programm realisiert. Der
+Anschluss erfolgt ueber den vor-
+handenen User-Port des Z 1013.
+Die Uebertragungsgeschwindigkeit
+betraegt 1200 baud (2 MHz Rech-
+nertakt).
+Der Datenausgang am Stecker X4
+liegt am Steckerstift A4 (TXD).
+Die Sendebereitschaft (/CTS) der
+S 3004 muss am Steckerstift B4
+bereitgestellt werden. 
+Bei der Verwendung anderer Druk-
+ker kann in Zelle 112H die Adres-
+se des externen Druckertreibers
+eingetragen werden. Das Zeichen
+wird im A-Register uebergeben.
+
+
+Viel Spass mit
+
+
+        "MicroWORD 1.5 GS1"
+
+
+               Rainer Brosig
+               Ltr. AG Z1013
+               in der IG-HC
+
+                 DRESDEN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013
+   ===================================================
+
+Durch den Einsatz einer RAM-Floppy nach MP 3/88 kann der Z1013
+zu einem sehr leistungsfaehigen Rechner ausgebaut werden. Zum
+einen ist es dadurch moeglich, CP/M-kompatible Software zu nutzen,
+und zum anderen die Verarbeitungsgeschwindigkeiten bei dieser
+Software extrem zu steigern. Auch die Nutzung der RAM-Floppy 
+ohne ein CP/M-Betriebssystem ist mit entsprechender Software
+moeglich, die nur den originalen Monitor mit eventueller Erweite-
+rung durch den Sprungverteiler (BEEP-Funktion) der IG-HC (AG
+Z 1013) benoetigt (HEADERDISK). 
+Die Bestueckung der RAM-Floppy kann wahlweise mit oder ohne 
+Haupuspeicher erfolgen, was besonders fuer die Z1013-Nutzer guen-
+stig ist, die den Hauptspeicher bereits auf 64K aufgeruestet
+haben. 
+
+
+1. Vollbestueckung fuer Z 1013
+==============================
+
+Da es im Z1013 durch das Fehlen des Koppelbusses keine /MEMDI1-
+und /MEMDI2-Signale gibt, brauchen folgende IC's nicht bestueckt
+zu werden:
+D51, D52, D53, D54 und D49
+Damit enfallen auch die DIL-Schalter und das Wickelfeld C.
+Es ist aber unbedingt darauf zu achten, dass die in diesen IC's
+vorgesehenen Durchkontaktierungen durch entsprechende Draht-
+bruecken realisiert werden. Dies gilt im besonderen auch fuer
+das Wickelfeld A, an dem einige Durchkontaktierungen wichtig
+fuer die Adressierung der RAM-Floppy sind.
+Um den Rechner auch mit 4 MHz Takt betreiben zu koennen, war es
+erforderlich, die RC-Kombinationen R33-R36 und C3-C6 im Wert zu
+aendern: 150 Ohm / 100 pF, C3 musste sogar ganz entfallen.
+Die RC-Werte der RAM-Floppy (R1/R2, C1/C2) konnten beibehalten
+werden (390 pF, 180 Ohm).
+Um den Monitor-EPROM sowie den Bildwiederholspeicher aus dem 
+64K Hauptspeicher auszublenden, muss durch den Z1013 das /RDY-
+Signal fuer diesen Speicherbreich erzeugt werden.  Dieses
+Signal an der Bussteckerleiste (C25) ist im Z1013  mit CASG
+belegt, welches aber am Busstecker in keiner Weise fuer externe
+Baugruppen benoetigt wird und ausserdem nicht der K1520-Stecker-
+norm entspricht. Das Signal CASG wird deshalb auf der Z1013-
+Grundplatine direkt an der Steckerleiste (C25) abgeritzt.
+An diese Stelle tritt nun das /RDY-Signal, welches folgender-
+massen erzeugt wird:
+Entsprechend Bild 1 werden an den Adressdekoder A23 fuenf Dioden
+mit der Katode an Pin 4,5,6,7,9 angeschlossen, wozu sich am
+besten Mehrfach-Dioden SAM 65 eignen. Die Anoden der Dioden
+werden zusammengeschaltet und ueber einem pull-up-Widerstand an
++5V gelegt. Der Verbindungspunkt der Dioden-Anoden ist schon
+das benoetigte /RDY-Signal, welches an das nun freie Pin C25
+des Systemsteckers angeschlossen wird.
+Neben der /RDY-Signalgenerierung muss der auf der Originalplatine
+vorhandene 16 KByte-RAM inaktiv geschaltet werden. Am einfach-
+sten erfolgt dies, indem das /CAS-Signal fuer die 16-KByte-IC's
+vom Ausgang (Pin 6) des IC's A8 getrennt wird und speicherseitig
+ueber einen Widerstand von 1 KOhm auf +5V gelegt wird.
+Es wird aber davor gewarnt, die Betriebsspannung der U 256 abzu-
+schalten, da diese dann den Bus extrem  stark belasten. 
+Eine andere Variante besteht darin, den 16 KByte-RAM auf der 
+Grundplatine weiter zu nutzen und diesen im externen 64K-Block
+mit auszublenden. Das erfolgt, indem das /CAS-Signal der U256
+mit noch einer Diode auf die /RDY-Leitung geklemmt wird. Die
+Katode liegt dazu am /CAS der U256, die Anode am /RDY-Signal.  
+Bei der Wahl der IO-Grund-Adresse der RAM-Floppy muss darauf ge-
+achtet werden, dass diese nicht mit der unvollstaendigen Dekodie-
+rung der IO-Adressen der Grundplatine in Konflikt geraten. Da
+ausserdem die Wahl der IO-Gsundadresse im Wickelfeld D einge-
+schraenkt ist, wurde die 98H (bei einer RF-Karte) bzw. die 58H
+fuer eine zweite RF-Karte gewaehlt. Dazu sind folgende Verbindun-
+gen im Wickelfeld D zu realisieren:
+
+1. 98H
+29-34, 31-36, 33-30, 35-32, 37-38
+
+2. 58H
+29-34, 31-36, 33-30, 35-38, 37-32
+
+Die Verbindung der RF-Karte mit dem Z1013 erfolgt entweder ueber
+den Erweiterungsbaugruppentraeger, wobei dann ein zweireihiger
+58-poliger Steckverbinder benutzt werden muss, oder, was wesent-
+lich effektiver ist, man verbindet die RF-Karte ueber einen
+1:1 Adapterstecker direkt mit dem Busstecker des Z1013. Pro-
+bleme mit dem dann ungetriebenen Bus entstanden weder bei 2
+noch bei 4 MHz Takt.
+  
+
+2. Teilbestueckung der RF-Karte (ohne Hauptspeicher)
+====================================================
+
+Wenn der verwendete Z1013 schon mit 64K auf der Grundplatine 
+ausgeruestet ist, kann ein grosser Teil der Bauelemente einge-
+spart werden. Folgende IC's koennen entfallen:
+D51, D52, D53, D54, D49, (D46), D47, D48, D45, D54-D61, D43
+und D44
+D46 kann nur dann entfallen, wenn eine Bruecke zwischen Pin 8
+und 9 eingefuegt wird.
+Weiterhin koennen R22-R29, R31-R47 sowie C3-C6 entfallen.
+Sehr kritisch ist die Realisierung der Durchkontaktierungen
+an den nichtbestueckten IC's, was sehr haeufig zu Fehlern fuehrt.
+Veraenderungen am Z1013 sind bei der Teilbestueckung der RF-Karte
+nicht notwendig. Sie kann 1:1 an Busstecker des Z1013 ange-
+schlossen werden. Fuer die IO-Grundadresse gilt das unter Pkt. 1
+Gesagte.
+
+
+3. Inbetriebnahme am Z1013
+===========================
+
+Bevor die RF-Karte an den Z1013 angesteckt wird, muss eine gruend-
+liche Sichtkontrolle aller Loetstellen und Durchkontaktierungen
+erfolgen. Mit Sicherheit findet man immer wieder noch eine Stel-
+le, an der man vergessen hat, ein Bauelement von der Bauelemen-
+teseite her anzuloeten. Es hat sich bewaehrt, die gesamte Platte
+oder wenigstens die Loetaugen vor allem auf der Bauelementeseite
+vor dem Bestuecken zu verzinnen. Damit sinkt auch die Gefahr von
+Haarrissen ganz erheblich.
+Als erstes empfiehlt es sich, die Stromaufnahme der Platte im
+Ruhezustand zu messen. Bei einer vollbestueckten Platte liegt die
+Stromaufnahme etwa bei 0,5 A, bei einer teilbestueckten bei etwa
+0,35 A (abh{ngig von den eingesetzten IC-Typen). 
+Nach dem Aufstecken der Platte (im spannungslosen Zustand!!)
+muss sich der Rechner wieder ganz normal melden. Danach kann das im 
+Anhang befindliche Testprogramm geladen und gestartet werden
+(Standort 100H-4B7H, Start: 100H). Werden beim Test alle Sekto-
+ren und Tracks als fehlerhaft gemeldet, so liegt der Fehler 
+wahrscheinlich in der Adressierung oder im Datenbustreiber bzw.
+in dessen Ansteuerung. Wird immer ein bestimmter Speicher-IC
+als fehlerhaft ausgegeben, so kann der IC selbst Bitfehler auf-
+weisen oder die Zuleitungen zu ihm sind in irgendeiner Weise
+unterbrochen (meist fehlende Durchkontaktierung). Es kommt auch
+vor, dass bei jedem Durchlauf ein anderer IC als fehlerhaft er-
+kannt wird. In diesem Fall liegen meist Refresh-Fehler vor, 
+oder die Betriebsspannung ist durch die nun hoehere Belastung
+des Netzteils verbrummt bzw. hat nicht die vorgeschriebene Hoehe.
+Aus Erfahrung kann gesagt werden, dass die Speicher bei einer
+Spannung von 4,8 V nicht mehr ordentlich laufen (Basteltypen!).
+
+
+
+*************************************************************
+*         Beschreibung zum Programm HEADER-DISK 45          *
+*           (c) by Rainer Brosig  IG-HC   1/89              *
+*************************************************************
+
+Standort: E000-E7FFH (mit Puffer)     Start: E01BH
+
+HEADER-DISK 45 ist ein Programm zur HEADERSAVE-kompatiblen Ver-
+waltung von max. 2 RAM-Disketten nach MP 3/88. Um die Disk moeg-
+lichst optimal auszulasten, wurde auf ein Directory verzichtet,
+sodass die Files sequentiell auf der Floppy, beginnend mit einem
+HEADERSAVE-kompatiblen Kopf, angelegt sind. Die damit verbunde-
+nen Suchzeiten sind unmerklich und werden durch die verkuerzte
+Ladezeit wieder kompensiert. 
+Beim Einschalten des Rechners ist es wichtig, vor dem ersten Be-
+schreiben der Disk diese komplett zu loeschen (initialisieren).
+
+Kommandos HEADER-DISK 45:
+-------------------------
+
+@R      READ
+        - laden File entsprechend abgefragter Filenummer mit
+          Autostart bei Typ=C vom  aktuellen Disk
+
+@RRR    - wie @R, aber Autostartverbot
+
+@RN     - wie @R, aber nach Name+Typ vom aktuellen Disk
+
+@RNN    - wie @RN, aber Autostartverbot
+
+@R aadr - auf aadr vom aktuellen Disk verschoben laden
+
+@RA     - wie @R, nur mit zusaetzlicher Umschaltung auf Disk A
+          (@RB->auf Disk B)     
+
+@W aadr eadr sadr ENT -> Typ+Name
+        WRITE
+        - saven File auf aktuelle Disk
+
+@W:     - wie @W, aber es wird der alte Kopfinhalt genommen
+          z.B. nach @LLL (!!nach @F ist der Kopf zerstoert!!)
+
+
+@F      FILES
+        - Anzeige der Files auf dem aktuellen Disk
+
+@FA     - wie @F, aber mit zusaetzlicher Zwangsumschaltung des Disk
+
+
+@K      KILL
+        - loeschen eines Files entsprechend abgefragter Nummer
+          auf aktuellem Disk
+
+@KA     - wie @K, aber mit zusaetzlicher Zwangsumschaltung des
+          Disk auf A (B) 
+
+@KN     - wie @K, aber loeschen nach Name+Typ statt nach Nummer
+
+@KAG    - Komplettloeschung Disk A
+@KBG    -        -"-            B
+
+
+@A      - Umschalten auf Disk A
+
+@B      - Umschalten auf Disk B
+
+
+Der Aufruf der Unterprogramme erfolgt HEADERSAVE-kompatibel
+ueber den Sprungverteiler auf E000H. Dabei kann ein auf Adr.
+E000H stehender HEADERSAVE-Treiber gegen das HEADER-DISK-Pro-
+gramm ausgetauscht werden, ohne dass Aenderungen am rufenden
+Programm erfolgen muessen. Bei den Blockroutinen bestehen Ein-
+schraenkungen bezueglich der max. Groesse des Files auf 64K bzw.
+es darf die Grenze von FFFFH nicht }berschritten werden, da
+ansonsten ein sp{teres Laden des Files von der Disk nicht mehr
+ohne weiteres m|glich ist.
+Die Grundadressen der Disks koennen in E024H (A) und E025H (B)
+bei Bedarf geaendert werden.
+
+
+                                         Rainer Brosig
+                                         Ltr. AG Z1013
+                                         in der IG-HC
+ 
+
+
+
+
+
+
+***************************************************************
+*                      IG - HC                                *
+*            Beschreibung der Besonderheiten des              *
+*       CP/M-kompatiblen Betriebssystems SCP-2RF 2.40M        *
+*            fuer den Z1013 mit einer oder zwei               *
+*                RAM-Floppys nach  MP 3/88                    *
+*                  (c) by Rainer Brosig                       *
+***************************************************************
+
+
+Standort: C800H-E7FFH  Start: DE00H
+
+          C800H-CFFFH - CCP
+          D000H-DDFFH - BDOS
+          DE00H-E7FFH - BIOS
+
+
+Voraussetzungen:
+----------------
+
+- 64K Hauptspeicher (eventuell der auf der RF-Karte)
+- mindestens eine RAM-Floppy nach MP 3/88
+    IO-Grundadr. Disk A=98H  (in DE3CH aenderbar)
+                 Disk B=58H  (   DE3DH          )
+- Tastatur nach MP 7/88 bzw. andere, die entsprechend schnell
+  sind, und alle CTRL-Zeichen erzeugen koennen
+  Sie muss in den Funktionen INKEY (RST 20H DB 4) sowie INCHAR
+  (RST 20H DB 1) logisch genauso reagieren, wie die originale
+  Folienflachtastatur oder die nach MP 7/88 (Tastatur mit A.2-
+  Monitor ergibt Schwierigkeiten, da diese nicht logisch kompa-
+  tibel reagiert).
+
+Beguenstigungen:
+----------------
+
+- 4 MHz Takt
+- hardwaremaessige Bildschirmorganisation 16*64 Zeichen 
+  (BWS-Anfang auf Adr. EC00H)
+
+Bedienung:
+----------
+
+Nach dem Start auf DE00H kann das physische Loeschen oder das
+komplette Laden einer RAM-Floppy angefordert werden. Wurde das
+System lediglich neu gestartet, wird durch Eingabe von ENTER
+sofort in die Kommando-Aufrufschleife des CCP gesprungen.
+Alle weiteren Handlungen entsprechen denen der normalen SCP-
+Bedienung, wie sie vom PC her bekannt sind:
+
+DIR                    Anzeige des Diskettenverzeichnisses
+ERA filename.atr       Loeschen eines Files
+TYPE filename.atr      Anzeigen von Textdateien auf dem Bildschirm
+USER nn                Wechsel des Nutzerbereichs
+SAVE blkz filename.atr Saven eines Files von 100H auf die aktu-
+                       elle RAM-Floppy mit einer Laenge von n
+                       Bloecken; blkz= Anzahl der 100H-Bloecke
+                       dezimal z.B. SAVE 58 POWER.COM
+                       wenn vorher POWER mit Hilfe des Monitors
+                       auf 100H-3AFFH gebracht wurde.
+
+Nach jedem Warmstart wird abgefordert, ob das SCP verlassen und
+ob die aktuelle RF geladen oder gesaved werden soll.
+Die Aufzeichnung erfolgt unter Nutzung einer eigenen Headersave-
+routine. Die Bloecke haben Blocknummern, die entgegen des Hea-
+dersave-Standards den Abstand 1 haben. Damit ist eine lineare
+Aufzeichnung bis zu einer max. Floppy-Groesse von 2 MByte in
+einem File moeglich. Ein Laden des Disk-Files mit dem normalen 
+Headersave in den Hauptspeicher ist aus eben genannten sowie aus
+Kapazitaetsgruenden nicht mehr moeglich.
+Die Darstellung der Hex-Zahlen waehrend des Saven oder Ladens
+der Floppy entsprechen den Spuren, die gerade gelesen oder ge-
+schrieben werden. Ein Lesefehler wird durch Ausgabe von BEEP und
+einem Spulpfeil, der die Richtung, in die das Band zu spulen 
+ist, anzeigt, gekennzeichnet. ENTER mu~ nicht zusaetzlich einge-
+geben werden. Ein Unterprogrammruf zu einem BEEP-Ausgabeprogramm
+kann in den Adressen E19AH und E525H eingetragen werden (z.B.
+Sprungverteiler FFDCH).
+Die Druckerschnittstelle ist f}r das V.24 Druckermodul von Riesa
+intern realisiert. Sollte aus verschiedenen Gruenden ein anderer
+Druckertreiber genutzt werden m}ssen, kann in DE3A/3BH die Auf-
+rufadresse des Treibers eingesetzt werden und der Schalter zum
+Kennzeichnen eines externen Treibers auf DE3EH ungleich 0 ge-
+setzt werden.
+Auf DE3FH kann durch Eintragen einer 2 oder 4 die Taktfrequenz
+des Rechners fuer 9600 bit/s angepasst werden, sofern diese
+nicht durch das Ruecklesen des Bit 6 der IO-Adr. 4  erfolgen
+kann (dann ist auf DE3FH eine 0 zu setzen).
+
+Unter dem Betriebssystem SCP-2RF 2.4 laufen alle CP/M Program-
+me, die sich fuer einen Bildschirm von 16*64 installieren lassen
+und die Groesse einer Floppy nicht ueberschreiten. Programme mit
+einer 24*80 Zeichen-Installation laufen nur mit Einschraenkungen
+und koennen meist nur so bedient werden, dass waehrend des Bild-
+schirmrollens mit Hilfe von ^S der Rollvorgang gestoppt wird,
+damit nicht die Haelfte aus dem Bildschirmbereich laeuft.
+Programme wie TP, die direkt auf den BWS schreiben, muessen ent-
+sprechend uminstalliert werden.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*************************************************************
+*         Beschreibung zum Programm HEADER-DISK 45          *
+*           (c) by Rainer Brosig  IG-HC   1/89              *
+*************************************************************
+
+HEADER-DISK 45 ist ein Programm zur HEADERSAVE-kompatiblen Ver-
+waltung von max. 2 RAM-Disketten nach MP 3/88. Um die Disk moeg-
+lichst optimal auszulasten, wurde auf ein Directory verzichtet,
+sodass die Files sequentiell auf der Floppy, beginnend mit einem
+HEADERSAVE-kompatiblen Kopf, angelegt sind. Die damit verbunde-
+nen Suchzeiten sind unmerklich und werden durch die verkuerzte
+Ladezeit wieder kompensiert. 
+Beim Einschalten des Rechners ist es wichtig, vor dem ersten Be-
+schreiben der Disk diese komplett zu loeschen.
+
+Kommandos HEADER-DISK 45:
+-------------------------
+
+@R      READ
+        - laden File entsprechend abgefragter Filenummer mit
+          Autostart bei Typ=C vom  aktuellem Disk
+
+@RRR    - wie @R, aber Autostartverbot
+
+@RN     - wie @R aber nach Name+Typ vom aktuellen Disk
+
+@RNN    - wie @RN, aber Autostartverbot
+
+@R aadr - auf aadr vom aktuellen Disk verschoben laden
+
+@RA     - wie @R, nur mit zusaetzlicher Umschaltung auf Disk A
+          (@RB->auf Disk B)     
+
+@W aadr eadr sadr ENT -> Typ+Name
+        WRITE
+        - saven File auf aktuelles Laufwerk
+
+@W:     - wie @W, aber es wird der alte Kopfinhalt genommen
+          z.B. nach @LLL (!!nach @F ist der Kopf zerstoert!!)
+
+
+@F      FILES
+        - Anzeige der Files auf dem aktuellem Disk
+
+@FA     - wie @F, aber zusaetzlicher Zwangsumschaltung des Disk
+
+
+@K      KILL
+        - loeschen eines Files entsprechend abgefragter Nummer
+          auf aktuellem Disk
+
+@KA     - wie @K, aber mit zusaetzlicher Zwangsumschaltung des
+          Disk auf A (B) 
+
+@KN     - wie @K, aber loeschen nach Name+Typ statt Nummer
+
+@KAG    - Komplettloeschung Disk A
+@KBG    -        -"-             B
+
+
+@A      - Umschalten auf Disk A
+
+@B      - Umschalten auf Disk B
+
+
+Der Aufruf der Unterprogramme erfolgt HEADERSAVE-kompatibel
+ueber den Sprungverteiler auf E000H. Dabei kann ein auf Adr.
+E000H stehender HEADERSAVE-Treiber gegen das HEADER-DISK-Pro-
+gramm ausgetauscht werden ohne das Aenderungen am rufenden
+Programm erfolgen muessen. Bei den Blockroutinen bestehen ein-
+schraenkungen bezueglich der max. Groesse des Files auf 60K.
+Die Ankopplung des R-80 Reassemblers mit den Blockroutinen
+ist m|glich.
+Die Grundadressen der Disks werden in E024H (A) und E025H (B)
+eingetragen.
+Die Version HEADERDISK 41 ist leider fehlerhaft. Wir bitten
+dies zu entschuldigen.
+
+                                                 R. Brosig
+                                                   IG-HC
+                                                  Dresden
+
+
+
+
+
+
+
+
+
+==============================================================
+
+
+Juergen Peters			IG Heimcomputer am IZ
+Jean-Bertrand-Str. 11		der TU Dresden
+Radebeul
+8122
+
+Tel. 73243    (privat)
+Tel. 5966 271 (dienstl.)
+
+
+
+    Zusatzleiterplatte 64-Zeichen-Bildschirm Z 1013 
+ 
+Die im folgenden beschriebene Zusatzleiterplatte fuer den
+Mikrorechnerbausatz Z 1013 realisiert umschaltbar die
+Funktionen: 
+
+	- Bildschirmformat 32*32 oder 64*16 (Zeichen*Zeile)
+	- Taktfrequenz 2 oder 4 MHz
+	- Steuersignal fuer Umschaltung des Zeichengenerators
+	- Steuersignal fuer ROM-Abschaltung
+	- vollstaendige Dekodierung des I/O-Dekoders A 27
+	- Beschleunigung der Signale /CAS und /WR.
+
+
+  1. Software-Schnittstellen
+Fuer die softwaremaessige Umschaltung der einzelnen Zusatzfunk-
+tionen wurden D-FF (DL 074) eingesetzt, da es damit moeglich
+ist, ueber die R/S-Eingaenge das FF auch mit Tastern gegen
+Masse definiert zu setzen. Die D-Eingaenge der vier FF liegen
+am Datenbus an D7, D6, D5 und D4. Diese Zuordnung wurde
+gewaehlt, weil durch A 47 (D 175) die anderen Datenleitungen
+bereits mit einer TTL- Last belegt sind. Fuer die Zuordnung der
+Datenbits wurden innerhalb der IG Heimcomputer Dresden
+folgende Festlegung, die als Normvorschlag gelten, getroffen: 
+
+  	 D7 - Umschaltung des Bildformates 32*32 oder 64*16
+	 D6 - Umschaltung der Taktfrequenz 2 MHz oder 4 MHz
+	 D5 - Umschaltung des Zeichengenerators ( 2. Zeichensatz )
+	 D4 - ROM-Abschaltung
+
+Als I/O-Adresse wurde die 4 festgelegt. Weiterhin soll mit der
+Ausgabe des Datenbytes 00H auf die I/O-Adresse 4 der Grundzu-
+stand des Rechners (32*32 Zeichen, 2 MHz, Originalzeichensatz
+und aktives Monitor-ROM) erreicht werden. Auf der gleichen I/O-
+Adresse ist das Ruecklesen des aktuellen Zustandes (d. h. die
+Stellung der FF) moeglich. Damit ist ueber AND- oder OR-Befehle
+ ein definiertes Setzen oder mit XOR-Befehlen ein Umschalten
+der Funktionen einfach moeglich. Fuer das Ruecklesen wird ein
+DL 257  (VI 2) eingesetzt. Die Leitung /IOSEL 1 (Pin 2 von A
+27) wird mit /RD oder /WR verknuepft und ergibt dann die
+Steuersignale  zum Einspeichern des Datenwortes bzw. zur
+Durchschaltung der  Q-Ausgaenge der FF auf den Datenbus.
+
+
+2. Funktion der Bildschirmumschaltung
+Die Umschaltung des Bildschirmformates von 32 Zeilen mit 32 
+Zeichen in ein Format mit 64 Zeichen in 16 Zeilen ist vor allem
+fuer eine effektive Textverarbeitung erforderlich. Dabei sollte
+diese Umschaltung software- und hardwaremaessig moeglich sein. 
+Das Prinzip beruht darauf, die Bildpunktfrequenz von 8 MHz auf
+12 MHz zu erhoehen und einen Teiler fuer die Adressen des
+Bildwiederholspeichers von 1:2 in 1:3 umzuschalten. Damit wer-
+den in einer Fernsehzeile 64 Zeichen mit je 8 Punkten darge-
+stellt. Die ausgenutzte Bildschirmbreite steigt damit auf
+ 4:3 im Vergleich zum bisherigen quadratischen Bild und
+entspricht damit auch dem normalen Bildschirmformat. Mit dieser
+Schaltung waere eigentlich eine Darstellung von 32 Zeilen mit
+jeweils 64 Zeichen einfach realisierbar. Es wurde aber darauf
+verzichtet, da dann ein doppelt so grosser
+Bildwiederholspeicher erforderlich waere und  die Lesbarkeit
+von Texten, fuer die diese Funktion ja in erster  Linie gedacht
+ist, schlechter ist. Ausserdem waeren wesentlich mehr
+Trennstellen auf der Leiterplatte erforderlich. Die graphischen
+Darstellungen erscheinen auch nicht sinnvoll, da die Zeichen
+verzerrt sind. Es werden hier die Zwischenzeilen dunkel
+getastet. Mit dieser Loesung sind auch kaum softwaremaessige
+Anpassungen erforderlich, da der Bildwiederholspeicher mit
+seiner Adressierung nicht veraendert wird.
+Die Bildpunktfrequenz von 12 MHz wird mit einem LC-Oszillator
+erzeugt. Die Stabilitaet ist fuer diesen Anwendungsfall voellig
+ausreichend. Natuerlich ist auch ein Quarz einsetzbar. Je nach
+Bildformat wird ueber die Gatterschaltung VI 10 entweder die 
+8 MHz- oder die 12 MHz-Bildpunktfrequenz gewaehlt. VI 3 bildet 
+zusammen mit A 20 einen Teiler durch 3 (bei 64 Zeichen). VI 4
+(DL 257) schaltet je nach gewaehltem Format die entsprechenden
+Leitungen um. Der Ausgang 3 des freien Gatters von A 32 wird 
+zum Ausgang 11 dieses Schaltkreises parallel geschaltet. An den
+Eingaengen 1,2 wird das Dunkelsteuersignal vom Multiplexer aus
+fuer die Zwischenzeilen gelegt. Durch die Negation des Bildsig-
+nals (einschliesslich der Austastsignale) mit dem verbleibenden
+Gatter ist mit einem Umschalter auch schwarze Schrift auf
+weissem Grund moeglich. Gegebenfalls ist fuer die negierte
+Darstellung R 26 zu vergroessern, um eine sichere
+Synchronisation des Fernseh- geraetes zu erreichen, da durch
+die fehlenden Schwarzschultern das BAS-Signal nicht mehr
+normgerecht ist. 
+
+3. Taktumschaltung
+Mit der wahlweisen Aenderung der Bildpunktfrequenz muss die
+Rechnertaktfrequenz davon unabhaengig erzeugt werden, da
+sonst die  seriellen Schnittstellen (Tonband oder Drucker)
+nicht mehr  funktionsfaehig waeren. Der 8 MHz-Quarztakt wird
+durch VI 9 durch 4 geteilt. Ueber eine Torschaltung (VI 8) wird
+jeweils ein Aus- gang des FF auf die Taktleitung geschaltet.
+Mit dieser Konfigu- ration ist die softwaremaessige Umschaltung
+mit OUT-Befehlen si- cher moeglich. Eine manuelle Umschaltung
+der Taktfrequenz ueber die RS-Eingaenge von VI 7 ist zwar
+moeglich und im Muster auch vorgesehen, aber dabei tritt
+manchmal eine Verfaelschung des RAM-Inhaltes ein.
+
+
+4. Weitere Steuersignale
+Fuer die Umschaltung des Zeichengenerators (z. B. mit negierter
+Darstellung bei gesetztem 7. Bit fuer die Kursordarstellung in 
+ Textsystemen) und des MEMDI-Signals fuer eine Abschaltung des
+ROM sind je ein FF der beiden Schaltkreise VI 3 und VI 1
+vorgesehen. Durch Einbeziehung der Adressen A5, A6 und A7 sowie
+des negierten /M1-Signals fuer die Auswahl des I/O-Dekoders 
+A 27 wird mit /IORQ eine vollstaendige Adressdekodierung mit VI 5
+erreicht. Die letzte Funktion, die fuer den Betrieb des
+Rechners mit einer  Taktfrequenz von 4 MHz erforderlich ist,
+geht auf eine Schaltung von Stoelzer zurueck. Auf der Leiter-
+platte ist dafuer der VI 1 (1/2 DL 074) und die Verbindung  mit
+ /RD vorgesehen. 
+
+5. Hinweise zum Aufbau
+Die Leiterplatte ist so konzipiert, dass sie ueber der Grund-
+leiterplatte mit 4 M2-Schrauben befestigt werden kann.
+Die Spule *) des 12 MHz-Oszillators liegt dabei ueber dem 
+Quarz. Fuer die erforderlichen Befestigungsloecher in der
+Grundplatte sind die  Koordinaten (10;17,5) (10;52,5)
+(107,5;10) und (107,5;40) bezogen auf die Kontur der Leiter-
+platte mit dem (0;0)-Punkt an der Ecke mit dem Quarz vorge-
+sehen. Es wurde versucht, mit einem Minimum an Leiterzugun-
+terbrechungen auszukommen, obwohl die Zahl der erforderlichen
+Anschluesse sehr hoch ist.
+*)HINWEIS zur Spule: Minifilter 21 Wdg. Kern MF 330 orange.
+
+Neben der Entfernung der Bruecke E2 fuer die Realisierung
+der vollstaendigen I/O- Dekodierung sind nur noch 4 Leiter-
+zuege fuer die Umschaltung des Bildformates durchzutrennen.
+Der Einsatz eines 2732 fuer den Zeichengenerator erfordert
+weitere 2 Trennstellen, da die /CS-Leitung doppelt an 5V ge-
+fuehrt ist.
+Die Beschleunigung der Signale /CAS und /WR nach Stoelzer
+erfordert eine weitere Trennstelle. Fuer den Aufbau ist es
+zweckmaessig, zunaechst die Leiterplatte vollstaendig zu
+bestuecken und mit einer separaten Stromversorgung den Os-
+zillator auf 12 MHz voreinzustellen. Die typische Stromaufnah-
+me der Schaltung liegt bei 50 mA. Danach ist ein stufenweiser
+Einbau guenstig. Zuerst werden die vier Trennstellen fuer die
+Bildformatumschaltung angebracht. Die Bruecke E1 fuer den Takt
+wird auch entfernt. Nach den Anschluessen fuer die Umschaltung
+des Bildformates und des Taktes wird diese Funktion geprueft,
+indem das zugehoerige FF (VI 7) manuell umgeschaltet  wird.
+Wenn die Aenderungen an A 32 noch nicht erfolgt sind, wer-
+ den die Zeilen bei 64 Zeichen doppelt geschrieben. Wenn die-
+ser  Teil richtig funktioniert, werden die Datenleitungen
+ D4 ... D7 sowie /RD , /WR und /IOSEL 1
+angeschlossen. Nach einer Funktionsueberpruefung dieses Arbeits-
+standes wird die Beschleunigung der Signale /CAS und /WR
+realisiert. Mit den einfachen Testprogrammen
+
+INIT:	LD A,00H	3E 00
+ 	OUT 4		D3 04
+	RST 38		FF
+NEGAT:	LD A,0FFH	3E FF
+	OUT 4		D3 04
+	RST 38H		FF
+UMSCH:	IN 4		DB 04
+
+	CPL 		2F
+	OUT 4		D3 04
+	RST 38H		FF
+	
+kann die Funktion der softwaremaessigen Umschaltung ueber-
+prueft werden.
+Als letztes wird die vollstaendige I/O-Dekodierung realisiert.
+
+Der Aufbau dieser Schaltung und die Belebung erfordern eine 
+ausreichende Schaltungskenntnis des Mikrorechnerbausatzes und
+der Funktion der Bilderzeugung, so dass der Nachbau nur dem
+versierten Amateur empfohlen wird. Die relativ geringe Zahl
+von  auf der Leiterplatte zu trennenden Leiterzuege ermoeglicht
+die  industrielle Reparatur, indem die Trennstellen
+ueberbrueckt werden und alle zusaetzlichen Anschluesse wieder
+entfernt werden. 
+Bauelemente bzw. Gatter, die auf der Grundleiterplatte bereits
+vorhanden sind, sind im Schaltbild gestrichelt dargestellt und
+entsprechend der Stromlaufplaene gekennzeichnet. Beim Entwurf
+des Layoutes wurden die nicht benoetigten Eingaenge (A0 ... A3)
+des Multiplexers DL 257 (A2) mit fuer Verbindungen genutzt, um
+eine einfachere Leiterzugfuehrung zu erreichen. Der Ersatz von
+L1 und C1 durch einen Quarz ist im Leiterzugbild
+beruecksichtigt. 
+
+==============================================================
+
+durchgesehen und korrigiert	
+Spulendaten eingetragen:	HOFMANN
+				AG Z1013
+  
+
+
+
+^
+ummer
+          auf aktuellem Disk
+
+@KA     - wie @K, aber mit zusaetzlicher Zwangsumschaltung des
+          Disk auf A (B) 
+
+@KN     - wie @K, aber loeschen nach Name+Typ statt Nummer
+
+@KAG    - Komplettloeschung Disk A
+@KBG    -        -"-             B
+
+
+@A      - Umschalten auf Disk A
+
+@B      - Umschalten auf Disk B
+
+
+Der Aufruf der Unterprogramme erfolgt HEADERSAVE-kompatibel
+ueber den Sprungverteiler auf E000H. Dabei kann ein auf Adr.
+E000H stehender HEADERSAVE-Treiber gegen das HEADER-DISK-Pro-
+gramm ausgetauscht werden ohne das Aenderungen am rufenden
+Programm erfolgen muessen. Bei den Blockroutinen bestehen ein-
+schraenkungen bezueglich der max. Groesse des Files auf 60K.
+Die Ankopplung des R-80 Reassemblers mit den Blockroutinen
+ist m|glich.
+Die Grundadressen der Disks werden in E024H (A) und E025H (B)
+eingetragen.
+Die Version HEADERDISK 41 ist leider fehlerhaft. Wir bitten
+dies zu entschuldigen.
+
+                                                 R. Brosig
+                                                   IG-HC
+                                                  Dresden
+
+
+
+
+
+
+
+
+
+==============================================================
+
+
+Juergen Peters			IG Heimcomputer am IZ
+Jean-Bertrand-Str. 11		der TU Dresden
+Radebeul
+8122
+
+Tel. 73243    (privat)
+Tel. 5966 271 (dienstl.)
+
+
+
+    Zusatzleiterplatte 64-Zeichen-Bildschirm Z 1013 
+ 
+Die im folgenden beschriebene Zusatzleiterplatte fuer den
+Mikrorechnerbausatz Z 1013 realisiert umschaltbar die
+Funktionen: 
+
+	- Bildschirmformat 32*32 oder 64*16 (Zeichen*Zeile)
+	- Taktfrequenz 2 oder 4 MHz
+	- Steuersignal fuer Umschaltung des Zeichengenerators
+	- Steuersignal fuer ROM-Abschaltung
+	- vollstaendige Dekodierung des I/O-Dekoders A 27
+	- Beschleunigung der Signale /CAS und /WR.
+
+
+  1. Software-Schnittstellen
+Fuer die softwaremaessige Umschaltung der einzelnen Zusatzfunk-
+tionen wurden D-FF (DL 074) eingesetzt, da es damit moeglich
+ist, ueber die R/S-Eingaenge das FF auch mit Tastern gegen
+Masse definiert zu setzen. Die D-Eingaenge der vier FF liegen
+am Datenbus an D7, D6, D5 und D4. Diese Zuordnung wurde
+gewaehlt, weil durch A 47 (D 175) die anderen Datenleitungen
+bereits mit einer TTL- Last belegt sind. Fuer die Zuordnung der
+Datenbits wurden innerhalb der IG Heimcomputer Dresden
+folgende Festlegung, die als Normvorschlag gelten, getroffen: 
+
+  	 D7 - Umschaltung des Bildformates 32*32 oder 64*16
+	 D6 - Umschaltung der Taktfrequenz 2 MHz oder 4 MHz
+	 D5 - Umschaltung des Zeichengenerators ( 2. Zeichensatz )
+	 D4 - ROM-Abschaltung
+
+Als I/O-Adresse wurde die 4 festgelegt. Weiterhin soll mit der
+Ausgabe des Datenbytes 00H auf die I/O-Adresse 4 der Grundzu-
+stand des Rechners (32*32 Zeichen, 2 MHz, Originalzeichensatz
+und aktives Monitor-ROM) erreicht werden. Auf der gleichen I/O-
+Adresse ist das Ruecklesen des aktuellen Zustandes (d. h. die
+Stellung der FF) moeglich. Damit ist ueber AND- oder OR-Befehle
+ ein definiertes Setzen oder mit XOR-Befehlen ein Umschalten
+der Funktionen einfach moeglich. Fuer das Ruecklesen wird ein
+DL 257  (VI 2) eingesetzt. Die Leitung /IOSEL 1 (Pin 2 von A
+27) wird mit /RD oder /WR verknuepft und ergibt dann die
+Steuersignale  zum Einspeichern des Datenwortes bzw. zur
+Durchschaltung der  Q-Ausgaenge der FF auf den Datenbus.
+
+
+2. Funktion der Bildschirmumschaltung
+Die Umschaltung des Bildschirmformates von 32 Zeilen mit 32 
+Zeichen in ein Format mit 64 Zeichen in 16 Zeilen ist vor allem
+fuer eine effektive Textverarbeitung erforderlich. Dabei sollte
+diese Umschaltung software- und hardwaremaessig moeglich sein. 
+Das Prinzip beruht darauf, die Bildpunktfrequenz von 8 MHz auf
+12 MHz zu erhoehen und einen Teiler fuer die Adressen des
+Bildwiederholspeichers von 1:2 in 1:3 umzuschalten. Damit wer-
+den in einer Fernsehzeile 64 Zeichen mit je 8 Punkten darge-
+stellt. Die ausgenutzte Bildschirmbreite steigt damit auf
+ 4:3 im Vergleich zum bisherigen quadratischen Bild und
+entspricht damit auch dem normalen Bildschirmformat. Mit dieser
+Schaltung waere eigentlich eine Darstellung von 32 Zeilen mit
+jeweils 64 Zeichen einfach realisierbar. Es wurde aber darauf
+verzichtet, da dann ein doppelt so grosser
+Bildwiederholspeicher erforderlich waere und  die Lesbarkeit
+von Texten, fuer die diese Funktion ja in erster  Linie gedacht
+ist, schlechter ist. Ausserdem waeren wesentlich mehr
+Trennstellen auf der Leiterplatte erforderlich. Die graphischen
+Darstellungen erscheinen auch nicht sinnvoll, da die Zeichen
+verzerrt sind. Es werden hier die Zwischenzeilen dunkel
+getastet. Mit dieser Loesung sind auch kaum softwaremaessige
+Anpassungen erforderlich, da der Bildwiederholspeicher mit
+seiner Adressierung nicht veraendert wird.
+Die Bildpunktfrequenz von 12 MHz wird mit einem LC-Oszillator
+erzeugt. Die Stabilitaet ist fuer diesen Anwendungsfall voellig
+ausreichend. Natuerlich ist auch ein Quarz einsetzbar. Je nach
+Bildformat wird ueber die Gatterschaltung VI 10 entweder die 
+8 MHz- oder die 12 MHz-Bildpunktfrequenz gewaehlt. VI 3 bildet 
+zusammen mit A 20 einen Teiler durch 3 (bei 64 Zeichen). VI 4
+(DL 257) schaltet je nach gewaehltem Format die entsprechenden
+Leitungen um. Der Ausgang 3 des freien Gatters von A 32 wird 
+zum Ausgang 11 dieses Schaltkreises parallel geschaltet. An den
+Eingaengen 1,2 wird das Dunkelsteuersignal vom Multiplexer aus
+fuer die Zwischenzeilen gelegt. Durch die Negation des Bildsig-
+nals (einschliesslich der Austastsignale) mit dem verbleibenden
+Gatter ist mit einem Umschalter auch schwarze Schrift auf
+weissem Grund moeglich. Gegebenfalls ist fuer die negierte
+Darstellung R 26 zu vergroessern, um eine sichere
+Synchronisation des Fernseh- geraetes zu erreichen, da durch
+die fehlenden Schwarzschultern das BAS-Signal nicht mehr
+normgerecht ist. 
+
+3. Taktumschaltung
+Mit der wahlweisen Aenderung der Bildpunktfrequenz muss die
+Rechnertaktfrequenz davon unabhaengig erzeugt werden, da
+sonst die  seriellen Schnittstellen (Tonband oder Drucker)
+nicht mehr  funktionsfaehig waeren. Der 8 MHz-Quarztakt wird
+durch VI 9 durch 4 geteilt. Ueber eine Torschaltung (VI 8) wird
+jeweils ein Aus- gang des FF auf die Taktleitung geschaltet.
+Mit dieser Konfigu- ration ist die softwaremaessige Umschaltung
+mit OUT-Befehlen si- cher moeglich. Eine manuelle Umschaltung
+der Taktfrequenz ueber die RS-Eingaenge von VI 7 ist zwar
+moeglich und im Muster auch vorgesehen, aber dabei tritt
+manchmal eine Verfaelschung des RAM-Inhaltes ein.
+
+
+4. Weitere Steuersignale
+Fuer die Umschaltung des Zeichengenerators (z. B. mit negierter
+Darstellung bei gesetztem 7. Bit fuer die Kursordarstellung in 
+ Textsystemen) und des MEMDI-Signals fuer eine Abschaltung des
+ROM sind je ein FF der beiden Schaltkreise VI 3 und VI 1
+vorgesehen. Durch Einbeziehung der Adressen A5, A6 und A7 sowie
+des negierten /M1-Signals fuer die Auswahl des I/O-Dekoders 
+A 27 wird mit /IORQ eine vollstaendige Adressdekodierung mit VI 5
+erreicht. Die letzte Funktion, die fuer den Betrieb des
+Rechners mit einer  Taktfrequenz von 4 MHz erforderlich ist,
+geht auf eine Schaltung von Stoelzer zurueck. Auf der Leiter-
+platte ist dafuer der VI 1 (1/2 DL 074) und die Verbindung  mit
+ /RD vorgesehen. 
+
+5. Hinweise zum Aufbau
+Die Leiterplatte ist so konzipiert, dass sie ueber der Grund-
+leiterplatte mit 4 M2-Schrauben befestigt werden kann.
+Die Spule *) des 12 MHz-Oszillators liegt dabei ueber dem 
+Quarz. Fuer die erforderlichen Befestigungsloecher in der
+Grundplatte sind die  Koordinaten (10;17,5) (10;52,5)
+(107,5;10) und (107,5;40) bezogen auf die Kontur der Leiter-
+platte mit dem (0;0)-Punkt an der Ecke mit dem Quarz vorge-
+sehen. Es wurde versucht, mit einem Minimum an Leiterzugun-
+terbrechungen auszukommen, obwohl die Zahl der erforderlichen
+Anschluesse sehr hoch ist.
+*)HINWEIS zur Spule: Minifilter 21 Wdg. Kern MF 330 orange.
+
+Neben der Entfernung der Bruecke E2 fuer die Realisierung
+der vollstaendigen I/O- Dekodierung sind nur noch 4 Leiter-
+zuege fuer die Umschaltung des Bildformates durchzutrennen.
+Der Einsatz eines 2732 fuer den Zeichengenerator erfordert
+weitere 2 Trennstellen, da die /CS-Leitung doppelt an 5V ge-
+fuehrt ist.
+Die Beschleunigung der Signale /CAS und /WR nach Stoelzer
+erfordert eine weitere Trennstelle. Fuer den Aufbau ist es
+zweckmaessig, zunaechst die Leiterplatte vollstaendig zu
+bestuecken und mit einer separaten Stromversorgung den Os-
+zillator auf 12 MHz voreinzustellen. Die typische Stromaufnah-
+me der Schaltung liegt bei 50 mA. Danach ist ein stufenweiser
+Einbau guenstig. Zuerst werden die vier Trennstellen fuer die
+Bildformatumschaltung angebracht. Die Bruecke E1 fuer den Takt
+wird auch entfernt. Nach den Anschluessen fuer die Umschaltung
+des Bildformates und des Taktes wird diese Funktion geprueft,
+indem das zugehoerige FF (VI 7) manuell umgeschaltet  wird.
+Wenn die Aenderungen an A 32 noch nicht erfolgt sind, wer-
+ den die Zeilen bei 64 Zeichen doppelt geschrieben. Wenn die-
+ser  Teil richtig funktioniert, werden die Datenleitungen
+ D4 ... D7 sowie /RD , /WR und /IOSEL 1
+angeschlossen. Nach einer Funktionsueberpruefung dieses Arbeits-
+standes wird die Beschleunigung der Signale /CAS und /WR
+realisiert. Mit den einfachen Testprogrammen
+
+INIT:	LD A,00H	3E 00
+ 	OUT 4		D3 04
+	RST 38		FF
+NEGAT:	LD A,0FFH	3E FF
+	OUT 4		D3 04
+	RST 38H		FF
+UMSCH:	IN 4		DB 04
+
+	CPL 		2F
+	OUT 4		D3 04
+	RST 38H		FF
+	
+kann die Funktion der softwaremaessigen Umschaltung ueber-
+prueft werden.
+Als letztes wird die vollstaendige I/O-Dekodierung realisiert.
+
+Der Aufbau dieser Schaltung und die Belebung erfordern eine 
+ausreichende Schaltungskenntnis des Mikrorechnerbausatzes und
+der Funktion der Bilderzeugung, so dass der Nachbau nur dem
+versierten Amateur empfohlen wird. Die relativ geringe Zahl
+von  auf der Leiterplatte zu trennenden Leiterzuege ermoeglicht
+die  industrielle Reparatur, indem die Trennstellen
+ueberbrueckt werden und alle zusaetzlichen Anschluesse wieder
+entfernt werdeBauelemente bzw. Gatter, die auf der Grundleiterplatte bereits
+vorhanden sind, sind im Schaltbild gestrichelt dargestellt und
+entsprechend der Stromlaufplaene gekennzeichnet. Beim Entwurf
+des Layoutes wurden die nicht benoetigten Eingaenge (A0 ... A3)
+des Multiplexers DL 257 (A2) mit fuer Verbindungen genutzt, um
+eine einfachere Leiterzugfuehrung zu erreichen. Der Ersatz von
+L1 und C1 durch einen Quarz ist im Leiterzugbild
+beruecksichtigt. 
+
+==============================================================
+
+durchgesehen und korrigiert	
+Spulendaten eingetragen:	HOFMANN
+				AG Z1013
+  
+^
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

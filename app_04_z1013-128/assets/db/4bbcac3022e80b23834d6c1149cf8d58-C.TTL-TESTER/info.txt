@@ -1,0 +1,7 @@
+<kurz src="TTL-Bauteiltester, Tester für digitale IC"/>
+<lang>Die Bauteilliste ist recht kurz: D 100,M 175,D 104,D 110</lang>
+<requires></requires>
+<port range="10" mode="3" device="TTL-Tester"/>
+<port range="11" mode="1" device="TTL-Tester"/>
+<port range="12" mode="3" device="TTL-Tester"/>
+<port range="13" mode="1" device="TTL-Tester"/>

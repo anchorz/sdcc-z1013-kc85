@@ -1,0 +1,18 @@
+<kurz src="erweiterte Variante des Hübler BASIC"/>
+<lang>
+kein TDL BASIC, ähnlich[272b217d19698ccb73b2c6d50013b922]
+Befehl WIDTH wurde entfernt
+
+
+Verwendet Spalten 8(aktiv) und 9(inaktiv) am Spaltentreiber OUT 8,9
+0x41b4: wird der Spaltentreiber verwendet, irgendetwas serielles mit einer Datenrate von 100 bps
+
+Überschreibt Minitorerweiterung an 0x00B0
+Setzt EA-Maske User Port 0x00 auf EEEAEEAE E-Eingabe , und setzt A-bits auf High
+
+</lang>
+<port range="00-01" device="Userport, unbekannte Funktion"/>
+<port range="02-02" device="Tastatur, test"/>
+<port range="00-08" device="Spaltentreiber, unbekannte Funktion"/>
+
+

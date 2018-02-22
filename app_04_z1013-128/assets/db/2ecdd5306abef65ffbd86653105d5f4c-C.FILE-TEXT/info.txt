@@ -1,0 +1,5 @@
+<kurz src="Einfacher Texteditor und Anzeigeprogramm, max 8 Zeilen pro Seite"/>
+<lang>
+Steuerung: E A @
+</lang>
+

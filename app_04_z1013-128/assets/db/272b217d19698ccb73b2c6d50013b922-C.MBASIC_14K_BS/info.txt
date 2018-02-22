@@ -1,0 +1,3 @@
+<kurz src="HBASIC 3.3 - BASIC Version vom Hübler Computer"/>
+<lang></lang>
+<requires></requires>

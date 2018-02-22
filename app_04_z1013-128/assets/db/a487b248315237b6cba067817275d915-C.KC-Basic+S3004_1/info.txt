@@ -1,0 +1,10 @@
+<kurz src="ähnlich KC-BASIC m+, kopiert Druckerteiber nach 0xE800"/>
+<lang>ähnlich [28107373ce86e4492ee5f0850daac981] kc_basic_m+
+
+S3004 an USER-PORT 0x00
+Der Druck selbst erfolgt über den Sprungverteiler:
+FFE8  C3 06 E8    JP      0E806H (DRAKK	logischer Druckertreiber)	
+
+</lang>
+<port range="00-01"/>
+<requires>SPV</requires>
