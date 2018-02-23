@@ -1,0 +1,16 @@
+<kurz src="Labyrinth, Joystick JU+TE"/>
+<lang>
+Start erfolgt mit der Taste @. Das Ziel ist nicht ganz so klar. Man soll Monstern
+ausweichen oder nicht?  
+Wahrscheinlich soll man den Monstern von Hinten auflauern und nicht einfach rumstehen und warten.
+
+Der Spaltentreiber wird auf 0 gesetzt. Die Bedeutung ist mir nicht ganz klar. Der Wert
+wird scheinbar nirgendwo wieder verwendet.
+
+</lang>
+<requires></requires>
+<port range="00" mode="2" device="Userport, Joystick JU+TE"/>
+<port range="01" mode="1" device="Userport, Joystick JU+TE"/>
+<port range="08" mode="1" device="Spaltentreiber, unbekannte Funktion"/>
+
+

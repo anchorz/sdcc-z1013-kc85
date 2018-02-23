@@ -557,11 +557,13 @@
 <file aadr="2bc0" eadr="5ab6" sadr="0000" typ="B" link="4455a79ce9ccf116d729417a5a1d7371-leipzig/leipzig.z80" name="LEIPZIG         " kurz="Wissenstest Leipzig" />
 <file aadr="3000" eadr="3695" sadr="0000" typ="I" link="bdd805a74e20a7671261592bee1aebf6-leipzig_doc/leipzig_doc.z80" name="LEIPZIG DOC     " kurz="Programmbeschreibung: Wissenstest Leipzig" />
 <file aadr="2bc0" eadr="3507" sadr="0300" typ="B" link="1e17e050937c975e2746c600491d5bf0-B.LICHTER/B.LICHTER.z80" name="LICHTER         " kurz="Lichter schalten über IO-Port 0x00" />
+<file aadr="0100" eadr="0410" sadr="0100" typ="C" link="9bfffe0aef6fdce29eea18500cb38d57-C.LIFE/C.LIFE.z80" name="LIFE            " kurz="Simulation zellularer Automat" />
 <file aadr="2900" eadr="2a41" sadr="0000" typ="T" link="3e8281ae18711183bd241be3c85f90f6-T.LISSAJOU_ZU_BASI/T.LISSAJOU%20ZU%20BASI.z80" name="LISSAJOU ZU BASI" kurz="Lissajous-Figuren" />
 <file aadr="e000" eadr="e1ff" sadr="e000" typ="C" link="1f3b3cdc42a6dd53d9d9553bd81e0574-C.LOAD%20MC%2085_2/C.LOAD%20MC%2085_2.z80" name="LOAD MC 85/2    " kurz="Programme vom KC85/2 und KC85/3 einlesen" />
 <file aadr="2bc0" eadr="419b" sadr="0302" typ="B" link="ad4612ee17efefcb54d846af479e8d79-B.LOCATORSYSTEM/B.LOCATORSYSTEM.z80" name="LOCATORSYSTEM   " kurz="Funkamateur Locator-System (Standortkenner) und geographische Koordinaten" />
 <file aadr="0800" eadr="1742" sadr="0000" typ="I" link="3c93c0730eb299275681a11f1f89ee06-I.LOGICANALYSOR/I.LOGICANALYSOR.z80" name="LOGICANALYSOR   " kurz="Logik-Zustands- und Logik-Zeitanalyse " />
 <file aadr="0200" eadr="2500" sadr="0200" typ="C" link="f2f980e4fbb876c2fc23be7261ba2309-C.LOGOLAB/C.LOGOLAB.z80" name="LOGOLAB         " kurz="Sokoban Variante, Kisten schieben" />
+<file aadr="0200" eadr="0b4f" sadr="0200" typ="C" link="e53939ae8736576bbe4b595c33210539-C.MAGGOTY/C.MAGGOTY.z80" name="MAGGOTY         " kurz="Würmer zurück in den Käfik lotsen" />
 <file aadr="2bc0" eadr="2e8e" sadr="0000" typ="B" link="2065303010160766abfd32a10d6f2319-B.MAIN-KC-IF/B.MAIN-KC-IF.z80" name="MAIN-KC-IF      " kurz="BASIC Patch: Erhöhung Fehlertoleranz für das KC-Interface" />
 <file aadr="3c00" eadr="3fff" sadr="3fec" typ="C" link="35a0027f80a63e04065d67e47d99f190-C.MAINSAVE%204.6.4/C.MAINSAVE%204.6.4.z80" name="MAINSAVE 4.6.4  " kurz="Headersave kompatible LOAD/SAVE-Routine" />
 <file aadr="e000" eadr="e3ff" sadr="e000" typ="C" link="09e01d1c9233d9e7addd611838df12ba-C.maintape%204.6.4/C.maintape%204.6.4.z80" name="maintape 4.6.4  " kurz="headersave kompatibles load/save 0xE000" />
@@ -584,6 +586,7 @@
 <file aadr="0100" eadr="387f" sadr="0100" typ="C" link="272b217d19698ccb73b2c6d50013b922-C.MBASIC_14K_BS/C.MBASIC%2014K%20BS.z80" name="MBASIC 14K BS   " kurz="HBASIC 3.3 - BASIC Version vom Hübler Computer" />
 <file aadr="1000" eadr="1e4d" sadr="1000" typ="C" link="2493d1ee769c274ef29a640d83d294f8-C.MC-CODE%20EDITOR/C.MC-CODE%20EDITOR.z80" name="MC-CODE EDITOR  " kurz="Tool, Maschinenkode-Editor" />
 <file aadr="2bc0" eadr="3105" sadr="0302" typ="B" link="39a14bfd70f1730c6e7a6a8cdf439ec2-B.MC-IN%20(Eingabe)/B.MC-IN%20(Eingabe).z80" name="MC-IN (Eingabe) " kurz="MC-Programm-Ersteller, Hexdump eingeben und mit Prüfsumme vergleichen." />
+<file aadr="3150" eadr="3fff" sadr="3150" typ="C" link="154e428aad94ffe67b996afec0da7839-C.MC-SERVICE/C.MC-SERVICE.z80" name="MC-SERVICE      " kurz="Reassembler, ASCII-DUMP, Text finden, HEX Rechner" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="7a49a143c0680d7f248d9e70eb342014-C.MCODE_KARTEI_P.S/C.MCODE%20KARTEI%20P.S.z80" name="MCODE KARTEI P.S" kurz="Maschinencode Datenbank Hilfe (RST20)" />
 <file aadr="0100" eadr="1c1c" sadr="0100" typ="C" link="754be3b310a001a811e80fba117b5485-C.MDEDAS7/C.MDEDAS7.z80" name="MDEDAS*7        " kurz="Editor Assembler" />
 <file aadr="2bc0" eadr="305d" sadr="0302" typ="B" link="35676c733f0a981f338200460d2b8dfe-B.MEMORY/B.MEMORY.z80" name="MEMORY          " kurz="Test des Kurzzeitgedächtnisses, Buchstaben- oder Zeichenketten merken" />
@@ -635,7 +638,9 @@
 <file aadr="2bc0" eadr="5d05" sadr="0000" typ="B" link="3b947bedc9b2470354ed2d7519960930-monopoly/monopoly.z80" name="MONOPOLY        " kurz="Monopoly für 2-6 Spieler, nett animiert, mit Pseudo-3D Grafik" />
 <file aadr="0100" eadr="146f" sadr="0100" typ="C" link="c6548d7dbe6cb0a47f42867dbf9eabf0-C.MONS3.2/C.MONS3.2.z80" name="MONS3.2         " kurz="SCI MONS3M, Monitor+Debugger V3.2" />
 <file aadr="1800" eadr="22a6" sadr="0000" typ="T" link="94ac8243741088a305985f7f00d7dde2-T.MONS3M_short/T.MONS3M%20short.z80" name="MONS3M short    " kurz="Kurzbeschreibung des Objektcodeeditors MONS3M" />
+<file aadr="0b00" eadr="1800" sadr="1000" typ="C" link="0f09be17815b40e943b2911b51d99ea1-C.MONSTERa/C.MONSTER.z80" name="MONSTER         " kurz="Labyrinth, Joystick Practic 01/88" />
 <file aadr="2bc0" eadr="3417" sadr="0000" typ="B" link="1fa3c3a28a034e14f5a72c91bb900b9f-B.MONSTER/B.MONSTER.z80" name="MONSTER         " kurz="Monster ausweichen, Kreise aufsammeln" />
+<file aadr="0b00" eadr="1800" sadr="1000" typ="C" link="22b20be2a8f6269a6c8bd81355e55c79-C.MONSTER/C.MONSTER.z80" name="MONSTER         " kurz="Labyrinth, Joystick JU+TE" />
 <file aadr="0800" eadr="28fe" sadr="0000" typ="T" link="4d17b007dc569594d85f2e14d5c7f3d8-mt4_6_doc/mt4_6_doc.z80" name="mt4.6 DOC.      " kurz="Doku maintape V4.6" />
 <file aadr="e000" eadr="e55f" sadr="e545" typ="C" link="25fcc651b46ad2857d308f6b25e7e403-C.MTAPE5.4-2.2M/C.MTAPE5.4-2.2M.z80" name="MTAPE5.4-2.2M   " kurz="Headersave kompatible LOAD/SAVE-Routine für 2.02" />
 <file aadr="e000" eadr="e55f" sadr="e545" typ="C" link="b58a15e334db8aa9574d40c6f39e2a68-C.MTAPE5.4-4kM/C.MTAPE5.4-4kM.z80" name="MTAPE5.4-4kM    " kurz="Headersave kompatible LOAD/SAVE-Routine für 4k-Monitor RB" />
@@ -679,6 +684,7 @@
 <file aadr="1000" eadr="22ff" sadr="0000" typ="b" link="9f83dd605923492700d30c77086a94d8-b.Party/b.Party.z80" name="Party           " kurz="Quiz &amp; Ratschläge für eine gelungene Party" />
 <file aadr="2bc0" eadr="7233" sadr="0302" typ="B" link="41401d07edfa51d877a4b356128570f3-B.PARTY+SOUND/B.PARTY+SOUND.z80" name="PARTY+SOUND     " kurz="Partyguide mit Soundeffekten, ähnlich [9f83dd605923492700d30c77086a94d8]" />
 <file aadr="2bc0" eadr="3b2b" sadr="0302" typ="B" link="ede5f5cfb3d37bbdf122f5a753f16b77-B.PFERDERENNEN/B.PFERDERENNEN.z80" name="PFERDERENNEN    " kurz="Pferdewetten für 1-8 Personen" />
+<file aadr="0100" eadr="03ff" sadr="0100" typ="C" link="2b4a3171ccb1a246801ca380037fedb2-C.PHANTASIE/C.PHANTASIE.z80" name="PHANTASIE       " kurz="Reaktionsspiel. Sternchen im richtigen Quadrat abschießen" />
 <file aadr="2bc0" eadr="4ab4" sadr="0000" typ="B" link="40d9a038c5495b451f2ae6a4534b6722-B.PHOBOS/B.PHOBOS.z80" name="PHOBOS          " kurz="Animation RAUMFAHRTUNTERNEHMEN MARS 1988/1989" />
 <file aadr="1800" eadr="2697" sadr="0000" typ="I" link="1da5997b9ebfdb51c3e823cefe72923a-I.PICTURE/I.PICTURE.z80" name="PICTURE         " kurz="Beschreibung der Umwandlungsroutine 'PICTURE'" />
 <file aadr="0100" eadr="51a0" sadr="0100" typ="C" link="72dd47906ec810ec86d5a903197d5323-C.PILOT/C.PILOT.z80" name="PILOT           " kurz="Hubschrauber, Rettungsmissionen fliegen (andere Version)" />
@@ -877,6 +883,7 @@
 <file aadr="1000" eadr="20b1" sadr="0000" typ="b" link="b1f8d678475cbd1842806e8e4e696b26-b.TEL_ADR%201/b.TEL_ADR%201.z80" name="TEL/ADR 1       " kurz="ADRESSEN-UND TELEFONNUMMERN-VERZEICHNIS" />
 <file aadr="1000" eadr="20f4" sadr="0000" typ="b" link="c2db725bd5e957a764e60d704b7d28b0-b.TEL_ADR_GEB%201%20L/b.TEL_ADR_GEB%201%20L.z80" name="TEL/ADR/GEB 1 L " kurz="Adressen- und Telefondatenbank mit Geburtsdatum" />
 <file aadr="1000" eadr="19c9" sadr="0000" typ="b" link="d17defdc64b330d46b703fae022defd0-b.TELETEXT%201/b.TELETEXT%201.z80" name="TELETEXT 1      " kurz="Bildschirmseiten auf Kassette speichern" />
+<file aadr="0100" eadr="3fff" sadr="0103" typ="C" link="39fd4c542ac5a20c8a4f551a516decbe-C.TENNIS/C.TENNIS.z80" name="TENNIS          " kurz="Tennis gegen eine Wand spielen" />
 <file aadr="2bc0" eadr="37b4" sadr="0000" typ="B" link="8af63e10df0930981bfc3631392f41d2-tennis/tennis.z80" name="TENNIS          " kurz="Tennis gegen Computer Spielen (8x4)" />
 <file aadr="1000" eadr="19be" sadr="0000" typ="b" link="4fb2293dfbeedc9242c2b9165f2115bc-b.TEST/b.TEST.z80" name="TEST            " kurz="Test Reaktionszeit" />
 <file aadr="0100" eadr="07ff" sadr="0110" typ="C" link="c697a6096da6ea7328a61b90e6114ac1-C.TestroutineZ1013/C.TestroutineZ1013.z80" name="TestroutineZ1013" kurz="RAM Test, Adress- und Datenleitungen testen" />
@@ -996,4 +1003,4 @@
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 </filelist>
-<status src="Datenbank enthält 996 Dateien."/></doc>
+<status src="Datenbank enthält 1003 Dateien."/></doc>

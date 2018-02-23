@@ -1,0 +1,31 @@
+         
+                 
+            
+                  
+             
+
+COPYRIGHT (C) 1989 BY *JODUKE*
+
+MAGGOTY ist ein Reaktionsspiel
+f}r den Z1013 geschrieben.    
+DU (), gesteuert mit CURSOR- 
+tasten, hast die Aufgabe, die 
+Maden () wieder in ihren 
+K{fig () zu sperren. Aber  
+Vorsicht, nicht die Maden be- 
+r}hren, sonst verlierst Du ein
+Leben ! Das macht aber gar-   
+nichts, solange im Diamanten- 
+lager () noch Diamanten () 
+sind, die du einsammeln       
+mu~t (), dabei sieht dann die
+Figur so aus ().             
+Mauersteine () kannst Du an  
+jedem beliebigen Punkt aufneh-
+men und ablegen. Wenn Du einen
+Mauerstein in der Hand hast,  
+siehst Du so aus (). Ablegen 
+kannst Du ihn mit der Leerta- 
+ste.                          
+             >ENTER<          
+

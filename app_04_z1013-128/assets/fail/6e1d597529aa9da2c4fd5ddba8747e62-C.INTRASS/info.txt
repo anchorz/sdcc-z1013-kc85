@@ -1,0 +1,10 @@
+<kurz src="ähnlich [04247772e5e6737c52fa55d0ab4c8bbb]"/>
+<lang>eventuell fehlerhaft. Sprung ausserhalb des Programmbereiches.
+
+519B  28 F3            JR      Z,5190H
+!!!   519D  CD DC 1E         CALL    1EDCH
+51A0  18 26            JR      51C8H
+51A2  CD 3F 51         CALL    513FH
+
+</lang>
+<requires></requires>

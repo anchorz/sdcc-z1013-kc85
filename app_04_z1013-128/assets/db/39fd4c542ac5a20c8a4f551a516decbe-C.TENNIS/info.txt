@@ -1,0 +1,11 @@
+<kurz src="Tennis gegen eine Wand spielen"/>
+<lang>
+Steuerung: ⇦ ⇨ 
+
+PORT 0x02/0x08 vom Tiny-BASIC (CTRL-C/S4-K) Break Erkennung
+
+</lang>
+<requires></requires>
+<port range="02" mode="2" device="Systemport, Tastatur"/>
+<port range="08" mode="1" device="Spaltentreiber, Tastaturabfrage"/>
+

@@ -1,0 +1,9 @@
+<kurz src="Reaktionsspiel. Sternchen im richtigen Quadrat abschießen"/>
+<lang>
+
+Steuerung: 
+BCDE
+RSTV
+
+</lang>
+<requires>2.02(GEOMETRY,MCALL2)</requires>

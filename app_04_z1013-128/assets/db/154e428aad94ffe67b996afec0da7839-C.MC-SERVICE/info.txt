@@ -1,0 +1,3 @@
+<kurz src="Reassembler, ASCII-DUMP, Text finden, HEX Rechner"/>
+<lang></lang>
+<requires></requires>

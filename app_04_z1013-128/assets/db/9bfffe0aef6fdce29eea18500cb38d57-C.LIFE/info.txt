@@ -1,0 +1,25 @@
+<kurz src="Simulation zellularer Automat"/>
+<lang>
+
+Steuerung: 
+
+Cursor Bewegen - Stern setzen
+ Y
+0 2
+ 9
+
+Cursor Bewegen
+ A
+H J 
+ Q 
+
+m,e,f,r,p Muster setzen 
+
+C Bildschirm Löschen
+
+G Simulation
+
+KLG8 - unbekannt
+
+</lang>
+<requires>2.02(GEOMETRY)</requires>

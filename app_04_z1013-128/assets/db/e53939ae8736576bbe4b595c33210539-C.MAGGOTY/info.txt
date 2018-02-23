@@ -1,0 +1,24 @@
+<kurz src="Würmer zurück in den Käfik lotsen"/>
+<lang>Besonderheit: statt dem normalen Z1013 Zeichensatz, wird der Text
+mit Umlauten ausgegeben.
+
+MAGGOTY ist ein Reaktionsspiel für den Z1013 geschrieben.
+
+DU,gesteuert mit CURSOR-tasten, hast die Aufgabe, die
+Maden wieder in ihren Käfig zu sperren. Aber Vorsicht, 
+nicht die Maden berühren, sonst verlierst Du ein Leben! 
+Das macht aber gar nichts, solange im Diamantenlager 
+noch Diamanten sind, die du einsammeln musst.
+
+Mauersteine kannst Du an jedem beliebigen Punkt aufnehmen 
+und ablegen. Wenn Du einen Mauerstein in der Hand hast, 
+ändert sich die Farbe der Spielfigur. Ablegen kannst Du ihn
+mit der Leertaste.                          
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ 
+
+</lang>
+<requires></requires>
+<port range="02" mode="1" device="Systemport, Tonausgabe"/>
+
+
