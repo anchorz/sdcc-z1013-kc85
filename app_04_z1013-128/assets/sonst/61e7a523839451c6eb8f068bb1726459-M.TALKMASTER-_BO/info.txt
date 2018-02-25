@@ -1,0 +1,3 @@
+<kurz src="wie [0260d9f673be513f26255fc031d4ab6c]"/>
+<lang>Startadresse ist aber 0x00B0. Dadaurch bekommt man noch ein paar Bytes mehr freien Speicher.</lang>
+<requires></requires>

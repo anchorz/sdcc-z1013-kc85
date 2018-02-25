@@ -59,6 +59,7 @@
 <file aadr="1000" eadr="29f3" sadr="0000" typ="b" link="4ff396ebc1b49df20d59bb3d37ebb7dc-b.ARKTIS%201/b.ARKTIS%201.z80" name="ARKTIS 1        " kurz="5 Tage die Heizung in der Arktis füttern" />
 <file aadr="0100" eadr="170b" sadr="0100" typ="C" link="52ec6c5d81ce3294c8d3aa38202d243a-C.ASCII-FRAKTALE_5/C.ASCII-FRAKTALE%205.z80" name="ASCII-FRAKTALE 5" kurz="TEFRA Textfraktale, compiliert" />
 <file aadr="1000" eadr="36ff" sadr="1000" typ="C" link="d13ddd251c1a43637a119e2001c90c32-C.ASM%20KC85_1%20_1800/C.ASM%20KC85_1%20_1800.z80" name="ASM KC85/1 :1800" kurz="Editor, Assembler (funktioniert?)" />
+<file aadr="0100" eadr="4336" sadr="2f70" typ="C" link="f1e55c23614ed6d07d8b5fd937a11963-C.ASM/C.ASM-SOFT.C.z80" name="ASM-SOFT.C      " kurz="Microword 1.7 + Assembler" />
 <file aadr="3000" eadr="a838" sadr="0000" typ="I" link="2875dce535cb60360ce39d30d104383b-I.ASM.COM_DOC1/I.ASM.COM%20DOC1.z80" name="ASM.COM DOC1    " kurz="SCP Assembler Teil 1 (defekt)" />
 <file aadr="1800" eadr="a55d" sadr="0000" typ="I" link="57523c53d5440ca9592b953d85771dbf-I.ASM.COM_DOC10/I.ASM.COM%20DOC10.z80" name="ASM.COM DOC10   " kurz="SCP Assembler Teil 10 (defekt)" />
 <file aadr="3000" eadr="a244" sadr="0000" typ="I" link="3a48f7a73255a2bc6e9e5284aead2317-I.ASM.COM_DOC2/I.ASM.COM%20DOC2.z80" name="ASM.COM DOC2    " kurz="SCP Assembler Teil 2" />
@@ -383,6 +384,7 @@
 <file aadr="0100" eadr="2820" sadr="2810" typ="C" link="c9490afb5f6a0b7b428456e5eda153b1-graverobber/graverobber.z80" name="GRAVEROBBER     " kurz="Grabraeuber, Schaetze sammeln (Brosig)" />
 <file aadr="0100" eadr="284e" sadr="2840" typ="C" link="58d5584eacb0f5bb95208dc74bc042ae-graverobber+prJ/graverobber+prJ.z80" name="GRAVEROBBER(J)  " kurz="Grabraeuber, Schaetze sammeln" />
 <file aadr="2f00" eadr="3fff" sadr="2f00" typ="C" link="c103c03cffe317189f2c40a482d2b36f-C.GZE%20V.16K%20MB-EQU/C.GZE%20V.16K%20MB-EQU.z80" name="GZE V.16K MB-EQU" kurz="Zeichensatzeditor, FZG+Maus" />
+<file aadr="a300" eadr="ebff" sadr="b300" typ="M" link="d1951372a9534af1ff7d8ec109d2da73-M.HACKER/M.HACKER.z80" name="HACKER          " kurz="Strategiespiel, Telefonnummern raten" />
 <file aadr="0100" eadr="c4c0" sadr="0100" typ="C" link="701732139296da2a16126ef357e8e4e5-hacker_com/hacker_com.z80" name="HACKER.COM      " kurz="Strategiespiel" />
 <file aadr="e800" eadr="e848" sadr="e800" typ="C" link="7b3917f7a3f4804589ffd926ea7379b0-C.HARD/C.HARD.z80" name="HARD#           " kurz="Druckertreiber (parallel), Interruptbetrieb" />
 <file aadr="1000" eadr="2429" sadr="0000" typ="b" link="508954d71b34930ca3f11251ce15b35f-b.HASCHMICH%201/b.HASCHMICH%201.z80" name="HASCHMICH 1     " kurz="Spieler einfangen (8x4)" />
@@ -496,6 +498,7 @@
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="1216543e3c3b605674308d96d78b7c29-k7669_2_scr/k7669_2_scr.z80" name="K7669/2.SCR     " kurz="S3004/K7699 Grafik Tastaturlayout-Vorlage Teil 2" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="498d97e1964aebefaee0cdb1029a6ad6-k7669_3_scr/k7669_3_scr.z80" name="K7669/3.SCR     " kurz="S3004/K7699 Grafik Tastaturlayout-Vorlage Teil 3" />
 <file aadr="2bc0" eadr="4120" sadr="0000" typ="B" link="2ea733528db7ee4feffd00605c687ee7-B.KALENDER/B.KALENDER.z80" name="KALENDER        " kurz="Kalenderberechnung, Ostern, Pfingsten" />
+<file aadr="2bc0" eadr="360d" sadr="0000" typ="B" link="fdfa3905e550ccd6d00351acaacba8b4-B.KALENDER.B/B.KALENDER.z80" name="KALENDER.B      " kurz="EWIGER KALENDER, Datumsdifferenz etc." />
 <file aadr="2bc0" eadr="6070" sadr="0000" typ="B" link="758594af32dfb5b13aed853a0c22c1c4-B.KALKUEL/B.KALKUEL.z80" name="KALKUEL         " kurz="Kalkül, Tabellenkalkulation, Summenberechnung" />
 <file aadr="01b0" eadr="0c23" sadr="0000" typ="M" link="03b9dc3ad6cc415ce9ab5b8194114ee6-M.KASS-VERZ.-_B0H/M.KASS-VERZ.-_B0H.z80" name="KASS-VERZ.-&gt;B0H " kurz="Kassettenlisten editieren und verwalten" />
 <file aadr="2bc0" eadr="2e3d" sadr="0000" typ="B" link="19a511324557a6f0ad2d378429f99534-B.KASSE/B.KASSE.z80" name="KASSE           " kurz="Berechnung Wechselgeld und Stückelung" />
@@ -575,6 +578,7 @@
 <file aadr="2bc0" eadr="7730" sadr="0000" typ="B" link="1a2de00cbf67dbdbcf119d2263621e59-master_of_soft_1/master_of_soft_1.z80" name="Master of Soft 1" kurz="überarbeitete Version SOFTCHEF" />
 <file aadr="1000" eadr="1861" sadr="ff00" typ="b" link="7a581387bbb87a582e5ec7b6837a2912-b.MASTERMIND/b.MASTERMIND.z80" name="MASTERMIND      " kurz="" />
 <file aadr="1000" eadr="147f" sadr="00ff" typ="b" link="fc2c8592c9ec3f6f9a6bc3601a5efd2a-b.MATHE-UEBUNG/b.MATHE-UEBUNG.z80" name="MATHE-UEBUNG    " kurz="" />
+<file aadr="2bc0" eadr="36b2" sadr="e000" typ="B" link="2eb7c827e1ff55811280b891de799cf6-B.MATHE.B/B.MATHE.B.z80" name="MATHE.B         " kurz="Super - Arithmetik(-funktionen)" />
 <file aadr="0100" eadr="1400" sadr="0100" typ="C" link="2ba1e7e566270d94adcac60525b6857b-mauer/mauer.z80" name="MAUER           " kurz="Ball gegen die Wand spielen, bisher beste Variante" />
 <file aadr="0100" eadr="1400" sadr="0100" typ="C" link="a91675b35f87b1f131f2bbe4db2ecb9b-mauer+prJ/mauer+prJ.z80" name="MAUER+Joystick  " kurz="Ball gegen die Wand spielen+Joystick nach Practic 01/88" />
 <file aadr="3800" eadr="580b" sadr="5784" typ="C" link="d22016fec818c24d2c9d77c8bc4a0388-C.MAUS-J/C.MAUS-J.z80" name="MAUS-J          " kurz="Mäuse erschlagen Joystick(SPV)" />
@@ -589,6 +593,7 @@
 <file aadr="3150" eadr="3fff" sadr="3150" typ="C" link="154e428aad94ffe67b996afec0da7839-C.MC-SERVICE/C.MC-SERVICE.z80" name="MC-SERVICE      " kurz="Reassembler, ASCII-DUMP, Text finden, HEX Rechner" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="7a49a143c0680d7f248d9e70eb342014-C.MCODE_KARTEI_P.S/C.MCODE%20KARTEI%20P.S.z80" name="MCODE KARTEI P.S" kurz="Maschinencode Datenbank Hilfe (RST20)" />
 <file aadr="0100" eadr="1c1c" sadr="0100" typ="C" link="754be3b310a001a811e80fba117b5485-C.MDEDAS7/C.MDEDAS7.z80" name="MDEDAS*7        " kurz="Editor Assembler" />
+<file aadr="1fa0" eadr="3040" sadr="2000" typ="M" link="2dfc27b7674d96f2416bdd113963eee4-M.Melodieprogramm/M.Melodieprogramm.z80" name="Melodieprogramm " kurz="Spielt verschiedene Lieder ab" />
 <file aadr="2bc0" eadr="305d" sadr="0302" typ="B" link="35676c733f0a981f338200460d2b8dfe-B.MEMORY/B.MEMORY.z80" name="MEMORY          " kurz="Test des Kurzzeitgedächtnisses, Buchstaben- oder Zeichenketten merken" />
 <file aadr="2bc0" eadr="3c00" sadr="0000" typ="B" link="5da1272aeddb5d6c417e8ff3e23eb0ff-memory/memory.z80" name="MEMORY          " kurz="Merkspiel, Karten umdrehen" />
 <file aadr="1000" eadr="1e8e" sadr="0000" typ="b" link="f5384973126e856f2e4975b670373e84-b.MEMORY%201/b.MEMORY%201.z80" name="MEMORY 1        " kurz="Memory mit Buchstaben" />
@@ -795,6 +800,7 @@
 <file aadr="c800" eadr="e7d6" sadr="de00" typ="C" link="1a866c5653eadbf47eaf11cacc84d565-C.SCP-2RF_2.38M/C.SCP-2RF%202.38M.z80" name="SCP-2RF 2.38M   " kurz=" CP/M 2.2 Z1013 IG-HC mit 2*256K RAM-Floppy V2.3" />
 <file aadr="c800" eadr="e7ff" sadr="de00" typ="C" link="2b0074091d5ffe3fbd3e85b3290ffbc0-scp_2rf_2_40m.com/scp_2rf_2_40m.com.z80" name="SCP-2RF 2.40M   " kurz="" />
 <file aadr="3000" eadr="4161" sadr="0000" typ="I" link="85d12ca551337b3646abf8efd0dc62aa-I.SCP-2RF.DOC/I.SCP-2RF.DOC.z80" name="SCP-2RF.DOC     " kurz="Besonderheiten des Betriebssystems SCP-2RF 2.40M für den Z1013" />
+<file aadr="0100" eadr="4000" sadr="0103" typ="M" link="da38145c595223d06e4ba8c4630dd3a1-M.SDI/M.SDI.z80" name="SDI             " kurz="Statt Weltraumverteidigung: hier wird aus dem Weltraum geschossen!" />
 <file aadr="3000" eadr="384f" sadr="0000" typ="I" link="670767abd6472aa6bb56d03af0c20f1b-I.SEDIT-DOC%205_89/I.SEDIT-DOC%205_89.z80" name="SEDIT-DOC 5/89  " kurz="BESCHREIBUNG FORTH 83 SEDIT" />
 <file aadr="1000" eadr="305a" sadr="0000" typ="b" link="f7b4653beb1183faef45d76689f537ef-b.SELBSTSICHER/b.SELBSTSICHER.z80" name="SELBSTSICHER    " kurz="Persoenlichkeitstest: SIND SIE SELBSTSICHER?" />
 <file aadr="1000" eadr="1b19" sadr="0000" typ="b" link="5750251590e6083a1d5c1c0c93af5715-b.SERO%201/b.SERO%201.z80" name="SERO 1          " kurz="ALTSTOFFE (PAPIER, DOSEN, FLASCHEN) SAMMELN" />
@@ -857,6 +863,7 @@
 <file aadr="2000" eadr="2ce7" sadr="0000" typ="T" link="e3298593e37bf1fa4e0690501d943405-T.SYSTEMUHR_B4_1.3/T.SYSTEMUHR%20B4%201.3.z80" name="SYSTEMUHR B4 1.3" kurz="Systemuhr für  Z1013, externer 1s-Takt an B4" />
 <file aadr="0100" eadr="03ff" sadr="0100" typ="C" link="9b36cb5ac976ddad2c0bcff6dc637224-C.SYSTEMUHR%20SOFT/C.SYSTEMUHR%20SOFT.z80" name="SYSTEMUHR SOFT  " kurz="Uhrzeit anzeigen" />
 <file aadr="1800" eadr="2900" sadr="0000" typ="I" link="4d795f4b17ccf7cc44859ff5ff0516b9-I.TAD1/I.TAD1.z80" name="TAD1            " kurz="Textadapter zur Anpassung von Texten an verschiedene Systeme" />
+<file aadr="01b0" eadr="0290" sadr="01b0" typ="C" link="0260d9f673be513f26255fc031d4ab6c-C.Talk-Master_V2.0/C.Talk-Master%20V2.0.z80" name="Talk-Master V2.0" kurz="1-Bit PCM Sample-Aufnahme und Abspieler" />
 <file aadr="5000" eadr="58d1" sadr="0100" typ="I" link="9d7094ecb1c52c5cab6707609cd3fa0a-I.TAPECOPY_BESCHR./I.TAPECOPY%20BESCHR..z80" name="TAPECOPY BESCHR." kurz="TapeCopy Laden/Speichern File Tape/aktuelles Laufwerk" />
 <file aadr="0100" eadr="07ff" sadr="0000" typ="D" link="6d7235bbe42875eadcf53f43888cdb45-D.TAPECOPY.COM/D.TAPECOPY.COM.z80" name="TAPECOPY.COM    " kurz="CPM COM: TapeCopy Laden/Speichern File Tape/aktuelles Laufwerk" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="cf53481f476e0a0539843fb338fb8231-tast1_scr/tast1_scr.z80" name="TAST1.SCR       " kurz="" />
@@ -979,6 +986,7 @@
 <file aadr="2bc0" eadr="3d65" sadr="2b50" typ="B" link="e7c7ae0efe0cdbe02fab292068ea786e-B.WURM-T/B.WURM-T.z80" name="WURM-T          " kurz="Wurmi, Anaconda im Labyrinth, frisst Futterstückchen und wird länger" />
 <file aadr="0100" eadr="0900" sadr="0100" typ="C" link="c318e23b99cb8353a4ab5d494f64198d-WURMI/WURMI.z80" name="WURMI           " kurz="" />
 <file aadr="0100" eadr="0908" sadr="0901" typ="C" link="e23e3f9502a6b428d42fb88f5539eefa-wurmi_bro/wurmi_bro.z80" name="WURMI*BRO       " kurz="RB: Schaltet die Tastatur abfrage auf SLOW." />
+<file aadr="0200" eadr="0aff" sadr="0200" typ="C" link="24d5be27e757044104585a44c8e6f0bd-C.Z_1013-COPY/C.Z%201013-COPY.z80" name="Z 1013-COPY     " kurz="Kopierprogramm zwischen 1/2　MHz Versionen" />
 <file aadr="0100" eadr="0bff" sadr="0100" typ="C" link="a607237be522ae2b2ccc9013a53d0de5-C.Z1013%20BASIC%203K/C.Z1013%20BASIC%203K.z80" name="Z1013 BASIC 3K  " kurz="Original Robotron 3.01 Tiny-Basic Interpreter" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="bb4e5ac1c398a9e1dc8ee40bb53b1b5d-G.Z1013_RB2/G.Z1013%20RB2.z80" name="Z1013 RB2       " kurz="Z1013 Grafik RB, mit SCP und RAM-Floppy" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="9aee279d49faaabfd090f22c9100076b-C.Z1013-DEMO/C.Z1013-DEMO.z80" name="Z1013-DEMO      " kurz="DEMO Z1013 Version 2, Präsentation: Reassembler, Tastaturlayout etc." />
@@ -1000,7 +1008,9 @@
 <file aadr="7000" eadr="77ff" sadr="0000" typ="E" link="a11dd2ae626d1b31e304144afdcd6255-ZG-INCOM/ZG-INCOM.z80" name="ZG-INCOM        " kurz="Entspricht dem IBM Zeichensatz, diesmal sind die Klammern mit dabei" />
 <file aadr="8000" eadr="87ff" sadr="0000" typ="E" link="020c9435b518e343ca43b9b9b284bbbc-ZGORIG+BREIT.Z80/ZGORIG+BREIT.Z80" name="ZGORIG+BREIT    " kurz="Zeichensatz, breite Version, mit DEL-Zeichen" />
 <file aadr="2bc0" eadr="2d9a" sadr="0302" typ="B" link="e16a2d3944104f8e36ac22300a61afe3-B.ZINSEN/B.ZINSEN.z80" name="ZINSEN          " kurz="Zinsen berechnen, Festzins 3,25%" />
+<file aadr="e000" eadr="e7ff" sadr="e000" typ="C" link="c16c71f9204005f7283f87ee266dcd8c-C.ZMONTXT/C.ZMONTXT.z80" name="ZMON*TXT*       " kurz="Monitorerweiterung mit Textfunktionen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
+<file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1003 Dateien."/></doc>
+<status src="Datenbank enthält 1013 Dateien."/></doc>

@@ -1,0 +1,3 @@
+<kurz src="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe"/>
+<lang>Sinn und Zweck ist noch unbekannt. Welcher Drucker wird hier angesprochen?</lang>
+<requires>RAM_F800</requires>

@@ -1,0 +1,26 @@
+<kurz src="Super - Arithmetik(-funktionen)"/>
+<lang>
+       Super - Arithmetik
+      ********************
+
+
+   1 ... Addition
+
+   2 ... Subtraktion
+
+   3 ... Multiplikation
+
+   4 ... Division
+
+   5 ... Potenzieren
+
+   6 ... Fakultaeten
+
+   7 ... Blocklaenge
+
+   8 ... GGT
+
+   9 ... Brüche add/sub       
+
+<include src="MATHE.B"/></lang>
+<requires>UMLAUT</requires>

@@ -1,0 +1,10 @@
+<kurz src="EWIGER KALENDER, Datumsdifferenz etc."/>
+<lang>Kalenderfunktionen:
+
+Wochentagsbestimmung
+Datendifferenz
+Datumsbestimmung
+Monatskalender
+
+<include src="KALENDER.B"/></lang>
+<requires></requires>

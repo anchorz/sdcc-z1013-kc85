@@ -1,0 +1,9 @@
+<kurz src="Strategiespiel, Telefonnummern raten"/>
+<lang>
+In diesem Spiel koennen Sie sich
+wie ein Computerfreak in ein
+Computernetz einwaehlen.
+</lang>
+<requires>SPV,RST</requires>
+<port range="02" mode="1" device="Systemport, Tonausgabe"/>
+

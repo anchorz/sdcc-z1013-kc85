@@ -1,0 +1,3 @@
+<kurz src="identisch [2eb7c827e1ff55811280b891de799cf6]"/>
+<lang>Dateigröße muss es Vielfaches von 32 sein. 13 Bytes fehlen.</lang>
+<requires></requires>

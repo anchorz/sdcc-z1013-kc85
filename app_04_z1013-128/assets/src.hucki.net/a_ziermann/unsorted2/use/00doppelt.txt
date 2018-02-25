@@ -1,7 +1,0 @@
-C.BASCON-T.C.z80              28.01.2013 12:10:45 -> z1013/a_ziermann/lang/basic/C.BASCON-TEST 2.0.z80
-C.BASICODE.C.z80              28.01.2013 12:10:45 -> z1013/a_ziermann/lang/basic/C.BASCODER TEST2.2.z80
-C.FORTH.C.z80                 28.01.2013 12:10:47 -> z1013/a_ziermann/lang/C.Z1013-FORTH.z80
-C.HDISKCOP.C.z80              28.01.2013 12:10:47 -> z1013/a_ziermann/sonst/C.HDISKCOPY 1.6.z80
-C.HEADERDI.C.z80              28.01.2013 12:10:47 -> z1013/Sammlung IGD/igd17a MC 6/C.HEADERDISK 45.z80
-C.HSAVE_7C.C.z80              28.01.2013 12:10:48 -> z1013/a_ziermann/nu/C.HEADERSAVE 5.95 (headersave_5_95).z80
-C.RDISK-E0.C.z80              28.01.2013 12:10:50 -> z1013/Sammlung IGD/igd11a MC 3/C.HEAD.DISK 45_ME.z80

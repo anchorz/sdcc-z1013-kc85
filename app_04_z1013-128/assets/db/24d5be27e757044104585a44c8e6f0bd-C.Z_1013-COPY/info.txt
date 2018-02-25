@@ -1,0 +1,23 @@
+<kurz src="Kopierprogramm zwischen 1/2　MHz Versionen"/>
+<lang>Ein Beispiel für Programme, die auf dem 2.02 und A2 Monitor und 1/2 MHz laufen sollen.
+Leider wurde das Programm nicht im Original abgespeichert, so dass die Einsprungadressen überschrieben wurden.
+
+; Sprungverteiler 2.02
+0203  C3 07 F3         JP      0F307H ; F2CA
+0206  C3 F6 F2         JP      0F2F6H ; F2B9
+0209  C3 54 F4         JP      0F454H ; F417
+; Sprungverteiler A2
+020C  C3 07 F3         JP      0F307H ;SPACE: fuehrende Leerzeichen ueberlesen
+020F  C3 F6 F2         JP      0F2F6H ;INSTR: Eingabe einer Zeichenkette
+0212  C3 54 F4         JP      0F454H ;LOA3:  20H Bytes laden nach (HL)
+
+0215  3A FD F7         LD      A,(0F7FDH)
+0218  FE 0A            CP      0AH
+021A  20 0B            JR      NZ,0227H
+021C  21 0C 02         LD      HL,020CH
+021F  11 03 02         LD      DE,0203H
+0222  01 09 00         LD      BC,0009H
+0225  ED B0            LDIR
+
+</lang>
+<requires>A2(MCALLA)</requires>

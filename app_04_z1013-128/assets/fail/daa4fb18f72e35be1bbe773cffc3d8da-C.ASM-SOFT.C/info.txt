@@ -1,0 +1,33 @@
+<kurz src="identisch [f1e55c23614ed6d07d8b5fd937a11963]"/>
+<lang>Dateigröße muss es Vielfaches von 32 sein. 9 Bytes fehlen.
+Wie wird der Assembler gestartet und wie der Texteditor?
+
+Textpuffer: 3000-C7FF 
+
+Centronics Drucker auf Port 0x50.  
+
+CC86  3E 0F            LD      A,0FH
+CC88  D3 51            OUT     (51H),A
+
+DF19  FE 1E            CP      1EH
+DF1B  20 07            JR      NZ,0DF24H
+DF1D  3E 0A            LD      A,0AH
+DF1F  CD 24 DF         CALL    0DF24H
+DF22  3E 0D            LD      A,0DH
+DF24  B7               OR      A
+DF25  20 02            JR      NZ,0DF29H
+DF27  3E 20            LD      A,20H
+DF29  F5               PUSH    AF
+DF2A  D3 50            OUT     (50H),A
+DF2C  DB 52            IN      A,(52H)
+DF2E  CB 47            BIT     0,A
+DF30  20 FA            JR      NZ,0DF2CH
+DF32  F1               POP     AF
+DF33  C9               RET
+
+</lang>
+<requires></requires>
+<port range="50" mode="1" device="Centronics"/>
+<port range="51" mode="1" device="Centronics"/>
+<port range="52" mode="2" device="Centronics"/>
+

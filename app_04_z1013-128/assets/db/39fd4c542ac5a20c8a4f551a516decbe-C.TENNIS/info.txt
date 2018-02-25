@@ -2,7 +2,7 @@
 <lang>
 Steuerung: ⇦ ⇨ 
 
-PORT 0x02/0x08 vom Tiny-BASIC (CTRL-C/S4-K) Break Erkennung
+PORT 0x02/0x08 wird vom Tiny-BASIC benutzt, zur (CTRL-C/S4-K) Break Erkennung
 
 </lang>
 <requires></requires>

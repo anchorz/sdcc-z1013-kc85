@@ -1,0 +1,15 @@
+<kurz src="Monitorerweiterung mit Textfunktionen"/>
+<lang>Installiert Monitorerweiterung:
+Hier ein schönes Beispiel, wie die Monitorerweiterung angehängt wird, statt die aktuelle Version 
+zu überschreiben.
+
+@T einladen
+@F finde End-of-Text EOF 
+@C berechne CRC
+@W AADR            - abspeichern, 2. Parameter muss 0x0000 sein.
+@E AADR EADR ASCII - suche und ersetze Zeichen; ASCII obere 8 Bit Suche, untere 8 Bit ersetze 
+@I laden - KC-Format
+@O speichern KC-Format
+
+</lang>
+<requires>RB(MONITOR_ERWEITERUNG,CMDF05F)</requires>
