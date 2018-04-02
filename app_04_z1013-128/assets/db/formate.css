@@ -46,6 +46,20 @@ div.text {
 	background: #f0f0f0;
 }
 
+div.port {
+	font-family: monospace;
+    white-space: pre;
+	padding: 10px;
+	background: #40f0f0;
+}
+
+div.syscall {
+	font-family: monospace;
+    white-space: pre;
+	padding: 10px;
+	background: #f08080;
+}
+
 span.md5 {
     font-size: 75%;
 	color: #909060;

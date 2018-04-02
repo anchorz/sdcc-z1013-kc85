@@ -1,6 +1,6 @@
 <kurz src="Hardcopy Z1013 Zeichen als Grafik ausdrucken"/>
-<lang>der mitgelieferte Zeichensatz ist nicht ganz orginial, wie man im direkten Vergleich sehen kann.
-Die Zeichen sind wie beim CGA Zeichensatz breiter, einige wurden aber auch ersetzt. Die Pseudografikzeichen sind wie beim Original.
+<lang>der mitgelieferte Zeichensatz ist nicht ganz original, wie man im direkten Vergleich sehen kann.
+Die Zeichen sind wie beim CGA Zeichensatz breiter, einige wurden aber auch ersetzt. Die Pseudografikzeichen dagegen scheinen unverändert.
 Der Zeichensatz steht an Adresse 0xE000 und kann durchaus noch durch andere Versionen ersetzt werden.</lang>
 <port range="50" mode="W" device="Parallele Schnittstelle"/>
 <port range="51" mode="W" device="Parallele Schnittstelle"/>
