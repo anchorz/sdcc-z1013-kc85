@@ -1,0 +1,15 @@
+<kurz src="HEADER-BANK-Copy Modifikation"/>
+<lang>modifikation von [a89ca30bab335ac940411016c26b1905]
+
+Steuerung: 
+E  Exit
+M  Zeile loeschen
+L  Load 
+S  Save
+Y  Verify
+N  Neue Endeadresse
+
+<include src="../62ebcfc7562efea5bfaf777a92e121ef-I.HEADERBANK/I.HEADERBANK.txt"/></lang>
+<syscall type="rst20" tag="[WIND, OUTHL, INKEY, INSTR, INLIN, INCH, PRST7, OTHLS, OUTSP, INHEX, OUTHX]"/>
+<port range="02" mode="3" device="Tonausgabe, Toneingabe"/>
+

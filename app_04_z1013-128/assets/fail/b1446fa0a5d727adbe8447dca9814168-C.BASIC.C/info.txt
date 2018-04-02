@@ -1,0 +1,9 @@
+<kurz src="identisch [967f0900af70c375e23821d789d72831]"/>
+<lang>Dateigröße muss es Vielfaches von 32 sein. 15 Bytes fehlen.
+
+ähnlich [0a70131d841dc8b4030092fe9ebd4d9b]. aber mit vielen noch unbekannten Patches.
+
+HeaderSave erfolgt statt über den Sprungverteiler über 0xe003/0xe006
+
+</lang>
+<requires></requires>

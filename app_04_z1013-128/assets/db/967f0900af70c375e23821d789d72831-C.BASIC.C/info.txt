@@ -1,0 +1,7 @@
+<kurz src="KC-BASIC, meldet MEMORY END ?"/>
+<lang>ähnlich [0a70131d841dc8b4030092fe9ebd4d9b]. aber mit vielen noch unbekannten Patches.
+
+HeaderSave erfolgt statt über den Sprungverteiler über 0xe003/0xe006
+
+</lang>
+<requires></requires>

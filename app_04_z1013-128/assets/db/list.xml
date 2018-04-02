@@ -103,6 +103,7 @@
 <file aadr="0100" eadr="29ff" sadr="0100" typ="C" link="00ca4f8ef57275753a08ede5c4697724-C.BASIC%20KC85_2%20RB/C.BASIC%20KC85_2%20RB.z80" name="BASIC KC85/2 RB " kurz="KC-BASIC Interpreter KC85/2, 45038 BYTES FREE" />
 <file aadr="0100" eadr="2b60" sadr="0100" typ="C" link="3305b978e27be0350aee422900e70662-basic_pset_sound/basic_pset_sound.z80" name="BASIC PSET/SOUND" kurz="BASIC Variante mit PSET-und SOUND-Funktion (HC900)" />
 <file aadr="3000" eadr="3c49" sadr="0000" typ="I" link="cccdcbd3bfaac8968c91cf1b58516f4a-I.BASIC-PACKER/I.BASIC-PACKER.z80" name="BASIC-PACKER    " kurz="BASIC-Packer:REMKILL und KOMPRI, Kommentare und Leerzeichen entfernen" />
+<file aadr="0100" eadr="2b50" sadr="0300" typ="C" link="967f0900af70c375e23821d789d72831-C.BASIC.C/C.BASIC.C.z80" name="BASIC.C         " kurz="KC-BASIC, meldet MEMORY END ?" />
 <file aadr="1000" eadr="3351" sadr="0000" typ="b" link="b16167651d9e2e7c83013d6a2632d6c9-b.BASICLERN%201/b.BASICLERN%201.z80" name="BASICLERN 1     " kurz="Lernprogramm, Einführung in Tiny-BASIC" />
 <file aadr="2000" eadr="5ec6" sadr="0000" typ="T" link="6978463ce9293fad83cfca6e84e8d236-T.BASICODE_17..END/T.BASICODE%2017..END.z80" name="BASICODE 17..END" kurz="BASICODE-3 Seite 17-END" />
 <file aadr="1801" eadr="586e" sadr="0000" typ="T" link="9af33385409768a4797d19a05248f8e7-T.BASICODE_29-41/T.BASICODE%2029-41.z80" name="BASICODE 29-41  " kurz="BOEK and CASSETTE BASICODE-3 Auszugsweise Seite 29-41" />
@@ -188,6 +189,7 @@
 <file aadr="2bc0" eadr="5652" sadr="0000" typ="B" link="fede7d114236a92dad153caebc08d4a8-B.CLIMBER2/B.CLIMBER2.z80" name="CLIMBER2        " kurz="Leitern klettern, Spielfigur zum Ausgang bringen, neu" />
 <file aadr="1200" eadr="3fff" sadr="1200" typ="C" link="82e98373f82b95911a7afb516a4a935c-C.COMPACT/C.COMPACT.z80" name="COMPACT         " kurz="Spielebox für 2.02: JumpingJack, Schlange, Riesenslalom, HeartRunner" />
 <file aadr="1000" eadr="13ff" sadr="1300" typ="C" link="a60c71869deccfc820570090d593b70e-C.COMPUTER-BILD/C.COMPUTER-BILD.z80" name="COMPUTER-BILD   " kurz="Grafik Computer" />
+<file aadr="0100" eadr="075f" sadr="0100" typ="C" link="160c82f6b229d9374318e93c6dab01be-C.COPY.C/C.COPY.C.z80" name="COPY.C          " kurz="HEADER-BANK-Copy Modifikation" />
 <file aadr="3000" eadr="3538" sadr="0000" typ="I" link="6f548dad9bb94680fcd1a240df7a7900-I.COPY.DOC/I.COPY.DOC.z80" name="COPY.DOC        " kurz="COPY.COM, Kopieren von CP/M-Dateien von und zum Magnetband" />
 <file aadr="1400" eadr="22ff" sadr="0000" typ=" " link="47ff8be10153bad257119daad912307f-copy64___com/copy64___com.z80" name="COPY64  .COM    " kurz="ALLcopy 2.1 64x16 für CP/M, Kopieren von und zum Magnetband." />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="786d4edbdb0e9f7a74cfdad54a68cefc-cosmic_ball/cosmic_ball.z80" name="COSMIC-BALL     " kurz="Ball durch 3D-Labyrinth lotsen" />
@@ -201,6 +203,8 @@
 <file aadr="0800" eadr="201a" sadr="0000" typ="I" link="d38ffd3df83a458c7255a468729556c5-I.CPM-2RF%202.50M/I.CPM-2RF%202.50M.z80" name="CPM-2RF 2.50M   " kurz="Beschreibung Besonderheiten CP/M-Betriebssystem CPM-2RF 2.50M" />
 <file aadr="1000" eadr="1ffc" sadr="0000" typ="b" link="cd98a58079e0704cd87eca4fe58b7549-b.CRASH%201/b.CRASH%201.z80" name="CRASH 1         " kurz="verbesserter BOALAB clone, weiche der Kugel aus" />
 <file aadr="e100" eadr="e16f" sadr="e100" typ="C" link="ecf10c8b4725c1da8690d775010d8b76-C.CRC-_SUMME/C.CRC-%20SUMME.z80" name="CRC- SUMME      " kurz="CRC Berechnen" />
+<file aadr="7d00" eadr="7f0c" sadr="7d00" typ="C" link="85aecc2b0af7fa9fab0a3ae305d06c0a-C.CRC-D_7D/C.CRC-D_7D.C.z80" name="CRC-D_7D.C      " kurz="Hexdump mit CRC berechnen, anzeigen, ausdrucken" />
+<file aadr="ea80" eadr="ebef" sadr="ea80" typ="C" link="37f5570c34d11e0173c8233e14429f1d-C.CRC-DISP/C.CRC-DISP.C.z80" name="CRC-DISP.C      " kurz="Anzeige Speicherinhalt als Hex-Dump mit Checksumme CRC" />
 <file aadr="0100" eadr="2fff" sadr="0100" typ="C" link="202b04605a9d160f679129a523acf513-C.CW/C.CW-MORSE.z80" name="CW-MORSE        " kurz="Morse Code Trainer, Version 2" />
 <file aadr="0100" eadr="2aff" sadr="0100" typ="C" link="01accb912ecbab863792851eb02df642-C.CW/C.CW-TRAINER.z80" name="CW-TRAINER      " kurz="Morse Code Trainer, Version 1" />
 <file aadr="00b0" eadr="3fff" sadr="0100" typ="C" link="40140c5896bab22433ff637216165bf0-cyros_8_8.com/cyros_8_8.com.z80" name="CYROS(8*8)      " kurz="Schach - startet im Demo-Modus" />
@@ -218,6 +222,7 @@
 <file aadr="2bc0" eadr="3a38" sadr="2b50" typ="B" link="d35e76db1dbdcb10d999b3033e8ea267-B.DDR-STAEDTE/B.DDR-STAEDTE.z80" name="DDR-STAEDTE     " kurz="Hangman, DDR Städte raten" />
 <file aadr="c000" eadr="d1ff" sadr="c000" typ="C" link="973c81f475b31826ae62a643467b122a-C.DEBUG_3.02/C.DEBUG%203.02.z80" name="DEBUG 3.02      " kurz="Debugger Speicher-Dump V3.02 H.Krull" />
 <file aadr="3000" eadr="364f" sadr="0000" typ="I" link="c4039bab453057bdce24b8bdda8ebf59-I.DEBUGGER%20DOC/I.DEBUGGER%20DOC.z80" name="DEBUGGER DOC    " kurz="BESCHREIBUNG FORTH 83 DEBUGGER" />
+<file aadr="c700" eadr="dfd2" sadr="c700" typ="C" link="59a9167355ffb00b25f4576bf0dcd0f8-C.DEBUGGER.C/C.DEBUGGER.C.z80" name="DEBUGGER.C      " kurz="Variante des Kubetzka Debugger" />
 <file aadr="0100" eadr="22d0" sadr="0100" typ="C" link="fc18bda07d41e92ff09cefe2f56582d0-C.DEMO%20BOERSE/C.DEMO%20BOERSE.z80" name="DEMO BOERSE     " kurz="Demo Z1013 64K+Softwarebörse Weimar" />
 <file aadr="1000" eadr="1307" sadr="0000" typ="b" link="9f19c621793fd3aaccb559985079b524-b.DEMO%20JOYSTICK/b.DEMO%20JOYSTICK.z80" name="DEMO JOYSTICK   " kurz="Demo - funktioniert nur mit passendem BASIC Interpreter" />
 <file aadr="0100" eadr="3bff" sadr="0100" typ="C" link="b8c97ca003ad9c3c961e72f0990b5718-demo_z1013_v1/demo_z1013_v1.z80" name="DEMO Z1013 V1   " kurz="Präsentation der wesentlichen Eigenschaften, Tastaturlayout etc." />
@@ -231,6 +236,7 @@
 <file aadr="1800" eadr="2dcf" sadr="0000" typ="T" link="0eb6d44d233d6e77d2af10e733929f42-T.DIENSTE_DKL/T.DIENSTE%20DKL.z80" name="DIENSTE DKL     " kurz="Bauteilbeschaffung nach 1990, Vertrieb von DDR-Bauelementen" />
 <file aadr="0100" eadr="5b54" sadr="0100" typ="C" link="522d05b0294bf46ba18ddb5304f1c76a-digger/digger.z80" name="DIGGER          " kurz="Knobelspiel, dabei Sand wegschaufeln, Diamanten einsammeln." />
 <file aadr="0100" eadr="0770" sadr="0100" typ="C" link="b74cfdf5b7a4f8bf9a82f1f5ada78a52-C.DIGITALTESTER/C.DIGITALTESTER.z80" name="DIGITALTESTER   " kurz="IC DIGITAL-TESTER" />
+<file aadr="0100" eadr="07ff" sadr="04c0" typ="C" link="7f825dd262cf7cd0e9a3106d6ea25901-C.DIR-PRN.C/C.DIR-PRN.C.z80" name="DIR-PRN.C       " kurz="Directory Listing Floppy-1541" />
 <file aadr="3490" eadr="3fff" sadr="3500" typ="C" link="6153eee91e757e3eb0663040fd59ed36-C.DISASS.V.5+DRUCK/C.DISASS.V.5+DRUCK.z80" name="DISASS.V.5+DRUCK" kurz="Disassembler (funktioniert?)" />
 <file aadr="3200" eadr="3fff" sadr="3200" typ="C" link="95cb274249819d3c83fcfd914b87c878-C.DISASSEMBLER%20PLU/C.DISASSEMBLER%20PLU.z80" name="DISASSEMBLER PLU" kurz="DISASSEMBLER PLUS" />
 <file aadr="3300" eadr="3fff" sadr="3300" typ="C" link="a3a3dea61ed70229121b84bdcc9ef3f5-disassembler_rb/disassembler%20rb.z80" name="DISASSEMBLER RB " kurz="erweiterter Disassembler (Speicherzellen ändern), 0x3300" />
@@ -387,6 +393,7 @@
 <file aadr="a300" eadr="ebff" sadr="b300" typ="M" link="d1951372a9534af1ff7d8ec109d2da73-M.HACKER/M.HACKER.z80" name="HACKER          " kurz="Strategiespiel, Telefonnummern raten" />
 <file aadr="0100" eadr="c4c0" sadr="0100" typ="C" link="701732139296da2a16126ef357e8e4e5-hacker_com/hacker_com.z80" name="HACKER.COM      " kurz="Strategiespiel" />
 <file aadr="e800" eadr="e848" sadr="e800" typ="C" link="7b3917f7a3f4804589ffd926ea7379b0-C.HARD/C.HARD.z80" name="HARD#           " kurz="Druckertreiber (parallel), Interruptbetrieb" />
+<file aadr="e000" eadr="e89f" sadr="e800" typ="C" link="019877ba89161a29510d9a02eade5471-C.HARDCOPY.C/C.HARDCOPY.C.z80" name="HARDCOPY.C      " kurz="Hardcopy Z1013 Zeichen als Grafik ausdrucken" />
 <file aadr="1000" eadr="2429" sadr="0000" typ="b" link="508954d71b34930ca3f11251ce15b35f-b.HASCHMICH%201/b.HASCHMICH%201.z80" name="HASCHMICH 1     " kurz="Spieler einfangen (8x4)" />
 <file aadr="2bc0" eadr="3490" sadr="0000" typ="B" link="56d35656b8bcb919ba696c46e172f51a-B.HASE_CENTRONICS/B.HASE%20CENTRONICS.z80" name="HASE CENTRONICS " kurz="Grafik Hase" />
 <file aadr="2bc0" eadr="3975" sadr="0000" typ="B" link="191843607f9b3c8d6cf3a11514fde1c4-B.HASE%26WOLF/B.HASE%26WOLF.z80" name="HASE&amp;WOLF       " kurz="Wölfe gegen Baum rennen lassen" />
@@ -951,6 +958,7 @@
 <file aadr="0200" eadr="09df" sadr="0200" typ="C" link="3a3c93cf8f340f920d7b0b8ada7bb982-universe%20rb/universe%20rb.z80" name="UNIVERSE RB     " kurz="" />
 <file aadr="1700" eadr="1781" sadr="e700" typ="M" link="6bca71c7145b566ff3d6e44e35e9878b-M.UP-REMKILL/M.UP-REMKILL.z80" name="UP-REMKILL      " kurz="Unterprogramm, entfernt (möglicherweise) REM-Zeilen" />
 <file aadr="1800" eadr="2249" sadr="0000" typ="T" link="fb1d0af38fc9ca742d79be02cd715209-T.URLADER_R.BROSIG/T.URLADER%20R.BROSIG.z80" name="URLADER R.BROSIG" kurz="Beschreibung Urlader, Bootloader" />
+<file aadr="1000" eadr="14ff" sadr="0000" typ="C" link="36efff2ed223451f24a5b5d1eb8cd7e2-C.URLADER.C/C.URLADER.C.z80" name="URLADER.C       " kurz="Z1013-SUPER-URLADER mga3" />
 <file aadr="e800" eadr="eaff" sadr="e800" typ="C" link="0b70520fb192060844fb2b09a618cc22-C.V.24+HC/C.V.24+HC.z80" name="V.24+HC         " kurz="V24, Druckertreiber, Hardcopy" />
 <file aadr="0700" eadr="14df" sadr="1000" typ="C" link="21116d60ec96b5bad5067552e3949b67-vampi/vampi.z80" name="VAMPI           " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (8x4)" />
 <file aadr="0700" eadr="14ff" sadr="1000" typ="C" link="5bdb666cbca1e0c8fb0a78b5c5cbae5e-vampi/vampi.z80" name="VAMPI           " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus" />
@@ -1013,4 +1021,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1013 Dateien."/></doc>
+<status src="Datenbank enthält 1021 Dateien."/></doc>

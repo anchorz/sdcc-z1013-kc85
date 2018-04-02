@@ -1,0 +1,7 @@
+<kurz src="identisch [85aecc2b0af7fa9fab0a3ae305d06c0a]"/>
+<lang>Dateigröße muss es Vielfaches von 32 sein. 19 Bytes fehlen.</lang>
+<syscall type="rst20" tag="[OUTHL, INSTR, INCH, PRST7, OUTSP, INHEX, OUTHX]"/>
+<port range="04" mode="W" device="[7]64/16"/>
+<port range="50" mode="W" device="Paraller Drucker Daten"/>
+<port range="52" mode="R" device="Paraller Drucker Status "/>
+

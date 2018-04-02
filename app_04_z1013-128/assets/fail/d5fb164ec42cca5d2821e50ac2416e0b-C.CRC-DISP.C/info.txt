@@ -1,0 +1,8 @@
+<kurz src="identisch [37f5570c34d11e0173c8233e14429f1d]"/>
+<lang></lang>
+<port range="04" mode="W" device="[7]64/16"/>
+<port range="50" mode="W" device="Paraller Drucker Daten"/>
+<port range="52" mode="R" device="Paraller Drucker Status"/>
+<syscall type="rst20" tag="[OUTHL, INSTR, INCH, PRST7, OUTSP, INHEX, OUTHX]"/>
+
+

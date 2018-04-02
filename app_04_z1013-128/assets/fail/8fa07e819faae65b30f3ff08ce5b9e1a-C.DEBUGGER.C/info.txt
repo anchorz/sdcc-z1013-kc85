@@ -1,0 +1,7 @@
+<kurz src="identisch [59a9167355ffb00b25f4576bf0dcd0f8]"/>
+<lang></lang>
+<port range="50" mode="W" device="Paraller Drucker Daten"/>
+<port range="51" mode="W" device="Paraller Drucker PIO-Initialisierung"/>
+<port range="52" mode="R" device="Paraller Drucker Status"/>
+<syscall type="rst20" tag="[OUTCH, OUTHL, INSTR, PRST7, OUTSP, INHEX, OUTHX]"/>
+
