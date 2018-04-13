@@ -13,4 +13,6 @@ RICHTIGE ZAHL AN FALSCHER
 STELLE: #
 
 <include src="MASTER2 1.b"/></lang>
-<requires></requires>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>
+

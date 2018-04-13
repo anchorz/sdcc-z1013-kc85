@@ -9,8 +9,8 @@ wird scheinbar nirgendwo wieder verwendet.
 
 </lang>
 <requires></requires>
-<port range="00" mode="2" device="Userport, Joystick JU+TE"/>
-<port range="01" mode="1" device="Userport, Joystick JU+TE"/>
-<port range="08" mode="1" device="Spaltentreiber, unbekannte Funktion"/>
+<port range="00" mode="R" device="Userport, Joystick JU+TE"/>
+<port range="01" mode="W" device="Userport, Joystick JU+TE"/>
+<port range="08" mode="W" device="Spaltentreiber, unbekannte Funktion"/>
 
 

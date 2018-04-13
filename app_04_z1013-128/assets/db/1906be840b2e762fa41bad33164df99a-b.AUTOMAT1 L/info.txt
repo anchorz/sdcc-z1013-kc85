@@ -2,4 +2,7 @@
 <lang>Steuerung: S4, S, K für die jeweiligen Positionen
 
 <include src="AUTOMAT1 L.b"/></lang>
-<requires>2.02</requires>
+<port range="00" mode="W" device="Userport: Tonausgabe über B0/B1?"/>
+<port range="01" mode="W" device="Userport: Tonausgabe über B0/B1?"/>
+<port range="02" mode="R/W" device="Systemport: Tastatur8x4"/>
+

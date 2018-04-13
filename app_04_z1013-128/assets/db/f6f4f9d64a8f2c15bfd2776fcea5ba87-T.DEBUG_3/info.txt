@@ -1,0 +1,4 @@
+<kurz src="DEBUG 3.02 Beschreibung  H. Krull 01.12.1989"/>
+<lang><include src="T.DEBUG_3.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

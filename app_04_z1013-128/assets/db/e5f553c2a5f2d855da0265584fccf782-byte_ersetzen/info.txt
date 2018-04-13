@@ -1,3 +1,3 @@
 <kurz src="Kommandoerweiterung (Brosig) @E Bytes-Ersetzen"/>
-<lang></lang>
+<lang>Die Einrichtung der Kommandoerweiterung ist nicht ganz korrekt. Statt RET(0xC9) sollte die Routine mit RST38H(0xFF) abgeschlossen werden.</lang>
 <required></required>

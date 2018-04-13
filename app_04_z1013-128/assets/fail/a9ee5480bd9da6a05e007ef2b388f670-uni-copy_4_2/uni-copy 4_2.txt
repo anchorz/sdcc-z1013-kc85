@@ -1,0 +1,124 @@
+***********************************************************
+*                                                         *
+*         Beschreibung U N I - C O P Y                    *
+*                                                         *
+***********************************************************
+                                 (c) wlsoft 4.7.89
+
+Das Programm dient des schnellen Kopierens von Headersave-
+programmen zum Softwaretausch und Ordnen von Programmen. Da es
+im Gegensatz zu den bekannten Headermenueversionen nicht nur mit
+dem Hauptspeicher, sondern auch mit der RAM-FLOPPY zusammen-
+arbeitet, ist das gleichzeitige einladen von ca. 256 KByte
+moeglich.
+
+ACHTUNG: Das Programm nutzt ausser der RAM-FLOPPY den gesammten
+         Hauptspeicher des Rechners.
+
+Bedingungen:
+-----------
+
+  1.Hardware:  RAM-FLOPPY nach MP 3/88
+
+  2.Software: -Die Blockroutinen des Headersave muessen ueber
+               den Sprungverteiler erreichbar sein.
+              -In dem Programm ist eine Headerdisk 45-Variante
+               von R.Brosig enthalten.(Standort D800H-DFFFH)
+               Diese Headerdiskvariante ist nach dem Start von
+               Uni-Copy normal nutzbar.
+              -Unicopy nutzt die Headerdiskroutinen (!!! nicht
+               nur Sprungverteiler)
+
+Programmstandort: 0D000H - 0DFFFH
+Start:            0D000H
+Arbeitsbereich:   00E0H  - 0CFFFH
+
+Bedienung:
+---------
+
+Nach dem Start des Programms wird abgefragt, ob die FLOPPY
+geloescht werden soll. Da diese damit auch zugleich
+initialisiert wird, ist das bei dem ersten Start unbedingt
+notwendig. Anschliessend werden die Anzahl der nacheinander von
+Magnetband zu ladenden Files abgefordert. Das Druecken von
+'ENTER' ueberspringt diese Funktionen ohne Aktivitaeten.
+
+Das Menue enthaelt 3 Teile:
+
+ -Im oberen Drittel wird staendig ein aktuelles Teildirektory
+  der FLOPPY erzeugt. Mit den Kursortasten ist ein Rollen des
+  Direktorys moeglich.
+  Der Kursor '>' zeigt auf das aktuelle File.
+
+ -Im 2.Drittel wird ein Hilfsmenue fuer alle moeglichen
+  Funktionen von Unicopy angezeigt.
+
+ -Im unteren Drittel ist ein Fenster installiert, in dem die
+  Kommandoeingabe bzw. der Dialog erfolgt.
+
+Kommandobeschreibung
+--------------------
+
+L - Load: Laden eines File's von Magnetband auf den naechsten
+          freien Platz der FLOPPY.
+          Dabei wird keine Namensabfrage o.ae. durchgefuehrt.
+
+S - Save: Schreiben des aktuellen File's von FLOPPY auf Magnet-
+          band.
+
+C - Copy: Es wird abgefragt,ob alle (A) oder nur die File's ab
+          Kursorposition kopiert werden sollen. Alle Files der
+          Floppy werden nacheinander als einzelne File's auf
+          Magnetband geschrieben.
+
+V - Veri: Vergleichen der File's auf Magnetband auf ordnungs-
+          gemaesse Aufzeichnung.
+          Abbruch mit ^C bei Kopfblocksuche bzw. Fehlermeldung
+          moeglich.
+
+T - Type: Das aktuelle File wird im Kommandofenster in ASCII
+          angezeigt. Dabei wird keine Auswertung von Steuer-
+          zeichen vorgenommen.
+          ^C bricht diese Funktion ab, alle anderen Tasten
+          erzeugen die naechste Seite des File's.
+
+K - Kill: Das aktuelle File wird nach einer Sicherheitsabfrage
+          geloescht.
+
+J - Jump: Das aktuelle File wird auf den originalen Speicher-
+          bereich geladen, falls es sich nicht mit Uni-Copy
+          ueberschneidet. 
+          Ist das File vom Typ 'C', wird es gestartet. Eine
+          Rueckkehr nach Uni-Copy ist moeglich, wenn das MC-    
+          Programm mit einem RST 38-Ruf endet.
+          !!! Das Programm ist nicht gegen das Ueberschreiben
+              durch Anwenderprogramme gesichert.
+              Z.B. der Start von KC-Basic ohne Speicherbegren-
+              zung fuehrt zum Systemabsturz nach 'Bye'.
+
+O - sOrt: Das aktuelle File wird an den naechsten freien Platz
+          kopiert. Anschliessend wird es an der Kursorposition
+          geloescht. Durch diese Funktion ist das Umsortieren
+          von File's moeglich.
+
+A - Addr: Anzeige von Anfangs-,End- und Startadresse des
+          aktuellen File's.
+
+N - New:  Es wird ein Neustar<gramms ausgefuehrt.
+
+D - Down: Der Kursor rueckt um 13 File nach unten.
+
+U - Up:   Der Kursor rueckt um 13 File nach oben.
+
+^C:       Beenden von Unicopy.
+
+
+Der Autor ist an Mitteilungen bei auftretenden Fehlern bzw.
+notwendigen Verbesserungen interessiert.
+
+                              Bernd Wilske
+                              Kantstr.4
+                              Brieselang
+                              1 5 5 2
+
+	@nur Statusbit auswerte

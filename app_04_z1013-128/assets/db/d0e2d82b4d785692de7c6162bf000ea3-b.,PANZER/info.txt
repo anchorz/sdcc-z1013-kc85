@@ -5,5 +5,6 @@ An einem Panzer laeuft in unterschiedlicher Entfernung ein Ziel
 vorbei.Sie koennen das Ziel vernichten,wenn Sie die 'ENT'-Taste
 druecken.
                    
-<include src=",PANZER.b/></lang>
-<requires></requires>
+<include src="PANZER.b"/></lang>
+<syscall type="rst20" tag="[WIND, INKEY]"/>
+<port range="keine" mode="" device=""/>

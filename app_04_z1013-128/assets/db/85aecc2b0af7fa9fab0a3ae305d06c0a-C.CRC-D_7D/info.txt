@@ -2,6 +2,6 @@
 <lang></lang>
 <syscall type="rst20" tag="[OUTHL, INSTR, INCH, PRST7, OUTSP, INHEX, OUTHX]"/>
 <port range="04" mode="W" device="[7]64/16"/>
-<port range="50" mode="W" device="Parallele Schnittstelle"/>
-<port range="52" mode="R" device="Parallele Schnittstelle"/>
+<port range="50" mode="W" device="Centronics"/>
+<port range="52" mode="R" device="Centronics"/>
 

@@ -26,7 +26,7 @@ DF33  C9               RET
 
 </lang>
 <requires></requires>
-<port range="50" mode="1" device="Centronics"/>
-<port range="51" mode="1" device="Centronics"/>
-<port range="52" mode="2" device="Centronics"/>
+<port range="50" mode="W" device="Centronics"/>
+<port range="51" mode="W" device="Centronics"/>
+<port range="52" mode="R" device="Centronics"/>
 

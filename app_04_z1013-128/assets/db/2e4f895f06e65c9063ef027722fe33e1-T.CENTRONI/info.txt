@@ -1,0 +1,4 @@
+<kurz src="DRU 3.3, Druckertreiber CENTRONICS+Monoflop D121 16.10.1989"/>
+<lang><include src="T.CENTRONI.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

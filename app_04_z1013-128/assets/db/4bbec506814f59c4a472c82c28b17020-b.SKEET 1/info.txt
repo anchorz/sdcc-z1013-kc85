@@ -16,4 +16,8 @@ EINEN SCHUSS !!
 NACH 50 VERSUCHEN WIRD DAS SPIEL BEENDET UND AUSGEWERTET.
                            
 <include src="SKEET 1.b"/></lang>
-<requires></requires>
+<port range="00" mode="W" device="Userport: Tonausgabe über B0/B1?"/>
+<port range="01" mode="W" device="Userport: Tonausgabe über B0/B1?"/>
+<port range="02" mode="R/W" device="Systemport: Tastatur8x4"/>
+<syscall type="202" tag="[INKEY]"/>
+

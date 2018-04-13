@@ -1,0 +1,39 @@
+        ####  ####  #    #  ####    #### 
+        #   # #   # #    #     #       # 
+        #   # #   # #    #     #       #
+        #   # ####  #    #  ####    #### 
+        #   # # #   #    #     #    #
+        #   # #  #  #    #     #    #   
+        ####  #   #  ####   #### #  ####
+
+        Dieses Programm ist zur Ansteuerung eines Druckers
+	mit CENTRONICS-Schnittstelle am USER-Port des Z1013
+	geeignet .
+	Die Hardware ist nach "Tips und Tricks für kleine 
+	Computer "(Schlenzig) S.70 . 
+
+
+	Programmstandort :E800-E880
+	Anbindung an Sprungverteiler :
+                         ist im Programm enthalten
+	   -"-    an MW  :0112 # CD E8 FF
+	   -"-    an R80 RB :
+	          wie an SV + E861 # 0D
+	             bei MW   E861 # 1E
+	
+	
+	Funktion
+	
+	DRU 3.2 wird auf addr. E800 initialisiert,
+	dabei wird der BS-Inhalt über eine CENTRONICS
+	ausgegeben.
+	Das Ausgabe-Unterprogramm wird auf
+	addr E82A angesprungen. 
+	wird ein NL(Newline)-Abfang benötigt,
+	dann auf addr E860 aufrufen.
+	dabei muß darauf geachtet werden , 
+	daß in addr E861 das abzufangede ASCII-
+	Zeichen steht.Es wird durch CR/LF
+	ersetzt.
+
+

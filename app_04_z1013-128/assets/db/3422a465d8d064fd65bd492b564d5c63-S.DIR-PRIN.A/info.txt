@@ -1,0 +1,4 @@
+<kurz src="Directory Listing Floppy-1541 Quelltext"/>
+<lang><include src="S.DIR-PRIN.A.txt"/></lang>
+<port range="keine" mode="" device=""/>
+<syscall type="keine" tag=""/>

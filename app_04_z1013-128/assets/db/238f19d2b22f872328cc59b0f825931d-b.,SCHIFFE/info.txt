@@ -2,4 +2,6 @@
 <lang>ähnlich [e997e701d6f8e77307f05aa604a9ce44], kleine Unterschiede in der Grafik 
 
 <include src=",SCHIFFE.b"/></lang>
-<requires></requires>
+<port range="keine" mode="" device=""/>
+<syscall type="202" tag="[WIND]"/>
+

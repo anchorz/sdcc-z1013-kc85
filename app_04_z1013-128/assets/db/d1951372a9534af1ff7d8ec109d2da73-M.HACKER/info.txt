@@ -5,5 +5,5 @@ wie ein Computerfreak in ein
 Computernetz einwaehlen.
 </lang>
 <requires>SPV,RST</requires>
-<port range="02" mode="1" device="Systemport, Tonausgabe"/>
+<port range="02" mode="W" device="Systemport, Tonausgabe"/>
 

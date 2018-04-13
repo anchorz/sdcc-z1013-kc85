@@ -1,7 +1,7 @@
 <kurz src="Variante des Kubetzka Debugger"/>
 <lang></lang>
-<port range="50" mode="W" device="Parallele Schnittstelle"/>
-<port range="51" mode="W" device="Parallele Schnittstelle"/>
-<port range="52" mode="R" device="Parallele Schnittstelle"/>
+<port range="50" mode="W" device="Centronics"/>
+<port range="51" mode="W" device="Centronics"/>
+<port range="52" mode="R" device="Centronics"/>
 <syscall type="rst20" tag="[OUTCH, OUTHL, INSTR, PRST7, OUTSP, INHEX, OUTHX]"/>
 

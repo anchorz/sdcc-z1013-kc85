@@ -6,6 +6,6 @@ PORT 0x02/0x08 wird vom Tiny-BASIC benutzt, zur (CTRL-C/S4-K) Break Erkennung
 
 </lang>
 <requires></requires>
-<port range="02" mode="2" device="Systemport, Tastatur"/>
-<port range="08" mode="1" device="Spaltentreiber, Tastaturabfrage"/>
+<port range="02" mode="R" device="Systemport: Tastatur"/>
+<port range="08" mode="W" device="Spaltentreiber: Tastaturabfrage"/>
 

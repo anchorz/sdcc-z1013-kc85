@@ -146,10 +146,12 @@ sub resolve_entry($) {
     open(FILE,"<:raw","$filename");
     read FILE, my $bytes, 2;
     my $aadr=unpack("v",$bytes);
+    #TODO check if filesize is at least 64 bytes
     $db_entry[0]=$aadr;
 
     read FILE, $bytes, 2;
     my $eadr=unpack("v",$bytes);
+    #printf "%4x %s\n", $eadr, $filename;
     $db_entry[1]=$eadr;
 
     read FILE, $bytes, 2;
@@ -184,7 +186,7 @@ sub resolve_entry($) {
       'P'=>"Pascal", #Pascal-Quellprogramm (HISOFT) im Headersaveformat
       'Q'=>"NSWEEP gequetschte Files", #Q...mit NSWEEP gequetschtes File
       's'=>"Assembler EDAS", #IDAS-Quellprogramm im Headersaveformat
-#S Assembler-Quellprogramm in ASCII mit NL
+      'S'=>"Assembler EDAS", #Assembler-Quellprogramm in ASCII mit NL
       'T'=>"Text", #Text mit NL
       ' '=>"CPM",
     );
@@ -417,11 +419,43 @@ sub do_index_html($)
         open(INFO,"<","$dir/info.txt");
         binmode(INFO, ":utf8");
         read(INFO,my $info,$len);
+
+        $has_hw_info=0;
+        my $text="";
+        while($info=~m/<syscall type="(.*?)" tag="(.*?)"\/>/sgi)
+        {
+            
+            my $rst=$1;
+            my $tag=$2;
+            $text.="$rst: $tag\n";
+        }
+        my $x = length $text;
+        if ($x > 0) { 
+            $item_content.="<div class=\"syscall\">Monitoraufrufe:</div>";
+            $item_content.="<div class=\"syscall\">$text</div>";
+            $has_hw_info=1;
+        }
+        $text="";
+        while($info=~m/<port range="(.*?)" mode="(.*?)" device="(.*?)"\/>/sgi)
+        {           
+            my $range=$1;
+            my $mode=$2;
+            my $device=$3;
+
+            $text.="$range [$mode] $device\n";
+        }
+        $x = length $text;
+        if ($x > 0) { 
+            $item_content.="<div class=\"port\">Verwendete IO-Ports bzw. Hardware:</div>";
+            $item_content.="<div class=\"port\">$text</div>";
+            $has_hw_info=1;
+        }
         if ($info=~/<lang>(.*)<\/lang>/sgi) {
             #print STDERR $1;
             my $lang=$1;
-            $item_content.="<div class=\"text\">".resolve_links($dir,$lang)."</div>";        
-        }
+            $item_content.="<div class=\"text\">".resolve_links($dir,$lang)."</div>";
+        } 
+        
         close(INFO);
     }
     
@@ -438,8 +472,8 @@ sub do_index_html($)
     #print "$dir\n";
     print FILE $content;
     close(FILE);
-        
-    return ($kurz,$has_video);
+    
+    return ($kurz,$has_video,$has_hw_info);
 }
 
 sub print_entry2($ $) {
@@ -458,7 +492,7 @@ sub print_entry2($ $) {
     }
 
     my $link=$link_base."/index.html";
-    my ($kurz,$has_video)=do_index_html($filename);
+    my ($kurz,$has_video,$has_hw_info)=do_index_html($filename);
     if ($row%2) {
         $row_class="even";
     } else {
@@ -469,12 +503,19 @@ sub print_entry2($ $) {
     } elsif ($has_video eq "pixel_video") {
         $has_video='<a href="'.html_encode($link_base."/animation.mp4").'"><img src="../img/if_theaters_326711.png" width="12" height="12" alt="Clip anzeigen"/></a>'."\n";
     } elsif ($has_video eq "rendered_image") {
-        $has_video='<img src="../img/screenshot_col.png" width="12" height="12" alt="Screenshot"/>'."\n";
+        $has_video='<img src="../img/screenshot_col.png" width="12" height="12" alt="Screenshot" title="Screenshot gerendert"/>'."\n";
     } elsif ($has_video eq "pixel_image") {
         $has_video='<img src="../img/screenshot.png" width="12" height="12" alt="Screenshot"/>'."\n";
     } else {
         $has_video='<img src="../img/1x1.png" width="12" height="12" alt="leer"/>'."\n";
     }
+   
+    if ($has_hw_info) {
+        $has_video.='<img src="../img/system_information.png" width="12" height="12" alt="System Information" title="mit Details zur verwendeten Hardware"/>';
+    } else {
+        $has_video.='<img src="../img/1x1.png" width="12" height="12" alt="leer"/>';
+    }
+
 
     my $remove_space=$en[4];
     $remove_space=~s/ /&nbsp;/sgi;

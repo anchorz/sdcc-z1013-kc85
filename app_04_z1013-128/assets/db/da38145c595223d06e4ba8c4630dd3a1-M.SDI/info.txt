@@ -1,6 +1,6 @@
 <kurz src="Statt Weltraumverteidigung: hier wird aus dem Weltraum geschossen!"/>
 <lang>
-Besonderheit: zur Tonausgabe spring das Programm in Mitten eines Opcodes:
+Besonderheit: zur Tonausgabe springt das Programm in Mitten eines Opcodes:
 C.H.(F3E1)
 
 Steuerung: Starte mit 
@@ -12,6 +12,6 @@ Funktioniert nicht auf A2, falsche Tiny-Basic Version.
 
 <include src="M.SDI.b"/></lang>
 <requires>2.02_RB(MCALL2)</requires>
-<port range="02" mode="3" device="Systemport, Tonausgabe, Tastatur"/>
-<port range="08" mode="1" device="Spaltentreiber, Tastaturabfrage"/>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, Tastatur"/>
+<port range="08" mode="R" device="Spaltentreiber: Tastaturabfrage"/>
 

@@ -1,6 +1,7 @@
 <kurz src="Würmer zurück in den Käfik lotsen"/>
 <lang>Besonderheit: statt dem normalen Z1013 Zeichensatz, wird der Text
-mit Umlauten ausgegeben.
+mit Umlauten ausgegeben: mus~t. An der Stelle wäre es sinnvoll vorher den ZG mit
+Umlauten zu aktivieren.
 
 MAGGOTY ist ein Reaktionsspiel für den Z1013 geschrieben.
 
@@ -19,6 +20,6 @@ Steuerung: ⇦ ⇨ ⇧ ⇩ ␣
 
 </lang>
 <requires></requires>
-<port range="02" mode="1" device="Systemport, Tonausgabe"/>
+<port range="02" mode="W" device="Systemport, Tonausgabe"/>
 
 

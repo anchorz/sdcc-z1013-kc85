@@ -1,0 +1,6 @@
+<kurz src="identisch [54cab8dd101d72cc8002486384dc6b3a]"/>
+<lang>
+wahrscheinlich wurden auch einzelne Bilder leicht verändert.  
+</lang>
+<syscall type="rst20" tag="[PRST7]"/>
+

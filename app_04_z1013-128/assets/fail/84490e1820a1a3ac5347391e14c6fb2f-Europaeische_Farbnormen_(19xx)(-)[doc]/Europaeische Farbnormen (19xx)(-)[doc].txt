@@ -1,0 +1,22 @@
+@3*lx1
+     W1-1europäische FarbnormenW0
+
+Norm       Verbreitung                                   -0
+
+PAL B/G    Albanien, Dänemark, Deutschland, Niederlande,
+	   Italien, Jugoslavien, Norwegen, Österreich,
+	   Schweden, Schweiz, Spanien
+PAL B	   Gibraltar
+PAL D/K    Rumänien
+PAL I	   Großbritanien, Irland
+
+SECAM B/G  Griechenland (früher auch DDR)
+SECAM D/K  Bulgarien, Estland, Lettland, Litauen, Polen,
+	   Tschechei, Slovakei, GUS, Ungarn
+SECAM L    Frankreich
+
+PAL/SECAM
+C/L/G	   Luxemburg
+PAL/SECAM
+E/L/G	   Monaco
+

@@ -2,4 +2,9 @@
 <lang>Steuerung: C S4
 
 <include src="STERNTALER1.b"/></lang>
-<requires></requires>
+<syscall type="keine" tag=""/>
+<port range="00" mode="W" device="Userport: unbekannte Funktion"/>
+<port range="01" mode="W" device="Userport: unbekannte Funktion"/>
+<port range="02" mode="R/W" device="Systemport: Tastatur8x4"/>
+
+

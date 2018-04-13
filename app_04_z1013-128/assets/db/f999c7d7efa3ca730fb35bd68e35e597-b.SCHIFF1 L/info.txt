@@ -63,4 +63,6 @@ MERKEN SIE SICH: SIE HABEN
 6 U-BOOTE     ZU VERNICHTEN !
 
 <include src="SCHIFF1 L.b"/></lang>
-<requires></requires>
+<port range="00" mode="W" device="Userport: Tonausgabe"/>
+<port range="01" mode="W" device="Userport: Tonausgabe"/>
+

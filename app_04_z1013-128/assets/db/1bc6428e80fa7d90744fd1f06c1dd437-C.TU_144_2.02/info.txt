@@ -6,5 +6,5 @@ Steuerung: G ⏎
 
 </lang>
 <requires>2.02(SPAL)</requires>
-<port range="02" mode="2" device="Systemport, Tastatur"/>
+<port range="02" mode="R" device="Systemport, Tastatur"/>
 

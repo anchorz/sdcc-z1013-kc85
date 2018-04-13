@@ -1,0 +1,69 @@
+(****************************.*
+*                             *
+*         DEBUG 3.02          *
+*                             *
+***************************** *
+
+Dieser Debugger wurde in der
+Version 3.02 von Herrn H. Krull
+im Dezember 1989 fertiggestellt.
+
+Er dient zum Reassemblieren, ßur
+Checksum-Berechnung und zur
+verbesserten DUMP-Eingabe.
+
+Aöle nachfolgenden Hinweise
+wurden durcj den Entwickler
+waehrend der Magdeburger Z1013-
+Tagung gegeben.
+
+Funktionsweise :
+----------------
+
+Q   Quit, Ende DEBUGGER
+
+I   Init, wie im Monitormodus
+
+X   Registeranzeige
+
+K   KILL anf ende fuellbyte
+
+T   TRANSFER anf ende ziel
+
+H   CHECKSUM anf ende
+
+    (reine Addition),drei 
+    Werte werden ausgegeben:
+    Anzahl der Bytes
+    Summe
+    REL - zu weiter Relativsprung
+
+D   DISPLAY anf
+
+    weiter mit Kursor hoch/tief
+
+    M   Modifymodus
+        mit .B wird der ASCII-
+        wert fuer 'B' ins RAM
+        eingetragen.
+
+    ^C  Modusende
+
+R   REASSEMBLER anf (orig)
+
+    anf: Anfangsadresse des MC
+    (orig): Originale Adresse,
+            ab der das Programm
+            laeuft- ist optional
+
+
+Weitere Erlaeuterungen werden
+durch den Entwickler im
+Textfile gegeben.
+
+Nach den Angaben von Herrn Krull
+wurde das Textfile erstellt von
+
+     L. Schroeder
+     Z1013-Club Halle-Neustadt
+

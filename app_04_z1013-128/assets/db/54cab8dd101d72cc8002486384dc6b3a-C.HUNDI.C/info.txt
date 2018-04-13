@@ -1,0 +1,6 @@
+<kurz src="Animation Hund, Grafik und Anfangsadresse auf 0xDE80 geändert"/>
+<lang>
+wahrscheinlich wurden auch einzelne Bilder leicht verändert.  
+</lang>
+<syscall type="rst20" tag="[PRST7]"/>
+

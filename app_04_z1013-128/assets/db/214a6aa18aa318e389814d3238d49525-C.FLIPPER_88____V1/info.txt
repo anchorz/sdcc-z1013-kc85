@@ -7,8 +7,8 @@ Steuerung: ⇦ ⇨
 
 </lang>
 <requires>RB(SPAL)</requires>
-<port range="00" mode="1" device="Userport, Tonausgabe"/>
-<port range="02" mode="3" device="Systemport, Tonausgabe oder Tastatur"/>
-<port range="03" mode="1" device="Systemport, Tonausgabe"/>
-<port range="08" mode="1" device="Spaltentreiber, Tastaturabfrage"/>
+<port range="00" mode="W" device="Userport, Tonausgabe"/>
+<port range="02" mode="R/W" device="Systemport, Tonausgabe oder Tastatur"/>
+<port range="03" mode="W" device="Systemport, Tonausgabe"/>
+<port range="08" mode="W" device="Spaltentreiber, Tastaturabfrage"/>
 

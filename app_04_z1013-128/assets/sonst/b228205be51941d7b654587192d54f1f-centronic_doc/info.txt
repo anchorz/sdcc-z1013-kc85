@@ -1,0 +1,4 @@
+<kurz src="identisch [2e4f895f06e65c9063ef027722fe33e1]"/>
+<lang>eigentlich das Original, aber der Inhalt ist identisch.</lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

@@ -1,5 +1,5 @@
 <kurz src="1-Bit PCM Sample-Aufnahme und Abspieler"/>
 <lang></lang>
 <requires>RST20</requires>
-<port range="02" mode="3" device="Systemport, Tonausgabe, Toneingabe"/>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, Toneingabe"/>
 

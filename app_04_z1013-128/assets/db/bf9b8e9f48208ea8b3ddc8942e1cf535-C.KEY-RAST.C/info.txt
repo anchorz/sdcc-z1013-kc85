@@ -1,0 +1,6 @@
+<kurz src="wandelt Tastatureingabe nach Position in Brosig-Tastaturkodetabelle"/>
+<lang></lang>
+<port range="02" mode="R" device="Systemport: Tastatur+RB"/>
+<port range="08" mode="W" device="Spaltentreiber: Tastatur+RB"/>
+<syscall type="rst20" tag="[PRST7, OUTHX]"/>
+

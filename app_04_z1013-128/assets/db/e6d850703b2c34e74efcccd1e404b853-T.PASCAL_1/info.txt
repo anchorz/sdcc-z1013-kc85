@@ -1,0 +1,4 @@
+<kurz src="BESCHREIBUNG HISOFT-PASCAL 1.04"/>
+<lang><include src="T.PASCAL_1.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

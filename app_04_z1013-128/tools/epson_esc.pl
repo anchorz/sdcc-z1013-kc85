@@ -123,7 +123,8 @@ while($index<$len) {
             case "9" { print "PE detection enabled\n"; }
             case "@" { print "RESET\n"; }
             case "*" { $mode=get_byte(); $count=get_word(); printf ("* %d:%d\n",$mode,$count); print_dots($count,$scale); }
-            case "A" { $line_spaceing=get_byte(); printf ("line_spaceing=%d\n",$line_spaceing); }
+            case "3" { $line_spaceing=get_byte(); printf ("line_spaceing 216''=%d\n",$line_spaceing); }
+            case "A" { $line_spaceing=get_byte(); printf ("line_spaceing 72'' =%d\n",$line_spaceing); }
             #double density 120dpi horizontal 60dpi vertical
             case "L" { $count=get_word(); printf ("L 960-dpl:%d\n",$count); print_dots($count,$scale); }
             case "O" { print "cancel bottom margin\n"; }

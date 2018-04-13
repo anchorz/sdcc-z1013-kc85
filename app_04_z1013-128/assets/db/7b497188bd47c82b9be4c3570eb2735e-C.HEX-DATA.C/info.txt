@@ -1,0 +1,4 @@
+<kurz src="Umwandlung Binärdaten in Assembler-Quelltext: HEX 18,0D,21 ..."/>
+<lang></lang>
+<syscall type="rst20" tag="[OUTHL, INSTR, PRST7, INHEX]"/>
+

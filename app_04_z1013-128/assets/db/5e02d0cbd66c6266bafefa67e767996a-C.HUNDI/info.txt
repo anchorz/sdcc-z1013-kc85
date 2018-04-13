@@ -1,3 +1,4 @@
 <kurz src="Animation Hund"/>
 <lang></lang>
 <requires></requires>
+<syscall type="keine" tag="Einzelbilder werden direkt in den BWS kopiert"/>

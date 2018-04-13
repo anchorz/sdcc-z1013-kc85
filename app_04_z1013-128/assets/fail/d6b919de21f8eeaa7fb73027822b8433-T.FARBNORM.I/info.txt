@@ -1,0 +1,6 @@
+<kurz src="identisch [595d83d833a584c57e20815c3e160358]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 10 Bytes fehlen.
+
+<include src="T.FARBNORM.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

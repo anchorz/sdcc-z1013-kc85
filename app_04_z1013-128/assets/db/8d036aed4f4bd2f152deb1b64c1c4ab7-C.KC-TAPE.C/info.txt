@@ -1,0 +1,6 @@
+<kurz src="KC85 Kassetteninterface"/>
+<lang></lang>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, Toneingabe"/>
+<syscall type="spv" tag="[BEEP]"/>
+<syscall type="rst20" tag="[OUTCH, OUTHL, INSTR, INCH, PRST7, OUTSP, OUTHX, INHEX]"/>
+

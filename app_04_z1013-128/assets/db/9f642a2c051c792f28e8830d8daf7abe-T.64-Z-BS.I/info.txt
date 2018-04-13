@@ -1,0 +1,7 @@
+<kurz src="64-Zeichen-Bildschirm Z1013 erweitert+Umlaute"/>
+<lang>fehlt: *)HINWEIS zur Spule: Minifilter 21 Wdg. Kern MF 330 orange. 
+
+
+<include src="T.64-Z-BS.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

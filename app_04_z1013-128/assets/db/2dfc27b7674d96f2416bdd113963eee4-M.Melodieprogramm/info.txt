@@ -1,5 +1,5 @@
 <kurz src="Spielt verschiedene Lieder ab"/>
 <lang></lang>
 <requires></requires>
-<port range="02" mode="1" device="Systemport, Tonausgabe"/>
+<port range="02" mode="W" device="Systemport, Tonausgabe"/>
 

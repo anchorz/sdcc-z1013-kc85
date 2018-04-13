@@ -1,0 +1,4 @@
+<kurz src="europäische Farbnormen PAL SECAM"/>
+<lang><include src="T.FARBNORM.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

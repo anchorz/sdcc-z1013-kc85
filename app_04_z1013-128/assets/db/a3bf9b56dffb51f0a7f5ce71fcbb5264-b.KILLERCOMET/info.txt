@@ -1,5 +1,9 @@
-<kurz src="ähnlich Centipede"/>
+<kurz src="Raumschiff abschießen, ähnlich Centipede"/>
 <lang>Steuerung: C,K,S oder S4 - alles auf Spalte 3 is ok.
 
 <include src="KILLERCOMET.b"/></lang>
-<requires></requires>
+<port range="00" mode="W" device="Userport: Tonausgabe B0/B1 oder unbekannte Funktion"/>
+<port range="01" mode="W" device="Userport: Tonausgabe B0/B1 oder unbekannte Funktion"/>
+<port range="02" mode="R" device="Systemport: Tastatur8x4"/>
+<port range="08" mode="W" device="Spaltentreiber: Tastatur8x4"/>
+

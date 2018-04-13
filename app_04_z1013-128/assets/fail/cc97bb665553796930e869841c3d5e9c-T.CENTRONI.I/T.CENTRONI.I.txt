@@ -1,0 +1,128 @@
+
+                     * * * D R U 3.3 Ko * * *
+                     ------------------------
+                     ------------------------
+
+Beschreibung
+------------
+
+Das Programm steuert einen Drucker  mit CENTRONICS-Schnittstelle
+am USER-Port des Z 1013. Die Zusatzinformationen  derCENTRONICS-
+Schnittstelle (z.B.Papierende u.s.w.) werden nicht ausgewertet.
+Um eine problemlose Ansteuerung unterschiedlicher Drucker zu er-
+moeglichen, wurde keine Initialisierung  des  Druckers eingebun-
+den. Programmstandort: E800-E870
+Von E800-E80F erfolgt die Einbindung des Sprungverteilers  (Mon.
+von R.Brosig),ab E810 beginnt der eigentliche Druckertreiber. 
+Das Ausgabe-Unterprogramm wird auf Adr. E82A angesprungen. 
+Wird ein NL(Newline)-Abfang benoetigt, so wird vom rufenden PG
+DRAKK gerufen (z.B. Micro-Word, auf 112H musz CD E8 FF stehen).
+Auf Adr. E861 seht das abzufangende ASCII-Zeichen. Es wird durch
+CR/LF ersetzt. 
+Benutzt man DRU 3.3 zusammen mit dem Reass R80 , so ist in die
+Zelle E861 0D zu schreiben.
+Soll der Drucker Grafik ausgeben, ruft man ueber ZEIDR. Dazu
+wird allerdings noch ein Grafikdruckertreiber benoetigt.
+DRU 3.3 wird auf Adr. E800 initialisiert. Dabei wird der Inhalt
+des BS am Drucker ausgegeben.
+
+Hardware
+--------
+
+Speziell fuer Drucker der K 63xx Serie arbeitete die
+Schnittstelle nach (2) besonders bei 4 MHz fehlerhaft.
+Die nachfolgend beschriebene Loesung stellt das  /STROBE  Signal 
+ueber einen Monoflop (D 121) bereit. Der Anschlusz  am USER-Port
+ist so vorzunehmen:
+
+
+
+
+              Leiterplatte Z 1013
+              -------------------
+
+        Bestueckungsseite
+
+
+
+Modulator           USER-Port
+--------------------------------
+
+                    12345
+                   C.....
+
+                   B.....
+
+                   A.....
+
+
+
+USER-Port
+---------
+
+C1=Masse  ----->an Centr. 16 und D 121 Pin 7
+C5=+5V    ----->an D 121 Pin 14 
+A4=ARDY   ----->an Pin 5 D 121
+B5=/ASTB  ----->an Centr. 10 (ACKNLG)
+
+A2=Datenbit 0 ->an Centr.  2
+B2=   "     1 ->an   "     3
+C2=   "     2 ->an   "     4
+A3=   "     3 ->an   "     5
+B3=   "     4 ->an   "     6
+C3=   "     5 ->an   "     7
+A4=   "     6 ->an   "     8
+B4"   "     7 ->an   "     9
+
+
+
+Der D121 ist wie folgt zu beschalten:
+
+Pin 3+4,7 Masse
+ "  14    +5V
+ "  1 (/Q) an Centr. 1 (/STROBE)
+ 
+ "  10-C-11-R-14  (Zeitglied)
+       C=500pF
+            R=3K
+Die Haltezeit musz >=1 Mikrosekunde sein (gueltig fuer K 63xx)
+
+Die Anschluesse 19-30,33 der Centr. sind ebenfalls
+Masseanschluesse, brauchen aber nicht mit der Schnittstelle ver-
+bunden werden, da sie intern mit 16 verbunden sind.
+
+Der Schirm des Druckerkabels darf nicht mit einer Masseleitung
+der Centr. oder mit der Masse Z 1013 verbunden werden.
+
+
+
+Literatur
+---------
+
+(1) DRU 3.3  Y23FH,Michael Stengel,Goetheplatz 2
+                   Ballenstedt,4303
+(2) Info DRU 3.2   M. Stengel
+
+(3) CENTRONICS-Schnittstelle,Tips und Tricks fuer kleine
+Computer,Schlenzig,S.70
+
+
+
+
+Standardvorschlag
+-----------------
+
+Damit beim Druck eines Textfiles auf verschiedenen Druckern (mit
+verschiedenen Zeichensaetzen) keine Ueberraschungen auftreten,
+sollten in Textfiles nur ASCII-Zeichen von 20H bis 126H benutzt
+werden.
+
+
+Bearbeitungsstand:16.10.89
+
+              Bernd Koch
+              Bl. 228/1
+              Halle-Neust.
+              4090
+
+

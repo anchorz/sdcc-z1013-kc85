@@ -1,0 +1,182 @@
+++++++++++++++++++++++++++++++++++++++++++++++
++                                            +
++       ED81     V2.2            wlsoft89    +
++                                            +
+++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Der ED81 enthaelt einen Assembler zur Uebersetzung von
+Befehlen im Mnemonikcode in Maschinencode der Einchiprechner
+U88x bzw Z8 und den Reassembler zur Rueckuebersetzung.
+Ausser dem Maschinencode wird noch eine Markentabelle
+abgespeichert. 
+
+Programmstandort: 8000H ...0A2FFH
+
+Hinweise zur Benutzung:
+     - adr = Hexzahl oder vereinbarte Marke
+     - ein Programmende ist eine Adresse, ab der mind. viermal
+       der Speicherinhalt '0FF' steht
+     - Verschieben von Progr.teilen nur in mit '0FFH' belegten
+       Speicher moeglich (bei M+E beachten)
+     - es ist deshalb guenstig, den Speicher mit '0FFH' zu
+       initialisieren !
+     - Der Anfang der Markentabelle ist bei einem Neustart mit
+       '00H' zu belegen
+
+Nach dem Start des ED81 auf der Adresse 8000H kann die Adresse
+der Markentabelle eingegeben werden. Es muessen davor 20 freie
+Speicherplaetze fuer Merkzellen des ED81 sein.
+Danach befindet sich der ED81 im Anzeigemodus. 
+
++ Markentabelle
+     - Ende der Tabelle : '00' (Beim Neustart einschreiben.)
+     - max. 127 Marken
+     - ein Ueberlaufen wird nicht verhindert
+
++ Anzeigemodus
+     - Programmanfaenge und markante Programmstellen mit Global-
+       marken versehen ! (3.Zeichen = Buchstabe)
+     - Kommandos im Anzeigemodus :
+
+Taste     Funktion 
+------------------------------------------------------------
+
+ T   Uebergang zum Testmodus ab Anzeigeadr. 
+ R   Uebergang zum RAM-Modus
+ Q   Uebergang zum Quellcodeeingabemodus
+DOWN naechster Befehl
+UP   vorstehender Befehl
+ N   32 x DOWN
+ Z   32 x UP ( 'UP' und 'Z' nur bei vorhandener Globalmarke
+     bis 256 Byte vor akt. Adresse )
+ +   Anzeigeadr. incrementieren
+ A   Anzeige ab vorstehender Globalmarke
+ G   G CR Anzeige ab Programmende
+     G 0 CR Anzeige ab der mit EXT vereinbarten Marke
+     G adr CR Anzeige ab adr
+ B   Bindekommando (ersetzt symb. Adr. durch hexadez.)
+     erzeugt lauffaehiges Programm
+     B CR Binden auf Anzeigeadr.
+     B adr CR
+ M   Verschieben von Programmen mit Marken
+     M adr CR CR Verschieben von adr bis Programmende auf Bereich
+     ab Anzeigeadr.
+     M adr1 CR adr2 CR von adr1 bis ausschliesslich adr2 auf Be-
+     reich ab Anzeigeadr.
+ V   Verschieben nur der Marken (Markenumrechnung)
+     V adr CR von adr bis Progr.ende auf Anzeigebereich
+     V adr1 CR adr2 CR von adr1 bis ausschl. adr2 auf Anzeigeadr.
+ E   Eingabebereich schaffen
+     E CR 1 Byte 
+     E adr CR ab akt. Adr. bis ausschl. adr 
+     das folgende Programm wird  entsprechend verschoben
+ S   Streichen von Befehlen
+     S CR 1 Befehl streichen
+     S adr CR von Anzeigeadr. bis adr streichen
+ C   Reassemblerliste drucken
+
++ Quellcodeeingabemodus
+     - Zahlen dez. oder hex. mit Ziffer beginnend
+       (z.B. : %0BFFE )
+     - Marke 3 Zeichen, erstes = Buchstabe
+     - alte Marken ueberschreibbar
+     - keine Marke: Tabulator oder 1 Leerzeichen
+     - nach Marke kann Offset bis +127/-128 stehen
+     - Op.code,Operanden nur durch Leerzeichen getrennt
+     - Ueberschreiben von Quellcode vermeiden! Vorsicht!
+     - kein Kommentar!
+     - Korrekturen: mit S Befehl streichen
+                    mit E Freiraum schaffen
+                    Eingebe neuer Befehl
+     - Fehlermeldungen: 'F'
+     - Uebernahme mit CR, nochmaliges CR naechster Befehl, jede
+       andere Taste - Anzeigemodus
+     - Pseudooperationen:
+       DB n          DW nn
+       MAR:EXT adr -ext. Marken deklarieren
++ Binden
+     - mit 'B' auf waehlbare adr oder nach 'T' auf die Anzeigeadr.
+     - nur das erstellte Programm als gesamtes (1 Schritt)
+     - mit EXT vereinbarte Marken werden nicht verschoben
+     - nach Fehlermeldung mit CR weitere Fehler angezeigt
+       ( Bindeoperation unterbrochen!)
+     - MTB beim Binden nicht veraendert!
+
++ RAM-Modus
+      - Funktionen des RAM-Modus:
+          * Bei Aufruf wird getestet, ob der OCE (Tagungs-
+            kassette 1) sich im Hauptspeicher befindet und
+            dessen gestartet.
+          * Anzeige eines bel. Speicherbereichs in HEX oder
+            ASCII
+          * Speichereingabe
+          * Kopieren eines Bereichs in anderen
+          * Vergleich
+          * Suchen nach Bytes
+          * Speicherbereich ausdrucken
+
+      - Kommandos:
+Taste     Funktion
+-----------------------------------------------------------------
+ H    Speicher in HEX anz.
+ S       "      " ASCII "
+ ->   +1
+ <-   -1
+DOWN  +8
+UP    -8
+ N    naechste Seite
+ Z    1 Seite zurueck
+ G    direkte Positionierung
+CR    uebernehmen Eingabefeld in akt. Pos. (HEX)
+ T    ASCII-Code des naechsten ueber Tast. eingeg. Zeichens
+      in Eingabefeld uebernehmen
+ I    Fuellen eines Bereiches
+      I adr CR ab akt. Adr. bis ausschl. adr
+ M    Kopieren eines Bereichs
+      M adr1 CR adr2 CR -von adr1 bis ausschl. adr2 in akt. Ber.
+ V    Vergleichen
+      V adr1 CR adr2 CR -Anzahl der Differenzen angezeigt
+      Kursor auf ersten Unterschied
+      Fortsetzung:  CR Wert aus Eingabefeld (Vergl.bereich) 
+                       wird auf akt. Adr. uebernommen
+                    V  Fortsetzung Vergleich
+                    BREAK Abbruch
+ L    Suchen einer Datenfolge 
+      L adr1 CR adr2 CR Datenfolge ab adr1 bis ausschl. adr2
+      wird im Speicher gesucht
+      wenn gefunden, auf akt. adr:
+      CR  Suche fortsetzen
+      BREAK Abbruch, Bereich vor Suche angezeigt
+ P    Ausdruck Speicherbelegung 
+      P adr CR -anlog P im Anzeigem.
+
++ Testmodus
+ S    Abarbeitung akt. Befehl und protokollieren
+ N    Abarbeitung akt. Befehle und Protokoll, bis naechster im
+      Speicher stehender Befehl erreicht ist
+ R    Aendern Registerinh.
+ A    Anzeige Arbeitsregister
+ E    Eingabe von 16 Werten zur Simulation von Porteingaben
+ H    Haltepunkt setzen
+ G    Sprung zur Adr.
+ Q    Ruecksprung in Anzeigemodus zur Aufrufstelle
+^C    Ruecksprung in Anzeigemodus
+
++ Druckmodus
+ Eingabe der Endadresse und Zeile/Seite
+
++ Tastencodes: CR        -  0DH
+               BREAK     -  03H
+               DOWN      -  0AH
+               UP        -  0BH
+               LEFT      -  08H
+               RIGHT     -  09H
+               TAB       -  17H
+
+
+                                       Bernd Wilske
+                                       Kantstr.4
+                                       Brieselang
+                                       1 5 5 2
+
