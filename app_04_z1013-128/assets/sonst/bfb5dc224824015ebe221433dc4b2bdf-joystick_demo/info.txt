@@ -1,0 +1,5 @@
+<kurz src="Testprogramm für Joystick nach Practic 01/88 Version 1"/>
+<lang>neu: [5591df18d0d6145646e91d54f4d0637a]
+
+<include src="main.c"/></lang>
+<requires></requires>

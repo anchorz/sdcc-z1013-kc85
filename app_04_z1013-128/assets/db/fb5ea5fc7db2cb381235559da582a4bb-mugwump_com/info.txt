@@ -1,0 +1,9 @@
+<kurz src="SDCC: finde 4 versteckte MUGWUMP im 10x10 Feld"/>
+<lang>C-Variante des BASIC Spiels aus 101 BASIC Computer Games
+
+Das Programm ist Textbasiert, funktioniert auch auf 32x32. Aber 
+die Zeilenumbrüche passen besser auf den 64x16 Bildschirm.
+
+<include src="main.c"/></lang>
+<syscall type="scp" tag=""/>
+<port range="04" mode="W" device="[7]64/16 - Platzhalter für optionalen 64x16 BS. Das Programm macht selber keinen IO-Zugriff."/>

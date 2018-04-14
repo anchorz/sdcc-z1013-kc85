@@ -1,4 +1,4 @@
-<kurz src="Würmer zurück in den Käfik lotsen"/>
+<kurz src="Würmer zurück in den Käfig lotsen"/>
 <lang>Besonderheit: statt dem normalen Z1013 Zeichensatz, wird der Text
 mit Umlauten ausgegeben: mus~t. An der Stelle wäre es sinnvoll vorher den ZG mit
 Umlauten zu aktivieren.

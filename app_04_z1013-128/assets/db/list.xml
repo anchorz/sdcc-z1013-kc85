@@ -501,7 +501,7 @@
 <file aadr="2bc0" eadr="3973" sadr="0302" typ="B" link="1b1a6a4cca199f9119c62b86fe5649a3-jaeger/jaeger.z80" name="JAEGER          " kurz="METEORe abschießen" />
 <file aadr="2bc0" eadr="3758" sadr="0302" typ="B" link="3a14626ad8c6a6e229cf7c5946f48087-B.JAZZY/B.JAZZY.z80" name="JAZZY           " kurz="Würfelspiel für 1-4 Personen" />
 <file aadr="2bc0" eadr="3826" sadr="0302" typ="B" link="ad73d16859a96ca563776f3a2ca1a1fe-B.JAZZY(Erlaeutg.)/B.JAZZY(Erlaeutg.).z80" name="JAZZY(Erlaeutg.)" kurz="JAZZY, Spielregeln" />
-<file aadr="0100" eadr="087b" sadr="0100" typ="C" link="bfb5dc224824015ebe221433dc4b2bdf-joystick_demo/joystick_demo.z80" name="JOYSTICK DEMO   " kurz="Testprogramm für Joystick nach Practic 01/88" />
+<file aadr="0100" eadr="0b04" sadr="0100" typ="C" link="5591df18d0d6145646e91d54f4d0637a-joystick_demo/joystick_demo.z80" name="joystick_demo   " kurz="SDCC Testprogramm für Joystick nach Practic 01/88" />
 <file aadr="0100" eadr="0d20" sadr="0100" typ="C" link="50db94576e7892c6b70d9bc9b088e51c-C.JUMPER/C.JUMPER.z80" name="JUMPER          " kurz="Fallschirmspringen mit Winddrift." />
 <file aadr="01f0" eadr="0da8" sadr="01f0" typ="C" link="726e86a3c7e77c13c2ef25d534e8e451-C.JUMPING_JACK_V2/C.JUMPING%20JACK%20V2.z80" name="JUMPING JACK V2 " kurz="V2" />
 <file aadr="0100" eadr="0dff" sadr="0100" typ="C" link="6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80" name="JUMPING-JACK    " kurz="Spinge durch die freien Stellen nach Oben, RST20 Variante" />
@@ -583,7 +583,7 @@
 <file aadr="2bc0" eadr="419b" sadr="0302" typ="B" link="ad4612ee17efefcb54d846af479e8d79-B.LOCATORSYSTEM/B.LOCATORSYSTEM.z80" name="LOCATORSYSTEM   " kurz="Funkamateur Locator-System (Standortkenner) und geographische Koordinaten" />
 <file aadr="0800" eadr="1742" sadr="0000" typ="I" link="3c93c0730eb299275681a11f1f89ee06-I.LOGICANALYSOR/I.LOGICANALYSOR.z80" name="LOGICANALYSOR   " kurz="Logik-Zustands- und Logik-Zeitanalyse " />
 <file aadr="0200" eadr="2500" sadr="0200" typ="C" link="f2f980e4fbb876c2fc23be7261ba2309-C.LOGOLAB/C.LOGOLAB.z80" name="LOGOLAB         " kurz="Sokoban Variante, Kisten schieben" />
-<file aadr="0200" eadr="0b4f" sadr="0200" typ="C" link="e53939ae8736576bbe4b595c33210539-C.MAGGOTY/C.MAGGOTY.z80" name="MAGGOTY         " kurz="Würmer zurück in den Käfik lotsen" />
+<file aadr="0200" eadr="0b4f" sadr="0200" typ="C" link="e53939ae8736576bbe4b595c33210539-C.MAGGOTY/C.MAGGOTY.z80" name="MAGGOTY         " kurz="Würmer zurück in den Käfig lotsen" />
 <file aadr="2bc0" eadr="2e8e" sadr="0000" typ="B" link="2065303010160766abfd32a10d6f2319-B.MAIN-KC-IF/B.MAIN-KC-IF.z80" name="MAIN-KC-IF      " kurz="BASIC Patch: Erhöhung Fehlertoleranz für das KC-Interface" />
 <file aadr="3c00" eadr="3fff" sadr="3fec" typ="C" link="35a0027f80a63e04065d67e47d99f190-C.MAINSAVE%204.6.4/C.MAINSAVE%204.6.4.z80" name="MAINSAVE 4.6.4  " kurz="Headersave kompatible LOAD/SAVE-Routine" />
 <file aadr="e000" eadr="e3ff" sadr="e000" typ="C" link="09e01d1c9233d9e7addd611838df12ba-C.maintape%204.6.4/C.maintape%204.6.4.z80" name="maintape 4.6.4  " kurz="headersave kompatibles load/save 0xE000" />
@@ -669,6 +669,7 @@
 <file aadr="e000" eadr="e55f" sadr="e545" typ="C" link="cc5c06311be1922ba8ada49bd8d86ec5-C.MTAPE5.4-A.2M/C.MTAPE5.4-A.2M.z80" name="MTAPE5.4-A.2M   " kurz="Headersave kompatible LOAD/SAVE-Routine für A.2" />
 <file aadr="2bc0" eadr="3c31" sadr="0000" typ="B" link="71054f1d02d8189bde3a81e2dad7af0b-B.MUEHLE/B.MUEHLE.z80" name="MUEHLE          " kurz="3D-Mühle für zwei Spieler - 3D NOUGHT AND CROSSES" />
 <file aadr="1000" eadr="1cd6" sadr="0000" typ="b" link="fdeb53edfaa708b45d61b0ba7ff0ef24-b.MUEHLE/b.MUEHLE.z80" name="MUEHLE          " kurz="Brettspiel Mühle für 2 Personen, unfertig?!" />
+<file aadr="0100" eadr="0eff" sadr="0eff" typ=" " link="fb5ea5fc7db2cb381235559da582a4bb-mugwump_com/mugwump_com.z80" name="MUGWUMP.COM     " kurz="SDCC: finde 4 versteckte MUGWUMP im 10x10 Feld" />
 <file aadr="1800" eadr="5524" sadr="0000" typ="T" link="4a0e8a37306a109648a0372b20ce5807-T.MURPHY-DOC_VP/T.MURPHY-DOC_VP.z80" name="MURPHY-DOC/VP   " kurz="Murphys Gesetze, deutsch" />
 <file aadr="1000" eadr="2556" sadr="0000" typ="b" link="2ba3193ac03229de8b558c7a07f7ac10-b.MUSIK/b.MUSIK.z80" name="MUSIK           " kurz="Musikmodul, Musikstücke erstellen und bearbeiten" />
 <file aadr="2bc0" eadr="2da7" sadr="e000" typ="B" link="b441af74131184905f8df3575561004c-B.MUSIKTAST/B.MUSIKTAST.z80" name="MUSIKTAST       " kurz="Anzeige Tastaturcode HEX/DEZ" />
@@ -1032,4 +1033,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1032 Dateien."/></doc>
+<status src="Datenbank enthält 1033 Dateien."/></doc>

@@ -1,0 +1,10 @@
+<kurz src="SDCC Testprogramm für Joystick nach Practic 01/88"/>
+<lang>Version 2 - testet alle Varianten soweit bekannt:
+
+1: practic 1/88
+2: Ju+Te 6/87
+3: practic 4/87
+4: ERF-soft
+
+<include src="main.c"/></lang>
+<requires></requires>
