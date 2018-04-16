@@ -1,0 +1,339 @@
+                                                       16.9.1989
+Beschreibung des Programmes HDISKCOPY 1.3 fuer den PC Z1013
+--------------------------------------------------------
+1.Aufbau, Funktion
+-------------------
+
+Standort D000 - E3FF      Start D81B
+  bestehend aus 3 Teilen:
+
+-angepasstes Headerdisk 45 von Rainer Brosig D000-DFFF
+ erweitert um CRC-Berechnung                       
+-Headersave 5.9 von Rainer Brosig 
+)
+-das eigentliche Kopierprogramm              D000-D7FF (J D001)
+
+Die drei Teilprogramme sind aufeinander angepasst und nur als
+Ganzes nutzbar.
+Der Sprung zu D81B initialisiert B0-Schleife fuer alle 3 Teile
+Headerdisk und das Kopierprogramm nutzen gemeinsam den 
+Puffer (einschl. Stack)         EAA0-EBFF
+Funktionen des Headerdisk und des Headersave sind wie von den 
+Originalprogrammrn gewohnt, aufrufbar.
+
+Der Stackpointer wird vom HDISKCOPY auf EADF gesetzt.
+HDISKCOPY (D000-D7FF) nicht von anderen Programmen aus aufrufen
+
+Das Gesamtprogramm ist epromfaehig
+
+A C H T U N G !!!
+Es wird die Tastaturpeepfunktion ueber den SPV (0FFDCH) genutzt.
+Wenn SPV nicht installiert ist, Zelle 0D7FDH von C3 in C9 aen-
+dern  sonst Absturz !!!
+
+2.Verwendung 
+------------
+Das Programm HDISKCOPY dient zur effektiven Arbeit mit der RAM-
+Floppy  und zum automatischen kopieren von Kassetten  ueber  die
+RAM-Floppy.
+Als Kopierpuffer dient der Bereich von 100-CFFF so dass Pro-
+gramme beliebigen Adressbereichs kopiert werden koennen, wobei 
+die Originaladressen in den Koepfen gerettet werden.
+Zur Erhoehung der Datensicherheit wird ein 8 Bit CRC nach 
+Prof. Voelz verwendet.
+Die Funktionen des Headerdisk 45 und des Headersaves bleiben
+voll nutzbar, siehe Beschreibung Headerdisk und Headersave 5.95
+
+3.Bedienung des HDISKCOPY
+-------------------------
+Nach dem Aufruf auf D81B wird die B0 Schleife des Monitors ini-
+tialisiert.
+HDISKCOPY kann nun mit @H bzw. J D001 aufgerufen werden. Die 
+weitere Bedienung erfolgt menuegefuehrt.
+
+^C     fuehrt ins Anfangsmenue zurueck
+
+ENTER  fuehrt die Standardfunktion aus   
+
+Erscheint die Zeile "### End ## New Command:" ,so gelten die
+Kommandos des Anfangsmenues. 
+^C oder Space oder eine andere Taste die kein Kommando aus-
+fuehrt, bringt das Anfangsmenue auf den Bildschirm.
+
+4. Erlaueterung der Funktionen
+------------------------------
+A,B  Auswahl der aktuellen Disk mit der gearbeitet wird
+
+F    zeigt alle Files dieser Disk an. Ist die Liste laenger
+     als 30 Files, so wird eine Tastaturbetaetigung erwartet.
+
+L    laedt von der Kassette auf die aktuelle Disk, wobei auch
+     mit Blocksave abgespeicherte Daten (vom R80 bzw. CPA 98PD)
+     geladen werden. Bei Ueberlaenge erfolgt eine Fehlermeldung.
+     existieren auf der Kassette 2 oder mehrere gleiche Dateien
+     (gleicher Name und Typ), so wird davon nur die erste Datei
+auf die Disk gebracht. 
+     A C H T U N G  bei blockgesavten Files kein autom. Erken-
+     nen der Laenge, da Adressberechnung erst nach dem laden er-
+     folgt.
+      
+      F   Fileanzeige, wartet auf weiteres Kommando 
+      ENT Abfrage wieviele Files geladen werden sollen, noch-
+          mal ENTER laedt alle Files bis ^C 
+
+      N   Suchfunktion, Abbruch bei anliegendem Signal mit ^C
+          danach weiter wie bei ENTER 
+
+      ^C  zurueck ins Anfangsmenue,
+          zum Unterbrechen der Ladefunktion muss Signal anliegen
+          dann Abbruch am Ende eines Files bzw. nach Kopfblock
+          bei gedrueckter ^C Taste.
+
+
+S    speichert Files der aktuellen Disk auf Kassette
+      
+      T   Pause zwischen den Files 3..9 s eingeben, Standard =6
+          gilt fuer 2 MHz, sonst siehe Punkt 7
+      
+      F   Fileanzeige und gleich weiter wie ENTER
+
+      ENT Eingabe der gewuenschten Files
+          Eingabe der Files durch , oder Leerzeichen getrennt,
+          auch - ist erlaubt.
+          Bsp. 1 5 5 2 6-18 ENTER 
+          oder 2 8- ENTER      
+          oder 1- ENTER (alle)
+          oder ENTER  (alle)
+          In den Pausen kann mit ^C abgebrochen werden.
+          Zeit zwischen ENTER und Beginn des Vortones ca. 2 sec
+          bei 2 MHz
+      N   fragt Typ und Name ab und speichert das File auf
+          Kassette.  
+
+V    Kontrolle der Aufzeichnung
+
+      ENT n*Verify (n = Anzahl der zuletzt abgespeicherten 
+          Files)
+
+      N   fragt Typ und Name ab, wenn File gefunden, weiter 
+          wie ENTER
+      A   Verify bis ^C (^C wirkt bei anliegendem Signal) 
+
+ es wird die Laderoutine benutzt, somit ist es bei "bad record"
+ moeglich, den Block nochmal einzulesen
+
+
+C    Kopieren Disk zu Disk
+
+      F   Fileanzeige, wartet auf weiteres Kommando
+
+      ENT Abfrage wie bei Save, Files werden nach Enter auf die
+          andere (nichtaktuelle) Disk kopiert. ^C Abbruch
+
+      N   kopiert ein File (Typ,Name)
+
+      R   Rename fragt Filenummern ab wie bei ENT, nach Enter
+          wird File angezeigt und Typ,Name abgefragt und das
+          File auf die aktuelle Disk abgespeichert, wobei das
+          alte File erhalten bleibt.
+
+K    Loeschen von Files
+     
+     Anzeige der Files der akt. Disk und Eingabeaufforderung.
+     Eingabe nur eines oder aufeinanderfolgende zu loeschender 
+     Files also z.B. 5 oder 2-12, Weitere Filenummern werden
+     ignoriert.
+     Nach ENTER wird delete (Y) abgefragt Y=loeschen, sonst Abbr
+     Bei fehlender Zahlenangabe oder einer nicht existierenden
+     Filenummer  wird  n i c h tgeloescht sondern ins
+     Anfangsmenue gesprungen.      
+     Nach jedem Loeschvorgang werden alle Files angezeigt und
+     erneut zur Eingabe einer Filenummer aufgefordert.
+     Abbruch mit Enter oder ^C moeglich, Laenge der Liste beachten
+     Bei mehr als 30 Files Tastenbetaetigung erforderlich, damit
+     es weitergeht. 
+     Bei Angabe eines Bereiches (2-12) werden die Files von 
+     hinten geloescht, (also 12 dann 11 bis 2) ,Durch Druecken
+     irgendeiner Taste kann abgebrochen werden. 
+
+
+!    Initialisieren der aktuellen Disk
+     Nach dem Einschalten mit (wenn vorhanden) beiden Disk
+     durchfuehren 
+     
+     A C H T U N G !
+     nicht initialisierte Disk wird beim Laden nicht bemerkt
+     --> Zeitvelust
+
+X    Rueckkehr ins Betriebssystem
+
+
+5.  CRC Berechnung und Auswertung
+---------------------------------
+5.1. Bei Verwendung HDISKCOPY
+-----------------------------
+Beim Laden von Kassette oder Disk werden zwei CRC berechnet und
+in den Kopf eingetragen. Das eine CRC wird ueber den gesamten
+Adressbereich berechnet. Das zweite (KCRC) nur von EC bis FF .
+Es dient der Kontrolle, ob ueberhaupt ein File mit CRC vorliegt,
+ und verhindert damit beim Laden von Kassette unnoetige
+Fehlermeldungen. Beim Laden von Disk wird in der vorliegenden
+Version des HDISKCOPY nur eine CRC-Kontrolle ueber den
+Adressbereich des Files durchgefuhrt.
+ Das hat einerseits eine hohe Datensicherheit zur Folge.
+
+Beim Ermitteln eines falschen CRC erscheint die Ausschrift 
+xx=bad CRC, press any key !
+ENTER = Ignorieren des Fehlers -> weiterkopieren
+jede andere Taste fuehrt zum Abbruch der Funktion
+
+Interpretation bei fehlerhaften CRC:
+
+beim Laden von Kassette(L) 
+--------------------------
+fremde Kassette bzw. nicht vom Kopierprogramm sondern aus dem 
+Monitor bzw. Anwenderprogramm auf Kassette abgespeichert.
+--> nochmal laden, bei gleichem CRC  Fehler ignorieren  
+
+eigene im Savemenue des HDISKCOPY abgespeicherte Kassette 
+--> Programm mit hoher Wahrscheinlichkeit fehlerhaft !!!
+
+beim Lesen Diskette(S,C)
+------------------------
+File durch Blocksave direkt auf die Disk gebracht (z.B.mit R80)
+--> Fehler ignorieren, da bei Blocksave kein CRC-Eintrag erfol-
+gen kann
+
+sonst ist File veraendert durch Stoerimpuls oder Speicherfehler
+
+
+5.2 CRC-Berechnung bei Verwendung Headerdisk (vom Monitor oder
+das Headerdisk aufrufenden Programm)
+--------------------------------------------------------------
+Es werden beim Lesen von Disk (@R,@RN) generell zwei CRC 
+berechnet, so dass nach direktem Blocksave auf die Disk kein
+fehlerhaftes CRC gemeldet wird. Trotzdem File nochmal umladen
+damit bei HDISKCOPY kein unnoetiges Unterbrechen des automa
+tischen Savens durch z.B. mit R80 erstellte Files auftritt.
+Meist wird eine mit R80 erstellte sowiso mit MicroWord weiter
+bearbeitet und neu abgespeichert.
+Wird doch einmal ein falsches CRC erkannt, so wird ein even-
+tueller Autostart unterdrueckt und es ist eine Taste zu 
+druecken. Mit grosser Wahrscheinlichkeit ist dann das File 
+durch einen Stoerimpuls oder sogar Speicherfehler veraendert.
+
+Bei der Benutzung des Headersaves vom Monitor oder Anwender
+programm erfolgt kein CRC Eintrag und keine Auswertung !!! 
+Deshalb wird nach jedem Lesen von der Disk das KCRC mit 
+0 initialisiert um ueberfluessige Fehlermeldungen nach 
+bewussten Veraenderungen des File und Abspeichern auf Kas-
+sette ohne neue CRC-Berechnung zu vermeiden.
+
+Vom Monitor aus ist eine Funktion @C nutzbar
+
+@C Anfangadresse Endadresse ENTER
+   berechnet CRC ueber Speicherbereich ohne Fehlermeldungen  
+
+@C ENTER
+   berechnet CRC des zuletzt geladenen Files, gibt Fehlermel-
+   dung aus, beruecksichtigt nicht das KCRC deshalb auch Fehler 
+   bei Blocksave. 
+
+6. Hinweise zur effektiven Arbeit mit der RAM-Floppy
+----------------------------------------------------
+um die Datensicherheit der CRC-Berechnung zu nutzen Files immer 
+ueber HDISKCOPY laden und abspeichern.
+
+Am sinnvollsten ist es den Sprungverteiler von Rainer Brosig von
+Headersave in Headerdisk zu aendern. Alle Programme (z.B. Micro-
+wort, R80 usw. arbeiten dann direkt auf die RAM-Disk.
+
+Nach dem Einschalten HDISKCOPY (D0000-E3FF) laden und auf D81B
+starten
+@H aufrufen, mit L alle zur Arbeit benoetigten Files automatisch
+von Kassette laden
+A C H T U N G  Fuer die Arbeit mit MicroWord !
+vorher Speicherende des MicroWord auf CFFF einstellen (A-Kom-
+mando des MW.), sonst wird bei Aufruf des MW das Headerdisk 
+und das HDISKCOPY zerstoert !  
+
+Vor dem Ausschalten alle bearbeiten Files mit S automatisch 
+auf Kassette abspeichern.
+
+Zum Kopieren von Kassetten mit L laden und gewuenschte Files
+in beliebiger Reihenfolge mit S abspeichern.
+
+
+7. Speicherzellen
+-----------------
+D7EA    Kopierpufferanfang    100H
+D7EC    max. Filelaenge      CEFFH
+D7EE    Korrektur fuer die Zeitschleife beim Saven.
+        Standard D500 gilt fuer 2 MHz Taktfrequenz
+        ist bei veraendern der Taktfrequenz zu korrigieren
+        Fuer Zeitschleife wird CRC Routine benutzt (100-D500) 
+D7F0    Initialisierungswert Pause (Standard 6 sec.)
+
+
+8.Spruenge
+----------
+8.1 HDISKCOPY
+-------------
+AUCRC   D52B    Auswertung CRC und KCRC
+AUCRO   D530      "        CRC
+EICRC   D541    nur Eintragen CRC und KCRC
+
+Funktion        danach Sprung zu               fuehrt aus
+------------------------------------------------------------
+Load Kassette   D48A JMP AUCRC   Auswertung CRC und KCRC
+
+Read Disk       D4AC:  JMP  AUCRO   nur Auswertung CRC
+
+Bei Bedarf koennen die Spruenge ausgetauscht werden.
+Bei Blockload wird nur zu EICRC gesprungen da bei Block-
+save kein CRC ermittelt wird. Diesen Sprung nicht veraendern. 
+
+Das KCRC steht im Kopf auf Adresse EA, das CRC auf EB 
+
+Ab D7F1 steht ein Sprungverteiler zum Headersave
+kann eventuell auf Sprung zum Headersave des RB Monitor ver-
+aendert werden 
+A C H  T U N G  benutzt interne Routinen des Headersave
+
+
+8.2 Headerdisk
+--------------
+DF1C    Befehl LD M,0  zum 0 setzen des KCRC, kann durch 
+        2*NOP ersetzt werden, wenn KCRC bei Monitorbedie-
+        nung gewuenscht. 
+DF1B    Befehl RNZ nach KCRC nicht gefunden nach Ersetzen 
+        durch NOP nur noch CRC Kontrolle auch vom Monitor aus.
+
+        Dann aber Fehlermeldung bei Blocksave !
+
+Soll das Headerdisk separat genutzt werden, so ist auf 0DF4CH
+der Aufruf CD FD D7 gegen CD DC FF (Tastaturpeep ueber SPV)
+bzw. 00 00 00 auszutauschen.  
+
+8.3 Headersave 
+--------------
+
+Ab 0D7EEH bis 0D7FC befinden sich die Spruenge ins Headersave,
+die bei Bedarf auf ein Headersave auf einem anderen Standor zB.
+RB-Monitor geaendert werden koennen.
+
+
+8.4.Sprungverteiler
+-------------------
+Es wird nur der Sprung auf 0D7FDH zur Tastaturpeeproutine
+(0FFDCH) genutzt, der bei Nichtvorhandensein des SPV durch C9
+estz werden muss.
+
+
+HDISKCOPY nur komplett (D000 bis E3FF) und unveraendert weitergeben.
+
+            Michael Halupka Idastr.41   Leipzig 7050
+
+
+
+

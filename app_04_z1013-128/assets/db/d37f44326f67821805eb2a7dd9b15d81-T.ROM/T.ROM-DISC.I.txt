@@ -1,0 +1,132 @@
+		Hallo Z1013-User !
+Wer saß noch nicht vor seinem Computer und hat ihn beschimpft,
+weil ein längeres Programm abgestürtzt ist ? Um ein lang-
+wieriges neuladen zu umgehen, nutze ich seit Juli 1988 eine
+ROM-Floppy, welche heute (Mai 89) mit 7 Stück 4k-EPROM's 2532
+bestückt ist. Auf diesen befinden sich folgende Programme :
+10k-BASIC+ ,DISASSEMBLER ,IDAS ,HEXDUMP ,MicroWORD .
+Nach dem Einschalten des Computers ist es notwendig, eine kurze
+Treiberroutine von Kassette zu laden. Wer möchte, kann diese
+auch noch im 4k-Monitor unterbringen, wenn er auf die BASIC-
+String's verzichtet.
+HARDWARE
+========
+Die Hardware ist kaum noch zu unterbieten. Sie besteht aus 
+1 DL 004, 1 DL 030, 1 DS 8205. Der Schaltplan ist im File
+C'''ROM-DISC-BILD dargestellt. Der Aufbau erfolgt auf der
+"MEM1-Speicherkarte" aus dem Buch "Praktische Microcomputer-
+technik" von Kramer. Diese kann bei der Firma Kolbe in Berlin
+bestellt werden (Preis 19.40 M). Ich möchte allerdings darauf 
+hinweisen, daß die Qualität meines Leiterplatten-Exemplares
+keine 5.- M Wert war. Ich mußte 1 Schluß und 6 Haarrisse 
+'ausbügeln' ! Auf der Leiterplatte ist Platz für 12 EPROM's
+im 28pol. Gehäuse. Das vorhandene Lochrasterfeld dient zum 
+Aufbau der Steuerung. Die Anschaltung an den Systembus erfolgt
+entweder über einen K 1520 - Steckverbinder und eine ent-
+sprechende Rückverdrahtung oder bei Anschluß an eine Z1013-
+Busplatine über einen passenden Stecker, wobei die Anschluß-
+belegung bei den belegten Signalen übereinstimmt. Das ver-
+wendete PIO-Bit B4 wird entweder über einen kurzen Draht und
+eine Stecklötöse oder mit über den Systembus zugeführt.
+Die EPROM's werden mit ihren Adreß- und Datenpin's direkt mit
+den entsprechenden Bussignalen verbunden. Die /CS und /OE-Pin's
+jedes EPROM werden verbunden und an einen Ausgang des DS 8205
+gelegt. Das MEMDI-Signal, welches der DL 030 erzeugt, kann bei
+nur einer MEMDI-Quelle direkt an den Bus geführt werden, sonst
+ist es mit einem DL 004-Gatter und einem zusätzlichen DL 003-
+Gatter als Open-Collector-Signal zuzuführen. Eine Entkopplung
+durch eine Diode ist nicht möglich, da eine weitere Diode auf
+dem Z 1013 in Reihe liegt.
+Wer sich die Schaltung ansieht, wird bemerken, daß keine Bus-
+treiber verwendet wurden. Ich nutze diese allerdings neben
+einer RAM-Floppy nach MP 3/88 sowie einem I/O-Modul mit 2 PIO's
+und einem CTC an einem ungetriebenen Bus ohne Probleme.
+FUNKTION
+========
+Der Zugriff auf die ROM-Disc erfolgt nicht direkt, da die
+EPROM's nicht im normalen Adreßbereich des Prozessor's liegen.
+Durch die Ausgabe eines 0-Signals über das PIO-Bit B4 wird der
+Zugriff vorbereitet, jetzt kann mit Hilfe eines LDIR-Befehles
+der Transfer in den Hauptspeicher erfolgen. Zu beachten ist
+allerdings, daß jetzt außer LDIR nur Befehle mit aktivem M1
+auftreten dürfen, bis B4 wieder 1-Pegel führt. Ansonsten kommt
+es unweigerlich zum Systemabsturz. Aus diesem Grund wird auch
+das PIO-Bit B4 nach der Benutzung wieder auf Eingabe um-
+initialisiert.
+SOFTWARE
+========
+Diese besteht aus einem kurzen Assemblerprogramm, welches nur
+an die entsprechenden Adressen der Programme auf den EPROM's
+angepaßt werden muß. Außerdem müssen die Aufrufstellen z.B.
+BASIC als @B in den Kommandoverteiler ab 0B0H eingebaut werden.
+
+PN	DISC
+;	(C) by R.Herzog 7/88
+BASIC:	LD	HL,0		;EPROM-ADR.
+	LD	DE,100H		;ZIEL-ADR.
+	LD	BC,2A00H	;LÄNGE
+	CALL	DISC
+	JMP	300H		;START BASIC
+DISAS:	LD	HL,2A00H	;EPROM-ADR.
+	LD	DE,3300H	;ZIEL-ADR.
+	LD	BC,0D00H	;LÄNGE
+	CALL	DISC
+	JMP	3300H		;START DISASSEMBLER
+DISC:	DI 
+	PUSH	AF
+	LD	A,0CFH
+	OUT	3
+	LD	A,0FFH		;B4 = 1 !!!
+	OUT	2
+	LD	A,0EFH		;BIT 4 AUSG.
+	OUT	3
+	EXX
+	PUSH	AF
+	PUSH	BC
+	LD	C,2		;PORTADR.
+	XOR	A
+	OUT	A
+	EXX
+	LDIR
+	EXX
+	XOR	A
+	CPL
+	OUT	A
+	POP	BC
+	POP	AF
+	EXX
+	LD	A,0CFH
+	OUT	3
+	LD	A,07FH		;B4 WIEDER AUF EINGABE
+	OUT	3
+	POP	AF
+	EI 
+	RET
+END
+ERWEITERUNGSMÖGLICHKEITEN
+=========================
+Die Kapazität kann entweder durch größere EPROM's oder durch
+eine größere Anzahl von EPROM's erhöht werden. Im ersten
+Fall bleibt die Hardware gleich, es werden nur die Adressen
+neu verdrahtet. Im zweiten Fall können bei Verwendung eines
+zweiten DS 8205, welcher bis auf die Adreßleitung AB15 ein-
+gangsseitig dem ersten parallelgeschaltet ist, 16 /CS-Signale
+erzeugt werden. AB 15 wird dabei über ein freies DL 004-Gatter
+negiert angeschlossen. Die physische Grenze ist aber bei Ver-
+wendung nur eines PIO-Bit's bei 64kByte ROM erreicht. Sollen
+größere ROM-Floppys aufgebaut werden, wird die Hard- und Soft-
+ware aufwendiger.
+TIP
+===
+Es soll immer noch Z1013-User geben, die sich mit einer Folien-
+tastatur quälen und aus diesem Grund auf den Vorteil eines
+im Monitor-ROM eingebauten Headersave sowie den für viele
+Programme notwendigen Sprungverteiler verzichten müssen.
+Für all diese habe ich einen 4k-Monitor entwickelt, welcher
+diese Dinge enthält und die "normale" Folientastatur abfragt.
+Wer sich für einen solchen EPROM interessiert, wende sich bitte
+an mich (Preis ca. 35.- M).
+Ronald Herzog, Eckersbacher Höhe 6, Zwickau, 9560
+Diese Adresse kann auch zur Kontaktaufnahme zum CCZ-Coputer-
+club Zwickau benutzt werden.
+

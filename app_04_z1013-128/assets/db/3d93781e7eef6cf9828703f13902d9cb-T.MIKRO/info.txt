@@ -1,0 +1,4 @@
+<kurz src="Kurzbeschreibung zum Micro-BASIC '85 (BASIC-Compiler), neu formatiert"/>
+<lang><include src="T.MIKRO-BA.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

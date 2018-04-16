@@ -1,4 +1,4 @@
-<kurz src="SDCC Testprogramm für Joystick nach Practic 01/88"/>
+<kurz src="SDCC Testprogramm für alle Joystick-Varianten"/>
 <lang>Version 2 - testet alle Varianten soweit bekannt:
 
 1: practic 1/88

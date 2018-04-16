@@ -1,3 +1,20 @@
 <kurz src="12K TDL Basic + HSAVE"/>
-<lang>Überarbeitete Version von [89437f192b16fb748fa17e94d993657a] mit HSAVE etc.</lang>
-<requires></requires>
+<lang>Ich würde das Programm als fehlerhaft aussortieren (Befehl LIST#2):
+Der Sprung geht wohl in Nirvana:   057F  C3 3E A6    JP      0A63EH
+der Code davor scheint fehlerhaft zu sein, eventuell ein Ladefehler.
+
+Aber mangels besserer Alternativen bleibt es erst einmal in der Datenbank.
+
+Noch habe ich nicht herausgefunden, ob und wie der Drucker angesprochen wird.
+
+
+Überarbeitete Version von [89437f192b16fb748fa17e94d993657a] mit HSAVE etc.
+Am Anfang wird auf 0xE800 ein Druckerteiber kopiert.
+Dann wird noch eine neue Tastaturcodetabelle auf 0x003B installiert (E950  21 5C E9         LD      HL,0E95CH)
+
+</lang>
+<port range="01" mode="W" device="Userport: S3004"/>
+<port range="02" mode="R" device="Userport: Tastatur+RB (keine Portabfrage, aber die neue Tastaturcodetabelle erwartet eine RB Tastatur)"/>
+<syscall type="spv" tag="[LORUF, SARUF]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, OUTHL, INLIN, CSAVE, INCH, PRST7, CLOAD, INHEX]"/>
+

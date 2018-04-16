@@ -1,3 +1,6 @@
 <kurz src="Welcome to BASICODE-3 16kB"/>
 <lang></lang>
-<requires></requires>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, Toneingabe"/>
+<syscall type="spv" tag="[LORUF, SARUF, DRAAK]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH, OUTHX]"/>
+

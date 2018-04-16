@@ -1,4 +1,4 @@
-<kurz src="32KByte ROM-Disc über PIO-B4 angesteuert"/>
+<kurz src="identisch [70b62df11e90144f514df161a3913bf3]"/>
 <lang></lang>
 <syscall type="keine" tag=""/>
 <port range="keine" mode="" device=""/>

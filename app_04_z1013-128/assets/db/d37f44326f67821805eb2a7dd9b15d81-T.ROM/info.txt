@@ -1,0 +1,4 @@
+<kurz src="Aufbauanleitung zur ROM-DISC über PIO-B4"/>
+<lang><include src="T.ROM-DISC.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

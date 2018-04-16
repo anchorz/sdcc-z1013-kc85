@@ -1,3 +1,6 @@
 <kurz src="Erläuterungen zum 12K TDL BASIC"/>
 <lang><include src="C.12K-BASICBUCH.b"/></lang>
-<requires></requires>
+<syscall type="rst20" tag="Tiny-Basic Interpreter benutzt [OUTCH, HEXUM, INCH, ALPHA]"/>
+<port range="02" mode="R" device="Systemport: Tiny-Basic Interpreter testet auf S4+K"/>
+<port range="08" mode="W" device="Spaltentreiber: Tiny-Basic Interpreter testet auf S4+K"/>
+

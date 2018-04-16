@@ -1,0 +1,4 @@
+<kurz src="HDISKCOPY 1.3: Headerdisk 45 mit CRC, Headersave 5.9 und Kopierprogramm,"/>
+<lang><include src="T.HDISKCOP.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

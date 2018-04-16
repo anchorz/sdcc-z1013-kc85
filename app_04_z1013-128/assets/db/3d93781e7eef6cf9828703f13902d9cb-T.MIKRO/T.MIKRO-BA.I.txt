@@ -1,0 +1,135 @@
+
+
+M I K R O -B A S I C 85
+_______________________
+
+BASIC-Compiler auf den Adressen 200 H bis 27FF H
+ENTRY-Point ist 22D H
+GLIEDERUNG:
+1
+2
+3
+4
+5
+6
+7
+8
+1. Variablen
+bestehen aus mindestens 1Buchstabe + 4 Buchstaben oder Ziffern
+Zahlenformat:   duale Gleitpunktzahlen
+Zahlendarstellung:   (3 BYTE)
+     Adresse x      Adresse x+1     Adresse x+2
+Bit-Nr.
+ 0 1 2 3 4 5 6 7 8 9 10 1 2 3 4 5 6 7 8 9 20 1 2 3 4
+|                           | | | |              | |
+_____________________________     ________________  
+       duale Mantisse         | |  dualer Exponent |
+Mantisse und Exponent in Zweierkomplement
+wichtige Bits:
+b 14= 2(Zweierkomplement)
+b 15 = Vorzeichen der Mantisse
+b 29 =Vorzeichen des Exponenten
+
+-9999<= x <=9999  rundungsfreies :
+Multiplizieren, Addieren, Subtrahieren
+Dezimal-Dual-Wandlung  (Imdizes)
+eindimensionale Felder und Dateien sind moeglich
+Eingabedateien = DAI       Ausgabedateien = DAO
+
+Syntax der Hexakonstanten: 0FFFFH (analog IDAS-88)
+
+2.physische Geraetebezeichnungen
+2.1 Ausgabegeraete
+SCR = Screen            (Bildschirm)
+PTP = Paper tape punch  (Lochbandstanzer)
+LPR = Line printer      (Drucker)
+2.2 Eingabegeraete:
+KEY =                   (Tastatur)
+PTR = Paper tape reader (Lochbandleser)
+3. Aufbau einer Programmzeile
+10 DIM 7300H:A(3),B,7400H:X
+bedeutet:A(1) bis A(3) auf 7300H,7303H,7306H; B auf 7309H,X auf
+7400H
+INPUT   = von Datei DAI
+PRINT   = Ausgabe von Zeichenketten in ' eingeschlossen auf DAO
+        Trennzeichen sind , ; /      / entspricht CR NL
+ASGN    =Dateizuweisung
+        Bsp: 30 ASGN DAO=LPR    
+        (nach Programmstart DAO=SCR und DAI=KEY)
+FORMAT  =Fn.m   Festpunkformat,n Stellen vor,m nach DP
+        =Em     Exp.-Darstellung  m Stellen nach DP
+OPEN    CLOSE   bei Dateieroeffnung
+LET     = unbedingt erforderlich,mehrere Anweisungen mit;trennen
+X hoch y nur so: LET Z=LN(Y*EXP(X))
+NEXT    =erstes NEXT bezieht sich auf letztes FOR
+        =STEP muss sein: FORX=1 STEP1 TO 10
+Schluesselwoerter:
+SQR SIN COS LN EXP ATN ABS SGN INT GOTO GOSUB RETURN CLS
+IF-Anw. =Vergleichsoperatoren:< > =
+        IF{arith. Ausdr.}{Vergl.op.}0 THEN{bedinte An.}{GOTO Zn}
+        IFX<0 THEN DO ....  DOEND
+        IFX<0 THEN DO ....  ELSE.... DOEND
+        DO-Bloecke koennen verschachtelt werden.
++++++++++ENDE ERSTER BLATT+++++++++
+CALL (Hexa-Adr.){(Parameterliste)}
+     Parametervebergabe:
+     10 DIM 3000H:X,Y,A(3)
+     20 CALL 7430H(X,A)
+     ergibt als MC:
+     CD 30 74      CALL 7430   MC-UP: ORG 7430H
+     00 30         DB   3000H         EX  (SP),HL
+     06 30         DB   3006          LD   E,M
+     09 30         DB   3009          INC  HL
+     ...           ...                LD D,M ...
+STOP   =Programm wartet auf Eingabe eins Leerschrites
+ON  OFF  Kommandos fuer Hardwaresteuerung
+{KOMMANDO}::={Buchstabe}{Ziffer}
+END    =logisches Programmende,mus Program abschliessen
+4.Arbeit mit dem Editor
+RAM-Arbeitszellen 0E00H-0EFFH (Standardfunkt. hinter dem 
+                              Arithmetikpaket)
+START auf Adresse 22DH; Neustart N;Restart=beliebiges Zeichen
+
+LIST     -gesamtes Programm auflisten
+LIST n   -Zeile n wird gelistet
+LIST n,m -von n bis m wird gelistet
+LLIST    -Ausdrucken des Programms
+SAVE     -Ausstanzen(mus im Sprungverteiler installiert werden)
+LOAD     -Einlesen(s. SAVE)
+EDIT zn  -editieren der Zeile zn; {=DEL,INS}
+RUN      -Uebersetzung und Fehleranzeige mit -Zeichen---->
+          NO EROR,Anzeige der Speicherbereiche , START( ?N):
+IDT      -Anzeige der Identifikatortabele
+
+Funktionstabelle von 3F80H bis 3F7H,Abschlus mit 0FH
+Aufbau:   |   |   |   |   |   | F | L | H |  naechste Funktion
+         ____________46H_______-----------  Startadresse
+        Funktionsname als ASCII min 0H aufgefuelt
+4.2 Bemerkungen zum Editor
+Wird der Editor genutzt, so begint der BASIC-Quellcode ab der
+Adresse 2900H und endet mit 0H.Nach dem Start mit RUN wird der
+MC buendig hinter dem Quelcode abgelegt,gefolgt von Variablen-
+und Hilfsvariablenbereich. Die Adrese des ersten freien 
+Speicherplatzes wird nach erfolgter Uebersetzung angezeigt.
+Im Verlauf der Uebersetzung baut der Compiler eine Adressen-
+tabele auf, die ruecklaeufig beginnend von 3FFFH 8-Byte-weise
+waechst.
+5.Autonome Nutzung des Compilers
+Mit CALL COMPN (CALL 1000H) kann der Compiler auch unabhaengig
+               vom Editor genutzt werden
+IX  Anf.Adr. des BASIC-Quellcodes
+IY  Anf.Adr. des zu generierenden MC's
+BC  Adr. des ersten freien Bytes hinter der Adressentabelle
+    die vom Compiler generiert wird
+DE  Anf.Adr. des Variablenbereiches
+HL  Anf.Adr. des Hilfsvariablenbereiches
+
+Folgende Informationen werden nach Rueckkehr gegeben:
+A   Fehler,wen A # 0
+IX  Ende des Textbereiches
+IY  erstes freies Byte hinter dem MC
+DE  erstes freies Byte hinter dem Variablenbereich
+HL  erstes freies Byte hinter dem Hilfsvariablenbereich
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+************* E N D E   D E S   T E X T E S**************
+

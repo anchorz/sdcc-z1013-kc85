@@ -1,0 +1,6 @@
+<kurz src="Besonderheiten des Betriebssystems SCP-2RF 2.40M für den Z1013 (ältere Version)"/>
+<lang>ähnlich [85d12ca551337b3646abf8efd0dc62aa], dies hier ist vielleicht eine ältere Version
+
+<include src="scp-2rf 2_40m(i).txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

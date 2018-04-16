@@ -411,6 +411,7 @@
 <file aadr="0100" eadr="2b60" sadr="0100" typ="C" link="ac559be453153ac534c19059ce754b32-hc_900_basic.com/hc_900_basic.com.z80" name="HC-900 BASIC    " kurz="BASIC Variante mit PSET-Funktion (HC900)" />
 <file aadr="0200" eadr="2faf" sadr="0200" typ="C" link="837c6fab35ca63bdcd44c3c5cffe82ba-C.HC-PASCAL_V2.1/C.HC-PASCAL_V2.1.z80" name="HC-PASCAL/V2.1  " kurz="KC Pascal, V2.1 by Burmeister, Lehmann, Vetters" />
 <file aadr="1800" eadr="283c" sadr="0000" typ="I" link="092feff3fa06e5d4bebef747c8561b83-I.HCopy%20FT/I.HCopy%20FT.z80" name="HCopy FT        " kurz="Schnellueberspielhilfe zum Laden Kassette-Kassette/RAM-Disk" />
+<file aadr="3100" eadr="60cc" sadr="0000" typ="T" link="85f92a7e3da5f77163ba673c3fca0c6f-T.HDISKCOP/T.HDISKCOP.I.z80" name="HDISKCOP.I      " kurz="HDISKCOPY 1.3: Headerdisk 45 mit CRC, Headersave 5.9 und Kopierprogramm," />
 <file aadr="d000" eadr="e3ff" sadr="d001" typ="C" link="088b38377f57c4cf4f1db24e8c263e22-C.HDISKCOPY_1.4/C.HDISKCOPY%201.4.z80" name="HDISKCOPY 1.4   " kurz="angepasstes Headerdisk 45 mit CRC, Headersave 5.9 und Kopierprogramm, Frei:100-CFFF" />
 <file aadr="3100" eadr="608e" sadr="0000" typ="I" link="832206a28857a892757370347ea0a730-I.HDISKCOPY_1.4-2/I.HDISKCOPY%201.4-2.z80" name="HDISKCOPY 1.4-2 " kurz="HDISKCOPY 1.4 und 1.42, 9.10.1989" />
 <file aadr="d000" eadr="e3ff" sadr="d000" typ="C" link="89ddbfd1b89a8ac6a1a86d431c68f1de-C.HDISKCOPY_1.42/C.HDISKCOPY%201.42.z80" name="HDISKCOPY 1.42  " kurz="angepasstes Headerdisk 45 mit CRC, Headersave 5.9 und Kopierprogramm, Frei:100-CeFF" />
@@ -421,6 +422,7 @@
 <file aadr="c000" eadr="c8ff" sadr="c800" typ="C" link="e2061ff9994c890dac06b31f9c20436c-head_disk_45_me/head_disk%2045_me.z80" name="HEAD.DISK 45/ME " kurz="HEADERDISK45 auf 0xC000 verschoben+ ME Modifikation" />
 <file aadr="0800" eadr="1781" sadr="0000" typ="I" link="c57560c2326e051f0620e4e4bc10b073-I.HEAD.DISK%2045_ZM/I.HEAD.DISK%2045_ZM.z80" name="HEAD.DISK 45/ZM " kurz="HEADERSAVE-kompatible Verwaltung, leicht verändert" />
 <file aadr="e000" eadr="e707" sadr="e400" typ="C" link="dbfc4d4c8e6daa37a50a2eefafb6f939-C.HEADER_MENUE/C.HEADER%20MENUE.z80" name="HEADER MENUE    " kurz="PROGRAMM ZUM SOFTWARETAUSCH V1" />
+<file aadr="4801" eadr="4af6" sadr="0100" typ="I" link="0684569ae0c34caf23c7bc6d294e68f9-header_bank_zeit/header_bank_zeit.z80" name="HEADER-BANK ZEIT" kurz="identisch [0684569ae0c34caf23c7bc6d294e68f9]" />
 <file aadr="e000" eadr="e4bc" sadr="e000" typ="C" link="479b01b95c4c01336915b59df1247883-C.HEADER-DISK%2027K/C.HEADER-DISK%2027K.z80" name="HEADER-DISK 27K " kurz="HEADERSAVE-kompatible Verwaltung RAM-Diskette nach MP 3/88" />
 <file aadr="3000" eadr="3be4" sadr="0000" typ="I" link="bb47d0de3691aaf53e7adf6ad8b015e3-I.HEADER-DISK%2054/I.HEADER-DISK%2054.z80" name="HEADER-DISK 54  " kurz="HEADERSAVE-kompatible Verwaltung von RAM-Disketten nach MP 3/88." />
 <file aadr="0800" eadr="1250" sadr="0000" typ="I" link="1851aeb86d095a20d4f612f5c291bebe-I.HEADER-MENUE%202/I.HEADER-MENUE%202.z80" name="HEADER-MENUE 2  " kurz="24 Programme laden und in beliebiger Reihenfolge abspeichern" />
@@ -501,7 +503,7 @@
 <file aadr="2bc0" eadr="3973" sadr="0302" typ="B" link="1b1a6a4cca199f9119c62b86fe5649a3-jaeger/jaeger.z80" name="JAEGER          " kurz="METEORe abschießen" />
 <file aadr="2bc0" eadr="3758" sadr="0302" typ="B" link="3a14626ad8c6a6e229cf7c5946f48087-B.JAZZY/B.JAZZY.z80" name="JAZZY           " kurz="Würfelspiel für 1-4 Personen" />
 <file aadr="2bc0" eadr="3826" sadr="0302" typ="B" link="ad73d16859a96ca563776f3a2ca1a1fe-B.JAZZY(Erlaeutg.)/B.JAZZY(Erlaeutg.).z80" name="JAZZY(Erlaeutg.)" kurz="JAZZY, Spielregeln" />
-<file aadr="0100" eadr="0b04" sadr="0100" typ="C" link="5591df18d0d6145646e91d54f4d0637a-joystick_demo/joystick_demo.z80" name="joystick_demo   " kurz="SDCC Testprogramm für Joystick nach Practic 01/88" />
+<file aadr="0100" eadr="0b04" sadr="0100" typ="C" link="5591df18d0d6145646e91d54f4d0637a-joystick_demo/joystick_demo.z80" name="joystick_demo   " kurz="SDCC Testprogramm für alle Joystick-Varianten" />
 <file aadr="0100" eadr="0d20" sadr="0100" typ="C" link="50db94576e7892c6b70d9bc9b088e51c-C.JUMPER/C.JUMPER.z80" name="JUMPER          " kurz="Fallschirmspringen mit Winddrift." />
 <file aadr="01f0" eadr="0da8" sadr="01f0" typ="C" link="726e86a3c7e77c13c2ef25d534e8e451-C.JUMPING_JACK_V2/C.JUMPING%20JACK%20V2.z80" name="JUMPING JACK V2 " kurz="V2" />
 <file aadr="0100" eadr="0dff" sadr="0100" typ="C" link="6a2b89d0db56afa89fe9aee6d8ac4bab-jumping-jack/jumping-jack.z80" name="JUMPING-JACK    " kurz="Spinge durch die freien Stellen nach Oben, RST20 Variante" />
@@ -633,6 +635,7 @@
 <file aadr="0100" eadr="72ff" sadr="0100" typ="C" link="c9e736709209113629d165d67d4a5f6c-C.MicroWORD_1.520O/C.MicroWORD%201.520O.z80" name="MicroWORD 1.520O" kurz="Textverarbeitung, Texteditor, V01.10.1988" />
 <file aadr="0100" eadr="6cbc" sadr="0100" typ="C" link="01b849b3c1bd4b6ad5709e582f3f633d-C.MicroWORD%201.520U/C.MicroWORD%201.520U.z80" name="MicroWORD 1.520U" kurz="Textverarbeitung, Texteditor, V01.10.1988" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="0ec6a4cb664baed278fa1941576ffe32-microword_1_5gs1/microword_1_5gs1.z80" name="MICROWORD 1.5GS1" kurz="Textverarbeitung, Texteditor, V18.01.1989" />
+<file aadr="1800" eadr="2b26" sadr="0000" typ="T" link="3d93781e7eef6cf9828703f13902d9cb-T.MIKRO/T.MIKRO-BA.I.z80" name="MIKRO-BA.I      " kurz="Kurzbeschreibung zum Micro-BASIC '85 (BASIC-Compiler), neu formatiert" />
 <file aadr="0100" eadr="18ff" sadr="0100" typ="C" link="d1357e73351352ea0b04382c7ab3c31b-C.MikroWORD%20S3004/C.MikroWORD%20S3004.z80" name="MikroWORD S3004 " kurz="MicroWORD 1.5GV1 / S3004, Textverarbeitung" />
 <file aadr="3000" eadr="3d6f" sadr="0000" typ="I" link="c9aa5fefb0f10d6cc80e31189d01e7d7-I.MINDOK/I.MINDOK.z80" name="MINDOK          " kurz="KURZBESCHREIBUNG MINTEX/3 " />
 <file aadr="0100" eadr="0fff" sadr="0100" typ="C" link="cc7f45f638eb57850062413fe0575ade-C.MINEFIELD/C.MINEFIELD.z80" name="MINEFIELD       " kurz="Minenfeld durchqueren+Cursor-Tasten, Originalversion" />
@@ -775,7 +778,8 @@
 <file aadr="0100" eadr="3f80" sadr="0100" typ="C" link="1447f1aafc89290ad5a5aae1311714ca-river_raid_ls/river_raid_ls.z80" name="RIVER RAID ls   " kurz="" />
 <file aadr="0200" eadr="0db0" sadr="0200" typ="C" link="36344c8987690997d99543318c4bebb3-C.ROLLING_BALL/C.ROLLING%20BALL.z80" name="ROLLING BALL    " kurz="Zeugs geschickt aufsammeln, Fehler vermeiden" />
 <file aadr="c000" eadr="ebff" sadr="c200" typ="C" link="595a47fd9eeb9f53e8990af4fd7a72a9-C.rom-basic/C.rom-basic.z80" name="rom-basic       " kurz="ROM Basic+Joystick nach Practic 01/88" />
-<file aadr="0100" eadr="0510" sadr="0100" typ="C" link="fe39387d15db0527b2210e105098c106-rom_disc_bild/rom_disc_bild.z80" name="ROM-DISC-BILD   " kurz="" />
+<file aadr="0100" eadr="0510" sadr="0100" typ="C" link="fe39387d15db0527b2210e105098c106-rom_disc_bild/rom_disc_bild.z80" name="ROM-DISC-BILD   " kurz="32KByte ROM-Disc über PIO-B4 angesteuert" />
+<file aadr="1800" eadr="2bc8" sadr="0000" typ="T" link="d37f44326f67821805eb2a7dd9b15d81-T.ROM/T.ROM-DISC.I.z80" name="ROM-DISC.I      " kurz="Aufbauanleitung zur ROM-DISC über PIO-B4" />
 <file aadr="d100" eadr="dfff" sadr="d100" typ="C" link="87bfb44299e42943ca992fb14834adf9-C.ROM-REASS./C.ROM-REASS..z80" name="ROM-REASS.      " kurz="Reassembler, fast identisch [3d0ac6c72380e1ae240897aba8571fc5]" />
 <file aadr="2bc0" eadr="3179" sadr="0000" typ="B" link="f5e2c9eb5734665b105d12996a65ead2-B.ROMBERG/B.ROMBERG.z80" name="ROMBERG         " kurz="Integral berechnen" />
 <file aadr="2bc0" eadr="3c37" sadr="0000" typ="B" link="5b0c6dffdba6e4210da36f4b887a469a-B.ROSTOCK/B.ROSTOCK.z80" name="ROSTOCK         " kurz="Wissenstest: was weisst du über den Bezirk Rostock" />
@@ -817,7 +821,8 @@
 <file aadr="3000" eadr="3cf1" sadr="0000" typ="I" link="4dd6b21818586b6417120bafafd10846-I.SCP-2RF_2.1/I.SCP-2RF%202.1.z80" name="SCP-2RF 2.1     " kurz="Beschreibung der Besonderheiten des Betriebssystems SCP-2RF 2.1" />
 <file aadr="3000" eadr="3fa8" sadr="0000" typ="I" link="719d4be3f945dffc38d1025f07391bc0-I.SCP-2RF_2.3/I.SCP-2RF%202.3.z80" name="SCP-2RF 2.3     " kurz="Beschreibung der Besonderheiten des Betriebssystems SCP-2RF 2.3" />
 <file aadr="c800" eadr="e7d6" sadr="de00" typ="C" link="1a866c5653eadbf47eaf11cacc84d565-C.SCP-2RF_2.38M/C.SCP-2RF%202.38M.z80" name="SCP-2RF 2.38M   " kurz=" CP/M 2.2 Z1013 IG-HC mit 2*256K RAM-Floppy V2.3" />
-<file aadr="c800" eadr="e7ff" sadr="de00" typ="C" link="2b0074091d5ffe3fbd3e85b3290ffbc0-scp_2rf_2_40m.com/scp_2rf_2_40m.com.z80" name="SCP-2RF 2.40M   " kurz="" />
+<file aadr="c800" eadr="e7ff" sadr="de00" typ="C" link="2b0074091d5ffe3fbd3e85b3290ffbc0-scp_2rf_2_40m.com/scp_2rf_2_40m.com.z80" name="SCP-2RF 2.40M   " kurz="CP/M 2.2 Z1013 IG-HC mit 2*256K RAM-Floppy V2.4 - 64 Zeichen" />
+<file aadr="0800" eadr="1a64" sadr="0000" typ="I" link="70b0a1b22ffc5f723df8466f54ffff12-scp-2rf_2_40m(i)/scp-2rf%202_40m(i).z80" name="SCP-2RF 2.40M   " kurz="Besonderheiten des Betriebssystems SCP-2RF 2.40M für den Z1013 (ältere Version)" />
 <file aadr="3000" eadr="4161" sadr="0000" typ="I" link="85d12ca551337b3646abf8efd0dc62aa-I.SCP-2RF.DOC/I.SCP-2RF.DOC.z80" name="SCP-2RF.DOC     " kurz="Besonderheiten des Betriebssystems SCP-2RF 2.40M für den Z1013" />
 <file aadr="0100" eadr="4000" sadr="0103" typ="M" link="da38145c595223d06e4ba8c4630dd3a1-M.SDI/M.SDI.z80" name="SDI             " kurz="Statt Weltraumverteidigung: hier wird aus dem Weltraum geschossen!" />
 <file aadr="3000" eadr="384f" sadr="0000" typ="I" link="670767abd6472aa6bb56d03af0c20f1b-I.SEDIT-DOC%205_89/I.SEDIT-DOC%205_89.z80" name="SEDIT-DOC 5/89  " kurz="BESCHREIBUNG FORTH 83 SEDIT" />
@@ -1033,4 +1038,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1033 Dateien."/></doc>
+<status src="Datenbank enthält 1038 Dateien."/></doc>
