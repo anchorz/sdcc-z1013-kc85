@@ -35,7 +35,8 @@ char cmap[] = { 178, 255, 179, 182, 255, 182, 178, 255, 179, 32, 157, 32, 148,
 #define CH_WIDTH 3
 #define CH_HEIGHT 3
 #define CH_SIZE (CH_WIDTH*CH_HEIGHT)
-//32 Zeichen + 2 extra
+
+//32 Zeichen + 2 extra (hidden&empty)
 #define CH_ANZAHL 32
 #define CH_HIDDEN 32
 #define CH_EMPTY  33
@@ -46,8 +47,15 @@ static char key;
 static char select[CH_ANZAHL];
 //Anzahl sichtbarer Karten := Zeilen x Spalten
 //hängt von der Bildschirmauflösung ab
-static char count;
+static char selectedX, selectedY;
+static char visibleCardValue;
+static char visibleCardX, visibleCardY;
+static char cardsLeft,rounds;
 static char _card[CH_ANZAHL * 2];
+
+#define CARDS_PER_LINE ((SCR_WIDTH - 1) / (CH_WIDTH + 1)) 
+#define LINES ((SCR_HEIGHT - 2) / (CH_HEIGHT + 1))
+#define COUNT ((LINES * CARDS_PER_LINE)&0xfe)
 
 static void initCards() {
 
@@ -57,10 +65,10 @@ static void initCards() {
 	}
 	ptr = _card;
 	//assert (count&1) - gerade Anzahl der Karten
-	for (char c = 0; c < count / 2; c++) {
+	for (char c = 0; c < COUNT / 2; c++) {
 		char choose;
 		do {
-			choose = rand() % (count / 2);
+			choose = rand() % (COUNT / 2);
 		} while (select[choose]);
 		select[choose] = 1;
 		*ptr = choose;
@@ -82,19 +90,13 @@ static void showCard(char x, char y, char id) {
 }
 
 static void shuffleCards() {
-	for (char i = count - 1; i > 0; i--) {
+	for (char i = COUNT - 1; i > 0; i--) {
 		char j = rand() % (i + 1);
 		char tmp = _card[i];
 		_card[i] = _card[j];
 		_card[j] = tmp;
 	}
 }
-
-static char selectedX, selectedY;
-static char cardsPerLine, lines;
-static char visibleCardValue;
-static char visibleCardX, visibleCardY;
-static char cardsLeft,rounds;
 
 static void eraseCardFrame() {
 	char x = selectedX * (CH_WIDTH + 1);
@@ -144,10 +146,10 @@ static void selectCard(char x, char y) {
 static void handleRight() {
 	char newX = selectedX + 1;
 	char newY = selectedY;
-	if (newX >= cardsPerLine) {
+	if (newX >= CARDS_PER_LINE) {
 		newX = 0;
 		newY++;
-		if (newY >= lines)
+		if (newY >= LINES)
 			return;
 	}
 	selectCard(newX, newY);
@@ -157,7 +159,7 @@ static void handleLeft() {
 	signed char newX = selectedX - 1;
 	signed char newY = selectedY;
 	if (newX < 0) {
-		newX = cardsPerLine - 1;
+		newX = CARDS_PER_LINE - 1;
 		newY--;
 		if (newY < 0)
 			return;
@@ -169,7 +171,7 @@ static void handleUp() {
 	signed char newX = selectedX;
 	signed char newY = selectedY - 1;
 	if (newY < 0) {
-		newY = lines - 1;
+		newY = LINES - 1;
 		newX--;
 		if (newX < 0)
 			return;
@@ -180,10 +182,10 @@ static void handleUp() {
 static void handleDown() {
 	char newX = selectedX;
 	char newY = selectedY + 1;
-	if (newY >= lines) {
+	if (newY >= LINES) {
 		newY = 0;
 		newX++;
-		if (newX >= cardsPerLine)
+		if (newX >= CARDS_PER_LINE)
 			return;
 	}
 	selectCard(newX, newY);
@@ -209,8 +211,8 @@ static void updateCardRounds()
 static void handleEnter() {
 	char index, value;
 
-	index = selectedY * cardsPerLine + selectedX;
-	if (index >= count) {
+	index = selectedY * CARDS_PER_LINE + selectedX;
+	if (index >= COUNT) {
 		return;
 	}
 	value = _card[index];
@@ -253,7 +255,7 @@ static void handleEnter() {
 		}
 		value = CH_EMPTY;
 		_card[index] = value;
-		_card[visibleCardY * cardsPerLine + visibleCardX] = value;
+		_card[visibleCardY * CARDS_PER_LINE + visibleCardX] = value;
 	}
 	showCard(visibleCardX, visibleCardY, value);
 	showCard(selectedX, selectedY, value);
@@ -265,11 +267,7 @@ void joystick_demo() {
 	char *ptr = cmap;
 	char cnt = 0;
 	char y = 0;
-	lines = (SCR_HEIGHT - 2) / (CH_HEIGHT + 1);
-	cardsPerLine = (SCR_WIDTH - 1) / (CH_WIDTH + 1);
-	count = (lines * cardsPerLine);
-	count &= 0xfe;
-	cardsLeft=count/2;
+	cardsLeft=(COUNT/2);
 
 	clrscr();
 	textbackground(screenBackground);
@@ -285,13 +283,13 @@ void joystick_demo() {
 	visibleCardValue = CH_UNKNOWN;
 
 	do {
-		for (int x = 0; x < cardsPerLine; x++) {
-			if (cnt < count)
+		for (int x = 0; x < CARDS_PER_LINE; x++) {
+			if (cnt < COUNT)
 				showCard(x, y, CH_HIDDEN);
 			cnt++;
 		}
 		y++;
-	} while (cnt < count);
+	} while (cnt < COUNT);
 	selectCard(0, 0);
 
 	do {

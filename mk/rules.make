@@ -108,10 +108,6 @@ obj/z1013/%.asm : src/%.c
 	sdcc -mz80 -S -o "$@" --nostdlib  --nostdinc -Iinclude -I../include $(CFLAGS) -D__Z1013__ "$<"
 	
 obj/z1013/%.rel : src/%.s
-  ifdef ENABLED_BANKED
-	pwd
-	../tools/bank_replace.pl "$<"
-  endif
 	$(AS) -plosgff -Iinclude "$@" "$<"
 
 obj/z1013/%.rel : obj/z1013/%.asm

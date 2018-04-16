@@ -1,0 +1,124 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  crt0.s - adapted for a Z1013, HC900, KC85(2..5)
+                              3 ;
+                              4 ;  Copyright (C) 2014, Andreas Ziermann
+                              5 ;                2015, Bert Lange
+                              6 ;
+                              7 ;  This library is free software; you can redistribute it and/or modify it
+                              8 ;  under the terms of the GNU General Public License as published by the
+                              9 ;  Free Software Foundation; either version 2, or (at your option) any
+                             10 ;  later version.
+                             11 ;
+                             12 ;  This library is distributed in the hope that it will be useful,
+                             13 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             14 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             15 ;  GNU General Public License for more details.
+                             16 ;
+                             17 ;  You should have received a copy of the GNU General Public License 
+                             18 ;  along with this library; see the file COPYING. If not, write to the
+                             19 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             20 ;   MA 02110-1301, USA.
+                             21 ;
+                             22 ;  As a special exception, if you link this library with other files,
+                             23 ;  some of which are compiled with SDCC, to produce an executable,
+                             24 ;  this library does not by itself cause the resulting executable to
+                             25 ;  be covered by the GNU General Public License. This exception does
+                             26 ;  not however invalidate any other reasons why the executable file
+                             27 ;   might be covered by the GNU General Public License.
+                             28 ;--------------------------------------------------------------------------
+                             29         .module crt0
+                             30 
+                             31         .globl  _main
+                             32         .globl  exit
+                             33 
+                             34         .globl l__INITIALIZER
+                             35         .globl s__INITIALIZED
+                             36         .globl s__INITIALIZER
+                             37         .globl l__DATA
+                             38         .globl s__DATA
+                             39 
+                             40         ; Ordering of segments for the linker.
+                             41         .area   _HOME
+                             42         .area   _CODE
+                             43         .area   _INITIALIZER
+                             44         .area   _GSINIT
+                             45         .area   _GSFINAL
+                             46         .area   _GSEXIT
+                             47         .area   _GSEXITFINAL
+                             48         .area   _DATA
+                             49         .area   _INITIALIZED
+                             50         .area   _BSEG
+                             51         .area   _BSS
+                             52         .area   _STACK
+                             53         .area   _HEAP
+                             54 
+                             55         .area   _CODE
+                             56 
+   0000                      57 init::
+   0000 C3r0Fr00      [10]   58         jp      init2
+   0003 20 20 20 20 20 20    59         .ascii      '        ' ; patch in the program name needed by Z9001 commando processor
+        20 20
+   000B 00                   60         .db      0x00          ; reserve hc900 for prolog byte at the start
+   000C 00                   61         .db      0x00          ; reserve hc900 for prolog byte at the start
+   000D 00                   62         .db      0x00          ; reserve: hc900 for prolog end 0x01 after the command name
+                             63                                ;          z9001 stack pointer
+   000E 00                   64         .db      0x00          ;          z9001 stack pointer
+   000F                      65 init2:
+                             66         ; Stack at the top of memory.
+   000F 31r04r04      [10]   67         ld      sp,#end_of_stackframe
+                             68         ; mark stack frame
+   0012 21 BB BB      [10]   69         ld      hl,#0xbbbb
+   0015 22r00r00      [16]   70         ld      (#start_of_stackframe),hl
+   0018 E5            [11]   71         push    hl
+                             72 
+                             73         ; Initialise global variables
+   0019 CDr00r00      [17]   74         call    gsinit
+   001C CDr00r00      [17]   75         call    _main
+   001F CDr00r00      [17]   76         call    gsexit
+   0022 C3r00r00      [10]   77         jp      exit
+                             78 
+                             79         .area   _GSINIT
+   0000                      80 gsinit::
+                             81         ; copy initialized variables to 'RAM'
+   0000 01r00r00      [10]   82         ld      bc, #l__INITIALIZER
+   0003 78            [ 4]   83         ld      a, b
+   0004 B1            [ 4]   84         or      a, c
+   0005 28 08         [12]   85         jr      Z, gsinit_zero
+   0007 11r00r00      [10]   86         ld      de, #s__INITIALIZED
+   000A 21r00r00      [10]   87         ld      hl, #s__INITIALIZER
+   000D ED B0         [21]   88         ldir
+                             89 
+   000F                      90 gsinit_zero:
+                             91         ; did we have data to zero?
+   000F 01r00r00      [10]   92         ld      bc, #l__DATA
+   0012 78            [ 4]   93         ld      a, b
+   0013 B1            [ 4]   94         or      a, c
+   0014 28 0F         [12]   95         jr      Z, gsinit_next
+                             96 
+                             97         ; zero uninitialized stuff
+   0016 AF            [ 4]   98         xor     a              ; clear a and carry
+   0017 11r01r00      [10]   99         ld      de, #s__DATA+1
+   001A 21r00r00      [10]  100         ld      hl, #s__DATA
+   001D 77            [ 7]  101         ld      (hl), a
+   001E 0B            [ 6]  102         dec     bc
+   001F 78            [ 4]  103         ld      a, b
+   0020 B1            [ 4]  104         or      a, c
+   0021 28 02         [12]  105         jr      Z, gsinit_next
+   0023 ED B0         [21]  106         ldir
+                            107 
+   0025                     108 gsinit_next:
+                            109         .area   _GSFINAL
+   0000 C9            [10]  110         ret
+                            111 
+                            112         .area   _GSEXIT
+   0000                     113 gsexit:
+                            114         .area   _GSEXITFINAL
+   0000 C9            [10]  115         ret
+                            116 
+                            117         .area   _STACK
+                            118         ; for now just allocate 1k for stack.
+   0000                     119 start_of_stackframe:
+   0000                     120         .ds     2    ; stack frame marker - top
+   0002                     121         .ds     1024
+   0402                     122         .ds     2    ; stack frame marker - bottom
+   0404                     123 end_of_stackframe:

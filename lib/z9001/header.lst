@@ -1,0 +1,70 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  header.s
+                              3 ;
+                              4 ;  Copyright (C) 2016, Andreas Ziermann
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+                             29 ; specific header to automatic generate KCC format 
+                             30 ; (which is used by simulator, disk, tape, USB, etc...)
+                             31 
+                             32         .module header
+                             33 
+                             34         .globl init
+                             35         .globl s__CODE
+                             36         .globl s__STACK
+                             37 
+                             38         .area   _KCC_HEADER (abs)
+                             39 
+   0000 00 00 00 00 00 00    40         .db 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00 ;name (placeholder 8 chars)
+        00 00
+   0008 43 4F 4D             41         .ascii 'COM'        ; extension
+   000B                      42         .ds 5               ; reserved
+   0010 02                   43         .db 0x02            ; next block
+   0011r00r00                44         .dw s__CODE         ; load address
+   0013rFFrFF                45         .dw s__STACK-1      ; end address 
+   0015r00r00                46         .dw init            ; start address
+                             47 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+    init                                                           **** GX
+    s__CODE                                                        **** GX
+    s__STACK                                                       **** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size    0   flags    0
+   1 _KCC_HEADER                                size   17   flags    8
+
