@@ -1,0 +1,59 @@
+==============================================================
+
+                 HEADER-CRC 1.1,1.2 und 1.3
+
+Bearbeitet von:
+Wolfgang Rafelt                 CC Dresden-Land
+Niederstrasse 11                des Kulturbundes
+Arnsdorf
+8143
+                                           
+=============================== 01.09.89 ======================
+
+  Das Programm Header-CRC enthaelt 2 Softwarekomplexe. Zum einen
+den Headersave 5.95 von R. Brosig und zum anderen die Standard-
+checksummenroutine CRC. Beide Teile wurden miteinander gekoppelt
+und realisieren folgende Funktionen:
+
+  - alle Headersave 5.95 Funktionen bleiben erhalten
+  - in den Kopfblock wird zusaetzlich die CRC-Checksumme einge-
+    tragen
+  - die Checksumme wird beim Saven vor der Typeingabe berech-
+    net und angezeigt
+  - beim Einladen von Programmen erfolgt die Kopfblockanzeige
+    mit CRC-Checksumme
+  - nach Beendigung des Ladevorganges berechnet Header-CRC
+    erneut das eingeladene Programm und vergleicht beide
+    Summen
+  - ein Selbstart von MC-Programmen erfolgt nur bei ueberein-
+    stimmung beider Summen
+
+  Zusaetzlich wird von Header-CRC eine Erkennung der Check-
+summe in den Kopfblock eingetragen. Damit bleiben Programme,
+die nicht mit Header-CRC gesavt wurden, selbstartfaehig. Das
+Programm ermoeglicht also eine absolut sichere Kotrollmoeg-
+lichkeit kopierter Software. Header-CRC 1.2 enthaelt zusaetz-
+lich die Moeglichkeit ueber @C aadr eadr jederzeit Speicher-
+inhalte zu ueberpruefen.
+ Header-CRC 1.3 ueberprueft bereits beim Einladen des Kopf-
+blockes die CRC-Erkennung und gibt diese nur bei dessen
+Vorhandensein mit aus. Diese Variante wurde geschaffem um
+Irrtuemer zu vermeiden, da Headersave 5.95 keine Loeschung des
+freien Kopfblockbereiches vornimmt. Domit wird eine Verwechslung
+zufaelliger Inhalte mit der CRC-Summe vermieden und der Nutzer
+ist sofort in der Lage, nicht mit Header-CRC gesavte Programme,
+zu erkennen.
+  Aufbau des Kopfblocks:
+  - Byte     0 - 1     Anfangsadresse des Programms
+  -          2 - 3     Endadresse des Programms
+  -          4 - 5     Startadresse
+  -          6 - 7     Checksumme
+  -          8 - 0AH   DB 'CRC'- Erkennung
+  -        0BH         frei
+  -        0CH         Typekennzeichen
+  -        0DH - 0FH   3x 0D3H Kopfkennzeichen
+  -        10H - 1FH   16 Byte Namensblock
+  Eventuell auftretende Fehler oder Stoerungen bitte an oben
+stehende Adresse!
+************  arbeitsversion ********************************************
+

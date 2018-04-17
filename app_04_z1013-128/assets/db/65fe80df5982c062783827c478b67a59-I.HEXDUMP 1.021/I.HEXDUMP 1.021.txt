@@ -223,10 +223,10 @@ sind die nachfolgenden Zellen mit C9H (RET) zu versehen:
 
 
 
-  - D604H:   (C3H) C9H     Ä3604H:  (C3H) C9H Ü  -  Uebergabe
+  - D604H:   (C3H) C9H     [3604H:  (C3H) C9H ]  -  Uebergabe
     AKKU-Inhalt an Druckertreiber
 
-  - D608H:   (C3H) C9H     Ä3608H:  (C3H) C9H Ü  -  Ruecksetzen
+  - D608H:   (C3H) C9H     [3608H:  (C3H) C9H ]  -  Ruecksetzen
     Zeilenzaehler ueber Sprungverteiler DRDEL (0FFEBH)
 
 
@@ -352,10 +352,10 @@ alle anderen Tasten fuehren zur Druckfortsetzung.
 Funktion    Code Schreibmaschinen-         Folientastatur
 ---------------------------------------------------------
 
-Cursor       0AH          ö                     S4/R
+Cursor       0AH          |                     S4/R
 runter                    V
 Cursor       0BH          ^                     S4/S
-hoch                      ö
+hoch                      |
 Abbruch      03H        CTRL C                  S4/K
 
 

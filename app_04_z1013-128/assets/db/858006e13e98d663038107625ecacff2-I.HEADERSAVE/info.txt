@@ -1,3 +1,6 @@
 <kurz src="HEADER-SAVE V 5.95 (C) by RB"/>
-<lang><include src="I.HEADERSAVE.txt"/></lang>
+<lang>Diese Textdatei entspricht nicht mehr ganz genau der Original .Z80 Datei. Da es viele verschiedene Varianten gibt
+wurden Änderungen hier hinein kopiert. 
+
+<include src="I.HEADERSAVE.txt"/></lang>
 <requires></requires>

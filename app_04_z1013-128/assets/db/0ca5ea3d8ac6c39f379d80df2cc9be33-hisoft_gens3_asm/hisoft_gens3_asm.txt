@@ -1,0 +1,51 @@
+                ****************************************
+                *                                      *
+                *  Z 1013 - ASM     Kurzbeschreibung   *
+                *                                      *
+                ****************************************
+Assembler GENS3.2    RAM-Bereich  E0H-1ED2H      J 100H/J 11AH
+Kommandos:
+I P1,P2   (input)     automatische Erzeugung von Zeilennummern
+L P1,P2   (list)      Listen des Textfiles
+K P1                  Anzahl der Zeilen beim Kdo L
+D P1,P2   (delete)    Loeschen von Zeilen
+M P1,P2   (move)      Verschieben von Zeilen
+N P1,P2   (number)    Umnumerierung von Zeilen
+F P1,P2,F$,S$ (find)  Suchen und Austausch F$<->S$
+E P1      (edit)      Zeileneditor
+P P1,P2,Name          Ausladen Textfile
+T P1,P2,Name          Ausladen des Textfiles in Bloecken
+G ,,Name              Einlesen Textfile
+A      (assembling)   Assemblerdurchlauf
+R         (run)       Starten des erarbeiteten Programms
+B         (bye)       Uebergang ins Betriebssystem
+C                     Festlegung der Puffergroesse fuer das Kdo.T
+S,,F$                 Neudefinition der Trennzeichen
+V                     Anzeige der aktuellen Werte P1,P2,F$,S$
+X                     Anzeige der Adressen des Textpuffers (dezimal)
+*******************************************************************************
+EDITOR-Kommandos                       ASSEMBLER-Kommandos
+->  TAB                               *E   Einfuegen 3 Leerzeilen
+SP  naechstes Zeichen                 *H$  $wird nach jedem *E ausgegeben
+ENT Ende EDIT mit Aenderungen         *S   Stop Listing Bild
+Q   Ende EDIT ohne Aenderungen        *L-  Stop Listing Bild+Drucker
+R   org.Zeile wird wieder dargest.    *L+  Aufhebung *L-
+L   Listen Zeile ab Kursor            *D+  Ausgabe Adresszaehler dez.
+K   DELETE                            *D-  Aufheben *D+
+Z   Loeschen Zeichen ab Kursor        *C-  kein Objektcode
+F   naechster gefundener F$           *C+  Aufhebung *C-
+S   Ersetzt F$ durch S$               *F   Assemblierung von Kassette
+I   INSERT                            *M+  Macro-Assemblierung
+X   Kursor Zeilenende                 *M-  Aufhebung *M+
+C   Ueberschreiben
+********************************************************************************
+OPTIONEN :
+ 1  Symboltabellen-Listing nach Pass 2
+ 2  kein Objektcode
+ 4  kein Assemblerlisting
+ 8  Druckerausgabe **nicht implementiert **
+16  Objektcode wird nach Symboltabelle abgelegt. Der Adresszaehler
+    beginnt entsprechend der ORG-Anweisung.
+32  schnelle Assemblierung ohne Darstellung der Adressen
+****************************************************************************
+

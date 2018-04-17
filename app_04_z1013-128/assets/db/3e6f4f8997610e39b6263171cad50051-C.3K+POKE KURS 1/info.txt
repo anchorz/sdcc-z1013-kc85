@@ -5,4 +5,6 @@ die mitgelieferte BASIC Version ist verschieden:
 Z1013 extended BASIC 3.03
 
 <include src="C.3K+POKE KURS 1.b"/></lang>
-<requires></requires>
+<port range="keine" mode="" device="aber der Tiny-Basic Interpreter testet for S4+K"/>
+<syscall type="rst20" tag="[OUTCH, INCH] Tiny-Basic Interpreter"/>
+

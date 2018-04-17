@@ -1,0 +1,4 @@
+<kurz src="GENS3.2 Assembler Kurzbeschreibung"/>
+<lang><include src="hisoft_gens3_asm.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

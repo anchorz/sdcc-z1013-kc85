@@ -7,12 +7,12 @@ Anmerkungen fuer Neueinsteiger:
 
 -Programmstandort:
       E000H-E3FFH Start: E3EEH  >CRC=8008<
-      eigentliche SAVE-LOAD-Routine  E000H-E3EDH
+      eigentliche SAVE-LOAD-Routine  E200H-E3EDH
       Der Rest ist die Umladeroutine der Kommandoschleife
 
 fuer Grundversion des Z-1013:
       3C00-3FFFH Start: 3FEEH   >CRC=50DF<
-
+ 
 Es gibt noch andere Generierungsvarianten des Headersaves z.B. 
 die im RB-Monitor, womit gleich nach Einschalten des Rechners
 das Headersave verfuegbar ist.
@@ -100,7 +100,6 @@ Pufferbereich Kopf!!:
         I-Instruktion, Informationen, Programmbeschreibung
         E-EPROM-Inhalte
         Q-mit NSWEEP gequetschte Files
-        $-BASICODE-3 - Files
     Space-ohne Typ
         X,Y,Z vorgesehen fuer Urlader-Files(CC Halle)
 (CPM/SCP-Dateien erhalten keinen Typ (SPACE), da sie den Typ
@@ -110,7 +109,8 @@ andere Typkennzeichen muessen bei der
              IG-HC TU Dresden
              Mommsenstr. 13
              Dresden  8027          oder beim
-Autor R. Brosig angemeldet werden, um Doppelvergaben zu verhindern.
+Autor R. Brosig angemeldet werden, um Doppelvergaben zu ver-
+hindern.
 
     FILENAME: max. 16 Zeichen (alle, auch Space, zugelassen)
 
@@ -236,7 +236,7 @@ Parameteruebergabe:
  die Zelle mit 0 initialisiert werden.
 
 
-3. Externer Aufruf von Unterprogrammen
+3. Externer Aufruf von Untrprogrammen
 -------------------------------------
 
 -Fuer den externen Aufruf wurden noch weitere Unterprogramme zu-
@@ -301,7 +301,7 @@ CALL AKP   (E015H; SPV: FFBEH) -Aufbereitung des Kopfpuffer
  beginnen entgegen den Software-Richtlinien zum Z1013 schon auf
  Adressen unterhalb 100H. Es kommt zu Ueberlagerungen mit dem
  Kopfpuffer. In solchen Faellen ist es guenstig, das File auf
- 100H zu verschieben und so auszulagen. Durch das Anfuegen einer
+ 100H zu verschieben und so auszuladen. Durch das Anfuegen einer
  kleinen Umladeroutine am Ende des Programms kann durch das An-
  springen der Umladeroutine ein Herunterladen auf die Original-
  adressen vor dem Start des eigentlichen Programms erreicht
@@ -323,4 +323,6 @@ KOPFAUFBAU: Byte 0-1   Anfangsadresse
 
 Bitte nur Original-Versionen des HEADERSAVE mit Beschreibung 
 weitergeben, keine geaenderten Versionen.
-
+***************************************************************
+^^^^^
+

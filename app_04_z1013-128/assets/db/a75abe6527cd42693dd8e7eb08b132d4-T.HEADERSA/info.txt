@@ -1,0 +1,4 @@
+<kurz src="Beschreibung HEADER-CRC (Headersave 5.95+CRC im Kopfblock) 01.09.1989"/>
+<lang><include src="T.HEADERSA.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

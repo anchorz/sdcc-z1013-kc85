@@ -1,3 +1,5 @@
 <kurz src="Saveroutine speichert bei 2 MHz im alten 1 MHz Format ab."/>
 <lang>Installiert eine Kommandoerweiterung @S</lang>
-<requires></requires>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe"/>
+<syscall type="rst20" tag="[PRST7]"/>
+<syscall type="@" tag="@S"/>

@@ -441,6 +441,7 @@
 <file aadr="0100" eadr="037f" sadr="0100" typ="C" link="ccc9e3004e243c49cfd02db8436225ab-C.HEADERPRINT%20(FS)/C.HEADERPRINT%20(FS).z80" name="HEADERPRINT (FS)" kurz="Inhaltsverzeichnis, formatierte Kassettenlisten erstellen+Drucken" />
 <file aadr="0100" eadr="0290" sadr="0100" typ="C" link="494faf336f8296c0f9842d6958023a91-C.HEADERPRINT%201.04/C.HEADERPRINT%201.04.z80" name="HEADERPRINT 1.04" kurz="Inhaltsverzeichnis, formatierte Kassettenlisten erstellen" />
 <file aadr="2000" eadr="26b6" sadr="2000" typ="I" link="c5f80f731e30f52f26c2a9d0a2a2b319-I.HEADERPRINT_1.1/I.HEADERPRINT%201.1.z80" name="HEADERPRINT 1.1 " kurz="automatische Erfassung von Kassetteninhalten" />
+<file aadr="0800" eadr="11a8" sadr="0000" typ="T" link="a75abe6527cd42693dd8e7eb08b132d4-T.HEADERSA/T.HEADERSA.I.z80" name="HEADERSA.I      " kurz="Beschreibung HEADER-CRC (Headersave 5.95+CRC im Kopfblock) 01.09.1989" />
 <file aadr="3000" eadr="6117" sadr="0000" typ="I" link="858006e13e98d663038107625ecacff2-I.HEADERSAVE/I.HEADERSAVE.z80" name="HEADERSAVE      " kurz="HEADER-SAVE V 5.95 (C) by RB" />
 <file aadr="2000" eadr="3bba" sadr="0000" typ="I" link="0cc48f65621a7478c0a3aaaed675e7bf-headersave_5_9_I/headersave_5_9_I.z80" name="HEADERSAVE 5.9  " kurz="HEADER-SAVE Format; Laden und Speichern auf Kassette" />
 <file aadr="e000" eadr="e3ff" sadr="e3ee" typ="C" link="477ad7f00ced7f87c8af62cbed04d112-C.HEADERSAVE%205.95/C.HEADERSAVE%205.95.z80" name="HEADERSAVE 5.95 " kurz="Load/Save-Routine 5.95 0E000h" />
@@ -458,11 +459,12 @@
 <file aadr="7f80" eadr="7fff" sadr="7f80" typ="C" link="2d313d8ce541d36af558bdcc421dabdf-C.HELP/C.HELP.z80" name="HELP            " kurz="HEX/ASCII-Dump" />
 <file aadr="d600" eadr="dfff" sadr="d600" typ="C" link="b3d2e04f6aa8948b1bb264465f51c256-C.HEX-D.Edit%201.02O/C.HEX-D.Edit%201.02O.z80" name="HEX-D.Edit 1.02O" kurz="Hex-Dump und Hex-Editor" />
 <file aadr="36f0" eadr="3fff" sadr="36f0" typ="C" link="bb296b420ec9ee9f342fb91546a439d2-C.HEX-D.Edit%201.02U/C.HEX-D.Edit%201.02U.z80" name="HEX-D.Edit 1.02U" kurz="Hex-Dump und Hex-Editor, ältere Version, Adresse 0x36F0" />
+<file aadr="0800" eadr="3c0e" sadr="0000" typ="T" link="1597013e9643ff3621aef2f20f2c766f-T.HEX/T.HEX-D.I.z80" name="HEX-D.I         " kurz="Beschreibung Hex-Dump und Hex-Editor 1.02" />
 <file aadr="eb00" eadr="ebbf" sadr="eb00" typ="C" link="7b497188bd47c82b9be4c3570eb2735e-C.HEX-DATA.C/C.HEX-DATA.C.z80" name="HEX-DATA.C      " kurz="Umwandlung Binärdaten in Assembler-Quelltext: HEX 18,0D,21 ..." />
 <file aadr="0100" eadr="0150" sadr="0100" typ="C" link="1cb652f624f9758d31b79e2277047631-C.HEXDUMP/C.HEXDUMP.z80" name="HEXDUMP         " kurz="Hexdump 6 Bytes pro Zeile mit ASCII Zeichen" />
 <file aadr="d700" eadr="dffd" sadr="d700" typ="C" link="fd495d34cdeab81b09c82b98937deac3-C.HexDump%201.01/C.HexDump%201.01.z80" name="HexDump 1.01    " kurz="Hex-Dump und Hex-Editor (ohne Prüfsummen)" />
 <file aadr="d600" eadr="dff8" sadr="d600" typ="C" link="55e7e88ebf6f3c54a0f174339d391376-C.HexDump%201.021/C.HexDump%201.021.z80" name="HexDump 1.021   " kurz="Hex-Dump und Hex-Editor (ohne Prüfsummen), neuere Version" />
-<file aadr="3000" eadr="637d" sadr="0000" typ="I" link="65fe80df5982c062783827c478b67a59-I.HEXDUMP%201.021/I.HEXDUMP%201.021.z80" name="HEXDUMP 1.021   " kurz="Hex-Dump und Hex-Editor" />
+<file aadr="3000" eadr="637d" sadr="0000" typ="I" link="65fe80df5982c062783827c478b67a59-I.HEXDUMP%201.021/I.HEXDUMP%201.021.z80" name="HEXDUMP 1.021   " kurz="Beschreibung Hex-Dump und Hex-Editor 1.021 (druckerfreundlich)" />
 <file aadr="3000" eadr="6057" sadr="0000" typ="T" link="5e290e96057c0874fd16af66c6982563-T.HexDump1.01+02/T.HexDump1.01+02.z80" name="HexDump1.01+02  " kurz=" Beschreibung Hex-ASCII-Dump  V1.01 und 1.02" />
 <file aadr="2bc0" eadr="3119" sadr="0302" typ="B" link="d0cbc01a09f1d6fb2c54d55c6900a8e9-B.HILFE%20BASICSUCHE/B.HILFE%20BASICSUCHE.z80" name="HILFE BASICSUCHE" kurz="BASIC Parser, Programmstruktur anzeigen FOR/NEXT GOTO GOSUB etc" />
 <file aadr="2bc0" eadr="3033" sadr="0300" typ="B" link="8f616a604a2dd150c310664a20ab0569-B.HILFE62000/B.HILFE62000.z80" name="HILFE62000      " kurz="Umrechnungprogramm HEX/DEC, Speicherdump" />
@@ -475,6 +477,7 @@
 <file aadr="0800" eadr="7bd8" sadr="0000" typ="I" link="73d6bf5f65abd71b7a16491de3dbed67-I.HIS.-PASCAL%201.03/I.HIS.-PASCAL%201.03.z80" name="HIS.-PASCAL 1.03" kurz="HISOFT-PASCAL 1.03 " />
 <file aadr="0100" eadr="407f" sadr="0100" typ="C" link="7cb94b0f171abffc920dcc1b0d431d5b-C.HIS./C.HIS.-PASCAL%201.03.z80" name="HIS.-PASCAL 1.03" kurz="Pascal-Compiler" />
 <file aadr="0100" eadr="4080" sadr="0100" typ="C" link="2d7a9a200ed1e1f344e61da19c933543-his__pascal_1_04/his__pascal_1_04.z80" name="HIS.-PASCAL 1.04" kurz="Pascal-Compiler" />
+<file aadr="2001" eadr="2a65" sadr="0000" typ="I" link="0ca5ea3d8ac6c39f379d80df2cc9be33-hisoft_gens3_asm/hisoft_gens3_asm.z80" name="HISOFT GENS3 ASM" kurz="GENS3.2 Assembler Kurzbeschreibung" />
 <file aadr="2000" eadr="3e53" sadr="0000" typ="I" link="5b9cec8af8a707bb7cbc47cfde6d888d-hisoft_pascal_I/hisoft_pascal_I.z80" name="HISOFT-PASCAL   " kurz="Beschreibung HiSoft-Pascal" />
 <file aadr="0100" eadr="407f" sadr="1800" typ="C" link="884833615520bd57f1290f4876236e22-C.Hisoft/C.Hisoft-Pascal.z80" name="Hisoft-Pascal   " kurz="ähnlich [2d7a9a200ed1e1f344e61da19c933543]" />
 <file aadr="0100" eadr="1500" sadr="0600" typ="C" link="7c63566b3a04038ea1297a151c34cbd8-C.HOEHLE/C.HOEHLE.z80" name="HOEHLE          " kurz="UBoot durch Höhle steuern mit ERF-Joystick" />
@@ -1038,4 +1041,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1038 Dateien."/></doc>
+<status src="Datenbank enthält 1041 Dateien."/></doc>

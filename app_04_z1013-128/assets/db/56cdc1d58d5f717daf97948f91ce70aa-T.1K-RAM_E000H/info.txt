@@ -1,3 +1,4 @@
 <kurz src="SPEICHERERWEITERUNG UM 1K-RAM VON 0E000-0E3FF"/>
 <lang><include src="T.1K-RAM E000H.txt"/></lang>
-<requires></requires>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

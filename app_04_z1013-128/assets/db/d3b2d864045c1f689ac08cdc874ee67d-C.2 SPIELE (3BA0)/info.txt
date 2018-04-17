@@ -3,4 +3,6 @@
 Steuerung: ⇦ ⇨ 
 
 </lang>
-<requires></requires>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH, KILL]"/>
+

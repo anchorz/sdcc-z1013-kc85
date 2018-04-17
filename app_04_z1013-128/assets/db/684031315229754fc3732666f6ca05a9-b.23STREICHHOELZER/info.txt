@@ -18,4 +18,5 @@ NIMMT, HAT VERLOREN.
 VERSTANDEN ? ES GEHT LOS !!!
 
 <include src="23STREICHHOELZER.b"/></lang>
-<required></required>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>
