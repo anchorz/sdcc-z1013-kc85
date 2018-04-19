@@ -73,11 +73,19 @@ obj/gcc/%.o : src/%.c
 obj/scp:
 	mkdir -p "$@"
 
-obj/scp/bin: obj/scp/$(OUT).com
+obj/scp/bin: obj/scp/$(OUT).com obj/scp/$(OUT).z80
 
 obj/scp/$(OUT).com: ../lib/scp/crt0.rel $(addsuffix .rel,$(addprefix obj/scp/,$(OBJECTS) $(SDCC_OBJECTS)))
 	$(LINK) $(SDLD_OPT) -b _CODE=0x0100 $(LD_FLAGS) -i "obj/scp/$(OUT).ihx" -k ../lib/scp -k ../lib/ -l scp -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/scp/$(OUT).ihx" "$@"
+	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
+
+obj/scp/$(OUT).z80: ../lib/scp/crt0.rel ../lib/z1013/header.rel $(addsuffix .rel,$(addprefix obj/scp/,$(OBJECTS) $(SDCC_OBJECTS)))
+	$(LINK) $(SDLD_OPT) -b _HEADER=$(Z1013_HEADER) -b _CODE=0x0100 $(LD_FLAGS) -i "obj/scp/$(OUT).ihx" -k ../lib/scp -k ../lib/ -l scp -l z80_ix $^
+	$(OBJCOPY) -Iihex -Obinary "obj/scp/$(OUT).ihx" "$@"
+	dd if="$@" of=padded.z80 bs=32 conv=sync
+	mv padded.z80 "$@"
+	printf %s $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
 	
 obj/scp/%.asm : src/%.c
@@ -101,6 +109,8 @@ obj/z1013/bin: obj/z1013/$(OUT).z80
 obj/z1013/$(OUT).z80: ../lib/z1013/crt0.rel ../lib/z1013/header.rel  $(addsuffix .rel,$(addprefix obj/z1013/,$(OBJECTS) $(SDCC_OBJECTS)))
 	$(LINK) $(SDLD_OPT) -b _HEADER=$(Z1013_HEADER) $(Z1013_DATA_OPTION) -b _CODE=$(Z1013_CODE)  $(LD_FLAGS) -i "obj/z1013/$(OUT).ihx" -k ../lib/z1013 -k ../lib/ -l z1013 -l krt -l conio -l z80_ix $^
 	$(OBJCOPY) -Iihex -Obinary "obj/z1013/$(OUT).ihx" "$@"
+	dd if="$@" of=padded.z80 bs=32 conv=sync
+	mv padded.z80 "$@"
 	printf %s $(OUT) | dd bs=1 of="$@" seek=16 conv=notrunc
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
 	
@@ -135,6 +145,8 @@ obj/z9001/$(OUT).kcc: ../lib/z9001/crt0.rel ../lib/z9001/header.rel  $(addsuffix
 	printf "%.8s" $(OUT) >obj/z9001/filename.txt
 	dd bs=1 if=obj/z9001/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
 	dd bs=1 if=obj/z9001/filename.txt of="$@" count=8 seek=131 conv=notrunc,ucase
+	dd if="$@" of=padded.z80 bs=128 conv=sync
+	mv padded.z80 "$@"
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
     
 obj/z9001/%.asm : src/%.c
@@ -172,6 +184,8 @@ obj/kc85/$(OUT).kcc: ../lib/kc85/crt0.rel ../lib/kc85/header.rel  $(addsuffix .r
 	printf "\x7f\x7f%.8s\x1" $(OUT) >obj/kc85/prolog.txt
 	dd bs=1 if=obj/kc85/filename.txt of="$@" count=8 seek=0 conv=notrunc,ucase
 	dd bs=1 if=obj/kc85/prolog.txt of="$@" count=11 seek=131 conv=notrunc,ucase
+	dd if="$@" of=padded.z80 bs=128 conv=sync
+	mv padded.z80 "$@"
 	@if [ "OFF" != "$(OPTION_SHOW_HEXDUMP)" ]; then hexdump -C "$@"; fi
 
 obj/kc85/%.asm : src/%.c
@@ -232,7 +246,7 @@ run:
 stop:
 	pgrep -f 'jkcemu.*obj/' | xargs kill
 	pgrep -f 'obj/gcc/$(OUT)' | xargs kill
-		
+
 clean:
 	rm -f Makefile~
 	rm -f a.out
