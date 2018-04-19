@@ -127,7 +127,7 @@ int main() {
         c = bdos(CPM_ICON, 0);
         if (c != 0) {
             c = bdos(CPM_RCON, 0);
-            if (c == 'J') {
+            if (c == 'J' || c == 'j') {
                 break;
             }
         }
@@ -170,10 +170,10 @@ int main() {
                     putchar(',');
                     print_int(distance % 10); //+36 Bytes
 #else
-                            d1 = p[i][0] - m;
-                            d2 = p[i][1] - n;
-                            distance = abs(d1) + abs(d2);
-                            print_int(d);
+                    d1 = p[i][0] - m;
+                    d2 = p[i][1] - n;
+                    distance = abs(d1) + abs(d2);
+                    print_int(d);
 #endif
                     print(" Schritte zum MUGWUMP\n\r$");
                     //printf("%d Schritte zum MUGWUMP %d %d\n\r", d, d1, d2);
@@ -221,12 +221,12 @@ int main() {
         do {
             char c;
             c = bdos(CPM_RCON, 0);
-            if (c == 'J') {
+            if (c == 'J' || c == 'j') {
                 print(
                         "\n\rVier weitere MUGWUMPS haben sich\n\rwieder versteckt.\n\r$");
                 break;
             }
-            if (c == 'N') {
+            if (c == 'N' || c == 'n') {
                 return 0;
             }
         } while (1);
