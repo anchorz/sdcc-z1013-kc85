@@ -163,17 +163,17 @@ int main() {
                     d1 = (posx - m) * 10;
                     d2 = (posy - n) * 10;
                     distance = d1 * d1 + d2 * d2;
-                    distance = sqrti(4*distance);
+                    distance = sqrti(4 * distance);
                     distance++;
-                    distance/=2;
+                    distance /= 2;
                     print_int(distance / 10); //+98 Bytes
                     putchar(',');
                     print_int(distance % 10); //+36 Bytes
 #else
-                    d1 = p[i][0] - m;
-                    d2 = p[i][1] - n;
-                    distance = abs(d1) + abs(d2);
-                    print_int(d);
+                            d1 = p[i][0] - m;
+                            d2 = p[i][1] - n;
+                            distance = abs(d1) + abs(d2);
+                            print_int(d);
 #endif
                     print(" Schritte zum MUGWUMP\n\r$");
                     //printf("%d Schritte zum MUGWUMP %d %d\n\r", d, d1, d2);
