@@ -1,0 +1,137 @@
+@3*l=========================================================
+=							=
+=	Beschreibung zum EPSON - Drucker		=
+=							=
+=               EMANNESMANN TALLY 81F                 =
+=							=
+=========================================================
+
+
+E1. SchriftartenF
+
+-1  Codierung    Zeichen/"   Druckbild			-0
+ <ESC> 'W' b  	   5	   W1SperrschriftW0
+ <ESC> 'P'	  10	   Pica-schrift (Norm)
+ <ESC> 'M'	  12	   MElite-schriftP
+ <0FH>/<12H>	  17	   komprimierte Schrift (^O/^R)
+ <ESC> 'p' b		   pProportionalschriftp0
+ <ESC> '4'/'5'		   4Kursivschrift ein/aus5
+ <ESC> 'x' b		   x1NL-Qualitätx0
+ <ESC> 'G'/'H'		   GDoppeldruck ein/ausH
+ <ESC> 'E'/'F'		   EFettschrift ein/ausF
+ <ESC> 'S' b		   S0Hoch-T/S1TiefstellungT ein
+ <ESC> 'T'		   Hoch-/Tiefstellung aus
+ <ESC> '-' b		   -1Unterstreichen-0
+
+     ...	   5	   W1ESperr und FettW0F
+     ...	   6	   MW1Sperr und ElitePW0
+     ...	 8.5	   W1Sperr und komprimiertW0
+     ...		   x14NLQ und kursivx05
+     ...		   x14W1Sperr, NLQ, kursivx05W0
+
+Eine Druckzeile ist 8 Zoll (20,3 cm) breit.
+
+E2. GraphikdruckF
+
+ <ESC> '*' m n(L) n(H)	Graphikdruck
+Druckmodus:   m=0 :  60 dpi
+		1 :  120 dpi
+		3 :  240 dpi
+		4 :   80 dpi  CRT-I-Graphik
+		5 :   72 dpi  für Hardcopy/Plotter
+		6 :   90 dpi  CRT-II-Graphik
+
+Dabei setzt das Byte 001H die unterste Nadel.
+Eine Nadel hat eine Kantenlänge von 1/72" (0.353 mm).
+Die normale Hardcopy ist 90.31 mm breit.
+
+E3. ZeilenabständeF
+
+ <ESC> '3' n		Zeilenabstand n/216 Zoll
+Die Zeichenhöhe ist darin enthalten und beträgt 21/216"
+(7-Nadel-Druck).
+Einige wesentliche Abstände:
+   n=2AH (42) '*' :  eineinhalbzeilig
+   n=19H (25) ^Y  :  papiersparend (besser für Text : 1BH)
+   n=16H (22) ^V  :  Pica-Hardcopy
+   n=18H (24) ^X  :  Graphik-Hardcopy
+   n=10H (16) ^P  :  Microschrift
+
+E4. andere wichtige ManipulationenF
+
+ <ESC> 'l' n		linker Rand
+ <ESC> 'Q' n		rechter Rand
+ <ESC> 'J' n		n/216"-Zeilenvorschub
+ <ESC> 'j' n		n/216"-Zeilenrückschub
+ <ESC> 'C' n		Seitenlänge in Zeilen
+ <ESC> 'O'		Perforation überspringen aus
+ <ESC> 'N' n		n Zeilen bei Perforation überspringen
+ <ESC> '8'/'9'		Papiersensor aus/ein
+ <ESC> '@'		Neuinitialisierung
+ <ESC> 'i' b		Sofortdruck
+ <ESC> 'R' n		nationale Zeichensätze  <0-10>
+*<ESC> '%' b		ROM-/Download-Zeichengenerator
+*<ESC> '&' ...		Download-Zeichen definieren
+*<ESC> '?' s n		Neubelegung Graphikmodus
+
+Symbolik:  n ... Integerzahl  <0-255>
+	   m ... ASCII-Ziffer <0-9>
+	   b ... ASCII-Ziffer <0-1>
+
+E5. MicroWORD- TextformF
+
+  <ESC>  @	NEW
+  <ESC>  3 *	1 1/2 - zeilig
+  <ESC>  l CUL	linker Rand (4 cm Platz zum Abheften)
+  <ESC>  x 1	NLQ-Mode
+
+Als Zeilenanzahl je Seite wird 62 eingegeben. Es werden
+dann 54 Textzeilen gedruckt. (Für Geschäftstexte maximal 48-50
+Zeilen drucken lassen, also Eingabe: 56.)
+Mit dem Code 0CH im Text wird ein vorzeitiger Wechsel zur
+nächsten Seite verlangt.
+
+E6. AssemblerlistingF
+
+  1B 53 <S> 0/1   Hoch-/Tiefstellung ein
+  1B 4D	<M>	  Elite-schrift
+  1B 33 <3> 10	  Zeilenabstand (010H= ^P)
+  1B 6C <l> ..	  linker Rand
+
+Der linke Rand ist für die linke Spalte 00BH (!), für die
+rechte Spalte 035H '5' (Elite-schrift !).
+Auf eine Seite passen dann bequem 2 x 137 Zeilen.
+Bessere Form (4x90 Zeilen/Seite):
+  ^O		  komprimiert
+  >ESC< '3' ^Y    engzeilig
+  Spaltenabstände :  8,40,72,104    Dez
+		    08 28 48 68     Hex
+		     -  (  H  h     Asc
+
+E7. BASIC-Listing (90 Zeilen/Seite)F
+
+  >ESC< M	Elite
+  >ESC< 3 ^Y    engzeilig
+  >ESC< l ^H    8 Spalten frei
+
+
+E8. BriefbeschriftungF
+
+* -1Anschrift-0 (mit doppelt hohen Zeichen):
+- Drucker in Normalbetrieb
+- NLQ halten, ON LINE drücken (=> ON LINE blinkt)
+- in EgroßenF Abständen hintereinander 6 x NLQ drücken
+- LF/FF drücken
+- ON LINE drücken (=> ON LINE leuchtet)
+- den EleerenF Umschlag mit der Unterkante an die
+  Metallkante und mit linker Nullposition anlegen
+- linker Rand ist '$' ; 1 Zeile Vorschub
+
+* -1Absender-0
+- EvorherF linken Rand auf 11 stellen
+- Briefoberkante an blaue Markierung auf Druckkopfblende
+- Andruckrollen von der Walze schieben
+  (Brief läuft über Andruckwelle)
+- Proportionaldruck (p1), aber keine Leerzeile
+- Postkarte 3 mm über Markierung einsetzen
+

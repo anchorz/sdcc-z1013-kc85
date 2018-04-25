@@ -1,0 +1,4 @@
+<kurz src="UNIVERSELLES DATENBANKPROGRAMM (erweiterte Cursorsteuerung)"/>
+<lang><include src="DATENBAN.B.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

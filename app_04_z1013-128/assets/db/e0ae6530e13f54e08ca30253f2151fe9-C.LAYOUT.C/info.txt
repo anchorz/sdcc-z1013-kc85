@@ -1,0 +1,16 @@
+<kurz src="Layoutmaker I. - Leiterplatten Layout erstellen, KRT-Vollgrafik"/>
+<lang>Funktionen: Line zeichnen / Pin setzen / Via setzen 
+
+Erwartet KRT-Grafik an Port 0x18 statt 0x08
+Erwartet Headersave Sprungverteiler an Adresse 0xE000
+   05D9  CD 06 E0    CALL    0E006H
+</lang>
+<port range="04" mode="W" device="[5]ZGBank Programm selber schaltet nicht, verwendet aber Umlaute"/>
+<port range="18" mode="W" device="KRT-Grafik: [4]On/off[3-0]Bank"/>
+<port range="50" mode="W" device="Centronics: Data"/>
+<port range="51" mode="W" device="Centronics: Initalisierung"/>
+<port range="52" mode="R" device="Centronics: Status"/>
+<syscall type="rst20" tag="[INCH, PRST7, OUTHX]"/>
+<syscall type="e000" tag="headersave"/>
+
+

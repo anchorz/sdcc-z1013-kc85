@@ -1,3 +1,11 @@
-<kurz src="Animation/Grafik"/>
-<lang>keine Ahnung, was dieses Programm anzeigen soll.</lang>
-<requires></requires>
+<kurz src="Animation, alle 7 Sekunden wird eine neue Seite angezeigt"/>
+<lang>Steuerung: 0,1,2 H,I,J
+
+Speicherbereich ab 0x2000 wird jeweils bis zum @-Zeichen ausgegeben
+danach etwa 7 Sekunden Pause (hier erfolgt auch einmalig die Tastaturabfrage)
+  wurde eine Taste gedrückt, erfolgt er Sprung ins Hauptmenu,
+  ansonsten wird die nächste Seite angezeigt
+
+</lang>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH, PRST7]"/>
+

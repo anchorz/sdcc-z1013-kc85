@@ -1,0 +1,6 @@
+<kurz src="UNIVERSELLES DATENBANKPROGRAMM"/>
+<lang>
+
+<include src="D-BANK.BAS.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

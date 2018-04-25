@@ -1,3 +1,4 @@
 <kurz src="REHN-SOFT 0287 3K+TINY BASIC"/>
 <lang></lang>
-<requires></requires>
+<syscall type="rst20" tag="[OUTCH, CSAVE, INCH, PRST7]"/>
+

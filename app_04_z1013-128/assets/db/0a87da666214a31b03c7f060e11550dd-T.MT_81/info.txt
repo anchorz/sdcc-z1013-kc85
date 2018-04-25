@@ -1,0 +1,4 @@
+<kurz src="Beschreibung zum EPSON Drucker, MT81 MANNESMANN TALLY 81"/>
+<lang><include src="T.MT_81.T.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

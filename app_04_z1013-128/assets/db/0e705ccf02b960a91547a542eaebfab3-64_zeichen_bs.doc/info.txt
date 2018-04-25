@@ -1,3 +1,4 @@
 <kurz src="Zusatzleiterplatte 64-Zeichen-Bildschirm Z1013"/>
 <lang><include src="64_zeichen_bs.doc.txt"/></lang>
-<required></required>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

@@ -1,0 +1,6 @@
+<kurz src="identisch [a91abc3c62262a8e6c0b60d9753928d2]"/>
+<lang>Zeilen wurden neu nummeriert.
+
+<include src="Datenbank-6.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

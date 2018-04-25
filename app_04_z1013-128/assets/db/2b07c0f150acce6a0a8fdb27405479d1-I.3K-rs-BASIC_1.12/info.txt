@@ -1,3 +1,4 @@
 <kurz src="3K Tiny-Basic 3K-rs-BASIC V1.12 rehn-soft   1988-03"/>
 <lang><include src="I.3K-rs-BASIC 1.12.txt"/></lang>
-<requires></requires>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

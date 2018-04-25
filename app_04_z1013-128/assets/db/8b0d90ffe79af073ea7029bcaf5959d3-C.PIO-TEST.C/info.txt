@@ -1,0 +1,8 @@
+<kurz src="Gibt verschiedene Testwerte auf der PIO U855 aus"/>
+<lang>
+Steuerung: CTRL-C
+</lang>
+<port range="beliebig" mode="W" device="PIO U855"/>
+<port range="beliebig" mode="W" device="PIO U855"/>
+<syscall type="rst20" tag="[INKEY, INSTR, PRST7, INHEX]"/>
+

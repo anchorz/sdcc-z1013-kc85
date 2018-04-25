@@ -1,0 +1,4 @@
+<kurz src="Z1013 Datei-TYPEN - Legende"/>
+<lang><include src="T.TYPEN-LE.T.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

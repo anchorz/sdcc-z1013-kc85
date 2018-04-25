@@ -4,8 +4,8 @@
 
 
 Der Objektcodeeditor enthaelt einen Assembler zur Uebersetzung von
-Befehlen im Mnemonikcode in den Maschinencode und den Reassemb-
-ler zur Rueckuebersetzung.
+Befehlen im Mnemonikcode in Maschinencode und den Reassembler zur
+Rueckuebersetzung.
 Ausser dem Maschinencode wird noch eine Markentabelle abgespeichert.
 
 Programmstandort:
@@ -201,4 +201,11 @@ Ein Rueckwartsblaettern ist nur bei gesetzter Globalmarke moeg-
 lich.
 Wenn Sie Teile loeschen wollen, jedes Zeichen, auch hinter dem
 Cursor, loeschen.
-^^^^
+
+letzter Bearbeiter:
+
+Uwe Gast
+Ringfurther Weg 5
+Magdeburg
+3035
+

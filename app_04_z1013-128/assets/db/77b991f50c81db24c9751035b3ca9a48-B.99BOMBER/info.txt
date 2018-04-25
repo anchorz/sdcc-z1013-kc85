@@ -10,4 +10,4 @@ dient >SPACE<.
 Sie duerfen keinen der 99 Bomber durchlassen.         
 
 <include src="99BOMBER.B"/></lang>
-<requires>A2</requires>
+<syscall type="A.2" tag="[KILL]"/>

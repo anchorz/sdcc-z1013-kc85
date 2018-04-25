@@ -1,0 +1,5 @@
+<kurz src="Anzeige Zeichensatzeprom als KRT-Vollgrafik"/>
+<lang>Steuerung: L S CTRL-C</lang>
+<port range="18" mode="W" device="KRT-Grafik: [4]On/off[3-0]Bank"/>
+<syscall type="rst20" tag="[INSTR, INCH, PRST7, INHEX]"/>
+

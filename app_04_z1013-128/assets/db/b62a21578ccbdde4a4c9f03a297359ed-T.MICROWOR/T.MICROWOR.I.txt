@@ -1,0 +1,396 @@
+@3*Ol
+***************************************************************
+*							      *
+*                W1  M i c r o W O R D  1.5W0                 *
+*							      *
+***************************************************************
+
+		  (c) by R. Brosig  1.10.88
+			IG-HC Dresden
+
+"MicroWORD 1.5" ist ein gegenüber V.1.3 stark erweitertes Text-
+system, welches sich durch Einfachheit, Kompaktheit und hohe
+Arbeitsgeschwindigkeit auszeichnet. Mit 22 Kommandos sowie 21
+Editierfunktionen werden alle für ein Textsystem wichtigen
+Funktionen ermöglicht. Durch die automatische Steuerzeichen-
+konvertierung können Texte verschiedener Herkunft bearbeitet
+werden.
+
+E1. SpeicheraufteilungF
+
+   0100H-13ADH  Programm
+   13AEH-13F8H  Arbeitszellen
+   13F9H-1418H  Stringpuffer
+   1419H-1455H  Druckertreiber
+   1456H-17FEH	SAVE-Bereich
+      ab 17FFH  Textpuffer
+
+E2. Der TextspeicherF
+
+Als Textspeicher dient der Speicherbereich ab 17FFH. Bei
+64K-RAM stehen somit max. 54258 Textzeichen zur Verfügung.
+Die genaue Lage des Textpuffers kann durch das A-Kommando bei
+Bedarf entsprechend eingeschränkt werden. Dabei kann die Defi-
+nition nur im Bereich von 1456H bis Speicherobergrenze erfolgen
+(max. EBFFH). Wird die Obergrenze des Textspeicherbereiches
+überschritten, wird durch eine Einfügung eines Zeichens 03H
+der überstehende Text abgeschnitten.
+Während der Bearbeitung wird der Text an Cursorposition in
+zwei Teile geteilt, wobei der hintere Teil an die Textpuffer-
+obergrenze geschoben wird. Ein Austritt aus dem Editor mit
+Reset oder dgl. bewirkt, daß der Text nicht wieder zusammen-
+gefügt wird. Durch einen sofortigen Neustart wird der Text 
+automatisch wieder reorganisiert.
+
+-1Achtung:-0
+Der Editor benötigt den gesamten definierten Textpufferbe-
+reich, auch wenn der zu bearbeitende Text kleiner ist.
+
+E3. Allgemeine FunktionenF
+
+Nach Start des Texteditors wird ein Speichertest durchgeführt,
+der einen evtl. größer def. Textpuffer auf das Speicher-
+ende begrenzt (Anzeige 'M'). Danach wird das Ende eines evtl.
+im Textpuffer liegenden Textes gesucht (Anzeige 'I'). Befinden
+sich darin CRLF-Steuerzeichen, so werden diese in NL gewandelt.
+CR-Steuerzeichen allein werden nur dann in NL gewandelt, wenn
+sich keine NL's im Text befinden. Nach dem Ende der Initiali-
+sierungsphase wird ein Kommandomodus erreicht. Dieser zeigt
+
+- das Menü der möglichen Kommandos,
+- die Zeile, in der sich der Cursor befindet		<LINE>,
+- die Cursorposition innerhalb der aktuellen Zeile	<POS>,
+- den freien Platz im Textpuffer dezimal		<FREE>,
+- die aktuelle Cursor-Textposition in hex		<TXP>,
+- das Textpufferende in hex				<ETB>,
+- das definierte Zeilenende dezimal (max.255)		<LE>,
+- den aktuellen Editiermode (Insert'I'/Overwrite'O')	<M>,
+- sowie den Hexcode des Zeichens auf der Cursorpos. an	<CD>.
+
+Für den Fall, daß noch kein Text im Textpuffer liegt, emp-
+fiehlt es sich, den Textpuffer als erstes komplett zu löschen
+<&>. Der SAVE (Merkzettel) wird beim Start automatisch gelöscht. 
+
+E4. Der KommandomodusF
+
+Der Kommandomodus ist durch das Kommandomenü gekennzeichnet.
+Durch Eingabe des entspr. Buchstaben/Zeichens wird das Kommando
+ausgeführt. Alle Eingaben, die kein Kommando aufrufen, führen
+zum Bildschirmmodus mit der letzten Cursorposition.
+
+-1Folgende Kommandos sind implementiert:-0
+
+<A> - assign
+Damit kann der Textpufferbereich neu definiert werden. Dadurch
+ist es auch möglich, mehrere Texte im Speicher zu halten.
+Es ist zu beachten, daß der Text auf der Adresse Textpuffer-
+anfang+1 beginnt, da auf der 1. Pufferzelle das STX-Zeichen
+eingetragen wird. 
+Die Eingabe der Adressen kann dezimal oder hexadez. (nachstel-
+len eines H, ohne führende 0) erfolgen.
+
+<Q> - quit
+Rückkehr zum Monitor und Reorganisation des Textes.
+
+<T> - top
+Cursor wird auf Textanfang gesetzt.
+
+<B> - bottom
+Cursor wird auf Textende gesetzt.
+
+<N> - number
+Cursor wird nach Eingabe der Zeilennummer mit maximal fünf
+Ziffern auf die entsprechende Zeile gesetzt.
+
+<#> - delete part
+Mit diesem Kommando kann ein Textteil, dessen Anfang mit einer
+Marke gekennzeichnet wurde, bis zur aktuellen Cursorposition
+gelöscht werden. Mögliche Fehler sind das Fehlen der ersten
+Markierung bzw. die Markierung liegt hinter der Cursorposition.
+
+<C> - all clear
+Löschen des gesamten Textpuffers. Der Textpuffer wird aber
+nicht physisch gelöscht, sondern es wird am Anfang des Text-
+puffers das ETX-Zeichen eingetragen.
+
+<F> - find/change
+Die Eingabe einer gesuchten Textfolge wird erwartet, durch
+'/' getrennt kann anschließend ein evtl. einzusetzender Text
+angegeben werden. Die gesamte Textfolge ist auf 32 Zeichen
+begrenzt, das Verhältnis der beiden Textteile ist beliebig.
+Die Suche erfolgt ab aktueller Cursorposition. Bei der ersten
+Übereinstimmung wird der Cursor auf das erste Zeichen dieser
+Zeichenkette gesetzt und in den Bildschirmmodus umgeschaltet.
+Im Bildschirmmodus existiert eine Funktionstaste, die diesen
+Kommandokomplex ohne erneute Eingabe der Zeichenkette wie-
+derholt startet.
+Ist die gefundene Zeichenfolge nicht die gewünschte, so kann
+mit Hilfe der Cursorfunktionen die Zeichenkette übergangen
+werden.
+
+<H> - print part
+Über die Druckerschnittstelle kann mit diesem Kommando der
+Text zwischen einer markierten Stelle und der aktuellen
+Cursorposition formatiert ausgedruckt werden. Es besteht die
+Möglichkeit der Einstellung des Seitenformates und der Auswahl
+der zu druckenden Seiten. Eine Arbeit mit Seitenstop kann
+eingestellt werden. Nach Aufruf des Kommandos erfolgt die
+Aufforderung zur Eingabe der Zeilenzahl/Seite (lines/page),
+die man mit einer Dezimalzahl (>9) beantwortet (1 Seite
+1/2 zeilig=> 62). Bei Zeilenzahl =0 bzw. keine Eingabe erfolgt
+keine Seitenformatierung.
+Bei geforderter Seitenformatierung wird abgefragt, welche
+Nummer die erste Seite erhalten soll. Bei leerer Eingabe wird
+ohne Fußzeile, in der die Seitennummer untergebracht ist,
+gedruckt. Anschließend wird abgefragt, ob ein Druckstop nach
+jeder Seite erfolgen soll. Wird diese Frage bejaht, stoppt
+MicroWORD nach jeder Seite. Andernfalls wird der Text bis
+zum Ende ohne Pause gedruckt.
+
+<P> - print file
+wie <H>, nur daß der komplette Text gedruckt wird.
+
+<E> - line end
+Mit diesem Kommando wird die rechte Zeilenbegrenzung einge-
+stellt (10-255). Ab 6 Positionen vor dieser Begrenzung ertönt
+eine Randwarnung, beim Überschreiben der Begrenzung erfolgt 
+ein Wortumbruch bis zum vorhergehenden Leerzeichen oder TAB. 
+Wird innerhalb der letzten 6 Zeichen ein '-' eingegeben, so
+erfolgt automatisch ein Zeilenabschluß. Die Eingabe einer 0
+als max. Zeilenlänge schaltet die Funktion aus.
+
+<L> - load file
+Es wird ein Text über die Headersaveschnittstelle in den 
+Textpuffer geladen. Ein evtl. vorhandener Text wird über-
+schrieben.
+
+<S> - save file
+Der gesamte Text, der sich im Textpuffer befindet, wird über
+die Headersaveschnittstelle ausgegeben.
+
+<V> - save part
+Ein vorher markierter Textteil wird bis zur aktuellen Cursor-
+position über die Headersaveschnittstelle ausgegeben.
+ 
+<D> - load part
+Der über die Headersaveschnittstelle eingelesene Text wird an
+der Cursorposition eingefügt. Dabei ist darauf zu achten, daß
+der eingefügte Text kleiner als der freie Textbereich ist.
+Es ist wichtig, daß der Einlesevorgang nicht vorzeitig abge-
+brochen wird, da es sonst zu einem Textverlust kommen kann.
+
+<=> NL => CRLF
+Wandelt über den gesamten Text das Zeilenendezeichen NL (1EH)
+in die Steuerzeichenfolge CRLF (0DH,0AH). Anschließend wird
+das Kommando <S> aufgerufen, so daß der gewandelte Text auf
+Kassette ausgelagert werden kann. Nach Beendigung oder Ab-
+bruch der Save-Funktion wird der Text wieder zurückgewandelt.
+Es ist zu beachten, daß der Text durch die Wandlung in CRLF
+um die Zeilenzahl länger wird und deshalb der freie Speicher-
+platz diesem Fakt entsprechen muß. Andernfalls erfolgt eine
+Fehlermeldung.
+
+<I> - in save
+Dieses sehr leistungsfähige Kommando dient im Zusammenhang
+mit dem <O>-Kommando dem Mischen von Textteilen aus dem gleichen
+Textpuffer, oder aus einem anderen. Ein Textbereich von einer
+definierten Marke bis zur Cursorposition wird in den SAVE
+geladen. Der SAVE stellt einen Sondertextpuffer von 1K Länge
+dar, der direkt hinter dem Editor plaziert ist. Ist der mar-
+kierte Bereich größer als der SAVE, erfolgt eine Fehlermel-
+dung, der Text wird nicht in den SAVE übernommen. Sollte der
+SAVE-Puffer vom normalen Textpuffer mitbenutzt werden müssen,
+so erfolgt eine entsprechende Fehlermeldung, wenn trotzdem eine
+SAVE-Funktion ausgeführt werden soll.
+ 
+<O> - out save
+Der Inhalt des mit <I> Kommando gefüllten SAVE's wird an der 
+aktuellen Cursorposition eingefügt. Dabei erfolgt eine Kon-
+trolle über den noch verfügbaren Speicherplatz.
+
+E5. Der BildschirmmodusF
+
+Im Bildschirmmodus wird der Bildschirm entsprechend des
+eingegebenen Textes aktualisiert. Das Textfenster wird dabei
+so dargestellt, daß der Cursor im Bildfenster erscheint. Dabei
+kann an den Rändern Text abgeschnitten sein, der nicht mehr 
+auf den Bildschirm paßt. Alle Editierfunktionen werden
+durch entsprechende Tastatureingaben ausgelöst.
+Das Programmsystem enthält dazu eine Tastaturkonvertierungsrou-
+tine, die es ermöglicht, jeden beliebigen Tastaturcode (ab 129)
+als Funktionscode (ab 142H) festzulegen. Im Folgenden werden die
+23 internen Codes, denen der gewünschte Tastaturcode zugeordnet
+werden muß, aufgelistet:
+
+-1Code   Bedeutung                   -0
+ 01H	Cursor rechts
+ 02H	Cursor links
+ 04H	Cursor runter
+ 05H	Cursor hoch
+ 06H	Cursor eine Seite vor
+ 07H	Cursor eine Seite zurück
+ 08H	Zeichen links löschen
+ 09H	Zeichen löschen
+ 0AH	Bild-/Komm.-Mode
+ 1BH	Steuerzeichen folgt
+ 0BH	Wandlung Buchstabe
+ 0FH	CAPS (Tausch gr/kl))           
+ 10H	Löschen einer Zeile
+ 0EH	Ersetzen/Wiederholen
+ 0CH	Seitenvorschub (nur Drucker)
+ 0DH	RETURN/ENTER
+ 11H	Tabulator
+ 13H	Einfügen/Überschreiben
+ 16H	Marke setzen
+ 18H	Cursor ein Wort rechts
+ 19H	Cursor ein Wort links
+ 1CH	Reclaim, Zeichen zurückholen
+ 00H	Zeichen einfügen ('NUL')
+
+
+Neben den von der Version 1.3 her bekannten Funktionen wurden
+5 neue Funktionen eingeführt:
+
+ - Marke setzen; diese Markierung wird zusammen mit der Cursor-
+   position von einigen Kommandos benötigt.
+
+ - Cursor ein Wort links/rechts; dadurch kann man schnell
+   Positionen in einer Zeile anfahren. Weiterhin hilft diese
+   Funktion, wenn z.B. das letzte Wort gelöscht werden soll,
+   um den Cursor ein Wort zurückzusetzen.
+
+ - Reclaim; diese Sonderfunktion hängt eng mit der gesamten
+   Arbeitsweise des Editors zusammen. Mit dieser Taste ist es
+   möglich, ein versehentlich überschriebenes oder gelöschtes
+   Textteil zurückzuholen, wenn dazwischen keine Cursor-
+   funktionen oder andere Manipulationen des Textes erfolgten. 
+
+ - Insert/Overwrite; in Abhängigkeit dieser Einstellung, die
+   in der Statuszeile auch angezeigt wird, erfolgt die Eingabe
+   neuen Textes, indem entweder überschrieben (O) oder eingefügt
+  (I) wird. 
+Steuerzeichen, die von der Tastatur ohne Ankündigung angespro-
+chen werden, aber durch das Programmsystem nicht bearbeitet
+werden, erzeugen eine Fehlerausschrift. Sollen Steuerzei-
+chen in den Text eingefügt werden, so sind diese stets
+mit der Ankündigungstaste anzumelden (entspr. Kodierungs-
+tabelle, z.B. ESC). Vorsicht ist bei der Einfügung des
+ETX-Zeichens (03H) geboten. Bei einem neuen Start des Editors
+wird dieses Zeichen als Textende erkannt, und der dahinter-
+liegende Text wird abgeschnitten. Muß aus irgendwelchen
+Gründen mit der Kodierung 03H im Text gearbeitet werden, so
+empfiehlt es sich, das ETX-Zeichen umzudefinieren (Zelle 127H).
+Folgende Steuerzeichen können bzw. müssen ohne Ankündigungs-
+taste in den Text eingefügt werden:
+
+TAB  Kodierung 09H; Tabulatorstop jede 8. Spalte
+NL   Kodierung 1EH; Neue Zeile als Wagenrücklauf/Zeilen-
+     schaltung
+FF   Kodierung 0CH; Neue Seite (wird nur beim Druck ausgeführt,
+     Anz. im Text als  Grafikzeichen)
+NUL  Kodierung 0; schreibt eine physische 0 in den Text, da 0
+     von Tastatur aus nicht erzeugbar ist, aber für bestimmte
+     Effekte (Drucker-St.-Zeichen) benötigt werden.
+
+Die Steuerzeichen werden im Text als Grafikzeichen mit einem in
+Zelle 16BH zugeordneten Offset dargestellt.
+Sollen die Steuerzeichen dem Zeichensatz entsprechend darge-
+stellt werden, so ist der Offset auf 0 zu setzen: 16BH -> 0.
+Ist man sich nicht sicher, welches Steuerzeichen tatsächlich
+im Speicher steht, so kann der Cursor auf die entsprechende
+Stelle gefahren werden. In der Statuszeile erscheint dann der
+entsprechende Hexcode.
+Weiterhin sind im Text Grafikzeichen zugelassen und eingeb-
+bar (außer FFH). Es ist aber zu bedenken, daß der Text da-
+durch nicht mehr dem ASCII-Format entspricht, und meist seine
+Druckfähigkeit verliert.
+ 
+Für die Cursordarstellung sind zwei Codes (je nachdem, ob sich
+unter dem Cursor ein Zeichen befindet) vorgesehen, die in Zel-
+le 124H bzw 125H eingetragen werden können. Wird in Zelle 126H
+eine 80H eingetragen, so erfolgt die Cursordarstellung mit
+gesetztem 7.Bit (vorteilhaft, wenn im Zeichensatz statt den
+Grafikzeichen der inverse ASCII-Zeichensatz abgelegt ist
+-> Cursordarstellung als inverses Zeichen).
+
+E6. Die DruckerschnittstelleF
+
+Die Originalversion verfügt über V24-Treibersoftware.
+Um andere phys. Druckertreiber nutzen zu können, muß auf der
+Adresse 112H der entsprechende Sprung eingetragen werden. Dort 
+kann z.B. ein Sprung auf DRAKK oder ZEIDR des Sprungverteilers
+gelegt werden
+Der angehängte phys. V.24-Treiber kann dann natürlich gelöscht
+bzw. anderweitig genutzt werden.
+Sollte der verwendete Drucker kein NL (1EH) als Steuerzeichen
+verstehen, so ist dieses im phys. Treiber in CRLF (0DH,0AH)
+aufzulösen (im angehängten V.24-Treiber realisiert). 
+
+E7.Implementierungsabhängige AnpassungsareaF
+
+100H   JMP ANF     ;Programmanfang
+103H   JMP WSTRT   ;Warmstart
+106H   JMP OUTCH   ;Zeichen im Akku ausgeben
+109H   JMP INCHR   ;Zeichen in Akku eingeben
+10CH   JMP INKEY   ;Tastaturabfrage
+112H   JMP DRAKK   ;Zeichen im Akku drucken
+      (JMP ZEIDR)
+115H   JMP DRDEL   ;Rücksetzen des logischen
+		    Druckertreibers
+118H   JMP SARUF   ;Headersave
+11BH   JMP LORUF   ;Headerload
+11EH   JMP SOUND   ;Tonerzeugung
+121H   JMP SYS     ;Rückkehr in den Monitor
+
+Alle Sprünge außer DRAKK (ZEIDR) und DRDEL (kurzg.) zeigen
+original auf den Sprungverteiler. Bei Nichtimplementierung
+einzelner Sprungverteilerroutinen sind diese unbedingt mit RET
+(C9H) kurzzuschließen! Das gilt besonders für SOUND.
+
+Wichtige Adressen und Zellen zur Anpassung:
+
+-Cursordarstellung: 
+ Code1    :   124H  -> C7H
+ Code2    :   125H  -> FFH
+ mit 7.bit:   126H  -> 0/80H
+
+-Ende-/Anfangtextzeichen:
+ ETX:  127H  -> 03H
+ STX:  128H  -> 02H
+
+-Textpuffer-Daten:
+ TPANF: 15BH -> 17FFH
+ TPEND: 15DH -> EBFFH
+
+-Bildschirm:
+ BWS-Anfang : 15FH -> EC00H
+ Spaltenzahl: 161H -> 64
+ Zeilenzahl : 163H -> 16
+
+-absolute Textbereichsgrenzen:
+ untere Grenze: 167H -> 1456H
+ obere  Grenze: 169H -> EBFFH
+
+-Zeichenoffset bei Steuerzeichen:
+ 16BH -> 0A0H 
+
+Diese Zellen sind im allg. konstant, können aber bei Hardware-
+änderungen (z.B.größerer Bildschirm) entspr. geändert werden. 
+
+
+Viel Spaß mit "MicroWORD 1.5"
+
+
+						     R. Brosig
+						     IG-HC
+					         Dresden
+
+
+PS: MicroWord 1.5 wird mit einem Ladebild ausgeliefert, welches
+nach dem Laden automatisch das Laden des Editors einleitet, so-
+fern das Headersave über den Sprungverteiler erreichbar ist.
+Dieses Ladebild nimmt keinerlei Speicher in Anspruch, da dieses
+durch den Editor überladen wird.
+Fehlerhinweise oder Verbesserungsvorschläge werden gern entge-
+gengenommen.
+

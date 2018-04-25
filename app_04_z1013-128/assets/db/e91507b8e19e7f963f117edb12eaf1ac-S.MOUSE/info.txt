@@ -1,0 +1,4 @@
+<kurz src="Commodore Mouse Treiber (Bus Mouse), Maustreiber"/>
+<lang><include src="S.MOUSE.ASM.txt"/></lang>
+<syscall type="rst20" tag=""/>
+<port range="00" mode="R" device="Userport: Maus"/>

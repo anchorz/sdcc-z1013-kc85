@@ -1,0 +1,10 @@
+<kurz src="MicroWORD  V1.7"/>
+<lang>Das Programm verwendet einen Sprungverteiler ab 0xE000. Dieser Bereich sollte also mit 0xFF oder 0xC9 gefüllt werden, um
+Abstürze zu vermeiden.</lang>
+<port range="04" mode="W" device="[7]64/16"/>
+<port range="50" mode="W" device="Centronics: Data"/>
+<port range="51" mode="W" device="Centronics: Initalisierung"/>
+<port range="52" mode="R" device="Centronics: Status"/>
+<syscall type="e000" tag="[06:save, 03:load]"/>
+<syscall type="spv" tag="[DRDEL]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH]"/>

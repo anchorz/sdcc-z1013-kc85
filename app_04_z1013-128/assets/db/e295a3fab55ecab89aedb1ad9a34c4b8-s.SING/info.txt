@@ -1,0 +1,7 @@
+<kurz src="Spracheingabe, Sprachausgabe"/>
+<lang>Falls das Programm funktioniert, warum wird B7 auf Eingabe geschalten? Ist da eine spezielle Hardware vorgeschalten?
+
+<include src="SING.S.s"/></lang>
+<syscall type="rst20" tag="[INTCH, PRST7]"/>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, unbekannte Funktion [7]Toneingabe?"/>
+<port range="03" mode="W" device="Systemport: Tonausgabe"/>

@@ -1,0 +1,6 @@
+<kurz src="identisch [f665b6a92491f043ed4704051cfc38b1]"/>
+<lang></lang>
+<syscall type="rst20" tag=""/>
+<port range="04" mode="" device="[5]ZGBank,  das Programm schaltet nicht, aber die Ausgabe erfolgt mit Umlauten"/>
+<port range="50" mode="W" device="Centronics"/>
+<port range="56" mode="R/W" device="I2C"/>

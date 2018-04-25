@@ -1,0 +1,6 @@
+<kurz src="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013 (druckerfreundlich)"/>
+<lang>ansonsten wie [59fc467989b3b211c653d62c3b2aa285]
+
+<include src="T.RF_AM_Z1.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

@@ -1,0 +1,9 @@
+<kurz src="Anzeige Sprungmarken/Symboltabelle nach einem Assembler-Lauf"/>
+<lang>Hilfsprogramm um die Symboltabelle auszudrucken. Die Adresse ist auf 0x0800. 
+Der verwendete Assembler ist unbekannt.
+
+Steuerung: CTRL-C
+
+</lang>
+<syscall type="rst20" tag="[OUTCH, OUTHL, INCH, PRST7]"/>
+<port range="keine" mode="" device=""/>

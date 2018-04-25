@@ -1,0 +1,209 @@
+
+****************************************************************
+                     maintape V 4.5
+****************************************************************
+
+Programmstandort: E000H - E3FFH    Start: E000H
+                  fuer Gruendversion:3C00H - 3FFFH  Start:3C00H
+
+benutzte Systemzellen:
+DATA  : 13/14H Blockadresse
+FTYP  :    15H Filetyp
+SOIL  : 16/17H Eingabebeginn
+ARG1  : 1B/1CH Anfangsadresse
+ARG2  : 1D/1EH Endadresse
+ARG3  : 23/24H Startadresse
+ZILAD : 25/26H Blocknummer
+CURS  : 2B/2CH Cursorposition
+AZEI  :    2DH Aktivitaetssymbol
+MPOL  :    2EH Phasenlage
+
+Ueberschrieben werden die Register AF,AF',BC,DE,HL und IX.
+
+
+Kommandos:
+----------
+
+@S begin end start name ENTER
+
+- Abspeichern einer File von 'begin' bis 'end' mit Startadresse
+  'start' und Namen 'name'.
+- Abgefragt werden Filetyp und Filenummer.Letztere wird in 
+  jedem Fileblock abgespeichert. Die Filenummer dient der
+  Orientierung bei der Suche nach einer bestimmten File und ist
+  in Verbindung mit der Blocknummer genauer als jedes Band-
+  zaehlwerk>
+- Es ist zu beachten, dasz zwischen 'start' und 'name' genau ein
+  Space stehen musz. Beim Fehlen einer Startadresse ist fuer
+  'start' eine '0' anzugeben!
+- Die abgespeicherten File lassen sich mit HEADERSAVE und dem
+  Originalmonitor (ENTER erst beim 2. Kennton) einlesen.
+
+
+@S:
+
+- Abspeichern einer File mit gleichem Kopfblock.
+- Abgefragt wird die Filenummer. Die CRC(SDLC)-Pruefsumme wird
+  vor dem Abspeichern aktualisiert.
+
+Jeweils nach dem Abspeichern einer File wird mit '<---(?)' eine
+Verifyfunktion angeboten, die mit 'N' oder Break (Shift4/K-
+ASCII=03) abgewiesen werden kann. Nach Betaetigung einer anderen
+Taste startet Verfify und kann bis zum Auffinden eines Kopf-
+blockes mit BREAK abgebrochen werden. Ansonsten wird die Rich-
+tigkeit der abgespeicherten Pruefsummen nachgeprueft
+
+
+@LC
+
+- Auflisten von Kopfbloecken auf dem Bildschirm. Der Kopfpuf-
+  ferbereich wird zerstoert! Die Funktion kann mit BREAK abge-
+  brochen werden.
+
+
+@LN name
+
+- Einlesen einer File mit Namen 'name' mit den im Filekopf ein-
+  getragenen Parametern. Der Name wird bis zum ersten Space im
+  @LN- Kommando ueberprueft. Wenn also kein Name angegeben wur-
+  de, so erfolgt das Einlesen ohne Namenskontrolle.
+- Abgefragt wird der Filetyp. Es erfolgt keine Pruefung des
+  Filetypes, wenn an dieser Stelle Space, ENTER oder ein anderes
+  Steuerzeichen eingegeben wird.
+
+
+@L addr
+
+- Einlesen der naechsten File ohne Namens- oder Typkontrolle ab
+  der angegebenen Adresse.
+
+
+@L begin end     *)
+
+- Einlesen der anliegenden File in den im Kommando angegebenen
+  Speicherbereich. Das Kommando wirkt wie das 'L'- Kommando des
+  Monitors und ist wie dieses anzuwenden. Es nutzt die herauf-
+  gesetzte Fehlertoleranz des *maintape*, wodurch sich einige
+  sonst nicht mehr lesbare Monitorfiles noch fehlerfrei einlesen
+  lassen.
+
+
+@L begin end blnr
+
+- Einlesen der naechsten File ab Blocknummer 'blnr' in den an-
+  gegebenen Speicherbereich. Zu beachten ist, dasz sich die an-
+  zugebende Blocknummer aus der Speicheradrese ergibt, ab der
+  der gesuchte Block bei Anwendung der Originalgrenzen eingele-
+  sen worden waere.
+
+Bei allen @L- Kommandos (auszer *)) erscheint ein Memorypointer,
+der -da er auch in der Suchphase sichtbar ist- um ein Aktivi-
+taetssymbol ergaenzt wurde:
+
+nnnn  f S   -Save der File mit Nummer f
+nnnn  f V   -Verfify der File mit Nummer f
+nnnn  f L   -Load der File mit Nummer f
+nnnn  f *   -Suche eines Kopfblockes bzw. einer vorgegebenen
+             Blocknummer
+
+Als Filenummer erscheint die beim Abspeichern angegebene. Werden
+HEADERSAVE- Files eingelesen, so wird ein weiszes Quadrat ausge-
+geben (ASCII=0).
+ 
+
+Folgende Fehlerausschriften sind moeglich:
+bad record        (b.r. u.a.)  -Fehlerhafte Pruefsumme
+record not found  (rnf. u.a.)  -Blocknummer ist hoeher als er-
+                                wartet, Pruefsumme aber i.O.
+no point          (np.  u.a.)  -File hat keine Blocknummer (MONI-
+                                TOR-File), laeszt sich mit *)
+                                einlesen.
+ER<nnnn                        -Pruefsumme des mit *) einge-
+                                lesenen Blockes war fehlerhaft
+
+Das Ladekommando (auszer *)) kann nach kurzem Rueckspulen des
+Tape mit Betaetigung einer beliebigen Taste auszer BREAK (Kom-
+mandoabbruch) fortgesetzt werden.
+
+
+Eingelesene COM- Files starten automatisch, wenn sie mit @LN
+eingelesen und ihr Filetyp 'C' in der Abfrage vor dem Einlesen
+bestaetigt wurde.
+
+
+
+@C begin end
+
+- Berechnung der CLC(SDLC)- Pruefsumme ueber den angegebenen
+  Bereich
+
+
+
+Aufbau des Kopfblockes:
+-----------------------
+
+Byte   0 -  1   Anfangsadresse
+Byte   2 -  3   Endadresse
+Byte   4 -  5   Startadresse
+Byte   6 -  7   CRC(SDLC)- Pruefsumme
+Byte   8 - 0BH  Nutzerkennzeichung
+Byte       0CH  Filetyp
+Byte  0DH- 0FH  Kopfkennzeichen 3x 0D3H
+Byte  10H- 1FH  Filename
+
+
+
+
+Abbruchsmoeglichkeiten:
+-----------------------
+
+Alle *maintape*- Kommandos (auszer *)) lassen sich an folgenden
+Stellen mit BREAK abbrechen:
+
+- waehrend der Suche eines Kopfblockes (Aktivitaetssymbol * )
+- nach Ausgabe einer Fehlerausschrift (auszer *))
+- waehrend der Abfrage nach Filetyp oder -nummer
+- waehrend der Abfrage, ob Verifyfunktion gewuenscht (Abbruch
+  auch mit 'N' moeglich)
+
+
+Anpassungen:
+------------
+
+Ab Adresse #E3F8 bzw. #3FF8 kann der jeweilige Nutzer sein per-
+soenliches 4-stelliges Kennzeichen eintragen. Es erscheint in
+jedem Filekopf ab 9. Stelle. Weiterhin ist auf Adresse #E001
+bzw. #3C01 eine Korrektur des Eintragbeginns der zusaetzlichen
+@- Kommandos moeglich, wenn die auf #B0 befindlichen nicht ueber-
+schrieben werden sollen.
+ 
+
+ 
+ Allgemeine Ausfuehrungen:
+-------------------------
+
+*maintape* ist eine eigenstaendige Entwicklung, die sich an
+einem hohen Bedienkomfort sowie einer fehlertoleranten Datener-
+kennung orientiert. Durch die Anwendung variabler Referenzwerte
+beim Einlesen koennen Spitzenverschiebungen zum Teil ausge-
+glichen werden, wodurch sich eine bessere Lesbarkeit der
+Files gegenueber dem Z1013-Monitor bzw. dem HEADERSAVE ergibt.
+
+Die Einfuehrung einer Filenummer ersetzt das Bandzaehlwerk und
+eruebrigt seine Synchronisation auf den Bandanfang.
+
+Fuer die Kompatibilitaet hinsichtlich der Parameteruebergabe des
+HEADERSAVE existiert eine abgeruestete Variante des *maintape*.
+Diese (*mainsave*) enthaelt ab #E000 einen identischen Sprung-
+verteiler und mit HEADERSAVE identische Kommandos.Geblieben
+sind auszerdem die Filenummer, die CRC(SDLC)-Pruefsumme und das
+dazugehoerige Kommando '@C'.
+
+
+
+
+
+                                Autor und letzter Bearbeiter:
+
+                                Martin Duchrow, BERLIN, 1143
+

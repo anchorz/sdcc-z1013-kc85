@@ -1,0 +1,15 @@
+      TYPEN - Legende
+B = BASIC-Programm f. HC-BASIC+ in Headersave
+C = Selbststartendes  MC-Programm
+E = EPROMinhalt
+I = Beschreibung des entspr. Programmes
+K = BASIC-Programm f.  KC 85/2 - BASIC/Header
+L =   "      "     f.  TDL-BASIC in  Headers.
+M = Maschinenprogramm, nicht Selbststartend
+P = PASCAL-Quellprogr.(HISOFT) in Headersave
+S = Assembler-Quellprogr. in ASII mit NL
+T = Text mit NL
+Q = Gequetschtes File mit NSWEEP
+b = 3k - basic
+s = IDAS-Quellprogramm in Headersave
+

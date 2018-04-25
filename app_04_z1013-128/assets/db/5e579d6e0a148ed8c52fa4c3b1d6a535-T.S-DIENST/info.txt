@@ -1,0 +1,4 @@
+<kurz src="Bestellung eines Schaltbildes 01.01.1992"/>
+<lang><include src="T.S-DIENST.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

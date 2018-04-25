@@ -1,0 +1,264 @@
+****************************************************************
+*              OBJEKTCODEEDITOR OCE FUER Z1013                 *
+****************************************************************
+
+Dieser Objektcodeeditor ist ausdem MC-80 von GERA entstanden,
+die Maengel desselben (z.B. 6-Zeilen-Edit) sind beseitigt, er
+wurde dem Z-1013 angepasst. Da der MC-80 bei Start seine RAM-
+Zellen mit 'FF' initialisiert, ist es hier angebracht, vor Ein-
+laden und Start des OCE, den RAM des Z-1013 mit 
+            'K aadr eadr FF' 
+ebenfalls auf FF zu setzen.  
+.............................................................
+
+Der Objektcodeeditor enthaelt einen Assembler zur Uebersetzung
+von Befehlen im Mnemonikcode in den Maschinencode und den Reas-
+sembler zur Rueckuebersetzung.
+Ausser dem Maschinencode wird noch eine Markentabelle abge-
+speichert.
+ 
+Programmstandort:
+     4000H ...5DFFH              >CRC=C6E0
+     4000H  =  Startadresse
+
+OCE-Stack:
+     200H abwaerts
+
+Hinweise zur Benutzung:
+     - adr = Hexzahl oder vereinbarte Marke
+     - ein Programmende ist eine Adresse, ab der mind. viermal
+       der Speicherinhalt 'FF' steht (s.oben)
+     - Verschieben von Progr.teilen nur in mit '00' oder 'FF'
+       belegten Speicher moeglich (bei M+E beachten)
+     - es ist deshalb guenstig, den Speicher mit 'FF' zu
+       initialisieren ! (s.oben)
+
+Nach dem Start des OCE auf der Adresse 4000H kann die Adresse
+der Markentabelle eingegeben werden. Der Speicherbereich fuer
+Markentabellen ist im Grundzustand auf 7800H eingestellt.
+           (MTB#7800 = im Kopf des Anfangmenue)
+Bei Neueinstellung muessen davor 20 Speicherplaetze freier 
+Speicher sein, fuer Merkzellen des OCE.
+Danach befindet sich der OCE im Anzeigemodus. 
+
++ Markentabelle
+     - Ende der Tabelle : '00'
+     - max. 127 Marken
+     - jede Vereinbarung und jeder Zugriff braucht 5 Byte
+     - ein Ueberlaufen wird nicht verhindert
+...............................................................
+
++ Anzeigemodus
+     - Programmanfaenge und markante Programmstellen mit Global-
+       marken versehen ! (3 Zeichen = Buchstaben z.B.: AAA:)
+     - Kommandos im Anzeigemodus :
+
+ANMERKUNGEN:
+Setzen Sie zuerst mit dem Kommando G eine Globalmarke. 
+(G aadr. >ENTER<, dann meldet er sich auf der gewuenschten 
+Adresse, jetzt Q, dann Marke setzen).
+Ein Rueckwartsblaettern ist nur bei gesetzter Globalmarke moeg-
+lich.
+Wenn Sie Teile loeschen wollen, jedes Zeichen, auch hinter dem
+Cursor, loeschen.
+
+Taste     Funktion 
+------------------------------------------------------------
+
+ K   direkte Maschinencodeeingabe
+
+ T   Uebergang zum Testmodus ab Anzeigeadr. 
+
+ H   Vereinbarung der Anzeigeadr. als Haltepunkt
+
+ R   Uebergang zum RAM-Modus (DUMP-MODUS)
+
+ Q   Uebergang zum Quellcodeeingabemodus
+
+DOWN naechster Befehl          (0AH)
+
+UP   vorstehender Befehl       (0BH)
+
+ N   32 x DOWN
+
+ Z   32 x UP ( 'UP' und 'Z' nur bei vorhandener Globalmarke
+     bis 256 Byte vor akt. Adresse )
+
+ +/- Anzeigeadr. incrementieren   
+
+ -/- Anzeigeadr. decrementieren
+
+ A   Anzeige ab vorstehender Globalmarke
+
+ G   G >ENTER< Anzeige ab Programmende
+     G 0 >ENTER< Anzeige ab der mit EXT vereinbarten Marke
+     (EXT s.w.unten)
+     G adr >ENTER< Anzeige ab adr
+
+ B   Bindekommando (ersetzt symb. Adr. durch hexadez.)
+     erzeugt lauffaehiges Programm
+     B >ENTER< Binden auf Anzeigeadr.
+     B adr >ENTER< auf angegebener Adresse
+
+ M   Verschieben von Programmen mit Marken
+     M adr >ENTER< >ENTER< Verschieben von adr bis Programmende auf
+     auf Bereich ab Anzeigeadr.
+     M adr1 >ENTER< adr2 >ENTER< von adr1 bis ausschliesslich
+     adr2 auf Bereich ab Anzeigeadr.
+
+ V   Verschieben nur der Marken (Markenumrechnung)
+     V adr >ENTER< von adr bis Progr.ende auf Anzeigebereich
+     V adr1 >ENTER< adr2 >ENTER< von adr1 bis ausschl. adr2 auf
+     Anzeigeadr.
+
+ E   Eingabebereich schaffen
+     E >ENTER< 1 Byte 
+     E adr >ENTER< ab akt. Adr. bis ausschl. adr 
+     das folgende Programm wird  entsprechend verschoben
+
+ S   Streichen von Befehlen
+     S >ENTER< 1 Befehl streichen
+     S adr >ENTER< von Anzeigeadr. bis adr streichen
+
+ L   Anzeige ab Programmzaehler vor dem letzten Schritt im
+     Testmode 
+
+ O   Quellprogrammausgabe (Offset)
+     O adr >ENTER< Programm ab adr als Quelle in RAM geschrieben
+
+ I   Quellprogrammeingabe (Insert)
+     I adr >ENTER< Quellprogramm ab adr wird in Anzeigebereich
+     uebernommen (gl. Format wie oben)
+
+ P   Reassemblerliste drucken
+     akt. Zeile mit '*' gekennzeichnet
+     Unterbrechung 'S, Fortsetzung 'Q
+     bei Ende wird Seitenvorschub erwartet - F
+     P adr >ENTER< : adr= Endadr. abs. oder symbolisch
+     P >ENTER< bis Progr.ende
+...............................................................
+
+
++ Quellcodeeingabemodus
+     - Zahlen dez. oder hex. mit Ziffer beginnend
+       (z.B. : 0BFFEH )
+     - Marke 3 Zeichen, erstes = Buchstabe
+     - alte Marken ueberschreibbar
+     - keine Marke: Tabulator oder 1 Leerzeichen
+     - nach Marke kann Offset bis +127/-128 stehen
+     - Op.code,Operanden nur durch Leerzeichen getrennt
+     - Ueberschreiben von Quellcode vermeiden! Vorsicht!
+     - kein Kommentar!
+     - Korrekturen: mit S Befehl streichen
+                    mit E Freiraum schaffen
+                    Eingebe neuer Befehl
+     - Fehlermeldungen:
+       F Operations- oder Operandenfehler
+       M Marke schon vorhanden
+       O Offset zu gross
+     - Uebernahme mit >ENTER<, nochmaliges >ENTER< naechster
+       Befehl, jede andere Taste - Anzeigemodus
+     - Pseudooperationen:
+       DB n                (Ein-Byte DATA/z.B. DB 6F)     
+       DW nn               (Zwei-Byte DATA/z.B. DB adr.) 		
+       DM "text"           (Strings in Hochkomma)  
+       MAR:EXT adr         (externe Marken vereinbaren, ent-
+                           spricht EQU-Zuweisung)
+     - # Speicherplatzzaehler
+...............................................................
+
++ Binden
+     - mit 'B' auf waehlbare adr oder nach 'T' auf die Anzeige-
+       adresse. 
+     - nur das erstellte Programm als gesamtes wird gebunden
+       (1 Schritt) 
+     - mit EXT vereinbarte Marken werden nicht verschoben
+     - nach Fehlermeldung mit >ENTER< werden weitere Fehler an-
+       gezeigt
+       (Bindeoperation unterbrochen!)
+     - MTB werden beim Binden nicht veraendert!
+............................................................... 
+
++ RAM-Modus  (DUMP)
+      - Funktionen des RAM-Modus:
+          * Anzeige eines bel. Speicherbereichs in HEX oder
+            ASCII
+          * Speichereingabe
+          * Kopieren eines Bereichs in einen anderen
+          * Vergleich von Speicherbereiche
+          * Suchen nach Bytes
+          * Speicherbereich ausdrucken (HEX-DUMP)
+
+      - Kommandos:
+Taste     Funktion
+-----------------------------------------------------------------
+ H            Speicher in HEX anz.
+ S               "      " ASCII "
+ +            +1
+ -            -1
+DOWN          +8            (0AH)
+UP            -8            (0BH)
+ N             naechste Seite
+ Z             1 Seite zurueck
+ G             direkte Positionierung
+>ENTER<        uebernehmen Eingabefeld in akt. Pos. (HEX)
+ T             ASCII-Code des naechsten ueber Tast. eingeg. Zei-
+               chens in Eingabefeld uebernehmen
+ I             Fuellen eines Bereiches
+               I adr >ENTER< ab akt. Adr. bis ausschl. adr
+ M             Kopieren eines Bereichs
+               M adr1 >ENTER< adr2 >ENTER< -von adr1 bis aus-
+               schl. adr2 in akt. Ber.
+ V             Vergleichen
+               V adr1 >ENTER< adr2 >ENTER< -Anzahl der Diffe-
+               renzen angezeigt Kursor auf ersten Unterschied
+               Fortsetzung: >ENTER< Wert aus Eingabefeld 
+                            (Vergl.bereich) 
+                            wird auf akt. Adr. uebernommen
+                            V  Fortsetzung des Vergleich
+                            BREAK (^C = 03H) = Abbruch
+ L    Suchen einer Datenfolge 
+      L adr1 >ENTER< adr2 >ENTER< eine Datenfolge ab adr1 bis 
+      ausschl. adr2, wird im Speicher gesucht. Wenn gefunden,
+      auf akt. adr:
+      >ENTER<  Suche fortsetzen
+      BREAK (^C = 03H) =  Abbruch, Bereich vor Suche angezeigt
+ P    Ausdruck Speicherbelegung 
+      P adr >ENTER<  - anlog P im Anzeigemodus.
+...............................................................
+
++ Testmodus
+ T    Abarbeitung aktuellen Befehl und protokollieren desselben
+      normal naechster, vom Programm auszufuehrender, Befehl,
+      wenn zuvor im A-Modus Haltepktunkt festgelegt wurde,
+      dann dieser.
+ N    Abarbeitung des aktuellen Befehl und Protokoll des naechs-
+      ten im Speicher stehenden Befehl
+ L    direktes Abarbeiten (Echtzeit)
+      0FFH wirkt als Softwarehaltepunkt, naechster Befehl wird
+      protokolliert.
+ R    Aendern des Registerinhalt,  wird mit >ENTER< bestaetigt,
+      bzw. mit BREAK (^C = 0eH) nicht uebernommen.
+
+      - Achtung: bei 'T' und 'N' I-Reg. nicht veraendert, 
+        IM2  =  Interupt-Mode 2
+
++ Tastencodes: >ENTER<                  = 0DH
+               BREAK = ^C               = 03H
+               DOWN  = Cursor n. unten  = 0AH
+               UP    =   "    "  oben   = 0BH
+               LEFT  = <--              = 08H
+               RIGHT = -->              = 09H
+
+         INSert (Einfügen)              = 05H
+         DELete (Löschen)               = 13H
+         TABulator                      = 17H
+
++ Drucker: eigene Routine enthalten,andere ueber Sprungvertei-
+           ler (SV)
+           auf 5D43H/5D44H; Uebergabe in A (DRAKK  JMP FFE8H)
+
+****** bearbeiter: u.gast/n.hildebrandt ig-hc tu dresden ******
+***************** textueberarbeitung: hofmann *****************
+23.08.89 
+

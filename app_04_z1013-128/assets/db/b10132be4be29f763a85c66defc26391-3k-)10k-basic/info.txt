@@ -1,3 +1,4 @@
 <kurz src="3k-Basic-Progamme in 10k-HC-Basic-Programme umwandeln"/>
 <lang><include src="3k-)10k-basic.txt"/></lang>
-<required></required>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

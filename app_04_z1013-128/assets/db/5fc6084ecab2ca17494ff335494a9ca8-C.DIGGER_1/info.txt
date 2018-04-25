@@ -1,0 +1,9 @@
+<kurz src="Knobelspiel, dabei Sand wegschaufeln, Diamanten einsammeln. Level 1&2 neu."/>
+<lang>Ältere Version. 
+Menupunkt Kopieren des Spiels ist vorhanden, aber ohne Tauschen von Höhlen</lang>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<port range="03" mode="W" device="Systemport: Tonausgabe"/>
+<port range="08" mode="W" device="Spaltentreiber: ohne Funktion?(Spalte 3,ehemals S4+K test?)"/>
+<syscall type="spv" tag="[SARUF, POLL]"/>
+<syscall type="rst20" tag="[WIND, OUTCH, INKEY, INSTR, INCH, PRST7, CLOAD, KILL, INHEX]"/>
+

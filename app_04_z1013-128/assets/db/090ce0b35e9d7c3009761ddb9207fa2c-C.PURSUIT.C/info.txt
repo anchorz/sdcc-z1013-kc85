@@ -1,0 +1,21 @@
+<kurz src="Hase+Wolf (ohne Joystick) Kohlköpfe aufsammeln, Wölfen ausweichen"/>
+<lang>Steuerung: ⇦ ⇨ ␣ U 
+
+Original zu [0fd7e15a38d589f921094f0112d6344a] noch ohne Joystick:
+
+Das Programm verwendet fast ausschliesslich RST20-Aufrufe, leider aber auch
+einen direkten CALL 0xF130, der auf dem A2 Monitor nicht funktioniert.
+
+'Hase+Wolf' ist ein Geschicklichkeitsspiel. Der 
+Spieler muß mit einem Hasen ein Labyrinth von Kohlköpfen 
+leerfressen. Dabei wird er von Wölfen verfolgt. Ist die 
+Zeit abgelaufen oder wird der Hase vom Wolf gefangen, 
+verliert er ein Leben.
+Wurde ein Labyrinth leergefressen, startet der Hase in der
+nächsten Spielstufe.
+
+</lang>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="202" tag="[INKEY]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, OUTHL, INSTR, PRST7, KILL, TRANS, OUTHX]"/>
+

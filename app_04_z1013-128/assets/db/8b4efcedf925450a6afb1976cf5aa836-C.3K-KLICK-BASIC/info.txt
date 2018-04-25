@@ -25,4 +25,7 @@ Nr. 1: Klick-Sound.
 
 Nr 2: CLOAD
 </lang>
-<requires></requires>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="202" tag="[OUTCH, INCH]"/>
+<syscall type="rst20" tag="[OUTCH, INCH, ALPHA, CLOAD]"/>
+

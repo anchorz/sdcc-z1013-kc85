@@ -1,0 +1,10 @@
+<kurz src="Textdatei/Grafik anzeigen"/>
+<lang>0xEBC0 kopiert Speicher seitenweise in den Bildwiederholspeicher
+0xEBE6: ab Anfangsaddresse
+
+Steuerung: ⇧ ⇩ CTRL-C
+
+</lang>
+<syscall type="e000" tag="06:headersave"/>
+<syscall type="rst20" tag="[INSTR, INCH, PRST7, INHEX]"/>
+<port range="keine" mode="" device=""/>

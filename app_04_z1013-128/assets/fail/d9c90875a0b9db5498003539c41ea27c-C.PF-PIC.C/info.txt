@@ -1,0 +1,9 @@
+<kurz src="identisch [6c9a394c9f24da37878c8131d3ef782f]"/>
+<lang>mangels 1541-Floppy gibt es hier keinen Screenshot 
+></lang>
+<port range="50" mode="W" device="Centronics: Data"/>
+<port range="51" mode="W" device="Centronics: Initalisierung"/>
+<port range="52" mode="R/W" device="Centronics: Status, Floppy 1541: IO"/>
+<port range="53" mode="W" device="Centronics: Initalisierung, Floppy 1541: Initalisierung"/>
+<syscall type="rst20" tag="[INCH, PRST7]"/>
+

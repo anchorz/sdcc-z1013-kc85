@@ -5,4 +5,7 @@ Basiert auf [a607237be522ae2b2ccc9013a53d0de5], hat aber eine
 Erweiterung ab 0x0C00, eine Art serielles Interface.
 
 </lang>
-<requires></requires>
+<port range="00" mode="R/W" device="Userport: unbekannte Funktion JST"/>
+<port range="01" mode="W" device="Userport: unbekannte Funktion JST"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH] Tiny-Basic"/>
+

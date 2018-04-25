@@ -1,0 +1,5 @@
+<kurz src="identisch [65b64aa5103205914c5f60266ec1d40e]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 31 Bytes fehlen.
+e: Z80-Header-Tag ist nicht korrekt, statt "d3d3d3" steht "2e2e2e"</lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

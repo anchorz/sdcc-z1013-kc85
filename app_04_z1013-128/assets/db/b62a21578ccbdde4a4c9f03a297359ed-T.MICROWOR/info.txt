@@ -1,0 +1,4 @@
+<kurz src="Textverarbeitung, Texteditor, V1.5 01.10.1988 (druckerfreundlich mit Umlauten)"/>
+<lang><include src="T.MICROWOR.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

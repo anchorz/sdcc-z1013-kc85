@@ -1,0 +1,4 @@
+<kurz src="Beschreibung OBJEKTCODEEDITOR OCE"/>
+<lang><include src="T.OC-EDITO.I.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

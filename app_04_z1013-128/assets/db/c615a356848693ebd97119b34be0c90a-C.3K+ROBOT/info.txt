@@ -1,4 +1,7 @@
 <kurz src="Präsentation: Informatik und Technologie"/>
 <lang>
 <include src="Robot.b"/></lang>
-<requires></requires>
+<port range="02" mode="R" device="Systemport: Tiny-Basic testet auf S4+K"/>
+<port range="08" mode="W" device="Spaltentreiber: Tiny-Basic testet auf S4+K"/>
+<syscall type="rst20" tag="[OUTCH, INCH, ALPHA] Tiny-Basic"/>
+

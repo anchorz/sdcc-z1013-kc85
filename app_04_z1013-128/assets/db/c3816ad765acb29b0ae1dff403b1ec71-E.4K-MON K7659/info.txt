@@ -1,3 +1,7 @@
 <kurz src="Original Brosig Monitor"/>
 <lang></lang>
-<requires></requires>
+<port range="00" mode="R/W" device="Userport: Tonausgabe,  Joystick+PA0188"/>
+<port range="01" mode="W" device="Userport: Joystick+PA0188"/>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, Tastatur+RB, Interrupt"/>
+<port range="03" mode="W" device="Systemport: Tonausgabe, Tastatur+RB, Interrupt"/>
+<port range="08" mode="W" device="Spaltentreiber: Tastatur+RB"/>

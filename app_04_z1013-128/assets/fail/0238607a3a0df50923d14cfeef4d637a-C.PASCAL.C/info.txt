@@ -1,0 +1,28 @@
+<kurz src="ähnlich [2d7a9a200ed1e1f344e61da19c933543]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 15 Bytes fehlen.
+
+(c) by Hisoft 1983
+Hacked for Z 1013
+by  N.H. & U.G.
+
+43A1   10 PROGRAM KREIS;
+43A1   20 BEGIN
+ *ERROR*      ^25
+
+43B3   25 WRITELN('DD');
+43C3   49 END.
+End Address: 43C5
+Errors :  1
+>
+
+>L
+   10 PROGRAM KREIS;
+   20 BEGIN
+   25 WRITELN('DD');
+   49 END.
+
+Ich habe kein Programm zum laufen bekommen, immer nur der Fehler 25.        
+</lang>
+<syscall type="spv" tag="[SARUF, LORUF]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH]"/>
+

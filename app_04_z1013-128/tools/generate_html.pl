@@ -485,7 +485,7 @@ sub print_entry2($ $) {
     my @en=@{$db_entry_list{$filename}};
 
     my $link_base=basename(dirname($filename));
-    my ($srcmd5,$tag)=split(/-/,$link_base);
+    my ($srcmd5,$tag)=split(/-/,$link_base,2);
 
     if ($en[5] ne $srcmd5) {
         printf STDERR "w: md5 stimmt nicht überein \"%s\" => \"%s-%s\"\n",$link_base,$en[5],$tag;
