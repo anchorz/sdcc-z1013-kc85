@@ -1,0 +1,3 @@
+<kurz src="Zeichsatz drehen (und wahrscheinlich spiegeln) zur Verwendung für den Drucker"/>
+<lang>Ein Beispiel könnte dies hier sein: [1266ffd29b91f88ed85593a90c986d59].</lang>
+<syscall type="rst20" tag="[INSTR, PRST7, INHEX]"/>

@@ -1,0 +1,3 @@
+<kurz src="identisch [b9554d4ba9270377e6a038da817c959f]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 7 Bytes fehlen.</lang>
+<syscall type="rst20" tag="[INSTR, PRST7, INHEX]"/>

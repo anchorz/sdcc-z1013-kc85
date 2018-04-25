@@ -22,6 +22,7 @@
 <file aadr="0100" eadr="0c50" sadr="0100" typ="C" link="2f396e8bd29b537dc925d8b52b9666cc-3k-bas_h-save_sv/3k-bas_h-save_sv.z80" name="3K-BAS.H-SAVE/SV" kurz="Tiny-Basic mit RST20 Monitoraufrufen und HSAVE-Erweiterung" />
 <file aadr="0100" eadr="0e00" sadr="0100" typ="C" link="5f39422c337a6556eabf64106cd43cb7-C.3K/C.3K-BASIC+JST.z80" name="3K-BASIC+JST    " kurz="Original Robotron 3.01 Tiny-Basic Interpreter+JST Erweiterung" />
 <file aadr="0100" eadr="0fff" sadr="0100" typ="C" link="178bfafe381c748f58a1ba8479d2c573-C.3K-BASIC-EDIT/C.3K-BASIC-EDIT.z80" name="3K-BASIC-EDIT   " kurz="REHN-SOFT 0287 3K+TINY BASIC" />
+<file aadr="0100" eadr="0dbb" sadr="0100" typ="C" link="bdd46ad8257c549a4790e6209a46db7f-C.3K-BASIC/C.3K-BASIC.PRG.z80" name="3K-BASIC.PRG    " kurz="Tiny-Basic Variante 3k-rs-BASIC V. 1.12 (D)" />
 <file aadr="0100" eadr="0cff" sadr="0100" typ="C" link="8b4efcedf925450a6afb1976cf5aa836-C.3K-KLICK-BASIC/C.3K-KLICK-BASIC.z80" name="3K-KLICK-BASIC  " kurz="Riesa Basic 3.01 Klick-Sound-Erweiterung" />
 <file aadr="2000" eadr="2939" sadr="0000" typ="I" link="2b07c0f150acce6a0a8fdb27405479d1-I.3K-rs-BASIC_1.12/I.3K-rs-BASIC%201.12.z80" name="3K-rs-BASIC 1.12" kurz="3K Tiny-Basic 3K-rs-BASIC V1.12 rehn-soft   1988-03" />
 <file aadr="1000" eadr="2204" sadr="0000" typ="b" link="45729983e66bf939c98ea6f707568f15-b.4-TAKT-OTTO%201/b.4-TAKT-OTTO%201.z80" name="4-TAKT-OTTO 1   " kurz="Demonstration 4-TAKT OTTO Motor" />
@@ -956,6 +957,7 @@
 <file aadr="0100" eadr="0d90" sadr="0100" typ="C" link="89ad4cce8ba3f48c1895992faf498e0b-tiny-basic%203.20h/tiny-basic%203.20h.z80" name="TINY-BASIC 3.20H" kurz="Z1013 TINY-BASIC 3.20 H (+Hilfe)" />
 <file aadr="2bc0" eadr="3cb0" sadr="0300" typ="B" link="7067a2b2a45805c548fff6588188e6d3-B.TIPS/B.TIPS.z80" name="TIPS            " kurz="HC-BASIC TIPS+KNIFFE, coole Titelgrafik" />
 <file aadr="1c00" eadr="289a" sadr="18e0" typ="T" link="9cde759abe1b1f7f23923dfe9c3e81b7-T.TOOL-BESCHR./T.TOOL-BESCHR..z80" name="TOOL-BESCHR.    " kurz="HEX/ASCII-Anzeige, Editor und Reassembler" />
+<file aadr="e000" eadr="e19f" sadr="e000" typ="C" link="ecc412a73147c840dd6e8f1e79c72c2f-C.TOP_SECR.C/C.TOP_SECR.C.z80" name="TOP_SECR.C      " kurz="Codieren &amp; Decodieren" />
 <file aadr="2bc0" eadr="3748" sadr="0000" typ="B" link="dc6830be0bd26812f1f641f704ee57f6-B.TORERO/B.TORERO.z80" name="TORERO          " kurz="TORERO, in einer Arena STIER bezwingen, Stier fangen" />
 <file aadr="2bc0" eadr="5dc3" sadr="0300" typ="B" link="a90aebe1cbc2213bdb7645adaa5c7190-B.Town/B.Town.z80" name="Town            " kurz="Geographie, Hauptstädte der Europas und der Erde zuordnen" />
 <file aadr="2bc0" eadr="5e32" sadr="0000" typ="B" link="e2d087c63ec556e0da6cad4127742bfa-B.TRADERS/B.TRADERS.z80" name="TRADERS         " kurz="STAR TRADERS, Weltraum-Handels-Spiel 2-4 Spieler" />
@@ -1000,6 +1002,7 @@
 <file aadr="1700" eadr="1781" sadr="e700" typ="M" link="6bca71c7145b566ff3d6e44e35e9878b-M.UP-REMKILL/M.UP-REMKILL.z80" name="UP-REMKILL      " kurz="Unterprogramm, entfernt (möglicherweise) REM-Zeilen" />
 <file aadr="1800" eadr="2249" sadr="0000" typ="T" link="fb1d0af38fc9ca742d79be02cd715209-T.URLADER_R.BROSIG/T.URLADER%20R.BROSIG.z80" name="URLADER R.BROSIG" kurz="Beschreibung Urlader, Bootloader" />
 <file aadr="1000" eadr="14ff" sadr="0000" typ="C" link="36efff2ed223451f24a5b5d1eb8cd7e2-C.URLADER.C/C.URLADER.C.z80" name="URLADER.C       " kurz="Z1013-SUPER-URLADER mga3" />
+<file aadr="0100" eadr="1000" sadr="0100" typ="C" link="a40d345e86d3af862d2908b63ce0ab20-C.V-TEXT/C.V-TEXT.C.z80" name="V-TEXT.C        " kurz="Videotext-Decoder am Z1013 I2C-Steuerung SAA5243 16.09.1993" />
 <file aadr="e800" eadr="eaff" sadr="e800" typ="C" link="0b70520fb192060844fb2b09a618cc22-C.V.24+HC/C.V.24+HC.z80" name="V.24+HC         " kurz="V24, Druckertreiber, Hardcopy" />
 <file aadr="0700" eadr="14df" sadr="1000" typ="C" link="21116d60ec96b5bad5067552e3949b67-vampi/vampi.z80" name="VAMPI           " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (8x4)" />
 <file aadr="0700" eadr="14ff" sadr="1000" typ="C" link="5bdb666cbca1e0c8fb0a78b5c5cbae5e-vampi/vampi.z80" name="VAMPI           " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI und seinen Freunden aus" />
@@ -1061,7 +1064,8 @@
 <file aadr="2bc0" eadr="2d9a" sadr="0302" typ="B" link="e16a2d3944104f8e36ac22300a61afe3-B.ZINSEN/B.ZINSEN.z80" name="ZINSEN          " kurz="Zinsen berechnen, Festzins 3,25%" />
 <file aadr="e000" eadr="e7ff" sadr="e000" typ="C" link="c16c71f9204005f7283f87ee266dcd8c-C.ZMONTXT/C.ZMONTXT.z80" name="ZMON*TXT*       " kurz="Monitorerweiterung mit Textfunktionen" />
 <file aadr="1000" eadr="23cf" sadr="0000" typ="b" link="cc6d548213482fdfd71e94ce4aab0e41-b.ZOMBIES/b.ZOMBIES.z80" name="ZOMBIES         " kurz="" />
+<file aadr="eb00" eadr="eb78" sadr="eb00" typ="C" link="b9554d4ba9270377e6a038da817c959f-C.ZS-KONV/C.ZS-KONV.C.z80" name="ZS-KONV.C       " kurz="Zeichsatz drehen (und wahrscheinlich spiegeln) zur Verwendung für den Drucker" />
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1064 Dateien."/></doc>
+<status src="Datenbank enthält 1068 Dateien."/></doc>

@@ -1,9 +1,7 @@
-<kurz src="Videotext-Decoder am Z1013 I2C-Steuerung SAA5243 16.09.1993"/>
-<lang>Videotext-Decoder für Europa mit den Schaltungen SAA 5231 und SAA 5243
+<kurz src="identisch [a40d345e86d3af862d2908b63ce0ab20]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 31 Bytes fehlen.
 
-Das Programm verwendet Umlaute bei der Ausgabe. Ein 2. Zeichensatz wäre von Vorteil.
-
-<include src="S.VIDEOTEX.ASM.txt"/></lang>
+<include src="../f665b6a92491f043ed4704051cfc38b1-S.VIDEOTEX/S.VIDEOTEX.ASM.txt"/></lang>
 <port range="04" mode="" device="[5]ZGBank,  das Programm schaltet nicht, aber die Ausgabe erfolgt mit Umlauten"/>
 <port range="56" mode="R/W" device="I2C: Videotext-Decoder"/>
 <port range="57" mode="W" device="I2C: Videotext-Decoder"/>

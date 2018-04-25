@@ -1,0 +1,5 @@
+<kurz src="Tiny-Basic Variante 3k-rs-BASIC V. 1.12 (D)"/>
+<lang>Erwarte eine Headersave-Variante auf 0xE000.
+</lang>
+<syscall type="e000" tag="[00:load, 03:save]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, CSAVE, INCH]"/>
