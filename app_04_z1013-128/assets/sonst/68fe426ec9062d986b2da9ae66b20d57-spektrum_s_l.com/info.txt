@@ -1,4 +1,4 @@
-<kurz src="ZX SPEKTRUM KASSETTENINTERFACE Load/Save"/>
+<kurz src="identisch [3f43cababb5057747e039b6c347e15f4]"/>
 <lang></lang>
 <port range="02" mode="R/W" device="Systemport: Tonausgabe, Toneingabe"/>
 <syscall type="rst20" tag="[INSTR, INCH, PRST7, INHEX]"/>

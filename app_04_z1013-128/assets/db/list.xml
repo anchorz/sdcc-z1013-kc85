@@ -462,7 +462,6 @@
 <file aadr="7f80" eadr="7fff" sadr="7f80" typ="C" link="2d313d8ce541d36af558bdcc421dabdf-C.HELP/C.HELP.z80" name="HELP            " kurz="HEX/ASCII-Dump" />
 <file aadr="d600" eadr="dfff" sadr="d600" typ="C" link="b3d2e04f6aa8948b1bb264465f51c256-C.HEX-D.Edit%201.02O/C.HEX-D.Edit%201.02O.z80" name="HEX-D.Edit 1.02O" kurz="Hex-Dump und Hex-Editor" />
 <file aadr="36f0" eadr="3fff" sadr="36f0" typ="C" link="bb296b420ec9ee9f342fb91546a439d2-C.HEX-D.Edit%201.02U/C.HEX-D.Edit%201.02U.z80" name="HEX-D.Edit 1.02U" kurz="Hex-Dump und Hex-Editor, ältere Version, Adresse 0x36F0" />
-<file aadr="0800" eadr="3c0e" sadr="0000" typ="T" link="1597013e9643ff3621aef2f20f2c766f-T.HEX/T.HEX-D.I.z80" name="HEX-D.I         " kurz="Beschreibung Hex-Dump und Hex-Editor 1.02" />
 <file aadr="eb00" eadr="ebbf" sadr="eb00" typ="C" link="7b497188bd47c82b9be4c3570eb2735e-C.HEX-DATA.C/C.HEX-DATA.C.z80" name="HEX-DATA.C      " kurz="Umwandlung Binärdaten in Assembler-Quelltext: HEX 18,0D,21 ..." />
 <file aadr="0100" eadr="0150" sadr="0100" typ="C" link="1cb652f624f9758d31b79e2277047631-C.HEXDUMP/C.HEXDUMP.z80" name="HEXDUMP         " kurz="Hexdump 6 Bytes pro Zeile mit ASCII Zeichen" />
 <file aadr="d700" eadr="dffd" sadr="d700" typ="C" link="fd495d34cdeab81b09c82b98937deac3-C.HexDump%201.01/C.HexDump%201.01.z80" name="HexDump 1.01    " kurz="Hex-Dump und Hex-Editor (ohne Prüfsummen)" />
@@ -787,8 +786,6 @@
 <file aadr="1800" eadr="4194" sadr="0000" typ="T" link="b3b6d962af52b3744b008b646ce9200e-T.RF_AM_Z1013+BILD/T.RF%20AM%20Z1013+BILD.z80" name="RF AM Z1013+BILD" kurz="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013 mit Bild" />
 <file aadr="c000" eadr="c57f" sadr="c000" typ="C" link="e30566da92787060c849464dde9db848-C.RF-SICHTTEST_3.6/C.RF-SICHTTEST%203.6.z80" name="RF-SICHTTEST 3.6" kurz="RAM Floppy Test" />
 <file aadr="0100" eadr="02ff" sadr="0100" typ="C" link="f67ae65729d02e3a5c43d0e58509c3be-C.RF-TEST%20(IO=98H)/C.RF-TEST%20(IO=98H).z80" name="RF-TEST (IO=98H)" kurz="RAM-FLOPPY-TEST PORT 0x98" />
-<file aadr="0100" eadr="02ea" sadr="0100" typ="C" link="2b17e7bffeeedfcca08a697aff0f9bbb-C.RF-TEST_00%26FFhex/C.RF-TEST%2000%26FFhex.z80" name="RF-TEST 00&amp;FFhex" kurz="Ram-Floppy Test 0x98-0x9F mit Testmuster 0x00 und 0xFF" />
-<file aadr="0100" eadr="02ea" sadr="0100" typ="C" link="cb738e69a3bd86c94d8c28b7a419c95e-C.RF-TEST_00-FFhex/C.RF-TEST%2000-FFhex.z80" name="RF-TEST 00-FFhex" kurz="Ram-Floppy Test 0x98-0x9F mit Testmuster 0x00 ... 0xFF" />
 <file aadr="0100" eadr="04b3" sadr="0100" typ="C" link="51d0977b34524611008fbcfe91b59c0f-rf_test_4_4/rf_test_4_4.z80" name="RF-TEST 4.4     " kurz="256K-RAM-FLOPPY-TEST 4" />
 <file aadr="0100" eadr="055c" sadr="0100" typ="C" link="7f5cd166c4a50dc7c361c07843842b77-rf_test_5_0/rf_test_5_0.z80" name="RF-TEST 5.0     " kurz="256K-RAM-FLOPPY-TEST 5" />
 <file aadr="1800" eadr="3e39" sadr="0000" typ="T" link="1934d81c1713c75826d28b2c5c9f06c0-T.RF_AM_Z1013/T.RF_AM_Z1.I.z80" name="RF_AM_Z1.I      " kurz="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013 (druckerfreundlich)" />
@@ -830,6 +827,7 @@
 <file aadr="0100" eadr="06ff" sadr="0100" typ="C" link="47d99fc625d4b50b45b8cba64cb01e3f-C.SCHLANGE%20ORG./C.SCHLANGE%20ORG..z80" name="SCHLANGE ORG.   " kurz="Hindernissen ausweichen, Schlange wird immer länger (8x4) Anaconda Variante" />
 <file aadr="2bc0" eadr="2e1b" sadr="0000" typ="B" link="b81b6d3c67426a42bdec4cfdc1194465-B.SCHUSS/B.SCHUSS.z80" name="SCHUSS          " kurz="durch Löcher in einer Wand schießen" />
 <file aadr="2bc0" eadr="3184" sadr="0302" typ="B" link="9a0aec91e72cfe19ade09d902fa4a314-B.SCHWINGKREIS/B.SCHWINGKREIS.z80" name="SCHWINGKREIS    " kurz="Schwingkreis berechnen" />
+<file aadr="fcc0" eadr="ffdf" sadr="fcc0" typ="C" link="ddf62e10ac65b1b02436a723ec1e4ed6-SCI-ZX_Spektrum_64k/SCI-ZX%20Spektrum_64k.z80" name="SCI-ZX Spec_64  " kurz="ZX SPEKTRUM KASSETTENINTERFACE Load/Save 64K@0xFCC0" />
 <file aadr="c800" eadr="e6ff" sadr="de00" typ="C" link="c667b06334b80bd88a913ba80537035c-C.SCP%201.21%201.6%20624/C.SCP%201.21%201.6%20624.z80" name="SCP 1.21 1.6 624" kurz=" CP/M 2.2 Z1013 mit 1.6 Disk.-Laufwerk" />
 <file aadr="3000" eadr="413b" sadr="0000" typ="I" link="26455e9618c8d20a53d90ec185c3505a-scp_2rf_2_38_doc/scp_2rf_2_38_doc.z80" name="SCP 2RF 2.38 DOC" kurz="Besonderheiten des Betriebssystems SCP-2RF 2.38M für den Z1013" />
 <file aadr="c800" eadr="e362" sadr="de00" typ="C" link="10f334eeba462179c4ea7874c4e44548-C.SCP%20EXT.RF%201.5/C.SCP%20EXT.RF%201.5.z80" name="SCP EXT.RF 1.5  " kurz="CP/M 2.2 Z1013 IG-HC mit ext. RAM-Floppy V.1.5" />
@@ -1063,4 +1061,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1063 Dateien."/></doc>
+<status src="Datenbank enthält 1061 Dateien."/></doc>

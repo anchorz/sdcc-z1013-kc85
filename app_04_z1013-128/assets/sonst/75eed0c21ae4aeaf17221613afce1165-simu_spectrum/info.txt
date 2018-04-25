@@ -1,0 +1,4 @@
+<kurz src="identisch [68fe426ec9062d986b2da9ae66b20d57]"/>
+<lang>Hier fehlt die Startadresse.</lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>
