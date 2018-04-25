@@ -1,0 +1,12 @@
+<kurz src="Tiny-Basic mit RST20 Monitoraufrufen und HSAVE-Erweiterung"/>
+<lang>Wieder eine Variante. Diese Hier scheint keine Direktabfrage der Tastatur auszuführen.
+
+HSAVE fragt nicht nach dem Filenamen.
+
+Meldet sich mit:
+READY
+>
+</lang>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH]"/>
+<syscall type="spv" tag="[LORUF, SARUF]"/>
+<port range="keine" mode="" device=""/>

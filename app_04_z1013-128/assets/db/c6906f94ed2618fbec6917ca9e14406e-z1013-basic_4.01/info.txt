@@ -1,0 +1,4 @@
+<kurz src="Tiny-Basic 4.01 HSAVE+EDIT VP'89"/>
+<lang></lang>
+<syscall type="spv" tag="[LORUF, SARUF]"/>
+<syscall type="rst20" tag="[OUTCH, INCH, ALPHA]"/>

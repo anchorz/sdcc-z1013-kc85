@@ -1,0 +1,7 @@
+<kurz src="identisch [a607237be522ae2b2ccc9013a53d0de5]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 16 Bytes fehlen.
+
+Eigentlich ein bisschen originaler als [a607237be522ae2b2ccc9013a53d0de5]
+Hier fehlen einige extra Bytes nach dem Ende des Programms im Vergleich mit [a607237be522ae2b2ccc9013a53d0de5].
+</lang>
+

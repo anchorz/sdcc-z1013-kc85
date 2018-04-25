@@ -19,6 +19,7 @@
 <file aadr="0100" eadr="3fff" sadr="0103" typ="C" link="3e6f4f8997610e39b6263171cad50051-C.3K+POKE%20KURS%201/C.3K+POKE%20KURS%201.z80" name="3K+POKE KURS 1  " kurz="PEEK und POKE Beispiele für Tiny-Basic" />
 <file aadr="0100" eadr="26ad" sadr="0102" typ="C" link="c615a356848693ebd97119b34be0c90a-C.3K+ROBOT/C.3K+ROBOT.z80" name="3K+ROBOT        " kurz="Präsentation: Informatik und Technologie" />
 <file aadr="1100" eadr="156b" sadr="0000" typ="I" link="b10132be4be29f763a85c66defc26391-3k-)10k-basic/3k-)10k-basic.z80" name="3K-)10K-BASIC   " kurz="3k-Basic-Progamme in 10k-HC-Basic-Programme umwandeln" />
+<file aadr="0100" eadr="0c50" sadr="0100" typ="C" link="2f396e8bd29b537dc925d8b52b9666cc-3k-bas_h-save_sv/3k-bas_h-save_sv.z80" name="3K-BAS.H-SAVE/SV" kurz="Tiny-Basic mit RST20 Monitoraufrufen und HSAVE-Erweiterung" />
 <file aadr="0100" eadr="0e00" sadr="0100" typ="C" link="5f39422c337a6556eabf64106cd43cb7-C.3K/C.3K-BASIC+JST.z80" name="3K-BASIC+JST    " kurz="Original Robotron 3.01 Tiny-Basic Interpreter+JST Erweiterung" />
 <file aadr="0100" eadr="0fff" sadr="0100" typ="C" link="178bfafe381c748f58a1ba8479d2c573-C.3K-BASIC-EDIT/C.3K-BASIC-EDIT.z80" name="3K-BASIC-EDIT   " kurz="REHN-SOFT 0287 3K+TINY BASIC" />
 <file aadr="0100" eadr="0cff" sadr="0100" typ="C" link="8b4efcedf925450a6afb1976cf5aa836-C.3K-KLICK-BASIC/C.3K-KLICK-BASIC.z80" name="3K-KLICK-BASIC  " kurz="Riesa Basic 3.01 Klick-Sound-Erweiterung" />
@@ -551,6 +552,7 @@
 <file aadr="2bc0" eadr="2edf" sadr="0302" typ="B" link="942a5f2e625c53fd83382292f4f5aed0-B.KFZ-KOSTEN/B.KFZ-KOSTEN.z80" name="KFZ-KOSTEN      " kurz="KFZ Kosten monatlich und jährlich berechnen" />
 <file aadr="2bc0" eadr="5987" sadr="0302" typ="B" link="cf4aa800a27744159d1b8f2536d0eea7-B.KING%201/B.KING%201.z80" name="KING 1          " kurz="SANTA PARAVIA, Z9001 Version mit Anpassungen an 32 Zeichen" />
 <file aadr="0100" eadr="40ff" sadr="0100" typ="C" link="c5fd4cc8a1ac5bfcf154ba9a7f83fca4-kings_valley/kings_valley.z80" name="KINGS-VALLEY*BRO" kurz="" />
+<file aadr="0100" eadr="0540" sadr="0100" typ="C" link="580c88def826005b36a6ae9c6963664b-kino/kino.z80" name="KINO            " kurz="Eine Art Spektrumanalyse bzw Bildgenerierung vom Tonbandeingang" />
 <file aadr="0800" eadr="2505" sadr="0000" typ="I" link="dc70e9b355a6eeb5113c5d6e951000c9-1.KLUB/1.KLUB-INFO.z80" name="KLUB-INFO       " kurz="KLUB-Info Richtlininen Leitklub(LKB) und CC" />
 <file aadr="2bc0" eadr="3817" sadr="0000" typ="B" link="2ceb9197e5aee7442b3520d15e0429a6-B.KNAUS-OGINO/B.KNAUS-OGINO.z80" name="KNAUS-OGINO     " kurz="Verhütungsmethode bzw. Bestimmung fruchtbarer Tage" />
 <file aadr="1000" eadr="2f2a" sadr="0000" typ="b" link="77af65bcc9fb72a0a87c56ae4be272c9-b.KNIFFEL/b.KNIFFEL.z80" name="KNIFFEL         " kurz="Würfelpoker" />
@@ -1037,6 +1039,7 @@
 <file aadr="0200" eadr="0aff" sadr="0200" typ="C" link="24d5be27e757044104585a44c8e6f0bd-C.Z_1013-COPY/C.Z%201013-COPY.z80" name="Z 1013-COPY     " kurz="Kopierprogramm zwischen 1/2　MHz Versionen" />
 <file aadr="0100" eadr="0bff" sadr="0100" typ="C" link="a607237be522ae2b2ccc9013a53d0de5-C.Z1013%20BASIC%203K/C.Z1013%20BASIC%203K.z80" name="Z1013 BASIC 3K  " kurz="Original Robotron 3.01 Tiny-Basic Interpreter" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="bb4e5ac1c398a9e1dc8ee40bb53b1b5d-G.Z1013_RB2/G.Z1013%20RB2.z80" name="Z1013 RB2       " kurz="Z1013 Grafik RB, mit SCP und RAM-Floppy" />
+<file aadr="0100" eadr="0c4f" sadr="0100" typ="C" link="c6906f94ed2618fbec6917ca9e14406e-z1013-basic_4.01/z1013-basic%204.01.z80" name="Z1013-BASIC 4.01" kurz="Tiny-Basic 4.01 HSAVE+EDIT VP'89" />
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="9aee279d49faaabfd090f22c9100076b-C.Z1013-DEMO/C.Z1013-DEMO.z80" name="Z1013-DEMO      " kurz="DEMO Z1013 Version 2, Präsentation: Reassembler, Tastaturlayout etc." />
 <file aadr="0800" eadr="8c9f" sadr="0000" typ="I" link="47ac5b223eb40f12728ccbee1e806c2e-z1013_forth_doc_I/z1013_forth_doc_I.z80" name="Z1013-FORTH.DOC " kurz="Dokumentation Programmiersystem FORTH" />
 <file aadr="0800" eadr="30c7" sadr="0000" typ="I" link="840e9839f071ab3696bf004ccc7d5490-I.Z1013-SURL.50%20^/I.Z1013-SURL.50%20^.z80" name="Z1013-SURL.50 ^ " kurz="Z1013 SUPER URLADER PROM V5 15.10.89, überarbeitete Version" />
@@ -1061,4 +1064,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1061 Dateien."/></doc>
+<status src="Datenbank enthält 1064 Dateien."/></doc>

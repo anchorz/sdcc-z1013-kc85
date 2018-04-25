@@ -1,0 +1,4 @@
+<kurz src="identisch [580c88def826005b36a6ae9c6963664b]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 31 Bytes fehlen.</lang>
+<port range="02" mode="R" device="Systemport: Toneingabe"/>
+<syscall type="rst20" tag="[INKEY]"/>

@@ -1,0 +1,7 @@
+<kurz src="Eine Art Spektrumanalyse bzw Bildgenerierung vom Tonbandeingang"/>
+<lang>Steuerung: ⇦ ⇨ Updatefrequenz
+0..9       Zeichenwert
+A B C      Grafiktyp  
+</lang>
+<port range="02" mode="R" device="Systemport: Toneingabe"/>
+<syscall type="rst20" tag="[INKEY]"/>
