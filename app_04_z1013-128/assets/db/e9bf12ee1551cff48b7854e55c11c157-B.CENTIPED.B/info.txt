@@ -1,0 +1,12 @@
+<kurz src="CENTIPEDE IST EIN GIFTIGER WURM AUS SEGMENTEN. (Englisch)"/>
+<lang>Der Quellcode basiert auf der selben Version wie [303a9fff4af21078f4b559e48b017740].
+
+DOKE 11103,11875 macht den Quellcode sichtbar. 
+      2B5F  2E63
+
+<include src="CENTIPED.B.B"/></lang>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="spv" tag="[POLL]"/>
+<syscall type="rst20" tag="[INKEY, INCH]"/>
+
+

@@ -1,0 +1,8 @@
+<kurz src="identisch [e9bf12ee1551cff48b7854e55c11c157]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 15 Bytes fehlen.
+
+DOKE 11103,11875 macht den Quellcode sichtbar. 
+      2B5F  2E63
+
+<include src="CENTIPED.B.B"/></lang>
+

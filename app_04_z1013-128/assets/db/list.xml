@@ -178,6 +178,7 @@
 <file aadr="2800" eadr="4800" sadr="de00" typ="M" link="035a6c5ffee24b723fadca3b502f5e64-ccp+bios12v_16/ccp+bios12v_16.z80" name="CCP+BIOS12V.16  " kurz="CP/M 2.2 Z1013-ZI./DC 1.2 Disk" />
 <file aadr="0100" eadr="5c75" sadr="0100" typ="C" link="3ba99bcb72faccfd2fe189a960746681-C.CED-EDITOR_2.44/C.CED-EDITOR%202.44.z80" name="CED-EDITOR 2.44 " kurz="CED Texteditor" />
 <file aadr="0100" eadr="5c75" sadr="0100" typ="C" link="8e8d5a2e0813c8d680498fb568253776-C.CED-EDITOR%202.44/C.CED-EDITOR%202.44.z80" name="CED-EDITOR 2.44 " kurz="Texteditor CED (V. 25.10.'87) " />
+<file aadr="2bc0" eadr="4050" sadr="2bc0" typ="B" link="e9bf12ee1551cff48b7854e55c11c157-B.CENTIPED.B/B.CENTIPED.B.z80" name="CENTIPED.B      " kurz="CENTIPEDE IST EIN GIFTIGER WURM AUS SEGMENTEN. (Englisch)" />
 <file aadr="2bc0" eadr="481c" sadr="0000" typ="B" link="303a9fff4af21078f4b559e48b017740-centipede/centipede.z80" name="CENTIPEDE       " kurz="CENTIPEDE IST EIN GIFTIGER WURM AUS SEGMENTEN." />
 <file aadr="1000" eadr="392e" sadr="0000" typ="b" link="cc00615980fae93214a701d14e8a0ef8-b.CENTIPEDE%201/b.CENTIPEDE%201.z80" name="CENTIPEDE 1     " kurz="Centipede, aber extrem langsam" />
 <file aadr="1c00" eadr="28d6" sadr="0000" typ="T" link="2e4f895f06e65c9063ef027722fe33e1-T.CENTRONI/T.CENTRONI.I.z80" name="CENTRONI.I      " kurz="DRU 3.3, Druckertreiber CENTRONICS+Monoflop D121 16.10.1989" />
@@ -292,8 +293,8 @@
 <file aadr="0100" eadr="2bf6" sadr="0100" typ="C" link="cd2e8bc3c0dafd6e208bc9e0bf46507a-C.ENCOUNTER/C.ENCOUNTER.z80" name="ENCOUNTER       " kurz="Ballspiel, Solo-Tennis" />
 <file aadr="0100" eadr="2c2e" sadr="2c20" typ="C" link="f7c9048bd060cc7dbc491893b4676fcc-encounter+prJ/encounter+prJ.z80" name="ENCOUNTER+Joy.  " kurz="Ballspiel, Solo-Tennis+Joystick Practic 01/88" />
 <file aadr="2bc0" eadr="3110" sadr="0302" typ="B" link="013e4e8402d0b96894953260821c578c-B.ENTENJAGD/B.ENTENJAGD.z80" name="ENTENJAGD       " kurz="statt Wurftauben auf Enten schießen" />
+<file aadr="2bc0" eadr="5e01" sadr="0000" typ="B" link="a631cc2e5323cb109251b012051def7f-B.ENTERPRI.B/B.ENTERPRI.B.z80" name="ENTERPRI.B      " kurz="mit einem Raumschiff Klingonen anschießen" />
 <file aadr="2bc0" eadr="57c6" sadr="0000" typ="B" link="734840ea31a34d28b3e4182275665f44-B.ENTERPRISE/B.ENTERPRISE.z80" name="ENTERPRISE      " kurz="Tonausausgabe, 2:30+0:30 Sek. warten, Klingonen" />
-<file aadr="2bc0" eadr="5f4f" sadr="0000" typ="B" link="aae41d1a5966c6e4a5c39b4bc1108e73-enterprise/enterprise.z80" name="ENTERPRISE      " kurz="mit einem Raumschiff Klingonen anschießen" />
 <file aadr="1000" eadr="3cfd" sadr="0000" typ="b" link="c5353d2d846e1c07fbd727a97b5dd538-b.ENTERPRISE/b.ENTERPRISE.z80" name="ENTERPRISE      " kurz="Enterprise Variante" />
 <file aadr="1000" eadr="3094" sadr="0000" typ="b" link="22cba2e4c111cee22fb1a2b5c11a2521-b.ENTERPRISE1/b.ENTERPRISE1.z80" name="ENTERPRISE1     " kurz="ENTERPRISE 87, Echtzeitsimulation" />
 <file aadr="0800" eadr="9ec7" sadr="0000" typ="T" link="d284771f05f3a33aa9d73dd1b74ed0f1-T.EPROM-BESCH.1.25/T.EPROM-BESCH.1.25.z80" name="EPROM-BESCH.1.25" kurz="Aufbauanleitung EPROM-Programmiergerät electronica 227/228" />
@@ -467,7 +468,6 @@
 <file aadr="7f80" eadr="7fff" sadr="7f80" typ="C" link="2d313d8ce541d36af558bdcc421dabdf-C.HELP/C.HELP.z80" name="HELP            " kurz="HEX/ASCII-Dump" />
 <file aadr="d600" eadr="dfff" sadr="d600" typ="C" link="b3d2e04f6aa8948b1bb264465f51c256-C.HEX-D.Edit%201.02O/C.HEX-D.Edit%201.02O.z80" name="HEX-D.Edit 1.02O" kurz="Hex-Dump und Hex-Editor" />
 <file aadr="36f0" eadr="3fff" sadr="36f0" typ="C" link="bb296b420ec9ee9f342fb91546a439d2-C.HEX-D.Edit%201.02U/C.HEX-D.Edit%201.02U.z80" name="HEX-D.Edit 1.02U" kurz="Hex-Dump und Hex-Editor, ältere Version, Adresse 0x36F0" />
-<file aadr="0800" eadr="3c0e" sadr="0000" typ="T" link="1597013e9643ff3621aef2f20f2c766f-T.HEX/T.HEX-D.I.z80" name="HEX-D.I         " kurz="Beschreibung Hex-Dump und Hex-Editor 1.02" />
 <file aadr="eb00" eadr="ebbf" sadr="eb00" typ="C" link="7b497188bd47c82b9be4c3570eb2735e-C.HEX-DATA.C/C.HEX-DATA.C.z80" name="HEX-DATA.C      " kurz="Umwandlung Binärdaten in Assembler-Quelltext: HEX 18,0D,21 ..." />
 <file aadr="0100" eadr="0150" sadr="0100" typ="C" link="1cb652f624f9758d31b79e2277047631-C.HEXDUMP/C.HEXDUMP.z80" name="HEXDUMP         " kurz="Hexdump 6 Bytes pro Zeile mit ASCII Zeichen" />
 <file aadr="d700" eadr="dffd" sadr="d700" typ="C" link="fd495d34cdeab81b09c82b98937deac3-C.HexDump%201.01/C.HexDump%201.01.z80" name="HexDump 1.01    " kurz="Hex-Dump und Hex-Editor (ohne Prüfsummen)" />
@@ -796,8 +796,6 @@
 <file aadr="1800" eadr="4194" sadr="0000" typ="T" link="b3b6d962af52b3744b008b646ce9200e-T.RF_AM_Z1013+BILD/T.RF%20AM%20Z1013+BILD.z80" name="RF AM Z1013+BILD" kurz="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013 mit Bild" />
 <file aadr="c000" eadr="c57f" sadr="c000" typ="C" link="e30566da92787060c849464dde9db848-C.RF-SICHTTEST_3.6/C.RF-SICHTTEST%203.6.z80" name="RF-SICHTTEST 3.6" kurz="RAM Floppy Test" />
 <file aadr="0100" eadr="02ff" sadr="0100" typ="C" link="f67ae65729d02e3a5c43d0e58509c3be-C.RF-TEST%20(IO=98H)/C.RF-TEST%20(IO=98H).z80" name="RF-TEST (IO=98H)" kurz="RAM-FLOPPY-TEST PORT 0x98" />
-<file aadr="0100" eadr="02ea" sadr="0100" typ="C" link="2b17e7bffeeedfcca08a697aff0f9bbb-C.RF-TEST_00%26FFhex/C.RF-TEST%2000%26FFhex.z80" name="RF-TEST 00&amp;FFhex" kurz="Ram-Floppy Test 0x98-0x9F mit Testmuster 0x00 und 0xFF" />
-<file aadr="0100" eadr="02ea" sadr="0100" typ="C" link="cb738e69a3bd86c94d8c28b7a419c95e-C.RF-TEST_00-FFhex/C.RF-TEST%2000-FFhex.z80" name="RF-TEST 00-FFhex" kurz="Ram-Floppy Test 0x98-0x9F mit Testmuster 0x00 ... 0xFF" />
 <file aadr="0100" eadr="04b3" sadr="0100" typ="C" link="51d0977b34524611008fbcfe91b59c0f-rf_test_4_4/rf_test_4_4.z80" name="RF-TEST 4.4     " kurz="256K-RAM-FLOPPY-TEST 4" />
 <file aadr="0100" eadr="055c" sadr="0100" typ="C" link="7f5cd166c4a50dc7c361c07843842b77-rf_test_5_0/rf_test_5_0.z80" name="RF-TEST 5.0     " kurz="256K-RAM-FLOPPY-TEST 5" />
 <file aadr="1800" eadr="3e39" sadr="0000" typ="T" link="1934d81c1713c75826d28b2c5c9f06c0-T.RF_AM_Z1013/T.RF_AM_Z1.I.z80" name="RF_AM_Z1.I      " kurz="Einsatz der 256K-RAM-Floppy nach MP 3/88 am Z1013 (druckerfreundlich)" />
@@ -1078,4 +1076,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1078 Dateien."/></doc>
+<status src="Datenbank enthält 1076 Dateien."/></doc>

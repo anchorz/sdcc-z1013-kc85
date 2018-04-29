@@ -1,0 +1,8 @@
+<kurz src="identisch [a631cc2e5323cb109251b012051def7f]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 30 Bytes fehlen.
+
+Überarbeitete Version von [aae41d1a5966c6e4a5c39b4bc1108e73] mit Groß- und Kleinschreibung,
+sowie weniger Rechtschreibfehlern.
+
+<include src="ENTERPRI.B.B"/></lang>
+

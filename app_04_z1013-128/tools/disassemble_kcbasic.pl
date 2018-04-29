@@ -103,6 +103,7 @@ $ofs=0x2c01-0x2bc0+32;
 #$ofs=0x2e21; #hbc41
 #$ofs=32;
 #$ofs=0x2b21; #kc-basic
+#$ofs=0x2e63-0x2bc0+32; #doke 11103, hack
 
 printf ("i: EADR(nach Z80 Header)=0x%04x     \@FILE-POS[0x%04x]\n",$eadr,$eadr-$aadr+32);
 

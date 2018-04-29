@@ -1,0 +1,7 @@
+<kurz src="mit einem Raumschiff Klingonen anschießen"/>
+<lang>Überarbeitete Version von [aae41d1a5966c6e4a5c39b4bc1108e73] mit Groß- und Kleinschreibung,
+sowie weniger Rechtschreibfehlern.
+
+<include src="ENTERPRI.B.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>
