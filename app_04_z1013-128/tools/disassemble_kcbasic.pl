@@ -220,7 +220,7 @@ REDO_CHARACTER:
                     case [0x2d..0x2e] { pq(chr($byte)); $token_type=NUMBER; }  # [-.] #JKCEMU did not add any SPACE on the output  
                     case 0x40 { pq("@"); }
                     case [0x41..0x5a,0x61..0x7a] { pr(chr($byte)); $token_type=SYMBOL; }
-                    case [0x20..0x21,0x23,0x27..0x2c,0x2f,0x3a..0x3f] { pq(chr($byte)); } # [ '(),:*/]
+                    case [0x20..0x21,0x23..0x2c,0x2f,0x3a..0x3f] { pq(chr($byte)); } # !#$%&'(),:*/
                     case 0x80 { pr("END"); }
                     case 0x81 { pr("FOR"); }
                     case 0x82 { pr("NEXT"); }

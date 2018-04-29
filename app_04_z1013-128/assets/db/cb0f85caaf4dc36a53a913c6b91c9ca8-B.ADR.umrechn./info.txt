@@ -1,3 +1,4 @@
 <kurz src="Ladeadressen mit Offset berechnen"/>
 <lang><include src="ADR.umrechn..B"/></lang>
-<requires></requires>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

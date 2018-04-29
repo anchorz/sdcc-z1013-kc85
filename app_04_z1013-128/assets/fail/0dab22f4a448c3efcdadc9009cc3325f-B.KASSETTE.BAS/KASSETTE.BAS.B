@@ -1,0 +1,82 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+   10 WINDOW:CLS:CLEAR 5000:OUT 1,15
+   20 INPUT "Kassette :";KA$:J$=CHR$(27)
+   30 DE=DE+1:READ A$:IF A$<>"*"THEN 30:ELSE RESTORE 570:DIM W$(INT(DE/2))
+   40 PRINT:PRINT "Kurzfassung (J)/N : ";:GOSUB 400:K$=T$:PAUSE 5
+   50 H1=1:C$="Seite ":IF K$<>"J"THEN PRINT:PRINT C$ ": ";:GOSUB 400:S$=T$
+   60 B$="#":GOSUB 70:GOTO 110
+   70 FOR A=1 TO DE:READ A$:IF A$<>B$ AND A$<>"*"THEN NEXT
+   80 IF A$="*"THEN 520
+   90 IF M>MV THEN MV=M
+  100 A=DE+2:NEXT:RETURN
+  110 READ A$:IF A$<>KA$ THEN 60
+  120 IF K$="J"THEN READ S1$(H1):GOTO 140
+  130 READ A$:IF A$<>S$ THEN 60
+  140 W$(0)="                   Kassette "+KA$+", "+C$+S$
+  150 GOSUB 170:IF ME<H1 THEN ME=H1-1
+  160 GOTO 210
+  170 M=0:FOR A=1 TO DE:CC$=A$:READ A$:M=M+1:IF A$="$"THEN 90
+  180 IF A$="@"THEN A$=CC$
+  190 W$(A)=LEFT$(W$(A)+STRING$(20," "),H):A$=LEFT$(A$+STRING$(15," "),15)
+  200 W$(A)=W$(A)+LEFT$(A$,1)+CHR$(211)+MID$(A$,2):NEXT
+  210 IF K$="J"AND H=0 THEN H=20:H1=2:GOTO 60
+  220 IF K$="J"THEN W$(0)="    "+C$+S1$(1)+STRING$(16," ")+C$+S1$(2):ELSE 270
+  230 POKE 24,1:PRINT J$ "M";:IF K$="J"THEN FC=26:GOTO 250:ELSE FC=33
+  240 PRINT J$ "l"CHR$(12);
+  250 PRINT J$ "3"CHR$(FC)J$ "O";
+  260 PRINT W$(0):PRINT:FOR A=1 TO MV:GOSUB 530:NEXT:GOTO 380
+  270 FOR A=1 TO MV-1:FOR B=1 TO 3:READ W1$(B)
+  280 IF W1$(B)="%"THEN 320
+  290 IF W1$(B)="&"THEN 330
+  300 IF W1$(B)="!"THEN W1$(B)="100"
+  310 W$(A)=W$(A)+"  "+RIGHT$("0000"+W1$(B),5)+"H":NEXT:NEXT:GOTO 340
+  320 W$(A)=W$(A)+STRING$(24," "):B=4:NEXT:NEXT:GOTO 340
+  330 W$(A)=W$(A)+"        ":NEXT:NEXT
+  340 FOR A=1 TO MV-1:B$=A$:READ A$
+  350 IF A$="@"THEN A$=B$
+  360 IF A$="'"THEN A$="Spiel"
+  370 W$(A)=RIGHT$(" "+STR$(A),2)+". "+W$(A)+"   "+A$:NEXT:GOTO 230
+  380 POKE 24,0:PRINT:PRINT "Nochmal drucken (J)/N ? ";:GOSUB 400:IF T$="J"THEN 230
+  390 END
+  400 T$=INKEY$:IF T$=""THEN 400:ELSE PRINT T$:RETURN
+  410!
+  420!  # ... Kassettenbeginn; es folgt Bezeichnung und Seite
+  430!  $ ... Trennungszeichen nach Namen
+  440!  % ... keine Adressen
+  450!  & ... keine Startadresse
+  460!  ! ... Adresse ist 00100H
+  470!  @ ... Name doppelt
+  480!  ' ... Spiel
+  490!
+  500!  rechter Rand fuer 2.            Kurzfassung: 48
+  510!
+  520!
+  530 FOR B=1 TO LEN(W$(A)):B$=MID$(W$(A),B,1):IF B$=CHR$(211)THEN 550
+  540 PRINT B$;:NEXT:PRINT:RETURN
+  550 PRINT CHR$(27);"K";CHR$(19);:OUT 0,0:FOR B1=1 TO 3:FOR B2=1 TO 4:OUT 0,0
+  560 NEXT:OUT 0,192:OUT 0,192:NEXT:OUT 0,0:NEXT
+  570 DATA#,ZC1,A
+  580 DATA CDEBUGGER,CBASIC,CSPRACHE,CMAZOGS,BKALENDER,CKC-SAVE
+  590 DATA CKC-LOAD,CASM-SOFT,CALF,CCYRUS,BSKAT,CSUPER-SKI,CMINEN,CPURSUIT
+  600 DATA CVOICE,CRST 20,CEDAS,CGHOST,CLADDER,CDIGGER 1.3,CLAST CHANCE
+  610 DATA CBASIC,BPARAVIA,BLEBEN,BCENTIPEDE,BENTERPRISE,CPASCAL 1.04,CMESEE
+  620 DATA CSOKO-BAN,CCOPY,BCLIMBER,CVAMPIR,CLABYRINTH,CWIZARD,CSCHIESSBUDE
+  630 DATA BFRAKT.KC,BABLEI,CHUNDI,CMicroWORD,$
+  640 DATA C700,DFFF,C700,!,2B50,300,200,560,50D,!,2000,!,2BC0,33D3,&
+  650 DATA!,300,!,3E80,3FFF,3F91,A600,E1FF,E000,!,E40,!,!,41B0,3FF0
+  660 DATA 2BC0,511A,&,!,1200,!,!,EFF,!,!,3FFF,!,7600,7800,&
+  670 DATA!,1F0,!,1F00,3FFF,2000,!,1FFF,200,!,6EFF,!,!,43CF,!
+  680 DATA!,1B00,106,C000,EABF,C000,3C0,3147,&,3C0,1188,&,2BC0,4040,&
+  690 DATA 2BC0,5F55,&,!,4030,!,EBC0,EBFF,EBC0,!,139F,1390,!,75F,!
+  700 DATA 2BC0,549F,&,!,14FF,!,!,3FFF,645,!,43FF,!,!,15F0,!
+  710 DATA 400,7CB,&,3C0,16C0,&,DE80,EBD0,EBA0,!,143F,!
+  720 DATA Reassembler,BASIC-Interpreter,Spracherzeuger,',Ewiger Kalender
+  730 DATA KC-Format-Saver,KC-Format-Lader,Assembler,',Schach-Spiel,'
+  740 DATA',',',Spracherzeuger,CALL-Umwandlung,EDAS,',',',Worteraten
+  750 DATA ROM-BASIC,',Lebenserwartung,',',PASCAL-Compiler,Speicherabbild
+  760 DATA',Kopierprogramm,',',',',',Fraktale berechnen,Differentialrechnung
+  770 DATA Grafikdemonstration,Textverarbeitungssystem
+  780 DATA#,ZC1,B
+  790 DATA$,%," "
+  800 DATA "*"

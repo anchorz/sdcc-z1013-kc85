@@ -1,0 +1,4 @@
+<kurz src="Grafik, Titel zu COWBOY.COM"/>
+<lang></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

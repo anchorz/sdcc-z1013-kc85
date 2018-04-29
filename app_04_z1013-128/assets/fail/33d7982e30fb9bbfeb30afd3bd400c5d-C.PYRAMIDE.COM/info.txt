@@ -1,0 +1,23 @@
+<kurz src="ähnlich [c5fd4cc8a1ac5bfcf154ba9a7f83fca4]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 15 Bytes fehlen.
+RB Tastatur Portierung ist nicht komplett. Texte sind ein wenig abgeändert.
+Wahrscheinlich war dem Autor des Patches die POLL-Routine zu langsam und hat deswegen
+die Direktabfrage wieder benutzt. 
+Da es von dieser Tastatur nur 2 Exemplare gab, habe ich das Programm als unbenutzbar aussortiert.
+
+im Vergleich zu [c5fd4cc8a1ac5bfcf154ba9a7f83fca4] andere Implementierung der Tastaturabfrage
+Pause ist hier 'P'-Taste
+unbekannte RB Tastatur = letzendlich wird hier doch noch das Tastaturlayout abgefragt, aber die Tastatur
+entspricht nicht dem RB Standard:
+IO: 08 4037 Wr 08403700
+IO: 02 403a Rd 02403a01
+
+Sie sind in KINGS-VALLEY, wo 16 uralte Pyramiden stehen. Jede Pyramide besitzt in ihrem Innern
+eine Schatzkammer. Man hat durch eventuellen Gebrauch der je nach Pyramidennummer in verschiedener
+Zahl vorhandenen Mittel (Schwert und Presslufthammer) die Kammern jeweils restlos auszurauben.
+Die Pyramide kann erst verlassen werden, wenn sie  leer ist! Doch man ist nicht der Einzige in der
+Schatzkammer...  
+
+</lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

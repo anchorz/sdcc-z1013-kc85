@@ -1,0 +1,6 @@
+<kurz src="identisch [8f6fa79936fcc882a1f9d0086fe6f5a5]"/>
+<lang>An sich ist dieses Programm korrekt. Lediglich die Startadresse 0x2BC0 ist inkorrekt, da hier ein ROM-BASIC vorausgesetzt wird.
+CALL*40A (dort wird CALL 0C4DAH aufgerufen)
+ 
+<include src="Ableitung (1987)(H. Voelz).B"/></lang>
+<requires></requires>

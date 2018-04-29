@@ -1,3 +1,23 @@
-<kurz src="AC1 MONITOR V3.1 (8x4)"/>
-<lang></lang>
-<requires>2.02</requires>
+<kurz src="AC1 MONITOR V3.1 (8x4) mit Mini-Basic"/>
+<lang>A aaaa bbbb c (Arithmetik) 
+B aaaa (Breakpoint) 
+C aaaa bbbb cccc (Compare) 
+D aaaa bbbb (Display Memory; Dump) 
+E aaaa (Execute Machine Programm) 
+F aa bb ce dd ... nn (Find String) 
+G (Go on) 
+I (Initialize) 
+J aaaa (Jump) 
+L aaaa ± (Load from Cassette) 
+M aaaa (Modify Memory) 
+P aaaa bbbb cc (Pattern) 
+R XX (Register Display/Modify) 
+S aaaa bbbb cccc name (Save to Cassette) 
+T aaaa bbbb cccc (Transfer) 
+V (Verify with Cassette) 
+Z Mini-Basic
+</lang>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, Toneingabe, Tastatur+8x4"/>
+<port range="03" mode="W" device="Systemport: Initialisierung"/>
+<port range="08" mode="W" device="Spaltentreiber: Tastatur+8x4"/>
+

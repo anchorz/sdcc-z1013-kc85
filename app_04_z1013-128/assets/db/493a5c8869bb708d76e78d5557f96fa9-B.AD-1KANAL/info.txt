@@ -1,4 +1,8 @@
 <kurz src="1 Kanal Digitalvoltmeter, RFE 4/88"/>
 <lang>
 <include src="AD-1KANAL.B"/></lang>
-<requires></requires>
+<port range="30" mode="R" device="E/A Modul"/>
+<port range="31" mode="W" device="E/A Modul"/>
+<port range="32" mode="R/W" device="E/A Modul"/>
+<port range="33" mode="W" device="E/A Modul"/>
+

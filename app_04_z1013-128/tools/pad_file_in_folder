@@ -1,0 +1,59 @@
+#!/usr/bin/perl -w
+
+use File::Copy::Recursive qw(dircopy);
+use Digest::MD5 qw(md5_hex);
+use File::Basename;
+use File::Spec;
+
+$padding=32;
+
+if (!defined $ARGV[0]) {
+    print "copy .z80 (padded to 32 bytes) into a new directory with correct md5\n";
+    exit 1;
+}
+
+$src=$ARGV[0];
+
+if (-d "$src") {
+    print "source must be a regular file\n";
+    exit 1;
+}
+
+
+$len= -s $src;
+open(FH,"<$src");
+binmode(FH,":raw");
+read FH,$content,$len;
+close FH;
+
+$md5 = Digest::MD5->new;
+$md5->add($content);
+$mod=$padding-($len%$padding);
+for ($i=0;$i<$mod;$i++) {
+    $md5->add(chr(0xff));
+}
+
+$dirname  = dirname($src);
+$basename  = basename($src);
+$dirname_neu=$dirname;
+$md5_neu=$md5->hexdigest;
+$dirname_neu=~s/^([a-f0-9]*)/$md5_neu/;
+
+if (-e $dirname_neu) {
+    printf("e: target folder already exists \"$dirname_neu\"\n"); 
+    #exit 1;
+} else {
+    mkdir($dirname_neu);
+}
+my $num_of_files_and_dirs = dircopy($dirname,$dirname_neu);
+#print "$num_of_files_and_dirs files copied to: \"$dirname_neu\"\n";
+
+$file_neu = File::Spec->catfile($dirname_neu, $basename );
+
+open(FH, '>>', $file_neu );
+for ($i=0;$i<$mod;$i++) {
+    printf(FH chr(0xff));
+}
+
+print "$md5_neu : new length is ($len+$mod) Bytes\n";
+

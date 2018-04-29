@@ -1,3 +1,4 @@
 <kurz src="AC1-TAPE für Z1013"/>
 <lang><include src="T.AC1_=_Z1013.txt"/></lang>
-<requires></requires>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

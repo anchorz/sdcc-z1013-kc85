@@ -1,3 +1,4 @@
 <kurz src="Adressdatenbank"/>
 <lang><include src="adressen.bas.B"/></lang>
-<required></required>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

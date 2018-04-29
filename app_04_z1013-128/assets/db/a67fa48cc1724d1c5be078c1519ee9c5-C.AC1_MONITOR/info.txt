@@ -1,3 +1,25 @@
 <kurz src="AC1 MONITOR V3.2"/>
-<lang></lang>
-<requires></requires>
+<lang>
+<h href="http://www.ac1-info.de/ac1_berlin/mon_v31_txt.htm">Das Monitorprogramm</a>
+A aaaa bbbb c (Arithmetik) 
+B aaaa (Breakpoint) 
+C aaaa bbbb cccc (Compare) 
+D aaaa bbbb (Display Memory; Dump) 
+E aaaa (Execute Machine Programm) 
+F aa bb ce dd ... nn (Find String) 
+G (Go on) 
+I (Initialize) 
+J aaaa (Jump) 
+L aaaa ± (Load from Cassette) 
+M aaaa (Modify Memory) 
+P aaaa bbbb cc (Pattern) 
+R XX (Register Display/Modify) 
+S aaaa bbbb cccc name (Save to Cassette) 
+T aaaa bbbb cccc (Transfer) 
+V (Verify with Cassette) 
+Z 
+</lang>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, Toneingabe"/>
+<syscall type="202" tag="[OUTCH, INCH, PRST7]"/>
+<syscall type="rst20" tag="[OUTHL, OUTHX]"/>
+

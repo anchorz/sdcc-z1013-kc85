@@ -1,0 +1,4 @@
+<kurz src="ähnlich [51329cb6126882f0e5b8a7fe0fb5f079]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 31 Bytes fehlen.
+Unterschiede unbekannt. Vielleicht ein paar Zeitkonstanten</lang>
+

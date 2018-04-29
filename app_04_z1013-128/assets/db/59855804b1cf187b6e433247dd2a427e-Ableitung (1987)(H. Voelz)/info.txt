@@ -1,3 +1,0 @@
-<kurz src="DIFFERENZIALRECHNUNG"/>
-<lang><include src="Ableitung (1987)(H. Voelz).B"/></lang>
-<requires></requires>

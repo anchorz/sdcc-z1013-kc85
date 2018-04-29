@@ -1,0 +1,5 @@
+<kurz src="Grafik, Ladebildschirm zu MicroWord"/>
+<lang>Zeigt den Titel an und springt zur Laderoutine</lang>
+<syscall type="spv" tag="[LORUF]"/>
+<syscall type="rst20" tag="[OUTCH]"/>
+<port range="keine" mode="" device=""/>

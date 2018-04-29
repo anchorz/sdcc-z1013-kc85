@@ -1,0 +1,8 @@
+<kurz src="Formatierte Ausgabe der Kassettenliste ZC1 Seite A"/>
+<lang>Soundeffekt auf Port 0x00 vor jeder Zeile
+ansonsten ist die Druckgeschwindigkeit ziemlich langsam. 
+
+<include src="KASSETTE.BAS.B"/></lang>
+<port range="00" mode="W" device="Userport: Tonausgabe"/>
+<port range="01" mode="W" device="Userport: Tonausgabe"/>
+

@@ -1,4 +1,4 @@
-<kurz src="AC1 Kassettenroutine V7 1988"/>
+<kurz src="AC1 Kassettenroutine V7 01.01.1988"/>
 <lang>
 * * AC 1 Kassettenroutine * *
 
@@ -17,4 +17,6 @@ oder Verschiebeadr. - ENTER
 MENUE     = @m
 
            (C) H.Venzke 1988</lang>
-<requires></requires>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe, Toneingabe"/>
+<syscall type="rst20" tag="[INCH, PRST7]"/>
+

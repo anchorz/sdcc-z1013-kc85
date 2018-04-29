@@ -1,0 +1,24 @@
+<kurz src="Schießübungen für 2 Personen"/>
+<lang>
+
+Steuerung linker Spieler:
+
+A  hoch
+Z  runter
+W  schießen schräg nach oben
+S  schießen gerade
+X  schießen schräg nach unten
+
+Steuerung rechter Spieler:
+
+\  hoch
+/  runter
+P  schießen schräg nach oben
+;  schießen gerade
+.  schießen schräg nach unten
+
+
+</lang>
+<syscall type="spv" tag="[POLL]"/>
+<syscall type="rst20" tag="[INCH, PRST7]"/>
+<port range="keine" mode="" device=""/>

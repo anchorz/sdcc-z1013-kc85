@@ -1,0 +1,4 @@
+<kurz src="Fibonacci-Zahlen bis 184, 01.01.1993"/>
+<lang><include src="FIBONACC.BAS.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

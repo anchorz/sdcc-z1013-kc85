@@ -1,0 +1,12 @@
+<kurz src="Assembler(5.3)+Microword(1.7)-Kombination"/>
+<lang>Installiert Monitorerweiterungen:
+@A
+@C 
+@M
+</lang>
+<port range="00" mode="W" device="Userport: Centronics"/>
+<port range="01" mode="W" device="Userport: Centronics"/>
+<port range="02" mode="R" device="Systemport: [4]Centronics-Busy"/>
+<syscall type="spv" tag="[LORUF, SARUF]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH]"/>
+

@@ -1,3 +1,4 @@
 <kurz src="Audio Kassetten Interface für Bürocomputer BC 5120 und PC1715"/>
 <lang><include src="I.ACI3-Interface.txt"/></lang>
-<requires></requires>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

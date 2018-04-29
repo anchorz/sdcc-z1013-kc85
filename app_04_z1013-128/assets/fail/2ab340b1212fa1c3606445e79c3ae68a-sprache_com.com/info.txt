@@ -1,0 +1,5 @@
+<kurz src="identisch [503e6fe5c7d0c64133784627186aae25]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 31 Bytes fehlen.
+   /home/andreas/ws/sdcc-z1013-kc85/app_04_z1013-128/assets/db/2ab340b1212fa1c3606445e79c3ae68a-sprache_com.com/sprache_com.com.z80
+e: Z80-Header-Tag ist nicht korrekt, statt "d3d3d3" steht "2e2e2e"</lang>
+

@@ -1,0 +1,7 @@
+<kurz src="Ableitung bilden, Differenzialrechnung (braucht ROM-BASIC!)"/>
+<lang>Dieses Programm erwartet ein ROM-BASIC, bzw die Startaddresse wird als 0x03C0 angenommen. Später wird mit 
+CALL*40A (und dort CALL 0C4DAH) eine Maschinensprachroutine aufgerufen. 
+
+<include src="Ableitung (1987)(H. Voelz).B"/></lang>
+<syscall type="C4DA" tag="hier wird irgendwo ins ROM-BASIC gesprungen"/>
+<port range="keine" mode="" device=""/>

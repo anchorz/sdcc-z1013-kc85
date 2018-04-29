@@ -1,0 +1,5 @@
+<kurz src="identisch [a65ca982ce138d171a256c8a1de72854]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 23 Bytes fehlen.
+<include src="KASSETTE.BAS.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>
