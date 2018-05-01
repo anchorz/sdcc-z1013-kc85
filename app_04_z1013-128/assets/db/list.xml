@@ -591,6 +591,7 @@
 <file aadr="0100" eadr="0f1f" sadr="0100" typ="C" link="e0ae6530e13f54e08ca30253f2151fe9-C.LAYOUT.C/C.LAYOUT.C.z80" name="LAYOUT.C        " kurz="Layoutmaker I. - Leiterplatten Layout erstellen, KRT-Vollgrafik" />
 <file aadr="2bc0" eadr="3a16" sadr="0000" typ="B" link="6b3b500959b5ffb9c903c977323b4d16-lebenserwartung/lebenserwartung.z80" name="LEBENSERWARTUNG " kurz="LEBENSERWARTUNGSPROGNOSE" />
 <file aadr="2bc0" eadr="3c07" sadr="0000" typ="B" link="8132ea7391704c0cde1476568d7fff2f-B.LEBENSERWARTUNG/B.LEBENSERWARTUNG.z80" name="LEBENSERWARTUNG " kurz="Fragen gleich mit [6b3b500959b5ffb9c903c977323b4d16]" />
+<file aadr="2bc0" eadr="3868" sadr="0000" typ="B" link="9dd86b32a8d19097b0685b5784424e71-B.LEBENSZE.B/B.LEBENSZE.B.z80" name="LEBENSZE.B      " kurz="LEBENSERWARTUNGSPROGNOSE (Version DA 1.8.1990)" />
 <file aadr="2bc0" eadr="5ab6" sadr="0000" typ="B" link="4455a79ce9ccf116d729417a5a1d7371-leipzig/leipzig.z80" name="LEIPZIG         " kurz="Wissenstest Leipzig" />
 <file aadr="3000" eadr="3695" sadr="0000" typ="I" link="bdd805a74e20a7671261592bee1aebf6-leipzig_doc/leipzig_doc.z80" name="LEIPZIG DOC     " kurz="Programmbeschreibung: Wissenstest Leipzig" />
 <file aadr="2bc0" eadr="3507" sadr="0300" typ="B" link="1e17e050937c975e2746c600491d5bf0-B.LICHTER/B.LICHTER.z80" name="LICHTER         " kurz="Lichter schalten über IO-Port 0x00" />
@@ -728,7 +729,7 @@
 <file aadr="0100" eadr="0eff" sadr="0100" typ="C" link="0b02a44994adc3840fa762d8c1233e69-othello%20v1/othello%20v1.z80" name="OTHELLO V1      " kurz="" />
 <file aadr="1000" eadr="22d0" sadr="0000" typ="b" link="1f082752dbf55f613afefd0f4d8ecd02-b.OTHELLO%20var/b.OTHELLO%20var.z80" name="OTHELLO var     " kurz="Othello-Variante, variable Spielgröße" />
 <file aadr="0100" eadr="1c79" sadr="0103" typ="C" link="3a8faa5d365403b05e28d8a80d9d6492-C.PAINT/C.PAINT.z80" name="PAINT           " kurz="Grafikeditor mit Tiny-Basic" />
-<file aadr="2bc0" eadr="58b8" sadr="0300" typ="B" link="75b9fcd76fa39557454f08460b34e45b-paravia/paravia.z80" name="PARAVIA         " kurz="SANTA PARAVIA, Z9001 Version" />
+<file aadr="2bc0" eadr="596e" sadr="0302" typ="B" link="64f6a44978ed6a5a0ab1e0b0efbed62b-B.PARAVIA.B/B.PARAVIA.B.z80" name="PARAVIA.B       " kurz="Verwalter der Stadt SANTA PARAVIA " />
 <file aadr="2bc0" eadr="8cc9" sadr="0302" typ="B" link="c729d0ac37bbf7be0c06d20d31e4728b-parskat/parskat.z80" name="PARSKAT         " kurz="SKAT und SANTA PARAVIA als Bundle" />
 <file aadr="2bc0" eadr="4ae8" sadr="0000" typ="B" link="958e3d96e57cab1698197cf524f5906b-B.PARTNER/B.PARTNER.z80" name="PARTNER         " kurz="" />
 <file aadr="1000" eadr="22ff" sadr="0000" typ="b" link="9f83dd605923492700d30c77086a94d8-b.Party/b.Party.z80" name="Party           " kurz="Quiz &amp; Ratschläge für eine gelungene Party" />
@@ -863,6 +864,7 @@
 <file aadr="e800" eadr="e8c0" sadr="0000" typ="C" link="fb42700f63e47da9bbff475a0789308a-C.SINOLA.PRG/C.SINOLA.PRG.z80" name="SINOLA.PRG      " kurz="Grafik, Titel zu COWBOY.COM" />
 <file aadr="2bc0" eadr="55e4" sadr="0000" typ="B" link="183428ee4758b53b160220529705044c-B.SKAT/B.SKAT.z80" name="SKAT            " kurz="Skat gegen den Computer mit HEX/ALPHA Umschaltung" />
 <file aadr="2bc0" eadr="5357" sadr="0300" typ="B" link="4d60a668334e5db51ec494ee528cc628-skat/skat.z80" name="SKAT            " kurz="Skat gegen den Computer" />
+<file aadr="2bc0" eadr="512a" sadr="0000" typ="B" link="20376ad04292d4a112362186c58a755f-B.SKAT.B/B.SKAT.B.z80" name="SKAT.B          " kurz="Skat gegen den Computer (verbessert DA)" />
 <file aadr="1000" eadr="1c82" sadr="0000" typ="b" link="8dfdfa2bde20f443be2d060771976c02-b.SKEET%203/b.SKEET%203.z80" name="SKEET 3         " kurz="Tontaubenschiessen" />
 <file aadr="1000" eadr="1a04" sadr="0000" typ="b" link="da03960f41bfd19d933668ad2e240dec-b.SKEET%20RER/b.SKEET%20RER.z80" name="SKEET RER       " kurz="Tauben schießen reloaded" />
 <file aadr="2bc0" eadr="3bd3" sadr="0000" typ="B" link="7e6ed1969fe2ba438a9d69475310006b-slalom/slalom.z80" name="SLALOM          " kurz="Ski fahren, Tore treffen" />
@@ -1076,4 +1078,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1076 Dateien."/></doc>
+<status src="Datenbank enthält 1078 Dateien."/></doc>

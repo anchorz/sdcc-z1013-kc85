@@ -8,6 +8,8 @@ use Cwd 'abs_path';
 use Switch;
 use utf8;
 
+binmode(STDOUT, ":utf8");
+
 our $map_ctrl=1;#maps ASCII 0x00..0x1f to CTRL-Characters U+f120..U+f13f
 #our $map_ctrl=0; #maps ASCII 0x00..0x1f,0x7f to FULL-CURSOR and CHESS FIGURES
 
@@ -105,19 +107,23 @@ $ofs=0x2c01-0x2bc0+32;
 #$ofs=0x2b21; #kc-basic
 #$ofs=0x2e63-0x2bc0+32; #doke 11103, hack
 
-printf ("i: EADR(nach Z80 Header)=0x%04x     \@FILE-POS[0x%04x]\n",$eadr,$eadr-$aadr+32);
+
+printf ("i: EADR(nach Z80 Header)=0x%04x (offset=0x%04x)\n",$eadr,$eadr-$aadr+32);
 
 if ($ofs==97) {
     $basic_end=unpack("v",substr($content,55,2));
-    printf ("i: PRGM(          \@2BD7)=0x%04x     \@FILE-POS[0x%04x]\n",$basic_end,$basic_end-$aadr+32);
-    if ($eadr<$basic_end) {
-        printf ("r:  Hier fehlt das Ende. Im Header steht das Ende EADR=%04x,\n",$eadr);
+    printf ("i: PRGM[0x%04x]=0x%04x          (offset=0x%04x)\n",$aadr+55-32,$basic_end,55);
+    if ($eadr<$basic_end) { 
+        printf ("w:  Hier fehlt eventuell das Ende. Im Header steht das Ende EADR=%04x,\n",$eadr);
         printf ("    aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+        printf ("    Das könnte aber eventuell auch der Variablenspeicher sein.\n");
+        
     }
 
     if ($eadr!=$basic_end) {
-        printf (":  Im Header steht das Ende EADR=%04x,\n",$eadr);
-        printf ("   aber der BASIC-Speicher meint das Ende sei bei=%04x\n",$basic_end);
+        printf ("w:  Ende lt. Header EADR=0x%04x ",$eadr);
+        printf ("ist nicht identisch mit dem Ende lt. BASIC=0x%04x\n",$basic_end);
+        printf ("    In den meisten Fällen sind die Werte aber gleich.\n");
     }
 }
 

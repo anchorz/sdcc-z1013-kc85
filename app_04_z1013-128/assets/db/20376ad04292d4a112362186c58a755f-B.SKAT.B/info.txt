@@ -1,0 +1,6 @@
+<kurz src="Skat gegen den Computer (verbessert DA)"/>
+<lang>neuere Version von [4d60a668334e5db51ec494ee528cc628]
+
+<include src="SKAT.B.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

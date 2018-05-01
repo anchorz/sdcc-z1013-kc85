@@ -1,0 +1,4 @@
+<kurz src="LEBENSERWARTUNGSPROGNOSE (Version DA 1.8.1990)"/>
+<lang><include src="LEBENSZE.B.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

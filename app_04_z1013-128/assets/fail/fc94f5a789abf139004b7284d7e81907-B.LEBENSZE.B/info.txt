@@ -1,0 +1,7 @@
+<kurz src="identisch [9dd86b32a8d19097b0685b5784424e71]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 23 Bytes fehlen.
+Anfangsadresse 0x03c0 stimmt nicht mit dem Wert aus dem Quellcode überein. Dies
+ist kein wirkliches Problem, da der BASIC Interpreter die Umrechnung vornimmt,
+mein disassemble_kcbasic Script dagegen (noch) nicht.
+</lang>
+

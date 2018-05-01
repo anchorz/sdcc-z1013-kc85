@@ -1,0 +1,8 @@
+<kurz src="neuere Version [64f6a44978ed6a5a0ab1e0b0efbed62b]"/>
+<lang>SANTA PARAVIA, Z9001 Version
+
+Könnte die Urversion sein. Gleich mit [5c469a2bd39c04926c9f00e465f632a2],
+einige Texte wurde dort angepasst.
+
+<include src="paravia.B"/></lang></lang>
+<required></required>
