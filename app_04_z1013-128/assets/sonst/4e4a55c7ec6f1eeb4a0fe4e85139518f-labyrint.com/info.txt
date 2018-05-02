@@ -1,0 +1,5 @@
+<kurz src="ähnlich [0ef9a99c07c18fe29395e1b09ba2da46]"/>
+<lang>älter Version von [0ef9a99c07c18fe29395e1b09ba2da46]
+
+Unterschied: hier wird INKEY verwendet, im anderen Programm INCH</lang>
+

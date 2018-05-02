@@ -222,6 +222,7 @@
 <file aadr="0100" eadr="3fff" sadr="3ff0" typ="C" link="e439a8f7be1c34757856f8a182dccb2d-cyrus-chess%20h/cyrus-chess%20h.z80" name="CYRUS-CHESS H   " kurz="Cyrus Schach (englisch)" />
 <file aadr="0800" eadr="1bdd" sadr="0000" typ="I" link="53443738703e817d77ffbe284aa77891-I.CYRUS-CHESS%20V.2/I.CYRUS-CHESS%20V.2.z80" name="CYRUS-CHESS V.2 " kurz="CYRUS V.2/dt." />
 <file aadr="e000" eadr="e99f" sadr="e3ee" typ="C" link="54a4157b16a8295d0b840d79f03ab9b1-cyrus_header_v_3/cyrus_header_v_3.z80" name="CYRUS-HEADER V.3" kurz="Headersave Erweiterung" />
+<file aadr="0100" eadr="41df" sadr="3ff0" typ="C" link="cd857697a6e5c3af00b66aacab2109a3-C.CYRUS.C/C.CYRUS.C.z80" name="CYRUS.C         " kurz="SCHACHEUROPAMEISTER Version DA" />
 <file aadr="2bc0" eadr="5c0b" sadr="0000" typ="B" link="a487d6404710d28f5706642d3a290b45-B.D-BANK/B.D-BANK.BAS.z80" name="D-BANK.BAS      " kurz="UNIVERSELLES DATENBANKPROGRAMM" />
 <file aadr="1800" eadr="2d81" sadr="0000" typ="I" link="90ace6d7f432e39f067f80aea34c0fc2-I.DAT/I.DAT.z80" name="DAT             " kurz="Dateiprogramm zur Bearbeitung von Personalien" />
 <file aadr="2bc0" eadr="3475" sadr="0000" typ="B" link="298792926e83ddc01fb1c1a3323cacb4-B.DATAGEN./B.DATAGEN..z80" name="DATAGEN.        " kurz="DATA Zeilen-GENERATOR (C) ROLAND KNECHT y56ya" />
@@ -391,6 +392,7 @@
 <file aadr="1000" eadr="299f" sadr="0000" typ="b" link="e1d854bd4b1a3db1b748f096421d19bc-b.GESUNDHEIT%201/b.GESUNDHEIT%201.z80" name="GESUNDHEIT 1    " kurz="Test um festzustellen, ob du gesund lebst" />
 <file aadr="0100" eadr="2000" sadr="0200" typ="C" link="cd97c36d3f01b8c09d9114c8f55458d0-ghost+voice/ghost+voice.z80" name="GHOST+VOICE     " kurz="GHOST mit Sound Effekten, Geist ausweichen und $ aufsammeln (2.02-Tastatur)" />
 <file aadr="0100" eadr="0a8f" sadr="0200" typ="C" link="452c590ae916c40ee8be3ed486eb4279-ghost_hut+j/ghost_hut+j.z80" name="GHOST-HUT+Joyst." kurz="Geist ausweichen und $ aufsammeln+Joystick Practic 01/88" />
+<file aadr="0100" eadr="1fff" sadr="0200" typ="C" link="10d878d2015a53a25a522bc470252399-C.GHOST.C/C.GHOST.C.z80" name="GHOST.C         " kurz="GHOST mit Sound Effekten, Geist ausweichen und $ aufsammeln (andere Tastatur)" />
 <file aadr="0100" eadr="35b6" sadr="0100" typ="C" link="541d63240556142a7dfee23fac6cf391-C.GLKWUNSCHKARTE/C.GLKWUNSCHKARTE.z80" name="GLKWUNSCHKARTE  " kurz="Glückwunschkarte drucken" />
 <file aadr="2bc0" eadr="3ecc" sadr="0000" typ="B" link="f57d43cadca195144d3657bd646dd8ff-B.GO%201010/B.GO%201010.z80" name="GO 10*10        " kurz="Go 10x10, Othello, Reversi, Brettspiel" />
 <file aadr="0100" eadr="0aff" sadr="0200" typ="C" link="159f779f459fc55b4315a4267db7c80a-gohst_rb/gohst_rb.z80" name="GOHST RB        " kurz="GHOST, Geist ausweichen und $ aufsammeln (Brosig-Tastatur)" />
@@ -1078,4 +1080,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1078 Dateien."/></doc>
+<status src="Datenbank enthält 1080 Dateien."/></doc>

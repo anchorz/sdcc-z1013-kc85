@@ -1,0 +1,22 @@
+<kurz src="SCHACHEUROPAMEISTER Version DA"/>
+<lang>Vielleicht passen die Spielstände zu dieser Version [05aa1a995a7aadd8f70126a16e68eafc] [f778e5a94e25f8597ce08085379a64d5]
+
+Absturz bei ungültigem Zug "Your move:A2 A2  Illegal" springt auf Adresse 0x0000
+PC=0E33  C9          RET
+PC=033E  18 9A       JR      02DAH
+PC=02DA  65          LD      H,L
+PC=02DB  F2 00 00    JP      P,0000H
+
+
+BREAK-KEY ist ESC!
+
+Druckertreiber ab 0xE830
+
+408D  FE 50            CP      50H
+408F  CC 30 E8         CALL    Z,0E830H
+
+</lang>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="E830" tag="Druckertreiber"/>
+<syscall type="202" tag="[INKEY]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH]"/>

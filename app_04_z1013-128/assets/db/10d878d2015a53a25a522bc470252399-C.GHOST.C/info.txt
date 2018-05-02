@@ -1,0 +1,4 @@
+<kurz src="GHOST mit Sound Effekten, Geist ausweichen und $ aufsammeln (andere Tastatur)"/>
+<lang>wie [cd97c36d3f01b8c09d9114c8f55458d0], Tastaturlayout ist verschieden.
+</lang>
+

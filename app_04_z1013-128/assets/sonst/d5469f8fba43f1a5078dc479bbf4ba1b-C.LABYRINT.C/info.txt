@@ -1,0 +1,7 @@
+<kurz src="ähnlich [0ef9a99c07c18fe29395e1b09ba2da46]"/>
+<lang>ältere Version von [0ef9a99c07c18fe29395e1b09ba2da46]
+
+Tastaturlayout ist verschieden, Links,Rechts,Space,A,O
+</lang>
+<syscall type="rst20" tag="[OUTCH, INKEY, HEXUM, INCH, PRST7, ALPHA, TRANS, OUTHX]"/>
+<port range="keine" mode="" device=""/>

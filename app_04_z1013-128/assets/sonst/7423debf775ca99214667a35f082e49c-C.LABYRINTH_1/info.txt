@@ -1,0 +1,4 @@
+<kurz src="ähnlich [0ef9a99c07c18fe29395e1b09ba2da46]"/>
+<lang>
+lediglich Verwendung der Monitoraufrufe von INCH und INKEY ist verschieden</lang>
+
