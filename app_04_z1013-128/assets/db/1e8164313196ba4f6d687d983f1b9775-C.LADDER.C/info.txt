@@ -1,0 +1,9 @@
+<kurz src="Ladder (original), noch ohne Cheat"/>
+<lang>ansonsten wie [0e5275f0123a3af7077d1d0d96389239]
+
+Steuerung: ⇦ ⇨  ␣ CTRL-C</lang>
+<port range="00" mode="W" device="Userport: Tonausgabe, Joystick ERF"/>
+<port range="01" mode="W" device="Userport: Tonausgabe, Joystick ERF"/>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<port range="03" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="rst20" tag="[WIND, OUTCH, INKEY, INCH, PRST7]"/>

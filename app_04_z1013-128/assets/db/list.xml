@@ -589,6 +589,7 @@
 <file aadr="3000" eadr="3a98" sadr="0000" typ="T" link="b7cfbee1a3e4773a9fcaa35546bb3f22-T.LADDER/T.LADDER.z80" name="LADDER          " kurz="Beschreibung LADDER, grafisch beste Variante" />
 <file aadr="0100" eadr="6eff" sadr="6ee0" typ="C" link="e82e4344ad97062448b83e1d89fc2926-ladder_prJ/ladder_prJ.z80" name="LADDER          " kurz="grafisch schönste Variante+Joystick Practic 01/88" />
 <file aadr="0100" eadr="6eff" sadr="0100" typ="C" link="0e5275f0123a3af7077d1d0d96389239-ladder_8_4/ladder_8_4.z80" name="LADDER 8*4      " kurz="Ladder 8x4 Folientastatur, Cheat: Wartet vor jeder Tastaturabfrage" />
+<file aadr="0100" eadr="6eff" sadr="0100" typ="C" link="1e8164313196ba4f6d687d983f1b9775-C.LADDER.C/C.LADDER.C.z80" name="LADDER.C        " kurz="Ladder (original), noch ohne Cheat" />
 <file aadr="1000" eadr="221f" sadr="0000" typ="b" link="bd3f499316f322ba617aec761074cf95-b.LANDESVERWALTER/b.LANDESVERWALTER.z80" name="LANDESVERWALTER " kurz="Wirtschaftsimulation statt in Paravia in einer römischen Kolonie" />
 <file aadr="0100" eadr="0f1f" sadr="0100" typ="C" link="e0ae6530e13f54e08ca30253f2151fe9-C.LAYOUT.C/C.LAYOUT.C.z80" name="LAYOUT.C        " kurz="Layoutmaker I. - Leiterplatten Layout erstellen, KRT-Vollgrafik" />
 <file aadr="2bc0" eadr="3a16" sadr="0000" typ="B" link="6b3b500959b5ffb9c903c977323b4d16-lebenserwartung/lebenserwartung.z80" name="LEBENSERWARTUNG " kurz="LEBENSERWARTUNGSPROGNOSE" />
@@ -1080,4 +1081,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1080 Dateien."/></doc>
+<status src="Datenbank enthält 1081 Dateien."/></doc>
