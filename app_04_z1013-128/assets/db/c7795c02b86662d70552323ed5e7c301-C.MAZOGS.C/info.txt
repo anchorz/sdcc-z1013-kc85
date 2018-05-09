@@ -1,0 +1,8 @@
+<kurz src="andere Tastenbelegung QAKL, ähnlich [c3e512db246882c1e4e08a50fddcfbb6] "/>
+<lang>
+Programm identisch [c3e512db246882c1e4e08a50fddcfbb6], Tastenbelegung ist verschieden
+
+Steuerung: ⇦ ⇨ ⇧ ⇩  QAKL VS LR
+</lang>
+<syscall type="rst20" tag="[INKEY, INCH]"/>
+<port range="keine" mode="" device=""/>

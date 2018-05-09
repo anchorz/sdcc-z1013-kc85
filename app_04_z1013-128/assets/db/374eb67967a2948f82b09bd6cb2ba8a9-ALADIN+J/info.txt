@@ -20,5 +20,10 @@ ehe der Schatz Dein Eigen ist.
 
 VIEL FREUDE MIT ALADIN
 </lang>
-<required></required>
+<port range="00" mode="R/W" device="Userport: Joystick PA0188"/>
+<port range="01" mode="W" device="Userport: Joystick PA0188"/>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="202" tag="[INCH]"/>
+<syscall type="rst20" tag="[INKEY, INSTR, INCH, ALPHA, TRANS, KILL, INHEX]"/>
+
 

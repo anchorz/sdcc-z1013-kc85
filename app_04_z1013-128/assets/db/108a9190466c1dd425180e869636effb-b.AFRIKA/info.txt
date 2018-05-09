@@ -1,23 +1,12 @@
 <kurz src="Wissenstest AFRIKA"/>
-<lang>Bei diesem Wissenstest koennen
+<lang>Bei diesem Wissenstest können Sie eine beliebige Anzahl von
+Fragen über AFRIKA beantworten.
 
-Sie eine beliebige Anzahl von
+Am Ende erfolgt eine Auswertung, die die Anzahl der richtigen
+Antworten absolut und in Prozent angibt.
 
-Fragen ueber AFRIKA beantworten.
-
-
-Am Ende erfolgt eine Auswertung,
-
-die die Anzahl der richtigen
-
-Antworten absolut und in Prozent
-
-angibt.
-
-
-Sie erhalten eine Note, die dem
-
-in Schulen ueblichen Bewertungsgrundsatz entspricht.
+Sie erhalten eine Note, die dem in Schulen üblichen Bewertungsgrundsatz entspricht.
 
 <include src="AFRIKA.b"/></lang>
-<requires></requires>
+<syscall type="202" tag="[WIND]"/>
+<port range="keine" mode="" device=""/>

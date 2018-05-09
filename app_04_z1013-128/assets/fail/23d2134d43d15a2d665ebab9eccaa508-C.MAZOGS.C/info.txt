@@ -1,0 +1,8 @@
+<kurz src="identisch [c7795c02b86662d70552323ed5e7c301] "/>
+<lang>
+Programm identisch [c3e512db246882c1e4e08a50fddcfbb6], Tastenbelegung ist verschieden
+
+Steuerung: ⇦ ⇨ ⇧ ⇩  QAKL VS LR
+</lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

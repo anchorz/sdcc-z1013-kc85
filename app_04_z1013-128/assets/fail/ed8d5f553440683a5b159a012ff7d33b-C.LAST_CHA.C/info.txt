@@ -1,0 +1,12 @@
+<kurz src="ähnlich [7fa44466f2cf9cdd94182faf9bc6991c]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 31 Bytes fehlen.
+
+Der einzige Unterschied: hier wird nach dem Beenden des Programms der Speicher gelöscht.
+
+03C5  CA 0B F5    JP      Z,0F50BH
+03C8  FE 2A       CP      2AH
+03CA  CA 38 00    JP      Z,0038H
+03CD  18 EC       JR      03BBH
+
+</lang>
+
