@@ -1,0 +1,2 @@
+<kurz src="Anzeige Sprungmarken/Symboltabelle nach einem Assembler-Lauf"/>
+<lang><include src="S.LABELS.A.txt"/></lang>

@@ -1,0 +1,5 @@
+<kurz src="identisch [c3a79ebdf6dae3446921c35436176031]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 23 Bytes fehlen.
+   /home/andreas/ws/sdcc-z1013-kc85/app_04_z1013-128/assets/db/6bec72716d850fc61977c0b19941faf6-layout_a.asm/layout_a.asm.z80
+e: Z80-Header-Tag ist nicht korrekt, statt "d3d3d3" steht "2e2e2e"</lang>
+

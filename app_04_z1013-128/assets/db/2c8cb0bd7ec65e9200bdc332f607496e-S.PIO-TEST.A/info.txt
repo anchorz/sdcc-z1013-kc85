@@ -1,0 +1,3 @@
+<kurz src="Gibt verschiedene Testwerte auf der PIO U855 aus"/>
+<lang><include src="S.PIO-TEST.A.txt"/></lang>
+

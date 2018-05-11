@@ -1,0 +1,3 @@
+<kurz src="PrintFox Bild DECODER -> MT81 (EPSON)"/>
+<lang><include src="S.PF-PICTU.A.txt"/></lang>
+

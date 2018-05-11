@@ -1,0 +1,3 @@
+<kurz src="Layoutmaker I. - Leiterplatten Layout erstellen, KRT-Vollgrafik"/>
+<lang><include src="S.LAYOUT.A.txt"/></lang>
+

@@ -1,0 +1,3 @@
+<kurz src="Paint VOLLGRAFIK KRT"/>
+<lang><include src="S.PAINT.A.txt"/></lang>
+

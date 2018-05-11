@@ -581,6 +581,7 @@
 <file aadr="2bc0" eadr="2eb8" sadr="0300" typ="B" link="55c28a2b3052eb323024f390e7c02ad8-B.KREIS/B.KREIS.z80" name="KREIS           " kurz="Kreisberechnung und grafische Ausgabe" />
 <file aadr="1000" eadr="2361" sadr="0000" typ="b" link="b67c46435c4aaff7891b914dce7da6d7-b.KUBI/b.KUBI.z80" name="KUBI            " kurz="Mathe - Kurvendiskussion, kubische Gleichungen" />
 <file aadr="0200" eadr="0600" sadr="0200" typ="C" link="a06cdb3672aaceda9d720a1914d56b2b-C.KUNDEN/C.KUNDEN-KARTEI.z80" name="KUNDEN-KARTEI   " kurz="Kundendatei verwalten, Name, Anschrift" />
+<file aadr="3000" eadr="3235" sadr="0000" typ="S" link="9113812183530215cc1fc36aba137185-S.LABELS.A/S.LABELS.A.z80" name="LABELS.A        " kurz="Anzeige Sprungmarken/Symboltabelle nach einem Assembler-Lauf" />
 <file aadr="eb00" eadr="eb48" sadr="eb00" typ="C" link="4d7b882ed882a4b5187530bd7415dc7d-C.LABELS/C.LABELS.C.z80" name="LABELS.C        " kurz="Anzeige Sprungmarken/Symboltabelle nach einem Assembler-Lauf" />
 <file aadr="0100" eadr="0e68" sadr="0e50" typ="C" link="478c623bfe47812fe1637b22a31ae0d6-labyrinth/labyrinth.z80" name="LABYRINTH       " kurz="Ähnlich Graverobber, Schätze einsammeln, Wächtern ausweichen" />
 <file aadr="0100" eadr="3fff" sadr="0645" typ="C" link="0ef9a99c07c18fe29395e1b09ba2da46-labyrinth1/labyrinth1.z80" name="LABYRINTH 1     " kurz="Labyrinth mit 3D-Effekt" />
@@ -592,6 +593,7 @@
 <file aadr="0100" eadr="6eff" sadr="0100" typ="C" link="0e5275f0123a3af7077d1d0d96389239-ladder_8_4/ladder_8_4.z80" name="LADDER 8*4      " kurz="Ladder 8x4 Folientastatur, Cheat: Wartet vor jeder Tastaturabfrage" />
 <file aadr="0100" eadr="6eff" sadr="0100" typ="C" link="1e8164313196ba4f6d687d983f1b9775-C.LADDER.C/C.LADDER.C.z80" name="LADDER.C        " kurz="Ladder (original), noch ohne Cheat" />
 <file aadr="1000" eadr="221f" sadr="0000" typ="b" link="bd3f499316f322ba617aec761074cf95-b.LANDESVERWALTER/b.LANDESVERWALTER.z80" name="LANDESVERWALTER " kurz="Wirtschaftsimulation statt in Paravia in einer römischen Kolonie" />
+<file aadr="3000" eadr="51e8" sadr="0000" typ="S" link="c3a79ebdf6dae3446921c35436176031-S.LAYOUT.A/S.LAYOUT.A.z80" name="LAYOUT.A        " kurz="Layoutmaker I. - Leiterplatten Layout erstellen, KRT-Vollgrafik" />
 <file aadr="0100" eadr="0f1f" sadr="0100" typ="C" link="e0ae6530e13f54e08ca30253f2151fe9-C.LAYOUT.C/C.LAYOUT.C.z80" name="LAYOUT.C        " kurz="Layoutmaker I. - Leiterplatten Layout erstellen, KRT-Vollgrafik" />
 <file aadr="2bc0" eadr="3a16" sadr="0000" typ="B" link="6b3b500959b5ffb9c903c977323b4d16-lebenserwartung/lebenserwartung.z80" name="LEBENSERWARTUNG " kurz="LEBENSERWARTUNGSPROGNOSE" />
 <file aadr="2bc0" eadr="3c07" sadr="0000" typ="B" link="8132ea7391704c0cde1476568d7fff2f-B.LEBENSERWARTUNG/B.LEBENSERWARTUNG.z80" name="LEBENSERWARTUNG " kurz="Fragen gleich mit [6b3b500959b5ffb9c903c977323b4d16]" />
@@ -736,6 +738,7 @@
 <file aadr="1000" eadr="22d0" sadr="0000" typ="b" link="1f082752dbf55f613afefd0f4d8ecd02-b.OTHELLO%20var/b.OTHELLO%20var.z80" name="OTHELLO var     " kurz="Othello-Variante, variable Spielgröße" />
 <file aadr="0100" eadr="0e1f" sadr="0100" typ="C" link="631c8581656b8a216cbf06af45a4d0ce-C.OTHELLO.C/C.OTHELLO.C.z80" name="OTHELLO.C       " kurz="OTHELLO-Variante (Tiny)" />
 <file aadr="0100" eadr="1c79" sadr="0103" typ="C" link="3a8faa5d365403b05e28d8a80d9d6492-C.PAINT/C.PAINT.z80" name="PAINT           " kurz="Grafikeditor mit Tiny-Basic" />
+<file aadr="3000" eadr="572e" sadr="0000" typ="S" link="160dc08a9e8181836dd336d0194c8306-S.PAINT.A/S.PAINT.A.z80" name="PAINT.A         " kurz="Paint VOLLGRAFIK KRT" />
 <file aadr="2bc0" eadr="596e" sadr="0302" typ="B" link="64f6a44978ed6a5a0ab1e0b0efbed62b-B.PARAVIA.B/B.PARAVIA.B.z80" name="PARAVIA.B       " kurz="Verwalter der Stadt SANTA PARAVIA " />
 <file aadr="2bc0" eadr="8cc9" sadr="0302" typ="B" link="c729d0ac37bbf7be0c06d20d31e4728b-parskat/parskat.z80" name="PARSKAT         " kurz="SKAT und SANTA PARAVIA als Bundle" />
 <file aadr="2bc0" eadr="4ae8" sadr="0000" typ="B" link="958e3d96e57cab1698197cf524f5906b-B.PARTNER/B.PARTNER.z80" name="PARTNER         " kurz="" />
@@ -743,6 +746,7 @@
 <file aadr="2bc0" eadr="7233" sadr="0302" typ="B" link="41401d07edfa51d877a4b356128570f3-B.PARTY+SOUND/B.PARTY+SOUND.z80" name="PARTY+SOUND     " kurz="Partyguide mit Soundeffekten, ähnlich [9f83dd605923492700d30c77086a94d8]" />
 <file aadr="1800" eadr="757b" sadr="0000" typ="T" link="e6d850703b2c34e74efcccd1e404b853-T.PASCAL_1/T.PASCAL_1.I.z80" name="PASCAL_1.I      " kurz="BESCHREIBUNG HISOFT-PASCAL 1.04" />
 <file aadr="0100" eadr="0650" sadr="0100" typ="C" link="6c9a394c9f24da37878c8131d3ef782f-C.PF-PIC/C.PF-PIC.C.z80" name="PF-PIC.C        " kurz="Lesen und Drucken von Grafikdateien von der Floppy 1541" />
+<file aadr="3000" eadr="4c9f" sadr="0000" typ="S" link="0989fc18a3c235075ec90b002a613bd6-S.PF-PICTU.A/S.PF-PICTU.A.z80" name="PF-PICTU.A      " kurz="PrintFox Bild DECODER -> MT81 (EPSON)" />
 <file aadr="2bc0" eadr="3b2b" sadr="0302" typ="B" link="ede5f5cfb3d37bbdf122f5a753f16b77-B.PFERDERENNEN/B.PFERDERENNEN.z80" name="PFERDERENNEN    " kurz="Pferdewetten für 1-8 Personen" />
 <file aadr="0100" eadr="03ff" sadr="0100" typ="C" link="2b4a3171ccb1a246801ca380037fedb2-C.PHANTASIE/C.PHANTASIE.z80" name="PHANTASIE       " kurz="Reaktionsspiel. Sternchen im richtigen Quadrat abschießen" />
 <file aadr="2bc0" eadr="4ab4" sadr="0000" typ="B" link="40d9a038c5495b451f2ae6a4534b6722-B.PHOBOS/B.PHOBOS.z80" name="PHOBOS          " kurz="Animation RAUMFAHRTUNTERNEHMEN MARS 1988/1989" />
@@ -751,6 +755,7 @@
 <file aadr="0100" eadr="51a0" sadr="0100" typ="C" link="f3ba5cc7e616e88eb267981b7f345bc8-pilot/pilot.z80" name="PILOT           " kurz="Hubschrauber, Rettungsmissionen fliegen" />
 <file aadr="2bc0" eadr="308c" sadr="2bc0" typ="B" link="7145d03450906e8a95ba84d2aaa8214f-B.PILZE/B.PILZE.z80" name="PILZE           " kurz="PILZE mittels Koordinatensystem finden" />
 <file aadr="4000" eadr="5000" sadr="4230" typ="C" link="4df50045ce689f42fe3c56f0de5ce676-PING_PONG/PING_PONG.z80" name="PING/PONG       " kurz="" />
+<file aadr="3000" eadr="331f" sadr="0000" typ="S" link="2c8cb0bd7ec65e9200bdc332f607496e-S.PIO-TEST.A/S.PIO-TEST.A.z80" name="PIO-TEST.A      " kurz="Gibt verschiedene Testwerte auf der PIO U855 aus" />
 <file aadr="eb00" eadr="eb9f" sadr="eb00" typ="C" link="8b0d90ffe79af073ea7029bcaf5959d3-C.PIO-TEST.C/C.PIO-TEST.C.z80" name="PIO-TEST.C      " kurz="Gibt verschiedene Testwerte auf der PIO U855 aus" />
 <file aadr="3000" eadr="3f9f" sadr="0000" typ="S" link="54d6b76192111140cd47868eba72ba22-S.PL-SCANN.A/S.PL-SCANN.A.z80" name="PL-SCANN.A      " kurz="PLOTTER-Scanner 5.8.1992" />
 <file aadr="3100" eadr="5000" sadr="3100" typ="T" link="af2444b92d5e3ba55996f045d9a086de-T.PLATZ_f.DIR/T.PLATZ%20f.DIR.z80" name="PLATZ f.DIR     " kurz="Leerdatei, Platz für Inhaltsverzeichnis" />
@@ -1098,4 +1103,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1098 Dateien."/></doc>
+<status src="Datenbank enthält 1103 Dateien."/></doc>
