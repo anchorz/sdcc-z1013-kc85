@@ -1,0 +1,9 @@
+<kurz src="Wizard of War, Monster in Dungeons töten (Ver.DA)"/>
+<lang>ähnlich [25fa3cab3b66d9ac9b2e1b25bc00fc34], Feuertaste wurde auf SPACE gelegt. 
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ 
+
+</lang>
+<syscall type="202" tag="[OUTCH, OUTHL, INCH]"/>
+<syscall type="rst20" tag="[INKEY]"/>
+<port range="keine" mode="" device=""/>

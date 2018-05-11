@@ -1,0 +1,7 @@
+<kurz src="Tetris, Blöcke drehen und stapeln (SPV:POLL)"/>
+<lang>wie [8134e835b06a3d4ec1a44fd411a6ffc3], die Tastaturabfrage erfolgt hier über SPV:POLL, 
+so dass das Spiel ruckelfrei ist.
+</lang>
+<syscall type="spv" tag="[POLL]"/>
+<syscall type="rst20" tag="[OUTCH, INCH, OUTHX]"/>
+<port range="keine" mode="" device=""/>

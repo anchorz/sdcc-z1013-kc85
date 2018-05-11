@@ -1,0 +1,3 @@
+<kurz src="Plottersteuerung"/>
+<lang><include src="S.PLOTTER.A.txt"/></lang>
+

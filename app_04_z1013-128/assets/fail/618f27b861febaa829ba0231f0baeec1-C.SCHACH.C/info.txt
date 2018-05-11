@@ -1,0 +1,16 @@
+<kurz src="identisch [b7a9e2f138a0651a74985ef27d224f00]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 31 Bytes fehlen.
+
+Steuerung:
+
+ZUGANALYSE - S L R 
+
+Bugs:
+
+nach der Frage: MOECHTEN SIE EINE ZUGANALYSE? N  
+beendet sich das Programm mit einem "Warmstart" auf 0x0000, den es beim Z1013 nicht gibt.
+2DA3  CD 09 20    CALL    2009H
+2009  C3 00 00    JP      0000H
+
+</lang>
+

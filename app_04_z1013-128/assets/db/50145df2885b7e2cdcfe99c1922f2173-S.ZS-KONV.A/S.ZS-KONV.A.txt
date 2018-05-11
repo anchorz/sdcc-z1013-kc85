@@ -1,0 +1,76 @@
+	PN	ZS-KONV
+;   Zeichensatzkonvertierung
+;     für Druckerprogramme
+;   Reassembliert am 9.10.'92
+;
+	ORG	0EB00H
+PRST7:	EQU	2
+INHEX:	EQU	3
+INSTR:	EQU	16
+;
+	RST	020H
+	DB	PRST7
+	DB	'Anfangsa'
+	DB	'dr. ZSATZ :'
+	DB	0A0H
+	RST	020H
+	DB	INSTR
+	LD	DE,(016H)
+	RST	020H
+	DB	INHEX
+	PUSH	HL
+	RST	020H
+	DB	PRST7
+	DB	'Anfangsa'
+	DB	'dr. Kopie :'
+	DB	0A0H
+	RST	020H
+	DB	INSTR
+	LD	DE,(016H)
+	RST	020H
+	DB	INHEX
+	PUSH	HL
+	RST	020H
+	DB	PRST7
+	DB	08DH
+	POP	DE
+	POP	HL
+	LD	B,0
+EB45:	LD	C,1
+	PUSH	BC
+	CALL	EB53
+	LD	BC,8
+	ADD	HL,BC
+	POP	BC
+	DJNZ	EB45-#
+	RST	038H
+EB53:	PUSH	HL
+	PUSH	DE
+	PUSH	BC
+	CALL	EB66
+	LD	A,D
+	POP	BC
+	POP	DE
+	POP	HL
+	LD	(DE),A
+	INC	DE
+	INC	C
+	LD	A,C
+	CMP	9
+	JRNZ	EB53-#
+	RET
+EB66:	LD	B,8
+EB68:	PUSH	BC
+	LD	A,M
+	INC	HL
+EB6B:	RLA
+	DEC	C
+	JRNZ	EB6B-#
+	RL	D
+	POP	BC
+	DJNZ	EB68-#
+	RET
+	END
+;
+	END
+

@@ -1,0 +1,11 @@
+<kurz src="identisch [2128ac8fbed268e760cc2df576d980d2]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 15 Bytes fehlen.
+
+Steuerung: ⇦ ⇨  ␣ </lang>
+<port range="00" mode="W" device="Userport: Tonausgabe, Joystick ERF"/>
+<port range="01" mode="W" device="Userport: Tonausgabe, Joystick ERF"/>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<port range="03" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="spv" tag="[POLL]"/>
+<syscall type="rst20" tag="[WIND, OUTCH, INCH, PRST7]"/>
+

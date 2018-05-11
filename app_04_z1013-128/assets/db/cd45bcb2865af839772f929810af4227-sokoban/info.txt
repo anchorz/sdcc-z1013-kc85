@@ -1,3 +1,4 @@
 <kurz src="Kistenschieben, Puzzle"/>
 <lang>Steuerung: ⇦ ⇨ ⇧ ⇩ </lang>
-<requires></requires>
+<syscall type="rst20" tag="[INCH]"/>
+<port range="keine" mode="" device=""/>

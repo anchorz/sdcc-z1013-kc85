@@ -1,0 +1,10 @@
+<kurz src="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (RB-SPV:POLL)"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ CTRL-C
+
+</lang>
+<port range="02" mode="R/W" device="Systemport: Tonausgabe"/>
+<syscall type="spv" tag="[POLL]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY]"/>
+

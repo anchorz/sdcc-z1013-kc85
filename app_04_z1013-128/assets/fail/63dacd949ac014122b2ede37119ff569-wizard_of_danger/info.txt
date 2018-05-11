@@ -1,0 +1,6 @@
+<kurz src="Originalversion"/>
+<lang>Startet nicht
+fragt Tastatur direkt ab, aber welchge?
+Verbesserte Version ist [25fa3cab3b66d9ac9b2e1b25bc00fc34]
+</lang>
+

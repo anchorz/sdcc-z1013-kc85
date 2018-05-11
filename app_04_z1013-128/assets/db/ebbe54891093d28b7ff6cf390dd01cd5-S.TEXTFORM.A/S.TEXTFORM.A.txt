@@ -1,0 +1,40 @@
+	PN	TEXTFORMAT
+;
+	ORG	08000H
+;
+	RST	020H
+	DB	2
+	DB	'Texte '
+	DB	'formatieren'
+	DB	13,13,13
+	DB	'Speicheradr'
+	DB	'essen :'
+	DB	13,08DH
+	RST	020H
+	DB	2
+	DB	'erste Zeile '
+	DB	' :',0A0H
+	RST	020H
+	DB	16
+	LD	DE,(016H)
+	RST	020H
+	DB	3
+	LD	(ATXT),HL
+	RST	020H
+	DB	2,13
+	DB	'letzte Zeile'
+	DB	' :',0A0H
+	RST	020H
+	DB	16
+	LD	DE,(016H)
+	RST	020H
+	DB	3
+	LD	(ETXT),HL
+	RST	038H
+;
+ATXT:	DA	0
+ETXT:	DA	0
+	END
+;
+	END
+

@@ -13,9 +13,23 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-<div><img src="screenshot_01.png" alt="Screenshot 1" height="384"  />
+<div><img src="screenshot_01.jpg" alt="Screenshot 1" height="384"  >
+<img src="screenshot_02.jpg" alt="Screenshot 2" height="384"  >
 </div>
 <div class="filelist">2000 3300 2000 C ... <a href="schach.z80">SCHACH          </a></div>
-<div class="text"></div>
+<div class="syscall">Monitoraufrufe:</div><div class="syscall">rst20: [WIND, OUTCH, INCH]
+</div><div class="port">Verwendete IO-Ports bzw. Hardware:</div><div class="port">02 [W] Systemport: Tonausgabe
+</div><div class="text">Steuerung:
+
+ZUGANALYSE - S L R 
+
+Bugs:
+
+nach der Frage: MOECHTEN SIE EINE ZUGANALYSE? N  
+beendet sich das Programm mit einem "Warmstart" auf 0x0000, den es beim Z1013 nicht gibt.
+2DA3  CD 09 20    CALL    2009H
+2009  C3 00 00    JP      0000H
+
+</div>
 </body>
 </html>

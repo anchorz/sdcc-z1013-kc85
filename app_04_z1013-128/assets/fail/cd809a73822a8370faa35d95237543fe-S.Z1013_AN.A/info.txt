@@ -1,0 +1,6 @@
+<kurz src="identisch [6e4dbe9e6ccfd881529e72edff779e12]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 16 Bytes fehlen.
+
+<include src="S.Z1013_AN.A.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

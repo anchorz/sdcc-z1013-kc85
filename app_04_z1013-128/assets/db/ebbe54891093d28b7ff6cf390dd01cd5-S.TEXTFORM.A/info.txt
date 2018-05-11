@@ -1,0 +1,5 @@
+<kurz src="Texte formatieren? Eigentlich nur 2 Adressen nach Hex-konvertieren"/>
+<lang>Vielleicht nur eine erste Version des Programms.
+
+<include src="S.TEXTFORM.A.txt"/></lang>
+

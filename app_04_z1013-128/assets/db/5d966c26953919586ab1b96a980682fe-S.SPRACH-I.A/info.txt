@@ -1,0 +1,4 @@
+<kurz src="SPRACH-IC aus dem Funkamateur ansteuern (frühe Version)"/>
+<lang><include src="S.SPRACH-I.A.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

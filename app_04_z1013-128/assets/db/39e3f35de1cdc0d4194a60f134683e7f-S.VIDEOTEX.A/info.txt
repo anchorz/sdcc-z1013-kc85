@@ -1,0 +1,6 @@
+<kurz src="Videotext-Decoder am Z1013 I2C-Steuerung SAA5243 16.09.1993"/>
+<lang>ähnlich [f665b6a92491f043ed4704051cfc38b1]
+
+<include src="S.VIDEOTEX.A.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

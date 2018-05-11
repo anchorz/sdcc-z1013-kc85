@@ -1,0 +1,8 @@
+<kurz src="Schießübungen vom PolyPlay+Joystick Practic 01/88"/>
+<lang>Steuerung: ⇦ ⇨  ␣ </lang>
+<port range="00" mode="W" device="Userport: Tonausgabe, Joystick PA0188"/>
+<port range="01" mode="W" device="Userport: Tonausgabe, Joystick PA0188"/>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<port range="03" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="spv" tag="[POLL]"/>
+<syscall type="rst20" tag="[WIND, OUTCH, INCH, PRST7]"/>

@@ -1,0 +1,7 @@
+<kurz src="Wizard of War, Monster in Dungeons töten (RST20)"/>
+<lang>auf RST20 angepasste Variante von [63dacd949ac014122b2ede37119ff569]
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ ⏎
+
+</lang>
+

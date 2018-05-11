@@ -1,0 +1,4 @@
+<kurz src="Zeichensatzkonvertierung für Druckerprogramme 9.10.1992"/>
+<lang><include src="S.ZS-KONV.A.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

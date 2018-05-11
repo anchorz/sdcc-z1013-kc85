@@ -1,0 +1,4 @@
+<kurz src="OTHELLO-Variante (Tiny)"/>
+<lang>Den Texten nach könnte es vom Tiny-Basic Programm [783cb2c3c560b1b2f830811fb437ccc8] abstammen</lang>
+<syscall type="rst20" tag="[WIND, OUTCH, INCH, OUTHX]"/>
+<port range="keine" mode="" device=""/>

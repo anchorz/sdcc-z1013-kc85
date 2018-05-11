@@ -23,3 +23,8 @@ td img {
 img {
     background-color: black;
 }
+
+img.h10 {
+    background-color: #008000;
+}
+

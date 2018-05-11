@@ -1,0 +1,4 @@
+<kurz src="Betriebssystem für  Z1013 V1.2 (Verwaltung) 23.11.1989"/>
+<lang><include src="S.Z1013_MO.A.txt"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

@@ -1,3 +1,17 @@
 <kurz src="Einfaches und kleines Schachprogramm"/>
-<lang></lang>
-<required></required>
+<lang>Steuerung:
+
+ZUGANALYSE - S L R 
+
+Bugs:
+
+nach der Frage: MOECHTEN SIE EINE ZUGANALYSE? N  
+beendet sich das Programm mit einem "Warmstart" auf 0x0000, den es beim Z1013 nicht gibt.
+2DA3  CD 09 20    CALL    2009H
+2009  C3 00 00    JP      0000H
+
+</lang>
+<port range="02" mode="W" device="Systemport: Tonausgabe"/>
+<syscall type="rst20" tag="[WIND, OUTCH, INCH]"/>
+
+

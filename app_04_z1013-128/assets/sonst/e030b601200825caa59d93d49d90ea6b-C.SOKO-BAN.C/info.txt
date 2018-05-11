@@ -1,0 +1,4 @@
+<kurz src="Vorgängerversion von [cd45bcb2865af839772f929810af4227]"/>
+<lang>Steuerung: ⇦ ⇨ ⇧ ⇩ </lang>
+<syscall type="rst20" tag="[INCH]"/>
+<port range="keine" mode="" device=""/>
