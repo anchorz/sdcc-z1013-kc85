@@ -75,12 +75,13 @@ for($y=0;$y<16;$y++) {
         $img->bgcolor('black');
         $img->fgcolor('black');
         for($j=0;$j<$h;$j++) {
-            my $chr=(($cnt+0x20)&0xff);
-            my $ofs=256;
-            if ($cnt>=0xe0) {
-                $ofs=512;
-            }
-            $index=256*$j+$chr+$ofs;
+            #if JKEMU CJJ Grafik
+            #my $chr=(($cnt+0x20)&0xff);
+            #my $ofs=256;
+            #if ($cnt>=0xe0) {
+            #    $ofs=512;
+            #}
+            #$index=256*$j+$chr+$ofs;
             printf (STDERR "c=%02x i=%04x\n",$cnt,$index);
             $line=read_byte();
             for($i=0;$i<8;$i++) {

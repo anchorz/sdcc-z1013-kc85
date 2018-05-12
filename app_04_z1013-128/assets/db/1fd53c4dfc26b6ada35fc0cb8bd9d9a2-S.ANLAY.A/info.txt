@@ -1,0 +1,2 @@
+<kurz src="Frühe Version vom Layoutmaker? Bild-Nachbearbeitung, drehen, spiegeln, KRT"/>
+<lang><include src="S.ANLAY.A.txt"/></lang>

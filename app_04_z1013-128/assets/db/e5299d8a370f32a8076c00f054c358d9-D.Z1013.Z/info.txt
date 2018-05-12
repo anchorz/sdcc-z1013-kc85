@@ -1,0 +1,5 @@
+<kurz src="ZGORIG+BREIT (hier mit Umlauten) noch einmal neu gezeichnet"/>
+<lang>EPROM Daten
+neben ein paar neuen Zeichen sieht man noch Unterschiede bei existierenden Zeichen
+<include src="zg.html"/></lang>
+

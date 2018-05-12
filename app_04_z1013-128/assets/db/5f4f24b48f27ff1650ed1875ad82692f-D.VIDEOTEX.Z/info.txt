@@ -1,0 +1,3 @@
+<kurz src="Teletext/Videotext Zeichensatz, für Bildschirm"/>
+<lang></lang>
+

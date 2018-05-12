@@ -1,0 +1,3 @@
+<kurz src="eigenwilliger Zeichensatz mit fetten Zeichen und schmalen Umlauten"/>
+<lang><include src="zg.html"/></lang>
+

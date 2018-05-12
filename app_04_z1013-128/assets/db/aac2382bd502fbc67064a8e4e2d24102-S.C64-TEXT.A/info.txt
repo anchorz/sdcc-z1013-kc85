@@ -1,0 +1,3 @@
+<kurz src="C64-TEXTE konvertieren"/>
+<lang><include src="S.C64-TEXT.A.txt"/></lang>
+

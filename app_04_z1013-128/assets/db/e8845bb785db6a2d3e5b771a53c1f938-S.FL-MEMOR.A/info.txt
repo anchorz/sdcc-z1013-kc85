@@ -1,0 +1,3 @@
+<kurz src="FLOPPY-1541 SPEICHER-LESEN"/>
+<lang><include src="S.FL-MEMOR.A.txt"/></lang>
+

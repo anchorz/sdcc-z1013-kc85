@@ -1,0 +1,3 @@
+<kurz src="Teletext/Videotext Zeichensatz, gedreht, für Drucker"/>
+<lang>./convert_raw_bitmap d.VT_EDIT.PIC.z80</lang>
+

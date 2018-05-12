@@ -1,0 +1,3 @@
+<kurz src="Umwandlung Binärdaten in Assembler-Quelltext: HEX 18,0D,21 ..."/>
+<lang><include src="S.HEX-DATA.A.txt"/></lang>
+

@@ -1,0 +1,5 @@
+<kurz src="identisch [1d9723ecb9d389ef4c10df605f073878]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 10 Bytes fehlen.
+   /home/andreas/ws/sdcc-z1013-kc85/app_04_z1013-128/assets/db/88d4c5158a6d8f91a16f184bf333363d-graph_pas.pas/graph_pas.pas.z80
+e: Z80-Header-Tag ist nicht korrekt, statt "d3d3d3" steht "2e2e2e"</lang>
+

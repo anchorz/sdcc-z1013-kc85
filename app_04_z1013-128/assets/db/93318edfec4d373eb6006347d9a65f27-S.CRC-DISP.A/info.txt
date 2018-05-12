@@ -1,0 +1,3 @@
+<kurz src="Anzeige Speicherinhalt als Hex-Dump mit Checksumme CRC"/>
+<lang><include src="S.CRC-DISP.A.txt"/></lang>
+

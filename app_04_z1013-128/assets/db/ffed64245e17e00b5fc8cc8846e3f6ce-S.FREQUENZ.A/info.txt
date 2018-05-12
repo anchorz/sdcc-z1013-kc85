@@ -1,0 +1,2 @@
+<kurz src="Frequenzgenerator am Userport"/>
+<lang><include src="S.FREQUENZ.A.txt"/></lang>

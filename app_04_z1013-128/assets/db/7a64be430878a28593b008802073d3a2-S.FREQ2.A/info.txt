@@ -1,0 +1,3 @@
+<kurz src="Frequenzgenerator am Userport V2 (2 Zeiten: Takt und Low)"/>
+<lang><include src="S.FREQ2.A.txt"/></lang>
+

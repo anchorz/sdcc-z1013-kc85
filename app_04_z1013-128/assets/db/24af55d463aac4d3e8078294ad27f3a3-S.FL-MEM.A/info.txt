@@ -1,0 +1,3 @@
+<kurz src="FLOPPY-1541 SPEICHER-LESEN (alt)"/>
+<lang><include src="S.FL-MEM.A.txt"/></lang>
+

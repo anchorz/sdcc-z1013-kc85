@@ -1,0 +1,3 @@
+<kurz src="COMM-IF 1.3 Disk-Monitor Floppy-1541 mit ÄNDERUNGEN FÜR FUNKAMATEUER"/>
+<lang><include src="S.FLOPPY.A.txt"/></lang>
+

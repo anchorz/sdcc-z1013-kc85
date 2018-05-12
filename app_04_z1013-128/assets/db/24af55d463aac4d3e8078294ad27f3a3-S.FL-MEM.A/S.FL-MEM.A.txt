@@ -1,0 +1,57 @@
+;	FLOPPY-SPEICHER-LESEN
+;	23.2.'93   DiAmANT
+;
+	ORG 08000H
+BEGIN:	RST	020H
+	DB	2,12
+	DB	'Laden von'
+	DB	'Floppy-sp'
+	DB	'eicher'
+	DB	13
+	DB	'(Es wird '
+	DB	'stets 4k'
+	DB	'Byte nach'
+	DB	' Adr. 9000'
+	DB	' gelesen)'
+	DB	13,13	
+	DB	'Floppy'
+	DB	'adresse :'
+	DB	0A0H
+	RST	020H
+	DB	16
+	LD	DE,(016H)
+	RST	020H
+	DB	3
+	LD	(ADR),HL
+;
+	LD	HL,09000H
+	LD	B,32
+LOOP:	PUSH	HL
+	LD	HL,BEF
+	LD	C,15
+	CALL	0E027H
+	CALL	0E01BH
+	POP	HL
+;
+	PUSH	BC
+	LD	B,128
+READ:	CALL	0E030H
+	DJNZ	READ-#
+	POP	BC
+	DEC	C
+	JRNZ	LOOP-#
+
+
+
+
+
+
+
+BEF:	DB	'M-R'
+ADR:	DA	0
+ANZ:	DB	128
+	DB	0
+	END
+;
+	END
+

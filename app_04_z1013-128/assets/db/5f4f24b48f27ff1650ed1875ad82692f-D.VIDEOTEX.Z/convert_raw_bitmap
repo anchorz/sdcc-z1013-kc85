@@ -1,0 +1,87 @@
+#!/usr/bin/perl -w
+
+use Data::Dumper;
+use Digest::MD5 qw(md5_hex);
+use File::Basename;
+use Cwd 'abs_path';
+use Switch;
+use GD::Simple;
+
+our $index;
+our $content;
+
+our $scale=10;
+our $img = GD::Simple->new(128*$scale, 96*$scale);
+our $black = $img->colorAllocate(0,0,0);
+our $white = $img->colorAllocate(255,255,255);
+$img->setAntiAliased($black);
+
+our $left_margin=0;
+our $line_spacing=0; #n/72 inch
+
+sub get_byte()
+{
+    my $b=ord(substr($content,$index++,1));
+    return $b;    
+}
+
+our $x=$scale/2;
+our $y=$scale/2;
+
+sub paint($)
+{
+    my $val=shift;
+    for(my $i=0;$i<8;$i++) {
+        if (($val&0x80)) {
+            $img->filledEllipse($x,$y+$i*$scale,10,10,$black);
+            #for ($j=0; $j<20; $j++) {
+            #  my $dx = rand($scale);
+            #  my $dy = rand($scale);
+            #  $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$white);
+            #}
+            #for (my $j=0; $j<10; $j++) {
+            #  my $dx = rand($scale);
+            #  my $dy = rand($scale);
+            #  $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$black);
+            #}
+        }
+        $val*=2;
+    }
+}
+
+sub print_dots($)
+{
+    my $count=shift;
+    for (my $i=0;$i<$count;$i++) {
+        my $b=get_byte();
+        paint($b);
+        $x+=$scale;
+    }
+}
+
+$file=$ARGV[0];
+if (!defined($ARGV[0])) {
+    print "convert binary .z80 file into printed image: missing filename\n";
+    exit 1;
+}
+open(FILE,"<:raw", $file);
+$len=-s "$file";
+read(FILE,$content,$len);
+close(FILE);
+$index=32;
+
+for (my $j=0;$j<12;$j++) {
+    $x=$scale/2;
+    for (my $i=0;$i<16;$i++) {
+        $y=$scale/2+$j*$scale*8;
+        print_dots(8); 
+    }
+}
+
+open my $out, '>', 'tmp.png' or die;
+binmode $out;
+print $out $img->png;
+printf("output: \"%s\"\n","tmp.png");
+system("convert tmp.png -motion-blur 2x6+45 -resize 33% -normalize -quality 70% screenshot_01.jpg" );
+printf("output: \"%s\"\n","screenshot_01.jpg");
+

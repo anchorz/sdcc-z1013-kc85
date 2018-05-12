@@ -1,0 +1,304 @@
+   10 PROGRAM FUNKTION;
+   20 
+   30  {$L-}{$C-}
+   40 
+   50 LABEL  1,2,3,4;
+   60 
+   70 CONST    PI=3.141598;
+   80          PMAX=4;
+   90 
+  100 VAR
+  110          ANZ, N :INTEGER;
+  120      X,Y,T,T0,T1:REAL;
+  130 
+  140      X0,X1      :REAL;
+  150 
+  160     A :ARRAY[1..2,1..500]       OF REAL;
+  170 
+  180     P :ARRAY[1..PMAX] OF        REAL;
+  190 
+  200          B,CR :CHAR;
+  210 
+  220 PROCEDURE START;
+  230 
+  240 
+  250 VAR    I:INTEGER;
+  260 
+  270 BEGIN
+  280  PAGE;WRITELN;
+  290  WRITELN(' Funktionsdarstellung in:');WRITELN;
+  300  WRITELN;
+  310  WRITELN;
+  320  WRITELN(' kart. Koordinaten    --> 1');WRITELN;
+  330  WRITELN(' Parameterdarstellung --> 2');WRITELN;
+  340  WRITELN(' Polarkoordinaten     --> 3');WRITELN;
+  350  WRITELN;WRITELN;
+  360  WRITELN(' Eingabe ab Zeile 1250');WRITELN;WRITELN;
+  370  WRITE('              welcher Typ:');
+  380   B:=INCH;
+  390 
+  400 {Die Variable ANZ be-
+  410  stimmt wieviele Para-
+  420  meter in dem Gleichungs- typ verwendet werden !}
+  430 
+  440  IF B='1' THEN ANZ:=4;
+  450  IF B='2' THEN ANZ:=3;
+  460  IF B='3' THEN ANZ:=0;
+  470 
+  480 
+  490 FOR I:=1 TO PMAX DO
+  500  P[I]:=0;
+  510 
+  520 END; {PROC. START}
+  530 
+  540 
+  550 
+  560 PROCEDURE PARAMETER;
+  570 
+  580 
+  590 VAR  I :INTEGER;
+  600 
+  610 
+  620 
+  630 BEGIN
+  640  PAGE;WRITELN;
+  650  WRITELN('     Parametereingabe');WRITELN;
+  660  IF B='1' THEN
+  670  BEGIN
+  680   WRITELN;
+  690   WRITELN('Polynom 3. Grades');
+  700   WRITELN;
+  710  END;
+  720  IF B='2' THEN
+  730  BEGIN
+  740   WRITELN;
+  750   WRITELN('Hypozykloide');
+  760   WRITELN;
+  770  END;
+  780  WRITELN('alte Parameter:');WRITELN;
+  790  FOR I:=1 TO ANZ DO
+  800  WRITELN(' P',I,'=',P[I]:9:5);
+  810  WRITELN;WRITELN;
+  820  WRITE('neue Parameter');
+  830  WRITELN;WRITELN;
+  840  FOR I:=1 TO ANZ DO
+  850  BEGIN
+  860   WRITE(' P',I,'= ');
+  870   READ(P[I]);
+  880   WRITELN;
+  890  END;
+  900 
+  910 END; {PROC.PARAMETER}
+  920 
+  930 
+  940 
+  950 
+  960 PROCEDURE INTERVALL;
+  970 
+  980 VAR   W0,W1 :REAL;
+  990 
+ 1000 
+ 1010 BEGIN
+ 1020  PAGE;WRITELN;
+ 1030 WRITELN('Eingabe der Intervallgrenzen:');WRITELN;
+ 1040  CASE B OF
+ 1050 
+ 1060  '1':BEGIN
+ 1070       WRITE(' X0=');
+ 1080       READ(X0);
+ 1090       WRITELN;
+ 1100       WRITE(' X1=');
+ 1110       READ(X1);
+ 1120       WRITELN; 
+ 1130       WRITE('Anzahl der Punkte N=');
+ 1140       READ(N);
+ 1150      END;
+ 1160 
+ 1170  '2':BEGIN
+ 1180       WRITE(' T0 [rad] =');
+ 1190       READ(T0);
+ 1200       WRITELN;
+ 1210       WRITE(' T1 [rad] =');
+ 1220       READ(T1);
+ 1230       WRITELN;
+ 1240       WRITE('Anzahl der Punkte N=');
+ 1250       READ(N);
+ 1260      END;
+ 1270 
+ 1280  '3':BEGIN
+ 1290       WRITE(' W0 [grad] =');
+ 1300       READ(W0);
+ 1310       WRITELN;
+ 1320       WRITE(' W1 [grad] =');
+ 1330       READ(W1);
+ 1340       T0:=W0*PI/180;
+ 1350       T1:=W1*PI/180;
+ 1360       WRITELN;
+ 1370       WRITE('Anzahl der Punkte N=');
+ 1380       READ(N);
+ 1390      END
+ 1400  
+ 1410  END;
+ 1420 END; {PROC. INTERVALL}
+ 1430 
+ 1440 
+ 1450 
+ 1460 
+ 1470 PROCEDURE GLTYP;
+ 1480 
+ 1490 VAR   R:REAL;
+ 1500 
+ 1510 
+ 1520 BEGIN
+ 1530  CASE B OF
+ 1540 
+ 1550   {Polynom }
+ 1560 
+ 1570  '1': Y:=P[1]+P[2]*X+P[3]*X*X+P[4]*X*X*X;
+ 1580 
+ 1590  '2':BEGIN
+ 1600 
+ 1610      {Hypozykloide}
+ 1620 
+ 1630       X:=(P[1]-P[2])*COS(T)+P[3]*COS(T*(P[1]-P[2])/P[2]);
+ 1640 
+ 1650       Y:=(P[1]-P[2])*SIN(T)-P[3]*SIN(T*(P[1]-P[2])/P[2]);
+ 1660 
+ 1670      END;
+ 1680 
+ 1690  '3':BEGIN
+ 1700   {archimedische Spirale}
+ 1710       R:=T;
+ 1720       X:=R*COS(T);
+ 1730       Y:=R*SIN(T);
+ 1740      END
+ 1750  END;
+ 1760 END; {GLTYP}
+ 1770 
+ 1780 
+ 1790 PROCEDURE RECHNUNG;
+ 1800 
+ 1810 VAR  DX,DT :REAL;
+ 1820 
+ 1830      I,J,K :INTEGER;
+ 1840 
+ 1850 
+ 1860 BEGIN
+ 1870  DX:=(X1-X0)/N;
+ 1880  DT:=(T1-T0)/N;
+ 1890  T:=T0;
+ 1900  X:=X0;
+ 1910  FOR I:=1 TO N DO
+ 1920  BEGIN
+ 1930   GLTYP;
+ 1940   A[1,I]:=X;
+ 1950   A[2,I]:=Y;
+ 1960   X:=X+DX;
+ 1970   T:=T+DT;
+ 1980  END;
+ 1990 
+ 2000 END; {PROC. RECHNUNG}
+ 2010 
+ 2020 PROCEDURE AUSGABE;
+ 2030 
+ 2040  VAR  I,ZE :INTEGER;
+ 2050 
+ 2060 
+ 2070 BEGIN
+ 2080 
+ 2090  PAGE;
+ 2100  ZE:=0;
+ 2110  WRITELN('      X              Y ');
+ 2120  WRITELN;
+ 2130  FOR I:=1 TO N DO
+ 2140  BEGIN
+ 2150   ZE:=ZE+1;
+ 2160   WRITELN(A[1,I]:14:6,A[2,I]:14:6);
+ 2170   WRITELN;
+ 2180   IF ZE=13 THEN 
+ 2190    BEGIN
+ 2200     WRITE('--> ENTER');      READ(CR);
+ 2210     ZE:=0;
+ 2220     PAGE;
+ 2230     WRITELN('       X             Y ');
+ 2240     WRITELN;
+ 2250    END;
+ 2260   END;
+ 2270   WRITE('--> ENTER');
+ 2280   READ(CR);
+ 2290 
+ 2300  END; {PROC. AUSGABE}
+ 2310 
+ 2320 PROCEDURE GRAPH;
+ 2330 
+ 2340 VAR
+ 2350   T1,I,J,K,D,M :INTEGER;
+ 2360   X1,X2,Y1,Y2  :REAL;
+ 2370   F1,P,R,S,NO  :REAL;
+ 2380 
+ 2390 BEGIN
+ 2400  X1:=A[1,1];X2:=A[1,1];
+ 2410  Y1:=A[2,1];Y2:=A[2,1];
+ 2420  FOR I:=2 TO N DO
+ 2430  BEGIN
+ 2440   IF A[1,I]<X1 THEN X1:=  A[1,I];
+ 2450   IF A[1,I]>X2 THEN X2:=  A[1,I];
+ 2460   IF A[2,I]<Y1 THEN Y1:=  A[2,I];
+ 2470   IF A[2,I]>Y2 THEN Y2:=  A[2,I];
+ 2480  END;
+ 2490  OUT(28,'8');
+ 2500  PAGE;
+ 2510  P:=ABS(X2-X1);
+ 2520  R:=ABS(Y2-Y1);
+ 2530 P:=127/P;R:=127/R;
+ 2540  FOR K:=1 TO N DO
+ 2550  BEGIN
+ 2560   I:=ENTIER((A[1,K]-X1)*P);
+ 2570  M:=ENTIER(I/4);
+ 2580  F1:=(A[2,K]-Y1)*R;
+ 2590  D:=ENTIER(F1/4);
+ 2600  J:=220+I-4*M-4*ENTIER(F1)+16*D;
+ 2610  POKE(#EFE0-32*D+M,CHR(J));
+ 2620 END;
+ 2630  CR:=INCH;
+ 2640 F1:=-Y1*R;
+ 2650 D:=ENTIER(F1/4);
+ 2660 I:=ENTIER(-X1*P);
+ 2670 M:=ENTIER(I/4);
+ 2680 FOR T1:=1 TO 32 DO
+ 2690 BEGIN
+ 2700  POKE(#EFE0-32*T1+M,CHR(161));
+ 2710  POKE(#EFDF-32*D+T1,CHR(160));
+ 2720  END;
+ 2730 WRITE('ENT.');READ(CR);
+ 2740 END; {PROC. GRAPH}
+ 2750 
+ 2760 
+ 2770 {HAUPTPROGRAMM}
+ 2780 
+ 2790 BEGIN
+ 2800 1: START;
+ 2810 2: PARAMETER;
+ 2820 3: INTERVALL;
+ 2830  RECHNUNG;
+ 2840  GRAPH;
+ 2850  PAGE;WRITELN;
+ 2860  WRITELN('numerische Ausgabe --> N');WRITELN;
+ 2870  WRITELN('neues Intervall    --> I');
+ 2880  WRITELN;
+ 2890  WRITELN('andere Gleichung   --> G');
+ 2900  WRITELN;
+ 2910  WRITELN('Parameteraenderung --> P');
+ 2920  WRITELN;
+ 2930  WRITELN('ENDE               --> E');
+ 2940  WRITELN;
+ 2950  WRITE('       skip Key    --> ');
+ 2960  CR:=INCH;
+ 2970  IF CR='G' THEN GOTO 1;
+ 2980  IF CR='P' THEN GOTO 2;
+ 2990  IF CR='I' THEN GOTO 3;
+ 3000  IF CR='N' THEN AUSGABE;
+ 3010  IF CR='E' THEN GOTO 4;
+ 3020  GOTO 2;
+ 3030 4:PAGE;
+ 3040 END.

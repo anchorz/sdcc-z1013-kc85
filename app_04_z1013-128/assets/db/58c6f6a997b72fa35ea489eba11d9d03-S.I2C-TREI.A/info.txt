@@ -1,0 +1,3 @@
+<kurz src="I²C-TREIBER"/>
+<lang><include src="S.I2C-TREI.A.txt"/></lang>
+

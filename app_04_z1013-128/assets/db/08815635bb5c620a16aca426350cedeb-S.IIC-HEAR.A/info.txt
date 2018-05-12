@@ -1,0 +1,3 @@
+<kurz src="I²C-TREIBER (alt)"/>
+<lang><include src="S.IIC-HEAR.A.txt"/></lang>
+

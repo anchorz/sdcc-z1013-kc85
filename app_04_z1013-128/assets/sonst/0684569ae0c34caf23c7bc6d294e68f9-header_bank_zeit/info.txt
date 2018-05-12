@@ -1,0 +1,3 @@
+<kurz src="identisch [62ebcfc7562efea5bfaf777a92e121e]"/>
+<lang><include src="header_bank_zeit.txt"/></lang>
+

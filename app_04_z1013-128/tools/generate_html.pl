@@ -177,6 +177,7 @@ sub resolve_entry($) {
 #c...Basic-Quellprogramm fuer Microbas-Compiler
       'C'=>"Executable",
       'D'=>"Dump",
+      'd'=>"Dump", #manchmal wird auch d verwendet
       'E'=>"EPROM",
       'G'=>"Grafik",
       'I'=>"Dokumentation",
