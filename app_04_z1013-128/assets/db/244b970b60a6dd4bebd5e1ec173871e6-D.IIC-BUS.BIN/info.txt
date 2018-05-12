@@ -1,0 +1,3 @@
+<kurz src="I2C BUS Platinenlayout"/>
+<lang></lang>
+

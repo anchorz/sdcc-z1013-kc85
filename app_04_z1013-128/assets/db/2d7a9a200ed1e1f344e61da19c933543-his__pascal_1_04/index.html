@@ -15,12 +15,22 @@
 <body>
 <div></div>
 <div class="filelist">0100 4080 0100 C ... <a href="his__pascal_1_04.z80">HIS.-PASCAL 1.04</a></div>
-<div class="text">
+<div class="syscall">Monitoraufrufe:</div><div class="syscall">spv: [SARUF, LORUF]
+rst20: [OUTCH, INKEY, INCH]
+</div><div class="text">
 
 siehe Beschreibung: Wichtige Adressen
 
 196D    enthält Anfangsadresse Quelltext
 1A07    enthält Endadresse Quelltext
+
+Beispielprogramm:
+>L
+   10 PROGRAM KREIS;
+   20 BEGIN
+   25 WRITELN('DD');
+   49 END.
+
 
 <pre>*
 ***************************************************************

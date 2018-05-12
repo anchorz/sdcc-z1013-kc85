@@ -7,6 +7,10 @@ use Cwd 'abs_path';
 use Switch;
 use GD::Simple;
 
+
+#our $rotate="270";
+our $rotate="90";
+
 our $index;
 our $content;
 
@@ -32,18 +36,18 @@ sub paint($)
 {
     my $val=shift;
     for(my $i=0;$i<8;$i++) {
-        if (!($val&0x80)) {
+        if (($val&0x80)) {
             $img->filledEllipse($x,$y+$i*$scale,10,10,$black);
-            for ($j=0; $j<20; $j++) {
-              my $dx = rand($scale);
-              my $dy = rand($scale);
-              $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$white);
-            }
-            for (my $j=0; $j<10; $j++) {
-              my $dx = rand($scale);
-              my $dy = rand($scale);
-              $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$black);
-            }
+            #for ($j=0; $j<20; $j++) {
+            #  my $dx = rand($scale);
+            #  my $dy = rand($scale);
+            #  $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$white);
+            #}
+            #for (my $j=0; $j<10; $j++) {
+            #  my $dx = rand($scale);
+            #  my $dy = rand($scale);
+            #  $img->setPixel($x+$dx-$scale/2,$dy-$scale/2+$y+$i*$scale,$black);
+            #}
         }
         $val*=2;
     }
@@ -82,6 +86,7 @@ open my $out, '>', 'tmp.png' or die;
 binmode $out;
 print $out $img->png;
 printf("output: \"%s\"\n","tmp.png");
-system("convert tmp.png -motion-blur 2x6+45 -resize 33% -normalize -rotate 270 -flop -quality 70% final_blur.png" );
-printf("output: \"%s\"\n","final_blur.png");
+
+system("convert tmp.png -motion-blur 2x6+45 -resize 33% -normalize -rotate $rotate -flop -quality 70% screenshot_0x.png" );
+printf("output: \"%s\"\n","screenshot_0x.png");
 

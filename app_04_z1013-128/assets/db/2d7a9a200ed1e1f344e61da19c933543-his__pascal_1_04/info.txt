@@ -6,6 +6,16 @@ siehe Beschreibung: Wichtige Adressen
 196D    enthält Anfangsadresse Quelltext
 1A07    enthält Endadresse Quelltext
 
+Beispielprogramm:
+>L
+   10 PROGRAM KREIS;
+   20 BEGIN
+   25 WRITELN('DD');
+   49 END.
+
+
 <include src="pascal_1_i.doc.txt"/>                
 </lang>
-<required></required>
+<syscall type="spv" tag="[SARUF, LORUF]"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH]"/>
+

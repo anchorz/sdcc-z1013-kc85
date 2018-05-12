@@ -1,3 +1,0 @@
-C.EPROMMER.P.z80              28.01.2013 12:10:32 -> z1013/a_ziermann/nu/C.EPROMMER 2.9_CCL.z80
-C.NSWEEP.PRG.z80              28.01.2013 12:10:34 -> z1013/Sammlung IGD/igd02a CPM 1/M.NSWEEP.COM.z80
-C.POWER.PRG.z80               28.01.2013 12:10:35 -> z1013/Sammlung IGD/igd02a CPM 1/M.POWER.COM.z80

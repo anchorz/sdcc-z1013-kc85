@@ -33,7 +33,8 @@ sub paint($)
     my $val=shift;
     for(my $i=0;$i<8;$i++) {
         if (($val&0x80)) {
-            $img->filledEllipse($x,$y+$i*$scale,10,10,$black);
+            $img->filledEllipse($x,$y+$i*$scale,8,8,$black);
+            $img->filledEllipse($x+$scale/2,$y+$i*$scale,8,8,$black);
             #for ($j=0; $j<20; $j++) {
             #  my $dx = rand($scale);
             #  my $dy = rand($scale);
@@ -82,6 +83,6 @@ open my $out, '>', 'tmp.png' or die;
 binmode $out;
 print $out $img->png;
 printf("output: \"%s\"\n","tmp.png");
-system("convert tmp.png -motion-blur 2x6+45 -resize 33% -normalize -quality 70% screenshot_01.jpg" );
+system("convert tmp.png -motion-blur 2x6+45 -resize 33% -normalize -quality 70% screenshot_01.png" );
 printf("output: \"%s\"\n","screenshot_01.jpg");
 

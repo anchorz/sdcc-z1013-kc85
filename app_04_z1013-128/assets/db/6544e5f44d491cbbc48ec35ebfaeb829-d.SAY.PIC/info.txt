@@ -1,0 +1,3 @@
+<kurz src="Sprachausgabe mit SP-0256 AL2 Platinenlayout"/>
+<lang></lang>
+

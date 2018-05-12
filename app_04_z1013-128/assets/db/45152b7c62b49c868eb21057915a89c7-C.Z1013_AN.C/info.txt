@@ -1,0 +1,9 @@
+<kurz src="Betriebssystem für Z1013 V1.2 (Anweisungen) 23.11.1989"/>
+<lang>muss zusammen mit [71a48825bc4985c687c62838faf0cb63] geladen werden.
+</lang>
+<port range="02" mode="R" device="Systemport:Tastatur+RB-unbekanntes Layout"/>
+<port range="04" mode="R" device="[7]64/16"/>
+<port range="08" mode="W" device="Spaltentreiber: Tastatur+RB-unbekanntes Layout"/>
+<port range="50" mode="W" device="Centronics: Data"/>
+<port range="52" mode="R" device="Centronics: Status"/>
+<syscall type="rst20" tag="[OUTCH, INKEY, INCH]"/>
