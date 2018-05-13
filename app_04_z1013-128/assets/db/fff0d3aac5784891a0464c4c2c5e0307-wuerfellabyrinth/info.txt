@@ -1,0 +1,26 @@
+<kurz src="3D-Labyrinth finde alle Schätze im Würfelhaus/Würfellabyrinth"/>
+<lang>Du befindest Dich in diesem Hochhaus und sollst den Ausgang finden !
+
+Aber raus kommst Du nur wenn Du alle Schätze gefunden hast ! 
+
+
+Hinweise:
+
+Braucht Zeichensatz [e5299d8a370f32a8076c00f054c358d9] oder [9dea37322df756630988e2e27caba511] mit Umlauten.
+Geht nur mit RAM-BASIC: CALL*2C24 (scrollen) CALL*2C07 (Bildschirm löschen)
+
+Bug: 
+
+nach der Abfrage des Zauberspruch beendet sich das Programm. Hier muss unbedingt ein "@" eingegeben werden.
+oder die Zeile 65010 RETURN einfügen.
+
+Zauberspruch sollte wohl sein:
+"ABRA KADABRA"
+"IPPEDI PIPPEDI BLUMENKOHL"
+"SIMSALABIM"
+"SESAM OEFFNE DICH"
+"HOKUS POKUS"
+
+<include src="wuerfellabyrinth.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

@@ -1,0 +1,14 @@
+<kurz src="TAPELIST-VT listet die HEADER auf den Bildschirm auf"/>
+<lang>Erlaeuterungen :
+
+AADR - Anfangsadresse
+EADR - Endadresse
+SADR - Startadresse
+
+Folgende Tastenfunktionen :
+S4/K  - Abbruch TAPELIST
+ENTER - listet die nicht mehr auf den Bildschirm kommenden Header auf
+3K-B  - CLOAD mit 3K-Basic   
+</lang>
+<syscall type="rst20" tag="[OUTCH, OUTHL, INKEY, INCH, CLOAD, OUTSP]"/>
+<port range="keine" mode="" device=""/>

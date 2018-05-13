@@ -1,0 +1,4 @@
+<kurz src="ähnlich [0ccda51e3ab5f9fea6f9342f1a8b876b]"/>
+<lang>Einige Sprünge sind aber auf die Adresse 0x4000 gelegt. Wahrscheinlich diente dieses ROM-Image zum debuggen.
+deswegen als unnütz bzw. temporäre Datei aussortiert</lang>
+

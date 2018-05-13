@@ -1,0 +1,3 @@
+<kurz src="identisch [71a48825bc4985c687c62838faf0cb63]"/>
+<lang>e: Z80-Header-Tag ist nicht korrekt, statt "d3d3d3" steht "2e2e2e"</lang>
+

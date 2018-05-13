@@ -1,0 +1,6 @@
+<kurz src="Z1013 PC Datenaustausch über die parallele Schnittstelle (ein Versuch!)"/>
+<lang>nun ist das PC Programm auf der anderen Seite und die Kabelbelegung leider verloren gegangen.
+Das finale Programm auf dem Z1013 leider auch.
+
+<include src="via_link4.s"/></lang>
+

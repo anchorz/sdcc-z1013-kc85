@@ -1,0 +1,3 @@
+<kurz src="ähnlich [ecaa82cdd9b23d9f9f8971b59b123726]"/>
+<lang>Programm ist identisch. Hier aber fehlt der Autostart.</lang>
+

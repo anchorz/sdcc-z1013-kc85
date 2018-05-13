@@ -1,0 +1,14 @@
+<kurz src="KC87 Spiel, noch nicht an den Z1013 angepasst"/>
+<lang>BUGs: 
+
+braucht ROM-Basic
+
+beim Starten bricht das Programm mit der Fehlermeldung ?OM ERROR IN 5 ab. 
+Offensichtlich ist kein Speicher mehr frei (CLEAR 1000,12279=0x2FF7)  also hilft nur noch Zeile 2 und 3 löschen
+
+?SN ERROR IN 20 (KC87 Programm?)
+20 WINDOW:CLS:WINDOW0,23,39,39 
+
+<include src="starfire_2.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

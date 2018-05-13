@@ -1,0 +1,13 @@
+<kurz src="ähnlich [ef69d054e2d412f0649786b47fb71bc3]"/>
+<lang>
+Hier wurde LD HL,0004H entfernt. Eigentlich ist dies ein Fehler. 
+
+127B  CD B2 18         CALL    18B2H
+127E  00               NOP
+127F  00               NOP
+1280  00               NOP
+1281  00               NOP
+1282  7E               LD      A,(HL)
+1283  36 00            LD      (HL),00H
+</lang>
+

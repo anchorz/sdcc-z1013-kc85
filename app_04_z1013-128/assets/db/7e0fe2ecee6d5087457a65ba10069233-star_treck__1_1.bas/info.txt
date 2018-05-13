@@ -1,0 +1,4 @@
+<kurz src="Die letzte und entgültige Version von ENTERPRISE (mit Fenstergrafik)"/>
+<lang><include src="star_treck__1_1.bas.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

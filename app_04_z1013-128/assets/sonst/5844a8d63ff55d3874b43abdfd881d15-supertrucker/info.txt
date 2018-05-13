@@ -1,0 +1,4 @@
+<kurz src="identisch [38484f348f3a99ecb6f62452170a6802]"/>
+<lang>Eigentlich das bessere Z80-File, da hier nur das Programm und keine
+BASIC-Variablen mit abgespeichert wurden.</lang>
+

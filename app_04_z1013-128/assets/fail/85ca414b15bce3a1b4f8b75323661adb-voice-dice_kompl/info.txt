@@ -1,0 +1,3 @@
+<kurz src="identisch [000be92806becac01e02ee850d2d6432]"/>
+<lang>e: Ist 1 Byte kleiner, als im Header angegeben.</lang>
+

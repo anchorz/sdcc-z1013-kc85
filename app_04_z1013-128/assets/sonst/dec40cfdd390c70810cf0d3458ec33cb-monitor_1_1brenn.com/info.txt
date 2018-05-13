@@ -1,0 +1,5 @@
+<kurz src="identisch [0ccda51e3ab5f9fea6f9342f1a8b876b]"/>
+<lang>Hier ist lediglich noch ein Vorspann vor dem eigentlichen ROM-Inhalt der den
+ROM an 0xF000 abschaltet und dann den neuen Monitor dorthin kopiert.
+</lang>
+

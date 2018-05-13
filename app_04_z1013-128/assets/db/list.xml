@@ -431,6 +431,7 @@
 <file aadr="1000" eadr="26e5" sadr="0000" typ="b" link="057fcb505548e5dbf62ca80066f88c55-b.HAUS%201/b.HAUS%201.z80" name="HAUS 1          " kurz="Würfelspiel, gelange als erster durch's Haus" />
 <file aadr="0100" eadr="3d80" sadr="0100" typ="C" link="005704d0c3b71489d96ba3862f01d046-C.HBASIC_03_89/C.HBASIC%2003_89.z80" name="HBASIC 03/89    " kurz="HBASIC - angepasstes BASIC vom Hübler Computer" />
 <file aadr="0100" eadr="2b60" sadr="0100" typ="C" link="ac559be453153ac534c19059ce754b32-hc_900_basic.com/hc_900_basic.com.z80" name="HC-900 BASIC    " kurz="BASIC Variante mit PSET-Funktion (HC900)" />
+<file aadr="0300" eadr="3000" sadr="0300" typ="C" link="f4c08520df7069cb61d7e50cd34354da-hc_bi_v__4_1.com/hc_bi_v__4_1.com.z80" name="HC-BI V. 4.1    " kurz="HCB V4.1 BASIC-Interpreter" />
 <file aadr="0200" eadr="2faf" sadr="0200" typ="C" link="837c6fab35ca63bdcd44c3c5cffe82ba-C.HC-PASCAL_V2.1/C.HC-PASCAL_V2.1.z80" name="HC-PASCAL/V2.1  " kurz="KC Pascal, V2.1 by Burmeister, Lehmann, Vetters" />
 <file aadr="1800" eadr="283c" sadr="0000" typ="I" link="092feff3fa06e5d4bebef747c8561b83-I.HCopy%20FT/I.HCopy%20FT.z80" name="HCopy FT        " kurz="Schnellueberspielhilfe zum Laden Kassette-Kassette/RAM-Disk" />
 <file aadr="3100" eadr="60cc" sadr="0000" typ="T" link="85f92a7e3da5f77163ba673c3fca0c6f-T.HDISKCOP/T.HDISKCOP.I.z80" name="HDISKCOP.I      " kurz="HDISKCOPY 1.3: Headerdisk 45 mit CRC, Headersave 5.9 und Kopierprogramm," />
@@ -793,6 +794,7 @@
 <file aadr="0100" eadr="3fff" sadr="0100" typ="C" link="090ce0b35e9d7c3009761ddb9207fa2c-C.PURSUIT.C/C.PURSUIT.C.z80" name="PURSUIT.C       " kurz="Hase+Wolf (ohne Joystick) Kohlköpfe aufsammeln, Wölfen ausweichen" />
 <file aadr="2bc0" eadr="3a33" sadr="2bc0" typ="B" link="03d81cbe9a0750c34728babfe49b2c12-B.PUSH/B.PUSH.z80" name="PUSH            " kurz="PUSH, EIN CLEVERES WUERFELSPIEL" />
 <file aadr="2bc0" eadr="32f3" sadr="0302" typ="B" link="1273befaaa0bd330e0564745ab99afc1-puzzel/puzzel.z80" name="PUZZEL          " kurz="Schiebepuzzle" />
+<file aadr="2bc0" eadr="5d9e" sadr="0000" typ="B" link="097935b7928223cb9880ecba5fd74136-pyramide/pyramide.z80" name="PYRAMIDE        " kurz="Basic-Clone von KINGS-VALLEY (mit Patch oder Fehler ab Zeile 2610)" />
 <file aadr="1000" eadr="1b50" sadr="1000" typ="C" link="a3290e59bab745f66734c96ee3620d63-C.PYRAMIDE/C.PYRAMIDE.z80" name="PYRAMIDE        " kurz="nur noch 120s Zeit um aus der Pyramide zu finden, Unterschied unbekannt" />
 <file aadr="0900" eadr="1bff" sadr="0900" typ="C" link="ecbcf0a2aa858cd4272f64073f08d108-pyramide/pyramide.z80" name="PYRAMIDE        " kurz="nur noch 120s Zeit um aus der Pyramide zu finden" />
 <file aadr="2bc0" eadr="6000" sadr="0302" typ="B" link="394f2a0bb7be25783b2e456a784ed303-pyramide(laeuft)/pyramide(laeuft).z80" name="PYRAMIDE(laeuft)" kurz="Basic-Clone von KINGS-VALLEY" />
@@ -805,6 +807,7 @@
 <file aadr="3000" eadr="5523" sadr="0000" typ="I" link="2e721e9e905dd8a4aa74fd9af0c54690-I.R-80.DOC_1.3/I.R-80.DOC%201.3.z80" name="R-80.DOC 1.3    " kurz="R-80 REASSEMBLER VERSION 1.3" />
 <file aadr="4000" eadr="5b70" sadr="4000" typ="C" link="04247772e5e6737c52fa55d0ab4c8bbb-C.R80-REASSEMBLER/C.R80-REASSEMBLER.z80" name="R80-REASSEMBLER " kurz="R-80 REASSEMBLER VERSION 1.01" />
 <file aadr="2bc0" eadr="3263" sadr="0000" typ="B" link="26406f564a96bc07da17d073c7253a1b-rakete/rakete.z80" name="RAKETE          " kurz="ballistische Rakete mit 5 Versuchen abschiessen" />
+<file aadr="0120" eadr="03ff" sadr="0120" typ="C" link="247736afd6dcbc1f5b8a56271a77152e-ram_%26_pio_test/ram_%26_pio_test.z80" name="RAM &amp; PIO-TEST  " kurz="bitweiser RAM- und PIO-Test" />
 <file aadr="1000" eadr="1c7a" sadr="0000" typ="b" link="bf03f27debb021c57bcb1a2e23b6eabc-b.RAMM-JAGD/b.RAMM-JAGD.z80" name="RAMM-JAGD       " kurz="Billard Variante, RAMM die Kugel!(8x4)" />
 <file aadr="1800" eadr="1fff" sadr="1800" typ="C" link="d9143b546f8d9f43ea5018af2a3e7249-C.RAMTEST%20RAMBUG%20Z/C.RAMTEST%20RAMBUG%20Z.z80" name="RAMTEST RAMBUG Z" kurz="RAM Test SPEICHERTEST RAMBUG, FUNKAMAEUR 12/86" />
 <file aadr="1900" eadr="1fff" sadr="1900" typ="C" link="de55fd3cb4ed98fb64e26a78291dd463-C.RAMTEST%20RAMBUG%20Z/C.RAMTEST%20RAMBUG%20Z.z80" name="RAMTEST RAMBUG Z" kurz="RAM Test" />
@@ -925,6 +928,8 @@
 <file aadr="2000" eadr="34d6" sadr="0000" typ="I" link="da3d3c73f4f281112f63b1e4511db487-sprungverteiler.doc/sprungverteiler.doc.z80" name="SPRUNGVERTEILER " kurz="SPV: Sprungverteiler fuer Z1013-Erweiterungen" />
 <file aadr="0800" eadr="335d" sadr="0000" typ="T" link="3c2e16fb69e8e52874ec889816868b59-T.STANDARDADRESSEN/T.STANDARDADRESSEN.z80" name="STANDARDADRESSEN" kurz="STANDARD-ADRESSEN, SPRUNGVERTEILER, SYSTEMADRESSEN, I/O-ADRESSEN" />
 <file aadr="2bc0" eadr="74f3" sadr="0302" typ="B" link="c4eb7877794109bb9f904d6470a4c49a-star/star.z80" name="STAR            " kurz="Überarbeitete Version der Enterprise Simulation, Klingonen und so" />
+<file aadr="2bc0" eadr="73f1" sadr="0000" typ="B" link="7e0fe2ecee6d5087457a65ba10069233-star_treck__1_1.bas/star_treck__1_1.bas.z80" name="STAR-TRECK *1.1*" kurz="Die letzte und entgültige Version von ENTERPRISE (mit Fenstergrafik)" />
+<file aadr="2bc0" eadr="4ea9" sadr="0300" typ="B" link="b9a03cf0baeac3182bc7b998a81dd8d4-starfire_2/starfire_2.z80" name="STARFIRE 2      " kurz="KC87 Spiel, noch nicht an den Z1013 angepasst" />
 <file aadr="0100" eadr="30e1" sadr="0100" typ="C" link="a2858579ee8ba7487a02f288f7f3484a-C.STARGLIDE/C.STARGLIDE.z80" name="STARGLIDE       " kurz="Fussballspiel, Tor treffen, Ball auffangen" />
 <file aadr="2bc0" eadr="3310" sadr="0302" typ="B" link="31464e6c283e848152b517477090e365-B.STARPLAY/B.STARPLAY.z80" name="STARPLAY        " kurz="Anaconda Variante, Anzahl der Fehler werden nur aufaddiert" />
 <file aadr="3000" eadr="3a9f" sadr="0000" typ="I" link="269656e8fa50d90029e5c7ce5ca89724-I.STATUS%20I_O/I.STATUS%20I_O-ADR%204.z80" name="STATUS I/O-ADR 4" kurz="Beschreibung zum Programm STATUS I/O-Adr 04H" />
@@ -960,6 +965,7 @@
 <file aadr="01b0" eadr="0290" sadr="01b0" typ="C" link="0260d9f673be513f26255fc031d4ab6c-C.Talk-Master_V2.0/C.Talk-Master%20V2.0.z80" name="Talk-Master V2.0" kurz="1-Bit PCM Sample-Aufnahme und Abspieler" />
 <file aadr="5000" eadr="58d1" sadr="0100" typ="I" link="9d7094ecb1c52c5cab6707609cd3fa0a-I.TAPECOPY_BESCHR./I.TAPECOPY%20BESCHR..z80" name="TAPECOPY BESCHR." kurz="TapeCopy Laden/Speichern File Tape/aktuelles Laufwerk" />
 <file aadr="0100" eadr="07ff" sadr="0000" typ="D" link="6d7235bbe42875eadcf53f43888cdb45-D.TAPECOPY.COM/D.TAPECOPY.COM.z80" name="TAPECOPY.COM    " kurz="CPM COM: TapeCopy Laden/Speichern File Tape/aktuelles Laufwerk" />
+<file aadr="0100" eadr="0800" sadr="0100" typ="C" link="0b81dfd73e45c17fadf36b4e9b7940d5-tapelist.com/tapelist.com.z80" name="TAPELIST        " kurz="TAPELIST-VT listet die HEADER auf den Bildschirm auf" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="cf53481f476e0a0539843fb338fb8231-tast1_scr/tast1_scr.z80" name="TAST1.SCR       " kurz="" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="95b9aec81428388a1cc5e29695213f09-tast2_scr/tast2_scr.z80" name="TAST2.SCR       " kurz="" />
 <file aadr="2600" eadr="29c0" sadr="0000" typ="G" link="e074001129ce4984b80ec59fab1ee4de-tast3_scr/tast3_scr.z80" name="TAST3.SCR       " kurz="" />
@@ -1060,13 +1066,14 @@
 <file aadr="0100" eadr="14ff" sadr="0100" typ="C" link="482bcea6abac36b281743b2b781353fa-C.VAMPIR.C/C.VAMPIR.C.z80" name="VAMPIR.C        " kurz="Bringe die Jungfrauen nach Hause, weiche VAMPI's Freunden aus (RB-SPV:POLL)" />
 <file aadr="2bc0" eadr="2fcc" sadr="0302" typ="B" link="9f13eb65e2f83a40cf3a267633041264-B.VARI-SUCHE%20BASIC/B.VARI-SUCHE%20BASIC.z80" name="VARI-SUCHE BASIC" kurz="Tools, sucht nach Variablen im BASIC-Programm" />
 <file aadr="1000" eadr="2502" sadr="0000" typ="b" link="e949da4d03ff299435537e311a240de0-b.VERFOLGUNG%201/b.VERFOLGUNG%201.z80" name="VERFOLGUNG 1    " kurz="Brettspiel, Verfolgungsjagd mit Würfeln" />
+<file aadr="4000" eadr="41a4" sadr="7fff" typ="s" link="764de03a93b5b71ad07b9f305fad635a-via_link4/via_link4.z80" name="VIA-LINK4       " kurz="Z1013 PC Datenaustausch über die parallele Schnittstelle (ein Versuch!)" />
 <file aadr="0200" eadr="0590" sadr="0200" typ="C" link="2c3229800e8a9a4abd0ef6a576d6642b-C.VIDEOBUCH/C.VIDEOBUCH.z80" name="VIDEOBUCH       " kurz="Videobuch1" />
 <file aadr="3000" eadr="58a5" sadr="0000" typ="S" link="39e3f35de1cdc0d4194a60f134683e7f-S.VIDEOTEX.A/S.VIDEOTEX.A.z80" name="VIDEOTEX.A      " kurz="Videotext-Decoder am Z1013 I2C-Steuerung SAA5243 16.09.1993" />
 <file aadr="3000" eadr="5882" sadr="0000" typ="S" link="f665b6a92491f043ed4704051cfc38b1-S.VIDEOTEX/S.VIDEOTEX.ASM.z80" name="VIDEOTEX.ASM    " kurz="Videotext-Decoder am Z1013 I2C-Steuerung SAA5243 16.09.1993" />
 <file aadr="8a00" eadr="9000" sadr="0000" typ="D" link="5f4f24b48f27ff1650ed1875ad82692f-D.VIDEOTEX.Z/D.VIDEOTEX.Z.z80" name="VIDEOTEX.Z      " kurz="Teletext/Videotext Zeichensatz, für Bildschirm" />
 <file aadr="1000" eadr="2357" sadr="0000" typ="b" link="f26a9815844f9f07c8a8649ba4ccb137-b.VIER/b.VIER.z80" name="VIER            " kurz="Quattro, 4 Spielsteine SENKRECHT, WAAGERECHT oder DIAGONAL anordnen" />
 <file aadr="0100" eadr="2b5f" sadr="0100" typ="C" link="ba340ff73a9b2429f0150ce1c7af7375-C.VIERTELBASIC/C.VIERTELBASIC.z80" name="VIERTELBASIC    " kurz="HC900 BASIC mit PSET, 21486 BYTES FREE, wie [ac559be453153ac534c19059ce754b32]" />
-<file aadr="2bc0" eadr="3fa0" sadr="0302" typ="B" link="6f00a9e848157e3fa9d72f38e7156b40-voegeln(g%26a)/voegeln(g%26a).z80" name="VOEGELN(G&amp;A)    " kurz="Mit einem Panzer Voegel abschiessen" />
+<file aadr="2bc0" eadr="3fa0" sadr="0302" typ="B" link="6f00a9e848157e3fa9d72f38e7156b40-voegeln(g%26a)/voegeln(g%26a).z80" name="VOEGELN(G&amp;A)    " kurz="Tod den Vögeln! Mit einem Panzer Vögel abschiessen" />
 <file aadr="2c00" eadr="3980" sadr="3700" typ="C" link="76f1c9d095834f919303ebb6024db27f-vogeljagd/vogeljagd.z80" name="Vogeljagd       " kurz="Vögel abschießen" />
 <file aadr="4000" eadr="77ff" sadr="0000" typ="M" link="03b64539dc117c750f348b4b4a5908b1-voice/voice.z80" name="VOICE           " kurz="Sprachausgabe API" />
 <file aadr="1000" eadr="77ff" sadr="0000" typ="b" link="e409bc9f50f81908ea854081afa45974-b.VOICE-DEMO/b.VOICE-DEMO.z80" name="VOICE-DEMO      " kurz="Sprachausgabe Tiny-Basic Beispiel mit Sprachausgabe-Modul" />
@@ -1084,6 +1091,7 @@
 <file aadr="a300" eadr="dfff" sadr="a300" typ="C" link="ac8a55057b2a934aac9eaa7533f61e10-C.WORD+ASM/C.WORD+ASM.z80" name="WORD+ASM        " kurz="Programmiersystem Texteditor MicroWORD 1.3 und Assembler ASM 5.3" />
 <file aadr="1000" eadr="2f0c" sadr="0000" typ="b" link="c8966b1536ab690448033cd0cba60d20-b.WORDS/b.WORDS.z80" name="WORDS           " kurz="Wörter raten, Mischung aus Kreuzworträtsel und Hangman" />
 <file aadr="3000" eadr="3883" sadr="0000" typ="I" link="1d13bf5cee84db11b4ce7d75641d9a9d-I.WORDSTARINST.DOC/I.WORDSTARINST.DOC.z80" name="WORDSTARINST.DOC" kurz="Wordstar-Installation für A5120/30 (mit SD1152 PIO-Drucker)" />
+<file aadr="2bc0" eadr="5800" sadr="0000" typ="B" link="fff0d3aac5784891a0464c4c2c5e0307-wuerfellabyrinth/wuerfellabyrinth.z80" name="Wuerfellabyrinth" kurz="3D-Labyrinth finde alle Schätze im Würfelhaus/Würfellabyrinth" />
 <file aadr="2bc0" eadr="c888" sadr="0000" typ="B" link="714c3b790dab03ac3da3750b16649cef-B.WUESTE/B.WUESTE.z80" name="WUESTE          " kurz="Spielebox: ALZAN, WUESTE, CHAMPION DERBY" />
 <file aadr="2bc0" eadr="63c1" sadr="0000" typ="B" link="9e77e3766a792b3d90010dc89346eab6-wueste/wueste.z80" name="WUESTE          " kurz="" />
 <file aadr="1000" eadr="324e" sadr="0000" typ="b" link="fb439b375e194d93aa1abc12296e8a0e-b.WUNDERLAND/b.WUNDERLAND.z80" name="WUNDERLAND      " kurz="Textadventure" />
@@ -1115,6 +1123,7 @@
 <file aadr="0100" eadr="032f" sadr="0100" typ="C" link="6c01681535b7f7ce54fb903f63a282a4-zeicheneditor_32/zeicheneditor_32.z80" name="ZEICHENEDITOR/32" kurz="Editor für den 8x8 Zeichensatz-ROM" />
 <file aadr="2bc0" eadr="32f1" sadr="0300" typ="B" link="9e416ae6c34254829b38332c760fe3c9-B.ZEICHENPROGRAMM/B.ZEICHENPROGRAMM.z80" name="ZEICHENPROGRAMM " kurz="Grafikeditor" />
 <file aadr="0100" eadr="010c" sadr="0100" typ="C" link="cd5d4958779622b3e545ea0072d0a8db-zeichensatz/zeichensatz.z80" name="Zeichensatz     " kurz="" />
+<file aadr="1000" eadr="17ff" sadr="0000" typ="E" link="9dea37322df756630988e2e27caba511-zg_1013_orig_uml/zg_1013_orig_uml.z80" name="ZG 1013 ORIG+UML" kurz="Original Z1013 Zeichensatz ROM mit Umlauten" />
 <file aadr="1000" eadr="17ff" sadr="0000" typ="E" link="ccef2fbe5ee7ff090c380119c78ca4e9-zg_1013_orig/zg_1013_orig.z80" name="ZG 1013 ORIG.   " kurz="Original Z1013 Zeichensatz ROM" />
 <file aadr="1000" eadr="17ff" sadr="0000" typ="E" link="128947d8f9a3fa363eb602b79615e858-zg_m_uml_+inv/zg_m_uml_+inv.z80" name="ZG m.Uml.+Inv.  " kurz="Originalzeichensatz mit Umlauten, Control-Zeichen und Inversdarstellung" />
 <file aadr="7000" eadr="77ff" sadr="0000" typ="E" link="a11dd2ae626d1b31e304144afdcd6255-ZG-INCOM/ZG-INCOM.z80" name="ZG-INCOM        " kurz="Entspricht dem IBM Zeichensatz, diesmal sind die Klammern mit dabei" />
@@ -1128,4 +1137,4 @@
 <file aadr="0101" eadr="0a7b" sadr="0000" typ="T" link="ecf95626cb9383416f9c0d310e5f7789-T.ZUGRIFFSANZEIGE/T.ZUGRIFFSANZEIGE.z80" name="ZUGRIFFSANZEIGE " kurz="Zugriffs-Anzeige für RAM-Floppy's nach MP 3/88" />
 <file aadr="db00" eadr="ebff" sadr="de00" typ="C" link="760a044ad19ea3ef17ab33aed8dda64a-C.ZUMON/C.ZUMON.z80" name="ZUMON           " kurz="Installiert Druckertreiber 0xFB00, Headersave 0xE000 und Sprungverteileraufrufe" />
 </filelist>
-<status src="Datenbank enthält 1128 Dateien."/></doc>
+<status src="Datenbank enthält 1137 Dateien."/></doc>

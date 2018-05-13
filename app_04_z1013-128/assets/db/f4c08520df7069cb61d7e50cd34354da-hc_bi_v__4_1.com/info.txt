@@ -1,0 +1,12 @@
+<kurz src="HCB V4.1 BASIC-Interpreter"/>
+<lang>Ab 0x2B12 ist noch eine schnelle Statusabfrage implementiert, die genau genommen nur auf der 8x4 Tastatur funktioniert ansonsten sollte es
+auch mit einem RB-Monitor funktioniert
+
+Keine Erweiterung im Sprachumfang.
+
+Unterschiede zum Original KC-BASIC nicht bekannt. 
+</lang>
+<port range="02" mode="R" device="Systemport: Toneingabe, Tastatur+RB/8x4"/>
+<port range="08" mode="W" device="Spaltentreiber: Tastatur+RB/8x4"/>
+<syscall type="rst20" tag="[INKEY]"/>
+

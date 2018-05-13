@@ -1,4 +1,4 @@
-<kurz src="Mit einem Panzer Voegel abschiessen"/>
+<kurz src="Tod den Vögeln! Mit einem Panzer Vögel abschiessen"/>
 <lang>Code ist "ALARM "
 
 Bei diesem Programm muessen Sie

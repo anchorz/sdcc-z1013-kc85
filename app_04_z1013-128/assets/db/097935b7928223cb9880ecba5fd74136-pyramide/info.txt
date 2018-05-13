@@ -1,0 +1,8 @@
+<kurz src="Basic-Clone von KINGS-VALLEY (mit Patch oder Fehler ab Zeile 2610)"/>
+<lang>wie [394f2a0bb7be25783b2e456a784ed303], aber hier ist noch ein Patch in den Zeilen:
+ 2610 IF TZ=0 THEN 2700
+ 2620 POKE TZ-64,195
+ 2700 POKE TN-64,195:RETURN
+
+<include src="pyramide.B"/></lang>
+

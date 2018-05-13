@@ -1,0 +1,4 @@
+<kurz src="identisch [7e0fe2ecee6d5087457a65ba10069233]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 15 Bytes fehlen.
+e: Ist 1 Byte kleiner, als im Header angegeben.</lang>
+

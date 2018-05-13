@@ -1,0 +1,3 @@
+<kurz src="Original Z1013 Zeichensatz ROM mit Umlauten"/>
+<lang><include src="zg.html"/></lang>
+

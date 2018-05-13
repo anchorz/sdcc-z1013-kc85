@@ -1,0 +1,6 @@
+<kurz src="bitweiser RAM- und PIO-Test"/>
+<lang></lang>
+<port range="00" mode="R/W" device="Userport: PIO-Test"/>
+<port range="01" mode="W" device="Userport: PIO-Test"/>
+<syscall type="rst20" tag="[OUTHL, PRST7]"/>
+
