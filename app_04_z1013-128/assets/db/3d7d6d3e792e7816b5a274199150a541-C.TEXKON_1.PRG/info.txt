@@ -1,0 +1,5 @@
+<kurz src="TEXTKON 1, Texte konvertieren, MicroWORD/KC-BASIC/EDITEX oder BWS-Format"/>
+<lang></lang>
+<syscall type="spv" tag="[LORUF]"/>
+<syscall type="rst20" tag="[WIND, OUTCH, OUTHL, INCH, PRST7, OUTSP, OTHLS, OUTHX]"/>
+<port range="keine" mode="" device=""/>

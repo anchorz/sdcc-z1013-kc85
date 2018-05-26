@@ -1,0 +1,3 @@
+<kurz src="BASICODE HYMNEN, Musik - Nationalhymnen abspielen"/>
+<lang><include src="HYMNEN.B"/></lang>
+

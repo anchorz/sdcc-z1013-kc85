@@ -1,0 +1,4 @@
+<kurz src="ähnlich [d5f25d97e5d6e9badb96fb9d4c759bc8]"/>
+<lang>kleinere Unterschiede im Datensegement. Hat diese Initialisierung überhaupt einen Einfluss auf den Ablauf.
+Die meisten Variablen werden ersteinmal überschrieben.</lang>
+

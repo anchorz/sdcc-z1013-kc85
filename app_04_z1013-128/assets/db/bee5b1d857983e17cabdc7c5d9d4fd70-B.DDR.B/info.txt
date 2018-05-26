@@ -1,0 +1,3 @@
+<kurz src="BASICODE Informationen über die DDR"/>
+<lang><include src="DDR.B.B"/></lang>
+

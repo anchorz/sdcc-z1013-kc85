@@ -1,0 +1,6 @@
+<kurz src="Frühe Version eines Fred-clones Pyramindenspiel"/>
+<lang>Es ist nur ein Snapshot. Das Programm ist weg.
+Zusammen mit [ef0310c52d92bf32e34b8f636656016d] laden.
+Leider fehlen die späteren Versionen
+
+<include src="pharao_3_6.edasASM.s"/> </lang>

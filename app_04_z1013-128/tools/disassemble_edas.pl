@@ -111,7 +111,7 @@ while(1) {
     $line_index=0; 
     #printf("INFO: line_index=%d\n",$line_index);
     $line_no=read_word();
-    print ":$line_no:";
+    #print ":$line_no:";
     #exit 1;   
     #printf("INFO: line_index=%d\n",$line_index);
     $line_length=read_byte();

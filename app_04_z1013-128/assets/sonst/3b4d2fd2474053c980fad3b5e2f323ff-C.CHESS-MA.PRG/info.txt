@@ -1,0 +1,42 @@
+<kurz src="ähnlich [5d80283acf94ae55c4f93be2c74e2c18]"/>
+<lang>w: Patch unter Umständen fehlerhaft.
+
+Das Programm ist identisch mit [5d80283acf94ae55c4f93be2c74e2c18], allerdings mit einer Ausnahme:
+Es sieht so aus, als ob hier die Tonausgabe wegpatcht wurde oder die Tonausgabe auf den Piezo der Brosig-Tastatur umgelegt 
+werden sollte. Es erscheint mit suspekt und nicht klar, ob hier überhaupt etwas bewirkt wird.
+3200  C5               PUSH    BC
+3201  F5               PUSH    AF
+3202  0E FF            LD      C,0FFH
+3204  3E 08            LD      A,08H
+3206  D3 08            OUT     (08H),A
+3208  06 80            LD      B,80H
+320A  10 FE            DJNZ    320AH
+320C  3E 08            LD      A,08H
+320E  D3 08            OUT     (08H),A
+3210  06 80            LD      B,80H
+3212  10 FE            DJNZ    3212H
+3214  0D               DEC     C
+3215  20 ED            JR      NZ,3204H
+3217  F1               POP     AF
+3218  C1               POP     BC
+3219  C9               RET
+
+[5d80283acf94ae55c4f93be2c74e2c18]
+3200  C5          PUSH    BC
+3201  F5          PUSH    AF
+3202  0E FF       LD      C,0FFH
+3204  CB FF       SET     7,A
+3206  D3 02       OUT     (02H),A
+3208  06 80       LD      B,80H
+320A  10 FE       DJNZ    320AH
+320C  CB BF       RES     7,A
+320E  D3 02       OUT     (02H),A
+3210  06 80       LD      B,80H
+3212  10 FE       DJNZ    3212H
+3214  0D          DEC     C
+3215  20 ED       JR      NZ,3204H
+3217  F1          POP     AF
+3218  C1          POP     BC
+3219  C9          RET
+
+</lang>

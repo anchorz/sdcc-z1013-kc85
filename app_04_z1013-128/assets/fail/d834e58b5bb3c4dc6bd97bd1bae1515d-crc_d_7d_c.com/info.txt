@@ -1,0 +1,4 @@
+<kurz src="identisch [85aecc2b0af7fa9fab0a3ae305d06c0a]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 19 Bytes fehlen.
+e: Z80-Header-Tag ist nicht korrekt, statt "d3d3d3" steht "2e2e2e"</lang>
+

@@ -1,0 +1,5 @@
+<kurz src="Beschreibung zum 4K-Monitor 1.1 mainsoft und die überarbeitete Version von 2001"/>
+<lang>4k-MONITOR V1.1 .doc
+
+<include src="I.4k-MONITOR V1.1.txt"/></lang>
+

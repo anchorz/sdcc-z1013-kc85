@@ -1,0 +1,3 @@
+<kurz src="BASICODE GLOBE zeichnet Globus in Draufsicht"/>
+<lang><include src="GLOBE.B"/></lang>
+

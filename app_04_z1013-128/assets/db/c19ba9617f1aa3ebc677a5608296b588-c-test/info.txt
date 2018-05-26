@@ -1,0 +1,7 @@
+<kurz src="Bremswegtabelle (und CTEST angehängt)"/>
+<lang>Bremsweg im Straßenzustand nass, trocken und vereist berechnen.
+
+Aus irgendeinem noch unerfindlichen Grund ist noch ein anderen Programm C-TEST angehängt.
+
+<include src="c-test.B"/></lang>
+

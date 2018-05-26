@@ -1,0 +1,163 @@
+
+
+
+
+
+
+==============================================================
+=                                                            =
+=                                                            =
+=               E D A S * 8   mit   Reassembler              =
+=               -------------------------------              =
+=                                                            =
+==============================================================
+
+
+
+                       (c) mainsoft  April / 1989
+
+
+
+
+ EDAS*8 wurde aus EDAS*7 weiterentwickelt, welches auf der
+Grundlage des AC1- Assemblers EDAS*4 arbeitet. EDAS*8 enthaelt
+neben einem Assembler und einem Editor auch einen Reassembler,
+welcher gegenueber EDAS*7 entscheidend weiterentwickelt wurde.
+Im folgenden wird nur auf die Unterschiede zum EDAS*7 einge-
+gangen:
+
+
+- Ganzahlarithmetik   EDAS*8 realisiert Addition, Subtraktion,
+  -----------------   Multiplikation und Division (+-*/) ohne
+                      Prioritaetsregeln fortlaufend und ohne
+                      Klammern.
+
+- Zusatzbefehle       Die Syntaxpruefung zu den Einzelindex-
+  -------------       registern (HX,LX,HY,LY) wurde berichtigt.
+
+- Zusatzanweisungen   Die Vornull bei DEFH ist nicht mehr erfor-
+  -----------------   derlich. Auszerdem wird eine Zeichenprue-
+                      fung auf Zulaessigkeit vorgenommen.
+
+- Kommandos           "D" ruft die Saveroutine ueber den Sprung-
+  ---------           verteiler des 4k- Monitors auf. Eine Kor-
+                      rektur der Ansprungadresse kann auf #1FFD
+                      vorgenommen werden.
+
+                      "L" ruft die Loadroutine ueber #1FFA ent-
+                      sprechend auf.
+
+- Kommandoeingabe     Ist jetzt auch mit Kleinbuchstaben moeg-
+  ---------------     lich.
+
+- Optionen            Die gesetzten Optionen werden waehrend
+  --------            der Kommandoeingaben in der untersten
+                      Bildschirmzeile angezeigt.
+
+- Reassembler         Wird wie bereits bei EDAS*7 ueber das Kom-
+  -----------         mando "B" angesprungen. Links oben wird
+                      die jeweilige Arbeitsumgebung (EDAS oder
+                      REAS) angezeigt.
+
+
+
+
+
+Beschreibung des Reassemblerteiles
+----------------------------------
+
+
+1. Allgemeines
+--------------
+
+Der Reassembler ist in der Lage, selbstaendig Marken zu er-
+kennen und einzutragen. Dazu musz zu Beginn die Einsprungs-
+adresse mit einer Sprungmarke "G" gekennzeichnet werden. Kom-
+mandoeingaben ohne Argument haben den Aufruf der entsprechen-
+den Anzeigefunktion zur Folge. Markenfestlegungen mit Klein-
+buchstaben schalten zwar den Uebersetzungsmodus (Programmcode/
+Datencode) um, erscheinen jedoch nicht im Assemblerlisting.
+Vom Programmierer festgelegte Marken koennen nur durch ihn
+selbst veraendert werden. Vom Programm erkannte Datenmarken
+koennen durch den Reassembler selbst in Sprungmarken umdefi-
+niert werden. Umgedreht ist das nur ueber die Kommandos "E"
+und "I" moeglich.
+Bei Verschiebungen des Maschinencodes im Speicher kann nach
+Angabe eines Offset so gearbeitet werden, als ob er sich auf
+seinem Originalstandort befinden wuerde. Nur die in der Bild-
+ueberschrift befindliche Angabe "FREE:" weist auf die tatsaech-
+liche Adresse hin.
+Beim Kommando "R" koenen wahlweise 3 Argumente angegeben wer-
+den: von bis zlnr. Standardannahmen sind die Grenzen des Kom-
+mandos "U" und Zeilennummer 1. Das Kommando "R" beruecksich-
+tigt als einziges die Optionen 01 und 02. In der Regel erar-
+beitet man sich zuerst die Markentabelle und speichert dann
+ein. Unabhaengig vom konkreten Markentyp erscheint im Quell-
+code nur "Mnnnn" fuer eine Sprung- und "Dnnnn" fuer alle an-
+deren Marken.
+
+
+
+2. Kommandos
+------------
+
+A  	Definiere Adresse (DEFW) als Datenmarke
+
+B	Definiere Datenbytes (DEFB)
+
+E	Reassemblerlauf bei unterdrueckter Bildausgabe in den
+	Grenzen des Kommandos "U"
+
+G	Definiere Sprungmarke
+
+I	Reassemblerlauf analog "E", jedoch mit Loeschen aller
+	nicht durch den Nutzer festgelegten Marken.
+
+K	Unterdruecke Markenausgabe an dieser Stelle
+
+M	Definiere String (DEFM)
+
+Q	Rueckkehr zum Assemblermodus
+
+R	Reassemblerlauf unter Beruecksichtigung der Optionen
+
+S	Definiere Speicherplatz bis zur naechsten Marke (DEFS)
+
+T	Loesche die Markentabelle. Auszerdem wird die Marken-
+	tabelle beim Kaltstart und vor jedem Assemblerlauf
+	automatisch geloescht.
+
+U	Festlegung der Grenzen fuer das Erkennen von Datenmar-
+	ken und den Reassemblerlauf
+
+W	Definiere Adressen (DEFW) mit Eintrag in die Marken-
+        tabelle als Sprungmarken
+
+X	Loesche die angegebene Marke
+
+Y	Anzeige der gesammten Markentabelle. Vom Reassembler-
+	selbstaendig erkannte Marken werden mit einem "*" ge-
+	kennzeichnet.
+
+_       Kommandotabellenmarke (Underline = Wechsel zwischen
+        DEFM und DEFW mit Eintrag als Sprungmarke)
+
+*	Definiere String bis zum gesetzten Bit 7 ohne Marken-
+        ausgabe
+
+
+Alle durch den Reassemblerteil nicht anders genutzten Komman-
+dos des EDAS*8 koennen auch im Reassemblermodus weitergenutzt
+werden (z.B. "V").
+
+
+
+3. Optionen
+-----------
+
+
+80	Ausgabe der EQU-Adressen	02	Einspeicherun
+40	Z1013- Mnemonik (RST #20)	01	Unterdruecke
+10	AC1- Mnemonik (RST #18 = PRST7)		Liste/
+						Hexdump
+

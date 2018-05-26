@@ -1,0 +1,2 @@
+<kurz src="BASICODE DE TIJDMACHINE"/>
+<lang><include src="DE_TIJDM.B.B"/></lang>

@@ -1,0 +1,7 @@
+<kurz src="identisch [36882f677d6be5b5c2530da36f7b2bd3]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 23 Bytes fehlen.
+
+Verwendet direkte Monitoraufrufe. Es gibt aber eine RST20 Variante.
+[6a2b89d0db56afa89fe9aee6d8ac4bab]
+</lang>
+

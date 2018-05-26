@@ -1,0 +1,4 @@
+<kurz src="Kondensatoren mit dem Computer messen V3"/>
+<lang>wie V2, nur ohne DEBUG-Meldungen
+
+<include src="CTEST3.B"/></lang>

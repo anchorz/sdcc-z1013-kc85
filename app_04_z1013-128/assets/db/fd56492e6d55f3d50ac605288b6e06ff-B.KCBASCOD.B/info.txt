@@ -1,0 +1,3 @@
+<kurz src="BASICODE KC-BASCODER Dokumentation"/>
+<lang><include src="KCBASCOD.B"/></lang>
+

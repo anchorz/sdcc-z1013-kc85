@@ -1,0 +1,5 @@
+<kurz src="ähnlich [60bc467ce7a136e7e88bc8fabaff34e0]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 23 Bytes fehlen.</lang>
+
+bis auf die Tastaturbelegung U,SPACE identisch mit [60bc467ce7a136e7e88bc8fabaff34e0]</lang>
+

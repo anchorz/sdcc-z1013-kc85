@@ -11,7 +11,16 @@ use utf8;
 binmode(STDOUT, ":utf8");
 
 our $map_ctrl=1;#maps ASCII 0x00..0x1f to CTRL-Characters U+f120..U+f13f
+our $map_uml=0;#maps ASCII {|}  to äöü
 #our $map_ctrl=0; #maps ASCII 0x00..0x1f,0x7f to FULL-CURSOR and CHESS FIGURES
+
+%mapping_umlaut=( "["=>"Ä",
+"\\"=>"Ö",
+"]"=>"Ü",
+"{"=>"ä",
+"|"=>"ö",
+"}"=>"ü",
+"~"=>"ß" );
 
 sub pr($) {
     print OUT $token;
@@ -45,6 +54,9 @@ sub map_char($) {
         }
         return chr(0xf1ff);
     } elsif (ord($c)>=0x20 && ord($c)<=0x7e){
+        if ($map_uml && $mapping_umlaut{$c} ) {
+            $c=$mapping_umlaut{$c};
+        }        
         return $c;
     } else {
         if ($map_ctrl==0 && ord($c)==0x7f) {
@@ -65,7 +77,7 @@ if (!defined $ARGV[0]) {
         print "konvertiert KC-BASIC Progamm wieder in Quelltext:\n";
         print "Sonderzeichen werden in UTF-Zeichen ab U+f100 umgewandet\n";
         print "-CTRL verwendet anstatt ^A..^Z die eingebauten Schachfiguren\n";
-        print basename($0)." basic.z80 [-CTRL]\n";
+        print basename($0)." basic.z80 [-CTRL|+UML]\n";
         exit 1;
     }
     $file=$ARGV[0];
@@ -75,6 +87,9 @@ if (defined $ARGV[1] ) {
     my $encoding=$ARGV[1];
     if ($encoding=~m/-CTRL/) {
         $map_ctrl=0; 
+    }
+    if ($encoding=~m/\+UML/) {
+        $map_uml=1; 
     }
 }
 
@@ -106,6 +121,7 @@ $ofs=0x2c01-0x2bc0+32;
 #$ofs=32;
 #$ofs=0x2b21; #kc-basic
 #$ofs=0x2e63-0x2bc0+32; #doke 11103, hack
+#$ofs=11601-0x2bc0+32; #doke 11103, hack
 
 
 printf ("i: EADR(nach Z80 Header)=0x%04x (offset=0x%04x)\n",$eadr,$eadr-$aadr+32);
@@ -145,7 +161,13 @@ if ($map_ctrl) {
 } else {
     print(OUT "-CTRL()");
 }
-print(OUT "-ohne Umlaute(äöüß)\n\n");
+
+if ($map_uml) {
+    print(OUT "+mit Umlauten(äöüß)\n\n");
+} else {
+    print(OUT "-ohne Umlaute(äöüß)\n\n");
+}
+
 
 $token="";
 $token_type=0; #0 general 1 rem 2 int float numbers 3 symbol 4 str

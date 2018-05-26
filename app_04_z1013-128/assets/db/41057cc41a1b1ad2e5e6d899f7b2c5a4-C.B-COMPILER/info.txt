@@ -1,4 +1,4 @@
-<kurz src="BASIC Compiler"/>
+<kurz src="Micro BASIC-85, BASIC Compiler"/>
 <lang>
 
 LIST

@@ -1,0 +1,253 @@
+.PL72
+.MB6
+           EDAS*7 - Editor/Assembler/Reassembler
+
+(c) Dipl.-Ing. M.Duchrow, Borkheiderstrasse 19, 1143 Berlin
+
+Speicherplatzbedarf 0100H-1C1CH
+Kaltstart: J 100[ aaaa[ eeee]]     
+                         aaaa Beginnadresse Quelltextpuffer 
+                                            (Standard:1D80H)
+                         eeee Endadresse Quelltextpuffer
+                                            (Standard: 3BFFH)
+Warmstart: J 103
+Anzeigen: FREE: erster freier Speicherplatz nach vorhandenem 
+                  Qelltext  
+          END:  erster freier Speicherplatz nach Maschinencode
+                  (nach Assemblerlauf)
+          SEC:  Beginnadresse der vereinbarten Sekundaerquelle
+
+blinkender Cursor zeigt Eingabebereitschaft an
+Tastaturpiep ueber Diodenbuchse
+
+Format Qelltextzeile: (ohne Marke vor Befehl mind. 2 Space !)
+     Zeilennr. [Marke] Befehl [Operand(en)][;Kommentar]
+Format Kommandozeile: (Kommando=1 Zeichen)
+     Kommando [Parameter1[ Parameter2[ Parameter3]]]
+
+Grundlage  fuer  den EDAS*7 war der in der Zeitschrift  "Funk-
+amateur",  Hefte  1/87 - 4/87  vorgestellte  EDITOR/ASSEMBLER, 
+welcher weiter effektiviert, korrigiert, den Gegebenheiten des 
+Z 1013 angepasst und um weitere Kommandos sowie einen Reassem-
+bler ergaentzt wurde.  Es handelt sich hier um einen Zweilauf-
+assembler,  der  im Zusammenhang mit dem Editor die gleichzei-
+tige  Arbeit  mit mehreren Quellentexten zulaesst und  so  das 
+Anlegen und Nutzen einer Unterprogrammbiliothek  unterstuetzt. 
+Leerzeichen  werden komprimiert im Speicher abgelegt,  wodurch 
+trotz uebersichtlicher Darstellung je nach Umfang der  Kommen-
+tare  ohne Speichererweiterung bereits fuer ca.  1 k-Byte  Ma-
+schinencodeprogramm  vorgesehene Quelltexte verarbeitet werden 
+koennen.
+Die Syntax des EDAS*4 aus o.g. Zeitschrift wurde ueberarbeitet 
+und  weitestgehend  der Assembler-Syntax  im  Z  1013-Handbuch 
+angepasst. Analog EDAS*4 werden im EDAS*7 eigene Routinen fuer 
+Bildschirm  und  Tastatur verwendet,  um den Bedienkomfort  zu 
+erhoehen.  Der ergeanzte Tastaturpiep - ein besonders bei Ver-
+wendung  der Originaltastatur wichtiges Hilfsmittel  der  Kon-
+trolle  - wird  ueber den Diodenbuchsenausgang abgenommen  und 
+kann z.B.  mit einem auf Aufnahme geschalteten Kassettengeraet 
+ueber  den  dort  vorhandenen  Wiedergabeverstaerker   hoerbar 
+gemacht werden.
+Bei  Kommentareingabe  (gekennzeichnet  durch  vorangestelltes 
+Semikolon)    geht   die   Tastatur   automatisch    in    den 
+Schreibmaschinenmodus    ueber   (Grossbuchstaben   nur    bei 
+Betaetigen   der   Shift-Taste).    Mit   Verweis   auf   o.g. 
+Literaturquelle  wird  im folgenden nur auf  die  zusaetzliche 
+geschaffenen Servicemoeglichkeiten naeher eingegangen.
+
+A[a[e]]   Assembliere  von  Zeile a bis e  
+
+B a e [x] Reassembliere  Maschinencode  ab  Adresse  a  bis  e 
+          (hexadezimal),    beginnend   mit   Zeilennummer   x 
+          (Standard=1)  mit Schrittweite 1 und  gleichzeitigem 
+          Einfuegen  in die bereits vorhandene Quelle  (Marken 
+          muessen  nachtraeglich ergaenzt werden) - im  EDAS*4 
+          noch nicht vorhanden
+C a e x   Quellzeilen innerhalb der aktiven Quelle verschieben 
+          (Zeilennummer a bis e nach x mit neuer  Schrittweite 
+          1)
+
+D  [a e]  name Abspeichern der aktiven Quelle bzw.  eines File           
+          von a bis e mit Namen "name"  (Voraussetzung:  main-          
+          tape ab 3C00H geladen)
+
+E         Wechsel von aktiver und Sekundaerquelle
+
+F [a [e]] Suchen    aller   mit   dem   Kommando    "/string/" 
+          eingegebenen Zeichenketten im aktiven Quelltext  von 
+          Zeile  a  bis  e (im Gegensatz  zum  EDAS*4  koennen 
+          "string" und die gesuchten Zeichenketten Leerzeichen 
+          enthalten,   wobei   die   Anzahl  der   Leerzeichen 
+          unberuecksichtigt bleibt).
+          Die   Suche  kann  auch  nach  Bearbeitung   anderer 
+          Kommandos fortgesetzt werden ohne nochmals  /string/ 
+          eingeben zu muessen. Das F-Kommando ist das einzige, 
+          welches nach Ausfuehrung ohne nochmalige Eingabe mit 
+          Betaetigung der ENTER-Taste wiederholt wird.
+
+G         Start  des assemblierten Programms,  wenn in  diesem 
+          mittels  "ENT"-Anweisung die Startadresse festgelegt 
+          wurde und kein Offset existiert.
+
+H[h]      Setzen  der  Bildschirmseitengroesse  auf  h  (1-FF) 
+          Zeilen-(Standard   8   Zeilen)  - nach  Ende   einer 
+          Bildschirmseite   haelt  die  Bildschirmausgabe   an 
+          (Kommandos  A,  F,  M,  V,  W und Z) und  wird  nach 
+          Betaetigen  einer Taste fortgesetzt / das permanente 
+          Druecken einer Taste verzoegert die  Geschwindigkeit 
+          der  Bildschirmausgabe  bis zum loslassen / mit  der 
+          Space-Taste  kann die Bildschirmausgabe  unabhaengig 
+          von der Zeilenzahl unterbrochen werden  (Fortsetzung 
+          nach  Betaetigung einer anderen Taste) / SHIFT-4 und 
+          K-Taste  brechen das aktuelle Kommando vorzeitig  ab 
+          (ASCII-Code: 03).
+
+I[a[s]]   Automatische  Ausgabe  einer Zeilennummer ab  a  mit 
+          Schrittweite s.
+
+J[h]      Ausgabeverzoegerung auf dem Bildschirm (0-FF)
+
+K[h]      Ausgabeverzoegerung zum Drucker (0-FF)
+
+L[o] name Laden  eines  Quelltextes mit Namen "name"  (Voraus-
+          setzung: maintape ab 3C00H geladen)
+
+M marke   Anzeige Quelltext ab Marke "marke" - die Eingrenzung 
+          von     Such- und    Ausgabebereich    mittels     a 
+          (Anfangsadresse)   und  e  (Endedresse)  analog   F-
+          Kommando ist moeglich.
+
+N a s     Zwischen  der Zeile a und der  vorhergehenden  Zeile 
+          wird ein Zwischenraum von s Zeilennummern erzeugt.
+O[h]      Setzen einer Option h fuer das A-Kommando
+
+P[hh]     Setzen  eines  hexadezimalen Offsets,  welcher  beim 
+          Assemblerlauf zur ORG-Anweisung addiert wird.
+
+Q         Ruecksprung zum Z1013-Monitor.
+
+R         Neunummerierung der Quellzeilen, beginnend als Zeile 
+          a (Standard=10) mit Schrittweite s (Standard = 10).
+
+S a e     Vereinbarung     einer     Sekundaerquellle      mit 
+          Quellpufferbereich  von  a  bis  e  (Quellkopf  muss 
+          vorhanden sein !).
+
+T a e x   Einfuegen  der Sekundaerquelle von Zeile a bis e  ab 
+          Zeile x in die aktuelle Quelle mit Schrittweite 1.
+
+U a       Initialisieren  eines Quellkopfes ab Adresse a  fuer 
+          spaetere   Vereinbarung   einer   Zweitquelle   bzw. 
+          Loeschen   des   Inhaltes  einer  Quelle   (logisch) 
+          (Kommando ist in EDAS*4 nicht enthalten).
+
+V[a[e]]   Anzeige der aktuellen Quelle von Zeile a bis e
+
+W[a[e]]   Ueberpruefung   des  Quelltextes  auf   syntaktische 
+          Fehler  von Zeile a bis e (im Gegensatz  zum  EDAS*4 
+          werden fuer Marken, die ausserhalb des Bereiches von 
+          a-e liegen, keine Fehlermeldungen ausgeschrieben.).
+
+X a e     Streichen von Zeile a bis e
+
+Y         Reaktivierung einer Quelle nach Kaltstart des EDAS*7 
+          (z.B.  nach Neuladen des EDAS*7,  wenn Quellprogramm 
+          noch  vorhanden ist).  Im Gegensatz zum EDAS*4  kann 
+          eine Reaktivierung auch nach Kaltstart mit Standard-
+          werten fuer Quellpufferbeginn und -ende (1D80/3BFFH) 
+          erfolgen.
+
+Z [a]     Anzeige  der  Zeile  a  (Standard  ist  die  zuletzt 
+          eingegebene Zeile) zur Korrektur.
+
+/string/  Eingabe  einer Zeichenkette "string" fuer die  Suche 
+          mit  dem Kommando "F".  Die Zeichenkette  kann  alle 
+          darstellbaren Zeichen (im Gegensatz zum EDAS*4 sogar 
+          Leerzeichen  enthalten,  wobei  deren  Anzahl  unbe-
+          ruecksichtigt bleibt, auch "/").
+
+:         Alpha-Umschaltung
+@         Hex-Umschaltung
++ h       Ergaenzung einer Option h fuer das A-Kommando(s.u.)
+- h       Streichen einer Option h fuer das A-Kommando(s.u.)
+
+Optionen zum Assembler (Bit 5 auch fuer Reassembler)
+
+Bit  0    +01  Unterdruecke Assemblerliste
+Bit  1    +02  Maschinencode zum Speicher
+Bit  2    +04  Drucke Assemblerliste (Druckeranschluss)
+Bit  4    +10  aktiviere 2. Lauf bei fehlerhaftem 1. Lauf
+Bit  5    +20  relative Sprungdistanzen absolut (SYPS K1520)
+Bit  7    +80  Ausgabe Symboltabelle
+
+Pseudobefehle
+
+DEFH      h,h,...        definiere Hex-Bytes (0 vor A...F)
+DEFB      arg,arg,...    definiere Bytes
+DEFW      arg,arg,...    definiere Doppelbytes
+DEFM      'string'       definiere String
+DEFS      n              definiere Speicherplatz
+$                        Adresszaehlersymbol
+ORG       n              Speicherplatzzaehler
+EQU       n              Vereinbarung Marken/Ausdruecke
+ENT       n              Startadresse fuer G-Kommando
+SKIP                     Leerzeile in Assemblerliste
+''a                      Hexadezimalwert eines ASCII-Zeichens
+
+Fehlermeldungen
+
+00   Speicherueberlauf, Editierpuffer voll
+01   Zeilennummernueberlauf (>9999)
+02   Ueberlauf im I-Kommando (>9999)
+03   Zeile existiert nicht
+04   unzulaessiger G-Befehl (ENT nicht definiert oder Offset
+     gesetzt
+05   Reaktivierung des Puffers nicht moeglich
+06   Schrittweite 0
+07   Zeilennummernbereich zu klein
+08   unzulaessige Argumenteingabe
+09   Zweitquelle nicht aktiviert
+10   unzulaessige Befehlszeile (Marke oder Mnemonik)
+20   unbekannte Mnemonik
+21   Operand passt nicht zum Operationscode
+22   Befehl mit Indexregistern nicht moeglich
+23   Operand bzw. Distanz zu gross
+24   zu viele Register
+25   unzulaessige Operandenkombination
+26   unzulaessiges Zeichen
+27   unzulaessiger Operand
+28   Klammer-fehler
+30   Marke nicht gefunden
+31   Marke mehrfach definiert
+40   falsche Assembleranweisung (Pseudo-Befehl)
+41   unzulaessige Vorwaertsreferenz (bei EQU,ORG,DEFS)
+60   erzeugter Maschinencode wuerde MDEDAS*7 ueberschreiben
+     (und Fehlercode 61)
+99   unzulaessiges Kommando
+
+Editierkommandos
+
+Funktionen mit Shift 4 und CTRL :
+I    ^A   Ruechwaerts loeschen
+J    ^B   nnnn   <<<<
+K    ^C   Abbruch Kommando bzw. loeschen der Befehlszeile
+L    ^D   Zeichen loeschen
+M    ^E   Leerzeichen einfuegen
+O    ^G   Tabulator fuer MDEDAS*7
+S    ^K   nach unten
+R    ^J   nach oben
+N    ^F   Zeile ab Cursorposition loeschen
+
+Adresse  Druckerausgabe auf 010AH,  Druckerinitialisierung auf 
+1520H beginnend.
+
+zusaetzliche Mnemonics 
+SPV  n    Z1013 Sprungverteiler (=RST 20H, DEFB n)
+HX        hoeherwertiges Byte des Doppelregisters IX
+LX        niederwertiges          - " -           IX
+HY        hoeherwertiges          - " -           IY
+LY        niederwertiges          - " -           IY
+M         wahlweise fuer (HL)
+0FFH oder #FF       Hexadezimaldarstellung von Zahlen 
+
+

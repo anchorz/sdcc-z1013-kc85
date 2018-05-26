@@ -1,0 +1,31 @@
+<kurz src="Plottertreiber für KC87"/>
+<lang>
+
+http://hc-ddr.hucki.net/wiki/doku.php/z9001/grafik
+...
+Die Basicbefehle zur Grafik-Erweiterung springen auf eine Befehlsliste außerhalb des BASIC-Bereiches: 
+die Liste wird auf A7D6…A7FD erwartet. Auf A7D6 (dez: -22570) muss C3 (JP) stehen, sonst ist keine 
+Erweiterung geladen und die Grafikbefehle können nicht genutzt werden.
+...
+GRPLOT.BIN
+Adr. 9800-A7FF	BASIC-Befehl	phys. Treiber Nr.	Bemerkung
+0A7D6h	pset	1	 
+0A7D9h	line	2	LINE kennt den BOXED-Mode BF, dieser ist aber nicht implementiert
+0A7DCh	circle	3	 
+0A7DFh	paint	4	PAINT (x,y)[,c[,d]] ist undokumentiert, und weder im Plotter- noch im Vollgrafiktreiber realisiert
+0A7E2h	label	5	 
+0A7E5h	size	6	 
+0A7E8h	zero	7	 
+0A7EBh	home	8	 
+0A7EEh	gcls	9	 
+0A7F1h	scale	-	ist komplett im log. BASIC-Treiber implementiert, es gibt keinen korrespondierenden Aufruf im phys. Treiber
+0A7F4h	screen	-	ist komplett im log. BASIC-Treiber implementiert, es gibt keinen korrespondierenden Aufruf im phys. Treiber
+0A7F7h	point	10	POINT liefert für Plotter immer 0
+0A7FAh	xpos	11	 
+0A7FDh	ypos	12
+
+http://hc-ddr.hucki.net/wiki/lib/exe/fetch.php/z9001/grafik.zip
+<include src="GRPLOT.asm"/>
+
+</lang>
+

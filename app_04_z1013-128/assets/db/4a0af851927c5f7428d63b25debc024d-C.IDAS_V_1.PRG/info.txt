@@ -1,0 +1,9 @@
+<kurz src="IDAS V1.1 Editor Assembler für A2-Monitor"/>
+<lang>Beschreibung:
+
+<include src="../4a82ecdc77cc3cd8d3a55afaeefed207-I.IDAS/I.IDAS.txt"/></lang>
+<syscall type="A.2" tag="[OUTCH, INCH]"/>
+<syscall type="e000" tag="[load]"/>
+<syscall type="e003" tag="[save]"/>
+<syscall type="rst20" tag="[INKEY]"/>
+<port range="keine" mode="" device=""/>

@@ -1,0 +1,4 @@
+<kurz src="Unidat 100 V2.5, Datenbank mit Suchfunktion"/>
+<lang><include src="UNIDAT.B.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

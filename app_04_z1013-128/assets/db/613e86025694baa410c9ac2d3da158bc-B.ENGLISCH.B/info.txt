@@ -1,0 +1,3 @@
+<kurz src="BASICODE ENGLISH Vokabeltrainer"/>
+<lang><include src="ENGLISCH.B"/></lang>
+

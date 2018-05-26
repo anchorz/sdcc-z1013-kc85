@@ -1,0 +1,116 @@
+
+
+
+=========================================
+=                                       =
+=                                       =
+=     Beschreibung zum 4K- Monitor      =
+=                                       =
+=     ----------------------------      =
+=                                       =
+=========================================
+
+
+
+
+
+  (c) by *mainsoft*   30. 04. 1989
+
+
+
+                      (Version 1.1)
+
+
+
+
+
+Der vorliegende 4K- Monitor V.1.1 baut auf den Routinen des
+Z 1013 - Monitor's sowie der Erweiterung durch R. Brosig (neue
+Tastaturabfrage, Sprungverteiler) auf.
+Neu eingearbeitet wurden die SAVE-/ LOAD- Routinen des *main-
+tape* und ein neues Registerdisplay. Das Unterprogramm der Bild-
+schirmausgabe sowie das "T"- Kommando wurden nur leicht veraen-
+dert. Die freigewordenen Speicherplaetze sind mit 0FFH aufge-
+fuellt und werden weiteren Programmverbesserungen dienen. Alle
+Unterprogramme befinden sich auf ihren Originalstandorten, damit
+sich keine Kompatibilitaetsprobleme ergeben.
+
+
+Die im 4K- Monitor eingesetzten Routinen fuehren zu folgenden
+Aenderungen der Gebrauchseigenschaften :
+
+
+1. Registerdisplay
+------------------
+
+Flagdarstellung : Anzeige aller Flags im AF- und AF'-Register.
+                  Gesetzte Flags werden mit Grosz-, andere mit
+                  Kleinbuchstaben angezeigt.
+
+
+
+Zeiger :          Die in den Doppelregistern enthaltenen
+                  Groeszen werden als Adressen interpretiert
+                  und der dortige Speicherinhalt ueber 3 Byte
+                  angezeigt. Das gleiche gilt fuer den PC, den
+                  SP und den Breakpunkt.
+
+
+
+2. Transport- Kommando "T"
+--------------------------
+
+Das Kommando wird abgewiesen, wenn das 3. Argument nicht ange-
+geben wurde. Damit werden Programmabstuerze vermieden. Beim
+Aufruf ueber den Sprungverteiler RST #20 ist darauf zu achten,
+dasz das A- Register nicht Null ist. In diesem Fall wird das
+Kommando nicht ausgefuehrt.
+
+
+
+3. Load-/ Saveroutinen
+----------------------
+
+Kommandos:
+
+L [name]         Einlesen der gesuchten File. Der Name ist bis
+                 zum ersten Space significant. Bei Typangabe
+                 "C" erfolgt Autostart fuer COM- Files. Bei
+                 fehlerhafter CRC- Pruefsumme wird der Auto-
+                 start unterdrueckt. Nach Fehlermeldungen kann
+                 das Einlesen durch BREAK (ASCII=3) abgebrochen
+                 oder nach Betaetigung einer beliebigen anderen
+                 Taste forgesetzt werden.
+
+LA adr           Einlesen ohne Namens- oder Typkontrolle ab der
+                 angegebenen Speicheradresse.
+
+LA von bis       Einlesen in den angegebenen Speicherbereich
+                 ohne Kontrolle von Blocknummern (analog origi-
+                 nalem Monitorkommando). Damit kann die bessere
+                 Datenerkennung des *maintape* auch fuer normale
+                 Files genutzt werden.
+
+LA von bis blnr  Einlesen in den angegebenen Speicherbereich
+                 ab der angegebenen Blocknummer.
+
+LC		 Ausgabe des Memorypointers und Ausschrift
+                 von Kopfbloecken. Die Files werden in die 
+                 Zeile des eingestellten Bildfensters einge-
+                 lesen. Der Kopfpufferbereich wird nicht zer-
+                 stoert. Ein Abbruch ist mit BREAK moeglich.
+
+S von bis start name
+                 Saven einer File. Abgefragt werden der Filetyp
+                 und die Filenummer.
+
+S :              Saven einer File mit dem im Kopfpufferbereich
+                 bereits enthaltenen Kopf. Die CRC- Pruefsumme
+                 wird neu bestimmt.
+
+
+
+Alle anderen Routinen entsprechen dem Original- bzw. Monitor
+der IG HC an der TU Dresden (vgl. Mikroprozessortechnik
+Heft 7/1988).
+

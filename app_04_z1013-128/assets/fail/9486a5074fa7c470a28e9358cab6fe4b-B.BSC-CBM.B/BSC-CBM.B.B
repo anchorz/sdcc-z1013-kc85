@@ -1,0 +1,76 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+ 1000 A=100:GOTO 20:REM CBM-ASCII
+ 1010 GOSUB 1490
+ 1020 REM
+ 1030 HO=0:VE=2:GOSUB 110
+ 1040 PRINT "Der C64 verwendet zwei unterschiedlich"
+ 1050 PRINT "kodierte Zeichensaetze:":PRINT
+ 1060 PRINT "  Satz 1 - Gross-Buchstb./Grafik"
+ 1070 PRINT "  Satz 2 - Gross-/Kleinbuchstaben":PRINT
+ 1080 PRINT "Das BASICODE-3-Uebersetzungsprogramm"
+ 1090 PRINT "schaltet im Betrieb auf den Zeichen-"
+ 1100 PRINT "satz 2 um.":PRINT
+ 1110 PRINT "Waehrend in BASICODE-3 der ASCII im"
+ 1120 PRINT "Bereich 32 ... 126 gilt, belegt der"
+ 1130 PRINT "Satz 2 im C-64 Positionen mit anderen"
+ 1140 PRINT "Werten und Zeichendarstellungen."
+ 1150 GOSUB 1530:GOSUB 100:GOSUB 1490
+ 1160 HO=0:VE=2:GOSUB 110
+ 1170 PRINT "Die Gegenueberstellung Gross-/Klein-"
+ 1180 PRINT "buchstaben ergibt:":PRINT
+ 1190 PRINT "         ASCII       CBM-ASCII"
+ 1200 PRINT "--------------------------------"
+ 1210 PRINT "A ... Z  65 ...  90  193 ... 218"
+ 1220 PRINT "a ... z  97 ... 122   65 ...  90"
+ 1230 PRINT
+ 1240 PRINT "Im folgenden wird der ASCII- bzw. CBM-"
+ 1250 PRINT "ASCII-Wert eines Zeichens bzw. einer"
+ 1260 PRINT "Steuertaste nach Aufruf der BASICODE-"
+ 1270 PRINT "Subroutine # 210 (Variable IN) gezeigt:"
+ 1280 HO=0:VE=16:GOSUB 110
+ 1290 PRINT "Taste druecken (DELETE => Ende) ";:GOSUB 210
+ 1300 IF IN=127 THEN 950
+ 1310 AC=ASC(IN$)
+ 1320 IF(AC>=193)AND(AC<=218)THEN AC=AC-128:GOTO 1350
+ 1330 IF(AC>=65)AND(AC<=90)THEN AC=AC+32
+ 1340 REM
+ 1350 HO=0:GOSUB 110
+ 1360 FOR VE=17 TO 20
+ 1370 HO=0:GOSUB 110
+ 1380 PRINT "                                        ";
+ 1390 NEXT VE
+ 1400 REM
+ 1410 HO=0:VE=19:GOSUB 110
+ 1420 PRINT IN$;" ";
+ 1430 PRINT "/ ASCII: ";:SR=AC:GOSUB 300
+ 1440 IF(IN>=28)AND(IN<=31)THEN SR$="-"
+ 1450 PRINT SR$;
+ 1460 PRINT " / CBM:";ASC(IN$);
+ 1470 PRINT " / BASICODE:";IN
+ 1480 GOTO 1280
+ 1490 SR$="CBM - ASCII"
+ 1500 HO=(40-LEN(SR$)-4)/2:VE=0
+ 1510 GOSUB 110:GOSUB 150:RETURN
+ 1520 REM
+ 1530 HO=30:VE=22:GOSUB 110
+ 1540 PRINT "Taste => ";:GOSUB 210:RETURN
+ 1550 REM
+30000 REM ----------------------------
+30010 REM DIES PROGRAMM IST NUR SINN-
+30020 REM VOLL, WENN ES AUF EINEM C-64
+30030 REM LAEUFT! FUER ANDERE COMPUTER
+30040 REM SIND IN ABHAENGIGKEIT VON
+30050 REM DER CODIERUNG DES ZEICHEN-
+30060 REM SATZES DIE NOTWENDIGEN AEN-
+30070 REM DERUNGEN (VERGL. U.A. # 1330
+30080 REM UND # 1340) VORZUNEHMEN.
+32000 REM ----------------------------
+32010 REM FRIEDRICH DORMEIER
+32020 REM
+32030 REM D-1000 BERLIN 39
+32040 REM
+32050 REM C64/C128 - 11/89
+32060 REM ----------------------------
+32070 REM ERSTAUSSTRAHLUNG: RADIO DDR
+32080 REM 900307

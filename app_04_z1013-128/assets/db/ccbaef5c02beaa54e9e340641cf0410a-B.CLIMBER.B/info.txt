@@ -1,0 +1,34 @@
+<kurz src="Leitern klettern, Spielfigur zum Ausgang bringen (Überarbeitet von DA)"/>
+<lang>* SPIELPROGRAMM C L I M B E R *
+
+Sie muessen ihre Spielfigur im Wettlauf mit der Zeit zum
+Ausgang der Spieletage bringen und dort auf das Erscheinen der
+naechsten Etage warten. Die Spielfigur kann mit Hilfe der
+Kursor-Tasten bewegt werden. Beeilen Sie sich, denn Sie
+haben nur wenig Zeit. 
+
+Verlassen Sie niemals die Linien und Leitern ! Meiden Sie die
+Ungeheuer. Sonst verliert die Spielfigur ihr Leben. Zum Glueck
+hat sie drei Leben. Die Waechter am Ausgang koennen nur durch das
+Einsammeln von Zauberfruechten besiegt werden.
+
+
+           Spielfigur:  ♟
+    Ausgang der Etage:  >-<
+             Waechter:  ♣
+       Zauberfruechte:  $
+       
+In einigen Gefahrensituationen kann Ihre Spielfigur durch eine
+Tarnkappe auch unsichtbar werden und ist dadurch erst einmal
+gerettet. Durch Bewegung der Figur wird Sie wieder sichtbar.
+
+scheint im wesentlichen das gleiche wie [74c964eac1358f9ec43f623473054b6c] zu sein.
+Wir nehmen aber diese Datei weil a) überarbeitet und die Überarbeitung scheint ein kleiner Bugfix zu sein
+b) keine Ausgaben auf Port 0x88 mehr. (Z9001)
+
+im Quelltext wurde der Variablenname hinter NEXT entfernt und die Tastatureingabe etwas geändert (ohne, dass es viel
+Einfluss auf die Funktionalität hat)
+
+<include src="CLIMBER.B.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

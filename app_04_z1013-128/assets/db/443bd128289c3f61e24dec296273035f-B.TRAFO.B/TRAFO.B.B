@@ -1,0 +1,188 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+    3 W=0
+    5 CLEAR 50
+   10 WIDTH 32
+   20 CLS:PRINT AT(10,7);"Trafo-Berechnung":PRINT          
+   30 PRINT AT(14,08);"M 42 bis M 102b":PRINT
+   35 PRINT AT(17,5);"mit Dynamoblech 3x0.5"
+   40 PAUSE 70
+   50 CLS
+   60 PRINT:PRINT "Gebe bitte folgende Daten ein :":PRINT STRING$(32,"*"):PRINT
+   70 INPUT "Primaerspannung in V :";UP:PRINT
+   75 PRINT "Wird die Eingabe der Sekundaer- groesse als Gleich-oder Wechsel-" 
+   77 INPUT "groesse gewuenscht ? (0/1)";N
+   78 PRINT:IF N=1 THEN 85
+   80 PRINT "Sekundaer-Gleichspannung in V :":PRINT
+   82 INPUT " ";UG:PRINT
+   83 PRINT "Sekundaer-Gleichstrom in A :":PRINT
+   84 INPUT " ";IG:PRINT:GOTO 120
+   85 PRINT "Sekundaer-Wechselspannung in V :":PRINT
+   87 INPUT " ";UW:PRINT   
+  100 PRINT "Sekundaer-Wechselstrom in A :":PRINT
+  110 INPUT " ";IS:PRINT
+  115 IF N=1 THEN 290
+  120 CLS
+  130 PRINT:PRINT "Welche Gleichrichterschaltung":PRINT
+  140 PRINT "moechtest Du anwenden ?":PRINT:PRINT
+  150 PRINT "Einweg.......1":PRINT
+  160 PRINT "Zweiweg......2":PRINT
+  170 PRINT "Graetz.......3":PRINT
+  180 PRINT "Dalon........4":PRINT
+  185 PRINT "keine........5":PRINT
+  190 PRINT:INPUT "Waehle bitte aus :";Q
+  200 IF Q<1 OR Q>5 GOTO 120
+  210 IF Q=4 GOTO 290
+  215 IF Q=5 THEN 290
+  220 CLS:PRINT:PRINT
+  230 PRINT "Welche Belastungsart ?":PRINT:PRINT
+  240 PRINT "Rein widerstandsmaessig........1":PRINT
+  250 PRINT "kapazitiv......................2":PRINT
+  260 PRINT "induktiv.......................3":PRINT
+  270 PRINT:INPUT "Deine Auswahl :";U:PRINT  
+  280 IF U<1 OR Q>3 GOTO 220
+  290 IF Q=1 AND U=1 THEN A=1
+  300 IF Q=1 AND U=2 THEN A=2
+  310 IF Q=1 AND U=3 THEN A=1
+  320 IF Q=2 AND U=1 THEN A=6
+  330 IF Q=2 AND U=2 THEN A=8
+  340 IF Q=2 AND U=3 THEN A=7
+  350 IF Q=3 AND U=1 THEN A=3
+  360 IF Q=3 AND U=2 THEN A=5
+  370 IF Q=3 AND U=3 THEN A=4
+  380 IF Q=4 THEN A=9
+  385 IF Q=5 THEN A=0
+  390 CLS:PRINT
+  400 PRINT "Wird ein bestimmter Trafotyp ge-wuenscht ? (0/1) ":PRINT
+  410 INPUT " ";C :PRINT:PRINT
+  420 IF C = 0 THEN 530
+  430 PRINT "M 42...........1":PRINT
+  440 PRINT "M 55...........2":PRINT
+  450 PRINT "M 65...........3":PRINT
+  460 PRINT "M 74...........4":PRINT
+  470 PRINT "M 85a..........5":PRINT
+  480 PRINT "M 85b..........6":PRINT
+  490 PRINT "M 102a.........7":PRINT
+  500 PRINT "M 102b.........8":PRINT
+  510 PRINT:PRINT:INPUT "Deine Auswahl :";W:PRINT
+  520 IF W<1 OR W>8 THEN 390
+  525 IF Q=5 THEN 526 ELSE 530
+  526 PT=IS*UW*1.2:GOTO 620
+  530 RESTORE 1150
+  540 FOR I=1 TO A:READ K1:NEXT I
+  550 RESTORE 1170
+  560 FOR I=1 TO A:READ K2:NEXT I
+  570 RESTORE 1190
+  580 FOR I=1 TO A:READ K3:NEXT I
+  590 RESTORE 1210
+  600 FOR I=1 TO A:READ K5:NEXT I
+  605 IF N=0 THEN 610   
+  607 US=UW:UG=US/K1:IG=IS/K2:GOTO 615
+  610 US=UG*K1 :IS=IG*K2
+  615 PG=UG*IG:PT=K3*PG         
+  620 IF PT>175 THEN 720  
+  625 IF Q=5 THEN US=UW
+  630 IF PT<175 THEN L=103:V=8
+  640 IF PT<120 THEN L=102:V=7
+  650 IF PT<100 THEN L=86:V=6
+  660 IF PT<70 THEN L=85:V=5
+  670 IF PT<50 THEN L=74:V=4
+  680 IF PT<25 THEN L=65:V=3
+  690 IF PT<12 THEN L=55:V=2
+  700 IF PT<4 THEN L=42:V=1
+  705 IF C=1 AND V>W THEN 930
+  706 IF C=1 THEN V=W
+  710 GOTO 770
+  720 PRINT "Diese Daten koennen mit diesem  Trafos nicht":PRINT   
+  730 PRINT "erreicht werden !":PRINT
+  740 INPUT "Neue Berechnung ? (0/1)";R:PRINT     
+  750 IF R = 1 THEN 50
+  760 CALL*F6C5
+  765 END
+  770 IF V=1 THEN G=42:RESTORE 1230
+  780 IF V=2 THEN G=55:RESTORE 1250
+  790 IF V=3 THEN G=65:RESTORE 1270
+  800 IF V=4 THEN G=74:RESTORE 1290
+  810 IF V=5 THEN G=85:RESTORE 1310
+  820 IF V=6 THEN G=86:RESTORE 1330
+  830 IF V=7 THEN G=102:RESTORE 1350
+  835 IF V=8 THEN G=103:RESTORE 1370
+  840 IF G=42 THEN T$="42"
+  850 IF G=55 THEN T$="55"
+  860 IF G=65 THEN T$="65"
+  870 IF G=74 THEN T$="74"
+  880 IF G=86 THEN T$="85b"
+  890 IF G=85 THEN T$="85a"
+  900 IF G=102 THEN T$="102a"
+  910 IF G=103 THEN T$="102b"
+  920 GOTO 960
+  930 CLS:PRINT:PRINT "Der von Dir vorgegebene Trafo   ist zu klein.":PRINT
+  940 GOTO 740
+  960 FOR I=1 TO 9 
+  970 READ   F(I):NEXT I
+  980 WP=INT(F(2)*UP*(1-.5*F(4)))
+  990 J=.5*F(4)/(1-F(4))
+ 1000 WS=INT(US*F(2)*(1+J))  
+ 1010 IW=(F(1)+F(6)+F(7))/UP
+ 1020 IB=F(5)/(F(2)*UP)
+ 1030 IP=SQR(IW^2+IB^2)
+ 1040 DR=SQR(4/PI*IP/F(3))
+ 1045 E=DR:GOSUB 2000
+ 1047 DP=DR+F
+ 1050 DB=SQR(4/PI*IS/F(3))
+ 1055 E=DB:GOSUB 2000
+ 1057 DS=DB+F
+ 1058 WL=F(9)/DP:LZ=INT(WP/WL)+1:WH=DP*LZ
+ 1060 WL=F(9)/DS:LZ=INT(WS/WL)+1:WM=DS*LZ:WG=WM+WH
+ 1062 LS=F(1)-PT:AP=WH*100/F(8):AS=WM*100/F(8)
+ 1065 IF WG >  F(8)   THEN 1066 ELSE 1069
+ 1066 IF C=0 AND V<8 THEN V>V+1:GOTO 770 
+ 1067 PRINT "Die Windungen passen nicht auf  den Spulenkoerper.":PRINT
+ 1068 GOTO 740
+ 1069 CLS
+ 1070 PRINT "Ergebnisse :":PRINT STRING$(32,"-")
+ 1080 PRINT "Trafotyp : M ";T$
+ 1090 PRINT:PRINT "Windungen,primaer   :";WP                 
+ 1100 PRINT:PRINT "Windungen,sekundaer :";WS                 
+ 1110 PRINT:PRINT "Drahtdurchmesser,primaer :":PRINT:PRINT DP;"mm CuL":PRINT    
+ 1120 PRINT "Drahtdurchmesser,sekundaer:":PRINT:PRINT DS;"mm CuL"          
+ 1123 PRINT:PRINT STRING$(32,"*")      
+ 1125 PRINT "Leistungsreserve";LS;"Watt":PRINT
+ 1127 PRINT "Der Wickelraum ist ohne Lagen-  isolation zu :":PRINT    
+ 1128 PRINT INT(AP)+1;"% primaerseitig und zu":PRINT
+ 1129 PRINT INT(AS)+1;"% sekundaerseitig":PRINT
+ 1130 PRINT "ausgenutzt.":PRINT
+ 1135 GOTO 740
+ 1140 REM K1 
+ 1150 DATA 2.5,.9,1.25,1.25,.9,1.25,1.25,.9,.45
+ 1160 REM K2
+ 1170 DATA 1.55,2.5,1.15,1.05,1.75,.8,.75,1.25,3.6
+ 1180 REM K3
+ 1190 DATA 4.4,2.4,1.45,1.3,1.6,1.65,1.6,1.85,1.65
+ 1200! K5
+ 1210 DATA 0,0,1.15,.9,1.3,.57,.45,.65,2.6
+ 1220! M42
+ 1230 DATA 4,22,6,.35,36,.5,1.7,6.0,22
+ 1240! M55
+ 1250 DATA 12,11.4,4.5,.2,44,1.2,2.9,7.5,29
+ 1260! M65
+ 1270 DATA 25,7.5,3.5,.15,48,2,4.4,8.8,33.7
+ 1280! M74
+ 1290 DATA 50,5.4,3.2,.12,53,3,6.9,10.2,39
+ 1300! M85a
+ 1310 DATA 70,4.3,3,.09,58,4.3,7.8,9.8,43.3
+ 1320! M85b
+ 1330 DATA 100,3.1,3,.08,58,6.3,8.7,9.5,43.3
+ 1340! M102a
+ 1350 DATA 120,3.3,2.8,.07,67,7,11.5,11.5,54
+ 1360! M102b
+ 1370 DATA 175,2.3,2.8,.06,67,10,13,11.2,54
+ 2000 IF E>1.9 THEN F=.07
+ 2010 IF E<1.9 THEN F=.06
+ 2020 IF E<1.1 THEN F=.05
+ 2030 IF E<.85 THEN F=.04
+ 2040 IF E<.5 THEN F=.03
+ 2045 IF E<.33 THEN F=.025
+ 2050 IF E<.22 THEN F=.02
+ 2060 IF E<.06 THEN F=.015
+ 2070 RETURN

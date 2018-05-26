@@ -1,0 +1,6 @@
+<kurz src="identisch [a1a2b361f7d6068a4e87e6db19e722b4]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 31 Bytes fehlen.
+
+i2c_bus.zip vtx_prax.zip  vtx_theo.zip</lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

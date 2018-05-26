@@ -1,0 +1,201 @@
+
+                                ********************************
+*                              **                              *
+*                              **                              *
+*     - M A I N T A P E -      **     ___________________      *
+*                              **                              *
+********************************
+
+
+Beschreibung des Kassetteninter-faces (SAVE/LOAD) fuer den Z1013
+================================
+
+ MAIN- Tape ist ein Programm zumSpeichern, Lesen  und  Editieren
+von Dateien/ Programmen auf bzw.vom Magnetband. Jeder Block wird
+mit einer Block- und einer File-nummer abgespeichert. Diese las-
+sen sich  auch  mitten  in einerFile auswerten und anzeigen. Da-
+mit kann man sich jederzeit  undunabhaengig vom  aktuellen Stand
+des Bandzaehlwerkes informieren,welche File sich  an der wieder-
+gegebenen Bandstelle  befindet.
+                                 Der schon vom  HEADER- Save her
+bekannte Memorypointer wird beimMAIN- Tape  um  das Aktivitaets-
+zeichen  und die  Filenummer er-gaenzt.  Das  Aktivitaetszeichen
+ist  notwendig, da Memorypointerund Filenummer jetzt   jederzeit
+anliegen, um Sie ueber die aktu-elle Bandstelle zu  informieren.
+Es bedeuten:
+
+xxxx S n    - Saven  einer  Filexxxx V n    - Verify     erfolgt
+xxxx L n    - File  wird geladenxxxx  n }  - File   bzw.  Block
+u.a      }    wird gesucht
+
+ Die beim Saven  erzeugten MAIN-Files  sind   abwaertskompatibel
+zu den Files, die mit dem Z1013-Monitor oder dem HEADER-Save er-
+zeugt werden. Daraus folgt :
+                                1. Laden  von MAIN- Files  durch
+                                   den Z1013- Monitor
+                                --------------------------------
+                                -  Beim  Laden  von  MAIN- Files
+   darf die  Enter- Taste   erst   beim  Ertoenen des  2.  Kenn-
+   tones betaetigt werden.
+
+2. Laden  von MAIN- Files  durch
+   HEADER- Save
+--------------------------------
+-  Beim Laden von MAIN-Files mit   dem   HEADER- Save   bestehen
+   keine Besonderheiten.
+
+3. Laden von MONITOR-Files durch
+   MAIN- Tape
+--------------------------------
+-  Ein Laden von MONITOR- Files    ist  ueber das Kommando  "@A"
+   moeglich,  wenn kein 3. Argu-   ment,  d.h.  keine  erwartete
+   Blocknummern  angegeben wird.   Bei anderen Kommandos erfolgt
+   die Ausschrift  "kBlnr.". Die   Arbeit kann mit Shift-4/K ab-
+   gebrochen werden. Nach Betae-   tigung  einer  anderen  Taste
+   wird   das  Kommando  fortge-   setzt.
+
+                                4. Laden von HEADER- Files durch
+                                   MAIN- Tape
+                                --------------------------------
+                                -  MAIN- Tape    enthaelt   eine
+   Routine   zur   automatischen   Erkennung  von   Filenummern.
+   Dadurch kann jede HEADER-File   gelesen  werden,  obwohl dort
+   die  Angabe  einer Filenummer   fehlt.   Im   Filenummernfeld
+   wird  ein weisser  Fleck aus-   gewiesen.  Damit  sind  MAIN-
+   von  HEADER- Files  zu unter-   scheiden.
+
+
+FEHLERTOLERANZ    UND    FEHLER-
+KORREKTUR BEIM EINLESEN
+--------------------------------
+ MAIN-Tape kann Fehler beim Ein-lesen  in einem  gewissen  Masse
+selbstaendig  korrigieren,  ohnedass der Nutzer eingreifen muss.
+Es  ist  damit  fehlertoleranterals  der  Z1013- Monitor und das
+bereits  genannte  HEADER- Save.Damit  lassen  sich   Files, die
+sonst auf  Fehler auflaufen, biszu einem  bestimmten  Fehlergrad
+noch fehlerfrei einlesen. SollteIhnen das Ladeprogramm doch ein-
+mal mit einer  Fehlermeldung ab-brechen,  so  koennen  sie,  wie
+schon beim HEADER-Save, das Ein-lesen Ihrer File nach kurzem Zu-
+rueckspulen  durch   Betaetigungeiner   Taste  ausser   Shift4/K
+fortsetzen  bzw. mit  dieser zumMonitor zurueckspringen.
+
+
+                                DAS LADEN DER MAIN-TAPE-ROUTINE
+                                _______________________________
+
+ MAIN- Tape  existiert  fuer denSpeicherbereich  ab   #3C00  bis
+#3FFF und  ab  #E000 bis  #EFFF.Beide  Programme  sind  mit  der
+Beginnadresse  zu  starten. Nachdem  Laden  der   Komandokuerzel
+erscheint  die  Ausschrift "mt-"und  die  Versionsnummer.  Damit
+ist MAIN- Tape arbeitsbereit.
+                                 Es ist  zu beachten,  dass  das
+MAIN-Tape-Programm  nicht kompa-tibel  zum HEADER-Save-Programm,
+sondern eine eigenstaendige Ent-wicklung  ist.   Das   bedeutet,
+MAIN- Tape  kann nicht ueber denSprungverteiler  der Computer-AG
+Dresden  ohne  dessen  Aenderungangesprungen  werden, da  andere
+Adressen fuer die Eintrittspunk-te  zur  Nutzung der MAIN- Tape-
+Routinen  vorhanden sind und dieRegister   verschieden   genutzt
+werden.
+
+                                DIE  KOMMANDOS  DES   MAIN- TAPE
+                                ________________________________
+
+ **** LADEN von MAIN-Files ****
+                                @LN name ENTER
+typ :
+   Es  wird  die  File mit Namen   und  Filtetyp geladen.   Beim
+   Namen  sind alle eingegebenen   Zeichen  bis zum ersten Space
+   signifikant,  d.h.  wenn kein   Name  angegeben  wurde,  dann
+   erfolgt keine Namenspruefung.   Mit   Eingabe  des  Filetypes
+   (ohne  Bestaetigung)  startet   die Loadroutine und sucht den
+   naechsten  Kopfblock. Es wer-   den   alle  Typangaben  >=20H
+   (ASCII-Zeichen  Space) ueber-   prueft. Wurde im @LN-Kommando
+   also z.B. die  Entertaste als   Typ  betaetigt,  dann erfolgt
+   keine Typueberpruefung. Files   vom  Typ  "C" starten automa-
+   tisch,  wenn im  @LN-Kommando   ein "C" als  Filetyp eingege-
+   ben wurde.
+    Gefundene Kopfbloecke werden   ab  Cursorposition  angezeigt
+   und vom jeweils nachfolgenden   Kopfblock ueberschrieben, bis
+   die  gesuchte  File  gefunden   ist.  Damit entfaellt das vom
+   Headersave  bekannte "Hinaus-   wandern" des Ladekommandos.
+                                    Nach Ende des  Ladevorganges
+   wird ueber  die   eingelesene   File die CRC(SDLC)-Pruefsumme
+   berechnet und ausgeschrieben.   Stimmt sie mit dem beim Saven
+   im   Kopfblock  eingetragenen   Wert ueberein, so  liegt eine
+   garantiert  fehlerfreie  File   vor.
+
+                                @L adr ENTER
+                                    Die  als  naechste mit Kopf-
+   block beginnende File wird ab   der angegebenen  Hexadezimal-
+   adresse eingelesen. Die Para-   meter  "begin"  und  "end" im
+   Kopfblock werden  so aktuali-   siert, dass  ein  Abspeichern
+   mit "@S:" erfolgen kann.
+
+ *** EDITIEREN von MAIN-Files***
+                                @A begin end blnr ENTER
+                                    Die  anliegende   MAIN- File
+   wird in den mit  "begin"  und   "end"  begrenzten Speicherbe-
+   reich   ab  der   angegebenen   Blocknummer  eingelesen, ohne
+   dass  ein  Kopfblock erwartet   wird.  Dabei ist zu beachten,
+   dass  als  Blocknummer  stets   die   hexadezimale   Anfangs-
+   adresse des folgenden Blockes   abgespeichert wurde.
+
+    Das Kommando eignet sich zum   abschnittsweisen   Lesen  von
+   Files  und kann z.B. zum Kor-   rigieren  von nur mit Fehlern
+   einzulesender  Z1013-MONITOR-   Files   genutzt   werden.  In
+   einem solchen Fall sind mehr-   mals  die  jeweils fehlerhaft
+   eingelesenen  Files   mittels   MAIN- Tape  abzuspeichern und
+   zum Schluss  die jeweils feh-   lerfreien Bloecke einzulesen.
+   Als  Ergebnis  steht ein feh-   lerfreies  Programm/ Datei im
+   Speicher zur Verfuegung, wenn   jeder  Block  bei irgendeinem
+   Einlesen  einmal   fehlerfrei   war.
+                                    Wird   das 3. Argument, d.h.
+   die  Blocknummer weggelassen,   so koenen mit dem @A-Kommando
+   normale   Z1013- Monitorfiles   eingelesen  werden.  Aufgrund
+   der groesseren Fehlertoleranz   des MAIN-Tape lassen  sich so
+   Files  noch fehlerfrei einle-   sen,  bei denen das Original-
+   L- Kommando   Fehlermeldungen   ausschrieb. Doch noch auftre-
+   tende  Fehler  werden  analog   angezeigt.
+
+@K ENTER
+    Es werden die Parameter  der   eingelesenen      Kopfbloecke
+   fortlaufend   ausgeschrieben.   Ausserdem erscheinen  ab Ver-
+   sion  2.0  des MAIN-Tapes die   Block-  und  Filenummer   des
+   jeweils eingelesenen Blockes.   Dadurch  ist  jederzeit  eine
+   genaue   Bandpositionsbestim-   mung moeglich. Dieser Service
+   wird auch beim  @LN- Kommando   waehrend   des Suchens garan-
+   tiert.  Durch schnellen  Vor-   und  Ruecklauf des Magnetban-
+   laesst  sich so die Zeit fuer   das Suchen verkuerzen.
+
+ *** SPEICHERN von MAIN-Files***
+                                @S begin end start name ENTER
+typ:                            nr.:
+                                    Der mit  "begin"  und  "end"
+   eingegrenzte  Speicherbereich   wird  mit einer  Startadresse
+   unter  dem angegebenen  Namen   als MAIN-File mit dem Filetyp
+   und  der  anzugebenden Nummer   (beides  ohne   Bestaetigung)
+   abgespeichert. Als Filenummer   kann eine Zahl, ein Buchstabe
+   oder  auch  jedes andere Zei-   chen angegeben werden.  Damit
+   sind theoretisch  256  unter-   schiedliche    Filekennzeich-
+   nungen moeglich.  Es wird em-   pfohlen, die  Files auf einer
+   Kassette oder  auf einem Mag-   netband durchgehend von 0 - 9
+   und von  A - Z,  in  Uberein-   stimmung  mit dem Inhaltsver-
+   zeichnis zu  nummerieren. Auf   diese  Weise  wird die  Suche
+   nach  einer  bestimmten  File   unterstuetzt.
+
+@S: ENTER                       nr.:
+                                    Es wird eine  MAIN- File mit
+   gleichem  Kopfblock abgespei-   chert.  Das  Kommando  laesst
+   sich  nach einem vorausgegan-   genem @LN-, @L- oder @S- Kom-
+   mando  nutzen  und  verkuerzt   die Zeit der Kommandoeingabe.
+
+@C begin end
+    Es wird die CRC(SDLC)-Pruef-   summe ueber den  mit  "begin"
+   und    "end"    eingegrenzten   Speicherbereich errechnet und
+   angezeigt.
+                                --------------------------------
+
+                Martin Duchrow
+                Berlin                          ------
+                                                1143
+

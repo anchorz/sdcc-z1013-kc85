@@ -1,0 +1,4 @@
+<kurz src="FIG-FORTH for Z1013 V1"/>
+<lang></lang>
+<syscall type="rst20" tag="[OUTCH, INCH]"/>
+<port range="keine" mode="" device=""/>

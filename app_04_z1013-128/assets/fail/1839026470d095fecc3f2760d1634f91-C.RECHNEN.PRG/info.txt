@@ -1,0 +1,3 @@
+<kurz src="identisch [233c58779784ba1fcd674758c56691c2]"/>
+<lang>e:Falscher Dateityp, muss B statt C heißen</lang>
+

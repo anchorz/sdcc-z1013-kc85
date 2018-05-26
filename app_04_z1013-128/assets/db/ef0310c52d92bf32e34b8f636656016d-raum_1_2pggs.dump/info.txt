@@ -1,0 +1,3 @@
+<kurz src="Frühe Version eines Fred-clones Phyramidenspiel (Daten)"/>
+
+

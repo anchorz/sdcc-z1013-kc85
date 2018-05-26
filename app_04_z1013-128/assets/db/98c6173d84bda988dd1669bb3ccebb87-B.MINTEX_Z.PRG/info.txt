@@ -1,0 +1,7 @@
+<kurz src="Textverarbeitung, Datenbank (ohne Wandeln)"/>
+<lang>Vorläufer von [655cd70ffef49ba251b1405f59e72253]
+mit Bugfix für 64KByte RAM
+
+<include src="MINTEX_Z.PRG.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

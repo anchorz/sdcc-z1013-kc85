@@ -139,8 +139,8 @@ sub resolve_entry($) {
 
     my $z80len=-s $filename;
     if ($z80len%32) {
-        printf STDERR "e: Dateigröße muss es Vielfaches von 32 sein. %d Bytes fehlen.\n", 32-$z80len%32 ;
         printf STDERR "   %s\n", $filename ;
+        printf STDERR "e: Dateigröße muss es Vielfaches von 32 sein. %d Bytes fehlen.\n", 32-$z80len%32 ;
     }
 
     open(FILE,"<:raw","$filename");
@@ -202,7 +202,7 @@ sub resolve_entry($) {
     read FILE, $bytes, 3;
     my $tag=unpack("a*",$bytes);
     if ("$tag" ne"\xd3\xd3\xd3") {
-        printf STDERR "e: Z80-Header-Tag ist nicht korrekt, statt \"d3d3d3\" steht \"%s\" %s\n",unpack("H*",$tag),$filename;
+        printf STDERR "e: Z80-Header-Tag ist nicht korrekt, statt \"d3d3d3\" steht \"%s\"\n  %s\n",unpack("H*",$tag),$filename;
     }
     
     my %zeichenMap=("<"=>"&lt;",">"=>"&gt;","&"=>"&amp;");

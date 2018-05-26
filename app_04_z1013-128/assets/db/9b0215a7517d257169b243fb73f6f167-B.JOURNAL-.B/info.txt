@@ -1,0 +1,3 @@
+<kurz src="BASICODE JOURNAL 2, Grundlagen zum Programmieren in BASICODE"/>
+<lang><include src="JOURNAL.B"/></lang>
+

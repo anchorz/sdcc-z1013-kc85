@@ -1,0 +1,5 @@
+<kurz src="IDAS Testprogramm?"/>
+<lang>Auf den ersten Blick sieht es nicht sehr sinnvoll aus:
+
+<include src="LIST-IDA.IS.s"/></lang>
+

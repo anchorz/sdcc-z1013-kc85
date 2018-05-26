@@ -1,8 +1,0 @@
-<kurz src="identisch []"/>
-<lang>
-
-Steuerung: ⇦ ⇨ ⇧ ⇩ ␣ U ⏎
-
-<include src="a"/></lang>
-<syscall type="keine" tag=""/>
-<port range="keine" mode="" device=""/>

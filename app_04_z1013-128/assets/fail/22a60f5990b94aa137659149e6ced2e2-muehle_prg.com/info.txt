@@ -1,4 +1,4 @@
-<kurz src=""/>
+<kurz src="ähnlich [a2bfb57eea9600c71081fd602bed626c]"/>
 <lang>Header ist nicht korrekt.
 Copyright Text ist verschieden von [a2bfb57eea9600c71081fd602bed626c-3d_muehle] 
 ansonsten sind die Programme identisch.

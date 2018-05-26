@@ -1,0 +1,158 @@
+Zeichensatz UTF-8+Z1013()+CTRL()-ohne Umlaute(äöüß)
+
+  100 CLS
+  110 PRINT:PRINT:PRINT:PRINT:PRINT
+  120 PRINT:PRINT:PRINT:PRINT
+  130 PRINT "             "
+  140 PRINT "                 "
+  150 PRINT "              "
+  160 PRINT "                 "
+  170 PRINT "           "
+  180 PRINT ""     
+  200 PRINT
+  210 INPUT "Mit wievielen Banden?";R0
+  215 PRINT
+  220 IF R0<2 THEN PAUSE 10:PRINT "Das ist aber sehr einfach!":PAUSE 20
+  230 IF R0>4 THEN PAUSE 10:PRINT "Sehr mutig fuer den Anfang!":PAUSE 20
+  250 PRINT
+  260 PRINT "SPIELANLEITUNG:"
+  270 PRINT ""
+  280 PRINT
+  290 PRINT "1.Steht der Cursor hinter         POSITION? ,so kann die Ab-"   
+  300 PRINT "  schussposition mit den Tasten   Cursor LINKS bzw. RECHTS"
+  310 PRINT "  veraendert werden. Nach ENTER"
+  320 PRINT "  rueckt der Cursor auf SCHUSS ?"
+  330 PRINT
+  340 PRINT "2.Steht der Cursor hinter         SCHUSS ? , so kann der "
+  350 PRINT "  Abschuss mit der Taste          L oder R ausgeloest werden."
+  360 PRINT "  Mit der Taste K ist ein         Ruecksprung auf 1. moeglich."
+  380 PRINT
+  400 PRINT
+  420 PRINT:INPUT "                   >ENTER";ENTER
+  430 V0=1
+  440 V=21
+  450 H0=1
+  460 H=30
+  480 TR=0      
+  490 FOR M=1 TO 10
+  500 R=0
+  510 WINDOW
+  520 P=INT((V-V0)*RND(1))+V0
+  530 Q=INT((H-H0)*RND(1))+H0
+  540 A$=""
+  550 IF M>1 THEN 1600
+  560 FOR K1=1 TO 1024
+  570 PRINT A$;
+  580 NEXT K1
+  590 GOSUB 1520
+  600 WINDOW V0,V,H0,H
+  610 CLS
+  620 X=INT((H-H0)/2)
+  630 GOSUB 1390
+  640 PAUSE 20
+  650 GOSUB 1470
+  660 PRINT AT(0,0);"L"
+  670 PRINT AT(0,31);"R"
+  680 PRINT AT(22,0);"<"
+  690 PRINT AT(22,31);">"
+  700 WINDOW
+  710 PRINT AT(V,X);""
+  720 WINDOW 25,25,17,30
+  730 PRINT "POSITION?";
+  735 Z$=INKEY$
+  740 IF Z$=CHR$(8)OR Z$=CHR$(9)OR Z$=CHR$(13)THEN 750 ELSE 735
+  750 WINDOW
+  760 IF Z$=CHR$(9)THEN X0=X+1:Z=1:GOTO 790
+  770 IF Z$=CHR$(8)THEN X0=X-1:Z=2:GOTO 790
+  780 GOTO 830
+  790 GOSUB 1430 
+  800 X=X0
+  810 GOSUB 1390
+  820 GOTO 720
+  830 WINDOW 27,27,17,29
+  832 PRINT "SCHUSS ?";
+  834 Z$=INKEY$
+  836 IF Z$="K"THEN 720
+  838 IF Z$="L"THEN Z=4:GOTO 845
+  840 IF Z$="R"THEN Z=3:GOTO 845
+  842 GOTO 834
+  845 I=V:J=X
+  850 WINDOW V0,V,H0,H:CLS
+  860 GOSUB 1470
+  870 GOSUB 1390
+  880 GOTO 1010
+  890!Bandenunterscheidung
+  900 IF I=V0 THEN A=-2
+  910 IF I=V THEN A=2
+  920 IF I>V0 AND I<V THEN A=0
+  930 IF J=H0 THEN B=-1
+  940 IF J=H THEN B=1
+  950 IF J>H0 AND J<H THEN B=0
+  960 Z0=Z
+  970 Z=Z+A+B
+  980 IF Z<>Z0 THEN R=R+1          
+  990 IF Z<>Z0 THEN GOSUB 1650
+ 1000 IF R>R0 THEN 1220
+ 1010 I0=I
+ 1020 J0=J
+ 1030!neue position in abhaengigkeit vonz
+ 1040 IF Z=1 OR Z=2 THEN I=I+1
+ 1050 IF Z=3 OR Z=4 THEN I=I-1
+ 1060 IF Z=1 OR Z=3 THEN J=J+1
+ 1070 IF Z=2 OR Z=4 THEN J=J-1
+ 1080 PRINT AT(I,J);""
+ 1090 PRINT AT(I0,J0);""
+ 1100!trefferuntersuchung
+ 1110 IF I<P OR I>P+1 THEN 890
+ 1120 IF J<Q OR J>Q+1 THEN 890
+ 1130!treffer!!
+ 1140 IF R=R0 THEN 1170
+ 1150 PRINT AT(10,5);"Leider zu zeitig!"
+ 1160 GOTO 1220
+ 1170 FOR K=1 TO 50
+ 1180 BEEP
+ 1190 NEXT K
+ 1200 TR=TR+1
+ 1210 PRINT AT(9,31);TR
+ 1220 NEXT M
+ 1230 PAUSE 20
+ 1240 WINDOW
+ 1250 CLS
+ 1260 PRINT "Trefferanzahl(von 10):";TR
+ 1270 PRINT
+ 1280 PRINT
+ 1290 IF TR<3 THEN PRINT "ALLER ANFANG IST SCHWER!"
+ 1300 IF TR>3 AND TR<8 THEN PRINT "SIE HABEN SICH WACKER GESCHLAGEN!"
+ 1310 IF TR>7 THEN PRINT "SIE KOENNEN SICH ZUR WELTSPITZE RECHNEN!"
+ 1320 PAUSE 50:CLS
+ 1330 PRINT AT(11,10);"Auf Wiedersehen!"
+ 1380 END
+ 1390 PRINT AT(V,X);""
+ 1400 PRINT AT(V-1,X-1);""
+ 1410 PRINT AT(V-1,X+1);""
+ 1420 RETURN
+ 1430 PRINT AT(V,X);" "
+ 1440 PRINT AT(V-1,X-1);" "
+ 1450 PRINT AT(V-1,X+1);" "
+ 1460 RETURN
+ 1470 PRINT AT(P,Q);""
+ 1480 PRINT AT(P,Q+1);""
+ 1490 PRINT AT(P+1,Q);""
+ 1500 PRINT AT(P+1,Q+1);""
+ 1510 RETURN
+ 1520 PRINT AT(23,11);"Billard"
+ 1530 PRINT AT(25,4);R0
+ 1540 PRINT AT(25,8);"Banden"
+ 1550 PRINT AT(27,4);TR
+ 1560 PRINT AT(27,8);"Treffer"
+ 1570 PRINT AT(29,4);M
+ 1580 PRINT AT(29,8);"Versuche"
+ 1590 RETURN
+ 1600 WINDOW 0,22,0,30
+ 1610 FOR I=1 TO 681
+ 1620 PRINT A$;
+ 1630 NEXT I
+ 1640 GOTO 590
+ 1650 BEEP
+ 1660 RETURN 
+ 1670 END

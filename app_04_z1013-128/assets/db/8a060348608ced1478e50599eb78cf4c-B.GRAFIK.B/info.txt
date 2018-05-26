@@ -1,0 +1,2 @@
+<kurz src="BASICODE GRAFIK Bild zeichnen"/>
+<lang><include src="GRAFIK.B"/></lang>

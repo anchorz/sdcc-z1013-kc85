@@ -1,0 +1,4 @@
+<kurz src="EDAS 8 Beschreibung+überarbeitete Version"/>
+<lang>EDAS8-Beschreib.doc 
+
+<include src="T.EDAS8-Beschreib.txt"/></lang>

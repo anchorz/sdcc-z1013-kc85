@@ -1,0 +1,30 @@
+<kurz src="Micro BASIC-85, BASIC Compiler (RST20)"/>
+<lang>wie [41057cc41a1b1ad2e5e6d899f7b2c5a4], lediglich ein PATCH für die Verwendung von RST20 Monitoraufrufen.
+
+
+LIST
+5 LET I=5
+10 PRINT I
+15 FOR X=1 STEP 2 TO 10
+16 PRINT X
+17 NEXT
+20 END
+
+Start erfolgt mit: 
+RUN⏎
+NO ERROR
+SOURCE: 02900H-02947H
+CODE  : 02948H-029C0H
+DATA  : 029C1H-029C7H
+IDTAB : 03F60H-03FFFH
+START(_/N): ␣
+
+Dann Leertaste!
+
+ .500000E+01 .100000E+01 .300000
+E+01 .500000E+01 .700000E+01 .90
+0000E+01
+READY  
+
+<include src="../41057cc41a1b1ad2e5e6d899f7b2c5a4-C.B-COMPILER/I.Micro-BASIC '85.txt"/></lang>
+<requires></requires>

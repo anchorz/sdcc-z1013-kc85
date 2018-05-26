@@ -1,0 +1,5 @@
+<kurz src="Kondensatoren mit dem Computer messen V2"/>
+<lang>
+
+<include src="CTEST2.B"/></lang>
+

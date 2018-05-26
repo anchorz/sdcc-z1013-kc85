@@ -1,0 +1,18 @@
+<kurz src="Grafikprogramm, Punkte setzen mit Viertelzeichen"/>
+<lang>
+
+Steuerung: ⇦ ⇨ ⇧ ⇩ Cursor Bewegen
+
+1 - Punkt setzen
+2 - Cursorsteuerung 
+3 - Punkt Löschen
+/ - Menu
+
+V - Cursor links oben
+B - Cursor rechts unten
+M - Cursor links unten
+N - Cursor rechts oben
+
+<include src="user-plot+demo.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

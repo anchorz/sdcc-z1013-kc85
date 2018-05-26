@@ -1,0 +1,26 @@
+<kurz src="Alogrithmen aus dem Bereich Chemie und Mathematik"/>
+<lang>AUFGABENNUMMER ist :1 ... 5
+
+Berechnung der reellen Loesungen einer kubischen Gleichung in Normalform. x^3+r*x^2+s*x+t=0
+
+Berechnung der kleinsten positiven Loesung mit beliebiger Genauigkeit nach dem NEWTONschen 
+    Verfahren fuer eine Gleichung 5.Grades in Normalform. "x^5+a*x^4+b*x^3+c*x^2+d*x+e=0
+
+Das Programm ermoeglicht die Berechnung der Fuellhoehe bestimmter Fuellkoerper. Diese Koerper
+  aus Quarzglas (Dichte 2.2g/cm^3) haben die Form von Paraboloiden. Ihre Wandstaerke betraegt 
+  2mm ihre Hoehe 100mm. Der obere aessere Durchmeser ist variabel. Diese Koerper sollen mit einem
+  Oel der Dichte 2g/cm^3 so gefuellt werden, dass sie 50m tief in eine Fluessigkeit mit variabler
+  Dichte (Rho >2.5g/cm^3) eintauchen und schimmen.
+
+Berechnung der speziellen Loesung linearen homogenen Differenzialgleichung 2.Ordnung mit 
+  konstant Koeffizienten der Form: y''+a1*y'+a0*y=0 
+                                
+Analyse und moegliche Stoffvarianten zum Versuch 3 
+  - Analyse der Anionen 
+  - Analyse der Kationen!
+
+<include src="CHEMIE.B.B"/>
+
+</lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

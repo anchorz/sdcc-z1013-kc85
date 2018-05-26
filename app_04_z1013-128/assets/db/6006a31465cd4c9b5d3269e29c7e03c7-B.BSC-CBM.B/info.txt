@@ -1,0 +1,3 @@
+<kurz src="BASICODE Konvertierung Zeichensatz auf einem C64"/>
+<lang><include src="BSC-CBM.B.B"/></lang>
+

@@ -1,0 +1,4 @@
+<kurz src="Videotext-Decoder am Z1013 I2C-Steuerung EMR-Image"/>
+<lang>i2c_bus.zip vtx_prax.zip  vtx_theo.zip</lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

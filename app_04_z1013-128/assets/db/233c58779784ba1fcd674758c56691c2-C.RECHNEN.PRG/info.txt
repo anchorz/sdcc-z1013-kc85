@@ -1,0 +1,9 @@
+<kurz src="Verschiedene Alogorithmen: ARITHMETISCHER UND QUATRATISCHER MITTELWERT usw."/>
+<lang>Die Unterprogramme werden nacheinander aufgerufen, ohne eine Menüauswahl
+ ARITHMETISCHER UND QUATRATISCHER MITTELWERT
+ Widerstandsnetzwerk
+ Flächen- und Umfangberechnung
+
+<include src="C.RECHNEN.PRG.B"/></lang>
+<syscall type="keine" tag=""/>
+<port range="keine" mode="" device=""/>

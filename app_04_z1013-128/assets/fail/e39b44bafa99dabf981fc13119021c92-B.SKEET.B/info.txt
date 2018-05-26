@@ -1,0 +1,7 @@
+<kurz src="ähnlich [06352fc0b0d458bdf85e1acaa6b07613]"/>
+<lang>e: Dateigröße muss es Vielfaches von 32 sein. 25 Bytes fehlen.
+
+Das Spiel gibt es schon. Also wird es aussortiert.
+Tastaturabfrage erfolgt mit PEEK(5)? Welches OS liefert da den Tastencode?
+</lang>
+

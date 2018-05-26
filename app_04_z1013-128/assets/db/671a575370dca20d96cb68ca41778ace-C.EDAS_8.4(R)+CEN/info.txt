@@ -1,0 +1,9 @@
+<kurz src="EDAS 8.4(R) "/>
+<lang></lang>
+<syscall type="f2ce" tag="unbekannt vielleicht Mon 2.02 oder MainSoft-Monitor"/>
+<syscall type="spv" tag="[LORUF, SARUF]"/>
+<syscall type="rst20" tag="[WIND, OUTHL, INKEY, INCH, PRST7, OUTHX]"/>
+<port range="00" mode="W" device="Userport: Centronics"/>
+<port range="01" mode="W" device="Userport: Centronics"/>
+<port range="02" mode="R/W" device="Systemport: [4]Centronics"/>
+

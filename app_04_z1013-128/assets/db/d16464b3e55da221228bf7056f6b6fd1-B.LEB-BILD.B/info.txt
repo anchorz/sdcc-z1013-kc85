@@ -1,0 +1,3 @@
+<kurz src="BASICODE LEBENDE BILDER"/>
+<lang><include src="LEB-BILD.B"/></lang>
+

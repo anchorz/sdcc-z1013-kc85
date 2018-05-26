@@ -1,0 +1,5 @@
+<kurz src="MINI-ADRESSENVERWALTUNG (Basiccode)"/>
+<lang>Ichhabe es noch nicht zum Laufen bekommen. Welche BASICCODE Variante wird dazu benötigt?
+
+<include src="ADRESSEN.B.B"/></lang>
+
