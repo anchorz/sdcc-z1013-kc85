@@ -63,6 +63,8 @@ obj/gcc/$(OUT): $(addsuffix .o,$(addprefix obj/gcc/,$(OBJECTS)))
 obj/gcc/%.o : src/%.c
 	gcc -g -Wall -pedantic -std=c99 -Werror -Iinclude -I../include-gcc -c -o "$@" $^
 
+include ../mk/rules.a5105.make 
+
 ################
 #
 #  SCP

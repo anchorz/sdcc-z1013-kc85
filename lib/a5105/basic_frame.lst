@@ -1,0 +1,137 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  basic_frame.s - generate BASIC program envelope where the C code 
+                              3 ;                  can be embedded
+                              4 ;
+                              5 ;  Copyright (C) 2018, Andreas Ziermann
+                              6 ;
+                              7 ;  This library is free software; you can redistribute it and/or modify it
+                              8 ;  under the terms of the GNU General Public License as published by the
+                              9 ;  Free Software Foundation; either version 2, or (at your option) any
+                             10 ;  later version.
+                             11 ;
+                             12 ;  This library is distributed in the hope that it will be useful,
+                             13 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             14 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             15 ;  GNU General Public License for more details.
+                             16 ;
+                             17 ;  You should have received a copy of the GNU General Public License 
+                             18 ;  along with this library; see the file COPYING. If not, write to the
+                             19 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             20 ;   MA 02110-1301, USA.
+                             21 ;
+                             22 ;  As a special exception, if you link this library with other files,
+                             23 ;  some of which are compiled with SDCC, to produce an executable,
+                             24 ;  this library does not by itself cause the resulting executable to
+                             25 ;  be covered by the GNU General Public License. This exception does
+                             26 ;  not however invalidate any other reasons why the executable file
+                             27 ;   might be covered by the GNU General Public License.
+                             28 ;--------------------------------------------------------------------------
+                             29         .module basic_frame
+                             30 
+                             31         .globl  save_stack_ptr
+                             32         
+                             33         ; Ordering of segments for the linker.
+                             34         .area   _HOME
+                             35         .area   _CODE
+                             36         .area   _INITIALIZER
+                             37         .area   _GSINIT
+                             38         .area   _GSFINAL
+                             39         .area   _GSEXIT
+                             40         .area   _GSEXITFINAL
+                             41         .area   _FOOTER
+                             42         .area   _DATA
+                             43         .area   _INITIALIZED
+                             44         .area   _BSEG
+                             45         .area   _BSS
+                             46         .area   _STACK
+                             47         .area   _HEAP
+                             48         
+                             49         .area   _CODE
+   0000 FF                   50         .db     0xff   ; prefix .BAS file
+                             51 ;
+                             52 ;       10 DEFUSR=&H[init]
+                             53 ;
+   0001                      54 line_10:
+   0001r0Cr00                55         .dw     line_20
+   0003 0A 00                56         .dw     10      ; line number is 10
+   0005 97                   57         .db     0x97    ; DEF
+   0006 DD                   58         .db     0xdd    ; USR
+   0007 EF                   59         .db     0xef    ; =
+   0008 0C                   60         .db     0x0c    ; &H
+   0009r1Fr00                61         .dw     prepare_stack
+   000B 00                   62         .db     0x00    ; EOL
+   000C                      63 line_20:
+                             64 ;
+                             65 ;       20 Z%=USR(0):END
+                             66 ;
+   000Cr1Ar00                67         .dw     line_30 ; where the code is embedded
+   000E 14 00                68         .dw     20      ; line number is 20
+   0010 5A 25                69         .ascii  'Z%'    ; integer variable Z%
+   0012 EF                   70         .db     0xef    ; =
+   0013 DD                   71         .db     0xdd    ; USR
+   0014 28                   72         .ascii  '('
+   0015 11                   73         .db     0x11    ; token 0
+   0016 29 3A                74         .ascii  '):'
+   0018 81                   75         .db     0x81    ; END
+   0019 00                   76         .db     0x00    ; EOL
+   001A                      77 line_30:
+                             78 ;
+                             79 ;       30 ! ... here comes the binary data
+                             80 ;
+   001Ar01r00                81         .dw     basic_ends
+   001C 1E 00                82         .dw     30      ; line number is 30
+   001E 21                   83         .ascii  '!'     ; REM
+   001F                      84 prepare_stack:
+   001F F3            [ 4]   85         di
+   0020 ED 73r00r00   [20]   86         ld      (save_stack_ptr),sp
+                             87 ; dont forget to enable interrupts again
+                             88 ; init: this is the address of the init: jump label
+                             89 ; crt0.s will be linked as 2nd object
+                             90 ; after main() is finished jump to label exit: as mentioned exits.s 
+                             91 ; return from there
+                             92 .area   _FOOTER
+   0000 00                   93         .db     0x00    ; EOL
+   0001                      94 basic_ends:
+   0001 00 00                95         .dw     0x0000
+                             96         
+                             97 .area   _BSS    
+                             98 
+   0000                      99 save_stack_ptr: 
+   0000                     100         .ds     2
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+  7 basic_ends                                                     0001 R
+  0 line_10                                                        0001 R
+  0 line_20                                                        000C R
+  0 line_30                                                        001A R
+  0 prepare_stack                                                  001F R
+  B save_stack_ptr                                                 0000 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size   24   flags    0
+   1 _HOME                                      size    0   flags    0
+   2 _INITIALIZER                               size    0   flags    0
+   3 _GSINIT                                    size    0   flags    0
+   4 _GSFINAL                                   size    0   flags    0
+   5 _GSEXIT                                    size    0   flags    0
+   6 _GSEXITFINAL                               size    0   flags    0
+   7 _FOOTER                                    size    3   flags    0
+   8 _DATA                                      size    0   flags    0
+   9 _INITIALIZED                               size    0   flags    0
+   A _BSEG                                      size    0   flags    0
+   B _BSS                                       size    2   flags    0
+   C _STACK                                     size    0   flags    0
+   D _HEAP                                      size    0   flags    0
+

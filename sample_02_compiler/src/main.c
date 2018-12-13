@@ -23,13 +23,19 @@ __sfr __banked __at(0x123) IoPort16;
 #elif defined(__KC85__)
     __at (0x8000) unsigned char bws[1024];
     __at (0xa800) unsigned char color[1024];
+#elif defined(__A5105__)
+    //unsafe dummy variable
+    __at (0x9000) unsigned char bws[1024];
 #elif defined(__GNUC__)
     unsigned char bws[1024];
 #else
     #error undefined platform
 #endif
 
-unsigned char predefined_at(int s) __z88dk_fastcall
+/* not to run in any kind of trouble, that code can be checked via LST file only
+ *
+ */
+unsigned char _test_io16(int s) __z88dk_fastcall
 {
     switch (s)
     {
@@ -44,7 +50,10 @@ unsigned char predefined_at(int s) __z88dk_fastcall
 }
 
 /* test case for compiler option: --allow-unsafe-reads
- * the programmer may rely on the fact that *p is not read at all if s==0
+ * the compiler may execute the expression (*p * 7) before the switch statement in order 
+ * to avoid multiple code instances for that expression
+ *
+ * the programmer still may rely on the fact that *p is not read at all if s==0
  *   - still that is bad style in that case - test that assumption first or switch
  *     only if s!=0 - make the intentions more clear
  * 
@@ -52,7 +61,7 @@ unsigned char predefined_at(int s) __z88dk_fastcall
  * to the actual c source. The option is more benefitial when optimizing for size.
  * So it is good the sub term optimization is off by default. 
  */
-unsigned char f(int s, int *p)
+unsigned char _test_premature_read(int s, int *p)
 {
     switch(s)
     {
@@ -67,13 +76,14 @@ unsigned char f(int s, int *p)
     }
 }
 
-/* SDCC allows to specify preserved registers in function declarations, to enable further optimizations on calls to
- * functions implemented in assembler. Example for the Z80 architecture specifying that a function will preserve
- * register pairs bc and iy
+/* SDCC allows to specify preserved registers in function declarations, to enable further 
+ * optimizations on calls to functions implemented in assembler. Example for the Z80 architecture
+ * specifying that a function will preserve register pairs bc and iy
+ *
+ * may be not supported, but still it is referenced in the manual
  */
-//void foo(void) __preserves_regs(b, c, iyl, iyh) 
-//{
-//}
+//void foo(void) __preserves_regs(b, c);
+
 
 // The __naked function modifier attribute prevents the compiler from generating prologue and epilogue code
 // the user is entirely responsible for such things as saving any registers that may need to be preserved,

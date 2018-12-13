@@ -1,0 +1,47 @@
+XL2
+H E areas 2 global symbols
+M basic_frame
+S .__.ABS. Def0000
+A _CODE size 24 flags 0 addr 0
+A _HOME size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _GSEXIT size 0 flags 0 addr 0
+A _GSEXITFINAL size 0 flags 0 addr 0
+A _FOOTER size 3 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _BSEG size 0 flags 0 addr 0
+A _BSS size 2 flags 0 addr 0
+S save_stack_ptr Def0000
+A _STACK size 0 flags 0 addr 0
+A _HEAP size 0 flags 0 addr 0
+T 00 00 FF
+R 00 00 00 00
+T 01 00
+R 00 00 00 00
+T 01 00 0C 00 0A 00 97 DD EF 0C 1F 00 00
+R 00 00 00 00 00 02 00 00 00 0A 00 00
+T 0C 00
+R 00 00 00 00
+T 0C 00 1A 00 14 00 5A 25 EF DD 28 11 29 3A 81 00
+R 00 00 00 00 00 02 00 00
+T 1A 00
+R 00 00 00 00
+T 1A 00 01 00 1E 00 21
+R 00 00 00 00 00 02 07 00
+T 1F 00
+R 00 00 00 00
+T 1F 00 F3 ED 73 00 00
+R 00 00 00 00 00 05 0B 00
+T 00 00 00
+R 00 00 07 00
+T 01 00
+R 00 00 07 00
+T 01 00 00 00
+R 00 00 07 00
+T 00 00
+R 00 00 0B 00
+T 00 00
+R 00 00 0B 00

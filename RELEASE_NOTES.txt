@@ -1,3 +1,8 @@
+2018-12-13
+
+	SDCC Update auf 3.8.4
+	Neues Ziel: BIC A5105 - Hilfsweise als .BAS Datei   
+
 2016-03-14
 
 Build environment:
